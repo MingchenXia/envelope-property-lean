@@ -1,39 +1,32 @@
-# Hironaka algebraic principalization for EnvelopeProperty
+# hironakaEp33: Hironaka resolution (vendored)
 
-Frozen minimal algebraic import cone from https://github.com/resolutionorg/hironaka at
-`a0d237580a68818b5142b6d404a2670b3fcee697`, backported to Lean/Mathlib v4.33.1.
-Copyright (c) 2026 Resolution; Apache-2.0. Original source headers and LICENSE are retained.
+An import cone of [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka) at commit
+`a0d237580a68818b5142b6d404a2670b3fcee697`, backported from Lean v4.34.0 to Lean v4.33.1 and Mathlib
+`0df444a360eaa60ab8c11dca51a86af692955474`. Copyright (c) 2026 Resolution; Apache-2.0 (see
+[`LICENSE`](LICENSE)). The original source headers are retained.
 
-Import the concrete modules under
-`Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.{Monomial,Centers,IsoLocus}`,
-or the small convenience root `Hironaka`. The latter imports only those three roots.
-No analytic, example, Challenge, or full-upstream umbrella module is vendored.
+Contents (627 modules: 626 upstream modules and one compatibility helper):
 
-The 522-module producer cone passed a direct Lean kernel build and transitive axiom audit.
-See VALIDATION.md, audit/principalization-axioms.log, UPSTREAM-CONE.json, and PORT-HASHES.json.
-The full source compatibility diff is compatibility.patch, explained in PORTING.md.
-No vendored definition/theorem interface was weakened and no hypothesis class was introduced.
+* the algebraic principalization cone (521 upstream modules), with roots
+  `Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.{Monomial,Centers,IsoLocus}`; the
+  convenience root `Hironaka` imports only these three;
+* the strong resolution extension (105 further upstream modules, root
+  `Hironaka.Resolution.Algebraic.Kol07.Thm36.Theorem36`): `exists_strong_resolution` for integral
+  algebraic schemes in characteristic zero, and the projectivity of blowups and of finite blowup
+  sequences.
 
-The package is named `hironakaEp33`, with Lean library prefix `Hironaka`. Parent integration uses
-an ordinary local path dependency `deps/hironaka-ep33`; the parent keeps its existing pinned
-Mathlib/TN dependencies. The parent Lake manifest must add this path package explicitly, following
-its existing pinned-dependency convention; do not run an unconstrained `lake update`.
-After registration, `lake build Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.Monomial`
-checks the principalization producer under the parent toolchain. From the parent project,
-`lake env lean deps/hironaka-ep33/audit/Principalization.lean` runs the actual-import audit;
-from this package directory use `lake env lean audit/Principalization.lean`. The same target can be built
-independently in this package using the included Mathlib v4.33.1 manifest.
+No analytic, example, `Challenge` or full-upstream umbrella module is vendored. No definition or
+theorem statement was weakened and no hypothesis was added.
 
-Versioned source contains no .lake directory, binaries, private clone metadata, or network helper.
-For this working session only, checked producer oleans were copied (not symlinked) from the isolated
-validation workspace to the ignored local `.lake/build/lib/lean` directory. They are not source
-artifacts and must not be committed.
-The original isolated build remains an external validation artifact; only source, license,
-provenance, configuration, and audit evidence are vendored here.
+Provenance:
 
-The EP finite chart-tree/etale Jacobian adapter remains separate work; principalization alone is
-not a proof of SmoothEnvelopeCharZero or completion of the whole paper.
+* [`UPSTREAM-CONE.json`](UPSTREAM-CONE.json): upstream commit, toolchains and the list of source
+  files of the principalization cone;
+* [`strong-resolution-extension/ADDITIONAL-UPSTREAM.json`](strong-resolution-extension/ADDITIONAL-UPSTREAM.json):
+  the same for the extension;
+* [`compatibility.patch`](compatibility.patch) and
+  [`strong-resolution-extension/compatibility.patch`](strong-resolution-extension/compatibility.patch):
+  every source change against upstream.
 
-## Strong resolution extension
-
-The additional 105 modules in `strong-resolution-extension/ADDITIONAL-UPSTREAM.json` extend the same exact upstream commit to the genuine `exists_strong_resolution` theorem for integral algebraic schemes in characteristic zero. The union now contains 626 upstream modules and one proved compatibility helper. Historical principalization hashes/evidence remain unchanged; the extension records its own source hashes, API patch and isolated kernel checks. Its actual parent-project build and audit are recorded by the consuming EP checkpoint. The extension also supplies the actual projectivity theorem for blowups and finite blowup sequences.
+This package is a Lake path dependency of `EnvelopeProperty` (`deps/hironaka-ep33`); build it from
+`EnvelopeProperty/` as described in the top-level README. Do not run `lake update`.
