@@ -19,6 +19,7 @@ import EnvelopeProperty.Global.PSH2HomogeneousMajorant
 import EnvelopeProperty.Projective.Remark73ProjectiveLine
 import EnvelopeProperty.Global.EPDecreasingLimits
 import EnvelopeProperty.Global.HomogeneousCarrierLimit
+import EnvelopeProperty.Source.FiniteDimensionalTopology
 
 -- EnvelopeProperty.MainTheoremFullyUnconditional
 #print axioms EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_fully_unconditional
@@ -179,3 +180,8 @@ import EnvelopeProperty.Global.HomogeneousCarrierLimit
 -- EnvelopeProperty.Global.HomogeneousCarrierLimit
 #print axioms EnvelopeProperty.MultiModel.IsScaleHomogeneous.homogenization_add_coe_le
 #print axioms EnvelopeProperty.MultiModel.isPSH_of_homogeneous_carrier_limit
+
+-- EnvelopeProperty.Source.FiniteDimensionalTopology
+#print axioms EnvelopeProperty.Variety.isOpen_ampleCone
+#print axioms EnvelopeProperty.Variety.ampleTendsto_iff_tendsto
+#print axioms EnvelopeProperty.Variety.isPSH_iff_isCurveWeakPSH

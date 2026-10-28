@@ -39,6 +39,8 @@ RELEASE_ROOTS = [
     # supporting results (PSH2 for decreasing limits; FHX 2026-10-28 Lemma 7.4)
     "EnvelopeProperty.Global.EPDecreasingLimits",
     "EnvelopeProperty.Global.HomogeneousCarrierLimit",
+    # definition fidelity: Variety.IsPSH is BJ22 Definition 4.1 when N^1(X)_R is finite dimensional
+    "EnvelopeProperty.Source.FiniteDimensionalTopology",
 ]
 
 EXTERNAL_PREFIXES = {
@@ -219,7 +221,7 @@ def main():
     repo = os.path.dirname(here)
     default_ws = (repo if os.path.basename(here) == "scripts"
                   and os.path.isfile(os.path.join(repo, ROOT_PACKAGE_DIR, "lake-manifest.json"))
-                  else "/home/user/archon-nakamaye")  # release repository / development workspace
+                  else ".")
     ap.add_argument("--workspace", default=default_ws)
     ap.add_argument("--json")
     ap.add_argument("--quiet", action="store_true")

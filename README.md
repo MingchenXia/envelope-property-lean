@@ -16,9 +16,6 @@ Numbering: the paper in `paper/` (revision of 2026-10-28) calls them Theorem A
 `ERRATA.md` cite the revision `832e086`, where they are Theorem 1.1 and Corollary 1.2. The
 statements are the same in both revisions.
 
-> **TODO (author): choose a LICENSE.** No license file is included yet. See [License](#license)
-> for the constraints from the third-party code in this repository.
-
 ## What is formalized
 
 Let `k` be an algebraically closed field with the trivial absolute value, `X` an integral
@@ -71,10 +68,11 @@ quantified over countable algebraically closed subfields:
 
 * Convergence of classes in `N¹(X)_ℝ` (in the definition of `IsPSH`) is `Variety.AmpleTendsto`:
   convergence in the order of the ample cone. When `N¹(X)_ℝ` is finite dimensional this is
-  convergence in its Euclidean topology, i.e. BJ22's definition (proved in the development
-  workspace as `Variety.ampleTendsto_iff_tendsto`, module
-  `EnvelopeProperty.Source.FiniteDimensionalTopology`, which is not part of this release);
-  finite dimensionality of `N¹(X)_ℝ` (Néron–Severi) is not formalized.
+  convergence in its Euclidean topology, so that `IsPSH` is literally BJ22's definition:
+  `Variety.ampleTendsto_iff_tendsto` and `Variety.isPSH_iff_isCurveWeakPSH`
+  (`EnvelopeProperty/Source/FiniteDimensionalTopology.lean`), under the explicit assumption
+  `[FiniteDimensional ℝ (Space p)]`. Finite dimensionality of `N¹(X)_ℝ` (Néron–Severi) is not
+  formalized; the main theorems do not assume it.
 * Nets in the definition of `IsPSH` are indexed by directed preorders in the universe of `X`.
 * The trivially valued field is `k` itself; no countability assumption is made on `k`.
 
@@ -93,7 +91,7 @@ lake build --no-build                 # check: everything up to date, nothing co
 lake env lean ../scripts/Axioms.lean  # the axiom audit below
 ```
 
-Without the build cache, `lake build` (in `EnvelopeProperty/`) compiles all 6160
+Without the build cache, `lake build` (in `EnvelopeProperty/`) compiles all 6161
 modules; expect many hours. See [`BUILD-CACHE.md`](BUILD-CACHE.md). Do not run `lake update`: the
 dependency revisions are pinned in `EnvelopeProperty/lake-manifest.json` (Mathlib
 `0df444a360eaa60ab8c11dca51a86af692955474`, tag `v4.33.1`), and the build cache is valid only for them.
@@ -108,22 +106,23 @@ the other packages are built as dependencies. A single theorem file can be check
 `scripts/Axioms.lean` prints the axioms of the headline theorems, of the earlier forms and of the
 errata certificates. Each depends exactly on `[propext, Classical.choice, Quot.sound]`.
 
-Checked for workspace revision `618e174e1347447afa241ddae10ba6101c076b5d` (2026-10-28): `lake build --no-build` succeeded; all 138 `#print axioms` lines report `[propext, Classical.choice, Quot.sound]`.
+Checked for workspace revision `322d15868e36b7aec63561aa2fc8cf98f038206c` (2026-10-28): `lake build --no-build` succeeded; all 141 `#print axioms` lines report `[propext, Classical.choice, Quot.sound]`.
 
 ## Layout
 
-The repository is the import closure of the 11 release roots — the six theorem files listed
-above, the three errata certificates and two supporting files (`Global/EPDecreasingLimits.lean`:
+The repository is the import closure of the 12 release roots — the six theorem files listed
+above, the three errata certificates, two supporting files (`Global/EPDecreasingLimits.lean`:
 PSH2 for decreasing limits under the envelope property; `Global/HomogeneousCarrierLimit.lean`: FHX
-Lemma 7.4 of the 2026-10-28 revision) — computed by [`scripts/closure.py`](scripts/closure.py)
+Lemma 7.4 of the 2026-10-28 revision) and `Source/FiniteDimensionalTopology.lean` (the definition
+of `IsPSH` is BJ22's when `N¹(X)_ℝ` is finite dimensional) — computed by [`scripts/closure.py`](scripts/closure.py)
 (`python3 scripts/closure.py` re-checks it). It keeps the directory layout of the
 development workspace, so that the Lake package names, options and the build cache are those of the
-workspace build. Source revision: workspace `618e174e1347447afa241ddae10ba6101c076b5d` (see
+workspace build. Source revision: workspace `322d15868e36b7aec63561aa2fc8cf98f038206c` (see
 [`RELEASE-MANIFEST.json`](RELEASE-MANIFEST.json), which lists every file with its sha256).
 
 | Directory | Lake package | Modules | Content |
 |---|---|---|---|
-| `EnvelopeProperty/` | `EnvelopeProperty` | 3089 | FHX: definitions, the main theorems and their proofs |
+| `EnvelopeProperty/` | `EnvelopeProperty` | 3090 | FHX: definitions, the main theorems and their proofs |
 | `EnvelopeProperty/deps/hironaka-ep33/` | `hironakaEp33` | 627 | Hironaka: principalization and resolution in characteristic 0 (port of resolutionorg/hironaka) |
 | `EnvelopeProperty/deps/aintlib-ep33/` | `aintlibEp33` | 185 | AINTLIB `ModularCurves` / `Common`: sheaves of modules, Čech cohomology, projective space |
 | `EnvelopeProperty/deps/tauceti-generic-ep33/` | `tauCetiGenericEp33` | 4 | Tau Ceti: generic freeness |
@@ -131,7 +130,7 @@ workspace build. Source revision: workspace `618e174e1347447afa241ddae10ba6101c0
 | `TranscendentalNakamaye/` | `TranscendentalNakamaye` | 1054 | complex-analytic infrastructure: complex manifolds, multiplier ideals, analytic resolution, Ohsawa–Takegoshi |
 | `SGPTFormalization/` | `SGPTFormalization` | 34 | holomorphic germs of schemes over ℂ (from the SGPT formalization) |
 | `BingWangEntropy/` | `BingWangEntropy` | 53 | the complex manifold of a smooth scheme over ℂ |
-| **total** | | **6160** | |
+| **total** | | **6161** | |
 
 Each package directory holds its `lakefile.toml`, `lean-toolchain` and `lake-manifest.json`. The
 lakefiles are those of the workspace with exact-module globs that are not in the closure removed
@@ -141,7 +140,7 @@ requirements are unchanged.
 ## Paper and errata
 
 * [`paper/`](paper/): the authors' LaTeX source (`main.tex`, `ComplexGeometry.bib`,
-  `cgeometry.sty`; revision of 2026-10-28); no compiled PDF is included yet (compile with `latexmk -pdf main.tex`, which needs biber). The formalization was written against
+  `cgeometry.sty`; revision of 2026-10-28) and the compiled `main.pdf`. The formalization was written against
   the revision `832e086`; in the later revision the main theorem and its corollary are unchanged,
   six intermediate statements are strengthened along the lines of ERRATA §1.3, and the
   formalization needs no change (ERRATA §1.4, EP-4.4).
@@ -149,13 +148,22 @@ requirements are unchanged.
   addendum, Wu, the Stacks project, Roberts–Singh, Temkin 2010, de Jong 1996, and the sources of the
   analytic part), with their status, fixes and Lean certificates.
 
+## Blueprint
+
+[`blueprint/`](blueprint/) is a curated subset of the blueprint (the informal, node-by-node
+mathematical route) of the formalization: the 1286 chapters (4617 statements)
+containing the nodes of the headline theorems, of the `LocalPositivity` and
+`SmoothEnvelopeCharZero` inputs, of the global theorems `thm:gl-*` and of the errata certificates,
+closed under `\uses` and `\ref`. See [`blueprint/README.md`](blueprint/README.md) for how it was
+selected and how to build it.
+
 ## Third-party code
 
 The following directories contain code from other projects, with their original copyright headers
 and license files; the compatibility changes are recorded in the patch files next to them.
 
 * `EnvelopeProperty/deps/hironaka-ep33/` — from [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka)
-  (Apache-2.0), backported to Lean/Mathlib v4.33.1 (`PORTING.md`, `compatibility.patch`).
+  (Apache-2.0), backported to Lean/Mathlib v4.33.1 (`UPSTREAM-CONE.json`, `compatibility.patch`).
 * `EnvelopeProperty/deps/aintlib-ep33/` — the `ModularCurves` and `Common` libraries of
   [AINTLIB](https://github.com/CBirkbeck/AINTLIB) (Apache-2.0; `UPSTREAM.json`,
   `COMPATIBILITY.patch`).
@@ -167,8 +175,23 @@ and license files; the compatibility changes are recorded in the patch files nex
 
 ## License
 
-**TODO (author).** No license is chosen yet. Constraints: 1196 of the 6160 Lean files already carry the header "Released under Apache 2.0 license as described in the file LICENSE" (per package: `EnvelopeProperty` 61/3089, `hironakaEp33` 627/627, `aintlibEp33` 105/185, `tauCetiGenericEp33` 4/4, `deJongProjectivityEp33` 359/1114, `TranscendentalNakamaye` 40/1054, `SGPTFormalization` 0/34, `BingWangEntropy` 0/53); the vendored packages under `EnvelopeProperty/deps/` come from Apache-2.0 projects and keep their own `LICENSE` files. So the repository needs a top-level `LICENSE`, compatible with Apache-2.0 for the third-party parts. 785 files have the placeholder header "Copyright (c) 2026. All rights reserved." (no holder) and 4203 files have no copyright header.
+This repository is released under the Apache License, Version 2.0 ([`LICENSE`](LICENSE)). Every file
+that does not carry another notice — including the files whose header is the placeholder
+"Copyright (c) 2026. All rights reserved." and the files without a header — is released under
+Apache-2.0 (see `LICENSE`). Vendored code keeps its upstream license: the packages under
+`EnvelopeProperty/deps/` (Apache-2.0, with their own `LICENSE` files) and the individual files that
+carry the header of their origin (see [Third-party code](#third-party-code)).
 
 ## Credits
 
-TODO (author): authorship / credit line for the formalization.
+* **Paper:** Yanbo Fang, Jiyuan Han and Mingchen Xia, *The envelope property for unibranch
+  projective varieties, with an appendix on the singular Yau–Tian–Donaldson conjecture*
+  ([`paper/`](paper/)).
+* **Lean formalization:** carried out by the AI agents Claude (Anthropic) and Codex (OpenAI) in an
+  Archon Horizon workspace.
+* **Built on** [Mathlib](https://github.com/leanprover-community/mathlib4) (the Mathlib community)
+  and the vendored upstream projects
+  [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka) (Resolution),
+  [AINTLIB](https://github.com/CBirkbeck/AINTLIB) (Chris Birkbeck and contributors),
+  [Tau Ceti](https://github.com/TauCetiProject/TauCeti) (the Tau Ceti contributors) and
+  [zblore/csd-lean4](https://github.com/zblore/csd-lean4) (Zayn Blore).
