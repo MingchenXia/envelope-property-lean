@@ -8,10 +8,10 @@ set_option linter.unusedSectionVars false
 /-!
 # The two Hironaka conclusions from a resolution invariant with per-sequence local finiteness
 
-Hironaka phases H5a / H5b (TN23), blueprint `mc:hironaka-from-seq-invariant` (chapter `maximal-contact.tex`); claimed I-0981
-C-0177, after the orchestrator's review of 3 October 2026 (`.archon-horizon/scratch/orchestrator-review-seq-induction-20261003.md`,
-finding F1, H5 side).  Sources: Copy-4, `lem:relative-principalization`; Włodarczyk 2005 (`wlodarczyk05-hironaka`), embedded
-resolution from the canonical resolution of `(X, X, ∅, 𝓘_V, 1)`.
+Hironaka phases H5a / H5b (TN23), blueprint `mc:hironaka-from-seq-invariant` (chapter `maximal-contact.tex`), written
+after an independent review (3 October 2026) of the induction over growing sequences.  Sources: Copy-4,
+`lem:relative-principalization`; Włodarczyk 2005 (`wlodarczyk05-hironaka`), embedded resolution from the canonical
+resolution of `(X, X, ∅, 𝓘_V, 1)`.
 
 The reductions of the two Hironaka statements were proved generic in the resolutions:
 `FactorizationFromResolution.factorizationData_of_exists_resolution` (H5a) takes the existence of resolutions of the marked
@@ -19,9 +19,9 @@ ideals of the domain, and `EmbeddedFromResolution.exists_embeddedResolution_data
 with four properties and a canonical segment with empty final cosupport.  The wrappers that supply these from a resolution
 invariant (`EmbeddedFromResolution.exists_embeddedResolution_data_of_resolutionInvariant(_of_isCoherent)`) are typed over the
 superseded structure `ResolutionInvariantExt.ResolutionInvariant` (uniform property (8)), which the induction of
-`hir:canonical-centres` cannot produce (human decision I-1139 (b)).  This module ADDS their forms for the structure of that
-decision, `ResolutionInvariantSeq.ResolutionInvariant` (property (8) along growing sequences, resolution by dependent choice);
-the earlier wrappers stay unchanged.
+`hir:canonical-centres` cannot produce (the author's decision of 3 October 2026).  This module ADDS their forms for the
+structure of that decision, `ResolutionInvariantSeq.ResolutionInvariant` (property (8) along growing sequences, resolution
+by dependent choice); the earlier wrappers stay unchanged.
 
 ## Main results
 
@@ -36,7 +36,7 @@ the earlier wrappers stay unchanged.
 
 H4 provides such an invariant, `CanonicalCentres.canonicalInvariant n : ResolutionInvariantSeq.ResolutionInvariant n n (ValTy n)`,
 and each Hironaka statement is discharged in place by one application of the results here (for H5b with the coherence of
-`𝓘_V` from `CartanIrreducible.cartanCoherence`, after the Cartan move of I-1169 (b)).
+`𝓘_V` from `CartanIrreducible.cartanCoherence`).
 
 Import discipline (Hironaka phase): this module does not import, even transitively,
 `Pending.RelativePrincipalization` or `Pending.EmbeddedResolution`.  Sorry-free.

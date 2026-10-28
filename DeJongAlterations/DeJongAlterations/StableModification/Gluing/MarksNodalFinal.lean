@@ -12,7 +12,7 @@ import DeJongAlterations.StableModification.Gluing.MarksSeparation
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), proof of
 Proposition 4.5.1 (`sepclosprop`, T:3243–3266) with Lemma 4.3.2 (`divlem`, T:3019–3046), in the
-form of `PLAN-T5.md` §2.2 steps 1–8 with marks (node V2).
+form with marks, up to the nodal modification.
 
 Lane T45E's `Gluing.StableVal.exists_marked_nodal_modification` (`Gluing/MarksNodal.lean`) takes
 projective separation of marks, `StableVal.ProjectiveSeparation R`, as a hypothesis: it is used
@@ -63,8 +63,8 @@ variable {K : Type u} [Field K] {R : ValuationSubring K}
 local notation "s₀" => IsLocalRing.closedPoint R
 
 /-- **A nodal modification with separated marks, unconditionally** (Temkin, proof of
-Proposition 4.5.1, T:3243–3266, with Lemma 4.3.2 `divlem`; `PLAN-T5.md` §2.2 steps 1–8 with marks,
-node V2): lane T45E's `StableVal.exists_marked_nodal_modification` without the hypothesis
+Proposition 4.5.1, T:3243–3266, with Lemma 4.3.2 `divlem`, with marks):
+lane T45E's `StableVal.exists_marked_nodal_modification` without the hypothesis
 `ProjectiveSeparation R`. Let `K` be algebraically closed, `R ⊆ K` a valuation ring of finite
 height and equal characteristic, and `φ : C → Spec R` a proper flat relative curve, integral,
 separated and quasi-compact, with `trdeg K(C)/K = 1`, normal at the points over the generic point,

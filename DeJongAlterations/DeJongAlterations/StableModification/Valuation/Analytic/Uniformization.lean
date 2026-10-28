@@ -30,7 +30,7 @@ The proofs of Theorem 2.1.10 in characteristic `0` and in the degenerate case `y
 `L = k`) are included; the hypothesis `K̃ ≠ k̃` of Temkin's 2.1.10(iii) is omitted, as it follows
 from the transcendence of `x̃`. Theorem 6.3.1(iii) (stability) is in `OneDimStable.lean`.
 
-The proof of Theorem 6.3.1(i) follows plan simplification S5 (`PLAN-SM-VAL.md`): by the type
+The proof of Theorem 6.3.1(i) avoids `K^mr`: by the type
 trichotomy `isTypeFourGenerator_or_isAnnulusGenerator_or_isGaussGenerator`, `\overline{k(y)}` is
 of type 4, 3 or 2; the type 4 case is `IsTypeFourGenerator.exists_isTypeFourGenerator`; in the
 type 3 case a generator `x` of the value group of `L` (`exists_forall_norm_eq_zpow_mul`) makes

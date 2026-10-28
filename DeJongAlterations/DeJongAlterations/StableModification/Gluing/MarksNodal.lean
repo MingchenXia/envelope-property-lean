@@ -9,8 +9,8 @@ import DeJongAlterations.StableModification.Gluing.MarksModel
 # A nodal modification with separated marks over a valuation ring
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
-Proposition 4.5.1 (`sepclosprop`, T:3243–3266), in the form of `PLAN-T5.md` §2.2 steps 1–8 **with
-marks** (node V2; the pair version of lane T45A's `Gluing.exists_nodal_modification`). Let `K` be
+Proposition 4.5.1 (`sepclosprop`, T:3243–3266), in the form **with
+marks** (the pair version of lane T45A's `Gluing.exists_nodal_modification`). Let `K` be
 algebraically closed, `R ⊆ K` a valuation ring of finite height and equal characteristic, and
 `φ : C → Spec R` a proper flat integral relative curve, normal along its generic fibre, with
 finitely many sections `σ k` with pairwise distinct generic points. Then there are the normalized
@@ -110,15 +110,15 @@ variable {K : Type u} [Field K] {R : ValuationSubring K}
 local notation "s₀" => IsLocalRing.closedPoint R
 
 /-- **A nodal modification with separated marks** (Temkin, proof of Proposition 4.5.1,
-T:3243–3266, with Lemma 4.3.3 `divlem`; `PLAN-T5.md` §2.2 steps 1–8 with marks, node V2). Let `K`
+T:3243–3266, with Lemma 4.3.3 `divlem`, with marks). Let `K`
 be algebraically closed, `R ⊆ K` a valuation ring of finite height and equal characteristic, and
 `φ : C → Spec R` a proper flat relative curve, integral, separated and quasi-compact, with
 `trdeg K(C)/K = 1`, normal at the points over the generic point, and let `σ k` be finitely many
 sections of `φ` with pairwise distinct generic points. Then there are a modification
 `b : N → C` (the normalized projective refinement, flat and of finite presentation over `R`, and
 projective over `R` if `C` is) and a modification `β : X → N` such that `X` is a nodal curve over
-`R`, locally projective over `N` (the input of the valuation-level projectivity theorem,
-`PLAN-T5.md` node V1), and the lifts `σX k` of the sections are pairwise disjoint and pass
+`R`, locally projective over `N` (the input of the valuation-level projectivity theorem),
+and the lifts `σX k` of the sections are pairwise disjoint and pass
 through smooth points of `X → Spec R`.
 
 Input not proved here: `ProjectiveSeparation R` (projective separation of marks on the strictly

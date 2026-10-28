@@ -9,7 +9,7 @@ Let `A ⊆ L` be a local subring of a field which is integrally closed in `L`. T
 the two algebraic facts behind the local domination step in our proof of M. Temkin, *Stable
 modification of relative curves*, J. Algebraic Geom. 19 (2010), Proposition 4.3.3
 (`locunifprop`, `semi-stable.tex` lines 3048–3081), in the replacement of the flattening argument
-of line 3065 (plan `PLAN-SM-GEOM.md`, S7):
+of line 3065 by a descent of étale algebras:
 
 * `mem_or_inv_mem_of_aeval_eq_zero` (**a root of a polynomial with a unit coefficient**): if
   `b ∈ L` is a root of a polynomial over `A` one of whose coefficients is a unit, then `b ∈ A` or

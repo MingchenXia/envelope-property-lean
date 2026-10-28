@@ -9,7 +9,7 @@ set_option autoImplicit false
 /-!
 # Column functions of an extension from the diagonal (DEL00 subadditivity, step 3)
 
-Step 3 of the route `.archon-horizon/scratch/tn-classical-del00-plan-0113.md` to the
+Step 3 of our route to the
 subadditivity of multiplier ideals (Demailly--Ein--Lazarsfeld, Michigan Math. J. **48** (2000),
 Theorem 2.6; Copy-4 `eq:subadditivity`).  Let `G` be holomorphic on `B × B`, `B = B(x, r) ⊆ ℂ^d`,
 with `∫∫_{B×B} |G(a,b)|² e^{-P₁(a)} e^{-P₂(b)} < ∞` for `P₁, P₂` plurisubharmonic near `B̄`.  For a

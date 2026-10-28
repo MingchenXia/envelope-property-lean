@@ -8,10 +8,10 @@ import Mathlib.RingTheory.Unramified.Field
 
 Temkin's stable modification `β : C' ⟶ C` of `(C, D)` carries the *transported marks*
 `D' = genericMarksClosure β g D η`, the schematic closure of `β_η⁻¹(D_η)` (Temkin, Remark 4.1,
-T:2810; `Curves.IsStableModification.marks_eq`). In the global assembly (`PLAN-T5.md` §2.1, nodes
-G3′, G5, G7, gap "G-marks" of §8: LIM3 does not identify the descended marks with the transported
-marks) the marks are produced by descent, base change and gluing, and their identification with
-the transported marks is reduced here to a statement about **points over the generic point**:
+T:2810; `Curves.IsStableModification.marks_eq`). In the global assembly (where lane LIM3's
+descent does not identify the descended marks with the transported marks) the marks are produced
+by descent, base change and gluing, and their identification with the transported marks is reduced
+here to a statement about **points over the generic point**:
 
 * `ker_eq_vanishingIdeal_closure_range`: the kernel (schematic image) of a quasi-compact morphism
   from a reduced scheme is the reduced induced structure on the closure of its image.
@@ -187,9 +187,8 @@ theorem mem_genericMarksClosure_iff (β : X ⟶ P) (g : P ⟶ T) (D : P.IdealShe
   · intro h
     exact subset_closure ⟨hx, h⟩
 
-/-- **G-marks: étale marks with the right points over the generic point are the transported
-marks** (`PLAN-T5.md` §8, "LIM3 … does not identify the descended marks with the transported
-marks"). Let `T` be integral, `β : X ⟶ P` over `g : P ⟶ T`, `D ⊆ P` with reduced generic
+/-- **Étale marks with the right points over the generic point are the transported
+marks**. Let `T` be integral, `β : X ⟶ P` over `g : P ⟶ T`, `D ⊆ P` with reduced generic
 transported marks, and `D' ⊆ X` étale over `T`. If a point `x` of `X` over the generic point lies
 on `D'` iff `β x` lies on `D`, then `D'` is the transported marks `genericMarksClosure β g D η`. -/
 theorem eq_genericMarksClosure_of_forall [IsIntegral T] (β : X ⟶ P) (g : P ⟶ T)

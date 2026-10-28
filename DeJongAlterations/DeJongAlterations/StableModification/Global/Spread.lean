@@ -3,15 +3,15 @@ import DeJongAlterations.StableModification.Global.Setup
 /-!
 # Spreading out the stable modification over a valuation ring
 
-Node G3′ of `PLAN-T5.md` (§2.1 step 2; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3379–3394): the stable modification over a valuation
+A step of the proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*,
+`semi-stable.tex`, T:3379–3394): the stable modification over a valuation
 ring `W ∈ RZ_{K(S)ᵃ}(S)` (lane T45B's `ValuationStableExistence`) descends to a projective
 semi-stable η-modification over the spectrum of a finitely generated subalgebra `B ⊆ W` (lane
 LIM3's `Limits.SpreadModification.exists_semistable_projective_etaModification_of_isIso_fiberMap`);
 its marks are the transported marks (*G-marks*, `genericMarksCondition_of_forall`: both are
 reduced over the generic point, since étale over a field, and have the same points there, by
 comparison with `W`); numerical stability at the centre of `W` spreads to an open neighbourhood
-(node G4, `StableOpenNbhd`), and an affine neighbourhood of the centre is a local stable piece
+(`StableOpenNbhd`), and an affine neighbourhood of the centre is a local stable piece
 (`exists_localStablePiece`).
 
 * `IsSpreadModel`: the properties of `IsStableModel` except numerical stability, with base
@@ -180,8 +180,8 @@ theorem isReduced_comap_of_isIso {Y Z : Scheme.{u}} (I : Z.IdealSheafData) (f : 
     isReduced_of_isOpenImmersion (pullback.snd f I.subschemeι)
   exact isReduced_of_isOpenImmersion (I.comapIso f).hom
 
-/-- **G-marks** (`PLAN-T5.md` §2.1 step 2, node G3′). Let `t : T ⟶ S` map the generic point to
-the generic point, the generic pair of `(C, D)` be semi-stable, and `β : X ⟶ C ×_S T` be an
+/-- **The marks of a spread model** (the generic marks condition). Let `t : T ⟶ S` map the generic
+point to the generic point, the generic pair of `(C, D)` be semi-stable, and `β : X ⟶ C ×_S T` be an
 isomorphism on the generic fibres with `(X, D_X)` a semi-stable pair over `T`. If the points of
 `D_X` over the generic point of `T` are those mapped into `D`, then `D_X` satisfies the generic
 marks condition with respect to `D ×_S T`: both closed subschemes of the generic fibre are

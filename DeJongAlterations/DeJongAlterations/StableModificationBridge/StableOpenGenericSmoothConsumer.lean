@@ -25,8 +25,8 @@ def StableOpenNbhdConnGenericSmooth (k : Type u) [Field k] : Prop :=
 
 
 set_option backward.isDefEq.respectTransparency false in
-/-- **Local stable pieces from the corrected spreading statement** (`PLAN-T5.md` §2.1 steps 1–2,
-nodes G1, G3′, G4; ERRATA DJA-O36). The proof of `exists_localStablePiece` with
+/-- **Local stable pieces from the corrected spreading statement**.
+The proof of `exists_localStablePiece` with
 `StableOpenNbhdConnGenericSmooth k` in place of `StableOpenNbhd k`: the extra hypothesis `NoContractedClopen` at
 the geometric point over the centre of `W` holds for the stable modification over `W`
 (`noContractedClopen_of_isStableModification`: Zariski connectedness of its closed fibre, which
@@ -244,7 +244,7 @@ theorem exists_localStablePiece_conn_genericSmooth {k : Type u} [Field k] {S C :
   have hnB : NumericallyStableFibre β' (pullback.snd g tB) DB (b ≫ c.π.app B) := by
     rw [← numericallyStableFibre_iff_of_isPullback H₁ H₂ DB b, hDB]
     exact hnb
-  -- no contracted clopen subset at the centre (ERRATA DJA-O36)
+  -- no contracted clopen subset at the centre
   have hfibW : ((pullback.snd g ψ') ⁻¹' {IsLocalRing.closedPoint W.valuationSubring}).Nontrivial := by
     have : IsIntegral (pullback g ψ') := hV.isIntegral
     have : UniversallyClosed (pullback.snd g ψ') := inferInstance
@@ -255,7 +255,7 @@ theorem exists_localStablePiece_conn_genericSmooth {k : Type u} [Field k] {S C :
     noContractedClopen_of_isStableModification hV hstab hproj hfibW ι hιint
   have hncB : NoContractedClopen β' (pullback.snd g tB) (b ≫ c.π.app B) :=
     (noContractedClopen_iff_of_isPullback H₁ H₂ b).mp hncb
-  -- spreading of numerical stability (node G4)
+  -- spreading of numerical stability
   have hlftB : LocallyOfFiniteType tB := by
     have e1 : Dg.map a ≫ Spec.map (CommRingCat.ofHom
         (algebraMap A (⊥ : Limits.FGSubalgebra A R).1)) =
@@ -353,8 +353,8 @@ theorem exists_localStablePiece_conn_genericSmooth {k : Type u} [Field k] {S C :
     rw [← cancel_mono T'.ι, Category.assoc, IsOpenImmersion.lift_fac, hηT, htoSpec]
 
 
-/-- **A locally projective stable modification exists, from the corrected spreading statement**
-(`PLAN-T5.md` §1.2, node G8; obligations E1–E4 of PLAN-OM3 §6; ERRATA DJA-O36). The statement of
+/-- **A locally projective stable modification exists, from the corrected spreading statement**.
+The statement of
 `hasLocallyProjectiveStableModification` with `StableOpenNbhdConnGenericSmooth k` in place of
 `StableOpenNbhd k`. -/
 theorem hasLocallyProjectiveStableModification_conn_genericSmooth {k : Type u} [Field k]
@@ -384,8 +384,8 @@ theorem hasLocallyProjectiveStableModification_conn_genericSmooth {k : Type u} [
     (fun P₁ P₂ W h₁ h₂ ↦ exists_comparisonPiece hUo P₁ P₂ W h₁ h₂)
 
 /-- **Temkin's stable modification theorem from the corrected spreading statement**
-(`DeJong.TemkinStableModification k`, Temkin Thm 1.5 with Thm 1.1; `PLAN-T5.md` §1.1, node G8;
-ERRATA DJA-O36): the statement of `temkinStableModification` with `StableOpenNbhdConnGenericSmooth k` in place
+(`DeJong.TemkinStableModification k`, Temkin Thm 1.5 with Thm 1.1):
+the statement of `temkinStableModification` with `StableOpenNbhdConnGenericSmooth k` in place
 of `StableOpenNbhd k`. -/
 theorem temkinStableModification_conn_genericSmooth {k : Type u} [Field k] [IsAlgClosed k]
     (hE : ValuationStableExistence.{u}) (hU : ValuationStableUniqueness.{u})
@@ -396,7 +396,7 @@ theorem temkinStableModification_conn_genericSmooth {k : Type u} [Field k] [IsAl
 
 /-- **De Jong's alteration theorem from the corrected inputs** (blueprint `cor:sm-gso-dejong`):
 from existence and uniqueness of stable modifications over valuation rings, the corrected
-spreading of numerical stability `StableOpenNbhdConnGenericSmooth k` (ERRATA DJA-O36) and the projectivity of
+spreading of numerical stability `StableOpenNbhdConnGenericSmooth k` and the projectivity of
 locally projective stable modifications. -/
 theorem deJongAlterationTheorem_conn_genericSmooth {k : Type u} [Field k] [IsAlgClosed k]
     (hE : ValuationStableExistence.{u}) (hU : ValuationStableUniqueness.{u})

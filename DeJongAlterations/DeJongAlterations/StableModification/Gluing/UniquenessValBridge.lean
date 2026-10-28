@@ -13,7 +13,7 @@ import DeJongAlterations.StableModification.Global.StatementsBaseChange
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), stability
-(T:1687–1690) in the numerical form of `PLAN-T5.md` §1.3 (lane T5G's
+(T:1687–1690) in the numerical form (lane T5G's
 `Global.NumericallyStableFibre`: every contracted component `Z` with `p_a(Z_red) = 0` carries at
 least three special points) and in the combinatorial form used by lane T44D's Corollary 4.4.3 (1)
 (`BlowDown.Domination.FibreStable`: no component contracted to a point of the base is exceptional

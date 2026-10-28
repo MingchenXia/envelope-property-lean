@@ -11,7 +11,7 @@ import Mathlib.Algebra.Polynomial.Module.Basic
 # Projective coordinates and the graded module of twisted sections
 
 This file starts the finiteness part of the Claude team's cohomology library (lane COH2,
-blueprint `sm-cohomology-finite.tex`, plan `PLAN-SM-GEOM.md` chapter F). The finiteness of the
+blueprint `sm-cohomology-finite.tex`). The finiteness of the
 cohomology of a coherent module `F` on a projective `A`-scheme (Hartshorne III.5.2, EGA III 2.2.1;
 used by Temkin, *Stable modification of relative curves*, Lemma 4.4.2 and Proposition 4.4.6) is
 reduced to Codex's finiteness of the coordinate Čech cohomology of finite graded modules over

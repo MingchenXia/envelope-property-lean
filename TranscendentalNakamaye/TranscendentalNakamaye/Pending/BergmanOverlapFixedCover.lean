@@ -13,8 +13,7 @@ blueprint `ana:regularization`.
 `pointExtensionConst d r Mθ R S` that does not mention `ϕ`.  Copy-4 needs more than
 that: it fixes the cover `U_j ⋐ V_j ⋐ B_j ⋐ B_j⁺` and the constant `C_B` **once and
 for all**, and only afterwards chooses the background form `ζ` and the potential `φ`.
-Frontier item 4 of `scratch/tn-classical-regularization-frontier-20260922-r2.md`
-records that no module assembles that yet, and item 3 records that only one of the
+No module assembled that before, and only one of the
 two directions `j ≤ l`, `l ≤ j` was available.
 
 This module supplies both, at the level of coordinate balls:
@@ -34,8 +33,8 @@ This module supplies both, at the level of coordinate balls:
   `|ψ_j - ψ_l| ≤ C_B` before dividing by `m`.
 
 **Scope.**  As everywhere upstream, `ϕ` is a *smooth* psh weight bounded below on `D`;
-the passage to `ϕ = m Ψ` with `Ψ` singular is blocker 1 of the frontier note (I-0227,
-I-0228) and is untouched here.  Nothing in this module is a restatement: the weight is
+the passage to `ϕ = m Ψ` with `Ψ` singular (the main remaining gap of the chain) is untouched
+here.  Nothing in this module is a restatement: the weight is
 universally quantified after the constant, which none of the existing statements does.
 -/
 
@@ -139,8 +138,8 @@ theorem exists_overlapConst_ball (hd : 0 < d)
       linarith)
 
 /-- **The two-sided overlap comparison with a single constant** — `eq:reg-overlap` in
-the form Copy-4 uses, frontier item 3 (both directions) together with item 4 (the
-constant fixed before the weight). -/
+the form Copy-4 uses: both directions, with the
+constant fixed before the weight. -/
 theorem exists_overlapConst_ball_pair (hd : 0 < d)
     {D : Set (ComplexModel d)} (hDo : IsOpen D) (hDc : Convex ℝ D)
     (hDb : Bornology.IsBounded D)

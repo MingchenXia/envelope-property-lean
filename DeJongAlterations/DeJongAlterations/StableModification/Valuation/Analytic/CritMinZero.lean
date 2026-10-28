@@ -18,8 +18,7 @@ best approximation in `M^p`, so every special coset `b + S_{0,s}(M)` has a minim
 modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of Proposition 6.2.4,
 `semi-stable.tex` lines 3951–3964, where it is read off from Schauder bases). Combined with
 `ImmediateDegreeP.lean`: such fields have no immediate purely inseparable extension of degree
-`p`, and every immediate Artin–Schreier extension has radius `1` (plan node C3 of
-`PLAN-SM-VAL.md`).
+`p`, and every immediate Artin–Schreier extension has radius `1`.
 
 ## Main definitions
 
@@ -156,7 +155,7 @@ def frobeniusRangeNontriviallyNormedField : NontriviallyNormedField (frobeniusRa
       exact one_lt_pow₀ hx hp.out.ne_zero }
 
 /-- **The Frobenius degree of `\overline{k(y)}`** (the bound `[K : K^p] ≤ p` used for
-one-dimensional fields; plan node C3 via A5): if `K` is complete of characteristic `p` and
+one-dimensional fields): if `K` is complete of characteristic `p` and
 `k(y)` is dense in `K` for a perfect subfield `k`, then `0 < [K : K^p] ≤ p`. -/
 theorem finrank_frobeniusRange_le_of_dense {k : Type*} [Field k] [Algebra k K]
     (hk : ∀ c : k, ∃ d : k, d ^ p = c) {y : K}

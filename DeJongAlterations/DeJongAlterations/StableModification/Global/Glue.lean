@@ -5,8 +5,8 @@ import Mathlib.AlgebraicGeometry.RelativeGluing
 # Gluing models along an open cover of the base
 
 The last step of the proof of Temkin's Theorem 1.5 (*Stable modification of relative curves*,
-J. Algebraic Geom. 19 (2010), `semi-stable.tex`, T:3394–3397, node G7 of `PLAN-T5.md` §2.1 step
-5) glues stable modifications `X_i ⟶ C ×_S U_i` defined over the members `U_i` of a finite open
+J. Algebraic Geom. 19 (2010), `semi-stable.tex`, T:3394–3397)
+glues stable modifications `X_i ⟶ C ×_S U_i` defined over the members `U_i` of a finite open
 cover of the base `S''`, using isomorphisms over `C` on the overlaps. This file provides the two
 general ingredients.
 
@@ -26,8 +26,8 @@ general ingredients.
   (`Scheme.Cover.RelativeGluingData`,
   Stacks 01LH) over the locally directed cover of `T` by the opens contained in some `U_i`.
 * **Gluing morphisms** (`exists_glueHom`): with rigidity, morphisms over `P` defined locally on
-  an open cover of the source glue (the form in which the second refinement of `PLAN-T5.md`
-  §2.1 step 4 produces the isomorphisms `φ_ij`).
+  an open cover of the source glue (the form in which the second refinement of the base in the
+  comparison step produces the isomorphisms `φ_ij`).
 
 Blueprint: `sm-global.tex`, `lem:sm-global-rigidity`, `lem:sm-global-glue`.
 -/

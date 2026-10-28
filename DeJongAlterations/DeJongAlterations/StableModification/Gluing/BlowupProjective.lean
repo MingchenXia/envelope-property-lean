@@ -26,7 +26,7 @@ The main result `exists_iso_blowup` identifies this extension, over `X`, with th
 (`isProjectiveOver_extensionHom`), **if `X` is projective and of finite presentation over a ring
 `E`, so is the extension**, by SERRE-I (lane OM3C,
 `Projectivity.isProjectiveOver_blowupStructure_comp_of_fg`). This is the projectivity of one step
-of the induction of Temkin's Proposition 4.3.1 (`PLAN-T5.md` node A4).
+of the induction of Temkin's Proposition 4.3.1.
 
 ## Main definitions and results
 

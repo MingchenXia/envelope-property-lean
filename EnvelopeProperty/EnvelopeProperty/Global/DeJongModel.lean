@@ -37,7 +37,8 @@ In Lean:
   `k[x] / I`, i.e. `k(X)`); "`k(Y)` finite over `k(X)`" is `FiniteDimensional` of this extension;
 * `𝒴` is `MultiModel.quotModel I_Y j₀ _` and "smooth" is `MultiModel.IsSmooth`: every chart
   algebra (the coordinate ring of an affine open `{x_{j_0} y_{j_1} ≠ 0}` of `Y`) is a smooth
-  `k`-algebra **and integrally closed** (decision D-M2).
+  `k`-algebra **and integrally closed** (normality of smooth algebras is not available in Mathlib,
+  so it is required; it holds for the source's `Y`, see below).
 
 `ProjSubvariety.Alteration X` bundles these data (with `Alteration.xIndex`, `Alteration.yIndex`
 the indices `j₀ 0`, `j₀ 1` and `Alteration.yRatio m = ȳ_m / ȳ_{j₀ 1}`); `DeJongAlterations k` says that every
@@ -55,8 +56,8 @@ is perfect, then `X̄₁` is smooth over `k`* (by 2.10: `sm(X/k) = Reg(X)` for p
 Definitions: a variety is an integral separated scheme of finite type over `k` (2.9); an alteration
 is a dominant proper morphism of integral schemes, finite over a nonempty open (2.20).
 
-The model form follows for projective `X` over the algebraically closed (hence perfect) `k`
-(checked in `.archon-horizon/scratch/ep/REF-CHECK.md`, item a5): take `Z = ∅`; as `X` is proper,
+The model form follows for projective `X` over the algebraically closed (hence perfect) `k`:
+take `Z = ∅`; as `X` is proper,
 `j₁(X₁)` is closed and open in the irreducible `X̄₁`, so `X₁ = X̄₁ =: Y` is a smooth projective
 variety with an alteration `Y → X`; a closed immersion `Y ↪ ℙ^{N'}` gives a closed immersion
 `Y ↪ X × ℙ^{N'} ⊆ ℙ^N × ℙ^{N'}`, whose bihomogeneous prime ideal `I_Y` is relevant for both

@@ -18,7 +18,7 @@ T:2394–2409): the refinement `p : S' → S` of finitely many affine `L`-quasi-
 (lane RZ1, `RiemannZariskiSpace.exists_refinement`) from the schematic image of `η` in `S`,
 graph closures in `S ×_ℤ ℙⁿ_ℤ` and schematic images in fibre products. The integrated statement
 records only that `p` is proper. This file proves that `p` is **projective** over `S`
-(`PLAN-T5.md` node A2, ERRATA DJA-O22; blueprint `sm-gluing-semistable.tex`,
+(blueprint `sm-gluing-semistable.tex`,
 `prop:sm-refinement-projective`), relative to any `pS : S → Spec k`:
 
 * `IsRelativelyProjective.pullback_fst`, `IsRelativelyProjective.comp` (Segre embedding over
@@ -36,9 +36,9 @@ records only that `p` is proper. This file proves that `p` is **projective** ove
   `exists_refinement_finset` rerun with a projectivity invariant, reusing its step lemmas).
 
 Over a projective base (`IsProjectiveOver pS`) the refinement is projective over `k`
-(`DeJong.IsRelativelyProjective.isProjectiveOver`), which is PLAN-OM3's obligation E1 for the
-refinements of the global argument (PLAN-T5 §2.1 step 3) and the projectivity of the curve
-refinement `C' → C` of §2.2 step 2.
+(`DeJong.IsRelativelyProjective.isProjectiveOver`). This is used for the refinements of the base
+in the global argument and for the projectivity of the curve refinement `C' → C` over a valuation
+ring.
 -/
 
 noncomputable section
@@ -188,7 +188,7 @@ theorem exists_refinement_finset_projective (hηT : ∀ i, ηT i ≫ g i = η) (
     · exact dominate_realizes_left hη (graph_isRefinement η n f).isProper (hReal j hj)
 
 /-- **Projective refinement of Riemann–Zariski covers** (Temkin, Proposition 3.2.6 `oetamodprop`,
-with the covering addendum; node A2 of `PLAN-T5.md`, blueprint `prop:sm-refinement-projective`):
+with the covering addendum; blueprint `prop:sm-refinement-projective`):
 the conclusion of `RiemannZariskiSpace.exists_refinement`, together with the projectivity of the
 refinement `p : S' → S` relative to any `pS : S → Spec k` (the refinement is a closed subscheme of
 `S ×_ℤ ℙᴺ_ℤ`). -/

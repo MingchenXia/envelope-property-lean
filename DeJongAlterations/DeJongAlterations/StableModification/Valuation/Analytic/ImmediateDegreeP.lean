@@ -16,8 +16,8 @@ the towers of `Towers.lean` — purely inseparable steps `L ∋ γ` with `γ ^ p
 Artin–Schreier steps `L ∋ α` with `α ^ p - α ∈ K` — a special coset of `K` (in the sense of
 `Analytic/Cosets.lean`) without minimal element which splits over `L`. This replaces Temkin's
 disc argument for Proposition 6.1.4(i) (M. Temkin, *Stable modification of relative curves*,
-J. Algebraic Geom. 19 (2010), `semi-stable.tex` lines 3508–3530 and 3557–3640; plan
-simplification S6 of `PLAN-SM-VAL.md`). Radii `r(x) = inf_{c ∈ K} ‖x - c‖` are
+J. Algebraic Geom. 19 (2010), `semi-stable.tex` lines 3508–3530 and 3557–3640).
+Radii `r(x) = inf_{c ∈ K} ‖x - c‖` are
 `DeJongAlterations.StableModification.Valuation.radius`.
 
 ## Main definitions

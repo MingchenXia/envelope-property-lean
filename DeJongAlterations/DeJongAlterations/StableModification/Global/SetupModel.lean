@@ -7,11 +7,11 @@ import DeJongAlterations.StableModification.DeJong.BaseStepProjective
 # Stable models over a base and their base change
 
 The global assembly of Temkin's Theorem 1.5 (*Stable modification of relative curves*,
-`semi-stable.tex`, §5, T:3379–3399; `PLAN-T5.md` §2.1 steps 2–5) moves stable modifications of
+`semi-stable.tex`, §5, T:3379–3399) moves stable modifications of
 `(C, D) ×_S T` along base changes `T' ⟶ T` (the proper maps `W'_j ⟶ T_j` of the RZ refinements)
 and glues them. This file fixes the bundle of properties carried along (`IsStableModel`) and
 proves that it is stable under base change along maps sending the generic point to the generic
-point (`IsStableModel.pullback`, node G5), and that it yields Temkin's stable η-modifications
+point (`IsStableModel.pullback`), and that it yields Temkin's stable η-modifications
 (`IsStableModel.isStableModification`).
 
 * `GenericMarksCondition g D β D'`: the marks `D'` agree scheme-theoretically with `β⁻¹(D)` over
@@ -117,7 +117,7 @@ section Model
 
 variable {k : Type u} [CommRing k] {T P X : Scheme.{u}}
 
-/-- **A stable model over an integral base** (`PLAN-T5.md` §2.1 steps 2–5): for `g : P ⟶ T` flat
+/-- **A stable model over an integral base**: for `g : P ⟶ T` flat
 and marks `D ⊆ P`, the morphism `β : X ⟶ P` with marks `D' ⊆ X` makes `(X, D')` a semi-stable pair
 over `T` whose marks agree with `β⁻¹(D)` over the generic point, numerically stable
 (`IsNumericallyStable`), projective over `P` relative to `P ⟶ T ⟶ Spec k`, and an isomorphism
@@ -166,7 +166,7 @@ theorem IsRelativelyProjective.iso_comp {T' X' X'' : Scheme.{u}} {pT' : T' ⟶ S
     IsRelativelyProjective pT' (e ≫ f) :=
   Projectivity.isRelativelyProjective_iso_hom_comp h (asIso e)
 
-/-- **Base change of stable models** (`PLAN-T5.md` §2.1 step 3, node G5): along `h : T' ⟶ T`
+/-- **Base change of stable models**: along `h : T' ⟶ T`
 quasi-compact, from an integral scheme and sending the generic point to the generic point, the
 base change `pullbackCompMap β g h : X ×_T T' ⟶ P ×_T T'` is a stable model of
 `(P ×_T T', D ×_T T')` over `T'`. -/

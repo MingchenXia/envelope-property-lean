@@ -8,8 +8,7 @@ set_option linter.unusedSectionVars false
 # From smooth weights to an arbitrary plurisubharmonic one
 
 Source: Copy-4, `lem:regularization`, Step 2 (`transcendental-nakamaye-copy4-20260911`);
-blueprint `ana:regularization`.  Frontier item 1 of
-`scratch/tn-classical-regularization-frontier-20260922-r2.md` (I-0227, I-0228).
+blueprint `ana:regularization`.
 
 `QuantitativeRegularizationTruncationLimit` passes from the truncations `max (u, -k)` to
 `u`.  The truncations are plurisubharmonic and locally bounded, but not smooth, and every
@@ -138,7 +137,7 @@ theorem bergmanSup_multiplierWeight_le_mul_of_smoothWeight
 
 variable {Ω : Opens (ComplexModel d)} {u : ComplexModel d → EReal}
 
-/-- **Frontier item 1, closed for the two-domain comparison.**  A comparison of two
+/-- **The singular-weight gap, closed for the two-domain comparison.**  A comparison of two
 weighted Bergman kernels that holds, with one constant, for every smooth plurisubharmonic
 weight bounded below on `A`, holds for `e^{-cu}` with `u` an arbitrary plurisubharmonic
 function on a neighbourhood `Ω` of `A` — in particular for Copy-4's `ϕ = m Ψ`, which is

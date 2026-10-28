@@ -15,11 +15,10 @@ This file starts the Čech cohomology library of the Claude team's route to Temk
 modification theorem (M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19
 (2010)). Temkin uses coherent cohomology of curves over a base (Lemma 4.4.2: constancy of the
 Euler characteristic and of the arithmetic genus, via EGA III 7.9.4; Proposition 4.4.6:
-semicontinuity and base change; Lemma B.1: the long exact sequence of a normalization). Following
-plan decision D4 (curves-only Čech library, `.archon-horizon/scratch/dja/PLAN-SM-GEOM.md`,
-chapter F), cohomology is *defined* as the cohomology of the alternating Čech complex of a finite
-affine cover; the comparison theorems are proved directly. Blueprint: `sm-cohomology-cech.tex`
-(`def:sm-cech`, `lem:sm-cech-basic`).
+semicontinuity and base change; Lemma B.1: the long exact sequence of a normalization). In this
+curves-only Čech library, cohomology is *defined* as the cohomology of the alternating Čech complex
+of a finite affine cover; the comparison theorems are proved directly. Blueprint:
+`sm-cohomology-cech.tex` (`def:sm-cech`, `lem:sm-cech-basic`).
 
 ## Conventions
 

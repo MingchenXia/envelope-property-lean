@@ -10,8 +10,7 @@ set_option linter.unusedSectionVars false
 Blueprint `hir:open-biholomorphism`, `hir:tower-transport-open` (`blueprint/src/hironaka.tex`, Hironaka phase H1).
 Sources: Włodarczyk 2005 §2.4 (Proposition `pr:funct`, étale neighbourhoods) and the Glueing Lemma `le:homo` (4) (the
 multiple test blow-ups induced by two étale neighbourhoods `φ_u, φ_v : X̄ → X`); in the analytic setting the étale
-neighbourhoods are an open inclusion and a biholomorphism between open sets (design note D7,
-`.archon-horizon/scratch/tn-classical-hironaka-design-0180.md`).
+neighbourhoods are an open inclusion and a biholomorphism between open sets.
 
 * `contMDiffAt_of_eventually_mdifferentiableAt'`: a map between complex manifolds that is holomorphic near a point is
   `C^∞` there (the normed-space case is `HolomorphicIdealSheaves.contMDiffAt_of_eventually_mdifferentiableAt`);

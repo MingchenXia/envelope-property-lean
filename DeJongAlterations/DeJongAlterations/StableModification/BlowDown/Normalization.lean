@@ -19,7 +19,7 @@ uses normalizations and compactifications with geometrically reduced fibres (Lem
 Grauert–Remmert finiteness theorem. In the blowing-down argument every normalization is that of
 a curve `Y` dominated by a normal curve `B` (a semi-stable modification), and then it is the
 relative normalization `π.normalization` of `Y` in `B` (Mathlib's `Spec` of the integral closure
-of `𝒪_Y` in `π_* 𝒪_B`; plan `PLAN-SM-GEOM.md`, S8). This file proves the properties of it that
+of `𝒪_Y` in `π_* 𝒪_B`). This file proves the properties of it that
 the blowing-down lemmas use (blueprint `prop:sm-normalization-reduced`, `sm-blow-down.tex`).
 
 ## Main results
@@ -41,7 +41,7 @@ the blowing-down lemmas use (blueprint `prop:sm-normalization-reduced`, `sm-blow
 * `isRadical_map_maximalIdeal_of_isNormalScheme`: **a normal curve `Y` over a valuation ring `V`
   which is dominated by a relatively projective birational `π : B → Y` with `B` flat over `V`
   with reduced closed fibre has reduced closed fibre** on every affine open (this is the input of
-  Temkin's Lemma 4.4.2 that his Lemma 4.4.1 provides, T:3120–3121; ERRATA T13, DJA-H6).
+  Temkin's Lemma 4.4.2 that his Lemma 4.4.1 provides, T:3120–3121; ERRATA T13).
 
 The normality of `π.normalization` and the identification `π.normalization = Y` for normal `Y`
 are the points (ii) left open in `rem:sm-stein-not-proved` (`sm-cohomology-stein.tex`).
@@ -348,7 +348,7 @@ theorem sectionsRingHom_comp (U : Y.Opens) :
 
 /-- **Reduced closed fibre of a normal curve dominated by a curve with reduced closed fibre**
 (the input of Temkin's Lemma 4.4.2 provided by his Lemma 4.4.1, T:3120–3121, here without the
-reduced fibre theorem; ERRATA T13, DJA-H6): let `pY : Y → Spec V` be locally of finite
+reduced fibre theorem; ERRATA T13): let `pY : Y → Spec V` be locally of finite
 presentation over a valuation ring `V`, `Y` integral and normal, and `π : B → Y` birational and
 projective relative to `pY`, with `B` integral, flat over `V` and with reduced closed fibre.
 Then `𝔪 Γ(U, 𝒪_Y)` is a radical ideal for every affine open `U ⊆ Y`: by Stein finiteness and

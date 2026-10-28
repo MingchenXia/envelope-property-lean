@@ -4,22 +4,22 @@ import DeJongAlterations.StableModification.Global.MainPieces
 /-!
 # The global assembly of Temkin's stable modification theorem
 
-Node G8 of `PLAN-T5.md` (§1.1–1.2, §2.1; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3379–3399, with Theorem 1.1 for the projectivity),
+The proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*, `semi-stable.tex`,
+T:3379–3399, with Theorem 1.1 for the projectivity),
 conditional on the published producer statements of the lanes that are still running:
 
 * `ValuationStableExistence` and `ValuationStableUniqueness` (lane T45B: Temkin Prop. 4.5.1
   over a valuation ring of finite height with algebraically closed fraction field);
-* `StableOpenNbhd k` (node G4: Temkin Lemma 5.1 (ii) in open form, via `ω`, PLAN-OM3 lanes
+* `StableOpenNbhd k` (Temkin Lemma 5.1 (ii) in open form, via `ω`, lanes
   OM3B–OM3D);
 * `StableModificationProjectivity k` (lane OM3D: Temkin Thm 1.1 for the glued modification).
 
-With `L = K(S)ᵃ` (decision D-DJ9): every valuation ring of `RZ_L(S)` lies in a local stable
-piece (`exists_localStablePiece`, nodes G1, G3′, G4), any two pieces are compared by comparison
-pieces (`exists_comparisonPiece`, node G6, from the uniqueness via `stableModelUniqueOver_of`,
-node G1), and the pieces glue after one refinement, a Chow modification and a normalization
-(`hasLocallyProjectiveStableModification_of_pieces`, nodes G5, G7, G8). This proves
-`hasLocallyProjectiveStableModification` (obligations E1–E4 of PLAN-OM3 §6) and
+With `L = K(S)ᵃ` (no generic étaleness is needed downstream): every valuation ring of `RZ_L(S)`
+lies in a local stable piece (`exists_localStablePiece`), any two pieces are compared by
+comparison pieces (`exists_comparisonPiece`, from the uniqueness via `stableModelUniqueOver_of`),
+and the pieces glue after one refinement, a Chow modification and a normalization
+(`hasLocallyProjectiveStableModification_of_pieces`). This proves
+`hasLocallyProjectiveStableModification` and
 `temkinStableModification` (`DeJong.TemkinStableModification k`), each from the hypotheses
 named above. The normality of `S` is not used.
 
@@ -37,9 +37,9 @@ universe u
 open DeJong (IsSemistablePair IsMultipointedCurve)
 open RiemannZariskiSpace
 
-/-- **A locally projective stable modification exists** (`PLAN-T5.md` §1.2, node G8; obligations
-E1–E4 of PLAN-OM3 §6), from the existence and uniqueness of stable modifications over valuation
-rings (lane T45B) and the spreading of numerical stability (node G4). For every family of
+/-- **A locally projective stable modification exists**,
+from the existence and uniqueness of stable modifications over valuation
+rings (lane T45B) and the spreading of numerical stability. For every family of
 `DeJong.TemkinStableModification k` there are a normal alteration `S' ⟶ S` projective over `k`
 and a stable, numerically stable η-modification of `C ×_S S'`, locally projective over `k`, with
 finite marks and an isomorphism over a nonempty open of `S'`. -/
@@ -70,8 +70,8 @@ theorem hasLocallyProjectiveStableModification {k : Type u} [Field k]
     (fun P₁ P₂ W h₁ h₂ ↦ exists_comparisonPiece hUo P₁ P₂ W h₁ h₂)
 
 /-- **Temkin's stable modification theorem** (`DeJong.TemkinStableModification k`, Temkin
-Thm 1.5 with Thm 1.1; `PLAN-T5.md` §1.1, node G8), from the existence and uniqueness of stable
-modifications over valuation rings (lane T45B), the spreading of numerical stability (node G4)
+Thm 1.5 with Thm 1.1), from the existence and uniqueness of stable
+modifications over valuation rings (lane T45B), the spreading of numerical stability
 and the projectivity of locally projective stable modifications (lane OM3D). -/
 theorem temkinStableModification {k : Type u} [Field k] [IsAlgClosed k]
     (hE : ValuationStableExistence.{u}) (hU : ValuationStableUniqueness.{u})

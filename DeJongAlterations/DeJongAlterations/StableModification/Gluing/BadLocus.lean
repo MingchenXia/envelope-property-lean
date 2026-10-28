@@ -8,11 +8,11 @@ import DeJongAlterations.Geometry.ModificationCenter
 import DeJongAlterations.StableModification.Cohomology.ConnectedBirational
 
 /-!
-# The bad locus of the normalized refinement is finite (PLAN-T5 node A6)
+# The bad locus of the normalized refinement is finite
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
-Proposition 4.5.1 (T:3243–3266) and Lemma 4.2.1 (`normmodlem`, T:2878–2902). `PLAN-T5.md` §2.2
-step 6: on the normalization `N` of the refinement, covered by opens `Oᵢ` carrying modifications
+Proposition 4.5.1 (T:3243–3266) and Lemma 4.2.1 (`normmodlem`, T:2878–2902). On
+the normalization `N` of the refinement, covered by opens `Oᵢ` carrying modifications
 `τᵢ : Bᵢ → Oᵢ` (the strictly semi-stable models, `N|Oᵢ = Nor_{Bᵢ}(Oᵢ)`), the points where `N` is
 not semi-stable form a finite set of points algebraic over the base.
 
@@ -30,7 +30,7 @@ Lemma 4.2.1(ii) (`ValCurves.finite_center`, `ValCurves.fiberTrdeg_eq_zero_of_mem
 * `fiberTrdeg_eq_zero_of_mem_localCenter`, `finite_localCenter`: it is finite and consists of
   points algebraic over `V`.
 * `compl_inter_subset_localCenter`, `finite_compl`, `fiberTrdeg_eq_zero_of_not_mem`: **the bad
-  locus `N ∖ G` is finite and consists of algebraic points** (node A6).
+  locus `N ∖ G` is finite and consists of algebraic points**.
 -/
 
 noncomputable section
@@ -184,7 +184,7 @@ theorem compl_inter_subset_localCenter (hG : ∀ i, (O i).ι ''ᵁ isomorphismOp
   have h' := mem_isomorphismOpen_of_not_mem_localCenter (O i) (τ i) (z := ⟨z, hzO⟩) h
   exact hz (hG i ⟨⟨z, hzO⟩, h', rfl⟩)
 
-/-- **The bad locus `Σ = N ∖ G` is finite** (`PLAN-T5.md` §2.2 step 6, node A6): `N` is covered by
+/-- **The bad locus `Σ = N ∖ G` is finite**: `N` is covered by
 finitely many opens `Oᵢ` with modifications `τᵢ : Bᵢ → Oᵢ`, and `G` contains the loci where the
 `τᵢ` are isomorphisms; then `N ∖ G` lies in the union of the (finite) modification loci. -/
 theorem finite_compl [Finite (PrimeSpectrum V)] [IsProper pN] (hN : IsNormalScheme N)
@@ -197,7 +197,7 @@ theorem finite_compl [Finite (PrimeSpectrum V)] [IsProper pN] (hN : IsNormalSche
   obtain ⟨i, hi⟩ := TopologicalSpace.Opens.mem_iSup.mp hzt
   exact Set.mem_iUnion.mpr ⟨i, compl_inter_subset_localCenter O τ G hG i hz hi⟩
 
-/-- **The bad locus consists of points algebraic over the base** (node A6). -/
+/-- **The bad locus consists of points algebraic over the base**. -/
 theorem fiberTrdeg_eq_zero_of_not_mem (hN : IsNormalScheme N)
     (hdim : fiberTrdeg pN (genericPoint N) ≤ 1) (hO : ⨆ i, O i = ⊤)
     [∀ i, IsModification (τ i)] (hG : ∀ i, (O i).ι ''ᵁ isomorphismOpen (τ i) ≤ G) {z : N}

@@ -12,7 +12,8 @@ import DeJongAlterations.StableModification.DeJong.NodalBaseChange
 
 Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), §1.2 (stability of a
 multipointed curve over a field is a geometric notion, checked over any algebraically closed
-extension); ERRATA DJA-O36 (invariance in both directions is needed by node G4 of `PLAN-T5.md`).
+extension). Invariance in both directions is needed by the corrected spreading statement
+(`Global/StableOpenStatement.lean`).
 
 Let `β ≫ g : X ⟶ C ⟶ S` with `β ≫ g` proper and `g` locally of finite type, `a : Spec K ⟶ S` a
 geometric point (`K` algebraically closed) and `ψ : K →+* Ω` a field extension. With
@@ -187,7 +188,7 @@ theorem numericallyStableFibre_comp_specMap [IsProper (β ≫ g)] {K : Type u} [
     _ ≤ _ := Set.encard_image_le _ _
 
 /-- **Ascent of numerical stability along a field extension** (blueprint
-`prop:sm-gso-numerical-ascent`; ERRATA DJA-O36): if `K` is algebraically closed and the geometric
+`prop:sm-gso-numerical-ascent`): if `K` is algebraically closed and the geometric
 fibre over `Spec Ω ⟶ Spec K ⟶ S` is numerically stable for a field extension `ψ : K →+* Ω`, so is
 the fibre over `a : Spec K ⟶ S`. -/
 theorem numericallyStableFibre_of_comp_specMap [IsProper (β ≫ g)] [LocallyOfFiniteType g]

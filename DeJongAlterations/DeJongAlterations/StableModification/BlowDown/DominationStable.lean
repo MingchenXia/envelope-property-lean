@@ -38,8 +38,8 @@ So `w` is an exceptional component of `Y` in the combinatorial sense
 (`CurvesField.IncidenceGraph.IsExceptional`: contracted to a point of `C`, genus `0`, no double
 point of its own, at most two marks and double points). The stability of `Cs` is used in this
 form (`FibreStable`); its comparison with `Curves.IsStableModification` (embedded `ℙ¹`) or with the
-numerical stability of `PLAN-T5.md` §1.3 (arithmetic genus of the reduced component) is not part
-of this file.
+numerical stability `Global.NumericallyStableFibre` (arithmetic genus of the reduced component) is
+not part of this file.
 
 ## Main results
 
@@ -54,7 +54,7 @@ of this file.
   `dominates_of_fibreStable_of_marks`: the same with the marks hypotheses in pointwise form
   (`marks_semistable_of_injective`).
 * `nonempty_iso_of_fibreStable`: two stable modifications dominated by a common one are isomorphic
-  over `C` (Corollary 4.4.3 (1) twice; `PLAN-T5.md` node V3).
+  over `C` (Corollary 4.4.3 (1) twice).
 -/
 
 namespace DeJongAlterations.StableModification.BlowDown.Domination
@@ -981,7 +981,7 @@ theorem dominates_of_fibreStable_of_marks [Finite (PrimeSpectrum V)]
 
 open scoped Classical in
 /-- **Uniqueness of the stable modification** (Temkin, Theorem 1.2 over a valuation ring, via
-Corollary 4.4.3 (1) applied twice; `PLAN-T5.md` node V3): two stable modifications `f₁ : C₁ → C`,
+Corollary 4.4.3 (1) applied twice): two stable modifications `f₁ : C₁ → C`,
 `f₂ : C₂ → C` dominated by a common nodal modification `Cb` (structure morphism `q`) are
 isomorphic over `C`. Each is semi-stable at the points of the modification locus of its
 domination and stable in the combinatorial form `FibreStable`; the remaining hypotheses are

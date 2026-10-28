@@ -13,8 +13,8 @@ set_option autoImplicit false
 
 Source: Demailly--Păun, Lemma 2.1 (`dp04-kahler-cone:2.1`,
 `references/dp04-kahler-cone/source/0105176.tex:588-700`), the construction of `ψ`, `ψ_ε` and
-`ω_ε`; quoted by Boucksom (`bou02-volume:4.11`).  Step B3 (part 2) of the TN.4 plan for
-Boucksom 4.8 (`.archon-horizon/scratch/tn4-plan-0133.md`), target statement on I-0831 C-0004.
+`ω_ε`; quoted by Boucksom (`bou02-volume:4.11`).  Used for
+Boucksom 4.8 (programme TN.4).
 
 Let `Y` be a closed complex submanifold of a compact complex manifold `M` with a Kähler form `ω`.
 

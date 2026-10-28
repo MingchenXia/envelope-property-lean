@@ -19,8 +19,8 @@ and of Proposition 4.5.1 (T:3250–3252, "applying to them first Proposition cof
 finiteness to modifications which need not be normal (`ERRATA.md` T41, T62).
 
 This file proves the finiteness for **every** modification (blueprint
-`sm-gluing-semistable.tex`, `lem:sm-gamma-finite-projective`; the projectivity hypothesis of the
-plan `PLAN-T5.md` node A3 turns out to be unnecessary). For `x' ∈ (C'/S)⁰`:
+`sm-gluing-semistable.tex`, `lem:sm-gamma-finite-projective`; the projectivity hypothesis
+originally planned turns out to be unnecessary). For `x' ∈ (C'/S)⁰`:
 
 * `exists_section_transcendental`: there is a section `s` over an open `U ∋ x'` whose residue at
   `x'` is transcendental over `κ(φ f x')`;

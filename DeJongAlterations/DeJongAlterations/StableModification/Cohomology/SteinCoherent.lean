@@ -27,7 +27,7 @@ used:
 It is the input of the finiteness of `π_* 𝒪_B` for a projective morphism `π : B → Y` of
 `V`-curves (`SteinFinite.lean`), which replaces Temkin's Lemma 4.4.1 and its use of the reduced
 fibre theorem (Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
-`semi-stable.tex` lines 3089–3104; plan `PLAN-SM-GEOM.md`, S8).
+`semi-stable.tex` lines 3089–3104).
 
 Blueprint: `sm-cohomology-stein.tex`, `lem:sm-fp-torsion-free`, `lem:sm-fp-exact`,
 `thm:sm-fp-graded`, `thm:sm-fp-cech`.

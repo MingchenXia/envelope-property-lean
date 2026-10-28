@@ -16,8 +16,8 @@ Sources: Xia, *Singularities in global pluripotential theory*, Theorem 1.4.5
 Demailly, *Analytic methods in algebraic geometry*, Theorem 14.1; used by Darvas--Xia, *The trace
 operator*, Theorem 3.16 (`references/dx24-trace-operator/source/main.tex:869-891`, "by the
 Ohsawa--Takegoshi extension theorem applied to `φ_j`"), which is the inclusion `(T4)` of Copy-4
-`sec:positive-current` (`𝓘(Mu) ⊆ Res_V 𝓘(M V_θ)`, `lem:ideal-comparison`).  Piece C3 of the
-positive-current programme (`.archon-horizon/scratch/tn23-envelopes-qea-plan-0117.md` §5.3).
+`sec:positive-current` (`𝓘(Mu) ⊆ Res_V 𝓘(M V_θ)`, `lem:ideal-comparison`).  Part of the
+positive-current programme (`TN.2.3.PCI`).
 
 Let `W ⊆ X` be a closed complex submanifold of dimension `k` of a complex manifold of dimension
 `n`, with the complex structure of `SubmanifoldChartedSpace` (the flattening atlas; this is the

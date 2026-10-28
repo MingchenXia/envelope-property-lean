@@ -10,12 +10,12 @@ Blueprint `hir:step-one-value-masked`, `hir:step-one-value-masked-basic` (`bluep
 pieces of `hir:maximal-order-step`).  Source: Włodarczyk 2005 (arXiv `hiron.tex`), proof of Proposition `pr:resol`, Step 1;
 Step 1bb works with `(V(u)_p, J̄_{p|V(u)_p}, (E_p ∖ E)_{|V(u)_p}, μ̄)`, the original members removed *as a set*.
 
-**Why this module.**  The first form `StepOneValue.lowerMarked 𝔍 0` (b2493314, kept unchanged) builds Step 1bb's lower marked
-ideal from `stepOneMarked 𝔍.N 𝔍.ideal 𝔍.d`, i.e. it *deletes* the `#𝔍.E` original members from the divisor.  The orchestrator's
-independent review of 3 October 2026 (`.archon-horizon/scratch/orchestrator-review-step-one-value-20261003.md`, finding H1)
-shows that this shifts the positions of the members under re-basing (`𝔍_P` has `#𝔍.E + |P|` members, all deleted), so property
-(4') fails for a resolution invariant which depends on the positions of the members (the planned monomial invariant does), and
-the general step's comparisons break.  Here the original members are **kept and masked**: the lower marked ideal of Step 1bb is
+**Why this module.**  The first form `StepOneValue.lowerMarked 𝔍 0` (kept unchanged) builds Step 1bb's lower marked
+ideal from `stepOneMarked 𝔍.N 𝔍.ideal 𝔍.d`, i.e. it *deletes* the `#𝔍.E` original members from the divisor.  An
+independent review of 3 October 2026 showed that this shifts the positions of the members under re-basing (`𝔍_P` has
+`#𝔍.E + |P|` members, all deleted), so property (4') fails for a resolution invariant which depends on the positions of the
+members (the planned monomial invariant does), and the general step's comparisons break.  Here the original members are **kept
+and masked**: the lower marked ideal of Step 1bb is
 `(𝓒_{N_{T₀}}(J̄_{T₀})|_{(N ∩ V(w))_{T₀}})|_W` for `J̄ = 𝓒_N(𝓗_N(𝔍))` with the divisor of `𝔍` (`lowerMarkedB`); the mask `W`
 misses the original members, whose traces on it are empty.  Step 1ab (`StepOneValue.lowerMarked 𝔍 (s + 1)`, TN3's
 `memberRestrict`) already keeps the members not through the point and is unchanged.

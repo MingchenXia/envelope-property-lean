@@ -6,13 +6,13 @@ import Mathlib.RingTheory.Etale.StandardEtale
 import DeJongAlterations.StableModification.Valuation.Bounded
 
 /-!
-# The valuation-theoretic input of Temkin's §4: the interface statement (M3)
+# The valuation-theoretic input of Temkin's §4: the interface statement
 
 This file states, as a proposition (`UniformizationEtaleStatement`), the form of Temkin's
 *uniformization of one-dimensional valued fields* that the curve part of the stable modification
 theorem consumes. It is an **interface, not a theorem**: nothing here is proved about it. The
-curve lanes may assume `UniformizationEtaleStatement` as a hypothesis while its proof (plan
-`PLAN-SM-VAL.md`, node M3, from Theorem 2.1.8 and Lemma 2.1.1 of the source) is in progress.
+curve lanes may assume `UniformizationEtaleStatement` as a hypothesis while its proof (from
+Theorem 2.1.8 and Lemma 2.1.1 of the source) is in progress.
 
 Source: M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
 `references/temkin10-stable-modification/source/semi-stable.tex`:
@@ -33,7 +33,7 @@ Source: M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 
   `O ∩ K` is a localization of the base valuation ring `R`, of height at most `dim S`.
 * `K` and the residue field of `O ∩ K` have the same exponential characteristic
   (equicharacteristic; automatic when the valuation is trivial on a ground field `k₀ ⊆ K`, which is
-  always the case for de Jong's bases of finite type over a field, plan §2).
+  always the case for de Jong's bases of finite type over a field).
 * `L/K` is finitely generated and has a separating transcendence element `x`: `L` is separable
   algebraic over `K(x)`. Hence `trdeg (L/K) = 1` (`UniformizationHypotheses.trdeg_eq_one`). This
   is the separability of `L/K` coming from the smoothness of the generic fibre `C_η`.
@@ -49,10 +49,10 @@ There is `T ∈ L`, transcendental over `K`, such that `O` is a **standard étal
 `f'` invertible), in particular étale (`UniformizationConclusion.exists_etale`). The algebra
 structure is the inclusion `O ∩ K(T) → O` (`instAlgebraComap`).
 
-This is the statement M3 of `PLAN-SM-VAL.md` §9.1 with the Mathlib forms fixed: `hfg` is
+This is the planned interface statement with the Mathlib forms fixed: `hfg` is
 `(⊤ : IntermediateField K L).FG`, `hsep` is a separating transcendence element, `htr` is
-derived, and the conclusion is the standard étale form (the plan's "explicit
-`IsStandardEtale`-localization form").
+derived, and the conclusion is the standard étale form (an explicit
+`IsStandardEtale`-localization form).
 -/
 
 noncomputable section
@@ -92,7 +92,7 @@ def UniformizationConclusion (K L : Type*) [Field K] [Field L] [Algebra K L]
   ∃ T : L, Transcendental K T ∧
     Algebra.IsStandardEtale (O.comap (algebraMap (IntermediateField.adjoin K {T}) L)) O
 
-/-- **Interface statement M3** (plan `PLAN-SM-VAL.md` §9.1): Temkin's uniformization of
+/-- **Interface statement**: Temkin's uniformization of
 one-dimensional valued fields (Theorem 2.1.8, `semi-stable.tex` l. 2056–2061) in the étale form
 consumed by Proposition 4.3.3 (l. 3059–3061). This is a proposition to be proved, not an axiom;
 consumers take it as a hypothesis. -/

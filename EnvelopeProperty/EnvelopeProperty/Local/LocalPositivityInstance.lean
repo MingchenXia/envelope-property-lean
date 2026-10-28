@@ -12,7 +12,7 @@ Fang–Han–Xia, *The envelope property for unibranch projective varieties*, Le
 The statement is the class `LocalPositivity k` (`Local/PositivityImport.lean`); this file proves
 it for every algebraically closed `k`.
 
-The proof is the native-scheme route of `.archon-horizon/scratch/ep/PLAN-LP-ASSEMBLY.md`:
+The proof is the native-scheme route:
 `ProjSubvariety.IsLocallyConvexAll.nativePotentialFSFamily` (the PL model of `X × 𝔸¹`, central
 nefness, the auxiliary polarization, nef plus ample, exact Fubini–Study realization of model
 potentials) produces a native potential family, and `LocalPositivity.of_nativePotentialFSFamily`

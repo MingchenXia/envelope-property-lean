@@ -8,8 +8,8 @@ set_option autoImplicit false
 Source: Demailly--Ein--Lazarsfeld, *A subadditivity property of multiplier ideals*, Michigan
 Math. J. **48** (2000), Theorem 2.6, cited by Copy-4 as `eq:subadditivity`
 (`references/transcendental-nakamaye-copy4-20260911/source/main-Nulllocus.tex`, `sec:positive-current`):
-`𝓘(φ₁ + φ₂) ⊆ 𝓘(φ₁) 𝓘(φ₂)`.  This module records two self-contained ingredients of the proof
-planned in `.archon-horizon/scratch/tn-classical-del00-plan-0113.md`.
+`𝓘(φ₁ + φ₂) ⊆ 𝓘(φ₁) 𝓘(φ₂)`.  This module records two self-contained ingredients of our proof
+of it.
 
 * `exists_productExtension` — **`L²` extension from the diagonal for two weights.**  On a bounded
   convex open `B ⊆ ℂ^d`, for `P₁, P₂` plurisubharmonic on `B` and `f` holomorphic on `B`, there is

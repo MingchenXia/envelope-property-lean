@@ -6,7 +6,7 @@ set_option autoImplicit false
 /-!
 # Torus coefficients on `ℂ^d × ℂ^d`
 
-Step 2 of the DEL00 route (`.archon-horizon/scratch/tn-classical-del00-plan-0113.md`).  For a
+Step 2 of our route to the DEL00 subadditivity theorem.  For a
 function `G` of two variables `a, b ∈ ℂ^d`, read on `ℂ^{d+d}` through `join`, the torus
 coefficient at `(x, x)` of index `(α, β)` is the iterated one:
 

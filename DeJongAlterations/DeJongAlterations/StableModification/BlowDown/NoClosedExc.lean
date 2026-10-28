@@ -13,8 +13,8 @@ M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010
 (`emptylem`, T:3158–3176): a semi-stable modification `f : (C', D') → (C, D)` of a multipointed
 curve over a valuation ring is stable iff `E₀ = ∅`, where `E₀` is the set of exceptional
 components of the fibres of `C'` lying over the closed point. We prove the direction used in the
-blow-down (PLAN-T5 C5; Temkin, Prop. 4.4.6 iterated until `E₀ = ∅`), for `C'` projective over
-`V`, in the numerical form of `PLAN-T5.md` §1.3 (lane T5G's `Global.NumericallyStableFibre`,
+blow-down (Temkin, Prop. 4.4.6 iterated until `E₀ = ∅`), for `C'` projective over
+`V`, in the numerical form (lane T5G's `Global.NumericallyStableFibre`,
 reproduced here as `NumericallyStableFibre`): exceptional components are recognized by their
 arithmetic genus `p_a = 0` and their number of special points, without identifying them with
 `ℙ¹`.
@@ -82,7 +82,7 @@ section Numerical
 variable {S X C : Scheme.{u}}
 
 /-- **Numerical stability of the fibre** `X_a` of `β ≫ g : X → C → S` with marks `D'` over a
-field point `a : Spec K → S` (`PLAN-T5.md` §1.3; this is the body of lane T5G's
+field point `a : Spec K → S` (this is the body of lane T5G's
 `Global.NumericallyStableFibre β g D' a`, not yet integrated, so that the two agree by `Iff.rfl`):
 every irreducible component `Z` of `X_a` contracted by `β_a` whose reduced induced subscheme
 `Z_red` has arithmetic genus `0` contains at least three special points (`specialPoints`). -/
@@ -102,7 +102,7 @@ def NumericallyStableFibre (β : X ⟶ C) (g : C ⟶ S) (D' : X.IdealSheafData) 
               pullback.snd (β ≫ g) a)) = 0 →
         3 ≤ (Z ∩ specialPoints (β ≫ g) D' a).encard
 
-/-- **Exceptional components are numerically exceptional** (`PLAN-T5.md` §1.3, G0): an
+/-- **Exceptional components are numerically exceptional**: an
 exceptional component `Z` (`Curves.IsExceptionalComponent`) is the image of a closed immersion of
 `ℙ¹_K`, so its reduced induced subscheme is `ℙ¹_K`, of arithmetic genus `1 − χ(ℙ¹_K, 𝒪) = 0`
 (`ExcSpecialize.eulerChar_projectiveSpace_one`), and it has at most two special points. -/

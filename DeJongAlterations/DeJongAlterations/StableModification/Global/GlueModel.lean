@@ -4,8 +4,8 @@ import DeJongAlterations.Algebra.NodeFittingIdealSheafGluing
 /-!
 # Gluing stable models over an open cover of the base
 
-Node G7 of `PLAN-T5.md` (§2.1 step 5; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3394–3397): stable models `X_i ⟶ P` over the members
+The last gluing step of the proof of Theorem 1.5 (Temkin, *Stable modification of relative
+curves*, `semi-stable.tex`, T:3394–3397): stable models `X_i ⟶ P` over the members
 `U_i` of an open cover of an integral base `T`, which are locally isomorphic over `P` on the
 overlaps, glue to a scheme `X ⟶ P` which is
 
@@ -13,7 +13,7 @@ overlaps, glue to a scheme `X ⟶ P` which is
 * numerically stable (`IsNumericallyStable`),
 * with marks satisfying the generic marks condition (hence the transported marks,
   `GenericMarksCondition.eq_genericMarksClosure`),
-* projective over each `g⁻¹(U_i)` (obligation E3 of PLAN-OM3 §6: local projectivity over the
+* projective over each `g⁻¹(U_i)` (local projectivity over the
   cover `g⁻¹(U_i)` of the target), and an isomorphism over a nonempty open of `T`.
 
 Only *morphisms* over `P` near each point of the overlaps are needed: by rigidity
@@ -138,7 +138,7 @@ section Model
 
 variable {k : Type u} [CommRing k] {T P X : Scheme.{u}}
 
-/-- **A stable model over an open of the base** (`PLAN-T5.md` §2.1 step 5): over the integral
+/-- **A stable model over an open of the base**: over the integral
 `T` with `g : P ⟶ T`, the morphism `β : X ⟶ P` lies over the open `U ⊆ T`; `(X, D')` is a
 semi-stable pair over `T` satisfying the generic marks condition and numerically stable; `β` is
 projective over `g⁻¹(U)` relative to `g⁻¹(U) ⟶ P ⟶ T ⟶ Spec k`, and an isomorphism over a
@@ -346,7 +346,7 @@ theorem exists_mem_of_iSup_eq_top (hU : ⨆ i, U i = ⊤) (t : T) : ∃ i, t ∈
   have ht : t ∈ ⨆ i, U i := by rw [hU]; trivial
   exact Opens.mem_iSup.mp ht
 
-/-- **Gluing stable models over an open cover of the base** (node G7; Temkin T:3394–3397). Stable
+/-- **Gluing stable models over an open cover of the base** (Temkin T:3394–3397). Stable
 models `β i : X i ⟶ P` over the members `U i` of an open cover of the integral base `T`, with
 morphisms over `P` near every point of the overlaps, glue to `β : X ⟶ P`, proper, with marks
 `D_X` such that `(X, D_X)` is a semi-stable pair over `T` satisfying the generic marks condition,

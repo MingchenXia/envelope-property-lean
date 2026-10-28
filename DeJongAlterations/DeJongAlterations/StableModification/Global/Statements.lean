@@ -4,10 +4,10 @@ import DeJongAlterations.StableModification.Projectivity.Reduction
 /-!
 # The published statements of the global assembly
 
-The interfaces through which the lanes of `PLAN-T5.md` (§1.3) run in parallel: the producers of
+The interfaces through which the formalization lanes ran in parallel: the producers of
 Temkin's Proposition 4.5.1 over a valuation ring (existence and uniqueness of the stable
 modification, lane T45B), of Proposition 4.4.6 (the blow-down, lane T44B) and of Lemma 5.1 (ii)
-(spreading of stability to an open neighbourhood, node G4) publish their results as the plain
+(spreading of stability to an open neighbourhood) publish their results as the plain
 propositions below, and the global assembly (Temkin §5, T:3379–3399, lane T5G) takes them as
 hypotheses. Nothing here asserts them. Source: M. Temkin, *Stable modification of relative
 curves*, J. Algebraic Geom. 19 (2010) (`references/temkin10-stable-modification/source/
@@ -19,8 +19,7 @@ Temkin's stability (T:1687–1690, `Curves.IsStableModification`) excludes *exce
 components*: images of closed immersions of `ℙ¹` contracted by `β` with at most two special
 points (`Curves.IsExceptionalComponent`). The blow-down of Appendix B and §4.4 works numerically
 (`ℙ¹`-trees are trees of components of arithmetic genus `0`), and the positivity of `ω(D')`
-needed for projectivity (PLAN-OM3, M5) uses degrees. We therefore publish the numerical form
-(`PLAN-T5.md` §1.3, obligation E4 of PLAN-OM3 §6):
+needed for projectivity uses degrees. We therefore publish the numerical form:
 
 * `NumericallyStableFibre β g D' a` (an abbreviation of lane T44A3's integrated
   `BlowDown.NoClosedExc.NumericallyStableFibre`, so that the two notions cannot diverge): every
@@ -44,27 +43,27 @@ needed for projectivity (PLAN-OM3, M5) uses degrees. We therefore publish the nu
 * `ValuationStableExistence` (Temkin Prop. 4.5.1 existence, T:3233–3266, with Thm 1.1 over `W`):
   over a finite-height valuation ring of equal characteristic with algebraically closed fraction
   field, a stable, numerically stable η-modification projective over `W` exists (lane T45B; the
-  projectivity conjunct is obligation E5 of PLAN-OM3, in strong form).
+  projectivity conjunct is the strong, global form).
 * `ValuationStableUniqueness` (Temkin Thm 1.2 over `W` via Prop. 4.5.1, T:3233–3266):
   two such modifications are isomorphic over `C`.
 * `BlowDownStable` (Temkin Prop. 4.4.6 iterated with Lemma 4.4.4, T:3158–3229; lane T44B):
   a projective semi-stable η-modification dominates (factors through) a stable and numerically
   stable one, projective over `W`.
 * `StableOpenNbhd k` (Temkin Lemma 5.1 (ii), T:3282–3311, in the form used by the proof of
-  Thm 1.5; node G4): numerical stability of a projective semi-stable family over one geometric
+  Thm 1.5): numerical stability of a projective semi-stable family over one geometric
   point spreads to an open neighbourhood.
 
 ## The deliverable to the projectivity argument
 
-* `HasLocallyProjectiveStableModification k pS g D` (`PLAN-T5.md` §1.2): obligations E1–E4 of
-  PLAN-OM3 §6: an alteration `ψ : S' ⟶ S` with `S'` integral, normal and projective over `k`
+* `HasLocallyProjectiveStableModification k pS g D`, conditions (E1)–(E4):
+  an alteration `ψ : S' ⟶ S` with `S'` integral, normal and projective over `k`
   (E1), a stable η-modification `β` of `C ×_S S'` (E2) which is locally relatively projective
   over `k` in the sense of lane OM3A's integrated `Projectivity.LocallyRelativelyProjective`
   (E3) and numerically stable (E4), with finite marks and an isomorphism over a nonempty open
   of `S'` (the remaining inputs of the bridge
   `Curves.hasStableModification_of_isStableModification`).
-* `StableModificationProjectivity k` (Temkin Thm 1.1 for our families, PLAN-OM3 §4, lane OM3D's
-  `isRelativelyProjective_of_isStableModification`, with E4 among its hypotheses): local
+* `StableModificationProjectivity k` (Temkin Thm 1.1 for our families, lane OM3D's
+  `isRelativelyProjective_of_isStableModification`, with (E4) among its hypotheses): local
   relative projectivity of such a stable modification is global relative projectivity.
 
 Blueprint: `sm-global.tex` (`def:sm-global-numerically-stable`,
@@ -109,7 +108,7 @@ abbrev specialPoints (β : C' ⟶ C) (g : C ⟶ S) (D' : C'.IdealSheafData) {K :
     (a : Spec (.of K) ⟶ S) : Set (pullback (C := Scheme.{u}) (β ≫ g) a) :=
   BlowDown.ExcSpecialize.specialPoints (β ≫ g) D' a
 
-/-- **Numerical stability of a geometric fibre** (`PLAN-T5.md` §1.3; Temkin T:1687–1690 in the
+/-- **Numerical stability of a geometric fibre** (Temkin T:1687–1690 in the
 numerical form of Appendix B, T:4411–4441). Every irreducible component `Z` of `C'_a` contracted
 by `β_a : C'_a ⟶ C_a` whose reduced induced subscheme has arithmetic genus `0` contains at least
 three special points (`specialPoints`). This is lane T44A3's integrated
@@ -141,7 +140,7 @@ def IsNumericallyStableAt (β : C' ⟶ C) (g : C ⟶ S) (D' : C'.IdealSheafData)
   ∀ (K : Type u) [Field K] [IsAlgClosed K] (a : Spec (.of K) ⟶ S),
     (∀ z, a z = s) → NumericallyStableFibre β g D' a
 
-/-- **Numerical stability** (`PLAN-T5.md` §1.3, obligation E4 of PLAN-OM3 §6): every geometric
+/-- **Numerical stability**: every geometric
 fibre is numerically stable. -/
 def IsNumericallyStable (β : C' ⟶ C) (g : C ⟶ S) (D' : C'.IdealSheafData) : Prop :=
   ∀ (K : Type u) [Field K] [IsAlgClosed K] (a : Spec (.of K) ⟶ S), NumericallyStableFibre β g D' a
@@ -216,7 +215,7 @@ theorem isoReducedSubschemeOfIso_hom_ι {X Y : Scheme.{u}} (e : X ≅ Y) (Z : Se
       reducedSubschemeι Z hZ ≫ e.hom :=
   isoReducedSubschemeOfKer_hom_ι _ _ _ _
 
-/-- **Numerical stability excludes exceptional components** (`PLAN-T5.md` §1.3, G0): an
+/-- **Numerical stability excludes exceptional components**: an
 exceptional component is the image of a closed immersion of `ℙ¹_K`, so its reduced induced
 subscheme is `ℙ¹_K`, of arithmetic genus `0`, and it has at most two special points (lane T44A3,
 `BlowDown.NoClosedExc.not_numericallyStableFibre_of_isExceptionalComponent`). -/
@@ -237,7 +236,7 @@ end Numerical
 
 section Producers
 
-/-- **A curve over a valuation ring in the situation of Temkin's §4.5** (`PLAN-T5.md` §1.3; our
+/-- **A curve over a valuation ring in the situation of Temkin's §4.5** (our
 case of Temkin's `C`, T:3233–3236): `C` is integral, flat, of finite presentation and projective
 over `W`, smooth at the points over the generic point, with marks `D` flat over `W` whose generic
 pair is semi-stable. -/
@@ -253,7 +252,7 @@ structure IsValuationCurve {K : Type u} [Field K] {W : ValuationSubring K} {C : 
     (DeJong.fiberMarks φ D (genericPoint (Spec (.of W))))
 
 /-- **Existence over a valuation ring** (Temkin Prop. 4.5.1 `sepclosprop`, T:3233–3266, with
-Thm 1.1 over `W`; `PLAN-T5.md` §1.3, lane T45B). Over a valuation ring `W` of finite height and
+Thm 1.1 over `W`; lane T45B). Over a valuation ring `W` of finite height and
 equal characteristic whose fraction field is algebraically closed, every curve in the situation
 `IsValuationCurve` has a stable η-modification which is numerically stable and projective over
 `W`. -/
@@ -265,7 +264,7 @@ def ValuationStableExistence : Prop :=
         IsStableModification β φ D D' ∧ IsNumericallyStable β φ D' ∧ IsProjectiveOver (β ≫ φ)
 
 /-- **Uniqueness over a valuation ring** (Temkin Thm 1.2 over `W`, T:3233–3266;
-`PLAN-T5.md` §1.3, lane T45B). In the situation of `ValuationStableExistence`, two stable,
+lane T45B). In the situation of `ValuationStableExistence`, two stable,
 numerically stable η-modifications projective over `W` are isomorphic over `C`. -/
 def ValuationStableUniqueness : Prop :=
   ∀ (K : Type u) [Field K] [IsAlgClosed K] (W : ValuationSubring K) [Finite (PrimeSpectrum W)],
@@ -278,7 +277,7 @@ def ValuationStableUniqueness : Prop :=
       ∃ e : C₁ ≅ C₂, e.hom ≫ β₂ = β₁
 
 /-- **The blow-down to the stable modification** (Temkin Prop. 4.4.6 `blowdownprop`, T:3188–3229,
-iterated with Lemma 4.4.4 `emptylem`, T:3158–3176; `PLAN-T5.md` §1.3, lane T44B). In the situation
+iterated with Lemma 4.4.4 `emptylem`, T:3158–3176; lane T44B). In the situation
 of `ValuationStableExistence`, a semi-stable η-modification `f : C' ⟶ C` with the transported
 marks, projective over `W`, factors through a stable and numerically stable η-modification
 `β` projective over `W`. -/
@@ -294,14 +293,14 @@ def BlowDownStable : Prop :=
           IsProjectiveOver (β ≫ φ) ∧ h ≫ β = f
 
 /-- **Spreading of numerical stability** (Temkin Lemma 5.1 (ii) `openloclem`, T:3282–3311, in the
-form used in the proof of Thm 1.5, T:3384–3394; `PLAN-T5.md` §1.3, node G4). Let `U` be a variety
+form used in the proof of Thm 1.5, T:3384–3394). Let `U` be a variety
 over `k`, `q : C ⟶ U` projective relative to `k`, `β : X ⟶ C` projective relative to `k`, and
 `(X, D')` a semi-stable pair over `U`. If the geometric fibre over one geometric point `a` over
 `z ∈ U` is numerically stable, so are the geometric fibres over all points of an open
 neighbourhood of `z`.
 
-Compared with `PLAN-T5.md` §1.3 this is the general form: `U` need not be normal (the ω route
-of node G4 first normalizes `U`; numerical stability is insensitive to the finite surjective
+This is the general form: `U` need not be normal (the ω route
+first normalizes `U`; numerical stability is insensitive to the finite surjective
 normalization), and no condition on `C`, the marks of `C` or the generic fibre is imposed (they
 are not used by the argument); numerical stability is assumed at one geometric point over `z`
 only (numerical stability of a geometric fibre is invariant under extension of the
@@ -320,8 +319,8 @@ end Producers
 
 section Projective
 
-/-- **A locally projective stable modification after an alteration** (`PLAN-T5.md` §1.2,
-obligations E1–E4 of PLAN-OM3 §6). For `pS : S ⟶ Spec k` and a multipointed `S`-curve
+/-- **A locally projective stable modification after an alteration** (conditions
+(E1)–(E4)). For `pS : S ⟶ Spec k` and a multipointed `S`-curve
 `(g : C ⟶ S, D)`: an alteration `ψ : S' ⟶ S` from an integral normal scheme projective over `k`
 (E1) and a stable η-modification `β : C' ⟶ C ×_S S'` of `(C ×_S S', D ×_S S')` (E2), locally
 relatively projective over `k` (E3, lane OM3A's `Projectivity.LocallyRelativelyProjective`: a
@@ -340,7 +339,7 @@ def HasLocallyProjectiveStableModification (k : Type u) [Field k] {S C : Scheme.
     ∃ U : S'.Opens, Nonempty U ∧ IsIso (β ∣_ ((pullback.snd g ψ) ⁻¹ᵁ U))
 
 /-- **Projectivity of the stable modification** (Temkin Thm 1.1 for the families of Thm 1.5,
-T:3379–3399 with §6; PLAN-OM3 §4, `thm:sm-tsm-proj`, lane OM3D). In the situation of
+T:3379–3399 with §6; `thm:sm-tsm-proj`, lane OM3D). In the situation of
 `DeJong.TemkinStableModification k` (`S` a normal projective variety over `k`, `(C, D)` a
 multipointed `S`-curve projective over `k` with smooth, semi-stable, geometrically integral
 generic fibre), let `ψ : S' ⟶ S` be an alteration with `S'` integral, normal and projective over
@@ -348,7 +347,7 @@ generic fibre), let `ψ : S' ⟶ S` be an alteration with `S'` integral, normal 
 relatively projective over `k`. Then `β` is projective relative to `k`.
 
 This is the statement of lane OM3D's `Projectivity.isRelativelyProjective_of_isStableModification`
-(PLAN-OM3 §4) with the extra hypotheses `IsVariety pS`, `IsNormalScheme S`, the semi-stability of
+with the extra hypotheses `IsVariety pS`, `IsNormalScheme S`, the semi-stability of
 the generic pair and numerical stability (E4), which are available at the point of use; it is a
 hypothesis of the final assembly, not asserted here. -/
 def StableModificationProjectivity (k : Type u) [Field k] [IsAlgClosed k] : Prop :=

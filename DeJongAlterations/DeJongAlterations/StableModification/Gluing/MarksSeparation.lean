@@ -63,8 +63,8 @@ section Statement
 
 variable {K : Type u} [Field K] (R : ValuationSubring K)
 
-/-- **Projective separation of marks, projectivity-preserving form** (`PLAN-T5.md` §2.2 step 4,
-node A4; Temkin, Lemma 4.3.2, T:3019–3044, with projectivity tracked). The statement of
+/-- **Projective separation of marks, projectivity-preserving form** (Temkin,
+Lemma 4.3.2, T:3019–3044, with projectivity tracked). The statement of
 `ProjectiveSeparation R` with the relative projectivity of `β` replaced by: `β` preserves
 projectivity (`B'` is projective over every ring over which `B` is projective and of finite
 presentation). -/
@@ -138,7 +138,7 @@ local notation "s₀" => IsLocalRing.closedPoint R
 
 include hN hdim hinj in
 /-- **A local semi-stable model with separated marks, unconditionally** (Temkin, proof of
-Proposition 4.5.1, T:3246–3252, with Lemma 4.3.2; `PLAN-T5.md` §2.2 steps 6–8 with marks): lane
+Proposition 4.5.1, T:3246–3252, with Lemma 4.3.2): lane
 T45B's `exists_local_marked_model` without the hypothesis `ProjectiveSeparation R`, for `K`
 separably closed and a strictly semi-stable model `τ : B → O` of an open `O ⊆ N` such that `B` is
 projective over a ring `E` through a separated `pE : O → Spec E` over `Spec R` (`B` projective over

@@ -17,8 +17,7 @@ element of trace one, and the classical formula `β = ∑ i σ^i(θ)`.
 
 This is the normal form used for the degree-`p` Galois steps of the towers of `Towers.lean`, in
 place of Temkin's disc argument (M. Temkin, *Stable modification of relative curves*,
-J. Algebraic Geom. 19 (2010), proof of Proposition 6.1.4, `semi-stable.tex` lines 3569–3636;
-plan simplification S6 of `PLAN-SM-VAL.md`).
+J. Algebraic Geom. 19 (2010), proof of Proposition 6.1.4, `semi-stable.tex` lines 3569–3636).
 
 ## Main results
 

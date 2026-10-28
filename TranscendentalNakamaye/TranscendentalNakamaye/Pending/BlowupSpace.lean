@@ -11,8 +11,7 @@ Source: Demailly, *Complex analytic and differential geometry*, VII.12.1--12.2
 (`references/demailly-cadg`, `agbook.tex` lines 20218--20306); blueprint `bex:blowup-space`,
 `bex:monomial-chart`.
 
-Second module of the construction of the blowup (TN.4 #6, design note
-`.archon-horizon/scratch/tn3-blowup-existence-design-0174.md`).  Demailly's blowup of `X` along `C`
+Second module of the construction of the blowup (TN.4 #6).  Demailly's blowup of `X` along `C`
 is, as a set, `(X \ C) ⊔ P(NC)`.  Here a point is a pair `(x, L)` with `L ⊆ ℂⁿ = T_xX` a subspace:
 `L = 0` when `x ∉ C`, and `L = T_xC + ℂξ` with `ξ ∉ T_xC` when `x ∈ C` (`BlowupSpace`).  For a
 function `f` and a point `p = (x, L)`, `extVal f p` is `f x` off `C` and `d_xf(ξ_p)` on `C`, for a

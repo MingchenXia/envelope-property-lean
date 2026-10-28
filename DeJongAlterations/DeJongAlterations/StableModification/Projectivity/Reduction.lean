@@ -12,7 +12,7 @@ import Mathlib.AlgebraicGeometry.ZariskisMainTheorem
 /-!
 # Reduction of relative projectivity to a finite map into `ℙᴺ`
 
-Blueprint `sm-projectivity-core.tex`, node M0 of PLAN-OM3 (Temkin, *Stable modification of
+Blueprint `sm-projectivity-core.tex` (Temkin, *Stable modification of
 relative curves*, Thm 1.1, T:1713–1749). The consumed conjunct of `DeJong.HasStableModification`
 is `IsRelativelyProjective pT β` for `β : C' ⟶ T = C ×_S S'`. This file shows that it suffices to
 find a `k`-morphism `h : C' ⟶ ℙᴺ_k` which is quasi-finite on the fibres of `β`:
@@ -30,10 +30,9 @@ find a `k`-morphism `h : C' ⟶ ℙᴺ_k` which is quasi-finite on the fibres of
 * bookkeeping (`lem:sm-proj-bookkeeping`): isomorphism invariance, closed subschemes,
   restriction to opens, `LocallyRelativelyProjective` of a relatively projective morphism,
   composition over a projective base, change of the coefficient ring along `Spec V ⟶ Spec k`, and
-  the equivalence with absolute projectivity over a projective base (PLAN-OM3 §8 O1).
+  the equivalence with absolute projectivity over a projective base.
 
-The first two statements were checked in the planning probe
-`.archon-horizon/scratch/offlib/dja-PO3/ProbeReduction.lean` (lane PO3).
+The first two statements were first checked in a planning probe (lane PO3).
 -/
 
 noncomputable section
@@ -65,8 +64,7 @@ theorem isRelativelyProjective_of_isProjectiveOver (pT : T ⟶ Spec (.of k)) [Is
   have : IsSeparated (pullback.snd pT (projectiveSpaceStructure k n)) := inferInstance
   exact ⟨n, i, IsClosedImmersion.of_comp i (pullback.snd _ _), pullback.lift_fst _ _ _⟩
 
-/-- Over a projective `k`-scheme, relative projectivity is absolute projectivity (PLAN-OM3 §8
-O1). -/
+/-- Over a projective `k`-scheme, relative projectivity is absolute projectivity. -/
 theorem isRelativelyProjective_iff_isProjectiveOver (pT : T ⟶ Spec (.of k))
     (hT : IsProjectiveOver pT) (f : X ⟶ T) :
     IsRelativelyProjective pT f ↔ IsProjectiveOver (f ≫ pT) := by

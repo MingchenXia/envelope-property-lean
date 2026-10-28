@@ -14,7 +14,7 @@ import DeJongAlterations.StableModification.Cohomology.CechPushforward
 # Čech cohomology of quasi-coherent modules (umbrella module)
 
 The curves-only Čech cohomology library of the Claude team's route to Temkin's stable modification
-theorem (plan `PLAN-SM-GEOM.md`, chapter F, decision D4; blueprint `sm-cohomology-cech.tex`).
+theorem (blueprint `sm-cohomology-cech.tex`).
 Namespace `DeJongAlterations.StableModification.Cohomology`.
 
 ## Files

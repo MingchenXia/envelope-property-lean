@@ -12,7 +12,7 @@ import Mathlib.Topology.Algebra.Field
 This file formalizes the unbounded case of the proof of Theorem 2.1.8 (`valunif`) of M. Temkin,
 *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), §2.2 (`semi-stable.tex`,
 lines 2188–2196), together with the separability criterion for transcendence bases used in that
-proof (lines 2204–2206). Plan `PLAN-SM-VAL.md`, node M1; blueprint `sm-val-uniformization-dec.tex`.
+proof (lines 2204–2206). Blueprint `sm-val-uniformization-dec.tex`.
 
 Temkin argues geometrically: if the valuation ring `K·O` is the local ring of a smooth closed
 point of the normal projective model of `L/K`, a uniformizer `x` induces an étale map to the

@@ -10,20 +10,19 @@ set_option linter.unusedSectionVars false
 Source: Copy-4, `lem:regularization`, Step 2 (`transcendental-nakamaye-copy4-20260911`);
 blueprint `ana:regularization`.
 
-`BergmanOverlapFixedCover.exists_overlapConst_finite` closes frontier items 3 and 4 of
-`scratch/tn-classical-regularization-frontier-20260922-r2.md`: for a *finite* family of
+`BergmanOverlapFixedCover.exists_overlapConst_finite` closes two gaps of the regularization
+chain: for a *finite* family of
 coordinate balls inside a convex bounded `D` there is ONE constant `C_B`, fixed by the
 family alone, comparing the two Bergman sup-weights at every point of the intersection of
 the inner half-balls, in **both** directions and for **every** smooth psh weight `ϕ`
 bounded below on `D`.  Its scope note records what was still missing: Copy-4 applies the
 estimate to `ϕ = m Ψ` with `Ψ` merely plurisubharmonic, hence `-∞` on a polar set, and
-none of the upstream Bergman machinery admits such a weight (frontier item 1, I-0227 /
-I-0228).
+none of the upstream Bergman machinery admits such a weight.
 
 `QuantitativeRegularizationSmoothWeightLimit.bergmanSup_multiplierWeight_le_mul_of_smoothPsh`
 is precisely the converter for that gap, and its hypothesis is precisely what
 `exists_overlapConst_finite` delivers.  This module performs the composition, and that
-closes frontier item 1 for the overlap estimate:
+closes this gap for the overlap estimate:
 
 > `exists_overlapConst_finite_multiplierWeight`: one constant `C`, fixed by the finite
 > ball family alone, with
@@ -33,11 +32,10 @@ closes frontier item 1 for the overlap estimate:
 
 Two remarks on the hypotheses.
 
-* The `ϕ`-boundedness hypothesis `hBϕ` of the smooth theory (I-0227 asked for its
-  removal) is **not** removed and does not need to be: the mollifier layer supplies
-  smooth approximants that are bounded below on `A` by construction, so `hBϕ` is
-  discharged rather than dropped.  The singular weight itself is unbounded below and
-  never has to satisfy it.
+* The `ϕ`-boundedness hypothesis `hBϕ` of the smooth theory is **not** removed and does
+  not need to be: the mollifier layer supplies smooth approximants that are bounded below on `A`
+  by construction, so `hBϕ` is discharged rather than dropped.  The singular weight itself is
+  unbounded below and never has to satisfy it.
 * `m` is a real parameter, quantified after `C`, so the logarithmic form below divides
   by `m` to give Copy-4's `|ψ_{i,m} - ψ_{j,m}| ≤ C_B / m` with the same `C_B` for all
   `m`.  This is the quantifier order Copy-4's Step 3 consumes.

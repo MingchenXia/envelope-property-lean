@@ -7,8 +7,8 @@ set_option autoImplicit false
 /-!
 # Finitely many points of the moment curve avoid any `m` hyperplanes
 
-Combinatorial step of the plan for Cartan's theorem on an irreducible germ
-(`.archon-horizon/scratch/tn-classical-cartan-plan-0119.md`, step 2): instead of Demailly's
+Step 2 (combinatorial) of our proof of Cartan's theorem on an irreducible germ: instead of
+Demailly's
 interpolation in the coefficients `c` of the primitive element (CADG II.4.29), use finitely many
 coefficient vectors `c(t_i) = (1, t_i, …, t_i^{k-1})` on the moment curve.  A hyperplane
 `{c : ∑_l λ_l c_l = 0}` (`λ ≠ 0`) contains `c(t)` only for the `≤ k - 1` roots `t` of

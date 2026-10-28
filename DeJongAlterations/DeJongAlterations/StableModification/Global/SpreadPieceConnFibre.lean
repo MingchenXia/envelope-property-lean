@@ -10,8 +10,8 @@ import DeJongAlterations.StableModification.Limits.SpreadModification
 /-!
 # The closed fibre of a stable model has no contracted clopen subset
 
-The input supplied by the consumer of `StableOpenNbhdConn` (ERRATA DJA-O36, node G4 of
-`PLAN-T5.md`; Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
+The input supplied by the consumer of `StableOpenNbhdConn` (`Global/StableOpenStatement.lean`;
+Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
 proof of Theorem 1.5, T:3384–3394). Let `W` be a valuation ring of finite height with
 algebraically closed fraction field, `(C, D)` a curve over `W` in the situation of Temkin's §4.5
 (`IsValuationCurve`), and `β : C' ⟶ C` a stable η-modification with `C'` projective over `W`. At a
@@ -230,7 +230,7 @@ theorem isIrreducible_preimage_genericPoint_comp [Finite (PrimeSpectrum W)]
   rwa [Set.image_univ, Scheme.Hom.range_fiberι] at this
 
 /-- **The closed fibre of a stable model has no contracted clopen subset** (blueprint
-`lem:sm-gso-stable-model-no-contracted-clopen`; ERRATA DJA-O36). Let `W` be a valuation ring of
+`lem:sm-gso-stable-model-no-contracted-clopen`). Let `W` be a valuation ring of
 finite height with algebraically closed fraction field, `(C, D)` a curve over `W` as in
 `IsValuationCurve` whose closed fibre has at least two points, and `β : C' ⟶ C` a stable
 η-modification with `C'` projective over `W`. At every geometric point

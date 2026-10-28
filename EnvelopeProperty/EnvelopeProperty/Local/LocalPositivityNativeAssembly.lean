@@ -12,7 +12,7 @@ import EnvelopeProperty.AlgGeom.NativeLineFSIsometries
 
 This file assembles the last two links of the native-scheme proof of Fang–Han–Xia, *The envelope
 property for unibranch projective varieties*, Lemma 5.5 (`lem:local-PL-positivity`, the class
-`LocalPositivity`), following the plan `.archon-horizon/scratch/ep/PLAN-LP-ASSEMBLY.md`.
+`LocalPositivity`).
 
 The upstream part of the pipeline (our native route for FHX Lemma 5.5: the PL model of `X × 𝔸¹`
 of a locally convex `φ`, nefness of the twisted ratio line on the central fibre, nef plus ample is
@@ -86,7 +86,8 @@ private local instance nativeStructureIsProper' : IsProper X.nativeStructure := 
   change IsProper (X.nativeInclusion ≫ ProjBerk.nativeStructureMap)
   infer_instance
 
-/-- **The output of the native pipeline** (links 1–7 of `PLAN-LP-ASSEMBLY.md`). For `a ∈ ℚ` and
+/-- **The output of the native pipeline** (its upstream part, described in the module docstring).
+For `a ∈ ℚ` and
 `φ : X^an → ℝ`: there are `r ≥ 1`, `d = r a`, `q ∈ ℕ`, `c, K ∈ ℝ` and functions `p_M, p_H` on the
 native valued points of `X` with `p_M = r φ + c` and `|p_H| ≤ K` on `X^an` such that, for every
 `b ≥ 1`, `b p_M + p_H` is a native finite Fubini–Study function of class `e` of an invertible sheaf

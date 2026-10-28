@@ -16,7 +16,7 @@ spread along an étale chart `φ : U → M` of a strictly semi-stable curve `X �
 point `x` and extended trivially, is a strictly semi-stable modification of `X`. This file reproves
 lane T43A's `LocalUniformization.exists_smoothBlowup_globalTransport` and
 `exists_nodeBlowup_globalTransport` (and BND's `Blowups.exists_transport`, which they use) with
-two changes, so that the result is **projective over `X`** (`PLAN-T5.md` node A4):
+two changes, so that the result is **projective over `X`**:
 
 * the neighbourhood `V₀` of `x` over which the chart blow-up is pulled back is chosen **affine**
   (`exists_isAffineOpen_finite_subset`, prime avoidance), and the blow-up is extended by the

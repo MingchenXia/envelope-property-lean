@@ -9,8 +9,9 @@ import DeJongAlterations.StableModification.Global.SpreadPieceConnFibre
 /-!
 # Local stable pieces from the corrected spreading statement
 
-The consumer of node G4 of `PLAN-T5.md` with the corrected statement `StableOpenNbhdConn k`
-(ERRATA DJA-O36; Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
+The consumer of the spreading of numerical stability, with the corrected statement
+`StableOpenNbhdConn k` (`Global/StableOpenStatement.lean`; Temkin, *Stable modification of relative
+curves*, J. Algebraic Geom. 19 (2010),
 proof of Theorem 1.5, T:3379–3394). `exists_localStablePiece_conn` is the proof of
 `Global.exists_localStablePiece` (`Global/SpreadPiece.lean`, which is not edited) with
 `StableOpenNbhdConn k` in place of `StableOpenNbhd k`. The geometric point over the centre of `W`
@@ -38,8 +39,8 @@ open Curves (pullbackCompMap IsStableModification)
 open RiemannZariskiSpace
 
 set_option backward.isDefEq.respectTransparency false in
-/-- **Local stable pieces from the corrected spreading statement** (`PLAN-T5.md` §2.1 steps 1–2,
-nodes G1, G3′, G4; ERRATA DJA-O36). The proof of `exists_localStablePiece` with
+/-- **Local stable pieces from the corrected spreading statement**.
+The proof of `exists_localStablePiece` with
 `StableOpenNbhdConn k` in place of `StableOpenNbhd k`: the extra hypothesis `NoContractedClopen` at
 the geometric point over the centre of `W` holds for the stable modification over `W`
 (`noContractedClopen_of_isStableModification`: Zariski connectedness of its closed fibre, which
@@ -250,7 +251,7 @@ theorem exists_localStablePiece_conn {k : Type u} [Field k] {S C : Scheme.{u}}
   have hnB : NumericallyStableFibre β' (pullback.snd g tB) DB (b ≫ c.π.app B) := by
     rw [← numericallyStableFibre_iff_of_isPullback H₁ H₂ DB b, hDB]
     exact hnb
-  -- no contracted clopen subset at the centre (ERRATA DJA-O36)
+  -- no contracted clopen subset at the centre
   have hfibW : ((pullback.snd g ψ') ⁻¹' {IsLocalRing.closedPoint W.valuationSubring}).Nontrivial := by
     have : IsIntegral (pullback g ψ') := hV.isIntegral
     have : UniversallyClosed (pullback.snd g ψ') := inferInstance
@@ -261,7 +262,7 @@ theorem exists_localStablePiece_conn {k : Type u} [Field k] {S C : Scheme.{u}}
     noContractedClopen_of_isStableModification hV hstab hproj hfibW ι hιint
   have hncB : NoContractedClopen β' (pullback.snd g tB) (b ≫ c.π.app B) :=
     (noContractedClopen_iff_of_isPullback H₁ H₂ b).mp hncb
-  -- spreading of numerical stability (node G4)
+  -- spreading of numerical stability
   have hlftB : LocallyOfFiniteType tB := by
     have e1 : Dg.map a ≫ Spec.map (CommRingCat.ofHom
         (algebraMap A (⊥ : Limits.FGSubalgebra A R).1)) =

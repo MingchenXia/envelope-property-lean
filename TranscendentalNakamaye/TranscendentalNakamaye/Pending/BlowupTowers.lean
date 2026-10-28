@@ -5,8 +5,7 @@ set_option autoImplicit false
 /-!
 # Towers of blowups, recorded as data
 
-Blueprint `hir:blowup-tower` (`blueprint/src/hironaka.tex`, Hironaka phase, design note
-`.archon-horizon/scratch/tn-classical-hironaka-design-0180.md`, risk R1).  Source: the sequences
+Blueprint `hir:blowup-tower` (`blueprint/src/hironaka.tex`, Hironaka phase).  Source: the sequences
 `X_0 = X ← X_1 ← ⋯ ← X_r` of blowups with smooth centres of Włodarczyk 2005 §2.1 ("multiple test
 blow-ups"), Bierstone--Milman 2008 Theorem 1.3 and Definitions 2.4.
 
@@ -14,7 +13,7 @@ blow-ups"), Bierstone--Milman 2008 Theorem 1.3 and Definitions 2.4.
 composite of blowups, and forgets the intermediate spaces and centres.  The resolution algorithm
 needs them as data -- the marked ideal is transformed step by step, the invariant at a stage
 depends on the earlier ones, and towers are concatenated.  This file provides that data structure
-(the shared tower type of the Hironaka phase, H1/H2 seam agreed on I-0977).
+(the shared tower type of the Hironaka phase, at the seam between phases H1 and H2).
 
 ## Design (R1)
 
@@ -45,7 +44,7 @@ Import discipline (Hironaka phase): this module does not import, even transitive
 later be proved in place from it.
 
 Sorry-free.  Restriction of a tower to an open subset needs the restriction of a single blowup to an
-open subset (an H2 item); the design note records a prototype that elaborates given that lemma.
+open subset (an H2 item).
 -/
 
 open Set

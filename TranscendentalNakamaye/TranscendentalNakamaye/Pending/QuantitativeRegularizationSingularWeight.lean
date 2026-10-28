@@ -15,9 +15,8 @@ currently has — `QuantitativeRegularizationBergmanOverlap.bergmanSup_le_of_poi
 and everything built on it, up to `BergmanOverlapFixedCover.exists_overlapConst_finite` —
 assumes the weight `e^{-ϕ}` has `ϕ` **smooth** and **bounded below**.  Copy-4 applies
 those statements to `ϕ = m Ψ` with `Ψ` merely plurisubharmonic, hence `-∞` on a polar
-set.  Frontier item 1 of `scratch/tn-classical-regularization-frontier-20260922-r2.md`
-(I-0227, I-0228) records this as the most blocking gap of the whole chain, and it also
-records *why* no bookkeeping closes it: replacing `Ψ` by `max (Ψ, -k)` makes the weight
+set.  This is the most blocking gap of the whole chain, and no
+bookkeeping closes it: replacing `Ψ` by `max (Ψ, -k)` makes the weight
 `e^{-ϕ}` **smaller**, hence the weighted unit ball **larger** and `bergmanSup`
 **larger**, so the comparison has to be closed by a limit from above, not by monotone
 convergence.
@@ -137,7 +136,7 @@ ones.**  For an increasing sequence of weights, locally bounded below by a posit
 constant, the kernel of the pointwise supremum is the infimum of the kernels.
 
 Applied to `w i = e^{-m·max (Ψ, -i)}` — or to any smooth decreasing regularization of
-those truncations — this is the statement that closes frontier item 1: a bound for the
+those truncations — this is the statement that closes that gap: a bound for the
 kernels of the regular weights, uniform in `i`, is a bound for the kernel of `e^{-mΨ}`. -/
 theorem bergmanSup_iSup_weight
     {D : Set (ComplexModel d)} (hD : IsOpen D)

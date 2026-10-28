@@ -22,7 +22,7 @@ Consequently (`SteinFinite.lean`) for `Y` locally of finite presentation over a 
 `V` and `B` flat over `V`, `π_* 𝒪_B` is a finite `𝒪_Y`-algebra and the relative normalization
 `π.normalization = Spec π_* 𝒪_B` is finite over `Y`
 (`isFinite_fromNormalization_of_isRelativelyProjective`). This is the finiteness half of
-`thm:sm-stein-finite-valuation` (plan `PLAN-SM-GEOM.md`, S8), which replaces Temkin's Lemma 4.4.1
+`thm:sm-stein-finite-valuation`, which replaces Temkin's Lemma 4.4.1
 (Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
 `semi-stable.tex` lines 3089–3104).
 

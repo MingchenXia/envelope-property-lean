@@ -6,16 +6,16 @@ Authors: DeJongAlterations contributors (Claude team, lane T45A)
 import DeJongAlterations.StableModification.BlowDown.ClosedLocus
 
 /-!
-# Local models around the bad points (PLAN-T5 node A7)
+# Local models around the bad points
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
 Lemma 4.4.2 (T:3115–3118: "since `V` is closed in `C̄`, we can extend `f` trivially") and
-Proposition 4.5.1 (T:3243–3266); `PLAN-T5.md` §2.2 step 7. Given finitely many bad points `Σ` of
-the normalized refinement `N` (node A6) and local modifications `τᵢ : Bᵢ → Oᵢ` with finite loci
-`Zᵢ`, we choose, for each closed point `x ∈ Σ`, an open `Uₓ ∋ x` inside some `Oⱼ₍ₓ₎` and the part
-`Tₓ = {t ∈ Zⱼ₍ₓ₎ | t ⤳ x}` of the locus through `x`, such that the `Tₓ` are closed in `N`,
+Proposition 4.5.1 (T:3243–3266). Given finitely many bad points `Σ` of
+the normalized refinement `N` (`Gluing/BadLocus.lean`) and local modifications `τᵢ : Bᵢ → Oᵢ` with
+finite loci `Zᵢ`, we choose, for each closed point `x ∈ Σ`, an open `Uₓ ∋ x` inside some `Oⱼ₍ₓ₎` and
+the part `Tₓ = {t ∈ Zⱼ₍ₓ₎ | t ⤳ x}` of the locus through `x`, such that the `Tₓ` are closed in `N`,
 pairwise disjoint, cover `Σ`, and `Uₓ` meets no other `T_y`. These are the data of the extension
-by the identity (node A8, `Gluing.Extension`).
+by the identity (`Gluing.Extension`).
 
 Closedness of `Tₓ` in `N` (and not only in `Oⱼ₍ₓ₎`) is the point of ERRATA T11: over a valuation
 ring with separably closed residue fields the closure of an algebraic point of a proper `V`-scheme
@@ -26,7 +26,7 @@ consists of generizations of its unique closed point
 
 * `isClosed_of_finite_of_specializes`: a finite set stable under specialization is closed.
 * `eq_of_specializes_of_isAlgebraicAt`: an algebraic point specializes to at most one closed point.
-* `exists_localModels`: the local data `(Uₓ, Tₓ)` (node A7).
+* `exists_localModels`: the local data `(Uₓ, Tₓ)`.
 -/
 
 noncomputable section
@@ -80,7 +80,7 @@ theorem eq_of_specializes_of_isAlgebraicAt {t x y : N} (htx : t ⤳ x) (hty : t 
 variable {ι : Type*} (O : ι → N.Opens) (Z : ι → Set N) (Bad : Set N)
 
 include hsep in
-/-- **Local models around the bad points** (`PLAN-T5.md` §2.2 step 7, node A7; Temkin, proof of
+/-- **Local models around the bad points** (Temkin, proof of
 Lemma 4.4.2, T:3115–3118, with ERRATA T11). Let `N` be proper over a valuation ring `V` all of whose
 residue fields `Frac(V/𝔭)` are separably closed, covered by opens `Oᵢ`, and let `Zᵢ ⊆ Oᵢ` be finite
 sets of algebraic points, closed in `Oᵢ` (the loci of local modifications `Bᵢ → Oᵢ`), and `Σ` a

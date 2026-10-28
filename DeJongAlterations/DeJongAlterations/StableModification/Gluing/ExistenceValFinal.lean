@@ -12,8 +12,8 @@ import DeJongAlterations.StableModification.BlowDown.UnconditionalFinal
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`),
-Proposition 4.5.1 (`sepclosprop`, T:3233–3266), existence part, in the form of `PLAN-T5.md` §2.2
-steps 1–10 (nodes V1, V2): over a valuation ring `W` of finite height and equal characteristic
+Proposition 4.5.1 (`sepclosprop`, T:3233–3266), existence part:
+over a valuation ring `W` of finite height and equal characteristic
 whose fraction field `K` is algebraically closed, every curve `φ : C → Spec W` in the situation
 `Global.IsValuationCurve` has a stable, numerically stable η-modification projective over `W`.
 
@@ -70,8 +70,8 @@ section Main
 variable {K : Type u} [Field K] [IsAlgClosed K] {W : ValuationSubring K} [Finite (PrimeSpectrum W)]
 
 /-- **A projective semi-stable stage dominating a projective modification, unconditionally**
-(Temkin, proof of Proposition 4.5.1, T:3243–3266, steps up to the blow-down; `PLAN-T5.md` §2.2
-steps 1–9, nodes V1, V2): lane T45E's `ExistenceVal.exists_isSemistableStage_comp` without the
+(Temkin, proof of Proposition 4.5.1, T:3243–3266, steps up to the blow-down):
+lane T45E's `ExistenceVal.exists_isSemistableStage_comp` without the
 hypothesis `ProjectiveSeparation W`. Let `K` be algebraically closed, `W ⊆ K` a valuation ring of
 finite height and equal characteristic, `(φ : C → Spec W, D)` a curve in the situation of Temkin's
 §4.5 (`Global.IsValuationCurve`), and `h : C' → C` a modification with `C'` projective over `W`.
@@ -165,7 +165,7 @@ theorem exists_isSemistableStage_comp
     have h1 := isSmoothAt_of_mem_isomorphismOpen f φ (V := φ ⁻¹ᵁ BlowDown.genericOpen W)
       (hgenU x hx) (hV.isSmoothAt_generic _ hφx)
     rwa [hfφ] at h1
-  -- projectivity of `X` over `W` (node V1, lane OM3F's `thm:sm-val-proj`)
+  -- projectivity of `X` over `W` (lane OM3F's `thm:sm-val-proj`)
   have := hXnod
   have : LocallyOfFinitePresentation (b ≫ h ≫ φ) := hNlfp
   have hXproj : IsProjectiveOver (β ≫ b ≫ h ≫ φ) :=
@@ -233,7 +233,7 @@ theorem exists_isSemistableStage_comp
 
 /-- **A stable modification dominated by a semi-stable stage dominating a projective
 modification, unconditionally** (Temkin, Proposition 4.5.1 existence, with Proposition 4.4.6,
-T:3188–3229, for the blow-down; `PLAN-T5.md` §2.2 steps 1–10): lane T45E's
+T:3188–3229, for the blow-down): lane T45E's
 `ExistenceVal.exists_stableModification_comp` without the hypotheses `ProjectiveSeparation W` and
 `ClosureComponentLocal`. In the situation of `exists_isSemistableStage_comp` there are a
 semi-stable stage `g ≫ h : X → C` through `h` and a semi-stable stage `β : Y → C` which is a stable
@@ -268,8 +268,8 @@ theorem exists_stableModification_comp
   exact ⟨X, g, Y, β, c, hc, hstage, hstage', hstable, fun K' _ _ a ↦ hnum K' a⟩
 
 /-- **Existence of a stable modification over a valuation ring, unconditionally** (Temkin,
-Proposition 4.5.1 `sepclosprop`, T:3233–3266, existence, with Thm 1.1 over `W`; `PLAN-T5.md` §2.2
-steps 1–10, nodes V1, V2). Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite
+Proposition 4.5.1 `sepclosprop`, T:3233–3266, existence, with Thm 1.1 over `W`).
+Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite
 height and equal characteristic, and `(φ : C → Spec W, D)` a curve in the situation of Temkin's
 §4.5 (`Global.IsValuationCurve`). Then `(C, D)` has a stable, numerically stable η-modification
 projective over `W` (`exists_stableModification_comp` with `h = 𝟙`). -/
@@ -290,8 +290,8 @@ end Main
 
 section Statement
 
-/-- **`Global.ValuationStableExistence` holds** (Temkin, Proposition 4.5.1, existence;
-`PLAN-T5.md` §1.3, node V2): over a valuation ring of finite height and equal characteristic
+/-- **`Global.ValuationStableExistence` holds** (Temkin, Proposition 4.5.1,
+existence): over a valuation ring of finite height and equal characteristic
 whose fraction field is algebraically closed, every curve in the situation of Temkin's §4.5 has a
 stable, numerically stable η-modification projective over the valuation ring. -/
 theorem valuationStableExistence : Global.ValuationStableExistence.{u} := by

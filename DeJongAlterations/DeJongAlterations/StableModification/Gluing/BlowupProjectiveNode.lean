@@ -28,7 +28,7 @@ Hence (`locusBlowup_isStrictlySemistable`) the blow-up is strictly semi-stable o
 modification, an isomorphism off `V(u, v, π)`, covered by spectra of integrally closed domains;
 and (`locusBlowup_centre`) a valuation with `|u| = |π|` is centred in the smooth open
 `{u/π invertible}` of the `π`-chart. This replaces `Bl_{(u,π)}` in the projective version of the
-node stage (`PLAN-T5.md` node A4).
+node stage of projective cofinality.
 -/
 
 noncomputable section

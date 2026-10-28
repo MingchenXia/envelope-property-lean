@@ -17,8 +17,7 @@ import EnvelopeProperty.Global.NativeTestConfigurationNefFSApproximationContinua
 This file proves the upstream half of the native-scheme proof of Fang–Han–Xia, *The envelope
 property for unibranch projective varieties*, Lemma 5.5 (`lem:local-PL-positivity`): a locally
 `O(a)`-convex function `φ` on a projectively normal `X = V(I) ⊆ ℙᴹ` admits a native potential
-family (`ProjSubvariety.NativePotentialFSFamily`; plan
-`.archon-horizon/scratch/ep/PLAN-LP-ASSEMBLY.md` §4). Together with
+family (`ProjSubvariety.NativePotentialFSFamily`). Together with
 `LocalPositivity.of_nativePotentialFSFamily` this gives the class `LocalPositivity k` (file
 `Local/LocalPositivityInstance.lean`).
 

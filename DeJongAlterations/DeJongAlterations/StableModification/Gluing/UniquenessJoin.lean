@@ -14,8 +14,8 @@ import DeJongAlterations.Geometry.AffineBlowupBirational
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), proof of
-Thm 1.2 over a valuation ring (§4.5, T:3233–3266, and Cor. 4.4.3 (1), T:3135–3149; `PLAN-T5.md`
-§2.2 step 11): two stable modifications `β₁ : C₁ → C`, `β₂ : C₂ → C` are compared through a
+Thm 1.2 over a valuation ring (§4.5, T:3233–3266, and Cor. 4.4.3 (1),
+T:3135–3149): two stable modifications `β₁ : C₁ → C`, `β₂ : C₂ → C` are compared through a
 curve dominating both, a semi-stable model of their *join* `J ⊆ C₁ ×_C C₂` (the closure of the
 part of the fibre product over a dense open `U` of `C` over which both are isomorphisms), and
 Temkin's Corollary 4.4.3 (1) is applied over the normalization `N` of `C` (it needs a normal
@@ -276,8 +276,8 @@ section Normalization
 variable {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [Finite (PrimeSpectrum V)]
   {C Cb C₁ C₂ : Scheme.{u}} (φ : C ⟶ Spec (.of V))
 
-/-- **The normalization of the base dominated by a common normal model** (`PLAN-T5.md` §2.2
-step 11; the base of Temkin's Corollary 4.4.3 (1) must be normal). Let `Cb` be integral and
+/-- **The normalization of the base dominated by a common normal model** (the base
+of Temkin's Corollary 4.4.3 (1) must be normal). Let `Cb` be integral and
 normal with modifications `hᵢ : Cb → Cᵢ` to normal integral `Cᵢ` and `h₁ ≫ β₁ = h₂ ≫ β₂ : Cb → C`
 an η-modification projective over `V`. The normalization `N = Nor_{Cb}(C)` of `C` in `Cb`
 (lane T44B's blow-down API `BlowDown.isEtaModification_blowDown_base`,

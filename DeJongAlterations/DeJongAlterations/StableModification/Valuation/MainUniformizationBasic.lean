@@ -7,7 +7,8 @@ import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra
 
 This file collects the purely algebraic ingredients of the proof of Theorem 2.1.8 (`valunif`) of
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), §2.2
-(`semi-stable.tex`, lines 2177–2232), in the strengthened form of plan `PLAN-SM-VAL.md`, node M2.
+(`semi-stable.tex`, lines 2177–2232), in the strengthened form used for the induction
+(`MainUniformization.lean`).
 Blueprint chapter `sm-val-main.tex`.
 
 Throughout, `K → L` is a field extension, `O` a valuation subring of `L`, `A = O ∩ K` and `κ(·)`
@@ -20,8 +21,8 @@ denotes residue fields.
   value of a coefficient of `P`. In other words `O ∩ K(T)` is the Gauss valuation of `K(T)`.
 * `range_residueField_adjoin`: under the same hypothesis the residue field of `O ∩ K(T)` is
   `κ(A)(T̃)` inside `κ(O)`; `residueFieldAdjoinEquiv` is the resulting isomorphism.
-* `linearIndependent_of_residue` and `finiteDimensional_residueField_adjoin` (plan node V4c,
-  the fix of literature issue LI-2 = ERRATA T-LI2): lifts of residues that are linearly
+* `linearIndependent_of_residue` and `finiteDimensional_residueField_adjoin` (the fix of
+  literature issue ERRATA T-LI2): lifts of residues that are linearly
   independent over `κ(A)(x̃)` are linearly independent over `K(x)`, hence
   `[κ(O) : κ(A)(x̃)] ≤ [L : K(x)]`.
 * `isStdUnramifiedGenerator_of_ringEquiv`: standard-unramified generators only depend on the
@@ -310,7 +311,7 @@ theorem coe_residueFieldAdjoinEquiv (w : ResidueField (O.comap (algebraMap K⟮T
 
 end ResidueAdjoin
 
-/-! ### Residue degrees (plan node V4c) -/
+/-! ### Residue degrees -/
 
 section ResidueDegree
 
@@ -327,7 +328,7 @@ variable {x : L} (hx : x ∈ O)
   (htr : Transcendental (ResidueField (O.comap (algebraMap K L))) (residue O ⟨x, hx⟩))
 
 include htr in
-/-- **Lifts of independent residues, polynomial form** (plan node V4c): let `x ∈ O` have residue
+/-- **Lifts of independent residues, polynomial form**: let `x ∈ O` have residue
 `x̃` transcendental over `κ(O ∩ K)` and let `yᵢ ∈ O` have residues linearly independent over
 `κ(O ∩ K)(x̃)`. If `∑ Pᵢ(x) yᵢ = 0` with `Pᵢ ∈ K[X]`, then all `Pᵢ = 0`. -/
 theorem eq_zero_of_sum_aeval_mul_eq_zero {ι : Type*} [Fintype ι] (y : ι → O)
@@ -393,7 +394,7 @@ theorem eq_zero_of_sum_aeval_mul_eq_zero {ι : Type*} [Fintype ι] (y : ι → O
   exact one_ne_zero hcoeff
 
 include htr in
-/-- **Lifts of independent residues** (plan node V4c, Temkin's LI-2 gap): if `x ∈ O` has residue
+/-- **Lifts of independent residues** (Temkin's gap ERRATA T-LI2): if `x ∈ O` has residue
 `x̃` transcendental over `κ(O ∩ K)`, then lifts `yᵢ ∈ O` of elements of `κ(O)` that are linearly
 independent over `κ(O ∩ K)(x̃)` are linearly independent over `K(x)`. -/
 theorem linearIndependent_of_residue {ι : Type*} [Fintype ι] (y : ι → O)
@@ -424,7 +425,7 @@ theorem linearIndependent_of_residue {ι : Type*} [Fintype ι] (y : ι → O)
   exact Subtype.ext ((mul_eq_zero.mp this).resolve_right hD)
 
 include htr in
-/-- **The residue degree bound** `[κ(O) : κ(O ∩ K)(x̃)] ≤ [L : K(x)]` (plan node V4c). -/
+/-- **The residue degree bound** `[κ(O) : κ(O ∩ K)(x̃)] ≤ [L : K(x)]`. -/
 theorem rank_residueField_adjoin_le [FiniteDimensional K⟮x⟯ L] :
     Module.rank (IntermediateField.adjoin (ResidueField (O.comap (algebraMap K L)))
       {residue O ⟨x, hx⟩}) (ResidueField O) ≤ Module.finrank K⟮x⟯ L := by

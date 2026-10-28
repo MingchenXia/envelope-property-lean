@@ -11,13 +11,12 @@ set_option linter.unusedSectionVars false
 # Marked ideals, admissible blowups, transforms and multiple test blowups
 
 Blueprint `hir:marked-ideal`, `hir:admissible`, `hir:transform`, `hir:test-tower`
-(`blueprint/src/hironaka.tex`, Hironaka phase H1/H2 interface; design note
-`.archon-horizon/scratch/tn-classical-hironaka-design-0180.md`).  Sources: Bierstone--Milman 2008,
+(`blueprint/src/hironaka.tex`, Hironaka phase H1/H2 interface).  Sources: Bierstone--Milman 2008,
 Definitions 2.1--2.2 (marked ideal `(M, N, E, 𝓘, d)`, cosupport, admissible blowing-up, transform)
 and Theorem 1.3; Włodarczyk 2005 §2.1--2.2 (marked ideals `(X, 𝓘, E, μ)`, resolutions, multiple test
 blow-ups, controlled transforms).
 
-## Encoding (design note, decision D1)
+## Encoding
 
 * `N` is a SUBSET of the ambient manifold (a closed submanifold for well-formed data), never a
   separate manifold type: the ambient spaces of a tower are the only types.
@@ -27,8 +26,8 @@ blow-ups, controlled transforms).
 * `E` is a list of subsets; the transform appends the exceptional divisor `π⁻¹ C` as the LAST
   member (BM08: "introduced as the last member of `E'`"; Włodarczyk: "`D_i` is the maximal element").
 * Strict transforms are taken relative to the centre, `closure (π⁻¹ (A \ C))`
-  (`BlowupStrictSubmanifold.geoStrictTransform`), for `N` and for the members of `E` (human decision
-  I-1010 / I-1011, run 0191): along a centre of codimension one the blowup is a biholomorphism, and the
+  (`BlowupStrictSubmanifold.geoStrictTransform`), for `N` and for the members of `E` (the author's
+  decision): along a centre of codimension one the blowup is a biholomorphism, and the
   strict transform `closure (π⁻¹ A \ Exc π)` would keep `A ∩ C`.  The transform is therefore the same as
   `MarkedIdealGeoTransform.geoTransform`.
 * The transform of the ideal is the ambient form of `𝓘' = 𝓘_{π⁻¹C}^{-d} π^*𝓘` on `N'`: the colon,
@@ -50,8 +49,8 @@ Import discipline (Hironaka phase): this module does not import, even transitive
 `Pending.RelativePrincipalization` or `Pending.EmbeddedResolution`, so that those two statements can
 later be proved in place from it.
 
-Sorry-free.  No statement about the EXISTENCE of resolutions is made here (human decision I-0975 Q1
-default: no new named input).
+Sorry-free.  No statement about the EXISTENCE of resolutions is made here (by the author's decision, no
+new named input).
 -/
 
 open Set

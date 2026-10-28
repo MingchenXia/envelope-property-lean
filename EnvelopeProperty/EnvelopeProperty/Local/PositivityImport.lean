@@ -25,7 +25,7 @@ The class is **not** an axiom: every theorem using it lists it among its hypothe
 
 ## The statement in the graded model
 
-Following the author's decision D1 (`PLAN-526.md`, graded model; blueprint
+Following the author's choice of the graded model (blueprint
 `conv:wu-bj-global`, `rmk:pg-subvariety-psh-comparison`):
 
 * `P` is a projective subvariety `X = V(I) ⊆ ℙᴹ` (`ProjSubvariety k M`: `I ⊆ R_M = k[x₀, …, x_M]`

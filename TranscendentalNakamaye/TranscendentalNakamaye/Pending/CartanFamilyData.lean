@@ -6,8 +6,7 @@ set_option autoImplicit false
 /-!
 # Parametrization data with exposed fields, and density for each primitive element
 
-Inputs of Cartan's theorem for an irreducible germ (plan
-`.archon-horizon/scratch/tn-classical-cartan-plan-0119.md`, steps 3--4).  The tree proves
+Inputs of Cartan's theorem for an irreducible germ (steps 3--4 of our proof).  The tree proves
 `GermParametrizationData.nonempty_parametrizationData` and
 `GermParametrizationData.nonempty_localParametrization` in `Nonempty` form, which hides the
 facts Cartan's argument needs about the data it constructs.  This module restates them:

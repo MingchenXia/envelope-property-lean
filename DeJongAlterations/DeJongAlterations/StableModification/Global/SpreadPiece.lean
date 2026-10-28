@@ -3,26 +3,26 @@ import DeJongAlterations.StableModification.Global.Spread
 /-!
 # Local stable pieces around the valuation rings of `RZ_{K(S)ᵃ}(S)`
 
-Nodes G1, G3′ and (as a hypothesis) G4 of `PLAN-T5.md` (§2.1 steps 1–2; Temkin, *Stable
-modification of relative curves*, `semi-stable.tex`, proof of Theorem 1.5, T:3379–3394).
+The first steps of the proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*,
+`semi-stable.tex`, T:3379–3394), with the spreading of numerical stability as a hypothesis.
 
 Let `S` be a projective variety over `k`, `(C, D)` a multipointed `S`-curve projective over `k`
 whose generic fibre is smooth, geometrically integral and, with the marks, semi-stable, and `L`
 an algebraically closed algebraic extension of `K(S)`. For a valuation ring `W ∈ RZ_L(S)`:
 
 1. `W` has finite height and equal characteristic, and `(C, D) ×_S Spec W` is a curve over `W`
-   in the situation of Temkin's §4.5 (node G1, `Global.isValuationCurve_pullback`); lane T45B's
+   in the situation of Temkin's §4.5 (`Global.isValuationCurve_pullback`); lane T45B's
    `ValuationStableExistence` gives a stable, numerically stable η-modification projective over
    `W`;
 2. lane LIM3's `exists_semistable_projective_etaModification_of_isIso_fiberMap` descends it to a
    projective semi-stable η-modification over the spectrum `T_B = Spec B` of a finitely generated
    subalgebra `B ⊆ W` of the sections of an affine open of `S`; its marks are the transported
-   marks (G-marks, `genericMarksCondition_of_forall`), so it is a spread model (`IsSpreadModel`);
+   marks (`genericMarksCondition_of_forall`), so it is a spread model (`IsSpreadModel`);
 3. the geometric fibre over a geometric point at the centre of `W` is the geometric fibre of
-   the stable modification over the closed point of `W`, hence numerically stable; by node G4
-   (`StableOpenNbhd`, a hypothesis) numerical stability holds over an open neighbourhood `O` of the
-   centre, and an affine neighbourhood `T' ⊆ O` of the centre is a local stable piece containing
-   `W` in its Riemann–Zariski space (`exists_localStablePiece`).
+   the stable modification over the closed point of `W`, hence numerically stable; by the spreading
+   of numerical stability (`StableOpenNbhd`, a hypothesis) numerical stability holds over an open
+   neighbourhood `O` of the centre, and an affine neighbourhood `T' ⊆ O` of the centre is a local
+   stable piece containing `W` in its Riemann–Zariski space (`exists_localStablePiece`).
 
 Blueprint: `sm-global.tex`, `thm:sm-global-local-piece`.
 -/
@@ -40,11 +40,11 @@ open Curves (pullbackCompMap IsStableModification)
 open RiemannZariskiSpace
 
 set_option backward.isDefEq.respectTransparency false in
-/-- **Local stable pieces** (`PLAN-T5.md` §2.1 steps 1–2, nodes G1, G3′, G4). In the situation of
+/-- **Local stable pieces**. In the situation of
 `DeJong.TemkinStableModification` (without normality of `S`), for `L` an algebraically closed
 algebraic extension of `K(S)`, existence of stable modifications over valuation rings (lane
-T45B, `ValuationStableExistence`) and the spreading of numerical stability (node G4,
-`StableOpenNbhd k`) give, for every valuation ring `W ∈ RZ_L(S)`, a local stable piece `T` with
+T45B, `ValuationStableExistence`) and the spreading of numerical stability
+(`StableOpenNbhd k`) give, for every valuation ring `W ∈ RZ_L(S)`, a local stable piece `T` with
 `W ∈ RZ_L(T)`. -/
 theorem exists_localStablePiece {k : Type u} [Field k] {S C : Scheme.{u}}
     (pS : S ⟶ Spec (.of k)) [IsVariety pS] (hSp : IsProjectiveOver pS) (g : C ⟶ S)
@@ -254,7 +254,7 @@ theorem exists_localStablePiece {k : Type u} [Field k] {S C : Scheme.{u}}
   have hnB : NumericallyStableFibre β' (pullback.snd g tB) DB (b ≫ c.π.app B) := by
     rw [← numericallyStableFibre_iff_of_isPullback H₁ H₂ DB b, hDB]
     exact hnb
-  -- spreading of numerical stability (node G4)
+  -- spreading of numerical stability
   have hlftB : LocallyOfFiniteType tB := by
     have e1 : Dg.map a ≫ Spec.map (CommRingCat.ofHom
         (algebraMap A (⊥ : Limits.FGSubalgebra A R).1)) =

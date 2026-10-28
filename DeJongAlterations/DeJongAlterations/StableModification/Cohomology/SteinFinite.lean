@@ -10,8 +10,8 @@ import Mathlib.AlgebraicGeometry.Morphisms.Finite
 /-!
 # Finiteness of `π_* 𝒪_B` over a valuation ring (Stein finiteness)
 
-Let `V` be a valuation ring. This file proves the finiteness half of the plan's
-`thm:sm-stein-finite-valuation` (`PLAN-SM-GEOM.md`, chapter F and S8), which replaces Temkin's
+Let `V` be a valuation ring. This file proves the finiteness half of
+`thm:sm-stein-finite-valuation`, which replaces Temkin's
 Lemma 4.4.1 (Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
 `semi-stable.tex` lines 3089–3104) and its use of the reduced fibre theorem (Grauert–Remmert):
 

@@ -11,7 +11,7 @@ set_option autoImplicit false
 
 Demailly, *Complex analytic and differential geometry*, II.4.29 (H. Cartan 1950), the irreducible
 case, with finitely many primitive elements in general position instead of Demailly's
-interpolation in the coefficients `c` (plan `.archon-horizon/scratch/tn-classical-cartan-plan-0119.md`).
+interpolation in the coefficients `c`.
 
 Let `A` be an irreducible analytic germ at `0 ∈ ℂⁿ`, in Noether position over `ℂᵈ`.
 

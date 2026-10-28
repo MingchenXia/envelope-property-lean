@@ -3,14 +3,14 @@ import DeJongAlterations.StableModification.Global.Cover
 /-!
 # Comparison pieces from the uniqueness over valuation rings
 
-Node G6 of `PLAN-T5.md` (§2.1 step 4; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3394–3397), by the new gluing argument of the plan: no
+The comparison step of the proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*,
+`semi-stable.tex`, T:3394–3397), by a new gluing argument: no
 Theorem 1.2 over normal bases, no Proposition 5.2.
 
 Let `T₁, T₂` be local stable pieces of `(C, D)` over `S` and `W` a valuation ring of `L` in
 `RZ_L(T₁) ∩ RZ_L(T₂)`. The base changes of the two stable models to `Spec W` are stable models of
 `(C, D) ×_S Spec W`; by uniqueness over the valuation ring (`StableModelUniqueOver`, provided by
-lane T45B's `ValuationStableUniqueness` through node G1) they are isomorphic over
+lane T45B's `ValuationStableUniqueness` through `stableModelUniqueOver_of`) they are isomorphic over
 `C ×_S Spec W`. Writing `Spec W` as the cofiltered limit of the spectra `Spec B` of the finitely
 generated subalgebras `B ⊆ W` of `Γ(T₁ ×_S T₂, ⊤)`-algebras (lane LIM1, `Limits.isLimitFGSpecCone`),
 the isomorphism descends to some `Spec B` (`Limits.exists_iso_of_iso`, EGA IV 8.8.2.5), where it is
@@ -99,9 +99,10 @@ theorem IsStableModel.congr_base {T X : Scheme.{u}} [IsIntegral T] {ψ ψ' : T �
 
 variable (pS g D L) in
 /-- **Uniqueness of stable models over the valuation rings of `RZ_L(S)`** (the form of lane
-T45B's `ValuationStableUniqueness` consumed by the comparison of pieces; derived from it in node
-G1): over every valuation ring `W` of `L` extending `η = functionFieldPoint S L` along
-`ψ : Spec W ⟶ S`, two stable models of `(C, D) ×_S Spec W` are isomorphic over `C ×_S Spec W`. -/
+T45B's `ValuationStableUniqueness` consumed by the comparison of pieces; derived from it in
+`Global/Setup.lean`): over every valuation ring `W` of `L` extending `η = functionFieldPoint S L`
+along `ψ : Spec W ⟶ S`, two stable models of `(C, D) ×_S Spec W` are isomorphic over
+`C ×_S Spec W`. -/
 def StableModelUniqueOver : Prop :=
   ∀ (W : RiemannZariskiSpace L) (ψ : Spec (.of W.valuationSubring) ⟶ S),
     toSpecValuationSubring W ≫ ψ = functionFieldPoint S L →
@@ -122,7 +123,7 @@ theorem isAffineHom_of_isAffine_of_isSeparated {T : Scheme.{u}} [IsAffine T] [S.
   exact IsAffineHom.of_comp t (terminal.from S)
 
 set_option backward.isDefEq.respectTransparency false in
-/-- **Comparison pieces** (`PLAN-T5.md` §2.1 step 4, node G6). Over a separated `S`, with
+/-- **Comparison pieces**. Over a separated `S`, with
 uniqueness of stable models over the valuation rings of `RZ_L(S)`, every valuation ring `W` of
 `RZ_L(T₁) ∩ RZ_L(T₂)` for two local stable pieces lies in `RZ_L(T')` for a comparison piece `T'`
 of them. -/

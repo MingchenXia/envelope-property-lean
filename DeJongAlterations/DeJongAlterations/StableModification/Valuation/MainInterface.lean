@@ -2,13 +2,13 @@ import DeJongAlterations.StableModification.Valuation.MainUniformization
 import DeJongAlterations.StableModification.Valuation.UnramifiedEtale
 
 /-!
-# The interface statement M3 is a theorem
+# The uniformization interface statement is a theorem
 
 This file proves `UniformizationEtaleStatement` (`InterfaceStatement.lean`), the form of
 Theorem 2.1.8 (`valunif`) of M. Temkin, *Stable modification of relative curves*, J. Algebraic
 Geom. 19 (2010) (`semi-stable.tex`, l. 2056–2061) consumed by Proposition 4.3.3 (`locunifprop`,
 l. 3059–3061): "there exists an element `T ∈ L` such that `L` is unramified over `K(T)`, and so
-`O` is étale over `O ∩ K(T)` by Lemma 2.1.1". Plan `PLAN-SM-VAL.md`, node M3; blueprint
+`O` is étale over `O ∩ K(T)` by Lemma 2.1.1". Blueprint
 `thm:sm-val-interface` in `sm-val-main.tex`.
 
 The standard-unramified generator of `MainUniformization.stdUnramifiedConclusion` gives
@@ -21,7 +21,7 @@ holds because `K(T)/K` has transcendence degree one and `O ∩ K` has finite hei
 
 * `finite_primeSpectrum_comap_adjoin`: `O ∩ K(T)` has finite height.
 * `UniformizationHypotheses.uniformizationConclusion`: the hypotheses imply the conclusion.
-* `uniformizationEtaleStatement` (**interface statement M3**).
+* `uniformizationEtaleStatement` (**the interface statement**).
 -/
 
 noncomputable section
@@ -62,7 +62,7 @@ theorem UniformizationHypotheses.uniformizationConclusion (h : UniformizationHyp
   have := finite_primeSpectrum_comap_adjoin h T
   exact ⟨T, hT, hy.isStandardEtale⟩
 
-/-- **The interface statement M3 holds** (plan `PLAN-SM-VAL.md` §9.1; Temkin, Theorem 2.1.8 in
+/-- **The interface statement holds** (Temkin, Theorem 2.1.8 in
 the étale form consumed by Proposition 4.3.3). -/
 theorem uniformizationEtaleStatement : UniformizationEtaleStatement.{u, v} :=
   fun _ _ _ _ _ _ h ↦ h.uniformizationConclusion

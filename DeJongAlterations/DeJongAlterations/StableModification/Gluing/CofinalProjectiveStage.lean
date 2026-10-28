@@ -14,7 +14,7 @@ M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010
 (`LocalUniformization.exists_smoothStep`, `LocalUniformization.exists_nodeStep`), rerun with the
 projective transports of `Gluing.CofinalProjectiveTransport`, so that each stage produces a
 modification `g : C₂ → C₁` with `PreservesProjective g`: `C₂` is projective over every ring over
-which `C₁` is projective and of finite presentation (`PLAN-T5.md` node A4).
+which `C₁` is projective and of finite presentation.
 
 * `exists_smoothStep_projective`: stage 2, the blow-up `Bl_{(π, T - a)}` in a smooth chart (the
   proof of T43A's `exists_smoothStep`, verbatim but for the transport);

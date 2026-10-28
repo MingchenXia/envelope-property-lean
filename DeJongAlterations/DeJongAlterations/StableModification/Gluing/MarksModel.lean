@@ -10,8 +10,8 @@ import DeJongAlterations.StableModification.Gluing.NodalUnconditional
 # A nodal modification with separated marks over a valuation ring
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
-Proposition 4.5.1 (`sepclosprop`, T:3243–3266), in the form of `PLAN-T5.md` §2.2 steps 1–8 **with
-marks** (node V2; the pair version of lane T45A's `Gluing.exists_nodal_modification`). Let `K` be
+Proposition 4.5.1 (`sepclosprop`, T:3243–3266), in the form **with
+marks** (the pair version of lane T45A's `Gluing.exists_nodal_modification`). Let `K` be
 algebraically closed, `R ⊆ K` a valuation ring of finite height and equal characteristic, and
 `φ : C → Spec R` a proper flat integral relative curve, normal along its generic fibre, with
 finitely many sections `σ k` with pairwise distinct generic points. Then there are the normalized

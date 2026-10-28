@@ -14,7 +14,7 @@ M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010
 (proper and birational), and the pieces `Wᵢ → Tᵢ` of the refinement in Proposition 3.2.6 are
 `L`-modifications of the affine quasi-modifications `Tᵢ`. The integrated RZ1 files record
 properness only. This file supplies the birationality (blueprint `sm-gluing-semistable.tex`,
-`lem:sm-refinement-birational`; part of `PLAN-T5.md` node A2):
+`lem:sm-refinement-birational`; part of the projectivity of the refinement):
 
 * `birationalOver_of_isIso_resLE`, `birationalOver_of_bijective_appLE`: a morphism of integral
   schemes restricting to an isomorphism between nonempty opens is birational;
@@ -120,7 +120,7 @@ theorem exists_affine_mem_range {F : Set S.functionField} (hF : F.Finite) :
   rw [map_mul, hρ, map_units_inv, hu, hρ, ← div_eq_mul_inv]
   exact hab ⟨x, hx⟩
 
-/-- **A refinement over the function field is a modification** (`PLAN-T5.md` node A2, for a
+/-- **A refinement over the function field is a modification** (for a
 `K(S)`-modification, Temkin T:2305–2309): if `S` is integral and `(S', p, η')` is a refinement of
 the generic point `Spec K(S) → S` with charts with respect to a finite set, `p` is birational. -/
 theorem birationalOver_of_hasCharts {p : S' ⟶ S}

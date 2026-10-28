@@ -25,8 +25,7 @@ complex manifold `↥W` with holomorphic inclusion.  Here:
 * `isKahler_pullback` and `kahlerBackground` — the pullback of the Kähler form of a
   `KahlerBackground` is a Kähler form on `↥W`, i.e. `ω|_W` is a Kähler background of `↥W`.
 
-Programme `TN.2.3.PCI` (positive-current input), piece C1 of
-`scratch/tn23-envelopes-qea-plan-0117.md` §5.3.  Sorry-free.
+Programme `TN.2.3.PCI` (positive-current input).  Sorry-free.
 -/
 
 open Set Filter

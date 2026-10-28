@@ -8,11 +8,11 @@ set_option linter.unusedSectionVars false
 /-!
 # The Step 1 (maximal-order) value for a lower invariant with per-sequence local finiteness
 
-Blueprint `hir:step-one-seq` (`blueprint/src/hironaka.tex`, Hironaka phase H4).  Human decision I-1139 C-0001 (option (b)):
-a resolution invariant is `ResolutionInvariantSeq.ResolutionInvariant`.  The orchestrator's review of 3 October 2026
-(`.archon-horizon/scratch/orchestrator-review-seq-induction-20261003.md`, finding F1): the Step 1 value `stepOneInvM` and its
-properties were formalized for a lower invariant `R : ResolutionInvariantExt.ResolutionInvariant n (k - 1) Λ` (uniform (8)),
-which the induction of `hir:canonical-centres` cannot supply.
+Blueprint `hir:step-one-seq` (`blueprint/src/hironaka.tex`, Hironaka phase H4).  By the author's decision of
+3 October 2026, a resolution invariant is `ResolutionInvariantSeq.ResolutionInvariant`.  An independent review of the same
+day found that the Step 1 value `stepOneInvM` and its properties had been formalized for a lower invariant
+`R : ResolutionInvariantExt.ResolutionInvariant n (k - 1) Λ` (uniform (8)), which the induction of
+`hir:canonical-centres` cannot supply.
 
 **The Step 1 stack for the new structure.**  The command `transport_ext_to_seq_module` (`ExtSeqTransport`) adds, for every
 declaration of the modules listed below that depends on `ResolutionInvariantExt.ResolutionInvariant`, a kernel-checked copy in

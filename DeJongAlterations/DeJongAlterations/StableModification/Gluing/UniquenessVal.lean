@@ -14,7 +14,7 @@ import DeJongAlterations.StableModification.Gluing.ExistenceVal
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), Theorem
 1.2 over a valuation ring through Proposition 4.5.1 (T:3233–3266) and Corollary 4.4.3 (1)
-(`sepcloscor`, T:3135–3149), in the route of `PLAN-T5.md` §2.2 step 11 (node V3): over a
+(`sepcloscor`, T:3135–3149): over a
 valuation ring `W` of finite height and equal characteristic with algebraically closed fraction
 field, two stable, numerically stable η-modifications `β₁ : C₁ → C`, `β₂ : C₂ → C`, projective
 over `W`, of a curve `(C, D)` in the situation `Global.IsValuationCurve` are isomorphic over `C`.
@@ -66,7 +66,7 @@ section CommonStage
 variable {K : Type u} [Field K] [IsAlgClosed K] {W : ValuationSubring K} [Finite (PrimeSpectrum W)]
 
 /-- **A semi-stable stage dominating two modifications** (Temkin, proof of Cor. 4.4.3 (1),
-T:3135–3149: a semi-stable `C̄` dominating `C'` and `C_st`; `PLAN-T5.md` §2.2 step 11). Let
+T:3135–3149: a semi-stable `C̄` dominating `C'` and `C_st`). Let
 `β₁ : C₁ → C`, `β₂ : C₂ → C` be η-modifications, projective over `W`, of a curve `(C, D)` in the
 situation of Temkin's §4.5. Then there is a semi-stable stage `Cb → C` of `(C, D)`
 (`BlowDown.IsSemistableStage`) factoring through modifications `hᵢ : Cb → Cᵢ` with
@@ -125,8 +125,8 @@ section Main
 variable {K : Type u} [Field K] [IsAlgClosed K] {W : ValuationSubring K} [Finite (PrimeSpectrum W)]
 
 /-- **Uniqueness of stable modifications over a valuation ring** (Temkin, Thm 1.2 over a
-valuation ring via Prop. 4.5.1, T:3233–3266, and Cor. 4.4.3 (1), T:3135–3149; `PLAN-T5.md` §2.2
-step 11, node V3). Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and
+valuation ring via Prop. 4.5.1, T:3233–3266, and Cor. 4.4.3 (1), T:3135–3149).
+Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and
 equal characteristic, and `(φ : C → Spec W, D)` a curve in the situation of Temkin's §4.5
 (`Global.IsValuationCurve`). Two stable, numerically stable η-modifications `β₁, β₂` of `(C, D)`,
 projective over `W`, are isomorphic over `C`.
@@ -320,7 +320,7 @@ end Main
 section Statement
 
 /-- **`Global.ValuationStableUniqueness`** (Temkin, Thm 1.2 over a valuation ring via
-Prop. 4.5.1; `PLAN-T5.md` §1.3, node V3), from projective separation of marks (lane T45D, in the
+Prop. 4.5.1), from projective separation of marks (lane T45D, in the
 form `ExistenceVal.ProjectiveSeparationAlgClosed` of lane T45E). -/
 theorem valuationStableUniqueness (hsepM : ExistenceVal.ProjectiveSeparationAlgClosed.{u}) :
     Global.ValuationStableUniqueness.{u} := by

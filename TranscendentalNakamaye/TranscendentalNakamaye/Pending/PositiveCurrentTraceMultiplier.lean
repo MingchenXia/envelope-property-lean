@@ -47,7 +47,7 @@ Ingredients:
 * `iOrderOnManifold_of_le_singularityEnvelope_add` — the hypothesis `u ≼_I φ_q` from
   `u ≤ P_β[φ_q] + C` (Xia Prop. 3.2.9: `P_β[φ] ~_I φ`), the form both routes produce.
 
-Programme `TN.2.3.PCI`, step (T4) of `scratch/tn23-envelopes-qea-plan-0117.md` §5.  Sorry-free.
+Programme `TN.2.3.PCI`, step (T4).  Sorry-free.
 -/
 
 open Set Filter MeasureTheory

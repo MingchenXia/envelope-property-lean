@@ -23,7 +23,7 @@ Blueprint chapter `sm-local-uniformization-curve.tex` (`prop:sm-local-uniformiza
 * `exists_finite_isStrictlySemistable_cover_of_isAlgClosed`: the same for `K` algebraically
   closed, without the hypothesis on places.
 
-## The route (plan `PLAN-SM-GEOM.md`, S7)
+## The route (descent of étale algebras)
 
 For `V ∈ RZ_L(C)` with valuation ring `O`, the uniformization property (Temkin's Theorem 2.1.8
 with Lemma 2.1.1, `Valuation.uniformizationEtaleStatement`) gives `T ∈ L` with `O` standard
@@ -191,8 +191,8 @@ section Line
 variable {K : Type u} [Field K] [IsSepClosed K] {L : Type u} [Field L] [Algebra K L]
 
 /-- **Descent of the uniformization to a strictly semi-stable curve** (Temkin, proof of
-Proposition 4.3.3, T:3062–3079, route S7). Let `O` be a valuation ring of `L` with
-`O ∩ K = R'` of finite height, `S ∈ O` transcendental over `K`, and `O` standard étale over
+Proposition 4.3.3, T:3062–3079, by descent of étale algebras). Let `O` be a valuation ring of `L`
+with `O ∩ K = R'` of finite height, `S ∈ O` transcendental over `K`, and `O` standard étale over
 `O ∩ K(S)`. For every finite set `A ⊆ O` there are a ring `E` with an injective map `E → L` into
 `O` whose image contains `A`, and a strictly semi-stable morphism `Spec E → Spec R'` compatible
 with `Spec L → Spec R'`. -/

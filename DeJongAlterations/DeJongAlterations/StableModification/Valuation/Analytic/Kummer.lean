@@ -10,7 +10,7 @@ import DeJongAlterations.StableModification.Valuation.Analytic.Annulus
 
 Let `K` be an analytic field, `N/K` a finite Galois extension of normed fields, and `T ⊇ V` the
 inertia and wild inertia subgroups of `Gal(N/K)` (`Analytic/Inertia.lean`). This file proves the
-"tame" half of plan simplification S5 (`PLAN-SM-VAL.md`), which replaces Temkin's use of the
+"tame" half of our argument which replaces Temkin's use of the
 maximal moderately ramified extension `K^mr` in *Stable modification of relative curves*,
 J. Algebraic Geom. 19 (2010), proof of Theorem 6.3.1 (`semi-stable.tex`, lines 4041–4111): the
 quotient `T/V` has no `p`-torsion, and when `T = Gal(N/K)` the fixed field `W = N^V` is a totally
@@ -159,7 +159,7 @@ theorem tameChar_pow {σ : N ≃ₐ[K] N} (hσ : σ ∈ inertiaSubgroup K N) (n 
   | zero => rw [pow_zero, pow_zero, tameChar_one_apply hw]
   | succ n ih => rw [pow_succ', tameChar_mul hσ _ hw, ih, pow_succ']
 
-/-- **The tame quotient has no `p`-torsion** (plan S5): if `σ ∈ T` and `σ ^ p ∈ V`, where `p` is
+/-- **The tame quotient has no `p`-torsion**: if `σ ∈ T` and `σ ^ p ∈ V`, where `p` is
 the characteristic of the residue field, then `σ ∈ V`. -/
 theorem mem_wildInertiaSubgroup_of_pow_char_mem (p : ℕ) [Fact p.Prime]
     [CharP (ResidueField (unitBall K)) p] {σ : N ≃ₐ[K] N} (hσ : σ ∈ inertiaSubgroup K N)
@@ -348,7 +348,7 @@ theorem finrank_le_ramificationIndex_fixedField (hT : inertiaSubgroup K N = ⊤)
   exact hcard
 
 
-/-- **The tame part is totally ramified and Cartesian** (plan S5): when `T = Gal(N/K)`,
+/-- **The tame part is totally ramified and Cartesian**: when `T = Gal(N/K)`,
 `e_{N^V/K} = [N^V : K]`. -/
 theorem ramificationIndex_fixedField_wildInertiaSubgroup (hT : inertiaSubgroup K N = ⊤) :
     ramificationIndex K (fixedField (wildInertiaSubgroup K N)) =
@@ -579,7 +579,7 @@ variable {k K N : Type*} [NormedField k] [IsAlgClosed k] [NontriviallyNormedFiel
   [IsUltrametricDist N] [NormedAlgebra K N] [FiniteDimensional K N] [IsGalois K N]
   [NormedAlgebra k N] [IsScalarTower k K N]
 
-/-- **The Kummer step for annulus fields** (plan S5(e)). Let `k ⊆ K` be an algebraically closed
+/-- **The Kummer step for annulus fields**. Let `k ⊆ K` be an algebraically closed
 subfield, `z` an annulus generator of `K` over `k`, and `N/K` finite Galois such that every
 element of `N°` is congruent modulo `N°°` to an element of `k°`. Then `m = [N^V : K]` satisfies
 `‖m‖ = 1`, and `N^V = K(y)` with `y ^ m = z`. -/

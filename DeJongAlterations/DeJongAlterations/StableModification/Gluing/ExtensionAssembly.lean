@@ -12,10 +12,10 @@ import DeJongAlterations.StableModification.Projectivity.Reduction
 import DeJongAlterations.StableModification.BlowDown.NoClosedExc
 
 /-!
-# The semi-stable model of the normalized refinement (PLAN-T5 nodes A6–A8 assembled)
+# The semi-stable model of the normalized refinement
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
-Proposition 4.5.1 (`sepclosprop`, T:3243–3266), in the form of `PLAN-T5.md` §2.2 steps 5–8: the
+Proposition 4.5.1 (`sepclosprop`, T:3243–3266), from the normalization to the nodal model: the
 normalization `N` of the projective refinement `C'` is covered by opens `Oᵢ = ν⁻¹(Wᵢ)` carrying the
 strictly semi-stable models `τᵢ : Bᵢ → Oᵢ`; outside the finite bad locus `N` is already nodal, and
 around each closed bad point a local model `τᵢ⁻¹(Uₓ) → Uₓ` is inserted by the identity.
@@ -26,7 +26,7 @@ around each closed bad point a local model `τᵢ⁻¹(Uₓ) → Uₓ` is insert
   and isomorphisms; cancellation `f ≫ g, g ⇒ f`.
 * `preimage_isomorphismOpen_le`, `preimage_inv_isomorphismOpen_le`: isomorphism loci of
   restrictions.
-* `exists_modification_of_localModifications`: **the generic assembly** (nodes A6–A8) — for a
+* `exists_modification_of_localModifications`: **the generic assembly** — for a
   normal integral `N` proper over `V` (finite height, separably closed residue fields) covered by
   finitely many local modifications `τᵢ : Bᵢ → Oᵢ` and an open `G` containing their isomorphism
   loci, a modification `β : X → N`, an isomorphism over an open `O' ⊆ G`, which over the other
@@ -34,14 +34,15 @@ around each closed bad point a local model `τᵢ⁻¹(Uₓ) → Uₓ` is insert
 * `isNodalCurve_comp_of_cover`, `image_isomorphismOpen_le_nodalLocus`: nodality from such a cover;
   isomorphism loci of nodal local models lie in the nodal locus
   (`Curves.SemistableOpen.nodalLocus`).
-* `exists_nodal_modification_normalization`: **nodes A5–A8 assembled** — for an integral proper
-  relative curve `C'` of finite presentation over `V`, covered by opens `Wᵢ` dominated by normal,
-  flat, nodal modifications `qᵢ : Bᵢ → Wᵢ` projective relative to `Wᵢ → Spec V`, the normalization
-  `N = Nor(C')` is finite over `C'` and there is a modification `X → N` with `X → C'` a
+* `exists_nodal_modification_normalization`: **the steps from the normalization to the nodal
+  model, assembled** — for an integral proper relative curve `C'` of finite presentation over `V`,
+  covered by opens `Wᵢ` dominated by normal, flat, nodal modifications `qᵢ : Bᵢ → Wᵢ` projective
+  relative to `Wᵢ → Spec V`, the normalization `N = Nor(C')` is finite over `C'` and there is a
+  modification `X → N` with `X → C'` a
   modification and `X` nodal over `V`, locally an open of some `Bᵢ` or of the nodal locus of `N`.
 
 The input `qᵢ` (projective strictly semi-stable models of the pieces of the refinement) is the
-output of PLAN-T5 node A4, which is not proved in this lane; marks (the pair version of the
+output of projective cofinality, which is not proved in this lane; marks (the pair version of the
 semi-stable locus) are not treated here: `exists_modification_of_localModifications` applies to any
 good locus `G`, in particular to a semi-stable-pair locus once its openness is available.
 -/
@@ -163,8 +164,8 @@ variable {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [Finite (Prime
   (hG : ∀ i, (O i).ι ''ᵁ isomorphismOpen (τ i) ≤ G)
 
 include hsep hN hdim hO hG in
-/-- **Inserting the local semi-stable models by the identity** (`PLAN-T5.md` §2.2 steps 6–8,
-nodes A6–A8; Temkin, proof of Proposition 4.5.1, T:3243–3266). Let `N` be normal, integral and
+/-- **Inserting the local semi-stable models by the identity** (Temkin, proof of
+Proposition 4.5.1, T:3243–3266). Let `N` be normal, integral and
 proper over a valuation ring `V` of finite height with separably closed residue fields, a relative
 curve, covered by finitely many opens `Oᵢ` carrying modifications `τᵢ : Bᵢ → Oᵢ`, and let `G ⊆ N`
 be an open containing the loci where the `τᵢ` are isomorphisms. Then there is a modification
@@ -344,12 +345,12 @@ variable {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [Finite (Prime
   (hnod : ∀ i, IsNodalCurve (q i ≫ (W i).ι ≫ pC'))
 
 include hsep hdim hW hB hflat hq hnod in
-/-- **The semi-stable model from local projective semi-stable models** (`PLAN-T5.md` §2.2
-steps 5–8, nodes A5–A8; Temkin, proof of Proposition 4.5.1, T:3243–3266). Let `C'` be an integral
+/-- **The semi-stable model from local projective semi-stable models** (Temkin, proof
+of Proposition 4.5.1, T:3243–3266). Let `C'` be an integral
 relative curve, proper and of finite presentation over a valuation ring `V` of finite height with
 separably closed residue fields, covered by finitely many opens `Wᵢ` dominated by modifications
 `qᵢ : Bᵢ → Wᵢ` which are projective relative to `Wᵢ → Spec V`, with `Bᵢ` normal, flat and nodal
-over `V` (the output of PLAN-T5 node A4 for the projective refinement). Then the normalization
+over `V` (the output of projective cofinality for the projective refinement). Then the normalization
 `N = Nor(C')` is finite over `C'`, and there is a modification `β : X → N` such that `X → C'` is a
 modification, `X` is a nodal curve over `V`, and `X` is covered by an open isomorphic to an open
 of the nodal locus of `N` and by opens isomorphic over `C'` to opens of the `Bᵢ`. -/

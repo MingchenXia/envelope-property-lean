@@ -6,8 +6,8 @@ import EnvelopeProperty.Projective.SubvarietyPSH
 /-!
 # Uniform limits with converging classes, and the ε-argument of our route to FHX Lemma 5.5
 
-This file proves the real-analysis step ("link 9" of the native-scheme pipeline for the class
-`LocalPositivity`, `.archon-horizon/scratch/ep/PLAN-LP-ASSEMBLY.md`) of our formalization route
+This file proves the real-analysis step (the last link of the native-scheme pipeline for the
+class `LocalPositivity`) of our formalization route
 for Fang–Han–Xia, *The envelope property for unibranch projective varieties*, Lemma 5.5
 (`lem:local-PL-positivity`): once a function `φ` on `X^an` is, for every `b ≥ 1`, the
 normalized difference of a Fubini–Study function of class `b e + e'` and a bounded error, it is

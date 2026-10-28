@@ -3,7 +3,7 @@ import DeJongAlterations.StableModification.Global.Statements
 /-!
 # Numerical stability is fibrewise: transport and base change
 
-Numerical stability (`Global.NumericallyStableFibre`, `PLAN-T5.md` §1.3) is a condition on each
+Numerical stability (`Global.NumericallyStableFibre`) is a condition on each
 geometric fibre separately (Temkin, T:1686–1690: stability is a condition on geometric fibres),
 so it transports along isomorphisms of geometric fibres compatible with the structure maps, the
 fibre maps and the marks (`NumericallyStableFibre.of_iso`, the analogue of

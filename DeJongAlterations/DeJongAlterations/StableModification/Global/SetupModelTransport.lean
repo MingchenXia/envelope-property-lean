@@ -3,7 +3,7 @@ import DeJongAlterations.StableModification.Global.GlueModel
 /-!
 # Transport of stable models
 
-Bookkeeping for the global assembly (`PLAN-T5.md` §2.1 steps 3–5): stable models
+Bookkeeping for the global assembly: stable models
 (`Global.IsStableModel`) transport along isomorphisms of the target over the base
 (`IsStableModel.comp_iso`), base change along `h : T' ⟶ T` in the form `C ×_S T'` for
 `T' ⟶ T ⟶ S` (`IsStableModel.pullback'`), and a stable model over an open `U ⊆ T` in pull-back

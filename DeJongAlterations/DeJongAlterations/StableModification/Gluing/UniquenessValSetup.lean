@@ -16,7 +16,7 @@ import DeJongAlterations.StableModification.Curves.SemistableNormalScheme
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), §4.5 and
 Thm 1.2 over a valuation ring (T:3233–3266). This file collects the facts about the situation of
-`Global.ValuationStableUniqueness` (`PLAN-T5.md` §2.2 step 11, node V3) that the uniqueness proof
+`Global.ValuationStableUniqueness` that the uniqueness proof
 uses and that are not stated elsewhere:
 
 * `isIntegral_of_isEtaModification`, `isModification_of_isEtaModification`: the source of an

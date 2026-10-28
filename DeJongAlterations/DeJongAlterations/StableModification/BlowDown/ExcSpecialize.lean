@@ -306,8 +306,8 @@ variable {S X : Scheme.{u}}
 
 /-- The *special points* of the fibre `X_a` of `q : X → S` with marks `D'` over a field point
 `a : Spec K → S`: the points lying on `D'` and the points at which `X_a → Spec K` is not smooth
-(Temkin T:1687). For `q = β ≫ g` this is the set `Global.specialPoints β g D' a` of
-`PLAN-T5.md` §1.3 (lane T5G, not yet integrated), and it is the set bounded by the field
+(Temkin T:1687). For `q = β ≫ g` this is the set `Global.specialPoints β g D' a`
+(lane T5G, not yet integrated), and it is the set bounded by the field
 `encard_special_le_two` of `Curves.IsExceptionalComponent`. -/
 def specialPoints (q : X ⟶ S) (D' : X.IdealSheafData) {K : Type u} [Field K]
     (a : Spec (.of K) ⟶ S) : Set (pullback (C := Scheme.{u}) q a) :=

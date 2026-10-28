@@ -15,8 +15,8 @@ injective map `E → O` over `ι` whose image contains `A`.
 This replaces, in our proof of M. Temkin, *Stable modification of relative curves*,
 J. Algebraic Geom. 19 (2010), Proposition 4.3.3 (`locunifprop`, `semi-stable.tex`
 lines 3076–3079: "By [EGA IV₄, 17.7.8], `A ⊗_Ā 𝒪_{C̄ᵢ,x̄ᵢ}` is étale over `𝒪_{C̄ᵢ,x̄ᵢ}` for some
-`i`"), the flattening theorem of line 3065 together with EGA IV 17.7.8 (plan `PLAN-SM-GEOM.md`,
-S7). The descended algebra is `E = B̄[X]_{g'}/(f')` for lifts `f', g'` of the presentation
+`i`"), the flattening theorem of line 3065 together with EGA IV 17.7.8. The
+descended algebra is `E = B̄[X]_{g'}/(f')` for lifts `f', g'` of the presentation
 `O ≅ Ō[X]_g/(f)`; injectivity of `E → O` comes from `O ≅ Ō ⊗_{B̄} E` and the flatness of `E`
 over `B̄`. Blueprint `lem:sm-lu-curve-etale-descent` (`sm-local-uniformization-curve.tex`).
 -/

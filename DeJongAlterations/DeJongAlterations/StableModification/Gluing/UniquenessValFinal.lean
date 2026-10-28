@@ -14,7 +14,7 @@ import DeJongAlterations.StableModification.Global.MainConn
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`), Theorem
 1.2 over a valuation ring through Proposition 4.5.1 (T:3233–3266) and Corollary 4.4.3 (1)
-(`sepcloscor`, T:3135–3149), in the route of `PLAN-T5.md` §2.2 step 11 (node V3).
+(`sepcloscor`, T:3135–3149).
 
 Lane T45F's `Gluing.UniquenessVal.valuationStableUniqueness` (`Gluing/UniquenessVal.lean`) takes
 `ExistenceVal.ProjectiveSeparationAlgClosed` as a hypothesis, used only through lane T45E's
@@ -61,8 +61,8 @@ section CommonStage
 variable {K : Type u} [Field K] [IsAlgClosed K] {W : ValuationSubring K} [Finite (PrimeSpectrum W)]
 
 /-- **A semi-stable stage dominating two modifications, unconditionally** (Temkin, proof of
-Cor. 4.4.3 (1), T:3135–3149: a semi-stable `C̄` dominating `C'` and `C_st`; `PLAN-T5.md` §2.2
-step 11): lane T45F's `UniquenessVal.exists_common_stage` without the hypothesis
+Cor. 4.4.3 (1), T:3135–3149: a semi-stable `C̄` dominating `C'` and `C_st`):
+lane T45F's `UniquenessVal.exists_common_stage` without the hypothesis
 `ProjectiveSeparation W`. Let `β₁ : C₁ → C`, `β₂ : C₂ → C` be η-modifications, projective over
 `W`, of a curve `(C, D)` in the situation of Temkin's §4.5. Then there is a semi-stable stage
 `Cb → C` of `(C, D)` (`BlowDown.IsSemistableStage`) factoring through modifications
@@ -121,8 +121,8 @@ section Main
 variable {K : Type u} [Field K] [IsAlgClosed K] {W : ValuationSubring K} [Finite (PrimeSpectrum W)]
 
 /-- **Uniqueness of stable modifications over a valuation ring, unconditionally** (Temkin, Thm 1.2
-over a valuation ring via Prop. 4.5.1, T:3233–3266, and Cor. 4.4.3 (1), T:3135–3149; `PLAN-T5.md`
-§2.2 step 11, node V3): lane T45F's `UniquenessVal.exists_iso_of_isStableModification` without the
+over a valuation ring via Prop. 4.5.1, T:3233–3266, and Cor. 4.4.3 (1), T:3135–3149):
+lane T45F's `UniquenessVal.exists_iso_of_isStableModification` without the
 hypothesis `ProjectiveSeparation W`. Let `K` be algebraically closed, `W ⊆ K` a valuation ring of
 finite height and equal characteristic, and `(φ : C → Spec W, D)` a curve in the situation of
 Temkin's §4.5 (`Global.IsValuationCurve`). Two stable, numerically stable η-modifications
@@ -314,7 +314,7 @@ end Main
 section Statement
 
 /-- **`Global.ValuationStableUniqueness` holds** (Temkin, Thm 1.2 over a valuation ring via
-Prop. 4.5.1; `PLAN-T5.md` §1.3, node V3): over a valuation ring of finite height and equal
+Prop. 4.5.1): over a valuation ring of finite height and equal
 characteristic whose fraction field is algebraically closed, two stable, numerically stable
 η-modifications, projective over the valuation ring, of a curve in the situation of Temkin's §4.5
 are isomorphic over the curve. -/
@@ -341,7 +341,7 @@ theorem deJongAlterationTheorem {k : Type u} [Field k] [IsAlgClosed k]
 /-- **De Jong's alteration theorem from the corrected spreading and projectivity**
 (`Global.deJongAlterationTheorem_conn` with `hE` and `hU` discharged; blueprint
 `cor:sm-gso-dejong`): from the corrected spreading of numerical stability
-`Global.StableOpenNbhdConn k` (ERRATA DJA-O36) and projectivity. -/
+`Global.StableOpenNbhdConn k` (see `Global/StableOpenStatement.lean`) and projectivity. -/
 theorem deJongAlterationTheorem_conn {k : Type u} [Field k] [IsAlgClosed k]
     (hO : Global.StableOpenNbhdConn k) (hP : Global.StableModificationProjectivity k) :
     DeJongAlterationTheorem k :=

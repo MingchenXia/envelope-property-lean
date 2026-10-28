@@ -18,7 +18,7 @@ Math. J. **48** (2000), Theorem 2.6 (local form), cited by Copy-4 as `eq:subaddi
 a germ `f` with `|f|² e^{-(P₁+P₂)}` integrable near `x` is, near `x`, a holomorphic combination of
 products `a b` with `|a|² e^{-P₁}` and `|b|² e^{-P₂}` integrable near `x`.
 
-## The proof (step 5 of `.archon-horizon/scratch/tn-classical-del00-plan-0113.md`)
+## The proof (step 5 of our route to the DEL00 subadditivity theorem)
 
 DEL prove `𝓗(B × B, e^{-P₁ ⊕ P₂}) = 𝓗(B, e^{-P₁}) ⊗̂ 𝓗(B, e^{-P₂})` (Hilbert tensor product) and
 then use Nadel's ideal identity.  This module replaces the Hilbert tensor product by Taylor

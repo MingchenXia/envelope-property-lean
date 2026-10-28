@@ -9,8 +9,8 @@ import DeJongAlterations.StableModification.Valuation.Bounded
 Let `l/k` be a field extension, `B` a valuation subring of `l` and `A = B ∩ k`. Temkin calls a
 finite extension `l/k` of valued fields *unramified* if `B` is a localization of an étale
 `A`-algebra (M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010),
-§2.1, `semi-stable.tex` l. 1985–1997). Following decision OD2 of `PLAN-SM-VAL.md` (simplification
-S8) we work with the explicit form produced by every proof of unramifiedness in the source
+§2.1, `semi-stable.tex` l. 1985–1997). We work
+with the explicit form produced by every proof of unramifiedness in the source
 (Propositions 2.2.1, 2.2.2 and Theorem 2.1.8):
 
 **Definition.** `x ∈ l` is a *standard-unramified generator* (`IsStdUnramifiedGenerator k B x`)
@@ -32,7 +32,7 @@ extension is *standard-unramified* (`IsStdUnramified k B`) if such an `x` exists
   standard étale `A`-algebra `A[X]_{f'}/(f)` and its map to `B` sending `X ↦ x`, which is
   injective (`toValuationSubring_injective`).
 * `IsStdUnramifiedGenerator.isLocalization`: `B` is the localization of `A[X]_{f'}/(f)` at the
-  prime ideal `𝔪_B ∩ A[X]_{f'}/(f)` (plan node V6(a); Temkin l. 2132–2139). Together with the
+  prime ideal `𝔪_B ∩ A[X]_{f'}/(f)` (Temkin l. 2132–2139). Together with the
   finiteness of the spectrum over a base of finite height this gives Temkin's Lemma 2.1.6, see
   `UnramifiedEtale.lean`.
 * `isStdUnramified_top`: a finite separable extension is standard-unramified for the trivial
@@ -424,8 +424,8 @@ end IntegralClosure
 section StdUnramified
 
 variable (k) in
-/-- `x ∈ l` is a **standard-unramified generator** of `l/k` for the valuation subring `B` of `l`
-(plan `PLAN-SM-VAL.md`, S8): `l = k(x)`, `x` is integral over `A = B ∩ k` (that is, its minimal
+/-- `x ∈ l` is a **standard-unramified generator** of `l/k` for the valuation subring `B` of `l`:
+`l = k(x)`, `x` is integral over `A = B ∩ k` (that is, its minimal
 polynomial `f` over `k` has coefficients in `A`) and `f'(x)` is a unit of `B`. -/
 structure IsStdUnramifiedGenerator (x : l) : Prop where
   adjoin_eq_top : IntermediateField.adjoin k {x} = ⊤
@@ -434,7 +434,7 @@ structure IsStdUnramifiedGenerator (x : l) : Prop where
 
 variable (k) in
 /-- The extension `l/k` is **standard-unramified** at `B` (Temkin's "unramified", in the explicit
-form S8 of `PLAN-SM-VAL.md`) if it has a standard-unramified generator. -/
+form above) if it has a standard-unramified generator. -/
 def IsStdUnramified : Prop :=
   ∃ x, IsStdUnramifiedGenerator k B x
 
@@ -573,7 +573,7 @@ theorem toValuationSubring_injective : Function.Injective hx.toValuationSubring 
   exact (P.hasMap_X.2.pow n).mul_left_eq_zero.mp hp
 
 /-- **`B` is a localization of the standard étale algebra** `A[X]_{f'}/(f)` at the prime ideal
-`𝔪_B ∩ A[X]_{f'}/(f)` (plan node V6(a); Temkin, `semi-stable.tex` l. 2132–2139). -/
+`𝔪_B ∩ A[X]_{f'}/(f)` (Temkin, `semi-stable.tex` l. 2132–2139). -/
 theorem isLocalization :
     letI := hx.toValuationSubring.toRingHom.toAlgebra
     IsLocalization.AtPrime B ((maximalIdeal B).comap hx.toValuationSubring) := by

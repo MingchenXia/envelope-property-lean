@@ -13,11 +13,11 @@ import EnvelopeProperty.Projective.SubvarietyHomogeneousSectionNorms
 
 Let `X = V(I) ⊆ ℙᴹ` be a projectively normal projective subvariety over a field `k`
 (`ProjSubvariety k M`, `R_M / I` integrally closed). The native-scheme pipeline for FHX
-Lemma 5.5 (`lem:local-PL-positivity`; plan `.archon-horizon/scratch/ep/PLAN-LP-ASSEMBLY.md`,
-link 8) produces finite Fubini–Study functions of an invertible sheaf on the actual native scheme
-`X.NativeScheme` (`NativeLineFubiniStudy.IsFinFS`, built from *all* global sections and their true
-model norms at the native valued points). This file translates them into the graded model of
-`X^an`: finite Fubini–Study functions `ProjSubvariety.IsFiniteFS` given by forms of `R_M`.
+Lemma 5.5 (`lem:local-PL-positivity`) produces finite Fubini–Study functions of an invertible sheaf
+on the actual native scheme `X.NativeScheme` (`NativeLineFubiniStudy.IsFinFS`, built from *all*
+global sections and their true model norms at the native valued points). This file translates them
+into the graded model of `X^an`: finite Fubini–Study functions `ProjSubvariety.IsFiniteFS` given
+by forms of `R_M`.
 
 The mathematics is the classical identification `H⁰(X, O(d)) = (R_M / I)_d` for a projectively
 normal `X` (Hartshorne II, Ex. 5.14): a global section of `O_X(d)` is determined by its generic

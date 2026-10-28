@@ -14,8 +14,8 @@ import DeJongAlterations.StableModification.ValCurves.ModificationsFiniteness
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010): every
 modification of a relative curve `C → S = Spec V` whose generic fibre is normal is an isomorphism
 over the generic fibre (a normal curve over a field has no nontrivial modification), so the
-sections of `C → S` through the marks lift uniquely to every modification (`PLAN-T5.md` §2.2,
-node V2; used for the transported marks `D'`, Temkin Remark 4.1, T:2810).
+sections of `C → S` through the marks lift uniquely to every modification (used for
+the transported marks `D'`, Temkin Remark 4.1, T:2810).
 
 * `topologicalKrullDim_fiber_le_one_of_fiberTrdeg`: the fibres of an integral relative curve
   (`trdeg κ(ξ)/κ(φ ξ) ≤ 1`) over a valuation ring have dimension at most one (the strict dimension

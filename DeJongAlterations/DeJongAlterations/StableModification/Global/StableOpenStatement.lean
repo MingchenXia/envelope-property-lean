@@ -8,13 +8,13 @@ import DeJongAlterations.StableModification.Global.StatementsBaseChange
 /-!
 # The corrected spreading statement `StableOpenNbhdConn`
 
-Node G4 of `PLAN-T5.md` (Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19
-(2010), Lemma 5.1 (ii) `openloclem`, T:3282–3311, in the open form used in the proof of
-Theorem 1.5, T:3384–3394), corrected as recorded in ERRATA DJA-O36.
+The spreading of numerical stability (Temkin, *Stable modification of relative curves*, J.
+Algebraic Geom. 19 (2010), Lemma 5.1 (ii) `openloclem`, T:3282–3311, in the open form used in the
+proof of Theorem 1.5, T:3384–3394), in a corrected form explained below.
 
 The integrated statement `Global.StableOpenNbhd k` spreads numerical stability from one geometric
 fibre to a neighbourhood. Its planned proof (via the positivity of `ω_{X/U}(D')` on the contracted
-components, PLAN-T5 §0.5 and G4) needs that `ω(D')` is positive on every component contracted by
+components) needs that `ω(D')` is positive on every component contracted by
 `β_a`; on a component of arithmetic genus one without special points (for instance
 `X = E ×_k U → C = U` for a smooth genus-one curve `E`, `D' = ∅`) the degree is zero, and such a
 component is a connected component of `X_a`. We therefore add the hypothesis that **no nonempty
@@ -32,7 +32,7 @@ Zariski's connectedness theorem for the closed fibre of the projective stable mo
   `StableOpenNbhd.conn` (the old statement implies the new one).
 * `StableOpenNbhdRational K`: the same statement over an algebraically closed field `K`, for a
   *normal* variety `V` and a `K`-rational point (a section `a` of `V ⟶ Spec K`). This is the
-  remaining ω step of node G4 (ERRATA DJA-O36), the hypothesis of the reduction
+  remaining ω step of the spreading statement, the hypothesis of the reduction
   `stableOpenNbhdConn_of_rational` (`Global/StableOpenReduce.lean`).
 
 Blueprint: `sm-global-stable-open.tex` (`def:sm-gso-no-contracted-clopen`,
@@ -55,8 +55,8 @@ section Clopen
 
 variable {C C' S S' : Scheme.{u}}
 
-/-- **No contracted clopen subset** (ERRATA DJA-O36): no nonempty clopen subset of the geometric
-fibre `X_a = X ×_S Spec K` of `β ≫ g` over `a : Spec K ⟶ S` is contracted by
+/-- **No contracted clopen subset** (see the module docstring): no nonempty clopen subset of the
+geometric fibre `X_a = X ×_S Spec K` of `β ≫ g` over `a : Spec K ⟶ S` is contracted by
 `β_a : X_a ⟶ C_a` (has subsingleton image). If `X_a` is connected, this says that `β_a` does not
 contract the whole fibre. -/
 def NoContractedClopen (β : C' ⟶ C) (g : C ⟶ S) {K : Type u} [Field K]
@@ -134,9 +134,9 @@ end Clopen
 section Statements
 
 /-- **Spreading of numerical stability, corrected** (Temkin Lemma 5.1 (ii) `openloclem`,
-T:3282–3311, in the form used in the proof of Thm 1.5, T:3384–3394; node G4 of `PLAN-T5.md`, with
-the correction of ERRATA DJA-O36). This is `StableOpenNbhd k` with the extra hypothesis that no
-nonempty clopen subset of the geometric fibre `X_a` is contracted by `β_a`
+T:3282–3311, in the form used in the proof of Thm 1.5, T:3384–3394, with
+the correction explained in the module docstring). This is `StableOpenNbhd k` with the extra
+hypothesis that no nonempty clopen subset of the geometric fibre `X_a` is contracted by `β_a`
 (`NoContractedClopen β q a`). Let `U` be a variety over `k`, `q : C ⟶ U` projective relative to
 `k`, `β : X ⟶ C` projective relative to `k`, and `(X, D')` a semi-stable pair over `U`. If the
 geometric fibre over one geometric point `a` over `z ∈ U` is numerically stable and has no
@@ -158,10 +158,10 @@ theorem StableOpenNbhd.conn {k : Type u} [Field k] (h : StableOpenNbhd k) :
   fun U pU hU C q hq X β hβ D' hss z K _ _ a ha hst _ ↦
     h U pU hU C q hq X β hβ D' hss z K a ha hst
 
-/-- **The ω step of node G4** (ERRATA DJA-O36; the hypothesis of the reduction
+/-- **The ω step of the spreading statement** (the hypothesis of the reduction
 `stableOpenNbhdConn_of_rational`): `StableOpenNbhdConn` over an algebraically closed field `K`,
 for a *normal* variety `V` over `K` and a `K`-rational point, i.e. a section `a` of
-`pV : V ⟶ Spec K` (whose image is a closed point). The planned proof (PLAN-T5 G4): `ω(D')` has
+`pV : V ⟶ Spec K` (whose image is a closed point). The planned proof: `ω(D')` has
 positive degree on every component of `X_a` contracted by `β_a` (numerical stability and
 `NoContractedClopen`), hence is ample on the fibres of `β` over `C_a`, hence `β`-ample over a
 neighbourhood of `C_a`, which gives positive degree, i.e. numerical stability, on the contracted

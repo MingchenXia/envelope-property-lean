@@ -7,9 +7,10 @@ import DeJongAlterations.Geometry.RationalCoordinateMapGenericFiberDimension
 /-!
 # The curve over a valuation ring of `RZ_{K(S)ᵃ}(S)`
 
-Node G1 of `PLAN-T5.md` (§2.1 step 1; Temkin, *Stable modification of relative curves*,
+The first step of the global assembly (Temkin, *Stable modification of relative curves*,
 `semi-stable.tex`, proof of Theorem 1.5, T:3384–3388). Let `(C, D)` be a multipointed `S`-curve
-over an integral base whose generic fibre is smooth, geometrically integral (decision D-DJ6) and,
+over an integral base whose generic fibre is smooth, geometrically integral (needed: a smooth
+integral generic fibre need not stay integral after base change to `K(S)ᵃ`) and,
 with the marks, semi-stable. For a morphism `ψ : T ⟶ S` from an integral scheme mapping the
 generic point to the generic point (e.g. the extension `Spec W ⟶ S` of the `K(S)ᵃ`-point to a
 valuation ring `W` of `RZ_{K(S)ᵃ}(S)`):
@@ -51,7 +52,7 @@ theorem isPullback_fiber_pullback_snd (g : C ⟶ S) (ψ : T ⟶ S) (t : T) :
 
 variable [IsIntegral S]
 
-/-- **Integrality of the base change** (`PLAN-T5.md` §2.1 step 1, G1; D-DJ6). For `g : C ⟶ S`
+/-- **Integrality of the base change**. For `g : C ⟶ S`
 flat with geometrically integral generic fibre and `ψ : T ⟶ S` from an integral scheme mapping
 the generic point to the generic point, `C ×_S T` is integral: its generic fibre over `T` is a
 base change of the generic fibre of `g` along a field extension, hence integral, and it is
@@ -143,7 +144,7 @@ theorem apply_genericPoint_of_extension (W : RiemannZariskiSpace L)
   rw [← genericPoint_map_of_isDominant (toSpecValuationSubring W), ← Scheme.Hom.comp_apply, hψ,
     functionFieldPoint_apply]
 
-/-- **The curve over a valuation ring of `RZ_L(S)`** (`PLAN-T5.md` §2.1 step 1, node G1). For
+/-- **The curve over a valuation ring of `RZ_L(S)`**. For
 `S` integral over `k` with `C` projective over `k`, `(C, D)` a multipointed `S`-curve whose
 generic fibre is smooth, geometrically integral and, with the marks, semi-stable, and `W` a
 valuation ring of `L` of finite height in `RZ_L(S)` with extension `ψ : Spec W ⟶ S`, the
@@ -247,7 +248,7 @@ theorem isProjectiveOver_of_isRelativelyProjective {V : Type u} [CommRing V] {X 
   exact h.isProjectiveOver hφ
 
 /-- **Uniqueness of stable models over the valuation rings of `RZ_L(S)`** from lane T45B's
-`ValuationStableUniqueness` (node G1): the base changes are curves over the valuation ring in the
+`ValuationStableUniqueness`: the base changes are curves over the valuation ring in the
 situation of Temkin's §4.5 (`isValuationCurve_pullback`), and stable models are stable,
 numerically stable and projective over the valuation ring. -/
 theorem stableModelUniqueOver_of [IsAlgClosed L] (hU : ValuationStableUniqueness.{u})

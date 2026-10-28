@@ -9,8 +9,7 @@ set_option linter.unusedSectionVars false
 /-!
 # Upper semicontinuous resolution invariants: maxima, maximum loci, termination
 
-Blueprint `hir:invariant-order` (`blueprint/src/hironaka.tex`, Hironaka phase H4, design D9 of
-`.archon-horizon/scratch/tn-classical-hironaka-design-0180.md`).  Sources: Bierstone--Milman 2008 §7 (the
+Blueprint `hir:invariant-order` (`blueprint/src/hironaka.tex`, Hironaka phase H4).  Sources: Bierstone--Milman 2008 §7 (the
 invariant whose maximum locus is the next centre), Encinas--Hauser 2002 ("Resolution of mobiles": an invariant with
 values in a well-ordered set that drops under the blowup of its top locus gives termination).
 

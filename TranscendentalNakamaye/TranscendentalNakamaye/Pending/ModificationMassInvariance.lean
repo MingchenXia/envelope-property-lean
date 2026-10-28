@@ -25,7 +25,7 @@ theory*, Proposition 2.4.2), used in `lem:domination`, Step 2 (`eq:dom-Ak`):
 > If `π : Y → X` is a modification and `T₁, …, Tₙ` are closed positive `(1,1)`-currents on `X`,
 > then `∫_Y π^*T₁ ∧ ⋯ ∧ π^*Tₙ = ∫_X T₁ ∧ ⋯ ∧ Tₙ` (non-pluripolar products).
 
-Plan: `scratch/tn23-envelopes-qea-plan-0117.md` §7, step 2c (positive-current programme, I-0752).
+Part of the positive-current programme (`TN.2.3.PCI`).
 
 ## Main results
 

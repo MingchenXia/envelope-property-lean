@@ -24,8 +24,8 @@ M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010
   localization is at one element, and a localization of a standard étale algebra at one element
   is standard étale.
 
-The converse of Lemma 2.1.6 (étale implies unramified) is not needed by the route of
-`PLAN-SM-VAL.md` and is not formalized.
+The converse of Lemma 2.1.6 (étale implies unramified) is not needed by our route
+and is not formalized.
 -/
 
 noncomputable section

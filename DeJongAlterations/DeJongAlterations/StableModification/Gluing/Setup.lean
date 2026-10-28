@@ -16,12 +16,12 @@ valuation ring `R` of finite height with algebraically closed fraction field, lo
 (Proposition 4.3.3) gives strictly semi-stable affine quasi-modifications `Tᵢ → C` covering
 `RZ_L(C)`, `L = K(C)`; Proposition 3.2.6 refines them into a modification `C' → C` covered by
 opens `C'ᵢ` with proper `C'ᵢ → Tᵢ`; cofinality (Proposition 4.3.1) dominates each `C'ᵢ` by a
-strictly semi-stable modification of `Tᵢ`. This file assembles these steps (`PLAN-T5.md` §2.2
-steps 1–3 and the non-projective part of step 4; nodes A1–A3; blueprint `sm-gluing-semistable.tex`,
-`thm:sm-gluing-refinement`), with the additions needed by the route of PLAN-T5:
+strictly semi-stable modification of `Tᵢ`. This file assembles these steps (cofinality
+without the projectivity of its output; blueprint `sm-gluing-semistable.tex`,
+`thm:sm-gluing-refinement`), with the additions needed by our route:
 
 * `exists_transcendental_isSeparable_of_perfectField`: a separating transcendence element of
-  `K(C)/K` for perfect `K` (the hypothesis `hsep` of local uniformization; node A1);
+  `K(C)/K` for perfect `K` (the hypothesis `hsep` of local uniformization);
 * `exists_affine_piece`, `exists_finite_isStrictlySemistable_affine_cover`: local uniformization
   with each piece mapping into an affine open of `C` (the hypothesis of the refinement theorem);
 * `SpecMap_apply_eq_genericPoint`, `exists_mul_eq_of_piece`, `fiberTrdeg_piece`: a piece
@@ -29,12 +29,12 @@ steps 1–3 and the non-projective part of step 4; nodes A1–A3; blueprint `sm-
 * `apply_eq_genericPoint_of_isDominant`, `isModification_of_piece`: the pieces `C'ᵢ → Tᵢ` of the
   refinement are modifications (`Gluing.birationalOver_of_locallyOfFiniteType`);
 * `exists_projective_refinement`: the assembly — `p : C' → C` is a modification, projective over
-  `C` (`Gluing.exists_refinement_projective`, node A2), the pieces are modifications with finite
-  `Γ₀` (`Gluing.finite_gammaZeroSet_of_flat`, node A3, the T62 fix) and are dominated by strictly
+  `C` (`Gluing.exists_refinement_projective`), the pieces are modifications with finite
+  `Γ₀` (`Gluing.finite_gammaZeroSet_of_flat`, the fix of ERRATA T62) and are dominated by strictly
   semi-stable modifications of the `Tᵢ`.
 
-The projectivity of the strictly semi-stable dominating modifications (PLAN-T5 node A4, needed for
-Stein finiteness in the normalization step A5) is **not** proved here.
+The projectivity of the strictly semi-stable dominating modifications (needed for
+Stein finiteness in the normalization step) is **not** proved here.
 -/
 
 noncomputable section
@@ -133,7 +133,7 @@ theorem exists_affine_piece {E : Type u} [CommRing E] (ιE : E →+* C.functionF
     exact (IsCentre.of_isOpenImmersion j hj hx).mem_ofScheme
 
 /-- **Temkin, Proposition 4.3.3, with affine targets** (`locunifprop`; the form consumed by the
-refinement, PLAN-T5 §2.2 step 1). For `K` algebraically closed and `C` integral, separated,
+refinement). For `K` algebraically closed and `C` integral, separated,
 quasi-compact, flat and locally of finite type over a valuation ring `R` of finite height and
 equal characteristic, with a separating transcendence element of `K(C)/K`, there are finitely
 many `L`-quasi-modifications `gᵢ : Spec Eᵢ → C` (`L = K(C)`, `Eᵢ ⊆ L`), each mapping into an
@@ -310,8 +310,8 @@ section Assembly
 
 variable {K : Type u} [Field K] {R : ValuationSubring K}
 
-/-- **The projective refinement of a curve over a valuation ring** (`PLAN-T5.md` §2.2 steps 1–4
-without the projectivity of step 4; nodes A1–A3; Temkin, proof of Proposition 4.5.1, T:3243–3252).
+/-- **The projective refinement of a curve over a valuation ring** (without the
+projectivity of the cofinality step; Temkin, proof of Proposition 4.5.1, T:3243–3252).
 Let `K` be algebraically closed, `R ⊆ K` a valuation ring of finite height and equal
 characteristic, and `φ : C → Spec R` an integral, separated, quasi-compact, flat relative curve
 locally of finite type (`trdeg K(C)/K = 1`). There are a modification `p : C' → C`, projective over

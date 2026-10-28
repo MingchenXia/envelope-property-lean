@@ -16,7 +16,8 @@ import Mathlib.GroupTheory.Sylow
 This file proves the field-theoretic towers used in place of Temkin's towers of
 `p`-extensions over the maximal moderately ramified extension `K^mr` (M. Temkin, *Stable
 modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of Theorem 6.3.1,
-`semi-stable.tex` lines 4057–4064 and 4091–4093; plan simplification S5(f) of `PLAN-SM-VAL.md`):
+`semi-stable.tex` lines 4057–4064 and 4091–4093; part of our replacement of
+`K^mr`):
 
 * every intermediate field of a finite Galois extension whose Galois group is a `p`-group is
   reached from the base by a chain of Galois extensions of degree `p`;
@@ -107,7 +108,7 @@ theorem isGalois_extendScalars_of_normal [IsGalois M N] {E L : IntermediateField
 
 variable [FiniteDimensional M N] [IsGalois M N]
 
-/-- **Towers of Galois extensions of degree `p`** (plan S5(f)). If `Gal(N/M)` is a `p`-group and
+/-- **Towers of Galois extensions of degree `p`**. If `Gal(N/M)` is a `p`-group and
 a property of intermediate fields holds for `M` and passes from `E` to `F ⊇ E` whenever `F/E` is
 Galois of degree `p`, then it holds for every intermediate field. -/
 theorem IsPGroup.induction_intermediateField {p : ℕ} [Fact p.Prime]
@@ -152,7 +153,7 @@ theorem IsPGroup.induction_intermediateField {p : ℕ} [Fact p.Prime]
 
 
 omit [IsGalois M N] in
-/-- **Linear disjointness of a Galois extension** (plan node G3): if `Z/M` is Galois, then
+/-- **Linear disjointness of a Galois extension**: if `Z/M` is Galois, then
 `[L Z : M] · [L ∩ Z : M] = [L : M] · [Z : M]` for every intermediate field `L`. -/
 theorem finrank_sup_mul_finrank_inf (L Z : IntermediateField M N) [IsGalois M Z] :
     Module.finrank M ↥(L ⊔ Z) * Module.finrank M ↥(L ⊓ Z) =
@@ -201,7 +202,7 @@ theorem finrank_adjoin_of_pow_char_mem {E L : Type*} [Field E] [Field L] [Algebr
 
 variable {M L : Type*} [Field M] [Field L] [Algebra M L]
 
-/-- **Towers of purely inseparable extensions** (plan S5(f)). Let `L/M` be finite and purely
+/-- **Towers of purely inseparable extensions**. Let `L/M` be finite and purely
 inseparable in characteristic `p`. If a property of intermediate fields holds for `M` and passes
 from `E` to `E(γ)` whenever `γ ∉ E` and `γ ^ p ∈ E`, then it holds for every intermediate
 field. -/

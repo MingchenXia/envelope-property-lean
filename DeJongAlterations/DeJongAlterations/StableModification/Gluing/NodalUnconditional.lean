@@ -8,9 +8,9 @@ import DeJongAlterations.StableModification.Gluing.CofinalProjective
 /-!
 # A nodal modification of a curve over a valuation ring, unconditionally
 
-Lane T45A proved `Gluing.exists_nodal_modification` (`PLAN-T5.md` §2.2 steps 1–8, nodes A1–A8;
-Temkin, proof of Proposition 4.5.1, T:3243–3266) under the hypothesis `ProjectiveCofinality R`
-(node A4). Lane T45C proved that hypothesis (`CofinalProjective.projectiveCofinality`, Temkin,
+Lane T45A proved `Gluing.exists_nodal_modification` (Temkin, proof of
+Proposition 4.5.1, T:3243–3266) under the hypothesis `ProjectiveCofinality R`.
+Lane T45C proved that hypothesis (`CofinalProjective.projectiveCofinality`, Temkin,
 Proposition 4.3.1 with the projectivity of the output, through SERRE-I). This file removes the
 hypothesis.
 
@@ -33,8 +33,8 @@ open DeJong (IsNodalCurve)
 variable {K : Type u} [Field K] {R : ValuationSubring K}
 
 /-- **A semi-stable modification of a curve over a valuation ring, unconditionally**
-(`PLAN-T5.md` §2.2 steps 1–8, nodes A1–A8; Temkin, proof of Proposition 4.5.1, T:3243–3266):
-`Gluing.exists_nodal_modification` with its node-A4 hypothesis `ProjectiveCofinality R`
+(Temkin, proof of Proposition 4.5.1, T:3243–3266):
+`Gluing.exists_nodal_modification` with its hypothesis `ProjectiveCofinality R`
 discharged by `CofinalProjective.projectiveCofinality`. Let `K` be algebraically closed,
 `R ⊆ K` a valuation ring of finite height and equal characteristic, and `φ : C → Spec R` a proper
 flat relative curve, integral, with `trdeg K(C)/K = 1`. Then there are a projective refinement

@@ -15,8 +15,8 @@ import DeJongAlterations.Geometry.SteinGenericFiber
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010)
 (`references/temkin10-stable-modification/source/semi-stable.tex`, cited `T:<line>`),
-Proposition 4.5.1 (`sepclosprop`, T:3233–3266), existence part, in the form of `PLAN-T5.md` §2.2
-steps 1–10 (nodes V1, V2): over a valuation ring `W` of finite height and equal characteristic
+Proposition 4.5.1 (`sepclosprop`, T:3233–3266), existence part:
+over a valuation ring `W` of finite height and equal characteristic
 whose fraction field `K` is algebraically closed, every curve `φ : C → Spec W` in the situation
 `Global.IsValuationCurve` (integral, flat, finitely presented and projective, smooth over the
 generic point, with flat marks `D` and semi-stable generic pair) has a stable, numerically
@@ -34,14 +34,14 @@ The proof:
 3. **A nodal model with separated marks** (steps 1–8, `StableVal.exists_marked_nodal_modification`):
    `X → N → C`, `X` nodal over `W` and locally projective over the normalized refinement `N`
    (projective over `W`), with pairwise disjoint lifted sections `σX k` through smooth points.
-4. **Projectivity** (node V1, Temkin Thm 1.1 at the valuation level, `thm:sm-val-proj`): `X` is
+4. **Projectivity** (Temkin Thm 1.1 at the valuation level, `thm:sm-val-proj`): `X` is
    projective over `W`, by lane OM3F's
    `Projectivity.Valuation.isProjectiveOver_of_valuationSubring` applied to `X → N → Spec W`.
 5. **The semi-stable stage**: `X → C` is an η-modification (it is an isomorphism over the
    normal generic fibre, `StableVal.isIso_restrict_genericOpen`), the marks `⋂ₖ ker σX k` are the
    transported marks (`Global.eq_genericMarksClosure_of_forall`) and form a semi-stable pair
    (`StableVal.isSemistablePair_iInf_ker`).
-6. **The stable blow-down** (node V2 with Temkin Prop. 4.4.6, T:3188–3229, lanes T44B, T44F,
+6. **The stable blow-down** (Temkin Prop. 4.4.6, T:3188–3229, lanes T44B, T44F,
    T44E):
    `BlowDown.Unconditional.exists_isStableModification_of_isSemistableStage_of_isProjectiveOver`
    gives a stable, numerically stable η-modification projective over `W`.
@@ -49,7 +49,7 @@ The proof:
 Steps 3–5 are carried out for an arbitrary modification `h : C' → C` with `C'` projective over
 `W` in place of `C` (`exists_isSemistableStage_comp`): the semi-stable stage then factors through
 `h`. With `h` the join of two stable modifications this is the semi-stable model dominating the
-join used for uniqueness (`PLAN-T5.md` node V3, lane T45F).
+join used for uniqueness (lane T45F).
 
 ## Hypotheses (results of lanes running in parallel)
 
@@ -91,7 +91,7 @@ set_option backward.isDefEq.respectTransparency false
 section Hypotheses
 
 /-- **Projective separation of marks over the valuation rings of Temkin's §4.5** (lane T45D;
-`PLAN-T5.md` node A4, marks part; Temkin, Lemma 4.3.3 `divlem`, T:3019–3044, with projectivity
+Temkin, Lemma 4.3.3 `divlem`, T:3019–3044, with projectivity
 tracked). `StableVal.ProjectiveSeparation R` for every valuation ring `R` of finite height and
 equal characteristic of an algebraically closed field. This is the form consumed by
 `exists_stableModification`; it follows from `∀ R, ProjectiveSeparation R`. -/
@@ -268,8 +268,8 @@ theorem isAlgClosed_residueField_pt₀ :
     (Scheme.Spec.residueFieldIso (.of W) (pt₀ (V := W))).commRingCatIsoToRingEquiv.symm
 
 /-- **A projective semi-stable stage dominating a projective modification** (Temkin, proof of
-Proposition 4.5.1, T:3243–3266, steps up to the blow-down; `PLAN-T5.md` §2.2 steps 1–9, nodes
-V1, V2). Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and equal
+Proposition 4.5.1, T:3243–3266, steps up to the blow-down).
+Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and equal
 characteristic, `(φ : C → Spec W, D)` a curve in the situation of Temkin's §4.5
 (`Global.IsValuationCurve`), and `h : C' → C` a modification with `C'` projective over `W`. Then
 there is a semi-stable stage of `(C, D)` (`BlowDown.IsSemistableStage`: an integral normal
@@ -366,7 +366,7 @@ theorem exists_isSemistableStage_comp (hsepM : ProjectiveSeparation W)
     have h1 := isSmoothAt_of_mem_isomorphismOpen f φ (V := φ ⁻¹ᵁ BlowDown.genericOpen W)
       (hgenU x hx) (hV.isSmoothAt_generic _ hφx)
     rwa [hfφ] at h1
-  -- projectivity of `X` over `W` (node V1, lane OM3F's `thm:sm-val-proj`)
+  -- projectivity of `X` over `W` (lane OM3F's `thm:sm-val-proj`)
   have := hXnod
   have : LocallyOfFinitePresentation (b ≫ h ≫ φ) := hNlfp
   have hXproj : IsProjectiveOver (β ≫ b ≫ h ≫ φ) :=
@@ -434,7 +434,7 @@ theorem exists_isSemistableStage_comp (hsepM : ProjectiveSeparation W)
 
 /-- **A stable modification dominated by a semi-stable stage dominating a projective
 modification** (Temkin, Proposition 4.5.1 existence, with Proposition 4.4.6, T:3188–3229, for the
-blow-down; `PLAN-T5.md` §2.2 steps 1–10). In the situation of `exists_isSemistableStage_comp`
+blow-down). In the situation of `exists_isSemistableStage_comp`
 there are a semi-stable stage `g ≫ h : X → C` through `h` and a semi-stable stage `β : Y → C`
 which is a stable and numerically stable modification of `(C, D)`, with a morphism `c : X → Y`
 over `C` (the blow-down).
@@ -471,8 +471,8 @@ theorem exists_stableModification_comp (hsepM : ProjectiveSeparation W)
   exact ⟨X, g, Y, β, c, hc, hstage, hstage', hstable, fun K' _ _ a ↦ hnum K' a⟩
 
 /-- **Existence of a stable modification over a valuation ring** (Temkin, Proposition 4.5.1
-`sepclosprop`, T:3233–3266, existence, with Thm 1.1 over `W`; `PLAN-T5.md` §2.2 steps 1–10, nodes
-V1, V2). Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and equal
+`sepclosprop`, T:3233–3266, existence, with Thm 1.1 over `W`).
+Let `K` be algebraically closed, `W ⊆ K` a valuation ring of finite height and equal
 characteristic, and `(φ : C → Spec W, D)` a curve in the situation of Temkin's §4.5
 (`Global.IsValuationCurve`). Then `(C, D)` has a stable, numerically stable η-modification
 projective over `W` (`exists_stableModification_comp` with `h = 𝟙`).
@@ -497,8 +497,8 @@ end Main
 
 section Statement
 
-/-- **`Global.ValuationStableExistence`** (Temkin, Proposition 4.5.1, existence; `PLAN-T5.md`
-§1.3, node V2), from projective separation of marks (lane T45D) and the étale-local part of the
+/-- **`Global.ValuationStableExistence`** (Temkin, Proposition 4.5.1,
+existence), from projective separation of marks (lane T45D) and the étale-local part of the
 closure-component lemma (lane T44G). -/
 theorem valuationStableExistence (hsepM : ProjectiveSeparationAlgClosed.{u})
     (hloc : BlowDown.ExcSpecialize.ClosureComponentLocal.{u}) :

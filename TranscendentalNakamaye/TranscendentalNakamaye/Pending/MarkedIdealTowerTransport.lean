@@ -8,10 +8,9 @@ set_option linter.unusedSectionVars false
 # Transport of multiple test blow-ups along a biholomorphism of the base
 
 Blueprint `hir:biholomorphism-invariance`, `hir:tower-transport` (`blueprint/src/hironaka.tex`, Hironaka
-phase H1; design note `.archon-horizon/scratch/tn-classical-hironaka-design-0180.md`, item R1 "transport of a
-tower along a biholomorphism").  Sources: Włodarczyk 2005 §2.4 (Proposition `pr:funct`: multiple test blow-ups
-and resolutions pull back along étale maps; here biholomorphisms), Bierstone--Milman 2008 Theorem 1.3
-(functoriality); the canonicity clause (3) of `hir:canonical-resolution`.
+phase H1: transport of a tower along a biholomorphism).  Sources: Włodarczyk 2005 §2.4 (Proposition `pr:funct`:
+multiple test blow-ups and resolutions pull back along étale maps; here biholomorphisms), Bierstone--Milman 2008
+Theorem 1.3 (functoriality); the canonicity clause (3) of `hir:canonical-resolution`.
 
 Let `Φ : X' ≃ₘ⟮𝓘(ℂ, ℂⁿ), 𝓘(ℂ, ℂⁿ)⟯ X` be a biholomorphism (Mathlib's `Diffeomorph`, smooth of order `∞`
 for the complex model with corners) and `𝔪` a marked ideal on `X` with coherent ideal.

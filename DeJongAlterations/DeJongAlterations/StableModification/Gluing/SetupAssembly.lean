@@ -15,14 +15,15 @@ import DeJongAlterations.StableModification.Limits.SpreadModification
 import DeJongAlterations.Geometry.NormalCurveModification
 
 /-!
-# A nodal modification of a curve over a valuation ring (PLAN-T5 §2.2 steps 1–8)
+# A nodal modification of a curve over a valuation ring
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
-Proposition 4.5.1 (`sepclosprop`, T:3243–3266). This file chains the nodes of `PLAN-T5.md` §2.2
-(lane T45A): the projective refinement `C' → C` with its pieces (`Gluing.exists_projective_refinement`,
-A1–A3), projective strictly semi-stable models of the pieces (node A4, **taken as the hypothesis
-`ProjectiveCofinality R`**), the normalization `N = Nor(C')` (A5) and the insertion of the local
-models into `N` (A6–A8, `Gluing.exists_nodal_modification_normalization`).
+Proposition 4.5.1 (`sepclosprop`, T:3243–3266). This file chains the steps of that proof
+(lane T45A): the projective refinement `C' → C` with its pieces
+(`Gluing.exists_projective_refinement`), projective strictly semi-stable models of the pieces
+(projective cofinality, **taken as the hypothesis `ProjectiveCofinality R`**), the normalization
+`N = Nor(C')` and the insertion of the local models into `N`
+(`Gluing.exists_nodal_modification_normalization`).
 
 ## Main results
 
@@ -31,7 +32,7 @@ models into `N` (A6–A8, `Gluing.exists_nodal_modification_normalization`).
   ring, is flat over `V`, hence of finite presentation if of finite type (Temkin, Lemma 3.5.1).
 * `isLocallyNoetherian_genericOpen`, `isEtaModification_of_isNodalCurve`: a modification of a
   relative curve with normal generic fibre by a nodal curve is an η-modification.
-* `ProjectiveCofinality R`: the statement of node A4 (not proved here).
+* `ProjectiveCofinality R`: the statement of projective cofinality (not proved here).
 * `exists_nodal_modification`: **under `ProjectiveCofinality R`, every proper flat integral
   relative curve over a valuation ring `R` of finite height and equal characteristic with
   algebraically closed fraction field has a modification `X → C` with `X` nodal over `R`**,
@@ -141,8 +142,8 @@ theorem isLocallyNoetherian_genericOpen :
 
 variable [Flat φ] [LocallyOfFiniteType φ]
 
-/-- **Modifications by nodal curves are η-modifications** when the generic fibre is normal
-(`PLAN-T5.md` §2.2 step 8, the η-modification part of node A8). Let `V` be a valuation ring of
+/-- **Modifications by nodal curves are η-modifications** when the generic fibre is normal.
+Let `V` be a valuation ring of
 finite height and `φ : C → Spec V` flat, locally of finite type, with `C` integral and normal at
 the points over the generic point. If `β : X → C` is a modification with `X` nodal over `V`, then
 `β` is an isomorphism over the generic fibre `C_η` (Codex's
@@ -197,7 +198,7 @@ section Assembly
 
 variable {K : Type u} [Field K] (R : ValuationSubring K)
 
-/-- **Projective cofinality** (`PLAN-T5.md` §2.2 step 4, node A4; Temkin, Proposition 4.3.1 with
+/-- **Projective cofinality** (Temkin, Proposition 4.3.1 with
 the projectivity of the output tracked): every modification `h : W → T` of an affine integral
 strictly semi-stable relative curve `ψ : T = Spec E → Spec R` is dominated by a strictly
 semi-stable modification `f : B → T` which is projective over `T` (relative to `ψ`). This is **not
@@ -214,8 +215,8 @@ def ProjectiveCofinality : Prop :=
 
 variable {R}
 
-/-- **A semi-stable modification of a curve over a valuation ring** (`PLAN-T5.md` §2.2 steps 1–8,
-nodes A1–A8, with node A4 as the hypothesis `ProjectiveCofinality R`; Temkin, proof of
+/-- **A semi-stable modification of a curve over a valuation ring** (with projective
+cofinality as the hypothesis `ProjectiveCofinality R`; Temkin, proof of
 Proposition 4.5.1, T:3243–3266). Let `K` be algebraically closed, `R ⊆ K` a valuation ring of
 finite height and equal characteristic, and `φ : C → Spec R` a proper flat relative curve,
 integral, with `trdeg K(C)/K = 1`. Then there are
@@ -225,7 +226,7 @@ integral, with `trdeg K(C)/K = 1`. Then there are
   `R`, and projective over `R` if `C` is;
 * a modification `β : X → N` with `X → C` a modification and `X` a **nodal curve over `R`**,
   locally projective over `N` (`Projectivity.LocallyRelativelyProjective`, the input `hloc` of
-  OM3C's valuation-level projectivity theorem, PLAN-T5 V1), and an η-modification of `C` if `C`
+  OM3C's valuation-level projectivity theorem), and an η-modification of `C` if `C`
   is normal along its generic fibre (e.g. smooth there).
 
 The `X` is obtained by inserting the projective strictly semi-stable models of the pieces of the
@@ -249,7 +250,7 @@ theorem exists_nodal_modification [IsAlgClosed K] [Finite (PrimeSpectrum R)]
     exists_projective_refinement hchar φ htr
   have := hp
   have := hp.sourceIntegral
-  -- the projective strictly semi-stable models of the pieces (node A4)
+  -- the projective strictly semi-stable models of the pieces (projective cofinality)
   have hmodels : ∀ i, ∃ (B : Scheme.{u}) (_ : IsIntegral B) (f : B ⟶ Spec (.of (E i)))
       (_ : IsModification f), IsStrictlySemistable (f ≫ g i ≫ φ) ⊤ ∧
         DeJong.IsRelativelyProjective (g i ≫ φ) f ∧ ∃ q : B ⟶ (W i).toScheme, q ≫ h i = f := by
@@ -291,7 +292,7 @@ theorem exists_nodal_modification [IsAlgClosed K] [Finite (PrimeSpectrum R)]
     rw [ValCurves.fiberTrdeg_comp_genericPoint φ p, htr]
   have hsep : ∀ P : PrimeSpectrum R, IsSepClosed (FractionRing (R ⧸ P.asIdeal)) :=
     fun P ↦ Cohomology.Connected.isSepClosed_fractionRing_quotient K P
-  -- nodes A5–A8
+  -- normalization, bad locus, local models and extension by the identity
   obtain ⟨hfin, X, β, hβ, hβν, hnod, hlrp, -⟩ :=
     exists_nodal_modification_normalization hsep (p ≫ φ) hdim hW q hqnorm hqflat hqproj hqnod
   have hmod : IsModification (β ≫ (genericPt C').fromNormalization ≫ p) := by

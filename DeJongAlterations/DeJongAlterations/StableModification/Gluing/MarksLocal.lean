@@ -10,8 +10,8 @@ import DeJongAlterations.StableModification.Gluing.MarksLift
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
 Proposition 4.5.1 (`sepclosprop`, T:3246–3252: "applying to them first Proposition cofinprop and
-then Lemma divlem we can construct a semi-stable modification of `(C'_i, D'_i)`"), in the form of
-`PLAN-T5.md` §2.2 steps 6–8 with marks (node V2, the pair version of lane T45A's nodes A6–A8).
+then Lemma divlem we can construct a semi-stable modification of `(C'_i, D'_i)`"), in the form
+with marks (the pair version of lane T45A's insertion of the local models).
 
 Let `N` be an integral proper curve over a valuation ring `R`, with marks given by sections
 `σN k : Spec R → N`. The **mark-bad set** `markBad` consists of the points of the sections at
@@ -21,7 +21,7 @@ Around a closed point `x` of an open `O ⊆ N` carrying a strictly semi-stable m
 the open `O_x = O ∩ throughOpen x` meets only the sections through `x` (which lie in it
 entirely, `range_subset_throughOpen`); over `O_x` the sections lift to `τ⁻¹(O_x)`, and the
 separation of marks with projectivity tracked (`ProjectiveSeparation`, **not proved here**: lane
-BND's `Blowups.exists_separation_marks` with the projectivity of the output, `PLAN-T5.md` node A4)
+BND's `Blowups.exists_separation_marks` with the projectivity of the output)
 gives a local model `τ_x : B_x → O_x` which is projective over `O_x`, nodal, whose lifted sections
 are pairwise disjoint and pass through smooth points, and whose isomorphism locus lies in the good
 locus (`exists_local_marked_model`).
@@ -46,7 +46,7 @@ section Hypothesis
 
 variable {K : Type u} [Field K] (R : ValuationSubring K)
 
-/-- **Projective separation of marks** (`PLAN-T5.md` §2.2 step 4, node A4, the marks part;
+/-- **Projective separation of marks** (the marks part of projective cofinality;
 Temkin, Lemma 4.3.3 `divlem`, T:3019–3044, with the projectivity of the output tracked; **not
 proved here**, lane T45C's `Gluing/SeparationProjective*`). For an integral strictly semi-stable
 curve `g : B → Spec R`, separated over `R`, and finitely many pairwise distinct sections `σ k`,
@@ -229,7 +229,7 @@ local notation "s₀" => IsLocalRing.closedPoint R
 
 include hN hdim hinj in
 /-- **A local semi-stable model with separated marks** (Temkin, proof of Proposition 4.5.1,
-T:3246–3252, with Lemma 4.3.3; `PLAN-T5.md` §2.2 steps 6–8 with marks). Let `τ : B → O` be a
+T:3246–3252, with Lemma 4.3.3). Let `τ : B → O` be a
 strictly semi-stable model of an open `O ⊆ N`, projective over `O`, and `x ∈ O` a closed point.
 Over `O_x = O ∩ throughOpen x` there is a modification `τ_x : B_x → O_x`, projective over `O_x`,
 nodal over `R`, whose isomorphism locus lies in the good locus, together with lifts of the

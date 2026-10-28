@@ -5,21 +5,21 @@ import DeJongAlterations.Composition
 /-!
 # Local stable pieces, comparison pieces and the refinement
 
-Nodes G5–G6 of `PLAN-T5.md` (§2.1 steps 3–4; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3384–3397), reorganized so that a *single* refinement
+The base change and comparison steps of the proof of Theorem 1.5 (Temkin, *Stable modification
+of relative curves*, `semi-stable.tex`, T:3384–3397), reorganized so that a *single* refinement
 of the base is needed.
 
-Let `S` be integral, `L ⊇ K(S)` algebraic (in the application `L = K(S)ᵃ`, decision D-DJ9), and
-`η = functionFieldPoint S L`.
+Let `S` be integral, `L ⊇ K(S)` algebraic (in the application `L = K(S)ᵃ`: no generic étaleness is
+needed downstream), and `η = functionFieldPoint S L`.
 
 * `LocalStablePiece pS g D L`: an affine integral `T`, of finite type over an affine open of `S`,
   with a dominant `L`-point over `η`, and a stable model (`IsStableModel`) of `(C, D) ×_S T` over
   `T`. These are produced around every valuation ring of `RZ_L(S)` by spreading out the stable
-  modification over the valuation ring (nodes G1, G3′, G4).
+  modification over the valuation ring.
 * `ComparisonPiece P₁ P₂`: an affine `T` with morphisms `cᵢ : T ⟶ Pᵢ.T` over `S`, an `L`-point
   over the points of the `Pᵢ`, and an isomorphism `X₁ ×_{T₁} T ≅ X₂ ×_{T₂} T` over `C` and `T`.
   These are produced around every valuation ring of `RZ_L(T₁) ∩ RZ_L(T₂)` by the uniqueness of
-  the stable modification over the valuation ring and descent of the isomorphism (node G6).
+  the stable modification over the valuation ring and descent of the isomorphism.
 * `LocalStablePiece.isStableModelOn`: the base change of a piece along a proper `h : W ⟶ T` from
   an open `W` of a refinement `p : S'' ⟶ S` is a stable model over `W` in the sense of
   `IsStableModelOn`, the form consumed by the gluing theorem.
@@ -43,7 +43,7 @@ open RiemannZariskiSpace
 variable {k : Type u} [CommRing k] {S C : Scheme.{u}} [IsIntegral S] (pS : S ⟶ Spec (.of k))
   (g : C ⟶ S) (D : C.IdealSheafData) (L : Type u) [Field L] [Algebra S.functionField L]
 
-/-- **A local stable piece** of the multipointed `S`-curve `(C, D)` (`PLAN-T5.md` §2.1 step 2):
+/-- **A local stable piece** of the multipointed `S`-curve `(C, D)`:
 an affine integral scheme `T` with a morphism `t : T ⟶ S` locally of finite type into an affine
 open `V` of `S`, a dominant `L`-point `ηT` over `η = functionFieldPoint S L`, and a stable model
 `β : X ⟶ C ×_S T` of `(C, D) ×_S T` over `T`. -/
@@ -76,7 +76,7 @@ attribute [instance] LocalStablePiece.isAffine LocalStablePiece.isIntegral
 
 variable {pS g D L}
 
-/-- **A comparison piece** for two local stable pieces (`PLAN-T5.md` §2.1 step 4): an affine `T`
+/-- **A comparison piece** for two local stable pieces: an affine `T`
 with morphisms `cᵢ : T ⟶ Pᵢ.T` over `S` (the composite to `S` locally of finite type), an
 `L`-point over the points of the `Pᵢ`, and an isomorphism `X₁ ×_{T₁} T ≅ X₂ ×_{T₂} T` compatible
 with the projections to `T` and to `C`. -/
@@ -156,8 +156,8 @@ lemma LocalStablePiece.bcMap_snd :
   rw [LocalStablePiece.bcMap, Category.assoc, Category.assoc, pullback.condition,
     LocalStablePiece.bcIso_hom_snd_assoc, Curves.pullbackCompMap_snd_assoc]
 
-/-- **Base change of a local stable piece to an open of a refinement** (`PLAN-T5.md` §2.1
-step 3, node G5). For `p : S'' ⟶ S` with `S''` integral, an open `W ⊆ S''` with quasi-compact
+/-- **Base change of a local stable piece to an open of a refinement**.
+For `p : S'' ⟶ S` with `S''` integral, an open `W ⊆ S''` with quasi-compact
 inclusion and a quasi-compact `h : W ⟶ T` over `S` mapping a dominant `L`-point of `W` to the
 point of the piece, the base change `X ×_T W ⟶ C ×_S S''` is a stable model over `W` of
 `(C, D) ×_S S''` in the sense of `IsStableModelOn`. -/

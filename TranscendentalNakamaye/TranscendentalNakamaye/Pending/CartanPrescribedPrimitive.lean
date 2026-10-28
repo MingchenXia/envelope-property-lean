@@ -6,9 +6,8 @@ set_option autoImplicit false
 /-!
 # Primitive elements on the moment curve, and parametrization data for a prescribed one
 
-Step 3 of the plan for Cartan's theorem on an irreducible germ
-(`.archon-horizon/scratch/tn-classical-cartan-plan-0119.md`; Demailly, *Complex analytic and
-differential geometry*, II.4.13 and II.4.29).
+Step 3 of our proof of Cartan's theorem on an irreducible germ
+(Demailly, *Complex analytic and differential geometry*, II.4.13 and II.4.29).
 
 Let `Q ⊆ 𝒪_n` be prime and in Noether position over `𝒪_d`, `K = Frac 𝒪_d`,
 `L = Frac(𝒪_n / Q)`.  Demailly notes (II.4.13) that `u_c = ∑_{k ≥ d} c_k z_k` is a primitive

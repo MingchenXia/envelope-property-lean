@@ -19,7 +19,7 @@ is an isometry (`norm_algEquiv_apply`). This file introduces the inertia subgrou
 `V = {σ | ‖σ x - x‖ < ‖x‖ for x ≠ 0}` of `Gal(N/K)` and proves the facts that replace Temkin's
 use of the maximal moderately ramified extension `K^mr` in *Stable modification of relative
 curves*, J. Algebraic Geom. 19 (2010), proof of Theorem 6.3.1 (`semi-stable.tex`,
-lines 4057–4061 and 4091–4093); see plan simplification S5 (`PLAN-SM-VAL.md`).
+lines 4057–4061 and 4091–4093).
 
 ## Main definitions
 
@@ -61,7 +61,7 @@ section Trace
 
 variable {F E : Type*} [Field F] [NormedField E] [IsUltrametricDist E] [Algebra F E]
 
-/-- **The trace argument** (plan simplification S5(a)). Let `σ` be an automorphism of a
+/-- **The trace argument**. Let `σ` be an automorphism of a
 non-archimedean normed field `E`, `S` an additive subgroup with `σ S ⊆ S`, and `d` an integer with
 `‖d‖ = 1` and `σ ^ d = 1` on `S`. If `‖σ ^ i y - y‖ < ‖y‖` for every `i` and every nonzero
 `y ∈ S`, then `σ` is the identity on `S`. -/
@@ -272,7 +272,7 @@ theorem eq_one_of_mem_wildInertiaSubgroup {τ : N ≃ₐ[K] N} (hτ : τ ∈ wil
     (fun i y _ hy => norm_pow_apply_sub_lt hτ i hy) (AddSubgroup.mem_top x)
   rw [pow_orderOf_eq_one, AlgEquiv.one_apply]
 
-/-- **The wild inertia subgroup is a `p`-group** (plan simplification S5(a); replaces Temkin's
+/-- **The wild inertia subgroup is a `p`-group** (replaces Temkin's
 use of the pro-`p` group `Gal(K^s/K^mr)`, `semi-stable.tex` lines 4057–4061), where `p` is the
 exponential characteristic of the residue field of `K`. -/
 theorem isPGroup_wildInertiaSubgroup (p : ℕ) [hp : ExpChar (ResidueField (unitBall K)) p] :
@@ -324,7 +324,7 @@ theorem inertiaSubgroup_le_wildInertiaSubgroup (h : ∀ x : N, x ≠ 0 → ∃ c
   rw [map_div₀, AlgEquiv.commutes, ← sub_div, norm_div, hcN] at this
   exact (div_lt_one (norm_pos_iff.mpr hx)).mp this
 
-/-- **Temkin S5(b)**: if `e_{N/K} = 1` then `T = V`. -/
+/-- If `e_{N/K} = 1` then `T = V`. -/
 theorem wildInertiaSubgroup_eq_inertiaSubgroup [FiniteDimensional K N]
     (h : ramificationIndex K N = 1) : wildInertiaSubgroup K N = inertiaSubgroup K N := by
   refine le_antisymm wildInertiaSubgroup_le_inertiaSubgroup
@@ -350,7 +350,7 @@ theorem inertiaSubgroup_eq_top_of_forall
   refine (norm_sub_le_max _ _).trans_lt (max_lt ?_ hc)
   rwa [norm_algEquiv_apply]
 
-/-- **Temkin S5(c)**: if `f_{N/K} = 1` then `T = Gal(N/K)`. -/
+/-- If `f_{N/K} = 1` then `T = Gal(N/K)`. -/
 theorem inertiaSubgroup_eq_top [FiniteDimensional K N] (h : inertiaDegree K N = 1) :
     inertiaSubgroup K N = ⊤ := by
   refine inertiaSubgroup_eq_top_of_forall fun x hx => ?_
@@ -581,7 +581,7 @@ theorem exists_pow_eq_aeval_of_separableClosure_eq {θ : Ñ} (hθ : separableClo
 
 variable [IsGalois K N]
 
-/-- **The inertia field is unramified** (plan simplification S5(d); the classical structure of
+/-- **The inertia field is unramified** (the classical structure of
 the inertia field, proved by Hensel lifting). There are `θ ∈ N°` and a monic `g ∈ K°[X]` such
 that `g` is the minimal polynomial of `θ` over `K`, its reduction is the separable minimal
 polynomial of `θ̃` over `K̃`, `‖g'(θ)‖ = 1`, the inertia field `Z = N^T` is `K(θ)`, `K̃(θ̃)` is the
@@ -716,7 +716,8 @@ theorem exists_inertiaField_generator :
   · rw [hθres]
     exact hθb
 
-/-- The inertia field is standard-unramified over `K` (Temkin's "unramified", plan S8). -/
+/-- The inertia field is standard-unramified over `K` (Temkin's "unramified", in the explicit form
+`IsStdUnramified`). -/
 theorem isStdUnramified_inertiaField :
     IsStdUnramified K (unitBall (fixedField (inertiaSubgroup K N))) := by
   obtain ⟨θ, g, hgmonic, hfeq, -, -, hθd, hZ, -, -, -, -⟩ :=

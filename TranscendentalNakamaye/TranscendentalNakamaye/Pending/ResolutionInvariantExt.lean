@@ -8,9 +8,9 @@ set_option linter.unusedSectionVars false
 
 Blueprint `hir:centre-function` (`blueprint/src/hironaka.tex`, Hironaka phase H4): the Lean form of the object the
 inductive construction of the canonical resolution of marked ideals produces, dimension by dimension.  This module
-**supersedes** the first form `ResolutionInvariantSpec.ResolutionInvariant` (7f77f95c, kept unchanged, blueprint
-`hir:centre-function-v1`), following the orchestrator's independent review of 3 October 2026
-(`.archon-horizon/scratch/orchestrator-review-resolution-invariant-20261003.md`, findings F1, F2, F5):
+**supersedes** the first form `ResolutionInvariantSpec.ResolutionInvariant` (kept unchanged, blueprint
+`hir:centre-function-v1`), following an independent review of 3 October 2026 (its findings F1, F2,
+F5):
 
 * (F2) the properties (2) and (4)--(7) are required along **canonical segments** only, as in the sources
   (Włodarczyk 2005, Proposition `pr:resol` (1) and (4): the invariants live on the supports of the canonical resolution,
@@ -22,10 +22,10 @@ inductive construction of the canonical resolution of marked ideals produces, di
   `T₀ T₁` has only empty centres, the invariant of `𝔪` along `T₀ T₁` is that of `𝔪_{T₀}` along `T₁`.  Włodarczyk's
   extensions insert isomorphisms anywhere in a resolution (`hiron.tex`, the definition of extensions and the étale
   lemma in the proof of `pr:resol`); the inductive step compares points whose lower-dimensional invariants are computed
-  from different stages, across steps which are empty near them.  The review's probe shows that the first form's
+  from different stages, across steps which are empty near them.  The review found that the first form's
   eight properties do not imply this.
 
-**Itself superseded on the route, kept**: human decision I-1139 C-0001 (b) (3 October 2026) replaced property (8)
+**Itself superseded on the route, kept**: the author's decision of 3 October 2026 replaced property (8)
 (`locallyFinite`, one bound for all canonical segments) by its form along growing sequences,
 `ResolutionInvariantSeq.ResolutionInvariant`: the invariant the route builds (`CanonicalCentres.canonicalInvariant`) and uses
 (`HironakaFromSeqInvariant`, the in-place proofs of the two Hironaka statements, `CanonicalResolution`).  This structure enters the

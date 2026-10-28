@@ -7,14 +7,14 @@ Temkin, *Stable modification of relative curves* (J. Algebraic Geom. 19 (2010); 
 `references/temkin10-stable-modification/source/semi-stable.tex`), §3.2, remark after
 Definition 3.2.1 (T:2310–2312): a `K̄`-modification of an integral scheme `S` with function field
 `K`, for `K̄` an algebraic closure of `K`, is an alteration. The proof of Theorem 1.5 (§5,
-T:3379–3399) works with the valuation rings of `K̄ = K(S)ᵃ` (our decision D-DJ9: no generic
+T:3379–3399) works with the valuation rings of `K̄ = K(S)ᵃ` (no generic
 étaleness is needed downstream), so the refinements of Proposition 3.2.6 are taken with values
 in the algebraic, possibly inseparable, extension `L = K(S)ᵃ` of `K(S)`.
 
 The integrated `RiemannZariskiSpace.isAlteration_isGenericallyEtale_of_hasCharts` and
 `RiemannZariskiSpace.exists_refinement_genericallyEtale` (lane RZ1) need `L / K(S)` separable
 (they also prove generic étaleness). Here the alteration part is proved for any algebraic
-extension, without noetherianity (node G2′ of `PLAN-T5.md`, ERRATA DJA-O22): the chart
+extension, without noetherianity: the chart
 `W ⊆ p⁻¹ V` over an affine open `V ∋ η_S` on which the finitely many chart generators are
 integral is the full preimage of `V`, and its section ring `s_V(Γ(S, V))[F]` is finite over
 `Γ(S, V)`, so `p` is finite over `V`.

@@ -16,7 +16,7 @@ change of the blow-up of `I` in `Spec R`:
 the comparison needed to identify the chart blow-ups of M. Temkin, *Stable modification of
 relative curves*, J. Algebraic Geom. 19 (2010), proof of Proposition 4.3.1 (T:2976–2983), which are
 spread along étale (in particular flat) charts, with the native blow-up of an ideal sheaf
-(Codex's `Geometry.BlowupGluing.blowup`), to which SERRE-I applies (`PLAN-T5.md` node A4).
+(Codex's `Geometry.BlowupGluing.blowup`), to which SERRE-I applies.
 
 ## Main results
 

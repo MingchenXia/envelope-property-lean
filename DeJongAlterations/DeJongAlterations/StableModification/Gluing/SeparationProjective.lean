@@ -10,7 +10,7 @@ import DeJongAlterations.StableModification.Gluing.SeparationProjectiveTransport
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), Lemma 4.3.2
 (`divlem`, T:3019–3046), for marks which are sections, **with the projectivity of the
-modification** (`PLAN-T5.md` §2.2 step 4, node A4, the marks part). Lane BND proved the lemma
+modification** (the marks part of projective cofinality). Lane BND proved the lemma
 (`Blowups.exists_separation_marks`) by an induction on the pair `(N, P)` (lexicographically), `N`
 the number of sections whose closed point has no smooth chart and `P` the number of pairs of
 sections meeting at the closed fibre, with two kinds of steps. This file reruns the induction with

@@ -8,11 +8,11 @@ import DeJongAlterations.StableModification.Blowups.Extension
 import DeJongAlterations.Geometry.ModificationCenterOpen
 
 /-!
-# Extension by the identity of finitely many local modifications (PLAN-T5 node A8)
+# Extension by the identity of finitely many local modifications
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
 Proposition 4.3.1 (T:2970–2975: "each such blow up extends trivially from a neighborhood of `x` to
-all of `C`") and of Proposition 4.5.1 (T:3243–3266); `PLAN-T5.md` §2.2 step 8. Iterating
+all of `C`") and of Proposition 4.5.1 (T:3243–3266). Iterating
 `Blowups.extension` (lane T43A/BND, `lem:sm-modification-extension`) inserts finitely many local
 modifications `fₖ : Yₖ → Uₖ`, each an isomorphism outside a closed `Tₖ ⊆ Uₖ` with `Uₖ ∩ Tₗ = ∅`
 for `k ≠ l`, into one modification `β : X → C`.
@@ -102,8 +102,8 @@ section Finset
 variable {C : Scheme.{u}} {κ : Type*} (U W : κ → C.Opens) {Y : κ → Scheme.{u}}
   (f : ∀ k, Y k ⟶ U k)
 
-/-- **Extension by the identity of finitely many local modifications** (`PLAN-T5.md` §2.2
-step 8, node A8): let `C` be integral and, for `k` in a finite set `s`, `fₖ : Yₖ → Uₖ` a
+/-- **Extension by the identity of finitely many local modifications**:
+let `C` be integral and, for `k` in a finite set `s`, `fₖ : Yₖ → Uₖ` a
 modification of an open `Uₖ ⊆ C` which is an isomorphism over `Uₖ ∩ Wₖ`, where `Uₖ ∪ Wₖ = C`,
 `Uₖ ⊆ Wₗ` for `k ≠ l` (the closed loci `C ∖ Wₖ` are disjoint from the other `Uₗ`) and the
 generic point of `C` lies in every `Wₖ`. Then there is a modification `β : X → C` which is an

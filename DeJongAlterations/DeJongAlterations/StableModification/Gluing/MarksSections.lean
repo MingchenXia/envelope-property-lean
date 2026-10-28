@@ -16,7 +16,7 @@ M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010
 Lemma 4.3.3 (`divlem`, T:3025–3033): over a valuation ring `V` whose fraction field is separably
 closed, the marks `D_η` of the generic fibre are finitely many rational points, and on a proper
 `V`-curve their closures are sections `σₖ : Spec V → X`. This file provides the bookkeeping for
-marks given by sections (`PLAN-T5.md` §2.2, node V2, the "pair version" of nodes A6–A8):
+marks given by sections (the "pair version" of the insertion of the local models):
 
 * `existsUnique_lift`: the valuative criterion of properness, for a proper `f : Y → X` and a
   section `σ` of `X` together with a lift of its generic point (`ClosureComponent.residuePt ⊥`,

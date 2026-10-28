@@ -20,12 +20,12 @@ The hypothesis holds when the closed fibre `X_k` is a reduced scheme
 
 Applied to `X = π⁻¹U` for a projective `π : B → Y` with `B` flat over `V` with reduced fibres and
 `U ⊆ Y` affine (`SteinProjective.lean`), this says that the finite `𝒪_Y`-algebra `π_* 𝒪_B` has
-reduced closed fibre: the second half of `thm:sm-stein-finite-valuation` (plan
-`PLAN-SM-GEOM.md`, S8, which replaces Temkin's use of the reduced fibre theorem, Temkin, *Stable
+reduced closed fibre: the second half of `thm:sm-stein-finite-valuation`
+(which replaces Temkin's use of the reduced fibre theorem, Temkin, *Stable
 modification of relative curves*, J. Algebraic Geom. 19 (2010), Lemma 4.4.1, `semi-stable.tex`
 lines 3089–3104).
 
-## The argument (plan S8)
+## The argument
 
 If `s^n ∈ 𝔪 Γ(X, 𝒪)`, then on each member `W_j` of a finite affine cover `s|_{W_j} ∈ 𝔪 Γ(W_j, 𝒪)`
 by the hypothesis, so `s|_{W_j} = t_j b_j` with `t_j ∈ 𝔪` (in a valuation ring a finite sum
@@ -210,7 +210,7 @@ theorem isRadical_map_maximalIdeal_globalSections {X : Scheme.{u}}
       (maximalIdeal V)).IsRadical :=
   isRadical_map_maximalIdeal_sections q isCompact_univ fun W hW _ => hred W hW
 
-/-- **Reduced closed fibre of `π_* 𝒪_B`** (blueprint `thm:sm-stein-reduced`, S8): for a
+/-- **Reduced closed fibre of `π_* 𝒪_B`** (blueprint `thm:sm-stein-reduced`): for a
 quasi-compact `π : B → Y` over `pY : Y → Spec V` with `B` flat over the valuation ring `V`, and
 an affine (more generally quasi-compact) open `U ⊆ Y` such that the affine opens of `B` inside
 `π⁻¹U` have reduced closed fibres, the ideal `𝔪 Γ(π⁻¹U, 𝒪_B)` is radical: the closed fibre of
@@ -309,7 +309,7 @@ section Stein
 
 variable {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
 
-/-- **Reduced closed fibre of `π_* 𝒪_B`** (blueprint `thm:sm-stein-reduced`, S8): for a
+/-- **Reduced closed fibre of `π_* 𝒪_B`** (blueprint `thm:sm-stein-reduced`): for a
 quasi-compact `π : B → Y` over `pY : Y → Spec V` with `B` flat over the valuation ring `V` with
 reduced closed fibre `B_k`, and a quasi-compact (e.g. affine) open `U ⊆ Y`, the ideal
 `𝔪 Γ(π⁻¹U, 𝒪_B)` is radical: `Γ(π⁻¹U, 𝒪_B) ⊗_V k` is reduced, i.e. the finite `𝒪_Y`-algebra

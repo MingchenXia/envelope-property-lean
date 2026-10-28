@@ -6,8 +6,8 @@ import DeJongAlterations.StableModification.Valuation.Unramified
 
 This file formalizes the composition criterion, Proposition 2.2.2 (`unramcrit2`) of M. Temkin,
 *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), §2.2
-(`semi-stable.tex`, lines 2146–2175), in the **adapted form** of `PLAN-SM-VAL.md` (node V8,
-simplification S10).
+(`semi-stable.tex`, lines 2146–2175), in the **adapted form** described
+below.
 
 Setting: `l/k` is a field extension, `A'` a valuation subring of `l` with `A = A' ∩ k`, residue
 fields `κ(A) → κ(A')`, and `B'` a valuation subring of `κ(A')` with `B = B' ∩ κ(A)`. The composed
@@ -27,8 +27,8 @@ extension") by checking flatness, `𝔫' = 𝔫C'` and finite presentation, the 
 Raynaud–Gruson [RG, 3.4.7] (flat and of finite type over a valuation ring implies finitely
 presented). That theorem is not in Mathlib; the adapted form avoids it because every composition
 in the proof of Theorem 2.1.8 is applied to a generator produced by decompletion with prescribed
-residue (plan nodes M0–M2), which is adapted in the above sense. The general statement is not
-formalized here.
+residue (`Decompletion.lean`, `MainUniformization.lean`), which is adapted in the above sense. The
+general statement is not formalized here.
 -/
 
 noncomputable section
@@ -77,7 +77,7 @@ theorem IsStdUnramifiedGenerator.compose {y : l} (hy : IsStdUnramifiedGenerator 
     rw [ha, residue_aeval_comap, ← derivative_map]
     exact hunit
 
-/-- **Composition criterion, adapted form** (plan `PLAN-SM-VAL.md`, node V8). Let `y` be a
+/-- **Composition criterion, adapted form**. Let `y` be a
 standard-unramified generator of `l/k` at `A'` whose residue `ȳ` is a unit of `B'` and a
 standard-unramified generator of `κ(A')/κ(A)` at `B'`. If the reduction of the minimal polynomial
 of `y` over `A = A' ∩ k` is `g̃ · X^m`, with `g̃` the minimal polynomial of `ȳ` over `κ(A)`, then

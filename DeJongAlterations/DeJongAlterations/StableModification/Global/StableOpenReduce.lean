@@ -10,8 +10,9 @@ import DeJongAlterations.Geometry.NormalizationFiniteArbitraryField
 /-!
 # Reduction of `StableOpenNbhdConn` to a rational point of a normal variety
 
-Node G4 of `PLAN-T5.md` (Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19
-(2010), Lemma 5.1 (ii) `openloclem`, T:3282–3311; ERRATA DJA-O36). We reduce the corrected
+The spreading of numerical stability (Temkin, *Stable modification of relative curves*, J.
+Algebraic Geom. 19 (2010), Lemma 5.1 (ii) `openloclem`, T:3282–3311), in the corrected form of
+`Global/StableOpenStatement.lean`. We reduce the corrected
 spreading statement `StableOpenNbhdConn k` to its special case `StableOpenNbhdRational K`: a
 `K`-rational point of a *normal* variety over an *algebraically closed* field `K` (the ω step,
 left as a hypothesis).
@@ -296,7 +297,7 @@ end Rational
 section Reduction
 
 /-- **Reduction of the corrected spreading statement to the ω step** (blueprint
-`thm:sm-gso-reduction`; ERRATA DJA-O36): if `StableOpenNbhdRational K` holds for every
+`thm:sm-gso-reduction`): if `StableOpenNbhdRational K` holds for every
 algebraically closed field `K`, then `StableOpenNbhdConn k` holds for every field `k`. The family
 is base changed to `U ×_k Spec K` along the field `K` of the given geometric point, which becomes
 a `K`-rational point (`exists_open_of_stableOpenNbhdRational`), and the open neighbourhood is

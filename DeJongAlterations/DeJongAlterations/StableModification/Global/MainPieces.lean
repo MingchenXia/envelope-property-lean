@@ -5,18 +5,19 @@ import DeJongAlterations.Geometry.NormalizationProjective
 /-!
 # From local and comparison pieces to a locally projective stable modification
 
-Node G8 of `PLAN-T5.md` (§2.1 steps 5–6; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3379–3399), conditional on the local inputs.
+The final steps of the proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*,
+`semi-stable.tex`, T:3379–3399), conditional on the local inputs.
 
 Let `S` be a projective variety over the field `k`, `(C, D)` a multipointed `S`-curve with
-`C ⟶ S` projective, and `L = K(S)ᵃ` (decision D-DJ9). If local stable pieces cover `RZ_L(S)` and
-comparison pieces cover the overlaps (`LocalStablePiece`, `ComparisonPiece`), then
-`HasLocallyProjectiveStableModification k pS g D`
+`C ⟶ S` projective, and `L = K(S)ᵃ` (no generic étaleness is needed downstream). If local stable
+pieces cover `RZ_L(S)` and comparison pieces cover the overlaps (`LocalStablePiece`,
+`ComparisonPiece`), then `HasLocallyProjectiveStableModification k pS g D`
 (`hasLocallyProjectiveStableModification_of_pieces`):
 
 1. glue the base changes of the pieces over a refinement `p : S'' ⟶ S`
-   (`exists_glued_model`, nodes G5–G7);
-2. make the base projective and normal (obligation E1): a Chow modification
+   (`exists_glued_model`);
+2. make the base projective and normal (condition (E1) of
+   `HasLocallyProjectiveStableModification`): a Chow modification
    `π : Y ⟶ S''` with `Y` projective over `k`
    (`ProjectiveReduction.exists_projective_modification_of_isProper`),
    followed by the normalization `ν : N ⟶ Y`, which is finite and birational, with `N` normal
@@ -50,8 +51,8 @@ open Geometry.NormalizationGluing (normalization normalizationStructure)
 
 variable {k : Type u} [Field k] {S C : Scheme.{u}}
 
-/-- **A locally projective stable modification from local and comparison pieces**
-(`PLAN-T5.md` §2.1 steps 3–6, nodes G5–G8). Let `S` be a projective variety over `k`, `(C, D)` a
+/-- **A locally projective stable modification from local and comparison pieces**.
+Let `S` be a projective variety over `k`, `(C, D)` a
 multipointed `S`-curve, `L ⊇ K(S)` algebraic (e.g. `K(S)ᵃ`). If every valuation ring of `RZ_L(S)`
 lies in `RZ_L(T)` for a local stable piece `T` and for any two local stable pieces every
 valuation ring of `RZ_L(T₁) ∩ RZ_L(T₂)` lies in `RZ_L(T')` for a comparison piece `T'`, then
@@ -129,8 +130,8 @@ theorem hasLocallyProjectiveStableModification_of_pieces (pS : S ⟶ Spec (.of k
     hm3.isStableModification, hm3.locallyRelativelyProjective, hm3.isNumericallyStable,
     isFinite_marks_of_isProper hm3.isSemistablePair, U₀, ⟨⟨hU₀.some, hU₀.some_mem⟩⟩, hiso₀⟩
 
-/-- **Temkin's stable modification theorem from the locally projective one** (node G8, final
-step; PLAN-OM3 §4). Given lane OM3D's projectivity theorem `StableModificationProjectivity k` and
+/-- **Temkin's stable modification theorem from the locally projective one** (the final
+step). Given lane OM3D's projectivity theorem `StableModificationProjectivity k` and
 a locally projective stable modification for every family of `DeJong.TemkinStableModification`,
 the integrated bridge `Curves.hasStableModification_of_isStableModification` gives
 `DeJong.TemkinStableModification k`. -/

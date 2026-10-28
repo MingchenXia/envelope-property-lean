@@ -10,8 +10,8 @@ set_option autoImplicit false
 Source: Demailly--Păun, *Numerical characterization of the Kähler cone of a compact Kähler
 manifold*, Lemma 2.1, the computation (2.2)--(2.3) (`dp04-kahler-cone:2.1`,
 `references/dp04-kahler-cone/source/0105176.tex:640-690 ((2.2) at :671, (2.3) at :687)`), quoted by Boucksom as the
-concentration of mass (`bou02-volume:4.11`).  This is the local calculus of step B3 (part 2) of
-the TN.4 plan for Boucksom 4.8 (`.archon-horizon/scratch/tn4-plan-0133.md`): the global potentials
+concentration of mass (`bou02-volume:4.11`).  This is the local calculus needed for
+Boucksom 4.8 (programme TN.4): the global potentials
 `ψ_ε = ½ log(∑ θ_j² ∑_k |g_{j,k}|² + ε²)` have `ddᶜψ_ε ≥ -A ω` uniformly in `ε`.
 
 For real `C²` functions `c_j` and holomorphic `G_j` near `z`, `s > 0` and

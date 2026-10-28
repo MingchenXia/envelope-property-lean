@@ -7,12 +7,12 @@ import DeJongAlterations.StableModification.Gluing.Setup
 import DeJongAlterations.StableModification.BlowDown.NormalizationCurve
 
 /-!
-# The normalization of the projective refinement (PLAN-T5 node A5)
+# The normalization of the projective refinement
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), proof of
 Proposition 4.5.1 (`sepclosprop`, `semi-stable.tex` lines 3243–3266): after the refinement
 `C' → C` (covered by opens `C'ᵢ = Wᵢ`) and cofinality, each `Wᵢ` is dominated by a strictly
-semi-stable modification `qᵢ : Bᵢ → Wᵢ`; `PLAN-T5.md` §2.2 step 5 replaces Temkin's use of the
+semi-stable modification `qᵢ : Bᵢ → Wᵢ`; our route replaces Temkin's use of the
 reduced fibre theorem by the normalization `N = Nor(C')` of `C'` in its function field, which over
 `Wᵢ` is the Stein factorization `Spec qᵢ_* 𝒪_{Bᵢ}` of `qᵢ`.
 
@@ -42,7 +42,7 @@ Here `N` is Mathlib's relative normalization `(genericPt C').normalization` of `
   finite, and `N` is projective over `V` when `C'` is.
 
 The hypotheses on the `qᵢ` (projectivity relative to `Wᵢ`, normality and flatness of `Bᵢ`) are the
-output of PLAN-T5 node A4 (projective cofinality), which is not proved in this lane; they are
+output of projective cofinality, which is not proved in this lane; they are
 explicit hypotheses here.
 
 The auxiliary predicate `IsoOver f₁ f₂` (an isomorphism of the sources commuting with the maps to
@@ -605,7 +605,7 @@ theorem iSup_preimage_eq_top {X Y : Scheme.{u}} (f : X ⟶ Y) {U : ι → Y.Open
 
 variable (pC' : C' ⟶ Spec (.of V))
 
-/-- **`N = Nor(C')` is finite over `C'`** (`PLAN-T5.md` §2.2 step 5, node A5): if `C'` is covered
+/-- **`N = Nor(C')` is finite over `C'`**: if `C'` is covered
 by opens `Wᵢ` dominated by modifications `qᵢ : Bᵢ → Wᵢ`, projective relative to `Wᵢ → Spec V`,
 with `Bᵢ` normal and flat over `V`, then `N → C'` is finite (Stein finiteness on each piece). -/
 theorem isFinite_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
@@ -620,7 +620,7 @@ theorem isFinite_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
     (Cohomology.isFinite_fromNormalization_of_isRelativelyProjective V (q i)
       ((W i).ι ≫ pC') (hq i))
 
-/-- **`N = Nor(C')` is flat over `V`** (node A5). -/
+/-- **`N = Nor(C')` is flat over `V`**. -/
 theorem flat_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
     [LocallyOfFinitePresentation pC'] [∀ i, IsModification (q i)]
     (hB : ∀ i, IsNormalScheme (B i)) (hflat : ∀ i, Flat (q i ≫ (W i).ι ≫ pC'))
@@ -634,7 +634,7 @@ theorem flat_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
   simp only [Category.assoc] at h
   exact h.prop (P := @Flat) (BlowDown.flat_normalization (q i) ((W i).ι ≫ pC') (hq i))
 
-/-- **`N = Nor(C')` is locally of finite presentation over `V`** (node A5). -/
+/-- **`N = Nor(C')` is locally of finite presentation over `V`**. -/
 theorem locallyOfFinitePresentation_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
     [LocallyOfFinitePresentation pC'] [∀ i, IsModification (q i)]
     (hB : ∀ i, IsNormalScheme (B i)) (hflat : ∀ i, Flat (q i ≫ (W i).ι ≫ pC'))
@@ -649,7 +649,7 @@ theorem locallyOfFinitePresentation_fromNormalization_genericPt (hW : ⨆ i, W i
   exact h.prop (P := @LocallyOfFinitePresentation)
     (BlowDown.locallyOfFinitePresentation_normalization (q i) ((W i).ι ≫ pC') (hq i))
 
-/-- **`N = Nor(C')` has reduced closed fibre** (node A5) when the `Bᵢ` have. -/
+/-- **`N = Nor(C')` has reduced closed fibre** when the `Bᵢ` have. -/
 theorem isReduced_closedFibre_fromNormalization_genericPt (hW : ⨆ i, W i = ⊤)
     [LocallyOfFinitePresentation pC'] [∀ i, IsModification (q i)]
     (hB : ∀ i, IsNormalScheme (B i)) (hflat : ∀ i, Flat (q i ≫ (W i).ι ≫ pC'))

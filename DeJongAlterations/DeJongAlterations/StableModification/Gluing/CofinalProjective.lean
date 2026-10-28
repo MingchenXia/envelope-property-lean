@@ -7,7 +7,7 @@ import DeJongAlterations.StableModification.Gluing.CofinalProjectiveStage
 import DeJongAlterations.StableModification.Gluing.SetupAssembly
 
 /-!
-# Projective cofinality of strictly semi-stable modifications (`PLAN-T5.md` node A4)
+# Projective cofinality of strictly semi-stable modifications
 
 M. Temkin, *Stable modification of relative curves*, J. Algebraic Geom. 19 (2010), Proposition
 4.3.1 (`cofinprop`, T:2956–3017): strictly semi-stable modifications of a strictly semi-stable
@@ -292,7 +292,7 @@ theorem isRelativelyProjective_of_isProjectiveOver_spec {R E : Type u} [CommRing
 
 variable {K : Type u} [Field K] [IsSepClosed K] {O : ValuationSubring K} [Finite (PrimeSpectrum O)]
 
-/-- **Projective cofinality** (`PLAN-T5.md` node A4; Temkin, Proposition 4.3.1 with the
+/-- **Projective cofinality** (Temkin, Proposition 4.3.1 with the
 projectivity of the output): let `O` be a valuation ring of finite height with separably closed
 fraction field and `ψ : Spec E → Spec O` an affine integral strictly semi-stable relative curve.
 Every modification `h : W → Spec E` is dominated by a strictly semi-stable modification
@@ -320,7 +320,7 @@ theorem exists_dominates_isStrictlySemistable_projective {E : Type u} [CommRing 
   rw [Category.comp_id] at hpr
   exact ⟨B, inferInstance, f, inferInstance, hss, hpr, q, hq⟩
 
-/-- **Lane T45A's hypothesis `ProjectiveCofinality R` holds** (`PLAN-T5.md` node A4) for every
+/-- **Lane T45A's hypothesis `ProjectiveCofinality R` holds** for every
 valuation ring `R` of finite height with separably closed fraction field. -/
 theorem projectiveCofinality (R : ValuationSubring K) [Finite (PrimeSpectrum R)] :
     ProjectiveCofinality R := by

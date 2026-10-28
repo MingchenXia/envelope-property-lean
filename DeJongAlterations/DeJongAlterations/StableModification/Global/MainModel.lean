@@ -4,11 +4,12 @@ import DeJongAlterations.StableModification.Global.CoverGlue
 # Locally projective stable models and their base change
 
 The glued model of `Global.exists_glued_model` is projective (relative to `Spec k`) only over the
-members of a finite open cover of its target (obligation E3 of PLAN-OM3 §6). This file bundles
-the properties carried to the end of the global assembly (`PLAN-T5.md` §2.1 steps 5–6, node G8)
+members of a finite open cover of its target (condition (E3) of
+`HasLocallyProjectiveStableModification`). This file bundles
+the properties carried to the end of the global assembly
 as `IsLocallyProjectiveStableModel`, and proves that they are stable under base change along
 morphisms of integral schemes sending the generic point to the generic point (needed for the
-normalization of the base, which gives E1) and under isomorphisms of the target, and that they
+normalization of the base, which gives (E1)) and under isomorphisms of the target, and that they
 give Temkin's stable η-modifications with finite marks.
 
 * `locallyRelativelyProjective_of_isPullback`: lane OM3A's
@@ -87,8 +88,8 @@ section Model
 
 variable {k : Type u} [CommRing k] {T P X : Scheme.{u}}
 
-/-- **A locally projective stable model over an integral base** (the output of the gluing,
-`PLAN-T5.md` §2.1 steps 5–6): for `g : P ⟶ T` flat and marks `D ⊆ P`, the proper morphism
+/-- **A locally projective stable model over an integral base** (the output of the gluing):
+for `g : P ⟶ T` flat and marks `D ⊆ P`, the proper morphism
 `β : X ⟶ P` with marks `D'` makes `(X, D')` a semi-stable pair over `T` satisfying the generic
 marks condition, numerically stable, locally relatively projective over `P ⟶ T ⟶ Spec k`, and is
 an isomorphism over a nonempty open of `T` with quasi-compact inclusion. -/

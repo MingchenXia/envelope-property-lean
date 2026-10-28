@@ -14,7 +14,7 @@ This file formalizes the converse direction of the decompletion criterion, Propo
 (2010), §2.2 (`semi-stable.tex`, lines 2100–2140), in the form needed for the induction of
 Theorem 2.1.8: the generator is produced with a **prescribed residue** and with reduced minimal
 polynomial `g̃ · X^m`, which is the *adapted* form consumed by the composition criterion
-`IsStdUnramifiedGenerator.compose_of_adapted` (plan `PLAN-SM-VAL.md`, node M0).
+`IsStdUnramifiedGenerator.compose_of_adapted`.
 Blueprint: `sm-val-uniformization-dec.tex`, `prop:sm-val-decompletion`.
 
 ## Setting

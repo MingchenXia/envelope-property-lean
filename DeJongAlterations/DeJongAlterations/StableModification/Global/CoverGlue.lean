@@ -3,8 +3,8 @@ import DeJongAlterations.StableModification.Global.Cover
 /-!
 # Gluing the base changes of the local stable pieces
 
-Nodes G5–G7 of `PLAN-T5.md` (§2.1 steps 3–5; Temkin, *Stable modification of relative curves*,
-`semi-stable.tex`, proof of Theorem 1.5, T:3384–3397), with a single refinement of the base.
+The gluing steps of the proof of Theorem 1.5 (Temkin, *Stable modification of relative curves*,
+`semi-stable.tex`, T:3384–3397), with a single refinement of the base.
 
 Let `S` be integral, separated, quasi-compact and locally Noetherian, `L ⊇ K(S)` algebraic and
 `η = functionFieldPoint S L`. Assume
@@ -52,7 +52,7 @@ theorem isSeparated_of_isAffine_of_isSeparated {T : Scheme.{u}} [IsAffine T] [S.
     infer_instance
   exact IsSeparated.of_comp t (terminal.from S)
 
-/-- **The local morphisms on the overlaps** (`PLAN-T5.md` §2.1 step 4, node G6). Let
+/-- **The local morphisms on the overlaps**. Let
 `p : S'' ⟶ S` be a morphism from an integral scheme with a dominant `L`-point `η''`, let opens
 `W₁, W₂, O ⊆ S''` realise two local stable pieces `P₁, P₂` and a comparison piece `Q` of them
 (morphisms `h₁, h₂, h_O` over `S`, compatible with `L`-points over `η''`). Then every point `x` of
@@ -145,7 +145,7 @@ theorem LocalStablePiece.exists_local_hom [S.IsSeparated] {S'' : Scheme.{u}} [Is
   · rw [Category.assoc, P₂.bcMap_snd, pullback.lift_snd_assoc, Category.assoc,
       Scheme.homOfLE_ι, hσ, Category.assoc]
 
-/-- **The glued model over a refinement** (`PLAN-T5.md` §2.1 steps 3–5, nodes G5–G7; Temkin,
+/-- **The glued model over a refinement** (Temkin,
 proof of Theorem 1.5, T:3384–3397). Let `S` be integral, separated, quasi-compact and locally
 Noetherian and `L ⊇ K(S)` algebraic. If every valuation ring of `RZ_L(S)` lies in `RZ_L(T)` for a
 local stable piece `T`, and for any two local stable pieces `T₁, T₂` every valuation ring of

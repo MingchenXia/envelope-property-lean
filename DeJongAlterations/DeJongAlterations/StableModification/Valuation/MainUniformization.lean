@@ -9,8 +9,8 @@ import DeJongAlterations.StableModification.Valuation.FunctionField.PoleNorm
 This file proves Theorem 2.1.8 (`valunif`) of M. Temkin, *Stable modification of relative
 curves*, J. Algebraic Geom. 19 (2010), §2.1–§2.2 (`semi-stable.tex`, statement lines 2056–2061,
 proof lines 2177–2232), in the form of the interface `UniformizationHypotheses`
-(`InterfaceStatement.lean`) and in the strengthened form used for the induction (plan
-`PLAN-SM-VAL.md`, node M2): there are `T ∈ L` transcendental over `K` and a
+(`InterfaceStatement.lean`) and in the strengthened form used for the induction:
+there are `T ∈ L` transcendental over `K` and a
 standard-unramified generator `y` of `L/K(T)` at `O` which is a unit of `O`.
 Blueprint chapter `sm-val-main.tex`, `thm:sm-val-uniformization`.
 
@@ -54,7 +54,7 @@ open DeJongAlterations.StableModification.Valuation.FunctionField
 
 universe u v
 
-/-- **The strengthened conclusion of Theorem 2.1.8** (plan `PLAN-SM-VAL.md`, node M2): some
+/-- **The strengthened conclusion of Theorem 2.1.8**: some
 `T ∈ L` transcendental over `K` and a standard-unramified generator `y` of `L/K(T)` at `O` which
 is a unit of `O`. -/
 def StdUnramifiedConclusion (K L : Type*) [Field K] [Field L] [Algebra K L]
@@ -218,7 +218,7 @@ theorem isFunctionFieldOneVar_residueField [IsSepClosed K] (hfg : (⊤ : Interme
 
 set_option linter.style.haveILetI false in
 /-- **The residue extension satisfies the hypotheses of Theorem 2.1.8** (Temkin, l. 2224–2227;
-the centre condition holds because `κ(O₁ ∩ K)` is algebraically closed, plan node F1). -/
+the centre condition holds because `κ(O₁ ∩ K)` is algebraically closed). -/
 theorem uniformizationHypotheses_residue (h : UniformizationHypotheses K L O)
     (hA₁ : O₁.comap (algebraMap K L) ≠ ⊤)
     (hnsurj : ¬ Function.Surjective
@@ -361,7 +361,7 @@ theorem stdUnramifiedConclusion_step {K : Type u} {L : Type v} [Field K] [Field 
 
 /-- **Temkin, Theorem 2.1.8** (uniformization of one-dimensional valued fields,
 `semi-stable.tex` l. 2056–2061, proof l. 2177–2232; blueprint `thm:sm-val-uniformization`), in
-the strengthened form of plan node M2: under `UniformizationHypotheses K L O` there are
+the strengthened form used for the induction: under `UniformizationHypotheses K L O` there are
 `T ∈ L` transcendental over `K` and a standard-unramified generator `y` of `L/K(T)` at `O` with
 `y` a unit of `O`. -/
 theorem stdUnramifiedConclusion {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
