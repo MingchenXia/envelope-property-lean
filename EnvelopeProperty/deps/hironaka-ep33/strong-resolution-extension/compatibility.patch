@@ -1,0 +1,419 @@
+--- upstream/Hironaka/Algebra/Smooth/StandardSmoothLift.lean
++++ resolution-ep33/Hironaka/Algebra/Smooth/StandardSmoothLift.lean
+@@ -4,6 +4,8 @@
+ Authors: Chris Elliott (Resolution): formalization performed by Claude Fable 5.1
+ -/
+ module
++
++public import Hironaka.Compat.TensorProductInduction
+ 
+ public import Mathlib.RingTheory.Smooth.StandardSmooth
+ public import Mathlib.Algebra.Category.Ring.Basic
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/SurjectiveCompletion.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/SurjectiveCompletion.lean
+@@ -77,13 +77,13 @@
+ @[reassoc]
+ theorem ι_none_comp_completionDesc {W : Scheme.{u}} {TA : Triple k} (ψ : W ⟶ TA.X.left) :
+     Sigma.ι (completionFamily W TA) none ≫ completionDesc ψ = ψ :=
+-  Sigma.ι_comp_desc _ _
++  Sigma.ι_desc _ _
+ 
+ @[reassoc]
+ theorem ι_some_comp_completionDesc {W : Scheme.{u}} {TA : Triple k} (ψ : W ⟶ TA.X.left)
+     (i : TA.affineCover.I₀) :
+     Sigma.ι (completionFamily W TA) (some i) ≫ completionDesc ψ = TA.affineCover.f i :=
+-  Sigma.ι_comp_desc _ _
++  Sigma.ι_desc _ _
+ 
+ instance isAffine_completionFamily (W : Scheme.{u}) [IsAffine W] (TA : Triple k)
+     (o : Option TA.affineCover.I₀) : IsAffine (completionFamily W TA o) := by
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/Affine.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/Affine.lean
+@@ -77,7 +77,7 @@
+ theorem firstCenterIndex_of_exists {S : BlowUpSequence A} {I : A.IdealSheafData}
+     (h : ∃ n, CenterContains S I n) : CenterContains S I (firstCenterIndex S I) := by
+   unfold firstCenterIndex
+-  rw [dite_eq_left h]
++  rw [dif_pos h]
+   exact Nat.find_spec h
+ 
+ open Classical in
+@@ -85,7 +85,7 @@
+     (h : ∃ n, CenterContains S I n) {n : ℕ} (hn : n < firstCenterIndex S I) :
+     ¬ CenterContains S I n := by
+   unfold firstCenterIndex at hn
+-  rw [dite_eq_left h] at hn
++  rw [dif_pos h] at hn
+   exact Nat.find_min h hn
+ 
+ theorem firstCenterIndex_lt_length {S : BlowUpSequence A} {I : A.IdealSheafData}
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineEmbedding.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineEmbedding.lean
+@@ -48,18 +48,18 @@
+ 
+ theorem padProj_X_of_lt (n : ℕ) (i : Fin (n + 2)) (h : i.val < n) :
+     padProj (k := k) n (X i) = X ⟨i.val, h⟩ := by
+-  rw [padProj, aeval_X, dite_eq_left h]
++  rw [padProj, aeval_X, dif_pos h]
+ 
+ theorem padProj_X_of_le (n : ℕ) (i : Fin (n + 2)) (h : n ≤ i.val) :
+     padProj (k := k) n (X i) = 0 := by
+-  rw [padProj, aeval_X, dite_eq_right (not_lt.mpr h)]
++  rw [padProj, aeval_X, dif_neg (not_lt.mpr h)]
+ 
+ theorem dropLast_X_of_lt (n : ℕ) (i : Fin (n + 2)) (h : i.val < n + 1) :
+     dropLast (k := k) n (X i) = X ⟨i.val, h⟩ := by
+-  rw [dropLast, aeval_X, dite_eq_left h]
++  rw [dropLast, aeval_X, dif_pos h]
+ 
+ theorem dropLast_X_last (n : ℕ) : dropLast (k := k) n (X (Fin.last (n + 1))) = 0 := by
+-  rw [dropLast, aeval_X, dite_eq_right (by simp)]
++  rw [dropLast, aeval_X, dif_neg (by simp)]
+ 
+ theorem padProj_surjective (n : ℕ) : Function.Surjective (padProj (k := k) n) := by
+   intro P
+@@ -84,8 +84,8 @@
+   by_cases h : i.val < n + 1
+   · rw [dropLast_X_of_lt n i h, aeval_X]
+     by_cases h' : i.val < n
+-    · rw [padProj_X_of_lt n i h', dite_eq_left h']
+-    · rw [padProj_X_of_le n i (not_lt.mp h'), dite_eq_right h']
++    · rw [padProj_X_of_lt n i h', dif_pos h']
++    · rw [padProj_X_of_le n i (not_lt.mp h'), dif_neg h']
+   · have hi : i = Fin.last (n + 1) := Fin.ext (by rw [Fin.val_last]; omega)
+     rw [hi, dropLast_X_last, map_zero, padProj_X_of_le n _ (by rw [Fin.val_last]; omega)]
+ 
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineEndResult.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineEndResult.lean
+@@ -221,7 +221,7 @@
+     by_contra hno
+     have : firstCenterIndex (BP TA) TA.I = (BP TA).length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hno]
++      rw [dif_neg hno]
+     omega
+   obtain ⟨hj', hle⟩ := firstCenterIndex_of_exists hex
+   have : IsNoetherian TA.X.left := (TA.X.left ↘ Spec (CommRingCat.of k)).isNoetherian_of_field
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineFunctoriality.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineFunctoriality.lean
+@@ -97,7 +97,7 @@
+     ⟨Sigma.desc (fun i => (c i).e) ≫ (Y ↘ Spec (CommRingCat.of k))⟩
+   have hoverE : HomIsOver (Sigma.desc fun i => (c i).e) (Spec (CommRingCat.of k)) := ⟨rfl⟩
+   have hdesc : (Sigma.desc fun i => (c i).e ≫ h) = Sigma.desc (fun i => (c i).e) ≫ h :=
+-    Sigma.hom_ext _ _ fun i => by rw [Sigma.ι_comp_desc, Sigma.ι_comp_desc_assoc]
++    Sigma.hom_ext _ _ fun i => by rw [Sigma.ι_desc, Sigma.ι_desc_assoc]
+   have hoverEh : HomIsOver (Sigma.desc fun i => (c i).e ≫ h) (Spec (CommRingCat.of k)) := by
+     constructor
+     rw [hdesc, Category.assoc, HomIsOver.comp_over (f := h) (S := Spec (CommRingCat.of k))]
+@@ -110,7 +110,7 @@
+   have hZ : (∐ fun i => (c i).W).IsReducedEquidimensional k :=
+     .sigma _ (fun i => (c i).e) (fun i => by
+       change Sigma.ι _ i ≫ Sigma.desc (fun i => (c i).e) ≫ (Y ↘ Spec (CommRingCat.of k)) = _
+-      rw [← Category.assoc, Sigma.ι_comp_desc]) hY
++      rw [← Category.assoc, Sigma.ι_desc]) hY
+   have hZqc : QuasiCompact ((∐ fun i => (c i).W) ↘ Spec (CommRingCat.of k)) := by
+     have := isAffineHom_of_isAffine ((∐ fun i => (c i).W) ↘ Spec (CommRingCat.of k))
+     infer_instance
+@@ -152,7 +152,7 @@
+   have key := hbY.symm.trans hbX
+   refine eq_of_pullback_of_covers _ _ (fun i => (c i).e) hcov fun i => ?_
+   have hi : (c i).e = Sigma.ι (fun i => (c i).W) i ≫ Sigma.desc (fun i => (c i).e) :=
+-    (Sigma.ι_comp_desc (fun i => (c i).e) i).symm
++    (Sigma.ι_desc (fun i => (c i).e) i).symm
+   rw [hi, pullback_comp, pullback_comp, key]
+ 
+ /-- Commutation of `BRAffine` with a smooth `h` of relative dimension `d` between affine reduced
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineTheorem36Reduced.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/AffineTheorem36Reduced.lean
+@@ -218,7 +218,7 @@
+     by_contra hno
+     have h0 : firstCenterIndex (BP TA) TA.I = (BP TA).length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hno]
++      rw [dif_neg hno]
+     omega
+   exact firstCenterIndex_of_exists hex
+ 
+@@ -237,7 +237,7 @@
+     have h0 : firstCenterIndex (BP TA) ((X.irreducibleComponentIdeal C hC).map emb) =
+         (BP TA).length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hno]
++      rw [dif_neg hno]
+     change componentIndex k X TA emb C hC = (BP TA).length at h0
+     omega
+   exact firstCenterIndex_of_exists hex
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/BR.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/BR.lean
+@@ -171,19 +171,19 @@
+ theorem BR_eq_of_descends (hX : X.IsReducedEquidimensional k)
+     (hT : BRDescends k X) : BR k X = hT.choose.eraseEmpty := by
+   unfold BR
+-  rw [ite_eq_left hX, dite_eq_left hT]
++  rw [if_pos hX, dif_pos hT]
+ 
+ /-- On a member of the class without the cover descent, `BR` is the empty sequence (a branch never
+ taken, since the descent holds on every member of the class). -/
+ theorem BR_eq_nil_of_not_descends (hX : X.IsReducedEquidimensional k)
+     (hT : ¬ BRDescends k X) : BR k X = nil X := by
+   unfold BR
+-  rw [ite_eq_left hX, dite_eq_right hT]
++  rw [if_pos hX, dif_neg hT]
+ 
+ /-- Off the class `BR` is the empty sequence. -/
+ theorem BR_eq_nil_of_not_class (hX : ¬ X.IsReducedEquidimensional k) : BR k X = nil X := by
+   unfold BR
+-  rw [ite_eq_right hX]
++  rw [if_neg hX]
+ 
+ /-- `BR` has no empty blow-up (both branches of the definition). -/
+ theorem eraseEmpty_BR : (BR k X).eraseEmpty = BR k X := by
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/BRDescent.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/BRDescent.lean
+@@ -284,7 +284,7 @@
+   have hZ' : (∐ coverPreimage q).IsReducedEquidimensional k :=
+     .sigma _ (coverPreimageι q) (fun i => by
+       change Sigma.ι _ i ≫ Sigma.desc (coverPreimageι q) ≫ (Z ↘ Spec (CommRingCat.of k)) = _
+-      rw [← Category.assoc, Sigma.ι_comp_desc]) hZ
++      rw [← Category.assoc, Sigma.ι_desc]) hZ
+   have hAff : IsAffine (∐ coverPreimage q) := inferInstance
+   have hqc : QuasiCompact ((∐ coverPreimage q) ↘ Spec (CommRingCat.of k)) := by
+     have := isAffineHom_of_isAffine ((∐ coverPreimage q) ↘ Spec (CommRingCat.of k))
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/BaseChangeAffine.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/BaseChangeAffine.lean
+@@ -259,7 +259,7 @@
+   have hZ' : (∐ coverPreimage p).IsReducedEquidimensional L :=
+     .sigma _ (coverPreimageι p) (fun i => by
+       change Sigma.ι _ i ≫ Sigma.desc (coverPreimageι p) ≫ (XL ↘ Spec (CommRingCat.of L)) = _
+-      rw [← Category.assoc, Sigma.ι_comp_desc]) hXL
++      rw [← Category.assoc, Sigma.ι_desc]) hXL
+   have hAff : IsAffine (∐ coverPreimage p) := inferInstance
+   have hAffHom := isAffineHom_of_isAffine ((∐ coverPreimage p) ↘ Spec (CommRingCat.of L))
+   have hqc : QuasiCompact ((∐ coverPreimage p) ↘ Spec (CommRingCat.of L)) := inferInstance
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/EqualAbsorbingIndex.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/EqualAbsorbingIndex.lean
+@@ -171,7 +171,7 @@
+     by_contra hno
+     have h0 : firstCenterIndex S ((X.irreducibleComponentIdeal C' hC').map emb) = S.length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hno]
++      rw [dif_neg hno]
+     omega
+   obtain ⟨hj', hleZ⟩ := firstCenterIndex_of_exists hex'
+   have hx₀A : emb x₀ ∈ ((X.irreducibleComponentIdeal C' hC').map emb).support := by
+@@ -318,13 +318,13 @@
+           have h0 : firstCenterIndex S ((X.irreducibleComponentIdeal C' hC').map emb) =
+             S.length := by
+             unfold firstCenterIndex
+-            rw [dite_eq_right hno]
++            rw [dif_neg hno]
+           rw [h C' hC'] at h0
+           omega
+         have := firstCenterIndex_of_exists hex
+         rwa [h C' hC'] at this
+       unfold firstCenterIndex
+-      rw [dite_eq_left ⟨j, hcc⟩]
++      rw [dif_pos ⟨j, hcc⟩]
+       exact Nat.find_min' _ hcc
+     · rw [hjeq]
+       exact firstCenterIndex_le_length _ _
+@@ -334,7 +334,7 @@
+       rw [not_le] at hlt
+       exact hbefore _ hlt (firstCenterIndex_of_exists hex)
+     · unfold firstCenterIndex
+-      rw [dite_eq_right hex]
++      rw [dif_neg hex]
+       exact hjle
+ 
+ end Identification
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/EraseEmptyIndex.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/EraseEmptyIndex.lean
+@@ -73,14 +73,14 @@
+     (hD : D = ⊤) (m : ℕ) : eraseIdx (cons X D rest) (m + 1) = eraseIdx rest m := by
+   classical
+   change (if D = ⊤ then 0 else 1) + eraseIdx rest m = eraseIdx rest m
+-  rw [ite_eq_left hD, zero_add]
++  rw [if_pos hD, zero_add]
+ 
+ /-- A kept (nonempty) blow-up advances the index by one. -/
+ theorem eraseIdx_cons_succ_of_ne_top {D : X.IdealSheafData} (rest : BlowUpSequence D.blowUp)
+     (hD : D ≠ ⊤) (m : ℕ) : eraseIdx (cons X D rest) (m + 1) = eraseIdx rest m + 1 := by
+   classical
+   change (if D = ⊤ then 0 else 1) + eraseIdx rest m = eraseIdx rest m + 1
+-  rw [ite_eq_right hD, add_comm]
++  rw [if_neg hD, add_comm]
+ 
+ /-- The index is monotone in the stage. -/
+ theorem eraseIdx_mono : ∀ {X : Scheme.{u}} (S : BlowUpSequence X) {m m' : ℕ}, m ≤ m' →
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/FirstCenterEraseEmpty.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/FirstCenterEraseEmpty.lean
+@@ -109,7 +109,7 @@
+     have h' : ∃ n, CenterContains S.eraseEmpty J n := ⟨_, hc⟩
+     apply le_antisymm
+     · unfold firstCenterIndex
+-      rw [dite_eq_left h']
++      rw [dif_pos h']
+       exact Nat.find_min' h' hc
+     · by_contra hlt'
+       push Not at hlt'
+@@ -124,7 +124,7 @@
+       rw [← he] at hn'
+       exact h ⟨n, (centerContains_eraseEmpty_iff S J n hn hne).1 hn'⟩
+     unfold firstCenterIndex
+-    rw [dite_eq_right h, dite_eq_right h', eraseIdx_length]
++    rw [dif_neg h, dif_neg h', eraseIdx_length]
+ 
+ /-- The truncations at the first containing index correspond under the deletion of empty blow-ups
+ (`eraseEmpty_take`). -/
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/FirstCenterPullback.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/FirstCenterPullback.lean
+@@ -136,17 +136,17 @@
+     have hfirst : ∀ m, m < Nat.find hex → m < firstCenterIndex S I := by
+       intro m hm
+       unfold firstCenterIndex
+-      rw [dite_eq_left hex]
++      rw [dif_pos hex]
+       exact hm
+     unfold firstCenterIndex
+-    rw [dite_eq_left hex', dite_eq_left hex, Nat.find_eq_iff]
++    rw [dif_pos hex', dif_pos hex, Nat.find_eq_iff]
+     exact ⟨centerContains_pullback_of_le S h hle (Nat.find_spec hex),
+       fun m hm => hdown m (hfirst m hm)⟩
+   · -- no downstairs absorption: `firstCenterIndex S I = S.length`, and no upstairs absorption at
+     -- any stage below it, so the upstairs index is the length too
+     have hlen : firstCenterIndex S I = S.length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hex]
++      rw [dif_neg hex]
+     have hex' : ¬ ∃ n, CenterContains (S.pullback h) I' n := by
+       rintro ⟨n, hc'⟩
+       have hnlt : n < firstCenterIndex S I := by
+@@ -154,7 +154,7 @@
+         exact hc'.1
+       exact hdown n hnlt hc'
+     unfold firstCenterIndex
+-    rw [dite_eq_right hex', dite_eq_right hex, length_pullback]
++    rw [dif_neg hex', dif_neg hex, length_pullback]
+ 
+ /-- Along a flat `h` whose image contains the generic point of the integral `V(I)`, the first-centre
+ index of the pulled-back sequence for `h⁻¹(V(I))` is the first-centre index of `V(I)` [Kol07,
+@@ -175,10 +175,10 @@
+     have hfirst : ∀ m, m < Nat.find hex → m < firstCenterIndex S I := by
+       intro m hm
+       unfold firstCenterIndex
+-      rw [dite_eq_left hex]
++      rw [dif_pos hex]
+       exact hm
+     unfold firstCenterIndex
+-    rw [dite_eq_left hex', dite_eq_left hex, Nat.find_eq_iff]
++    rw [dif_pos hex', dif_pos hex, Nat.find_eq_iff]
+     exact ⟨centerContains_pullback_of_le S h le_rfl (Nat.find_spec hex),
+       fun m hm => hdown m (hfirst m hm)⟩
+   · have hex' : ¬ ∃ n, CenterContains (S.pullback h) (I.comap h) n := by
+@@ -186,6 +186,6 @@
+       exact hex ⟨n, centerContains_of_centerContains_pullback_of_mem_range S h I hη hmem
+         (fun m _ hc => hex ⟨m, hc⟩) hc'⟩
+     unfold firstCenterIndex
+-    rw [dite_eq_right hex', dite_eq_right hex, length_pullback]
++    rw [dif_neg hex', dif_neg hex, length_pullback]
+ 
+ end Hironaka.Resolution
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/Independence.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/Independence.lean
+@@ -70,12 +70,12 @@
+     (h : ∃ (TA : Triple k) (emb : X ⟶ TA.X.left), AdmissibleEmbedding k X TA emb) :
+     BR_affine' k X = BR_affine h.choose h.choose_spec.choose := by
+   unfold BR_affine'
+-  rw [dite_eq_left h]
++  rw [dif_pos h]
+ 
+ theorem BR_affine'_of_neg (X : Scheme.{u}) [X.Over (Spec (CommRingCat.of k))]
+     (h : ¬ ∃ (TA : Triple k) (emb : X ⟶ TA.X.left), AdmissibleEmbedding k X TA emb) :
+     BR_affine' k X = nil X := by
+   unfold BR_affine'
+-  rw [dite_eq_right h]
++  rw [dif_neg h]
+ 
+ end Hironaka.Resolution
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Thm36/SigmaCharts.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Kol07/Thm36/SigmaCharts.lean
+@@ -114,10 +114,10 @@
+   · change e i ≫ 𝟙 Y =
+       hi.isoPullback.hom ≫ pullback.fst (Limits.Sigma.map j) (Sigma.ι B i) ≫ Sigma.desc e
+     rw [Category.comp_id, ← Category.assoc, hi.isoPullback_hom_fst]
+-    exact (Sigma.ι_comp_desc e i).symm
++    exact (Sigma.ι_desc e i).symm
+   · change f i ≫ 𝟙 X = 𝟙 (B i) ≫ Sigma.ι B i ≫ Sigma.desc f
+     rw [Category.comp_id, Category.id_comp]
+-    exact (Sigma.ι_comp_desc f i).symm
++    exact (Sigma.ι_desc f i).symm
+   · simp
+ 
+ /-- The summands cover the coproduct. -/
+@@ -171,14 +171,14 @@
+   refine Scheme.IdealSheafData.eq_of_comap_eq_of_covers (Sigma.ι B) (fun x => ?_) fun i => ?_
+   · obtain ⟨⟨i, b⟩, rfl⟩ := (sigmaMk B).surjective x
+     exact ⟨i, b, (sigmaMk_mk B i b).symm⟩
+-  · rw [ker_sigmaMap_comap_ι, hker, ← Scheme.IdealSheafData.comap_comp, Sigma.ι_comp_desc]
++  · rw [ker_sigmaMap_comap_ι, hker, ← Scheme.IdealSheafData.comap_comp, Sigma.ι_desc]
+ 
+ /-- Commuting squares on the summands give a commuting square of the coproducts. -/
+ theorem sigmaMap_comp_desc {A Y₀ : Scheme.{u}} (q : ∀ i, B i ⟶ A) (e : ∀ i, W i ⟶ Y₀)
+     (emb₀ : Y₀ ⟶ A) (hsq : ∀ i, j i ≫ q i = e i ≫ emb₀) :
+     Limits.Sigma.map j ≫ Sigma.desc q = Sigma.desc e ≫ emb₀ :=
+   Sigma.hom_ext _ _ fun i => by
+-    rw [Limits.Sigma.ι_map_assoc, Sigma.ι_comp_desc, hsq, Sigma.ι_comp_desc_assoc]
++    rw [Limits.Sigma.ι_map_assoc, Sigma.ι_desc, hsq, Sigma.ι_desc_assoc]
+ 
+ end SigmaEmb
+ 
+--- upstream/Hironaka/Resolution/Algebraic/Wlo05/Embedded.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Wlo05/Embedded.lean
+@@ -219,14 +219,14 @@
+       ((bmoOneRun T hm).take (Nat.find h)).concat
+         (bedAux (isolatedTriple T hm C (Nat.find h)) hm
+           (remainingComponents T hm C (Nat.find h))) := by
+-  rw [bedAux, dite_eq_left h]
++  rw [bedAux, dif_pos h]
+ 
+ open Classical in
+ /-- The loop at a round without an absorption: the whole run, and the loop stops. -/
+ theorem bedAux_of_not_exists (T : MarkedTriple k) (hm : T.m = 1)
+     (C : Finset T.X.left.IdealSheafData)
+     (h : ¬ ∃ n, HasAbsorptionAt T hm C n) : bedAux T hm C = bmoOneRun T hm := by
+-  rw [bedAux, dite_eq_right h]
++  rw [bedAux, dif_neg h]
+ 
+ /-! ### The components of `Y` and the sequence `BED` -/
+ 
+--- upstream/Hironaka/Resolution/Algebraic/Wlo05/EmbeddedSmoothWindow.lean
++++ resolution-ep33/Hironaka/Resolution/Algebraic/Wlo05/EmbeddedSmoothWindow.lean
+@@ -189,7 +189,7 @@
+     by_contra hno
+     have h1 : firstCenterIndex (bmoOneRun T hm) c = (bmoOneRun T hm).length := by
+       unfold firstCenterIndex
+-      rw [dite_eq_right hno]
++      rw [dif_neg hno]
+     omega
+   refine ⟨hex, ?_⟩
+   refine centersMissBefore_of_forall_center_pullback_eq_top (bmoOneRun T hm) j _
+@@ -273,7 +273,7 @@
+     fun ⟨i, hi⟩ => not_centerContains_take_of_le_firstCenterIndex T hm n₀ c hle i hi
+   have h : firstCenterIndex ((bmoOneRun T hm).take n₀) c = ((bmoOneRun T hm).take n₀).length := by
+     unfold firstCenterIndex
+-    rw [dite_eq_right hno]
++    rw [dif_neg hno]
+   rw [h]
+   exact le_of_eq (Fin.val_last _)
+ 
+--- upstream/Hironaka/Scheme/BlowUpSequence/AffineCover.lean
++++ resolution-ep33/Hironaka/Scheme/BlowUpSequence/AffineCover.lean
+@@ -90,7 +90,7 @@
+ theorem ι_comp_affineCoverDesc (i : (finiteAffineCover X).I₀) :
+     Sigma.ι (fun i => (finiteAffineCover X).X i) i ≫ affineCoverDesc X =
+       (finiteAffineCover X).f i :=
+-  Sigma.ι_comp_desc _ _
++  Sigma.ι_desc _ _
+ 
+ /-- `g` is smooth: locality on the source, each piece being an open immersion. -/
+ theorem smooth_affineCoverDesc : Smooth (affineCoverDesc X) := by

@@ -1,0 +1,3299 @@
+{
+  "upstream_repository": "https://github.com/resolutionorg/hironaka",
+  "upstream_commit": "a0d237580a68818b5142b6d404a2670b3fcee697",
+  "upstream_toolchain": "v4.34.0",
+  "port_toolchain": "v4.33.1",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "roots": [
+    "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.Monomial",
+    "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.Centers",
+    "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.IsoLocus"
+  ],
+  "module_count": 521,
+  "source_lines": 118970,
+  "mathlib_direct_imports": [
+    "Mathlib.Algebra.Algebra.Rat",
+    "Mathlib.Algebra.Algebra.Subalgebra.Lattice",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent",
+    "Mathlib.Algebra.Category.Ring.Basic",
+    "Mathlib.Algebra.Category.Ring.Constructions",
+    "Mathlib.Algebra.CharP.Algebra",
+    "Mathlib.Algebra.DirectSum.Internal",
+    "Mathlib.Algebra.MvPolynomial.Degrees",
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+    "Mathlib.Algebra.Order.Module.Field",
+    "Mathlib.Algebra.Polynomial.Laurent",
+    "Mathlib.AlgebraicGeometry.AffineScheme",
+    "Mathlib.AlgebraicGeometry.Cover.Directed",
+    "Mathlib.AlgebraicGeometry.Cover.Open",
+    "Mathlib.AlgebraicGeometry.Fiber",
+    "Mathlib.AlgebraicGeometry.IdealSheaf.Basic",
+    "Mathlib.AlgebraicGeometry.IdealSheaf.Functorial",
+    "Mathlib.AlgebraicGeometry.IdealSheaf.Subscheme",
+    "Mathlib.AlgebraicGeometry.Modules.Sheaf",
+    "Mathlib.AlgebraicGeometry.Modules.Tilde",
+    "Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion",
+    "Mathlib.AlgebraicGeometry.Morphisms.Etale",
+    "Mathlib.AlgebraicGeometry.Morphisms.Finite",
+    "Mathlib.AlgebraicGeometry.Morphisms.Flat",
+    "Mathlib.AlgebraicGeometry.Morphisms.Immersion",
+    "Mathlib.AlgebraicGeometry.Morphisms.LocalIso",
+    "Mathlib.AlgebraicGeometry.Morphisms.Proper",
+    "Mathlib.AlgebraicGeometry.Morphisms.Smooth",
+    "Mathlib.AlgebraicGeometry.Morphisms.UniversallyOpen",
+    "Mathlib.AlgebraicGeometry.Noetherian",
+    "Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Functor",
+    "Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper",
+    "Mathlib.AlgebraicGeometry.PullbackCarrier",
+    "Mathlib.AlgebraicGeometry.Pullbacks",
+    "Mathlib.AlgebraicGeometry.RelativeGluing",
+    "Mathlib.AlgebraicGeometry.Scheme",
+    "Mathlib.Basic.NNReal.Defs",
+    "Mathlib.CategoryTheory.Category.Basic",
+    "Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs",
+    "Mathlib.CategoryTheory.MorphismProperty.Descent",
+    "Mathlib.CategoryTheory.MorphismProperty.Limits",
+    "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+    "Mathlib.Combinatorics.Matroid.Init",
+    "Mathlib.Data.EReal.Operations",
+    "Mathlib.Data.Finset.Max",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Fintype.Sort",
+    "Mathlib.Data.Fintype.WithTopBot",
+    "Mathlib.Data.List.Sort",
+    "Mathlib.Data.Nat.Choose.Multinomial",
+    "Mathlib.Data.Prod.Lex",
+    "Mathlib.Data.Sigma.Order",
+    "Mathlib.Data.Sym.Sym2.Init",
+    "Mathlib.FieldTheory.FinTrdeg",
+    "Mathlib.FieldTheory.IntermediateField.Adjoin.Defs",
+    "Mathlib.FieldTheory.Perfect",
+    "Mathlib.FieldTheory.SeparablyGenerated",
+    "Mathlib.GroupTheory.MonoidLocalization.Away",
+    "Mathlib.GroupTheory.MonoidLocalization.Basic",
+    "Mathlib.LinearAlgebra.Dimension.OrzechProperty",
+    "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas",
+    "Mathlib.LinearAlgebra.Matrix.NonsingularInverse",
+    "Mathlib.LinearAlgebra.Matrix.ToLinearEquiv",
+    "Mathlib.LinearAlgebra.Matrix.Transvection",
+    "Mathlib.LinearAlgebra.SymmetricAlgebra.Basic",
+    "Mathlib.LinearAlgebra.TensorProduct.Basis",
+    "Mathlib.LinearAlgebra.Vandermonde",
+    "Mathlib.RingTheory.AdicCompletion.Algebra",
+    "Mathlib.RingTheory.AdicCompletion.AsTensorProduct",
+    "Mathlib.RingTheory.AdicCompletion.Basic",
+    "Mathlib.RingTheory.AdicCompletion.Completeness",
+    "Mathlib.RingTheory.AdicCompletion.LocalRing",
+    "Mathlib.RingTheory.AdicCompletion.RingHom",
+    "Mathlib.RingTheory.AlgebraicIndependent.Basic",
+    "Mathlib.RingTheory.Derivation.Basic",
+    "Mathlib.RingTheory.Derivation.Lie",
+    "Mathlib.RingTheory.Etale.Field",
+    "Mathlib.RingTheory.Etale.Kaehler",
+    "Mathlib.RingTheory.Filtration",
+    "Mathlib.RingTheory.FiniteLength",
+    "Mathlib.RingTheory.Flat.Basic",
+    "Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra",
+    "Mathlib.RingTheory.Flat.FaithfullyFlat.Basic",
+    "Mathlib.RingTheory.Flat.Localization",
+    "Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal",
+    "Mathlib.RingTheory.GradedAlgebra.HomogeneousLocalization",
+    "Mathlib.RingTheory.GradedAlgebra.RingHom",
+    "Mathlib.RingTheory.Ideal.Defs",
+    "Mathlib.RingTheory.Ideal.Maps",
+    "Mathlib.RingTheory.Ideal.MinimalPrime.Basic",
+    "Mathlib.RingTheory.Ideal.Operations",
+    "Mathlib.RingTheory.Ideal.Quotient.Operations",
+    "Mathlib.RingTheory.Kaehler.Basic",
+    "Mathlib.RingTheory.Kaehler.JacobiZariski",
+    "Mathlib.RingTheory.Kaehler.Polynomial",
+    "Mathlib.RingTheory.KrullDimension.Basic",
+    "Mathlib.RingTheory.KrullDimension.NonZeroDivisors",
+    "Mathlib.RingTheory.KrullDimension.Regular",
+    "Mathlib.RingTheory.LocalProperties.Exactness",
+    "Mathlib.RingTheory.LocalRing.Defs",
+    "Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic",
+    "Mathlib.RingTheory.LocalRing.MaximalIdeal.Defs",
+    "Mathlib.RingTheory.LocalRing.MaximalIdeal.Square",
+    "Mathlib.RingTheory.LocalRing.Module",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Defs",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Ideal",
+    "Mathlib.RingTheory.LocalRing.RingHom.Basic",
+    "Mathlib.RingTheory.Localization.AtPrime.Basic",
+    "Mathlib.RingTheory.Localization.Away.Basic",
+    "Mathlib.RingTheory.Localization.BaseChange",
+    "Mathlib.RingTheory.Localization.Defs",
+    "Mathlib.RingTheory.Localization.Module",
+    "Mathlib.RingTheory.MvPolynomial.Homogeneous",
+    "Mathlib.RingTheory.MvPolynomial.Ideal",
+    "Mathlib.RingTheory.MvPowerSeries.Basic",
+    "Mathlib.RingTheory.MvPowerSeries.Derivative",
+    "Mathlib.RingTheory.MvPowerSeries.Equiv",
+    "Mathlib.RingTheory.MvPowerSeries.Inverse",
+    "Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors",
+    "Mathlib.RingTheory.MvPowerSeries.Order",
+    "Mathlib.RingTheory.MvPowerSeries.Substitution",
+    "Mathlib.RingTheory.OreLocalization.Ring",
+    "Mathlib.RingTheory.ReesAlgebra",
+    "Mathlib.RingTheory.Regular.RegularSequence",
+    "Mathlib.RingTheory.RegularLocalRing.Defs",
+    "Mathlib.RingTheory.RegularLocalRing.Polynomial",
+    "Mathlib.RingTheory.RingHom.Etale",
+    "Mathlib.RingTheory.RingHom.Flat",
+    "Mathlib.RingTheory.Smooth.AdicCompletion",
+    "Mathlib.RingTheory.Smooth.Basic",
+    "Mathlib.RingTheory.Smooth.Field",
+    "Mathlib.RingTheory.Smooth.Local",
+    "Mathlib.RingTheory.Smooth.Locus",
+    "Mathlib.RingTheory.Smooth.StandardSmooth",
+    "Mathlib.RingTheory.Smooth.StandardSmoothCotangent",
+    "Mathlib.RingTheory.Smooth.StandardSmoothOfFree",
+    "Mathlib.RingTheory.Spectrum.Prime.Defs",
+    "Mathlib.RingTheory.Spectrum.Prime.RingHom",
+    "Mathlib.RingTheory.TensorProduct.MvPolynomial",
+    "Mathlib.RingTheory.Unramified.Basic",
+    "Mathlib.RingTheory.Unramified.LocalStructure",
+    "Mathlib.RingTheory.Valuation.ValuationRing",
+    "Mathlib.Tactic.LinearCombination",
+    "Mathlib.Topology.Algebra.InfiniteSum.Order",
+    "Mathlib.Topology.JacobsonSpace",
+    "Mathlib.Topology.MetricSpace.Bounded",
+    "Mathlib.Topology.Semicontinuity.Basic",
+    "Mathlib.Topology.Semicontinuity.Defs",
+    "Mathlib.Topology.Sets.Closeds"
+  ],
+  "missing_mathlib_paths": [
+    "Mathlib.Basic.NNReal.Defs"
+  ],
+  "source_files": [
+    {
+      "module": "Hironaka.Algebra.ColonPow",
+      "path": "Hironaka/Algebra/ColonPow.lean",
+      "upstream_sha256": "807a7214f84675461fad122cf8e4d7d06fd4bacb5b42b8b19ec89ef3e8d0b2f3",
+      "lines": 176
+    },
+    {
+      "module": "Hironaka.Algebra.DerivationLocalization",
+      "path": "Hironaka/Algebra/DerivationLocalization.lean",
+      "upstream_sha256": "c59c98231fb3cbfb17c2de842ad1faed67d5218692bf6a65072cf3eaf3218aff",
+      "lines": 169
+    },
+    {
+      "module": "Hironaka.Algebra.Derivative.Basic",
+      "path": "Hironaka/Algebra/Derivative/Basic.lean",
+      "upstream_sha256": "50107debdf1e33283b583f52b6fa9b232bc5d83656c438988f73e7cab09f1d57",
+      "lines": 303
+    },
+    {
+      "module": "Hironaka.Algebra.Derivative.Equiv",
+      "path": "Hironaka/Algebra/Derivative/Equiv.lean",
+      "upstream_sha256": "d2803b0829eae9585dc78c270ced48eea0c703aee63be45fb50c090c6e943c30",
+      "lines": 81
+    },
+    {
+      "module": "Hironaka.Algebra.Derivative.Extension",
+      "path": "Hironaka/Algebra/Derivative/Extension.lean",
+      "upstream_sha256": "f99e5a2c0ba6195f0e0ee9039b5fb1db11fb63bd341fe72c0be31044a0ca42e1",
+      "lines": 214
+    },
+    {
+      "module": "Hironaka.Algebra.Derivative.Localization",
+      "path": "Hironaka/Algebra/Derivative/Localization.lean",
+      "upstream_sha256": "dab557848951dce8a0444739a73be0d92834365c8a326386058fd5c44c5bc160",
+      "lines": 148
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Balanced",
+      "path": "Hironaka/Algebra/Local/Balanced.lean",
+      "upstream_sha256": "a34bfd35ef07855e4163b008a8c0057347ea40c2ce9efca8e9e0334577b8035e",
+      "lines": 135
+    },
+    {
+      "module": "Hironaka.Algebra.Local.BirationalTransform",
+      "path": "Hironaka/Algebra/Local/BirationalTransform.lean",
+      "upstream_sha256": "c4ad5191de1aa294dd4dad56ad740c12516d7f663c0ae6cebc3f82b04fa2145a",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Algebra.Local.BlowUpLift",
+      "path": "Hironaka/Algebra/Local/BlowUpLift.lean",
+      "upstream_sha256": "6bfc68e7405e1f4c014f0dbb0a745dc9abe96f894ecefec9efc543ebe94b27e5",
+      "lines": 119
+    },
+    {
+      "module": "Hironaka.Algebra.Local.BlowUpLiftLog",
+      "path": "Hironaka/Algebra/Local/BlowUpLiftLog.lean",
+      "upstream_sha256": "d6b7c8724b81559a7ee98a60d4ed7d23879531a9c533a040276293f3bd172e72",
+      "lines": 156
+    },
+    {
+      "module": "Hironaka.Algebra.Local.BlowUpLiftTransform",
+      "path": "Hironaka/Algebra/Local/BlowUpLiftTransform.lean",
+      "upstream_sha256": "ca303120a971b20b00af0459e0fc2dbe4f7d7991c7e84086d540edbfd7e236ba",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Chart",
+      "path": "Hironaka/Algebra/Local/Chart.lean",
+      "upstream_sha256": "463ca56fea75170f0ddca475b9b3e8253c703573faffd52ac97c6f6401a6e530",
+      "lines": 840
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartCoords",
+      "path": "Hironaka/Algebra/Local/ChartCoords.lean",
+      "upstream_sha256": "7c59c80954c6881a04bf98d3b499de8d4d97dd52dac1bb76fe8745099372b0a7",
+      "lines": 203
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartFibre",
+      "path": "Hironaka/Algebra/Local/ChartFibre.lean",
+      "upstream_sha256": "eb9283c5dcb92914731e73d70da9869b2755ab3ec69b5737ebea1fdcd23b5ffd",
+      "lines": 152
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartGenericFibre",
+      "path": "Hironaka/Algebra/Local/ChartGenericFibre.lean",
+      "upstream_sha256": "a496e2cee5c50c9a7988110d47727db08a311287c8d2cdbb950618c4d1c4353c",
+      "lines": 891
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartLocal",
+      "path": "Hironaka/Algebra/Local/ChartLocal.lean",
+      "upstream_sha256": "66cfcd7507f2c9dd06310b1788a490c9103deaed65ee8e8742d732b403e82a22",
+      "lines": 371
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartLogDerivations",
+      "path": "Hironaka/Algebra/Local/ChartLogDerivations.lean",
+      "upstream_sha256": "dfd4a651c824457736e9e9f5c3680ed2600412009f3fd5ef90b8cf236231b4fb",
+      "lines": 209
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartPresentation",
+      "path": "Hironaka/Algebra/Local/ChartPresentation.lean",
+      "upstream_sha256": "d6081379c00e0bee8b286055464078b64aa55f4d846fb85a3385b154bcd7cf1e",
+      "lines": 145
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartRing",
+      "path": "Hironaka/Algebra/Local/ChartRing.lean",
+      "upstream_sha256": "cd861b0571557492a8c935d5f41e55160505104760dc94804903c9250b500ef9",
+      "lines": 237
+    },
+    {
+      "module": "Hironaka.Algebra.Local.ChartSubst",
+      "path": "Hironaka/Algebra/Local/ChartSubst.lean",
+      "upstream_sha256": "abd9da7cb39964a52742d9b6bb0ba10c2e6ddcf0bc88bfda4ef8f198e1ce9fd2",
+      "lines": 220
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CoefficientField",
+      "path": "Hironaka/Algebra/Local/CoefficientField.lean",
+      "upstream_sha256": "2a2cfb682a0635a0d3a4a2a472470518e07e926c078eef1c58bbec11098cc8e5",
+      "lines": 122
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CoefficientFieldOver",
+      "path": "Hironaka/Algebra/Local/CoefficientFieldOver.lean",
+      "upstream_sha256": "0a0dc01d56e72ad06275427a322cfe0c206b44600f580e655bc0d1194581ed38",
+      "lines": 175
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CoefficientFieldUnique",
+      "path": "Hironaka/Algebra/Local/CoefficientFieldUnique.lean",
+      "upstream_sha256": "dfe68460fbad0bb149a8d5ba3a4ceb9459887f303fe8a495eb54727ab14ad091",
+      "lines": 87
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Cohen",
+      "path": "Hironaka/Algebra/Local/Cohen.lean",
+      "upstream_sha256": "b1d06ef3efd1da7e0715a550b16b6fae2269f67326ecd2f959226c39d9c62d8c",
+      "lines": 276
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CohenDerivation",
+      "path": "Hironaka/Algebra/Local/CohenDerivation.lean",
+      "upstream_sha256": "72b88a012470fa17e871df333c2c037f1d01d53ceb25afc2e4fe3b653fea0acd",
+      "lines": 296
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CohenIso",
+      "path": "Hironaka/Algebra/Local/CohenIso.lean",
+      "upstream_sha256": "883438e2828f60aa12778fb50c3839b06493698317dc8cc9aa242974641ff6d8",
+      "lines": 260
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CohenMap",
+      "path": "Hironaka/Algebra/Local/CohenMap.lean",
+      "upstream_sha256": "ae10d2f47f731146510593b579c50c1e5e37b4415a924420fab50752980eb484",
+      "lines": 226
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Completion",
+      "path": "Hironaka/Algebra/Local/Completion.lean",
+      "upstream_sha256": "2c55e4e163c1f0921bae3f5cfad5d979d9cb9b428799b29d512b44b07dbff913",
+      "lines": 170
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CompletionCoords",
+      "path": "Hironaka/Algebra/Local/CompletionCoords.lean",
+      "upstream_sha256": "0acc6a8f630fb6104dbbd2d4d4546ccc26c653821636aefccb868383a3d27dff",
+      "lines": 263
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CompletionEtale",
+      "path": "Hironaka/Algebra/Local/CompletionEtale.lean",
+      "upstream_sha256": "a1a4216c543a0dd6f2c2d8525208194be2f34e3d147b74bbfad48878d58c3990",
+      "lines": 232
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CompletionMap",
+      "path": "Hironaka/Algebra/Local/CompletionMap.lean",
+      "upstream_sha256": "3d290554cb060de690bd2fe08a16d5fd564e746d7725d03292b3d84068932dfb",
+      "lines": 249
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Coords",
+      "path": "Hironaka/Algebra/Local/Coords.lean",
+      "upstream_sha256": "5589fa67dd83ea9297b17bd0e633e262d4dfaff24ef100c60752ebb15e2f5034",
+      "lines": 397
+    },
+    {
+      "module": "Hironaka.Algebra.Local.CoordsOver",
+      "path": "Hironaka/Algebra/Local/CoordsOver.lean",
+      "upstream_sha256": "c4245b2503a68928f4dc705e847b85ae47867ae39cf24856e6c678ccbfaf1e7d",
+      "lines": 334
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Defs",
+      "path": "Hironaka/Algebra/Local/Defs.lean",
+      "upstream_sha256": "b1c9fec9952e8eeaa0e989dc4d77a922cd331c2140e431c8e89cf557940c84c8",
+      "lines": 44
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Derivative",
+      "path": "Hironaka/Algebra/Local/Derivative.lean",
+      "upstream_sha256": "97de3715c3c8a5d53939a71a1555917af86d3ddaac11f16642f44220873f3def",
+      "lines": 689
+    },
+    {
+      "module": "Hironaka.Algebra.Local.DerivativeCompletion",
+      "path": "Hironaka/Algebra/Local/DerivativeCompletion.lean",
+      "upstream_sha256": "199c7d44ad9d8fd5db160651f9213ac92a29f9a5997091c1f24eb691766bed7c",
+      "lines": 111
+    },
+    {
+      "module": "Hironaka.Algebra.Local.FormalAut",
+      "path": "Hironaka/Algebra/Local/FormalAut.lean",
+      "upstream_sha256": "460154df0478171bc8b0426389ce862ac0594f7e240efded4c03b2549d8b84f5",
+      "lines": 672
+    },
+    {
+      "module": "Hironaka.Algebra.Local.LogDeriv",
+      "path": "Hironaka/Algebra/Local/LogDeriv.lean",
+      "upstream_sha256": "1d28caaafee2514598434d4ff7eca2ee22823c57377e3d3cf1a34831e8ef6be5",
+      "lines": 632
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Marked",
+      "path": "Hironaka/Algebra/Local/Marked.lean",
+      "upstream_sha256": "4f3cc10df23c5fa76f916eca0f647a32fcce260e0b782c266cc91c3f34e309f1",
+      "lines": 179
+    },
+    {
+      "module": "Hironaka.Algebra.Local.MaximalContact",
+      "path": "Hironaka/Algebra/Local/MaximalContact.lean",
+      "upstream_sha256": "376c78f0e0a732ad1d047b2812787bb2a65a34082f4005b8a8306f62de63f88b",
+      "lines": 197
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Order",
+      "path": "Hironaka/Algebra/Local/Order.lean",
+      "upstream_sha256": "b468c0804196d9c51b7e37037ede903eb0b3d02c9a1212ea79a4707877d413aa",
+      "lines": 335
+    },
+    {
+      "module": "Hironaka.Algebra.Local.OrderFlat",
+      "path": "Hironaka/Algebra/Local/OrderFlat.lean",
+      "upstream_sha256": "1368fa203bbb2d684159bd7ed30e5072cea5f7c894a6edb0853c1d6bac608315",
+      "lines": 168
+    },
+    {
+      "module": "Hironaka.Algebra.Local.OrderPolynomial",
+      "path": "Hironaka/Algebra/Local/OrderPolynomial.lean",
+      "upstream_sha256": "0583407f0850a501b60d0721dc9c3ef14726c21698d034762fba9cc509de4ca1",
+      "lines": 261
+    },
+    {
+      "module": "Hironaka.Algebra.Local.OrderSmooth",
+      "path": "Hironaka/Algebra/Local/OrderSmooth.lean",
+      "upstream_sha256": "7726710758bf57db8a5aa871d92b9bacedfee976b9ca8da234135b104fd9176c",
+      "lines": 126
+    },
+    {
+      "module": "Hironaka.Algebra.Local.PolynomialOrder",
+      "path": "Hironaka/Algebra/Local/PolynomialOrder.lean",
+      "upstream_sha256": "1117ab7b77608ecb67bcba7e55d78556e4ef4370cb99c0edb79e41a3ac812b91",
+      "lines": 167
+    },
+    {
+      "module": "Hironaka.Algebra.Local.PowerSeries",
+      "path": "Hironaka/Algebra/Local/PowerSeries.lean",
+      "upstream_sha256": "44817d425a8e0d628646fc67e7757c0b789fee91134d0c083e691dc925908e37",
+      "lines": 237
+    },
+    {
+      "module": "Hironaka.Algebra.Local.PowerSeriesEndomorphism",
+      "path": "Hironaka/Algebra/Local/PowerSeriesEndomorphism.lean",
+      "upstream_sha256": "3b99901a9c7b91c01f0fe29b4380ddf43f740e4c271a86d32c3db96f72d0f3ac",
+      "lines": 199
+    },
+    {
+      "module": "Hironaka.Algebra.Local.PowerSeriesRegular",
+      "path": "Hironaka/Algebra/Local/PowerSeriesRegular.lean",
+      "upstream_sha256": "5f32d87f24ef69eed662ee059308108f00008f926e82690085f369364adbbffa",
+      "lines": 92
+    },
+    {
+      "module": "Hironaka.Algebra.Local.PrimeProducts",
+      "path": "Hironaka/Algebra/Local/PrimeProducts.lean",
+      "upstream_sha256": "57fbc3fa6d0af8f5f297b44837e9dab4f15639a3c96a22c307b5b647d50326bb",
+      "lines": 120
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Prop94",
+      "path": "Hironaka/Algebra/Local/Prop94.lean",
+      "upstream_sha256": "c8b6a5e4cca80cbec69b99db906f410154b5dde8a3a4e40eb9fc813e8114f945",
+      "lines": 396
+    },
+    {
+      "module": "Hironaka.Algebra.Local.QuotientCoords",
+      "path": "Hironaka/Algebra/Local/QuotientCoords.lean",
+      "upstream_sha256": "ba437b9486d3fb1641d589080e664849d5fbbd69e4f3c0bcc21e9058cf40eb57",
+      "lines": 202
+    },
+    {
+      "module": "Hironaka.Algebra.Local.QuotientParameters",
+      "path": "Hironaka/Algebra/Local/QuotientParameters.lean",
+      "upstream_sha256": "8b565b87a3773c6a5d489634ab4543c5b1e569da0d6bae46ca3faf54e47a4154",
+      "lines": 247
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Regular",
+      "path": "Hironaka/Algebra/Local/Regular.lean",
+      "upstream_sha256": "47e99794b456a5dd0b803a658e23c4b209dfaa6d4aeeb027f47a0e30fd170d3f",
+      "lines": 409
+    },
+    {
+      "module": "Hironaka.Algebra.Local.RegularSystem",
+      "path": "Hironaka/Algebra/Local/RegularSystem.lean",
+      "upstream_sha256": "be5666651cd9ff7db15b3370b5b0b97fbf1e23e6f49455650583c28964730c80",
+      "lines": 368
+    },
+    {
+      "module": "Hironaka.Algebra.Local.RegularSystemCommon",
+      "path": "Hironaka/Algebra/Local/RegularSystemCommon.lean",
+      "upstream_sha256": "b1d302da0dfcf7401085efa142a71613df7d6fced1c496cf91fdcd1acc23e3dd",
+      "lines": 240
+    },
+    {
+      "module": "Hironaka.Algebra.Local.SymbolicPower",
+      "path": "Hironaka/Algebra/Local/SymbolicPower.lean",
+      "upstream_sha256": "1aba5e9eff7a1b25a21dbb53f41cc0715dfe8a87899c40324638042c677e4bec",
+      "lines": 331
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Taylor",
+      "path": "Hironaka/Algebra/Local/Taylor.lean",
+      "upstream_sha256": "3caa91b45f91453ad98cab08ecb180428048235f213b5b786a5a06536db23daf",
+      "lines": 622
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Transform",
+      "path": "Hironaka/Algebra/Local/Transform.lean",
+      "upstream_sha256": "e573af49cd5c8864bf8be6cf68760e3803b7e486034dfb7f858a047b20008d27",
+      "lines": 615
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TransformDeriv",
+      "path": "Hironaka/Algebra/Local/TransformDeriv.lean",
+      "upstream_sha256": "21b53a6af50025e7b58ada631997c57591b3eaa040ce5ec1847225134b3d5e66",
+      "lines": 408
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TransformDerivIter",
+      "path": "Hironaka/Algebra/Local/TransformDerivIter.lean",
+      "upstream_sha256": "3609aa492a8dfbcb922dcfd3bf265535fc689410fbb17a04251b04f6e24d5520",
+      "lines": 95
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TransformDerivNormalForm",
+      "path": "Hironaka/Algebra/Local/TransformDerivNormalForm.lean",
+      "upstream_sha256": "dde69f721a70a2c1700629fb6113549b248099112da2f10ec68eb127c83d812e",
+      "lines": 312
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TransformLogDeriv",
+      "path": "Hironaka/Algebra/Local/TransformLogDeriv.lean",
+      "upstream_sha256": "ddb7222cfe3d8549736f4bf37d6eb74e574825de98d376309107c4ea8b85c98e",
+      "lines": 242
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TransformOrder",
+      "path": "Hironaka/Algebra/Local/TransformOrder.lean",
+      "upstream_sha256": "94eb80d9117221102a85c51dc9d61266940cd186034cda521ebe9d7a4fffe025",
+      "lines": 201
+    },
+    {
+      "module": "Hironaka.Algebra.Local.Tuning",
+      "path": "Hironaka/Algebra/Local/Tuning.lean",
+      "upstream_sha256": "9b4314b62a239e9715cb9280bb223d9658f64a64dd96e4142cc6b734c37a4e97",
+      "lines": 649
+    },
+    {
+      "module": "Hironaka.Algebra.Local.TuningParam",
+      "path": "Hironaka/Algebra/Local/TuningParam.lean",
+      "upstream_sha256": "25a794e00856e0667c0bd6daf12717385d7d86d2a4210b8e48e7f5faa740bbfe",
+      "lines": 202
+    },
+    {
+      "module": "Hironaka.Algebra.Order.Cosupport",
+      "path": "Hironaka/Algebra/Order/Cosupport.lean",
+      "upstream_sha256": "3f6516a5e1b8da64c0d4a0cc9b1ae908199e591a51254856feb2731355ddb94e",
+      "lines": 110
+    },
+    {
+      "module": "Hironaka.Algebra.Proj.BaseChange",
+      "path": "Hironaka/Algebra/Proj/BaseChange.lean",
+      "upstream_sha256": "7d1af55d64563dc2a2478214bd25d9db433b8deedfcd380f0348fb3a2b1e285c",
+      "lines": 201
+    },
+    {
+      "module": "Hironaka.Algebra.Proj.Dehomogenize",
+      "path": "Hironaka/Algebra/Proj/Dehomogenize.lean",
+      "upstream_sha256": "b3d628397f632a5da64b94b5e242ade1fe01fac90b03c06b79d38e13647e0490",
+      "lines": 355
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Cotangent",
+      "path": "Hironaka/Algebra/RegularSmooth/Cotangent.lean",
+      "upstream_sha256": "f1720011aab105e4581c29a24e7c309592690b37586976f37cc3ee68d9d13b50",
+      "lines": 170
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Defs",
+      "path": "Hironaka/Algebra/RegularSmooth/Defs.lean",
+      "upstream_sha256": "285f6c593b881fc5258b142a6635b325d1d069b1508eadbe16d7f0acf7e7212f",
+      "lines": 58
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Dimension",
+      "path": "Hironaka/Algebra/RegularSmooth/Dimension.lean",
+      "upstream_sha256": "c2aaaec60924127474d12b79e7aeabecd0a9be56611e53bedde88140f9500339",
+      "lines": 117
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Polynomial",
+      "path": "Hironaka/Algebra/RegularSmooth/Polynomial.lean",
+      "upstream_sha256": "b01325724e33d4f67a46f740ecf9c2e1fcf14f4b8077b9c93479a0c35637611a",
+      "lines": 115
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Presentation",
+      "path": "Hironaka/Algebra/RegularSmooth/Presentation.lean",
+      "upstream_sha256": "f6c8fac8293f32d66aaaf6280147672a59f6f3894a5c0cb31edad38a337f7f9f",
+      "lines": 127
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.QuotientRegular",
+      "path": "Hironaka/Algebra/RegularSmooth/QuotientRegular.lean",
+      "upstream_sha256": "7cfac629fd22d2deb0b8259ec3f281417f7ee4da01c3ddfd8a500b133e12c6c5",
+      "lines": 161
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Regular",
+      "path": "Hironaka/Algebra/RegularSmooth/Regular.lean",
+      "upstream_sha256": "a713176aea98eb64f447b1055e8ca2adb689e5fb94118a6c35269b3b295853ce",
+      "lines": 71
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.RegularImpliesSmooth",
+      "path": "Hironaka/Algebra/RegularSmooth/RegularImpliesSmooth.lean",
+      "upstream_sha256": "9be195cdd42b554a3abcb5bb54d4ec688675c657a276593cc3b1179edbdc68c1",
+      "lines": 263
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.RegularSmoothEquiv",
+      "path": "Hironaka/Algebra/RegularSmooth/RegularSmoothEquiv.lean",
+      "upstream_sha256": "caa80c51ecbb42f1b2b568e208ef53181a9e95dcc7cb0f648418fbcacdd711a6",
+      "lines": 65
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.SchemeForms",
+      "path": "Hironaka/Algebra/RegularSmooth/SchemeForms.lean",
+      "upstream_sha256": "256916c9b7037259f2d67024076f84b95ba6d1b39fdefdcff0af0b399f26f39a",
+      "lines": 123
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.SmoothAt",
+      "path": "Hironaka/Algebra/RegularSmooth/SmoothAt.lean",
+      "upstream_sha256": "078d52379d98188888f6605c3be1c444df4d9d0ad19b73c173541aae57e483eb",
+      "lines": 148
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.SmoothImpliesRegular",
+      "path": "Hironaka/Algebra/RegularSmooth/SmoothImpliesRegular.lean",
+      "upstream_sha256": "f79b866b73f0b2636b5413c882720bc707ff8a4ef0a5fadfaa6723cbe865b03a",
+      "lines": 229
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Stalk",
+      "path": "Hironaka/Algebra/RegularSmooth/Stalk.lean",
+      "upstream_sha256": "07e223c88e5db52624d89c0ebe2bfe80ccfc34ae6505baab8d45e2385e73f44d",
+      "lines": 74
+    },
+    {
+      "module": "Hironaka.Algebra.RegularSmooth.Trdeg",
+      "path": "Hironaka/Algebra/RegularSmooth/Trdeg.lean",
+      "upstream_sha256": "214d27f7316a1bd0c65cac18dcc50b8fab5683a4c738849669b82f57fee3f589",
+      "lines": 92
+    },
+    {
+      "module": "Hironaka.Algebra.Smooth.EtaleCriterion",
+      "path": "Hironaka/Algebra/Smooth/EtaleCriterion.lean",
+      "upstream_sha256": "3609725b87ab7439eda361cb4870efe34f1a22364d65429eed3620e928dc1aaf",
+      "lines": 131
+    },
+    {
+      "module": "Hironaka.Algebra.Smooth.SpreadOut",
+      "path": "Hironaka/Algebra/Smooth/SpreadOut.lean",
+      "upstream_sha256": "78766e96a87e888e116f3b09e615903be061fb4d4ba709fa3bb7120d85715f42",
+      "lines": 149
+    },
+    {
+      "module": "Hironaka.Algebra.SymmetricAlgebra.Away",
+      "path": "Hironaka/Algebra/SymmetricAlgebra/Away.lean",
+      "upstream_sha256": "571e908a8ab4e8e8817e6943e6c42f7f24e527b03999cb7ef462c3fff449a8ed",
+      "lines": 366
+    },
+    {
+      "module": "Hironaka.Algebra.SymmetricAlgebra.Defs",
+      "path": "Hironaka/Algebra/SymmetricAlgebra/Defs.lean",
+      "upstream_sha256": "de266ea506cf52cad123afc917aa0dcff91fc0cf52d5a7883151c2c5a7d765d4",
+      "lines": 141
+    },
+    {
+      "module": "Hironaka.Algebra.Util.JacobsonCover",
+      "path": "Hironaka/Algebra/Util/JacobsonCover.lean",
+      "upstream_sha256": "bdf54904cec0991386a2a9e5ccb90003bf8158d6e29cc5ace4df50dac8328567",
+      "lines": 52
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Balanced.Basic",
+      "path": "Hironaka/Resolution/Algebraic/Balanced/Basic.lean",
+      "upstream_sha256": "fadb2ab2d47cc0083f026c5a610834f604655b2534a94eb9973ceb57eecee6b2",
+      "lines": 84
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Balanced.GoingUpChain",
+      "path": "Hironaka/Resolution/Algebraic/Balanced/GoingUpChain.lean",
+      "upstream_sha256": "418ce40661a360e392e2aa52d4b2fea75377cb9b27fd51c08b5dd3b64d1fc642",
+      "lines": 230
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Balanced.Order",
+      "path": "Hironaka/Resolution/Algebraic/Balanced/Order.lean",
+      "upstream_sha256": "f8b3ee186f56d1966d8abe289a48f6211f1656a89eb4ebea0ca9742a1399400c",
+      "lines": 161
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Assembly",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Assembly.lean",
+      "upstream_sha256": "c7304e6e3447bebab0f4400fa193ccbd4fe9d4ec148c6572717ab6324265c292",
+      "lines": 242
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.AssemblyTuned",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/AssemblyTuned.lean",
+      "upstream_sha256": "eae28c27218a58dec5abb3ef4f31d9613ba811470a88a0bec0abed7ac1b8ce93",
+      "lines": 250
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.AssemblyZero",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/AssemblyZero.lean",
+      "upstream_sha256": "0f1dd52de537ea1c947b38c16006c833e37d512bcf4209198b2b28eeda05c8d0",
+      "lines": 190
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Basic",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Basic.lean",
+      "upstream_sha256": "c735bdc08b3610edddde735dd84860cd175aecbd1507deea721e6025f691fb1c",
+      "lines": 216
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Center",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Center.lean",
+      "upstream_sha256": "030d3a26b3e0a4e86141a2a2d0c57fe46f4bbd3a1883853d7f4d79cc53010bbf",
+      "lines": 261
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.ClassEtalePullback",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/ClassEtalePullback.lean",
+      "upstream_sha256": "801b548c24d6ffab58647668ed38499a1d4ec83681137658271327d1edede8ef",
+      "lines": 59
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Composite",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Composite.lean",
+      "upstream_sha256": "33a66ba17e3fe3458fe4191d9944b1d879828830b6dfe5ce1c0d60e9e67a1d79",
+      "lines": 345
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Data",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Data.lean",
+      "upstream_sha256": "d1abeaae43907cd69b2b28dcdf98940dccaad0bf571696f7fffe3f78ffaa1f9c",
+      "lines": 162
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.FunctorialityBaseChange",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/FunctorialityBaseChange.lean",
+      "upstream_sha256": "932900a8ab04d58bcc9a484c2537bd83ed1a301d21e8bd935ff7bfb477f3fc39",
+      "lines": 411
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.FunctorialityPullback",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/FunctorialityPullback.lean",
+      "upstream_sha256": "258dd2a79198c471fbda09860511e1a6a0eef379caedffe481275a50dad97416",
+      "lines": 613
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Indifference",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Indifference.lean",
+      "upstream_sha256": "ce1609b9fae85477b5d393371637a869afeb1f6e533f04be3de1d7db1e0f149d",
+      "lines": 244
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.NilAtUnit",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/NilAtUnit.lean",
+      "upstream_sha256": "44e053657fb454f76676dd37497a2e35407354b5c891ea6a90f43943fcf68821",
+      "lines": 114
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Output",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Output.lean",
+      "upstream_sha256": "a0452fc44eb5fc7c6589551ac44cf8a01f85af60d692385508c996649d0e838b",
+      "lines": 331
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Restriction",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Restriction.lean",
+      "upstream_sha256": "c3ee53f45b2d53f2f6a73745a20e67025de0f66c7b5ef8e26bcbe881e2676bba",
+      "lines": 445
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Transform",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Transform.lean",
+      "upstream_sha256": "586b2737bdbe25bc0916d7ff23a4dab29f391fa4c6133e2b844107d6f1de3853",
+      "lines": 277
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.BoundaryClearing.Tuned",
+      "path": "Hironaka/Resolution/Algebraic/BoundaryClearing/Tuned.lean",
+      "upstream_sha256": "d2f8243278d45c8c20d00f50b2afe463308607ad15095858a205f9605ea387e5",
+      "lines": 120
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.AppendLast",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/AppendLast.lean",
+      "upstream_sha256": "3fe0ade6bd3b68564fd06b55aec464b112a1e37204af5d816251dcfe8a09ff1e",
+      "lines": 87
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Componentwise",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Componentwise.lean",
+      "upstream_sha256": "fcda8990ed7e663bf0c45633343b0925958fb13a7a7f9bb15cfe58978c3d25fd",
+      "lines": 115
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ComponentwiseBlowUp",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ComponentwiseBlowUp.lean",
+      "upstream_sha256": "8c694cbea0e8468d11e1b4cb8df4990df51b1ebcd4ce1965e7b21b87e3adb357",
+      "lines": 378
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ComponentwiseTransforms",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ComponentwiseTransforms.lean",
+      "upstream_sha256": "2caf1c42787afc612be649f94062b207b6878e48acb2633f65d226d7b5a1b9ed",
+      "lines": 388
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ComponentwiseTransport",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ComponentwiseTransport.lean",
+      "upstream_sha256": "a87fcd1d04ce7ff75cbc01dd2857ddc3bda1641fcea01f71f3c82d4e11430fb4",
+      "lines": 429
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Corollary89",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Corollary89.lean",
+      "upstream_sha256": "d981585b097a8e48c09588231a22c6ec99dd993d068d290f7cc7d494b2655a1e",
+      "lines": 262
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.CosuppTransport",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/CosuppTransport.lean",
+      "upstream_sha256": "3654a5473e456fa9902202b3c7601cfc1f78b62d722e45dff9d3eea018d878f5",
+      "lines": 141
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.EraseEmptyEmbedding",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/EraseEmptyEmbedding.lean",
+      "upstream_sha256": "97a883e430b58e09d201abfb16cfddc6c4030dd0a35539cf8052963ab293c772",
+      "lines": 481
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.EraseEmptyInduced",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/EraseEmptyInduced.lean",
+      "upstream_sha256": "832bec3f09dcbd6620a324820e16680891bfbb7576d7885f520fac20ba4d17d2",
+      "lines": 437
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ExceptionalFamilyErasure",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ExceptionalFamilyErasure.lean",
+      "upstream_sha256": "d520874b57133877b8a9af3cc41f68e93483e56a5df855f52d5f3e014c81e7e8",
+      "lines": 174
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ExceptionalFamilyPullback",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ExceptionalFamilyPullback.lean",
+      "upstream_sha256": "5f19475a3d620549cd202c8ec1be106f6588ee6c0513f6cd038895a91622f36f",
+      "lines": 110
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.ExceptionalMonomial",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/ExceptionalMonomial.lean",
+      "upstream_sha256": "5dd03f1cd24adff7e26bf90b29e53031848b7b92989076609b29f154cec46621",
+      "lines": 190
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Globalization",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Globalization.lean",
+      "upstream_sha256": "79bf5bd368844e6c39d0acd4677314c48dad6bf7b9acb54e1e8cc7905c1cc8d5",
+      "lines": 419
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Globalize",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Globalize.lean",
+      "upstream_sha256": "325b28726a175f7529b06f6b0a1603e8767a9ae9725865bede85f1e237d02e22",
+      "lines": 530
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.GlobalizeDescent",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/GlobalizeDescent.lean",
+      "upstream_sha256": "8350a994063fc9f7c92c82bcbde231ad438ecd764f57721c1959028078ac6751",
+      "lines": 465
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.GoingUp",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/GoingUp.lean",
+      "upstream_sha256": "0488a7f5ea3ffa171b20e763683875417a98dc389bb750ad78f3cd3e0471ff2e",
+      "lines": 490
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.IsoLocus",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/IsoLocus.lean",
+      "upstream_sha256": "fa3a4e2ef44838413182efe6d9fc4e5f1ae423c958e613a688a9ae21f7c7d3be",
+      "lines": 240
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.IsoRestrict",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/IsoRestrict.lean",
+      "upstream_sha256": "5c60974868a5c0600f48456c263e731c2fff3b2456f63919600a8c533d9f1995",
+      "lines": 121
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.MarkedProduct",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/MarkedProduct.lean",
+      "upstream_sha256": "be1fb5674fc0a81a78b6d4c64903c53c10a6b7bbc1b9cfd6db97a26ad7f2254b",
+      "lines": 143
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.MarkedSupPow",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/MarkedSupPow.lean",
+      "upstream_sha256": "c59aa94c3c7384a7ff5299abe9dc5601f5bca112b77d16d018fd7e0612704855",
+      "lines": 153
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.MaximalContactClasses",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/MaximalContactClasses.lean",
+      "upstream_sha256": "a66825b582c38e2ef5f3194c01339b54486fd8b7f2670bd6fc267a724e148439",
+      "lines": 83
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.MaximalContactGlobalization",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/MaximalContactGlobalization.lean",
+      "upstream_sha256": "f3e04b494be7004468db25d4114e925563e940cd682ffe5b0f6ebe59463a15f9",
+      "lines": 357
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Prop37.Prop37Descent",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Prop37/Prop37Descent.lean",
+      "upstream_sha256": "90398b009afa49bf66c04030fce77e5779890c5a3e23be7cf93d409e3c4b5a7b",
+      "lines": 603
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Prop37.Prop37Local",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Prop37/Prop37Local.lean",
+      "upstream_sha256": "97bfe372d9ece49a3bf63599a1fe6e1a8788870121192b3dbd0aa7df0de666cf",
+      "lines": 623
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Prop37.Prop37Setting",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Prop37/Prop37Setting.lean",
+      "upstream_sha256": "4357a7dddc7e05f6f004d5f082dc1cf1d878bbffc9c67eaeeae610ea96240ee8",
+      "lines": 399
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.RefineFamily",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/RefineFamily.lean",
+      "upstream_sha256": "7676c9f3ffa86e03fbabacf9f0e39ab76ec2968914fe13e0a2f1a255823541bb",
+      "lines": 315
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.RefineIrreducible",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/RefineIrreducible.lean",
+      "upstream_sha256": "304de31d3f53f80be50d49640135e1d2243f2643d8911c8252b6c6b489b7ddf2",
+      "lines": 833
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Remark33Warning63",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Remark33Warning63.lean",
+      "upstream_sha256": "27e1e04c548c40fe4357c8fced471fb3b5eaa2b9517fb89c6415190ee8eae11f",
+      "lines": 77
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.SncGlobalSubfamily",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/SncGlobalSubfamily.lean",
+      "upstream_sha256": "2b0e0643152b3af360d5531651f07c0f0561e9a512dbbae9a8db93c8351b4d4e",
+      "lines": 159
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.SubdividesOn",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/SubdividesOn.lean",
+      "upstream_sha256": "8059f90e8b7da5402afcf4d047c5ee7b458cf0bb34b69174ba414c75969aae1f",
+      "lines": 196
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Theorem88BlowUp",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Theorem88BlowUp.lean",
+      "upstream_sha256": "f06ab706eb6039d6cfe00056c7bc049751c20a7924a3a0e0f705ea5ecaa8906b",
+      "lines": 587
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Theorem88Chart",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Theorem88Chart.lean",
+      "upstream_sha256": "470d6d11f0ebdf8cf7fd328d9cebd3dad52c1902215aa4ea737619b5d8b05b12",
+      "lines": 74
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Theorem88Sequence",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Theorem88Sequence.lean",
+      "upstream_sha256": "a8d33b81cb30dea72a3e9b67cd4493516018d2376d7ad7727f25b313a9e83155",
+      "lines": 257
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin.lean",
+      "upstream_sha256": "29cee2aba08fb756f1aa011d00accba89087b4e031f80c742adadee20297aefa",
+      "lines": 167
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Bookkeeping",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Bookkeeping.lean",
+      "upstream_sha256": "ece738f262a3c990d1f32c7cb5570eec4c4e1e669163f2e1cbce00e56b43bce1",
+      "lines": 54
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Center",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Center.lean",
+      "upstream_sha256": "1cc4bd6e2ebc10e14daf546db557a702f639275de4f93bd83c7d71dc68bfeb0b",
+      "lines": 172
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Collapse",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Collapse.lean",
+      "upstream_sha256": "dd7d975a0d072540a02af95a388373d5cd458f14483ed59d0b076730d30751bf",
+      "lines": 237
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.MeetLocus",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/MeetLocus.lean",
+      "upstream_sha256": "5c4aac46e9a11220762b67b9ff0ee433d8c813e5fd1ae4e17f1f5e89657454ba",
+      "lines": 178
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.OverSing",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/OverSing.lean",
+      "upstream_sha256": "3c49259c1d6465a5c59d3433a8c2a0f2832c5df8e6b19b08311a86570f15e5bf",
+      "lines": 92
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Sequence",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Sequence.lean",
+      "upstream_sha256": "8b755e45883767b677507d467e946d023f4b0c31811e8bd2004ad19a91a4d6c4",
+      "lines": 192
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Step",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Step.lean",
+      "upstream_sha256": "88ec6502e01c250eec8972cb888b64bc3aaa3ed2f3b656666cc2297037fa16e8",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Disjoin.Triple",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Disjoin/Triple.lean",
+      "upstream_sha256": "a89100a63130d3dbe071181d095841a131b8dc7c9e176c695272d0bf7a805a47",
+      "lines": 263
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Principalization.lean",
+      "upstream_sha256": "8079d7f6aad8570c8b024c2e18c58858b6d65a4221aa4799c88c291716dfa1c1",
+      "lines": 79
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.Centers",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Principalization/Centers.lean",
+      "upstream_sha256": "47ae2626b5ab26352975bbf99f1d8afa0b736fc2958f6f6fd987574938fbc006",
+      "lines": 121
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.IsoLocus",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Principalization/IsoLocus.lean",
+      "upstream_sha256": "3f56290341c43b3eb869b381e6986ad2c9a2ff519f22d28c00f7dbb2e5d95de3",
+      "lines": 104
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Thm35.Principalization.Monomial",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Thm35/Principalization/Monomial.lean",
+      "upstream_sha256": "1133d509c90222d877ed052c1944bfdd5c11caeb991c30ba307122f642e89404",
+      "lines": 143
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.TopCenters",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/TopCenters.lean",
+      "upstream_sha256": "8395d523ae88c287a5737f79967061c50ee34592adbc8a1debc56c936858027e",
+      "lines": 83
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.TotalTransformPositions",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/TotalTransformPositions.lean",
+      "upstream_sha256": "911b19d3517a84d8b0fa11360e8c9f258862cb65ac18b64a3b54d8686d96c0d4",
+      "lines": 133
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Kol07.Tuning",
+      "path": "Hironaka/Resolution/Algebraic/Kol07/Tuning.lean",
+      "upstream_sha256": "12dc7999a28228c51c0ac4ccc1c729a35fc0f8c33e6ad35855ef1860e3ccf383",
+      "lines": 207
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Assembly",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Assembly.lean",
+      "upstream_sha256": "cf69d7d1c28dbbad3ba9cd5dd7d56a41be5cb5e3102fc24f7a0f68791cd945eb",
+      "lines": 141
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.BaseChangeLoop",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/BaseChangeLoop.lean",
+      "upstream_sha256": "1f989be2dfbc5edbbf0d9d9fc489ca4747149089f7906e17e11af8b4a87560b6",
+      "lines": 411
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.BaseChangeParameters",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/BaseChangeParameters.lean",
+      "upstream_sha256": "c6dc1666a7ae670300a617e18db9b1f37b3b57448b9c231733104f2fd8205b41",
+      "lines": 111
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Basic",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Basic.lean",
+      "upstream_sha256": "c68a03054a71737698a8aa94634e7d180856da7e55b5c56589db9d3c58404213",
+      "lines": 133
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Clause1",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Clause1.lean",
+      "upstream_sha256": "97d36aacd883f7586df6f1078038ef5adf39025edd2889d5c2c739fdf4e579b4",
+      "lines": 161
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Clause3",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Clause3.lean",
+      "upstream_sha256": "fcd9f75e2c9546613886c1849842d45aba3996e8decb44027e7e73b8bc7c9d0e",
+      "lines": 184
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Data",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Data.lean",
+      "upstream_sha256": "0f31390695f6a2724e8791ee92224bbb89c0c7885ccde8392484117af37842ec",
+      "lines": 104
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Functoriality",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Functoriality.lean",
+      "upstream_sha256": "5ab92e64b6b17d57f3ad36590bb40204b827906f64cf0645966dcb3495d48370",
+      "lines": 171
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.InducedClass",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/InducedClass.lean",
+      "upstream_sha256": "2ae7693fd3abfaacd99899ff8914c26d8f72c40a4a6443743939446325d33e79",
+      "lines": 77
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.LoopFunctorial",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/LoopFunctorial.lean",
+      "upstream_sha256": "8b84b4a9b1250c53c57ca80a9b04195ed1efae3ec25335e68bf0aaa73f4caa3c",
+      "lines": 323
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.MonomialExtendsByEmpty",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/MonomialExtendsByEmpty.lean",
+      "upstream_sha256": "75d9cf61309c8c5332ab27783767e41cfa66abcfd6f161ea3b2eab5061cc4cd3",
+      "lines": 71
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.MonomialPart",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/MonomialPart.lean",
+      "upstream_sha256": "4db9d4e68349d38b7c2f6fb6a4a000cbf82843d12d1512c35d7739fcfabf53a3",
+      "lines": 104
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.NonmonomialInvariant",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/NonmonomialInvariant.lean",
+      "upstream_sha256": "e45bcd2b36c7170306816bac34d78650995f7a63a2c1f6372046db4a6b025de9",
+      "lines": 123
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Parameters",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Parameters.lean",
+      "upstream_sha256": "03574079e37f12e1d2ee3be2a148f70f9f738cdc8ab8cd987a09a6cb92c0ec13",
+      "lines": 102
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SkippedRound",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SkippedRound.lean",
+      "upstream_sha256": "2d05d38668a74473b550e67fcaea4f6c0fd93fcd70ecc147214e61dcdf28b172",
+      "lines": 174
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Smooth",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Smooth.lean",
+      "upstream_sha256": "665a9c6e96e8b313884875cfec1934382edb7122f2b7489897d34d2a4f704631",
+      "lines": 226
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SmoothLoop",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SmoothLoop.lean",
+      "upstream_sha256": "6617224267fbc8a166e9980d9a0411e0f1eb602e6e09ac30a7658255a4613f89",
+      "lines": 573
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SmoothStep3",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SmoothStep3.lean",
+      "upstream_sha256": "f7ea5b95624d853c240b7e8cfafcd664d2c3647cd8d1512d0cd293cbcb1a20c5",
+      "lines": 253
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Split",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Split.lean",
+      "upstream_sha256": "e3e06b1c9ceccaa61bbde51cfc012c0401d73564e4e929cf8f26596c2967790d",
+      "lines": 123
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SplitFunctorial",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitFunctorial.lean",
+      "upstream_sha256": "cc7c8e52d90f1a1a696886616bb0dfaf61fad343aab0d78abe8dc0509badff38",
+      "lines": 131
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SplitMain",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitMain.lean",
+      "upstream_sha256": "55b6e1d82749bb59c232e4a4d6f55151f00509e6da45d88c7e16da638fb32caa",
+      "lines": 274
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SplitOrder",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitOrder.lean",
+      "upstream_sha256": "6c79d18ab28a4f1af9bdba807af7a511a9a31301e7b54b68898b790c5ca72037",
+      "lines": 89
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SplitSupport",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitSupport.lean",
+      "upstream_sha256": "b682a29f8bb6f32b5ebaaa90bed41cdf1cff8e63ba6bb0071217d9bb17213d2a",
+      "lines": 140
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.SplitTriple",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitTriple.lean",
+      "upstream_sha256": "cc0a0071c02ef4b6440d5d262a7b647c79fe8291a4d37e6c802b638e78384979",
+      "lines": 175
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Step1NonmonomialPart",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step1NonmonomialPart.lean",
+      "upstream_sha256": "33c296ed589bc599b259d95eeae6f5889ae21877e4284a6ccb954f37b80bf97d",
+      "lines": 442
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Step2Separation",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step2Separation.lean",
+      "upstream_sha256": "e6fb14f37824674fd4882f7e1020792be7a21aeb4e7543ac4eb10b545a2f97bf",
+      "lines": 550
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Step3Functorial",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step3Functorial.lean",
+      "upstream_sha256": "991aae005b4cbd59ff3fd2666518ea7adafa2c2f64aced50f65b0f479f9e681e",
+      "lines": 163
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Step3Input",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step3Input.lean",
+      "upstream_sha256": "d47fc4c0bf60a062172f85ebb08ebfdf80258534fff4a1b8a4cf492c607de11c",
+      "lines": 181
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Theorem107",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Theorem107.lean",
+      "upstream_sha256": "d0b15896e57a8c1606ca75d43c3f4132211d396ace64a57edab085ece3ed7bfe",
+      "lines": 67
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.Transform",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/Transform.lean",
+      "upstream_sha256": "0d062d6e03ccc98a9dbaaf16a8c4a5655010e62619dbfbc0177b6552acee3ef7",
+      "lines": 258
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MarkedOrderReduction.UpToUnits",
+      "path": "Hironaka/Resolution/Algebraic/MarkedOrderReduction/UpToUnits.lean",
+      "upstream_sha256": "6f11141c96e495a771c5e75861c0a855509397bea17f4cb8504f270b0d6e8b3e",
+      "lines": 311
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.AgreeOnBlowUp",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/AgreeOnBlowUp.lean",
+      "upstream_sha256": "af3671a194aaff4c78504bdd16bd4706d8b5135534de6ace8be078bc5ec9a4db",
+      "lines": 276
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.AgreeOnBlowUpKernel",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/AgreeOnBlowUpKernel.lean",
+      "upstream_sha256": "7caf17002a57c013ed7e972bac983f836dc1244914294cd3f2a08e5960a08b33",
+      "lines": 1025
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.AgreeOnSpread",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/AgreeOnSpread.lean",
+      "upstream_sha256": "61e5e25222bbf6230392c015cc86e5941cc3458cd164228448982cfb8be261d6",
+      "lines": 323
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Basic",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Basic.lean",
+      "upstream_sha256": "fb9f167c30ea9d0fe4337f20669ea171fb9ced1ac2a76ebb08a3edeba097dc97",
+      "lines": 172
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.CompletionIdealMap",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/CompletionIdealMap.lean",
+      "upstream_sha256": "9fdcd0f98b87b1ceacb120e12ee47f264aad098736372e472cc1c1335bc2b17f",
+      "lines": 63
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Coordinates",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Coordinates.lean",
+      "upstream_sha256": "b43cc945d27f2bba21fe28b549e43bee70f09026643927e110c256a2adf2800f",
+      "lines": 188
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleEquiv",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquiv.lean",
+      "upstream_sha256": "501463d4bb52998287c2dd651d17a70a33a57ed77da8d3d8d0bb2877b56f1f05",
+      "lines": 134
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleEquivAffine",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivAffine.lean",
+      "upstream_sha256": "8e8109672c8d9815e5a35a40ebc2335cd24d48635f88c5789a72b64c768c1491",
+      "lines": 138
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleEquivSeq",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivSeq.lean",
+      "upstream_sha256": "f7b79484eb0e6c7fb9360b238cb5fd092214b0f75ab9912bcf70a97b465e0d46",
+      "lines": 114
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleEquivSeqFunctor",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivSeqFunctor.lean",
+      "upstream_sha256": "a47403dd32b55f0f989e67ee49c4277330f54b942cc03e8d5b803c044d13c8ca",
+      "lines": 160
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleEquivSigma",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivSigma.lean",
+      "upstream_sha256": "443a5bab5ed29c6e880ccfd953b5f0d94bd2cd4bcfc73d8d8915a32be77d6a48",
+      "lines": 188
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleNbhdConditions",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleNbhdConditions.lean",
+      "upstream_sha256": "0910e7304445164c263ebaf2d380b7366cb83e039a052a6c662d433bf021cdaa",
+      "lines": 160
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.EtaleToFormal",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/EtaleToFormal.lean",
+      "upstream_sha256": "a025295fa162cb963cbf5d9c6e755f56836b36135127dc35401df40a7c374fcc",
+      "lines": 358
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Existence",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Existence.lean",
+      "upstream_sha256": "a392e443dc870882b5c4bfd5e68b04758e1198d538ece575b71743ddbce48536",
+      "lines": 418
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.FormalEquiv",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/FormalEquiv.lean",
+      "upstream_sha256": "3e8c6f207df4ace8a6e0e664bed46d07aab5a87e6e7c7fa636a1eac2ac3457c0",
+      "lines": 196
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.FormalEquivBridge",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/FormalEquivBridge.lean",
+      "upstream_sha256": "506d0872a6f1385a0513473027ea2378e24febfcf06af5becb385d164d26e6e5",
+      "lines": 288
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.FormalEquivExists",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/FormalEquivExists.lean",
+      "upstream_sha256": "46d69136b0f168e6fc99635b0bbeab3be9a3f8b2b29a9010e46363b0491480ba",
+      "lines": 382
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.FunctorIndependence",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/FunctorIndependence.lean",
+      "upstream_sha256": "d8e254ab6bbd32d2535878a3dc599bfc5454092cf185dc0d74f9803b94225ef4",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.GoingDown",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/GoingDown.lean",
+      "upstream_sha256": "16dcdeebef80674642bef8566f6847a75d98470f3529bc8af753bcb6bb773739",
+      "lines": 278
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.GoingUpDown",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/GoingUpDown.lean",
+      "upstream_sha256": "c4b639496fee6f142044d4943730ea5b7abdff768a441f0a280b64ed24644e76",
+      "lines": 212
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.GraphOfAutomorphism",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/GraphOfAutomorphism.lean",
+      "upstream_sha256": "229b3fd902fa4c76eca307f262f785a467422f7b0f611c046dfd0ac7b0a87176",
+      "lines": 289
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Invariant",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Invariant.lean",
+      "upstream_sha256": "874f49fa3b1707bcf7bc5f8a102131ab3c6ea493198a6767767c4a5dd9eb7d03",
+      "lines": 59
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Principal",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Principal.lean",
+      "upstream_sha256": "a94639e1732e2a3afced6f6e65123c10d919add74056d819aa182a082a97d71b",
+      "lines": 41
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.PullbackSmooth",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/PullbackSmooth.lean",
+      "upstream_sha256": "d1d52bbf29ca847c065b96fb682b6232d81876f7e073a6c1e18dec71d0969642",
+      "lines": 81
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Restrict",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Restrict.lean",
+      "upstream_sha256": "8d2058e3cd3cdef9bc5703505627d0c58fab2bd01b9a8f9312a604ca2ef4b800",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Sequence",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Sequence.lean",
+      "upstream_sha256": "24bd7a6af4a640e11116ce948cf17d46ccffd22657e3dacfd3ccd1f8b99b43db",
+      "lines": 262
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Theorem92",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Theorem92.lean",
+      "upstream_sha256": "4bbd2f044880c940bbd45c07b84f341b48ac37f22f3db4e2aeb742d5a1595dc3",
+      "lines": 143
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Theorem97",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Theorem97.lean",
+      "upstream_sha256": "d35ad9bb692c85aae211e9c5a0ce23edec04594094c4ea3ab1f75152678ea098",
+      "lines": 73
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Theorem97Induction",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Theorem97Induction.lean",
+      "upstream_sha256": "7bc91b8b12ca4fdfd12b7ecc3635a93f18e6f33962f6d3cdaa53c08761c1a736",
+      "lines": 248
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Theorem97Setup",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Theorem97Setup.lean",
+      "upstream_sha256": "4b00bc085ef6cc2a5920b5b4bd09754cf071b5dc95343ba3bdc646904bb6afd0",
+      "lines": 122
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.MaximalContact.Transform",
+      "path": "Hironaka/Resolution/Algebraic/MaximalContact/Transform.lean",
+      "upstream_sha256": "0adbdf2b80c8a2671c24287a6490aadf5f01cbc2aad4cc3ac0c615f673eba631",
+      "lines": 562
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.BaseChangeRealize",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/BaseChangeRealize.lean",
+      "upstream_sha256": "892d191479df1775f14c0fbab6de879e0f5be85aed18e21429cc9010924b8adb",
+      "lines": 125
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.ChainRun",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/ChainRun.lean",
+      "upstream_sha256": "36a89b21f755da1222308bb23352063786188d5fecac985f40798421384b3af2",
+      "lines": 191
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.ChainRunErase",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/ChainRunErase.lean",
+      "upstream_sha256": "10c654f4cd04462ea22f0ba6b31e56acab026987d80809189a05ed64fb82d18d",
+      "lines": 376
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Chart",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Chart.lean",
+      "upstream_sha256": "d74cd1e05f83b650cad6e176eab4a2b98261595774b9dbd88ed37749cd0ef1ef",
+      "lines": 329
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Congruence",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Congruence.lean",
+      "upstream_sha256": "bc5e5061328bb36a400e8aee2dd74a52ce4b03276c311990c43bce683c20f4c7",
+      "lines": 80
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.EnumerationIndep",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/EnumerationIndep.lean",
+      "upstream_sha256": "9b5b84fe5e454118f69c93763342b15e5e91a11ce2a40c748b2f56e3c49a6839",
+      "lines": 219
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Exponent",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Exponent.lean",
+      "upstream_sha256": "a26e7be12de682644856384be364983018a2405606b5c6537db7f0907f01eb9b",
+      "lines": 253
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Input",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Input.lean",
+      "upstream_sha256": "993242d714ef8634a8c98e793f25206d820b1dba4f4f040ed4969dfd7a2f9489",
+      "lines": 163
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Kernel",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Kernel.lean",
+      "upstream_sha256": "9f9b7c15414caa4b0d07e0d6c49ddbf7b69814baea697450e70a35756baa0621",
+      "lines": 748
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Local",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Local.lean",
+      "upstream_sha256": "81eafc43a39708629161238b46f599c237fbb29921928521c57135cb8b5ebbc3",
+      "lines": 214
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Nerve",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Nerve.lean",
+      "upstream_sha256": "dcc408adde755e1acf17dae0b3919ff3dc1cd15bf11b1eac2bbd18da25134fe3",
+      "lines": 243
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.OrderSeq",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/OrderSeq.lean",
+      "upstream_sha256": "26ff5a8b5db4be04248d06bb86f99f8a531f5db6e9a38b298de10aa004c26ed3",
+      "lines": 288
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Pieces",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Pieces.lean",
+      "upstream_sha256": "5fe9ab18bbfb9b41644fdd15291bf16670ad8359f86747f13feef65bb65be2f7",
+      "lines": 498
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.PullbackErase",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/PullbackErase.lean",
+      "upstream_sha256": "4c988265bd7927632e0d6c1c5b77fe6422870332cf92712a996f90c3c2072ef9",
+      "lines": 415
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.PullbackRun",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/PullbackRun.lean",
+      "upstream_sha256": "9d12f42c045c829afa443ca0da66973e2990ad11fb11910c4d4aad6582bf1990",
+      "lines": 725
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Realize",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Realize.lean",
+      "upstream_sha256": "b78019ecddba1c30d68483d063c7c913c86a264745729c8ea6ca897b80af543d",
+      "lines": 234
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.RealizeCongr",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/RealizeCongr.lean",
+      "upstream_sha256": "d4785a005e151d14f5b8e346a82336cb59060cd740d9e01853ec1586338a2c2e",
+      "lines": 460
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.RealizeDim",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/RealizeDim.lean",
+      "upstream_sha256": "11466a45c2d08f9de7d11727ba5ae1f276aa8337bd50ac1190e0f798fa80268b",
+      "lines": 171
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.RealizeNil",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/RealizeNil.lean",
+      "upstream_sha256": "55471a867cbaa8c298ec4c8c62baf93aacf886e8eac6641e8a24a8e6c10ca46f",
+      "lines": 119
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Refinement",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Refinement.lean",
+      "upstream_sha256": "cbb1aa188804df6bdc4948675ddedf85aee5f118e9ba3d72b9177e71284f27f4",
+      "lines": 490
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Geometric.Transform",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Geometric/Transform.lean",
+      "upstream_sha256": "3ef11a67f144237b902d7d097b6f2068e71e1c7bf034918137975f1f8c4b898d",
+      "lines": 462
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Measure",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Measure.lean",
+      "upstream_sha256": "6fbc5d5cc6fc4fda7dd808043dd5f5a45d4c35ea0ceb00c2fc60979a59933e48",
+      "lines": 171
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict.lean",
+      "upstream_sha256": "e492dd6b56bed045fa1427b1cbc5cc0ffc53077b66457a51dcfc980fd1dff2d6",
+      "lines": 82
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.Extend",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/Extend.lean",
+      "upstream_sha256": "d37c46137f00fdf1ab7ef9d3c9705ce47bcbc743599cdd093af6b25afb64ae1c",
+      "lines": 330
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.Invariant",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/Invariant.lean",
+      "upstream_sha256": "dc492e458e026bc4d5f209164a38112be2cbfd16736e9afff9642fb78145111e",
+      "lines": 141
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.Phase",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/Phase.lean",
+      "upstream_sha256": "0c27855d28d9aff75b95f32c19284fa5244f98531ef5f272d51ec205d0cb66cc",
+      "lines": 318
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.Refine",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/Refine.lean",
+      "upstream_sha256": "ca66dfa3a791f04f37e1dbff7bb993c54801e0fcfa602c384f2972f99f7ca775",
+      "lines": 285
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.RefinePhase",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/RefinePhase.lean",
+      "upstream_sha256": "e14a9fa2848da9451066a691aa55e3ec4781585d96cba660a97233d62bcf84a5",
+      "lines": 198
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Restrict.Rename",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Restrict/Rename.lean",
+      "upstream_sha256": "28d30b2c026e50a13a5561484cd9f87dfab3cbf07ffaf5317080dd83f0d55b2a",
+      "lines": 252
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.State",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/State.lean",
+      "upstream_sha256": "1bc28148ebaa0d63584b33a24460307af1139f55f6057900c97fd74fb4eb3284",
+      "lines": 593
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Monomial.Step3Phases",
+      "path": "Hironaka/Resolution/Algebraic/Monomial/Step3Phases.lean",
+      "upstream_sha256": "b15eb1a9bb828bc7b6cae44c880b27bbd5feea2be667448764b82b6449b9a76d",
+      "lines": 320
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Order.SupPow",
+      "path": "Hironaka/Resolution/Algebraic/Order/SupPow.lean",
+      "upstream_sha256": "70e4f1a3f3791d7d1f9614df50b4e7acca19aff26c83cba426ed659a7894403b",
+      "lines": 130
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Basic",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Basic.lean",
+      "upstream_sha256": "a8abf2e9b896548d5ac6515e0aa7d47d6d951de39c216b5a3a687db465812b61",
+      "lines": 248
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.EmptyIndifferent",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferent.lean",
+      "upstream_sha256": "48244f08180d6256d84f49e81498aae08cea2a9bb25f62e01fcff8e49b25f6dc",
+      "lines": 109
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.EmptyIndifferentFunctor",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferentFunctor.lean",
+      "upstream_sha256": "aca42853df1350897d7819de639687e5dbe58c8e7a60af0ebe52960740963f20",
+      "lines": 112
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.EmptyIndifferentGlobal",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferentGlobal.lean",
+      "upstream_sha256": "eebb51a1d581068e4d30175ae7b52afbc913eef2b859d83ad637d7a1564fc99b",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.EmptyIndifferentStep2",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferentStep2.lean",
+      "upstream_sha256": "ab51679c19bd725df02766872b9faaa8b8d3e230e4e9e48f131ba18483b8eb56",
+      "lines": 431
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Functorial",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Functorial.lean",
+      "upstream_sha256": "82329d5a7b34f93b2726508d0709ea87cca5b852d2c8b35048c4118cae4f6136",
+      "lines": 391
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step21BoundaryClearing",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step21BoundaryClearing.lean",
+      "upstream_sha256": "48fd2cf1af91d7de76b63e607557de2cf2fe5a26abe57970bd0a856fd21d2c18",
+      "lines": 123
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step21Disjoint",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step21Disjoint.lean",
+      "upstream_sha256": "ca909adbb82a19994a1264fa3b775e9c16ce2b9793c78fe5ecfcac2f20c6f9dc",
+      "lines": 128
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step21EraseEmpty",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step21EraseEmpty.lean",
+      "upstream_sha256": "5f532ae5f02438280ca77b8b884f22524984798b306b5330aab9be27252c7be6",
+      "lines": 308
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step21Functorial",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step21Functorial.lean",
+      "upstream_sha256": "c1242657f89f211ec50db1ddfb7b4eed453ca6213a9b95ecff76ca0d432a02b6",
+      "lines": 230
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step21MaximalContact",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step21MaximalContact.lean",
+      "upstream_sha256": "2aa3b591b7c54a4045646d6c7cb642c8f77386dadc39e1cf6bc216d6133eaa4c",
+      "lines": 115
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step22Assembly",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step22Assembly.lean",
+      "upstream_sha256": "1d98496897379e4ec47aebecfb2291c9065ca580e030418cb30937784669d0d5",
+      "lines": 166
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step22Basic",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step22Basic.lean",
+      "upstream_sha256": "2688d459268ad88dbc10cb086c1dd4c08c5ae441209dcc86b720ca523f179706",
+      "lines": 220
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step22Cosupp",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step22Cosupp.lean",
+      "upstream_sha256": "b0b5ef43ca07ce957c668e01e53887edcd081d68a444d2e512b2bfb1e5e015fb",
+      "lines": 178
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step22Indep",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step22Indep.lean",
+      "upstream_sha256": "e7a2513d53c519c30502a30025c13f223818db654ae7c568ec5b5d1434b61781",
+      "lines": 216
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step22RestrictToHypersurface",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step22RestrictToHypersurface.lean",
+      "upstream_sha256": "d4d6f2fb6a1699c5163aeedb83c0da554d868abfe6cd9d0fc53f548263ad3b93",
+      "lines": 218
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step2EraseEmpty",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step2EraseEmpty.lean",
+      "upstream_sha256": "a50667b1718edd836962781f2b635cb14436734e3810ab81e288c8741e6a405c",
+      "lines": 495
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step2Functorial",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step2Functorial.lean",
+      "upstream_sha256": "c05240354395ae18a665f90717423f3dbed213ab0b8c49d791b74f9c36f254ce",
+      "lines": 387
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step3Clauses",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step3Clauses.lean",
+      "upstream_sha256": "81d40743da98f7f64cbc7f3b9994b20868a4ed57b85187b925e277b89940b38b",
+      "lines": 350
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step3Cover",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step3Cover.lean",
+      "upstream_sha256": "37abebb707f66014fc7c105be95a3d5bf28efeda0c2f60f064550c0ba958914d",
+      "lines": 132
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step3Data",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step3Data.lean",
+      "upstream_sha256": "41e28dbe5c2711fa4c0c01188f654fb6ba9821608dd37f5dec15e9f75d7a0605",
+      "lines": 99
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Step3Globalization",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Step3Globalization.lean",
+      "upstream_sha256": "695cd2a0a8b6ea3e5d6b1a7b021c713422d73718ad0bea59f5de02791b1c490f",
+      "lines": 281
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.OrderReduction.Tuned",
+      "path": "Hironaka/Resolution/Algebraic/OrderReduction/Tuned.lean",
+      "upstream_sha256": "bf34a8d39bec957fa408e5f19fde16169e6cdccc9cb454f9b0f2be99fd082bd9",
+      "lines": 208
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.ComponentStalks",
+      "path": "Hironaka/Resolution/Algebraic/Snc/ComponentStalks.lean",
+      "upstream_sha256": "733b5e114322608132c76b803d712b10e5d17f482bfbbc0a46a255021082d19c",
+      "lines": 223
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.DictionaryBoundary",
+      "path": "Hironaka/Resolution/Algebraic/Snc/DictionaryBoundary.lean",
+      "upstream_sha256": "cb1e107e7557b913cd0df5afc8d394353e8a85d0dbb81b4c404cb6d190384de4",
+      "lines": 317
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.DictionaryComponents",
+      "path": "Hironaka/Resolution/Algebraic/Snc/DictionaryComponents.lean",
+      "upstream_sha256": "3f6b34a55a2cce37dd4f2f03b9cbfa62eef4e919face917625ee0871ab4bfd23",
+      "lines": 424
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.DictionaryGenericPoints",
+      "path": "Hironaka/Resolution/Algebraic/Snc/DictionaryGenericPoints.lean",
+      "upstream_sha256": "d3670af6f30c9daf469396eaee20c82142b58cd3925e05286993c0907848132c",
+      "lines": 149
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.DictionaryRegular",
+      "path": "Hironaka/Resolution/Algebraic/Snc/DictionaryRegular.lean",
+      "upstream_sha256": "f573c0f773531c64f9841d3e5a4ce2c7022b0ca1b0d83072591b9c642f38b156",
+      "lines": 116
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.MonomialComponents",
+      "path": "Hironaka/Resolution/Algebraic/Snc/MonomialComponents.lean",
+      "upstream_sha256": "06a16529e250c36267b572fb7533b920b48c0ba670285cd0b7fb7ba2779cdf42",
+      "lines": 147
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.SmoothDivisorLocal",
+      "path": "Hironaka/Resolution/Algebraic/Snc/SmoothDivisorLocal.lean",
+      "upstream_sha256": "e542be3da30642cae6ce7fb6276f2dbe1342d4e4fcb85b16272753e301e979be",
+      "lines": 179
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.SncInvertible",
+      "path": "Hironaka/Resolution/Algebraic/Snc/SncInvertible.lean",
+      "upstream_sha256": "54b3529ce041282c98d3334c507e4b367f2d8c9dde1bbe155d535fd74596d680",
+      "lines": 104
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Snc.SncOnTransport",
+      "path": "Hironaka/Resolution/Algebraic/Snc/SncOnTransport.lean",
+      "upstream_sha256": "769747b848e9dc10f6ade5b22fed4c078f27e26bf3605e67457f879aaee8f88e",
+      "lines": 189
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Amalgam",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Amalgam.lean",
+      "upstream_sha256": "74ab689a5c1411bbda3a9a8d7676b05e20b6f4a5bfedec6a7a0bc2d3b03afda1",
+      "lines": 137
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Base",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Base.lean",
+      "upstream_sha256": "0c66f61d464460185ad11dd40eb818dddb008f7bcbe5b9e2b2e1888de934bc32",
+      "lines": 114
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Coherence",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Coherence.lean",
+      "upstream_sha256": "ffd9465fa12b275e004ba9ee2cc4255a5009889e372203ced0a214a06b7e21d4",
+      "lines": 191
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Congr",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Congr.lean",
+      "upstream_sha256": "01437cc32e93f7c4d7028b39a46593fe8cd037aa20e317cee2168f7fe4fe13b1",
+      "lines": 303
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.CongrBMO",
+      "path": "Hironaka/Resolution/Algebraic/Stage/CongrBMO.lean",
+      "upstream_sha256": "6c61b83416f4d3044de1c37a74562c778c603d777d652af2201e47b32565896a",
+      "lines": 223
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Dim",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Dim.lean",
+      "upstream_sha256": "f189b76ea27bf02b4970502ed104f770b2cbd8af92c5838df59f1cd8e1340f5c",
+      "lines": 60
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.DimFree",
+      "path": "Hironaka/Resolution/Algebraic/Stage/DimFree.lean",
+      "upstream_sha256": "4984d71625f65c35d7805985ec42a1c2ee477d27bcc06cc9d08c0fc449e96ee1",
+      "lines": 132
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.DimFreeTheorems",
+      "path": "Hironaka/Resolution/Algebraic/Stage/DimFreeTheorems.lean",
+      "upstream_sha256": "0329149c266d53302d02761c6acddcaf2abcb794c9cd188dbc4df8495264f4c9",
+      "lines": 221
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.DimZero",
+      "path": "Hironaka/Resolution/Algebraic/Stage/DimZero.lean",
+      "upstream_sha256": "dc7b1840c0c6fbdfa1a416ae3c39fe0a4541f5ee9568a12f1d5b352906347492",
+      "lines": 99
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Mono",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Mono.lean",
+      "upstream_sha256": "275e9eac31e6ce3a3ff874ec797d54e19ef5c5755fb5608ab0bfbbb3dc14b833",
+      "lines": 55
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Theorem68",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Theorem68.lean",
+      "upstream_sha256": "9db6e3e998e22c3efd90a3677589dd848acff8f96fa0c60f0b873d157666d8e7",
+      "lines": 52
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Stage.Tower",
+      "path": "Hironaka/Resolution/Algebraic/Stage/Tower.lean",
+      "upstream_sha256": "11e077f0485c46b47322c8cc6653201543175bfed6dc74d09ee0ee9fcd9a5464",
+      "lines": 173
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Assemble",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Assemble.lean",
+      "upstream_sha256": "affed587fb2a52de734261af655da63b5660be356244dc56f6aacabef784576c",
+      "lines": 155
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Corollary101",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Corollary101.lean",
+      "upstream_sha256": "6ebcbe5de622362ff2dce82baa0f8b19be4a44fdcc57d539c96184e440dfe4a3",
+      "lines": 259
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Cosupport",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Cosupport.lean",
+      "upstream_sha256": "a89c1f5bcd2889fe423145ed90164c6277bd58dc6ab7d0e03a60b5e6adf59e71",
+      "lines": 103
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.MCTuned",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/MCTuned.lean",
+      "upstream_sha256": "06227258d593f06d198a51e71a544f816659640d255c030f3ba5eaa01cce7433",
+      "lines": 89
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Parameter",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Parameter.lean",
+      "upstream_sha256": "0fc9561da8d65c539f7974111e381a9f74ea8feeef8c15276fe22f7598994c3c",
+      "lines": 95
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Pullback",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Pullback.lean",
+      "upstream_sha256": "0267e92c0c81ab8a898c8a2aefffc6b3772d34b3d99d867c4f5fea8633264bd1",
+      "lines": 82
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Sequence",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Sequence.lean",
+      "upstream_sha256": "92f0b468a0e354ab0a7434d3f3c17767e0e037708c47e93a8e19adb0661b15b9",
+      "lines": 220
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Sheaf",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Sheaf.lean",
+      "upstream_sha256": "f7f908cde15b23666bfbb09ded886c3531f5831895b6ad2a2eace35302a8904f",
+      "lines": 194
+    },
+    {
+      "module": "Hironaka.Resolution.Algebraic.Tuning.Transform",
+      "path": "Hironaka/Resolution/Algebraic/Tuning/Transform.lean",
+      "upstream_sha256": "117476bd84c528b2e2fa7f02a4551f233c0a9a0a81dd3cc26b8980d2a7c05400",
+      "lines": 221
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineAlgebra",
+      "path": "Hironaka/Scheme/BlowUp/AffineAlgebra.lean",
+      "upstream_sha256": "58a5d08c2d8692b36d5ea335125c2430d59b3c273103f9abf629c10e491dd7bc",
+      "lines": 371
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Basic",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Basic.lean",
+      "upstream_sha256": "fcaea7d793fe2edab79977d5803f678a6052efdd305d20835aca649421de960c",
+      "lines": 64
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Chart",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Chart.lean",
+      "upstream_sha256": "5f8e6974f51cada6310f3f85e06df8c4eb6056ecbcf7008214b1517e93af9c01",
+      "lines": 186
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Defs",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Defs.lean",
+      "upstream_sha256": "d4db5d156232e6350f8e6852918156d996b627abdda6c0d7994e889eeffe8ddc",
+      "lines": 258
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Exceptional",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Exceptional.lean",
+      "upstream_sha256": "d3dfb6b41b7b0f0e794e4259eca37160b76ddde8ea0773cef19821b9be9c889e",
+      "lines": 148
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Admissible",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Admissible.lean",
+      "upstream_sha256": "b30b5e4a4daa6424c6d4d74dc19b650ef8835e0c036f5f2b0bc40ff12346e5d0",
+      "lines": 119
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Existence",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Existence.lean",
+      "upstream_sha256": "67e03a5a971af16a7e0f93596a67266f1ce9768bbc24c0eb881f8571e422b26d",
+      "lines": 100
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Kernel",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Kernel.lean",
+      "upstream_sha256": "5ec70319a7de5c6d75399437744c403add1c66e2e3f305babc4abdd4a46deb8a",
+      "lines": 111
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Membership",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Membership.lean",
+      "upstream_sha256": "023740446e5315adfd7c441fa6fb543e783a6dd7a77e5ebd427c79cfc4387c0a",
+      "lines": 297
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Restrict",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Restrict.lean",
+      "upstream_sha256": "180f9c06592b897f5d5d8ccede61a3b16f93e727d1688a5cee2c483b99365e68",
+      "lines": 189
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUp.Universal.Uniqueness",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUp/Universal/Uniqueness.lean",
+      "upstream_sha256": "d9fdb997f1e9a7b17d8d81849ee82d43f78f7250cdb0d808d79be2704d11ed0c",
+      "lines": 135
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.AffineBlowUpAlgebra",
+      "path": "Hironaka/Scheme/BlowUp/AffineBlowUpAlgebra.lean",
+      "upstream_sha256": "282fe703a7bd7849dfc161a63f2df8f8f02c8966ebe034486f4f501491c9a31d",
+      "lines": 128
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.BaseChange",
+      "path": "Hironaka/Scheme/BlowUp/BaseChange.lean",
+      "upstream_sha256": "b7c3d181cf7b748258dd7b7d56e7abdf7cad8ab3e49a436dd0e581d2550699f8",
+      "lines": 305
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.BlowUpMap",
+      "path": "Hironaka/Scheme/BlowUp/BlowUpMap.lean",
+      "upstream_sha256": "10eb4fd18e91c32bd916e9a8da88e7892cdabe103f86bb2f026ce5c8dbdd20b6",
+      "lines": 95
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.BlowUpMap.Defs",
+      "path": "Hironaka/Scheme/BlowUp/BlowUpMap/Defs.lean",
+      "upstream_sha256": "09e41e591b8c90b9803c6d774257aec25df53328c380e83933e998afbe95d6f9",
+      "lines": 110
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.BlowUpMapSquare",
+      "path": "Hironaka/Scheme/BlowUp/BlowUpMapSquare.lean",
+      "upstream_sha256": "e4b2e51f883f22f548abae6412272ae311cb3b694fb5c45bb3362b15dfe924e4",
+      "lines": 62
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Cancellation",
+      "path": "Hironaka/Scheme/BlowUp/Cancellation.lean",
+      "upstream_sha256": "01faaa6c06dc18ae703bb169443a1306a7305b6d682e4446caa5d355a1e9d8e4",
+      "lines": 102
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.ClosedImmersionLift",
+      "path": "Hironaka/Scheme/BlowUp/ClosedImmersionLift.lean",
+      "upstream_sha256": "56b71986145c772fa1c0be7f3b769c1e2778a2e92fcfcb4bc5b551e35bb2269d",
+      "lines": 225
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Composite",
+      "path": "Hironaka/Scheme/BlowUp/Composite.lean",
+      "upstream_sha256": "e14440961a35e443f5af87f1543650847016b47e33770ec9257e555626ce991c",
+      "lines": 327
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Composite.ChartIdeal",
+      "path": "Hironaka/Scheme/BlowUp/Composite/ChartIdeal.lean",
+      "upstream_sha256": "e237fc22ada31eb73d808cc470cdf1ad3195f184a6a1572efe65af86291df99c",
+      "lines": 158
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Composite.Descend",
+      "path": "Hironaka/Scheme/BlowUp/Composite/Descend.lean",
+      "upstream_sha256": "ab0efdd5c480a2f5daf38f0fbaee524c263875b51956f28188929096a9a82da4",
+      "lines": 167
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Composite.Transition",
+      "path": "Hironaka/Scheme/BlowUp/Composite/Transition.lean",
+      "upstream_sha256": "606dea7209bc5ef2124113a5646a382b51a40f158460530bb7b487c3a81a2f03",
+      "lines": 260
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.Charts",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/Charts.lean",
+      "upstream_sha256": "347916f1072bf20ed16d0d53557f36433a83e43e11b8deb78ff325e413157119",
+      "lines": 233
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.Exceptional",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/Exceptional.lean",
+      "upstream_sha256": "bd3f8de3d0baa5561f98945233c2a30508d04a0b9751c6ea7d772085063f47f1",
+      "lines": 326
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.ExceptionalProj",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/ExceptionalProj.lean",
+      "upstream_sha256": "1615ce9bda04dcd8f5e15e398aebc0359d0ddcf8e2a1b55bde653f25c315d410",
+      "lines": 381
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.ReesInitial",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/ReesInitial.lean",
+      "upstream_sha256": "a5b9def6ea37149a4d21b5aba28a4aab60bcb4fa4fa6c51b035025a9e9a6d8c7",
+      "lines": 293
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.Smooth",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/Smooth.lean",
+      "upstream_sha256": "32ab95f5936ca447aa4096279de14538e7048a1f9b09338905ebf24ef69665ef",
+      "lines": 152
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.CoordinateSubspace.Split",
+      "path": "Hironaka/Scheme/BlowUp/CoordinateSubspace/Split.lean",
+      "upstream_sha256": "736ffd35bf6563da7aa4c222c4ad912cdab21d94d67c22e70be13cb06e379bd8",
+      "lines": 265
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Defs",
+      "path": "Hironaka/Scheme/BlowUp/Defs.lean",
+      "upstream_sha256": "b99420a59b411f7256bfc7e5c3530fd22b68d52b8bfbef750cb6d30a080f2c53",
+      "lines": 69
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Descent",
+      "path": "Hironaka/Scheme/BlowUp/Descent.lean",
+      "upstream_sha256": "1c8b695ade50b06e4b65a7932ff542299899c70980057befa70a3b6f761ad492",
+      "lines": 219
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.ExceptionalSet",
+      "path": "Hironaka/Scheme/BlowUp/ExceptionalSet.lean",
+      "upstream_sha256": "5af847b72a69230290056a8eedb043759e4dc9471270d859df4234b20923bb2c",
+      "lines": 97
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.ExceptionalSetSmooth",
+      "path": "Hironaka/Scheme/BlowUp/ExceptionalSetSmooth.lean",
+      "upstream_sha256": "060fa4c77ffb8afe05fad4da8b2a2458b127869e0dfae5b9803bc9c798914e5a",
+      "lines": 204
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.FlatBaseChange",
+      "path": "Hironaka/Scheme/BlowUp/FlatBaseChange.lean",
+      "upstream_sha256": "03a05afe51ccae24a7a2e219c6d1d6911bd9462f0017e7c9f779266104a67dce",
+      "lines": 187
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.AffineBlowUpFunctor",
+      "path": "Hironaka/Scheme/BlowUp/Glue/AffineBlowUpFunctor.lean",
+      "upstream_sha256": "ca753c50bfb6771e14eb475be0fa29f797023b40e6bf0d8e23ad956fe585ee09",
+      "lines": 157
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.BlowUp",
+      "path": "Hironaka/Scheme/BlowUp/Glue/BlowUp.lean",
+      "upstream_sha256": "bd6cc3847ccc42e0f760d9aaabb982609c36d1c21d4ac7e34167048d8c9e6a88",
+      "lines": 102
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.Charts",
+      "path": "Hironaka/Scheme/BlowUp/Glue/Charts.lean",
+      "upstream_sha256": "7a1b78c45a0a743362c4d2990f64fb2926fc0e4815b37f02be72a23d432d00dd",
+      "lines": 122
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.Global",
+      "path": "Hironaka/Scheme/BlowUp/Glue/Global.lean",
+      "upstream_sha256": "2eebf79bf9c29f332b8e5408868d5f403b3b666ce59dcdc6ca5de811787d99f0",
+      "lines": 234
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.GlobalCharts",
+      "path": "Hironaka/Scheme/BlowUp/Glue/GlobalCharts.lean",
+      "upstream_sha256": "b2a8dec4f71331913457bdcdd12a051c6267f3d3ec5fd907def7fa4ecdf952cc",
+      "lines": 170
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.Product",
+      "path": "Hironaka/Scheme/BlowUp/Glue/Product.lean",
+      "upstream_sha256": "d851ca7c2c6c9bb274e4a93049c0c6333057abd405555b57120dd7a15e8448fa",
+      "lines": 131
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.RestrictOpen",
+      "path": "Hironaka/Scheme/BlowUp/Glue/RestrictOpen.lean",
+      "upstream_sha256": "1e46edd19b6b94e940b78d82a1e83acebf7da790791524a93151472d23a3b897",
+      "lines": 137
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Glue.Trivial",
+      "path": "Hironaka/Scheme/BlowUp/Glue/Trivial.lean",
+      "upstream_sha256": "1fe901c5e4f22730c443974b468b89dd59be566befc2393e60213e0ae95d6860",
+      "lines": 186
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.GlueIdealSheaf",
+      "path": "Hironaka/Scheme/BlowUp/GlueIdealSheaf.lean",
+      "upstream_sha256": "d595329279b1042b853e0f78f61f42991704360da160bba599cbe29d2abbd10e",
+      "lines": 380
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.InverseImage",
+      "path": "Hironaka/Scheme/BlowUp/InverseImage.lean",
+      "upstream_sha256": "4d7e0eb6480cec39995d3edad7fec14518894ecc101702d0298c50bbcc98bd87",
+      "lines": 287
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Invertible",
+      "path": "Hironaka/Scheme/BlowUp/Invertible.lean",
+      "upstream_sha256": "71dc10eaf4ec498bc0fb449d579840f0603fb8734e61a7afcf5f79fe0e4b9e59",
+      "lines": 337
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.InvertibleSheaf",
+      "path": "Hironaka/Scheme/BlowUp/InvertibleSheaf.lean",
+      "upstream_sha256": "afd21a6a31d625d9f8e665ae5abae188843edfaf23d3450d7ad27f9edb1cc82d",
+      "lines": 273
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.LinearType",
+      "path": "Hironaka/Scheme/BlowUp/LinearType.lean",
+      "upstream_sha256": "591788049b5dfcbea9e494199a693e46a879de569f539b275f97838d53ea9bf7",
+      "lines": 221
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Model",
+      "path": "Hironaka/Scheme/BlowUp/Model.lean",
+      "upstream_sha256": "bb5c715d0b97fec1ca7b798d7f0e9f4f132ab602701e5d4dd3d96710f9f9a5d1",
+      "lines": 437
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Presentation",
+      "path": "Hironaka/Scheme/BlowUp/Presentation.lean",
+      "upstream_sha256": "fee3684772c3b9316c22666cb0e00278bb008e0adc2b8c8a897b1c04eac86cf1",
+      "lines": 211
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.ProductCenter",
+      "path": "Hironaka/Scheme/BlowUp/ProductCenter.lean",
+      "upstream_sha256": "2bf7e141b920efd2a2168fcfad79033c4a46451afc30e858541b93affc26a22c",
+      "lines": 398
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.Basic",
+      "path": "Hironaka/Scheme/BlowUp/Rees/Basic.lean",
+      "upstream_sha256": "89670a645bfd762b5eb205811981931e914b37c5fbad5dd7ca0bc4924677f6b3",
+      "lines": 80
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.ChartRing",
+      "path": "Hironaka/Scheme/BlowUp/Rees/ChartRing.lean",
+      "upstream_sha256": "1b4cebdf984dcbb15bd470076015d4852dd70dee42dc2a8e1a3f6d6b78e850d1",
+      "lines": 228
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.Defs",
+      "path": "Hironaka/Scheme/BlowUp/Rees/Defs.lean",
+      "upstream_sha256": "c13e0ddc2f52d5afe8965fbec3353195570d4fc73a463ee5ae48c3b3939e521b",
+      "lines": 248
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.DegreeZero",
+      "path": "Hironaka/Scheme/BlowUp/Rees/DegreeZero.lean",
+      "upstream_sha256": "f566a288312876baf13b4774dfbf67167481fcfd3a6617f95fccf80eb1951a5a",
+      "lines": 90
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.Irrelevant",
+      "path": "Hironaka/Scheme/BlowUp/Rees/Irrelevant.lean",
+      "upstream_sha256": "1d14fad6355dcd21a977a63855685ecb5a2cb02629c347f0bfebd4efdfbdb9dc",
+      "lines": 126
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Rees.Map",
+      "path": "Hironaka/Scheme/BlowUp/Rees/Map.lean",
+      "upstream_sha256": "afa5e1aadbb8aac3cead499dc491b1028009b3d9064840097fd1de0f449be475",
+      "lines": 172
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transform",
+      "path": "Hironaka/Scheme/BlowUp/Transform.lean",
+      "upstream_sha256": "f66fe19bfae1076fa35d5312235d016bdec848d0d0275b05f91fb5a3de8038a0",
+      "lines": 576
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transform.Defs",
+      "path": "Hironaka/Scheme/BlowUp/Transform/Defs.lean",
+      "upstream_sha256": "7683dca5cdd6eaa7f03a6658ef5ade8bfe8574d0358e52456052e629dec85fdf",
+      "lines": 126
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transform.StrictTransform",
+      "path": "Hironaka/Scheme/BlowUp/Transform/StrictTransform.lean",
+      "upstream_sha256": "9cdeb34746afb5244c89d66c1507581fc39cd0be9a0f942032657468ffcd5e5e",
+      "lines": 306
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transform.TransformIso",
+      "path": "Hironaka/Scheme/BlowUp/Transform/TransformIso.lean",
+      "upstream_sha256": "b103cfb6285a0159f0c2899a3dfc99675ac514d038d2c595bf138ee00f03bb0b",
+      "lines": 69
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transform.WeakTransform",
+      "path": "Hironaka/Scheme/BlowUp/Transform/WeakTransform.lean",
+      "upstream_sha256": "0c34a8020020d9556f5449c796e481922cfca0c442c332f52ee1ef7cb06076d5",
+      "lines": 489
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.Transition",
+      "path": "Hironaka/Scheme/BlowUp/Transition.lean",
+      "upstream_sha256": "62bcdcb310e523b04d67b5f03699811c8f47c240b506174e317abc48e92a7d34",
+      "lines": 348
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUp.UniversalProperty",
+      "path": "Hironaka/Scheme/BlowUp/UniversalProperty.lean",
+      "upstream_sha256": "5cb25770689e2a876071ea264cc7666dcd8d50292037f579acb897a4412d7ade",
+      "lines": 70
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Assignment",
+      "path": "Hironaka/Scheme/BlowUpSequence/Assignment.lean",
+      "upstream_sha256": "487253c24d6bf7102e367cd295f57e0b8ed0303257b097fcc8179d40c2b33584",
+      "lines": 52
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.BaseChange",
+      "path": "Hironaka/Scheme/BlowUpSequence/BaseChange.lean",
+      "upstream_sha256": "9ddc7612d9708e24c3885f3ae6cbe70bc5121c6000e1b6de7f89ec6d134f0353",
+      "lines": 159
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.BaseChangeOrder",
+      "path": "Hironaka/Scheme/BlowUpSequence/BaseChangeOrder.lean",
+      "upstream_sha256": "bb5ad8629c1c6c88f45af11e0f9b0abd281ffae4791503d45168736c6cea80cd",
+      "lines": 322
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.BaseChangeParameters",
+      "path": "Hironaka/Scheme/BlowUpSequence/BaseChangeParameters.lean",
+      "upstream_sha256": "dff0bec2720af91d1c0bd77597f678cf0fd7d1272e8a4a34b144bfbc5d4f9335",
+      "lines": 272
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.BaseChangeTriple",
+      "path": "Hironaka/Scheme/BlowUpSequence/BaseChangeTriple.lean",
+      "upstream_sha256": "9bd8ac319d1edcfec0b9ad7352f6da596adb1caf2cdd3cdfb76152cb2c08b318",
+      "lines": 334
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Basic",
+      "path": "Hironaka/Scheme/BlowUpSequence/Basic.lean",
+      "upstream_sha256": "763bd3538b2681fae815c556149b843b1443da96b4ffca5053e2fb62eab9345e",
+      "lines": 627
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.CentersCosupport",
+      "path": "Hironaka/Scheme/BlowUpSequence/CentersCosupport.lean",
+      "upstream_sha256": "436798c370083b39293c704a154d439ac1c1a10d1a2fbd3b0eaaec15909e80e0",
+      "lines": 171
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Concat",
+      "path": "Hironaka/Scheme/BlowUpSequence/Concat.lean",
+      "upstream_sha256": "7dd276dd0697dbfefb520b32c133eb6b8f63703b830414cdef8f3c46b07c0314",
+      "lines": 71
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.ConcatApi",
+      "path": "Hironaka/Scheme/BlowUpSequence/ConcatApi.lean",
+      "upstream_sha256": "f138cbfe4d64c97e139e3b64d012b908d2a06270fe3b8f5d448d87beb8389d41",
+      "lines": 145
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.ConcatMarked",
+      "path": "Hironaka/Scheme/BlowUpSequence/ConcatMarked.lean",
+      "upstream_sha256": "4a766343fed6808e911af6ef402d28be5215bd98ad44f75d3d97825e1b3a25ed",
+      "lines": 86
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.ConcatMaxOrd",
+      "path": "Hironaka/Scheme/BlowUpSequence/ConcatMaxOrd.lean",
+      "upstream_sha256": "1788c8ce3a2e4b0044f614425e7e55b989bd9e23f678053199efb16da03a14e4",
+      "lines": 54
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.ConcatPullback",
+      "path": "Hironaka/Scheme/BlowUpSequence/ConcatPullback.lean",
+      "upstream_sha256": "e3a40acb7980632401cd6adfab982640935f43ce5e1621b78551d5bfdfbda963",
+      "lines": 67
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.ConcatTransforms",
+      "path": "Hironaka/Scheme/BlowUpSequence/ConcatTransforms.lean",
+      "upstream_sha256": "01d9a059c1206ebfaed7b0af52de6e1a4886b16ba5a7828d887219a72a4f6ed5",
+      "lines": 85
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Defs",
+      "path": "Hironaka/Scheme/BlowUpSequence/Defs.lean",
+      "upstream_sha256": "76a088155edf629d1b970eba1d024780671397af15e8002197d6ab1d4f71cdbb",
+      "lines": 198
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.DerivativeSequence",
+      "path": "Hironaka/Scheme/BlowUpSequence/DerivativeSequence.lean",
+      "upstream_sha256": "ec85c8a1d611cb3cc078a33a7a38390ac7e43ab9723aa5dbe0f50c78953b9b76",
+      "lines": 209
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.DisjointUnion",
+      "path": "Hironaka/Scheme/BlowUpSequence/DisjointUnion.lean",
+      "upstream_sha256": "38d98ced182fb9f2ac318102f0b1cb4acf8ee384f2448d126010bba64c4a850e",
+      "lines": 184
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.EqNilMarked",
+      "path": "Hironaka/Scheme/BlowUpSequence/EqNilMarked.lean",
+      "upstream_sha256": "4acb67e90de6798d518823f461329b9ac2f18a7963547fcdb6fbb70911dcf850",
+      "lines": 57
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.EraseEmptyConcat",
+      "path": "Hironaka/Scheme/BlowUpSequence/EraseEmptyConcat.lean",
+      "upstream_sha256": "c6e1117b2de3f35f3ad6d84f92accd7b41e62600d8913ac6538010a91555ac1e",
+      "lines": 164
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.EraseEmptyTransport",
+      "path": "Hironaka/Scheme/BlowUpSequence/EraseEmptyTransport.lean",
+      "upstream_sha256": "1c5ff0585716da0214021238313ed7f5e9d6d1e240b64dc57f0ee66ffc2703f8",
+      "lines": 184
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Functor",
+      "path": "Hironaka/Scheme/BlowUpSequence/Functor.lean",
+      "upstream_sha256": "be88d930c6019da1aadfa958e00a8bfdc99b333fbd837d83d937980cda8863a1",
+      "lines": 238
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.FunctorRestrict",
+      "path": "Hironaka/Scheme/BlowUpSequence/FunctorRestrict.lean",
+      "upstream_sha256": "56dc38b2d6217c1c1992da6f3cdfea84dc834dc72857d5c14816d24fdc6c100c",
+      "lines": 57
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.FunctorVocabulary",
+      "path": "Hironaka/Scheme/BlowUpSequence/FunctorVocabulary.lean",
+      "upstream_sha256": "c75b25fb9a790083fb38de85d751e28e30d706962313fca583eb793e56284712",
+      "lines": 834
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Functoriality",
+      "path": "Hironaka/Scheme/BlowUpSequence/Functoriality.lean",
+      "upstream_sha256": "2491baec2e77aa2f3894af295c87ae00f715483639c01c325decec0b1ba1a27f",
+      "lines": 442
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.InducedData",
+      "path": "Hironaka/Scheme/BlowUpSequence/InducedData.lean",
+      "upstream_sha256": "5a16b41d0e708771be5932eeec1908611f7d366a2d988df51c5d8165d6bc594a",
+      "lines": 504
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.LogDerivativeSequence",
+      "path": "Hironaka/Scheme/BlowUpSequence/LogDerivativeSequence.lean",
+      "upstream_sha256": "329c9e532949486de3cd745e65558e7791faaa3cc15f8a4ff4a358ee7ae58bae",
+      "lines": 112
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.MarkedLeWeak",
+      "path": "Hironaka/Scheme/BlowUpSequence/MarkedLeWeak.lean",
+      "upstream_sha256": "6985b9a7316acfa180101bee190d6d42af4f76ac0cb36493639ddd1038573910",
+      "lines": 107
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.MarkedMono",
+      "path": "Hironaka/Scheme/BlowUpSequence/MarkedMono.lean",
+      "upstream_sha256": "2eaeb2df57439c556434901b9935bcade2bcdbe571f6b09edece9bb582424d7b",
+      "lines": 57
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.MarkedTripleBlowUp",
+      "path": "Hironaka/Scheme/BlowUpSequence/MarkedTripleBlowUp.lean",
+      "upstream_sha256": "8a2c8674b5a97c5496d9ff1bf3fe5aa85bc5f17d9bd36818b55dc1fccb9e53c4",
+      "lines": 95
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.OrderAlongCenter",
+      "path": "Hironaka/Scheme/BlowUpSequence/OrderAlongCenter.lean",
+      "upstream_sha256": "b91d67193aaab17da39bd33b800dfc13bfdf169cf7996d58512408577ac414f4",
+      "lines": 520
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Pullback",
+      "path": "Hironaka/Scheme/BlowUpSequence/Pullback.lean",
+      "upstream_sha256": "f46005eaa3f209a2f13f8c06f6b5f1021f085e34be063b71a8a75e94f049e949",
+      "lines": 419
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.PullbackEraseEmpty",
+      "path": "Hironaka/Scheme/BlowUpSequence/PullbackEraseEmpty.lean",
+      "upstream_sha256": "339b17941274a566ea12e0b7415245c3c1e4faa8ec80f8f064e71ea51ed07206",
+      "lines": 416
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.PullbackInduced",
+      "path": "Hironaka/Scheme/BlowUpSequence/PullbackInduced.lean",
+      "upstream_sha256": "0bb4f538af1c424ab8aefbefca9d6f668cc231be19103b227343a625da22ac6d",
+      "lines": 594
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.PullbackSmooth",
+      "path": "Hironaka/Scheme/BlowUpSequence/PullbackSmooth.lean",
+      "upstream_sha256": "4762cdb0bc8d5c939d826593c86eb427db87e525886340abb2dcbb530a6bb8b0",
+      "lines": 115
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.PullbackSnc",
+      "path": "Hironaka/Scheme/BlowUpSequence/PullbackSnc.lean",
+      "upstream_sha256": "6ea224e5fc35963eaefa57765c7ce53fa8157ae5659b95978c6c8137e7a3f2a8",
+      "lines": 229
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Pushforward",
+      "path": "Hironaka/Scheme/BlowUpSequence/Pushforward.lean",
+      "upstream_sha256": "45d4575b315d80bb660dd6039e41e32fea3abd7c08280e66be29fbe6e0bcc763",
+      "lines": 540
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Remark33Exceptional",
+      "path": "Hironaka/Scheme/BlowUpSequence/Remark33Exceptional.lean",
+      "upstream_sha256": "3125b7955c0e27eadc37fd5d4a36b9ca6b88254fe451b28c42af2be33d2059f3",
+      "lines": 130
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Remark33Iso",
+      "path": "Hironaka/Scheme/BlowUpSequence/Remark33Iso.lean",
+      "upstream_sha256": "254fb94b76b15830d900826caaaf68d654036ef50ec272860e815ec8089ee7c8",
+      "lines": 139
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Remark67",
+      "path": "Hironaka/Scheme/BlowUpSequence/Remark67.lean",
+      "upstream_sha256": "92009217b29132ac50e95563e7dc0b6fc2eda70d2dce8af2a606749d7a995d00",
+      "lines": 195
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Restrict",
+      "path": "Hironaka/Scheme/BlowUpSequence/Restrict.lean",
+      "upstream_sha256": "0df5c5a62ed009803fbce84ceea39b0523e9f54bd857210392f095a943bb8d59",
+      "lines": 189
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.RestrictDivisors",
+      "path": "Hironaka/Scheme/BlowUpSequence/RestrictDivisors.lean",
+      "upstream_sha256": "4cd3b7a120a6adeed5a0c4166c1e5f37ebf8e36d41f11b840d90b952e4ea5750",
+      "lines": 762
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.RestrictDivisorsOn",
+      "path": "Hironaka/Scheme/BlowUpSequence/RestrictDivisorsOn.lean",
+      "upstream_sha256": "2400b507b82c13eb335a1d5e5323abea33573548487a7710cf4b039e2836282b",
+      "lines": 191
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.SmoothCenter",
+      "path": "Hironaka/Scheme/BlowUpSequence/SmoothCenter.lean",
+      "upstream_sha256": "226e89b8c2e43653935be3150f8eb1cab569f5caadfbeff4de25f1ea476adfb5",
+      "lines": 430
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.SmoothParameters",
+      "path": "Hironaka/Scheme/BlowUpSequence/SmoothParameters.lean",
+      "upstream_sha256": "17c09bf9ca218e97f084b1fa82492e507faa70386799f78ef78624b0bdaf5a0c",
+      "lines": 300
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Theorem88Basic",
+      "path": "Hironaka/Scheme/BlowUpSequence/Theorem88Basic.lean",
+      "upstream_sha256": "2869055d592e4fff459e53c602b400f563f3e07ffd4fb8fad1691cd6449d4421",
+      "lines": 181
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.TransformDerivative",
+      "path": "Hironaka/Scheme/BlowUpSequence/TransformDerivative.lean",
+      "upstream_sha256": "d6aa0e882a209b2b35a4134422daa88ab563eaf4de03a454876faeb4b2b3d205",
+      "lines": 506
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.TransformLogDerivative",
+      "path": "Hironaka/Scheme/BlowUpSequence/TransformLogDerivative.lean",
+      "upstream_sha256": "15322fca736bb409d391b20923731fd9c15459f28af9cd9de6b8b3def9693500",
+      "lines": 455
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Triple",
+      "path": "Hironaka/Scheme/BlowUpSequence/Triple.lean",
+      "upstream_sha256": "7d7dbf4229fa06ef0b40b7cfe0824931e5e6f19ce4799cc42f094ef18f8d5e5c",
+      "lines": 248
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.TrivialCenter",
+      "path": "Hironaka/Scheme/BlowUpSequence/TrivialCenter.lean",
+      "upstream_sha256": "990c8863ca1b791af87442f4226ba35e62784561071fdb0f1880ffd972052d11",
+      "lines": 95
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.Truncate",
+      "path": "Hironaka/Scheme/BlowUpSequence/Truncate.lean",
+      "upstream_sha256": "4c5cb245fa415426af991d68b93468614d914fd4bbb3401e758f7b78b1af7ac0",
+      "lines": 333
+    },
+    {
+      "module": "Hironaka.Scheme.BlowUpSequence.WeakTransformFlat",
+      "path": "Hironaka/Scheme/BlowUpSequence/WeakTransformFlat.lean",
+      "upstream_sha256": "de02604daeba2e07edba15f2dcb8ec652029b1d9e0649ef81a075b650d92f4ba",
+      "lines": 120
+    },
+    {
+      "module": "Hironaka.Scheme.Defs",
+      "path": "Hironaka/Scheme/Defs.lean",
+      "upstream_sha256": "69b813f65f6409ab982bd926a9fa26d8dca7b121034ef73f1e69837c42ca422f",
+      "lines": 39
+    },
+    {
+      "module": "Hironaka.Scheme.FiniteType",
+      "path": "Hironaka/Scheme/FiniteType.lean",
+      "upstream_sha256": "7b7f256cf4809d96904ab0989a1b6f2752e74acf6467223f3332ddd80de2875c",
+      "lines": 32
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Defs",
+      "path": "Hironaka/Scheme/IdealSheaf/Defs.lean",
+      "upstream_sha256": "5afc8a20312dae963636be021e97463e15134a38403024405be646dad8c16720",
+      "lines": 85
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.BaseChange",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/BaseChange.lean",
+      "upstream_sha256": "a8c7e6834223ff5674d23557def25bea9258552a1b34b460697b6eb02f8ac1b3",
+      "lines": 337
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.Cosupport",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/Cosupport.lean",
+      "upstream_sha256": "00c873956f24fde5ee1155f015c88f1f264c9605f1d5ceac713e76b28d8f13d1",
+      "lines": 88
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.DualSpans",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/DualSpans.lean",
+      "upstream_sha256": "2bd0fdb9923be79e8ced99785b89375de871a62aa5d24615998d8b7b26559044",
+      "lines": 127
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.FlagCoords",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/FlagCoords.lean",
+      "upstream_sha256": "1b79a02aef202a50234e954df8c421fe1b4204e9beb2b82209ca93af8bb66811",
+      "lines": 228
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.Logarithmic",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/Logarithmic.lean",
+      "upstream_sha256": "31f245f37d61ff4912f6ab40d56462434dd8a2f252c84ba11a1138aaccb8f463",
+      "lines": 207
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.LogarithmicLocalization",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/LogarithmicLocalization.lean",
+      "upstream_sha256": "c2d412f0e419394cad006154a2645d07adbfd55fe5edbda165128d37c5abcac5",
+      "lines": 168
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.LogarithmicQuotient",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/LogarithmicQuotient.lean",
+      "upstream_sha256": "5c23fc3c42febab6805c810ef3f7b7a3e5181c4d05aa991c5541ee9e343bd112",
+      "lines": 155
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.LogarithmicSheaf",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/LogarithmicSheaf.lean",
+      "upstream_sha256": "2f7f23d28c486ebff7fc498d920ee6accd6955e4211f4b5dc7bc68b2350cdc17",
+      "lines": 217
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.Properties",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/Properties.lean",
+      "upstream_sha256": "35d7ea59a1438a5bf96d50e7242c4b70fd480fa18a6926437ba19de52fbd7236",
+      "lines": 243
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.Pullback",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/Pullback.lean",
+      "upstream_sha256": "e0cedb571b8054be56a760a7fca40c81d9895730c048eed7c77371160a2a9b97",
+      "lines": 163
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.Sheaf",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/Sheaf.lean",
+      "upstream_sha256": "70897fe77a8e5229ebff36e24f919191398cfe1d318c34c329eec05638486464",
+      "lines": 159
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Derivative.StalkCoords",
+      "path": "Hironaka/Scheme/IdealSheaf/Derivative/StalkCoords.lean",
+      "upstream_sha256": "40b37e0dbc48da8f08024af882aec62d074568db1032be069a5aa18389036edf",
+      "lines": 318
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Invertible",
+      "path": "Hironaka/Scheme/IdealSheaf/Invertible.lean",
+      "upstream_sha256": "bf99b9673ed79bfa1c107cd7bc86acc58cdeb37009acd22f54d96da737ec4e2a",
+      "lines": 259
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.AffineSpace",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/AffineSpace.lean",
+      "upstream_sha256": "fcce6feef661c18b63faca4e0f3653fcf90f1bc3a7d3a7f2b6317df1af051f5e",
+      "lines": 655
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Along",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Along.lean",
+      "upstream_sha256": "19501ac3880ff3fb172cef5caa9f5774569561aa516da43b5191055f1fcfd420",
+      "lines": 191
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Basic",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Basic.lean",
+      "upstream_sha256": "258578ca6cdbd16584153c003db2bd424a42be800a12dc825344add1e384bd94",
+      "lines": 124
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Constructible",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Constructible.lean",
+      "upstream_sha256": "4cce992133466c3412a0322f64306b121017645f4c87c8ffe74bb9ba09cd57bd",
+      "lines": 369
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Exceptional",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Exceptional.lean",
+      "upstream_sha256": "d581e85164f23a9bf7f1c708e89248d23bc79e2a7c3e14a867d855cb2d2c8186",
+      "lines": 288
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.ExceptionalOrder",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/ExceptionalOrder.lean",
+      "upstream_sha256": "77575bf19d5ae365db4adf6dd9d99e645eead5a41e966a062b28a88fed250dd4",
+      "lines": 286
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Invariance",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Invariance.lean",
+      "upstream_sha256": "2a7b903e2fc99c830413431502373f42bc15187c736508bebca4456a54350095",
+      "lines": 115
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Lemma61",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Lemma61.lean",
+      "upstream_sha256": "a55e748e3809c34bfc6417ef24dffc77ec60e92ec15ef5eaa3ef106a657fd102",
+      "lines": 343
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.MaxOrdAnti",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/MaxOrdAnti.lean",
+      "upstream_sha256": "f4a16478fd9bfa103833a729810026a54c54d1dd84e042371f21c9d202e72900",
+      "lines": 55
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Semicontinuity",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Semicontinuity.lean",
+      "upstream_sha256": "fe4da483ec5827eda8576d3b17ea06f29610a01733cd34d4a9ea8916f5ac1190",
+      "lines": 129
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Smooth",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Smooth.lean",
+      "upstream_sha256": "e0e3ae062e713ab361f6589a06ed60901d1a2951faa0a4568508a6aa2b64a84c",
+      "lines": 124
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.Order.Specialization",
+      "path": "Hironaka/Scheme/IdealSheaf/Order/Specialization.lean",
+      "upstream_sha256": "5af715568862520f0fdba020c0aeebe55c5d1e1d2612e4531cdccea9349a9a6d",
+      "lines": 204
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.StalkIdeal",
+      "path": "Hironaka/Scheme/IdealSheaf/StalkIdeal.lean",
+      "upstream_sha256": "fde409f06bfc5802194c981624d31e2dfe5656426f5203507374dc6acb85479a",
+      "lines": 128
+    },
+    {
+      "module": "Hironaka.Scheme.IdealSheaf.StalkLe",
+      "path": "Hironaka/Scheme/IdealSheaf/StalkLe.lean",
+      "upstream_sha256": "003891d553d4d9e4ce914daf16a6b3b7963e5cd0674af2226e419c897665916e",
+      "lines": 192
+    },
+    {
+      "module": "Hironaka.Scheme.Modules.Defs",
+      "path": "Hironaka/Scheme/Modules/Defs.lean",
+      "upstream_sha256": "385e605ac24fa17c8f7dc9cdcebb1da39ba6b09fe4ba262df4b1720b36a87aa7",
+      "lines": 38
+    },
+    {
+      "module": "Hironaka.Scheme.Modules.Sections",
+      "path": "Hironaka/Scheme/Modules/Sections.lean",
+      "upstream_sha256": "e423ebaa474c14f9b859043a9d251b7c32d846da881b0ebea479eb1b63473ba9",
+      "lines": 317
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Affine.BaseChange",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Affine/BaseChange.lean",
+      "upstream_sha256": "c0978d36e94491e7424708ca3bd5338f2643d356a3536025595273690e22e1e9",
+      "lines": 128
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Affine.Defs",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Affine/Defs.lean",
+      "upstream_sha256": "aa54e0f9c319f62aa54c8106e0e966d999c2501b4e403ddf2eeb413e9cdf01c4",
+      "lines": 112
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Affine.Map",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Affine/Map.lean",
+      "upstream_sha256": "bc2dd63c836df566550c27563cb338b995f538d73b47de5e3f5f48a466c37020",
+      "lines": 125
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Defs",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Defs.lean",
+      "upstream_sha256": "8b0da6236a2082fa39c92fa61f0c5ef4194af3a7043209dd43c63cb06b3e50f4",
+      "lines": 82
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Equifibered",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Equifibered.lean",
+      "upstream_sha256": "c3d06f8de7a134311573e9172bfea5def58c52ddbfffba513d0011c24a28eff0",
+      "lines": 60
+    },
+    {
+      "module": "Hironaka.Scheme.ProjectiveBundle.Functor.Defs",
+      "path": "Hironaka/Scheme/ProjectiveBundle/Functor/Defs.lean",
+      "upstream_sha256": "cbc007729a6cd5673d4eed0e5e7970e303fe22b4fa5980fc606b2e773f39e738",
+      "lines": 100
+    },
+    {
+      "module": "Hironaka.Scheme.Resolution.Basic",
+      "path": "Hironaka/Scheme/Resolution/Basic.lean",
+      "upstream_sha256": "dc92f48846a6a74cc40e4f1cc086514e8f58f6993a0c42d434a8c47190811d2d",
+      "lines": 81
+    },
+    {
+      "module": "Hironaka.Scheme.Resolution.Defs",
+      "path": "Hironaka/Scheme/Resolution/Defs.lean",
+      "upstream_sha256": "52c1e0831ea55748b6b8c3a6335bf05fdec54f9c096a0dff6ac363e1f90e2bd0",
+      "lines": 452
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.Adapted",
+      "path": "Hironaka/Scheme/Smooth/Adapted.lean",
+      "upstream_sha256": "6f1be7431599ebf82589545f89386d2d67685c4e7853065e09e639ebf0a6d457",
+      "lines": 239
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.AdaptedCoordinates",
+      "path": "Hironaka/Scheme/Smooth/AdaptedCoordinates.lean",
+      "upstream_sha256": "798b028e14e805f552048d7126da7a1e45ae6c588d4b091a409e224ca1882ab2",
+      "lines": 224
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.BlowUpSmooth",
+      "path": "Hironaka/Scheme/Smooth/BlowUpSmooth.lean",
+      "upstream_sha256": "1be7748efe4fa5237fbec8754e2c40edf46bb2a3e864fba7dcb8064f4ba4e8c4",
+      "lines": 160
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.BlowUpSmoothChart",
+      "path": "Hironaka/Scheme/Smooth/BlowUpSmoothChart.lean",
+      "upstream_sha256": "b33fc956187701d6930b77ffacdff912aee63d680d80a2369c22c2c01c3b9309",
+      "lines": 165
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ChartDefs",
+      "path": "Hironaka/Scheme/Smooth/ChartDefs.lean",
+      "upstream_sha256": "398b753e36af47d9393e355bf311f2943bba6836e0d7f6d97e431f6437b3b2c5",
+      "lines": 56
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ChartEtale",
+      "path": "Hironaka/Scheme/Smooth/ChartEtale.lean",
+      "upstream_sha256": "1d89ee732299942ba9f2d9bc2649ca623b5e31c9d1c289662070a4272450e2b7",
+      "lines": 227
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ChartIso",
+      "path": "Hironaka/Scheme/Smooth/ChartIso.lean",
+      "upstream_sha256": "54026d8f9b02e87c35887a3dd8cee92f1952973105f38c3c5da5e7282a3e9ca6",
+      "lines": 136
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ChartRing",
+      "path": "Hironaka/Scheme/Smooth/ChartRing.lean",
+      "upstream_sha256": "0d3f470b0d8ad2687d6c8c91babf4cf824aa6e49fbe7d5bf3dcf92673d5a2cf2",
+      "lines": 161
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.CoordinateSystem",
+      "path": "Hironaka/Scheme/Smooth/CoordinateSystem.lean",
+      "upstream_sha256": "ba65bd0b122dbd0dc0faf9279ef8eb9e1dc20e9193951298f21ecd7c65e376b7",
+      "lines": 85
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.CoordinateSystemPair",
+      "path": "Hironaka/Scheme/Smooth/CoordinateSystemPair.lean",
+      "upstream_sha256": "949f7a90d735ac8e4ee0a7c6e61e3cfa969de83afa05a8201dbf1cc807520366",
+      "lines": 148
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.DifferentialBasis",
+      "path": "Hironaka/Scheme/Smooth/DifferentialBasis.lean",
+      "upstream_sha256": "f1606acd5db12d519888d3a2adb7197ad09f2febb42b7ca549814d0d72b87f16",
+      "lines": 194
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.DifferentialBasisAny",
+      "path": "Hironaka/Scheme/Smooth/DifferentialBasisAny.lean",
+      "upstream_sha256": "f0d79540743fc86745be9fe41f51749aae3948e57808d0c841f7ebba4f0bb207",
+      "lines": 200
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleCoordinates",
+      "path": "Hironaka/Scheme/Smooth/EtaleCoordinates.lean",
+      "upstream_sha256": "c150e13bb1b7541d3c52c1971fab66319b65d7f949dfd5b965d4872e503390f7",
+      "lines": 271
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleCoordinatesAdapted",
+      "path": "Hironaka/Scheme/Smooth/EtaleCoordinatesAdapted.lean",
+      "upstream_sha256": "9f410e3e65054e8c2d1d0ee576f8e43281c22568874640de4a200efb298af6bf",
+      "lines": 88
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleCoordinatesDefs",
+      "path": "Hironaka/Scheme/Smooth/EtaleCoordinatesDefs.lean",
+      "upstream_sha256": "c7830d34a859d6e7128d0e5dcbd7fa0d659fabc687017f58d913aa775cabcb33",
+      "lines": 78
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleCover",
+      "path": "Hironaka/Scheme/Smooth/EtaleCover.lean",
+      "upstream_sha256": "3a9aeb9fa783f5d2961a8e6105b00e134fbfcbe72eb4007f18cbe4dea2421068",
+      "lines": 92
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleCoverFinite",
+      "path": "Hironaka/Scheme/Smooth/EtaleCoverFinite.lean",
+      "upstream_sha256": "372e9e7ce4259c7cf49d8774307f363dbe961a3be3324f633ff044bdbb00088d",
+      "lines": 103
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleLocal",
+      "path": "Hironaka/Scheme/Smooth/EtaleLocal.lean",
+      "upstream_sha256": "2b97eb5bbaa321c90c1639029a192571cb7818ccea91148f3b7d3e91f5772f91",
+      "lines": 169
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.EtaleStalk",
+      "path": "Hironaka/Scheme/Smooth/EtaleStalk.lean",
+      "upstream_sha256": "61767f6ea2356b787db0d05cec786005509d0e8afbf06e6afdc1788c72777a4c",
+      "lines": 73
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ExceptionalBaseChange",
+      "path": "Hironaka/Scheme/Smooth/ExceptionalBaseChange.lean",
+      "upstream_sha256": "cf6d5d7f1685033e61b89687c87eb74c47342c4321c0944a42e6368ed1b1164e",
+      "lines": 273
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ExceptionalBundle",
+      "path": "Hironaka/Scheme/Smooth/ExceptionalBundle.lean",
+      "upstream_sha256": "51c5238d4807af9f8145445e430d297cf0f6526c51392ddb325d8ad3f237b0e5",
+      "lines": 348
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ExceptionalChart",
+      "path": "Hironaka/Scheme/Smooth/ExceptionalChart.lean",
+      "upstream_sha256": "2610e7c584ca82f19c2ea705d0135b4940d1375bd6df6276874eab5f4e58d412",
+      "lines": 281
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ExceptionalDivisor",
+      "path": "Hironaka/Scheme/Smooth/ExceptionalDivisor.lean",
+      "upstream_sha256": "f7d65bcb6ee3bf57d126d9e5f26d7bce4c1fb574c5d270afd1908e32ef954a3c",
+      "lines": 298
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.ExceptionalModel",
+      "path": "Hironaka/Scheme/Smooth/ExceptionalModel.lean",
+      "upstream_sha256": "659b90898c9745057c5c8a3c3a0a50c316f8febfd78c1d6b6d2b5a156d018f96",
+      "lines": 428
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.Graph",
+      "path": "Hironaka/Scheme/Smooth/Graph.lean",
+      "upstream_sha256": "316d26a788f7eb5c159fdc365caf5ac35eb6c1900b86d8b203b8f5a07d4a3a25",
+      "lines": 157
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphBasic",
+      "path": "Hironaka/Scheme/Smooth/GraphBasic.lean",
+      "upstream_sha256": "cf3afdcb5d8e87b5d5102727538c193b8975729f3eaafc556b52e532943a8f9f",
+      "lines": 130
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphCompletion",
+      "path": "Hironaka/Scheme/Smooth/GraphCompletion.lean",
+      "upstream_sha256": "9210868f679a2b3c650b66eb57d922df66e7a898fd8e35d7a39154446860992c",
+      "lines": 265
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphComponent",
+      "path": "Hironaka/Scheme/Smooth/GraphComponent.lean",
+      "upstream_sha256": "ac45adf2524e01766200f466945c6ea94414025ac4a9ebef9e3d7550a2e06d6f",
+      "lines": 59
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphDiagonalPair",
+      "path": "Hironaka/Scheme/Smooth/GraphDiagonalPair.lean",
+      "upstream_sha256": "ebbe2f441abbbd5c4d44fb9e0799a0a4484648d2cd80a6c0146d12dd445fc859",
+      "lines": 220
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphFormal",
+      "path": "Hironaka/Scheme/Smooth/GraphFormal.lean",
+      "upstream_sha256": "4d91dca60f15380fd4f27560f8996f02b4efe443161728808c3a7d777a7496ca",
+      "lines": 207
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.GraphPoint",
+      "path": "Hironaka/Scheme/Smooth/GraphPoint.lean",
+      "upstream_sha256": "9a8c6853ad3e00bb06ebe93af7d69e2a3fadbc54f6cb48a4b9bf92a2ecb73782",
+      "lines": 166
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.IdealSheafSpreadOut",
+      "path": "Hironaka/Scheme/Smooth/IdealSheafSpreadOut.lean",
+      "upstream_sha256": "1deede76ec2fa67b7544473f42881dafef691c2cd7d6008841f077ff03fe7b88",
+      "lines": 108
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.LocalBlowUp",
+      "path": "Hironaka/Scheme/Smooth/LocalBlowUp.lean",
+      "upstream_sha256": "d9ffaee0d2933bd4715f6eb1bfabb6b7773520da452feebbabd47bd90caf9d6b",
+      "lines": 256
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.LocalBlowUpChart",
+      "path": "Hironaka/Scheme/Smooth/LocalBlowUpChart.lean",
+      "upstream_sha256": "88f6ab017682d7678cb16b0c9dae43894d1e3c1514121f89f5df141cdb01aa77",
+      "lines": 288
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.LocalBlowUpStalk",
+      "path": "Hironaka/Scheme/Smooth/LocalBlowUpStalk.lean",
+      "upstream_sha256": "ef482d311db19cab326360da72ac8bda81ef2f9ee58339f7d4538336baf1b8f3",
+      "lines": 82
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.Origin",
+      "path": "Hironaka/Scheme/Smooth/Origin.lean",
+      "upstream_sha256": "e92e86c1c610122dac0c8150cdc12cce273ee9a9d30fc8c40a5134fe8dfba797",
+      "lines": 153
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.StandardChart",
+      "path": "Hironaka/Scheme/Smooth/StandardChart.lean",
+      "upstream_sha256": "fc237ce2b114fbc668ff8c7826847eb4d3c4ead1c8124ac4499507b6fbba5d57",
+      "lines": 159
+    },
+    {
+      "module": "Hironaka.Scheme.Smooth.SubschemeStalk",
+      "path": "Hironaka/Scheme/Smooth/SubschemeStalk.lean",
+      "upstream_sha256": "2d7452ad24856cfd6f15690425971108a4fbcc65a5fffa2a15ec1de445acfd0f",
+      "lines": 129
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.AppendEmpty",
+      "path": "Hironaka/Scheme/Snc/AppendEmpty.lean",
+      "upstream_sha256": "fa1c7df328544c230c293a28e2d6e39366556213c8946e0a7bed47e945f66058",
+      "lines": 74
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.Basic",
+      "path": "Hironaka/Scheme/Snc/Basic.lean",
+      "upstream_sha256": "ecb89460a3e575e3aa58a51fcbfa2574c8533b188f73ba36ce39ffe2d7f957cb",
+      "lines": 69
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.ChartDerivations",
+      "path": "Hironaka/Scheme/Snc/ChartDerivations.lean",
+      "upstream_sha256": "1076fb0d9bb4e37639e51e90043b35ea87aee5d6eff4bdd75939f04515119405",
+      "lines": 274
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.ChartSncData",
+      "path": "Hironaka/Scheme/Snc/ChartSncData.lean",
+      "upstream_sha256": "98c211f7d6f62ed46e589362b33e0ff3b2ac2278f37ea550663fed164d4a755d",
+      "lines": 224
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.ChartStalk",
+      "path": "Hironaka/Scheme/Snc/ChartStalk.lean",
+      "upstream_sha256": "192c4ee939a6c542e3ef8102f10089c8ec7dea2257f2386fe5cb6beda7f65a3e",
+      "lines": 217
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.Coordinates",
+      "path": "Hironaka/Scheme/Snc/Coordinates.lean",
+      "upstream_sha256": "363c810709baf8915307d656167609db96feb3f1bb3b6217f1050cee32474cfc",
+      "lines": 107
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.Defs",
+      "path": "Hironaka/Scheme/Snc/Defs.lean",
+      "upstream_sha256": "62fda8c1ebe5b96ab4dbb140eecc75648b5de8f215c592da010af34843e1f15e",
+      "lines": 191
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.Dictionary",
+      "path": "Hironaka/Scheme/Snc/Dictionary.lean",
+      "upstream_sha256": "562c1d4fd42a62d9992b19fa7715b9b5b32144de4728ff1f65ff088a01c833e8",
+      "lines": 113
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.DictionaryOrder",
+      "path": "Hironaka/Scheme/Snc/DictionaryOrder.lean",
+      "upstream_sha256": "c21edaee7d510bf70bca1155d277b52c2e12770e39dea768b4c219ce38ec05a0",
+      "lines": 213
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.EraseFamily",
+      "path": "Hironaka/Scheme/Snc/EraseFamily.lean",
+      "upstream_sha256": "3c20871c29efd802b0a823712dbf016ea00190308cbcf24fd7c0bbcfaaef3f7e",
+      "lines": 212
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.EtaleParameters",
+      "path": "Hironaka/Scheme/Snc/EtaleParameters.lean",
+      "upstream_sha256": "3f07a85574b6387b975794e72e0a7c7196e0d97976568d021a6ef297fde7babb",
+      "lines": 238
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.Family",
+      "path": "Hironaka/Scheme/Snc/Family.lean",
+      "upstream_sha256": "f0e96d0c636a6b88a3becd3472e92102a8ebc29a83e258dcd020f08990950cfa",
+      "lines": 145
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.HasSncWith",
+      "path": "Hironaka/Scheme/Snc/HasSncWith.lean",
+      "upstream_sha256": "2ed728fda344c6a22bd9cdd79c1287c56cc9700e28f1610ac11d48db26111aa9",
+      "lines": 395
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.LiftHypersurface",
+      "path": "Hironaka/Scheme/Snc/LiftHypersurface.lean",
+      "upstream_sha256": "1c61f61c3058f4b6602d14087f6212ebf2b8869410d5ec4ff388d995ed6bd796",
+      "lines": 326
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.ParameterAlgebra",
+      "path": "Hironaka/Scheme/Snc/ParameterAlgebra.lean",
+      "upstream_sha256": "ac46a6dae1cd9d6ed12764ed919289820e8dad64cc12b3eb6625c9ae5f2687e1",
+      "lines": 176
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.ParameterSubset",
+      "path": "Hironaka/Scheme/Snc/ParameterSubset.lean",
+      "upstream_sha256": "8b83aa8e0f1ea6f2df11381c33bc066a5ab7e6233a4b21266333257493bfb5fc",
+      "lines": 322
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.RelativeDimension",
+      "path": "Hironaka/Scheme/Snc/RelativeDimension.lean",
+      "upstream_sha256": "112216817806e9c3a92c719158d776fbe6e35eda63feabd61f51aef46260b9b7",
+      "lines": 209
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.RestrictHypersurface",
+      "path": "Hironaka/Scheme/Snc/RestrictHypersurface.lean",
+      "upstream_sha256": "44225730b3ec67c6a24595732eb854e40a007b54b663661a060e09e419ae64d8",
+      "lines": 182
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.SmoothDivisor",
+      "path": "Hironaka/Scheme/Snc/SmoothDivisor.lean",
+      "upstream_sha256": "76c3df3a4cbe673ad5f24d3e5e64241a53e0d643cb813e381f69b75dd6cd94ae",
+      "lines": 84
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.SncOn",
+      "path": "Hironaka/Scheme/Snc/SncOn.lean",
+      "upstream_sha256": "978debf440f33154ac7df0e394b6752b9e70414b7ce3607baebd3e885008b36d",
+      "lines": 65
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.SpreadSnc",
+      "path": "Hironaka/Scheme/Snc/SpreadSnc.lean",
+      "upstream_sha256": "e2af1738c1ec8fb92bb8f88203012df6754b763ec94c4085ed90b3fa19e8108f",
+      "lines": 337
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformChartComputation",
+      "path": "Hironaka/Scheme/Snc/TotalTransformChartComputation.lean",
+      "upstream_sha256": "f94d1b82c0dada503c18a012092fac3b52516c1deffef4e320f7febd99300f57",
+      "lines": 210
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformData",
+      "path": "Hironaka/Scheme/Snc/TotalTransformData.lean",
+      "upstream_sha256": "9f3e6963a60ea3b620d629b8fbe2760703545df3232898dfaf75299ba8da39f3",
+      "lines": 192
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformOffCentre",
+      "path": "Hironaka/Scheme/Snc/TotalTransformOffCentre.lean",
+      "upstream_sha256": "8a47c0f28d74cc56e530a9eacf13726b314889a23424aeb3874b352832749731",
+      "lines": 197
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformOnCentre",
+      "path": "Hironaka/Scheme/Snc/TotalTransformOnCentre.lean",
+      "upstream_sha256": "b6a2bb00166c337a65a4f751862260f2f855a3a5600f8e5a144223f4b7d4b827",
+      "lines": 473
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformSmoothBlowUp",
+      "path": "Hironaka/Scheme/Snc/TotalTransformSmoothBlowUp.lean",
+      "upstream_sha256": "c3ac52e016f1599c4ed5ca1b668853cd721320ad83b39d3b1cfcced8b9583137",
+      "lines": 224
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TotalTransformSnc",
+      "path": "Hironaka/Scheme/Snc/TotalTransformSnc.lean",
+      "upstream_sha256": "d15b2d0f0590815dc69aa3e84594d83612dd8a070782438c83f88b95874d60f0",
+      "lines": 403
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TrivialSncData",
+      "path": "Hironaka/Scheme/Snc/TrivialSncData.lean",
+      "upstream_sha256": "9b78cacf97f78e84cec4dcae9e0095c8cc926fe3ef60f37773dd5576fa415ec6",
+      "lines": 207
+    },
+    {
+      "module": "Hironaka.Scheme.Snc.TrivialTotalTransform",
+      "path": "Hironaka/Scheme/Snc/TrivialTotalTransform.lean",
+      "upstream_sha256": "3e5233f388f0b826d73ac35ecb5a4ef08b98b607ddeeed29e04ab21ba6481e11",
+      "lines": 279
+    }
+  ]
+}

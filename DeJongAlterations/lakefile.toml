@@ -1,0 +1,18 @@
+# Release copy of the workspace lakefile, restricted to the import closure of the release
+# roots (see README.md and scripts/closure.py at the repository root): exact-module globs that are not in the
+# closure are dropped.
+name = "DeJongAlterations"
+version = "0.1.0"
+defaultTargets = ["DeJongAlterations"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "DeJongAlterations"
+globs = ["DeJongAlterations.+"]

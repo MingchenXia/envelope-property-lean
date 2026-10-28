@@ -1,0 +1,2108 @@
+--- upstream/Hironaka/Algebra/Derivative/Extension.lean
++++ ep33/Hironaka/Algebra/Derivative/Extension.lean
+@@ -67,7 +67,7 @@
+     rw [Subsingleton.elim y 0, map_zero]
+   have hsurj : Function.Surjective (map k A B B) := map_surjective k A B
+   obtain ⟨s, hs⟩ := Module.projective_lifting_property (map k A B B) LinearMap.id hsurj
+-  have h01 := ((exact_mapBaseChange_map k A B).split_tfae hinj hsurj).out 1 2
++  have h01 := ((exact_mapBaseChange_map k A B).split_tfae hinj hsurj).out 0 1
+   exact h01.mp ⟨s, hs⟩
+ 
+ /-- For `B` formally smooth over `A`, every `k`-derivation `δ` of `A` extends to a `k`-derivation
+--- upstream/Hironaka/Algebra/Local/Balanced.lean
++++ ep33/Hironaka/Algebra/Local/Balanced.lean
+@@ -129,7 +129,7 @@
+     (dvd_mul_left _ _).trans (Ideal.mem_span_singleton.mp h)
+   rw [MvPowerSeries.X_dvd_iff] at hdvd
+   have := hdvd (Finsupp.single i 2) (by simp [hij])
+-  rw [MvPowerSeries.coeff_X_pow, ite_eq_left rfl] at this
++  rw [MvPowerSeries.coeff_X_pow, if_pos rfl] at this
+   exact one_ne_zero this
+ 
+ end IsLocalRing
+--- upstream/Hironaka/Algebra/Local/Chart.lean
++++ ep33/Hironaka/Algebra/Local/Chart.lean
+@@ -247,7 +247,7 @@
+   rcases lt_trichotomy j r with hj | hjr | hj
+   · rw [c.chartDeriv_of_lt r hj, Derivation.smul_apply, smul_eq_mul]
+     by_cases hk : k < r
+-    · rw [awayPderiv_chartY_of_lt c r j hk, ite_eq_right hj.ne]
++    · rw [awayPderiv_chartY_of_lt c r j hk, if_neg hj.ne]
+       split_ifs
+       · linear_combination hu
+       · ring
+@@ -257,14 +257,14 @@
+   · rw [hjr, c.chartDeriv_self r, Derivation.add_apply, Derivation.finset_sum_apply]
+     simp only [Derivation.smul_apply, smul_eq_mul]
+     by_cases hk : k < r
+-    · rw [awayPderiv_chartY_of_lt c r r hk, ite_eq_left (rfl : r = r), ite_eq_right hk.ne']
++    · rw [awayPderiv_chartY_of_lt c r r hk, if_pos (rfl : r = r), if_neg hk.ne']
+       rw [Finset.sum_eq_single k]
+-      · rw [awayPderiv_chartY_of_lt c r k hk, ite_eq_left (rfl : k = k), ite_eq_right hk.ne,
++      · rw [awayPderiv_chartY_of_lt c r k hk, if_pos (rfl : k = k), if_neg hk.ne,
+           chartY_of_lt c.x r hk]
+         ring
+       · intro i hi hik
+-        rw [awayPderiv_chartY_of_lt c r i hk, ite_eq_right hik,
+-          ite_eq_right (Finset.mem_filter.mp hi).2.ne]
++        rw [awayPderiv_chartY_of_lt c r i hk, if_neg hik,
++          if_neg (Finset.mem_filter.mp hi).2.ne]
+         ring
+       · intro hk'
+         exact absurd (Finset.mem_filter.mpr ⟨Finset.mem_univ k, hk⟩ :
+@@ -274,11 +274,11 @@
+           chartY c.x r i * c.awayPderiv r i (chartY c.x r k) = 0 := by
+         intro i hi
+         rw [awayPderiv_chartY_of_not_lt c r i hk,
+-          ite_eq_right (fun (h : i = k) => hk (h ▸ (Finset.mem_filter.mp hi).2)), mul_zero]
++          if_neg (fun (h : i = k) => hk (h ▸ (Finset.mem_filter.mp hi).2)), mul_zero]
+       rw [Finset.sum_eq_zero this, add_zero]
+   · rw [c.chartDeriv_of_gt r hj]
+     by_cases hk : k < r
+-    · rw [awayPderiv_chartY_of_lt c r j hk, ite_eq_right hj.ne', ite_eq_right (hk.trans hj).ne']
++    · rw [awayPderiv_chartY_of_lt c r j hk, if_neg hj.ne', if_neg (hk.trans hj).ne']
+       ring
+     · exact awayPderiv_chartY_of_not_lt c r j hk
+ 
+@@ -515,10 +515,10 @@
+ variable (x : Fin n → R) (r : Fin n) (a : Fin n → R)
+ 
+ theorem shiftCoords_of_lt {i : Fin n} (hi : i < r) : shiftCoords x r a i = x i - a i * x r :=
+-  ite_eq_left hi
++  if_pos hi
+ 
+ theorem shiftCoords_of_not_lt {i : Fin n} (hi : ¬ i < r) : shiftCoords x r a i = x i :=
+-  ite_eq_right hi
++  if_neg hi
+ 
+ /-- `x'ᵢ/x_r = yᵢ − ãᵢ` for `i < r`. -/
+ theorem mk_shiftCoords_of_lt {i : Fin n} (hi : i < r) :
+@@ -606,9 +606,9 @@
+         Localization.Away (x r)) := by
+   rw [coe_chartYROf]
+   by_cases hi : i < r
+-  · rw [ite_eq_left hi, chartYOf_of_lt _ _ _ hi, mk_shiftCoords_of_lt x r a hi, Subalgebra.coe_sub,
++  · rw [if_pos hi, chartYOf_of_lt _ _ _ hi, mk_shiftCoords_of_lt x r a hi, Subalgebra.coe_sub,
+       Subalgebra.coe_algebraMap, coe_chartYROf, chartYOf_of_lt _ _ _ hi]
+-  · rw [ite_eq_right hi, chartYOf_of_not_lt _ _ _ hi, coe_chartYROf, chartYOf_of_not_lt _ _ _ hi,
++  · rw [if_neg hi, chartYOf_of_not_lt _ _ _ hi, coe_chartYROf, chartYOf_of_not_lt _ _ _ hi,
+       shiftCoords_of_not_lt x r a hi]
+ 
+ /-- `𝔪'_a` is the origin of the chart for the shifted coordinates (membership correspondence
+@@ -784,7 +784,7 @@
+   let τ : Fin r ≃ Fin r := Equiv.swap i₀ ρ₀
+   let f₀ : Fin n → Fin n := fun i => if h : i.val < r then g₀ (τ ⟨i.val, h⟩) else i
+   let s₀ : Finset (Fin n) := Finset.univ.filter fun i => i.val < r
+-  have hf₀ : ∀ i (h : i.val < r), f₀ i = g₀ (τ ⟨i.val, h⟩) := fun i h => dite_eq_left h
++  have hf₀ : ∀ i (h : i.val < r), f₀ i = g₀ (τ ⟨i.val, h⟩) := fun i h => dif_pos h
+   have hinj : Set.InjOn f₀ ↑s₀ := by
+     intro i hi j hj hij
+     have hi' : i.val < r := (Finset.mem_filter.mp (Finset.mem_coe.mp hi)).2
+--- upstream/Hironaka/Algebra/Local/ChartCoords.lean
++++ ep33/Hironaka/Algebra/Local/ChartCoords.lean
+@@ -80,7 +80,7 @@
+   · -- `i < j < r`
+     rw [c.chartDeriv_of_lt r (hij.trans hj), c.chartDeriv_of_lt r hj,
+       Derivation.commutator_smul_smul _ _ (hE i j), awayPderiv_algebraMap_x,
+-      awayPderiv_algebraMap_x, ite_eq_right (hij.trans hj).ne, ite_eq_right hj.ne]
++      awayPderiv_algebraMap_x, if_neg (hij.trans hj).ne, if_neg hj.ne]
+     simp
+   · -- `i < j = r`
+     rw [hj]
+@@ -89,7 +89,7 @@
+     have h1 : ⁅algebraMap R (Localization.Away (c.x r)) (c.x r) • c.awayPderiv r i,
+         c.awayPderiv r r⁆ = -c.awayPderiv r i := by
+       rw [← one_smul (Localization.Away (c.x r)) (c.awayPderiv r r),
+-        Derivation.commutator_smul_smul _ _ (hE i r), awayPderiv_algebraMap_x, ite_eq_left rfl,
++        Derivation.commutator_smul_smul _ _ (hE i r), awayPderiv_algebraMap_x, if_pos rfl,
+         Derivation.map_one_eq_zero]
+       simp
+     have h2 : ∀ k ∈ Finset.univ.filter (fun k : Fin n => k < r),
+@@ -98,7 +98,7 @@
+       intro k hk
+       have hk' : k < r := (Finset.mem_filter.mp hk).2
+       rw [Derivation.commutator_smul_smul _ _ (hE i k), awayPderiv_algebraMap_x,
+-        ite_eq_right hk'.ne, awayPderiv_chartY_of_lt c r i hk', ite_eq_right hir.ne]
++        if_neg hk'.ne, awayPderiv_chartY_of_lt c r i hk', if_neg hir.ne]
+       by_cases hik : i = k
+       · subst hik
+         simp [algebraMap_mul_invX]
+@@ -111,7 +111,7 @@
+     · -- `i < r < j`
+       rw [c.chartDeriv_of_lt r hi, ← one_smul (Localization.Away (c.x r)) (c.awayPderiv r j),
+         Derivation.commutator_smul_smul _ _ (hE i j), Derivation.map_one_eq_zero,
+-        awayPderiv_algebraMap_x, ite_eq_right hj.ne']
++        awayPderiv_algebraMap_x, if_neg hj.ne']
+       simp
+     · -- `i = r < j`
+       rw [hi, c.chartDeriv_self r, add_lie, sum_lie, hE r j, zero_add]
+@@ -119,7 +119,7 @@
+       have hk' : k < r := (Finset.mem_filter.mp hk).2
+       rw [← one_smul (Localization.Away (c.x r)) (c.awayPderiv r j),
+         Derivation.commutator_smul_smul _ _ (hE k j), Derivation.map_one_eq_zero,
+-        awayPderiv_chartY_of_lt c r j hk', ite_eq_right (hk'.trans hj).ne', ite_eq_right hj.ne']
++        awayPderiv_chartY_of_lt c r j hk', if_neg (hk'.trans hj).ne', if_neg hj.ne']
+       simp
+     · -- `r < i < j`
+       rw [c.chartDeriv_of_gt r hi, hE i j]
+--- upstream/Hironaka/Algebra/Local/ChartFibre.lean
++++ ep33/Hironaka/Algebra/Local/ChartFibre.lean
+@@ -108,8 +108,8 @@
+     exact h'
+   have hP0 : MvPolynomial.map (residue R) Q ≠ 0 := by
+     intro h0
+-    have h1 := congrArg (AddMonoidAlgebra.coeff · β) h0
+-    rw [coeff_map, AddMonoidAlgebra.coeff_zero, Finsupp.zero_apply] at h1
++    have h1 := congrArg (MvPolynomial.coeff β) h0
++    rw [coeff_map, MvPolynomial.coeff_zero] at h1
+     exact hβ (Ideal.Quotient.eq_zero_iff_mem.mp h1)
+   have hsub : (MvPolynomial.map (residue R) Q).support ⊆ Q.support :=
+     support_map_subset (residue R) Q
+--- upstream/Hironaka/Algebra/Local/ChartGenericFibre.lean
++++ ep33/Hironaka/Algebra/Local/ChartGenericFibre.lean
+@@ -109,7 +109,7 @@
+       · rw [map_add, hα, Finsupp.degree_single]
+       · intro j hj
+         rw [Finsupp.add_apply, hs j hj, Finsupp.single_apply,
+-          ite_eq_right (fun h : i = j => hj (h ▸ hi))]
++          if_neg (fun h : i = j => hj (h ▸ hi))]
+         rfl
+       · rw [prod_pow_add, prod_pow_single]
+     · rintro _ ⟨α, ⟨hα, hs⟩, rfl⟩
+@@ -726,9 +726,9 @@
+       simp only [restrictExp_apply, id]
+     omega
+   · rw [coeff_sum, Finset.sum_eq_single α₀]
+-    · rwa [coeff_monomial, ite_eq_left rfl]
++    · rwa [coeff_monomial, if_pos rfl]
+     · intro α hα hne
+-      rw [coeff_monomial, ite_eq_right]
++      rw [coeff_monomial, if_neg]
+       exact fun h => hne (eq_of_restrictExp_eq' r (hS α hα).1 (hS α₀ hα₀S).1 (hS α hα).2
+         (hS α₀ hα₀S).2 h)
+     · intro h
+@@ -795,8 +795,8 @@
+       at this
+     rw [hmk, map_zero] at this
+     exact this.symm
+-  have := congrArg (AddMonoidAlgebra.coeff · β) h0
+-  rw [MvPolynomial.coeff_map, AddMonoidAlgebra.coeff_zero, Finsupp.zero_apply,
++  have := congrArg (MvPolynomial.coeff β) h0
++  rw [MvPolynomial.coeff_map, MvPolynomial.coeff_zero,
+     IsLocalRing.residue_eq_zero_iff] at this
+   exact hβ this
+ 
+--- upstream/Hironaka/Algebra/Local/ChartLocal.lean
++++ ep33/Hironaka/Algebra/Local/ChartLocal.lean
+@@ -313,7 +313,7 @@
+     (hn : (n : WithBot ℕ∞) = ringKrullDim R) {i : ℕ} (hi : i < n) :
+     chartChain x r i < chartChain x r (i + 1) := by
+   unfold chartChain
+-  rw [ite_eq_left hi]
++  rw [if_pos hi]
+   split_ifs with h
+   · exact chartPrime_lt_succ x r hx hn (by omega)
+   · have : i = n - 1 := by omega
+@@ -334,7 +334,7 @@
+     rw [← PrimeSpectrum.asIdeal_le_asIdeal]
+     change chartChain x r n ≤ chartOrigin x r
+     unfold chartChain
+-    rw [ite_eq_right (lt_irrefl n)]
++    rw [if_neg (lt_irrefl n)]
+   have h := Order.length_le_height hlast
+   rw [PrimeSpectrum.height_eq_orderHeight ⟨_, hP⟩]
+   exact h
+--- upstream/Hironaka/Algebra/Local/ChartLogDerivations.lean
++++ ep33/Hironaka/Algebra/Local/ChartLogDerivations.lean
+@@ -152,8 +152,8 @@
+     rw [Derivation.smul_apply, chartDerivRingOver_apply, algebraMap_x_eq_mul_chartYR c.x r hh,
+       Derivation.leibniz]
+     simp only [smul_eq_mul]
+-    rw [c.chartDerivRing_chartYR r, ite_eq_left rfl, mul_one,
+-      ← chartYR_self_eq_algebraMap c.x r, c.chartDerivRing_chartYR r, ite_eq_right hh.ne, mul_zero,
++    rw [c.chartDerivRing_chartYR r, if_pos rfl, mul_one,
++      ← chartYR_self_eq_algebraMap c.x r, c.chartDerivRing_chartYR r, if_neg hh.ne, mul_zero,
+       add_zero]
+     exact mul_comm _ _
+   rw [hval]
+@@ -169,7 +169,7 @@
+       if i = r then chartYR c.x r h else 0 := by
+     rw [chartDerivRingOver_apply, algebraMap_x_eq_mul_chartYR c.x r hh, Derivation.leibniz]
+     simp only [smul_eq_mul]
+-    rw [c.chartDerivRing_chartYR r, ite_eq_right hi, mul_zero, zero_add,
++    rw [c.chartDerivRing_chartYR r, if_neg hi, mul_zero, zero_add,
+       ← chartYR_self_eq_algebraMap c.x r, c.chartDerivRing_chartYR r]
+     split_ifs <;> simp
+   rw [hval]
+--- upstream/Hironaka/Algebra/Local/ChartRing.lean
++++ ep33/Hironaka/Algebra/Local/ChartRing.lean
+@@ -76,12 +76,12 @@
+ noncomputable abbrev chartY : Fin n → Localization.Away (x r) := chartYOf x r (x r)
+ 
+ theorem chartYOf_of_lt {i : Fin n} (h : i < r) :
+-    chartYOf x r d i = Localization.mk (x i) ⟨d, Submonoid.mem_powers d⟩ := ite_eq_left h
++    chartYOf x r d i = Localization.mk (x i) ⟨d, Submonoid.mem_powers d⟩ := if_pos h
+ 
+ theorem chartYOf_of_not_lt {i : Fin n} (h : ¬ i < r) : chartYOf x r d i = algebraMap R _ (x i) :=
+-  ite_eq_right h
+-
+-theorem chartYOf_self : chartYOf x r d r = algebraMap R _ (x r) := ite_eq_right (lt_irrefl r)
++  if_neg h
++
++theorem chartYOf_self : chartYOf x r d r = algebraMap R _ (x r) := if_neg (lt_irrefl r)
+ 
+ /-- With a general denominator `d`: the subalgebra `R[xᵢ/d : i < r]` of `R[1/d]`. -/
+ noncomputable def chartRingOf : Subalgebra R (Localization.Away d) :=
+@@ -169,7 +169,7 @@
+ noncomputable def shiftCoords (a : Fin n → R) : Fin n → R :=
+   fun i => if i < r then x i - a i * x r else x i
+ 
+-theorem shiftCoords_self (a : Fin n → R) : shiftCoords x r a r = x r := ite_eq_right (lt_irrefl r)
++theorem shiftCoords_self (a : Fin n → R) : shiftCoords x r a r = x r := if_neg (lt_irrefl r)
+ 
+ /-- The other `K`-rational points of the exceptional fibre,
+ `𝔪'_a = ⟨yᵢ − ãᵢ (i < r), x_r, x_{r+1}, …, xₙ⟩ R'`, the points the linear change of coordinates
+@@ -224,14 +224,14 @@
+ 
+ theorem chartDeriv_of_lt {j : Fin n} (h : j < r) :
+     c.chartDeriv r j = algebraMap R (Localization.Away (c.x r)) (c.x r) • c.awayPderiv r j :=
+-  ite_eq_left h
++  if_pos h
+ 
+ theorem chartDeriv_self :
+     c.chartDeriv r r = c.awayPderiv r r +
+       ∑ i ∈ Finset.univ.filter (fun i : Fin n => i < r), chartY c.x r i • c.awayPderiv r i := by
+-  rw [chartDeriv, ite_eq_right (lt_irrefl r), ite_eq_left rfl]
++  rw [chartDeriv, if_neg (lt_irrefl r), if_pos rfl]
+ 
+ theorem chartDeriv_of_gt {j : Fin n} (h : r < j) : c.chartDeriv r j = c.awayPderiv r j := by
+-  rw [chartDeriv, ite_eq_right (not_lt.mpr h.le), ite_eq_right h.ne']
++  rw [chartDeriv, if_neg (not_lt.mpr h.le), if_neg h.ne']
+ 
+ end IsLocalRing.RegularCoords
+--- upstream/Hironaka/Algebra/Local/ChartSubst.lean
++++ ep33/Hironaka/Algebra/Local/ChartSubst.lean
+@@ -153,9 +153,9 @@
+     coeff (chartExp r α) (subst (chartSubst r) f) = coeff α f := by
+   classical
+   rw [coeff_subst (hasSubst_chartSubst r), finsum_eq_single _ α]
+-  · rw [chartSubst_prod, coeff_monomial, ite_eq_left rfl, smul_eq_mul, mul_one]
++  · rw [chartSubst_prod, coeff_monomial, if_pos rfl, smul_eq_mul, mul_one]
+   · intro d hd
+-    rw [chartSubst_prod, coeff_monomial, ite_eq_right (fun h => hd (chartExp_injective r h).symm),
++    rw [chartSubst_prod, coeff_monomial, if_neg (fun h => hd (chartExp_injective r h).symm),
+       smul_zero]
+ 
+ /-- Every monomial of `φ̂ f` is `y^{σ(d)}` for a monomial `x^d` of `f`. -/
+@@ -167,7 +167,7 @@
+   refine finsum_eq_zero_of_forall_eq_zero fun d => ?_
+   by_cases hd : coeff d f = 0
+   · rw [hd, zero_smul]
+-  · rw [chartSubst_prod, coeff_monomial, ite_eq_right (fun h => hβ d hd h.symm), smul_zero]
++  · rw [chartSubst_prod, coeff_monomial, if_neg (fun h => hβ d hd h.symm), smul_zero]
+ 
+ /-- If every monomial of `f` has `x₀..x_r`-degree `≥ m` (`f ∈ P̂ᵐ`), then every monomial of `φ̂ f`
+ has `y_r`-exponent `≥ m`. -/
+--- upstream/Hironaka/Algebra/Local/CompletionCoords.lean
++++ ep33/Hironaka/Algebra/Local/CompletionCoords.lean
+@@ -4,6 +4,8 @@
+ Authors: Chris Elliott (Resolution): formalization performed by Claude Fable 5.1
+ -/
+ module
++
++import Hironaka.Compat.TensorProductInduction
+ 
+ public import Hironaka.Algebra.Local.Completion
+ public import Hironaka.Algebra.Local.Order
+--- upstream/Hironaka/Algebra/Local/CompletionMap.lean
++++ ep33/Hironaka/Algebra/Local/CompletionMap.lean
+@@ -145,7 +145,7 @@
+ 
+ /-- The induced map is a local homomorphism. -/
+ instance isLocalHom_completionMap : IsLocalHom (completionMap φ) := by
+-  refine ((local_hom_TFAE (completionMap φ)).out 1 3).mpr ?_
++  refine ((local_hom_TFAE (completionMap φ)).out 0 2).mpr ?_
+   simpa using map_maximalIdeal_pow_completionMap_le φ 1
+ 
+ /-- Orders do not decrease along the induced map. -/
+--- upstream/Hironaka/Algebra/Local/CoordsOver.lean
++++ ep33/Hironaka/Algebra/Local/CoordsOver.lean
+@@ -210,7 +210,7 @@
+   · rw [reindex_x, Equiv.swap_apply_left, hx]
+   · have := ((c.changeCoordsOfLinearSpans hk hs _ hi).reindex
+       (Equiv.swap ⟨0, i.pos⟩ i)).pderiv_x ⟨0, i.pos⟩ ⟨0, i.pos⟩
+-    rwa [ite_eq_left rfl, reindex_x, Equiv.swap_apply_left, hx] at this
++    rwa [if_pos rfl, reindex_x, Equiv.swap_apply_left, hx] at this
+ 
+ /-- The local construction of maximal contact [Kol07, 51.2] over `k`: for `ord I = m ≥ 1` some
+ `h ∈ MC_m(I)` of order `1` is the first coordinate of a coordinate system `x'` with `∂'₁ h = 1`. -/
+@@ -279,7 +279,7 @@
+           X i * MvPowerSeries.pderiv (R := K) j (p : MvPowerSeries (Fin n) K) := fun j => by
+       rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, MvPowerSeries.pderiv_X, Pi.single_apply]
+     simp only [hpd, mul_add, Finset.sum_add_distrib, mul_ite, mul_one, mul_zero]
+-    rw [Finset.sum_ite_eq Finset.univ i, ite_eq_left (Finset.mem_univ i), Finset.mul_sum]
++    rw [Finset.sum_ite_eq Finset.univ i, if_pos (Finset.mem_univ i), Finset.mul_sum]
+     congr 1
+     · ring
+     · exact Finset.sum_congr rfl fun j _ => by ring
+--- upstream/Hironaka/Algebra/Local/Derivative.lean
++++ ep33/Hironaka/Algebra/Local/Derivative.lean
+@@ -318,7 +318,7 @@
+   · intro f hf
+     obtain ⟨i⟩ : Nonempty (Fin n) := ⟨⟨0, Nat.pos_of_ne_zero hn⟩⟩
+     have key : f = c.pderiv i (c.x i * f) - c.x i * c.pderiv i f := by
+-      rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, ite_eq_left rfl, mul_one]
++      rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, if_pos rfl, mul_one]
+       ring
+     rw [key]
+     refine Ideal.sub_mem _ ?_ (Ideal.mul_mem_left _ _ ?_)
+@@ -579,7 +579,7 @@
+   · rw [Ideal.span_singleton_le_iff_mem]
+     have hu : IsUnit (m : R) := isUnit_natCast R (by omega)
+     have h1 : c.pderiv i (c.x i ^ m) = (m : R) * c.x i ^ (m - 1) := by
+-      rw [Derivation.leibniz_pow, c.pderiv_x, ite_eq_left rfl, smul_eq_mul, mul_one, nsmul_eq_mul]
++      rw [Derivation.leibniz_pow, c.pderiv_x, if_pos rfl, smul_eq_mul, mul_one, nsmul_eq_mul]
+     have h2 := Ideal.mul_mem_left _ (↑hu.unit⁻¹ : R)
+       (c.pderiv_mem_D (Ideal.mem_span_singleton_self (c.x i ^ m)) i)
+     rwa [h1, ← mul_assoc, IsUnit.val_inv_mul, one_mul] at h2
+--- upstream/Hironaka/Algebra/Local/FormalAut.lean
++++ ep33/Hironaka/Algebra/Local/FormalAut.lean
+@@ -599,13 +599,13 @@
+     rw [shiftSubst_self, map_add, coeff_X, Pi.single_eq_same, one_mul]
+     by_cases hl : j = l
+     · subst hl; simp
+-    · rw [ite_eq_right hl,
+-        ite_eq_right fun h' => hl (Finsupp.single_left_injective one_ne_zero h').symm]
++    · rw [if_neg hl,
++        if_neg fun h' => hl (Finsupp.single_left_injective one_ne_zero h').symm]
+   · rw [shiftSubst_of_ne h, coeff_X, Pi.single_eq_of_ne h, zero_mul, add_zero]
+     by_cases hl : j = l
+     · subst hl; simp
+-    · rw [ite_eq_right hl,
+-        ite_eq_right fun h' => hl (Finsupp.single_left_injective one_ne_zero h').symm]
++    · rw [if_neg hl,
++        if_neg fun h' => hl (Finsupp.single_left_injective one_ne_zero h').symm]
+ 
+ theorem det_linearPart_shiftSubst (i : Fin n) (c : MvPowerSeries (Fin n) K) :
+     (linearPart (shiftSubst i c)).det = 1 + coeff (Finsupp.single i 1) c := by
+--- upstream/Hironaka/Algebra/Local/LogDeriv.lean
++++ ep33/Hironaka/Algebra/Local/LogDeriv.lean
+@@ -64,7 +64,7 @@
+ theorem pderiv_mem_span_x_of_ne' (i : Fin n) {j : Fin n} (hj : j ≠ i) {f : R}
+     (hf : f ∈ Ideal.span {c.x i}) : c.pderiv j f ∈ Ideal.span {c.x i} := by
+   obtain ⟨g, rfl⟩ := Ideal.mem_span_singleton.mp hf
+-  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, ite_eq_right hj, mul_zero, add_zero]
++  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, if_neg hj, mul_zero, add_zero]
+   exact Ideal.mul_mem_right _ _ (Ideal.mem_span_singleton_self _)
+ 
+ /-- `Der(−log E)`, the derivations in the span of the `∂ᵢ` that preserve every `⟨xᵢ⟩`, `i ∈ E`
+@@ -87,8 +87,8 @@
+     (∑ l, a l • c.pderiv l) (c.x i) = a i := by
+   rw [Derivation.finset_sum_apply]
+   simp only [Derivation.smul_apply, smul_eq_mul, c.pderiv_x]
+-  rw [Finset.sum_eq_single i (fun l _ hl => by rw [ite_eq_right hl, mul_zero]) (by simp)]
+-  rw [ite_eq_left rfl, mul_one]
++  rw [Finset.sum_eq_single i (fun l _ hl => by rw [if_neg hl, mul_zero]) (by simp)]
++  rw [if_pos rfl, mul_one]
+ 
+ /-- `δ = ∑ᵢ aᵢ ∂ᵢ` preserves every `⟨xᵢ⟩`, `i ∈ E`, iff `aᵢ ∈ ⟨xᵢ⟩` for every `i ∈ E`. -/
+ theorem sum_smul_pderiv_mem_logDerE_iff (E : Finset (Fin n)) (a : Fin n → R) :
+--- upstream/Hironaka/Algebra/Local/MaximalContact.lean
++++ ep33/Hironaka/Algebra/Local/MaximalContact.lean
+@@ -118,7 +118,7 @@
+   refine ⟨i.pos, c₁.reindex (Equiv.swap ⟨0, i.pos⟩ i), ?_, ?_⟩
+   · rw [reindex_x, Equiv.swap_apply_left, hi]
+   · have := (c₁.reindex (Equiv.swap ⟨0, i.pos⟩ i)).pderiv_x ⟨0, i.pos⟩ ⟨0, i.pos⟩
+-    rwa [ite_eq_left rfl, reindex_x, Equiv.swap_apply_left, hi] at this
++    rwa [if_pos rfl, reindex_x, Equiv.swap_apply_left, hi] at this
+ 
+ /-! ### The maximal contact ideal -/
+ 
+--- upstream/Hironaka/Algebra/Local/OrderSmooth.lean
++++ ep33/Hironaka/Algebra/Local/OrderSmooth.lean
+@@ -54,7 +54,7 @@
+   have : q.LiesOver p := ⟨hpq⟩
+   let := Localization.AtPrime.algebraOfLiesOver p q
+   have : IsLocalHom (algebraMap (Localization.AtPrime p) (Localization.AtPrime q)) := by
+-    rw [Localization.AtPrime.algebraMap_eq]
++    rw [Localization.AtPrime.IsLiesOverAlgebra.algebraMap_eq]
+     exact Localization.isLocalHom_localRingHom p q (algebraMap R S) _
+   have : Algebra.EssFiniteType R (Localization.AtPrime q) := Algebra.EssFiniteType.comp R S _
+   have : Algebra.EssFiniteType (Localization.AtPrime p) (Localization.AtPrime q) :=
+@@ -63,7 +63,7 @@
+     Algebra.FormallyUnramified.of_restrictScalars R _ _
+   have h := ordFaithful_of_flat_of_map_maximalIdeal_eq (A := Localization.AtPrime p)
+     (B := Localization.AtPrime q) Algebra.FormallyUnramified.map_maximalIdeal
+-  rwa [Localization.AtPrime.algebraMap_eq] at h
++  rwa [Localization.AtPrime.IsLiesOverAlgebra.algebraMap_eq] at h
+ 
+ /-- **The order under the local maps of a smooth algebra**: for `R → S` of finite presentation
+ and smooth at the prime `q` of `S` over `p`, the local map `R_p → S_q` reflects the powers of the
+--- upstream/Hironaka/Algebra/Local/PowerSeries.lean
++++ ep33/Hironaka/Algebra/Local/PowerSeries.lean
+@@ -84,10 +84,10 @@
+       intro m
+       rw [X_def, coeff_monomial_mul]
+       by_cases h : 1 ≤ m a
+-      · rw [ite_eq_left (Finsupp.single_le_iff.mpr h), ite_eq_left h, one_mul]
++      · rw [if_pos (Finsupp.single_le_iff.mpr h), if_pos h, one_mul]
+         change coeff (m - Finsupp.single a 1 + Finsupp.single a 1) f = coeff m f
+         rw [tsub_add_cancel_of_le (Finsupp.single_le_iff.mpr h)]
+-      · rw [ite_eq_right (fun h' => h (Finsupp.single_le_iff.mp h')), ite_eq_right h]
++      · rw [if_neg (fun h' => h (Finsupp.single_le_iff.mp h')), if_neg h]
+     set φ₁ : MvPowerSeries σ R := fun m => if m a = 0 then coeff m f else 0 with hφ₁
+     have hφ₁c : ∀ m, coeff m φ₁ = if m a = 0 then coeff m f else 0 := fun m => rfl
+     have hsplit : f = φ₁ + X a * ga := by
+@@ -100,12 +100,12 @@
+       intro m hm
+       rw [hφ₁c]
+       by_cases h : m a = 0
+-      · rw [ite_eq_left h]
++      · rw [if_pos h]
+         exact hf m fun i hi => by
+           rcases Finset.mem_insert.mp hi with rfl | hi
+           · exact h
+           · exact hm i hi
+-      · exact ite_eq_right h
++      · exact if_neg h
+     obtain ⟨g', hg', hsupp⟩ := ih φ₁ hφ₁'
+     refine ⟨Function.update g' a ga, ?_, ?_⟩
+     · rw [Finset.sum_insert hat, Function.update_self, hsplit, hg', add_comm]
+--- upstream/Hironaka/Algebra/Local/QuotientCoords.lean
++++ ep33/Hironaka/Algebra/Local/QuotientCoords.lean
+@@ -72,7 +72,7 @@
+ theorem pderiv_mem_span_x_of_ne {j : Fin (k + 1)} (hj : j ≠ i₀) {f : R}
+     (hf : f ∈ span {c.x i₀}) : c.pderiv j f ∈ span {c.x i₀} := by
+   obtain ⟨g, rfl⟩ := mem_span_singleton.mp hf
+-  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, ite_eq_right hj, mul_zero, add_zero]
++  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.pderiv_x, if_neg hj, mul_zero, add_zero]
+   exact mem_span_singleton.mpr (dvd_mul_right _ _)
+ 
+ /-- The induced derivation `∂̄ⱼ` of `R̄ = R/⟨x_{i₀}⟩`, from `∂_{σ j}` with
+@@ -179,7 +179,7 @@
+     by_cases hjl : j = l
+     · subst hjl
+       simp
+-    · rw [ite_eq_right (fun h => hjl (Fin.succAbove_right_inj.mp h)), ite_eq_right hjl, map_zero]
++    · rw [if_neg (fun h => hjl (Fin.succAbove_right_inj.mp h)), if_neg hjl, map_zero]
+   pderiv_comm j l f := by
+     obtain ⟨g, rfl⟩ := Ideal.Quotient.mk_surjective f
+     simp only [quotientPderiv_mk, c.pderiv_comm]
+--- upstream/Hironaka/Algebra/Local/SymbolicPower.lean
++++ ep33/Hironaka/Algebra/Local/SymbolicPower.lean
+@@ -142,15 +142,15 @@
+       · have hnle : ¬ Finsupp.single a 1 ≤ d := by
+           rw [Finsupp.single_le_iff]
+           omega
+-        rw [ite_eq_right hnle, zero_add]
+-        exact (ite_eq_left hda).symm
++        rw [if_neg hnle, zero_add]
++        exact (if_pos hda).symm
+       · have hle : Finsupp.single a 1 ≤ d := by
+           rw [Finsupp.single_le_iff]
+           omega
+-        rw [ite_eq_left hle, one_mul]
++        rw [if_pos hle, one_mul]
+         change coeff d F =
+           coeff (d - Finsupp.single a 1 + Finsupp.single a 1) F + if d a = 0 then coeff d F else 0
+-        rw [tsub_add_cancel_of_le hle, ite_eq_right hda, add_zero]
++        rw [tsub_add_cancel_of_le hle, if_neg hda, add_zero]
+     rw [hsplit]
+     refine Ideal.add_mem _ (Ideal.mul_mem_mul
+       (Ideal.subset_span ⟨a, hT (Finset.mem_insert_self a T'), rfl⟩) ?_)
+@@ -165,9 +165,9 @@
+     · intro d hd
+       have hda : d a = 0 := by
+         by_contra h
+-        exact hd (ite_eq_right h)
++        exact hd (if_neg h)
+       obtain ⟨hw, i, hi, hdi⟩ :=
+-        hF d (by rwa [show coeff d F' = coeff d F from ite_eq_left hda] at hd)
++        hF d (by rwa [show coeff d F' = coeff d F from if_pos hda] at hd)
+       refine ⟨hw, i, ?_, hdi⟩
+       rcases Finset.mem_insert.mp hi with rfl | hi'
+       · exact absurd hda hdi
+--- upstream/Hironaka/Algebra/Local/TransformDeriv.lean
++++ ep33/Hironaka/Algebra/Local/TransformDeriv.lean
+@@ -138,7 +138,7 @@
+       c.chartDerivRing r j (transformElem c.x r f hf) := by
+   refine Subtype.ext ?_
+   rw [coe_chartDerivRing, coe_transformElem_eq, coe_transformElem_eq, chartDeriv_of_lt _ _ hj,
+-    Derivation.smul_apply, awayPderiv_algebraMap_mul_invX_pow, ite_eq_right hj.ne, mul_zero,
++    Derivation.smul_apply, awayPderiv_algebraMap_mul_invX_pow, if_neg hj.ne, mul_zero,
+     nsmul_zero, sub_zero, smul_eq_mul, mul_left_comm, algebraMap_mul_invX_pow_succ]
+ 
+ /-- [Kol07, (75.2)]: for `j > r` and `f ∈ Pᵐ⁺¹`, `π⁻¹_*(∂ⱼ f, m) = y_r ∂'ⱼ π⁻¹_*(f, m+1)`. -/
+@@ -150,7 +150,7 @@
+   refine Subtype.ext ?_
+   rw [Subalgebra.coe_mul, coe_chartDerivRing, coe_transformElem_eq, coe_transformElem_eq,
+     chartDeriv_of_gt _ _ hj, coe_chartYROf, chartYOf_self, awayPderiv_algebraMap_mul_invX_pow,
+-    ite_eq_right hj.ne', mul_zero, nsmul_zero, sub_zero, mul_left_comm,
++    if_neg hj.ne', mul_zero, nsmul_zero, sub_zero, mul_left_comm,
+     algebraMap_mul_invX_pow_succ]
+ 
+ /-- [Kol07, (75.3)], by the chain rule (also [Wlo05, Lemma 2.6.3] and [BM08, Lemma 3.1]): for
+@@ -178,20 +178,20 @@
+     have hi' := (Finset.mem_filter.mp hi).2
+     rw [Subalgebra.coe_mul, coe_chartDerivRing, coe_transformElem_eq, chartDeriv_of_lt _ _ hi',
+       Derivation.smul_apply, smul_eq_mul, coe_chartYROf, awayPderiv_algebraMap_mul_invX_pow,
+-      ite_eq_right hi'.ne, mul_zero, nsmul_zero, sub_zero]
++      if_neg hi'.ne, mul_zero, nsmul_zero, sub_zero]
+     ring
+   have hinner : ∀ i ∈ Finset.univ.filter (· < r),
+       (chartY c.x r i • c.awayPderiv r i) (algebraMap R _ f * invX c.x r ^ (m + 1)) =
+         chartY c.x r i * (algebraMap R _ (c.pderiv i f) * invX c.x r ^ (m + 1)) := by
+     intro i hi
+     have hi' := (Finset.mem_filter.mp hi).2
+-    rw [Derivation.smul_apply, smul_eq_mul, awayPderiv_algebraMap_mul_invX_pow, ite_eq_right hi'.ne,
++    rw [Derivation.smul_apply, smul_eq_mul, awayPderiv_algebraMap_mul_invX_pow, if_neg hi'.ne,
+       mul_zero, nsmul_zero, sub_zero]
+   rw [Subalgebra.coe_add, Subalgebra.coe_sub, Subalgebra.coe_mul, AddSubmonoidClass.coe_finsetSum,
+     Finset.sum_congr rfl hsum, ← Finset.mul_sum, AddSubmonoidClass.coe_nsmul, coe_chartDerivRing,
+     coe_transformElem_eq, coe_transformElem_eq, chartDeriv_self, Derivation.add_apply,
+     Derivation.finset_sum_apply, Finset.sum_congr rfl hinner, coe_chartYROf, chartYOf_self,
+-    awayPderiv_algebraMap_mul_invX_pow, ite_eq_left rfl, mul_one, nsmul_eq_mul, nsmul_eq_mul]
++    awayPderiv_algebraMap_mul_invX_pow, if_pos rfl, mul_one, nsmul_eq_mul, nsmul_eq_mul]
+   linear_combination (-(algebraMap R (Localization.Away (c.x r)) (c.pderiv r f))) * hx1 +
+     (((m + 1 : ℕ) : Localization.Away (c.x r)) * algebraMap R (Localization.Away (c.x r)) f) * hx2
+ 
+@@ -326,7 +326,7 @@
+     refine Subtype.ext ?_
+     rw [coe_chartDerivRing, Subalgebra.coe_add, Subalgebra.coe_mul, Subalgebra.coe_mul,
+       coe_chartDerivRing, Derivation.leibniz, smul_eq_mul, smul_eq_mul, coe_chartYROf,
+-      chartDeriv_chartY, ite_eq_left rfl, mul_one, add_comm]
++      chartDeriv_chartY, if_pos rfl, mul_one, add_comm]
+   have h2 : z = c.chartDerivRing r r (chartYR c.x r r * z) -
+       chartYR c.x r r * c.chartDerivRing r r z := by rw [h1]; ring
+   rw [h2]
+--- upstream/Hironaka/Algebra/Local/TransformDerivNormalForm.lean
++++ ep33/Hironaka/Algebra/Local/TransformDerivNormalForm.lean
+@@ -183,7 +183,7 @@
+     · -- `∂'_h k ∈ ∂'_h K`
+       exact Ideal.mem_sup_right (c.le_chartDlog r h _ (Ideal.subset_span ⟨g, hg, rfl⟩))
+     · -- `∂'_h (y_h ∂'_h k) = y_h ∂'_h (∂'_h k) + ∂'_h k`
+-      rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.chartDerivRing_chartYR r, ite_eq_left rfl,
++      rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, c.chartDerivRing_chartYR r, if_pos rfl,
+         mul_one]
+       refine Ideal.mem_sup_right (add_mem (c.chartYR_mul_chartDerivRing_mem_chartDlog r h ?_)
+         (c.le_chartDlog r h _ ?_)) <;> exact Ideal.subset_span ⟨k, hk, rfl⟩
+--- upstream/Hironaka/Algebra/Local/TransformOrder.lean
++++ ep33/Hironaka/Algebra/Local/TransformOrder.lean
+@@ -114,7 +114,7 @@
+   have hΨr : Ψ (X r) = algebraMap B (AdicCompletion (maximalIdeal B) B) (φ (x r)) := by
+     have h := hΨ (X r)
+     rw [cohenEquiv_X, completionMap_algebraMap, subst_X (hasSubst_chartSubst r),
+-      chartSubst, ite_eq_right (lt_irrefl r)] at h
++      chartSubst, if_neg (lt_irrefl r)] at h
+     exact h.symm
+   -- `Ψ G' = ι' g`, cancelling `ι' (φ (x r)) ^ m` in the domain `B̂`
+   have hcancel : algebraMap B (AdicCompletion (maximalIdeal B) B) (φ (x r)) ^ m * Ψ G' =
+@@ -129,7 +129,7 @@
+     rw [← hΨr]
+     refine (map_ne_zero_iff Ψ Ψ.injective).mpr fun hX => ?_
+     have h := congrArg (coeff (Finsupp.single r 1)) hX
+-    rw [coeff_X, ite_eq_left rfl, map_zero] at h
++    rw [coeff_X, if_pos rfl, map_zero] at h
+     exact one_ne_zero h
+   have hΨG : Ψ G' = algebraMap B (AdicCompletion (maximalIdeal B) B) g :=
+     mul_left_cancel₀ (pow_ne_zero m hne) hcancel
+--- upstream/Hironaka/Algebra/RegularSmooth/RegularImpliesSmooth.lean
++++ ep33/Hironaka/Algebra/RegularSmooth/RegularImpliesSmooth.lean
+@@ -4,6 +4,8 @@
+ Authors: Chris Elliott (Resolution): formalization performed by Claude Fable 5.1
+ -/
+ module
++
++import Hironaka.Compat.TensorProductInduction
+ 
+ public import Mathlib.RingTheory.Smooth.Locus
+ public import Mathlib.FieldTheory.Perfect
+--- upstream/Hironaka/Resolution/Algebraic/BoundaryClearing/AssemblyTuned.lean
++++ ep33/Hironaka/Resolution/Algebraic/BoundaryClearing/AssemblyTuned.lean
+@@ -82,13 +82,13 @@
+ theorem tunedFunctor_seq_of_maxOrd_eq (T : Triple k) (hT : Triple.BDClass n m j T)
+     (h : T.I.maxOrd = m) :
+     (tunedFunctor hm F hDom').seq T hT = F.seq (T.tuned m hm) (hDom' T hT h) :=
+-  dite_eq_left h
++  dif_pos h
+ 
+ /-- Below the mark the tuned functor returns the empty sequence (the convention of
+ [Kol07, Theorem 68]). -/
+ theorem tunedFunctor_seq_of_maxOrd_lt (T : Triple k) (hT : Triple.BDClass n m j T)
+     (h : T.I.maxOrd < m) : (tunedFunctor hm F hDom').seq T hT = BlowUpSequence.nil T.X.left :=
+-  dite_eq_right h.ne
++  dif_neg h.ne
+ 
+ /-- The tuned functor commutes with smooth morphisms when `F` does ([Kol07, 34.1]): the argument of
+ `Hironaka/Resolution/Algebraic/OrderReduction/Functorial.lean` on `BDClass n m j`. -/
+@@ -120,12 +120,12 @@
+     (h : T.I.maxOrd = m) :
+     (dataFunctor n m j hm B hDom).seq T hT =
+       (functor n (tuningParam m) j B hDom).seq (T.tuned m hm) (domain_tuned hm hT h) :=
+-  dite_eq_left h
++  dif_pos h
+ 
+ /-- Below the mark `BD_{n,m,j}` is the empty sequence (the convention of [Kol07, Theorem 68]). -/
+ theorem dataFunctor_seq_of_maxOrd_lt (T : Triple k) (hT : Triple.BDClass n m j T)
+     (h : T.I.maxOrd < m) : (dataFunctor n m j hm B hDom).seq T hT = BlowUpSequence.nil T.X.left :=
+-  dite_eq_right h.ne
++  dif_neg h.ne
+ 
+ /-- Clause (1) of [Kol07, Lemma 102] for `BD_{n,m,j}` from clause (1) of [Kol07, Theorem 69] for
+ `B`: clause (1) of `Output.lean` for `(W_{s(m)}(I), s(m))` transported to `(I, m)` at the last stage
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Globalization.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/Globalization.lean
+@@ -98,7 +98,7 @@
+ theorem isOpenImmersion_of_isColimit_cofan (h : Nonempty (IsColimit (Cofan.mk Y ι))) (i : σ) :
+     IsOpenImmersion (ι i) := by
+   have := isIso_sigmaDesc_of_isColimit_cofan ι h
+-  rw [← Sigma.ι_comp_desc ι i]
++  rw [← Sigma.ι_desc ι i]
+   infer_instance
+ 
+ /-- The injections of a colimit cofan of schemes are jointly surjective. -/
+@@ -107,14 +107,14 @@
+   have := isIso_sigmaDesc_of_isColimit_cofan ι h
+   obtain ⟨z, rfl⟩ := (Sigma.desc ι).surjective y
+   obtain ⟨⟨i, x⟩, rfl⟩ := (sigmaMk U).surjective z
+-  exact ⟨i, x, by rw [sigmaMk_mk, ← Scheme.Hom.comp_apply, Sigma.ι_comp_desc]⟩
++  exact ⟨i, x, by rw [sigmaMk_mk, ← Scheme.Hom.comp_apply, Sigma.ι_desc]⟩
+ 
+ /-- The injections of a colimit cofan of schemes have pairwise disjoint images. -/
+ theorem ne_of_isColimit_cofan (h : Nonempty (IsColimit (Cofan.mk Y ι))) {i j : σ} (hij : i ≠ j)
+     (x : U i) (x' : U j) : ι i x ≠ ι j x' := by
+   have := isIso_sigmaDesc_of_isColimit_cofan ι h
+   intro hx
+-  rw [← Sigma.ι_comp_desc ι i, ← Sigma.ι_comp_desc ι j, Scheme.Hom.comp_apply,
++  rw [← Sigma.ι_desc ι i, ← Sigma.ι_desc ι j, Scheme.Hom.comp_apply,
+     Scheme.Hom.comp_apply] at hx
+   have hx' := (Sigma.desc ι).isOpenEmbedding.injective hx
+   rw [sigmaι_eq_iff] at hx'
+@@ -172,7 +172,7 @@
+ injections" of [Kol07, 104, Step 3]) is a coproduct of open immersions. -/
+ theorem openImmersionCoprods_sigmaDesc {σ : Type u} {U : σ → Scheme.{u}} {X : Scheme.{u}}
+     (g : ∀ i, U i ⟶ X) [∀ i, IsOpenImmersion (g i)] : openImmersionCoprods (Sigma.desc g) :=
+-  ⟨σ, U, Sigma.ι U, ⟨coproductIsCoproduct U⟩, fun i => by rw [Sigma.ι_comp_desc]; infer_instance⟩
++  ⟨σ, U, Sigma.ι U, ⟨coproductIsCoproduct U⟩, fun i => by rw [Sigma.ι_desc]; infer_instance⟩
+ 
+ /-- A coproduct of open immersions is étale. -/
+ theorem openImmersionCoprods_etale {X Y : Scheme.{u}} (f : X ⟶ Y)
+@@ -268,7 +268,7 @@
+       exact ne_of_isColimit_cofan (κ i) (hc i) (fun h => hne (Sigma.ext rfl (heq_of_eq h))) v v'
+         (eq_of_heq hv)
+   · have := hκ p.1 p.2
+-    rw [Category.assoc, Sigma.ι_comp_desc]
++    rw [Category.assoc, Sigma.ι_desc]
+     infer_instance
+ 
+ /-- The third example of a class in [Kol07, Theorem 105 (1)], read as the proof uses it: the
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Globalize.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/Globalize.lean
+@@ -320,7 +320,7 @@
+     intro x
+     obtain ⟨i, y, hy⟩ := hcov x
+     exact ⟨Sigma.ι (fun i => (Ts i).X.left) i y,
+-      by rw [← hy, ← Scheme.Hom.comp_apply, Sigma.ι_comp_desc]⟩
++      by rw [← hy, ← Scheme.Hom.comp_apply, Sigma.ι_desc]⟩
+   have hsm : Smooth g' := openImmersionCoprods.smooth hM'
+   have hsep : IsSeparated g' := openImmersionCoprods_isSeparated hM'
+   have het : Etale g' := openImmersionCoprods_etale g' hM'
+@@ -345,13 +345,13 @@
+     (fun i => Sigma.ι (fun i => (Ts i).X.left) i)
+     ⟨⟨coproductIsCoproduct (fun i => (Ts i).X.left)⟩, fun i => ?_, fun i => ?_, fun i => ?_⟩ hL
+   · change Sigma.ι (fun i => (Ts i).X.left) i ≫ (g' ≫ (T.X.left ↘ Spec (CommRingCat.of k))) = _
+-    rw [Sigma.ι_comp_desc_assoc]
++    rw [Sigma.ι_desc_assoc]
+     exact (hp i).1
+   · change (Ts i).I = (T.I.comap g').comap (Sigma.ι (fun i => (Ts i).X.left) i)
+-    rw [← Scheme.IdealSheafData.comap_comp, Sigma.ι_comp_desc]
++    rw [← Scheme.IdealSheafData.comap_comp, Sigma.ι_desc]
+     exact (hp i).2.1
+   · change (Ts i).E = (T.E.comap g').comap (Sigma.ι (fun i => (Ts i).X.left) i)
+-    rw [← DivisorFamily.comap_comp, Sigma.ι_comp_desc]
++    rw [← DivisorFamily.comap_comp, Sigma.ι_desc]
+     exact (hp i).2.2
+ 
+ /-! ### The kernel pair `X'' = X' ×_X X'` -/
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/GlobalizeDescent.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/GlobalizeDescent.lean
+@@ -331,7 +331,7 @@
+     [hne : Nonempty T.X.left] :
+     globalizeSeq D hF B hB T hG = Classical.choose (exists_globalizeSeq (T := T) D hF B hB hG) := by
+   unfold globalizeSeq
+-  rw [dite_eq_left hne]
++  rw [dif_pos hne]
+ 
+ theorem globalizeSeq_of_isEmpty [CharZero k] (D : Triple.GlobalizationData openImmersionCoprods GT
+ LT)
+@@ -339,7 +339,7 @@
+     (hB : B.CommutesWithSurjectionsIn openImmersionCoprods) {T : Triple k} (hG : GT T)
+     [IsEmpty T.X.left] : globalizeSeq D hF B hB T hG = BlowUpSequence.nil T.X.left := by
+   unfold globalizeSeq
+-  rw [dite_eq_right (not_nonempty_iff.mpr ‹_›)]
++  rw [dif_neg (not_nonempty_iff.mpr ‹_›)]
+ 
+ theorem globalizeSeq_isOrderSeq [CharZero k] (D : Triple.GlobalizationData openImmersionCoprods GT
+ LT)
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/MaximalContactGlobalization.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/MaximalContactGlobalization.lean
+@@ -137,7 +137,7 @@
+       Sigma.desc fun i => (Ts i).X.left ↘ Spec (.of k) := by
+     apply Sigma.hom_ext
+     intro i
+-    rw [Sigma.ι_comp_desc_assoc, Sigma.ι_comp_desc, h.2.1 i]
++    rw [Sigma.ι_desc_assoc, Sigma.ι_desc, h.2.1 i]
+   have hloc : IsZariskiLocalAtSource (@SmoothOfRelativeDimension n) :=
+     @HasRingHomProperty.instIsZariskiLocalAtSource _ _ inferInstance
+   have hP : SmoothOfRelativeDimension n (Sigma.desc fun i => (Ts i).X.left ↘ Spec (.of k)) :=
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/Prop37/Prop37Setting.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/Prop37/Prop37Setting.lean
+@@ -103,7 +103,7 @@
+ @[reassoc]
+ theorem ι_comp_coverDesc (i : T.affineCover.I₀) :
+     Sigma.ι (fun i => T.affineCover.X i) i ≫ T.coverDesc = T.affineCover.f i :=
+-  Sigma.ι_comp_desc _ _
++  Sigma.ι_desc _ _
+ 
+ set_option backward.isDefEq.respectTransparency.types false in
+ /-- `g` is smooth: locality on the source (`IsZariskiLocalAtSource.sigmaDesc`; the unifier option
+@@ -153,7 +153,7 @@
+     T.coverDesc ≫ (T.X.left ↘ Spec (CommRingCat.of k)) =
+       Sigma.desc fun i => T.affineCover.f i ≫ (T.X.left ↘ Spec (CommRingCat.of k)) :=
+   Sigma.hom_ext _ _ fun i => by
+-    rw [ι_comp_coverDesc_assoc, Sigma.ι_comp_desc]
++    rw [ι_comp_coverDesc_assoc, Sigma.ι_desc]
+ 
+ -- Same unifier option as `smooth_coverDesc` above: `IsZariskiLocalAtSource.sigmaDesc` needs the
+ -- instance `IsZariskiLocalAtSource (@SmoothOfRelativeDimension n)`, which the
+--- upstream/Hironaka/Resolution/Algebraic/Kol07/RefineFamily.lean
++++ ep33/Hironaka/Resolution/Algebraic/Kol07/RefineFamily.lean
+@@ -262,10 +262,10 @@
+   -- `WithBot {a // ¬ p a}` only by unfolding)
+   let q : F.ι → Option (WithBot {a : F.ι // ¬ p a}) := fun j =>
+     if hj : p j then some ⊥ else some ((⟨j, hj⟩ : {a : F.ι // ¬ p a}) : WithBot {a : F.ι // ¬ p a})
+-  have hq_pos : ∀ j (hj : p j), q j = some ⊥ := fun j hj => dite_eq_left hj
++  have hq_pos : ∀ j (hj : p j), q j = some ⊥ := fun j hj => dif_pos hj
+   have hq_neg : ∀ j (hj : ¬ p j),
+       q j = some ((⟨j, hj⟩ : {a : F.ι // ¬ p a}) : WithBot {a : F.ι // ¬ p a}) :=
+-    fun j hj => dite_eq_right hj
++    fun j hj => dif_neg hj
+   refine ⟨q, ?_, ?_⟩
+   · change ∀ j j', x ∈ (F.component j).support → x ∈ (F.component j').support → q j = q j' →
+       j = j'
+--- upstream/Hironaka/Resolution/Algebraic/MarkedOrderReduction/SmoothStep3.lean
++++ ep33/Hironaka/Resolution/Algebraic/MarkedOrderReduction/SmoothStep3.lean
+@@ -102,7 +102,7 @@
+     (f' : E'.ι ≃o Fin L') (f : E.ι ≃o Fin L) (i : E'.ι) :
+     labelMapOfIsTopErasure e f' f (f' i : ℕ) = (f (e i) : ℕ) := by
+   unfold labelMapOfIsTopErasure
+-  rw [dite_eq_left (Fin.isLt _)]
++  rw [dif_pos (Fin.isLt _)]
+   have h1 : (⟨((f' i : Fin L') : ℕ), Fin.isLt _⟩ : Fin L') = f' i := Fin.ext rfl
+   rw [h1, OrderIso.symm_apply_apply]
+ 
+@@ -134,13 +134,13 @@
+     have h₁ : ℓ₁ < L' := hℓ₁
+     have h₂ : ℓ₂ < L' := hℓ₂
+     unfold labelMapOfIsTopErasure
+-    rw [dite_eq_left h₁, dite_eq_left h₂]
++    rw [dif_pos h₁, dif_pos h₂]
+     exact Fin.lt_def.mp (f.strictMono (e.strictMono (f'.symm.strictMono (Fin.mk_lt_mk.mpr hlt))))
+   σlt := by
+     intro ℓ hℓ
+     have h₁ : ℓ < L' := hℓ
+     unfold labelMapOfIsTopErasure
+-    rw [dite_eq_left h₁]
++    rw [dif_pos h₁]
+     exact Fin.isLt _
+   nerve_eq := by
+     have hpiece : (ofDivisorFamily E a f (σ.trans (compEquivOfIsTopErasure he))).piece =
+@@ -150,7 +150,7 @@
+       · rw [ofDivisorFamily_piece_of_lt' a f (σ.trans (compEquivOfIsTopErasure he)) hc,
+           ofDivisorFamily_piece_of_lt' a f' σ hc, Equiv.trans_apply, compEquivOfIsTopErasure_snd]
+       · change (if h : c < k then _ else ⊥) = (if h : c < k then _ else ⊥)
+-        rw [dite_eq_right hc, dite_eq_right hc]
++        rw [dif_neg hc, dif_neg hc]
+     have hnc : (ofDivisorFamily E a f (σ.trans (compEquivOfIsTopErasure he))).nextComp =
+         (ofDivisorFamily E' a f' σ).nextComp := rfl
+     have hnerve : (ofDivisorFamily E a f (σ.trans (compEquivOfIsTopErasure he))).nerve =
+--- upstream/Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitMain.lean
++++ ep33/Hironaka/Resolution/Algebraic/MarkedOrderReduction/SplitMain.lean
+@@ -140,9 +140,9 @@
+     by_cases h : x ∈ (E.component i).support
+     · rw [finprod_stalk_eq_of_specializes E hE (hη i h).1 (hη i h).2, hs i h,
+         Ideal.span_singleton_pow]
+-      simp only [q, dite_eq_left h]
++      simp only [q, dif_pos h]
+     · rw [finprod_stalk_eq_one_of_notMem E h]
+-      simp only [q, dite_eq_right h, Ideal.span_singleton_one, Ideal.one_eq_top]
++      simp only [q, dif_neg h, Ideal.span_singleton_one, Ideal.one_eq_top]
+   rw [Finset.prod_congr rfl fun i _ => hF i, Ideal.prod_span_singleton]
+   intro g hg
+   rw [Ideal.mem_span_singleton]
+@@ -151,22 +151,22 @@
+     by_cases hd : x ∈ (E.component d).support
+     · refine Or.inr ⟨z (c ⟨d, hd⟩), prime_of_parameters hz.1.symm hz.2 _,
+         ⟨(I.ord (Classical.choose (exists_genericPoint_specializes _ hd))).toNat, by
+-          simp only [q, dite_eq_left hd]⟩, ?_⟩
++          simp only [q, dif_pos hd]⟩, ?_⟩
+       intro i _ hid
+       by_cases hi : x ∈ (E.component i).support
+-      · simp only [q, dite_eq_left hi]
++      · simp only [q, dif_pos hi]
+         intro hdvd
+         exact not_dvd_of_ne hz.1.symm hz.2 (fun e => hid (congrArg Subtype.val (hc e)).symm)
+           ((prime_of_parameters hz.1.symm hz.2 _).dvd_of_dvd_pow hdvd)
+-      · simp only [q, dite_eq_right hi]
++      · simp only [q, dif_neg hi]
+         exact (prime_of_parameters hz.1.symm hz.2 _).not_dvd_one
+-    · exact Or.inl (by simp only [q, dite_eq_right hd]; exact isUnit_one)
++    · exact Or.inl (by simp only [q, dif_neg hd]; exact isUnit_one)
+   · intro i _
+     by_cases hi : x ∈ (E.component i).support
+-    · simp only [q, dite_eq_left hi]
++    · simp only [q, dif_pos hi]
+       have := stalkIdeal_le_pow_of_specializes f E hE I (hη i hi).1 (hη i hi).2 hg
+       rwa [hs i hi, Ideal.span_singleton_pow, Ideal.mem_span_singleton] at this
+-    · simp only [q, dite_eq_right hi]
++    · simp only [q, dif_neg hi]
+       exact one_dvd g
+ 
+ /-- `M(I)` divides `I`: `I ⊆ M(I)` and `M(I)` is invertible. -/
+--- upstream/Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step1NonmonomialPart.lean
++++ ep33/Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step1NonmonomialPart.lean
+@@ -365,7 +365,7 @@
+ otherwise nothing is done). -/
+ theorem step1_of_lt (T : MarkedTriple k) (hT : MarkedTriple.BMOClass n m T)
+     (h : roundOrder T < m) : (step1 bo T hT).1 = BlowUpSequence.nil T.X.left := by
+-  rw [step1, dite_eq_right (not_le.mpr h)]
++  rw [step1, dif_neg (not_le.mpr h)]
+ 
+ /-- At or above the mark, Step 1 is one round followed by Step 1 of the induced marked triple (the
+ loop unrolled once). -/
+@@ -374,7 +374,7 @@
+     (step1 bo T hT).1 =
+       (step1Round bo T hT hd).concat
+         (step1 bo (roundTriple bo T hT hd) (bmoClass_roundTriple bo T hT hd)).1 := by
+-  rw [step1, dite_eq_left hd]
++  rw [step1, dif_pos hd]
+ 
+ /-- Step 1 is a smooth blow-up sequence of order `≥ m` starting with `(X, I, m, E)`
+ ([Kol07, Definition 66] for `Π_1`). -/
+--- upstream/Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step2Separation.lean
++++ ep33/Hironaka/Resolution/Algebraic/MarkedOrderReduction/Step2Separation.lean
+@@ -415,7 +415,7 @@
+ /-- At the exit (`s = 0`), Step 2 is the empty sequence. -/
+ theorem step2_of_eq_zero (T : MarkedTriple k) (hT : MarkedTriple.BMOClass n m T)
+     (h : sepOrder T = 0) : (step2 bo T hT).1 = BlowUpSequence.nil T.X.left := by
+-  rw [step2, dite_eq_right (not_lt.mpr h.le)]
++  rw [step2, dif_neg (not_lt.mpr h.le)]
+ 
+ /-- For `s ≥ 1`, Step 2 is one round followed by Step 2 of the induced marked triple (the loop
+ unrolled once). -/
+@@ -424,7 +424,7 @@
+     (step2 bo T hT).1 =
+       (step2Round bo T hT hs).concat
+         (step2 bo (step2Triple bo T hT hs) (bmoClass_step2Triple bo T hT hs)).1 := by
+-  rw [step2, dite_eq_left hs]
++  rw [step2, dif_pos hs]
+ 
+ /-- Step 2 is a smooth blow-up sequence of order `≥ m` starting with `(X, I, m, E)`
+ ([Kol07, Definition 66] for `Π_2`). -/
+--- upstream/Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivSigma.lean
++++ ep33/Hironaka/Resolution/Algebraic/MaximalContact/EtaleEquivSigma.lean
+@@ -73,8 +73,8 @@
+     EtaleEquiv f I m E H H' := by
+   classical
+   have hdesc : Etale (Sigma.desc ψ) := IsZariskiLocalAtSource.sigmaDesc fun _ => inferInstance
+-  have hι : ∀ i, Sigma.ι W i ≫ Sigma.desc ψ = ψ i := fun i => Sigma.ι_comp_desc _ _
+-  have hι' : ∀ i, Sigma.ι W i ≫ Sigma.desc ψ' = ψ' i := fun i => Sigma.ι_comp_desc _ _
++  have hι : ∀ i, Sigma.ι W i ≫ Sigma.desc ψ = ψ i := fun i => Sigma.ι_desc _ _
++  have hι' : ∀ i, Sigma.ι W i ≫ Sigma.desc ψ' = ψ' i := fun i => Sigma.ι_desc _ _
+   refine EtaleEquiv.mk (EtaleImagePair.sigma W ψ ψ' hcov hcov') ?_ ?_ ?_ ?_ ?_
+   · change Sigma.desc ψ ≫ f = Sigma.desc ψ' ≫ f
+     refine Sigma.hom_ext _ _ fun i => ?_
+--- upstream/Hironaka/Resolution/Algebraic/MaximalContact/Transform.lean
++++ ep33/Hironaka/Resolution/Algebraic/MaximalContact/Transform.lean
+@@ -143,8 +143,8 @@
+     exact h'
+   have hP0 : MvPolynomial.map (residue R) Q ≠ 0 := by
+     intro h0
+-    have h1 := congrArg (AddMonoidAlgebra.coeff · β) h0
+-    rw [MvPolynomial.coeff_map, AddMonoidAlgebra.coeff_zero] at h1
++    have h1 := congrArg (MvPolynomial.coeff β) h0
++    rw [MvPolynomial.coeff_map, MvPolynomial.coeff_zero] at h1
+     exact hβ (Ideal.Quotient.eq_zero_iff_mem.mp h1)
+   obtain ⟨⟨⟨a, ha⟩, ⟨s, hs⟩⟩, hmul⟩ :=
+     (IsLocalization.mem_map_algebraMap_iff 𝔮.primeCompl (Localization.AtPrime 𝔮)).mp hmem
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/ChainRunErase.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/ChainRunErase.lean
+@@ -86,37 +86,37 @@
+ 
+ theorem chainRunE_cons_of_eq_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) = ∅) :
+     chainRunE ρ Y N (S :: Ns) = chainRunE ρ Y (N.blowUp S) Ns := by
+-  rw [chainRunE, ite_eq_left h]
++  rw [chainRunE, if_pos h]
+ 
+ theorem chainRunE_cons_of_ne_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) ≠ ∅) :
+     chainRunE ρ Y N (S :: Ns) = (Y.nerve.filter fun Q => Q.image ρ ∈ S) ::
+       chainRunE (extendComp ρ Y N (Y.nerve.filter fun Q => Q.image ρ ∈ S) S)
+         (Y.blowUp (Y.nerve.filter fun Q => Q.image ρ ∈ S)) (N.blowUp S) Ns := by
+-  rw [chainRunE, ite_eq_right h]
++  rw [chainRunE, if_neg h]
+ 
+ theorem chainMapE_nil : chainMapE ρ Y N [] = ρ := rfl
+ 
+ theorem chainMapE_cons_of_eq_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) = ∅) :
+     chainMapE ρ Y N (S :: Ns) = chainMapE ρ Y (N.blowUp S) Ns := by
+-  rw [chainMapE, ite_eq_left h]
++  rw [chainMapE, if_pos h]
+ 
+ theorem chainMapE_cons_of_ne_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) ≠ ∅) :
+     chainMapE ρ Y N (S :: Ns) =
+       chainMapE (extendComp ρ Y N (Y.nerve.filter fun Q => Q.image ρ ∈ S) S)
+         (Y.blowUp (Y.nerve.filter fun Q => Q.image ρ ∈ S)) (N.blowUp S) Ns := by
+-  rw [chainMapE, ite_eq_right h]
++  rw [chainMapE, if_neg h]
+ 
+ theorem chainStateYE_nil : chainStateYE ρ Y N [] = Y := rfl
+ 
+ theorem chainStateYE_cons_of_eq_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) = ∅) :
+     chainStateYE ρ Y N (S :: Ns) = chainStateYE ρ Y (N.blowUp S) Ns := by
+-  rw [chainStateYE, ite_eq_left h]
++  rw [chainStateYE, if_pos h]
+ 
+ theorem chainStateYE_cons_of_ne_empty (h : (Y.nerve.filter fun Q => Q.image ρ ∈ S) ≠ ∅) :
+     chainStateYE ρ Y N (S :: Ns) =
+       chainStateYE (extendComp ρ Y N (Y.nerve.filter fun Q => Q.image ρ ∈ S) S)
+         (Y.blowUp (Y.nerve.filter fun Q => Q.image ρ ∈ S)) (N.blowUp S) Ns := by
+-  rw [chainStateYE, ite_eq_right h]
++  rw [chainStateYE, if_neg h]
+ 
+ /-- The chain with skips along a concatenation. -/
+ theorem chainRunE_append (ρ : ℕ → ℕ) : ∀ (Y N : MonomialState) (N₁ N₂ : List (Finset (Finset ℕ))),
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/EnumerationIndep.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/EnumerationIndep.lean
+@@ -87,7 +87,7 @@
+   if h : c < k₂ then (σ₁.symm (σ₂ ⟨c, h⟩) : ℕ) else 0
+ 
+ theorem relabel_of_lt {c : ℕ} (hc : c < k₂) : relabel σ₁ σ₂ c = (σ₁.symm (σ₂ ⟨c, hc⟩) : ℕ) :=
+-  dite_eq_left hc
++  dif_pos hc
+ 
+ theorem relabel_lt {c : ℕ} (hc : c < k₂) : relabel σ₁ σ₂ c < k₁ := by
+   rw [relabel_of_lt σ₁ σ₂ hc]
+@@ -103,15 +103,15 @@
+ 
+ theorem ofDivisorFamily_piece_of_lt' {k : ℕ} (σ : Fin k ≃ Components E) {c : ℕ} (hc : c < k) :
+     (ofDivisorFamily E a e σ).piece c = Closeds.closure {((σ ⟨c, hc⟩).2 : X)} :=
+-  dite_eq_left hc
++  dif_pos hc
+ 
+ theorem ofDivisorFamily_label_of_lt' {k : ℕ} (σ : Fin k ≃ Components E) {c : ℕ} (hc : c < k) :
+     (ofDivisorFamily E a e σ).label c = (e (σ ⟨c, hc⟩).1 : ℕ) :=
+-  dite_eq_left hc
++  dif_pos hc
+ 
+ theorem ofDivisorFamily_a_of_lt' {k : ℕ} (σ : Fin k ≃ Components E) {c : ℕ} (hc : c < k) :
+     (ofDivisorFamily E a e σ).a c = a ((σ ⟨c, hc⟩).2 : X) :=
+-  dite_eq_left hc
++  dif_pos hc
+ 
+ /-- The piece of the relabelled index is the piece itself. -/
+ theorem piece_relabel {c : ℕ} (hc : c < k₂) :
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Exponent.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Exponent.lean
+@@ -130,9 +130,9 @@
+   -- that generic point
+   have hck : c < k' := hc
+   change (if h : c < k' then a ((σ ⟨c, h⟩).2 : X) else 0) = a η
+-  rw [dite_eq_left hck]
++  rw [dif_pos hck]
+   have hηc' : η ∈ (if h : c < k' then Closeds.closure {((σ ⟨c, h⟩).2 : X)} else ⊥) := hηc
+-  rw [dite_eq_left hck] at hηc'
++  rw [dif_pos hck] at hηc'
+   have hspec : ((σ ⟨c, hck⟩).2 : X) ⤳ η := specializes_iff_mem_closure.mpr hηc'
+   -- both are generic points of the member `(σ ⟨c, hck⟩).1`, which is `i`
+   have hmem : ((σ ⟨c, hck⟩).2 : X) ∈ (E.component i).support := by
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Input.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Input.lean
+@@ -96,19 +96,19 @@
+       rw [mem_finset_sup_iff]
+       refine ⟨c.1, Finset.mem_filter.mpr ⟨Finset.mem_range.mpr c.2, ?_⟩, ?_⟩
+       · change (if h : c.1 < k then (e (σ ⟨c.1, h⟩).1 : ℕ) else 0) = (e j : ℕ)
+-        rw [dite_eq_left c.2, hc']
++        rw [dif_pos c.2, hc']
+       · change x ∈ (if h : c.1 < k then Closeds.closure {((σ ⟨c.1, h⟩).2 : X)} else ⊥)
+-        rw [dite_eq_left c.2, hc']
++        rw [dif_pos c.2, hc']
+         exact specializes_iff_mem_closure.mp hηx
+     · rw [Finset.sup_le_iff]
+       intro c hc
+       obtain ⟨hcr, hlab⟩ := Finset.mem_filter.mp hc
+       have hck : c < k := Finset.mem_range.mp hcr
+       have hlab' : (if h : c < k then (e (σ ⟨c, h⟩).1 : ℕ) else 0) = (e j : ℕ) := hlab
+-      rw [dite_eq_left hck] at hlab'
++      rw [dif_pos hck] at hlab'
+       have hj : (σ ⟨c, hck⟩).1 = j := e.injective (Fin.ext hlab')
+       change (if h : c < k then Closeds.closure {((σ ⟨c, h⟩).2 : X)} else ⊥) ≤ _
+-      rw [dite_eq_left hck]
++      rw [dif_pos hck]
+       rcases hp : σ ⟨c, hck⟩ with ⟨jc, ηc⟩
+       rw [hp] at hj
+       change jc = j at hj
+@@ -119,11 +119,11 @@
+     have hck' : c' < k := hc'
+     have hlab' : (if h : c < k then (e (σ ⟨c, h⟩).1 : ℕ) else 0) =
+         (if h : c' < k then (e (σ ⟨c', h⟩).1 : ℕ) else 0) := hlab
+-    rw [dite_eq_left hck, dite_eq_left hck'] at hlab'
++    rw [dif_pos hck, dif_pos hck'] at hlab'
+     have hj : (σ ⟨c, hck⟩).1 = (σ ⟨c', hck'⟩).1 := e.injective (Fin.ext hlab')
+     change Disjoint (if h : c < k then Closeds.closure {((σ ⟨c, h⟩).2 : X)} else ⊥)
+       (if h : c' < k then Closeds.closure {((σ ⟨c', h⟩).2 : X)} else ⊥)
+-    rw [dite_eq_left hck, dite_eq_left hck', disjoint_iff_inf_le]
++    rw [dif_pos hck, dif_pos hck', disjoint_iff_inf_le]
+     intro x hx
+     rw [← SetLike.mem_coe, Closeds.coe_inf] at hx
+     obtain ⟨h1, h2⟩ := hx
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Kernel.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Kernel.lean
+@@ -431,7 +431,7 @@
+   change x' ∈ (if c < Φ.nextComp then strictTransformCloseds (Φ.centerOf S) (Φ.piece c) else
+     (S.filter fun P => Φ.newComp S P = c).sup fun P =>
+       (Φ.faceSet P).preimage (Φ.centerOf S).blowUpπ.continuous) ↔ _
+-  rw [ite_eq_right hlt, mem_finset_sup_iff]
++  rw [if_neg hlt, mem_finset_sup_iff]
+   constructor
+   · rintro ⟨P, hP, hx⟩
+     exact ⟨P, (Finset.mem_filter.mp hP).1, (Finset.mem_filter.mp hP).2, hx⟩
+@@ -648,7 +648,7 @@
+     · rw [Φ.blowUpPieces_label_of_lt S hck] at hlab
+       exact ⟨hck, hlab⟩
+     · exfalso
+-      have : (Φ.blowUpPieces S m).label c = Φ.nextLabel := ite_eq_right hck
++      have : (Φ.blowUpPieces S m).label c = Φ.nextLabel := if_neg hck
+       omega
+   · rintro ⟨hck, hlab⟩
+     exact ⟨hck.trans_le (Nat.le_add_right _ _), (Φ.blowUpPieces_label_of_lt S hck).trans hlab⟩
+@@ -666,7 +666,7 @@
+     rw [Φ.blowUpPieces_label_of_lt S (not_le.mp hck)] at hlab
+     exact absurd hlab (Φ.label_lt c (not_le.mp hck)).ne
+   · rintro ⟨hck, hc⟩
+-    exact ⟨hc, ite_eq_right (not_lt.mpr hck)⟩
++    exact ⟨hc, if_neg (not_lt.mpr hck)⟩
+ 
+ omit [Smooth f] in
+ include f in
+@@ -733,11 +733,11 @@
+           (Φ.π_mem_piece_of_mem_blowUpPieces_piece f hck' h2)
+       · -- an old and a new piece have different labels
+         rw [Φ.blowUpPieces_label_of_lt S hck] at hlab
+-        have : (Φ.blowUpPieces S m).label c' = Φ.nextLabel := ite_eq_right hck'
++        have : (Φ.blowUpPieces S m).label c' = Φ.nextLabel := if_neg hck'
+         exact absurd (hlab.trans this) (Φ.label_lt c hck).ne
+     · by_cases hck' : c' < Φ.nextComp
+       · rw [Φ.blowUpPieces_label_of_lt S hck'] at hlab
+-        have : (Φ.blowUpPieces S m).label c = Φ.nextLabel := ite_eq_right hck
++        have : (Φ.blowUpPieces S m).label c = Φ.nextLabel := if_neg hck
+         exact absurd (this.symm.trans hlab) (Φ.label_lt c' hck').ne'
+       · -- two new pieces: their faces pass through a common point, so they coincide
+         obtain ⟨P, hP, hPc, hxP⟩ := (Φ.mem_blowUpPieces_piece_of_le (not_lt.mp hck)).mp h1
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Pieces.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Pieces.lean
+@@ -207,17 +207,17 @@
+ 
+ theorem blowUpPieces_piece_of_lt {c : ℕ} (hc : c < Φ.nextComp) :
+     (Φ.blowUpPieces S m).piece c = strictTransformCloseds (Φ.centerOf S) (Φ.piece c) :=
+-  ite_eq_left hc
++  if_pos hc
+ 
+ theorem blowUpPieces_label_of_lt {c : ℕ} (hc : c < Φ.nextComp) :
+-    (Φ.blowUpPieces S m).label c = Φ.label c := ite_eq_left hc
++    (Φ.blowUpPieces S m).label c = Φ.label c := if_pos hc
+ 
+ theorem blowUpPieces_a_of_lt {c : ℕ} (hc : c < Φ.nextComp) :
+-    (Φ.blowUpPieces S m).a c = Φ.a c := ite_eq_left hc
++    (Φ.blowUpPieces S m).a c = Φ.a c := if_pos hc
+ 
+ theorem blowUpPieces_label_newComp (P : Finset ℕ) :
+     (Φ.blowUpPieces S m).label (Φ.newComp S P) = Φ.nextLabel :=
+-  ite_eq_right (not_lt.mpr (Nat.le_add_right _ _))
++  if_neg (not_lt.mpr (Nat.le_add_right _ _))
+ 
+ /-- The new piece of a face `P ∈ S`: the preimage `π⁻¹(Z_P)`. -/
+ theorem blowUpPieces_piece_newComp {P : Finset ℕ} (hP : P ∈ S) :
+@@ -227,7 +227,7 @@
+   change (if Φ.newComp S P < Φ.nextComp then _ else
+     (S.filter fun Q => Φ.newComp S Q = Φ.newComp S P).sup fun Q =>
+       (Φ.faceSet Q).preimage (Φ.centerOf S).blowUpπ.continuous) = _
+-  rw [ite_eq_right hlt]
++  rw [if_neg hlt]
+   have : (S.filter fun Q => Φ.newComp S Q = Φ.newComp S P) = {P} :=
+     Finset.eq_singleton_iff_unique_mem.mpr ⟨Finset.mem_filter.mpr ⟨hP, rfl⟩, fun Q hQ =>
+       MonomialState.rank_injOn S (Finset.mem_filter.mp hQ).1 hP
+@@ -240,7 +240,7 @@
+   have hlt : ¬ Φ.newComp S P < Φ.nextComp := not_lt.mpr (Nat.le_add_right _ _)
+   change (if Φ.newComp S P < Φ.nextComp then Φ.a (Φ.newComp S P) else
+     (S.filter fun Q => Φ.newComp S Q = Φ.newComp S P).sup fun Q => Φ.total Q - m) = _
+-  rw [ite_eq_right hlt]
++  rw [if_neg hlt]
+   have : (S.filter fun Q => Φ.newComp S Q = Φ.newComp S P) = {P} :=
+     Finset.eq_singleton_iff_unique_mem.mpr ⟨Finset.mem_filter.mpr ⟨hP, rfl⟩, fun Q hQ =>
+       MonomialState.rank_injOn S (Finset.mem_filter.mp hQ).1 hP
+@@ -386,7 +386,7 @@
+   label c := if h : c < k then (e (σ ⟨c, h⟩).1 : ℕ) else 0
+   a c := if h : c < k then a ((σ ⟨c, h⟩).2 : X) else 0
+   label_lt c hc := by
+-    simp only [dite_eq_left hc]
++    simp only [dif_pos hc]
+     exact (e _).isLt
+ 
+ end PieceFamily
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Refinement.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Refinement.lean
+@@ -261,7 +261,7 @@
+ omit [Flat h] in
+ theorem parentOf_of_lt {k' : ℕ} (σ' : Fin k' ≃ Components (E.comap h)) {c' : ℕ} (hc : c' < k') :
+     Φ.parentOf h σ' c' = (Φ.faceAt (h ((σ' ⟨c', hc⟩).2 : Y))).sup id :=
+-  dite_eq_left hc
++  dif_pos hc
+ 
+ include f in
+ /-- The parent of a component: the image of the generic point is a generic point of the parent
+@@ -302,18 +302,18 @@
+       c' ≤ (Φ.piece (Φ.parentOf h σ' c')).preimage h.continuous := by
+     intro c' hc'
+     change (if hc : c' < k' then Closeds.closure {((σ' ⟨c', hc⟩).2 : Y)} else ⊥) ≤ _
+-    rw [dite_eq_left hc']
++    rw [dif_pos hc']
+     exact Closeds.closure_le.mpr (Set.singleton_subset_iff.mpr (hspec c' hc').2.2.1)
+   refine ⟨rfl, fun c' hc' => (hspec c' hc').1, fun c' hc' => ?_, fun c' hc' => ?_, hle, ?_, ?_⟩
+   · have hck : c' < k' := hc'
+     change Φ.label (Φ.parentOf h σ' c') =
+       (if hc : c' < k' then ((e (σ' ⟨c', hc⟩).1 : Fin Φ.nextLabel) : ℕ) else 0)
+-    rw [dite_eq_left hck]
++    rw [dif_pos hck]
+     exact (hspec c' hck).2.1
+   · have hck : c' < k' := hc'
+     change Φ.a (Φ.parentOf h σ' c') =
+       (if hc : c' < k' then Φ.exponentAt (h ((σ' ⟨c', hc⟩).2 : Y)) else 0)
+-    rw [dite_eq_left hck]
++    rw [dif_pos hck]
+     exact (hspec c' hck).2.2.2.2.symm
+   · -- the preimage of a piece is the union of its children
+     intro c hc
+@@ -355,7 +355,7 @@
+       refine ⟨(σ'.symm p : ℕ), Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hc', hρc⟩, ?_⟩
+       change y ∈ (if hc'' : (σ'.symm p : ℕ) < k' then
+         Closeds.closure {((σ' ⟨(σ'.symm p : ℕ), hc''⟩).2 : Y)} else ⊥)
+-      rw [dite_eq_left hc', hσ]
++      rw [dif_pos hc', hσ]
+       exact specializes_iff_mem_closure.mp hη'y
+     · rw [Finset.sup_le_iff]
+       intro c' hc'
+@@ -372,7 +372,7 @@
+       rw [← (hspec c₁ hk₁).2.1, ← (hspec c₂ hk₂).2.1, hρeq]
+     change Disjoint (if hc : c₁ < k' then Closeds.closure {((σ' ⟨c₁, hc⟩).2 : Y)} else ⊥)
+       (if hc : c₂ < k' then Closeds.closure {((σ' ⟨c₂, hc⟩).2 : Y)} else ⊥)
+-    rw [dite_eq_left hk₁, dite_eq_left hk₂, disjoint_iff_inf_le]
++    rw [dif_pos hk₁, dif_pos hk₂, disjoint_iff_inf_le]
+     intro y hy
+     rw [← SetLike.mem_coe, Closeds.coe_inf] at hy
+     obtain ⟨h1, h2⟩ := hy
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Geometric/Transform.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Geometric/Transform.lean
+@@ -294,7 +294,7 @@
+         exact hc'Q
+       obtain ⟨u, hu, hstalk⟩ := exists_stalkIdeal_strictTransformAlong_eq_span_of_mem f
+         Φ.pieceIdeal (Φ.centerOf S) hZp ⟨c, hc⟩ x' hx'F hz.1 hZs hjc hjcs hF
+-      rw [ite_eq_left hcQ, pow_one, hF,
++      rw [if_pos hcQ, pow_one, hF,
+         show ((vanishingIdeal (Φ.piece c)).strictTransformAlong
+             (IdealSheafData.blowUpπ (Φ.centerOf S)) ((Φ.centerOf S).comap
+             (IdealSheafData.blowUpπ (Φ.centerOf S)))).stalkIdeal x' = span {u} from hstalk,
+@@ -309,7 +309,7 @@
+           by_contra hne
+           exact notMem_span_singleton_of_ne hz.1.1 hz.1.2 (fun h => hne h.symm) hzz
+         exact hjcs (hjj ▸ hj)
+-      rw [ite_eq_right hcQ, pow_zero, mul_one]
++      rw [if_neg hcQ, pow_zero, mul_one]
+       exact (stalkIdeal_strictTransformAlong_of_notMem f Φ.pieceIdeal (Φ.centerOf S) hZp ⟨c, hc⟩
+         x' hx'F hz.1 hZs hjc hjcs).symm
+   · -- `x` off the piece: both sides are the unit ideal
+@@ -318,7 +318,7 @@
+         by
+       rw [Hironaka.Sequence.support_vanishingIdeal_eq]
+       exact hxc
+-    rw [ite_eq_right hcQ, pow_zero, mul_one, stalkIdeal_comap,
++    rw [if_neg hcQ, pow_zero, mul_one, stalkIdeal_comap,
+       stalkIdeal_eq_top_of_notMem_support _ hxc',
+       Ideal.map_top, stalkIdeal_eq_top_of_notMem_support]
+     intro h
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Restrict/Extend.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Restrict/Extend.lean
+@@ -44,11 +44,11 @@
+ def extendLabel (ℓ : ℕ) : ℕ := if ℓ < D.nextLabel then σ ℓ else P.nextLabel
+ 
+ theorem extendComp_of_lt {c : ℕ} (hc : c < D.nextComp) : extendComp ρ D P S_D S c = ρ c :=
+-  ite_eq_left hc
++  if_pos hc
+ 
+ theorem extendComp_newComp {Q : Finset ℕ} (hQ : Q ∈ S_D) :
+     extendComp ρ D P S_D S (D.newComp S_D Q) = P.newComp S (Q.image ρ) := by
+-  rw [extendComp, ite_eq_right (not_lt.mpr (D.nextComp_le_newComp S_D Q))]
++  rw [extendComp, if_neg (not_lt.mpr (D.nextComp_le_newComp S_D Q))]
+   have : (S_D.filter fun Q' => D.newComp S_D Q' = D.newComp S_D Q) = {Q} :=
+     Finset.eq_singleton_iff_unique_mem.mpr ⟨Finset.mem_filter.mpr ⟨hQ, rfl⟩,
+       fun Q' hQ' =>
+@@ -56,10 +56,10 @@
+   rw [this, Finset.sup_singleton]
+ 
+ theorem extendLabel_of_lt {ℓ : ℕ} (hℓ : ℓ < D.nextLabel) : extendLabel σ D P ℓ = σ ℓ :=
+-  ite_eq_left hℓ
++  if_pos hℓ
+ 
+ theorem extendLabel_nextLabel : extendLabel σ D P D.nextLabel = P.nextLabel :=
+-  ite_eq_right (lt_irrefl _)
++  if_neg (lt_irrefl _)
+ 
+ theorem image_extendComp_of_lt {T : Finset ℕ} (hT : ∀ c ∈ T, c < D.nextComp) :
+     T.image (extendComp ρ D P S_D S) = T.image ρ :=
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Restrict/Phase.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Restrict/Phase.lean
+@@ -275,7 +275,7 @@
+       · omega
+       · omega
+     exact ⟨OrderEmbedding.ofStrictMono _ hg, fun c hc => by
+-      rw [OrderEmbedding.coe_ofStrictMono]; exact ite_eq_left hc⟩
++      rw [OrderEmbedding.coe_ofStrictMono]; exact if_pos hc⟩
+ 
+ theorem step3_restrict_aux {L N : MonomialState} (h : Sub L N) :
+     ∃ ρ' σ' : ℕ → ℕ, (∀ c, c < L.nextComp → ρ' c = c) ∧ (∀ ℓ, ℓ < L.nextLabel → σ' ℓ = ℓ) ∧
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/State.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/State.lean
+@@ -476,21 +476,21 @@
+ theorem blowUp_nerve : (st.blowUp S).nerve = blowUpNerve st.nerve S (st.newComp S) := rfl
+ 
+ theorem blowUp_label_of_lt {c : ℕ} (hc : c < st.nextComp) : (st.blowUp S).label c = st.label c :=
+-  ite_eq_left hc
++  if_pos hc
+ 
+ theorem blowUp_a_of_lt {c : ℕ} (hc : c < st.nextComp) : (st.blowUp S).a c = st.a c :=
+-  ite_eq_left hc
++  if_pos hc
+ 
+ /-- The new components carry the new label. -/
+ theorem blowUp_label_newComp (P : Finset ℕ) : (st.blowUp S).label (st.newComp S P) = st.nextLabel :=
+-  ite_eq_right (not_lt.mpr (st.nextComp_le_newComp S P))
++  if_neg (not_lt.mpr (st.nextComp_le_newComp S P))
+ 
+ /-- The new component of the face `P` has exponent `a(P) - m`. -/
+ theorem blowUp_a_newComp {P : Finset ℕ} (hP : P ∈ S) :
+     (st.blowUp S).a (st.newComp S P) = st.total P - st.m := by
+   change (if st.newComp S P < st.nextComp then st.a (st.newComp S P)
+     else (S.filter fun Q => st.newComp S Q = st.newComp S P).sup fun Q => st.total Q - st.m) = _
+-  rw [ite_eq_right (not_lt.mpr (st.nextComp_le_newComp S P))]
++  rw [if_neg (not_lt.mpr (st.nextComp_le_newComp S P))]
+   have : (S.filter fun Q => st.newComp S Q = st.newComp S P) = {P} :=
+     Finset.eq_singleton_iff_unique_mem.mpr ⟨Finset.mem_filter.mpr ⟨hP, rfl⟩,
+       fun Q hQ => st.newComp_injOn S (Finset.mem_filter.mp hQ).1 hP (Finset.mem_filter.mp hQ).2⟩
+--- upstream/Hironaka/Resolution/Algebraic/Monomial/Step3Phases.lean
++++ ep33/Hironaka/Resolution/Algebraic/Monomial/Step3Phases.lean
+@@ -67,11 +67,11 @@
+     (h : (st.choice r).Nonempty) :
+     phase r st hs = ((phase r (st.blowUp (st.choice r)) fun _ hsr => st.star_blowUp hs hsr).1,
+       st.choice r :: (phase r (st.blowUp (st.choice r)) fun _ hsr => st.star_blowUp hs hsr).2) := by
+-  rw [phase, ite_eq_left h]
++  rw [phase, if_pos h]
+ 
+ theorem phase_of_not_nonempty (st : MonomialState) (hs : ∀ s < r, st.Star s)
+     (h : ¬ (st.choice r).Nonempty) : phase r st hs = (st, []) := by
+-  rw [phase, ite_eq_right h]
++  rw [phase, if_neg h]
+ 
+ /-- A run of Step 3: each centre is Kollár's nonempty choice at some phase `r`, `1 ≤ r ≤ n`, of
+ the state reached before it. -/
+@@ -265,10 +265,10 @@
+   | zero => exact absurd h (by simp [phaseFuel])
+   | succ fuel ih =>
+     by_cases hne : (st.choice r).Nonempty
+-    · rw [phaseFuel, ite_eq_left hne, Option.map_eq_some_iff] at h
++    · rw [phaseFuel, if_pos hne, Option.map_eq_some_iff] at h
+       obtain ⟨res', hres', rfl⟩ := h
+       rw [phase_of_nonempty st hs hne, ih (fun _ hsr => st.star_blowUp hs hsr) hres']
+-    · rw [phaseFuel, ite_eq_right hne, Option.some.injEq] at h
++    · rw [phaseFuel, if_neg hne, Option.some.injEq] at h
+       rw [phase_of_not_nonempty st hs hne, h]
+ 
+ /-- `phases` with fuel per phase. -/
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Basic.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Basic.lean
+@@ -196,17 +196,17 @@
+     else Scheme.BlowUpSequence.nil T.X.left
+   isOrderSeq T hT := by
+     by_cases h : T.I.maxOrd = m
+-    · rw [dite_eq_left h]
++    · rw [dif_pos h]
+       obtain ⟨d, hd⟩ := T.smoothOfRelativeDimension
+       exact (Hironaka.BD.isOrderSeq_iff_tuned (T.X.left ↘ Spec (.of k)) d _ T.I T.E m h
+         (hmC T hT)).mpr (B.isOrderSeq (T.tuned m (hmC T hT)) (hDom T hT h))
+-    · rw [dite_eq_right h]
++    · rw [dif_neg h]
+       exact ⟨isSmooth_nil _, fun i => i.elim0⟩
+   noEmptyCenters T hT := by
+     by_cases h : T.I.maxOrd = m
+-    · rw [dite_eq_left h]
++    · rw [dif_pos h]
+       exact B.noEmptyCenters _ _
+-    · rw [dite_eq_right h]
++    · rw [dif_neg h]
+       exact fun i => i.elim0
+ 
+ /-- **The reduction to the tuned ideal**, Step 1 of the proof of [Kol07, Theorem 103] ("thus from
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferentStep2.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/EmptyIndifferentStep2.lean
+@@ -244,12 +244,12 @@
+           exact hi'
+         rw [hc₁]
+         simp only [step21Seq]
+-        rw [dite_eq_left hj, dite_eq_left hj']
++        rw [dif_pos hj, dif_pos hj']
+         exact step21Seq_succ_indifferent_aux T hn hmax bdm E' hsnc' e hn₂ hmax₂ hind hmem htop _ _
+           ih hj hj' hpos
+       · rw [erasureCount_succ_of_notMem T.E E' e hj hin]
+         simp only [step21Seq]
+-        rw [dite_eq_left hj]
++        rw [dif_pos hj]
+         have hrd := hnil k j
+           (T.induced (step21Seq T hn hmax bdm j).1 (step21Seq T hn hmax bdm j).2.1 (Fin.last _))
+           (bdClass_induced_last T hn hmax (step21Seq T hn hmax bdm j).2.1
+@@ -258,7 +258,7 @@
+         exact (concat_eq_of_eq_nil (step21Seq T hn hmax bdm j).1 hrd).trans ih
+     · rw [erasureCount_succ_of_not_lt T.E E' e hj]
+       simp only [step21Seq]
+-      rw [dite_eq_right hj]
++      rw [dif_neg hj]
+       exact ih
+ 
+ end Step21
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Functorial.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Functorial.lean
+@@ -179,13 +179,13 @@
+ theorem ofTunedClass_seq_of_maxOrd_eq (T : Triple k) (hT : C T) (h : T.I.maxOrd = m) :
+     (OrderSeqAssignment.ofTunedClass B hmC hDom).seq T hT =
+       B.seq (T.tuned m (hmC T hT)) (hDom T hT h) :=
+-  dite_eq_left h
++  dif_pos h
+ 
+ /-- Below the mark, the reduced functor on `C` returns the empty sequence (the remark after
+ [Kol07, Theorem 68]: the case `max-ord I < m` is trivial). -/
+ theorem ofTunedClass_seq_of_maxOrd_lt (T : Triple k) (hT : C T) (h : T.I.maxOrd < m) :
+     (OrderSeqAssignment.ofTunedClass B hmC hDom).seq T hT = BlowUpSequence.nil T.X.left :=
+-  dite_eq_right h.ne
++  dif_neg h.ne
+ 
+ /-- The value of the reduced functor on `C` is a smooth blow-up sequence of order `m` starting
+ with `(X, I, E)`: the first proof field of `ofTunedClass`. -/
+@@ -312,13 +312,13 @@
+ theorem ofTuned_seq_of_maxOrd_eq (T : Triple k) (hT : Triple.BOClass n m T)
+     (h : T.I.maxOrd = m) :
+     (OrderSeqAssignment.ofTuned B hDom).seq T hT = B.seq (T.tuned m hT.1) (hDom T hT h) :=
+-  dite_eq_left h
++  dif_pos h
+ 
+ /-- Below the mark, the reduced functor returns the empty sequence. -/
+ theorem ofTuned_seq_of_maxOrd_lt (T : Triple k) (hT : Triple.BOClass n m T)
+     (h : T.I.maxOrd < m) : (OrderSeqAssignment.ofTuned B hDom).seq T hT =
+       BlowUpSequence.nil T.X.left :=
+-  dite_eq_right h.ne
++  dif_neg h.ne
+ 
+ /-- The value of the reduced functor is a smooth blow-up sequence of order `m` starting with
+ `(X, I, E)`: the first proof field of `ofTuned`. -/
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Step21Disjoint.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Step21Disjoint.lean
+@@ -61,12 +61,12 @@
+           (T.induced (step21Seq T hn hmax bd j).1 (step21Seq T hn hmax bd j).2.1 (Fin.last _))
+           (bdClass_induced_last T hn hmax (step21Seq T hn hmax bd j).2.1
+             (step21Seq T hn hmax bd j).2.2 hj)) := by
+-  rw [step21Seq, dite_eq_left hj]
++  rw [step21Seq, dif_pos hj]
+ 
+ /-- Beyond the last position the sequence is unchanged. -/
+ theorem step21Seq_succ_of_not_lt (j : ℕ) (hj : ¬ j < Fintype.card T.E.ι) :
+     (step21Seq T hn hmax bd (j + 1)).1 = (step21Seq T hn hmax bd j).1 := by
+-  rw [step21Seq, dite_eq_right hj]
++  rw [step21Seq, dif_neg hj]
+ 
+ /-- Every Step 2.1 sequence is a smooth blow-up sequence of order `m` starting with `(X, I, E)`:
+ the first carried fact. -/
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Step21EraseEmpty.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Step21EraseEmpty.lean
+@@ -297,10 +297,10 @@
+     simp only [step21Seq]
+     by_cases hj : j < Fintype.card T.E.ι
+     · have hj' : j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_left hj', dite_eq_left hj]
++      rw [dif_pos hj', dif_pos hj]
+       exact step21Seq_eraseEmpty_pullback_succ_aux T hn hmax bd hn' hmax' h hpb hind _ _ ih hj' hj
+     · have hj' : ¬ j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_right hj', dite_eq_right hj]
++      rw [dif_neg hj', dif_neg hj]
+       exact ih
+ 
+ end Step21
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Step21Functorial.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Step21Functorial.lean
+@@ -171,10 +171,10 @@
+     simp only [step21Seq]
+     by_cases hj : j < Fintype.card T.E.ι
+     · have hj' : j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_left hj', dite_eq_left hj]
++      rw [dif_pos hj', dif_pos hj]
+       exact step21Seq_pullback_succ_aux T hn hmax bd hn' hmax' h hs hpb _ _ ih hj' hj
+     · have hj' : ¬ j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_right hj', dite_eq_right hj]
++      rw [dif_neg hj', dif_neg hj]
+       exact ih
+ 
+ /-- The inductive step of `step21Seq_baseChange`, on the whole Step 2.1 values: `pullback_concat`
+@@ -219,10 +219,10 @@
+     simp only [step21Seq]
+     by_cases hj : j < Fintype.card T.E.ι
+     · have hj' : j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_left hj', dite_eq_left hj]
++      rw [dif_pos hj', dif_pos hj]
+       exact step21Seq_baseChange_succ_aux T hn hmax bd hn' hmax' σ p hbc _ _ ih hj' hj
+     · have hj' : ¬ j < Fintype.card T'.E.ι := hcard ▸ hj
+-      rw [dite_eq_right hj', dite_eq_right hj]
++      rw [dif_neg hj', dif_neg hj]
+       exact ih
+ 
+ end Step21
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Step22Assembly.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Step22Assembly.lean
+@@ -104,13 +104,13 @@
+     maxContactCase T hT hH hle bd =
+       step2Seq (T.tuned m hT.1) (hasDimLE_tuned hT.2.1 m hT.1) (le_of_eq (maxOrd_tuned h hT.1)) bd
+         (one_le_tuningParam m) hH (retune_keeps_maxContact h hT.1 hle) :=
+-  dite_eq_left h
++  dif_pos h
+ 
+ /-- Below the mark, `BO^H_{n,m}(X, I, E)` is the empty sequence (the remark after
+ [Kol07, Theorem 68]). -/
+ theorem maxContactCase_of_maxOrd_lt (h : T.I.maxOrd < m) :
+     maxContactCase T hT hH hle bd = BlowUpSequence.nil T.X.left :=
+-  dite_eq_right h.ne
++  dif_neg h.ne
+ 
+ /-- `BO^H_{n,m}(X, I, E)` is a smooth blow-up sequence of order `m` starting with `(X, I, E)`:
+ Step 2 on the tuned triple, read back through `Hironaka.BD.isOrderSeq_iff_tuned`
+--- upstream/Hironaka/Resolution/Algebraic/OrderReduction/Step22Basic.lean
++++ ep33/Hironaka/Resolution/Algebraic/OrderReduction/Step22Basic.lean
+@@ -184,7 +184,7 @@
+       (Fin.last _) a), q b = some (toLex (Sum.inl
+         (⟨b, hb⟩ :
+           ((step21Seq T hn hmax (bd m) (Fintype.card T.E.ι)).1.exceptionalFamily T.E).ι))) :=
+-    fun b hb => dite_eq_left hb
++    fun b hb => dif_pos hb
+   refine ⟨q, ?_, ?_⟩
+   · intro b b' hb hb' heq
+     have h1 := fun a => notOriginal_of_mem_cosupp_step21 T hn hmax bd hx hb a
+--- upstream/Hironaka/Resolution/Algebraic/Tuning/Transform.lean
++++ ep33/Hironaka/Resolution/Algebraic/Tuning/Transform.lean
+@@ -211,7 +211,7 @@
+         hPtr x.1
+     _ ≤ ∏ j : Fin (m + 1),
+           (I.markedTransform Z m).derivativeIter (Z.blowUpπ ≫ f) j ^ x.1 j :=
+-        Finset.prod_le_prod₀ (fun j _ => bot_le) fun j _ =>
++        Finset.prod_le_prod (fun j _ => bot_le) fun j _ =>
+           pow_le_pow_left₀ bot_le
+             (markedTransform_derivativeIter_le f n Z I hm (Nat.lt_succ_iff.mp j.2)) _
+     _ ≤ W (Z.blowUpπ ≫ f) (I.markedTransform Z m) m s := prod_le_W _ x.2
+--- upstream/Hironaka/Scheme/BlowUp/BaseChange.lean
++++ ep33/Hironaka/Scheme/BlowUp/BaseChange.lean
+@@ -4,6 +4,8 @@
+ Authors: Chris Elliott (Resolution): formalization performed by Claude Fable 5.1
+ -/
+ module
++
++import Hironaka.Compat.TensorProductInduction
+ 
+ public import Hironaka.Scheme.BlowUp.AffineAlgebra
+ public import Mathlib.RingTheory.Flat.Basic
+--- upstream/Hironaka/Scheme/BlowUp/CoordinateSubspace/Exceptional.lean
++++ ep33/Hironaka/Scheme/BlowUp/CoordinateSubspace/Exceptional.lean
+@@ -66,12 +66,12 @@
+     (Subtype.val_injective : Function.Injective (Subtype.val : {i : Fin n // p i} → Fin n))
+ 
+ theorem killPred_X_of {i : Fin n} (h : p i) : killPred A p (X i) = X ⟨i, h⟩ := by
+-  rw [killPred, killCompl, aeval_X, dite_eq_left ⟨⟨i, h⟩, rfl⟩]
++  rw [killPred, killCompl, aeval_X, dif_pos ⟨⟨i, h⟩, rfl⟩]
+   congr 1
+   exact Equiv.ofInjective_symm_apply Subtype.val_injective ⟨i, h⟩
+ 
+ theorem killPred_X_of_not {i : Fin n} (h : ¬ p i) : killPred A p (X i) = 0 := by
+-  rw [killPred, killCompl, aeval_X, dite_eq_right]
++  rw [killPred, killCompl, aeval_X, dif_neg]
+   rintro ⟨⟨i', hi'⟩, h'⟩
+   exact h (h' ▸ hi')
+ 
+@@ -220,18 +220,18 @@
+   invFun i := if h : i.1.val < r then Sum.inl ⟨i.1, h, i.2⟩ else Sum.inr ⟨i.1, h⟩
+   left_inv := by
+     rintro (i | i)
+-    · exact dite_eq_left i.2.1
+-    · exact dite_eq_right i.2
++    · exact dif_pos i.2.1
++    · exact dif_neg i.2
+   right_inv i := by
+     by_cases h : i.1.val < r
+-    · exact congrArg _ (dite_eq_left h)
+-    · exact congrArg _ (dite_eq_right h)
++    · exact congrArg _ (dif_pos h)
++    · exact congrArg _ (dif_neg h)
+ 
+ theorem splitVars_symm_of_lt {i : Fin n} (hij : i ≠ j) (h : i.val < r) :
+-    (splitVars n r j hj).symm ⟨i, hij⟩ = Sum.inl ⟨i, h, hij⟩ := dite_eq_left h
++    (splitVars n r j hj).symm ⟨i, hij⟩ = Sum.inl ⟨i, h, hij⟩ := dif_pos h
+ 
+ theorem splitVars_symm_of_not_lt {i : Fin n} (hij : i ≠ j) (h : ¬ i.val < r) :
+-    (splitVars n r j hj).symm ⟨i, hij⟩ = Sum.inr ⟨i, h⟩ := dite_eq_right h
++    (splitVars n r j hj).symm ⟨i, hij⟩ = Sum.inr ⟨i, h⟩ := dif_neg h
+ 
+ /-- `A[x]/(x_j) ≃ (A[x]/I)[x_i : i < r, i ≠ j]` as `A`-algebras. -/
+ noncomputable def fibreAlgEquiv :
+@@ -278,7 +278,7 @@
+         by_contra hne
+         exact h ⟨hi, hne⟩
+       rw [hij, Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _), map_zero]
+-  · rw [ite_eq_right fun h => hi h.1, fibreAlgEquiv_mk_X_of_not_lt A n r j hj hi, algebraMap_eq]
++  · rw [if_neg fun h => hi h.1, fibreAlgEquiv_mk_X_of_not_lt A n r j hj hi, algebraMap_eq]
+ 
+ /-- `A[x]/(x_j) ≃ (A[x]/I)[x_i : i < r, i ≠ j]` as algebras over `𝒪(L) = A[x]/I`, the structure of
+ `A[x]/(x_j)` over `A[x]/I` being through the chart map `π_j` [Hau14, Example 5.9]. -/
+--- upstream/Hironaka/Scheme/BlowUp/CoordinateSubspace/Split.lean
++++ ep33/Hironaka/Scheme/BlowUp/CoordinateSubspace/Split.lean
+@@ -107,9 +107,9 @@
+   have hd' := mem_support_iff.mp hd
+   rw [coeff_sub, coeff_homogeneousComponent] at hd'
+   by_cases hdk : d.degree = k
+-  · rw [ite_eq_left hdk, sub_self] at hd'
++  · rw [if_pos hdk, sub_self] at hd'
+     exact absurd rfl hd'
+-  · rw [ite_eq_right hdk, sub_zero] at hd'
++  · rw [if_neg hdk, sub_zero] at hd'
+     have := forall_degree_of_mem_span_range_X_pow hp d (mem_support_iff.mpr hd')
+     omega
+ 
+@@ -177,21 +177,21 @@
+   left_inv i := by
+     by_cases h : i.val < r
+     · dsimp only
+-      rw [dite_eq_left h]
++      rw [dif_pos h]
+       rfl
+     · dsimp only
+-      rw [dite_eq_right h]
++      rw [dif_neg h]
+       rfl
+   right_inv := by
+     rintro (j | i)
+-    · exact dite_eq_left j.2
+-    · exact dite_eq_right i.2
++    · exact dif_pos j.2
++    · exact dif_neg i.2
+ 
+ theorem splitFin_apply_of_lt {i : Fin n} (h : i.val < r) :
+-    splitFin n r hrn i = Sum.inl ⟨i.val, h⟩ := dite_eq_left h
++    splitFin n r hrn i = Sum.inl ⟨i.val, h⟩ := dif_pos h
+ 
+ theorem splitFin_apply_of_not_lt {i : Fin n} (h : ¬ i.val < r) :
+-    splitFin n r hrn i = Sum.inr ⟨i, h⟩ := dite_eq_right h
++    splitFin n r hrn i = Sum.inr ⟨i, h⟩ := dif_neg h
+ 
+ /-- `A[x_0, …, x_{n-1}] ≃ₐ[A] (A[x]/I)[u_0, …, u_{r-1}]`, `x_i ↦ u_i` for `i < r` and `x_i ↦ x̄_i`
+ for `i ≥ r`, through `A[x]/I ≃ A[x_i : r ≤ i]` (`quotientCenterAlgEquiv`). -/
+--- upstream/Hironaka/Scheme/BlowUp/LinearType.lean
++++ ep33/Hironaka/Scheme/BlowUp/LinearType.lean
+@@ -150,8 +150,8 @@
+     intro _ p hp
+     rw [partialPresentationIdeal_zero, Ideal.mem_bot] at hp ⊢
+     ext m
+-    have := congrArg (AddMonoidAlgebra.coeff · m) hp
+-    rw [coeff_C_mul, AddMonoidAlgebra.coeff_zero, Finsupp.zero_apply] at this
++    have := congrArg (MvPolynomial.coeff m) hp
++    rw [coeff_C_mul, MvPolynomial.coeff_zero] at this
+     exact isSMulRegular_head a g h (by simpa using this)
+   | succ j ih =>
+     intro hj p hp
+--- upstream/Hironaka/Scheme/BlowUp/Model.lean
++++ ep33/Hironaka/Scheme/BlowUp/Model.lean
+@@ -105,13 +105,13 @@
+     modelAux A S j (X (R := A) i) =
+       algebraMap (MvPolynomial σ A) (Localization.Away (X j : MvPolynomial σ A)) (X (R := A) i) *
+         invSelf (X j : MvPolynomial σ A) := by
+-  rw [modelAux, aeval_X, ite_eq_left ⟨hi, hij⟩]
++  rw [modelAux, aeval_X, if_pos ⟨hi, hij⟩]
+ 
+ theorem modelAux_X_of_not {i : σ} (h : ¬(i ∈ S ∧ i ≠ j)) :
+     modelAux A S j (X (R := A) i) =
+       algebraMap (MvPolynomial σ A) (Localization.Away (X j : MvPolynomial σ A))
+         (X (R := A) i) := by
+-  rw [modelAux, aeval_X, ite_eq_right h]
++  rw [modelAux, aeval_X, if_neg h]
+ 
+ theorem modelAux_X_self :
+     modelAux A S j (X (R := A) j) =
+@@ -120,11 +120,11 @@
+ 
+ theorem chartSubst_X_of_mem {i : σ} (hi : i ∈ S) (hij : i ≠ j) :
+     chartSubst A S j (X (R := A) i) = X (R := A) i * X j := by
+-  rw [chartSubst, aeval_X, ite_eq_left ⟨hi, hij⟩]
++  rw [chartSubst, aeval_X, if_pos ⟨hi, hij⟩]
+ 
+ theorem chartSubst_X_of_not {i : σ} (h : ¬(i ∈ S ∧ i ≠ j)) :
+     chartSubst A S j (X (R := A) i) = X i := by
+-  rw [chartSubst, aeval_X, ite_eq_right h]
++  rw [chartSubst, aeval_X, if_neg h]
+ 
+ theorem chartSubst_X_self : chartSubst A S j (X (R := A) j) = X j :=
+   chartSubst_X_of_not A S j fun h => h.2 rfl
+--- upstream/Hironaka/Scheme/BlowUp/Rees/Defs.lean
++++ ep33/Hironaka/Scheme/BlowUp/Rees/Defs.lean
+@@ -89,7 +89,7 @@
+ /-- An element of the Rees algebra that is a monomial of degree `i` lies in the `i`-th piece. -/
+ theorem reesAlgebra.mem_grading_of_coe_eq_monomial {i : ℕ} {p : reesAlgebra I} {c : R}
+     (hp : (p : R[X]) = monomial i c) : p ∈ reesAlgebra.grading I i :=
+-  fun j hj => by rw [hp, coeff_monomial, ite_eq_right (Ne.symm hj)]
++  fun j hj => by rw [hp, coeff_monomial, if_neg (Ne.symm hj)]
+ 
+ /-- The `n`-th piece consists of the monomials `c tⁿ`, `c ∈ I ^ n`. -/
+ theorem reesAlgebra.mem_grading_iff_exists {n : ℕ} {p : reesAlgebra I} :
+--- upstream/Hironaka/Scheme/BlowUpSequence/Basic.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/Basic.lean
+@@ -526,13 +526,13 @@
+ /-- A nonempty first center is kept. -/
+ theorem eraseEmpty_cons_of_ne_top {D : X.IdealSheafData} (rest : BlowUpSequence D.blowUp)
+     (h : D ≠ ⊤) : (cons X D rest).eraseEmpty = cons X D rest.eraseEmpty := by
+-  rw [eraseEmpty, dite_eq_right h]
++  rw [eraseEmpty, dif_neg h]
+ 
+ /-- An empty first blow-up is deleted, its tail carried back to `X` along the inverse of the
+ isomorphism `blowUpπ X ⊤`. -/
+ theorem eraseEmpty_cons_top (rest : BlowUpSequence (⊤ : X.IdealSheafData).blowUp) :
+     (cons X ⊤ rest).eraseEmpty = rest.eraseEmpty.pullback (inv (⊤ : X.IdealSheafData).blowUpπ) := by
+-  rw [eraseEmpty, dite_eq_left rfl]
++  rw [eraseEmpty, dif_pos rfl]
+ 
+ /-- The result of `eraseEmpty` has no empty centers: the empty blow-up convention of [Kol07, 32]. -/
+ theorem noEmptyCenters_eraseEmpty (S : BlowUpSequence X) : S.eraseEmpty.NoEmptyCenters := by
+@@ -587,11 +587,11 @@
+     rw [hc]
+     by_cases hD : D = ⊤
+     · subst hD
+-      rw [eraseEmpty_cons_top, length_pullback, ite_eq_left rfl]
++      rw [eraseEmpty_cons_top, length_pullback, if_pos rfl]
+       change rest.eraseEmpty.length + (1 + Nat.card {i : Fin rest.length // rest.IsEmptyAt i}) =
+         rest.length + 1
+       omega
+-    · rw [eraseEmpty_cons_of_ne_top rest hD, ite_eq_right hD]
++    · rw [eraseEmpty_cons_of_ne_top rest hD, if_neg hD]
+       change rest.eraseEmpty.length + 1 +
+         (0 + Nat.card {i : Fin rest.length // rest.IsEmptyAt i}) = rest.length + 1
+       omega
+--- upstream/Hironaka/Scheme/BlowUpSequence/DisjointUnion.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/DisjointUnion.lean
+@@ -96,7 +96,7 @@
+ theorem IsSigmaOf.isOpenImmersion (h : T.IsSigmaOf Ts ι) (i : σ) : IsOpenImmersion (ι i) := by
+   have := h.isIso_sigmaDesc
+   have : IsOpenImmersion (Sigma.ι (fun i => (Ts i).X.left) i) := (sigmaOpenCover _).map_prop i
+-  rw [← Sigma.ι_comp_desc ι i]
++  rw [← Sigma.ι_desc ι i]
+   infer_instance
+ 
+ /-- The pieces of a disjoint union cover it. -/
+@@ -107,7 +107,7 @@
+   obtain ⟨y, rfl⟩ := (Sigma.desc ι).homeomorph.surjective x
+   obtain ⟨⟨i, z⟩, rfl⟩ := (sigmaMk fun i => (Ts i).X.left).surjective y
+   refine Set.mem_iUnion.2 ⟨i, z, ?_⟩
+-  simp only [Scheme.Hom.homeomorph_apply, sigmaMk_mk, ← Scheme.Hom.comp_apply, Sigma.ι_comp_desc]
++  simp only [Scheme.Hom.homeomorph_apply, sigmaMk_mk, ← Scheme.Hom.comp_apply, Sigma.ι_desc]
+ 
+ /-- Distinct pieces of a disjoint union are disjoint. -/
+ theorem IsSigmaOf.disjoint_range (h : T.IsSigmaOf Ts ι) {i j : σ} (hij : i ≠ j) :
+@@ -117,7 +117,7 @@
+   rintro x ⟨a, rfl⟩ ⟨b, hb⟩
+   have e : Sigma.ι (fun i => (Ts i).X.left) j b = Sigma.ι (fun i => (Ts i).X.left) i a := by
+     apply (Sigma.desc ι).homeomorph.injective
+-    simpa only [Scheme.Hom.homeomorph_apply, ← Scheme.Hom.comp_apply, Sigma.ι_comp_desc] using hb
++    simpa only [Scheme.Hom.homeomorph_apply, ← Scheme.Hom.comp_apply, Sigma.ι_desc] using hb
+   exact hij (congrArg Sigma.fst ((sigmaι_eq_iff _ _ _ _ _).1 e)).symm
+ 
+ /-- The class of triples with affine underlying scheme is closed under finite disjoint unions
+--- upstream/Hironaka/Scheme/BlowUpSequence/EraseEmptyConcat.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/EraseEmptyConcat.lean
+@@ -66,7 +66,7 @@
+     (cons X D rest).eraseEmptyLastHom =
+       eqToHom (congrArg BlowUpSequence.last (eraseEmpty_cons_of_eq_top rest h)) ≫
+         rest.eraseEmpty.pullbackLastHom (inv D.blowUpπ) ≫ rest.eraseEmptyLastHom := by
+-  rw [BlowUpSequence.eraseEmptyLastHom, dite_eq_left h]
++  rw [BlowUpSequence.eraseEmptyLastHom, dif_pos h]
+   rfl
+ 
+ theorem eraseEmptyLastHom_cons_of_ne_top (D : X.IdealSheafData)
+@@ -74,7 +74,7 @@
+     (cons X D rest).eraseEmptyLastHom =
+       eqToHom (congrArg BlowUpSequence.last (eraseEmpty_cons_of_ne_top rest h)) ≫
+         rest.eraseEmptyLastHom := by
+-  rw [BlowUpSequence.eraseEmptyLastHom, dite_eq_right h]
++  rw [BlowUpSequence.eraseEmptyLastHom, dif_neg h]
+   rfl
+ 
+ /-- Transport of the second argument of a concatenation along an equality of first arguments: the
+--- upstream/Hironaka/Scheme/BlowUpSequence/EraseEmptyTransport.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/EraseEmptyTransport.lean
+@@ -74,7 +74,7 @@
+     (rest : BlowUpSequence D.blowUp)
+     (hD : D = ⊤) [IsIso D.blowUpπ] :
+     (cons X D rest).eraseEmpty = rest.eraseEmpty.pullback (inv D.blowUpπ) := by
+-  rw [eraseEmpty, dite_eq_left hD]
++  rw [eraseEmpty, dif_pos hD]
+ 
+ /-- The inverses of two trivial blow-ups intertwine `h` with `blowUpMap` (both composites are the
+ same map to `X`, by `blowUpMap_π`). -/
+--- upstream/Hironaka/Scheme/BlowUpSequence/PullbackEraseEmpty.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/PullbackEraseEmpty.lean
+@@ -245,14 +245,14 @@
+     by_cases hD' : D = ⊤
+     · subst hD'
+       have hiso : IsIso (⊤ : X.IdealSheafData).blowUpπ := blowUp.isIso_π_top
+-      rw [BlowUpSequence.eraseEmpty, dite_eq_left rfl]
++      rw [BlowUpSequence.eraseEmpty, dif_pos rfl]
+       have key := IsOrderSeq.pullback ((⊤ : X.IdealSheafData).blowUpπ ≫ f) n (inv
+           (⊤ : X.IdealSheafData).blowUpπ) (d := 0)
+         (ih ((⊤ : X.IdealSheafData).blowUpπ ≫ f) ht)
+       rw [IsIso.inv_hom_id_assoc, weakTransform_top_left, ← Scheme.IdealSheafData.comap_comp,
+         IsIso.inv_hom_id, Scheme.IdealSheafData.comap_id] at key
+       exact (extendsByEmpty_totalTransform_top_comap_inv E).isOrderSeq key
+-    · rw [BlowUpSequence.eraseEmpty, dite_eq_right hD', isOrderSeq_cons_iff]
++    · rw [BlowUpSequence.eraseEmpty, dif_neg hD', isOrderSeq_cons_iff]
+       exact ⟨⟨hD, hsnc, hm⟩, ih (D.blowUpπ ≫ f) ht⟩
+ 
+ /-- The marked form of `IsOrderSeq.eraseEmpty` [Kol07, 32 and 34.1]. -/
+@@ -269,14 +269,14 @@
+     by_cases hD' : D = ⊤
+     · subst hD'
+       have hiso : IsIso (⊤ : X.IdealSheafData).blowUpπ := blowUp.isIso_π_top
+-      rw [BlowUpSequence.eraseEmpty, dite_eq_left rfl]
++      rw [BlowUpSequence.eraseEmpty, dif_pos rfl]
+       have key := IsOrderGeSeq.pullback ((⊤ : X.IdealSheafData).blowUpπ ≫ f) n (inv
+           (⊤ : X.IdealSheafData).blowUpπ) (d := 0)
+         (ih ((⊤ : X.IdealSheafData).blowUpπ ≫ f) ht)
+       rw [IsIso.inv_hom_id_assoc, markedTransform_top_left, ← Scheme.IdealSheafData.comap_comp,
+         IsIso.inv_hom_id, Scheme.IdealSheafData.comap_id] at key
+       exact (extendsByEmpty_totalTransform_top_comap_inv E).isOrderGeSeq key
+-    · rw [BlowUpSequence.eraseEmpty, dite_eq_right hD', isOrderGeSeq_cons_iff]
++    · rw [BlowUpSequence.eraseEmpty, dif_neg hD', isOrderGeSeq_cons_iff]
+       exact ⟨⟨hD, hsnc, hm⟩, ih (D.blowUpπ ≫ f) ht⟩
+ 
+ /-- The surjective case of [Kol07, 34.1], where no deletion is needed. The surjectivity hypothesis
+--- upstream/Hironaka/Scheme/BlowUpSequence/SmoothParameters.lean
++++ ep33/Hironaka/Scheme/BlowUpSequence/SmoothParameters.lean
+@@ -75,7 +75,7 @@
+     exact LinearMap.range_eq_bot.mpr (Subsingleton.elim _ _)
+   obtain ⟨s, hs⟩ := Module.projective_lifting_property (KaehlerDifferential.map k A B B)
+     LinearMap.id (KaehlerDifferential.map_surjective k A B)
+-  have h01 := (KaehlerDifferential.exact_mapBaseChange_map k A B).split_tfae'.out 1 2
++  have h01 := (KaehlerDifferential.exact_mapBaseChange_map k A B).split_tfae'.out 0 1
+   obtain ⟨-, l, hl⟩ := h01.mp ⟨hinj, s, hs⟩
+   let L : Ω[B⁄k] →ₗ[B] M := (δ.liftKaehlerDifferential.liftBaseChange B) ∘ₗ l
+   refine ⟨L.compDer (KaehlerDifferential.D k B), fun a => ?_⟩
+@@ -214,7 +214,7 @@
+       TensorProduct.mk_apply, hvj, hℓv, Finsupp.lapply_apply, Finsupp.single_apply]
+     by_cases hij : i = j
+     · subst hij; simp
+-    · rw [ite_eq_right hij, ite_eq_right (Ne.symm hij)]
++    · rw [if_neg hij, if_neg (Ne.symm hij)]
+   -- push the values to `κ(B)` and extend along the formally smooth `A → B`
+   let ρ : ResidueField A →ₗ[A] ResidueField B :=
+     (IsScalarTower.toAlgHom A (ResidueField A) (ResidueField B)).toLinearMap
+--- upstream/Hironaka/Scheme/IdealSheaf/Order/AffineSpace.lean
++++ ep33/Hironaka/Scheme/IdealSheaf/Order/AffineSpace.lean
+@@ -334,12 +334,12 @@
+       exact Ideal.derivation_apply_mem_derivative (pderiv i) (Ideal.mem_span_singleton_self _)
+     exact (ratPoint a).isPrime.ne_top ((Ideal.eq_top_iff_one _).mpr (h hone))
+   by_cases ha : a i = 0
+-  · rw [ite_eq_left ha]
++  · rw [if_pos ha]
+     refine le_antisymm ?_ (h1.mpr ha)
+     rw [← not_lt]
+     intro hlt
+     exact h2 (by rw [← one_add_one_eq_two]; exact (ENat.add_one_le_iff ENat.one_ne_top).mpr hlt)
+-  · rw [ite_eq_right ha]
++  · rw [if_neg ha]
+     exact Order.lt_one_iff.mp (not_le.mp fun h => ha (h1.mp h))
+ 
+ open scoped Classical in
+--- upstream/Hironaka/Scheme/IdealSheaf/Order/Smooth.lean
++++ ep33/Hironaka/Scheme/IdealSheaf/Order/Smooth.lean
+@@ -12,7 +12,7 @@
+ import Hironaka.Algebra.Local.OrderSmooth
+ import Hironaka.Scheme.IdealSheaf.Order.Basic
+ import Hironaka.Scheme.IdealSheaf.StalkIdeal
+-import Mathlib.Basic.NNReal.Defs
++import Mathlib.Data.NNReal.Defs
+ import Mathlib.Data.Nat.Choose.Multinomial
+ 
+ /-!
+--- upstream/Hironaka/Scheme/Modules/Sections.lean
++++ ep33/Hironaka/Scheme/Modules/Sections.lean
+@@ -290,7 +290,9 @@
+   letI := Module.compHom Γ(F, U) (X.presheaf.map (homOfLE h).op).hom
+   letI : IsScalarTower Γ(X, V) Γ(X, U) Γ(F, U) := IsScalarTower.of_compHom _ _ _
+   have hb := F.isBaseChange_resₗ hU hV h
+-  refine eq_top_iff.mpr fun n _ => hb.inductionOn n (fun x => ?_)
++  refine eq_top_iff.mpr fun n _ => hb.inductionOn n
++    (fun n => n ∈ Submodule.span Γ(X, U) (Set.range (F.restrictionMap h)))
++    (Submodule.zero_mem _) (fun x => ?_)
+     (fun c n hn => Submodule.smul_mem _ c hn) (fun _ _ => add_mem)
+   exact Submodule.subset_span ⟨x, rfl⟩
+ 
+--- upstream/Hironaka/Scheme/Smooth/ChartEtale.lean
++++ ep33/Hironaka/Scheme/Smooth/ChartEtale.lean
+@@ -140,7 +140,7 @@
+     rw [MvPolynomial.aeval_X, AlgHom.comp_apply, AlgEquiv.coe_toAlgHom, hσ,
+       AlgHom.restrictScalars_apply]
+     by_cases h : i.val < r ∧ i ≠ j
+-    · rw [dite_eq_left h]
++    · rw [dif_pos h]
+       have hm : modelHom k (center n r) j (MvPolynomial.X i) =
+           frac (a := MvPolynomial.X j) (X_mem_coordinateIdeal k (center n r) h.1) :=
+         Subtype.ext (by rw [coe_modelHom, modelAux_X_of_mem k (center n r) j h.1 h.2, coe_frac])
+@@ -150,7 +150,7 @@
+         change awayFrac _ 1 (E.v i) = awayFrac _ 1 (algebraMap (MvPolynomial (Fin n) k) Γ(X, E.U)
+           (MvPolynomial.X i))
+         rw [hv i])
+-    · rw [dite_eq_right h]
++    · rw [dif_neg h]
+       have mem : algebraMap (MvPolynomial (Fin n) k) (Localization.Away (MvPolynomial.X (R := k) j))
+           (MvPolynomial.X i) ∈
+             affineBlowUpAlgebra (centerIdeal k n r) (MvPolynomial.X (R := k) j) :=
+--- upstream/Hironaka/Scheme/Smooth/EtaleCover.lean
++++ ep33/Hironaka/Scheme/Smooth/EtaleCover.lean
+@@ -47,7 +47,7 @@
+     S ⊆ Set.range (Sigma.desc g).base :=
+   h.trans (Set.iUnion_subset fun i => by
+     rintro _ ⟨y, rfl⟩
+-    exact ⟨(Sigma.ι W i).base y, by rw [← Sigma.ι_comp_desc g i]; rfl⟩)
++    exact ⟨(Sigma.ι W i).base y, by rw [← Sigma.ι_desc g i]; rfl⟩)
+ 
+ /-- A pair of étale morphisms `ψ, ψ' : U ⟶ X` whose images both contain the set `S` (in the
+ application, the cosupport of a marked ideal): the "étale surjections `ψ, ψ' : U ⇉ X`" of
+--- upstream/Hironaka/Scheme/Snc/ChartDerivations.lean
++++ ep33/Hironaka/Scheme/Snc/ChartDerivations.lean
+@@ -115,18 +115,18 @@
+ omit hD in
+ theorem chartDer_of_lt {i : Fin n} (hi : i < r) :
+     chartDer x r D i = algebraMap R (Localization.Away (x r)) (x r) • awayDer x r D i :=
+-  ite_eq_left hi
++  if_pos hi
+ 
+ omit hD in
+ theorem chartDer_self :
+     chartDer x r D r = awayDer x r D r +
+       ∑ l ∈ Finset.univ.filter (· < r), chartY x r l • awayDer x r D l := by
+-  rw [chartDer, ite_eq_right (lt_irrefl r), ite_eq_left rfl]
++  rw [chartDer, if_neg (lt_irrefl r), if_pos rfl]
+ 
+ omit hD in
+ theorem chartDer_of_gt {i : Fin n} (hi : ¬ i < r) (hir : i ≠ r) :
+     chartDer x r D i = awayDer x r D i := by
+-  rw [chartDer, ite_eq_right hi, ite_eq_right hir]
++  rw [chartDer, if_neg hi, if_neg hir]
+ 
+ /-- The chart derivations are dual to the chart functions: `chartDer i (y_j) = δ_{ij}`. -/
+ theorem chartDer_chartY (i j : Fin n) :
+@@ -138,16 +138,16 @@
+     have hL := awayDer_chartY_mul x r D i hj
+     by_cases hi : i < r
+     · rw [chartDer_of_lt x r D hi, Derivation.smul_apply, smul_eq_mul, mul_comm, hL, hD, hD,
+-        ite_eq_right (ne_of_lt hi)]
++        if_neg (ne_of_lt hi)]
+       simp only [map_zero, mul_zero, sub_zero]
+       split_ifs <;> simp
+     · by_cases hir : i = r
+       · subst hir
+         rw [chartDer_self, Derivation.add_apply, Derivation.finset_sum_apply,
+-          ite_eq_right (ne_of_gt hj)]
++          if_neg (ne_of_gt hj)]
+         refine hu.mul_left_cancel ?_
+-        rw [mul_zero, mul_add, Finset.mul_sum, mul_comm, hL, hD, hD, ite_eq_right (ne_of_gt hj),
+-          ite_eq_left rfl]
++        rw [mul_zero, mul_add, Finset.mul_sum, mul_comm, hL, hD, hD, if_neg (ne_of_gt hj),
++          if_pos rfl]
+         have hsum : ∀ l ∈ Finset.univ.filter (· < i),
+             algebraMap R (Localization.Away (x i)) (x i) *
+               (chartY x i l • awayDer x i D l) (chartY x i j) =
+@@ -157,24 +157,24 @@
+           rw [Derivation.smul_apply, smul_eq_mul, mul_left_comm,
+             mul_comm (algebraMap R (Localization.Away (x i)) (x i))
+               (awayDer x i D l (chartY x i j)),
+-            awayDer_chartY_mul x i D l hj, hD, hD, ite_eq_right (ne_of_lt hl.2)]
++            awayDer_chartY_mul x i D l hj, hD, hD, if_neg (ne_of_lt hl.2)]
+           simp only [map_zero, mul_zero, sub_zero]
+           split_ifs with h
+           · subst h; simp
+           · simp
+-        rw [Finset.sum_congr rfl hsum, Finset.sum_ite_eq' _ j, ite_eq_left (by simpa using hj)]
++        rw [Finset.sum_congr rfl hsum, Finset.sum_ite_eq' _ j, if_pos (by simpa using hj)]
+         simp
+-      · rw [chartDer_of_gt x r D hi hir, ite_eq_right (fun h : i = j => hi (h ▸ hj))]
++      · rw [chartDer_of_gt x r D hi hir, if_neg (fun h : i = j => hi (h ▸ hj))]
+         refine hu.mul_left_cancel ?_
+-        rw [mul_zero, mul_comm, hL, hD, hD, ite_eq_right hir,
+-          ite_eq_right (fun h : i = j => hi (h ▸ hj))]
++        rw [mul_zero, mul_comm, hL, hD, hD, if_neg hir,
++          if_neg (fun h : i = j => hi (h ▸ hj))]
+         simp
+   · -- `y_j = x_j`, `j ≥ r`
+     have hy : chartY x r j = algebraMap R (Localization.Away (x r)) (x j) :=
+       chartYOf_of_not_lt x r (x r) hj
+     by_cases hi : i < r
+     · rw [chartDer_of_lt x r D hi, Derivation.smul_apply, hy, awayDer_algebraMap, hD,
+-        ite_eq_right (fun h : i = j => hj (h ▸ hi)), ite_eq_right (fun h : i = j => hj (h ▸ hi))]
++        if_neg (fun h : i = j => hj (h ▸ hi)), if_neg (fun h : i = j => hj (h ▸ hi))]
+       simp
+     · by_cases hir : i = r
+       · subst hir
+@@ -186,7 +186,7 @@
+           intro l hl
+           rw [Finset.mem_filter] at hl
+           rw [Derivation.smul_apply, awayDer_algebraMap, hD,
+-            ite_eq_right (fun h : l = j => hj (h ▸ hl.2))]
++            if_neg (fun h : l = j => hj (h ▸ hl.2))]
+           simp
+         rw [Finset.sum_congr rfl hsum, Finset.sum_const_zero, add_zero]
+         split_ifs <;> simp
+@@ -265,7 +265,7 @@
+       rw [Derivation.localization_algebraMap, chartRingDer_chartYR]
+       by_cases h : i = j
+       · subst h; simp
+-      · rw [ite_eq_right h, ite_eq_right (fun h' => h (Subtype.ext h'))]
++      · rw [if_neg h, if_neg (fun h' => h (Subtype.ext h'))]
+         simp)
+   exact exists_span_eq_maximalIdeal_of_linearIndependent w (fun i => i.2) hli
+ 
+--- upstream/Hironaka/Scheme/Snc/ChartSncData.lean
++++ ep33/Hironaka/Scheme/Snc/ChartSncData.lean
+@@ -125,16 +125,16 @@
+       a i = σ ⟨c' ⟨i, h⟩, hq⟩ := fun i h hq => by
+     change (if h : x₀ ∈ (D i).support then
+       (if hq : chartCoord E hj (c' ⟨i, h⟩) ∈ q then σ ⟨c' ⟨i, h⟩, hq⟩ else j') else j') = _
+-    rw [dite_eq_left h, dite_eq_left hq]
++    rw [dif_pos h, dif_pos hq]
+   have ha_of_not : ∀ i (h : x₀ ∈ (D i).support), chartCoord E hj (c' ⟨i, h⟩) ∉ q → a i = j' :=
+     fun i h hq => by
+       change (if h : x₀ ∈ (D i).support then
+         (if hq : chartCoord E hj (c' ⟨i, h⟩) ∈ q then σ ⟨c' ⟨i, h⟩, hq⟩ else j') else j') = _
+-      rw [dite_eq_left h, dite_eq_right hq]
++      rw [dif_pos h, dif_neg hq]
+   have ha_notMem : ∀ i, x₀ ∉ (D i).support → a i = j' := fun i h => by
+     change (if h : x₀ ∈ (D i).support then
+       (if hq : chartCoord E hj (c' ⟨i, h⟩) ∈ q then σ ⟨c' ⟨i, h⟩, hq⟩ else j') else j') = _
+-    rw [dite_eq_right h]
++    rw [dif_neg h]
+   have ha_not : ∀ i, a i ≠ j' → ∃ (h : x₀ ∈ (D i).support) (hq : chartCoord E hj (c' ⟨i, h⟩) ∈ q),
+       c' ⟨i, h⟩ ≠ j ∧ a i = σ ⟨c' ⟨i, h⟩, hq⟩ := by
+     intro i hi
+--- upstream/Hironaka/Scheme/Snc/Coordinates.lean
++++ ep33/Hironaka/Scheme/Snc/Coordinates.lean
+@@ -84,7 +84,7 @@
+     exact hu.symm
+   have := congrArg (fun v => b.repr v i) hcot
+   simp only [map_smul, Finsupp.smul_apply, Module.Basis.repr_self, Finsupp.single_apply,
+-    ite_eq_right (Ne.symm hij), smul_zero] at this
++    if_neg (Ne.symm hij), smul_zero] at this
+   exact one_ne_zero this
+ 
+ end RegularLocalRing
+--- upstream/Hironaka/Scheme/Snc/EraseFamily.lean
++++ ep33/Hironaka/Scheme/Snc/EraseFamily.lean
+@@ -89,11 +89,11 @@
+   · subst h
+     change Sum.elim (E.erase i).component (fun _ => E.component i)
+       (if h : i = i then Sum.inr PUnit.unit else Sum.inl ⟨i, h⟩) = E.component i
+-    rw [dite_eq_left rfl]
++    rw [dif_pos rfl]
+     rfl
+   · change Sum.elim (E.erase j).component (fun _ => E.component j)
+       (if h : i = j then Sum.inr PUnit.unit else Sum.inl ⟨i, h⟩) = E.component i
+-    rw [dite_eq_right h]
++    rw [dif_neg h]
+     rfl
+ 
+ /-- If `E` is snc, so is `(E − E^j) + E^j` (the reindexing lemma `isSnc_of_equiv`). -/
+--- upstream/Hironaka/Scheme/Snc/EtaleParameters.lean
++++ ep33/Hironaka/Scheme/Snc/EtaleParameters.lean
+@@ -137,11 +137,11 @@
+   have hℓ : ∀ x : B, (maximalIdeal R).toCotangent ⟨ℓ x, hℓmem x⟩ = x := by
+     intro x
+     by_cases h : (x : CotangentSpace R) ∈ Set.range v
+-    · have h1 : ℓ x = w (Classical.choose h) := dite_eq_left h
++    · have h1 : ℓ x = w (Classical.choose h) := dif_pos h
+       have h2 : v (Classical.choose h) = x := Classical.choose_spec h
+       rw [← h2]
+       exact congrArg _ (Subtype.ext h1)
+-    · have h1 : ℓ x = (ℓ₀ x : R) := dite_eq_right h
++    · have h1 : ℓ x = (ℓ₀ x : R) := dif_neg h
+       rw [← hℓ₀ x]
+       exact congrArg _ (Subtype.ext h1)
+   obtain ⟨hspan, hcard⟩ :=
+@@ -161,7 +161,7 @@
+     rw [Equiv.symm_apply_apply]
+     change (if h : (v i : CotangentSpace R) ∈ Set.range v then w (Classical.choose h)
+       else (ℓ₀ ⟨v i, hvB i⟩ : R)) = w i
+-    rw [dite_eq_left h]
++    rw [dif_pos h]
+     exact congrArg w (hli.injective (Classical.choose_spec h))
+ 
+ end Regular
+@@ -213,7 +213,7 @@
+     by_cases hcc : c = c'
+     · subst hcc
+       simp
+-    · rw [Pi.single_eq_of_ne (Ne.symm hcc), ite_eq_right hcc, map_zero]
++    · rw [Pi.single_eq_of_ne (Ne.symm hcc), if_neg hcc, map_zero]
+   choose D hDy using hD
+   -- localize to `A_q`
+   let w : {c : Fin n // y c ∈ q} → Localization.AtPrime q := fun c => algebraMap A _ (y c.1)
+@@ -229,7 +229,7 @@
+     by_cases hij : i = j
+     · subst hij
+       simp
+-    · rw [ite_eq_right hij, ite_eq_right (fun h => hij (Subtype.ext h)), map_zero]
++    · rw [if_neg hij, if_neg (fun h => hij (Subtype.ext h)), map_zero]
+   exact exists_span_eq_maximalIdeal_of_linearIndependent w hw
+     (linearIndependent_toCotangent_of_derivations w hw Dl hDl)
+ 
+--- upstream/Hironaka/Scheme/Snc/LiftHypersurface.lean
++++ ep33/Hironaka/Scheme/Snc/LiftHypersurface.lean
+@@ -224,7 +224,7 @@
+     intro i e he
+     have hex : ∃ e' : {e : (E.comap g).ι // y ∈ ((E.comap g).component e).support},
+         i.1 = toLex (Sum.inl (e'.1 : E.ι)) := ⟨e, he⟩
+-    simp only [cidx, dite_eq_left hex]
++    simp only [cidx, dif_pos hex]
+     congr 1
+     apply congrArg c'
+     apply Subtype.ext
+@@ -239,7 +239,7 @@
+       rintro ⟨e, he⟩
+       rw [hi] at he
+       exact Sum.inr_ne_inl (toLex.injective he)
+-    simp only [cidx, dite_eq_right hnex]
++    simp only [cidx, dif_neg hnex]
+   refine ⟨n' + 1, z, ⟨⟨hzspan, hzdim⟩, cidx, ?_, ?_⟩, ?_⟩
+   · -- injectivity of the index map
+     intro i i' hii'
