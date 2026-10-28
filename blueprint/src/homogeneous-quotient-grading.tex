@@ -1,0 +1,74 @@
+\subsection{Genuine grading of a homogeneous ideal quotient}
+\label{subsec:homogeneous-quotient-grading}
+
+\begin{theorem}[Actual quotient grading, with every original homogeneous lift]
+\label{graded:homogeneous-ideal-quotient-grading}
+\lean{EnvelopeProperty.GradedQuotient.grading,
+EnvelopeProperty.GradedQuotient.componentMap,
+EnvelopeProperty.GradedQuotient.componentMap_coe,
+EnvelopeProperty.GradedQuotient.componentMap_surjective,
+EnvelopeProperty.GradedQuotient.instGradedMonoid,
+EnvelopeProperty.GradedQuotient.isInternal,
+EnvelopeProperty.GradedQuotient.gradedRing,
+EnvelopeProperty.GradedQuotient.gradedMk,
+EnvelopeProperty.GradedQuotient.gradedMk_apply,
+EnvelopeProperty.GradedQuotient.instGradedRingHomogeneous,
+EnvelopeProperty.GradedQuotient.irrelevant_le_map,
+EnvelopeProperty.GradedQuotient.map_irrelevant}
+\leanok
+Let $A$ be a commutative algebra over an arbitrary commutative coefficient
+ring $R$, internally graded by an additive index monoid. Let $I$ be an
+actual homogeneous ideal, without reducedness or primeness assumptions.
+The actual quotient ring $A/I$ has its genuine internal grading given
+by the images of the original homogeneous components. The original
+quotient ring homomorphism is genuinely graded and surjective on every
+homogeneous component. Every homogeneous quotient element therefore
+has an actual lift of the same degree. This construction preserves the
+original ideal, including all its nilpotents. For a natural-number
+grading its actual irrelevant ideal is exactly the image of the original
+irrelevant ideal under this genuine quotient map.
+\end{theorem}
+\begin{proof}
+Define each quotient component as the actual submodule image under the
+original quotient algebra homomorphism. The quotient of the original
+homogeneous one lies in degree zero, and the actual images of products
+of homogeneous elements have the required sum degree. This proves the
+actual graded multiplicative structure on these component images.
+
+The quotient homomorphism gives a surjective additive map on each
+component by the definition of its genuine submodule image. The actual
+componentwise direct-sum map is therefore surjective. The canonical
+recomposition homomorphisms commute with this entire direct-sum map
+and the original quotient map, as follows on each actual homogeneous
+summand and hence on every finite direct sum.
+
+Every quotient element is represented by an original element. Decompose
+that representative in the genuine original internal grading and map
+its components to the quotient. The recomposition identity proves
+surjectivity of the canonical quotient-component recomposition.
+
+For injectivity, take a quotient direct sum whose recomposition is
+zero and lift its finitely many homogeneous components to an actual
+original direct sum using the proved componentwise surjectivity. Its
+original recomposition lies in the actual ideal $I$, by the quotient
+kernel criterion. Homogeneity of $I$ puts every original homogeneous
+component in $I$. The original internal decomposition identifies these
+components with the selected original direct-sum entries. Their quotient
+images are all zero, so the whole quotient direct sum is zero. Applying
+this to a difference proves genuine injectivity.
+
+Thus the actual canonical quotient-component recomposition is
+bijective. Its true inverse supplies an internal decomposition,
+combined with the preceding actual graded multiplication. The original
+quotient map preserves every homogeneous component by construction,
+and the same actual submodule image witnesses give the stated lifts.
+Neither an internal decomposition nor a graded quotient certificate is
+assumed; no radical replacement, domain, field, noetherian or finite
+generation condition is used. For the natural-number grading, each
+positive quotient component lifts in the same positive degree, so it
+lies in the actual image of the original irrelevant ideal. Conversely
+the true graded quotient map takes every positive original component
+into the quotient irrelevant ideal. The actual positive-component
+generator criterion for irrelevant ideals then proves the asserted
+entire ideal-image equality.
+\end{proof}

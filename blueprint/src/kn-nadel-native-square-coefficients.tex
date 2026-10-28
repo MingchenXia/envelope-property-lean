@@ -1,0 +1,35 @@
+\section{All coefficients in the original native module square}
+
+\begin{lemma}[The equality comparison transports scalars]
+\label{lem:kn-native-pushforward-congr-scalars}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pushforwardCongr_hom_app_smul}
+\leanok
+For equal scheme morphisms, the original pushforward comparison sends
+$r m$ to the product of the same comparison applied to $r$ and to $m$,
+on every original open.
+\end{lemma}
+\begin{proof}
+The comparison is precisely restriction along the equality of the
+corresponding inverse-image opens. The presheaf module restriction law
+transports the scalar by the actual structure-sheaf restriction.
+\end{proof}
+
+\begin{lemma}[The original module square transports every coefficient]
+\label{lem:kn-native-module-square-all-coefficients}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalModuleSquareMap_app_smul}
+\uses{lem:kn-native-pushforward-congr-scalars}
+\leanok
+For any actual commuting scheme square, any module on its upper-left
+scheme and every original open, the original module-square map sends
+$r m$ to $J(r)\,W(m)$, where $J$ is the original structural square map
+and $W$ is the original module-square map. No coefficient comparison is
+supplied as an additional hypothesis.
+\end{lemma}
+\begin{proof}
+The native pullback adjunction unit is linear for the original source
+ring, acting on its pushforward target through the actual upper scheme
+map. Thus it sends $rm$ to $g^\sharp(r)\eta(m)$. Both composition
+comparisons act identically on sections, and the preceding lemma
+handles the remaining equality comparison. The same operations on the
+structure module give exactly the original $J(r)$.
+\end{proof}

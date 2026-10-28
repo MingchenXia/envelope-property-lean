@@ -1,0 +1,68 @@
+\section{Naturality of the existing ordinary degree-one comparison}
+
+For an actual original morphism of additive sheaves, use the native
+chosen injective resolutions and the native descent of that morphism.
+All complexes and edges below are the already published ordinary
+native objects. No new augmentation or degree-one isomorphism is
+defined.
+
+\begin{lemma}[The whole vertical injective-Cech square]
+\label{lem:scheme-module-cech-one-vertical-natural}
+\lean{EnvelopeProperty.SchemeModuleCechOneNaturality.verticalEdge_naturality}
+\leanok
+The original native Cech map followed by the target vertical edge is
+the source vertical edge followed by the actual total map of the
+descended injective-Cech bicomplex map.
+\end{lemma}
+\begin{proof}
+The native descent commutes with the two original resolution
+augmentations in degree zero. Apply the native sheaf-to-Cech functor
+to this entire square. In each total degree compose with the native
+injection into the total bicomplex. Naturality of that injection and
+the existing vertical-edge component formula give the asserted entire
+cochain-map equality.
+\end{proof}
+
+\begin{lemma}[The whole horizontal injective-Cech square]
+\label{lem:scheme-module-cech-one-horizontal-natural}
+\lean{EnvelopeProperty.SchemeModuleCechOneNaturality.horizontalEdge_naturality}
+\leanok
+The global-section complex map of the actual native descent,
+followed by the target horizontal edge, equals the source horizontal
+edge followed by the same actual total bicomplex map.
+\end{lemma}
+\begin{proof}
+On every resolution degree use the published original
+section-augmentation naturality for the actual descent component.
+Compose with the native injection of that row into the total complex.
+Its naturality and the existing horizontal-edge component formula give
+the entire cochain equality. No row exactness or cohomology comparison
+is assumed to establish this square.
+\end{proof}
+
+\begin{theorem}[Original affine-module naturality of the existing comparison]
+\label{thm:scheme-module-cech-one-original-natural}
+\lean{EnvelopeProperty.SchemeModuleCechOneNaturality.affineHOneIso_naturality}
+\leanok
+\uses{lem:scheme-module-cech-one-vertical-natural,lem:scheme-module-cech-one-horizontal-natural}
+Let $(U_i)$ be an actual affine open cover of a scheme $X$. For every
+original map of quasicoherent modules $M\to N$, the existing genuine
+degree-one Cech-homology-to-sheaf-cohomology isomorphisms commute with
+the entire original maps. Local cohomology acyclicity is derived from
+the affine opens and the original quasicoherence; no comparison or
+vanishing certificate is an input.
+\end{theorem}
+\begin{proof}
+Pass the preceding two whole squares to homology in degree one.
+Internally apply the already proved affine degree-one vanishing to
+both original modules. The already existing vertical edges are
+therefore isomorphisms on degree-one homology, and the existing cover
+theorem gives the same for both horizontal edges. Invert the
+horizontal squares. The native injective-resolution comparison with
+right-derived global sections commutes with the very same descent;
+the published genuine Ext-to-derived-global-sections comparison
+commutes with the original sheaf map. Invert its square as well.
+Compose these four entire squares. Their composite is exactly the
+existing native degree-one comparison, so it proves its naturality
+without replacing or reproving it.
+\end{proof}

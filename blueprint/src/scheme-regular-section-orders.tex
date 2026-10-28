@@ -1,0 +1,41 @@
+\section{Actual original regular-section weighted scheme orders}
+
+\begin{definition}[Same original native weighted regular order]
+\label{def:fc-native-weighted-regular-section-order}
+\leanok
+\lean{EnvelopeProperty.SchemeRegularSectionOrders.weightedOrder, EnvelopeProperty.SchemeRegularSectionOrders.weightedOrder_genericPoint, EnvelopeProperty.SchemeRegularSectionOrders.weightedOrder_eq_stalk}
+For the original global regular section, use the native scheme order of
+its actual original generic germ, multiplied by the original residue-field
+degree under the original structure morphism.  At the original generic
+point that term is zero; at every original nongeneric curve point its
+actual original stalk principal quotient computes the same weighted order.
+\end{definition}
+\begin{proof}
+The native generic point has coheight zero, so its native order is zero.
+Every original nongeneric curve point has actual codimension one, and the
+genuine native order--stalk-length theorem applies to the same original
+regular section.  No point/order or residue matching premise is supplied.
+\end{proof}
+
+\begin{theorem}[True native weighted regular order under actual stalk maps]
+\label{thm:fc-native-weighted-regular-section-transport}
+\leanok
+\lean{EnvelopeProperty.SchemeRegularSectionOrders.pullback_ne_zero, EnvelopeProperty.SchemeRegularSectionOrders.weightedOrder_pullback, EnvelopeProperty.SchemeRegularSectionOrders.finsum_eq_nongeneric}
+An actual original stalk isomorphism at original nongeneric source and
+image curve points preserves the true native weighted order of every
+original nonzero global regular section and its actual original pullback.
+The nonzero pullback is derived internally.  The whole original weighted
+sum equals the sum over all original nongeneric points, without a supplied
+support or finiteness certificate.
+\uses{def:fc-native-weighted-regular-section-order,thm:fc-stalk-map-original-weighted-section-orders}
+\end{theorem}
+\begin{proof}
+The actual native germ square and injective actual stalk isomorphism show
+that a zero global pullback would force the same original nonzero germ to
+vanish.  Native stalk-length formulas on both actual curves and the
+original residue-linear stalk transport then identify their true native
+weighted orders.  The actual generic-point term is zero, so intersecting
+the original support with the complement of that original point gives the
+full nongeneric sum.  No order, nonzero-pullback, residue or sum certificate
+is assumed.
+\end{proof}

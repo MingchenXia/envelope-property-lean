@@ -1,0 +1,82 @@
+\subsection{Actual Laurent Gauss seminorms and whole annulus bounds}
+\begin{theorem}[The actual Laurent Gauss seminorm at a positive radius]
+\label{spectrum:actual-laurent-gauss-valuation}
+\uses{spectrum:relative-principal-open,spectrum:gauss-valuation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentGauss,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_toLaurent,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_C,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_T_nat,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_T_neg_nat,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_T,
+EnvelopeProperty.Berkovich.Spectrum.coeff_mul_T,
+EnvelopeProperty.Berkovich.Spectrum.coeff_toLaurent_nat,
+EnvelopeProperty.Berkovich.Spectrum.coeff_toLaurent_of_neg,
+EnvelopeProperty.Berkovich.Spectrum.le_laurentGauss_val,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_eq_sup,
+EnvelopeProperty.Berkovich.Spectrum.laurentGauss_val_eq_zero_iff,
+EnvelopeProperty.Berkovich.Spectrum.laurent_val_T}
+\leanok
+Let $A$ be any commutative ring, $v:A\to\R_{\ge0}$ an actual
+multiplicative ultrametric seminorm, and $r>0$. The genuine
+localization $A[T,T^{-1}]=A[T][1/T]$ has a unique seminorm
+restricting to the radius-$r$ polynomial Gauss seminorm. It preserves
+all original coefficients, has $|T^j|=r^j$ for every $j\in\mathbb{Z}$,
+and for every actual Laurent polynomial $f=\sum_j a_jT^j$ satisfies
+\[
+ |f|_{v,r}=\max_{j\in\operatorname{supp}f}v(a_j)r^j.
+\]
+The maximum of an empty coefficient support is zero. If $v$ is
+faithful, this Laurent seminorm is faithful. Neither a domain nor
+a faithful coefficient seminorm is needed for its construction.
+\end{theorem}
+\begin{proof}
+The genuine polynomial Gauss seminorm takes $T$ to the actual
+nonzero number $r$. Extend it through the real principal
+localization constructor; the whole localization inverse proves
+uniqueness on every Laurent element. Multiplicativity and the
+identity $T^jT^{-j}=1$ give all integer-power values and preserve
+all original polynomial values.
+
+For any $f$ the actual Laurent polynomial shift theorem constructs
+$n\ge0$ and $p\in A[T]$ with $p=fT^n$. Thus
+$|f|_{v,r}=|p|_{v,r}/r^n$. The whole original Laurent coefficient
+shift identity identifies the coefficient of $T^i$ in $p$ with
+$a_{i-n}$; all coefficients of $f$ below $-n$ vanish. Apply the
+proved full polynomial Gauss coefficient maximum and divide by
+the positive $r^n$. This gives the displayed full finite maximum,
+including coefficients annihilated by $v$. If $v$ is faithful,
+zero Laurent value forces every coefficient to vanish, hence
+$f=0$.
+\end{proof}
+
+\begin{theorem}[Whole Laurent bounds on genuine annulus points]
+\label{spectrum:actual-laurent-annulus-endpoint-bound}
+\uses{spectrum:actual-laurent-gauss-valuation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurent_val_le_max_endpoint}
+\leanok
+For arbitrary commutative $A$, prescribed $v$, positive
+$\rho,r$, and an ACTUAL Laurent seminorm $x$ with EVERY
+coefficient equal to $v$, if
+$\rho\le |T|_x\le r$, then for EVERY original Laurent
+polynomial $f$,
+\[
+ |f|_x\le \max(|f|_{v,\rho},|f|_{v,r}).
+\]
+No domain, faithfulness or chosen polynomial-value identity is
+required.
+\end{theorem}
+\begin{proof}
+The true unit $T$ has nonzero value at EVERY Laurent point.
+Multiplicativity gives the entire integer-power formula
+$|T^j|_x=|T|_x^j$, including negative exponents via the
+actual inverse unit. Expand the WHOLE original $f$ as its
+finite sum $\sum_j a_jT^j$ and apply the genuine ultrametric
+finite-sum bound. For $j\ge0$, its monomial value is at most
+$v(a_j)r^j$; for $j<0$, it is at most
+$v(a_j)\rho^j$, because inversion reverses the actual
+positive coordinate bound. The first theorem bounds each of
+these real coefficient terms by the corresponding ENTIRE
+endpoint Laurent value of $f$. Taking the maximum bounds
+all monomials and thus the whole original finite sum.
+The zero polynomial and empty support obey the same argument.
+\end{proof}

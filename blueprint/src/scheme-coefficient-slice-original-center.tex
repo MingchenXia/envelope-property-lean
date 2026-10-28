@@ -1,0 +1,17 @@
+\section{The unchanged original DVR and all parameter multiplicities on the normalized slice}
+\begin{theorem}\label{thm:normalized-slice-original-center-ring}
+Under the original coefficient-slice hypotheses of the preceding theorem, the canonical native local map from the actual normalized center stalk into the original DVR $V$ is an isomorphism of rings. It carries the native value of every polynomial in $E[t]$ to its unchanged original evaluation in $V$.
+\uses{thm:normalized-coefficient-slice-center-dvr,thm:scheme-trait-center-original-ring}
+\lean{EnvelopeProperty.SchemeCoefficientSliceOriginalCenter.stalkMap_bijective,EnvelopeProperty.SchemeCoefficientSliceOriginalCenter.stalkEquiv,EnvelopeProperty.SchemeCoefficientSliceOriginalCenter.stalkEquiv_coefficients}\leanok
+\end{theorem}
+\begin{proof}
+The actual normalized center stalk is a DVR by the preceding result, hence is a valuation ring. The generic restriction of the actual normalized trait is the canonical dominant original $K$-point. Its entire projection into $X$ is the unchanged canonical generic point. The local-overring theorem therefore proves bijectivity of the canonical native center-stalk map into $V$. Its induced ring isomorphism is the given native map itself. The entire original polynomial-structure triangle identifies the composite of the native polynomial-to-stalk coefficient map with this isomorphism with the original polynomial evaluation map into $V$.
+\end{proof}
+\begin{theorem}\label{thm:normalized-slice-original-center-orders}
+The preceding native isomorphism preserves the order of every stalk element. If the original parameter $t$ is nonzero and lies in the maximal ideal of $V$, then there is a positive integer $e$ such that both its actual native normalized-stalk order and its original order in $V$ equal $e$.
+\uses{thm:normalized-slice-original-center-ring}
+\lean{EnvelopeProperty.SchemeCoefficientSliceOriginalCenter.stalkEquiv_ord,EnvelopeProperty.SchemeCoefficientSliceOriginalCenter.exists_positive_parameterOrder}\leanok
+\end{theorem}
+\begin{proof}
+A ring isomorphism of DVRs carries an irreducible uniformizer to an irreducible uniformizer and units to units. For a nonzero element write it as a unit times a uniformizer to the power $n$; both orders equal $n$. The zero element has infinite order on both sides. Apply this equality to the native coefficient of the parameter polynomial; its image is exactly the unchanged $t$. Its original order is finite because $t\ne0$, and positive because $t$ is a nonunit. Thus the same positive integer is the order on both sides. The integer is unrestricted: this theorem does not assert that the special fibre is reduced or that its multiplicity equals one.
+\end{proof}

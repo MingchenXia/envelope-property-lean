@@ -1,0 +1,50 @@
+\section{The actual intrinsic ample cone generates every original numerical class}
+\label{sec:native-numerical-ample-cone-generation}
+
+\begin{lemma}[Native projectivity supplies an actual geometric ample line]
+\label{lem:native-projectivity-geometric-ample-line}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_geometric_ample_line}
+\leanok
+\uses{def:fc-original-geometric-line-ampleness,lem:fc-original-very-ample-is-ample}
+\source{bj22-trivval:sec:tc}
+Every native projective structure morphism to the original coefficient
+spectrum admits an internally produced actual geometrically ample line.
+\end{lemma}
+\begin{proof}
+Native projectivity gives a genuine finite polynomial projective closed
+embedding over the same original coefficient ring. Take the actual
+whole pullback of its original $\mathcal O(1)$. The same embedding and
+identity line isomorphism prove that this line is genuinely very ample.
+Its actual first tensor power proves geometric ampleness.
+\end{proof}
+
+\begin{theorem}[Every original numerical class is a difference of intrinsic ample classes]
+\label{thm:native-numerical-ample-cone-generation}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_ampleCone_difference, EnvelopeProperty.NativeRealNumericalClasses.ampleCone_isReproducing, EnvelopeProperty.NativeRealNumericalClasses.span_ampleCone_eq_top}
+\leanok
+\uses{lem:native-projectivity-geometric-ample-line,thm:native-numerical-finite-ample-openness,thm:native-numerical-line-family-maps}
+\source{bj22-trivval:sec:tc}
+On integral projective $X$, every class in the original real numerical
+quotient is a difference of two classes of the same intrinsic ample
+cone. Consequently that cone is reproducing and its real linear span
+is the entire original numerical quotient. No global finite-dimensional
+span or numerical ampleness-invariance assumption occurs.
+\end{theorem}
+\begin{proof}
+Produce an actual ample $A$ by the preceding lemma. Represent the given
+original $\theta$ in a finite original line family as $F(a)$, using the
+actual finite numerical-line representation theorem. Finite-family
+ample openness at $[A]$ supplies a positive coefficient radius
+$\varepsilon$. Put $S=\sum_i|a_i|$ and
+$r=\varepsilon/(S+1)>0$. Since $|a_i|\leq S$, every coefficient of
+$ra$ has absolute value less than $\varepsilon$. Hence
+$[A]+r\theta$ belongs to the original ample cone. Positive scaling
+also puts $r^{-1}([A]+r\theta)$ and $r^{-1}[A]$ in that cone, and their
+exact difference is the original $\theta$.
+Thus every element belongs to the set difference of the cone with
+itself, proving the reproducing property. Its linear span is the whole
+space because every such difference belongs to that span. The same
+argument covers the zero-dimensional or zero-vector-space cases and
+the empty representing family; it uses no artificial nontriviality
+assumption on the original numerical quotient.
+\end{proof}

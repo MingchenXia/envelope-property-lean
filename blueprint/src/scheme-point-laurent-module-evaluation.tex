@@ -1,0 +1,98 @@
+\section{Actual product-point evaluation of original Laurent line sections}
+
+\begin{definition}\label{def:fc-point-laurent-line-evaluation}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.frameFunctional,EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceFrame}
+\leanok
+\uses{thm:fc-scheme-module-laurent-coefficients,def:fc-scheme-module-laurent-evaluation,scheme:actual-native-completed-field-point,def:native-point-laurent-gauss-family,def:actual-line-frame-via-factor}
+Let $p:X\to\operatorname{Spec}R$ be compact and separated, let $x$ be
+an original relative valued point, and let $L$ be an original invertible
+module. Write $H(x)$ for its actual completed residue field, $h$ for
+the original completed field point, and $a$ for the constant-coefficient
+morphism from $\operatorname{Spec}H(x)[T,T^{-1}]$ to
+$\operatorname{Spec}H(x)$. An actual frame $e$ of $h^*L$ defines an
+original $R$-linear functional
+\[
+ \phi_e:\Gamma(X,L)\longrightarrow H(x)
+\]
+by the native pullback unit along $h$, the frame, and the actual affine
+section isomorphism of $\operatorname{Spec}H(x)$. The $R$ action on
+$H(x)$ is its actual original coefficient map induced by $h\circ p$.
+Transport $e$ along $a$ to the actual pulled line on the Laurent
+source, using the genuine original composition comparisons and unit
+isomorphism. This constructs its source frame.
+\end{definition}
+\begin{proof}
+The native adjunction unit on top sections is semilinear for $h$'s
+actual original top-section ring map. The original global coefficient
+map of $p$ followed by that map is the actual coefficient map of
+$h\circ p$. The completed-point coefficient triangle and naturality
+of the affine section isomorphism identify this map with the stated
+original $R$ action on $H(x)$. The frame is linear over original top
+sections. Their composition is therefore the required original
+linear functional. Pullback composition and the genuine unit
+comparison give the source frame, with no scalar or evaluation
+compatibility assumption.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-point-laurent-line-evaluation}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceCoefficient,EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceCoefficient_eq_evaluate}
+\leanok
+\uses{def:fc-point-laurent-line-evaluation,thm:fc-flat-module-global-sections,thm:fc-scheme-module-laurent-coefficient-formulas,def:fc-scheme-module-laurent-evaluation,lem:fc-original-section-pullback-frame,lem:fc-original-line-section-fibre}
+Let $g:X\times_R\operatorname{Spec}R[T,T^{-1}]\to X$ be the original
+first projection, and let $b$ be the actual original product map from
+$\operatorname{Spec}H(x)[T,T^{-1}]$ constructed from $h\circ a$ and
+the original Laurent parameter projection. For every original whole
+section $\sigma$ of $g^*L$, pull $\sigma$ back along $b$, apply the
+actual source frame just constructed, and convert the resulting
+original affine section into its Laurent polynomial. The result is
+exactly the Laurent evaluation of $\sigma$ by $\phi_e$. Equivalently,
+if $(m_i)$ is the actual original coefficient family of $\sigma$,
+its resulting polynomial is
+\[
+ \sum_i \phi_e(m_i)T^i.
+\]
+This holds for all original sections, zero coefficients, and all
+negative integer exponents.
+\end{theorem}
+\begin{proof}
+Apply the genuine entire H0 equivalence to write the section as its
+actual Laurent tensor. Both constructions preserve addition and
+scalar multiplication. It suffices to compare a pure tensor
+$F\otimes m$. The original H0 pure-tensor formula sends it to the
+actual parameter coefficient $q^*(F)$ times the original pullback-unit
+section of $m$. Native pullback linearity sends the parameter
+coefficient to the actual Laurent coefficient homomorphism applied
+to $F$. Native pullback composition and the actual product first
+projection triangle send the unit section to the pullback along
+$a$ of the original unit section along $h$. The constructed source
+frame therefore turns that section into the constant Laurent
+polynomial with value $\phi_e(m)$. Multiplication gives exactly the
+coefficientwise Laurent evaluation of $F\otimes m$. The actual
+monomial basis then yields the displayed finite sum and the equality
+for every original tensor and hence every original section.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-point-laurent-line-gauss}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceCoefficient_laurentGauss,EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceCoefficient_finite_family,EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceFrameSection,EnvelopeProperty.Berkovich.SchemePointLaurentModuleEvaluation.sourceFrameSection_value}
+\leanok
+\uses{thm:fc-point-laurent-line-evaluation,thm:fc-scheme-module-laurent-gauss-maximum,thm:fc-scheme-module-laurent-gauss-finite-family}
+At the actual original Laurent Gauss source point of any positive
+radius $r$, the value of this true original frame coefficient is
+\[
+ \max_i |\phi_e(m_i)|r^i.
+\]
+For every finite original section family, the same original finite
+coefficient and integer-weight family works before every positive
+radius and evaluation point at which the frame is used. This is a
+local coefficient assertion; no boundedness of the Laurent base
+valuation or proper model norm over the Laurent base is assumed.
+\end{theorem}
+\begin{proof}
+Substitute the genuine original section-evaluation equality into the
+already proved entire geometric Laurent Gauss coefficient formula.
+Apply its finite-family formula to the same original family. The
+coefficient-pair family was constructed from the original family
+before the functional, valuation and radius, which proves its
+independence from these evaluations. No valuation-ring extension
+over the Laurent base is used.
+\end{proof}

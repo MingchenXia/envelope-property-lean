@@ -1,0 +1,40 @@
+\section{The genuine affine frame cover of the original invertible line}
+
+\begin{definition}[All original framed affine opens]
+\label{def:fc-original-line-framed-affine-site}
+\leanok
+\lean{EnvelopeProperty.GeneratedLineFramedAffineCover.FramedAffineSite, EnvelopeProperty.GeneratedLineFramedAffineCover.framedAffineSite_partialOrder, EnvelopeProperty.GeneratedLineFramedAffineCover.frame}
+\uses{thm:fc-generated-line-projective-affine-naturality}
+Index by all actual affine opens $U$ of the same original scheme for
+which the original line's actual pullback to $U$ has a genuine whole
+frame. The order and transition maps are the original affine-open
+inclusions. Each such actual frame restricts along every original
+smaller affine open; no chosen frame-transition data are added.
+\end{definition}
+\begin{proof}
+The native actual open pullback-composition and structure-line
+isomorphisms restrict a genuine original frame to every actual
+smaller open. This defines the downward-closed full affine site.
+\end{proof}
+
+\begin{theorem}[The actual original frame-affine site is a locally directed cover]
+\label{thm:fc-original-line-framed-affine-cover}
+\leanok
+\lean{EnvelopeProperty.GeneratedLineFramedAffineCover.exists_framed_affine, EnvelopeProperty.GeneratedLineFramedAffineCover.framedCover, EnvelopeProperty.GeneratedLineFramedAffineCover.framedCover_partialOrder, EnvelopeProperty.GeneratedLineFramedAffineCover.framedCover_locallyDirected}
+\uses{def:fc-original-line-framed-affine-site}
+The actual framed affine opens cover the same original scheme for
+any original invertible line. With the literal original affine
+transition maps this is a genuine locally directed Zariski cover.
+No covering or overlap-comparison certificate is assumed.
+\end{theorem}
+\begin{proof}
+The definition of original invertibility gives a genuine local frame
+near each original point. Refine that actual open by an original
+affine neighborhood and restrict the original frame. This proves
+coverage. On any actual intersection, the native affine-site cover
+has an affine refinement through every original point. Restrict one
+of the original frames to that refinement. The resulting framed
+refinement, with the same original affine inclusion maps, verifies
+local directedness; identity, composition, and structure equalities
+are the native affine-cover equalities.
+\end{proof}

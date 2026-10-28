@@ -1,0 +1,43 @@
+\section{Actual residue-weighted local degrees of a finite algebra}
+
+\begin{theorem}[The true residue-weighted local length formula]
+\label{thm:fc-finite-algebra-local-degree}
+\leanok
+\lean{EnvelopeProperty.FiniteAlgebraLocalDegrees.local_finrank_eq_length_mul_residue_finrank}
+Let $B$ be an actual local finite-dimensional algebra over the original
+field $k$. Then
+$\dim_k B=\ell_B(B)\,[\kappa(B):k]$, with the actual original residue
+field and original coefficient action.
+\end{theorem}
+\begin{proof}
+The original field map to $B$ is a local homomorphism. The genuine local
+length restriction formula gives
+$\ell_k(B)=\ell_B(B)\,\ell_{\kappa(k)}(\kappa(B))$.
+The actual residue map of the field is surjective, so restriction of
+scalars identifies the latter length with $\ell_k(\kappa(B))$.
+Both original field modules are finite dimensional. Field module length
+is therefore actual field dimension, and taking natural values gives
+the formula.
+\end{proof}
+
+\begin{theorem}[The whole original finite algebra degree is the sum of actual local degrees]
+\label{thm:fc-finite-algebra-degree-sum}
+\leanok
+\lean{EnvelopeProperty.FiniteAlgebraLocalDegrees.finrank_eq_sum_local_length_mul_residue_finrank}
+\uses{thm:fc-finite-algebra-local-degree}
+For an actual finite-dimensional commutative $k$-algebra $A$, its
+original field dimension is the finite sum over its actual prime
+spectrum of
+$\ell_{A_P}(A_P)[\kappa(P):k]$.
+\end{theorem}
+\begin{proof}
+The original algebra is Artinian because it is finite over the field.
+Its actual prime spectrum is finite and the genuine Artinian
+localization decomposition identifies the whole original algebra
+with the product of its actual prime localizations. Original field
+dimension is the sum of the original dimensions of these localizations.
+Each actual localization is finite dimensional because localization
+of the Artinian algebra is an actual surjective quotient. Apply the
+preceding true local residue-weighted length formula at every original
+prime and sum.
+\end{proof}

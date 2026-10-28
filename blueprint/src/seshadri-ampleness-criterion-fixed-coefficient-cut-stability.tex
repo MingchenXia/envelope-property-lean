@@ -1,0 +1,142 @@
+\section{The same Cartier cut with a fixed invertible coefficient}
+
+\begin{definition}[The original fixed-coefficient power sequence]
+\label{def:seshadri-fixed-coefficient-power-cut-sequence}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientCutStability.fixedCoefficientPowerSectionSequence}
+\leanok
+\uses{def:seshadri-original-section-cut-complex,def:seshadri-same-section-original-power-complex}
+Let $X$ be integral, let $L,E$ be original invertible sheaves, and let
+$s:\mathcal O_X\to L^r$ be an original nonzero section. Put
+$g:D\hookrightarrow X$ for its literal zero-subscheme inclusion.
+For every $n\geq0$, define an actual sequence
+\[
+ E\otimes L^n\longrightarrow E\otimes L^{n+r}
+ \longrightarrow g_*g^*(E\otimes L^{n+r}).
+\]
+Start with the existing section-cut sequence for $A=L^r$ and
+$M=E\otimes L^n$. Transport its middle object by the canonical
+isomorphism
+\[
+ c_n:A\otimes(E\otimes L^n)\simeq E\otimes L^{n+r}
+\]
+obtained from the inverse associator, the symmetry of $A,E$, the
+associator, the symmetry of $A,L^n$, and the original power-addition
+isomorphism. Transport the right object by $g_*g^*c_n$, leaving the
+left object fixed. Thus both arrows come from the same original ideal
+inclusion and quotient, with no supplied multiplication comparison.
+\end{definition}
+\begin{proof}
+The existing section-cut construction has middle object
+$A\otimes M$ and right object $g_*g^*(A\otimes M)$, with consecutive
+composite zero. Conjugate the first arrow by the identity on $M$ and
+$c_n$, and conjugate the second by $c_n^{-1}$ and $g_*g^*c_n$.
+Their composite remains zero because $c_nc_n^{-1}$ is the identity.
+These formulas specify the displayed actual sequence and its arrows.
+\end{proof}
+
+\begin{lemma}[Exactness with the same original coefficient]
+\label{lem:seshadri-fixed-coefficient-power-cut-short-exact}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientCutStability.fixedCoefficientPowerSectionSequence_shortExact}
+\leanok
+\uses{def:seshadri-fixed-coefficient-power-cut-sequence,lem:seshadri-actual-cartier-short-exact}
+The sequence just defined is short exact for every $n\geq0$.
+\end{lemma}
+\begin{proof}
+The original $E\otimes L^n$ is invertible, since both of its factors
+are invertible. The existing Cartier-cut theorem therefore makes the
+section-cut sequence for $A$ and $E\otimes L^n$ short exact.
+The identity, $c_n$, and $g_*g^*c_n$ form an isomorphism of this short
+complex with the specified fixed-coefficient sequence. Short exactness
+is invariant under an isomorphism of short complexes, proving the claim.
+\end{proof}
+
+\begin{lemma}[Actual first-cohomology epimorphisms with fixed coefficient]
+\label{lem:seshadri-fixed-coefficient-cut-eventual-hone-epi}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientCutStability.exists_fixedCoefficient_singleCut_hOne_epi_of_ample}
+\leanok
+\uses{def:seshadri-fixed-coefficient-power-cut-sequence,lem:seshadri-fixed-coefficient-power-cut-short-exact,lem:vanishing-original-ample-serre,lem:seshadri-one-cut-cohomology-epi}
+Let $X$ be integral and separated over a field $k$, equipped with an
+original finite affine open cover. Keep the same original $L,E,r,s,D,g$.
+If $g^*L$ is natively ample over $k$, then, for every sufficiently large
+$n$, the actual first arrow of the fixed-coefficient sequence induces
+an epimorphism
+\[
+ H^1(X,E\otimes L^n)\longrightarrow H^1(X,E\otimes L^{n+r}).
+\]
+\end{lemma}
+\begin{proof}
+Unpack native ampleness of $g^*L$ into its actual positive-power closed
+embedding and whole power comparison. Apply the existing coherent Serre
+theorem on the same $D$ with the fixed coherent coefficient $g^*E$.
+It supplies one bound $N$ for vanishing of every positive cohomology
+group of $g^*E\otimes(g^*L)^m$ whenever $m\geq N$.
+The canonical tensor pullback and original power pullback isomorphisms
+identify this sheaf with $g^*(E\otimes L^m)$, so the same groups vanish
+for that literal original pullback. Since $n+r\geq n$, the same bound
+applies when $n\geq N$ and $m=n+r$.
+
+Apply $g^*c_n$ in reverse to obtain the vanishing on the actual right
+term of the original section-cut sequence. The existing first-cohomology
+epimorphism theorem for that sequence applies to $M=E\otimes L^n$.
+Its first arrow followed by $c_n$ is exactly the specified
+fixed-coefficient arrow. Functoriality of the original field-linear
+cohomology and the isomorphism induced by $c_n$ preserve epimorphisms.
+This proves the claim without assuming ambient ampleness or a target
+vanishing statement.
+\end{proof}
+
+\begin{theorem}[The same fixed-coefficient first-cohomology maps stabilize]
+\label{thm:seshadri-fixed-coefficient-cut-eventual-hone-iso}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientCutStability.exists_fixedCoefficient_singleCut_hOne_isIso_of_ample}
+\leanok
+\uses{lem:seshadri-fixed-coefficient-cut-eventual-hone-epi,lem:seshadri-fixed-step-dimension-stabilization,thm:fc-scheme-coherent-euler-bounded,thm:fc-scheme-coherent-euler-zero}
+In addition suppose $X$ is projective over $k$ and $r>0$. For every
+sufficiently large $n$, the very same actual first-cohomology map is an
+isomorphism. The bound may depend on the original fixed $E$.
+\end{theorem}
+\begin{proof}
+Every $E\otimes L^n$ is invertible, hence a finite-type quasicoherent
+module. Existing genuine projective coherent finiteness makes its
+original field-linear first cohomology finite dimensional.
+For $n$ beyond the preceding epimorphism bound, the target dimension is
+therefore at most the source dimension. Apply the already proved
+finite-residue stabilization lemma to these natural-number dimensions
+with step $r$. It gives one larger bound at which the two dimensions
+are equal. Each same actual map is then a surjection between
+finite-dimensional vector spaces of equal dimension and hence an
+injection. It is both monic and epic and is therefore an isomorphism.
+The original finite-residue lemma is reused; no uniformity in $E$ or
+incoming dimension-stability certificate is asserted.
+\end{proof}
+
+\begin{theorem}[The standard original restriction is onto with fixed coefficient]
+\label{thm:seshadri-fixed-coefficient-cut-eventual-standard-restriction}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientCutStability.exists_fixedCoefficient_singleCut_sections_surjective_of_ample}
+\leanok
+\uses{thm:seshadri-fixed-coefficient-cut-eventual-hone-iso,lem:seshadri-fixed-coefficient-power-cut-short-exact,lem:seshadri-actual-hone-mono-sections-onto,lem:seshadri-actual-cartier-quotient-standard-unit}
+Under the preceding hypotheses, for every sufficiently large $n$ the
+standard original adjunction-unit restriction
+\[
+ \Gamma(X,E\otimes L^{n+r})\longrightarrow
+ \Gamma(D,g^*(E\otimes L^{n+r}))
+\]
+is surjective. In particular the fixed coefficient may be the actual
+dual of a chosen original very ample line.
+\end{theorem}
+\begin{proof}
+Use the actual short exact sequence of the first definition.
+Its actual first-cohomology map is monic by the preceding theorem, so
+the already proved natural degree-zero comparison and long exact
+sequence make its original quotient map surjective on global sections.
+The existing general Cartier quotient comparison, applied to
+$A=L^r$ and $M=E\otimes L^n$, identifies its quotient with the standard
+adjunction unit followed by pushforward of an internally constructed
+automorphism of $g^*(A\otimes M)$. Conjugate this automorphism by
+$g^*c_n$. Naturality of the same adjunction unit for $c_n^{-1}$ gives
+the fixed-coefficient quotient as the standard unit on exactly
+$E\otimes L^{n+r}$ followed by the conjugated automorphism.
+The latter induces a bijection on global sections. Cancel this
+bijection in the already proved quotient surjection. The resulting
+surjection is precisely the stated standard restriction, with no
+matching or surjectivity certificate supplied as input.
+\end{proof}

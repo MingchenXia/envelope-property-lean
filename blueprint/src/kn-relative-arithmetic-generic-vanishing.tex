@@ -1,0 +1,145 @@
+\section{Generic vanishing and nonproper arithmetic avoidance}
+
+For the three generic-vanishing statements below, fix a commutative ring $A$, a field $K$
+with a specified injective $A$-algebra map, and an $A$-module $M$.
+Whenever $S$ occurs, it is a multiplicative subset of $A$ consisting of
+nonzero elements.
+
+\begin{lemma}\label{lem:kn-arithmetic-free-fibre-detection}
+\lean{EnvelopeProperty.FreeFiberDetection.subsingleton_of_baseChange}
+\leanok
+Let $C$ be a commutative ring, $B$ a nonzero commutative $C$-algebra,
+and $N$ a free $C$-module.  If $B\otimes_C N=0$, then $N=0$.
+The basis cardinality need not be finite.
+\end{lemma}
+\begin{proof}
+Scalar extension of a basis of $N$ is a basis of $B\otimes_C N$.
+A basis vector over the nonzero ring $B$ is nonzero, so the hypothesis
+forces the basis index set to be empty.  Coordinates in that empty basis
+then identify every vector of $N$ with zero.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-relative-arithmetic-torsion-base-change}
+\lean{EnvelopeProperty.RelativeGenericVanishing.baseChange_subsingleton_of_torsion}
+\leanok
+Let $A$ be a commutative ring embedded in a field $K$, and let $M$ be
+an $A$-module.  If every element of $M$ is annihilated by a nonzero
+element of $A$, then $K\otimes_A M=0$.
+\end{lemma}
+\begin{proof}
+For a pure tensor $a\otimes m$, choose $s\ne0$ with $sm=0$.
+Balancing gives $s(a\otimes m)=a\otimes sm=0$.  The image of $s$ in
+$K$ is nonzero by injectivity, hence invertible.  Therefore
+$a\otimes m=0$.  Every tensor is a finite sum of pure tensors, so the
+entire tensor product is zero.  No finiteness hypothesis on $M$ is used.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-relative-arithmetic-localized-generic-vanishing}
+\lean{EnvelopeProperty.RelativeGenericVanishing.baseChange_subsingleton_of_localization}
+\leanok
+\uses{lem:kn-relative-arithmetic-torsion-base-change}
+Let $S$ be a multiplicative subset of $A$ consisting of nonzero elements.
+If $S^{-1}M=0$, then $K\otimes_A M=0$.
+\end{theorem}
+\begin{proof}
+The equality $m/1=0$ in the localized module gives an $s\in S$ with
+$sm=0$.  This $s$ is nonzero by the assumption on $S$, so the preceding
+lemma applies to every $m$.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-relative-arithmetic-free-fibre-generic-vanishing}
+\lean{EnvelopeProperty.RelativeGenericVanishing.baseChange_subsingleton_of_free_localized_fiber}
+\leanok
+\uses{lem:kn-arithmetic-free-fibre-detection,thm:kn-relative-arithmetic-localized-generic-vanishing}
+Suppose that $S^{-1}M$ is free over $S^{-1}A$ and that $B$ is a nonzero
+commutative $S^{-1}A$-algebra.  If
+$B\otimes_{S^{-1}A}S^{-1}M=0$, then $K\otimes_A M=0$.
+The free rank and the $A$-module $M$ need not be finite.
+\end{theorem}
+\begin{proof}
+Choose a basis of $S^{-1}M$.  Its scalar extension is a basis of the
+tensor product over $B$.  A basis vector over a nonzero ring cannot be
+zero, so the basis index set must be empty.  Consequently $S^{-1}M=0$,
+and the preceding theorem applies.
+\end{proof}
+
+\begin{definition}\label{def:kn-relative-arithmetic-avoiding-open}
+\lean{EnvelopeProperty.FinitePresentationGenericAvoidance.avoidingOpen,EnvelopeProperty.FinitePresentationGenericAvoidance.preimage_avoidingOpen_le_compl}
+\leanok
+For a scheme morphism $f:X\to Y$ and a subset $Z\subseteq X$, put
+$U=Y\setminus\overline{f(Z)}$.  Then $f^{-1}(U)\subseteq X\setminus Z$.
+\end{definition}
+\begin{proof}
+The complement of the closure is open.  If $x\in Z$, then
+$f(x)\in f(Z)\subseteq\overline{f(Z)}$, so $f(x)\notin U$.
+This proves the inclusion without any properness hypothesis.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-arithmetic-constructible-generic-closure}
+\lean{EnvelopeProperty.ConstructibleGenericClosure.exists_open_deciding,EnvelopeProperty.ConstructibleGenericClosure.mem_closure_iff_of_constructible,EnvelopeProperty.ConstructibleGenericClosure.genericPoint_mem_closure_iff,EnvelopeProperty.ConstructibleGenericClosure.exists_open_avoiding}
+\leanok
+If $\eta$ is a generic point of the whole topological space and $Z$ is
+constructible, then membership in $Z$ is constant on some open
+neighbourhood of $\eta$.  In particular, $\eta\in\overline Z$ if and
+only if $\eta\in Z$.  If $\eta\notin Z$, the complement of $\overline Z$
+is an open neighbourhood of $\eta$ avoiding $Z$.
+\end{lemma}
+\begin{proof}
+Induct on the construction of a constructible set from retrocompact
+opens by finite unions and complements.  For an open containing $\eta$,
+take that same open.  An open not containing $\eta$ is empty, because
+the generic point specializes to every point; use the whole space as
+the deciding neighbourhood.  For a union, intersect the deciding
+neighbourhoods of the two sets.  For a complement use the same deciding
+neighbourhood.  This proves the first assertion.  If $\eta\in\overline Z$,
+its deciding neighbourhood meets $Z$, so its constant membership
+predicate forces $\eta\in Z$.  The reverse implication follows from
+$Z\subseteq\overline Z$.  Taking the complement of the closure proves
+the last assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-relative-arithmetic-generic-avoiding-open}
+\lean{EnvelopeProperty.FinitePresentationGenericAvoidance.genericPoint_mem_avoidingOpen}
+\leanok
+\uses{lem:kn-arithmetic-constructible-generic-closure,def:kn-relative-arithmetic-avoiding-open}
+Let $Y$ be integral affine, let $f:X\to Y$ be quasi-compact and locally
+of finite presentation, and let $Z$ be locally constructible.  If no
+point of $Z$ lies over the generic point $\eta$ of $Y$, then $\eta\in U$.
+\end{lemma}
+\begin{proof}
+Chevalley's theorem makes $f(Z)$ locally constructible.  Since $Y$ is
+affine, hence quasi-compact, $f(Z)$ is constructible.  For a constructible
+subset of an irreducible scheme, its closure contains the generic point
+if and only if the subset itself does: a constructible predicate is
+constant on some open neighbourhood of that point.  The hypothesis
+therefore excludes $\eta$ from $\overline{f(Z)}$, proving $\eta\in U$.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-relative-arithmetic-closed-constructible}
+\lean{EnvelopeProperty.FinitePresentationGenericAvoidance.isLocallyConstructible_of_isClosed}
+\leanok
+Every closed subset of a Noetherian scheme is locally constructible.
+\end{lemma}
+\begin{proof}
+In a Noetherian space every open is quasi-compact.  The complement of
+the closed subset is therefore retrocompact open and is constructible.
+Its complement is constructible and hence locally constructible.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-relative-arithmetic-dense-open-avoiding-closed}
+\lean{EnvelopeProperty.FinitePresentationGenericAvoidance.exists_dense_open_avoiding_closed}
+\leanok
+\uses{lem:kn-relative-arithmetic-generic-avoiding-open,lem:kn-relative-arithmetic-closed-constructible}
+Let $Y$ be integral affine, let $X$ be Noetherian, and let $f:X\to Y$
+be quasi-compact and locally of finite presentation.  If the closed
+subset $Z\subseteq X$ has no point over the generic point of $Y$,
+then there is a nonempty dense open $U\subseteq Y$
+containing that generic point with $f^{-1}(U)\subseteq X\setminus Z$.
+The morphism $f$ need not be proper.
+\end{theorem}
+\begin{proof}
+Use the complement of $\overline{f(Z)}$.  The preceding lemmas show
+that it contains the generic point and avoids the whole bad set after
+inverse image.  It is nonempty because it contains that point, and a
+nonempty open of the irreducible space $Y$ is dense.
+\end{proof}

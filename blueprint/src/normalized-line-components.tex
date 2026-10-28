@@ -1,0 +1,226 @@
+\subsection{Actual normalization of an original line-preimage component}
+\label{subsec:normalized-line-components}
+
+Let $F$ be a field, let $g\in F[X_i:i\in\sigma]$, and retain the actual
+finite ambient algebra map $\varphi:F[X_i][1/g]\to B$. A direction with
+$b_j\ne0$ defines the original transverse line equations. For a genuine
+minimal prime $P$ above their original image in $B$, set
+$D=B/P$ and $C=\overline D\subset\operatorname{Frac}(D)$, the literal
+integral closure. This chapter constructs the normalization of this one
+actual component; it does not replace the original full preimage by its
+reduction, choose a component certificate, or assemble all components.
+
+\begin{theorem}[The actual component normalization and its genuine free line action]
+\label{algebra:normalized-line-component-ring}
+\lean{EnvelopeProperty.AffineLine.componentQuotient_isDomain,
+  EnvelopeProperty.AffineLine.componentQuotient_finiteType,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom_principalLineHom,
+  EnvelopeProperty.AffineLine.componentNormalization_inclusion_finite,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom_finite,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom_injective,
+  EnvelopeProperty.AffineLine.componentNormalization_isDedekindDomain,
+  EnvelopeProperty.AffineLine.openLineRing_isPrincipalIdealRing,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom_free,
+  EnvelopeProperty.AffineLine.normalizedComponentLineHom_flat}
+\leanok
+\uses{algebra:line-component-whole-map,algebra:line-component-domination,algebra:principal-open-line-ring,algebra:finite-free-curve-normalization}
+The original minimal-prime hypothesis makes $D$ a domain. If $\sigma$ is
+finite and $\varphi$ is finite, then $D$ is of finite type over $F$.
+The actual component homomorphism
+\[
+ A=F[T][1/g(a+Tb)]\longrightarrow D\longrightarrow C
+\]
+retains every original localized ambient element. If $F$ is perfect, the
+normalization inclusion and this whole line homomorphism are finite.
+If $g(a+Tb)\ne0$, then $C$ is Dedekind. If also $B$ is a domain,
+$g\ne0$ and $\varphi$ is injective, the line homomorphism is injective,
+and its exact induced $A$-module structure on $C$ is free and flat.
+No separability assumption is imposed.
+\end{theorem}
+\begin{proof}
+A minimal prime is prime, hence its quotient is a domain. Give $B$ the
+actual algebra structure induced by $\varphi$. Its scalar tower over $F$
+is proved by the entire scalar identity of this algebra homomorphism.
+The localization of the finite-variable polynomial ring is of finite type
+over $F$; finiteness of $B$ over that ring then gives finite type of $B$
+and of its actual quotient $D$.
+
+Compose the already constructed whole component-line algebra homomorphism
+with the literal inclusion $D\to C$. Its value on every original localized
+ambient element is the inclusion of the original quotient value, by the
+whole component factorization. Perfect-field finite normalization gives
+finiteness of $D\to C$, and composition gives finiteness of $A\to C$.
+Actual fraction-field inclusion is injective. The earlier genuine
+component-domination theorem makes $A\to D$ injective under the stated
+domain, nonvanishing and finite-injective ambient hypotheses, so the
+composition remains injective.
+
+The nonempty open-line ring is a Dedekind domain. Integral dimension
+descent together with true normality and finite Noetherian normalization
+makes $C$ Dedekind. Every ideal in $F[T][1/p]$ is the extension of its
+contraction to $F[T]$; that contraction is principal and an ideal image
+remains principal. Thus the actual open-line ring is a principal ideal
+ring, even for the empty-open ring. For the nonempty line, the exact
+injective action on $C$ gives torsion-freeness. The genuine finite
+torsion-free principal-domain module theorem gives freeness, and free
+modules are flat. The action in the freeness statement is explicitly the
+one induced by the entire constructed normalized line homomorphism.
+\end{proof}
+
+\begin{theorem}[Entire normalized component scheme triangles]
+\label{scheme:normalized-line-component-map}
+\lean{EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_factor,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_square,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_over_field,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_isFinite,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_flat,
+  EnvelopeProperty.AffineLine.normalizedComponentLineSchemeMap_surjective}
+\leanok
+\uses{algebra:normalized-line-component-ring,algebra:line-component-scheme-domination,scheme:actual-finite-flat-curve-normalization}
+The literal $\operatorname{Spec}C\to\operatorname{Spec}A$ is the actual
+normalization projection followed by the original component-line scheme
+map. Its whole ambient square and whole original $F$-structure triangle
+commute. Under the corresponding ring hypotheses it is finite and flat.
+The original domain, nonvanishing and finite-injective ambient hypotheses
+make it surjective on genuine scheme points; this surjectivity itself
+does not require perfection of $F$.
+\end{theorem}
+\begin{proof}
+Apply the actual contravariant Spec functor to the entire normalization
+and component ring composition. This proves the full factorization, not
+merely its coordinate values. Compose the earlier original component
+square with the literal normalization projection to obtain the complete
+ambient square. The normalized algebra homomorphism's equality on every
+$F$ scalar gives its entire structure triangle.
+
+True finite and flat ring maps give finite and flat Spec maps. The
+literal normalization projection is scheme-surjective by actual integral
+lying over and its fraction-field injection. The original component-line
+map is scheme-surjective by the genuine component-domination producer.
+Their composition is therefore scheme-surjective, retaining the original
+scheme map and all its triangles.
+\end{proof}
+
+\begin{theorem}[Native normalized line maps for every prescribed field valuation]
+\label{scheme:normalized-line-native-map}
+\lean{EnvelopeProperty.AffineLine.normalizedComponentLineNativeMap,
+  EnvelopeProperty.AffineLine.continuous_normalizedComponentLineNativeMap,
+  EnvelopeProperty.AffineLine.isProperMap_normalizedComponentLineNativeMap,
+  EnvelopeProperty.AffineLine.normalizedComponentLineNativeMap_surjective}
+\leanok
+\uses{scheme:normalized-line-component-map,scheme:relative-integral-native-proper-map,scheme:relative-integral-native-image}
+For any real-valued field valuation $\nu$ on $F$, the entire normalized
+line morphism induces a continuous fixed-$\nu$ native point map. Under
+finite-variable, perfect-field and finite ambient hypotheses it is
+proper; adding the original domain, nonvanishing and injectivity
+hypotheses makes it surjective. No bound on all elements of $F$, normed
+field structure or completeness hypothesis is required.
+\end{theorem}
+\begin{proof}
+The genuine entire $F$-structure triangle defines the actual relative
+native point map and preserves every prescribed scalar value. Continuity
+is the genuine native functoriality theorem. Finiteness of the actual
+scheme map implies integrality, so the checked arbitrary prescribed-base
+integral native properness theorem applies. Its scheme-surjectivity and
+the exact common-base integral native image theorem give whole native
+point lifts. There is no arbitrary different-prescribed-base extension
+assertion in this argument.
+\end{proof}
+
+\begin{theorem}[Original ambient ideals through component normalization]
+\label{scheme:normalized-component-original-ideals}
+\lean{EnvelopeProperty.AffineLine.normalizedComponentInclusionSchemeMap,
+  EnvelopeProperty.AffineLine.normalizedComponentInclusionSchemeMap_eq_specMap,
+  EnvelopeProperty.AffineLine.normalizedComponentInclusion_idealSheaf_comap,
+  EnvelopeProperty.AffineLine.normalizedComponentInclusion_stalkIdeal_comap}
+\leanok
+\uses{scheme:normalization-original-ideal-pullback,scheme:genuine-ideal-pullback-stalk}
+The actual composite $\operatorname{Spec}C\to\operatorname{Spec}(B/P)
+\to\operatorname{Spec}B$ pulls the original affine ideal datum of $J$
+back to the full image $(J(B/P))C$. At every actual normalized point,
+the pulled-back stalk ideal is the image of the original ideal stalk
+under the entire actual stalk map. These identities require no
+finite-generation or perfect-field hypothesis.
+\end{theorem}
+\begin{proof}
+The genuine Spec composition identifies the composite with the actual
+homomorphism $B\to B/P\to C$. Actual geometric ideal pullback on the
+affine top open is the entire global-section ideal image. The genuine
+$\Gamma\operatorname{Spec}$ naturality identity identifies this full
+section map with the original ring composition, and ideal images compose.
+Affine ideal sheaf extensionality gives the entire ideal datum equality.
+The already proved arbitrary-scheme ideal pullback stalk theorem gives
+the full stalk-map image at every actual normalized point. The original
+$J$, including its powers and nilpotents, is not replaced by a radical.
+These are geometric ideal identities, not ideal norm identities over
+all coefficients of a possibly unbounded valued field.
+\end{proof}
+
+\begin{theorem}[Whole native lifts above the original component]
+\label{scheme:normalization-component-native-lifts}
+\lean{EnvelopeProperty.AffineLine.componentNormalizationNativeMap,
+  EnvelopeProperty.AffineLine.componentNormalizationNativeMap_surjective,
+  EnvelopeProperty.AffineLine.isProperMap_componentNormalizationNativeMap}
+\leanok
+\uses{scheme:actual-finite-flat-curve-normalization,scheme:relative-integral-native-proper-map,scheme:relative-integral-native-image}
+For any prescribed field valuation, the actual normalization projection
+induces a proper whole native component map. For the original genuine
+minimal-prime quotient it is surjective, preserving every original
+component value and every prescribed field scalar. These native
+projection statements do not require finite type, perfection, or finite
+module normalization.
+\end{theorem}
+\begin{proof}
+The literal integral-closure inclusion is integral regardless of
+finiteness. Its scalar-tower algebra homomorphism gives the true common
+$F$-base triangle, so the general integral native properness theorem
+applies. For the actual prime quotient, the fraction-field inclusion is
+injective and integral lying over makes the normalization projection
+scheme-surjective. The genuine exact common-base native integral image
+theorem supplies whole prescribed-base lifts. A chosen branch above a
+given scheme support is not asserted.
+\end{proof}
+
+\begin{theorem}[Given rational original points lift with every original value]
+\label{scheme:normalized-component-rational-native-lift}
+\lean{EnvelopeProperty.AffineLine.exists_componentNormalization_rationalEval,
+  EnvelopeProperty.AffineLine.exists_componentNormalization_rationalNativeLift}
+\leanok
+\uses{algebra:normalized-line-component-ring,spectrum:integral-rational-evaluator-existence,scheme:affine-valued-point-homeomorphism}
+Suppose $F$ is algebraically closed and a given actual evaluator
+$e:B\to_F F$ kills the original component prime $P$. It extends to an
+actual evaluator $d:C\to_F F$ satisfying
+$d(\iota(\overline r))=e(r)$ for every original $r\in B$.
+For any real-valued valuation $\nu$ of $F$, there is an actual
+fixed-$\nu$ normalized native point whose whole image in
+$\operatorname{Spec}B$ is the original rational point evaluated by
+$\nu\circ e$, and whose entire affine valuation is $\nu\circ d$.
+No finite-variable, finite-module, norm or completeness hypothesis is
+required for this rational lift.
+\end{theorem}
+\begin{proof}
+The exact kernel condition defines a genuine quotient evaluator
+$B/P\to_F F$. The normalization inclusion is integral and injective into
+the original component fraction field. Apply the checked actual rational
+evaluator extension theorem over an algebraically closed field. Its
+whole algebra-homomorphism identity gives the claimed equality on every
+original $B$ element.
+
+Compose $d$ with $\nu$ to obtain a genuine real-valued seminorm on $C$.
+Its equality on all $F$ scalars gives an actual relative spectrum point,
+and the genuine affine native homeomorphism gives a whole native point.
+Apply actual affine naturality to its entire original component inclusion.
+The evaluator equality on every original $B$ element and affine
+homeomorphism injectivity identify its image with the original whole
+native rational point. Its entire $C$ seminorm is $\nu\circ d$ by the
+actual inverse affine homeomorphism law.
+
+This constructs one actual normalized component and rational lifts, not
+the normalization of the full reduced preimage, a smoothness theorem,
+an arbitrary proper curve model, or an analytic potential comparison.
+For nontrivial $\nu$, whole-field ideal norms must still not be substituted
+for genuine bounded-model center-stalk functions. Those model and
+potential constructions remain separate paper boundaries.
+\end{proof}

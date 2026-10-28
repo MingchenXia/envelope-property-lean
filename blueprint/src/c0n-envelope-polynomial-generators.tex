@@ -1,0 +1,83 @@
+\section{Relative polynomial generators and the original envelope}
+
+\begin{definition}[Bounded polynomial cone generators]
+\label{def:c0n-bounded-polynomial-cone-generators}
+\uses{conv:sg-setting,lem:sg-phi-basic}
+\lean{EnvelopeProperty.ProjSubvariety.HasBoundedPolynomialConeGenerators}
+\leanok
+An ideal $B\subset T$ has bounded polynomial cone generators of degree $e$
+if there is a finite set $G\subset k[x_0,\ldots,x_M][t]$ with
+\[
+ (\bar G)\subset B\subset(\bar G)^{\mathrm{sat}}
+\]
+such that every coefficient of every $F\in G$, viewed as a polynomial in
+$t$, is a homogeneous form in the $x$ variables of some degree at most $e$.
+Here $\bar G$ is the image in the actual cone ring $T$.
+\end{definition}
+
+\begin{lemma}[Fubini--Study functions from relative polynomial generators]
+\label{lem:c0n-polynomial-cone-fs}
+\uses{def:c0n-bounded-polynomial-cone-generators,lem:sg-phi-basic}
+\lean{EnvelopeProperty.ProjSubvariety.isFS_coneIdealApprox_of_polynomial_generators}
+\leanok
+If $B_m\ne0$ has bounded polynomial cone generators of degree $md+c$,
+where $m>0$, then $m^{-1}\phi_{B_m}\in\mathcal H(X,d+c/m)$.
+\end{lemma}
+\begin{proof}
+Let $G$ be the finite polynomial set in the definition.  Saturation does
+not change its potential on $X^{\mathrm{an}}$, and adding the kernel of
+$k[x_0,\ldots,x_M,t]\to T$ does not change it there either.  Thus
+$\phi_{B_m}=\phi_{(G)}$ on $X^{\mathrm{an}}$.
+Some $F\in G$ has nonzero image in $T$: otherwise $(\bar G)=0$, whose
+saturation is zero since $T$ is a domain and its irrelevant ideal contains
+a nonzero coordinate, contradicting $B_m\ne0$.
+The coefficient degree bound and the finite-generator formula for ideal
+potentials give $\phi_{(G)}\in\mathcal H(X,md+c)$.
+Multiplying this Fubini--Study function by $m^{-1}$ changes the class to
+$d+c/m$, as asserted.
+\end{proof}
+
+\begin{theorem}[Envelope assembly from relative polynomial generators]
+\label{thm:c0n-polynomial-cone-envelope-assembly}
+\source{bj22-trivval:thm:contenvlisse}
+\uses{lem:c0n-polynomial-cone-fs,lem:c0n-cone-ideal-bounds,thm:pg-psh2,thm:sg-comparison}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_envelope_of_polynomialConeIdealEstimates}
+\leanok
+Assume that $k$ is algebraically closed, let $d>0$, and let $\phi\le0$ be
+piecewise linear on the original $X^{\mathrm{an}}$.
+Suppose that actual cone ideals $B_m$ contain $J_m(\phi)T$ for $m>0$,
+that $B_{ml}\subset(B_m^l)^{\mathrm{sat}}$ for $m,l>0$, and that for one
+fixed $c\in\mathbf N$ every $B_m$ with $m>0$ has bounded polynomial
+cone generators of degree $md+c$.
+Suppose also that at every divisorial point $v$ there is $A_v\ge0$ such
+that for every $m>0$ some $q>0$ satisfies
+\[
+ \phi_{B_m}(v)\le(m/q)\phi_{J_q(\phi)}(v)+A_v.
+\]
+Then the original envelope $P_d(\phi)$ is $d$-plurisubharmonic.
+\end{theorem}
+\begin{proof}
+Bound $\phi$ below by a real constant $C$, using continuity and compactness.
+The inclusion of the nonzero obstacle ideal gives $B_m\ne0$ for $m>0$.
+Put $u_m=m^{-1}\phi_{B_m}$ and $U=\inf_j u_{j!}$.
+The preceding lemma gives $u_m\in\operatorname{PSH}(X,d+c/m)$.
+The ideal bounds give $u_{(j+1)!}\le u_{j!}$ and
+$U\ge P_d(\phi)\ge C$; the second inequality holds because $C$ is a
+competitor.  The classes $d+c/j!$ converge to $d$, so the decreasing-limit
+theorem gives $U\in\operatorname{PSH}(X,d)$.
+At a divisorial point the discrepancy estimate gives
+$U(v)\le P_d(\phi)(v)+A_v/j!$ for every $j$.
+Given $\varepsilon>0$, choose $j>A_v/\varepsilon$ and use $j!\ge j$.
+It follows that $U(v)\le P_d(\phi)(v)\le\phi(v)$.
+Divisorial comparison with the continuous obstacle gives $U\le\phi$
+everywhere.  Thus $U$ is a competitor for the envelope and
+$U\le P_d(\phi)$, whereas the reverse inequality was already established.
+Consequently $P_d(\phi)=U$ is $d$-plurisubharmonic.
+\end{proof}
+
+\begin{remark}
+Relative sections over $k[t]$ yield homogeneous polynomials in the $x$
+variables with polynomial coefficients in $t$.  The criterion retains
+these polynomials as generators.  It requires no assertion that their
+individual $t$-homogeneous components belong to the multiplier ideal.
+\end{remark}

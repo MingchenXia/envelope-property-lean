@@ -1,0 +1,46 @@
+\section{The isomorphism open from the actual monomial total transform}
+
+\begin{lemma}[The complement of the full boundary avoids every boundary monomial]\label{lem:sc0-basic-boundary-monomial-open}
+\lean{EnvelopeProperty.Char0.basicOpen_prod_le_basicOpen_monomial}
+\leanok
+For a finite family $p_i$ in a ring and arbitrary nonnegative exponents $e_i$,
+$D(\prod_i p_i)\subseteq D(\prod_i p_i^{e_i})$.
+\end{lemma}
+\begin{proof}
+If no $p_i$ belongs to a prime ideal, neither does any nonnegative power nor
+their product, by primality. This also includes empty families and zero exponents.
+\end{proof}
+
+\begin{lemma}[The actual boundary complement of a resolution chart is \'etale over the base]\label{lem:sc0-monomial-transform-boundary-etale}
+\lean{EnvelopeProperty.Char0.etale_algebraMap_boundary_of_monomial_transform}
+\leanok
+\uses{lem:sc0-monomial-transform-open-containment,lem:sc0-affine-iso-localization-etale}
+Let $\pi:Y\to\operatorname{Spec}R$ be isomorphic off the support of an actual
+ideal sheaf $J$, and let $\alpha:\operatorname{Spec}A\to Y$ be an actual affine
+open chart. Suppose its actual total-transform ideal is the monomial ideal in
+the preceding lemma. Then $R\to A[1/\prod_i p_i]$ is \'etale.
+\end{lemma}
+\begin{proof}
+The total-transform identity produces the required containment in the actual
+isomorphism open. Apply the geometric localized-chart \'etaleness lemma to that
+containment and the original chart projection triangle.
+\end{proof}
+
+\begin{lemma}[Actual monomial total transform supplies the open containment]\label{lem:sc0-monomial-transform-open-containment}
+\lean{EnvelopeProperty.Char0.coe_support_eq_zeroLocus_idealOfSpecSheaf,EnvelopeProperty.Char0.basicOpen_boundary_le_compl_support_preimage}
+\leanok
+\uses{lem:sc0-basic-boundary-monomial-open,lem:sc0-affine-global-blowup-iso}
+Let $\varphi:\operatorname{Spec}A\to\operatorname{Spec}R$ be an actual scheme
+morphism and $J$ an actual ideal sheaf on its target. If the actual normalized
+ideal of $\varphi^*J$ is $(\prod_i p_i^{e_i})$, then
+\[
+ D(\prod_i p_i)\subseteq\varphi^{-1}(\operatorname{Spec}R\setminus\operatorname{Supp}J).
+\]
+\end{lemma}
+\begin{proof}
+The support of an actual affine ideal sheaf is the vanishing set of its normalized
+ring ideal. Under the assumed identity it is therefore the zero set of the stated
+monomial. The preceding lemma places the basic open of the full boundary product
+outside this zero set. Support of an inverse-image ideal sheaf is the inverse
+image of its support, giving the assertion.
+\end{proof}

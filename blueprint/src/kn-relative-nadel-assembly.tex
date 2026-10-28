@@ -1,0 +1,257 @@
+\section{Relative Nadel vanishing from the canonical trace of adapted covers}
+\label{sec:kn-relative-nadel-assembly}
+
+Throughout, $k$ is a field of characteristic zero, $R$ is a finite-type
+$k$-algebra, and $X$ is an integral scheme with $f:X\to\operatorname{Spec}k$
+smooth of relative dimension $n$ and $\pi:X\to\operatorname{Spec}R$ a morphism
+over $k$. For an ideal $I\subseteq\mathcal O_X$ that is nonzero at the generic
+point, let $\mu:Y\to X$ be its Hironaka principalization, so that
+$I\cdot\mathcal O_Y=\mathcal O_Y(-E)$ for an SNC divisor $E$, and for
+$q\in\mathbb Q_{\geq0}$ put
+\[
+ Q_q=\omega_{Y/k}\otimes\mathcal O_Y(-\lfloor qE\rfloor),\qquad
+ \omega_{Y/k}=\textstyle\bigwedge^n\Omega^1_{Y/k}.
+\]
+The chapter derives relative ample Nadel vanishing from one local input, the
+existence of the canonical trace on adapted cyclic covers. Kawamata--Viehweg
+vanishing on $Y$ is obtained from relative Kodaira vanishing by the covering
+trick, and local vanishing of $R^i\mu_*$ is replaced by the vanishing of all
+positive twists by a relatively ample line. The setting is relative over
+$\operatorname{Spec}R$: neither properness of $X$ over $k$ nor algebraic
+closedness of $k$ is used.
+
+\begin{definition}[The canonical trace on every adapted cover]
+\label{def:kn-relative-nadel-cover-trace-input}
+\uses{lem:kn-nadel-global-normalized-geometric-properties}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.CoverCanonicalTraceInput}
+\leanok
+For a field $k$, the \emph{canonical trace input} is the following
+proposition. Let $Y$ be an integral scheme with $g:Y\to\operatorname{Spec}k$
+smooth of relative dimension $n$. Let $(F_i)_{i}$ be a finite family of Cartier
+divisors on $Y$, let $a\in\mathbb Q$ with denominator $N$, let $L_i$ be
+invertible, and let $\sigma_{i,0},\dots,\sigma_{i,n}$ be auxiliary sections of
+$L_i^{\otimes N}\otimes\mathcal O_Y(-F_i)$ whose zero divisors together with
+the $F_i$ form an SNC family and have empty common intersection for each $i$.
+Let $p:Y'\to Y$ be the normalization of the fibre product of the cyclic covers
+$t_{i,j}^N=\sigma_{i,j}$, let $\deg p=N^{(n+1)r}$, where $r$ is the number of
+divisors $F_i$, be the product of the degrees of these cyclic covers, and let
+$dp:p^*\omega_{Y/k}\to\omega_{Y'/k}$ be the differential. Then there is a morphism
+$T:p_*\omega_{Y'/k}\to\omega_{Y/k}$ with
+\[
+ \omega_{Y/k}\xrightarrow{\ \eta\ }p_*p^*\omega_{Y/k}
+   \xrightarrow{\ p_*(dp)\ }p_*\omega_{Y'/k}\xrightarrow{\ T\ }\omega_{Y/k}
+ \;=\;\deg p\cdot\mathrm{id}_{\omega_{Y/k}},
+\]
+where $\eta$ is the unit of the adjunction $p^*\dashv p_*$. The proposition
+contains no cohomology and does not require $Y$ to be proper.
+\end{definition}
+
+\begin{lemma}[Principalization over a finite-type affine base]
+\label{lem:kn-relative-nadel-principalization}
+\lean{EnvelopeProperty.Vanishing.NadelRelativePrincipalization.structure_finiteType,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.structure_isSeparated,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.sequence,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.stage_smoothOfRelativeDimension,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.totalTransform_isIdealOfSncDivisor,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.composite_isProper,EnvelopeProperty.Vanishing.NadelRelativePrincipalization.last_isIntegral}
+\leanok
+If $\pi$ is projective, then $f$ is separated and of finite type. If $f$ is
+separated and of finite type, the principalization $\mu:Y\to X$ of $I$ is a
+finite sequence of blow-ups in smooth centres; $\mu$ is proper, $Y$ is integral
+and smooth of relative dimension $n$ over $k$, and $I\cdot\mathcal O_Y$ is the
+ideal of an SNC divisor.
+\end{lemma}
+\begin{proof}
+The structure map $\operatorname{Spec}R\to\operatorname{Spec}k$ is of finite
+type and affine, hence separated; $\pi$ is projective, hence proper. Thus
+$f=\pi$ followed by this structure map is separated and of finite type.
+
+Hironaka's principalization applies to the triple consisting of the smooth
+separated finite-type $k$-scheme $X$, the ideal $I$, and the empty boundary;
+$I$ is nonzero in every stalk, because $X$ is integral, so every stalk of
+$\mathcal O_X$ injects into the function field, and $I$ is nonzero at the
+generic point. It produces a sequence of blow-ups in centres smooth over $k$;
+each stage is therefore smooth of relative dimension $n$ over $k$, and the
+total transform of $I$ is the ideal of an SNC divisor. A finite composite of
+blow-ups of locally noetherian schemes in closed centres is proper. The
+composite is an isomorphism over the open set where $I=\mathcal O_X$, which
+contains the generic point, so $Y$ is nonempty. A blow-up of an integral
+scheme is either empty (when the centre is the whole scheme) or integral;
+since $Y$ is nonempty, every stage, and in particular $Y$, is integral.
+\end{proof}
+
+\begin{lemma}[The twisted multiplier module is a pushforward]
+\label{lem:kn-relative-nadel-twisted-multiplier}
+\uses{lem:kn-relative-nadel-principalization}
+\lean{EnvelopeProperty.Vanishing.NadelRelativePrincipalizationTwistedMultiplier.originalTwistedMultiplierIso,EnvelopeProperty.Vanishing.NadelRelativePrincipalizationTwistedMultiplier.originalTwistedMultiplierPushforward_isQuasicoherent}
+\leanok
+Let $f$ be separated and of finite type and $A$ an invertible module on $X$.
+Then
+\[
+ (\omega_{X/k}\otimes A)\otimes\mathcal J(q\cdot I)\;\simeq\;
+ \mu_*\bigl(Q_q\otimes\mu^*A\bigr),
+\]
+where $\mathcal J(q\cdot I)$ is the multiplier ideal defined by all divisorial
+valuations, and both sides are quasicoherent.
+\end{lemma}
+\begin{proof}
+Since $\mu$ is a log resolution of $I$, the multiplier ideal is computed on
+$Y$: $\omega_{X/k}\otimes\mathcal J(q\cdot I)\simeq\mu_*Q_q$. Tensoring with
+$A$ and the projection formula $\mu_*(Q_q)\otimes A\simeq\mu_*(Q_q\otimes\mu^*A)$
+for the invertible $A$ give the isomorphism, after rearranging the tensor
+factors by associativity and symmetry. The multiplier ideal is a quasicoherent
+ideal and $\omega_{X/k}\otimes A$ is invertible, so the left side is
+quasicoherent, and so is the isomorphic right side.
+\end{proof}
+
+\begin{theorem}[Relative Kawamata--Viehweg vanishing on the principalization]
+\label{thm:kn-relative-nadel-source-vanishing}
+\uses{def:kn-relative-nadel-cover-trace-input,lem:kn-relative-nadel-principalization,thm:kn-relative-nadel-numerator-cover,thm:kn-relative-kodaira-characteristic-zero,thm:affine-pushforward-cohomology-vanishing,def:kn-nadel-twisted-bounded-canonical-unit,lem:kn-nadel-bounded-canonical-pushforward-unit-factor,thm:kn-nadel-whole-degree-scalar-isomorphism,lem:actual-cohomology-retract-vanishing}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.relativeSourceVanishing_of_coverTrace}
+\leanok
+Assume the canonical trace input for $k$, that $R$ is of finite type over $k$,
+and that $f$ is separated and of finite type. Let $M,B$ be invertible on $X$,
+let $I\otimes B$ be generated by finitely many global sections, let $q\geq0$
+and $d>0$, $t\geq0$ be integers with $dq=t$, and let
+$M^{\otimes d}\simeq C\otimes B^{\otimes t}$ with $C$ ample over
+$\operatorname{Spec}R$. Then
+\[
+ H^{r+1}\bigl(Y,\;Q_q\otimes\mu^*M\bigr)=0\qquad(r\geq0).
+\]
+\end{theorem}
+\begin{proof}
+The numerator-cover theorem over $R$ produces positive exceptional weights,
+an integer $N>0$ and an SNC ideal $K=\mathcal O_Y(-D)$ with
+$\lfloor D/N\rfloor=\lfloor qE\rfloor$, an SNC presentation
+$D=\sum_i b_iF_i$, and auxiliary sections as in the canonical trace input with
+denominator $N$ of $1/N$. The adapted cover $p:Y'\to Y$ is finite, $Y'$ is
+smooth of relative dimension $n$ over $k$, and the rounded cover line $P$ on
+$Y'$ is ample over $\operatorname{Spec}R$ via $Y'\to Y\to X\to\operatorname{Spec}R$.
+
+The composite $Y'\to\operatorname{Spec}k$ is separated: $p$ is finite, hence
+affine, $\mu$ is proper and $f$ is separated. Relative Kodaira vanishing
+over $R$ gives $H^{r+1}(Y',\omega_{Y'/k}\otimes P)=0$. The scheme $Y$ is
+quasi-compact, because $\mu$ is proper and $f$ is quasi-compact, and separated,
+because $\mu$ and $f$ are; choose a finite affine open cover of $Y$. Since $p$
+is affine and $\omega_{Y'/k}\otimes P$ is invertible, hence quasicoherent,
+affine pushforward gives
+$H^{r+1}(Y,p_*(\omega_{Y'/k}\otimes P))=0$.
+
+Put $A=\mu^*M\otimes\mathcal O_Y(-\lfloor D/N\rfloor)$, an invertible module,
+and let $a_i<N$ be the fractional residues of the $b_i$, so that $P$ is the
+whole rounded line of $A$ with residues $(a_i)$. The twisted bounded canonical
+unit $j:\omega_{Y/k}\otimes A\to p_*(\omega_{Y'/k}\otimes P)$ composed with the
+inclusion into $p_*\omega_{Y'/k}\otimes A$ equals the twist by $A$ of
+$\eta\,;\,p_*(dp)$. The canonical trace input gives $T$ with
+$\eta\,;\,p_*(dp)\,;\,T=\deg p\cdot\mathrm{id}$, and $\deg p$ acts invertibly
+because it is a nonzero integer in characteristic zero. Hence $j$ has a
+retraction, the twist by $A$ of the inclusion followed by $T$ and by
+$(\deg p)^{-1}$, transported through the projection formula. Cohomology
+vanishing passes to retracts, so $H^{r+1}(Y,\omega_{Y/k}\otimes A)=0$.
+
+Finally $\lfloor D/N\rfloor=\lfloor qE\rfloor$ gives
+$Q_q\otimes\mu^*M\simeq\omega_{Y/k}\otimes A$ after rearranging the tensor
+factors, which proves the vanishing.
+\end{proof}
+
+\begin{lemma}[Twisting the rational ample source]
+\label{lem:kn-relative-nadel-twisted-source-data}
+\uses{lem:kn-original-rational-ample-twist-data}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.relativeTwistedSourceData}
+\leanok
+Let $R$ be a commutative ring, $X$ integral over $\operatorname{Spec}R$, $M$
+invertible, $C$ and $H$ ample over $\operatorname{Spec}R$, $d>0$, and
+$M^{\otimes d}\simeq C\otimes B^{\otimes t}$. For every $m\geq1$ the line
+$M\otimes H^{\otimes m}$ is invertible, $C\otimes H^{\otimes md}$ is ample over
+$\operatorname{Spec}R$, and
+$(M\otimes H^{\otimes m})^{\otimes d}\simeq
+ (C\otimes H^{\otimes md})\otimes B^{\otimes t}$.
+\end{lemma}
+\begin{proof}
+A tensor product of invertible modules is invertible. Since $md>0$, the power
+$H^{\otimes md}$ of the ample line $H$ is ample, and the tensor product of two
+lines ample over $\operatorname{Spec}R$ is ample over $\operatorname{Spec}R$.
+The isomorphism is
+$(M\otimes H^{\otimes m})^{\otimes d}\simeq M^{\otimes d}\otimes H^{\otimes md}
+ \simeq C\otimes B^{\otimes t}\otimes H^{\otimes md}$, followed by the symmetry
+exchanging $B^{\otimes t}$ and $H^{\otimes md}$. The argument is the one over a
+field and uses no property of the base ring.
+\end{proof}
+
+\begin{lemma}[The global twist family of the source]
+\label{lem:kn-relative-nadel-source-global-twists}
+\uses{thm:kn-relative-nadel-source-vanishing,lem:kn-relative-nadel-twisted-source-data,lem:kn-original-rounded-source-twist-isomorphism,lem:actual-cohomology-retract-vanishing}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.relativeSource_globalTwists_of_coverTrace}
+\leanok
+Under the hypotheses of the preceding theorem, let $H$ be ample over
+$\operatorname{Spec}R$. Then for every $r\geq0$ and every $m\geq1$,
+\[
+ H^{r+1}\bigl(Y,\;(Q_q\otimes\mu^*M)\otimes(\mu^*H)^{\otimes m}\bigr)=0 .
+\]
+\end{lemma}
+\begin{proof}
+Fix $m\geq1$. By the twisting lemma, $M\otimes H^{\otimes m}$, the ample
+numerator $C\otimes H^{\otimes md}$, the same $B$, the same generating sections
+of $I\otimes B$ and the same $q,d,t$ satisfy the hypotheses of the source
+vanishing theorem, which gives
+$H^{r+1}(Y,Q_q\otimes\mu^*(M\otimes H^{\otimes m}))=0$. Since $\mu^*$ is
+monoidal and commutes with tensor powers,
+$Q_q\otimes\mu^*(M\otimes H^{\otimes m})\simeq
+ (Q_q\otimes\mu^*M)\otimes(\mu^*H)^{\otimes m}$, and cohomology vanishing is
+invariant under isomorphism.
+\end{proof}
+
+\begin{theorem}[Relative rational-ample multiplier vanishing]
+\label{thm:kn-relative-nadel-multiplier-vanishing}
+\uses{thm:kn-relative-nadel-source-vanishing,lem:kn-relative-nadel-source-global-twists,lem:kn-relative-nadel-twisted-multiplier,lem:fc-original-very-ample-is-ample,thm:projective-acyclic-original-pushforward-higher-vanishing,lem:actual-cohomology-retract-vanishing}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.relativeMultiplierVanishing_of_coverTrace}
+\leanok
+Assume the canonical trace input for $k$, that $R$ is of finite type over $k$,
+and that $f$ is separated and of finite type. Let $A,B$ be invertible, let
+$I\otimes B$ be generated by finitely many global sections, let $q\geq0$ be
+rational and $d>0$, $t\geq0$ integers with $dq=t$, and let
+$A^{\otimes d}\simeq C\otimes B^{\otimes t}$ with $C$ ample over
+$\operatorname{Spec}R$. Then
+\[
+ H^{r+1}\bigl(X,\;(\omega_{X/k}\otimes A)\otimes\mathcal J(q\cdot I)\bigr)=0
+ \qquad(r\geq0).
+\]
+\end{theorem}
+\begin{proof}
+Put $\mathcal F=Q_q\otimes\mu^*A$; it is invertible, hence quasicoherent, and
+$\mu_*\mathcal F$ is quasicoherent by the multiplier lemma. Since $C$ is ample
+over $\operatorname{Spec}R$, some positive power of $C$ is the pullback of
+$\mathcal O(1)$ along a closed immersion $j:X\to\mathbb P^s_R$ over
+$\operatorname{Spec}R$. The line $H=j^*\mathcal O(1)$ is very ample, hence
+ample, over $\operatorname{Spec}R$. The source vanishing theorem gives
+$H^{r+1}(Y,\mathcal F)=0$, and the global twist lemma gives the vanishing of
+$H^{r+1}(Y,\mathcal F\otimes(\mu^*H)^{\otimes m})$ for all $r\geq0$ and
+$m\geq1$. The projective Leray--\v{C}ech comparison for the proper $\mu$ and
+the closed immersion $j$ therefore identifies the vanishing of
+$H^{r+1}(Y,\mathcal F)$ with that of $H^{r+1}(X,\mu_*\mathcal F)$. The
+multiplier lemma transports this vanishing to
+$(\omega_{X/k}\otimes A)\otimes\mathcal J(q\cdot I)$.
+\end{proof}
+
+\begin{theorem}[Relative ample Nadel vanishing from the canonical trace]
+\label{thm:kn-relative-ample-nadel-of-cover-trace}
+\uses{thm:kn-relative-nadel-multiplier-vanishing,lem:kn-relative-nadel-principalization,def:c0n-relative-ample-nadel-input,def:kn-relative-nadel-cover-trace-input}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.relativeAmpleNadelVanishingInput_of_coverTrace}
+\leanok
+If the canonical trace input holds for $k$, then the relative ample Nadel input
+holds for $k$.
+\end{theorem}
+\begin{proof}
+Take the data of the relative ample Nadel input: $\pi:X\to\operatorname{Spec}R$
+projective with $f$ smooth of relative dimension $n$ and $X$ integral,
+invertible $A,B$, a finite generating family of $I\otimes B$, $c\geq0$ with
+$dc=t$, and $A^{\otimes d}\simeq C\otimes B^{\otimes t}$ with $C$ ample over
+$\operatorname{Spec}R$. By the principalization lemma, $f$ is separated and of
+finite type. The multiplier vanishing theorem with $q=c$ gives the vanishing
+of $H^{r+1}(X,(\omega_{X/k}\otimes A)\otimes\mathcal J(c\cdot I))$ for every
+$r\geq0$, which is the asserted statement.
+\end{proof}
+
+\begin{remark}
+The canonical trace input is the only hypothesis of the last theorem. It is a
+statement about the finite flat adapted covers of smooth $k$-schemes, with
+no cohomology; it is not proved in this chapter, so the chapter does not by
+itself establish Nadel vanishing.
+\end{remark}

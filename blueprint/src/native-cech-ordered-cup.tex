@@ -1,0 +1,49 @@
+\section{The original ordered product on the sheaf Cech terms}
+
+\begin{definition}[The ordered product with its original section values]
+\label{def:native-cech-ordered-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.orderedCup, EnvelopeProperty.DI.CechAlexanderWhitneyProduct.cup_pi, EnvelopeProperty.DI.CechAlexanderWhitneyProduct.cup_tensorSection_pi}
+Let $k$ have prime characteristic $p$, let $f:X\to\operatorname{Spec}k$
+be the original morphism, and put $F:X\to Y=X^{(p)}$ and
+$E^q=F_*\Omega^q_{X/k}$, with the original coefficient action through
+$F^\#$. Let $(U_i)_{i\in I}$ be any family of opens of $Y$.
+For each tuple $t$ put $U_t=\bigcap_a U_{t_a}$ and
+$Q(M,U_t)=j_{t,*}(M|_{U_t})$. The original ordinary sheaf Cech term is
+$\check C^j(M)=\prod_{t\in I^{j+1}}Q(M,U_t)$.
+There is a canonical morphism
+\[
+ \check C^j(E^q)\otimes\check C^{j'}(E^r)
+       \longrightarrow\check C^{j+j'}(E^{q+r}).
+\]
+Its projection to a tuple $t$ of length $j+j'+1$ is the original
+exterior product after the native prefix and suffix projections
+and their restrictions to $U_t$. The prefix uses positions
+$0,\ldots,j$ and the suffix positions $j,\ldots,j+j'$.
+On every ambient open $W$, and every pair of whole original sections,
+the image of their original tensor section is exactly the original
+exterior product on $U_t\cap W$ of those two restricted projections.
+No smoothness, finiteness, or covering assertion is needed for this
+construction.
+\end{definition}
+\begin{proof}
+The full tuple intersection lies in both its prefix and suffix
+intersections. Project to those original factors and use the original
+factor restriction maps to reach $Q(E^q,U_t)$ and $Q(E^r,U_t)$.
+On $W$, both factor section objects are the original exterior
+sections on $F^{-1}(U_t\cap W)$. Their ambient scalar acts first
+by restriction from $W$ to $U_t\cap W$, and then by the actual
+coefficient map $F^\#$. The original whole-section exterior product
+is bilinear for this common action. It commutes with every original
+restriction. Hence its tensor lift is an actual morphism from the
+original tensor presheaf to $Q(E^{q+r},U_t)$.
+
+The original sheafification adjunction extends this morphism to the
+actual tensor sheaf. Its unit sends each pure tensor of original
+sections to that same tensor section, so the extended map has
+exactly the stated whole-section value. Applying the original
+product universal property over the output tuples gives the stated
+morphism. Each original product projection recovers its defining
+factor map. Restriction and the tensor unit retain the original
+values, proving the formula on every $W$, including empty opens.
+\end{proof}

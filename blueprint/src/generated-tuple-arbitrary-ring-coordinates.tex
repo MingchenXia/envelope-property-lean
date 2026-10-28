@@ -1,0 +1,100 @@
+\section{Original tuple coordinates over arbitrary rings}
+
+\begin{definition}[The original normalized tuple chart homomorphism]
+\label{def:general-generated-tuple-original-chart-ring-map}
+\uses{def:fc-generated-tuple-graded-map,lem:central-embedding-generic-unit-rees-homogeneous-coefficient-equiv}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.chartRingMap}
+\leanok
+Let $R$ and $A$ be arbitrary commutative rings, $r:R\to A$ the original
+coefficient homomorphism and $a_0,\ldots,a_m$ an actual unit-ideal tuple.
+If $a_i=1$, construct the homomorphism from the original $i$-th polynomial
+coordinate ring to $A$ using the same original tuple graded map and the
+actual unit-Rees homogeneous coefficient equivalence. Neither ring is
+required to be a domain; zero rings and nilpotent coefficients are allowed.
+\end{definition}
+\begin{proof}
+The original graded map sends its pivot variable to $a_iT=T$ in the
+original unit Rees algebra. Apply its actual homogeneous localization map,
+then the inverse of the existing coefficient equivalence on the same
+unit-Rees homogeneous chart. Precompose with the original homogeneous
+coordinate-ratio homomorphism. Each map is defined on these original rings.
+The coefficient equivalence is the already proved arbitrary-ring result;
+no fraction field or new coefficient equivalence is introduced.
+\end{proof}
+
+\begin{theorem}[The same original tuple map on its actual chart]
+\label{thm:general-generated-tuple-original-chart-factor}
+\uses{def:general-generated-tuple-original-chart-ring-map,lem:central-embedding-generic-unit-rees-original-inverse-chart}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.affineTupleMap_coordinateChart}
+\leanok
+The same existing original tuple morphism from $\operatorname{Spec}A$
+equals the spectrum map of the constructed chart homomorphism followed
+by the original polynomial chart inclusion indexed by $i$.
+\end{theorem}
+\begin{proof}
+Express the existing tuple morphism by its original composite graded map.
+Use the already proved whole inverse-chart formula for the original unit
+blowup, now valid over arbitrary $A$. Functoriality of the original
+homogeneous chart map gives its expression on that same target chart.
+The actual original polynomial chart is the same homogeneous-away chart
+under its existing coordinate equivalence. Its two inverse maps cancel,
+giving the stated whole scheme-map equality.
+\end{proof}
+
+\begin{theorem}[Every original coordinate is retained]
+\label{thm:general-generated-tuple-original-chart-coordinate}
+\uses{def:general-generated-tuple-original-chart-ring-map,lem:central-embedding-generic-unit-rees-inverse-generator}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.chartRingMap_coordinate}
+\leanok
+The constructed chart homomorphism sends every original coordinate ratio
+at $i$ to the same original $a_j$, including the pivot.
+\end{theorem}
+\begin{proof}
+The original homogeneous coordinate ratio is $X_j/X_i$. Its image under
+the actual graded map is $(a_jT)/T$. The existing arbitrary-ring unit-Rees
+coefficient theorem sends this ratio to $a_j$. This argument uses polynomial
+and homogeneous-localization identities, including for nilpotent $a_j$.
+\end{proof}
+
+\begin{theorem}[The original coefficient homomorphism is retained]
+\label{thm:general-generated-tuple-original-chart-coefficients}
+\uses{thm:general-generated-tuple-original-chart-factor}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.chartRingMap_C}
+\leanok
+The same chart homomorphism sends every original coefficient $c\in R$
+to $r(c)$.
+\end{theorem}
+\begin{proof}
+The existing tuple morphism preserves the original coefficient structure
+map. Substitute its proved whole chart factorization and the original
+coordinate-chart structure triangle. Faithfulness of the spectrum functor
+gives the equality of the actual original coefficient ring maps, hence the
+claimed equality on every coefficient.
+\end{proof}
+
+\begin{theorem}[The whole chart map is original polynomial evaluation]
+\label{thm:general-generated-tuple-original-chart-evaluation}
+\uses{thm:general-generated-tuple-original-chart-coordinate,thm:general-generated-tuple-original-chart-coefficients}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.chartRingMap_eq_eval}
+\leanok
+The entire original chart homomorphism is polynomial evaluation with
+coefficient map $r$ and the same original coordinates $a_j$.
+\end{theorem}
+\begin{proof}
+Polynomial-ring homomorphisms are determined by their original coefficient
+map and original variables. The two preceding conclusions identify both.
+\end{proof}
+
+\begin{theorem}[The actual whole tuple map has the same evaluation formula]
+\label{thm:general-generated-tuple-original-map-evaluation}
+\uses{thm:general-generated-tuple-original-chart-factor,thm:general-generated-tuple-original-chart-evaluation}
+\lean{EnvelopeProperty.GeneratedTupleArbitraryRingCoordinates.affineTupleMap_eq_eval_chart}
+\leanok
+The same existing original tuple morphism equals the spectrum of this
+actual polynomial evaluation followed by the same original coordinate
+inclusion, over every original commutative coefficient ring.
+\end{theorem}
+\begin{proof}
+Substitute the proved whole polynomial-homomorphism equality into the
+already proved actual chart factorization.
+\end{proof}

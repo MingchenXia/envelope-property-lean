@@ -1,0 +1,60 @@
+\section{Actual original residue and kernel division commute with algebra restriction}
+\label{sec:witt-two-algebra-division-naturality}
+
+Let $W=W_2(k)$ for the original perfect characteristic-$p$ field.
+Let $A,A'$ be actual smooth $W$-algebras and let
+$\beta:A\to A'$ be ANY original $W$-algebra morphism. Put
+$B=k\otimes_W A$ and $B'=k\otimes_W A'$ with their original
+tensor-product ring structures and actual residue maps.
+
+\begin{definition}[The actual original residue and kernel maps]
+\label{def:witt-two-actual-residue-kernel-maps}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.residueMap,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.residueMap_tmul,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.residueMap_reduction,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.kernelMap,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.kernelMap_value,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.kernelMap_primeElement}
+The actual tensor map $\operatorname{id}_k\otimes\beta$ is an
+original residue algebra morphism $B\to B'$. It sends the entire
+original residue of every $a\in A$ to the entire residue of
+$\beta(a)$, and induces the actual original semilinear map on
+the native kernel ideals of these actual residue maps.
+\uses{thm:witt-two-algebra-kernel-division}
+\end{definition}
+\begin{proof}
+Construct the native algebra tensor-product map from the identity
+on $k$ and the original algebra morphism $\beta$. On actual
+pure tensors its value is the original coefficient tensored with
+$\beta(a)$. Thus it respects the original left $k$-algebra
+structures and has the asserted whole reduction formula. For an
+actual kernel element $x$, that formula sends its residue zero
+to zero, proving that $\beta(x)$ belongs to the actual target
+kernel. Restrict this SAME original ring map to those actual
+kernel ideals. Additivity and semilinearity follow from the
+original ring map's addition and multiplication formulas.
+\end{proof}
+
+\begin{theorem}[Actual canonical kernel division is natural]
+\label{thm:witt-two-actual-kernel-division-naturality}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivisionNaturality.dividePrime_naturality}
+On EVERY actual original residue-kernel element, first applying
+the original kernel map and then the actual target canonical
+division gives precisely the actual residue map applied to the
+original source canonical division. No division compatibility,
+kernel matching, flatness certificate or chosen primitive is input.
+\uses{def:witt-two-actual-residue-kernel-maps}
+\end{theorem}
+\begin{proof}
+Actual smooth-flat residue exactness writes EVERY original kernel
+element as $pa$ for an actual $a\in A$. The native kernel map
+sends this actual element to $p\beta(a)$, since the original
+ring map preserves the prime. The proved original division
+formula gives respectively the actual residues of $a$ and
+$\beta(a)$. The actual tensor-map reduction identity identifies
+these values in $B'$. This proves the entire naturality assertion,
+independently of the choice of the genuine prime preimage.
+\end{proof}
+
+These are actual algebra restriction maps and division identities.
+Naturality of the full divided cotangent maps and canonical
+homotopies under commuting lifted algebra maps, actual lifted
+scheme restrictions and global Deligne--Illusie descent remain
+further producers.

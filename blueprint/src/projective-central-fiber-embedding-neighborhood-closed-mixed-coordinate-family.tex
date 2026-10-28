@@ -1,0 +1,60 @@
+\section{Actual mixed coordinates for a positive power}
+\begin{definition}[The actual mixed coordinate family]
+\label{def:central-embedding-actual-mixed-coordinate-family}
+\uses{def:central-embedding-original-homogeneous-forms-generating-family}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateFamily.mixedCoordinateFamily}
+\leanok
+For any commutative coefficient ring and $d\geq0$, the actual forms
+$X_a^dX_b$ with literal index $\operatorname{ULift}(\operatorname{Fin}(m+1)\times\operatorname{Fin}(m+1))$
+give a genuine generating family of the original $O(d+1)$.
+\end{definition}
+\begin{proof}
+Their native homogeneous degree is $d+1$. The diagonal selection $(i,i)$
+is literally $X_i^{d+1}$, so the proved homogeneous-family producer internally
+proves the actual evaluation morphism epimorphic on the entire scheme.
+No basis of global sections or additional central generator is supplied.
+\end{proof}
+\begin{lemma}[The same mixed family is finite]
+\label{lem:central-embedding-actual-mixed-coordinate-family-finite}
+\uses{def:central-embedding-actual-mixed-coordinate-family}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateFamily.mixedCoordinateFamily_isFiniteType}
+\leanok
+This same actual family is of finite type.
+\end{lemma}
+\begin{proof}
+Its literal pair index has its actual finite type instance. Apply the proved
+homogeneous-family finiteness theorem, retaining all these indices.
+\end{proof}
+\begin{lemma}[Every mixed coefficient is its entire original ratio]
+\label{lem:central-embedding-actual-mixed-coordinate-family-coefficients}
+\uses{def:central-embedding-actual-mixed-coordinate-family}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateFamily.mixedCoordinateFamily_localCoefficient}
+\leanok
+On the original $i$-th coordinate frame, every actual coefficient equals the
+entire homogeneous fraction $X_a^dX_b/X_i^{d+1}$ transported through the actual
+affine-open top-section isomorphism.
+\end{lemma}
+\begin{proof}
+Apply the homogeneous-family whole-coefficient theorem to these actual forms.
+The native open-immersion section isomorphism identifies its affine-open
+section map with the inverse of the original top-section isomorphism.
+\end{proof}
+\begin{lemma}[The actual row retains every original coordinate ratio]
+\label{lem:central-embedding-actual-mixed-coordinate-row-coefficients}
+\uses{lem:central-embedding-actual-mixed-coordinate-family-coefficients}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateFamily.mixedCoordinateFamily_row_localCoefficient}
+\leanok
+In the entire original $i$-th frame the actual $(i,a)$ coefficient is exactly
+$X_a/X_i$, over arbitrary commutative rings, including nilpotents and the zero ring.
+\end{lemma}
+\begin{proof}
+In the native homogeneous localization compare the two actual fractions.
+The native localization equality criterion reduces their equality to polynomial
+cross multiplication, using the multiplicative witness $1$. The polynomial
+identity follows from the commutative ring laws. Transport this whole equality
+through the actual away-to-section morphism and original top-section isomorphism.
+No cancellation by a nonzerodivisor, domain, reducedness or pointwise equality
+is used.
+\end{proof}
+The actual mixed generated map, its closed immersion and whole $O(d+1)$
+comparison, and the same-power central Serre assembly remain further obligations.

@@ -1,0 +1,94 @@
+\subsection{Integrality of the original native polynomial product model}
+\begin{lemma}[The entire actual coefficient extension ideal]
+\label{lem:actual-polynomial-coefficient-ideal-membership}
+\lean{EnvelopeProperty.mem_polynomialCoefficientIdeal_iff}
+\leanok
+\uses{polynomial:coefficient-variable-interchange}
+Let $R$ be ANY commutative ring, $\sigma$ ANY variable set, and
+$J\subseteq R[\sigma]$ ANY original ideal. Let
+$q:R[\sigma]\to R[T][\sigma]$ be the ORIGINAL coefficient map induced
+by $R\to R[T]$, and let $e:R[T][\sigma]\simeq R[\sigma][T]$ be the
+EXISTING polynomial-coefficient interchange. For EVERY original
+$F\in R[T][\sigma]$,
+\[F\in q(J)R[T][\sigma]\quad\Longleftrightarrow\quad
+  \forall m,\ \operatorname{coeff}_m(eF)\in J.\]
+Here the extension is the entire actual nonradical ideal image.
+In particular $q(a)\in q(J)R[T][\sigma]$ if and only if $a\in J$.
+No field, finite variable set, reducedness, Noetherian or finiteness
+assumption is imposed. Original nilpotents are retained.
+\end{lemma}
+\begin{proof}
+The EXISTING actual interchange satisfies $e\circ q=C$, the original
+univariate constant inclusion: the existing formulas on the SAME original
+coefficient constants and each original multivariable generator prove this
+whole ring-map equality by polynomial extensionality. Thus the actual
+ideal image under $e$ is EXACTLY the original ideal $J$ extended along $C$,
+by functoriality of ideal images. The original $e$ is a RING EQUIVALENCE, so its actual ideal image is
+exactly the set image (surjectivity is used); its injectivity then gives
+that membership in the SAME ideal is equivalent to membership of $eF$
+in that actual ideal image. Equivalently use the existing ideal-equivalence
+image/comap membership identity.
+Apply the EXISTING Mathlib entire-ideal coefficient criterion for extension
+along $C$. For $F=q(a)$ the polynomial $eF=C(a)$ has coefficient $a$ in
+degree zero and zero in every other degree; the criterion gives the final
+membership reflection. No new interchange or quotient construction is made.
+\end{proof}
+
+\begin{lemma}[Actual prime coefficient extension]
+\label{lem:actual-polynomial-coefficient-prime-extension}
+\lean{EnvelopeProperty.isPrime_polynomialCoefficientIdeal}
+\leanok
+\uses{lem:actual-polynomial-coefficient-ideal-membership,polynomial:coefficient-variable-interchange}
+Under the preceding arbitrary-ring hypotheses, if the ORIGINAL ideal $J$
+is prime, then its actual coefficient extension $q(J)R[T][\sigma]$ is prime.
+\end{lemma}
+\begin{proof}
+Reuse Mathlib's existing primality of $J$ extended to $R[\sigma][T]$
+along $C$. The actual image of the original extended ideal under $e$
+is exactly this prime ideal, by the preceding whole-map calculation.
+Its inverse image under the original ring equivalence is prime and is
+literally the original coefficient extension. No prime ideal, field,
+geometric-integrality or reduced quotient certificate is an input.
+\end{proof}
+
+\begin{theorem}[The original native variety times the polynomial line is integral]
+\label{thm:actual-native-polynomial-product-integral}
+\lean{EnvelopeProperty.ProjSubvariety.nativeProductModel_isIntegral}
+\leanok
+\uses{lem:actual-polynomial-coefficient-ideal-membership,lem:actual-polynomial-coefficient-prime-extension,lem:original-prime-projective-kernel-integral,def:pl-native-variety-product,projective:actual-polynomial-line-product,projective:actual-product-model-ideal-functions}
+Let $k$ be ANY field and $X$ ANY original projective subvariety. Its EXISTING
+\texttt{NativeProductModel}, with its original scheme structure, is integral.
+No algebraic closure, perfection, characteristic, geometric integrality or
+caller-supplied integrality assertion is assumed.
+\end{theorem}
+\begin{proof}
+Let $J$ be the ORIGINAL homogeneous prime of $X$, and choose the ORIGINAL
+relevant degree-one coordinate $x_j\notin J$. Take the ACTUAL homogeneous
+coefficient extension $J'$ over $k[T]$. Its underlying ideal is prime by
+the preceding theorem, and its original image coordinate $q(x_j)$ remains
+outside $J'$ by the entire coefficient-ideal criterion. This original
+coordinate is still homogeneous of degree one for the ACTUAL original
+polynomial projective grading over $k[T]$.
+Apply the already constructed general homogeneous-prime quotient theorem
+to conclude that the literal kernel closed subscheme for $J'$ inside the
+original polynomial projective scheme is integral. This reuses the genuine
+graded-domain integral-Proj owner; no generic Proj proof is reproduced.
+
+The EXISTING exact theorem \texttt{nativeProductCutIdeal\_eq} identifies
+the ORIGINAL product cutting ideal with the actual pullback of that kernel
+ideal along the inverse of the EXISTING ambient polynomial-line product
+scheme isomorphism. The genuine geometric ideal-comap closed-subscheme
+isomorphism followed by the corresponding pullback projection is an actual
+isomorphism onto the same original kernel subscheme. Transport integrality
+along that actual isomorphism. Its source is definitionally the EXISTING
+\texttt{NativeProductModel}; no change of homogeneous ideal, saturation,
+reduced support, variety, polynomial coordinate or structure map occurs.
+\end{proof}
+
+The existing native subvariety integrality is a separate reused owner.
+The author's existing whole Hironaka--DeJong blowup isomorphism, together
+with the actual integrality consumer proved separately, now transfers the
+existing DeJong global integrality theorem to the SAME original Hironaka
+blowup. Finite normalization, the normalized action and relative nefness
+remain separate obligations. This slice changes neither original blowup
+factory and does not claim LocalPositivity.

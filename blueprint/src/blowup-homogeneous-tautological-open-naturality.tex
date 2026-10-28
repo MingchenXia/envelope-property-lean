@@ -1,0 +1,91 @@
+\section{The same original lifted forms under canonical open pullback}
+
+Let $X,Z,W$ be schemes, $\mu:Z\to X$ and $u:W\to Z$ be actual morphisms,
+with $u$ an open immersion. For an $\mathcal O_X$-module $M$ and actual
+ideal-sheaf data $D$, write $L_\mu=\mu^*M$ and
+$K_\mu=(D.\operatorname{comap}\mu).\operatorname{toModules}$, using the
+native explicit tensor and the native ideal-module inclusion throughout.
+
+\begin{definition}[Canonical whole open target comparison]
+\label{def:resume-original-whole-open-target-comparison}
+\uses{sc0-scheme-tensor-ideal-pullback:original-open-ideal}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.openIdealTensorCompIso}
+\leanok
+There is a specified canonical whole isomorphism
+\[
+ E_{\mu,u,M,D}:u^*(L_\mu\otimes K_\mu)
+ \xrightarrow{\sim}(u\mu)^*M\otimes
+ (D.\operatorname{comap}(u\mu)).\operatorname{toModules}.
+\]
+Its construction takes only the original maps, module and ideal. No
+whole-line comparison, Cartier condition or ideal-matching premise is given.
+\end{definition}
+\begin{proof}
+The actual open ideal-tensor pullback comparison first identifies the source
+with $u^*L_\mu\otimes
+((D.\operatorname{comap}\mu).\operatorname{comap}u).\operatorname{toModules}$.
+Tensor the native module pullback-composition isomorphism with the ideal-module
+isomorphism induced by the actual ideal comap-composition equality. This
+constructs precisely the displayed target isomorphism. Both its constituent
+isomorphisms are internally fixed by the original data.
+\end{proof}
+
+\begin{theorem}[The entire inclusion square of the canonical comparison]
+\label{thm:resume-original-whole-open-target-inclusion}
+\uses{def:resume-original-whole-open-target-comparison,sc0-scheme-tensor-ideal-pullback:original-open-ideal}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.openIdealTensorCompIso_inclusion}
+\leanok
+Let $i_\mu:L_\mu\otimes K_\mu\to L_\mu$ and
+$i_{u\mu}:(u\mu)^*M\otimes K_{u\mu}\to(u\mu)^*M$ be the actual
+entire tensor-ideal inclusions. Then
+\[
+ E_{\mu,u,M,D}.\operatorname{hom}\,i_{u\mu}
+   =u^*(i_\mu)\,c_{u,\mu,M},
+\]
+where $c_{u,\mu,M}:u^*\mu^*M\simeq(u\mu)^*M$ is the native original
+pullback-composition isomorphism. This is equality of whole module morphisms.
+\end{theorem}
+\begin{proof}
+The first constituent satisfies the existing whole open tensor-ideal inclusion
+square. For the second constituent, transport the ideal equality to reduce to
+one ideal and its same inclusion $i$. For any line morphism $a$, naturality of
+the native tensor and right unitor gives
+$(a\otimes1)(1\otimes i)\rho=(1\otimes i)\rho a$.
+The actual monoidal-to-explicit tensor isomorphisms identify this with the
+required explicit tensor inclusion square. Compose these two proved squares.
+The ideal equality and the line isomorphism used in this proof are the actual
+comap and pullback-composition comparisons, rather than additional premises.
+\end{proof}
+
+\begin{theorem}[Canonical open naturality of the same original form lift]
+\label{thm:resume-original-lifted-form-open-naturality}
+\uses{thm:resume-original-whole-open-target-inclusion,thm:resume-pulled-original-form-ideal-tensor-section,thm:fc-line-section-factorization}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.liftedFormSection_openNaturality}
+\leanok
+Let $R$ be any commutative ring, $j:X\to\mathbf P_R^n$, $J$ the original
+homogeneous ideal, and $F\in J$ homogeneous of degree $d$. Set
+$M=j^*\mathcal O(d)$ and $D=j^{-1}\widetilde J$ with the fixed native pivot
+$0$. If $\beta_{F,\mu}$ denotes the specified original whole form lift, then
+\[
+ u^*(\beta_{F,\mu})\,E_{\mu,u,M,D}.\operatorname{hom}
+   =\beta_{F,u\mu}.
+\]
+Both sides are the same original homogeneous form lifted by the existing
+construction, on their whole native targets; no section-matching certificate
+or regularity premise is supplied.
+\end{theorem}
+\begin{proof}
+The original line $M$ is invertible by the native projective-twist theorem and
+actual pullback. Therefore tensoring the actual ideal inclusion into
+$\mathcal O_W$ with $(u\mu)^*M$ is monic. Postcompose the two claimed maps with
+this monomorphism. The preceding whole square takes the left side to the
+pullback of the included image of $\beta_{F,\mu}$, followed by the native line
+composition comparison. The existing original lift-inclusion theorem
+identifies this included image with the same original homogeneous section.
+Native section pullback preserves composition and satisfies its actual
+unit-compatible pullback-composition equality, so the result is that same
+section pulled along $u\mu$. The old lift-inclusion theorem identifies this
+with the included image of $\beta_{F,u\mu}$. Cancel the actual monomorphism.
+\end{proof}
+
+These three nodes prove the canonical whole open target comparison, its entire inclusion square, and naturality of the same original form lift. Actual fraction-chart bases of the old whole-blowup lift, the original Rees projective-map whole $\mathcal O(1)$ comparison and its normalized simultaneous-model pullback remain separate consumers.

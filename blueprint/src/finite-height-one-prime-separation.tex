@@ -1,0 +1,31 @@
+\section{Actual finite prime separation on one original normalized Rees chart}
+
+\begin{theorem}[An actual separator at a selected original prime]
+\label{thm:actual-finite-prime-separator}
+For an ACTUAL finite family of original ideals, a selected original prime
+not containing any of the other original ideals admits an ACTUAL original
+element outside itself and inside EVERY other original ideal.
+\lean{EnvelopeProperty.exists_finite_prime_separator,EnvelopeProperty.exists_finite_heightOne_prime_separator}
+\leanok
+\end{theorem}
+\begin{proof}
+For every other original ideal choose an ACTUAL original element in it
+and outside the selected prime, as supplied by noncontainment. Multiply
+these original elements. Their entire product remains outside the selected
+prime by primality, and belongs to EVERY other original ideal by its
+corresponding actual original factor. The empty product is one and has
+the same asserted properties.
+\end{proof}
+
+\begin{corollary}[Distinct actual height-one centres]
+\label{cor:actual-height-one-prime-separator}
+For ACTUAL distinct height-one prime centres on an original Noetherian
+chart, the noncontainment hypotheses are DERIVED, and the same ACTUAL
+separator exists.
+\end{corollary}
+\begin{proof}
+If one original height-one prime were contained in the selected one,
+finite-height prime strict monotonicity would force a strict height
+inequality. Both actual heights are one, so containment implies equality,
+contrary to distinctness. Apply the theorem.
+\end{proof}

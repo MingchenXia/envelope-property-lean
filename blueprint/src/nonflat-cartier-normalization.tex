@@ -1,0 +1,76 @@
+\subsection{Original Cartier ideals under nonflat normalization}
+\begin{lemma}[The original regular principal ideal tensor map]
+\label{lem:nonflat-cartier-principal-tensor}
+\lean{EnvelopeProperty.IdealTensorBaseChange.toIdealMap_injective_of_regularGenerator,EnvelopeProperty.IdealTensorBaseChange.equivOfRegularGenerator,EnvelopeProperty.IdealTensorBaseChange.equivOfRegularGenerator_tmul}
+\leanok
+\uses{lem:regular-generator-module-equiv,lem:ideal-tensor-base-change}
+Let $R,S$ be arbitrary commutative rings, with an arbitrary original
+$R$-algebra structure on $S$. Let $I\subset R$ be the original ideal,
+$I=(g)$, where $g$ is a nonzerodivisor in $R$ and its actual image
+$g_S$ is a nonzerodivisor in $S$. The existing canonical multiplication
+map $S\otimes_R I\longrightarrow IS$, $s\otimes x\mapsto s x$,
+is injective and hence a genuine $S$-linear isomorphism. No flatness,
+Noetherian, reducedness, finiteness or field hypothesis is imposed.
+\end{lemma}
+\begin{proof}
+Use the existing multiplication-by-$g$ isomorphism $R\simeq_R I$,
+base change it to $S$, and compose with $S\otimes_R R\simeq_S S$.
+The canonical tensor map in these coordinates is multiplication by the
+actual $g_S$. Indeed on every pure tensor $s\otimes r$ both composites
+have included value $s\,\operatorname{im}(r)\,g_S$; tensor induction proves
+whole-map equality. Multiplication by $g_S$ is injective by regularity,
+so the canonical map is injective. Its existing unconditional surjectivity
+onto the actual extended ideal gives the stated isomorphism. All rings,
+algebra actions, ideals and canonical maps are unchanged; nilpotents
+outside the regular equation are retained.
+\end{proof}
+
+\begin{lemma}[Dominant Cartier pullback without flatness]
+\label{lem:nonflat-dominant-cartier-comap}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.comap_of_dominant_integral}
+\leanok
+\uses{scheme:genuine-ideal-pullback-stalk}
+Let $f:X\to Y$ be an actual dominant morphism with $X$
+integral and $Y$ reduced. For every actual effective Cartier ideal
+$J$ on $Y$, its original geometric ideal comap $J\mathcal O_X$ is
+an actual effective Cartier ideal. No quasi-compactness, flatness, finite type,
+Noetherian, separation, projectivity or normality is assumed.
+\end{lemma}
+\begin{proof}
+Fix an original $x\in X$. Choose an affine Cartier equation $g$ for $J$
+on an original affine neighborhood $U$ of $f(x)$; $g$ is regular there.
+Choose an original affine neighborhood $V$ of $x$ inside $f^{-1}U$.
+Since $X$ is integral, its nonempty open $V$ is dense; thus $V\to X$
+and its composite $V\to Y$ are dominant. Factoring through the original
+open immersion $U\to Y$ shows that the actual affine restriction
+$f_{UV}:V\to U$ is dominant. Reducedness of $U$ implies scheme-theoretic
+dominance by the existing Mathlib theorem. The morphism $f_{UV}$ between
+affines is automatically quasi-compact, so its actual section map
+$\Gamma(U)\to\Gamma(V)$ is injective. The original $U$ is nonempty
+because it contains $f(x)$, so its regular equation is nonzero.
+Hence the actual $g_V$ is nonzero;
+it is regular in the original domain $\Gamma(V)$. The existing geometric
+ideal-comap formula gives $(J\mathcal O_X)(V)=(g_V)$. These original
+neighborhoods and equations prove the original effective Cartier definition.
+\end{proof}
+
+\begin{corollary}[The actual normalization retains original Cartier ideals]
+\label{lem:nonflat-normalization-cartier-comap}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.cartier_comap}
+\leanok
+\uses{lem:nonflat-dominant-cartier-comap,scheme:actual-integral-normalization-surjective}
+For any integral original scheme $Y$, let $n:Y^\nu\to Y$ be the EXISTING
+relative normalization in its original function field, with its EXISTING
+projection. Every original effective Cartier ideal $J$ has effective Cartier
+comap along this actual $n$. No finite normalization, finite type,
+Noetherian, excellent, field, quasi-compact or separation assumption on $Y$
+is imposed.
+\end{corollary}
+\begin{proof}
+The existing actual generic-field spectrum is integral, so Mathlib's
+relative normalization is integral. The original projection has already proved surjectivity for this exact normalization; thus it is dominant. The original target is reduced because
+it is integral. Apply the preceding genuine theorem to $n$.
+This proves Cartier preservation, not a normalized polarized-model,
+relative-nef approximation or the LocalPositivity theorem. The canonical
+nonflat module-sheaf comparison is a subsequent separate obligation.
+\end{proof}

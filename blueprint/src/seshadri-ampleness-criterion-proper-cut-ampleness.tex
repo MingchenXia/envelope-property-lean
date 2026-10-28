@@ -1,0 +1,85 @@
+\section{Native ampleness on the same proper Cartier cut from integral induction}
+
+This slice transports an intermediate lower-dimensional induction conclusion.
+It does not assume the desired ampleness of the cut. The final numerical
+Nakai induction must itself supply the intermediate conclusion below.
+All schemes and line pullbacks remain the original ones.
+
+\begin{lemma}[Every literal integral stratum of the original cut is ample]
+\label{lem:seshadri-original-proper-cut-strata-ample}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionProperCutAmpleness.sectionCut_strataAmple_of_properIntegralClosedAmple}
+\leanok
+\uses{thm:line-section-zero-ideal-cartier,thm:fc-curve-cartier-ideal-finite,thm:scheme-point-closure-integral,lem:tc-seven-canonical-power-transport}
+Let $p:X\to\operatorname{Spec}k$ be the original projective morphism over
+a field, with $X$ integral. Let $L,A$ be original invertible modules and
+$s:\mathcal O_X\to A$ an original nonzero section. Set $I=I(s)$ and
+$g:D=I.\mathrm{subscheme}\hookrightarrow X$ for its literal original zero cut.
+Assume the following intermediate integral induction conclusion: for every
+original integral scheme $Y$ and every actual closed immersion $j:Y\to X$
+which is not surjective, the same original $j^*L$ is natively ample over
+$\operatorname{Spec}k$ through $j\circ p$.
+
+For each original $\eta\in D$, put
+\[
+ J_\eta=\operatorname{vanishingIdeal}_D
+     \bigl(\overline{\{\eta\}}\bigr),\qquad
+ a_\eta:J_\eta.\mathrm{subscheme}\hookrightarrow D.
+\]
+Then the original $a_\eta^*(g^*L)$ is natively ample for the actual
+structure map $a_\eta\circ g\circ p$. There is no integrality or
+reducedness hypothesis on $D$ and no supplied line comparison.
+\end{lemma}
+\begin{proof}
+The actual nonzero original section makes $I$ a Cartier ideal by the
+existing theorem. The existing proper-support theorem therefore gives
+$I.\mathrm{support}\ne X$. The native range formula for $g$ identifies
+its range with this same support, so $g$ is not surjective.
+
+Fix an original point $\eta$ of $D$. The existing reduced point-closure
+producer proves that the literal $J_\eta.\mathrm{subscheme}$ is integral.
+Its native inclusion $a_\eta$ and $g$ are closed immersions, so their
+actual composite $j=a_\eta\circ g$ is a closed immersion into $X$.
+If $j$ were surjective, $g$ would be surjective, contrary to the preceding
+properness. Apply the intermediate integral induction conclusion to
+this actual composite. It gives native ampleness of $j^*L$, on the
+same original integral point closure and with its actual base triangle.
+
+The canonical composition comparison for module pullback gives the
+whole isomorphism
+\[
+ c_\eta:j^*L\simeq a_\eta^*(g^*L).
+\]
+Unpack the obtained native ample datum: a positive integer $r$, its
+actual closed projective embedding $q$, its same original base triangle,
+and its whole $\mathcal O(1)$ comparison with $(j^*L)^r$.
+Compose this comparison with the existing actual tensor-power
+isomorphism $c_\eta^{\otimes r}$. Invertibility of
+$a_\eta^*(g^*L)$ follows by the two actual pullbacks of the original
+invertibility of $L$. Associativity of the original scheme maps rewrites
+the base triangle to $a_\eta\circ(g\circ p)$. These constructed data
+are exactly native ampleness of the stated literal line. No desired
+ampleness or matching certificate has been inserted.
+\end{proof}
+
+\begin{theorem}[The same original line is ample on the whole original cut]
+\label{thm:seshadri-original-proper-cut-native-ampleness}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionProperCutAmpleness.isAmple_sectionCut_of_properIntegralClosedAmple}
+\leanok
+\uses{lem:seshadri-original-proper-cut-strata-ample,thm:seshadri-original-strata-native-ampleness}
+With exactly the preceding original data and intermediate integral
+induction conclusion, the same original $g^*L$ is natively ample on the
+whole original $D$ over $k$. In particular $D$ may be reducible and
+nonreduced. The intermediate conclusion is not advertised as an
+additional assumption of the final numerical Nakai theorem.
+\end{theorem}
+\begin{proof}
+The native cut inclusion is closed and $p$ is projective, so the actual
+composite $g\circ p$ is projective. The original $g^*L$ is invertible.
+The preceding lemma supplies genuine native ampleness on every literal
+reduced point closure of this same $D$, with exactly the pullbacks and
+structure maps required by the already proved general-ambient strata
+ampleness theorem. Apply that theorem to $g\circ p$ and the same
+$g^*L$. It internally assembles the original line's positive very ample
+power, giving the required native ample conclusion without replacing
+$D$ by its reduction or an integral component.
+\end{proof}

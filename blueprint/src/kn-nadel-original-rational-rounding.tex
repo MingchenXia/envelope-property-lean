@@ -1,0 +1,67 @@
+\section{The original rational exponent and its actual rounded ideal}
+
+\begin{lemma}
+\label{lem:kn-nadel-original-rational-residue}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.fractionalRootWeight,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.fractionalRootWeight_lt,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalFloorExponent,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalClearedExponent}
+\leanok
+Let $q\geq0$ be the original rational exponent, $t=\operatorname{num}(q)$
+and $m=\operatorname{den}(q)>0$. For an original multiplicity $b\geq0$,
+define $r(q,b)=(tb)\bmod m$. Then $r(q,b)<m$ and
+$\lfloor qb\rfloor=(tb)/m$. For every $m\mid d$,
+\[
+ \lfloor qb\rfloor d+r(q,b)(d/m)=b\,t(d/m).
+\]
+\end{lemma}
+\begin{proof}
+Nonnegativity of $q$ makes its integer numerator a nonnegative integer.
+Thus $qb=(tb)/m$, whose natural floor is the natural quotient $(tb)/m$.
+The remainder is less than the positive $m$. Multiply
+$(tb)\bmod m+m((tb)/m)=tb$ by $d/m$ and use $m(d/m)=d$.
+Commutativity of multiplication gives the displayed equality.
+\end{proof}
+
+\begin{lemma}
+\label{lem:kn-nadel-original-rounded-cleared-ideal}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalRoundedIdeal_clearedPower}
+\leanok
+\uses{lem:kn-nadel-original-rational-residue}
+Let the original SNC ideal have its actual presentation
+$J=\prod_iI_{D_i}^{b_i}$ on the original smooth scheme. For $q\geq0$,
+put $m_i=m$, $r_i=r(q,b_i)$ and let $R$ be the entire intrinsic ideal
+$\mathcal O(-\lfloor qD\rfloor)$ of this original $J$.
+For every $m\mid d$, the equality of whole ideal sheaves is
+\[
+ R^d K_d(r)=J^{t(d/m)}.
+\]
+\end{lemma}
+\begin{proof}
+The original presentation-independent rounded-ideal theorem identifies
+$R$ with $\prod_iI_{D_i}^{\lfloor qb_i\rfloor}$. The definition of
+$K_d(r)$ is $\prod_iI_{D_i}^{r_i(d/m)}$. Distribute powers over the
+finite product and combine the two factors for each same original
+component. The preceding equality of exponents changes their exponent
+to $b_i t(d/m)$. These are exactly the factors of $J^{t(d/m)}$.
+All equalities concern the original entire ideal sheaves.
+\end{proof}
+
+\begin{lemma}
+\label{lem:kn-nadel-original-rounded-cleared-line}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalClearedRoundedLineIso}
+\leanok
+\uses{lem:kn-nadel-original-rounded-cleared-ideal}
+For any original module $M$, set $C=M\otimes R$. There is an actual
+whole module isomorphism
+\[
+ C^{\otimes d}\otimes K_d(r)\simeq
+ M^{\otimes d}\otimes J^{t(d/m)}.
+\]
+\end{lemma}
+\begin{proof}
+The intrinsic rounded ideal $R$ is effective Cartier on the original
+smooth scheme. Split the tensor power of $C$ and identify the tensor
+power of $R$ with its actual ideal power. Associativity changes the
+result into $M^{\otimes d}\otimes(R^d\otimes K_d(r))$.
+Cartier ideal tensor multiplication identifies the second factor with
+the entire ideal product $R^dK_d(r)$; apply the preceding whole ideal
+equality. This constructs the displayed whole module isomorphism.
+\end{proof}

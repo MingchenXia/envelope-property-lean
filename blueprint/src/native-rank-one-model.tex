@@ -1,0 +1,35 @@
+\section{The actual projective scheme of an original rank-one model}
+
+\begin{definition}[The original rank-one multicone defines its native scheme]
+\label{def:fc-native-rank-one-model}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOneScheme, EnvelopeProperty.MultiModel.nativeRankOneCoefficients, EnvelopeProperty.MultiModel.nativeRankOneStructure, EnvelopeProperty.MultiModel.nativeRankOneChartRing, EnvelopeProperty.MultiModel.nativeRankOneCoordinateOpen}
+\uses{lem:fc-native-model-total-grading}
+For an original rank-one model, take the actual Proj of the original
+algebra with its native total grading. The original coefficient map lands
+in degree zero, hence gives its actual structure morphism to the original
+coefficient field. The original coordinate elements define their actual
+standard basic opens and actual degree-zero homogeneous localization rings.
+\end{definition}
+
+\begin{lemma}[Actual original rank-one projective charts and integrality]
+\label{lem:fc-native-rank-one-model-charts}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOneCoordinate_mem, EnvelopeProperty.MultiModel.nativeRankOneHomogeneousChartIso, EnvelopeProperty.MultiModel.nativeRankOneCoordinateOpen_isAffine, EnvelopeProperty.MultiModel.nativeRankOneCoordinate_ne_zero, EnvelopeProperty.MultiModel.nativeRankOne_irrelevant_ne_bot, EnvelopeProperty.MultiModel.nativeRankOneScheme_isIntegral}
+\uses{def:fc-native-rank-one-model}
+Each original coordinate is homogeneous of degree one. Its actual basic
+open is the spectrum of the native degree-zero localization, without a
+chart-isomorphism assumption. The actual rank-one Proj is integral.
+\end{lemma}
+\begin{proof}
+The original coordinate is exactly its original coefficient times the
+single-variable monomial of degree one. The native Proj construction
+therefore gives its whole standard affine scheme isomorphism. At least
+one original coordinate coefficient is nonzero by the original model
+axiom. Its corresponding actual nonzero degree-one element belongs to
+the irrelevant ideal, so that ideal is nonzero. The original algebra is
+a subalgebra of a polynomial ring over the original field and hence a
+domain. The actual zero homogeneous prime gives an irreducible Proj,
+while its native stalk embeddings into localizations of that same domain
+give reducedness. Thus the whole actual native scheme is integral.
+\end{proof}

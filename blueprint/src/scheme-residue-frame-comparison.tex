@@ -1,0 +1,82 @@
+\section{One genuine unit comparing entire original residue frames}
+
+\begin{definition}\label{def:fc-original-frame-transition-unit}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.transitionUnit}
+\leanok
+\uses{lem:actual-unit-module-automorphism-scalar}
+Let $A$ be any commutative ring and let $P$ be an original module
+on $\operatorname{Spec}A$ with two actual entire frames
+$e_0,e_1:P\simeq\mathcal O$. The entire original automorphism
+$e_1e_0^{-1}$ of the structure module is multiplication by a genuine
+global unit. Transport this unit through the actual global-section
+isomorphism of $\operatorname{Spec}A$ to obtain a genuine unit
+$u(e_0,e_1)\in A^\times$. This choice depends only on the two entire
+original frames and precedes all choices of sections and valuations.
+\end{definition}
+\begin{proof}
+The composite of the inverse of $e_0$ with $e_1$ is an actual
+structure-module isomorphism. The whole structure-module
+classification theorem therefore supplies a global unit whose
+actual scalar automorphism equals this entire composite. The
+genuine global-section ring isomorphism maps a unit to a unit,
+giving the stated original unit in $A$.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-original-frame-transition-coefficient}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.transitionUnit_coefficient}
+\leanok
+\uses{def:fc-original-frame-transition-unit}
+For every original whole section $s$ of $P$, its actual coefficients
+in the two original frames satisfy $c_1(s)=u(e_0,e_1)c_0(s)$ in $A$.
+The same unit works for every original section, including zero.
+\end{lemma}
+\begin{proof}
+Compose the entire scalar-automorphism identity with $e_0$.
+The adjacent frame and inverse cancel, leaving $e_1$ equal to
+$e_0$ followed by multiplication by the chosen original global
+unit. Apply this equality on the original top open to $s$.
+The true scalar endomorphism multiplies the original coefficient
+by that global unit. Applying the genuine global-section ring
+isomorphism preserves multiplication and carries the global unit
+to $u(e_0,e_1)$, which proves the exact coefficient identity.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-original-frame-transition-positive-value}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.transitionUnit_value_pos,EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.transitionUnit_coefficient_value}
+\leanok
+\uses{lem:fc-original-frame-transition-coefficient}
+For every actual valuation $\nu:A\to\mathbb R_{\geq0}$, the number
+$\nu(u(e_0,e_1))$ is strictly positive, and for every original
+section one has
+$\nu(c_1(s))=\nu(u(e_0,e_1))\nu(c_0(s))$.
+\end{lemma}
+\begin{proof}
+The unit and its inverse multiply to one. Applying the valuation
+shows that their values multiply to one. Thus the value of the
+unit is nonzero, hence strictly positive in $\mathbb R_{\geq0}$.
+Apply the multiplicative valuation to the preceding coefficient
+identity to obtain the claimed formula for every section.
+\end{proof}
+
+\begin{corollary}\label{cor:fc-native-residue-frame-transition}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.residueFrameCoefficient_change,EnvelopeProperty.Berkovich.SchemeResidueFrameComparison.residueFrameCoefficient_value_change}
+\leanok
+\uses{lem:fc-original-frame-transition-coefficient,lem:fc-original-frame-transition-positive-value,thm:fc-native-framed-section-residue-transport}
+For any actual native valued point $y$ on any original scheme $Y$,
+any original module $N$, and any two actual entire frames of its
+same original residue fibre, the coefficients of every original
+whole section of $N$ differ by this one genuine unit of
+$\kappa_Y(y)$. Their actual native valuation values therefore
+differ by the one strictly positive value of this unit. No
+properness, bounded base, frame-preservation identity, supplied
+comparison unit, or norm certificate is required.
+\end{corollary}
+\begin{proof}
+Pull the original whole section through the actual native unit to
+the same original residue fibre. The original residue coefficient
+is precisely the frame coefficient of this actual pulled section.
+Apply the coefficient identity above on the genuine spectrum of
+$\kappa_Y(y)$ and then apply the actual native residue valuation.
+The positivity statement for the same unit applies to this native
+valuation, giving the asserted strictly positive common factor.
+\end{proof}

@@ -1,0 +1,106 @@
+\section{Finite pullback of the original ample line over an arbitrary base ring}
+
+\begin{lemma}[Very ampleness across a closed coefficient immersion]
+\label{lem:kn-relative-very-ample-closed-base}
+\lean{EnvelopeProperty.Vanishing.RelativeFiniteAmpleClosedBase.isVeryAmple_comp_of_surjective}
+\leanok
+\uses{lem:kn-projective-embedding-scalar-extension}
+Let $\varphi:R\twoheadrightarrow A$ be a surjective homomorphism of
+commutative rings, $q:Z\to\operatorname{Spec}A$ a morphism, and $M$ a
+line bundle on $Z$. If $M$ is very ample for $q$, then it is very ample
+for $\operatorname{Spec}\varphi\circ q$, with the same line bundle.
+\end{lemma}
+\begin{proof}
+Choose a closed immersion $j:Z\hookrightarrow\mathbf P^n_A$ over $A$
+and an isomorphism $j^*\mathcal O_{\mathbf P^n_A}(1)\simeq M$.
+The native coefficient map $c:\mathbf P^n_A\to\mathbf P^n_R$ is the
+base change of $\operatorname{Spec}\varphi$. The latter is a closed
+immersion because $\varphi$ is surjective, so $c$ and $jc$ are closed
+immersions. Their structure triangle is the original composite
+$Z\to\operatorname{Spec}A\to\operatorname{Spec}R$.
+The coordinate hyperplane ideal commutes with every coefficient-ring
+change. Its dual therefore gives
+$c^*\mathcal O_{\mathbf P^n_R}(1)\simeq\mathcal O_{\mathbf P^n_A}(1)$.
+Pullback composition and the chosen comparison identify
+$(jc)^*\mathcal O_{\mathbf P^n_R}(1)$ with the same $M$, as required.
+\end{proof}
+
+\begin{corollary}[Ampleness across a closed coefficient immersion]
+\label{cor:kn-relative-ample-closed-base}
+\lean{EnvelopeProperty.Vanishing.RelativeFiniteAmpleClosedBase.isAmple_comp_of_surjective}
+\leanok
+\uses{lem:kn-relative-very-ample-closed-base}
+Under the same hypotheses, an ample line for $q$ is ample for the
+composite with $\operatorname{Spec}\varphi$.
+\end{corollary}
+\begin{proof}
+The line stays invertible. Choose a positive tensor power which is
+very ample for $q$, and apply the preceding lemma to that same power.
+This proves the positive-power criterion over $R$ without changing
+the line or the exponent.
+\end{proof}
+
+\begin{lemma}[The literal coefficient-image factorization]
+\label{lem:kn-relative-coefficient-image-factor}
+\lean{EnvelopeProperty.Vanishing.RelativeFiniteAmplePullback.coefficientImageStructure_comp}
+\leanok
+Let $p:X\to\operatorname{Spec}R$ be a morphism and let
+$A$ be the image of the induced homomorphism
+$R\to\Gamma(X,\mathcal O_X)$. The canonical map
+$X\to\operatorname{Spec}\Gamma(X,\mathcal O_X)$ followed by
+$\operatorname{Spec}\Gamma(X,\mathcal O_X)\to\operatorname{Spec}A$
+defines a morphism $p_A:X\to\operatorname{Spec}A$ satisfying
+$\operatorname{Spec}(R\twoheadrightarrow A)\circ p_A=p$.
+\end{lemma}
+\begin{proof}
+The inclusion $A\hookrightarrow\Gamma(X,\mathcal O_X)$ composed with
+the surjection $R\twoheadrightarrow A$ is exactly the original
+coefficient homomorphism. Contravariant functoriality of the spectrum
+and naturality of the canonical global-section morphism therefore give
+the asserted equality with $p$.
+\end{proof}
+
+\begin{lemma}[The same ample line over the coefficient image]
+\label{lem:kn-relative-ample-coefficient-image}
+\lean{EnvelopeProperty.Vanishing.RelativeFiniteAmplePullback.isAmple_over_coefficientImage}
+\leanok
+\uses{lem:kn-relative-coefficient-image-factor,thm:kn-ample-scalar-extension}
+If $L$ is ample for $p$, the same line $L$ is ample for $p_A$.
+\end{lemma}
+\begin{proof}
+The square whose top map is the identity of $X$, whose vertical maps
+are $p_A$ and $p$, and whose bottom map is
+$\operatorname{Spec}(R\twoheadrightarrow A)$ is Cartesian. Indeed,
+the bottom map is a monomorphism, and the literal factorization in the
+preceding lemma makes this the pullback square of a morphism which
+already factors through that monomorphism. Scalar base change preserves
+very ampleness, the same positive tensor power, and the actual
+invertible line. Its resulting line on $X$ is the pullback along the
+identity and hence canonically the original $L$.
+\end{proof}
+
+\begin{theorem}[Finite pullback over the original arbitrary coefficient ring]
+\label{thm:kn-relative-finite-ample-original-base}
+\lean{EnvelopeProperty.Vanishing.RelativeFiniteAmplePullback.isAmple_pullback}
+\leanok
+\uses{lem:kn-relative-ample-coefficient-image,cor:kn-relative-ample-closed-base,prop:kn-nadel-whole-finite-ample-pullback}
+Let $R$ be any commutative ring, $X$ an integral scheme,
+$p:X\to\operatorname{Spec}R$, and $L$ an ample line for $p$.
+For every finite morphism $\pi:Y\to X$, the actual line $\pi^*L$
+is ample for the original composite $\pi p$. The scheme $Y$ may
+be disconnected or nonintegral.
+\end{theorem}
+\begin{proof}
+Form the coefficient image $A$ and the literal factorization $p_A$
+above. Since $X$ is integral, its global-section ring is a domain,
+and its subring $A$ is a domain. The same original $L$ is ample for $p_A$. Finite
+pullback ampleness over a domain, applied to $\pi$ and $p_A$, gives
+ampleness of $\pi^*L$ on the entire original $Y$ over $A$.
+Compose its very ample positive-power embedding with the closed
+coefficient immersion $\mathbf P^n_A\hookrightarrow\mathbf P^n_R$.
+The closed-base ampleness corollary retains the same original
+$\pi^*L$ and the same positive exponent, and the factorization equality
+identifies the resulting structure map with $\pi p$. This proves
+ampleness over the original $R$ with no hypothesis on the components
+of $Y$.
+\end{proof}

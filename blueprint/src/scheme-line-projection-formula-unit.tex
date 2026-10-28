@@ -1,0 +1,146 @@
+\section{Unit normalization of the original line projection formula}
+
+Let $F:\mathcal C\to\mathcal D$ be a braided strong monoidal functor
+with right adjoint $G$, unit $\eta$, and tensorator
+$\mu_{X,Y}:F(X)\otimes F(Y)\simeq F(X\otimes Y)$.
+Let $L\otimes Q\simeq\mathbb1$ be an actual inverse tensor pair.
+The projection formula below is the original isomorphism obtained by
+conjugating the comparison for tensoring by $Q$ across the two original
+tensor equivalences and the original adjunction.
+
+\begin{lemma}[Transport of the inverse-pair unit]
+\label{lem:line-pf-inverse-pair-unit-transport}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.map_inversePairUnit}
+\leanok
+For an actual evaluation $b:Q\otimes L\simeq\mathbb1$, put
+\[
+ u_{X,b}:X\xrightarrow{\rho^{-1}}X\otimes\mathbb1
+ \xrightarrow{\mathrm{id}\otimes b^{-1}}X\otimes(Q\otimes L)
+ \xrightarrow{\alpha^{-1}}(X\otimes Q)\otimes L.
+\]
+Let $b_F$ be the original transported evaluation
+$\mu_{Q,L}F(b)\epsilon^{-1}$.
+Then $F(u_{X,b})$ followed by the inverse tensorator on its final
+two factors equals $u_{F(X),b_F}$ followed by
+$\mu_{X,Q}\otimes\mathrm{id}_{F(L)}$.
+\end{lemma}
+\begin{proof}
+Postcompose both sides by the tensorator on $F(X\otimes Q)$ and
+$F(L)$, which is invertible.  The monoidal associativity law rewrites
+the two consecutive tensorators.  The inverse transported evaluation
+followed by $\mu_{Q,L}$ is $\epsilon F(b^{-1})$.
+Naturality of the tensorator moves $F(b^{-1})$ to the original side,
+and the right-unit compatibility identifies the initial composite
+with $F(\rho^{-1})$.  Functoriality now gives exactly $F(u_{X,b})$.
+\end{proof}
+
+\begin{lemma}[The original inverse-tensor mate]
+\label{lem:line-pf-original-inverse-tensor-mate}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.tensorDual_mate}
+\uses{lem:line-pf-inverse-pair-unit-transport}
+\leanok
+Let $E$ and $E_F$ be the original right-tensor equivalences for
+$(L,Q)$ and $(F(L),F(Q))$, with their original evaluations.
+The mate, across $E^{-1}$ and $E_F^{-1}$, of the original comparison
+for tensoring by $Q$ is the inverse comparison for tensoring by $L$.
+\end{lemma}
+\begin{proof}
+The unit of each inverse equivalence is the inverse of its original
+supplied counit.  Thus it is exactly the inverse-pair unit above with
+the evaluation reversed using the braiding.  Braidedness of $F$
+identifies its transport with the target reversed evaluation.
+The unit characterization of mates and the preceding transport
+identity give the claimed equality at every object $X\otimes Q$;
+cancel the invertible image of the original unit to obtain it.
+For an arbitrary object $A$, use the counit isomorphism
+$(A\otimes L)\otimes Q\simeq A$ of the inverse equivalence and
+naturality of both comparisons.  No adjusted unit is expanded or
+replaced.
+\end{proof}
+
+\begin{lemma}[The original line projection formula preserves the unit]
+\label{lem:line-pf-original-unit-normalization}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.projectionFormulaOfTensorInverse_unit}
+\uses{lem:line-pf-original-inverse-tensor-mate}
+\leanok
+Writing $P$ for the original conjugate projection isomorphism, the
+composite
+\[
+ L\simeq\mathbb1\otimes L
+ \longrightarrow G(\mathbb1)\otimes L
+ \xrightarrow{P_{\mathbb1}}G(\mathbb1\otimes F(L))
+ \simeq G(F(L))
+\]
+is the actual adjunction unit $\eta_L$; its first arrow is
+$\eta_{\mathbb1}$ followed by the original inverse unit comparison
+of $F$ on the $G(\mathbb1)$ factor.
+\end{lemma}
+\begin{proof}
+Braidedness identifies the transported reversed evaluation with the
+reversed transported evaluation.  The preceding inverse-pair-unit
+identity therefore shows that the mate of the original comparison for
+tensoring by $Q$ is the inverse tensorator for $L$.
+The iterated-mates identity identifies its second mate with the
+original $P$.  The unit identity for mates gives
+$(\eta_A\otimes\mathrm{id}_L)P_{F(A)}
+=\eta_{A\otimes L}G(\mu_{A,L}^{-1})$.
+Take $A=\mathbb1$, use naturality of the original $P$ and the original
+unit comparison, and apply the left-unit compatibility of the inverse
+tensorator.  Naturality of $\eta$ with the left unitor then gives
+precisely $\eta_L$.
+\end{proof}
+
+\begin{lemma}[Transport to actual unit representatives]
+\label{lem:line-pf-actual-unit-representatives}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.projectionFormulaOfTensorInverse_actual_unit}
+\uses{lem:line-pf-original-unit-normalization}
+\leanok
+Let $a:\mathbb1_{\mathcal C}\simeq U$ and
+$b:\mathbb1_{\mathcal D}\simeq V$ be actual unit representatives,
+and let $t:F(U)\simeq V$ be compatible with the original unit comparison:
+$\epsilon^{-1}b=F(a)t$.
+The same projection formula, with the actual unit map
+$U\xrightarrow{\eta_U}G(F(U))\xrightarrow{G(t)}G(V)$ and the left
+unitors transported by $a$ and $b$, still gives exactly $\eta_L$.
+\end{lemma}
+\begin{proof}
+Naturality of $\eta$ at $a$ and the given unit-comparison identity
+identify $a\eta_U G(t)$ with the categorical unit map followed by
+$G(b)$.  Naturality of the original projection formula at $b$
+moves this final $G(b)$ to the output.  It cancels the inverse $b$
+in the actual target left unitor.  The remaining composite is exactly
+the preceding original unit-normalization identity.
+\end{proof}
+
+\begin{lemma}[The native structure-sheaf unit]
+\label{lem:line-pf-native-adjunction-unit}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.lineProjectionFormulaObj_adjunction_unit}
+\uses{lem:line-pf-actual-unit-representatives}
+\leanok
+For every original scheme morphism $g:Y\to X$ and actual invertible
+$\mathcal O_X$-module $L$, the composite
+\[
+ L\simeq\mathcal O_X\otimes L
+ \longrightarrow g_*\mathcal O_Y\otimes L
+ \xrightarrow{P_{\mathcal O_Y}}g_*(\mathcal O_Y\otimes g^*L)
+ \simeq g_*g^*L
+\]
+formed using the original structural map and original projection
+formula is the native pullback--pushforward adjunction unit.
+\end{lemma}
+\begin{proof}
+The actual pullback, with its original monoidal comparison, preserves
+the braiding.  Apply the preceding result with the actual comparison
+from the localized monoidal unit to the structure-module sheaf.
+The already proved compatibility of the monoidal pullback unit with
+the structure-sheaf pullback isomorphism supplies its unit hypothesis.
+Finally, the native adjunction sends that structure-sheaf pullback
+isomorphism to the actual structural map; this is the existing
+structure-sheaf hom-equivalence identity.  This proves the formula
+for the same original morphism, line, structural map, and projection
+isomorphism, without a normalization hypothesis.
+\end{proof}
+
+The braided hypothesis concerns the given monoidal structure on $F$.
+It cannot be omitted: a strong monoidal functor between braided
+categories need not preserve their braidings.

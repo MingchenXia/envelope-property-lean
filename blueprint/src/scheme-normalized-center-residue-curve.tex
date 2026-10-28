@@ -1,0 +1,17 @@
+\section{The actual residual curve of the unchanged normalized center}
+\begin{theorem}\label{thm:normalized-center-original-residue-field}
+For the original normalized coefficient slice and original center $c$, its native residue field is the unchanged original $\kappa(V)$ as an algebra over the actual coefficient field $E$. The equivalence is induced by the original canonical center-stalk map and carries every original residue class to its original residue value in $V$.
+\uses{thm:normalized-slice-original-center-ring}
+\lean{EnvelopeProperty.SchemeNormalizedCenterResidueCurve.residueAlgEquiv,EnvelopeProperty.SchemeNormalizedCenterResidueCurve.residueAlgEquiv_residue}\leanok
+\end{theorem}
+\begin{proof}
+The actual canonical center-stalk map is a bijective local map and preserves every original coefficient. Regard it as an $E$-algebra isomorphism with the native stalk coefficient action and the actual coefficient inclusion into $V$. Taking residue quotients gives the asserted $E$-algebra isomorphism. Its quotient formula is precisely the residue of that same canonical stalk map, so the equivalence retains every original residue value rather than merely identifying abstract fields.
+\end{proof}
+\begin{theorem}\label{thm:normalized-center-actual-residual-curve}
+Let $C$ be the actual native scheme-image closure of the same center $c$ in the normalized coefficient slice. Its actual native function field is the unchanged original $\kappa(V)$ as an $E$-algebra. If the original parameter belongs to the maximal ideal of $V$, then $C$ is proper over $E$. Its whole dimension is one.
+\uses{thm:normalized-center-original-residue-field}
+\lean{EnvelopeProperty.SchemeNormalizedCenterResidueCurve.functionFieldAlgEquiv,EnvelopeProperty.SchemeNormalizedCenterResidueCurve.closure_isProper,EnvelopeProperty.SchemeNormalizedCenterResidueCurve.closure_dimension_eq_one}\leanok
+\end{theorem}
+\begin{proof}
+The actual point closure is integral, and its native function field is canonically the native residue field of its original generic point $c$. Compose that canonical coefficient-preserving isomorphism with the preceding original residue-field isomorphism. The whole original polynomial-to-trait triangle and membership of the parameter in the maximal ideal imply that this actual point closure factors through the zero fibre of the proper morphism to $E[t]$. Closed immersion into that proper fibre proves properness over $E$. The original relative-basis residue formula gives $\operatorname{trdeg}_E\kappa(V)=1$ from the original center degree one. The actual finite-type dimension theorem therefore gives whole dimension one for $C$. No normality or smoothness of this residual curve, and no reducedness of the entire special fibre, is asserted.
+\end{proof}

@@ -1,0 +1,53 @@
+\section{A genuine cover by SNC Jacobian neighborhoods}
+
+\begin{definition}[Actual adapted monomial Jacobian neighborhood]\label{def:sc0-snc-jacobian-neighbourhood}
+\lean{EnvelopeProperty.Char0.SNCJacobianNeighbourhood}
+\leanok
+\uses{thm:sc0-native-snc-jacobian-neighbourhood}
+For an actual resolution $\pi:Y\to\operatorname{Spec}R$ and a fixed SNC family
+$F$, an adapted monomial Jacobian neighborhood of $x$ consists of an actual
+affine \'etale coordinate chart $U$ at $x$, an injective choice of its boundary
+coordinates cutting out precisely the components through $x$, the absence of
+all other components on $U$, a monomial formula for the total transform on $U$,
+and a principal open $W=D_U(s)$ containing $x$. On the actual localization at
+$s$, the genuine original-base Jacobian image ideal is the principal ideal of
+a monomial in those same boundary coordinates. The formula is required for
+every actual realization of that principal localization.
+\end{definition}
+
+\begin{lemma}[Such neighborhoods exist at every closed point]\label{lem:sc0-snc-jacobian-at-closed}
+\lean{EnvelopeProperty.Char0.exists_snc_jacobian_neighbourhood_at_closed}
+\leanok
+\uses{def:sc0-snc-jacobian-neighbourhood,lem:sc0-snc-affine-factor-neighbourhood,thm:sc0-native-snc-jacobian-neighbourhood}
+Suppose $Y$ is smooth of relative dimension $n$ over a perfect field $k$,
+$R$ has a specified actual \'etale $n$-coordinate map over $k$, $\pi$ is
+isomorphic off the support of $J$, and $J\mathcal O_Y$ is a product of powers
+of the components of $F$. Every closed point of $Y$ has an actual adapted
+monomial Jacobian neighborhood.
+\end{lemma}
+\begin{proof}
+Apply the actual adapted monomial chart producer to the factor
+$J\mathcal O_Y$ of its SNC product (with complementary factor the unit ideal).
+Apply the principal Jacobian neighborhood theorem to that actual chart and
+the specified source coordinates. Its principal open contains the original
+closed point; all adapted chart data are retained. The source-coordinate
+hypothesis is the actual local source-chart interface, which in particular
+holds for the polynomial affine source. This statement does not assert global
+coordinates on an arbitrary smooth affine source.
+\end{proof}
+
+\begin{lemma}[Finitely many actual neighborhoods cover the whole scheme]\label{lem:sc0-finite-snc-jacobian-cover}
+\lean{EnvelopeProperty.Char0.exists_finite_snc_jacobian_neighbourhood_cover}
+\leanok
+\uses{lem:sc0-snc-jacobian-at-closed}
+If $Y$ is additionally quasi-compact, finitely many of these actual principal
+neighborhoods cover all of $Y$.
+\end{lemma}
+\begin{proof}
+Choose a neighborhood separately at every closed point, before taking any
+finite subcover. The smooth finite-type $k$-scheme $Y$ is Jacobson. Every
+point specializes to a closed point, so it belongs to that closed point's
+chosen open neighborhood. Thus these actual shrunk opens cover $Y$, and
+quasi-compactness selects finitely many of them. This uses the cover by the
+shrunk neighborhoods themselves, not a prior finite cover of larger charts.
+\end{proof}

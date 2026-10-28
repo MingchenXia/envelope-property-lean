@@ -1,0 +1,67 @@
+\section{Actual local line coefficients and intrinsic curve degree}
+
+\begin{definition}[The coefficient in an actual original affine frame]
+\label{def:fc-original-line-section-frame-coefficient}
+\leanok
+\lean{EnvelopeProperty.CurveLineSectionOrders.frameCoefficient, EnvelopeProperty.CurveLineSectionOrders.frameCoefficient_ne_zero}
+\uses{thm:fc-original-line-zero-ideal-module}
+For the original section $s:O_X\to L$ and an actual affine frame
+$e:L|_U\simeq O_U$, let $c_e(s)$ be the original section of $O_X(U)$
+given by applying $e$ to $s(1)$. If $X$ is integral and $s\ne0$, then
+$c_e(s)\ne0$ on every nonempty original affine framed open, and the
+actual original zero ideal on $U$ is exactly $(c_e(s))$.
+\end{definition}
+\begin{proof}
+The whole image defining the original zero ideal is the coefficient
+principal ideal in an actual frame. The nonzero original section
+internally makes that original zero ideal Cartier. Its original stalk
+ideal at any point of a nonempty framed open contains a nonzero
+Cartier equation. If the original coefficient were zero, the actual
+localization of its principal ideal would be zero, a contradiction.
+\end{proof}
+
+\begin{theorem}[The actual frame coefficient has the original local order]
+\label{thm:fc-original-line-section-frame-order}
+\leanok
+\lean{EnvelopeProperty.CurveLineSectionOrders.localOrder_eq_frameCoefficient_order, EnvelopeProperty.CurveLineSectionOrders.weightedLocalOrder_eq_frameCoefficient_order}
+\uses{def:fc-original-line-section-frame-coefficient, thm:fc-curve-cartier-weighted-degree}
+On an original integral locally Noetherian scheme, the native local
+order of the same original zero ideal at $x\in U$ is exactly
+$\operatorname{ord}_x(c_e(s))$ under the original generic germ. Its
+weight over the original field is this same integer times the degree
+of the actual original residue field.
+\end{theorem}
+\begin{proof}
+The preceding actual coefficient is a nonzero generator of the same
+original Cartier ideal on the actual affine open. The genuine
+local-equation order comparison identifies its native scheme order
+with the zero ideal's native order. Multiplication by the literal
+original residue-field degree gives the weighted formula.
+\end{proof}
+
+\begin{theorem}[True section orders and generated line degrees are nonnegative]
+\label{thm:fc-original-curve-generated-line-degree-nonnegative}
+\leanok
+\lean{EnvelopeProperty.CurveLineSectionOrders.localOrder_nonneg, EnvelopeProperty.CurveLineSectionOrders.degree_nonneg_of_nonzero_section, EnvelopeProperty.CurveLineSectionOrders.degree_nonneg_of_generatingSections, EnvelopeProperty.CurveLineSectionOrders.degree_pullback_nonneg_of_generatingSections}
+\uses{thm:fc-original-line-section-frame-order, thm:fc-original-curve-line-degree-zero-section}
+On an original integral locally Noetherian scheme every original
+Cartier ideal's native local order is nonnegative. Consequently on
+any original integral projective curve, the intrinsic degree of an
+original line with an actual nonzero section is nonnegative. In
+particular this holds for any actual globally generated line and,
+after any literal curve map, for the actual pullback of any original
+globally generated line. No normality, smoothness, prescribed degree,
+nefness, or section-order certificate is assumed.
+\end{theorem}
+\begin{proof}
+At an actual codimension-one point, the native order of a nonzero
+regular Cartier equation is the nonnegative length of the same
+principal quotient of the actual original stalk. At all other points
+its native scheme order is zero. The original residue-field degree is
+nonnegative. The genuine full Euler degree formula for the original
+nonzero section is therefore a finite-support sum of nonnegative
+weighted orders. An actual generating family contains a nonzero
+original section because an invertible line on the nonempty original
+scheme is nonzero. Original pullback preserves the actual generating
+family, so the same argument applies to any actual curve pullback.
+\end{proof}

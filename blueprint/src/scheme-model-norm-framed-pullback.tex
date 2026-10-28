@@ -1,0 +1,56 @@
+\section{True proper-model norms through arbitrary source schemes}
+
+\begin{theorem}\label{thm:proper-model-norm-framed-source}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_framedPullback}
+\leanok
+Let $Z\to\operatorname{Spec}R$ be proper and let $v$ be a valuation
+bounded by one on $R$. Let $g:Y\to Z$ be any scheme morphism and
+$y$ a valued point of $Y$ extending $v$ through the composite structure
+map. Write $z=g(y)$. For an invertible module $M$ on $Z$, an actual
+isomorphism $\alpha:g^*M\simeq N$, and any actual residue-fibre
+frame $e$ of $M$ at $z$, transport $e$ by the native residue-field
+map and $\alpha$ to the induced frame $e_N$ at $y$. Then every
+original whole section $s$ satisfies
+\[
+ \|s(z)\|_M=|e_N(\alpha(g^*s)(y))|\,\|e^{-1}(1)\|_M.
+\]
+The source $Y$ need not be proper and its coordinate valuation need
+not be bounded. The target point and every frame comparison are
+constructed from the actual native maps.
+\uses{prop:generated-line-generic-frame-norms,cor:fc-native-framed-section-valuation-transport}
+\end{theorem}
+\begin{proof}
+The native image of $y$ has the entire prescribed base valuation
+because the structure map on $Y$ is the actual composite. Scalar
+homogeneity in the genuine proper-model line at $z$ expresses the
+norm of $s(z)$ as its $e$-coefficient value times the norm of
+$e^{-1}(1)$. Native pullback composition, the actual residue-field
+square, the pullback-adjunction unit and the actual module
+isomorphism identify the induced-frame coefficient with the image
+of that original coefficient in $\kappa(y)$. The native image-point
+valuation is its pullback along this same field map. Substitution
+gives the formula, including zero sections. Properness is used only
+for the genuine target model norm.
+\end{proof}
+
+\begin{theorem}\label{thm:proper-model-norm-source-frame-existence}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_sourceResidueFrame_modelLineNorm}
+\leanok
+Under the preceding geometric assumptions there exists an actual
+residue-fibre frame of $N$ at $y$ whose coefficient valuation equals
+the true target model norm for every original whole section $s$
+simultaneously. No frame, norm comparison or section-matching
+certificate is an input.
+\uses{thm:proper-model-norm-framed-source}
+\end{theorem}
+\begin{proof}
+Properness produces the actual valuation-ring center of $z$.
+Invertibility trivializes the original module over that local
+valuation ring. Pull this actual whole frame to the native residue
+field of $z$. Its inverse-unit section has model norm one: in the
+chosen actual valuative frame its coefficient is one and the
+valuation of one is one. Transport this frame to $y$ by the actual
+residue-field pullback and $\alpha$. The preceding formula now has
+unit norm factor, giving the asserted equality for all original
+sections at once.
+\end{proof}

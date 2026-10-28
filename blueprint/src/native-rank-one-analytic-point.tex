@@ -1,0 +1,43 @@
+\section{The original rank-one analytic point and its true native projective residue}
+
+\begin{lemma}[Original multigradedness is actual native gradedness in rank one]
+\label{lem:fc-native-rank-one-analytic-support}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOne_proj_eq_homComp, EnvelopeProperty.MultiModel.nativeRankOneRelevantPoint, EnvelopeProperty.MultiModel.continuous_nativeRankOneRelevantPoint, EnvelopeProperty.MultiModel.nativeRankOneSupport, EnvelopeProperty.MultiModel.continuous_nativeRankOneSupport, EnvelopeProperty.MultiModel.nativeRankOneSupport_toIdeal, EnvelopeProperty.MultiModel.nativeRankOneSupport_mem_coordinateOpen}
+\uses{lem:fc-native-model-total-components, lem:fc-native-rank-one-homogeneous-polynomial}
+Every native homogeneous projection in rank one is the SAME original
+multihomogeneous component. Every original analytic point is therefore
+an actual relevant graded seminorm of the SAME original algebra. Its
+native projective support is its whole original prime valuation kernel,
+and every original coordinate nonvanishing condition is preserved.
+\end{lemma}
+\begin{proof}
+The original native projection is its true ambient homogeneous
+component. In one variable this is the original coefficient at the
+unique exponent of that degree, times the same monomial, which is the
+original multihomogeneous component. The original multigraded bound
+gives native gradedness. An original coordinate has value one by
+normalization, so the original kernel cannot contain the native
+irrelevant ideal. The support and coordinate-open assertions now hold
+by the actual definitions of relevant homogeneous support.
+\end{proof}
+
+\begin{theorem}[Original analytic points give actual native valued points with exact fraction values]
+\label{thm:fc-native-rank-one-analytic-point}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOnePoint, EnvelopeProperty.MultiModel.nativeRankOnePoint_point, EnvelopeProperty.MultiModel.nativeRankOnePoint_eval_mk}
+\uses{lem:fc-native-rank-one-analytic-support, thm:fc-graded-native-valued-point}
+Each original rank-one analytic point defines a true valued point of the
+SAME native projective scheme. Every actual homogeneous chart section
+with original numerator $p$ and denominator the $d$th power of an
+original coordinate has exactly the original value
+$|p|/|z_j|^d$.
+\end{theorem}
+\begin{proof}
+Apply the genuine projective stalk and residue-field valuation
+construction to the proved original relevant graded seminorm. Its
+actual section-fraction evaluation theorem gives the stated equality
+for the SAME original numerator and coordinate, including vanishing
+numerators. No unrelated residue-field identification or value
+certificate is supplied.
+\end{proof}

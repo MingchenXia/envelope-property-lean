@@ -1,0 +1,26 @@
+\begin{lemma}[Existing finite type of the actual original section algebra]
+\label{scheme:existing-hironaka-original-section-finite-type}
+\lean{AlgebraicGeometry.Scheme.Hom.finiteType_sectionsAlgebra}
+\leanok
+\uses{scheme:existing-hironaka-original-section-action}
+Let $R$ be ANY commutative ring, $X$ ANY original scheme, and let
+$f:X\to\operatorname{Spec}R$ be an actual locally finite type morphism.
+For every actual affine open $U\subset X$, the SAME original ring
+$\Gamma(X,U)$ is a finite type $R$-algebra for the already defined
+$f.\mathrm{sectionsAlgebra}(U)$. Its scalar map is the original map
+$R\xrightarrow{\Gamma\mathrm{SpecIso}^{-1}}
+\Gamma(\operatorname{Spec}R,\top)\xrightarrow{f.\mathrm{appLE}}\Gamma(X,U)$.
+There is no field, reducedness, integrality, smoothness, nonempty-open,
+Noetherian or quasi-compactness assumption.
+\end{lemma}
+\begin{proof}
+This is the existing Hironaka theorem for the existing named algebra
+structure. The actual morphism locally of finite type gives finite type
+of $f.\mathrm{appLE}(\top,U)$ between the original affine section rings.
+The inverse spectrum global-section ring map is surjective because it
+is an isomorphism, hence is finite type. Compose these two original
+finite type ring maps. This composite is exactly the original scalar
+map defining $f.\mathrm{sectionsAlgebra}(U)$, so it proves the stated
+finite type algebra property. This records the original proof and
+introduces no new Lean theorem or mathematical producer.
+\end{proof}

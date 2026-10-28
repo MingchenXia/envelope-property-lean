@@ -1,0 +1,61 @@
+\section{Exactness of the genuine original associated-sheaf functor}
+\label{sec:tilde-exactness}
+
+Let $R$ be ANY original commutative ring, including zero. The
+functor below is the SAME native associated-sheaf functor from
+original $R$-modules to module sheaves on the original
+$\operatorname{Spec}R$. No exactness, flatness, basis, finite
+presentation or comparison certificate is supplied.
+
+\begin{theorem}[Genuine native kernel preservation]
+\label{lem:cartier-tilde-original-kernels}
+\lean{EnvelopeProperty.TildeExactness.quasicoherent_closedUnderKernels,EnvelopeProperty.TildeExactness.preservesKernel}
+\leanok
+The original associated-sheaf functor preserves the actual native
+kernel of EVERY original module homomorphism.
+\end{theorem}
+\begin{proof}
+The already proved native localization theorem shows that the
+kernel of a map between actual quasicoherent sheaves is itself
+quasicoherent: on every original principal open it is exactly the
+localized original module kernel. Thus the actual full subcategory
+of original quasicoherent sheaves is closed under genuine native
+kernels. Its true inclusion creates, and hence preserves, those
+kernels. The actual native associated-sheaf equivalence identifies
+original modules with this SAME full subcategory. An equivalence
+preserves all genuine limits. Composing its actual kernel
+preservation with the actual kernel-preserving inclusion proves
+kernel preservation for the SAME original associated-sheaf
+functor. The whole composite is the original functor, not a
+replacement equivalence; zero arrows are retained by its actual
+native additivity. There is no kernel closure or localization
+hypothesis left to supply.
+\end{proof}
+
+\begin{theorem}[Actual finite-limit and native homology preservation]
+\label{thm:cartier-tilde-original-exact-homology}
+\lean{EnvelopeProperty.TildeExactness.preservesFiniteLimits,EnvelopeProperty.TildeExactness.preservesHomology,EnvelopeProperty.TildeExactness.associatedComplex,EnvelopeProperty.TildeExactness.homologyIso}
+\leanok
+The SAME original associated-sheaf functor preserves finite limits
+and native cohomology in every degree of EVERY original complex.
+\end{theorem}
+\begin{proof}
+The original functor is genuinely additive. The preceding actual
+kernel preservation therefore gives all genuine finite limits by
+the native preadditive finite-limit construction. The actual
+associated-sheaf/global-section adjunction makes the original
+functor a left adjoint, so it preserves colimits and in particular
+finite colimits. The genuine native theorem that a functor
+preserving finite limits and finite colimits preserves homology
+therefore applies. Its actual native homology comparison is an
+isomorphism, with its entire original kernel, boundary and quotient
+maps retained. No exactness or homology comparison certificate
+is assumed.
+\uses{lem:cartier-tilde-original-kernels}
+\end{proof}
+
+The immediate consumer is native cohomology of the SAME actual
+affine Frobenius exterior-sheaf complex. Global smooth-chart
+compatibility, whole sheaf Cartier descent, relative Frobenius
+identification, Deligne--Illusie splitting and vanishing remain
+further obligations.

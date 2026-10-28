@@ -1,0 +1,28 @@
+\section{Actual native values retain relations of original generic section germs}
+\label{sec:native-generic-section-value-relations}
+
+\begin{lemma}[Original generic product identities hold at every common native point]
+\label{lem:native-generic-section-value-relations}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_mul_of_genericGerm_mul}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-equiv,thm:sc0-scheme-sections-function-field-restriction}
+\source{bj22-trivval:sec:tc}
+On an original integral scheme, let $s$ be an actual original section
+on $U$ and let $t,u$ be actual original sections on $V$. If their literal
+generic germs in the same native function field satisfy $st=u$, then
+at every actual native valued point whose original support belongs
+to both opens, the actual original section values satisfy
+$|s|\,|t|=|u|$. The native point need not have generic support.
+\end{lemma}
+\begin{proof}
+Restrict all three original sections to the actual intersection open,
+which is nonempty because it contains the support of the given actual
+native point. Restriction preserves their literal original generic
+germs. Native generic germs on an integral scheme are injective, so
+the given original field identity proves equality of the actual whole
+restricted section product with the actual restricted $u$. Evaluate
+this whole original section equality at the native point. Native
+evaluation is multiplicative and native restriction does not change
+section values. These two actual identities give the conclusion for
+the original sections on their original opens.
+\end{proof}

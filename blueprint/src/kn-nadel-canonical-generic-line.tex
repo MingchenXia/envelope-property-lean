@@ -1,0 +1,46 @@
+\section{The original canonical line in its generic pushforward}
+
+\begin{definition}[The actual generic canonical-line inclusion]
+\label{def:kn-canonical-actual-generic-inclusion}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.genericCanonicalInclusion}
+\leanok
+Let $X$ be integral and smooth of dimension $n$ over its original field,
+write $\omega_X$ for its original canonical line, and put
+$\gamma:\operatorname{Spec}\mathcal O_{X,\eta}\to X$.
+Define $i_\omega:\omega_X\to\gamma_*\gamma^*\omega_X$ as the composite
+\[
+ \omega_X\simeq\mathcal O_X\otimes\omega_X
+ \longrightarrow(\gamma_*\mathcal O_\eta)\otimes\omega_X
+ \simeq\gamma_*(\mathcal O_\eta\otimes\gamma^*\omega_X)
+ \simeq\gamma_*\gamma^*\omega_X.
+\]
+The middle isomorphism is the genuine whole line projection formula.
+\uses{lem:kn-structure-trace-generic-unit-mono}
+\end{definition}
+\begin{proof}
+Use the actual unit constraints, the original generic structural unit,
+and the native line projection formula with the original invertible
+canonical line. No frame or generic-line comparison is chosen.
+\end{proof}
+
+\begin{lemma}[The actual original canonical inclusion is injective]
+\label{lem:kn-canonical-actual-generic-inclusion-mono}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.genericCanonicalInclusion_mono}
+\leanok
+The same entire original map $i_\omega$ is a monomorphism.
+\uses{def:kn-canonical-actual-generic-inclusion,lem:kn-structure-trace-generic-unit-mono}
+\end{lemma}
+\begin{proof}
+The original regular structure module embeds into the generic-field
+pushforward. Tensoring by the original invertible canonical line is
+an equivalence, hence preserves this monomorphism. All remaining maps
+in the displayed composite are actual isomorphisms, so the whole
+composite is a monomorphism.
+\end{proof}
+
+This constructs a genuine map between the original canonical line and
+its original generic pullback target. No assertion identifying its
+displayed spelling with the native adjunction unit is used. Nor does
+this construct a trace on the cover's canonical line: the ramified
+canonical differential must still be inverted generically and its
+regular trace extension proved.

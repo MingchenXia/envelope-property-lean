@@ -1,0 +1,40 @@
+\section{The actual original-source discrepancy bounds all leaf coordinate orders}
+
+\begin{lemma}[The leaf coordinate determinant satisfies the logarithmic bound]\label{lem:sc0-dvr-leaf-coordinate-logarithmic-bound}
+\lean{EnvelopeProperty.Char0.sum_addVal_leaf_le_one_add_dvrLeafDet}
+\leanok
+\uses{lem:sc0-dvr-logarithmic-determinant,thm:sc0-actual-dvr-logarithmic-jacobian,lem:sc0-actual-leaf-dvr-coordinate-index}
+For actual \'etale leaf coordinates $v$ in a literal leaf $E\subseteq V$
+and the actual DVR partials restricted to $E$,
+\[
+ \sum_i\operatorname{ord}_V(v_i)\le 1+
+ \operatorname{ord}_V\det(D_jv_i).
+\]
+\end{lemma}
+\begin{proof}
+Use the actual finite index equivalence to regard the actual images of $v$
+as a tuple indexed by the actual DVR coordinate set. Apply the proved
+actual DVR logarithmic determinant bound. Simultaneously reindexing the rows
+and columns does not change the determinant. Reindexing the finite sum does
+not change its value. These are exactly the determinant and sum displayed.
+\end{proof}
+
+\begin{theorem}[Actual original-source discrepancy gains the leaf monomial orders]\label{thm:sc0-dvr-original-source-leaf-logarithmic-bound}
+\lean{EnvelopeProperty.Char0.dvr_original_source_leaf_logarithmic_bound}
+\leanok
+\uses{lem:sc0-dvr-leaf-coordinate-logarithmic-bound,cor:sc0-dvr-leaf-source-jacobian-order,def:sc0-original-source-dvr-jacobian-ideal}
+If the actual genuine original-source leaf Jacobian ideal is $(v^a)$, its
+actual original-source DVR Jacobian ideal satisfies
+\[
+ \sum_i\operatorname{ord}_V(v_i)+\sum_l a_l\operatorname{ord}_V(v_{c(l)})
+ \le 1+\operatorname{ord}_V\operatorname{Jac}_V(C).
+\]
+\end{theorem}
+\begin{proof}
+The exact original-source DVR ideal order is the order of the actual
+coordinate derivative determinant plus the weighted order sum of its actual
+leaf Jacobian monomial. Apply the preceding lower bound to the determinant
+order plus one, add the weighted sum on both sides, and use associativity
+of addition. This remains valid for infinite orders, with no subtraction
+or division by a zero determinant.
+\end{proof}

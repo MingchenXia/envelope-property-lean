@@ -1,0 +1,62 @@
+\section{Detecting original module maps on a principal open}
+
+\begin{lemma}[Global generation detects an original module map]
+\label{lem:scheme-module-generators-detect-zero}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalDetection.hom_eq_zero_of_generatingSections}
+Let $M,N$ be modules on any scheme $X$ and let $G$ be genuine
+generating sections of $M$. If an original map $q:M\to N$ kills
+every original global section, then $q=0$. No finiteness of the
+generating family or of $X$ is needed.
+\uses{lem:generated-line-top-sections}
+\end{lemma}
+\begin{proof}
+For every original generator, its compatible section is recovered
+from its actual top-open value. Its section morphism is the
+corresponding free basis inclusion followed by the original
+evaluation epimorphism. Composition with $q$ is therefore zero.
+The universal property of that same free coproduct makes the
+evaluation followed by $q$ zero. Cancel the actual evaluation
+epimorphism to obtain $q=0$.
+\end{proof}
+
+\begin{lemma}[The original map on the whole principal-open section module]
+\label{lem:scheme-module-principal-map-zero}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalDetection.principalApp_eq_zero_of_top}
+Let $X$ be quasicompact and separated, $\pi:X\to B$ any morphism,
+$r\in\Gamma(B,\mathcal O_B)$ and $M,N$ quasicoherent on $X$.
+If $q:M\to N$ kills every original global section, it kills
+every section on the whole original open $P=\pi^{-1}D(r)$.
+All coefficient actions are induced by the original $\pi$.
+\uses{thm:scheme-module-whole-principal-localization}
+\end{lemma}
+\begin{proof}
+Both actual whole section restrictions are localization at $r$.
+The genuine naturality square for the original map $q$ identifies
+its composition with source restriction with target restriction
+followed by its original global map, which is zero. Uniqueness
+in the universal property of the actual localized source, with
+the actual localized target, makes its entire principal-open
+map zero. This includes empty opens and $r=0$.
+\end{proof}
+
+\begin{proposition}[A genuinely generated restriction detects the original map]
+\label{prop:scheme-module-principal-restriction-zero}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalDetection.restrict_eq_zero_of_generatingSections}
+Under the preceding geometric hypotheses, suppose the actual
+restricted module $M|_P$ has genuine generating sections.
+If $q$ kills all original global sections on $X$, then its
+actual restriction $q|_P$ is zero.
+\uses{lem:scheme-module-generators-detect-zero,lem:scheme-module-principal-map-zero}
+\end{proposition}
+\begin{proof}
+The preceding lemma makes the original map on $\Gamma(P,M)$
+zero. The genuine restriction comparison identifies this map
+with the whole top-open map of $q|_P$. Apply generation detection
+to the actual generating sections of $M|_P$.
+This is an auxiliary detection result: in the eventual test-configuration
+consumer, generation on $P$ must still be derived from the original
+ample line bundle and the actual source linearization.
+\end{proof}

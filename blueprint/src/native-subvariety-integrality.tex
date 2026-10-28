@@ -1,0 +1,63 @@
+\subsection{The original projective subvariety as an integral algebraic scheme}
+
+\begin{lemma}\label{lem:original-prime-projective-kernel-integral}
+\uses{graded:projective-homogeneous-quotient-immersion,thm:proj-domain-integral}
+\lean{EnvelopeProperty.GradedQuotient.isIntegral_quotientKernelSubscheme}
+\leanok
+Let $R$ and $A$ be commutative rings, let $A$ be a graded $R$-algebra
+$A=\bigoplus_{d\geq0}A_d$, and let $J$ be a homogeneous prime ideal of $A$.
+Suppose that some $a\in A_d$, with $d>0$, lies outside $J$.
+For the actual quotient scheme morphism
+$i:\operatorname{Proj}(A/J)\to\operatorname{Proj}(A)$, the literal closed
+subscheme defined by the kernel ideal sheaf of $i$ is integral.
+\end{lemma}
+\begin{proof}
+The original quotient $A/J$ is a domain. The image of the specified $a$ in
+$A/J$ is nonzero, homogeneous of the same positive degree, and belongs to
+the irrelevant homogeneous ideal. Thus that irrelevant ideal is nonzero.
+Apply the existing graded-domain integral-Proj theorem: its zero homogeneous
+prime is a genuine relevant generic point, and its original stalks embed
+in the corresponding domain localizations. Hence $\operatorname{Proj}(A/J)$
+is integral. The original map $i$ is a closed immersion by the homogeneous
+quotient closed-immersion theorem. A closed immersion is an isomorphism onto
+its actual scheme-theoretic image, namely the subscheme of its kernel ideal
+sheaf. Transport integrality along this genuine original-sheaf isomorphism.
+No replacement by a reduced support, saturated ideal, or abstract projective
+model is made.
+\end{proof}
+
+\begin{lemma}\label{lem:original-native-subvariety-integral}
+\uses{lem:original-prime-projective-kernel-integral,def:pl-native-variety-product,projective:native-polynomial-structure-proper}
+\lean{EnvelopeProperty.ProjSubvariety.nativeSubvariety_isIntegral,EnvelopeProperty.ProjSubvariety.nativeAlgScheme}
+\leanok
+Let $k$ be any field and let $X=V(I)\subseteq\mathbf P^N_k$ be a projective
+subvariety, with its original homogeneous prime $I$ and a coordinate outside
+$I$. Then the already defined native closed scheme $X^{\mathrm{nat}}$ is
+integral. Its original structure map to $\operatorname{Spec}k$ makes this
+same scheme a separated finite-type algebraic $k$-scheme.
+\end{lemma}
+\begin{proof}
+Apply the preceding lemma to the original polynomial grading and original
+homogeneous ideal $I$. The chosen coordinate outside $I$ has degree one,
+so it supplies the required positive-degree element. The kernel subscheme
+in the preceding lemma is definitionally the previously defined
+$X^{\mathrm{nat}}$. Its original structure map is the original closed
+immersion followed by the native polynomial-projective structure map.
+The latter is proper, as already proved over arbitrary coefficient rings;
+closed immersions are proper and composition preserves properness. Thus the
+same structure map is proper, in particular separated and finite type.
+Retain this actual scheme and this actual map when viewing it as an algebraic
+$k$-scheme.
+\end{proof}
+
+\begin{remark}\label{rmk:original-native-integral-scheme-reuse}
+These are intrinsic original-scheme inputs, over every original coefficient
+field. No resolution or alteration theorem is reproved here. The author's existing polynomially projective strong-resolution theorem
+provides a stronger genuine characteristic-zero resolution with integral,
+polynomially projective final scheme when its actual polynomial-projective
+factorization input is available. The present algebraic-scheme definition
+retains the literal native scheme and original structure morphism needed
+by that producer. Constructing its polynomial-projectivity input remains
+separate from these three APIs. Alteration existence remains an external
+interface, as requested by the repository user.
+\end{remark}

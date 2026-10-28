@@ -1,0 +1,29 @@
+\section{The actual simultaneous original positive diagonal has the same native projective scheme}
+\begin{lemma}\label{lem:native-rank-one-same-algebra-scheme}
+\lean{EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.rankOneSchemeEq,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.rankOneSchemeIso,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.rankOneSchemeIso_structure}
+\leanok
+\uses{def:fc-native-rank-one-model}
+Two rank-one models with the same literal subalgebra of the same polynomial ring over the same coefficient field have the same actual native projective scheme. The resulting isomorphism preserves their original structure maps.
+\end{lemma}
+\begin{proof}
+The native degree-$n$ piece consists exactly of those elements of this subalgebra whose unchanged original polynomial is homogeneous of total degree $n$. Thus equality of the subalgebras identifies every native homogeneous piece, including the degree-zero coefficient inclusion. The native projective scheme is the projective spectrum of this very grading. Its structure morphism is the native degree-zero morphism followed by the same original coefficient inclusion. Both constructions therefore agree under this equality, giving the asserted isomorphism and structure triangle. The choice and enumeration of coordinates do not enter either construction.
+\end{proof}
+\begin{theorem}\label{thm:original-projective-diagonal-native-scheme}
+\lean{EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.actualDiagonalSchemeIso}
+\leanok
+\uses{lem:native-rank-one-same-algebra-scheme,thm:actual-original-positive-diagonal-segre-algebra}
+Let $X$ be integral over an arbitrary field and let a nonempty finite family of original projective maps have the same original base, with its first factor a closed immersion. The actual strictly positive all-one diagonal of its reconstructed whole-function-field model is isomorphic over that same base to the actual native rank-one scheme of the original finite Segre map.
+\end{theorem}
+\begin{proof}
+Construct the finite original Segre map and its original base triangle. Its actual pivot chart is nonempty because it is the intersection of the finitely many nonempty original pivot charts on the same integral $X$. The first closed factor makes the actual Segre map a closed immersion. The entire all-one diagonal subalgebra of the original finite family model is exactly the entire subalgebra of this original Segre whole-field model, over the same derived Segre base. Apply the preceding lemma to this proved equality. No scheme or model comparison is supplied as input.
+\end{proof}
+\begin{theorem}\label{thm:original-simultaneous-native-model-homeomorphism}
+\lean{EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.rankOneNativePointHomeomorph,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.rankOneAnalyticHomeomorph,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.oneDegree_pos,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.originalNativeSegreBaseModelHomeomorph,EnvelopeProperty.OriginalProjectiveDiagonalNativeComparison.originalNativeModelHomeomorph}
+\leanok
+\uses{thm:original-projective-diagonal-native-scheme,thm:projective-fixed-native-analytic-gluing,lem:gl-veronese}
+Under the preceding original hypotheses, the ENTIRE original native valued-point space over the original base is homeomorphic to the entire analytic space of the simultaneously reconstructed multigraded whole-function-field model. All nongeneric supports are retained. No analytic or scheme comparison is an input.
+\end{theorem}
+\begin{proof}
+Equality of the entire rank-one algebras identifies their actual native projective schemes and original structure maps, hence their entire native fixed-base valued-point spaces with the same evaluations and topology. Composing their established native rank-one analytic homeomorphisms gives a homeomorphism of their whole model analytic spaces. Apply this to the proved equality of the all-one diagonal algebra and the actual finite original Segre algebra. The actual Segre closed immersion identifies the whole original native space with its one fixed whole-field model, including all original supports. The original positive diagonal Veronese homeomorphism identifies the simultaneous multigraded analytic space with the whole diagonal model analytic space, since the all-one multidegree is strictly positive in every factor. Compose these three genuine homeomorphisms. The derived original Segre structure equality identifies its base with the original base throughout. Transport this actual base equality to the reconstructed family model itself; its original coordinate data agree and its defining proof properties are unchanged. The final homeomorphism therefore lands in the exact original-base family model.
+\end{proof}
+This identifies the actual native schemes and the entire simultaneous analytic spaces. The transport of every multigraded original line, whole section and metric remains a subsequent construction. Whole projective numerical finite dimensionality and the paper topology remain open.

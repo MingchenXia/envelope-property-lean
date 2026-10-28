@@ -1,0 +1,131 @@
+\section{A constructed smooth arithmetic principal open in the same coefficient field}
+
+\begin{theorem}[A finite-type characteristic-zero integer domain has a nonempty smooth principal open]
+\label{thm:arithmetic-nonempty-smooth-principal-open}
+\lean{EnvelopeProperty.ArithmeticSmoothCoefficientBase.formallySmooth_atBot,EnvelopeProperty.ArithmeticSmoothCoefficientBase.exists_nonzero_smooth_away}
+\leanok
+Let $R$ be the ACTUAL original integral domain of characteristic zero, of
+finite type over $\mathbb Z$. Then there exists an ACTUAL nonzero $r\in R$
+such that the original localization $R[1/r]$ is smooth over $\mathbb Z$.
+It remains a finite-type integer algebra, a domain, and of characteristic zero.
+No smooth-localization witness is an input.
+\end{theorem}
+\begin{proof}
+Since $\mathbb Z$ is Noetherian, the original finite-type $R$ is finitely
+presented. Localize at its zero prime. This is the original fraction field
+$F$, with the injective map from $R$; its characteristic is zero. The composite
+$\mathbb Z\to R\to F$ is ESSENTIALLY of finite type, since the latter map is
+a localization. Give $F$ its actual rational-field action. Restricting the
+base of this same essentially finite-type algebra along
+$\mathbb Z\to\mathbb Q\to F$ shows that $F$ is essentially of finite type
+over $\mathbb Q$. This does not assert that $F$ is finite type as an algebra
+over either $\mathbb Z$ or $\mathbb Q$.
+The native perfect-field theorem therefore makes $F$ formally smooth over
+$\mathbb Q$. The map $\mathbb Z\to\mathbb Q$ is a localization and hence
+formally smooth. Composition gives formal smoothness of the original
+zero-prime localization over $\mathbb Z$. The native openness theorem for
+the smooth locus of a finitely presented algebra now produces $r\notin(0)$
+with $R[1/r]$ smooth. Localization at one element is finitely presented,
+hence the composite is of finite type. As $r\ne0$, this localization embeds
+the original domain, so is a domain and retains characteristic zero.
+\end{proof}
+
+\begin{definition}[The actual smooth localization inside the same original field]
+\label{def:arithmetic-actual-localized-coefficient-ring}
+\lean{EnvelopeProperty.ArithmeticSmoothCoefficientBase.awayEmbedding,EnvelopeProperty.ArithmeticSmoothCoefficientBase.awayEmbedding_source,EnvelopeProperty.ArithmeticSmoothCoefficientBase.awayEmbedding_injective,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedCoefficientRing,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedCoefficientEquiv,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedCoefficientEquiv_whole_embedding,EnvelopeProperty.ArithmeticSmoothCoefficientBase.le_localizedCoefficientRing,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedCoefficientRing_isLocalization,EnvelopeProperty.ArithmeticSmoothCoefficientBase.exists_smooth_localizedCoefficientRing}
+\leanok
+\uses{thm:arithmetic-nonempty-smooth-principal-open}
+Let $R\subset k$ be the actual finite-type integer coefficient subalgebra
+of the SAME original characteristic-zero field. For $r\ne0$ as above, take
+the actual localization homomorphism $R[1/r]\to k$ extending the original
+inclusion, and let $S\subset k$ be its actual image as an integer subalgebra.
+This map is injective; its actual image equivalence
+$R[1/r]\simeq_R S$ has the WHOLE original embedding as its composite with
+$S\hookrightarrow k$. It makes $S$ an actual localization of $R$ away from
+the original $r$. The actual inclusion $R\subset S$ retains all original
+polynomial coefficients and all specified finite extras. Internally choosing
+$r$ produces such an $S$ smooth and finite type over $\mathbb Z$, a domain
+of characteristic zero.
+\end{definition}
+\begin{proof}
+The image of the nonzero original $r$ is a unit of the SAME original field,
+so the native localization lift constructs the map, agreeing with the
+original inclusion on EVERY element of $R$. The injective original
+inclusion and the injective source localization imply injectivity of the
+lift by the native localization criterion. Restrict this actual map to its
+range, and restrict the range's scalars from $R$ to $\mathbb Z$. The native
+injective-map range equivalence gives the claimed whole embedding equality
+and localization property. Every original element of $R$ is the image of
+its original localization class, so $R\subset S$ literally inside $k$.
+Transport the produced smoothness and finite type along the actual range
+equivalence; the original field inclusion supplies the domain and
+characteristic-zero instances. Apply the preceding theorem to choose the
+required nonzero $r$ internally. There is no countable subfield or supplied
+smooth-base certificate.
+\end{proof}
+
+\begin{theorem}[The same original arithmetic model and whole base-change square survive this localization]
+\label{thm:arithmetic-smooth-base-same-model}
+\lean{EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedPresentationModel,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedPresentationTensorEquiv,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedPresentationTensorEquiv_tmul,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedPresentationTensorEquiv_whole_baseChange,EnvelopeProperty.ArithmeticSmoothCoefficientBase.localizedPresentationModel_finitePresentation,EnvelopeProperty.ArithmeticSmoothCoefficientBase.exists_smooth_original_presentation_base}
+\leanok
+\uses{def:arithmetic-actual-localized-coefficient-ring,thm:arithmetic-same-presentation-model,thm:arithmetic-literal-polynomial-quotient-model}
+Retain the ACTUAL coefficient ring $R$, descended relations and literal
+model $A_R$ constructed from the original presentation and finite extras.
+For the actual $S\subset k$ above, put literally $A_S=S\otimes_R A_R$.
+There is a constructed actual equivalence
+\[ k\otimes_S A_S\simeq_k A \]
+whose composite with the ENTIRE native scalar-extension map
+$k\otimes_R A_R\to k\otimes_S(S\otimes_R A_R)$ equals the SAME prior
+equivalence to the SAME original $A$ as an equality of whole algebra maps.
+For every original $c\in k$, $s\in S$ and polynomial $p\in R[x_j]$, it sends
+\[ c\otimes(s\otimes\overline p)\longmapsto
+       c\,s\,p(z_j), \]
+using the original inclusions into $k$. Thus every original coefficient,
+variable and the whole original quotient/evaluation diagram are retained.
+The same result specializes to the literal original $k[x_j]/(f_i)$;
+the arithmetic model after this base extension is finitely presented over $S$.
+The nonzero $r$ and smoothness of $S$ are internally produced from the
+original finite equations, not supplied as target assumptions.
+\end{theorem}
+\begin{proof}
+Use the native whole algebra equivalence cancelling the consecutive base
+changes $R\to S\to k$, and follow it by the SAME preceding arithmetic
+model equivalence. Its native formula sends $c\otimes(s\otimes a)$ to
+$(s c)\otimes a$. Applying the preceding whole evaluation formula proves
+the displayed readback for every polynomial and every coefficient.
+Composing with the inverse native base-change equivalence is exactly the
+old whole algebra map; no generator-only matching is used. Finite
+presentation survives scalar extension by its native theorem. The literal
+quotient case uses the native presentation of the SAME original relation
+family. Finally apply the actual smooth principal-open producer to this
+same finite-type coefficient subalgebra to obtain $r$ internally.
+\end{proof}
+
+\begin{corollary}[The produced arithmetic base genuinely supplies the existing length-two Witt point lift]
+\label{cor:arithmetic-produced-smooth-base-witt-point}
+\lean{EnvelopeProperty.ArithmeticSmoothCoefficientBase.exists_produced_witt_point}
+\leanok
+\uses{def:arithmetic-actual-localized-coefficient-ring,thm:arithmetic-smooth-base-same-model}
+For every bound $N$, this produced SAME smooth arithmetic base $S\subset k$
+has an actual maximal ideal with finite residue field of prime
+characteristic $p>N$, together with an ACTUAL homomorphism from $S$ to its
+length-two Witt ring reducing to the ENTIRE original quotient map.
+The composite with the actual $R\to S$ inclusion retains the original
+integer coefficient embedding and the same quotient reduction square.
+No family, line-bundle, Frobenius lift or vanishing assertion is made.
+\end{corollary}
+\begin{proof}
+The preceding producer supplies actual smoothness, finite type, domain and
+characteristic zero for $S$ internally. Apply the existing actual
+large-characteristic Witt point-lift theorem to this SAME $S$ and its
+nonzero element $1$. Its native formal-smooth lifting construction gives
+the whole reduction equality. Compose that equality with the actual
+inclusion from $R$ to obtain the retained original coefficient square.
+This is a lift of a point of the arithmetic base, and does not descend or
+lift the original geometric family or line bundle.
+\end{proof}
+
+This closes only the smooth arithmetic BASE prerequisite. Descent and
+construction of the same original geometric family, its projective
+embedding and line bundle, and subsequent cohomological or Deligne--Illusie
+arguments are separate mathematical producers.

@@ -1,0 +1,40 @@
+\section{The same whole original cover is etale near the original generic point}
+
+\begin{theorem}[An internally produced whole etale generic neighborhood]
+\label{thm:kn-canonical-original-etale-generic-neighborhood}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTraceGenericBranch.exists_original_etale_neighborhood}
+\leanok
+For the original normalized adapted cover $\pi:Y\to X$, the original
+smooth integral SNC data, positive tame degrees and empty rows produce
+an actual coefficient ring $S$, an open immersion
+$j:\operatorname{Spec}S\to X$, and a map
+$t:\operatorname{Spec}\mathcal O_{X,\eta}\to\operatorname{Spec}S$
+such that $t j=\gamma$ is the same original generic-point morphism and
+the entire actual pullback $Y\times_X\operatorname{Spec}S\to
+\operatorname{Spec}S$ is etale. No generic etale or matching certificate
+is supplied by a caller.
+\uses{thm:kn-canonical-original-ratio-localized-etale,lem:kn-canonical-original-ratio-coefficients-nonzero,lem:kn-nadel-whole-native-ratio-model}
+\end{theorem}
+\begin{proof}
+Choose a closed specialization of the original generic point and the
+actual original common SNC frames there. The existing whole native
+normalization comparison identifies the entire inverse image of its
+actual affine base chart $U$ with the spectrum of its original ratio
+algebra $B$ over $A=\mathcal O_X(U)$, preserving the original base map.
+Let $a$ be the product of every original ratio coefficient and put
+$S=A[1/a]$. Original SNC geometry proves $a\ne0$; the actual original
+germ into the generic field is therefore a unit on $a$. The universal
+property of this actual localization produces $t$, and its coefficient
+triangle proves $t j=\gamma$.
+
+The original whole ratio algebra becomes etale after this actual base
+change, by the proved tame unit-root and whole tensor comparison.
+The native spectrum--tensor pullback isomorphism preserves the actual
+coefficient projection. The original complete normalization chart and
+its base triangle give the actual cartesian comparison with
+$Y\times_X\operatorname{Spec}S$, also preserving its whole projection.
+Transport etaleness through these actual isomorphisms. The map $j$ is
+the actual principal-open immersion followed by the original affine
+chart immersion, so its image is an open neighborhood of the original
+generic point. No connected component of either pullback is selected.
+\end{proof}

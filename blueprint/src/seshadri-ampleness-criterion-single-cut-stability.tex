@@ -1,0 +1,178 @@
+\section{The same single cut: first cohomology and actual restriction}
+The higher-cut packet is frozen separately. This continuation uses its literal
+original power complex, the existing actual coherent cohomology finiteness,
+and ordinary native ampleness only on the same lower-dimensional cut.
+The final restriction means the actual pullback--pushforward adjunction unit,
+not an arbitrary isomorphic quotient.
+
+\begin{lemma}[Finite residues of an eventually decreasing dimension function]
+\label{lem:seshadri-fixed-step-dimension-stabilization}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.nat_fixedStep_stabilizes}
+\leanok
+Let $d:\mathbb N\to\mathbb N$, $r>0$, and suppose
+$d(n+r)\leq d(n)$ for all $n\geq N_0$. There is $N\geq N_0$ such that
+$d(n+r)=d(n)$ for every $n\geq N$.
+\end{lemma}
+\begin{proof}
+For each $j\in\{0,\ldots,r-1\}$, the sequence
+$t\mapsto d(N_0+j+rt)$ is antitone. Apply the existing native
+\texttt{WellFoundedLT.antitone\_chain\_condition} on the natural numbers;
+no separate least-value stabilization proof is needed. Obtain a stabilization
+index $k_j$ for each of the finitely many residues, and take
+$N=\max_j(N_0+j+rk_j)$. This is at least $N_0$ because $r>0$.
+For $n\geq N$, write $n-N_0=j+rt$ by actual quotient and remainder.
+The inequality $N_0+j+rk_j\leq n$ and positivity of $r$ imply $k_j\leq t$.
+Both terms indexed by $t$ and $t+1$ therefore equal the same stabilized
+value, giving the claimed equality for $n$ and $n+r$.
+\end{proof}
+
+\begin{theorem}[The actual fixed-section first cohomology maps stabilize]
+\label{thm:seshadri-actual-single-cut-eventual-hone-iso}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.exists_singleCut_powerHOne_isIso_of_ample}
+\leanok
+Let $X$ be integral, separated and projective over a field $k$, let $L$
+be an original invertible sheaf, and let $s:\mathcal O_X\to L^r$ be a
+nonzero actual section, with $r>0$. Let $i:D\hookrightarrow X$ be its
+literal zero-subscheme inclusion. If the same $i^*L$ is ample in the native
+positive-power-embedding sense, there is $N$ such that, for every
+$n\geq N$, the actual multiplication map in the original power complex
+induces an isomorphism from original field-linear $H^1(X,L^n)$ to
+original field-linear $H^1(X,L^{n+r})$.
+\uses{lem:seshadri-single-cut-eventual-hone-epi,lem:seshadri-fixed-step-dimension-stabilization}
+\end{theorem}
+\begin{proof}
+The frozen single-cut producer supplies actual epimorphisms for all
+$n\geq N_0$, deriving the cut vanishing internally from genuine native
+ampleness. Existing projective coherent cohomology finiteness applies to
+both original powers and to their original field-complex homology groups.
+Surjectivity of each actual linear map implies that the target dimension
+is at most the source dimension. Apply the preceding finite-residue lemma.
+For every sufficiently large $n$, the same actual map is surjective between
+finite-dimensional spaces of equal dimensions. Apply the native
+\nolinkurl{LinearMap.injective_iff_surjective_of_finrank_eq_finrank}
+to infer its injectivity. Thus the very same multiplication map is both
+monic and epic and hence is an isomorphism. No incoming stabilization,
+vanishing, or cohomology-comparison certificate is used.
+\end{proof}
+
+\begin{lemma}[Original global sections are naturally original Cech degree zero]
+\label{lem:seshadri-original-sections-cech-zero-natural}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.fieldSectionsHZeroIso_naturality}
+\leanok
+For a scheme over a field and any actual open cover, the original
+field-linear global sections of each original module identify naturally
+with degree-zero homology of its original field-linear Cech complex.
+\end{lemma}
+\begin{proof}
+Use the original Cech augmentation from actual global sections. Existing
+sheaf gluing says its augmented short complex is exact and its first map
+is monic. The native cycles universal property and
+\nolinkurl{CochainComplex.isIso_liftCycles_iff} identify this augmentation
+with an isomorphism onto the cycles in degree zero. The native
+\texttt{CochainComplex.isoHomology}\ensuremath{\pi_0} then identifies these
+same cycles with homology, since the incoming differential is zero.
+Naturality of the augmentation is checked after every original product
+projection: both composites are the same restriction of the original
+module map. The native cycles and homology projection naturality identities
+then give the whole square. Restrict the original base scalars to $k$ and
+use the existing natural homology-under-scalar-restriction comparison.
+This reuses the native cycles APIs and does not duplicate the Euler
+packet's private kernel--homology isomorphism.
+\end{proof}
+
+\begin{lemma}[A monic actual first cohomology map gives actual sections onto]
+\label{lem:seshadri-actual-hone-mono-sections-onto}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.sections_surjective_of_hOne_mono}
+\leanok
+Let $0\to F\xrightarrow{u}M\xrightarrow{v}Q\to0$ be an actual short exact
+sequence of quasicoherent modules on a separated scheme over a field,
+computed on an actual finite affine open cover. If the same map induced
+by $u$ on original field-linear first cohomology is monic, then the
+original global-section map of $v$ is surjective.
+\uses{lem:seshadri-original-sections-cech-zero-natural}
+\end{lemma}
+\begin{proof}
+The existing field-complex functor preserves this actual short exact
+sequence. Its genuine connecting map from degree-zero quotient homology
+to degree-one left homology has zero composite with the monic actual
+map of $u$, hence is zero. Exactness makes the original degree-zero map
+of $v$ epic. The preceding actual natural sections square transports this
+to an epimorphism of the same original global-section map. For modules,
+epimorphisms are exactly surjective linear maps.
+\end{proof}
+
+\begin{lemma}[The transported Cartier quotient is the standard restriction]
+\label{lem:seshadri-actual-cartier-quotient-standard-unit}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.powerSectionSequence_standardUnit_factorization}
+\leanok
+For the same original nonzero section and the literal original closed
+pullback, there is an internally constructed whole automorphism $\tau$
+of that pullback line such that the transported right arrow of the power
+complex is the fixed actual adjunction unit followed by $i_*\tau$.
+No incoming matching or restriction certificate is used.
+\end{lemma}
+\begin{proof}
+Write $F\dashv G$ for the actual pullback--pushforward adjunction,
+$E$ for tensoring by the original invertible middle line, and $E'$ for
+tensoring by its actual pullback. The original structure-ring quotient
+$q:U\to GV$, where $U,V$ are the original structure modules, has adjoint
+$q^\flat:FU\to V$ equal to the native pullback-of-unit isomorphism.
+Let $\alpha:F E'^{-1}\cong E^{-1}F$ be the actual monoidal tensor
+comparison. The existing projection formula is precisely the conjugate
+of this $\alpha$ under $E^{-1}F\dashv GE$ and $FE'^{-1}\dashv E'G$.
+
+Here is a construction that avoids any assumption that a chosen whole
+comparison is literally the identity. Let $A$ denote the original middle
+line, $e:E^{-1}A\cong U$ its actual dual evaluation, $b:EU\cong A$ its
+actual unitor, and $t:E'V\cong FA$ the corresponding unitor on the cut.
+Set $g=F(e)q^\flat$, an actual isomorphism. Define
+\[
+ \xi=(\operatorname{unit}_{E^{-1}\dashv E})_A E(e):A\cong EU,
+ \qquad a=b^{-1}\xi^{-1}:A\cong A,
+\]
+and
+\[
+ \sigma_0=(\operatorname{unit}_{E'^{-1}\dashv E'})_{FA}
+                E'(\alpha_A g):FA\cong E'V,
+ \qquad \tau=F(a)\sigma_0t:FA\cong FA.
+\]
+All factors are actual whole isomorphisms, constructed internally from
+the same line and its actual inverse tensor equivalences.
+The native unit-conjugation identity followed by naturality of the
+projection formula gives
+$\xi E(q)\operatorname{PF}_V=\eta_A G(\sigma_0)$.
+Precompose by $a$ and use the actual unit naturality square for $a$;
+postcompose by $G(t)$. This yields exactly
+$b^{-1}E(q)\operatorname{PF}_VG(t)=\eta_A G(\tau)$.
+The left side is the existing transported quotient.
+The original power-addition comparison and its actual pullback and
+pushforward conjugate $\tau$ to the same literal $L^{n+r}$ pullback,
+using adjunction-unit naturality once more. Thus the claimed standard-unit
+comparison is a proved original commuting diagram with an internally
+constructed automorphism, not a supplied compatibility hypothesis.
+\end{proof}
+
+\begin{theorem}[The standard original fixed-cut restriction is eventually onto]
+\label{thm:seshadri-actual-single-cut-eventual-restriction-onto}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionSingleCutStability.exists_singleCut_powerSections_surjective_of_ample}
+\leanok
+In the projective single-cut setting of the first theorem, the standard
+original global-section restriction
+\[
+\Gamma(X,L^{n+r})\longrightarrow\Gamma(D,i^*L^{n+r})
+\]
+is surjective for every sufficiently large $n$.
+\uses{thm:seshadri-actual-single-cut-eventual-hone-iso,lem:seshadri-actual-hone-mono-sections-onto,lem:seshadri-actual-cartier-quotient-standard-unit,lem:seshadri-same-section-original-power-short-exact}
+\end{theorem}
+\begin{proof}
+Use the same literal power complex and its already proved short exactness.
+The first theorem gives a monic actual first cohomology map for every
+sufficiently large $n$. Actual global sections therefore surject onto the
+same original quotient by the fourth lemma. The preceding standard-unit
+comparison has an internally constructed target automorphism, which induces
+an actual bijection on original global sections. Cancel it and use the
+canonical global sections comparison for pushforward
+identify the resulting map with exactly the displayed original restriction.
+This produces surjectivity internally from projectivity, the original
+section, and genuine ampleness only on its actual cut.
+\end{proof}

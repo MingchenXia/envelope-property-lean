@@ -1,0 +1,28 @@
+\section{The actual candidates on the original canonical pushforward}
+
+\begin{definition}[Fixed native canonical restriction comparisons]
+\label{def:kn-canonical-whole-chart-fixed-native-comparisons}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalBaseRestrictionIso,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalSourceRestrictionIso}
+\leanok
+For an actual whole original chart, use the native restriction--pullback
+comparison and the actual open-immersion canonical differential for the
+base comparison. For the source comparison, use the actual cartesian
+whole-module open base change, then the native source restriction--pullback
+comparison, the actual source open-immersion canonical differential, and
+the original structural triangle. The differential homs are fixed native
+maps; no arbitrary compatible pair of isomorphisms is selected.
+\uses{sc0-open-differential:pullback-isomorphism,lem:kn-structure-trace-chart-cartesian}
+\end{definition}
+
+\begin{definition}[Every-point candidate on the original canonical pushforward]
+\label{def:kn-canonical-every-point-original-pushforward-candidate}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.producedOriginalCanonicalCandidate}
+\leanok
+At every original point, the same actual whole-chart ratio candidate
+transports to a regular morphism from the restriction of the original
+$\pi_*\omega_Y$ to the restriction of the original $\omega_X$.
+Use the fixed native source comparison, the same explicit produced
+candidate, and the inverse fixed base comparison. Neither normalization
+nor a rational-factor equation is asserted by this constructor.
+\uses{def:kn-canonical-every-point-whole-candidate,def:kn-canonical-whole-chart-fixed-native-comparisons}
+\end{definition}

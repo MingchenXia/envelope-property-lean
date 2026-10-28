@@ -1,0 +1,79 @@
+\section{Actual original Gauss-point norms on a literal test configuration}
+
+\begin{lemma}\label{lem:actual-trivial-polynomial-gauss-bound}
+\lean{EnvelopeProperty.Berkovich.Spectrum.gauss_val_le_one, EnvelopeProperty.Berkovich.Spectrum.trivialGaussValuation, EnvelopeProperty.Berkovich.Spectrum.trivialGaussValuation_X, EnvelopeProperty.Berkovich.Spectrum.trivialGaussValuation_le_one}
+\leanok
+For any original field $k$ and $0<r\leq1$, the actual polynomial Gauss
+valuation extending the original trivial valuation is bounded by one on
+the entire original $k[t]$ and takes the original parameter to $r\ne0$.
+\uses{spectrum:gauss-point}
+\end{lemma}
+\begin{proof}
+The coefficient maximum formula bounds every coefficient value by one
+and every nonnegative power of $r$ by one. Each term, and hence the
+finite maximum including the zero polynomial, is at most one. The
+actual Gauss parameter formula gives its value exactly $r$, which is
+nonzero by positivity. No boundedness or parameter-value certificate
+is added to the original data.
+\end{proof}
+
+\begin{definition}\label{def:native-test-configuration-gauss-power-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerBaseIdealNormalizedRoot, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerSectionNorm}
+\leanok
+Let $C$, its original invertible total line $M$, the original ample
+fibre line and the original line-action/fibre-one isomorphisms be as in
+the preceding actual test-configuration theorems. At each original native
+point $x$ of $X$ extending the trivial valuation and each $0<r\leq1$,
+evaluate the actual entire base ideal $I_m$ and each actual original
+global section of $M^m$ at the constructed original point $y_{C,x,r}$.
+The normalized root is $\|I_m(y_{C,x,r})\|^{1/m}$, using the real root
+convention also at zero norms and at degree zero.
+\uses{thm:native-test-configuration-gauss-point-base,lem:actual-trivial-polynomial-gauss-bound,lem:native-base-ideal-root-multiples}
+\end{definition}
+\begin{proof}
+The genuine original point has the entire prescribed polynomial Gauss
+base by the preceding whole-point theorem. The first lemma gives the
+bounded base needed for the actual proper model norms. Source
+projectivity supplies the actual properness of the original projection.
+Thus these are the actual original proper-model ideal and line norms;
+neither a point nor a norm matching certificate is supplied.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-actual-gauss-norm-supremum}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_gauss_normalized_supremum}
+\leanok
+At every original $x$, these actual normalized roots converge to a
+positive real $b(x,r)\leq1$, which is their least upper bound over
+\emph{all positive original degrees}. Early zero ideals are included.
+\uses{def:native-test-configuration-gauss-power-norms,thm:native-test-configuration-normalized-supremum}
+\end{theorem}
+\begin{proof}
+The boundedness and nonzero parameter value are derived from the first
+lemma, and the relative original Gauss point is constructed from $x$.
+Apply the original all-positive-degree supremum theorem at that actual
+point. Its positive root limit and exact least-upper-bound assertion
+are precisely those for the original norms just defined. Degree zero
+is excluded from the supremum, exactly as in that theorem.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-actual-gauss-finite-norm-family}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_finite_gauss_power_section_norms}
+\leanok
+One degree threshold works for every original $x$. For each degree
+beyond it, one finite family of original total-space global sections,
+chosen before $x$, computes the actual entire base-ideal norm at every
+$y_{C,x,r}$ as the maximum of their actual model line norms. This
+maximum is positive and at most one.
+\uses{def:native-test-configuration-gauss-power-norms,thm:native-test-configuration-eventual-finite-positive-norm-family}
+\end{theorem}
+\begin{proof}
+The actual polynomial Gauss valuation is fixed before $x$. Apply the
+original finite-family theorem with its derived boundedness and nonzero
+parameter value. It supplies one threshold and, at each later degree,
+one actual global-section family valid at every original point over
+this valuation. Specialize its whole assertion to the actually
+constructed $y_{C,x,r}$. This preserves the family before the point and
+gives the exact original ideal-norm identity and both bounds.
+Identification of these actual norms with the weighted Laurent-section
+FS metric remains a subsequent, separate geometric comparison.
+\end{proof}

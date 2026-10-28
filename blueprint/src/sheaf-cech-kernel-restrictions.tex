@@ -1,0 +1,42 @@
+\section{The actual original restriction on Cech kernels}
+
+\begin{lemma}[The same original evaluated differentials commute with restriction]
+\label{lem:sheaf-cech-kernel-restriction-square}
+\leanok
+\lean{EnvelopeProperty.SheafCechKernelRestrictions.termRestriction,EnvelopeProperty.SheafCechKernelRestrictions.differential_square,EnvelopeProperty.SheafCechKernelRestrictions.differential_square_linear,EnvelopeProperty.SheafCechKernelRestrictions.kernelRestriction,EnvelopeProperty.SheafCechKernelRestrictions.kernelRestriction_apply,EnvelopeProperty.SheafCechKernelRestrictions.kernelRestriction_subtype}
+For an actual module-valued sheaf $F$, any original cover family
+$U_i$, and ANY original inclusion $V\subseteq W$, the actual
+restriction maps on the first two sheaf-Cech terms commute with
+the SAME first evaluated Cech differentials. Their actual
+restriction on kernels sends every original kernel element to
+the SAME restricted section. No cover, affine, finite or
+nonempty-open condition is needed for this naturality step.
+\end{lemma}
+\begin{proof}
+Evaluate the first actual sheaf-Cech differential on the two
+opens. Its original natural-transformation square is precisely
+the asserted whole differential square. Apply the actual linear
+kernel restriction of this square; its coefficient formula is
+the original degree-zero restriction by definition.
+\end{proof}
+
+\begin{proposition}[Whole original section restriction agrees with kernel restriction]
+\label{prop:scheme-section-kernel-restriction}
+\leanok
+\lean{EnvelopeProperty.SheafCechKernelRestrictions.openSectionsKernelIso_naturality}
+For ANY original scheme module $M$ and an actual open cover,
+the whole section-to-Cech-kernel isomorphisms on ANY original
+opens $V\subseteq W$ identify the actual original restriction
+map with the actual kernel restriction of the preceding square.
+All maps retain the SAME original global base coefficient action.
+\uses{prop:scheme-module-open-sections-kernel,lem:sheaf-cech-kernel-restriction-square}
+\end{proposition}
+\begin{proof}
+Compose both actual maps with the genuine kernel inclusion.
+The complete original augmentation identity identifies both
+composites with the same naturality square of the original
+sheaf-Cech augmentation. Cancel the actual injective kernel
+inclusion. No localization or target-isomorphism certificate
+is involved. Actual affine cover/overlap term localizations
+and finite-product transport are subsequent geometric steps.
+\end{proof}

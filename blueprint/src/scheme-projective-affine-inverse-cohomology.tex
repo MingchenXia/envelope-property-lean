@@ -1,0 +1,378 @@
+\section{Original projective section refinements and all affine inverse-image cohomology}
+\label{sec:projective-affine-original-inverse-cohomology}
+
+These results use an original closed projective embedding and the literal
+line $H=j^*\mathcal O(1)$. They construct actual positive-degree section
+opens, all native finite product intersections, and the cohomological
+consumer for every original affine base open. Definitions record API
+constructions, with no separate source-theorem credit. Zero cohomology
+below means the actual native sheaf cohomology group is a subsingleton.
+Composition is written in diagram order when used for module maps.
+
+\begin{lemma}[An actual line isomorphism preserves its section open]
+\label{lem:proj-affine-section-iso-open}
+\lean{EnvelopeProperty.SchemeProjectiveSectionOpenBasis.sectionOpen_postcompose_iso}
+\uses{lem:cech-line-section-original-affine-open}
+\leanok
+For invertible original modules $M,N$, a section $s:\mathcal O_X\to M$
+and an actual whole-module isomorphism $e:M\simeq N$, one has
+$D(s\,e)=D(s)$, using the literal original zero-ideal complements.
+\end{lemma}
+\begin{proof}
+On a local original frame of $M$, use $e^{-1}$ to obtain a frame of
+$N$. The actual pulled section coefficients agree by cancellation of
+$e$ with its inverse. The native zero-support criterion in these
+frames gives equality at each original point, hence equality of opens.
+\end{proof}
+
+\begin{definition}[The genuine homogeneous section in the original power line]
+\label{def:proj-affine-homogeneous-power-section}
+\lean{EnvelopeProperty.SchemeProjectiveSectionOpenBasis.homogeneousPowerSection}
+\uses{thm:fc-original-homogeneous-form-section,lem:positive-power-projective-twist}
+\leanok
+Let $R$ be a commutative ring, let
+$P=\operatorname{Proj}R[X_0,\ldots,X_n]$, and fix a coordinate index
+$j$. A homogeneous form $F$ of degree $d\geq0$ defines a section of
+the actual $d$th tensor power of the coordinate model of
+$\mathcal O_P(1)$.
+This is the existing genuine homogeneous-form section, transported by
+the inverse of the native whole twist-power isomorphism.
+\end{definition}
+\begin{proof}
+The genuine homogeneous global-section producer gives the original
+section of the coordinate twist $\mathcal O_P(d)$. Postcompose it
+with the inverse of the already proved whole comparison between that
+twist and the $d$th power of the same original $\mathcal O_P(1)$.
+This construction introduces no independent section-existence axiom.
+\end{proof}
+
+\begin{lemma}[The actual homogeneous section has its original basic open]
+\label{lem:proj-affine-homogeneous-power-open}
+\lean{EnvelopeProperty.SchemeProjectiveSectionOpenBasis.homogeneousPowerSection_open}
+\uses{def:proj-affine-homogeneous-power-section,lem:proj-affine-section-iso-open,lem:fc-original-homogeneous-form-frame-coefficient}
+\leanok
+For every actual homogeneous form $F$ of degree $d$, the nonzero open
+of the preceding section is exactly the original homogeneous basic
+open $D_+(F)$ in $P$.
+\end{lemma}
+\begin{proof}
+On each actual coordinate chart $X_i\ne0$, the existing homogeneous
+section has the genuine coefficient $F/X_i^d$. The native projective
+stalk isomorphism identifies its germ with that same homogeneous
+localization fraction. This germ is a unit precisely when $F$ does
+not belong to the original homogeneous prime. The actual section
+zero-support criterion therefore gives $D_+(F)$ chartwise. The whole
+twist-power transport preserves this literal open by the line-isomorphism lemma.
+\end{proof}
+
+\begin{definition}[The original embedding line and actual pulled form sections]
+\label{def:proj-affine-embedding-line-sections}
+\lean{EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.embeddingLine,EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.pulledHomogeneousPowerSection}
+\uses{def:proj-affine-homogeneous-power-section}
+\leanok
+For an original morphism $j:X\to P$, put
+$H=j^*\mathcal O_P(1)$, using coordinate $0$ in the original model.
+Pull back each original homogeneous-form power section and postcompose
+with the native power-pullback comparison. This defines an actual
+section $s_F:\mathcal O_X\to H^d$.
+These are object and section constructions, not additional ampleness claims.
+\end{definition}
+\begin{proof}
+Use the actual module pullback of the chosen original $\mathcal O_P(1)$.
+The genuine section pullback has target $j^*(\mathcal O_P(1)^d)$;
+the native whole pullback-power isomorphism gives its stated target $H^d$.
+\end{proof}
+
+\begin{lemma}[Invertibility and literal original pulled opens]
+\label{lem:proj-affine-pulled-section-open}
+\lean{EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.embeddingLine_isInvertible,EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.pulledHomogeneousPowerSection_open}
+\uses{def:proj-affine-embedding-line-sections,lem:proj-affine-homogeneous-power-open,lem:proj-affine-section-iso-open,lem:cech-line-section-original-affine-open}
+\leanok
+For every original $j$, $H$ is invertible, and every actual homogeneous
+form $F$ of degree $d$ satisfies $D(s_F)=j^{-1}D_+(F)$.
+\end{lemma}
+\begin{proof}
+Invertibility of the original coordinate twist is preserved by native
+pullback. The original section-open pullback law identifies the open
+before the power comparison. The preceding homogeneous basic-open
+identity and invariance under that whole-module comparison give the
+literal stated inverse-image equality.
+\end{proof}
+
+\begin{lemma}[Actual positive-power affine section neighborhoods]
+\label{lem:proj-affine-positive-section-neighborhood}
+\lean{EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.exists_positive_sectionOpen_le}
+\uses{lem:proj-affine-pulled-section-open}
+\leanok
+If $j:X\to P$ is a closed immersion, then for every original open
+$U\subseteq X$ and $x\in U$ there are an actual $d>0$ and actual
+$s:\mathcal O_X\to H^d$ such that $x\in D(s)\subseteq U$ and
+$D(s)$ is affine. No form, section, local frame or open-matching
+certificate is supplied.
+\end{lemma}
+\begin{proof}
+The topology induced by the actual closed embedding expresses $U$ as
+the preimage of an ambient open. Choose an original homogeneous basic
+open around $j(x)$ inside it. Decomposing its defining polynomial
+into homogeneous components selects a homogeneous component $F$ whose
+basic open still contains $j(x)$ and lies in the chosen neighborhood.
+Choose a coordinate $X_i$ nonzero at $j(x)$. The actual form $FX_i$
+has degree $d+1>0$, is still nonzero at $j(x)$, and its basic open
+lies in $D_+(F)$. Its pulled actual section has this exact open.
+A positive-degree homogeneous basic open is affine; its preimage
+under the actual closed immersion is affine.
+\end{proof}
+
+\begin{lemma}[A genuine finite positive-section refinement of every original affine open]
+\label{lem:proj-affine-finite-positive-refinement}
+\lean{EnvelopeProperty.SchemeProjectiveSectionPositiveBasis.exists_finite_positive_sectionOpen_refinement}
+\uses{lem:proj-affine-positive-section-neighborhood}
+\leanok
+For a closed original embedding $j$ and any original affine open
+$U\subseteq X$, there are an internally selected finite index type
+$I$, positive degrees $d_i$, and actual sections
+$s_i:\mathcal O_X\to H^{d_i}$ such that all $D(s_i)$ are affine,
+all lie in $U$, and $\bigcup_{i\in I}D(s_i)=U$ literally.
+The index family may be empty when $U$ is empty.
+\end{lemma}
+\begin{proof}
+Apply the positive-section neighborhood producer to every point of
+$U$. These actual affine section opens cover $U$ and each lies in
+$U$. Compactness of the original affine open selects a finite
+subfamily. The two inclusions prove the exact supremum equality;
+all section, positive-degree and affineness data are retained.
+\end{proof}
+
+\begin{lemma}[The original tensor section has the intersection open]
+\label{lem:proj-affine-tensor-section-open}
+\lean{EnvelopeProperty.SchemeLineSectionProductOpens.tensorSectionHom_open}
+\uses{lem:cech-line-section-original-affine-open}
+\leanok
+For invertible original $M,N$ and actual sections
+$a:\mathcal O_X\to M$, $b:\mathcal O_X\to N$, the native tensor
+section satisfies $D(a\otimes b)=D(a)\cap D(b)$, as equality of the
+literal original section opens.
+\end{lemma}
+\begin{proof}
+Choose common actual affine frames of $M,N$ around each point.
+Native tensor-section pullback and the tensor frame read its actual
+coefficient as the product of the two original coefficients.
+Evaluation in the original residue field preserves multiplication;
+a product is nonzero exactly when both factors are nonzero.
+The actual zero-support frame criterion proves the equality of opens.
+\end{proof}
+
+\begin{definition}[An actual section product in the same original sum power]
+\label{def:proj-affine-power-product}
+\lean{EnvelopeProperty.SchemeLineSectionProductOpens.powerSectionProduct}
+\uses{lem:proj-affine-tensor-section-open}
+\leanok
+For sections $s:\mathcal O_X\to H^m$ and
+$t:\mathcal O_X\to H^n$, define their actual power product as the
+native tensor section followed by the genuine whole isomorphism
+$H^m\otimes H^n\simeq H^{m+n}$.
+This records a section construction, with no supplied frame coherence.
+\end{definition}
+\begin{proof}
+Use the original section tensor homomorphism and the existing native
+$\operatorname{tensorPowerAddIso}$ on the same module $H$.
+Its target is the literal original tensor power at exponent $m+n$.
+\end{proof}
+
+\begin{lemma}[Original power products preserve the actual factor opens]
+\label{lem:proj-affine-power-product-open}
+\lean{EnvelopeProperty.SchemeLineSectionProductOpens.powerSectionProduct_open}
+\uses{def:proj-affine-power-product,lem:proj-affine-tensor-section-open,lem:proj-affine-section-iso-open}
+\leanok
+For invertible $H$ and the actual original power product $st$,
+one has $D(st)=D(s)\cap D(t)$.
+\end{lemma}
+\begin{proof}
+The original tensor-section open is the intersection by the preceding
+product-open theorem. Postcomposition with the actual whole
+power-addition isomorphism preserves that original open.
+\end{proof}
+
+\begin{definition}[Actual finite degrees and original tuple product sections]
+\label{def:proj-affine-finite-power-products}
+\lean{EnvelopeProperty.SchemeLineSectionFiniteProductOpens.tupleSectionDegree,EnvelopeProperty.SchemeLineSectionFiniteProductOpens.tuplePowerSection}
+\uses{def:proj-affine-power-product}
+\leanok
+For a tuple of actual degrees $(d_i)_{i\in\operatorname{Fin}(m)}$
+and actual sections $s_i:\mathcal O_X\to H^{d_i}$, define
+$D=\sum_i d_i$ and the actual tuple product section
+$t:\mathcal O_X\to H^D$. The empty tuple has degree zero and the
+identity section of the original unit module.
+These are finite sum and section constructions.
+\end{definition}
+\begin{proof}
+Form the native list of the given dependent degree-section pairs.
+Recursively multiply its actual sections with the original power
+product; start with the identity of the unit module. The internally
+proved list-sum equality transports the result to the stated literal
+exponent $D$, rather than assuming an exponent comparison.
+\end{proof}
+
+\begin{lemma}[The actual tuple product is the native finite intersection]
+\label{lem:proj-affine-finite-product-opens}
+\lean{EnvelopeProperty.SchemeLineSectionFiniteProductOpens.tuplePowerSection_open,EnvelopeProperty.SchemeLineSectionFiniteProductOpens.tupleSectionDegree_pos}
+\uses{def:proj-affine-finite-power-products,lem:proj-affine-power-product-open,lem:proj-affine-section-iso-open}
+\leanok
+The preceding actual tuple product satisfies
+\[
+ D(t)=\prod\nolimits_i^{\mathrm{cat}} D(s_i)
+     =\bigcap_iD(s_i),
+\]
+where the categorical product is in the original category of opens.
+For every nonempty tuple of positive original degrees, its actual
+total degree $D$ is positive.
+\end{lemma}
+\begin{proof}
+Induction on the native list, using the actual binary product-open
+law, gives the pointwise intersection condition. The empty unit
+section has open $X$. Whole-line transport preserves this open, and
+the native universal property identifies the categorical product
+with the finite infimum. A nonempty sum of positive natural numbers
+is positive, giving the actual degree bound needed for every
+nonempty \v{C}ech tuple.
+\end{proof}
+
+\begin{theorem}[Actual inverse-image vanishing for every positive original power section]
+\label{thm:proj-affine-positive-section-inverse-vanishing}
+\lean{EnvelopeProperty.SchemeLineSectionPowerInverseVanishing.inverseImage_powerSection_H_succ_subsingleton}
+\uses{thm:cech-line-native-section-open-vanishing,lem:cech-line-section-original-affine-open,lem:actual-cohomology-retract-vanishing}
+\leanok
+Let $Y$ be quasicompact and separated, $f:Y\to X$ any original
+morphism, $H$ invertible, and $F$ quasicoherent on $Y$.
+Fix $q\geq0$ and assume
+$H^{q+1}(Y,F\otimes(f^*H)^m)=0$ for all sufficiently large $m$.
+For every actual $d>0$ and $s:\mathcal O_X\to H^d$,
+\[
+ H^{q+1}(f^{-1}D(s),F|_{f^{-1}D(s)})=0.
+\]
+\end{theorem}
+\begin{proof}
+Let $T=f^*(H^d)$. The genuine pullback-power and power-multiplication
+isomorphisms identify $T^m$ with $(f^*H)^{dm}$. Because $d>0$,
+$m\leq dm$, so the same eventual global bound applies to every
+sufficiently large $m$ after this actual whole-module transport.
+Apply the original line-section higher-vanishing theorem on $Y$ to
+$T,f^*s,F$. The actual section-open pullback identity then identifies
+its literal nonzero open with $f^{-1}D(s)$.
+\end{proof}
+
+\begin{lemma}[Ordinary higher-vanishing equivalence under an actual scheme isomorphism]
+\label{lem:proj-affine-iso-restriction-higher-zero}
+\lean{EnvelopeProperty.SchemeOpenNestedCohomology.restrictIso_H_succ_iff}
+\uses{thm:affine-pushforward-cohomology-vanishing,lem:actual-cohomology-retract-vanishing}
+\leanok
+Let $e:A\simeq B$ be an actual scheme isomorphism, with $B$
+quasicompact and separated, and let $M$ be quasicoherent on $B$.
+For every $q\geq0$,
+$H^{q+1}(A,e^*M)=0$ if and only if $H^{q+1}(B,M)=0$, where the
+left module is the literal native restriction along $e$.
+\end{lemma}
+\begin{proof}
+Choose an original finite affine cover of $B$. The existing actual
+affine-pushforward cohomology comparison applies to the isomorphism
+$e$. Its native restriction adjunction unit is an isomorphism.
+The actual unit and its inverse give retracts in both directions,
+which transport the two higher-cohomology subsingleton properties.
+The comparison and inverse are constructed internally.
+\end{proof}
+
+\begin{definition}[The whole native module comparison for nested original opens]
+\label{def:proj-affine-nested-restriction}
+\lean{EnvelopeProperty.SchemeOpenNestedCohomology.nestedRestrictionIso}
+\leanok
+For original $V\subseteq X$, an open $W\subseteq V$, and original
+module $M$, let $A$ be the actual image open of $W\to V\to X$.
+The canonical image isomorphism $e:W\simeq A$ and native restriction
+composition define
+$e^*(M|_A)\simeq(M|_V)|_W$ as a whole-module isomorphism.
+\end{definition}
+\begin{proof}
+Compose the inverse native restriction-composition comparison for
+$e$ and $A\hookrightarrow X$, the actual image-isomorphism triangle,
+and the native restriction-composition comparison for
+$W\hookrightarrow V\hookrightarrow X$.
+No module-matching equality is an input.
+\end{proof}
+
+\begin{lemma}[Nested original restriction has the same ordinary higher-vanishing predicate]
+\label{lem:proj-affine-nested-higher-zero}
+\lean{EnvelopeProperty.SchemeOpenNestedCohomology.nested_restrict_H_succ_iff_image}
+\uses{def:proj-affine-nested-restriction,lem:proj-affine-iso-restriction-higher-zero,lem:actual-cohomology-retract-vanishing}
+\leanok
+Suppose $X$ is separated, $M$ is quasicoherent, and the actual image
+open $A$ above is quasicompact. For every $q\geq0$,
+\[
+ H^{q+1}(W,(M|_V)|_W)=0
+ \quad\Longleftrightarrow\quad H^{q+1}(A,M|_A)=0.
+\]
+No acyclicity or cohomology-comparison certificate is a premise.
+\end{lemma}
+\begin{proof}
+The actual whole nested-restriction isomorphism and its inverse
+transport the subsingleton property of native sheaf cohomology.
+Apply the original scheme-isomorphism restriction equivalence to
+$e:W\simeq A$. Separatedness is inherited from $X$, and the stated
+compactness hypothesis is exactly the one used in that comparison.
+\end{proof}
+
+\begin{theorem}[Every original affine inverse image has zero actual positive cohomology]
+\label{thm:proj-affine-original-inverse-higher-vanishing}
+\lean{EnvelopeProperty.SchemeProjectiveAffineInverseCohomology.projective_affine_inverseImage_H_succ_subsingleton}
+\uses{lem:proj-affine-finite-positive-refinement,lem:proj-affine-finite-product-opens,thm:proj-affine-positive-section-inverse-vanishing,lem:proj-affine-nested-higher-zero,sc0-compact-pushqc:whole-original-pushforward,thm:scheme-module-cech-native-additive-comparison,lem:affine-pushforward-ordered-vanishing}
+\leanok
+Let $R$ be a commutative ring, let
+$j:X\hookrightarrow\operatorname{Proj}R[X_0,\ldots,X_n]$ be an
+original closed immersion, put $H=j^*\mathcal O(1)$, let
+$f:Y\to X$ be proper, and let $F$ be an original quasicoherent module
+on $Y$. Assume the literal original global family
+\[
+ \forall r\geq0\;\exists N_r\;\forall m\geq N_r,\qquad
+ H^{r+1}(Y,F\otimes(f^*H)^m)=0.
+\]
+Then for every original affine open $U\subseteq X$ and every $q\geq0$,
+\[
+ H^{q+1}(f^{-1}U,F|_{f^{-1}U})=0.
+\]
+All finite refinements, tuple products, original module comparisons,
+local higher-vanishing proofs and native \v{C}ech comparisons are
+produced internally. No common bound over $r$ is required.
+\end{theorem}
+\begin{proof}
+The original closed projective embedding and properness internally
+make $Y$ quasicompact and separated and make $X$ separated.
+Produce the actual finite positive-section affine refinement
+$V_i=D(s_i)$ of the original affine $U$. Every nonempty native tuple
+intersection $C=\bigcap V_i$ is affine in $X$ and is literally the
+nonzero open of the actual product section in a positive power of
+$H$. The positive-section inverse-image theorem, applied separately
+in each degree $r+1$, gives actual higher vanishing on $f^{-1}C$.
+Properness makes this original inverse image quasicompact. The
+canonical nested-restriction comparison transports that vanishing
+to the actual tuple intersections in $Y_U=f^{-1}U$.
+
+Let $f_U:Y_U\to U$ be the actual restriction and
+$F_U=F|_{Y_U}$. Properness gives compactness of $Y_U$; it inherits
+separatedness. The existing compact-separated pushforward producer
+therefore makes the actual $Q=f_{U*}F_U$ quasicoherent. Since the
+original $U$ is affine, its positive cohomology vanishes, so its
+actual finite affine-cover \v{C}ech complex for $Q$ is exact.
+The native ordinary/ordered \v{C}ech comparisons and the actual
+pushforward-complex isomorphism transfer this exactness to the
+actual inverse-image cover of $Y_U$. Its tuple intersections need
+not be affine: their required positive cohomology was proved above
+from the original global family. Native acyclic-intersection
+\v{C}ech-to-ordinary-cohomology comparison now gives exactly
+$H^{q+1}(Y_U,F_U)=0$ for the literal original restricted module.
+\end{proof}
+
+The last theorem retains its original global-vanishing family as an
+explicit hypothesis. Kodaira vanishing on an adapted covering space,
+even with equality of intrinsic rounded ideals, does not by itself prove
+that family for a fixed original blowup module. Actual canonical trace
+and rounded-module descent must supply it before this theorem applies
+to a Nadel local-vanishing argument. No full Nadel theorem is asserted here.

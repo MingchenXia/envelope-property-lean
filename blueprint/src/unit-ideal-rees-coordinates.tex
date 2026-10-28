@@ -1,0 +1,57 @@
+\section{Exact original coordinates on the actual unit-ideal Rees chart}
+
+\begin{definition}[The actual unit Rees chart retains the original ring]
+\label{def:fc-original-unit-rees-chart-coefficients}
+\leanok
+\lean{EnvelopeProperty.UnitIdealReesCoordinates.fractionCoefficient_surjective, EnvelopeProperty.UnitIdealReesCoordinates.fractionCoefficientEquiv, EnvelopeProperty.UnitIdealReesCoordinates.homogeneousCoefficientEquiv, EnvelopeProperty.UnitIdealReesCoordinates.homogeneousCoefficientEquiv_apply}
+For the original domain $A$, the actual coefficient map identifies
+$A$ with the same genuine homogeneous Rees chart $A[A/1]$ at the
+original element $T$. Both the actual fraction subalgebra and the
+actual homogeneous localization are identified through their
+original coefficient maps, without a supplied comparison.
+\end{definition}
+\begin{proof}
+The genuine original fraction-chart denominator-clearing theorem at
+$g=1$ says that every original chart element is the image of an
+actual element of $A$. The actual coefficient map is injective in
+the original fraction field, so is an algebra isomorphism. Compose
+with the genuine original homogeneous-localization to fraction-chart
+isomorphism.
+\end{proof}
+
+\begin{theorem}[The same original Rees coordinate ratio]
+\label{thm:fc-original-unit-rees-coordinate-ratio}
+\leanok
+\lean{EnvelopeProperty.UnitIdealReesCoordinates.homogeneousCoefficientEquiv_symm_generator}
+\uses{def:fc-original-unit-rees-chart-coefficients}
+Under this actual original coefficient identification, the genuine
+original homogeneous ratio $(aT)/T$ is exactly the SAME original
+$a\in A$ for every $a\in A$.
+\end{theorem}
+\begin{proof}
+Map the actual homogeneous fraction into the same original fraction
+field by the genuine Rees chart evaluation. Its value is exactly
+$a/1=a$. Both coefficient identifications preserve the literal
+original coefficient, and their injectivity gives the equality in
+the whole original chart ring.
+\end{proof}
+
+\begin{theorem}[The actual inverse of the original unit blowup projection]
+\label{thm:fc-original-unit-rees-chart-section}
+\leanok
+\lean{EnvelopeProperty.UnitIdealReesCoordinates.inverse_fractionChart, EnvelopeProperty.UnitIdealReesCoordinates.inverse_homogeneousChart}
+\uses{def:fc-original-unit-rees-chart-coefficients}
+The inverse of the actual original unit-ideal blowup projection is
+the original chart inclusion composed with the spectrum map of the
+preceding original coefficient identification. This holds both in
+the actual fraction-chart and actual homogeneous-chart presentations.
+\end{theorem}
+\begin{proof}
+The actual chart inclusion followed by the actual original blowup
+projection is the spectrum of the original coefficient map. The
+preceding true inverse coefficient map therefore makes the composite
+the identity on the SAME original spectrum. The original blowup
+projection is already a genuine isomorphism, so its actual inverse
+is this chart section. Expanding the genuine original fraction-chart
+inclusion yields the identical homogeneous-chart formula.
+\end{proof}

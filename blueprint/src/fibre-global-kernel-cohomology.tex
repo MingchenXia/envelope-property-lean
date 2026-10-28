@@ -1,0 +1,52 @@
+\section{The original global-section kernel filtration in degree-zero Rees cohomology}
+
+\begin{lemma}[The literal zeroth ideal power is the original structure module]
+\label{lem:fibre-ideal-power-zero-module-iso}
+\uses{lem:fibre-infinitesimal-categorical-kernel}
+\lean{EnvelopeProperty.FibreGlobalKernelCohomology.powerZeroIso}
+\leanok
+The original inclusion $(I\mathcal O_X)^0\to\mathcal O_X$ is an
+isomorphism of the entire original module sheaves, on an arbitrary
+original scheme and for every coefficient ideal.
+\end{lemma}
+\begin{proof}
+Every original section is locally a member of the zeroth ideal power,
+since that power is the entire section ring on every original affine
+open. Regarding each such entire original section as a section of the
+zeroth ideal module defines an inverse to its original inclusion. This
+map is additive, linear and commutes with restriction because every
+underlying section is unchanged.
+Both composites retain every section on every open, so are identities.
+\end{proof}
+
+\begin{lemma}[Every whole global ideal-power image is its literal Rees degree-zero cohomology]
+\label{lem:fibre-global-kernel-degree-zero-cohomology}
+\uses{lem:fibre-infinitesimal-global-h0-cech,lem:fibre-infinitesimal-global-image-kernel,lem:fibre-ideal-power-cech-inclusion-comparison}
+\lean{EnvelopeProperty.FibreGlobalKernelCohomology.globalKernelSectionsIso,EnvelopeProperty.FibreGlobalKernelCohomology.globalKernelSectionsIso_apply,EnvelopeProperty.FibreGlobalKernelCohomology.kernelInclusion,EnvelopeProperty.FibreGlobalKernelCohomology.globalKernelSectionsIso_naturality,EnvelopeProperty.FibreGlobalKernelCohomology.kernelZeroIso,EnvelopeProperty.FibreGlobalKernelCohomology.degreeZeroKernelIso,EnvelopeProperty.FibreGlobalKernelCohomology.degreeZeroKernelIso_inclusion,EnvelopeProperty.FibreGlobalKernelCohomology.degreeZeroGlobalIso,EnvelopeProperty.FibreGlobalKernelCohomology.degreeZeroGlobalIso_inclusion}
+\leanok
+On a separated original scheme with a finite ordered affine open
+cover, the actual degree-zero cohomology of the $d$th literal Rees
+Cech degree is canonically $R$-linearly isomorphic to the original
+whole global-section kernel $F_d$. The identification uses precisely
+the original coefficient-induced $R$ action, and retains the original
+global function whenever it is represented as an ideal-module section.
+The higher-to-lower Rees cohomology maps correspond to the actual
+inclusions of the original $F_d$. At degree zero $F_0$ is the
+whole original global-section module, and the map from each power
+to this module is its actual whole original kernel inclusion.
+\end{lemma}
+\begin{proof}
+Identify the literal Rees cohomology with the original coherent
+ideal-power cohomology by the proved whole original comparison. In
+degree zero, the actual original covering sheaf-gluing isomorphism
+identifies this cohomology with whole ideal-power global sections.
+Their original linear kernel equivalence identifies them with $F_d$.
+Restrict the original coefficient structure along the canonical
+$R\simeq\Gamma(\operatorname{Spec}R,\mathcal O)$ map throughout. The
+resulting scalar action on every original global section is exactly
+multiplication by its original coefficient section, so the composite
+is $R$-linear. The coherent-to-literal inclusion comparison, naturality
+of the genuine global-section/cohomology isomorphism, and the fact that
+both the original ideal-module and kernel inclusions retain every
+original global function prove the stated whole inclusion square.
+\end{proof}

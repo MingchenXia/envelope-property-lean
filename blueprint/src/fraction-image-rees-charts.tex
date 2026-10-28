@@ -1,0 +1,59 @@
+\subsection{Actual finite-type fraction images as original Rees charts}
+
+\begin{lemma}[An actual finite-type fraction image is an original Rees chart]
+\label{scheme:actual-finite-type-fraction-image-chart}
+\lean{EnvelopeProperty.FractionImageReesChart.exists_fractionImageChart}
+\leanok
+\uses{algebra:actual-rees-degree-zero-chart-equivalence}
+Let $A$ be ANY commutative DOMAIN, let $C$ be ANY commutative finite-type
+$A$-algebra, and let $\phi:C\to_A\operatorname{Frac}(A)$ be an ACTUAL
+algebra homomorphism.  There are a finite original generating set $s\subset C$,
+a family $G:(\{*\}\sqcup s)\to A$ with $G_*\ne0$, a true $A$-algebra
+isomorphism
+\[
+ E:\operatorname{ReesChart}(G,*)\simeq_A\phi(C)\subset\operatorname{Frac}(A),
+\]
+and an actual $A$-algebra map $\psi:C\to\operatorname{ReesChart}(G,*)$.
+The WHOLE original fraction-chart map equals the map induced by $E$, and
+\[
+ \operatorname{toFractionRing}\circ\psi=\phi,
+ \qquad \ker\psi=\ker\phi.
+\]
+$C$ need not be reduced or a domain, and $\phi$ need not be injective.
+The isomorphism targets the actual IMAGE; no radical, quotient-kernel, chart
+or fraction-coordinate certificate is supplied.
+\end{lemma}
+\begin{proof}
+Choose a genuine finite original set $s$ from finite type, so $A[s]=C$.
+Index an actual fraction-field family $a$ by $\{*\}\sqcup s$, putting
+$a_*=1$ and $a_c=\phi(c)$ for $c\in s$.  Actual fraction localization gives
+ONE common denominator $d\in A\setminus\{0\}$ and original numerators
+$G_i\in A$ with $G_i=d a_i$ in the SAME fraction field.  Injectivity of the
+original coefficient map gives $G_*=d$, so this selected member is nonzero and
+EVERY original ratio $G_i/G_*$ is $a_i$.
+
+The actual range of $a$ is $\{1\}\cup\phi(s)$.  Consequently
+\[
+ A[G_i/G_*]=A[1,\phi(s)]=A[\phi(s)]
+   =\operatorname{map}_{\phi}(A[s])=\phi(C)
+\]
+as a literal equality of original subalgebras of the SAME fraction field.
+Compose the genuine original Rees fraction-chart isomorphism with this
+subalgebra equality.  Both maps retain the ENTIRE original fraction value,
+which gives the stated formula for $E$ on every chart element.
+
+Define $\psi$ to be the actual range restriction $C\to\phi(C)$ followed by
+$E^{-1}$.  The two genuine inverse laws give the whole original composite
+equation on EVERY element of $C$.  Finally the actual fraction-chart map is
+injective, so $\psi(c)=0$ if and only if its original fraction value
+$\phi(c)$ is zero.  This proves the exact equality of the ORIGINAL kernels,
+including all nilpotents and every other original element in that kernel.
+\end{proof}
+
+\begin{remark}[Exact scope]
+This is the first concrete algebraic primitive for the reviewed proper
+BIRATIONAL domination plan.  Product-chart covers, proper valuative lifts,
+global gluing and the final domination are still separate implementation work.
+It does not identify the original possibly nonreduced $C$ with its image, and
+does not assert arbitrary proper Chow or native properness.
+\end{remark}

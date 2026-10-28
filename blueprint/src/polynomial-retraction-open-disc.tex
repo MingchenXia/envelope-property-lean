@@ -1,0 +1,59 @@
+\subsection{Whole polynomial retractions and actual strict fibre discs}
+\begin{lemma}[The original polynomial retraction preserves coefficients and decreases radius]
+\label{analytic:polynomial-retraction-fibre-bounds}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.proj_polynomialRetraction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.val_polynomialRetraction_X_le}
+\leanok
+\uses{analytic:polynomial-spectrum-homotopy-equivalence}
+Let $R,A$ be ANY commutative rings with their original algebra map and
+prescribed valuation $v$ on $R$. For the previously constructed actual
+homotopy $D$ from the identity of $\operatorname{Sp}_v(A[T])$ to its zero
+Gauss section retraction, EVERY original point $x$ and EVERY homotopy time
+$\theta\in[0,1]$ satisfy
+\[
+ p(D(\theta,x))=p(x),\qquad |T(D(\theta,x))|\leq |T(x)|.
+\]
+The coefficient identity is an equality of the WHOLE original coefficient
+point, with no reducedness, boundedness or faithfulness assumption.
+\end{lemma}
+\begin{proof}
+The concatenation first evaluates genuine inflation
+$I_{s|T(x)|}(x)$ for a rescaled time $s\in[0,1]$. The actual coefficient
+identity for inflation retains $p(x)$, and its coordinate formula is
+$\max(|T(x)|,s|T(x)|)=|T(x)|$ since $0\leq s\leq1$.
+The second phase evaluates the original Gauss point
+$\eta_{(1-s)|T(x)|}(p(x))$. Its whole coefficient restriction is again
+$p(x)$, and its exact coordinate value is $(1-s)|T(x)|\leq|T(x)|$.
+Both actual phases therefore satisfy both assertions, including at their
+common join. These are the actual formulas for the previously constructed
+homotopy, rather than newly supplied radius or coefficient certificates.
+\end{proof}
+
+\begin{theorem}[A genuine contraction of every actual strict fibre disc]
+\label{analytic:actual-strict-fibre-disc-contraction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FibreOpenDisc,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreOpenDisc.contraction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreOpenDisc.contractibleSpace}
+\leanok
+\uses{analytic:polynomial-retraction-fibre-bounds}
+Fix an ACTUAL whole point $y\in\operatorname{Sp}_v(A)$ and $r>0$. The
+original strict fibre disc
+\[
+ \mathcal D_y(r)=\{x\in\operatorname{Sp}_v(A[T]):p(x)=y,\ |T(x)|<r\}
+\]
+is contractible to the actual zero-radius Gauss point $\eta_0(y)$. The
+contraction is the restriction of the ORIGINAL whole polynomial retraction,
+not an assumed disc-chart or topological certificate. No field,
+completeness, nontrivial norm or domain hypothesis is required.
+\end{theorem}
+\begin{proof}
+Every intermediate point $D(\theta,x)$ has the SAME whole coefficient
+restriction $y$, and its coordinate value is at most $|T(x)|<r$ by the
+preceding lemma. Thus the original continuous homotopy restricts to the
+actual strict disc with its original subspace topology. At time zero it is
+the identity on the whole original points. At time one it is
+$\eta_0(p(x))=\eta_0(y)$, a genuine point of the SAME strict disc because
+$|T(\eta_0(y))|=0<r$. This constructs an actual homotopy from the identity
+to that constant point, proving contractibility. The positive-radius input
+is necessary: the strict disc of radius zero is empty.
+\end{proof}

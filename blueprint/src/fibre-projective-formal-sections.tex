@@ -1,0 +1,96 @@
+\section{Actual formal functions for the whole original projective section ring}
+
+\begin{theorem}[The canonical original infinitesimal section map]
+\label{thm:fibre-projective-original-section-map}
+\uses{thm:fibre-global-kernel-quotient-reconstruction,lem:fc-projective-source-separated,lem:fc-projective-finite-ordered-affine-cover}
+\lean{EnvelopeProperty.FibreProjectiveFormalSections.sectionMap,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_apply,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_injective_of_cover,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_injective}
+\leanok
+The original whole global-section ring maps to the ring of compatible
+sections of the literal positive infinitesimal models by every actual
+projection. Over the actual complete Noetherian base, for a genuine
+projective factorization, this map is injective.
+\end{theorem}
+\begin{proof}
+The actual projection and transition composition law proves every
+compatibility equation. Ring operations commute with every original
+projection. If two sections have the same coordinates, their difference
+belongs to every original global projection kernel. Hence they have the
+same entire original kernel quotient in every order. The genuine stable
+kernel-filtration reconstruction equivalence then identifies the two
+original sections.
+\end{proof}
+
+\begin{lemma}[The entire original coefficient triangle]
+\label{lem:fibre-projective-formal-coefficient}
+\uses{thm:fibre-projective-original-section-map}
+\lean{EnvelopeProperty.FibreProjectiveFormalSections.projection_coefficient_quotient,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_coefficient}
+\leanok
+For each order, restriction of an original coefficient to the original
+infinitesimal model is its quotient coefficient followed by that model's
+structure coefficient. Consequently the canonical section map sends an
+original coefficient to its entire original compatible coefficient family.
+\end{lemma}
+\begin{proof}
+The two structure morphisms of the defining pullback have the same
+composite to the original affine base. Apply global sections and the
+canonical affine global-section identification. This gives the equality
+of the two whole coefficient homomorphisms at every order. Equality at
+every positive coordinate then gives the asserted equality in the ring
+of compatible sections.
+\end{proof}
+
+\begin{theorem}[Whole original projective formal functions]
+\label{thm:fibre-projective-formal-sections}
+\uses{thm:fibre-projective-original-section-map,thm:fibre-global-kernel-quotient-reconstruction,lem:fc-infinitesimal-compatible-section-boundary,cor:fc-formal-functions-positive-compatible-zero}
+\lean{EnvelopeProperty.FibreProjectiveFormalSections.compatible_coordinate_lifts,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_surjective_of_cover,EnvelopeProperty.FibreProjectiveFormalSections.sectionMap_surjective,EnvelopeProperty.FibreProjectiveFormalSections.formalEquiv,EnvelopeProperty.FibreProjectiveFormalSections.formalEquiv_toRingHom,EnvelopeProperty.FibreProjectiveFormalSections.formalEquiv_apply,EnvelopeProperty.FibreProjectiveFormalSections.formalEquiv_coefficient,EnvelopeProperty.FibreProjectiveFormalSections.formalEquiv_symm_apply}
+\leanok
+For an actual projective factorization over an $I$-adically complete
+Noetherian coefficient ring, the same original global-section ring is
+canonically isomorphic to the whole ring of compatible sections of its
+actual positive infinitesimal models. There is no extra lifting,
+cohomology, reducedness or normality assumption.
+\end{theorem}
+\begin{proof}
+Use the original projective coordinate affine cover, deriving
+separatedness and its finite affine cover internally. A compatible
+family of original infinitesimal sections has genuine connecting
+classes in the first cohomology of the original ideal powers. Actual
+boundary naturality makes these classes compatible under the original
+power inclusions. The proved coherent-to-literal Rees comparisons
+preserve these precise maps. Genuine finite projective Rees cohomology
+and separation over the actual complete Noetherian base force this
+entire compatible obstruction family to vanish. Exactness therefore
+lifts every given coordinate to an original whole global section.
+
+The classes of these lifts in the entire original projection-kernel
+quotients are independent of the lifts and form a compatible family,
+because the projections commute with the original transitions. The
+genuine kernel-filtration reconstruction gives one original global
+section with every prescribed quotient class, hence every prescribed
+original infinitesimal section. This proves surjectivity of the actual
+canonical map. Its ring operations were already proved, so its
+bijectivity gives the asserted whole original ring isomorphism.
+\end{proof}
+
+\begin{theorem}[Literal closed-fibre idempotent restriction]
+\label{thm:fibre-projective-formal-idempotents}
+\uses{thm:fibre-projective-formal-sections,scheme:actual-original-infinitesimal-idempotent-family}
+\lean{EnvelopeProperty.FibreProjectiveFormalSections.idempotentRestrictionEquiv,EnvelopeProperty.FibreProjectiveFormalSections.idempotentRestrictionEquiv_apply}
+\leanok
+Under the same actual complete Noetherian projective hypotheses,
+restriction of original whole global sections to the actual order-one
+model bijects idempotents. This refers to the entire original rings,
+including their nilpotents.
+\end{theorem}
+\begin{proof}
+The whole formal-functions ring isomorphism induces a bijection on
+idempotents because a ring homomorphism preserves $e^2=e$, and its
+inverse preserves the same equation. Actual unique idempotent lifting
+across every nilpotent infinitesimal transition identifies idempotents
+of the entire compatible-section ring with idempotents on the order-one
+model. Their composition is the original order-one section restriction:
+the formal-functions forward map has every coordinate equal to the
+original section pullback, and the second bijection evaluates its
+zero-index coordinate. This proves the asserted bijection for that
+literal restriction.
+\end{proof}

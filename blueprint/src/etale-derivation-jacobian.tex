@@ -1,0 +1,43 @@
+\section{Actual derivation Jacobians through an \'etale leaf}
+
+\begin{lemma}[Every actual derivation expands in \'etale source coordinates]\label{lem:sc0-etale-derivation-expansion}
+\lean{EnvelopeProperty.Char0.derivation_apply_eq_sum_etale}
+\leanok
+\uses{lem:sc0-etale-differential-basis}
+For an actual \'etale coordinate family $v_1,\ldots,v_n$ in $A$ and an actual
+$k$-derivation $D:A\to S$ into an actual compatible $A$-algebra,
+\[
+ D(f)=\sum_j (\partial_j f) D(v_j)
+\]
+with coefficients extended through the actual scalar map $A\to S$.
+\end{lemma}
+\begin{proof}
+Expand $df$ in the actual basis $dv_j$ of $\Omega_{A/k}$. Its coefficients
+are the actual partial derivatives $\partial_jf$ by construction. Apply
+the actual $A$-linear map from the universal property of differentials
+corresponding to $D$. It sends $dv_j$ to $D(v_j)$, giving the identity.
+\end{proof}
+
+\begin{theorem}[Actual derivation Jacobian ideals through an \'etale leaf]\label{thm:sc0-etale-derivation-jacobian-ideal}
+\lean{EnvelopeProperty.Char0.derivationSourceJacobianIdeal, EnvelopeProperty.Char0.derivation_source_matrix_comp, EnvelopeProperty.Char0.derivation_source_det_comp, EnvelopeProperty.Char0.derivationSourceJacobianIdeal_eq}
+\leanok
+\uses{lem:sc0-etale-derivation-expansion,def:sc0-affine-relative-jacobian-ideal}
+Let $R\to A\to S$ be actual ring maps compatible over $k$, with actual
+\'etale coordinates $v$ in $A$, and actual derivations $D_1,\ldots,D_n:A\to S$.
+The ideal generated in $S$ by determinants $\det(D_jf_i)$ for every tuple
+of original functions $f_i\in R$ equals
+\[
+ (\det(D_jv_i))\,\operatorname{Jac}(A/R)S,
+\]
+where $\operatorname{Jac}(A/R)$ is the genuine all-original-functions
+Jacobian ideal in the actual $v$-differential basis.
+\end{theorem}
+\begin{proof}
+The preceding expansion writes each source-tuple derivative matrix as
+the mapped transpose of its actual \'etale-coordinate differential matrix
+multiplied by the actual matrix $(D_jv_i)$. Taking determinants gives the
+factorization for every original tuple. Taking the actual generated ideals
+and using ideal extension and multiplication gives equality: every tuple
+determinant lies in the displayed product, and every displayed generator
+product is exactly that tuple determinant.
+\end{proof}

@@ -1,0 +1,66 @@
+\section{Ordinary coherent Serre vanishing and global generation on projective space}
+
+\begin{lemma}[Eventual acyclicity of the original finite negative-twist source]
+\label{lem:coherent-projective-negative-presentation-acyclic}
+\uses{lem:coherent-projective-original-twist-addition}
+\lean{EnvelopeProperty.CoherentProjectiveSerreVanishing.exists_negativeSource_bound}
+\leanok
+A finite coproduct of original negative coordinate twists becomes acyclic
+in every positive degree after tensoring with every sufficiently large
+original nonnegative twist.
+\end{lemma}
+\begin{proof}
+Write its finitely many summands as $\mathcal O_{j_i}(-a_i)$ and take
+$A=\max_i a_i$, with $A=0$ for the empty source. For $d\ge A$, the preceding
+isomorphism identifies the $i$th tensor summand with the same original
+$\mathcal O(d-a_i)$, whose degree is nonnegative. The actual standard-cover
+Laurent weight contraction makes the original ordered Cech complex of
+every such summand exact in each positive degree. Finite coproducts of
+module sheaves and of these Cech complexes commute with their original
+maps, and finite coproducts of exact module complexes remain exact.
+Consequently their original positive cohomology modules vanish.
+\end{proof}
+
+\begin{theorem}[Ordinary coherent Serre vanishing]
+\label{thm:coherent-projective-serre-vanishing}
+\uses{lem:coherent-projective-negative-presentation-acyclic,thm:scheme-original-invertible-tensor-exact,lem:scheme-original-invertible-tensor-quasicoherent}
+\lean{EnvelopeProperty.CoherentProjectiveSerreVanishing.exists_orderedCech_bound,EnvelopeProperty.CoherentProjectiveSerreVanishing.exists_sheafCohomology_bound}
+\leanok
+Let $R$ be Noetherian and $M$ an original finite-type quasicoherent module
+on the genuine polynomial projective space $\mathbb P_R^n$. There exists
+$A$ such that, for every $d\ge A$ and every $q>0$, the whole original
+$H^q(\mathbb P_R^n,M\otimes\mathcal O(d))$ is zero.
+\end{theorem}
+\begin{proof}
+Use the original finite ordered standard affine cover, of cardinality
+$c=n+1$. Every ordered Cech term in degree at least $c$ is zero, so the
+same holds for cohomology. We prove by induction on $s$ the stronger
+statement that every finite-type quasicoherent $M$ has one bound $A$
+working simultaneously in all positive degrees $q$ with $c\le q+s$.
+For $s=0$ use the just-proved zero Cech terms, and take $A=0$.
+
+For the successor step choose the actual finite negative-twist
+surjection $Q\twoheadrightarrow M$. Its kernel $K$ is quasicoherent and
+finite type because projective space over the Noetherian base is
+locally Noetherian. The induction hypothesis supplies a bound for $K$,
+and the preceding lemma supplies a bound for $Q$. Take their maximum.
+Tensor the original short exact sequence by the actual invertible
+$\mathcal O(d)$; exactness is preserved by the genuine tensor equivalence.
+Its standard affine Cech complexes give a short exact sequence. In the
+original long exact sequence, for $q>0$ and $c\le q+s+1$, the group
+$H^q(Q(d))$ is zero by the source bound and $H^{q+1}(K(d))$ is zero by
+the induction hypothesis, since $c\le(q+1)+s$. Exactness forces the
+entire group $H^q(M(d))$ to be zero. This proves the induction step.
+Finally take $s=c$, when its inequality holds for every positive $q$.
+\end{proof}
+
+
+The comparison to the whole original sheaf cohomology uses the actual
+finite standard affine cover. All of its nonempty finite intersections are
+affine on this original separated projective scheme. Quasicoherence of each
+original tensor twist, derived above, gives genuine acyclicity on these
+intersections. The native full/ordered Cech homotopy equivalence retains
+all original homology, and the actual acyclic-cover comparison identifies
+positive exactness with vanishing of the original sheaf cohomology. For
+the final statement an order on the finite coordinate index is constructed
+internally; no order or cover certificate is an extra hypothesis.

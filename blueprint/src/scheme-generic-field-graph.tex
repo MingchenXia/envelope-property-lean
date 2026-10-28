@@ -1,0 +1,61 @@
+\subsection{A genuine generic graph retains the SAME original function field}
+
+\begin{definition}[Actual coefficient homomorphism of a dominant field-valued point]
+\label{scheme:generic-field-point-hom}
+\lean{EnvelopeProperty.SchemeGenericFieldGraph.fieldHom}
+\leanok
+For an integral scheme $Y$ and an ACTUAL dominant map
+$g:\operatorname{Spec}K\to Y$, define the actual field homomorphism
+$k(Y)\to K$ by the native stalk map at the actual image of the closed point,
+transporting only along its proved equality with the genuine generic point.
+\end{definition}
+\begin{proof}
+The field spectrum has one point; its original image is generic by true
+dominance. Thus the native closed-point stalk map has, after actual native
+stalk transport, exactly the actual generic stalk as source.
+\end{proof}
+
+\begin{theorem}[The entire original field point is retained]
+\label{scheme:generic-field-point-hom-diagram}
+\lean{EnvelopeProperty.SchemeGenericFieldGraph.fieldHom_fromSpecStalk}
+\leanok
+\uses{scheme:generic-field-point-hom}
+The spectrum of this SAME actual coefficient homomorphism, followed by the
+native generic-stalk morphism, equals the SAME original $g$ as an entire
+scheme morphism.
+\end{theorem}
+\begin{proof}
+The genuine native stalk-transport triangle moves the generic stalk to the
+actual image stalk. The original closed-point-to-stalk factorization then
+recovers the whole original map $g$, including its actual section maps.
+\end{proof}
+
+\begin{theorem}[An actual generic graph has exactly the original function field]
+\label{scheme:generic-graph-original-function-field}
+\lean{EnvelopeProperty.SchemeGenericFieldGraph.fieldHom_bijective_of_genericProjection,EnvelopeProperty.SchemeGenericFieldGraph.functionFieldEquiv}
+\leanok
+\uses{scheme:generic-field-point-hom-diagram}
+Let $X,Y$ be actual integral schemes and let
+$g:\operatorname{Spec}k(X)\to Y$ be an actual dominant point. If an actual
+whole projection $p:Y\to X$ satisfies
+$g\circ p=X.\mathrm{fromSpecStalk}(\eta_X)$, the SAME actual native
+coefficient homomorphism $k(Y)\to k(X)$ is bijective and defines a genuine
+field isomorphism. No birationality or function-field comparison is assumed.
+\end{theorem}
+\begin{proof}
+The genuine generic point of $X$ lies in the actual image of $p$, so $p$ is
+dominant. Applying the actual native stalk map of $p$ at $\eta_Y$, with
+its proved generic-point equality, gives an actual map
+$\operatorname{Spec}k(Y)\to X$ equal to the native generic morphism of $Y$
+followed by $p$. Regard this as a dominant $k(Y)$-valued point of $X$ and
+form its genuine coefficient homomorphism $k(X)\to k(Y)$.
+
+Compose the two proven whole generic diagrams and use the original equation
+$g\circ p=X.\mathrm{fromSpecStalk}(\eta_X)$. Cancelling the native
+monomorphism from the generic stalk of $X$ proves that the two spectrum
+maps compose to the identity of $\operatorname{Spec}k(X)$. Full faithfulness
+of actual $\operatorname{Spec}$ then proves that the original coefficient
+homomorphism $k(Y)\to k(X)$ has a right inverse. It is injective because
+it is a field homomorphism, and surjective by this right inverse, giving the
+claimed SAME-field isomorphism.
+\end{proof}

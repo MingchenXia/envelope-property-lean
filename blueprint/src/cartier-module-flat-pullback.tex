@@ -1,0 +1,50 @@
+\section{Actual global flat pullback of effective Cartier ideal modules}
+\begin{lemma}[Canonical flat Cartier comparison on genuine affine pairs]
+\label{lem:actual-cartier-module-flat-pullback-affine-pair}
+\uses{lem:actual-ideal-module-canonical-pullback-comp-iso,lem:actual-ideal-open-canonical-pullback-iso,lem:affine-cartier-module-pullback-iso}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.toModulesComapPullbackMap_isIso_on_affine_pair}
+For an actual effective Cartier ideal $I$ and flat morphism $f:X\to Y$,
+let $V\subset Y$ and $U\subset X$ be original affine opens with
+$U\subset f^{-1}V$. The whole restriction to $U$ of the actual canonical
+ideal-module pullback comparison is an isomorphism.
+\end{lemma}
+\begin{proof}
+The genuine original restricted morphism $U\to V$ is flat. The actual
+open pullback of $I$ to $V$ is Cartier by flat pullback of effective Cartier
+ideals, so the genuine affine canonical comparison is an isomorphism by
+the preceding affine producer. The canonical open comparison for
+$V\hookrightarrow Y$ is an isomorphism for every ideal. Actual composition
+therefore proves the entire canonical comparison for $U\to V\to Y$ is
+an isomorphism. The true original restriction triangle identifies this
+morphism with $U\hookrightarrow X\to Y$. The genuine canonical comparison
+for the final geometric ideal along $U\hookrightarrow X$ is also an
+isomorphism. Cancel it in the proved whole composition equality. This
+proves that the genuine pullback to $U$ of the canonical comparison for
+$f$ is an isomorphism. The native restriction--pullback natural
+isomorphism identifies this with its entire original restriction.
+\end{proof}
+
+\begin{theorem}[Genuine whole canonical Cartier ideal module flat base change]
+\label{thm:actual-cartier-module-global-flat-pullback}
+\uses{lem:actual-cartier-module-flat-pullback-affine-pair}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.toModulesComapPullbackMap_isIso,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.flatPullbackModuleIso}
+For an actual effective Cartier ideal and an arbitrary actual flat scheme
+morphism, the original canonical module pullback comparison with the
+module of the entire genuine geometric ideal comap is an isomorphism.
+No affineness, Noetherianity, finite-generation, domain or reducedness
+assumption is required.
+\end{theorem}
+\begin{proof}
+For each original point $x$, choose an original affine neighbourhood $V$
+of $f(x)$, and then an original affine neighbourhood $U$ of $x$ inside
+the whole preimage $f^{-1}V$. The preceding affine-pair result proves the
+canonical comparison is an isomorphism on the entire restriction to
+$U$. These genuine original $U$ cover $X$ since each contains its chosen
+point. The actual sheaf-local isomorphism criterion now proves that the
+original whole canonical comparison is an isomorphism. Its genuine
+inverse supplies the actual stated module sheaf isomorphism. All local
+comparison and cover data were constructed from the original Cartier
+ideal, flat morphism and actual affine basis.
+\end{proof}

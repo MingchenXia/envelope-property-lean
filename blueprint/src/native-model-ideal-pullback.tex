@@ -1,0 +1,107 @@
+\subsection{Genuine scheme ideal pullback and model-function consistency}
+\label{subsec:native-model-ideal-pullback}
+
+\begin{theorem}[Actual geometric ideal pullback on sections and stalks]
+\label{scheme:genuine-ideal-pullback-stalk}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.comap_ideal_top_of_isAffine_native,
+AlgebraicGeometry.Scheme.IdealSheafData.comap_open_ideal_top_map,
+AlgebraicGeometry.Scheme.IdealSheafData.comap_ideal_of_affine_opens,
+AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_comap}
+\leanok
+\uses{scheme:ideal-sheaf-data-stalk}
+For arbitrary actual schemes and a genuine morphism $g:X\to Y$, use
+Mathlib's actual ideal-sheaf-data pullback, defined by the true pullback
+of its associated closed subscheme. On any compatible actual affine
+opens $U\subset X$, $V\subset Y$ with $U\subset g^{-1}(V)$, its ideal is
+\[
+ (g^*I)(U)=I(V)\,\Gamma(X,U)
+\]
+under the actual local section homomorphism. At every actual point $x$,
+its intrinsic stalk ideal is the genuine image
+\[
+ (g^*I)_x=\operatorname{Ideal.map}(g_x^\#)(I_{g(x)}).
+\]
+Neither equality is assumed as a certificate. No noetherian, finite
+generation, separatedness or properness hypothesis is required.
+\end{theorem}
+\begin{proof}
+First take actual affine source and target schemes. The true geometric
+pullback is left adjoint to the true geometric ideal pushforward, and the
+latter has the independently proved affine section formula given by
+ideal contraction under the actual global section homomorphism. For the
+candidate section ideal obtained by actual ideal extension, its ordinary
+extension/contraction adjunction shows the original target ideal lies in
+its geometric pushforward. The geometric adjunction therefore bounds the
+actual pullback ideal above by this candidate. Conversely its genuine
+adjunction unit bounds the target ideal by contraction of the actual
+pullback ideal; ordinary ideal extension gives the reverse inequality.
+Thus the genuine geometric pullback has exactly the asserted affine
+section-ring ideal image.
+
+For actual affine opens in arbitrary schemes, real open-immersion
+pullback and the true global-section isomorphisms of restricted schemes
+transport the original affine ideals. Geometric pullback composition and
+the whole restricted-morphism inclusion triangle identify the two
+restricted pullback data. Apply the affine result. The actual formula
+for the restricted morphism's global-section map is the original local
+section homomorphism conjugated by the two genuine open section
+isomorphisms. Cancelling these isomorphisms gives the asserted formula
+on the original section rings.
+
+Finally choose an actual affine neighborhood of $g(x)$ and an actual
+affine refinement of its preimage containing $x$. The previously proved
+intrinsic stalk ideals equal these true affine germ images. Apply the
+section formula and actual ideal-image composition. Genuine section
+restriction, germ naturality and the whole scheme stalk-map identity
+identify the two resulting homomorphisms, proving the full stalk formula.
+The proof starts with Mathlib's geometric closed-subscheme pullback;
+it never replaces it by a newly stipulated affine ideal map.
+\end{proof}
+
+\begin{theorem}[Actual model ideal norms and logarithms commute with pullback]
+\label{scheme:proper-model-ideal-pullback}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.sectionSpectrum_comap_appLE,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_comap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_comap}
+\leanok
+\uses{scheme:genuine-ideal-pullback-stalk,scheme:native-model-ideal-function,
+scheme:proper-center-map,lem:general-ideal-pullback}
+Let $X,Y$ be actual proper models over $\operatorname{Spec}R$, with a
+prescribed real seminorm $v$ bounded on every base coefficient. For every
+genuine commuting model morphism $g:X\to Y$, every genuine ideal-sheaf
+datum $I$ on $Y$, and every actual prescribed-base native point $y$ of
+$X$, its intrinsic model functions satisfy
+\[
+ \|g^*I\|(y)=\|I\|(g(y)),\qquad
+ \log\|g^*I\|(y)=\log\|I\|(g(y)).
+\]
+No finite generation, noetherian condition, flatness, birationality or
+additional property of the intervening morphism $g$ is required.
+\end{theorem}
+\begin{proof}
+Genuine native residue-field pullback and actual restriction of sections
+prove that the whole section-spectrum point on a source open restricts
+under the original local section homomorphism to the corresponding
+whole target section-spectrum point. This compares all actual sections,
+including every coefficient, without a generator-value argument.
+
+Choose an actual affine neighborhood of the true target center. Actual
+proper-center functoriality puts the true source center in its preimage;
+choose an actual affine refinement there. The intrinsic model norm agrees
+with its real affine ideal norm on both genuine center neighborhoods.
+The preceding derived geometric pullback formula identifies the source
+ideal with the actual image of the target ideal under the true local
+section map. Proper center pullback gives genuine boundedness on every
+source section. The independently proved bounded ideal-image norm
+formula therefore converts the source norm to the target ideal norm at
+the actual restricted spectrum point. The whole section-spectrum identity
+identifies this point with the native image, giving the asserted norm
+equality. Apply the actual extended logarithm for the second identity,
+including zero norms and negative infinity.
+
+This supplies genuine model-function consistency under model refinement
+and birational model maps, as a specialization of the stronger commuting
+morphism theorem. It uses the actual geometric ideal pullback and actual
+model centers, not assumed stalk or center certificates. No analytic
+structure-sheaf or coherent analytic ideal identification is claimed.
+\end{proof}

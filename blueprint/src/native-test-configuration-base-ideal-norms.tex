@@ -1,0 +1,75 @@
+\section{Positive norms of the original eventual test-configuration base ideals}
+
+\begin{lemma}\label{lem:model-ideal-positive-on-unit-restriction}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_pos_of_comap_eq_top}
+Let $\mathcal X$ be proper over an affine valued base whose coefficients
+have value at most one. Let $I$ be an original ideal sheaf and $U$ an
+original open with $I\mathcal O_U=\mathcal O_U$. At every native valued
+point whose underlying scheme point belongs to $U$, the original model
+ideal norm of $I$ is strictly positive.
+\end{lemma}
+\begin{proof}
+The support of the pulled-back ideal is the inverse image of the original
+support. The unit ideal has empty support, so the scheme point is outside
+the original support. The actual model ideal norm vanishes exactly at the
+native scheme support. It is therefore nonzero and hence strictly positive.
+The valuative model center may still lie in the support; the argument uses
+the original native point, not its center.
+\end{proof}
+
+\begin{lemma}\label{lem:native-test-configuration-valued-point-unit-open}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.valuedPoint_mem_unitOpen}
+For an actual valuation $v$ on the original polynomial parameter ring
+with $v(t)\ne0$, every actual native point extending $v$ lies in the
+original noncentral scheme open of a literal test configuration.
+\end{lemma}
+\begin{proof}
+The native point's whole prescribed-base equation identifies the image of
+its scheme point with the support of $v$. This support belongs to $D(t)$
+exactly when $v(t)\ne0$. Taking the original inverse image gives membership
+in the original noncentral open.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-eventual-positive-base-ideal-norm}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_powerBaseIdeal_norm_pos}
+Take the original ample fibre line and source line-action/fibre-one data
+of the eventual-verticality theorem. Fix any bounded valuation on the
+original polynomial parameter ring with nonzero parameter value. There
+is one $N$ such that for every $m\ge N$ the model norm of the base ideal
+of \emph{all} global sections of the original total line power is
+strictly positive at every native point extending that valuation.
+\uses{thm:native-test-configuration-eventual-verticality,lem:model-ideal-positive-on-unit-restriction,lem:native-test-configuration-valued-point-unit-open}
+\end{theorem}
+\begin{proof}
+Use the single bound derived from original ampleness in eventual
+verticality. For each exponent beyond it, the entire original base ideal
+restricts to the unit ideal on the original noncentral open. Every native
+point extending the fixed valuation lies in this open by the preceding
+lemma. The first lemma gives strict positivity. Source projectivity gives
+the properness required by the actual model norm construction.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-eventual-finite-positive-norm-family}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_finite_power_section_norms}
+For every exponent beyond one bound, one finite family of actual global
+sections of the same original total line power computes its entire base
+ideal norm at every original native point. The corresponding maximum of
+actual generic-fibre model line norms is strictly positive and at most one.
+The family is chosen before the native point; no chosen-family norm
+identity, positivity, or verticality certificate is assumed.
+\uses{thm:native-test-configuration-eventual-positive-base-ideal-norm}
+\end{theorem}
+\begin{proof}
+The original polynomial base is Noetherian and the original projection
+has its actual projective factorization. The whole projective base-ideal
+norm theorem therefore gives one finite family whose maximum of actual
+generic-fibre section norms equals the all-global-section base ideal norm
+at every point. Strict positivity follows from the preceding theorem,
+and the bound by one follows from boundedness of the actual ideal norm.
+The maximum is a nonnegative real number, and its inclusion in the
+extended nonnegative reals preserves these strict and weak inequalities.
+\end{proof}

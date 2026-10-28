@@ -1,0 +1,65 @@
+\section{Actual monomial leaf Jacobians inside divisorial valuation rings}
+
+\begin{definition}[Normalized order of an actual DVR ideal]\label{def:sc0-dvr-ideal-order}
+\lean{EnvelopeProperty.Char0.dvrIdealOrder}
+\leanok
+For an actual ideal $J$ of the DVR $V$, put
+$\operatorname{ord}_V(J)=\inf_{f\in J}\operatorname{ord}_V(f)$.
+The zero ideal has order infinity.
+\end{definition}
+
+\begin{lemma}[Exact principal and product ideal orders]\label{lem:sc0-dvr-ideal-order-principal-product}
+\lean{EnvelopeProperty.Char0.dvrIdealOrder_span_singleton, EnvelopeProperty.Char0.dvrIdealOrder_mul}
+\leanok
+\uses{def:sc0-dvr-ideal-order}
+For actual DVR ideals, $\operatorname{ord}_V((f))=\operatorname{ord}_V(f)$
+and $\operatorname{ord}_V(JL)=\operatorname{ord}_V(J)+\operatorname{ord}_V(L)$.
+\end{lemma}
+\begin{proof}
+The generator belongs to its principal ideal, giving the upper bound.
+Every element of that ideal is a multiple of the generator, giving the
+lower bound by the DVR divisibility criterion. Every actual DVR ideal is
+principal. Choose its actual generator, apply the principal formula to both
+factors and their product, and use the normalized valuation product formula.
+The arguments include zero ideals.
+\end{proof}
+
+\begin{theorem}[Exact original-source Jacobian ideal on a contained DVR]\label{thm:sc0-dvr-leaf-source-jacobian}
+\lean{EnvelopeProperty.Char0.dvrLeafPartials, EnvelopeProperty.Char0.dvr_leaf_source_jacobian_ideal}
+\leanok
+\uses{thm:sc0-etale-derivation-jacobian-ideal,thm:sc0-actual-dvr-logarithmic-jacobian,def:sc0-etale-family-monomial-leaf}
+Let $C\subseteq E\subseteq V\subseteq K$ be actual inclusions with $V$
+a divisorial DVR, actual DVR coordinates $w=(\pi,u)$, and actual \'etale
+leaf coordinates $v$ in $E$. Identify their equal finite index sets.
+Restrict the actual DVR coordinate partials through the literal inclusion
+$E\hookrightarrow V$. If the genuine original-$C$ leaf Jacobian ideal is
+$(v^a)$, the actual all-original-$C$-functions DVR derivative Jacobian ideal
+is exactly $(\operatorname{Jac}_w(v)\,v^a)$ in the actual DVR.
+\end{theorem}
+\begin{proof}
+The actual DVR partials preserve $V$ by the proved primitive-coordinate
+theorem and compose with the actual inclusion of $E$ to give actual
+derivations $E\to V$. Apply the exact derivation-Jacobian ideal comparison
+in the actual \'etale coordinates $v$. Extension of the actual leaf monomial
+ideal sends it to precisely the same monomial in its actual images in $V$.
+The product of the two actual principal ideals is the principal ideal of
+the displayed product. Every original source-function tuple is retained
+through the literal inclusions.
+\end{proof}
+
+\begin{corollary}[Exact original-source DVR Jacobian order]\label{cor:sc0-dvr-leaf-source-jacobian-order}
+\lean{EnvelopeProperty.Char0.dvr_leaf_source_jacobian_order}
+\leanok
+\uses{thm:sc0-dvr-leaf-source-jacobian,lem:sc0-dvr-ideal-order-principal-product}
+In the preceding setting the actual original-source Jacobian ideal has order
+\[
+ \operatorname{ord}_V\operatorname{Jac}_w(v)
+ +\sum_i a_i\operatorname{ord}_V(v_i).
+\]
+\end{corollary}
+\begin{proof}
+Apply the actual principal-ideal order formula to the preceding exact
+principal ideal identity. Apply the normalized valuation product formula
+and power formula to its actual finite monomial. Empty products contribute
+zero order, and zero coordinates with positive exponent contribute infinity.
+\end{proof}

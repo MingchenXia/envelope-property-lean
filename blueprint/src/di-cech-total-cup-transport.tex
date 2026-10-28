@@ -1,0 +1,63 @@
+\section{Original differential and degree transports for total cup}
+
+\begin{theorem}[The native total differential on every original summand]
+\label{thm:di-cech-total-inclusion-differential}
+\uses{def:di-cech-total-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalInclusion_d}
+For $q+j=a$, compose the original total inclusion of bidegree
+$(q,j)$ with the original differential from total degree $a$ to
+$a+1$. This is the original outer differential followed by its
+original total inclusion, plus $(-1)^q$ times the original inner
+Cech differential followed by its original total inclusion.
+The two target total-degree witnesses are internally derived.
+\end{theorem}
+\begin{proof}
+\leanok
+Eliminate the given degree equality to set $a=q+j$. The original
+native total differential formula gives exactly these two terms
+with the native unit-group sign. The native unit scalar action is
+the action of its integer value, and the value of the unit power
+is the same power of $-1$ in the integers. Thus the stated integer
+sign gives the same actual morphism. Proof irrelevance identifies
+the original total-inclusion degree witnesses.
+\end{proof}
+
+\begin{definition}[Original total-degree equality map and inclusion transport]
+\label{def:di-cech-total-degree-map}
+\uses{def:di-cech-total-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalDegreeMap,EnvelopeProperty.DI.CechTotalCup.totalDegreeMap_ιTotal}
+A total-degree equality induces the original equality morphism
+between the original total-complex terms. Composing a native total
+inclusion with it gives the same native inclusion into the new
+total degree, using the composite original index equality.
+\end{definition}
+\begin{proof}
+\leanok
+Define the map by the original equality morphism on the original
+term family. Eliminate the degree equality. The transport is now
+the identity and its composition with the inclusion is the same
+inclusion. The degree witnesses agree by proof irrelevance.
+\end{proof}
+
+\begin{theorem}[Original Cech-degree and form-degree transports before inclusion]
+\label{thm:di-cech-bidegree-map-total-inclusion}
+\uses{def:di-cech-total-degree-map,def:di-cech-cup-form-degree-map}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.degreeMap_ιTotal,EnvelopeProperty.DI.CechTotalCup.formDegreeMap_ιTotal}
+An original Cech-degree equality map followed by the original total
+inclusion is the inclusion from the original Cech degree. Likewise,
+the original Cech-functor map of a form-degree equality, followed by
+the original total inclusion, is the inclusion from the original
+form degree. All new total-degree witnesses are internally derived.
+\end{theorem}
+\begin{proof}
+\leanok
+Eliminate the relevant degree equality. The original Cech-degree
+map is the identity. For the original form-degree map, the original
+Cech functor preserves the identity form morphism, so its evaluated
+component is the identity as well. Compose these original identities
+with the original total inclusion. Proof irrelevance identifies the
+index-equality witnesses, proving both entire morphism equations.
+\end{proof}

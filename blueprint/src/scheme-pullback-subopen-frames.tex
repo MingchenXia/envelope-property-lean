@@ -1,0 +1,26 @@
+\section{Actual pulled line frames on every original joint subopen}
+\begin{definition}\label{def:actual-pullback-subopen-frame}
+\lean{EnvelopeProperty.SchemePullbackSubopenFrames.frame}
+\leanok
+\uses{lem:fc-original-section-pullback-frame}
+Let $g:Y\to Z$ be any actual scheme morphism, $U\subseteq Z$ an original open, $V\subseteq g^{-1}U$ an original source open, and let an original module $M$ have a genuine frame after pullback to $U$. Pull the original module to $Y$ and then to $V$. Its actual frame is the original composition isomorphism followed by the pullback of that given frame through the genuine restricted morphism $g|_V:V\to U$ and the original unit comparison. Neither $g$ affine nor $g^{-1}U$ affine is required.
+\end{definition}
+\begin{theorem}\label{thm:actual-pullback-subopen-scalar}
+\lean{EnvelopeProperty.SchemePullbackSubopenFrames.frame_scalar}
+\leanok
+\uses{def:actual-pullback-subopen-frame,lem:fc-original-section-pullback-scalar}
+Every original whole section of $M$, with its actual coefficient in the original frame on $U$, retains its actual scalar equation after pullback to this SAME original $V$. The scalar is the image of that coefficient under the actual top-open section map of the genuine restricted morphism $V\to U$.
+\end{theorem}
+\begin{proof}
+The genuine restricted morphism composed with the original inclusion of $U$ equals the original inclusion of $V$ followed by $g$. Composition of actual whole-section pullback maps, including the original unit comparison, identifies the section pulled first through $g$ and then to $V$ with the section pulled through this same composite. The actual frame through this factorization applies the pullback of the given original scalar equation. Pullback of an actual structure-unit scalar endomorphism is its scalar image under the genuine top-open section ring map. These are whole module-morphism identities, so they hold for every section without a pointwise or metric compatibility assumption.
+\end{proof}
+\begin{theorem}\label{thm:actual-projective-subopen-homogeneous-frame}
+\lean{EnvelopeProperty.SchemePullbackSubopenFrames.projectiveSectionHom,EnvelopeProperty.SchemePullbackSubopenFrames.projectiveSourceFrame,EnvelopeProperty.SchemePullbackSubopenFrames.projectiveFrame,EnvelopeProperty.SchemePullbackSubopenFrames.projectiveForm_scalar}
+\leanok
+\uses{thm:actual-pullback-subopen-scalar,thm:native-pulled-projective-line-frames}
+For any original projective map $f:Y\to\mathbb P^m$, any nonnegative original coordinate power, and any source open contained in an original coordinate-chart preimage, this construction gives the actual pulled line frame. Every original homogeneous form section has exactly its original dehomogenized scalar, transported by the same actual restricted morphism. No closedness or affineness of the individual factor map is assumed.
+\end{theorem}
+\begin{proof}
+Use the actual original coordinate power line and its genuine original coordinate-chart frame. The original homogeneous-section coefficient theorem identifies the scalar of the whole homogeneous form section in that original projective frame with its actual dehomogenized coefficient. The preceding whole pullback identity transports this actual scalar through the genuine restricted factor morphism. This constructs the desired frame and proves its whole section-map scalar identity on every indicated source open, including a joint affine chart obtained by intersection with other projective factors.
+\end{proof}
+This supplies actual local frames and their scalar naturality for arbitrary individual factors. The realization of every whole original multigraded global section and its norm is a subsequent gluing step. Whole projective numerical finite dimensionality and the paper topology remain open.

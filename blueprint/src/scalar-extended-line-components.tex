@@ -1,0 +1,119 @@
+\subsection{Genuine coefficient extension and domination of line components}
+\label{subsec:scalar-extended-line-components}
+
+\begin{theorem}[Whole tensor comparison for polynomial principal opens]
+\label{algebra:principal-open-scalar-tensor}
+\lean{EnvelopeProperty.AffineLine.principalOpenTensorEquiv,
+EnvelopeProperty.AffineLine.principalOpenTensorEquiv_tmul}
+\leanok
+For arbitrary commutative rings $k,F$ with a genuine coefficient map and
+any polynomial $g\in k[X_i]$, the actual ring isomorphism
+\[
+ F\otimes_k k[X_i,1/g]\simeq
+ F[X_i,1/g_F]
+\]
+is an $F$-algebra isomorphism, where $g_F$ is the entire coefficient-mapped
+polynomial. It preserves every original tensor $s\otimes q$ as the
+localization of $s q_F$. No nonzero or injectivity hypothesis is needed.
+\end{theorem}
+\begin{proof}
+Actual tensor localization first identifies the original tensor ring with
+the localization of $F\otimes_k k[X_i]$ at $1\otimes g$. The genuine
+polynomial tensor isomorphism maps every $s\otimes q$ to $s q_F$ and
+maps the entire denominator $1\otimes g$ to $g_F$. It therefore maps
+the actual power submonoid onto that of $g_F$. The true localization
+isomorphism induced by this full polynomial isomorphism gives the
+displayed entire ring isomorphism. Its genuine tensor and localization
+evaluation formulas prove the assertion on all original polynomials
+and scalars, including zero-localization cases.
+\end{proof}
+
+\begin{theorem}[Actual scalar-extended ambient map retains finiteness and injectivity]
+\label{algebra:principal-open-scalar-map}
+\lean{EnvelopeProperty.AffineLine.principalOpenScalarMap,
+EnvelopeProperty.AffineLine.principalOpenScalarMap_tensor,
+EnvelopeProperty.AffineLine.principalOpenScalarMap_algebraMap,
+EnvelopeProperty.AffineLine.principalOpenScalarMap_finite,
+EnvelopeProperty.AffineLine.principalOpenScalarMap_injective}
+\leanok
+\uses{algebra:principal-open-scalar-tensor,spectrum:scalar-extension-algebra-cancellation}
+Every genuine $k$-algebra homomorphism
+$\varphi:k[X_i,1/g]\to B$ gives an actual $F$-algebra homomorphism
+\[
+ \varphi_F:F[X_i,1/g_F]\longrightarrow F\otimes_k B.
+\]
+Its full diagram agrees with $1\otimes\varphi$ on every entire tensor
+and every original polynomial. A finite original map gives a finite
+new map. If $F$ is a genuinely flat $k$-module and the original map is
+injective, then the new whole map is injective. This map construction
+and its finiteness statement use arbitrary commutative rings.
+\end{theorem}
+\begin{proof}
+Compose the inverse of the preceding actual localized tensor isomorphism
+with the genuine tensor algebra map $1\otimes\varphi$. Its inverse law
+gives the whole diagram on every tensor, not only generators. The proved
+entire polynomial tensor formula identifies the original polynomial
+inclusion with its exact coefficient-mapped inclusion in this diagram.
+
+For finiteness, equip $B$ with the actual action induced by $\varphi$.
+The original coefficient commutation gives its real scalar tower.
+Actual scalar tensor cancellation identifies $F\otimes_k B$ with the
+base change of this original finite module to
+$F\otimes_k k[X_i,1/g]$, retaining the full base-ring action. Genuine
+module finiteness after this actual cancellation, followed by the
+localization isomorphism, yields finiteness of the new entire ring map.
+For injectivity, true coefficient flatness preserves the injectivity
+of $\varphi$ as an actual linear map under left tensoring. Composing
+with the preceding inverse ring isomorphism preserves injectivity.
+No free or finite-flat hypothesis on the original algebra is used.
+\end{proof}
+
+\begin{theorem}[Actual scalar-extended minimal components dominate the line]
+\label{algebra:scalar-line-component-domination}
+\lean{EnvelopeProperty.AffineLine.scalarComponentLineHom_injective,
+EnvelopeProperty.AffineLine.scalarComponent_quotient_ringKrullDim_eq_one,
+EnvelopeProperty.AffineLine.scalarComponentLineHom_comap_surjective}
+\leanok
+\uses{algebra:geometric-domain-base-change,algebra:principal-open-scalar-map,
+algebra:line-component-domination}
+Let $k$ be algebraically closed, $F/k$ any genuine field extension,
+and $B$ an original domain $k$-algebra. Let the actual ambient map
+$k[X_i,1/g]\to B$ be finite and injective, with $g\ne0$ and finitely
+many coordinates. Choose a real line over $F$ with a nonzero parameter
+coordinate and $g_F(a+bT)\ne0$. For every actual minimal prime $P$ over
+the original transverse-equation image under the constructed
+$\varphi_F$, the genuine whole component-line map is injective,
+\[
+ \dim((F\otimes_k B)/P)=1,
+\]
+and its prime-spectrum map onto the original open line is surjective.
+Its finiteness and full scheme square are the preceding actual component
+producers. Domain of $F\otimes_k B$ is a conclusion of a real algebraic
+producer, not an input certificate in these theorems.
+\end{theorem}
+\begin{proof}
+Genuine geometric domain preservation over the algebraically closed
+original field proves that the entire tensor ring $F\otimes_k B$ is a
+domain. The actual field coefficient map is injective, so its entire
+polynomial map preserves $g\ne0$. A field module is flat over $k$;
+the preceding actual map producers therefore make $\varphi_F$ finite
+and injective. They also preserve all original coefficient and tensor
+elements.
+
+Apply the proved real component-line construction to this actual new
+map and the supplied original minimal prime of its transverse-equation
+image. Its genuine height and dimension arguments derive whole line-map
+injectivity and quotient dimension one. Actual integral lying-over
+gives surjectivity on the entire prime spectrum. The ambient tensor-domain
+and finite-map hypotheses used there have now been discharged by genuine
+coefficient-extension producers, rather than encoded in a component or
+geometric-integrality record. No original normality, completeness,
+separability, infinitude or characteristic hypothesis is added.
+\end{proof}
+
+This gives the scalar-extended ambient-domain and line-component domination
+input of FHX Proposition~5.22 from a real original finite injective affine
+map. Existence of the paper's complete algebraically closed valued field
+and rational lift, selection of a line avoiding the bad open complement,
+finite normalization and its smooth or flat structure, and the curve
+potential argument remain separate genuine constructions.

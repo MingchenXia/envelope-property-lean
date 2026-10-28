@@ -1,0 +1,137 @@
+\section{Actual local-frame coefficients on the same ambient and central lines}
+
+Throughout, $Y$ and $C$ are the original integral schemes,
+$i:C\hookrightarrow Y$ is the actual closed immersion, $\xi=\eta_C$,
+$\eta=i(\xi)$, and $L$ is the actual invertible module on $Y$.
+In the prescribed-model application $L$ is the literal pullback of the
+original $\mathcal O(d)$ tensor Cartier-ratio line. The map from $Y$ to
+that original model may be nondominant; no inclusion of its function field
+is used. The generic sections below use the existing original residue-
+spectrum pullback modules and their existing native comparisons.
+
+For an original function-field scalar $a$, its action on a generic fibre
+means the actual generic residue map followed by the inverse original
+$\Gamma\operatorname{Spec}$ isomorphism. This convention introduces neither
+an unrelated scalar field nor a supplied section-coefficient square.
+
+\begin{theorem}[Two genuine local frames produce both original generic coefficient squares]
+\label{thm:intrinsic-numerical-two-frame-original-coefficient-squares}
+\lean{EnvelopeProperty.NumericalGaussCurveLineOrders.exists_twoFrame_coefficients}
+\leanok
+\uses{sc0-generic-line:original-restriction,lem:actual-unit-module-automorphism-scalar,def:intrinsic-numerical-actual-support-section-restriction,cor:central-generic-prescribed-section-same-rational-lift,def:central-generic-original-local-section-value,def:actual-line-frame-via-factor,lem:actual-line-frame-via-factor-composition,thm:fc-line-section-factorization,thm:fc-line-section-factor-scalar-relation,lem:fc-original-line-section-fibre,scheme:actual-residue-section-pullback}
+Let $U\subset Y$ contain $\eta$, and let
+$\delta:O_U\xrightarrow{\sim}L|_U$ be an actual original frame.
+Write $\rho$ for its existing original ambient generic section and
+$\sigma$ for its existing original central generic section.
+For every original $x\in C$, internally choose an actual open $V$ containing
+$i(x)$ and an actual original frame
+$\delta_x:O_V\xrightarrow{\sim}L|_V$. There are an actual open
+$W\subseteq U\cap V$ containing $\eta$, a genuine
+$r\in\Gamma(Y,W)^\times$, and an actual unit
+$u_x\in D^\times$, where $D=\mathcal O_{Y,\eta}$, such that the whole
+restricted morphisms satisfy
+\[
+ \delta|_W=r\,\delta_x|_W,\qquad
+ u_x=\operatorname{germ}_{\eta}(r).
+\]
+Set $f_x=\operatorname{germ}_{\eta_Y}(r)\in K(Y)$ and
+$b_x=i_\xi^\#(u_x)\in K(C)$ using the actual original maps. Both scalars
+are nonzero, $f_x=\operatorname{algebraMap}_{D,K(Y)}(u_x)$, and the SAME
+original generic sections satisfy the two literal fibre identities
+\[
+ \rho=f_x\,\rho_x,\qquad \sigma=b_x\,\sigma_x.
+\]
+Here $\rho_x,\sigma_x$ are the original ambient and central generic sections
+of the SAME chosen $\delta_x$, with their actual source modules unchanged.
+All frames, the regular unit, both scalars and both fibre identities are
+constructed internally. No coefficient, frame-matching, norm or order
+identity is supplied.
+\end{theorem}
+\begin{proof}
+Choose $V,\delta_x$ from the actual invertibility cover of $L$ at $i(x)$.
+The original generic point $\xi$ specializes to $x$; the actual continuous
+map $i$ therefore implies $\eta\in V$. Intersect $U$ and $V$, retaining
+this true point, and use the genuine native pullback restriction comparisons
+to restrict both whole section isomorphisms to that same open.
+
+Compose the first section isomorphism with the inverse of the second.
+This is an actual whole automorphism of the original structure module.
+The existing whole unit-automorphism theorem internally gives a genuine
+top-section unit. Transport it through the actual open/top section-ring
+isomorphism to $r\in\Gamma(Y,W)^\times$. Cancelling the second whole frame
+gives the displayed whole scalar relation. The original germ maps take
+this unit to a unit $u_x$ in $D$ and its generic image $f_x$. The existing
+original germ-to-function-field square proves
+$f_x=\operatorname{algebraMap}_{D,K(Y)}(u_x)$. The closed-immersion stalk map
+sends the same unit to the nonzero element $b_x$ of the actual generic
+structure stalk $K(C)$.
+
+Pull the WHOLE scalar relation through the actual ambient generic residue
+factor and through the actual composite of the central generic residue map
+with $i$. The existing whole section factorization and scalar-pullback
+identities retain both relations before evaluation at one. The original
+open-factor triangles and native module pullback-composition isomorphisms
+identify these values with the already defined $\rho,\rho_x,\sigma,\sigma_x$.
+The actual scalar appLE formula and original germ--stalk-map naturality give
+precisely the residue scalars of $f_x$ and $b_x$, respectively. This derives
+both fibre equalities in their same original modules.
+\end{proof}
+
+\begin{theorem}[The actual line coefficient is a vertical unit with the original central order]
+\label{thm:intrinsic-numerical-two-frame-leading-line-order}
+\lean{EnvelopeProperty.NumericalGaussCurveLineOrders.unit_stalk_leading_order}
+\leanok
+\uses{thm:intrinsic-numerical-two-frame-original-coefficient-squares,thm:gauss-common-original-component-stalk,lem:gauss-leading-original-localization-squares,def:central-curve-original-leading-field,thm:central-curve-original-leading-order,def:gauss-surface-same-field-native-orders,def:gauss-surface-original-residual-vertical-rings,def:gauss-surface-original-vertical-fraction-map,lem:gauss-surface-original-vertical-fraction-identities,lem:gauss-leading-original-vertical-order,thm:central-curve-original-eventual-order,thm:gauss-surface-original-fraction-eventual-orders}
+Retain the internally produced coefficients above. At an original
+nongeneric $x$, suppose the actual ambient stalk
+$S=\mathcal O_{Y,i(x)}$ is Noetherian and has genuine local parameters
+$\pi,z$ with $\pi$ prime, $\pi\nmid z$, maximal ideal $(\pi,z)$, and actual
+closed-immersion stalk-map kernel $(\pi)$. Suppose the original curve has
+dimension at most one and is locally Noetherian. Let $T=S_{(\pi)}$ be the
+already constructed vertical DVR and retain its actual original
+isomorphism $E:T\simeq D$.
+
+More generally, the underlying statement applies to EVERY actual
+$u\in D^\times$, with $f$ DEFINED by its actual image in $K(Y)$ and then
+the canonical fraction comparison, and $b=i_\xi^\#(u)$. In particular,
+apply it to the $u_x$ internally constructed above. The SAME $f_x$ in
+the SAME actual fraction field of $S$ is internally the image of the
+actual unit $v_x=E^{-1}(u_x)\in T^\times$. Its actual native
+vertical order is therefore zero. The existing canonical residue map to
+the SAME $K(C)$ sends $\operatorname{res}_T(v_x)$ to exactly the original
+central coefficient $b_x$, and its native residual order is
+\[
+ \exp\bigl(\operatorname{ord}_C(b_x,x)\bigr).
+\]
+Consequently, for all sufficiently large original positive indices $N$,
+the actual unnormalized weighted order of $f_x$ is exactly
+$\exp(\operatorname{ord}_C(b_x,x))$.
+No vertical-order, residue, coefficient or eventual-order comparison is data.
+\end{theorem}
+\begin{proof}
+Map the genuine $D$-unit $u_x$ back through the actual whole ring isomorphism
+$E$ to the genuine $T$-unit $v_x$. The existing whole fraction inclusion square
+says that its image in the actual fraction field is the original $f_x$;
+this uses the previous internally derived function-field equality. The
+existing whole residue square says that its canonical residual image in
+$K(C)$ is $i_\xi^\#(u_x)=b_x$. These are the actual stalk and localization
+maps, not chosen coefficient identifications.
+
+The native fraction order of a genuine unit is one, namely the exponential
+of integer zero. The existing original curve leading-order theorem applied
+to $v_x$ identifies its exact residual order with the displayed curve order.
+Finally apply the existing all-fraction eventual-order theorem with its
+already proved original-curve coefficient refinement. Its integer leading
+exponent is zero by injectivity of the exponential and the proved unit order.
+Its factor is therefore the SAME actual unit $v_x$, since the original
+vertical fraction inclusion is injective. The preceding canonical residue
+identity identifies its curve coefficient with $b_x$. Substitution gives
+the exact eventual weighted order.
+\end{proof}
+
+This is the algebraic local-coefficient producer. The later original
+fixed-Gauss model-norm profile also needs the separately constructed true
+center of each SAME weighted native point. The later whole Euler-degree
+consumer needs a genuine arbitrary rational-section degree formula; the
+old zero-section formula only directly treats whole nonzero sections.
+Neither conclusion is an incoming certificate or a completion claim here.

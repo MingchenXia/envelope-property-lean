@@ -1,0 +1,155 @@
+\section{Actual eventual orders on the SAME original fraction field}
+
+Keep the original Noetherian local domain $S$, $\mathfrak m=(\pi,z)$,
+the original prime $\pi$, and $\pi\nmid z$. Let $K=\operatorname{Frac}S$,
+$T=S_{(\pi)}$, $\overline S=S/(\pi)$, and let $V_N$ be the SAME actual
+weighted DVRs already constructed. All fraction-field and residue maps below
+are constructed from these literal original rings, rather than supplied as
+comparison certificates. Write $\exp(n)$ for the native multiplicative
+integer value corresponding to the additive integer $n$.
+
+\begin{definition}[The original vertical localization in the same field]
+\label{def:gauss-surface-original-vertical-fraction-map}
+\uses{def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalFractionEmbedding}
+\leanok
+\leavevmode\par
+The actual localization map $\iota_T:T\to K$ extends the ORIGINAL coefficient
+map $S\to\operatorname{Frac}S$. It is the genuine localization lift for the
+original complement of $(\pi)$, whose members are nonzero in the original
+domain and hence invertible in the SAME original $K$.
+\end{definition}
+\begin{proof}
+Use the actual canonical map from a localization into the original fraction
+ring, with the original prime complement contained in the original
+non-zero-divisors. No field identification or embedding is an input.
+\end{proof}
+
+\begin{lemma}[Actual whole coefficient and fraction-ring identities]
+\label{lem:gauss-surface-original-vertical-fraction-identities}
+\uses{def:gauss-surface-original-vertical-fraction-map}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalFractionEmbedding_injective,
+EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalFractionEmbedding_coefficient,
+EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalFractionRing}
+\leanok
+\leavevmode\par
+The SAME $\iota_T$ is injective and preserves EVERY original $s\in S$.
+With its actual induced algebra structure, the SAME original $K$ is the
+fraction ring of THIS $T$.
+\end{lemma}
+\begin{proof}
+The localization lift is injective because its source coefficient map and
+the original $S\to K$ are injective. Its actual coefficient triangle follows
+from the localization lift equation. Every original element of $K$ is a
+ratio of two original elements of $S$, hence of their actual images in $T$.
+This proves the asserted fraction-ring structure for precisely this map.
+\end{proof}
+
+\begin{definition}[Actual native whole-field orders]
+\label{def:gauss-surface-same-field-native-orders}
+\uses{lem:gauss-surface-original-vertical-fraction-identities,lem:gauss-surface-original-residual-vertical-dvrs,thm:gauss-regular-surface-original-dvr,def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalOrder,
+EnvelopeProperty.GaussRegularSurfaceValuationFractions.weightedOrder,
+EnvelopeProperty.GaussRegularSurfaceValuationFractions.residualOrder}
+\leanok
+\leavevmode\par
+Use the genuine native fraction-field order homomorphisms of the actual
+DVRs: $\operatorname{ordFrac}_T$ on $K$,
+$\operatorname{ordFrac}_{V_N}$ on that SAME $K$ through the already proved
+original embedding, and $\operatorname{ordFrac}_{\overline S}$ on the actual
+$\operatorname{Frac}\overline S$. These are the native homomorphisms to
+$\mathbf Z^{\mathrm{mult}}\cup\{0\}$; no family of valuations is an input.
+\end{definition}
+\begin{proof}
+All three DVR structures and both fraction-ring structures on $K$ are
+internally derived from the same original parameters. Instantiate the native
+\texttt{Ring.ordFrac} with exactly those actual algebra structures. Its value
+on a nonzero original DVR element of additive order $n$ is $\exp(n)$, by the
+native comparison with its actual maximal-ideal valuation and additive
+valuation. In particular it sends true original units to one and the true
+original uniformizers to $\exp(1)$.
+\end{proof}
+
+\begin{lemma}[Canonical actual vertical residue and residual fraction field]
+\label{lem:gauss-surface-canonical-vertical-leading-field}
+\uses{def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalResidueEquiv,
+EnvelopeProperty.GaussRegularSurfaceValuationFractions.verticalResidueEquiv_coefficient}
+\leanok
+\leavevmode\par
+There is the canonical original $\overline S$-algebra isomorphism
+\[
+ E:\kappa(T)\xrightarrow{\sim}\operatorname{Frac}\overline S.
+\]
+It takes the residue of the actual image of EVERY $s\in S$ to the actual
+fraction-field image of $\bar s\in\overline S$. No residue-field or scalar
+comparison certificate is supplied, and no identification with an unrelated
+coefficient field is asserted.
+\end{lemma}
+\begin{proof}
+The actual prime residue field for the original ideal $(\pi)$ is by
+definition the residue field of the SAME original localization $T$.
+The existing genuine quotient-to-prime-residue construction makes it the
+fraction ring of the actual original $S/(\pi)$, with its literal original
+coefficient triangle. The canonical fraction-ring algebra isomorphism,
+inverted in the stated direction, gives $E$. Its algebra commutation law
+and that actual quotient coefficient triangle give the whole asserted
+identity for every original $s$, and therefore also for fractions of
+nonzero original residues.
+\end{proof}
+
+\begin{theorem}[All original fractions have true intrinsic eventual orders]
+\label{thm:gauss-surface-original-fraction-eventual-orders}
+\uses{def:gauss-surface-same-field-native-orders,lem:gauss-surface-canonical-vertical-leading-field,lem:gauss-surface-original-leading-expansion,thm:gauss-surface-original-eventual-orders,lem:gauss-surface-original-vertical-fraction-identities,thm:gauss-regular-surface-original-dvr,def:gauss-surface-original-residual-vertical-rings,lem:gauss-surface-original-residual-vertical-dvrs}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationFractions.exists_eventual_fieldOrder}
+\leanok
+\leavevmode\par
+For EVERY nonzero original $f\in K$, internally produce $a,b\in\mathbf Z$
+and an actual unit $v\in T^\times$ such that
+\[
+ f=\iota_T(v)\pi^a,\qquad
+ \operatorname{ordFrac}_T(f)=\exp(a),\qquad
+ \operatorname{ordFrac}_{\overline S}(E(\overline v))=\exp(b).
+\]
+For all sufficiently large original $N>0$, the SAME actual weighted native
+order satisfies
+\[
+ \operatorname{ordFrac}_{V_N}(f)=\exp(aN+b).
+\]
+Thus $a$ is the true vertical field order and $b$ is the true native order
+of the actual original leading residue, rather than a supplied slope pair.
+\end{theorem}
+\begin{proof}
+Write $f=s/t$ with original nonzero $s,t\in S$ using the actual original
+fraction-ring surjectivity. Apply the internally proved leading expansion
+to BOTH original elements. Obtain
+$s=\pi^{a_s}s'$, $t=\pi^{a_t}t'$ with original $s',t'$ avoiding $(\pi)$,
+native residual orders $b_s,b_t$, and the actual original unit/remainder
+expansions. Their original images in $T$ are genuine units. Form their actual
+unit quotient $v=s'/t'\in T^\times$ and put
+$a=a_s-a_t$, $b=b_s-b_t$ in $\mathbf Z$.
+
+The actual whole coefficient identities and field division give
+$f=\iota_T(v)\pi^a$. Native vertical order sends this true unit to one and
+the true $\pi_T$ to $\exp(1)$, giving the displayed vertical order.
+The canonical map $E$ sends its actual residue to
+$\overline{s'}/\overline{t'}$ in the SAME residual fraction field. The native
+residual orders of these two genuine residues are $b_s,b_t$, so the native
+order of this actual quotient is $\exp(b)$.
+
+For sufficiently large $N$, the actual original leading expansions give
+native additive orders $a_sN+b_s$ and $a_tN+b_t$ in the SAME $V_N$.
+This is the genuine sum-of-distinct-values argument already proved for the
+original functions; it uses the original units and the actual remainder
+orders at least $N$. The native additive-to-fraction-order comparison and
+the actual original coefficient square therefore give orders
+$\exp(a_sN+b_s)$ and $\exp(a_tN+b_t)$ in $K$. Native multiplicativity and
+division give $\exp((a_s-a_t)N+(b_s-b_t))$, as asserted. Every unit,
+factorization, threshold and order coefficient in this argument is produced
+internally from the ORIGINAL nonzero $f$.
+\end{proof}
+
+Fixed Gauss real scaling by the actual order of a prescribed original base
+parameter, native-point convergence, difference quotients, global original
+surface selection, residual degree positivity and LocalPositivity remain
+subsequent statements; they are not assumptions or conclusions here.

@@ -1,0 +1,38 @@
+\subsection{Actual native maximum propagation along original closed curve chains}
+
+\begin{theorem}[Actual closed integral curve propagation]
+\label{thm:fc-native-maximum-integral-closed-curve}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_integral_closed_curve_of_isMaxOn,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_closed_support_eq_of_isMaxOn}
+\leanok
+An original global maximum of a native locally psh function propagates between
+any two original native points whose supports lie in the same actual closed
+integral curve of dimension at most one. In particular it propagates between
+native points with the same original closed support, using the actual integral
+reduced singleton subscheme.
+\end{theorem}
+\begin{proof}
+The original closed-immersion range theorem lifts both entire native points
+to the actual curve. Pull back the unchanged native local psh class. Its whole
+maximum is attained at the first lift, so the proved integral scheme-curve
+maximum theorem makes it constant. For coincident closed support use the
+literal reduced singleton, whose actual source is integral and discrete of
+dimension zero. No uniqueness-of-valuations certificate is assumed.
+\end{proof}
+
+\begin{theorem}[Actual connected projective curve-chain propagation at closed supports]
+\label{thm:fc-native-maximum-closed-projective-chain}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_closed_projectiveCurveChain_of_isMaxOn,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_of_closed_supports}
+\leanok
+On an original connected projective finite-type scheme over a complete
+algebraically closed ultrametric normed field, an original native locally psh
+function attaining a global maximum at a native point with closed support has
+that same value at every original native point with closed support.
+\end{theorem}
+\begin{proof}
+Construct the actual closed-intermediate projective curve chain. At every
+intermediate original closed support, construct an actual prescribed-base
+native point through the literal singleton subscheme. Inductively propagate
+the maximum across each unchanged actual integral curve. The empty chain uses
+the actual reduced singleton case above. No chain, point-lift or maximum
+propagation certificate is an input to the connected-projective conclusion.
+\end{proof}

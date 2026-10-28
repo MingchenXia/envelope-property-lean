@@ -1,0 +1,57 @@
+\section{Actual extended ideal-power module sheaves on the original scheme}
+
+\begin{lemma}[Original affine sections of the extended ideal powers]
+\label{lem:fibre-ideal-power-affine-sections}
+\leanok
+\lean{EnvelopeProperty.FibreIdealPowers.extendedPower,EnvelopeProperty.FibreIdealPowers.powerModule,EnvelopeProperty.FibreIdealPowers.extendedPower_ideal,EnvelopeProperty.FibreIdealPowers.affineSectionsEquiv,EnvelopeProperty.FibreIdealPowers.affineSectionsEquiv_apply}
+Let $f:X\to\operatorname{Spec}R$, let $I\subset R$ be an actual ideal,
+and put $J=I\mathcal O_X$, using the genuine ideal-sheaf comap. For
+EVERY $d\ge0$ and every original affine open $U$, the actual ideal
+$J^d(U)$ equals $(I\cdot\Gamma(X,U))^d$ under the original coefficient
+map. The module of sections of the SAME ideal-power sheaf on $U$ is
+linearly isomorphic to this entire actual ideal, preserving its
+inclusion into $\Gamma(X,U)$.
+\end{lemma}
+\begin{proof}
+The accepted whole affine comap theorem identifies $J(U)$ with the
+image of $I$ under the actual coefficient homomorphism, including the
+canonical original $\Gamma(\operatorname{Spec}R)=R$ normalization.
+Ideal-sheaf powers evaluate to the actual ideal powers on every affine
+open. Apply the genuine module-sheaf affine-section equivalence to
+$J^d$ and transport by this exact ideal equality. It retains every
+ambient section, including all nilpotents and degree zero.
+\end{proof}
+
+\begin{lemma}[All actual affine restrictions retain the entire original functions]
+\label{lem:fibre-ideal-power-restrictions}
+\uses{lem:fibre-ideal-power-affine-sections}
+\leanok
+\lean{EnvelopeProperty.FibreIdealPowers.affineSectionsEquiv_restriction}
+For every inclusion of original affine opens $U\subseteq V$, the above
+whole ideal-power section equivalences take the actual sheaf restriction
+to the literal original function restriction $\Gamma(X,V)\to\Gamma(X,U)$.
+\end{lemma}
+\begin{proof}
+The actual module sheaf of an ideal is the subsheaf of functions lying
+locally in that ideal. Its genuine affine-section equivalence retains
+the whole function. Its restriction is therefore the original function
+restriction on every section. The exact ideal-power equality does not
+change that underlying function, giving the claim.
+\end{proof}
+
+\begin{lemma}[Actual ideal-power sheaves are coherent on the original finite-type scheme]
+\label{lem:fibre-ideal-power-coherence}
+\leanok
+\lean{EnvelopeProperty.FibreIdealPowers.isFinitePresentation_powerModule,EnvelopeProperty.FibreIdealPowers.isQuasicoherent_powerModule,EnvelopeProperty.FibreIdealPowers.isFiniteType_powerModule}
+If $R$ is Noetherian and $f$ is locally of finite type, EVERY actual
+$J^d$ module sheaf on the SAME original $X$ is of finite presentation,
+hence quasi-coherent and of finite type. No coherence or affine
+comparison certificate is supplied.
+\end{lemma}
+\begin{proof}
+Actual finite-type transfer from the Noetherian affine base makes $X$
+locally Noetherian. The accepted ideal-module finite-presentation theorem
+applies directly to the actual ideal sheaf $J^d$. Genuine finite
+presentation of sheaves of modules implies quasi-coherence and finite
+type, proving all three assertions on the original scheme.
+\end{proof}

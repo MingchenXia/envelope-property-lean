@@ -1,0 +1,252 @@
+\subsection{Actual domain transport and residue maps for structural unibranchness}
+\label{subsec:domain-local-normalizations}
+
+\begin{theorem}[The genuine reduced normalization of a domain]
+\label{algebra:domain-reduced-normalization-comparison}
+\lean{EnvelopeProperty.LocalNormalization.reductionEquiv,
+EnvelopeProperty.LocalNormalization.reductionEquiv_apply,
+EnvelopeProperty.LocalNormalization.reduced_isDomain,
+EnvelopeProperty.LocalNormalization.isFractionRing_reducedFractionRing,
+EnvelopeProperty.LocalNormalization.domainNormalizationEquiv,
+EnvelopeProperty.LocalNormalization.domainNormalizationEquiv_coefficientMap}
+\uses{algebra:actual-structural-unibranch-local-ring,algebra:actual-same-ambient-integral-closure-map,algebra:actual-normalization-fraction-field-choice}
+For an actual domain $R$, the true quotient $R\to R_{\mathrm{red}}$
+is bijective. With its ORIGINAL coefficient action, the actual fraction
+field of $R_{\mathrm{red}}$ is a fraction field of $R$. Consequently,
+for ANY actual fraction field $K$ of $R$, there is a genuine
+$R$-algebra equivalence $N(R)\simeq_R\overline R^{\,K}$.
+Every original coefficient follows the whole genuine original map.
+\leanok
+\end{theorem}
+\begin{proof}
+The nilradical is zero because the original ring is reduced, so the
+actual quotient map has zero kernel and is surjective. Its whole
+composite with the injective fraction-field map remains injective.
+Every element of the actual fraction field of the reduction has a
+fraction representation. Lift BOTH numerator and denominator through
+the true quotient surjection; the whole scalar tower preserves the
+fraction identity. This constructs the genuine fraction-field
+structure over the ORIGINAL domain, not an unrelated field action.
+
+The true reduction quotient is integral. The already proved
+same-ambient integral-base comparison identifies its normalization
+with the original ring's integral closure in that SAME field.
+Actual uniqueness of fraction fields then gives the coefficient-
+preserving ambient equivalence to $K$. Restrict to actual integral
+elements. Both whole inverse laws and the original coefficient
+formula follow from those genuine algebra equivalences.
+\end{proof}
+
+\begin{theorem}[Actual localness and the complete original residue square]
+\label{algebra:domain-geometric-unibranch-residue-map}
+\lean{EnvelopeProperty.LocalNormalization.isLocalRing_domainNormalization,
+EnvelopeProperty.LocalNormalization.domainNormalization_isLocalHom,
+EnvelopeProperty.LocalNormalization.domainResidueFieldMap,
+EnvelopeProperty.LocalNormalization.domainResidueFieldEquiv,
+EnvelopeProperty.LocalNormalization.domainResidueFieldMap_eq,
+EnvelopeProperty.LocalNormalization.domainResidueFieldMap_isPurelyInseparable}
+\uses{algebra:domain-reduced-normalization-comparison}
+If the actual local domain $R$ is structurally unibranch, then
+$\overline R^{\,K}$ is local. Its original coefficient inclusion
+is local, and its ACTUAL residue-field map is the whole composite
+of $\kappa(R)\to\kappa(N(R))$ with the residue equivalence
+induced by the preceding original-coefficient normalization
+comparison. If $R$ is geometrically unibranch, THIS genuine
+original residue map is purely inseparable.
+\leanok
+\end{theorem}
+\begin{proof}
+Transport localness through the genuine normalization ring equivalence.
+The original inclusion is integral and injective into the actual
+fraction field; integral unit reflection makes it local. The
+normalization equivalence preserves EVERY original coefficient.
+The actual residue functor's whole composition law, or quotient
+surjectivity and the full coefficient identity, gives the stated
+entire residue square. The induced residue equivalence is a purely
+inseparable extension because it is surjective. Compose this genuine
+extension with the purely inseparable map in the STANDARD structural
+definition. No residue-comparison or singleton-fibre certificate is
+an input.
+\end{proof}
+
+\begin{theorem}[The whole prime-localization and residue square]
+\label{algebra:actual-normalization-local-residue-square}
+\lean{EnvelopeProperty.isPurelyInseparable_of_surjective_fieldHom,
+EnvelopeProperty.isLocalization_atPrime_of_local_baseLocalization,
+EnvelopeProperty.baseLocalizationAtPrimeEquiv,
+EnvelopeProperty.baseLocalizationAtPrimeEquiv_algebraMap,
+EnvelopeProperty.baseLocalizationHom,
+EnvelopeProperty.baseLocalizationHom_eq_map,
+EnvelopeProperty.residueFieldMap_baseLocalizationHom,
+EnvelopeProperty.residueFieldMap_isPurelyInseparable_of_local_baseLocalization}
+\uses{algebra:actual-local-normalization-prime-uniqueness}
+Let $A\to B$ be integral and let $T$ be its ACTUAL localization
+at the image of $A\setminus p$. Suppose $T$ is local and $q$
+contracts to $p$. Then $T$ is genuinely $B_q$: extension makes
+$q$ the actual maximal ideal and contraction recovers $q$, so
+EVERY element outside $q$ maps to a unit. The canonical
+$B_q\simeq_B T$ gives the whole residue square with
+$A_p\to B_q$ and the ACTUAL $A_p\to T$. Consequently, if
+that last residue extension is purely inseparable, so is the
+original map $\kappa(p)\to\kappa(q)$.
+\leanok
+\end{theorem}
+\begin{proof}
+The established integral-localization theorem makes the extension
+of $q$ maximal; true localness identifies it with the actual
+maximal ideal. Genuine localization contraction gives its full
+preimage $q$. Enlarge the inverted submonoid from the image of
+$A\setminus p$ to $B\setminus q$: every additional element
+is an actual unit because it lies outside the unique maximal
+ideal of $T$. The genuine localization universal property gives
+the claimed equivalence, retaining EVERY original $B$ element.
+
+Compose the true local map $A_p\to B_q$ with that equivalence.
+On each original $a\in A$ this is the actual localized
+coefficient map. Localization uniqueness therefore compares the
+WHOLE local maps, not only residue supports. Apply the genuine
+residue composition law to obtain the entire square.
+The residue equivalence and its inverse are surjective, hence
+purely inseparable. Compose the actual purely inseparable
+$\kappa(p)\to\kappa(T)$ with its inverse to recover pure
+inseparability of the ORIGINAL $\kappa(p)\to\kappa(q)$.
+\end{proof}
+
+\begin{theorem}[Structural local properties derive the ORIGINAL prime and residue properties]
+\label{algebra:structural-domain-normalization-primes}
+\uses{algebra:actual-normalization-local-residue-square,algebra:domain-geometric-unibranch-residue-map}
+\lean{EnvelopeProperty.NormalizationLocalization.isLocalRing_atPrime_normalization,
+EnvelopeProperty.NormalizationLocalization.primes_eq_of_isUnibranch_atPrime,
+EnvelopeProperty.NormalizationLocalization.residueFieldMap_isPurelyInseparable_of_isGeometricallyUnibranch_atPrime,
+EnvelopeProperty.NormalizationLocalization.injective_primeSpectrumComap_of_isUnibranch}
+Let $A$ be ANY actual domain and $p$ an original prime.
+Standard unibranchness of $A_p$ makes
+$\overline{A_p}^{\operatorname{Frac}A}$ local and DERIVES uniqueness of
+ORIGINAL primes in $C=\overline A^{\operatorname{Frac}A}$ over $p$.
+Standard GEOMETRIC unibranchness of $A_p$ additionally makes the ACTUAL
+original map $\kappa(p)\to\kappa(q)$ purely inseparable for every $q$
+over $p$. If each original $A_p$ is structurally unibranch, prime
+contraction $\operatorname{Spec}C\to\operatorname{Spec}A$ is injective.
+No original-prime or native-fibre injection is supplied as input.
+\leanok
+\end{theorem}
+\begin{proof}
+The canonical localization action $A_p\to\operatorname{Frac}A$
+is the true original one. Genuine composition of localizations proves
+that SAME field is a fraction field of $A_p$. The preceding domain
+transport therefore derives localness of the literal same-field
+$\overline{A_p}^{\operatorname{Frac}A}$. The proved integral-closure
+localization theorem makes this actual ring a localization of $C$
+at the image of $A\setminus p$. Actual integral maximality and
+contraction, already proved above, derive equality of any two
+ORIGINAL primes of $C$ contracting to $p$.
+
+For the residue conclusion, standard GEOMETRIC unibranchness and the
+actual domain comparison give pure inseparability of the actual
+$A_p$ coefficient residue map into this local normalization. The
+whole local coefficient map constructed through the real $C_q$
+equivalence is the SAME original $A_p$ inclusion: both follow the
+true scalar tower on EVERY $a\in A$, and genuine localization
+uniqueness proves equality on the entire $A_p$. The preceding whole
+residue square therefore transfers pure inseparability to the
+ORIGINAL $\kappa(p)\to\kappa(q)$. Applying actual prime uniqueness
+at the common contraction of two genuine primes gives injectivity
+of the entire original prime-spectrum map. No finiteness, Noetherianity,
+ambient field identification or residue-comparison certificate occurs.
+\end{proof}
+
+\begin{theorem}[Actual Spec residue conjugation and the genuine radicial criterion]
+\label{scheme:actual-spec-residue-conjugation-radicial}
+\uses{algebra:actual-normalization-local-residue-square}
+\lean{EnvelopeProperty.specMap_residueFieldMap_eq,
+EnvelopeProperty.universallyInjective_specMap_of_prime_and_residue}
+For ANY ring homomorphism $f:A\to B$ and genuine original prime $q$
+of $B$, the residue map of the ACTUAL scheme morphism
+$\operatorname{Spec}B\to\operatorname{Spec}A$ is the whole composite
+\[
+ \kappa_{\mathrm{scheme}}(f^{-1}q)
+ \simeq \kappa(f^{-1}q)\longrightarrow\kappa(q)
+ \simeq \kappa_{\mathrm{scheme}}(q),
+\]
+where the central map is the ORIGINAL ideal-residue map of $f$.
+Consequently actual prime contraction injection together with actual
+pure inseparability of these ideal-residue maps DERIVES universal
+injectivity of the genuine Spec morphism. This reusable comparison
+requires no domain, integrality or finite-type hypothesis.
+\leanok
+\end{theorem}
+\begin{proof}
+Use Mathlib's ACTUAL affine stalk isomorphisms and its whole stalk-map
+identity for the SAME original Spec morphism. On EVERY actual stalk
+element, the scheme stalk map equals the entire composite of those
+isomorphisms with the real original localization homomorphism.
+The genuine residue quotient is surjective; apply the whole stalk
+identity to every original representative and then the actual residue
+map. This proves equality of the ENTIRE residue-field homomorphisms,
+not just agreement of valuations or prime supports.
+
+Both outside residue isomorphisms are surjective and hence purely
+inseparable. Genuine composition of purely inseparable FIELD maps
+therefore transfers the supplied original ideal-residue property to
+the actual scheme residue maps. The standard proved criterion for
+universally injective scheme morphisms now applies to these ACTUAL
+scheme-point and residue properties. Universal injectivity is the
+conclusion, rather than a reformulation assumed of the native map.
+\end{proof}
+
+\begin{theorem}[The genuine normalization native homeomorphism from structural local input]
+\label{scheme:structural-domain-normalization-native-homeomorphism}
+\uses{algebra:structural-domain-normalization-primes,scheme:actual-spec-residue-conjugation-radicial,scheme:integral-surjective-native-homeomorphism,scheme:relative-native-universal-homeomorphism}
+\lean{EnvelopeProperty.DomainNormalization.projection,
+EnvelopeProperty.DomainNormalization.projection_isIntegralHom,
+EnvelopeProperty.DomainNormalization.projection_surjective,
+EnvelopeProperty.DomainNormalization.projection_universallyInjective,
+EnvelopeProperty.DomainNormalization.nativeHomeomorph,
+EnvelopeProperty.DomainNormalization.nativeHomeomorph_apply,
+EnvelopeProperty.DomainNormalization.relativeNativeHomeomorph,
+EnvelopeProperty.DomainNormalization.relativeNativeHomeomorph_apply}
+Let $A$ be ANY domain whose ORIGINAL local rings $A_p$ are each
+geometrically unibranch in the standard structural sense.
+For the LITERAL $C=\overline A^{\operatorname{Frac}A}$, the ACTUAL
+normalization morphism $\operatorname{Spec}C\to\operatorname{Spec}A$
+is integral, surjective and universally injective. Its independently
+defined native-valued-point map is genuinely a homeomorphism,
+absolutely and above ANY exact common prescribed coefficient seminorm.
+Both homeomorphisms retain their ENTIRE original native point maps.
+No field, Noetherianity, finite normalization, bounded coefficient,
+completeness or separation hypothesis is needed.
+\leanok
+\end{theorem}
+\begin{proof}
+The LITERAL integral closure supplies its true integral coefficient
+map. Original fraction-ring injection implies original normalization
+injection, so actual integral lying-over proves scheme surjectivity.
+These two lower assertions in fact require only a commutative $A$;
+the DOMAIN hypothesis is retained for the structural local argument.
+The preceding local theorem derives original prime injection and
+actual ideal-residue pure inseparability from the STANDARD local
+structural inputs. The whole Spec residue comparison then gives
+true scheme universal injectivity.
+
+Apply the already proved native invariance theorem for ACTUAL integral,
+scheme-surjective, universally injective morphisms. Its point map is
+continuous and closed by genuine integral native properness; actual
+integral lifting gives whole-point surjectivity, and genuine purely
+inseparable valuation uniqueness gives whole-point injectivity.
+Thus it produces a homeomorphism whose underlying map is exactly the
+ORIGINAL normalization native map. The exact whole basepoint composition
+law restricts the same map over ANY common prescribed coefficient
+seminorm. No differently prescribed scalar extension or fibre existence
+is asserted. The displayed whole-map formulas hold for every original
+point and its full residue valuation, not merely its scheme support.
+\end{proof}
+
+\begin{remark}[Exact remaining scope]
+This proves the INTEGRAL AFFINE normalization result from standard
+local-ring structural geometric input. It does not define geometric
+unibranchness by spectrum or MaxSpec injectivity. The separate
+strict-henselization equivalence, reduction of general nonintegral
+schemes and global scheme normalization gluing remain subsequent
+producers. No analytic structure sheaf or potential theorem follows
+from the present native homeomorphism statement.
+\end{remark}

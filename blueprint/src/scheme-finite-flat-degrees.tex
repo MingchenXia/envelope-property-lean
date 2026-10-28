@@ -1,0 +1,44 @@
+\section{True whole finite closed degrees of an original finite flat scheme map}
+
+\begin{theorem}[Actual affine rank and original generic rank]
+\label{thm:fc-scheme-finite-flat-original-rank}
+\leanok
+\lean{EnvelopeProperty.SchemeFiniteFlatDegrees.finrank_affine, EnvelopeProperty.SchemeFiniteFlatDegrees.finrank_eq_genericPoint}
+For an actual finite flat morphism, its native original scheme rank
+on an original affine target is exactly the native stalk rank of
+its actual whole global-section ring map. On an original integral
+target with finite presentation this rank equals the same original
+map's native rank at the original generic point, at every point.
+\end{theorem}
+\begin{proof}
+The actual canonical affine spectrum isomorphisms form a whole
+cartesian square preserving the original map. Native flat rank
+base change and the exact spectrum rank theorem give the first
+identity. Native finite flat ranks are locally constant, and the
+original integral target is preconnected, proving constancy at the
+same original generic point.
+\end{proof}
+
+\begin{theorem}[Actual finite closed pullback has multiplied original field degree]
+\label{thm:fc-scheme-finite-flat-closed-degree}
+\leanok
+\lean{EnvelopeProperty.SchemeFiniteFlatDegrees.finrank_sections_pullback_finiteClosed, EnvelopeProperty.SchemeFiniteFlatDegrees.comapIso_structure, EnvelopeProperty.SchemeFiniteFlatDegrees.comapSubscheme_isFinite, EnvelopeProperty.SchemeFiniteFlatDegrees.finrank_fieldSections_comap}
+\uses{thm:fc-scheme-finite-flat-original-rank}
+For the same actual finite flat finitely presented morphism to an
+original integral scheme, every actual finite closed subscheme over
+the original coefficient field has an entire actual inverse image
+whose whole field degree is the original closed degree times the
+native generic rank of the SAME original map. No fiber-rank, basis
+or degree matching is supplied.
+\end{theorem}
+\begin{proof}
+The original finite closed scheme and its actual finite inverse
+image are affine. Native actual base change preserves finiteness,
+flatness and the whole original scheme rank, so every actual rank
+over the finite closed base is the same original generic rank.
+Its finite original section algebra is genuinely semilocal. The
+actual whole section algebra map is finite flat, and the true
+semilocal basis theorem internally derives a basis of exactly the
+original rank. Restrict this actual basis to the original field to
+compute the total degree, retaining the whole coefficient action.
+\end{proof}

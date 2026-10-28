@@ -1,0 +1,160 @@
+\subsection{Actual completed-disc restrictions and translations}
+\label{subsec:gauss-disc-restrictions}
+
+These are genuine Banach-algebra completion constructions underlying
+the usual disc restrictions in Berkovich geometry (Berkovich~1990,
+\S\S1.2, 2.1; BGR~1984, \S\S5.1.1--5.1.2).
+No analytic sheaf or restricted-series presentation is assumed.
+
+\begin{theorem}[Genuine whole translated closed discs]
+\label{spectrum:actual-translated-closed-disc}
+\uses{scheme:relative-affine-valued-point-homeomorphism,spectrum:pullback,spectrum:relative}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.CoordinateDisc,
+EnvelopeProperty.Berkovich.RelativeSpectrum.TranslatedDisc,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discTranslationHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discTranslationHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedEmbedding_discTranslation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discTranslationHomeomorph_native}
+\leanok
+For arbitrary commutative coefficient rings and any prescribed
+coefficient seminorm, the ACTUAL polynomial automorphism
+$T\mapsto T+a$ gives a genuine homeomorphism from the closed
+radius-$s$ coordinate locus $|T|\leq s$ to the true translated
+locus $|T-a|\leq s$. Every original polynomial value follows
+its entire actual substitution. This is the restriction of a
+proved whole polynomial-spectrum homeomorphism, and its native
+affine square is the actual scheme automorphism's square.
+\end{theorem}
+\begin{proof}
+Use the genuine polynomial algebra automorphism with inverse
+$T\mapsto T-a$. Pullback on the whole seminorm spectrum is an
+actual homeomorphism; coefficient algebra laws preserve every
+original prescribed coefficient. Its value on $T-a$ is exactly
+the original value on $T$, because the ENTIRE substituted
+polynomial is $T$. Therefore this homeomorphism restricts to the
+specified actual closed loci, including zero radius. The genuine
+affine native naturality theorem identifies its whole point map
+with the actual Spec of that same original algebra automorphism.
+No topology, native bijection or generator-only seminorm equality
+is declared as a certificate.
+\end{proof}
+
+\begin{theorem}[Genuine contractive translation and restriction of completed functions]
+\label{analytic:actual-gauss-disc-restriction}
+\uses{analytic:actual-polynomial-gauss-completion,spectrum:gauss-maximality}
+\lean{EnvelopeProperty.Berkovich.Spectrum.gauss_val_translate_le,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialTranslation,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_polynomialTranslation_le,
+EnvelopeProperty.Berkovich.GaussCompletion.lipschitz_polynomialTranslation,
+EnvelopeProperty.Berkovich.GaussCompletion.translationRingHom,
+EnvelopeProperty.Berkovich.GaussCompletion.translationRingHom_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.translation,
+EnvelopeProperty.Berkovich.GaussCompletion.continuous_translation,
+EnvelopeProperty.Berkovich.GaussCompletion.translation_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_translation_le}
+\leanok
+Let $K$ be an ultrametric normed field, $r,s>0$, $s\leq r$, and
+$\|a\|\leq r$. There is an ACTUAL contractive $K$-algebra map
+from the radius-$r$ Gauss completion to the radius-$s$ completion,
+extending the entire original polynomial substitution
+$p(T)\mapsto p(T+a)$. It preserves every original coefficient.
+For $a=0$ this is the actual completed-function restriction map.
+No field completeness or injectivity of function restriction is
+asserted or assumed.
+\end{theorem}
+\begin{proof}
+Pull the original radius-$s$ Gauss point back along the genuine
+whole polynomial translation. Its coefficient values are the
+original $K$ norm, and its value on $T$ is at most
+$\max(s,\|a\|)\leq r$. The actual whole polynomial Gauss
+maximality theorem therefore bounds EVERY substituted polynomial's
+radius-$s$ norm by its original radius-$r$ norm. Compose this
+true polynomial map with the actual target polynomial embedding
+into its complete Gauss algebra. On the genuine radius-$r$
+normed polynomial copy it is contractive, hence continuous.
+Its actual ring completion extension constructs the entire map.
+Completion density preserves the bound on EVERY completion
+element. The actual polynomial coefficient law proves that the
+whole original $K$ coefficient action is preserved, giving the
+claimed genuine algebra map.
+\end{proof}
+
+\begin{theorem}[Whole composition and identity of actual completed restrictions]
+\label{analytic:actual-gauss-disc-restriction-composition}
+\uses{analytic:actual-gauss-disc-restriction}
+\lean{EnvelopeProperty.Berkovich.Spectrum.polynomialTranslate_comp,
+EnvelopeProperty.Berkovich.GaussCompletion.denseRange_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.center_add_bound,
+EnvelopeProperty.Berkovich.GaussCompletion.translation_comp,
+EnvelopeProperty.Berkovich.GaussCompletion.translation_zero}
+\leanok
+For $t\leq s\leq r$ positive radii and centers satisfying
+$\|a\|\leq r$, $\|b\|\leq s$, the ACTUAL completed
+translation by $a$ followed by translation by $b$ is precisely
+translation by $a+b$ from radius $r$ to radius $t$.
+Zero translation on a fixed radius is the whole identity map.
+These are equalities on EVERY completed function.
+\end{theorem}
+\begin{proof}
+The ultrametric inequality derives the required genuine combined
+center bound $\|a+b\|\leq\max(\|a\|,\|b\|)\leq r$.
+On every original polynomial, actual substitution composition
+sends $p(T)$ to $p((T+b)+a)=p(T+(a+b))$, while zero
+translation fixes the entire polynomial. These are equalities
+of true whole polynomial homomorphisms. The original polynomial
+image is genuinely dense in its norm completion, and both actual
+ring maps are continuous. Equality on ALL those original
+polynomials therefore proves equality of the whole completion
+maps. This does not infer injectivity of restriction to a smaller
+disc from polynomial injectivity or selected coordinate values.
+\end{proof}
+
+\begin{theorem}[Actual completed-function evaluation naturality on genuine subdiscs]
+\label{analytic:actual-gauss-subdisc-evaluation-naturality}
+\uses{spectrum:actual-translated-closed-disc,analytic:actual-gauss-disc-restriction-composition,analytic:actual-gauss-disc-function-values,spectrum:completed-residue-field-pullback}
+\lean{EnvelopeProperty.Berkovich.GaussCompletion.pointTranslation,
+EnvelopeProperty.Berkovich.GaussCompletion.pointTranslation_val_apply,
+EnvelopeProperty.Berkovich.GaussCompletion.isClosedEmbedding_pointTranslation,
+EnvelopeProperty.Berkovich.GaussCompletion.evaluationToH_translation,
+EnvelopeProperty.Berkovich.GaussCompletion.value_translation}
+\leanok
+The corresponding genuine point map sends every actual
+radius-$s$ point $x$ to its translated radius-$r$ point $y$.
+It preserves the entire polynomial seminorm and is a continuous
+closed embedding onto the actual translated subdisc. For EVERY
+completed radius-$r$ function, its value after actual function
+restriction at $x$ equals its original value at $y$.
+More strongly, actual evaluations into the true original
+completed residue fields commute with their genuine field map.
+\end{theorem}
+\begin{proof}
+The first theorem supplies the actual translated point and whole
+polynomial value formula. Its original coordinate value is at
+most $\max(s,\|a\|)\leq r$, so it lies in the true target
+disc. The genuine whole polynomial automorphism proves point
+injectivity. The translated locus is closed because it is the
+inverse image of a closed interval under a continuous whole
+polynomial evaluation. Its inclusion composed with the actual
+translation homeomorphism is therefore a closed embedding.
+Cancelling the embedding of the radius-$r$ disc into the full
+relative spectrum proves the asserted closed embedding into
+that disc, even at zero point radius. The native affine square retains this SAME
+original point map and every polynomial value.
+
+The actual point identity $y=\operatorname{comap}(T\mapsto T+a)(x)$
+gives a genuine isometric map $\mathcal H(y)\to\mathcal H(x)$.
+Compare the two ACTUAL ring maps from the radius-$r$ completion
+into this true $\mathcal H(x)$: function restriction followed
+by original-$x$ evaluation, and original-$y$ evaluation followed
+by this completed residue-field map. Both are continuous.
+On EVERY original polynomial, actual completed-function
+restriction is genuine polynomial substitution and genuine
+completed-field functoriality preserves that entire original
+value. Therefore the two whole ring maps agree on the true dense
+polynomial image, hence on EVERY completion element. Taking
+norms, using the genuine field map's isometry, and the previously
+proved spectral-value/original-evaluation formula proves the
+asserted whole completed-function value naturality. No residue
+fields are identified by fiat, and no analytic sheaf or harmonic
+structure is asserted.
+\end{proof}

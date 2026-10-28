@@ -1,0 +1,59 @@
+\section{Laurent coefficients of every original test-configuration section}
+
+\begin{theorem}\label{thm:native-tc-global-laurent-sections}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalMap, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalMap_gaussPoint, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLinePowerIso, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalProductPowerSection, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalPowerLaurentCoefficients, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalProductPowerSection_eq_sum}
+\leanok
+Let $\mathcal X$ be an original test configuration, $M$ its original
+linearized module, and $L$ its fibre-one module. For every $n\geq0$,
+the native composite of the noncentral product inverse and open inclusion,
+together with its source-derived whole line-power isomorphism, sends every original global section of $M^{\otimes n}$
+to an actual whole section of the product pullback of $L^{\otimes n}$.
+If $L$ is invertible, this section has unique finitely supported
+Laurent coefficients in the entire original space
+$H^0(X,L^{\otimes n})$ and is their actual monomial sum. All compactness,
+separatedness and quasicoherence needed here follow from the original
+test-configuration data and invertibility, rather than being additional
+comparison inputs.
+\uses{thm:native-test-configuration-whole-open-sections,thm:fc-scheme-module-laurent-coefficients}
+\end{theorem}
+\begin{proof}
+The original fibre-one isomorphism and proper test-configuration
+projection imply properness of the original $X$ over the field.
+Properness gives compactness and separatedness. Every tensor power
+of an invertible module is invertible and hence quasicoherent.
+Compose the actual product inverse with the original noncentral open
+inclusion to obtain a morphism $g$ from the product to the total space.
+The native pullback-composition isomorphisms and the source-derived
+whole noncentral line-power isomorphism give an actual isomorphism
+$g^*M^{\otimes n}\simeq\operatorname{pr}_X^*L^{\otimes n}$.
+Send each original section by the genuine pullback-adjunction unit
+along $g$, then by this actual whole module isomorphism. Composition
+of the native valued-point maps shows that $g$ sends the whole
+product Gauss point to the actual total-space Gauss point. Apply the whole Laurent
+coefficient equivalence to this actual product section. Its inverse
+formula is the finite sum of original monomial multiples of actual
+pullback-unit original sections, which proves both reconstruction
+and uniqueness. No homogeneous-coordinate lifting or section
+matching property is supplied.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-global-laurent-fixed-family}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalProductPowerFamily, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalPowerLaurentTerms, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.globalPowerLaurentCoefficient_mem_terms}
+\leanok
+For every finite family $G$ of original total-space sections in a
+fixed degree, the resulting original coefficient/weight family is
+finite and is chosen before all original valued points, radii,
+local frames and evaluations. Every coefficient of every transported
+section is supported in that same original family. The construction
+includes degree zero, zero coefficients and negative integer weights.
+\uses{thm:native-tc-global-laurent-sections}
+\end{theorem}
+\begin{proof}
+Map the actual finite family by the original restriction and whole
+product-section map. Take the finite union of the supports of the
+finitely supported coefficient families, retaining each coefficient
+with its integer exponent. A coefficient in one of these supports
+belongs to this finite union by its defining membership witness.
+The construction uses no valued point, radius, frame or functional.
+All integer exponents and all original sections are retained.
+\end{proof}

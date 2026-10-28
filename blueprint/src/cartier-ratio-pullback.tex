@@ -1,0 +1,72 @@
+\section{Canonical pullback comparisons for the actual Cartier ratio sheaf}
+\begin{lemma}[Canonical whole sheaf tensor and Cartier ratio pullback]
+\label{lem:cartier-ratio-canonical-pullback}
+\uses{lem:cartier-actual-invertible-module-sheaf,lem:actual-cartier-ratio-line-sheaf}
+\lean{AlgebraicGeometry.Scheme.Modules.canonicalTensorPullbackIso,AlgebraicGeometry.Scheme.IdealSheafData.ratioPullbackIso}
+\leanok
+The pullback of the actual sheafified tensor along any genuine scheme
+morphism is canonically the sheafified tensor of the actual pullbacks.
+For a genuine Cartier ideal in the denominator, the actual ratio sheaf
+pullback is canonically the tensor of the numerator pullback and the
+true sheaf dual of the denominator pullback.
+\end{lemma}
+\begin{proof}
+Use the existing genuine comparison between the localized coherent
+monoidal tensor and the explicit sheafified tensor. Pull back its inverse,
+then apply the inverse tensorator of the actual canonical monoidal
+pullback functor, and finally the explicit tensor comparison on the
+original source scheme. Every map is the actual proved sheafification
+or monoidal pullback comparison; no arbitrary isomorphism is chosen.
+For the ratio apply this construction to the original numerator module
+and original actual sheaf dual of the denominator module. The Cartier
+ideal's genuine module sheaf is invertible, so the existing canonical
+dual-pullback map is an isomorphism. Tensor its actual isomorphism with
+the numerator identity. This gives precisely the stated original ratio
+pullback isomorphism, for arbitrary original scheme morphisms.
+\end{proof}
+
+\begin{lemma}[Actual canonical ratio comparison under whole Cartier invariance]
+\label{lem:cartier-ratio-whole-invariant-comparison}
+\uses{lem:cartier-ratio-canonical-pullback,lem:cartier-invariant-module-iso}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantRatioModuleIso}
+\leanok
+If two actual flat scheme morphisms preserve the two entire Cartier
+ideal comaps, their genuine ratio module pullbacks have an actual
+canonical isomorphism.
+\end{lemma}
+\begin{proof}
+Use the preceding actual ratio pullback comparison for the first
+morphism. Tensor the genuine canonical numerator comparison with the
+true contravariant sheaf dual of the inverse denominator comparison.
+Then compose with the inverse actual ratio pullback comparison for the
+second morphism. The denominator inverse is required because the actual
+sheaf dual is contravariant. Every factor is an actual original sheaf
+isomorphism constructed from the genuine full geometric ideal equality.
+No module comparison input is used. Group unit and cocycle coherence of
+this tensor-dual ratio, its model metric/polarization and nefness are
+separate subsequent assertions.
+\end{proof}
+
+
+\begin{lemma}[Actual whole invariant ratio identity and transitivity]
+\label{lem:cartier-ratio-whole-invariant-transitivity}
+\uses{lem:cartier-ratio-whole-invariant-comparison,lem:cartier-actual-tensor-dual-functorial,lem:cartier-invariant-module-coherence}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantRatioModuleIso_refl,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantRatioModuleIso_trans}
+\leanok
+The actual invariant Cartier ratio module comparison has identity and
+transitivity laws on the whole original source.
+\end{lemma}
+\begin{proof}
+For identity, both actual factor comparisons are the original identity.
+The genuine sheaf dual and explicit sheafified tensor preserve those
+identities, so the two original ratio pullback comparisons cancel.
+For transitivity, the inverse middle ratio pullback comparison cancels
+with the identical original forward comparison. True tensor
+functoriality composes the numerator comparisons and the two reversed
+dual denominator comparisons. Genuine contravariant dual functoriality
+identifies the latter with the dual of the inverse composite denominator
+comparison. The already proved whole factor transitivity laws now give
+exactly the original ratio comparison between the first and last maps.
+All maps are the actual previously constructed isomorphisms; no ratio
+identity or transitivity premise is used.
+\end{proof}

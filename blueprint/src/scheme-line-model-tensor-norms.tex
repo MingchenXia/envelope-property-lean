@@ -1,0 +1,66 @@
+\section{Genuine tensor multiplicativity of original proper-model line norms}
+
+\begin{definition}[Actual tensor frame on the original proper center]
+\label{def:actual-center-line-tensor-frame}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.monoidalTensor}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerTensorFrame}
+\leanok
+\uses{lem:scheme-line-actual-center-frame}
+Given actual original center frames of two original invertible
+modules, use the inverse native monoidal tensorator, the tensor of
+these actual frames, and the actual structure-module multiplication
+isomorphism to frame their actual pulled tensor line. The explicit
+sheafified tensor and the native monoidal tensor are identified by
+the genuine original comparison isomorphism.
+\end{definition}
+
+\begin{lemma}[Actual generic tensor frame]
+\label{lem:actual-center-generic-tensor-frame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameGenericIso_tensor}
+\leanok
+\uses{def:actual-center-line-tensor-frame,lem:scheme-line-actual-generic-frame-naturality}
+The actual generic frame of this original center tensor frame is
+the inverse original generic tensorator followed by the tensor of
+the two original generic frames and the original structure-module
+multiplication isomorphism.
+\end{lemma}
+\begin{proof}
+The genuine composition comparison of actual scheme pullbacks is
+monoidal, and so is the genuine comparison for the actual proper
+valuative generic triangle. The original actual tensor-frame
+composition theorem applies to their composite. Its two pulled
+factor frames are exactly the original generic frames by their
+actual definitions; its other side is exactly the original generic
+frame of the actual center tensor frame. This gives the asserted
+whole original frame equality without a coherence premise.
+\end{proof}
+
+\begin{theorem}[Original pure tensor section norm]
+\label{thm:actual-model-line-tensor-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_tensor}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericTensorSection}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericTensorSection}
+\leanok
+\uses{lem:actual-center-generic-tensor-frame,def:scheme-line-actual-model-norm,lem:scheme-line-actual-model-isomorphism-isometry}
+The original proper-model norm of the actual pure tensor of two
+sections on the same original residue-field line fibers is the
+product of their original model norms, for both the native
+monoidal tensor and the actual explicit sheafified tensor.
+\end{theorem}
+\begin{proof}
+Choose original center frames supplied by the actual original
+invertibility. Compute the original tensor-line norm in the actual
+center tensor frame. By the preceding whole frame equality, its
+coefficient is obtained by applying the two original generic
+frames to the factors and multiplying the two resulting original
+structure sections: naturality of the true original pure tensor
+section and actual structure-module multiplication give this exact
+coefficient identity. The actual global-section isomorphism and
+the original residue valuation both preserve multiplication. Thus
+the coefficient value is the product of the original factor norms.
+Finally the original coherent-to-explicit tensor comparison is an
+actual whole original line-module isomorphism, hence an isometry
+for the genuine original model norms. It carries the constructed
+native pure tensor to the stated actual explicit pure tensor
+section and gives the same norm identity there.
+\end{proof}

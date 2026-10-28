@@ -1,0 +1,286 @@
+\section{One original leading function and the cancellation of local parameters}
+
+Let $i:C\hookrightarrow Y$ be a genuine closed immersion of integral schemes.
+Put $\eta=i(\eta_C)$, $D=\mathcal O_{Y,\eta}$, $K=Y.\mathrm{functionField}$,
+and $F=C.\mathrm{functionField}$. The homomorphism
+\[
+ \lambda:D\longrightarrow F
+\]
+is the ORIGINAL stalk map $i^\#_{\eta_C}$. At an original $x\in C$ put
+$S_x=\mathcal O_{Y,i(x)}$. An original component equation $\pi_x\in S_x$
+is prime and satisfies $\ker(i_x^\#)=(\pi_x)$. Write $T_x=(S_x)_{(\pi_x)}$
+and retain the actual original specialization map $j_x:S_x\to D$.
+The existing construction gives $E_x:T_x\simeq D$, with
+$E_x(s/1)=j_x(s)$ for EVERY $s\in S_x$.
+
+For the residual-order statements assume $S_x$ Noetherian and choose the
+original second parameter $z_x$ with $\pi_x\nmid z_x$ and
+$\mathfrak m_{S_x}=(\pi_x,z_x)$. The existing original leading-field
+isomorphism is denoted
+$R_x:\kappa(T_x)\simeq F$. Its target is the SAME original function
+field of $C$, rather than the residue field of the closed point $x$.
+Let $J_x:\operatorname{Frac}S_x\simeq K$ be the canonical original
+fraction-field isomorphism and let $\iota_x:T_x\to\operatorname{Frac}S_x$
+be the existing original vertical fraction inclusion.
+
+\begin{lemma}[Both original whole-localization squares]
+\label{lem:gauss-leading-original-localization-squares}
+\uses{thm:gauss-common-original-component-stalk,def:central-curve-original-leading-field,def:gauss-surface-original-vertical-fraction-map,lem:gauss-surface-original-vertical-fraction-identities}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.componentStalk_residual_apply,EnvelopeProperty.GaussLeadingResidueNaturality.componentStalk_fraction_apply}
+\leanok
+For EVERY $w\in T_x$, including zero,
+\[
+ R_x(\operatorname{res}_{T_x}w)=\lambda(E_xw),\qquad
+ J_x(\iota_xw)=\iota_D(E_xw),
+\]
+where $\iota_D:D\to K$ is the original stalk-to-function-field map.
+Neither displayed identity is an input.
+\end{lemma}
+\begin{proof}
+Both sides of the first equality define ring homomorphisms $T_x\to F$.
+On an original coefficient $s\in S_x$, the existing leading-field
+coefficient formula identifies the left side with the original image of
+$i_x^\#s$ in $F$. The actual naturality of stalk maps for
+$\eta_C\leadsto x$ identifies this with $\lambda(j_xs)$. The existing
+coefficient formula for $E_x$ gives the right side. Uniqueness of a ring
+homomorphism out of the localization of $S_x$ therefore proves equality
+on ALL of $T_x$.
+
+For the second equality both sides are ring homomorphisms $T_x\to K$.
+On $s\in S_x$, the original vertical inclusion and the canonical
+fraction-field isomorphism give its original image in $K$. Composition
+of the actual structure-sheaf specialization maps shows that the same
+image is $\iota_D(j_xs)$. Apply the same localization uniqueness. Thus
+the proof retains the entire original coefficient action and not only
+the values of selected parameters or units.
+\end{proof}
+
+\begin{lemma}[The same exact vertical order on the whole original field]
+\label{lem:gauss-leading-original-vertical-order}
+\uses{lem:gauss-leading-original-localization-squares,thm:gauss-common-original-component-stalk,lem:central-curve-fraction-order-ring-equiv,def:gauss-surface-same-field-native-orders}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.verticalOrder_genericField}
+\leanok
+For every $f\in K$, including zero,
+\[
+ \operatorname{verticalOrder}_x(J_x^{-1}f)
+   =\operatorname{ordFrac}_{D}(f).
+\]
+In particular the additive integer exponent of a nonzero function is the
+SAME at every point $x$, with no ramification or scale factor.
+\end{lemma}
+\begin{proof}
+The existing component theorem makes the SAME $D$ a DVR, by transporting
+the existing original DVR $T_x$ through $E_x$. Both are consequently
+Noetherian domains of dimension at most one. The existing full-fraction
+order transport applied to $E_x$ preserves their normalized native orders.
+Its fraction extension is $J_x$: the preceding whole-fraction square
+shows equality on all coefficients of $T_x$, and fraction-field uniqueness
+extends this to every fraction. This proves the displayed equality.
+It includes zero at the level of the order homomorphisms. For nonzero
+$f$, injectivity of the integer exponential gives equality of the exact
+integer exponents.
+\end{proof}
+
+\begin{definition}[One uniformizer and actual global leading functions]
+\label{def:gauss-leading-one-original-uniformizer}
+\uses{thm:gauss-common-original-component-stalk,lem:gauss-leading-original-vertical-order,lem:gauss-surface-original-residual-vertical-dvrs}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.exists_globalLeadingFactorization,EnvelopeProperty.GaussLeadingResidueNaturality.exists_parameterUnit}
+\leanok
+One original point $x_0$ with a Noetherian $S_{x_0}$ and the genuine prime
+component equation internally makes $D$ a DVR. Choose ONCE a uniformizer
+$\Pi\in D$, independently of all subsequent points and functions.
+Every nonzero $f\in K$ has a unique $a_f\in\mathbf Z$ and
+$U_f\in D^\times$ such that
+\[
+ f=\iota_D(U_f)\iota_D(\Pi)^{a_f}.
+\]
+Define its global leading function $B_f=\lambda(U_f)\in F^\times$.
+For every original local component parameter there is an internally
+constructed $v_x\in D^\times$ such that
+\[
+ E_x(\pi_x/1)=\Pi v_x.
+\]
+Put $V_x=\lambda(v_x)\ne0$. These units and leading functions are
+constructed from the actual maps; they are not comparison hypotheses.
+\end{definition}
+\begin{proof}
+Apply the existing component-stalk DVR theorem at $x_0$. Every DVR has an
+irreducible element, so choose $\Pi$ once in this SAME $D$.
+The DVR fraction factorization theorem writes each nonzero $f$ as a unit
+times an integral power of $\iota_D(\Pi)$, allowing negative powers.
+The normalized native order of this factorization is $\exp(a_f)$:
+the unit has order one and $\Pi$ has additive order one. Hence the
+integer exponent is unique. After fixing it, injectivity of $D\to K$
+and cancellation of the nonzero power of $\Pi$ make $U_f$ unique.
+The original $\lambda$ maps actual units to units of $F$, so $B_f\ne0$.
+
+The original $\pi_x/1$ is irreducible in $T_x$. Its image under the
+constructed ring isomorphism $E_x$ is irreducible in $D$. Any two
+irreducibles of a DVR are associated. Thus there is an actual unit
+$v_x$ with the stated equality; its residue is again nonzero. No
+regularity of an ambient closed-point residue field is used.
+\end{proof}
+
+\begin{theorem}[The exact local leading-unit transformation]
+\label{thm:gauss-leading-local-unit-transformation}
+\uses{def:gauss-leading-one-original-uniformizer,lem:gauss-leading-original-localization-squares,lem:gauss-leading-original-vertical-order,thm:gauss-surface-original-fraction-eventual-orders,thm:gauss-common-original-component-stalk}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.exists_localLeadingFactorization}
+\leanok
+Fix the ONE $\Pi$. For every nonzero original $f\in K$, the existing
+all-fraction producer internally gives $u_{x,f}\in T_x^\times$ and
+the SAME integer $a_f$ such that
+\[
+ J_x^{-1}f=\iota_x(u_{x,f})\pi_x^{a_f},\qquad
+ E_x(u_{x,f})=U_fv_x^{-a_f}.
+\]
+Consequently its unchanged original leading residue is
+\[
+ r_x(f):=R_x(\operatorname{res}_{T_x}u_{x,f})
+       =B_fV_x^{-a_f}\ne0.
+\]
+Every original nonzero function is covered, including poles in $K$ and
+leading functions with negative order at $x$.
+\end{theorem}
+\begin{proof}
+Apply the existing all-fraction producer to $J_x^{-1}f$. It returns a
+vertical unit, an integer exponent, its actual native vertical order,
+and the genuine leading residue. The preceding whole-order transport
+and uniqueness of the global exponent identify the returned exponent
+with $a_f$.
+
+Map the returned factorization into $K$ through $J_x$ and use the whole
+fraction square. Substitute
+$E_x(\pi_x/1)=\Pi v_x$ and the global factorization of $f$.
+All powers of $\iota_D(\Pi)$ are nonzero. Cancelling that power gives
+\[
+ \iota_D(E_xu_{x,f})\iota_D(v_x)^{a_f}=\iota_D(U_f).
+\]
+Since these are units, multiplication by the inverse power and
+injectivity of $D\to K$ yield the claimed whole-unit identity.
+Apply the first whole-localization square and the original ring map
+$\lambda$; preservation of products and integral powers of units gives
+the claimed residue identity. Nonvanishing follows because each of its
+factors is nonzero. Thus the local leading residues need not equal
+$B_f$; the actual transition unit remains present.
+\end{proof}
+
+\begin{lemma}[Positive order of an actual original vertical parameter]
+\label{lem:gauss-leading-original-parameter-positive-order}
+\uses{def:gauss-leading-one-original-uniformizer,lem:gauss-leading-original-vertical-order,thm:gauss-common-original-component-stalk}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.exists_verticalParameterFactorization}
+\leanok
+For an actual $t\in D$ with $t\ne0$ and $t\in\mathfrak m_D$, internally
+produce $e\in\mathbf N$, $e>0$, and $U_t\in D^\times$ with
+\[
+ t=U_t\Pi^e.
+\]
+For $\tau=\iota_D(t)$ the exact vertical exponent is $e$ and
+$B_t=\lambda(U_t)\ne0$. At every original $x$, the existing local
+fraction factorization of $J_x^{-1}\tau$ has this SAME exponent and
+leading function
+$r_x(t)=B_tV_x^{-e}$.
+\end{lemma}
+\begin{proof}
+The DVR factorization of the actual nonzero ring element $t$ gives a
+natural exponent $e$ and an actual unit $U_t$. If $e=0$, this equality
+makes $t$ a unit, contrary to its membership in the true maximal ideal.
+Thus $e>0$. The same factorization in the original fraction field gives
+the exact global exponent by uniqueness in the preceding definition.
+Apply the local leading-unit transformation to $\tau$. It supplies the
+local unit and the displayed residue formula internally.
+\end{proof}
+
+Assume now $C$ locally Noetherian, $\dim C\le1$, and $x\ne\eta_C$.
+Write $a=a_f$ and
+\[
+ b_x=\operatorname{ord}_x(r_x(f)),\qquad
+ c_x=\operatorname{ord}_x(r_x(t)).
+\]
+These are integer orders of nonzero functions; neither is assumed
+nonnegative. The symbol $c_x$ in this general statement concerns the
+local FRACTION representing the given actual generic-stalk parameter.
+If that parameter is the germ of an original section near $i(x)$, its
+identification with an eventual Gauss-profile coefficient is a separate
+consumer of the existing profile theorem.
+
+\begin{theorem}[One genuine whole-curve leading quotient]
+\label{thm:gauss-leading-whole-curve-quotient}
+\uses{thm:gauss-leading-local-unit-transformation,lem:gauss-leading-original-parameter-positive-order}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.leadingQuotient_eq_global}
+\leanok
+The global nonzero function
+\[
+ H_{f,t}=B_f^e/B_t^a\in F^\times
+\]
+is defined ONCE before choosing $x$. For every original $x$ with the
+genuine local component data, its unchanged local leading functions satisfy
+\[
+ r_x(f)^e/r_x(t)^a=H_{f,t}.
+\]
+In particular this SAME function is independent of the local parameter
+and second-parameter choices at every $x$, for the ONE fixed $\Pi$.
+\end{theorem}
+\begin{proof}
+Substitute $r_x(f)=B_fV_x^{-a}$ and $r_x(t)=B_tV_x^{-e}$.
+Preservation of integer powers and commutativity give transition factors
+$V_x^{-ae}$ and $V_x^{-ea}$ in the numerator and denominator. They
+are equal and nonzero, so they cancel. This proves the displayed equality
+as an equality of actual elements of the SAME $F$.
+
+The right-hand side was defined from the actual global units $U_f,U_t$
+before any local point or parameters. The equality holds for EVERY local
+choice satisfying the genuine component equations. This is the asserted
+independence, proved without assuming equality of local residues.
+\end{proof}
+
+\begin{theorem}[The exact corrected original curve order]
+\label{thm:gauss-leading-corrected-curve-order}
+\uses{thm:gauss-leading-whole-curve-quotient,thm:central-curve-original-leading-order,thm:gauss-leading-local-unit-transformation,lem:gauss-leading-original-parameter-positive-order,thm:fc-curve-proper-support-points,thm:gauss-common-original-component-stalk,thm:gauss-surface-original-fraction-eventual-orders}
+\lean{EnvelopeProperty.GaussLeadingResidueNaturality.exists_correctedLeadingOrders}
+\leanok
+The exponents and orders returned by the unchanged original all-fraction
+producer satisfy
+\[
+ \begin{split}
+  e b_x-a c_x&=\operatorname{ord}_x(H_{f,t}),\\
+  b_x-\frac ae c_x
+   &=\operatorname{ord}_x(B_f)-\frac ae\operatorname{ord}_x(B_t).
+ \end{split}
+\]
+Here the second line is an equality of real numbers and $e>0$ is produced
+from the actual parameter. In particular $a/e$ is the SAME vertical
+scaling at every point and the transition-unit corrections cancel exactly.
+\end{theorem}
+\begin{proof}
+The existing full-fraction leading-order theorem identifies the actual
+native residual order of each produced local unit with the exponential
+of the SAME original $C.\operatorname{ord}_x$ of its leading function.
+Thus its returned integer is exactly $b_x$, respectively $c_x$, by
+injectivity of the integer exponential. This retains the original
+local producer's actual units, fractions and coefficients.
+
+All the leading functions are nonzero. The original curve order
+homomorphism therefore takes products to sums, integral powers to
+integer multiples, and division to subtraction. Apply it to the
+preceding whole-field quotient identity. It yields the first displayed
+equality. Applying it also to the two local transformation identities,
+and putting $d_x=\operatorname{ord}_x(V_x)$, gives
+\[
+ b_x=\operatorname{ord}_x(B_f)-a d_x,\qquad
+ c_x=\operatorname{ord}_x(B_t)-e d_x.
+\]
+Subtract $a/e$ times the second identity from the first. Since $e>0$,
+the terms involving $d_x$ cancel. No sign restriction
+on $a$, $b_x$, $c_x$, or $d_x$ was used.
+
+At zero the first two whole-localization squares and the native
+whole-field order comparison remain valid, with the zero value of the
+order homomorphism. The unit factorizations and these integer formulas
+are asserted only for nonzero functions. This avoids identifying the
+integer order's value at zero with an exponential residue order.
+\end{proof}
+
+The conclusion produces a genuine common function on the whole original
+central curve. It does not construct the global surface or its SNC
+boundary, alter existing Gauss points, assert a principal-degree balance,
+or prove residual nefness or LocalPositivity.

@@ -1,0 +1,64 @@
+\subsection{Actual native model points from the original DVR morphisms}
+
+\begin{definition}[The actual original native DVR model point]
+\label{berkovich:actual-dvr-native-model-point}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.nativeDVRPoint}
+\leanok
+Given an actual DVR $V$ over the original field, a positive real $c$, an actual
+scheme morphism $q:\operatorname{Spec}V\to X$, and its actual whole coefficient
+factorization $qf=\operatorname{Spec}\phi$, take the genuine original DVR
+seminorm $\exp(-c\operatorname{ord}_V)$ on $V$. Its original native affine point,
+followed by the SAME actual $q$, is an actual relative native model point over
+the original coefficient seminorm restricted through $\phi$.
+\end{definition}
+\begin{proof}
+The native affine point lies over itself under the actual identity scheme map.
+The actual whole coefficient square and the genuine prescribed-base native
+map construct the claimed original relative point. The original coefficients
+are bounded because every actual DVR element has nonnegative original order.
+\end{proof}
+
+\begin{theorem}[Its TRUE proper-model center is the actual DVR closed-point image]
+\label{berkovich:actual-dvr-native-model-center}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_nativeDVRPoint}
+\leanok
+\uses{berkovich:actual-dvr-native-model-point}
+If the original model structure map is proper, the TRUE valuative center of
+that actual native point is EXACTLY $q(\mathfrak m_V)$. No center certificate
+or properness of $q$ is supplied.
+\end{theorem}
+\begin{proof}
+On the actual identity model $\operatorname{Spec}V\to\operatorname{Spec}V$,
+the genuine valuative lift's base triangle identifies its whole map with the
+spectrum of the actual bounded coefficient-to-valuation-ring map. Thus its
+center prime is the contraction of the actual valuation-ring maximal ideal.
+An original DVR element has norm less than one exactly when it is a nonunit:
+units have order zero; every nonunit has order at least one and hence norm
+at most $e^{-c}<1$. The actual contracted prime is therefore EXACTLY
+$\mathfrak m_V$. Apply the genuine proper-center naturality theorem across
+the original whole coefficient square. It identifies the actual proper-model
+center with the SAME original closed-point image under $q$.
+\end{proof}
+
+\begin{theorem}[The nonzero vertical parameter constructs an actual prescribed-Gauss point]
+\label{berkovich:actual-dvr-prescribed-gauss-model-point}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_nativeDVRPoint_gauss_center}
+\leanok
+\uses{berkovich:actual-dvr-native-model-center,berkovich:actual-dvr-normalized-parameter-gauss-base}
+For an actual proper $k[t]$-model and an actual whole DVR morphism whose original
+coefficient map is evaluation at an original nonzero $t\in\mathfrak m_V$, there
+exists an ACTUAL relative native point over the SAME prescribed Gauss valuation
+of radius $e^{-1}$ whose TRUE model center is EXACTLY the original DVR
+closed-point image. Neither the native point nor its center nor its whole
+Gauss-base comparison is supplied.
+\end{theorem}
+\begin{proof}
+Normalize the genuine original DVR fraction-field norm at the original nonzero
+parameter. Restriction to $V$ gives the SAME original DVR seminorm and retains
+the actual parameter value $e^{-1}$. The proved entire polynomial evaluation
+formula gives its EXACT restriction on every original coefficient polynomial.
+Construct the original native DVR model point and use this whole valuation
+equality to regard it in the prescribed Gauss-base relative point space.
+The preceding genuine center computation gives exactly the original closed
+point's image, without replacing it by a supplied center.
+\end{proof}

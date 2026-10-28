@@ -1,0 +1,167 @@
+\section{The original mixed native square on its coordinate section}
+
+Let $k$ be a field, let $A$ be a commutative $k$-algebra, and let
+$x_1,\ldots,x_n$ define an etale coordinate map
+$k[X_1,\ldots,X_n]\to A$. Fix the original finite root family:
+positive degrees $N_i$, units $u_i\in A^\times$, a set $I$ of active
+indices, and an injection $\sigma:I\hookrightarrow\{1,\ldots,n\}$.
+Assume each $N_i$ is a unit in $A$. Let $B$ be the entire original
+mixed root algebra, $S$ the entire unit-root algebra, and
+$C=S\otimes_A B$. Let $P$ be the original pure root algebra over $S$,
+and let $\rho:C\to P$ be the produced purification homomorphism.
+All original root factors and all components of these algebras are retained.
+
+Write $M_A,M_B,M_S,M_P$ for the original native affine top exterior
+cotangent section modules, and $M_C$ for the original tensor comparison's
+native section module with its original composite field structure.
+Scalar restrictions use the original coefficient homomorphisms.
+Let $\omega_x$ be the original sheafification of
+$dx_1\wedge\cdots\wedge dx_n$ in $M_A$. For a tuple $z$ in $P$,
+write $\omega_P(z)$ for its native sheafified coordinate wedge.
+The notation $\operatorname{read}_P$ below forgets only the original
+restriction-of-scalars presentation of the same section.
+
+\begin{definition}[The original coordinate input and native readers]
+\label{def:kn-mixed-native-coordinate-paths}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_inputValue,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_restrictedInputValue,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_purificationInputCoordinates}
+\uses{lem:kn-nadel-mixed-original-native-canonical-input,lem:kn-nadel-mixed-comparison-native-tensor,lem:kn-mixed-original-native-value,lem:kn-unit-original-native-value}
+\leanok
+Let $M_{\mathrm{ctor}}$ and $\alpha:S\to C$ be the exact native
+module and coefficient map used by the original purification constructor.
+Let $v_{\mathrm{ext}}$ be its original extended coordinate-point
+readback, and retain its restricted presentation
+\[
+ \zeta=\operatorname{fromUnderlying}_{\alpha,M_{\mathrm{ctor}}}
+                   (v_{\mathrm{ext}}).
+\]
+Let $\mathcal R_\rho$ be the original outer-coefficient native Gamma
+reader in the purification coordinate theorem, followed by its original
+target readback. Its source is this exact restricted module and its
+target is the original native $P$-section carrier.
+Let $U:S\otimes_A M_A\simeq M_S$ be the original unit comparison,
+$d_p:M_S\to\operatorname{Res}_{S\to P}M_P$ the original pure native
+pullback, and $\eta_S$ the actual extension--restriction adjunction unit
+on the original base section module, read in its original extension
+carrier. The purification input tuple is exactly
+$j\mapsto i_B(\operatorname{im}_{A\to B}(x_j))$.
+\end{definition}
+\begin{proof}
+Read the coefficient map, native source module and coordinate value
+from the original constructor. Restricting its scalar presentation keeps
+that same section. The reader is the original function of this exact
+restricted source, with its original field-transport witness retained.
+The unit comparison and pure differential are the original native maps.
+These definitions introduce no new compatible map or normalization
+equation.
+\end{proof}
+
+\begin{lemma}[The mixed path on the original coordinate section]
+\label{lem:kn-mixed-native-coordinate-left-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeExtended_originalCoordinateValue,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_purification_input_coordinate_typed,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_left_coordinate}
+\uses{def:kn-mixed-native-coordinate-paths,lem:kn-mixed-original-native-readback,lem:kn-global-trace-native-coordinate-wedge}
+\leanok
+Let $i_B:B\to C$ be the original tensor-right homomorphism and set
+\[
+ z^L_j=\rho\bigl(i_B(\operatorname{im}_{A\to B}(x_j))\bigr).
+\]
+Then the actual original reader satisfies
+\[
+ \mathcal R_\rho(\zeta)=\omega_P(z^L).
+\]
+The input tuple to the purification comparison is exactly
+$j\mapsto i_B(\operatorname{im}_{A\to B}(x_j))$ in the original $C$.
+\end{lemma}
+\begin{proof}
+The original mixed native pullback sends $\omega_x$ to the coordinate
+wedge of the original images of $x_j$ in $B$. The original extension
+point theorem computes its coordinate value using the actual unit and
+sheaf differential, with coefficient the image of $1$. Exterior
+naturality sends that wedge to the tensor-right image coordinate wedge
+in the original $C$; the coefficient $1$ acts as the identity.
+
+Read that value in the exact original input of the purification
+coordinate theorem. The native/raw and restriction-of-scalars readers
+retain the same section. The accepted original-source equality is
+applied before the original purification reader; thus the actual
+purification coordinate identity applies to this same tuple. It sends
+the wedge to the wedge of its images under $\rho$, with the original
+field transport retained. This is exactly the displayed value in $M_P$.
+\end{proof}
+
+\begin{lemma}[The pure path on the same coordinate section]
+\label{lem:kn-mixed-native-coordinate-right-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_unit_congr_coordinate,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_right_coordinate,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_right_target_readback,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_original_right_coordinate}
+\uses{def:kn-mixed-native-coordinate-paths,lem:kn-unit-original-native-value,lem:kn-global-trace-native-coordinate-wedge}
+\leanok
+Let $i_S:S\to P$ be the original structural homomorphism and set
+\[
+ z^R_j=i_S(\operatorname{im}_{A\to S}(x_j)).
+\]
+The actual pure value through the original target reader satisfies
+\[
+ \operatorname{read}_P\bigl(d_p(U(\eta_S(\omega_x)))\bigr)
+   =\omega_P(z^R).
+\]
+Both the pure target's original names and its restricted native section
+presentation retain this same value in the same original $P$.
+\end{lemma}
+\begin{proof}
+The original unit-cover comparison evaluates the actual adjunction unit
+of $\omega_x$ as
+the coordinate wedge of the images of the $x_j$ in $S$. Applying the
+actual pure native differential gives the wedge of their original
+images under $S\to P$, by the native algebra-map coordinate identity.
+Restriction of scalars keeps the underlying section. Reading the same
+original pure target through its two defining names leaves the value
+unchanged. These original reader identities give the displayed formula.
+\end{proof}
+
+\begin{lemma}[The produced ring square identifies the actual target wedges]
+\label{lem:kn-mixed-native-coordinate-target-wedge}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_original_target_tuple,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_wedge_coordinate}
+\uses{lem:kn-mixed-purification-original-ring-square,lem:kn-mixed-native-coordinate-left-value,lem:kn-mixed-native-coordinate-right-value}
+\leanok
+The two literal original tuples in $P$ agree:
+$z^L=z^R$. Consequently
+$\omega_P(z^L)=\omega_P(z^R)$ in the original native target module.
+\end{lemma}
+\begin{proof}
+The original produced ring square is
+\[
+ \rho\circ i_B\circ(A\to B)=i_S\circ(A\to S).
+\]
+Evaluate it at every original $x_j$. This gives equality of the two
+target tuples at every index, hence equality of those tuples in $P$.
+Apply the same native coordinate-wedge construction to this equality.
+No coordinate, coefficient ring or field structure is replaced in
+passing from the tuple equality to the wedge equality.
+\end{proof}
+
+\begin{theorem}[The original mixed native coordinate equation]
+\label{thm:kn-mixed-native-original-coordinate-equation}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeCanonicalSquare_coordinate}
+\uses{lem:kn-mixed-native-coordinate-left-value,lem:kn-mixed-native-coordinate-right-value,lem:kn-mixed-native-coordinate-target-wedge}
+\leanok
+For the original etale coordinates, positive tame degrees, units and
+active-coordinate injection above, the two actual native paths have
+the following exact original-reader coordinate equation:
+\[
+ \mathcal R_\rho(\zeta)
+ =\operatorname{read}_P\bigl(d_p(U(\eta_S(\omega_x)))\bigr).
+\]
+The field may have arbitrary characteristic. No integrality,
+nontriviality or connectedness hypothesis on $A$, nor a caller
+coordinate-compatibility, trace or vanishing equation, is assumed.
+The conclusion is the displayed coordinate-value equation.
+\end{theorem}
+\begin{proof}
+The original-reader identity gives the left side as $\omega_P(z^L)$.
+The produced ring square gives $z^L=z^R$, hence equality of their
+native target wedges. The original target readback and target-name
+identities identify that value with the right-path expression.
+Composing these actual equalities proves the stated reader equation.
+An identification with separately named whole-map expressions evaluated
+on a tensor generator is a further presentation comparison. No such
+comparison, equality of entire homomorphisms, or counit normalization is
+asserted here.
+\end{proof}

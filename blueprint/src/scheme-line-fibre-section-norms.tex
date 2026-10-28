@@ -1,0 +1,41 @@
+\section{Norms of actual original global sections on the true generic fiber}
+
+\begin{lemma}[Original section norm equals original morphism norm]
+\label{lem:actual-line-fiber-section-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_fibreSection}
+\leanok
+\uses{def:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-unit-norm,lem:fc-original-line-section-fibre}
+For every actual original whole morphism
+$\sigma:\mathcal O_X\to M$ to an actual original invertible
+module, the genuine model norm of its actual original residue-field
+section equals the genuine model morphism norm of $\sigma$.
+\end{lemma}
+\begin{proof}
+Pull the original unit section to the original structure-line
+fiber using the inverse native pullback-unit isomorphism. The
+original structure-line norm formula and the true inverse-hom
+identity show that its actual model norm is one. The actual
+original residue-field section of $\sigma$ is exactly the image
+of this unit-line section under the actual original pulled
+morphism. The genuine model morphism scaling identity therefore
+gives the asserted norm equality.
+\end{proof}
+
+\begin{corollary}[Actual dual Cartier fiber section potential]
+\label{cor:actual-dual-cartier-fiber-section-model-potential}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_dualCartierFibreSection}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_dualCartierFibreSection_log}
+\leanok
+\uses{lem:actual-line-fiber-section-model-norm,cor:actual-dual-cartier-inclusion-model-potential}
+The genuine original fiber section of the actual original dual
+transpose of a Cartier ideal inclusion has model norm equal to
+the intrinsic original ideal norm. Its logarithmic norm equals the
+intrinsic original model ideal logarithm.
+\end{corollary}
+\begin{proof}
+Apply the preceding actual section norm formula to the genuine
+canonical original dual transpose. Its original model morphism
+norm equals the original Cartier inclusion norm, which equals the
+intrinsic original model ideal norm. Apply the original extended-real
+logarithm to this exact equality for the logarithmic assertion.
+\end{proof}

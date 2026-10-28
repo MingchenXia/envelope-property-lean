@@ -1,0 +1,58 @@
+\section{The original global-twist family supplies actual Leray acyclicity}
+\label{sec:projective-acyclic-original-pushforward-cohomology}
+
+\begin{theorem}[Actual positive vanishing comparison from original global twists]
+\label{thm:projective-acyclic-original-pushforward-higher-vanishing}
+\lean{EnvelopeProperty.SchemeProjectiveAcyclicPushforwardCohomology.subsingleton_H_succ_iff_pushforward}
+\uses{thm:proj-affine-original-inverse-higher-vanishing,lem:kn-nadel-leray-acyclic-intersections}
+\leanok
+Let $R$ be a commutative ring, let
+$j:X\hookrightarrow\operatorname{Proj}R[X_0,\ldots,X_n]$ be an original
+closed immersion, and let $H=j^*\mathcal O(1)$ be the literal original
+embedding line. Let $f:Y\to X$ be proper and let $F$ be an original
+quasicoherent module whose actual original pushforward $f_*F$ is
+quasicoherent. Assume
+\[
+ \forall r\geq0\;\exists N_r\;\forall m\geq N_r,\qquad
+ H^{r+1}(Y,F\otimes(f^*H)^m)=0.
+\]
+Then for every $q\geq0$,
+\[
+ H^{q+1}(Y,F)=0\quad\Longleftrightarrow\quad
+ H^{q+1}(X,f_*F)=0.
+\]
+The cohomology groups and modules are the actual native ones. No finite
+cover, local acyclicity, matching comparison, or affine-morphism property
+is a premise. Quasicoherence of the actual pushforward is an explicit
+ordinary sheaf property; a concrete multiplier-sheaf application must
+produce that property from its actual module comparisons.
+\end{theorem}
+\begin{proof}
+The actual original projective embedding makes $X$ quasicompact and
+separated. Internally choose a finite affine open cover $(U_i)$ of $X$
+and a linear order on its finite index set. Each nonempty native tuple
+intersection $C=\bigcap U_i$ is an actual affine open of $X$.
+
+Apply the proved all-affine inverse-image theorem to that original $C$,
+the same $j,f,F$, and the stated original global-twist family. This
+internally produces zero ordinary positive cohomology of the original
+$F|_{f^{-1}C}$ in every degree. The actual inverse-image finite-intersection
+identity identifies $f^{-1}C$ with the literal native tuple intersection
+of the $f^{-1}U_i$. Native module restriction has that same underlying
+restricted sheaf, so these are exactly the local groups required by the
+already proved Leray--\v{C}ech comparison.
+
+Invoke that existing comparison for the actual $f,F$ and the internally
+chosen affine cover. It uses the genuine ordered pushforward-complex
+isomorphism, the internally proved source-intersection acyclicity, and
+quasicoherence of the actual $f_*F$ on the affine base intersections to
+identify the two positive-cohomology vanishing predicates. This proves
+both implications without repeating the generic cochain comparison or
+assuming that $f$ is affine.
+\end{proof}
+
+The original global-twist family remains an explicit hypothesis. A
+covering-space Kodaira result alone does not imply it for a fixed original
+$F$. Actual trace descent and the original rounded/multiplier module
+comparisons are still needed in the Nadel application; this theorem does
+not assert completion of Nadel vanishing.

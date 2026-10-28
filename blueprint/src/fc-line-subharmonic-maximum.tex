@@ -1,0 +1,36 @@
+\subsection{The actual line subharmonic strong maximum principle}\label{subsec:fc-line-subharmonic-maximum}
+
+\begin{theorem}[Actual subharmonic strong maximum principle]\label{thm:fc-line-subharmonic-strong-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.eventually_eq_of_isLocalMax, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.eventually_eq_of_isLocalMax_norm}
+\leanok
+\uses{def:fc-actual-line-subharmonic, thm:fc-separated-affinoid-basis,
+  thm:fc-rigid-density, lem:fc-rigid-closed-disc-basis,
+  lem:fc-separated-affinoid-puncture, thm:fc-dirichlet-existence,
+  thm:fc-separated-harmonic-strict-bound}
+\source{gr25-classically-psh:prop:subharmonic.properties}
+Let the algebraically closed valued field have a nontrivial valuation.
+If an actual subharmonic function on an open domain of its actual analytic
+line has a local maximum at $x$, it is constant on an actual neighbourhood
+of $x$. Negative infinity values are allowed.
+\end{theorem}
+
+\begin{proof}
+A local maximum equal to $-\infty$ gives the assertion immediately.
+Otherwise its value is a finite real $R$. Choose a separated actual
+affinoid $U$ whose strict core contains $x$ and whose whole carrier lies
+in the domain and in the neighbourhood where $u\le R$.
+If $u$ is not identically $R$ on that core, upper semicontinuity and actual
+rigid density supply a rigid point $a$ in the core with $u(a)<b<R$.
+Choose a positive-radius whole closed disc about $a$ where $u<b$, small
+enough also to avoid $x$ and all old hole centres and to remain strictly
+inside the outer radius. Append its open disc as a new separated hole,
+forming an actual affinoid $V$ with $x$ still in the strict core.
+Solve the actual Dirichlet problem on $V$ with boundary value $b$ at the
+new hole boundary and $R$ at all other actual boundary points.
+The original function is at most these values on the whole actual
+boundary, so literal subharmonic comparison gives $u(x)\le H(x)$.
+The strict harmonic core theorem gives $H(x)<R=u(x)$, a contradiction.
+Thus $u=R$ on the actual open strict core of $U$, as required.
+Every geometric strictness condition in this argument is constructed
+from the source neighbourhood data.
+\end{proof}

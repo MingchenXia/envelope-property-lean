@@ -1,0 +1,38 @@
+\section{Actual dominant maps to the same original normal curve are flat}
+
+\begin{theorem}[Original dominant stalk maps are flat on a normal curve]
+\label{thm:fc-normal-curve-dominant-stalk-flat}
+\leanok
+\lean{EnvelopeProperty.NormalCurveDominantFlat.stalkMap_flat}
+\uses{thm:fc-curve-denominator-cartier}
+For an actual dominant morphism from an original integral scheme to
+an original integral locally Noetherian normal curve, every actual
+original stalk map is flat. No finiteness of the morphism or
+regularity of the original source is assumed.
+\end{theorem}
+\begin{proof}
+Actual dominance and integral original function-field specialization
+make every original stalk map injective. Both original stalk rings
+are domains, so its actual target ring is torsion-free over the
+original source stalk. The original normal Noetherian curve bound
+makes every base stalk a principal ideal ring, including the
+original generic field. The genuine torsion-free module criterion
+over a Dedekind domain therefore gives flatness of this SAME actual
+stalk map.
+\end{proof}
+
+\begin{theorem}[Whole original dominant curve morphism is flat]
+\label{thm:fc-normal-curve-dominant-flat}
+\leanok
+\lean{EnvelopeProperty.NormalCurveDominantFlat.flat, EnvelopeProperty.NormalCurveDominantFlat.comap_isInvertible}
+\uses{thm:fc-normal-curve-dominant-stalk-flat}
+The SAME entire original dominant morphism to the original normal
+curve is flat. Consequently each original effective Cartier ideal
+has a genuine effective Cartier geometric comap along this same
+map. No flatness or Cartier-comparison input is supplied.
+\end{theorem}
+\begin{proof}
+Apply the native stalkwise flatness criterion to the actual original
+stalk maps just proved flat. Native flat Cartier pullback then gives
+the Cartier property of the same original geometric comap.
+\end{proof}

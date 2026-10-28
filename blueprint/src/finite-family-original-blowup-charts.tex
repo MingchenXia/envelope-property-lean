@@ -1,0 +1,77 @@
+\subsection{The constructed finite family and the ORIGINAL finite-set blowup charts}
+
+\begin{lemma}[The entire original finite-family chart is the original finite-set chart]
+\label{paper:actual-finite-family-original-blowup-chart}
+\uses{algebra:actual-rees-degree-zero-chart-equivalence}
+\lean{EnvelopeProperty.ReesFiniteFamily.generatorSet,
+EnvelopeProperty.ReesFiniteFamily.mem_generatorSet,
+EnvelopeProperty.ReesFiniteFamily.generatorIdeal_eq_span,
+EnvelopeProperty.ReesFiniteFamily.fractionAlgebra_eq_blowupChart,
+EnvelopeProperty.ReesFiniteFamily.chartEquiv,
+EnvelopeProperty.ReesFiniteFamily.chartEquiv_coe,
+EnvelopeProperty.ReesFiniteFamily.chartEquiv_algebraMap,
+EnvelopeProperty.ReesFiniteFamily.chartEquiv_coordinateRatio}
+Let $A$ be ANY commutative domain and let $g:\iota\to A$ be a genuinely finite
+family. Define the actual finite set $s=\{g_i:i\in\iota\}$, retaining the
+ORIGINAL elements of $A$. Its ideal span is EXACTLY the original family ideal.
+For each original index $j$ with $g_j\ne0$, construct a genuine $A$-algebra
+isomorphism from the original degree-zero Rees chart to the EXISTING paper
+ring $\operatorname{blowupChart}(s,g_j)$. It retains the ENTIRE original
+fraction-field map, every coefficient, and every actual ratio $g_i/g_j$.
+No global finite-index/finite-set Rees scheme equivalence is assumed.
+\leanok
+\end{lemma}
+\begin{proof}
+Membership in the actual finite-set image is precisely existence of an original
+family index. Thus its underlying set is the actual range of $g$; their ideal
+spans agree on the original ring, without radicals or replacement generators.
+The original ratios indexed by $\iota$ are exactly the image under $a\mapsto a/g_j$
+of this original finite set. Hence the literal fraction-adjoin subalgebra of
+$\operatorname{Frac}A$ for the family equals the EXISTING finite-set fractional
+blowup chart as an ENTIRE subalgebra. Compose the actual original Rees
+fraction-equivalence with this true subalgebra equality. Both maps retain every
+original fraction-field element, so the whole original chart map, all original
+coefficient elements and every ratio are preserved. Inherited further coefficient
+actions are therefore genuine; no unrelated scalar action is chosen.
+
+The condition $g_j\ne0$ is essential for this actual chart equivalence. If
+$g_j=0$, the genuine Rees chart is empty/zero, whereas the existing fractional
+$A[s/0]$ may be the original $A$, since all its displayed ratios are zero.
+We never identify those charts. The lower fraction-adjoin SET equality itself
+still allows zero denominators, but its Rees equivalence uses nonzeroness.
+\end{proof}
+
+\begin{theorem}[The EXISTING original finite-set chart rings give a genuine cover of the SAME finite-family Rees scheme]
+\label{paper:actual-finite-family-original-affine-cover}
+\uses{paper:actual-finite-family-original-blowup-chart,scheme:actual-rees-coordinate-cover,scheme:actual-rees-projection-surjective}
+\lean{EnvelopeProperty.ReesFiniteFamily.chartSchemeIso,
+EnvelopeProperty.ReesFiniteFamily.chartImmersion,
+EnvelopeProperty.ReesFiniteFamily.instIsOpenImmersion_chartImmersion,
+EnvelopeProperty.ReesFiniteFamily.chartImmersion_comp_projection,
+EnvelopeProperty.ReesFiniteFamily.affineOpenCover}
+For the same actual finite family, the spectra of the EXISTING rings
+$\operatorname{blowupChart}(s,g_j)$ with $g_j\ne0$ form a REAL affine open cover
+of the SAME original finite-family Rees scheme. Every actual immersion composed
+with its original projection is the ENTIRE original $A$ coefficient map on
+spectra. No native chart-cover or whole scheme-comparison certificate is supplied.
+The family may be empty or consist only of zeros; then the genuine source
+scheme and its nonzero-coordinate cover are empty as required.
+\leanok
+\end{theorem}
+\begin{proof}
+Apply Spec contravariantly to every genuine whole chart-ring isomorphism from
+the preceding lemma. Compose its actual isomorphism with the original selected
+coordinate chart immersion of the finite-family Rees scheme. These are true
+open immersions. The actual original chart coefficient triangle and the whole
+$A$-algebra commutation law yield the entire projection triangle, including
+all section maps.
+
+Use the CHECKED original nonzero-coordinate affine open cover of the SAME
+original family presentation. Every original point lies in one such selected
+chart, with actual $g_j\ne0$ derived by that cover. The corresponding genuine
+scheme isomorphism supplies its whole inverse point, so the EXISTING original
+paper chart rings actually cover the whole original Rees scheme. Indexing by
+the original nonzero indices permits repetitions harmlessly. No chosen nonempty-family or chart-cover certificate replaces this real cover argument.
+This bridges the constructed family to the UNCHANGED old chart rings, without
+any function-class edit or arbitrary-proper Chow conclusion.
+\end{proof}

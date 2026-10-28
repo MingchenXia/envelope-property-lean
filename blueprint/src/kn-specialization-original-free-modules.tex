@@ -1,0 +1,96 @@
+\section{Specializing the original finite free module complex}
+
+\begin{lemma}[The original tensor extension retains its matrix]
+\label{lem:kn-specialization-original-base-change-matrix}
+\lean{EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.toMatrix_baseChange}
+\leanok
+Let $f:A\to B$ be a linear map between finite free $R$-modules with
+chosen finite bases.  Over an $R$-algebra $S$, its actual tensor
+extension $1\otimes f$ has, in the base-changed bases, the matrix
+obtained by applying the original coefficient map $R\to S$ to every
+entry of the original matrix of $f$.
+\end{lemma}
+\begin{proof}
+The $j$th base-changed basis vector is $1\otimes a_j$.  Its image
+is $1\otimes f(a_j)$.  The coefficient in the $i$th base-changed
+basis vector is the image in $S$ of the original $i$th coefficient
+of $f(a_j)$.  This proves equality of every matrix entry.
+\end{proof}
+
+\begin{lemma}[Exactness retains the original basis identifications]
+\label{lem:kn-specialization-original-exactness-matrix}
+\lean{EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.matrix_exact_iff}
+\leanok
+For an original pair of linear maps between finite free modules,
+exactness of its two matrices over the same coefficient ring is equivalent to exactness
+of the original pair of linear maps under the original basis
+identifications.
+\end{lemma}
+\begin{proof}
+The matrix maps are obtained by conjugating the original maps with
+the coordinate isomorphisms.  Precomposition by an isomorphism
+preserves the image; postcomposition by an isomorphism preserves
+the zero locus.  The common middle coordinate isomorphism transports
+the range of the first map and the kernel of the second to the
+corresponding original range and kernel.  Their equality is therefore
+equivalent in the two representations.
+\end{proof}
+
+\begin{theorem}[A principal exactness neighborhood for the original free modules]
+\label{thm:kn-specialization-original-free-neighborhood}
+\lean{EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.exists_closed_fibre_exactness_neighborhood}
+\leanok
+\uses{lem:kn-specialization-original-base-change-matrix,lem:kn-specialization-original-exactness-matrix,thm:kn-specialization-finite-free-exactness}
+Let $A\xrightarrow f B\xrightarrow g C$ be an original finite free
+$R$-module complex and let $\mathfrak p$ be an original maximal
+ideal.  If the actual tensor maps over $\kappa(\mathfrak p)$ are
+exact, there is $r\notin\mathfrak p$ such that the actual tensor
+maps over every original $R$-algebra field in which $r$ is nonzero
+are exact.
+\end{theorem}
+\begin{proof}
+Choose finite bases of the original free modules.  The first two
+lemmas identify exactness of the actual residue tensor maps with
+exactness of the original matrices after the original residue
+coefficient map.  The matrix specialization theorem supplies an
+element $r$ with residue $1$ and exactness at every field point
+where it remains nonzero.  The same two lemmas identify these matrix
+maps with the actual tensor maps of the original modules.  Thus no
+matrix-comparison isomorphism is a supplied hypothesis.
+\end{proof}
+
+\begin{corollary}[Generic exactness for the original tensor complex]
+\label{cor:kn-specialization-original-free-generic}
+\lean{EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.generic_exact_of_closed_fibre_exact}
+\leanok
+\uses{thm:kn-specialization-original-free-neighborhood}
+If $R$ is a domain, exactness of the actual closed residue tensor
+complex implies exactness of the actual tensor extension of the
+same original finite free module complex to any fraction field of $R$.
+\end{corollary}
+\begin{proof}
+The element $r\notin\mathfrak p$ supplied by the theorem is
+nonzero in $R$.  Injectivity of the canonical map to the fraction
+field retains nonvanishing of $r$, so the theorem applies to that
+original canonical coefficient map.
+\end{proof}
+
+\begin{corollary}[Native homology of the original tensor complex]
+\label{cor:kn-specialization-original-free-native-homology}
+\lean{EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.exists_original_homology_zero_neighborhood,EnvelopeProperty.Vanishing.SpecializationOriginalFreeModules.original_generic_homology_isZero_of_closed_fibre}
+\leanok
+\uses{thm:kn-specialization-original-free-neighborhood,cor:kn-specialization-original-free-generic}
+Form the native short complex from the actual tensor extensions of the
+same original maps.  If its native homology vanishes over the canonical
+closed residue fibre, it vanishes after every coefficient map to a
+field in one constructed principal neighborhood.  Over a domain it
+also vanishes after the canonical fraction-field extension.
+\end{corollary}
+\begin{proof}
+The native homology of a module short complex vanishes exactly when
+the original range equals the original kernel.  Apply this criterion
+to the actual residue tensor maps, the principal-neighborhood
+exactness theorem, and the same criterion in the reverse direction.
+For the generic field use its canonical coefficient map and the
+generic exactness corollary.
+\end{proof}

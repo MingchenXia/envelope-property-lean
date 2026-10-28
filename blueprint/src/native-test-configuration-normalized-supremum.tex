@@ -1,0 +1,59 @@
+\section{The genuine normalized ideal-norm supremum over all positive exponents}
+
+\begin{lemma}\label{lem:native-power-base-ideal-power-inclusion}
+\leanok
+\lean{EnvelopeProperty.TensorPowerBaseIdealGrading.powerBaseIdeal_pow_succ_le}
+For every original invertible sheaf $M$ on any scheme, every $m\geq0$
+and $k\geq1$, the actual all-global-section base ideals satisfy
+$I_m^k\subset I_{km}$.
+\uses{prop:actual-line-power-base-ideal-grading}
+\end{lemma}
+\begin{proof}
+For $k=1$ the assertion is equality. Multiplying the inclusion for $k$
+by $I_m$ and then applying the actual graded ideal multiplication inclusion
+gives the assertion for $k+1$. All ideals are the entire original base
+ideals, not chosen section subfamilies.
+\end{proof}
+
+\begin{lemma}\label{lem:native-base-ideal-root-multiples}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.powerBaseIdealNormalizedRoot}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.powerBaseIdealNormalizedRoot_le_multiple}
+On an actual proper model with bounded valued base, for every positive
+$m,k$, the actual real roots satisfy
+$\|I_m\|^{1/m}\leq\|I_{km}\|^{1/(km)}$.
+\uses{lem:native-power-base-ideal-power-inclusion,lem:model-ideal-norm-monotone}
+\end{lemma}
+\begin{proof}
+Actual model norms multiply on ideal products, so the preceding whole-ideal
+inclusion gives $\|I_m\|^k\leq\|I_{km}\|$. All these norms are finite
+nonnegative reals since they are at most one. Raise both sides to the
+positive real exponent $1/(km)$ and simplify $k/(km)=1/m$. This argument
+also covers zero norms, without a nonvanishing premise.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-normalized-supremum}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_powerBaseIdeal_normalized_supremum}
+Take the original ample fibre line and original source line-action and
+fibre-one data. For any bounded parameter valuation with nonzero parameter
+value and every original native point, there is a positive real $b\leq1$
+such that the actual normalized roots converge to $b$ and
+$b=\sup_{m\geq1}\|I_m\|^{1/m}$.
+No norm, positivity, generation, limit or supremum matching certificate
+is assumed.
+\uses{cor:native-test-configuration-root-limit,lem:native-base-ideal-root-multiples}
+\end{theorem}
+\begin{proof}
+The genuine Fekete theorem from original ampleness provides the positive
+root limit $b\leq1$. Fix $m>0$. The normalized root at $m$ is at most
+every root at a positive multiple of $m$. These multiples tend to infinity,
+so convergence and closedness of the order imply that this original root
+is at most $b$. Thus $b$ is an upper bound for all the positive-index
+roots. Conversely any such upper bound bounds their tail and hence their
+limit $b$. Therefore $b$ is the least upper bound of exactly these original
+roots. The exponent zero is excluded because its root convention would
+artificially add one. Comparing this native ideal-norm supremum with the
+original weighted Laurent-section FS envelope remains a separate geometric
+comparison.
+\end{proof}

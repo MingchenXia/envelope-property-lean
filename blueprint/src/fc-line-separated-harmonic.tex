@@ -1,0 +1,23 @@
+\subsection{Strict harmonic comparison on the constructed core}\label{subsec:fc-line-separated-harmonic}
+
+\begin{theorem}[Strict harmonic boundary bound on the core]\label{thm:fc-separated-harmonic-strict-bound}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.lt_of_boundary_le_of_exists_lt}
+\leanok
+\uses{lem:fc-separated-core-connected-boundary, thm:fc-harmonic-component-maximum,
+  thm:fc-harmonic-weak-maximum}
+Let $U$ have a separated presentation and nonempty strict core. If an actual
+harmonic function $H$ has boundary values at most $R$, with one actual
+boundary value strictly smaller than $R$, then $H(x)<R$ for every point
+$x$ of its strict core.
+\end{theorem}
+
+\begin{proof}
+The actual weak maximum principle gives $H\le R$ on the whole carrier.
+If equality holds at a strict-core point, the actual componentwise harmonic
+maximum theorem makes $H$ constant on the interior component containing
+that point. The connected strict core is contained in this component.
+Every actual boundary point lies in the closure of the core, so continuity
+makes every boundary value equal to $R$, a contradiction.
+The separated presentation will always be obtained by construction in the
+subharmonic maximum-principle application.
+\end{proof}

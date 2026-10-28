@@ -1,0 +1,48 @@
+\section{The fixed finite actual divisorial family of an etale boundary}
+
+\begin{definition}[Actual boundary divisorial DVRs]\label{def:sc0-etale-boundary-divisorial-dvr}
+\lean{EnvelopeProperty.Char0.etaleBoundaryDivisorialDVR}
+\leanok
+Let $C\subseteq E\subset K$ have original function field $K$ and let
+$E$ have actual etale coordinates $v_i$. Select a finite family of
+boundary coordinates $p_l=v_{c(l)}$. For every prime minimal over one
+of the $(p_l)$, take the literal subalgebra $E_P\subset K$, with its
+actual original-source divisorial DVR properties.
+\end{definition}
+\begin{proof}
+Every coordinate is nonzero because its differential is a genuine
+basis vector. The actual etale coordinate ring is finite type over $k$,
+Noetherian and regular; its normality is derived from regularity.
+Every such principal minimal-prime localization is therefore an actual
+DVR. Its literal image in $K$ contains $C$, has the same actual fraction
+field, and is essentially of finite type over $k$. These give all the
+stated original-source divisorial properties without further hypotheses.
+\end{proof}
+
+\begin{lemma}[The exact actual function-field subalgebra]\label{lem:sc0-etale-boundary-divisorial-dvr-value}
+\lean{EnvelopeProperty.Char0.etaleBoundaryDivisorialDVR_val}
+\leanok
+\uses{def:sc0-etale-boundary-divisorial-dvr}
+The constructed DVR subalgebra is precisely the literal image of the
+actual prime localization in the original function field.
+\end{lemma}
+\begin{proof}
+This is the actual localization image used in the construction; the
+derived divisorial properties leave its underlying subalgebra unchanged.
+\end{proof}
+
+\begin{theorem}[The actual boundary divisorial family is finite]\label{thm:sc0-finite-etale-boundary-divisorial-dvrs}
+\lean{EnvelopeProperty.Char0.finite_range_etaleBoundaryDivisorialDVR}
+\leanok
+\uses{def:sc0-etale-boundary-divisorial-dvr,lem:finite-boundary-minimal-primes}
+The actual family of those original-source divisorial DVRs is finite.
+It depends only on the fixed actual leaf and its selected boundary
+coordinates, independently of all monomial exponents and rational
+multiplier parameters.
+\end{theorem}
+\begin{proof}
+The leaf is Noetherian. Its finitely many selected coordinate ideals
+have only finitely many minimal primes in total. The actual DVR family
+is the image of this finite prime family under the literal localization
+construction, and the image of a finite set is finite.
+\end{proof}

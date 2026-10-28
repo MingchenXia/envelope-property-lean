@@ -1,0 +1,65 @@
+\subsection{Genuine compactness of proper native spaces over bounded coefficients}
+\label{subsec:proper-native-compactness}
+
+The prescribed seminorm $v$ on the arbitrary commutative ring $R$ is
+explicitly bounded on every coefficient. The actual structure morphism
+$f:X\to\operatorname{Spec}R$ is proper. Compactness below uses the true
+valuative centers and all-coordinate bounded affine spectra. No field,
+completeness, Noetherian condition, finite type of a section ring or
+Hausdorff conclusion is assumed. This bounded model-base scope is retained;
+an arbitrary unbounded prescribed field norm does not supply a coefficient
+map into the chosen residue-field valuation ring by this construction.
+
+\begin{lemma}[Actual compact bounded affine representatives]
+\label{scheme:compact-bounded-native-affine-images}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_boundedAffineImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mem_boundedAffineImage_of_center_mem}
+\leanok
+\uses{scheme:relative-affine-open-homeomorphism,scheme:proper-center-local-bounds,
+spectrum:compact-relative-bounds}
+For an actual affine open $U$, take the actual image in the native
+prescribed-base space of its relative section-ring spectrum whose every
+element value is at most one. That image is compact. Every native point
+whose true model center belongs to $U$ lies in this image.
+\end{lemma}
+\begin{proof}
+Every-coordinate radius-one bounds define a compact subset of the actual
+relative spectrum by its closed product evaluation embedding and the
+prescribed-base closed locus. Composing the genuine inverse affine chart
+homeomorphism with its support-open subtype inclusion is continuous.
+Its image of that real compact subset is therefore compact without any
+separation assumption on the ambient space. When the true center belongs
+to $U$, its original support also belongs to $U$, and the actual proper
+lift proves all genuine section values at most one. The entire affine
+chart represents the point with those original section values, giving
+actual bounded-spectrum membership and recovering the whole native point
+under the inverse chart.
+\end{proof}
+
+\begin{theorem}[Actual finite bounded cover and proper compactness]
+\label{scheme:proper-native-compactness}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.iUnion_boundedAffineImage_eq_univ,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_univ_of_finite_affine_cover,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.compactSpace_of_isProper}
+\leanok
+\uses{scheme:compact-bounded-native-affine-images,scheme:proper-native-center}
+A genuine affine scheme cover covers the entire native prescribed-base
+point space by the preceding compact bounded affine images. Any actual
+finite such cover proves compactness. Genuine quasi-compactness of the
+proper scheme supplies a finite affine subcover, so its entire native
+prescribed-base point space is compact.
+\end{theorem}
+\begin{proof}
+For any native point, its actual model center lies in a member of the
+scheme cover. The first lemma puts that whole point in the corresponding
+compact bounded affine image. This proves equality of the actual image
+union with the whole native space. A finite union of real compact images
+is compact in any topological space. Finally the affine base scheme
+$\operatorname{Spec}R$ is quasi-compact, and the actual proper structure
+map is quasi-compact, so the source scheme is quasi-compact. Mathlib's
+genuine affine-basis finite-cover theorem supplies the required finite
+family; applying the preceding union argument proves the final compact-space
+statement. The finite affine cover is produced from the actual scheme,
+not supplied as a certificate encoding native compactness.
+\end{proof}

@@ -1,0 +1,74 @@
+\section{The common actual generic-fiber trace}
+
+\begin{lemma}[The actual finite affine trace over a field]
+\label{lem:kn-structure-trace-field-producer}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.fieldPushforwardSectionsEquiv,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.fieldStructureTrace,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.fieldStructureTrace_sections,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.fieldStructureTrace_top}
+\leanok
+If $q:Z\to\operatorname{Spec}K$ is finite and $K$ is a field, there is
+an actual module morphism $q_*\mathcal O_Z\to\mathcal O_{\operatorname{Spec}K}$
+whose value on every whole section is the native trace of the entire
+finite-dimensional algebra $\Gamma(Z,\mathcal O_Z)/K$. The original
+coefficient map defines its scalar action; no integral component or
+basis is chosen, and no incoming trace map is required.
+\uses{lem:kn-structure-trace-affine-sheaf}
+\end{lemma}
+\begin{proof}
+Finiteness makes $Z$ affine and makes its entire section algebra finite
+over $K$. The original coefficient map is the original pullback on
+whole sections composed with the inverse spectrum--sections
+isomorphism for $K$. Hence the actual native sections of $q_*\mathcal
+O_Z$, with their $K$-action, identify with the entire section algebra.
+It is a finite-dimensional vector space, so has its native algebra
+trace. Transport this linear trace to the actual source and target
+sections and take its preimage under the affine quasicoherent
+equivalence. This produces the actual sheaf morphism and proves its
+value on every whole section.
+\end{proof}
+
+\begin{lemma}[The original regular structure module embeds into its generic field]
+\label{lem:kn-structure-trace-generic-unit-mono}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.genericStructuralUnit_mono}
+\leanok
+For integral $X$, the actual structural unit
+$\mathcal O_X\to\gamma_*\mathcal O_{\operatorname{Spec}K}$ is a
+monomorphism. In particular any regular factorization of a fixed
+rational structure trace is unique.
+\end{lemma}
+\begin{proof}
+The image of $\gamma$ contains the generic point, hence is dense. Its
+source has a single point, so the map is quasicompact. Since $X$ is
+reduced, dominance implies scheme-theoretic dominance, and consequently
+the actual pullback on functions is injective on every open. The actual
+structural unit has precisely these pullbacks as its section maps.
+Thus it is a monomorphism of module presheaves and also of module
+sheaves. Right cancellation by this monomorphism gives uniqueness of
+any regular factorization.
+\end{proof}
+
+\begin{definition}[The original rational structure trace]
+\label{def:kn-structure-trace-rational}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.genericRationalStructureTrace,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.genericRationalStructureTrace_top}
+\leanok
+Let $\pi:Y\to X$ be finite and $X$ integral, and put
+$\gamma:\operatorname{Spec}K\to X$ for the actual morphism from the
+generic stalk field. The entire actual generic fiber $Z$ gives an
+intrinsic rational structure trace
+\[
+ \pi_*\mathcal O_Y\longrightarrow\gamma_*\mathcal O_{\operatorname{Spec}K}.
+\]
+On each whole section of $Y$ it is the native trace of the pullback to
+the entire generic fiber. The assertion here has rational functions
+as its target; regularity and factorization through $\mathcal O_X$
+require the subsequent local comparison and gluing argument.
+\uses{lem:kn-structure-trace-field-producer}
+\end{definition}
+\begin{proof}
+Form the actual pullback square of $\pi$ and $\gamma$. The actual square
+map of structure-module pushforwards sends every section to its
+pullback to $Z$. The second projection $Z\to\operatorname{Spec}K$ is
+finite, so the preceding construction supplies its native sheaf trace.
+Compose the actual square map with the pushforward of that trace along
+$\gamma$. This is the asserted original module morphism. Evaluation
+on whole sections gives the displayed native trace formula by the
+actual square-map section formula and the preceding trace computation.
+\end{proof}

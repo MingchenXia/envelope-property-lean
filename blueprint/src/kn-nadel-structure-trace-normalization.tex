@@ -1,0 +1,39 @@
+\section{Whole native coefficient normalization of the affine structure trace}
+
+\begin{lemma}[Every original coefficient follows the actual affine sheaf trace]
+\label{lem:kn-structure-trace-affine-every-coefficient}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_apply}
+\leanok
+Under the original affine unit and pushforward section identifications,
+the actual sheaf trace sends every native source section to the native
+algebra trace of its original coefficient in the entire algebra $B$.
+\uses{lem:kn-structure-trace-affine-sheaf}
+\end{lemma}
+\begin{proof}
+Evaluate the proved whole section-map identity on the section in question.
+Apply the original unit-section identification. Its inverse in the
+constructed section map cancels, leaving precisely the original algebra
+trace of the original pushforward coefficient. No basis or component is
+selected in this identity.
+\end{proof}
+
+\begin{lemma}[The original structural unit has its original rank factor]
+\label{lem:kn-structure-trace-affine-unit-degree}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_structuralUnit}
+\leanok
+On a nonzero finite free original affine algebra $A\to B$, apply the
+actual structural unit to any native base section and then the actual
+affine sheaf trace. Its original coefficient is the original coefficient
+multiplied by $\operatorname{rank}_A B$. For each actual whole ratio
+algebra this rank is the product of all original root degrees.
+\uses{lem:kn-structure-trace-affine-every-coefficient,lem:kn-nadel-whole-cover-degree}
+\end{lemma}
+\begin{proof}
+The actual spectrum--section naturality identity identifies the original
+structural unit coefficient with its image under $A\to B$. The preceding
+formula therefore gives the native algebra trace of this scalar. In a
+finite free basis its multiplication matrix is the scalar diagonal
+matrix, whose trace is the rank times that scalar. The whole monic
+ratio-algebra basis has cardinality the product of every original degree,
+which gives the last assertion.
+\end{proof}

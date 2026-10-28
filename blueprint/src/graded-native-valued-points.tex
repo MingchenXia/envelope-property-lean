@@ -1,0 +1,47 @@
+\section{True projective residue valuations from original relevant graded seminorms}
+
+\begin{theorem}[A relevant graded seminorm defines a true native Proj valued point]
+\label{thm:fc-graded-native-valued-point}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelevantGradedSpectrum.localValuation, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.localValuation_supp, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.homogeneousLocalValuation, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.homogeneousLocalValuation_supp, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativeStalkValuation, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativeStalkValuation_supp, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativePoint, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativePoint_point, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativePoint_residue}
+\uses{lem:fc-native-model-total-grading}
+For an actual graded commutative ring, every original relevant graded
+real seminorm defines a canonical native valued point of its actual
+Proj. Its scheme support is the SAME original homogeneous prime kernel.
+Its projective residue-field valuation retains the original valuation
+of every actual projective stalk residue.
+\end{theorem}
+\begin{proof}
+Extend the original valuation to the ordinary local ring at its kernel.
+The valuation of a fraction vanishes exactly when its numerator is in
+that original kernel, so the support is precisely the actual local
+maximal ideal. Restrict this valuation to the TRUE homogeneous
+degree-zero local ring. The true homogeneous localization unit criterion
+shows that its support is again exactly the actual local maximal ideal.
+Transport along the actual native Proj stalk isomorphism and descend
+through its true residue quotient. This gives the stated valued point
+and retains the whole original homogeneous support and every genuine
+stalk residue. The generally larger affine-cone residue field is never
+identified with the projective residue field.
+\end{proof}
+
+\begin{theorem}[Actual native homogeneous fraction sections keep their original values]
+\label{thm:fc-graded-native-valued-fractions}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelevantGradedSpectrum.homogeneousLocalValuation_mapId_chart, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativePoint_eval_awayToSection, EnvelopeProperty.Berkovich.RelevantGradedSpectrum.nativePoint_eval_mk}
+\uses{thm:fc-graded-native-valued-point}
+Every true native homogeneous chart section is evaluated by the original
+seminorm extended to that SAME principal localization. In particular,
+an original numerator $p$ divided by an original homogeneous denominator
+$f^d$ has exactly the original value $|p|/|f|^d$ whenever $|f|\ne0$.
+\end{theorem}
+\begin{proof}
+Every true homogeneous chart element is an actual same-degree fraction.
+The native fraction section's germ is its actual homogeneous-local-ring
+image followed by the inverse of the true projective stalk isomorphism.
+The residue construction retains that stalk value. The actual ordinary
+localized valuation evaluates that SAME fraction as the original
+numerator value times the inverse denominator value; multiplicativity
+gives the displayed power formula. This applies to all actual original
+fractions, including zero numerators.
+\end{proof}

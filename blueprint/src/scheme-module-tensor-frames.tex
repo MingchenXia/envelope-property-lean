@@ -1,0 +1,25 @@
+\section{Actual tensor frames and multiplication of original transitions}
+
+\begin{lemma}[The original tensor frame restricts and multiplies transitions]
+\label{lem:scheme-original-tensor-frame-transitions}
+\lean{EnvelopeProperty.SchemeModuleTensorFrames.tensorFrame,EnvelopeProperty.SchemeModuleTensorFrames.tensorFrame_restrict,EnvelopeProperty.SchemeModuleTensorFrames.tensorFrame_hom_eq_comp_scalars}
+\leanok
+Two original module frames on an original open give the original tensor
+module its coefficient-preserving tensor frame. Restricting it is the
+tensor frame of the restricted original frames. If the original two
+frames change by multiplication by $r$ and $s$, their tensor frame
+changes by multiplication by $rs$ in the same original structure ring.
+\end{lemma}
+\begin{proof}
+Use the true restriction-tensor comparison, tensor the two original
+frames, and then use the structure-module multiplication isomorphism.
+The original restriction/pullback coherence and the original unit
+comparison identify its restriction with the same construction on the
+smaller original open. For the transition formula, substitute the two
+given original frame equalities. Functoriality of tensor separates the
+tensor of these composites into the tensor of the original right-hand
+frames followed by the tensor of the scalar multiplications. Under
+structure-module multiplication the latter map sends $x\otimes y$ to
+$(rx)(sy)=rs(xy)$; hence it is multiplication by $rs$. This gives the
+claimed equality for the entire original tensor-frame homomorphism.
+\end{proof}

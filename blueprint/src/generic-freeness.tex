@@ -1,0 +1,46 @@
+\section{Actual generic freeness}
+
+The four source modules in this section are unchanged Apache-licensed sources from
+\texttt{TauCetiProject/TauCeti}, commit
+\texttt{15198c5caca3d2ccadc8d5b4e98cbef1a50b4a4c}. They compile under the existing
+Lean and Mathlib pins. The upstream provenance is recorded in
+\texttt{EnvelopeProperty/deps/tauceti-generic-ep33}.
+
+\begin{lemma}[Free exhaustive filtrations]\label{lem:actual-free-filtration}
+\leanok
+\lean{Module.Free.of_filtration}
+Let $R$ be a ring and $M$ an $R$-module. Suppose
+$0=N_0\subseteq N_1\subseteq\cdots$ is an exhaustive filtration by actual
+submodules and every $N_{j+1}/N_j$ is free. Then $M$ is free.
+\end{lemma}
+
+\begin{proof}
+Projectivity splits the actual quotient map at each step. The resulting map
+from the direct sum of the subquotients to $M$ is injective by induction on the
+largest nonzero summand, and surjective by exhaustiveness. Transport its actual
+direct-sum basis along this linear equivalence. No finiteness is needed.
+\end{proof}
+
+\begin{theorem}[Local generic freeness]\label{thm:actual-local-generic-freeness}
+\leanok
+\lean{Module.freeLocus_mem_nhds_of_mem_minimalPrimes, Module.dense_interior_freeLocus_of_finiteType}
+\uses{lem:actual-free-filtration}
+Let $A$ be reduced and noetherian, $B$ a finite-type $A$-algebra, and $M$ a finite
+$B$-module with its compatible $A$-module structure. Define the actual free locus
+$\{\mathfrak p\in\Spec A:M_{\mathfrak p}\text{ is free over }A_{\mathfrak p}\}$.
+This locus is a neighbourhood of each minimal prime of $A$, and its interior
+is dense in $\Spec A$.
+\end{theorem}
+
+\begin{proof}
+Induct on a finite algebra generating set. For a polynomial extension, filter
+$M$ by powers of the new variable applied to a finite module generating set.
+The actual submodules of coefficient relations increase and stabilize by
+noetherianity. Thus only finitely many subquotients need to be made free near
+the prescribed minimal prime. Intersect their actual open neighbourhoods and
+apply Lemma~\ref{lem:actual-free-filtration} at every prime of that intersection.
+Surjective algebra maps transfer the statement to the given finite-type algebra.
+Every nonempty open of the actual spectrum contains a minimal prime, which
+gives density of the interior. This is local freeness at the stated primes;
+a global basis after a single localization is a further statement.
+\end{proof}

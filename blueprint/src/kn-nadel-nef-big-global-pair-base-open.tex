@@ -1,0 +1,108 @@
+\section{The original generated pair on whole base opens}
+
+\begin{lemma}[The actual base change of the same generated pair]
+\label{lem:kn-nadel-nef-big-same-pair-base-open}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.source_isPullback,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseTarget,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseTarget_isPullback,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseTargetProjectiveIso,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseTargetProjectiveIso_hom_coeff,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseTargetProjectiveIso_hom_structure,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.basePair,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.basePair_fst,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.basePair_snd,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.basePair_isPullback,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseProjectivePair,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseProjectivePair_coeff,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpen.baseProjectivePair_structure}
+\leanok
+\uses{lem:kn-nadel-nef-big-same-global-pair-proper}
+Let $D$ be an ideal on a scheme $X$ over a field $k$, let $B$ be an
+invertible line, and let $G$ be a finite generating family of $D\otimes B$.
+Write $\pi:Y\to X$ for the original blowup and
+$F=(\pi,q):Y\to T=X\times_k\mathbf P_k^s$ for the same generated pair.
+For an affine open $U$ of $X$, put $A=\Gamma(X,U)$ and
+$Y_U=\operatorname{Bl}_{D(U)}\operatorname{Spec}A$.
+There is a canonical actual Cartesian square
+\[
+\begin{array}{ccc}
+Y_U&\xrightarrow{F_U}&T\times_X\operatorname{Spec}A\\
+\downarrow&&\downarrow\\
+Y&\xrightarrow{F}&T.
+\end{array}
+\]
+The upper target is canonically $\mathbf P_A^s$.  Under this
+identification the structure map of $F_U$ is the original local blowup
+projection, and its composite with $\mathbf P_A^s\to\mathbf P_k^s$
+is precisely the original $q$ composed with $Y_U\to Y$.
+\end{lemma}
+\begin{proof}
+The actual affine blowup square is Cartesian over the open subscheme
+$U$.  Composing its upper projection with $U\simeq\operatorname{Spec}A$
+gives the same Cartesian square over $\operatorname{Spec}A\to X$.
+The original first projection $T\to X$ and this base morphism have their
+canonical pullback.  The original blowup inclusion followed by $F$ and
+the original local projection satisfy its defining equality, since
+$F$ has first projection $\pi$.  Their actual pullback lift is $F_U$.
+Cancel the right-hand Cartesian square from the original blowup square;
+the remaining square is the asserted Cartesian square for $F_U$.
+
+Paste the defining square of $T\times_X\operatorname{Spec}A$ with
+the square defining $T$.  Its lower coefficient morphism is exactly
+$\operatorname{Spec}A\to X\to\operatorname{Spec}k$.
+The native projective coefficient square is Cartesian over this same
+coefficient morphism.  Uniqueness of the two pullbacks therefore gives
+the canonical isomorphism to $\mathbf P_A^s$.  The two projection
+equations of that isomorphism and of the original pullback lift give
+the two stated identities.
+\end{proof}
+
+\begin{lemma}[Composition of the actual ideal--line generator transport]
+\label{lem:kn-nadel-nef-big-comap-tensor-composition}
+\notready
+\uses{lem:kn-nadel-nef-big-global-frame-untwist}
+For actual morphisms $f:V\to U$ and $g:U\to X$, the canonical map
+$(gf)^*(D\otimes B)\to D\mathcal O_V\otimes(gf)^*B$ agrees with
+the two successive canonical ideal--line maps, through the original
+pullback composition isomorphisms and the literal equality of the two
+geometric ideal comaps.  In particular this comparison preserves every
+original basis map of a generating family.
+\end{lemma}
+\begin{proof}
+Factor each map into the original inverse tensorator followed by the
+canonical ideal-module comap tensored with the identity of the line.
+Naturality of the inverse tensorator moves the first ideal-module map
+through the second tensorator.  The two ideal-module maps then compose
+to the original composite ideal-module map, followed by the canonical
+isomorphism from equality of the geometric ideal comaps.  The inverse
+tensorators compose through the original pullback composition
+isomorphism because that isomorphism is monoidal.  These are equalities
+of the whole module-sheaf maps.  Apply the equality to each original
+basis map, using composition of the original unit pullback maps, to
+obtain the last assertion.
+\end{proof}
+
+\begin{lemma}[Identification with the same framed affine map]
+\label{lem:kn-nadel-nef-big-base-open-same-framed-map}
+\notready
+\uses{lem:kn-nadel-nef-big-same-pair-base-open,lem:kn-nadel-nef-big-comap-tensor-composition,lem:kn-nadel-nef-big-framed-affine-pair-closed}
+If $B$ has its actual frame on $U$, the map $F_U$, under the preceding
+canonical target identification, is the original framed-affine map of
+the actual restricted source family $G$.  Hence this same $F_U$ is a
+closed immersion on the entire inverse image of the base open.
+\end{lemma}
+\begin{proof}
+Restrict $G$ by the actual ideal--line comap map.  The original affine
+ideal-comap equality identifies its ideal factor with $\widetilde{D(U)}$;
+apply this equality as a module isomorphism to the generating family,
+retaining each original index.  Pull the actual frame of $B$ to
+$\operatorname{Spec}A$.  The preceding composition equality identifies
+the original transported family on $Y$, restricted to $Y_U$, with the
+successively transported family from this same affine source family.
+The canonical exceptional-ideal equality and the original pullback
+composition maps identify their target lines.
+
+On every original Rees pivot chart, composing the basis-map equality
+with the actual pivot frame identifies every projective coefficient.
+The added zero coefficient and the original coefficient homomorphism
+are preserved as well.  Composition of affine projective tuples with
+the original projective coefficient map is the tuple over the composite
+coefficient homomorphism.  The original source chart cover therefore
+gives equality of the two whole projective maps.  The preceding two
+projection identities identify this projective map with $F_U$ under
+the canonical target isomorphism.  The framed-affine theorem makes it
+closed, hence the same is true before the target isomorphism.
+\end{proof}
+
+This comparison concerns the same original generated pair.  Target
+locality on a framed affine cover will give its global monomorphism;
+properness of the already constructed pair then gives its closedness.
+No numerical nef or big conclusion follows from these statements.

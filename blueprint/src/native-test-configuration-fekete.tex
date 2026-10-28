@@ -1,0 +1,76 @@
+\section{Fekete limits for the actual test-configuration base ideals}
+
+\begin{lemma}\label{lem:model-ideal-norm-monotone}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_mono}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_mono}
+For a proper scheme over a bounded valued affine base, inclusion of actual
+ideal sheaves implies the same inequality between their actual model norms
+at every original relative valued point. Their logarithms obey the same
+monotonicity.
+\end{lemma}
+\begin{proof}
+Evaluate both ideals on any affine neighborhood of the actual valuative
+center. Original ideal-sheaf inclusion implies inclusion of the affine
+ideals. Their norms are monotone because they are suprema of the values
+of their elements. The intrinsic model norms equal these affine norms.
+Apply the monotonicity of the extended-real logarithm for the last assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:native-power-base-ideal-supermultiplicative}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.powerBaseIdeal_norm_mul_le}
+Let $M$ be an actual invertible sheaf on a proper model. For the base ideals
+$I_m$ of all global sections of the original powers $M^m$,
+$\|I_m\|\|I_n\|\leq\|I_{m+n}\|$ at every actual point, including zero norms.
+\uses{lem:model-ideal-norm-monotone,prop:actual-line-power-base-ideal-grading}
+\end{lemma}
+\begin{proof}
+Actual tensor multiplication gives the whole original ideal inclusion
+$I_m I_n\subset I_{m+n}$. Intrinsic model ideal norms multiply on actual
+ideal products. The preceding lemma gives the claimed inequality.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-fekete-limit}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.powerBaseIdealNegativeLog}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_powerBaseIdeal_fekete_limit}
+Take the original ample fibre line and original source line-action and
+fibre-one data of eventual verticality, and fix any bounded parameter
+valuation with nonzero parameter value. At every original native point,
+the actual sequence $-\log(\|I_m\|)/m$ has a finite nonnegative limit.
+After a single bound derived from the original ampleness, that limit is
+precisely the infimum of these normalized negative logarithms on the tail.
+No positivity, norm, subadditivity, boundedness or limit certificate is
+supplied as an additional input.
+\uses{thm:native-test-configuration-eventual-positive-base-ideal-norm,lem:native-power-base-ideal-supermultiplicative,thm:tail-subadditive-fekete}
+\end{theorem}
+\begin{proof}
+Original ampleness and source data give one bound $N$ after which every
+$I_m$ has strictly positive norm at every native point. All model ideal
+norms are at most one. Thus their real negative logarithms are nonnegative,
+and the preceding supermultiplicativity inequality becomes subadditivity
+for $m,n\geq N$ after taking real logarithms and changing sign. The sum
+$m+n$ also belongs to the same tail, so all logarithms in that inequality
+are finite. Apply the tail version of Fekete convergence, which needs no
+condition on the possibly vanishing finitely many earlier base ideals.
+The early real-logarithm convention at zero does not affect the limit.
+This is the actual ideal-norm limit; comparison with the original weighted
+Laurent-section Fubini--Study envelope is a separate obligation.
+\end{proof}
+
+
+\begin{corollary}\label{cor:native-test-configuration-root-limit}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_powerBaseIdeal_root_limit}
+For each actual native point, the real roots $\|I_m\|^{1/m}$ converge to
+some $b$ with $0<b\leq1$.
+\uses{thm:native-test-configuration-fekete-limit}
+\end{corollary}
+\begin{proof}
+Let $a\geq0$ be the actual negative-logarithm limit from the theorem.
+Put $b=\exp(-a)$, which is positive and at most one. On the derived
+positive tail, the actual roots equal the exponential of the negative
+normalized negative logarithms. Exponential continuity and the preceding
+limit imply convergence; the finitely many earlier roots have no effect.
+\end{proof}

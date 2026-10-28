@@ -1,0 +1,64 @@
+\section{The actual function-field degree of a finite dominant map}
+
+\begin{definition}[The canonical original generic extension degree]
+\label{def:intrinsic-numerical-canonical-function-field-degree}
+\uses{lem:actual-dominant-function-field-map}
+\lean{EnvelopeProperty.NumericalCurveFieldDegree.degree}
+\leanok
+For an actual finite dominant $g:D\to C$ of integral schemes, let
+$N(g)=[k(D):k(C)]$, computed with the actual generic-stalk field
+embedding induced by $g$. This definition uses the whole original
+function fields and that same canonical embedding.
+\end{definition}
+
+\begin{theorem}[Actual finiteness makes this original degree positive]
+\label{thm:intrinsic-numerical-function-field-degree-positive}
+\uses{def:intrinsic-numerical-canonical-function-field-degree,lem:actual-dominant-stalk-injectivity,thm:fc-scheme-finite-principal-generic-rank}
+\lean{EnvelopeProperty.NumericalCurveFieldDegree.functionFields_finite,EnvelopeProperty.NumericalCurveFieldDegree.degree_pos}
+\leanok
+If the same $g$ is finite, then its actual function-field extension is
+finite and $N(g)>0$. No flatness, normality, dimension bound or
+independently chosen field embedding is required.
+\end{theorem}
+\begin{proof}
+Choose a nonempty original affine open $U$ of $C$. Dominance makes
+$g^{-1}U$ nonempty, and finiteness makes it affine. Write
+$R=\Gamma(C,U)$ and $B=\Gamma(D,g^{-1}U)$. These are original domains,
+and the actual section map makes $B$ finite, hence integral, over $R$.
+The original fields $K=k(C)$ and $F=k(D)$ are respectively the fraction
+localizations of $R$ and $B$. Naturality of the actual generic germs
+identifies the two maps from $R$ to $F$: the map through $B$ equals the
+map through the canonical original $K\to F$.
+
+Integrality of $B/R$ and fraction localization make $F$ algebraic over
+$K$. The finite-type algebra $B/R$, followed by its fraction
+localization, makes $F$ essentially of finite type over $R$, and then
+over $K$. An algebraic field extension essentially of finite type is
+finite: finitely many field generators are algebraic, so their field
+adjoin equals their finite algebra adjoin. Thus the actual $F/K$ is
+finite. Its underlying vector space is nonzero, so its dimension,
+which is $N(g)$, is positive. No assertion that $K$ is a finite-type
+$R$-algebra is used.
+\end{proof}
+
+\begin{theorem}[Every original affine inverse computes the same degree]
+\label{thm:intrinsic-numerical-function-field-degree-affine-rank}
+\uses{def:intrinsic-numerical-canonical-function-field-degree,lem:actual-dominant-stalk-injectivity,thm:fc-scheme-finite-principal-generic-rank}
+\lean{EnvelopeProperty.NumericalCurveFieldDegree.degree_eq_affineRank}
+\leanok
+For every nonempty original affine open $U$ of $C$ and the same actual
+finite dominant $g$,
+\[
+ N(g)=\operatorname{rank}_{\Gamma(C,U)}\Gamma(D,g^{-1}U),
+\]
+with the scalar action given by the actual original section map.
+\end{theorem}
+\begin{proof}
+Use the same actual rings and fraction fields as above. The coefficient
+identity for the actual generic germs supplies both original scalar
+towers into $F$. Fraction localization preserves module rank in each
+tower, giving
+$[F:K]=\operatorname{rank}_R B$. Both sides are computed using these
+actual original maps. The argument works for each original nonempty
+affine open separately and needs no normality or flatness.
+\end{proof}

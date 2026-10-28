@@ -1,0 +1,47 @@
+\section{The actual Laurent-parameter family}
+
+\begin{lemma}[Whole coefficient-ring parameter families]
+\label{lem:native-parameter-family-rings}
+\uses{lem:pl-parameter-scaling-hom}
+\lean{EnvelopeProperty.parameterUnitBaseChangeHom,EnvelopeProperty.parameterUnitBaseChangeHom_C,EnvelopeProperty.parameterUnitBaseChangeHom_X,EnvelopeProperty.parameterUnitBaseChangeHom_comp,EnvelopeProperty.parameterUnitBaseChangeHom_id,EnvelopeProperty.parameterUnitBaseChangeHom_one,EnvelopeProperty.parameterLaurentUnit,EnvelopeProperty.parameterLaurentHom,EnvelopeProperty.parameterLaurentHom_evaluate}
+\leanok
+For every actual coefficient map $f:R\to S$ and unit $u\in S^\times$,
+there is an actual ring map $R[t]\to S[t]$ fixing the coefficients via
+$f$ and sending $t$ to $ut$.  Under coefficient extension $g:S\to T$
+and a second unit $v\in T^\times$, these maps compose by the unit
+$v\,g(u)$.  Identity coefficients and unit $1$ give the identity map.
+Over the actual Laurent polynomial ring $R[z,z^{-1}]$, the unit $z$
+gives a single universal ring family whose evaluation at any actual
+extended coefficient unit is precisely this map.
+\end{lemma}
+\begin{proof}
+Compose actual coefficient extension with the proved actual parameter
+substitution.  Equality of maps on every coefficient and on $t$ proves
+the composition and identity laws.  The Laurent parameter is a genuine
+unit with inverse $z^{-1}$.  Its actual Laurent evaluation homomorphism
+sends it to the prescribed unit, so polynomial-map extensionality on
+coefficients and $t$ proves the entire evaluation identity.
+\end{proof}
+
+\begin{lemma}[Genuine native scheme parameter families]
+\label{lem:native-parameter-family-morphisms}
+\uses{lem:native-parameter-family-rings,lem:native-parameter-unit-iso}
+\lean{EnvelopeProperty.ProjBerk.nativeParameterFamilyMap,EnvelopeProperty.ProjBerk.nativeParameterFamilyMap_comp,EnvelopeProperty.ProjBerk.nativeParameterFamilyMap_id,EnvelopeProperty.ProjBerk.nativeParameterLaurentFamily}
+\leanok
+The actual coefficient-ring parameter family induces an actual native
+polynomial-Proj morphism, with its full scheme composition and identity
+laws.  The single Laurent-parameter family is such an actual morphism,
+rather than a collection of automorphisms of field-valued points.
+\end{lemma}
+\begin{proof}
+Apply the actual native coefficient morphism to the whole ring maps.
+Its already proved contravariant composition and identity laws
+transport the entire ring-family laws to exact scheme identities.
+Specialize the actual coefficient extension to the Laurent polynomial
+ring and its genuine universal unit.
+\end{proof}
+
+The source is still expressed in native polynomial-Proj coordinates.
+Identifying it with the actual multiplicative-group product, restricting
+the whole family to the original variety and ideals, and lifting it to
+the actual blowup remain separate geometric steps.

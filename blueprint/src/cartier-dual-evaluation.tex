@@ -1,0 +1,65 @@
+\section{The actual canonical dual pairing and invertible tensor cancellation}
+
+\begin{lemma}[The original evaluation pairing is an isomorphism]
+\label{lem:cartier-actual-canonical-dual-evaluation-isomorphism}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.ev_isIso}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationIso}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationIso_hom}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.monoidalEvaluationIso}
+\leanok
+For every genuine invertible module sheaf $\mathcal L$ on an arbitrary
+original scheme $X$, its ACTUAL canonical evaluation morphism
+$\mathcal L\otimes\mathcal L^\vee\to\mathcal O_X$ is an isomorphism.
+The resulting isomorphism has this very original evaluation as its
+homomorphism. It also identifies the genuine coherent tensor with
+its actual monoidal unit.
+\end{lemma}
+\begin{proof}
+Take the actual original open trivializing cover of $\mathcal L$.
+On every original open contained in one of its members, the original
+trivialization identifies a section $m$ with its coefficient $E(m)$.
+If $\psi$ is its coefficient functional, the actual evaluation on the
+presheaf tensor has inverse $c\mapsto E^{-1}(c)\otimes\psi$.
+For a pure tensor $m\otimes\varphi$, writing
+$\varphi=s\psi$ gives $E^{-1}(\varphi(m))=sm$ and hence the same
+pure tensor after applying this inverse. Additivity extends the
+identity to every tensor; evaluation of the displayed inverse is
+$c$ by the actual trivialization identities. Thus the genuine
+presheaf evaluation is bijective on every original open in the
+trivializing cover. Sheafification inverts that actual locally
+bijective morphism. Its composite with the genuine sheafification
+counit is exactly the ORIGINAL sheaf evaluation. Both factors are
+isomorphisms, proving the assertion for that actual morphism.
+Finally compose with the true coherent-to-explicit tensor comparison
+and the genuine structure-module-to-monoidal-unit comparison.
+\end{proof}
+
+\begin{lemma}[Tensor by the actual original line sheaf is fully faithful]
+\label{lem:cartier-actual-line-tensor-fully-faithful}
+\uses{lem:cartier-actual-canonical-dual-evaluation-isomorphism}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.tensorRightFullyFaithful}
+\leanok
+For every original invertible module sheaf $\mathcal L$, the genuine
+functor $\mathcal M\mapsto\mathcal M\otimes\mathcal L$ on ALL original
+module sheaves is fully faithful. This supplies actual unique
+preimages of morphisms and isomorphisms under that functor.
+\end{lemma}
+\begin{proof}
+By the actual evaluation isomorphism, tensoring successively with
+$\mathcal L$ and its actual dual is naturally isomorphic to the
+identity functor: use the original tensor associator, tensor the
+actual inverse evaluation with each original object, and use its
+right unitor. This natural isomorphism makes tensor by
+$\mathcal L$ faithful, since equality after its subsequent dual tensor
+is equality under a functor naturally isomorphic to the identity.
+The same argument applies to the actual invertible dual and gives
+faithfulness of tensor by that dual. The composite of the two tensor
+functors is full because it is naturally isomorphic to the identity.
+To lift a morphism between two $\mathcal L$ tensors, tensor it with
+the dual and lift that image through the full composite functor.
+Faithfulness of dual tensor shows that the image of this lift under
+$\mathcal L$ tensor is the original morphism. This proves fullness;
+faithfulness makes the lift unique. Applying this unique lifting to
+an isomorphism and its actual inverse gives inverse original maps,
+since faithfulness detects both inverse identities.
+\end{proof}

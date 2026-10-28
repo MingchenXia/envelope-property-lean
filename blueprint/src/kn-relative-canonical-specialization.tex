@@ -1,0 +1,85 @@
+\chapter{Canonical comparison on the original relative family}
+
+\begin{theorem}[Actual fibre cohomology from free localized homology]
+\label{thm:relative-native-fibre-free-specialization}
+\uses{thm:relative-arithmetic-free-scalar-homology,lem:kn-derived-geometric-fibre-cohomology}
+\lean{EnvelopeProperty.Vanishing.RelativeCanonicalSpecialization.fibre_subsingleton_of_free_scalar_fibre}
+\leanok
+Let $Y/A$ be separated and let $M$ be invertible on $Y$. Fix a finite
+ordered affine cover whose Čech complex $K$ is bounded and has flat
+$A$-module terms. Let $A\to T\to C$ be a compatible scalar tower with
+$C\ne0$, and suppose that the native homology of $T\otimes_A K$ is
+free over $T$ in every degree. If $H^{q+1}(Y_C,M_C)=0$, then
+$H^{q+1}(Y_F,M_F)=0$ for every compatible $T$-algebra $F$.
+\end{theorem}
+\begin{proof}
+The actual inverse-image affine cover computes cohomology of each scalar
+fibre, and its ordered complex is canonically the corresponding tensor
+complex. Below the upper bound, the preceding homology base-change theorem
+identifies $H^{q+1}(C\otimes_T(T\otimes_A K))$ with
+$C\otimes_T H^{q+1}(T\otimes_A K)$. Associativity of tensor products
+identifies the former with the stipulated zero group. A free module whose
+extension to a nonzero ring is zero has empty basis, so the original
+$T$-homology vanishes. Its extension to $F$ is zero, and the same homology
+base-change theorem gives the desired fibre vanishing. Above the bound,
+the actual middle Čech term and its scalar extensions are zero.
+\end{proof}
+
+\begin{theorem}[Canonical specialization at the produced Witt point]
+\label{thm:relative-canonical-produced-witt-specialization}
+\uses{thm:relative-native-fibre-free-specialization,lem:relative-arithmetic-coordinate-complex,lem:relative-arithmetic-cech-free-witt-point,lem:kn-arithmetic-canonical-specialization-model}
+\lean{EnvelopeProperty.Vanishing.RelativeCanonicalSpecializationWitt.nativeCanonicalTensor_subsingleton}
+\leanok
+Let $A$ be a characteristic-zero noetherian domain smooth and of finite
+type over $\mathbf Z$, and let $B$ be a noetherian finite-type $A$-algebra.
+Let $Y/A$ be smooth and separated of relative dimension $n$, with a
+compatible projective map $Y\to\operatorname{Spec}B$, and let $L$ be
+invertible on $Y$. Fix $q\geq0$. Suppose that every finite quotient field
+$A/P$ of characteristic $\ell>n$ admitting an actual lift
+$A\to W_2(A/P)$ has
+$H^{q+1}(Y_{A/P},\omega_{Y_{A/P}/(A/P)}\otimes L_{A/P})=0$.
+Then the same canonical-twisted group vanishes on $Y_F$ for every
+injective homomorphism $A\to F$ into a field.
+\end{theorem}
+\begin{proof}
+Construct $M=\omega_{Y/A}\otimes L$ and its invertibility. Smoothness makes
+$Y/A$ flat. Relative projectivity constructs the actual bounded Čech
+complex, with flat $A$-module terms and homology finite over $B$.
+The preceding free-Witt-point lemma chooses an actual $P$ and
+$\ell>n$, its finite quotient field and Witt lift, making the localized
+complex's homology free. The stipulated geometric vanishing applies at
+this chosen point. Canonical base change identifies its coefficient
+with the actual residue pullback of $M$.
+Every element outside $P$ maps to a nonzero element of $A/P$ and, by
+injectivity, of $F$. Both scalar maps therefore extend to $A_P$.
+The actual fibre comparison with free localized homology transfers
+vanishing from $A/P$ to $F$. The whole canonical base-change isomorphism
+identifies the resulting pullback of $M$ with the stated canonical twist
+on the same actual $F$-fibre.
+\end{proof}
+
+\begin{lemma}[The original canonical coefficient on a prescribed field square]
+\label{lem:relative-original-canonical-square-cohomology}
+\uses{thm:kn-arithmetic-canonical-prescribed-field-square,lem:kn-scheme-iso-positive-cohomology}
+\lean{EnvelopeProperty.Vanishing.RelativeCanonicalSpecialization.squareCanonicalTensor_subsingleton_H_iff}
+\leanok
+Let $Y/A$ be smooth of relative dimension $n$, and let $L$ be invertible.
+Consider a Cartesian field square with original maps $a:X\to Y$ and
+$f:X\to\operatorname{Spec}k$. Assume that $X$ has a projective map to
+some affine scheme $\operatorname{Spec}R$. Positive cohomology of
+$\omega_{X/k}\otimes a^*L$ vanishes exactly when positive cohomology of
+the pullback of $\omega_{Y/A}\otimes L$ to the native $k$-fibre vanishes.
+There is no properness assumption on $Y/A$ or $X/k$.
+\end{lemma}
+\begin{proof}
+The Cartesian square supplies the scheme isomorphism from the original
+$X$ to the native fibre. Its first projection is $a$ and its field
+structure is $f$. The whole canonical base-change isomorphism therefore
+identifies the pulled coefficient with the stated original canonical
+twist. Composing the inverse scheme isomorphism with the given projective
+map $X\to\operatorname{Spec}R$ gives a projective map from the native
+fibre to that same affine scheme, since an isomorphism is a closed
+immersion. The native scheme-isomorphism cohomology comparison applies
+using this projective map. The canonical module isomorphism finishes the
+comparison with the original twist.
+\end{proof}

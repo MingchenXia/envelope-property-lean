@@ -1,0 +1,222 @@
+\subsection{The actual nonaffine integral normalization and its native points}
+
+The actual relative-normalization construction is Mathlib's
+\texttt{AlgebraicGeometry/Normalization.lean}, tagged Stacks 035H.
+We apply it to the ORIGINAL generic-field morphism, rather than
+requiring an affine-normalization or chart comparison as an input.
+Geometric unibranchness means the STANDARD structural local-ring
+property at every actual stalk, as above. Strict-henselization
+characterizations and nonintegral normalization remain separate.
+
+\begin{theorem}[The genuine generic morphism meets the exact normalization prerequisites]
+\label{scheme:actual-integral-generic-normalization-input}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.genericMap,
+EnvelopeProperty.IntegralSchemeNormalization.genericMap_apply,
+EnvelopeProperty.IntegralSchemeNormalization.genericMap_quasiCompact,
+EnvelopeProperty.IntegralSchemeNormalization.genericMap_quasiSeparated,
+EnvelopeProperty.IntegralSchemeNormalization.genericMap_preimage,
+EnvelopeProperty.IntegralSchemeNormalization.genericSectionIso,
+EnvelopeProperty.IntegralSchemeNormalization.genericSectionIso_coefficients}
+For ANY integral scheme $X$, put $K=X.functionField$, its ACTUAL
+generic stalk. The real morphism
+$j:\operatorname{Spec}K\to X$ is quasi-compact and quasi-separated.
+For EVERY nonempty affine open $U$, its genuine inverse image is
+all of $\operatorname{Spec}K$, and the entire actual section ring
+$\Gamma(\operatorname{Spec}K,j^{-1}U)$ is genuinely isomorphic to
+$K$ preserving the ORIGINAL coefficient map $\Gamma(X,U)\to K$.
+That map makes $K$ an actual fraction field of the SAME original
+$\Gamma(X,U)$. No quasi-compactness or separatedness of $X$ is needed.
+\leanok
+\end{theorem}
+\begin{proof}
+Use the genuine scheme morphism from the stalk at the original
+generic point. Its source is the actual Spec of the actual field
+$K$, so it has ONE point. Every inverse image is finite, hence
+compact; this DERIVES quasi-compactness of the morphism. The actual
+stalk morphism is a preimmersion, hence a monomorphism, hence
+separated and therefore quasi-separated. These are derived from
+the genuine map, not supplied as additional geometric hypotheses.
+
+The source's unique point maps to the original generic point.
+Every nonempty open of an integral scheme contains that point,
+so its genuine inverse image is the whole source. Restrict sections
+through this ACTUAL open equality and use the true global-sections
+isomorphism of Spec $K$. The existing entire stalk-morphism section
+formula identifies the WHOLE composite with the ORIGINAL germ map
+to the generic stalk. Mathlib's actual function-field theorem makes
+this same $K$ a fraction field of $\Gamma(X,U)$, using that genuine
+coefficient action. No abstract field identification is assumed.
+\end{proof}
+
+\begin{theorem}[Actual relative normalization gives whole original affine closure charts]
+\label{scheme:actual-integral-normalization-affine-charts}
+\uses{scheme:actual-integral-generic-normalization-input,algebra:actual-normalization-fraction-field-choice}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.normalization,
+EnvelopeProperty.IntegralSchemeNormalization.projection,
+EnvelopeProperty.IntegralSchemeNormalization.genericLift,
+EnvelopeProperty.IntegralSchemeNormalization.genericLift_comp_projection,
+EnvelopeProperty.IntegralSchemeNormalization.projection_isIntegralHom,
+EnvelopeProperty.IntegralSchemeNormalization.affineClosureEquiv,
+EnvelopeProperty.IntegralSchemeNormalization.affineClosureEquiv_algebraMap,
+EnvelopeProperty.IntegralSchemeNormalization.chartMap,
+EnvelopeProperty.IntegralSchemeNormalization.chartMap_isOpenImmersion,
+EnvelopeProperty.IntegralSchemeNormalization.chartMap_comp_projection,
+EnvelopeProperty.IntegralSchemeNormalization.chartMap_opensRange}
+Define $N(X)$ to be the ACTUAL relative normalization of $X$ in
+$j:\operatorname{Spec}K\to X$, and let $\pi:N(X)\to X$ be its
+true projection. It is integral. For each nonempty affine $U$,
+$A=\Gamma(X,U)$, the LITERAL $C_U=\overline A^{\operatorname{Frac}A}$
+has a genuinely constructed open immersion
+$\operatorname{Spec}C_U\to N(X)$ whose ENTIRE range is
+$\pi^{-1}U$. Its whole projection triangle is the ORIGINAL
+$\operatorname{Spec}C_U\to\operatorname{Spec}A\to X$.
+No normalization, affine cover, ring or scheme comparison is supplied.
+The genuine generic-field morphism factors through $N(X)$ by the actual
+normalization construction, and the WHOLE projection composite is the
+original generic-field morphism.
+\leanok
+\end{theorem}
+\begin{proof}
+The exact qcqs prerequisites in the first node permit Mathlib's
+true relative normalization. Its construction already proves
+integrality of the projection and gives an ACTUAL open cover by
+Spec of the integral closures of $\Gamma(X,U)$ in
+$\Gamma(\operatorname{Spec}K,j^{-1}U)$; the range is precisely
+$\pi^{-1}U$ and the whole projection map is the true original
+coefficient map followed by the original affine chart.
+
+The preceding actual ambient section isomorphism is an algebra
+isomorphism over the ORIGINAL $A$. It maps true integral elements
+to true integral elements. Actual fraction-field uniqueness then
+compares this entire closure with the LITERAL $C_U$ through the
+actual $K$ fraction-field action. These algebra isomorphisms
+preserve EVERY original $A$ element. Apply Spec to the genuine
+whole comparison and compose with the original normalization
+cover injection. Its actual isomorphism and open immersion give
+an open immersion, with the SAME actual inverse-image range.
+The entire coefficient law proves the full original projection
+triangle; selected coordinates or prime supports do not suffice.
+\end{proof}
+
+\begin{theorem}[True original normalization projection is scheme-surjective]
+\label{scheme:actual-integral-normalization-surjective}
+\uses{scheme:actual-integral-normalization-affine-charts}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.projection_surjective}
+The genuine $\pi:N(X)\to X$ is scheme-surjective for ANY integral
+$X$, without finite normalization, Noetherianity, quasi-compactness
+or a chosen normalization witness.
+\leanok
+\end{theorem}
+\begin{proof}
+Given an ORIGINAL point of $X$, choose a genuine affine neighborhood
+containing it; this neighborhood is nonempty because it contains
+that actual point. The true affine chart identifies that point
+with a prime of the SAME $A=\Gamma(X,U)$. Its LITERAL normalization
+inclusion into $C_U$ is injective and integral, so actual lying-over
+supplies a prime above it. The whole chart projection triangle in
+the preceding node maps the resulting actual $N(X)$ point back
+to the ORIGINAL point. Thus every whole scheme point is attained,
+without choosing a support-lift certificate.
+\end{proof}
+
+\begin{theorem}[Actual open immersions preserve standard structural stalk geometry]
+\label{scheme:actual-geometric-unibranch-open-inheritance}
+\uses{algebra:actual-structural-unibranch-ring-equivalence}
+\lean{EnvelopeProperty.IsGeometricallyUnibranchScheme.of_isOpenImmersion}
+For an ACTUAL open immersion $Y\to X$, standard geometric
+unibranchness of every genuine $X$ stalk implies the same standard
+property for every genuine $Y$ stalk. No integrality or separation
+hypothesis is needed for this local structural inheritance.
+\leanok
+\end{theorem}
+\begin{proof}
+For every ORIGINAL point $y$, the actual stalk map
+$\mathcal O_{X,f(y)}\to\mathcal O_{Y,y}$ is a genuine ring
+isomorphism, proved from the open immersion. Apply the already
+proved true RingEquiv invariance, retaining its genuine reduction,
+normalization and complete original residue square. This constructs
+the target standard class; no normalization or native point
+property is included in the hypothesis or conclusion.
+\end{proof}
+
+\begin{lemma}[The genuine nonempty affine opens cover every scheme]
+\label{scheme:actual-nonempty-affine-open-cover}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.NonemptyAffineOpen,
+EnvelopeProperty.IntegralSchemeNormalization.iSup_nonemptyAffineOpen_eq_top}
+For ANY original scheme $X$, let the index family consist of its actual
+nonempty affine opens. Their supremum in the original lattice of opens
+is the whole scheme. No integrality, quasi-compactness, separatedness,
+geometric unibranchness or supplied cover is assumed.
+\leanok
+\end{lemma}
+\begin{proof}
+For every original point $x\in X$, the existing affine-neighborhood
+existence theorem supplies an actual affine open $U$ containing $x$.
+That SAME point witnesses that $U$ is nonempty, so $U$ belongs to the
+stated index family, and $x$ belongs to its supremum. Thus the supremum
+is the top open. If $X$ is empty, the pointwise assertion is vacuous
+and gives the same equality. No finite subcover is claimed.
+\end{proof}
+
+\begin{theorem}[Structural stalk geometry DERIVES global normalization radiciality]
+\label{scheme:actual-integral-geometric-unibranch-normalization-radicial}
+\uses{scheme:actual-integral-normalization-affine-charts,scheme:actual-geometric-unibranch-open-inheritance,scheme:actual-structural-unibranch-stalk-normalization,scheme:actual-nonempty-affine-open-cover}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.projection_universallyInjective}
+If the actual integral $X$ is standard geometrically unibranch
+at every ACTUAL local stalk, its genuine normalization projection
+$\pi$ is universally injective. No prime-fibre, residue comparison,
+MaxSpec injection, affine chart or native bijection is supplied.
+\leanok
+\end{theorem}
+\begin{proof}
+The ORIGINAL nonempty affine opens form a true cover, since every
+scheme point has an actual affine neighborhood containing it.
+For each such $U$, its actual chart $\operatorname{Spec}A\to X$
+is an open immersion. The preceding structural inheritance theorem
+derives the standard property of its actual scheme stalks. The
+already proved integral-affine theorem therefore gives genuine
+universal injectivity of the LITERAL $C_U$ projection.
+
+The constructed open immersion $\operatorname{Spec}C_U\to N(X)$
+and the true inclusion of $\pi^{-1}U$ have the SAME whole range.
+Actual open-immersion uniqueness supplies a true isomorphism
+between their source schemes. Its full projection identity, and
+the original $\operatorname{Spec}A\simeq U$, identify the actual
+restriction of $\pi$ with the SAME literal normalization map.
+Transport its genuine algebraic universal injectivity through
+those ACTUAL source and target isomorphisms. Universal injectivity
+is genuinely Zariski-local on the target, so the DERIVED actual
+nonempty affine cover proves it globally. No global or local
+normalization comparison appears as an input.
+\end{proof}
+
+\begin{theorem}[The genuine nonaffine normalization preserves all native points]
+\label{scheme:actual-integral-geometric-unibranch-normalization-native}
+\uses{scheme:actual-integral-normalization-surjective,scheme:actual-integral-geometric-unibranch-normalization-radicial,scheme:integral-surjective-native-homeomorphism,scheme:relative-native-universal-homeomorphism}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.nativeHomeomorph,
+EnvelopeProperty.IntegralSchemeNormalization.nativeHomeomorph_apply,
+EnvelopeProperty.IntegralSchemeNormalization.relativeNativeHomeomorph,
+EnvelopeProperty.IntegralSchemeNormalization.relativeNativeHomeomorph_apply}
+For every integral scheme $X$ satisfying the STANDARD actual-stalk
+geometric property, the independently defined native map
+$N(X)^{\mathrm{val}}\to X^{\mathrm{val}}$ is a genuine homeomorphism.
+It is EXACTLY the whole original projection on native points and
+residue valuations. It likewise gives the exact whole homeomorphism
+above ANY prescribed coefficient seminorm for ANY actual common
+structure map $X\to\operatorname{Spec}R$.
+\leanok
+\end{theorem}
+\begin{proof}
+The actual projection is integral by construction, scheme-surjective
+by true affine lying-over, and universally injective by the derived
+actual stalk argument. The established genuine native invariance
+producer therefore applies: true integral closedness and lifting,
+plus actual purely inseparable residue valuation uniqueness, give
+the native homeomorphism retaining the ORIGINAL whole map. Exact
+basepoint composition restricts this SAME map above any common
+prescribed coefficient point. No bounded base, field, completeness,
+finite normalization, Noetherianity, quasi-compactness or separatedness
+of $X$ is assumed. This is integral normalization, not a construction
+for arbitrary nonintegral schemes, an equivalence with strict
+henselization definitions, or an analytic structure-sheaf theorem.
+\end{proof}

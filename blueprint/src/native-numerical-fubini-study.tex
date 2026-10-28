@@ -1,0 +1,103 @@
+\section{Varying actual original-line data define intrinsic numerical FS functions}
+\label{sec:native-numerical-fubini-study}
+
+\begin{definition}[Whole original rational-line FS data]
+\label{def:native-numerical-whole-section-fs-data}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.numericalClass,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.eval,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.Nonzero,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.IsRational}
+\leanok
+\uses{thm:native-real-numerical-classes,thm:scheme-global-section-weighted-norm-isometry}
+\source{bj22-trivval:defi:FS,fhx-envelope-20261028:eq:FS-function}
+On an actual original scheme, a datum consists of an actual invertible line
+$M$, a positive integer $m$, and a finite family of pairs $(s,\lambda)$ of
+actual whole global sections of $M$ and real weights. Its numerical class
+on a projective original model is $m^{-1}[M]$. Its function at the same
+original native points of a proper model is
+\[
+ m^{-1}\max_{(s,\lambda)}\bigl(\log\|s\|+\lambda\bigr),
+\]
+using the true original proper-model norm. Zero sections and common zeroes
+are permitted, with $\log0=-\infty$. A datum is nonzero when at least one of
+its actual sections is nonzero, and rational when every actual weight is
+rational. The line is part of the actual data and can vary freely.
+\end{definition}
+
+\begin{theorem}[Actual nonzero sections exactly detect generic finiteness]
+\label{thm:native-numerical-fs-nonvanishing}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.eval_ne_bot_iff,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.nonzero_iff_exists_eval_ne_bot}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,thm:scheme-original-global-section-norm-detection}
+At every actual original native point, the datum evaluates to a value
+other than $-\infty$ precisely when one of its actual sections has nonzero
+true norm there. If the proper original scheme is integral, the family is
+nonzero if and only if its evaluation is not identically $-\infty$.
+\end{theorem}
+\begin{proof}
+A weighted term is $-\infty$ exactly when its section norm vanishes, because
+the weight is finite. A finite supremum equals $-\infty$ exactly when all
+its terms do. The reciprocal denominator is strictly positive, so it
+preserves this condition. This proves the pointwise assertion, including
+empty families and common zeroes. On an integral proper original scheme,
+an actual nonzero whole section has nonzero true norm at an actual original
+native point by the genuine section-norm detection theorem. Such a term
+makes the evaluation nontrivial. Conversely, a nontrivial evaluation yields
+a term of nonzero norm, and the zero whole section has zero true norm.
+\end{proof}
+
+\begin{definition}[FS of an actual numerical class]
+\label{def:native-numerical-whole-section-fs}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsFS,EnvelopeProperty.NativeNumericalFubiniStudy.IsRationalFS}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data}
+A function is numerical FS of class $\theta$ if it is the entire evaluation
+of some nonzero actual datum whose actual class $m^{-1}[M]$ equals $\theta$.
+The rational variant additionally requires rational weights. This permits
+every actual original line and denominator; it has no fixed-line-ray
+restriction and no supplied realization or comparison certificate.
+\end{definition}
+
+\begin{theorem}[Numerical FS retains its genuine original nontriviality]
+\label{thm:native-numerical-fs-generically-finite}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsFS.exists_ne_bot,EnvelopeProperty.NativeNumericalFubiniStudy.IsRationalFS.isFS}
+\leanok
+\uses{def:native-numerical-whole-section-fs,thm:native-numerical-fs-nonvanishing}
+On an integral projective original scheme, every numerical FS function is
+not identically $-\infty$. Every rational numerical FS function is numerical
+FS of the same class and the same entire original function.
+\end{theorem}
+\begin{proof}
+Use the actual defining nonzero family and its preceding nonvanishing
+criterion. Rational weights are a further property of the same datum;
+forgetting this property retains its line, denominator, true class,
+nonzero sections and entire evaluation.
+\end{proof}
+
+\begin{theorem}[Every existing original fixed-line datum has its genuine numerical class]
+\label{thm:native-numerical-fs-from-ray}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.ofRay,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.ofRay_eval,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.ofRay_numericalClass,EnvelopeProperty.NativeNumericalFubiniStudy.isFS_of_ray}
+\leanok
+\uses{def:native-numerical-whole-section-fs,def:native-line-whole-section-general-fs,lem:native-numerical-line-tensor-power}
+Every actual original fixed-line FS function for $L$ and rational
+coefficient $a$ is numerical FS of its actual class $a[L]$, with the same
+entire original function. Its given whole datum becomes an original
+rational-line datum using its actual tensor-power line, its same positive
+denominator, whole sections and original real weights.
+\end{theorem}
+\begin{proof}
+If the original fixed-line datum has degree $d$ and denominator $m$, its
+actual sections already belong to the whole line $L^{\otimes d}$.
+Keep them, all weights and $m$ unchanged. Its true norm evaluation is
+literally unchanged. The actual tensor-power class is $d[L]$. The original
+degree relation is $d=ma$, hence its numerical class is
+$m^{-1}d[L]=a[L]$. The original nonzero family remains the same family,
+so it defines the claimed numerical FS function.
+\end{proof}
+
+\begin{remark}
+These definitions use the actual original curve-degree numerical quotient
+and true whole original sections, independently of any function-field
+model comparison. They follow the varying rational-line shape of BJ's
+\texttt{defi:FS} and \texttt{defi:psh}, used in FHX's psh preliminaries.
+Rational-weight or ample-perturbation approximation requires its own
+geometric theorem. In particular, this definition does not assert that a
+fixed-line FS predicate descends through arbitrary numerical equivalence.
+\end{remark}

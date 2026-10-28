@@ -1,0 +1,163 @@
+\section{The original ample line on the actual Frobenius twist}
+
+Let $f:X\to\operatorname{Spec}k$ be the original structural morphism
+in prime characteristic $p$.  Write $X'=X\times_{k,F_k}k$, let
+$\pi:X'\to X$ be the first projection, and let
+$F_{X/k}:X\to X'$ be relative Frobenius.  These maps satisfy the
+actual scheme equality $\pi\circ F_{X/k}=F_X$.
+
+\begin{definition}[The twisted original line]
+\label{def:kn-frobenius-twisted-line}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.twistedLine}
+For an original module $L$ on $X$, its twisted module is
+$L'=\pi^*L$ on the actual scheme $X'$.
+\end{definition}
+
+\begin{lemma}[The relative pullback is the original absolute pullback]
+\label{lem:kn-relative-line-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.relativePullbackIso}
+\uses{def:kn-frobenius-twisted-line}
+There is a canonical isomorphism
+$F_{X/k}^*L'\simeq F_X^*L$.  No perfectness, line-frame, or smoothness
+assumption is required for this comparison.
+\end{lemma}
+\begin{proof}
+The pullback-composition isomorphism identifies the left-hand module
+with $(\pi\circ F_{X/k})^*L$.  Transport along the actual scheme equality
+$\pi\circ F_{X/k}=F_X$.  This gives the claimed isomorphism on the original
+modules rather than a comparison of chosen affine presentations.
+\end{proof}
+
+\begin{lemma}[The same comparison retains every tensor power]
+\label{lem:kn-relative-line-power-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.relativePullbackPowerIso}
+\uses{lem:kn-relative-line-pullback}
+For every $m\geq0$, there is a canonical isomorphism
+$F_{X/k}^*((L')^{\otimes m})\simeq(F_X^*L)^{\otimes m}$.
+\end{lemma}
+\begin{proof}
+Pullback commutes with the recursively defined actual tensor powers.
+Apply the tensor power of the preceding module isomorphism.  At
+$m=0$, both comparisons are the structure-module pullback comparison.
+\end{proof}
+
+\begin{lemma}[Absolute Frobenius raises original transition scalars to the $p$th power]
+\label{lem:kn-frobenius-unit-transition}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.pullback_unitScalar,EnvelopeProperty.Vanishing.FrobeniusLineComparison.pullback_unitAutomorphism}
+For an original global scalar $a$ on $X$, conjugating the pullback of
+its structure-module multiplication map by the canonical unit
+comparison gives multiplication by $a^p$.  For a unit $a$, this is an
+equality of actual module automorphisms.
+\end{lemma}
+\begin{proof}
+Pullback of scalar multiplication is multiplication by the actual
+pullback of that scalar.  The original scheme Frobenius acts on every
+original section by its $p$th power.  Substitution yields the scalar
+equality.  For units, the same equality for forward maps proves equality
+of their module isomorphisms.
+\end{proof}
+
+The additional isomorphism $F_X^*L\simeq L^{\otimes p}$ for an
+arbitrary original line requires the equality of the full pulled and
+tensor-power frame transitions and their geometric gluing.  The scalar
+identity above controls frame changes; matching transitions and descent
+will give that global isomorphism.
+
+\begin{lemma}[The local Frobenius/power comparison is independent of frame]
+\label{lem:kn-frobenius-frame-independence}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.powerFrame_hom_eq_comp_scalar,EnvelopeProperty.Vanishing.FrobeniusLineComparison.frameComparison_eq}
+\uses{lem:kn-frobenius-unit-transition}
+On an open where $L$ has an actual rank-one frame, compare $F_X^*L$
+and $L^{\otimes p}$ by their induced frames.  The resulting module
+isomorphism is independent of the chosen original rank-one frame.
+\end{lemma}
+\begin{proof}
+Any two rank-one frames differ by multiplication by a unique unit $a$.
+The actual pulled frames differ by multiplication by $a^p$, by the
+preceding lemma.  By induction on the tensor exponent, the actual
+tensor-power frames differ by multiplication by the corresponding
+power of $a$: tensoring changes by $r$ and $s$ changes the tensor frame
+by $rs$, since the structure-module tensor comparison is multiplication.
+In degree $p$ the transition is therefore also $a^p$.  These common
+invertible transitions cancel in the coefficient-preserving comparison.
+\end{proof}
+
+\begin{lemma}[The transported Frobenius frame respects further pullback]
+\label{lem:kn-frobenius-frame-restriction}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.frobeniusFrame_factor,EnvelopeProperty.Vanishing.FrobeniusLineComparison.localComparison_eq}
+\uses{lem:kn-frobenius-frame-independence}
+The Frobenius frame transported from a genuine frame over $g:Y\to X$
+and then pulled further through $j:Z\to Y$ agrees with the Frobenius
+frame transported from the original frame pulled along $j$.  The
+coefficient-preserving local comparison is independent of that
+original frame.
+\end{lemma}
+\begin{proof}
+Pullback composition identifies both frame maps with the pullback of
+the original frame along the same composite morphism to $X$.
+The Frobenius naturality square for $j$ identifies $F_Y\circ j$
+with $j\circ F_Z$, and the one for $g$ identifies $F_X\circ g$
+with $g\circ F_Y$.  Their composite is the Frobenius naturality
+square for $g\circ j$.  Compatibility of the native
+composition and structure-module comparisons therefore identifies
+the two entire frame maps.  Applying frame independence on the
+source scheme proves the second assertion.
+\end{proof}
+
+\begin{theorem}[The original Frobenius pullback is the original line power]
+\label{thm:kn-frobenius-line-power}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.absolutePowerIso,EnvelopeProperty.Vanishing.FrobeniusLineComparison.relativePowerIso}
+\uses{lem:kn-frobenius-frame-restriction,lem:kn-relative-line-pullback,thm:scheme-original-frame-gluing}
+For every original invertible module $L$,
+$F_X^*L\simeq L^{\otimes p}$ and
+$F_{X/k}^*L'\simeq L^{\otimes p}$ on the same original scheme.
+\end{theorem}
+\begin{proof}
+Take the genuine trivializing open cover of $L$.  On each open the
+actual Frobenius naturality square transports its line frame to a
+frame of $F_X^*L$.  The tensor-power construction gives a frame of
+$L^{\otimes p}$ on that same open.  Their coefficient-preserving
+comparison is independent of the original frame by the preceding
+lemma.  Restriction of the transported Frobenius frame agrees with
+transport of the restricted original frame: both are the pullback of
+the original frame along the same Frobenius commutative triangle,
+using composition compatibility of native pullback.  The same
+composition compatibility for tensor-power pullback gives this
+restriction property for the tensor-power frame.  Consequently the
+local comparisons agree on every overlap.  Sheaf descent of actual
+module morphisms glues these comparisons and their inverses to a
+global module isomorphism.  Compose with the relative-to-absolute
+comparison to obtain the relative Frobenius assertion.
+\end{proof}
+
+
+\begin{corollary}[Projection retains the original amplified tensor term]
+\label{cor:kn-frobenius-line-projection}
+\leanok
+\lean{EnvelopeProperty.Vanishing.FrobeniusLineComparison.relativeTensorPowerIso,EnvelopeProperty.Vanishing.FrobeniusLineComparison.moduleProjectionIso}
+\uses{thm:kn-frobenius-line-power,thm:fc-original-scheme-line-projection-formula}
+For every original module $M$ and every $m\geq0$,
+\[
+ F_{X/k*}M\otimes (L')^{\otimes m}
+ \simeq F_{X/k*}(L^{\otimes pm}\otimes M).
+\]
+\end{corollary}
+\begin{proof}
+The projection formula for the invertible module $(L')^{\otimes m}$
+gives the pushforward of $M\otimes F_{X/k}^*((L')^{\otimes m})$.
+Pullback commutes with tensor powers, and the preceding theorem
+identifies that pulled line with $(L^{\otimes p})^{\otimes m}$.
+Tensor-power multiplication identifies it with $L^{\otimes pm}$.
+The symmetry of the original module tensor product gives the stated
+order of factors.  This is a module comparison in each degree; the
+differential is transported from the twisted pushed complex and is
+not obtained by pretending the original de Rham differential is
+$\mathcal O_X$-linear.
+\end{proof}

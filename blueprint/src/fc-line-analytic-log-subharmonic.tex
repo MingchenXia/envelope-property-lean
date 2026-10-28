@@ -1,0 +1,45 @@
+\subsection{Every actual completed analytic logarithm is subharmonic}\label{subsec:fc-line-analytic-log-subharmonic}
+
+\begin{lemma}[Exact clipped rational approximation]\label{lem:fc-analytic-clipped-rational-approximation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.exists_rational_clippedValue_eq}
+\leanok
+\uses{def:fc-line-affinoid-algebra, def:fc-line-rational-functions}
+Let $f$ belong to the genuine completed analytic algebra of an actual
+standard affinoid $U$. For every $\delta>0$ there is an element $g$ of its
+actual original rational algebra such that, simultaneously at every
+original point $x\in U$,
+\[
+  \max\{|f(x)|,\delta\}=\max\{|g(x)|,\delta\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Use actual rational density in the genuine norm completion to choose
+$\|f-g\|<\delta$. Evaluation of both whole completed functions is in the
+same original completed residue field $\mathcal H(x)$, and is contractive.
+Thus $|f(x)-g(x)|<\delta$. The two actual ultrametric triangle inequalities
+give the displayed equality at every point simultaneously.
+\end{proof}
+
+\begin{theorem}[Actual analytic logarithms are subharmonic]\label{thm:fc-completed-analytic-log-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticLog, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_analyticLog_clipped, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_analyticLog}
+\leanok
+\uses{lem:fc-analytic-clipped-rational-approximation,
+  thm:fc-localized-rational-log-subharmonic, lem:fc-line-subharmonic-elementary,
+  thm:fc-line-subharmonic-directed-inf}
+For every element $f$ of the genuine completed analytic algebra of an
+actual standard affinoid $U$, the actual extended logarithm
+$x\mapsto\log|f(x)|$ is subharmonic on $\operatorname{int}(U)$.
+\end{theorem}
+
+\begin{proof}
+For every $\delta>0$, exact clipped rational approximation identifies
+$\max\{\log|f|,\log\delta\}$ on the whole carrier with
+$\max\{\log|g|,\log\delta\}$. The latter is actually subharmonic on the
+interior by the actual rational-log theorem and finite-maximum closure.
+As positive $\delta$ decreases, these functions form a decreasing
+directed family whose pointwise infimum is exactly $\log|f|$, including
+the value $-\infty$ at every zero. The already proved directed-infimum
+closure gives actual subharmonicity. No local unit factorization or
+analytic maximum-principle certificate is assumed.
+\end{proof}

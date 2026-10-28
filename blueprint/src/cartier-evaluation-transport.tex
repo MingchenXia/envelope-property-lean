@@ -1,0 +1,53 @@
+\section{Actual dual transport determined by original evaluation}
+
+\begin{lemma}[Canonical transport of actual pulled duals]
+\label{lem:cartier-actual-evaluation-dual-transport}
+\uses{lem:cartier-actual-line-tensor-fully-faithful}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.pulledEvaluationIso}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso_pairing}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso_balanced}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso_unique}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso_refl}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.evaluationDualTransportIso_trans}
+\leanok
+Let $\mathcal L$ be an invertible module sheaf on an arbitrary scheme
+$Y$, let $f,g:X\to Y$ be actual morphisms, and let
+$e:f^*\mathcal L\simeq g^*\mathcal L$ be an actual isomorphism.
+The original pulled canonical evaluations, composed with the genuine
+pullback tensorator and monoidal unit comparison, give actual pairings
+$E_f:f^*\mathcal L\otimes f^*(\mathcal L^\vee)\simeq\mathcal O_X$
+and $E_g$.
+There is a canonical actual isomorphism
+$T_e:f^*(\mathcal L^\vee)\simeq g^*(\mathcal L^\vee)$, uniquely
+characterized among all actual morphisms by
+\[
+ (1\otimes T_e)E_g=(e^{-1}\otimes1)E_f.
+\]
+Equivalently, the actual simultaneous tensor map preserves the original
+evaluation: $(e\otimes T_e)E_g=E_f$.
+It is the identity for the actual identity of $f^*\mathcal L$, and
+$T_eT_{e'}=T_{ee'}$ for every composable pair of original isomorphisms
+between three actual pullbacks of $\mathcal L$.
+\end{lemma}
+\begin{proof}
+Construct $E_f$ by the actual tensorator of $f^*$, pullback of the
+original canonical evaluation isomorphism, and the inverse actual
+unit comparison. Use the same construction for $g$ and for any third
+original morphism $h$. Tensor by the genuine invertible $g^*\mathcal L$
+is fully faithful, by original invertibility and the actual braiding.
+Lift the actual isomorphism
+$(e^{-1}\otimes1)E_fE_g^{-1}$ uniquely through that functor. This is
+$T_e$. Its actual image is that composite, which proves the displayed
+identity. Conversely that identity determines the image by cancelling
+the original isomorphism $E_g$, and faithfulness determines the map.
+Composing the characterizing equation with $e\otimes1$ and cancelling
+$e\otimes1$ against $e^{-1}\otimes1$ proves the balanced identity.
+For the original identity, the identity on its pulled dual satisfies
+the characterization, giving the unit formula. For composable $e,e'$,
+the tensor interchange identity moves $e'^{-1}$ past $T_e$.
+The two characterizing equations then identify the pairing of
+$T_eT_{e'}$ with
+$(e'^{-1}\otimes1)(e^{-1}\otimes1)E_f=((ee')^{-1}\otimes1)E_f$.
+The same uniqueness proves the composition formula.
+\end{proof}

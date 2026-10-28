@@ -1,0 +1,78 @@
+\subsection{Actual Rees integrality and reduced-source closed factorization}
+
+\begin{lemma}[Reduced graded rings have genuinely reduced original Proj schemes]
+\label{scheme:actual-reduced-graded-proj}
+\lean{EnvelopeProperty.proj_isReduced}
+\leanok
+For ANY reduced commutative graded ring, its actual Proj scheme is reduced.
+No domain, nonempty, finite generation or grading-dimension condition is imposed.
+\end{lemma}
+\begin{proof}
+At every original relevant homogeneous prime, the actual homogeneous localization
+embeds by its genuine underlying ring homomorphism in the ordinary prime
+localization. Ordinary localization preserves reducedness and the embedding
+reflects it. The actual Proj stalk isomorphism transports this reducedness to
+EVERY original stalk. Genuine stalkwise reducedness proves actual reducedness
+of the SAME original scheme, including empty Proj schemes.
+\end{proof}
+
+\begin{lemma}[The original Rees scheme is genuinely integral]
+\label{scheme:actual-original-rees-integral}
+\lean{EnvelopeProperty.ReesPresentation.quotient_isDomain,
+EnvelopeProperty.ReesPresentation.scheme_isReduced,
+EnvelopeProperty.ReesPresentation.denseRange_goodOpenLift,
+EnvelopeProperty.ReesPresentation.scheme_isIntegral}
+\leanok
+\uses{scheme:actual-reduced-graded-proj,algebra:actual-rees-image-and-quotient,scheme:actual-rees-good-open-density}
+Let $A$ be a commutative domain and $(g_i)$ ANY actual family with one
+actual $g_j\ne0$. The SAME original Rees scheme is integral. Neither
+finiteness nor a supplied source-integrality property is assumed.
+\end{lemma}
+\begin{proof}
+The actual whole original homogeneous kernel quotient is algebra-isomorphic
+to the literal Rees subalgebra of $A[T]$. Since $A[T]$ is a domain, this
+actual quotient is a domain, without replacing its kernel by a radical.
+For any reduced graded ring, every genuine homogeneous stalk embeds in
+its ordinary prime localization, which is reduced; the actual Proj stalk
+isomorphism therefore makes its original scheme reduced.
+
+The original good-open map from $\operatorname{Spec}A[1/g_j]$ is a true
+open immersion. The original nonzero $g_j$ is regular, so the proved
+whole inverse image of $D(g_j)$ is dense in the SAME original Rees scheme.
+The actual good-open range equality makes the original good-open map have
+dense range. Its source is the spectrum of a genuine domain localization,
+so is nonempty and irreducible. Its continuous image and closure are
+irreducible, giving irreducibility of the whole original Rees scheme.
+Reducedness and irreducibility give its actual integrality. No generic
+scheme point, irreducibility or chart certificate is supplied.
+\end{proof}
+
+\begin{lemma}[A reduced source factors through a genuine closed target from actual range containment]
+\label{scheme:actual-reduced-closed-factorization}
+\leanok
+\lean{EnvelopeProperty.kernel_le_of_range_subset_of_isReduced,
+EnvelopeProperty.closedLiftOfRangeSubset,
+EnvelopeProperty.closedLiftOfRangeSubset_fac,
+EnvelopeProperty.existsUnique_closedLift_of_range_subset}
+For actual scheme morphisms $j:Z\hookrightarrow P$ and $h:Y\to P$ with
+$j$ a closed immersion and $Y$ reduced, actual containment of the whole
+scheme image of $h$ in that of $j$ constructs a unique whole factor
+$Y\to Z$ whose composite with $j$ is exactly $h$.
+\end{lemma}
+\begin{proof}
+The actual ideal sheaf kernel of $j$ has support exactly its closed image.
+Its genuine pullback along $h$ has support all of $Y$, by the real range
+containment. On a reduced scheme an actual ideal sheaf with full zero
+locus is zero, since every local ideal is contained in the genuine zero
+nilradical. The true ideal map/comap adjunction therefore puts the entire
+kernel of $j$ inside that of $h$. Mathlib's real closed-immersion lift
+constructs the whole factor, and the closed immersion's actual monomorphism
+proves uniqueness. This is not a supplied lift or ideal-kernel certificate.
+\end{proof}
+
+
+The source-integrality result permits arbitrary index families. No actual closed
+projective domination theorem is attached here: construction of the original
+field-valued generic inverse, actual common-denominator projective coordinates
+and the whole closed-target range comparison are the next producers. Arbitrary
+proper-witness Chow domination and analytic potential theory remain separate.

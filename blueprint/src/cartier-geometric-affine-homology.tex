@@ -1,0 +1,124 @@
+\section{Actual affine evaluation and homology of the geometric complex}
+
+\begin{lemma}[Original affine-chart module sections]
+\label{lem:cartier-geometric-affine-module-sections}
+\leanok
+\lean{EnvelopeProperty.Cartier.GeometricAffineHomology.moduleSectionsIso,EnvelopeProperty.Cartier.GeometricAffineHomology.moduleSectionsIso_apply}
+Let $Z$ be a scheme, let $W\subset Z$ be an actual affine open,
+write $A=\Gamma(Z,W)$ and let $j:\operatorname{Spec}A\to Z$ be its
+original affine-chart morphism. For every original module sheaf $M$
+on $Z$, the original open identification $j(\operatorname{Spec}A)=W$
+gives an $A$-linear isomorphism
+\[
+ \Gamma(\operatorname{Spec}A,j^*M)\simeq\Gamma(W,M).
+\]
+Its value on every section is precisely the original open-transport
+restriction, and these maps are natural in the original $M$.
+\end{lemma}
+\begin{proof}
+The native open restriction has the same sections as $M$ on the
+original image open. The image of the entire original affine
+spectrum is exactly $W$. Transport along this equality gives a
+bijection, with inverse transport along the inverse equality.
+
+The original affine-chart ring theorem identifies the map
+$A\to\Gamma(\operatorname{Spec}A,\mathcal O)$ with the inverse native
+spectrum section isomorphism. Composing it with the inverse
+open-immersion section isomorphism and transporting the image open
+back to $W$ gives exactly the identity of $A$; this is the original
+open-immersion section triangle. Semilinearity of the original
+module restrictions therefore gives $A$-linearity of the displayed
+bijection. Naturality is precisely naturality of the original
+module-presheaf morphism under this same open transport.
+\end{proof}
+
+\begin{lemma}[The whole original affine-chart section complex]
+\label{lem:cartier-geometric-affine-section-complex}
+\leanok
+\uses{lem:cartier-geometric-affine-module-sections}
+\lean{EnvelopeProperty.Cartier.GeometricAffineHomology.sectionComplexIso,EnvelopeProperty.Cartier.GeometricAffineHomology.sectionComplexIso_hom_f_apply}
+For any original cochain complex $K$ of module sheaves on $Z$, the
+preceding original section maps give an isomorphism of the entire
+native $A$-module complexes obtained by restricting $K$ along $j$
+and taking native affine sections, or by directly evaluating the
+same original $K$ on $W$.
+\end{lemma}
+\begin{proof}
+Use the preceding original module isomorphism in each degree.
+Its naturality for the actual differential $K^q\to K^{q+1}$ is
+exactly the required cochain square. The native
+isomorphism-of-components construction therefore gives the whole
+isomorphism with those same degree components.
+\end{proof}
+
+\begin{theorem}[Actual affine homology and section exchange]
+\label{thm:cartier-geometric-affine-homology-sections}
+\leanok
+\uses{lem:cartier-geometric-affine-section-complex,prop:affine-quasicoherent-complex-original-homology,prop:scheme-open-restriction-complex-homology,thm:cartier-geometric-relative-complex-quasicoherent}
+\lean{EnvelopeProperty.Cartier.GeometricAffineHomology.homologySectionsIso,EnvelopeProperty.Cartier.GeometricAffineHomology.geometricHomologySectionsIso}
+For a termwise quasicoherent original $K$ and an actual affine open
+$W\subset Z$, there is a canonical $A$-linear isomorphism
+\[
+ H^q(\Gamma(W,K))\simeq\Gamma(W,H^q(K))
+\]
+in every degree. In particular it applies to the original global
+geometric relative complex $K=F_*\Omega^\bullet_{X/k}$ on the
+original $Y=X^{(p)}$ and every original twisted affine open $W=U^{(p)}$.
+For this geometric specialization, termwise quasicoherence is
+internally derived from the original smooth geometry and actual
+affineness of the relative Frobenius; no comparison or homology
+preservation certificate is supplied.
+\end{theorem}
+\begin{proof}
+Restrict the actual original $K$ along the actual $j$. Its terms
+remain quasicoherent. The proved affine counit complex theorem
+identifies this restricted complex with the associated-sheaf complex
+of its native affine sections. The preceding whole section-complex
+isomorphism identifies those sections with the direct evaluation of
+the same original $K$ on $W$. Exactness of the proved associated-sheaf
+functor identifies its native homology with the associated sheaf of
+$H^q(\Gamma(W,K))$.
+
+The original open-restriction homology theorem identifies the same
+restricted-complex homology with $j^*H^q(K)$. Compose these actual
+isomorphisms and apply native affine global sections. The original
+associated-sheaf section unit recovers $H^q(\Gamma(W,K))$, and the
+first lemma identifies the other side with $\Gamma(W,H^q(K))$.
+This gives the asserted isomorphism. For the geometric complex,
+its termwise quasicoherence is the proved actual relative-complex
+quasicoherence theorem, so the specialization introduces no new
+comparison hypothesis.
+\end{proof}
+
+\begin{theorem}[Local Cartier into the actual global homology sections]
+\label{thm:cartier-geometric-local-global-homology-sections}
+\leanok
+\uses{thm:cartier-geometric-affine-homology-sections,thm:cartier-geometric-local-native-cartier,thm:cartier-geometric-local-native-coordinate-independence}
+\lean{EnvelopeProperty.Cartier.GeometricAffineHomology.localSheafCartierSectionsIso,EnvelopeProperty.Cartier.GeometricAffineHomology.localSheafCartierSectionsIso_unit,EnvelopeProperty.Cartier.GeometricAffineHomology.localSheafCartierSectionsIso_chartChange}
+For every original affine honest-coordinate open and every degree,
+the original local Cartier map followed by the preceding canonical
+exchange gives an isomorphism
+\[
+ \Gamma(W,\Omega^q_{Y/k})\simeq\Gamma(W,H^q(K)).
+\]
+On the original unit of every raw source form, it is exactly native
+Cartier of that form's original universal chart image, followed by
+the proved actual homology transfers. The entire isomorphism is
+independent of the original honest tuple used in its construction.
+\end{theorem}
+\begin{proof}
+Compose the proved original local Cartier isomorphism with the
+preceding geometric homology-section exchange. Both maps have the
+same actual section-ring action and exactly matching native homology
+objects, so their composite has the stated original source and target.
+The proved every-unit formula for local Cartier, postcomposed with
+the same canonical exchange, is the asserted formula. The exchange
+depends only on the original global complex and original open. Thus
+postcomposing the proved whole honest-tuple independence equality
+with it gives independence of the whole composite.
+\end{proof}
+
+This exchange concerns the original global complex and its actual
+native homology sheaf. Naturality of the local Cartier maps between
+different original opens, and their descent to one global Cartier
+morphism, remain separate compatibility statements.

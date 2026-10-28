@@ -1,0 +1,108 @@
+\subsection{Homogeneous prime supports of projective seminorms}
+\label{subsec:projective-support}
+
+The support is the actual prime kernel of a seminorm. We first construct it
+for arbitrary internally graded commutative rings, and then specialize to the
+normalized projective model. The target is Mathlib's projective spectrum of
+relevant homogeneous prime ideals with its Zariski topology; no identification
+of a scheme's analytification or structure sheaf is assumed.
+
+\begin{lemma}[Homogeneous kernels of graded seminorms]
+\label{spectrum:graded-support}
+\lean{EnvelopeProperty.Berkovich.Spectrum.IsGraded,
+EnvelopeProperty.Berkovich.Spectrum.supp_isHomogeneous,
+EnvelopeProperty.Berkovich.Spectrum.homogeneousSupport,
+EnvelopeProperty.Berkovich.Spectrum.homogeneousSupport_toIdeal,
+EnvelopeProperty.Berkovich.Spectrum.primePoint_val_eq_one_of_not_mem,
+EnvelopeProperty.Berkovich.Spectrum.primePoint_val_le_one,
+EnvelopeProperty.Berkovich.Spectrum.primePoint_isGraded}
+\leanok
+\uses{spectrum:support-surjective}
+Let $A=\bigoplus_{i\in\Gamma} A_i$ be an internally graded commutative ring,
+where $\Gamma$ is an additive monoid. Call a real multiplicative ultrametric
+seminorm $x$ graded if $|a_i|_x\le |a|_x$ for every homogeneous projection
+$a_i$ of every $a\in A$. Its prime kernel is a homogeneous ideal.
+For any homogeneous prime $\mathfrak p$, the seminorm pulled back from the
+trivial seminorm on $A/\mathfrak p$ is graded and has kernel $\mathfrak p$.
+\end{lemma}
+\begin{proof}
+If $|a|_x=0$, the grading inequalities give $|a_i|_x=0$ for every $i$.
+Thus the kernel is closed under homogeneous projections, exactly the
+homogeneous-ideal condition; it is prime by multiplicativity.
+The trivial prime-quotient seminorm takes value zero precisely on
+$\mathfrak p$, and value one elsewhere. If $a\in\mathfrak p$, homogeneity
+places each $a_i$ in $\mathfrak p$, so both values are zero.
+If $a\notin\mathfrak p$, its value is one and every projection has value
+at most one. This proves all grading inequalities.
+\end{proof}
+
+\begin{theorem}[Supports for arbitrary relevant graded spectra]
+\label{spectrum:relevant-graded-support}
+\lean{EnvelopeProperty.Berkovich.Spectrum.projectiveSupport,
+EnvelopeProperty.Berkovich.Spectrum.projectiveSupport_toIdeal,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.support,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.support_toIdeal,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.mem_support,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.continuous_support,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.primePoint,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.support_primePoint,
+EnvelopeProperty.Berkovich.RelevantGradedSpectrum.support_surjective}
+\leanok
+\uses{spectrum:graded-support,spectrum:support}
+For an $\mathbb N$-graded commutative ring $A$, consider the subspace of
+graded real seminorms whose kernels do not contain the irrelevant ideal
+$A_+$. Sending a point to its prime kernel gives a continuous surjection
+onto the projective spectrum $\operatorname{Proj}(A)$.
+\end{theorem}
+\begin{proof}
+The preceding lemma bundles each kernel as a homogeneous prime. The
+explicit irrelevant-avoidance condition makes it a projective-spectrum point.
+The inverse image of the Zariski zero locus of a set $E\subseteq A$ is
+$\bigcap_{a\in E}\{x:|a|_x=0\}$, a closed set by continuous evaluation.
+Every Zariski closed set is such a zero locus, proving continuity.
+Given a relevant homogeneous prime, the trivial prime-quotient seminorm
+is graded by the preceding lemma, has precisely that kernel, and therefore
+satisfies the relevance condition. This gives surjectivity.
+\end{proof}
+
+\begin{theorem}[Projective-model support]
+\label{projective:support}
+\lean{EnvelopeProperty.ProjBerk.proj_eq_homogeneousComponent,
+EnvelopeProperty.ProjBerk.irrelevant_eq_idealOfVars,
+EnvelopeProperty.ProjBerk.toRelevantGradedSpectrum,
+EnvelopeProperty.ProjBerk.continuous_toRelevantGradedSpectrum,
+EnvelopeProperty.ProjBerk.support,
+EnvelopeProperty.ProjBerk.support_toIdeal,
+EnvelopeProperty.ProjBerk.mem_support,
+EnvelopeProperty.ProjBerk.continuous_support,
+EnvelopeProperty.ProjBerk.preimage_support_zeroLocus,
+EnvelopeProperty.ProjBerk.exists_X_not_mem,
+EnvelopeProperty.ProjBerk.homogeneousPrimePoint,
+EnvelopeProperty.ProjBerk.support_homogeneousPrimePoint,
+EnvelopeProperty.ProjBerk.support_surjective}
+\leanok
+\uses{spectrum:relevant-graded-support,charts:forward-chart,berk:support-surjective,
+closed-charts:vanishing}
+For a trivially valued field $k$, the normalized projective seminorm model
+has a continuous surjective support map to the projective spectrum of
+$k[X_0,\ldots,X_n]$ with its total-degree grading. Its homogeneous prime
+ideal is exactly the seminorm kernel, and the preimage of a projective
+Zariski zero locus is its analytic evaluation zero locus.
+\end{theorem}
+\begin{proof}
+Gradedness of a normalized projective point gives the homogeneous-component
+inequalities, so its kernel is homogeneous. Some coordinate has value one
+by normalization. That coordinate is a positive-degree homogeneous element
+and hence lies in the irrelevant ideal, but not in the kernel. This excludes
+the irrelevant ideal and defines the projective-spectrum point. The preceding
+generic support construction and the continuous inclusion of the projective
+model prove continuity; the zero-locus formula follows from the kernel definition.
+For surjectivity, let $\mathfrak p$ be a relevant homogeneous prime. At least
+one coordinate is outside $\mathfrak p$, because the coordinate ideal contains
+every positive-degree homogeneous polynomial and therefore the irrelevant ideal.
+The trivial prime-quotient seminorm is graded, takes coordinate values zero
+or one, and takes value one on a coordinate outside $\mathfrak p$.
+Consequently its maximum coordinate value is one, so it is a normalized
+projective point with support $\mathfrak p$.
+\end{proof}

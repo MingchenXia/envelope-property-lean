@@ -1,0 +1,53 @@
+\section{Original finite-fibre native principal orders without flatness}
+
+\begin{definition}[The same original field structure and coefficient square]
+\label{def:fc-finite-fibre-original-coefficient-square}
+\leanok
+\lean{EnvelopeProperty.FiniteFibrePrincipalOrders.sourceFieldStructure, EnvelopeProperty.FiniteFibrePrincipalOrders.fieldStructure_eq, EnvelopeProperty.FiniteFibrePrincipalOrders.coefficient_pullback}
+For an original finite dominant map $f:Y\to\operatorname{Spec}A$ of an
+integral curve, an original field algebra $k\to A$, and an original prime
+$\mathfrak p$, put $S=A_{\mathfrak p}$ and retain the entire native inverse
+$Y_S$ with original projections $\pi,q$.  Its original field structure is
+both $\pi f\operatorname{Spec}(k\to A)$ and
+$q\operatorname{Spec}(k\to S)$.  The actual pullback of every original
+coefficient $a\in A$ is the same original coefficient $a/1\in S$.
+\end{definition}
+\begin{proof}
+The literal native pullback square, contravariant functoriality of
+$\operatorname{Spec}$, and the actual scalar tower identify the entire
+structure maps.  The native whole global-section pushout and actual
+$\Gamma\operatorname{Spec}$ triangle identify every original coefficient;
+localization flatness is internally derived, with no flatness of $f$.
+\end{proof}
+
+\begin{theorem}[All original finite-fibre weighted principal orders]
+\label{thm:fc-finite-fibre-all-native-principal-orders}
+\leanok
+\lean{EnvelopeProperty.FiniteFibrePrincipalOrders.finsum_fibre_principal_orders}
+Assume $A$ is a Noetherian domain of dimension at most one, $Y$ is an
+integral curve, $\mathfrak p\ne0$, and the actual residue field of
+$S=A_{\mathfrak p}$ is finite over the actual original $k$.  For every
+original $a\ne0$,
+\[
+ \sum_{y\in f^{-1}(\mathfrak p)}
+ \operatorname{ord}_y(f^*a)[\kappa(y):k]
+ =\operatorname{rank}_A\Gamma(Y,\mathcal O_Y)
+   \operatorname{ord}_S(a/1)[\kappa(S):k].
+\]
+Every term uses the same actual original structure map and native
+scheme order.  No normality or flatness of the finite map is required.
+\uses{def:fc-finite-fibre-original-coefficient-square,thm:fc-original-fibre-native-order-local-inverse-sum,thm:fc-local-finite-all-native-principal-orders}
+\end{theorem}
+\begin{proof}
+Dominance internally makes the original coefficient map injective, and
+localization in the original domain makes $a/1$ nonzero.  The actual whole
+local inverse is integral and locally Noetherian.  The genuine all-point
+bijection and stalk/residue comparison turn the original fibre sum into
+the all-point sum on that entire inverse.  The actual coefficient and
+field-structure squares above identify its section and field action with
+those in the genuine nonflat local principal-order theorem.  Its actual
+rank--order--residue formula proves the equality.  In the final projective
+curve consumer, ordinary local dimension and residue finiteness are still
+to be derived from the original chart geometry; they are not added paper
+assumptions here.
+\end{proof}

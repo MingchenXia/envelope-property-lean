@@ -1,0 +1,68 @@
+\section{Geometric source of the Laurent family}
+
+\begin{lemma}[The whole actual coefficient-extended product]
+\label{lem:native-parameter-family-product}
+\uses{lem:native-parameter-family-morphisms}
+\lean{EnvelopeProperty.ProjBerk.isPullback_parameterPolynomialBaseChange,EnvelopeProperty.ProjBerk.isPullback_nativeParameterProduct,EnvelopeProperty.ProjBerk.nativeParameterProductIso,EnvelopeProperty.ProjBerk.nativeParameterProductIso_hom_fst,EnvelopeProperty.ProjBerk.nativeParameterProductIso_hom_snd}
+\leanok
+For every actual coefficient-ring extension $R\to S$, the native scheme
+$\mathbb P^M_{S[t]}$ is the whole actual base product
+$\mathbb P^M_{R[t]}\times_{\operatorname{Spec}R}\operatorname{Spec}S$.
+The comparison is an actual scheme isomorphism with both full projection
+identities.
+\end{lemma}
+\begin{proof}
+The polynomial coefficient square is an actual ring pushout, by the
+genuine polynomial tensor-product equivalence.  Taking Spec makes it
+a pullback square.  Paste this square to the previously established
+whole native polynomial-Proj coefficient-base-change square.  The
+universal property of this actual pasted pullback supplies the
+isomorphism and both projection identities.
+\end{proof}
+
+\begin{lemma}[A single morphism from the actual multiplicative-group product]
+\label{lem:native-laurent-action-morphism}
+\uses{lem:native-parameter-family-product,lem:native-parameter-family-rings}
+\lean{EnvelopeProperty.ProjBerk.nativeParameterLaurentActionMorphism,EnvelopeProperty.ProjBerk.nativeParameterLaurentFamily_evaluate}
+\leanok
+The single universal Laurent family defines an actual morphism
+$\mathbb P^M_{R[t]}\times_R\operatorname{Spec}R[z,z^{-1}]
+\to\mathbb P^M_{R[t]}$.
+After actual Laurent evaluation at any coefficient-extended unit, the
+whole original native morphism is exactly the proved unit parameter
+family map.
+\end{lemma}
+\begin{proof}
+Transport the actual universal Laurent native family through the inverse
+of the preceding actual product isomorphism.  Contravariant coefficient
+functoriality and the whole universal ring evaluation identity prove the
+whole scheme evaluation identity.
+\end{proof}
+
+\begin{lemma}[The universal coordinate action diagrams]
+\label{lem:native-laurent-action-coordinate-laws}
+\uses{lem:native-laurent-action-morphism,lem:native-parameter-family-rings}
+\lean{EnvelopeProperty.parameterLaurentProductUnit,EnvelopeProperty.parameterLaurentMultiplicationHom,EnvelopeProperty.ProjBerk.nativeParameterLaurentFamily_one,EnvelopeProperty.ProjBerk.nativeParameterLaurentFamily_mul}
+\leanok
+Evaluation of the universal family at $z=1$ is the identity whole native
+scheme morphism.  On the actual iterated Laurent coefficient scheme,
+first acting by $z$ and then by $w$ equals the single action whose
+parameter is $wz$.  These are equalities of whole scheme morphisms on the
+universal native coordinate sources.
+\end{lemma}
+\begin{proof}
+The first identity is the whole Laurent evaluation formula at the unit
+$1$, followed by the actual identity-family law.  In the iterated Laurent
+ring the product of the second Laurent unit with the coefficient image
+of the first is an actual unit.  Laurent evaluation at this product is
+the actual multiplicative-group multiplication ring map.  Its whole
+evaluation identity followed by the already proved actual two-family
+composition identity proves the second scheme-morphism equality.
+The actual product comparison identifies the single native source with
+the whole multiplicative-group product.  The second identity is recorded
+on the entire iterated Laurent native coordinate source.
+\end{proof}
+
+The coordinate action identities concern the whole schemes.  Restricting
+and transporting these identities to the original variety model and
+lifting the family to the constructed blowup remain separate steps.

@@ -1,0 +1,48 @@
+\section{Denominator ideals on the original integral scheme}
+
+\begin{definition}[The original denominator ideal sheaf]
+\label{def:fc-scheme-rational-denominators}
+\leanok
+\lean{EnvelopeProperty.SchemeRationalDenominators.affineIdeal, EnvelopeProperty.SchemeRationalDenominators.idealSheaf}
+\uses{thm:fc-rational-denominator-localization}
+Let $X$ be the original integral scheme and $f\in K(X)$ an arbitrary
+original rational function. On a nonempty original affine open $U$, take
+$D_{\Gamma(X,U)}(f)$ using the original generic-germ embedding into the
+same $K(X)$. On the empty affine open take the whole zero ring ideal.
+These ideals define an actual ideal sheaf on the original $X$.
+\end{definition}
+
+\begin{theorem}[True original chart and stalk identities]
+\label{thm:fc-scheme-rational-denominator-stalks}
+\leanok
+\lean{EnvelopeProperty.SchemeRationalDenominators.affineIdeal_eq, EnvelopeProperty.SchemeRationalDenominators.affineIdeal_basicOpen, EnvelopeProperty.SchemeRationalDenominators.idealSheaf_ideal, EnvelopeProperty.SchemeRationalDenominators.idealSheaf_ideal_ne_bot, EnvelopeProperty.SchemeRationalDenominators.stalkIdeal_eq, EnvelopeProperty.SchemeRationalDenominators.stalkIdeal_ne_bot}
+\uses{def:fc-scheme-rational-denominators}
+The constructed ideal on every nonempty original affine chart is exactly
+the original denominator ideal there. Its original stalk at every original
+point $x$ is exactly
+\[
+ D_{\mathcal O_{X,x}}(f)\subseteq\mathcal O_{X,x},
+\]
+with the literal original stalk-to-function-field map. Every such original
+chart ideal and every such original stalk is nonzero. No comparison ideal,
+frame, finite denominator presentation, normality or Cartier premise is
+supplied.
+\end{theorem}
+\begin{proof}
+Restriction of the original generic germ along an original basic open
+is the same generic germ. Thus the original coefficient maps form the
+actual scalar tower. The true denominator-localization theorem gives
+exactly the ideal-sheaf basic-open compatibility. Empty basic opens have
+zero section ring, so their ideals agree as well. This constructs the
+original ideal sheaf, and its affine ideals have the asserted literal
+identities.
+
+Choose an actual affine neighborhood of $x$. The original ideal's stalk
+is the ideal extended by the original germ, and the actual original stalk
+is the localization of that affine section ring at its actual prime.
+Apply the same denominator-localization theorem along the genuine native
+section--stalk--function-field tower. Finally the original integral
+scheme's function field is the fraction field of each nonempty affine
+section ring and of each original stalk. Genuine fraction-field
+surjectivity produces their nonzero denominators.
+\end{proof}

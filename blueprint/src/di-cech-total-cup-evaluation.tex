@@ -1,0 +1,154 @@
+\section{The actual total cup under original local evaluation}
+
+\begin{theorem}[The whole original total cup on the zero Cech row]
+\label{thm:di-total-cup-original-zero-row}
+\uses{def:di-cech-total-cup,thm:di-cech-total-cup-pure-input,thm:di-cech-total-tensor-ext}
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCup_zeroRow_pi_native, EnvelopeProperty.DI.CechTotalCup.totalCup_zeroRow_pi}
+\leanok
+Let $K$ be the original geometric relative de Rham complex, $U$ any
+family of original opens, and $T$ its published Cech total complex.
+For any degrees $a,b$ and original zero-row tuple, project the actual
+total cup $T^a\otimes T^b\to T^{a+b}$ to the original zero Cech row
+and then its original tuple factor. The entire morphism is the
+original factor wedge of the two original zero-row tuple projections.
+In native wedge degree the output is $b+a$; in canonical total degree
+$a+b$ the formula follows by the original indexed-object equality
+transport. No cover, finiteness of $U$, or comparison certificate is
+required.
+\end{theorem}
+\begin{proof}
+\leanok
+The original pure-bidegree tensor inclusions jointly detect maps out
+of the tensor of total terms. Test the asserted equality on bidegrees
+$(q,j)$ and $(r,j')$ with $q+j=a$ and $r+j'=b$. The actual total cup
+has value $(-1)^{jr}$ times the ordered cup followed by the original
+inclusion of bidegree $(r+q,j+j')$. If either Cech degree is positive,
+this inclusion has zero composite with the zero-row projection by
+original inclusion--projection orthogonality. On the asserted right
+side the corresponding input zero-row projection is zero, and
+bilinearity of the original factor wedge gives zero as well.
+
+If $j=j'=0$, the original equations give $q=a$, $r=b$ and the sign is
+one. Original inclusion--projection orthogonality cancels the same
+output inclusion and projection. The ordered cup projection is the
+original prefix/suffix factor wedge. In Cech degree zero these two
+tuples are the same original tuple and their factor restrictions are
+the identity. This proves the whole native-degree equality on every
+pure input, hence on the whole original tensor. Transport of the
+original form index from $b+a$ to $a+b$ commutes with the original total
+and product projections, giving the canonical-degree formula.
+\end{proof}
+
+\begin{theorem}[The actual original member-factor evaluation preserves the cup]
+\label{thm:di-total-cup-original-factor-evaluation}
+\uses{thm:di-total-cup-original-zero-row}
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCup_evaluation}
+\leanok
+For every original family member $U_i$, the native total evaluation
+$T\to j_*j^*K$ takes the actual total cup to the original factor wedge
+of the two native input evaluations, with the original degree
+transport from $b+a$ to $a+b$.
+\end{theorem}
+\begin{proof}
+\leanok
+The native evaluation component is the original zero-row projection,
+the product projection at the constant one-vertex tuple, and the
+original factor restriction from that tuple intersection to $U_i$.
+Apply the preceding whole-map identity to that same tuple. The
+original factor restriction commutes with the original factor wedge,
+as follows from restriction compatibility of the original form wedge.
+Original degree transport commutes with these same factor maps.
+The resulting two input composites are exactly the original native
+evaluation components, proving the asserted entire morphism equality.
+\end{proof}
+
+\begin{definition}[Original member-section evaluation]
+\label{def:di-total-cup-original-member-section-evaluation}
+\uses{thm:di-total-cup-original-factor-evaluation}
+\lean{EnvelopeProperty.DI.CechTotalCup.memberEvaluation}
+\leanok
+On original sections over $U_i$, compose the native factor evaluation
+with the inverse of the original restriction--pushforward unit on
+that same open. This gives a linear map
+$\varepsilon_i^a:\Gamma(U_i,T^a)\to\Gamma(U_i,K^a)$ over the original
+ring $\Gamma(U_i,\mathcal O_Y)$. The unit component is invertible:
+its original cut open is $U_i\cap U_i=U_i$.
+\end{definition}
+\begin{proof}
+\leanok
+The original unit component is an original module morphism. Its
+underlying map is restriction of the original sheaf to its same open,
+with the actual cut-open equality. The restriction map is bijective,
+so this linear map is an isomorphism. Its inverse and the native factor
+evaluation therefore compose to the asserted original linear map.
+\end{proof}
+
+\begin{theorem}[Original member sections retain native local evaluation and wedge]
+\label{thm:di-total-cup-original-native-local-evaluation}
+\uses{def:di-total-cup-original-member-section-evaluation,thm:di-total-cup-original-factor-evaluation}
+\lean{EnvelopeProperty.DI.CechTotalCup.memberEvaluation_totalCupSection, EnvelopeProperty.DI.CechTotalCup.originalLocalSection, EnvelopeProperty.DI.CechTotalCup.memberEvaluation_native}
+\leanok
+The map $\varepsilon_i^a$ is the original native local evaluation,
+read on the original member sections through the original
+open-restriction section identifications. For all whole original
+sections $x\in\Gamma(U_i,T^a)$ and $y\in\Gamma(U_i,T^b)$,
+\[
+ \varepsilon_i^{a+b}(\mu(x,y))
+ =\operatorname{cast}_{b+a=a+b}
+   \bigl(\varepsilon_i^a(x)\wedge\varepsilon_i^b(y)\bigr).
+\]
+No exactness of sections or quasi-isomorphism hypothesis is assumed.
+\end{theorem}
+\begin{proof}
+\leanok
+The native local evaluation is the restriction of the original factor
+evaluation followed by the original adjunction counit. The original
+open-section identifications are natural in every original module
+map. The adjunction triangle says that restricting the original unit
+and following by this counit is the identity. Consequently reading
+this native local evaluation on original sections is exactly the
+native factor evaluation followed by the inverse original unit
+component, which is $\varepsilon_i^a$.
+
+Apply the preceding whole factor-evaluation cup identity to the
+original tensor section of $x$ and $y$. The original unit commutes
+with the original form wedge by restriction compatibility, and with
+the original form-degree transport by naturality in that index.
+The images of the two member evaluations under their original units
+are the two native factor evaluations. Thus the two sides of the
+displayed identity have the same image under the original invertible
+target unit component. Cancel that actual unit to obtain the equality
+on the whole original section modules.
+\end{proof}
+
+\begin{corollary}[Original affine readback of an evaluated global map]
+\label{cor:di-total-cup-member-affine-readback}
+\uses{thm:di-total-cup-original-native-local-evaluation,lem:di-affine-local-map-spec-readback}
+\lean{EnvelopeProperty.DI.CechTotalCup.memberEvaluation_sectionReadback}
+\leanok
+Suppose $U_i$ is an original affine open and $\phi:M\to T^a$ is any
+original global module map. The whole linear map obtained by applying
+$\phi$ on original sections over $U_i$ and then $\varepsilon_i^a$
+equals the original affine section readback of $j^*\phi$ followed by
+the literal native local-evaluation component. Neither source
+quasicoherence, closedness, nor a desired class comparison is assumed.
+\end{corollary}
+\begin{proof}
+\leanok
+Original affine readback is composition of original inverse-chart
+restriction and genuine spectrum sections, conjugated by the original
+restriction-composition and module-sections units. It therefore
+preserves composition and identity. Naturality of those same original
+units identifies readback of $j^*\psi$ with the original section map
+of every original global morphism $\psi$.
+
+Apply readback to the original adjunction triangle for the target
+module. It identifies readback of the original counit as the inverse
+of the original unit component on $U_i$; that component is invertible
+by the original same-open cut equality. The literal native local
+evaluation is restriction of the native factor evaluation followed
+by this original counit. Composition preservation and the preceding
+global-map naturality now give precisely the original section map
+of $\phi$ followed by the native factor evaluation and inverse
+original unit, which is $\varepsilon_i^a$.
+\end{proof}

@@ -1,0 +1,86 @@
+\section{The original Witt reduction quotient and residue tensor product}
+\label{sec:witt-two-residue-tensor}
+
+Give $k$ its original $W=W_2(k)$-algebra structure
+through the proved reduction homomorphism $\rho$.
+For an actual flat $W$-module $M$, retain the
+original submodule $pM$ and quotient $\overline M$.
+
+\begin{definition}[The actual residue tensor projection]
+\label{def:witt-two-residue-tensor-map}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidue.reductionAlgebra,EnvelopeProperty.DeligneIllusie.WittTwoResidue.tensorReduction}
+The original reduction defines the $W$-algebra
+structure on $k$ and the actual linear map
+$r_M:M\to k\otimes_W M$, $m\mapsto1\otimes m$.
+\uses{def:witt-two-reduction}
+\end{definition}
+\begin{proof}
+The algebra structure is the one induced by the
+original ring homomorphism $\rho$. Tensor
+bilinearity implies that $m\mapsto1\otimes m$
+is $W$-linear for precisely this original action.
+\end{proof}
+
+\begin{theorem}[Exactness and surjectivity of the original tensor projection]
+\label{thm:witt-two-residue-tensor-exact}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidue.tensorReduction_surjective,EnvelopeProperty.DeligneIllusie.WittTwoResidue.tensorReduction_exact}
+The same original map $r_M$ is surjective, and
+$M\xrightarrow{p}M\xrightarrow{r_M}k\otimes_W M$
+is exact.
+\uses{def:witt-two-residue-tensor-map,lem:witt-two-prime-kernel}
+\end{theorem}
+\begin{proof}
+The scalar sequence $W\xrightarrow{p}W
+\xrightarrow{\rho}k$ is exact by the original
+kernel formula, and $\rho$ is surjective. Tensor
+with $M$. Flatness gives exactness, and tensoring
+a surjective linear map preserves surjectivity.
+The left-unit isomorphism $W\otimes_W M\simeq M$
+identifies the first map with multiplication by $p$.
+It identifies the second with $r_M$: for a pure
+tensor $a\otimes m$, its image is
+$\rho(a)\otimes m=1\otimes am$ by the original
+balanced relation. Additivity and generation by
+pure tensors prove this identification everywhere.
+Transporting exactness and surjectivity along the
+left-unit isomorphism proves the statement.
+\end{proof}
+
+\begin{theorem}[The original reduction quotient is the actual residue tensor]
+\label{thm:witt-two-residue-tensor-equivalence}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidue.reductionTensorEquiv,EnvelopeProperty.DeligneIllusie.WittTwoResidue.reductionTensorEquiv_mk}
+There is an original linear equivalence
+$\overline M\simeq k\otimes_W M$, sending every
+original quotient class $\overline m$ to
+$1\otimes m$.
+\uses{thm:witt-two-residue-tensor-exact}
+\end{theorem}
+\begin{proof}
+Exactness gives $\ker r_M=pM$, and surjectivity
+gives an actual first-isomorphism equivalence
+$M/\ker r_M\simeq k\otimes_W M$. Identify the
+quotient by the proved equality of original
+submodules. The first-isomorphism formula on each
+original quotient class is $r_M(m)=1\otimes m$,
+which gives the asserted formula for this same map.
+\end{proof}
+
+\begin{theorem}[Canonical divided values in the actual residue tensor]
+\label{thm:witt-two-divided-residue-tensor}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidue.dividePrimeTensorEquiv,EnvelopeProperty.DeligneIllusie.WittTwoResidue.dividePrimeTensorEquiv_primeMultiple}
+Composing actual linear division with the preceding
+original equivalence gives an actual linear
+equivalence $pM\simeq k\otimes_W M$, whose value
+on every $pm$ is exactly $1\otimes m$.
+\uses{thm:witt-two-module-linear-division,thm:witt-two-residue-tensor-equivalence}
+\end{theorem}
+\begin{proof}
+The two equivalences have matching original middle
+module $M/pM$, so their composite is a linear
+equivalence. Their two original all-element value
+formulas give $pm\mapsto\overline m\mapsto1\otimes m$.
+\end{proof}

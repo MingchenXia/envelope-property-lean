@@ -1,0 +1,91 @@
+\section{The entire proper central fibre in a separated compactification}
+
+Let $B,S,R,T$ be schemes. Let $\epsilon:S\to B$ and
+$\gamma:B\to S$ satisfy $\epsilon\gg\gamma=\operatorname{id}_S$.
+For an actual morphism $b:R\to B$, write
+\[
+ P=R\times_B S,\qquad r:P\to R,\qquad s:P\to S
+\]
+for its fibre product along $\epsilon$ and its two original projections.
+Given actual morphisms $e:R\to T$ and $p:T\to S$, set
+$h=r\gg e$. No immersion condition is imposed on $e$.
+
+\begin{lemma}[The original central map is relatively proper]
+\label{lem:proper-central-fiber-original-map}
+\lean{EnvelopeProperty.ProperCentralFiberCompactification.pullback_comp_structure, EnvelopeProperty.ProperCentralFiberCompactification.isProper_pullback_comp}
+\leanok
+Suppose that $b$ is proper, $p$ is separated, and the whole morphisms
+satisfy $e\gg p=b\gg\gamma$. Then the same original $h$ satisfies
+$h\gg p=s$ and is proper.
+\end{lemma}
+\begin{proof}
+The actual fibre-product identity is $r\gg b=s\gg\epsilon$.
+Associativity and the two given whole identities give
+\[
+ h\gg p
+ =r\gg(e\gg p)
+ =(r\gg b)\gg\gamma
+ =(s\gg\epsilon)\gg\gamma
+ =s\gg(\epsilon\gg\gamma)=s.
+\]
+The morphism $s$ is the base change of the proper morphism $b$, so it
+is proper. Since $p$ is separated, the graph of the same $h$ over $S$
+is a closed immersion $P\hookrightarrow P\times_S T$. The projection
+$P\times_S T\to T$ is the base change of the proper morphism
+$s:P\to S$, and is proper. Their composite is the original $h$, so
+$h$ is proper. In particular the argument concerns properness over
+$S$; it does not require $R$ or $T$ to be proper over an absolute base.
+\end{proof}
+
+\begin{lemma}[The entire original fibre-product image]
+\label{lem:proper-central-fiber-entire-image}
+\lean{EnvelopeProperty.ProperCentralFiberCompactification.range_pullback_comp}
+\leanok
+For arbitrary $b:R\to B$, $\epsilon:S\to B$ and $e:R\to T$, the
+same original projections satisfy
+\[
+ \operatorname{im}(r)=b^{-1}(\operatorname{im}\epsilon),\qquad
+ \operatorname{im}(r\gg e)
+ =e\bigl(b^{-1}(\operatorname{im}\epsilon)\bigr).
+\]
+Moreover every actual pair $x\in R$, $z\in S$ satisfying
+$b(x)=\epsilon(z)$ has an actual point of $P$ whose two projections
+are $x$ and $z$.
+\end{lemma}
+\begin{proof}
+The original fibre-product identity shows that the image under $r$ of
+every point of $P$ lies in $b^{-1}(\operatorname{im}\epsilon)$.
+Conversely let $x\in R$ and $z\in S$ have common image $w\in B$.
+The residue maps give field extensions of $\kappa(w)$ into
+$\kappa(x)$ and $\kappa(z)$. Their tensor product over $\kappa(w)$
+is nonzero: extension of scalars by the nonzero field extension
+$\kappa(z)$ is faithfully flat, and $\kappa(x)$ is a nonzero vector
+space. This nonzero ring has a prime ideal. The corresponding point
+of the original scheme fibre product lies above the actual pair
+$(x,z)$. This proves the assertion about the two projections and the
+reverse inclusion for $\operatorname{im}(r)$. Finally the image of
+the composite $r\gg e$ is the image under $e$ of the entire image of
+$r$, giving the second displayed equality. This uses the genuine
+scheme fibre product, including its residue-field tensor product.
+\end{proof}
+
+\begin{corollary}[The same entire central image is closed]
+\label{cor:proper-central-fiber-closed-compactification-image}
+\uses{lem:proper-central-fiber-original-map,lem:proper-central-fiber-entire-image}
+\lean{EnvelopeProperty.ProperCentralFiberCompactification.isClosed_image_preimage_range}
+\leanok
+Assume $\epsilon\gg\gamma=\operatorname{id}_S$, $b$ proper,
+$p$ separated, and $e\gg p=b\gg\gamma$. Then the entire subset
+\[
+ H=e\bigl(b^{-1}(\operatorname{im}\epsilon)\bigr)\subseteq T
+\]
+is closed. It is exactly the image of the same actual proper map
+$h:P\to T$.
+\end{corollary}
+\begin{proof}
+The first lemma makes the actual composite $r\gg e$ proper. A proper
+morphism is universally closed, hence its image of the whole source
+is closed. The second lemma identifies this very image, without
+discarding any fibre-product points, with the displayed subset $H$.
+Thus the displayed entire original central image is closed.
+\end{proof}

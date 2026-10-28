@@ -1,0 +1,25 @@
+\section{Entire original fibres under an isomorphism on a neighbourhood}
+
+\begin{lemma}[The original fibre is unchanged on a neighbourhood]
+\label{lem:pl-original-fibre-map-neighbourhood-isomorphism}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.fibreMap_open_isIso,EnvelopeProperty.PLOriginalModelCompatibility.fibreMap_isIso_of_morphismRestrict}
+\leanok
+Let $f:Y\to Z$ be a morphism over $S$, and let $T\to S$ be any base change.
+Suppose an open $U\subset Z$ contains the entire image of $Z\times_S T$ and
+$f^{-1}(U)\to U$ is an isomorphism. Then the original induced morphism
+$Y\times_S T\to Z\times_S T$ is an isomorphism.
+\end{lemma}
+\begin{proof}
+For an open immersion $V\hookrightarrow W$, the induced morphism
+$V\times_S T\to W\times_S T$ is an open immersion by base change. If $V$
+contains the entire image of $W\times_S T$, every point of this latter fibre
+has a point above it in the pullback, so the induced open immersion is
+surjective and hence an isomorphism. Apply this observation to $U\subset Z$
+and $f^{-1}(U)\subset Y$. The hypothesis for the latter follows from the
+Cartesian projection identity: every fibre point of $Y$ maps to a fibre point
+of $Z$. Base change of the isomorphism $f^{-1}(U)\to U$ is also an
+isomorphism. The square of these three induced fibre isomorphisms commutes
+on both original projections by the universal property of pullbacks.
+Cancellation of the source open-fibre isomorphism gives the asserted original
+fibre isomorphism.
+\end{proof}

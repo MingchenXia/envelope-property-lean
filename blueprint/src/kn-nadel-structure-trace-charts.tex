@@ -1,0 +1,41 @@
+\section{Internally produced whole free charts for the structure trace}
+
+\begin{definition}[A whole free chart of the original projection]
+\label{def:kn-structure-trace-whole-free-chart}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart}
+\leanok
+A whole free chart of $\pi:Y\to X$ of degree $D$ consists of an
+original affine base open $U$, an algebra $B$ over $\mathcal O_X(U)$,
+an actual basis indexed by $\{0,\ldots,D-1\}$, and an isomorphism
+$\operatorname{Spec}B\simeq\pi^{-1}U$ over the original base.
+It contains no trace map or overlap agreement.
+\end{definition}
+
+\begin{theorem}[The original adapted cover produces its whole free atlas]
+\label{thm:kn-structure-trace-produced-whole-free-chart}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.exists_whole_free_chart_at_point,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.producedWholeFreeChart,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.mem_producedWholeFreeChart}
+\leanok
+Under the original adapted-cover assumptions, put
+$D=\prod_a N_a$, retaining all original row/copy factors. Every
+original point $x$ has an internally produced whole free chart with
+$x\in U$. Choosing these proved witnesses gives a whole free atlas
+indexed by the original points of $X$. No chart, basis, trace, or
+compatibility certificate is an incoming assumption.
+\uses{def:kn-structure-trace-whole-free-chart,lem:kn-nadel-global-original-raw-producer,lem:kn-nadel-whole-native-ratio-model,lem:kn-nadel-whole-cover-degree}
+\end{theorem}
+\begin{proof}
+Choose a closed specialization of $x$ by the original Jacobson
+geometry. The original SNC producer supplies a common affine open,
+all original line frames, the original local coordinates, and every
+unit coefficient there. The empty-row property supplies the absent
+copy in each original row. The canonical ratio-chart producer then
+gives the actual isomorphism from the whole ratio spectrum onto the
+entire inverse image, including its original projection triangle.
+The original varying-root monic basis has cardinality $D$. Reindex
+this actual basis by the corresponding finite-set equivalence to
+obtain the asserted basis indexed by $D$. The produced open contains
+the closed specialization and hence $x$. All data and proofs in the
+chart are therefore supplied by the original construction. Choose
+one witness for each original $x$; its proved membership gives the
+covering property of this derived atlas.
+\end{proof}

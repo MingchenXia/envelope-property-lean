@@ -1,0 +1,91 @@
+\section{Finite pullback preserves the original native ample line}
+
+\begin{lemma}[The actual affine pullback counit is epic on quasicoherent modules]
+\label{lem:pl-auxiliary-affine-counit-epic}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.counit_epi_of_isAffineHom}
+\leanok
+\uses{lem:actual-affine-module-epi-of-sections}
+Let $f:Y\to X$ be affine and let $M$ be quasicoherent on $Y$.
+The original pullback--pushforward counit $f^*f_*M\to M$ is epic.
+\end{lemma}
+\begin{proof}
+\leanok
+For every affine open $U\subset X$, the original $V=f^{-1}U$ is
+affine. The adjunction's actual right triangle says
+\[
+ f_*M\xrightarrow{\eta}f_*f^*f_*M
+       \xrightarrow{f_*\varepsilon} f_*M=\operatorname{id}.
+\]
+On $U$ this gives an actual sectionwise right inverse to
+$\varepsilon(V)$. Restrict $\varepsilon$ to $V$: its target is
+quasicoherent, so surjectivity on the full affine global sections
+implies that this restriction is epic. The original preimages of
+all affine opens of $X$ cover every point of $Y$. The open-cover
+epimorphism detection theorem therefore makes the original whole
+counit epic. This does not assert faithfulness of pushforward on
+arbitrary sheaves.
+\end{proof}
+
+\begin{lemma}[Finite pushforward retains coherent generators]
+\label{lem:pl-auxiliary-finite-pushforward-finite-type}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.isFiniteType_pushforward_of_isFinite}
+\leanok
+Let $f:Y\to X$ be finite and let $M$ be quasicoherent of finite
+type. The original $f_*M$ is of finite type.
+\end{lemma}
+\begin{proof}
+\leanok
+On every affine $U\subset X$, its preimage $V$ is affine and
+$\Gamma(V,M)$ is finite over $\Gamma(V,\mathcal O_Y)$. The
+original finite morphism makes $\Gamma(V,\mathcal O_Y)$ finite
+over $\Gamma(U,\mathcal O_X)$. Transitivity of finite modules gives
+finite generation of the same $\Gamma(V,M)$ over the original
+base ring. The original pushforward identifies these with its
+sections on $U$. Affine-local finite generation therefore proves
+the assertion.
+\end{proof}
+
+\begin{theorem}[Original finite pullback twists are eventually generated]
+\label{thm:pl-auxiliary-finite-pullback-eventual-generation}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.exists_eventual_generatingSections_finite_pullback}
+\leanok
+\uses{lem:pl-auxiliary-affine-counit-epic,lem:pl-auxiliary-finite-pushforward-finite-type,thm:original-native-ample-coherent-global-generation}
+Let $p:X\to\operatorname{Spec}R$, let $L$ be an original native
+ample line on $X$, let $f:Y\to X$ be finite, and let $M$ be a
+coherent module on $Y$. Every sufficiently large original twist
+$M\otimes(f^*L)^m$ has actual finite global generating sections.
+\end{theorem}
+\begin{proof}
+\leanok
+Apply native ample coherent generation to $f_*M$ and the original
+$L$. Pull back each obtained finite generating family to $Y$.
+The canonical monoidal pullback isomorphism identifies its target
+with $f^*f_*M\otimes f^*L^m$. Tensor the preceding epic counit
+with the original invertible $f^*L^m$ and compose with the actual
+whole tensor-power pullback comparison. This gives an epimorphism
+to the specified original $M\otimes(f^*L)^m$. Transporting the
+pulled finite generating family across this actual epimorphism
+gives the required original generators.
+\end{proof}
+
+\begin{theorem}[Finite pullback of the same original ample line]
+\label{thm:pl-auxiliary-native-finite-pullback-ample}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.isAmple_finite_pullback}
+\leanok
+\uses{thm:pl-auxiliary-finite-pullback-eventual-generation,thm:general-native-veryample-original-inverse-twist-generators}
+With the same $p,L,f$, suppose the original $p\circ f$ is
+projective. Then the original whole $f^*L$ is natively ample on
+$Y$ over $R$. Neither scheme is assumed integral or reduced.
+\end{theorem}
+\begin{proof}
+\leanok
+The supplied ordinary projectivity internally produces an actual
+closed projective embedding of the original $Y$. Let $C$ be its
+whole original $\mathcal O(1)$ pullback, so $C$ is very ample.
+The preceding theorem applied to the coherent original $C^{-1}$
+gives finite global generators of $C^{-1}\otimes(f^*L)^m$ for
+an internally selected positive $m$. The native inverse-twist
+generation criterion then makes the same original $(f^*L)^m$
+very ample. Together with pullback invertibility this is exactly
+native ampleness of the original $f^*L$.
+\end{proof}

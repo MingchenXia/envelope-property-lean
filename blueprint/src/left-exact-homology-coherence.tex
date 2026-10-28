@@ -1,0 +1,53 @@
+\section{Coherence of the canonical homology comparison}
+\label{sec:left-exact-homology-coherence}
+
+\begin{lemma}[Agreement with actual native homology preservation]
+\label{lem:left-exact-original-homology-preservation-agreement}
+\leanok
+\lean{EnvelopeProperty.LeftExactHomologyCoherence.map_eq_mapHomologyIso}
+If a finite-limit-preserving zero-preserving functor actually
+preserves left homology of a short complex $S$, the canonical
+comparison $H(FS)\to F(H(S))$ is exactly the forward map of
+the native homology-preservation isomorphism.
+\uses{prop:left-exact-original-homology-comparison}
+\end{lemma}
+\begin{proof}
+The native preserved-homology data have cycle object $F(ZS)$
+and homology projection equal to $F$ of the original
+projection. Their cycle comparison has the same composite
+with the monomorphism $F(ZS\to S_2)$ as the canonical
+preserved-kernel comparison. Uniqueness at that kernel makes
+the cycle comparisons equal. The native and canonical
+homology comparisons therefore agree after precomposition
+with the original cycle projection. That projection is epic,
+so the whole homology maps are equal.
+\end{proof}
+
+\begin{lemma}[Actual comparison for a composite functor]
+\label{lem:left-exact-original-homology-composition}
+\leanok
+\lean{EnvelopeProperty.LeftExactHomologyCoherence.map_comp}
+For finite-limit-preserving zero-preserving functors $F,G$,
+the canonical comparison for $G\circ F$ is the canonical
+comparison for $G$ on $FS$, followed by $G$ of the canonical
+comparison for $F$ on $S$.
+\uses{prop:left-exact-original-homology-comparison}
+\end{lemma}
+\begin{proof}
+The direct cycle comparison and the composite of the two
+cycle comparisons have identical composites with the actual
+image under $G\circ F$ of the original cycle inclusion. This
+inclusion remains monic because the functors preserve its
+kernel fork. Thus the whole cycle comparisons agree. On
+cycles, the proposed composite homology map is the first
+cycle comparison followed by $G$ of the second cycle
+comparison and then $G(F(ZS\to HS))$. The cycle equality
+identifies it with the direct canonical cycle formula.
+Cancellation of the native epic cycle projection proves
+the equality of the entire homology maps.
+\end{proof}
+
+These identities retain the native maps and all coefficients.
+They permit the actual affine-open section functor to be
+factored into original open restriction and affine sections,
+without a new matching or exactness hypothesis.

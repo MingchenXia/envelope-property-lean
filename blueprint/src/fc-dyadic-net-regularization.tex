@@ -1,0 +1,32 @@
+\subsection{Dyadic regularization by a genuine directed net}
+
+\begin{theorem}[Dyadic finite Fubini--Study nets without countability]
+\label{thm:fc-finite-fs-dyadic-net}
+\lean{EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_net_dyadic}
+\leanok
+For every global psh function of rational class $\theta$ on a compact
+Fubini--Study system, there is a decreasing directed net of finite rational
+Fubini--Study functions with classes $\theta+2^{-n(\alpha)}\mathbf1$, where
+$n$ is increasing and tends to infinity. Its pointwise infimum is the original
+function. No second countability assumption is needed.
+\end{theorem}
+\begin{proof}
+Start with the genuine decreasing finite Fubini--Study net $f_i$ whose rational
+classes $a_i$ converge to $\theta$. Index the new net by all pairs $(n,i)$ with
+$a_i\le\theta+2^{-n}\mathbf1$, ordered coordinatewise. For each fixed $n$, class
+convergence and the strict positivity of $2^{-n}$ make this inequality hold on
+an entire tail of the original directed set. Consequently the new index set
+is nonempty and directed: above two admissible pairs first increase $n$ to
+their maximum, then choose an old index above both old indices and above the
+tail threshold for this new $n$.
+
+Raise the class of the unchanged function $f_i$ to
+$\theta+2^{-n}\mathbf1$ using Fubini--Study monotonicity. The new functions are
+still decreasing because their old indices increase. The first projection
+is increasing and cofinal in the natural numbers by the same tail construction,
+so it tends to infinity. The second projection is cofinal in the original
+index set: fix $n=0$ and choose an old index above any prescribed index and
+the tail threshold. Thus the new pointwise infimum equals the unchanged
+original pointwise infimum. This constructs all index data and every
+approximant from the original psh function.
+\end{proof}

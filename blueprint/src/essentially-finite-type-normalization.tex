@@ -1,0 +1,42 @@
+\subsection{Actual normalization of essentially finite type domains}
+
+\begin{theorem}[Finiteness of the original essentially finite type normalization]
+\label{algebra:actual-essentially-finite-type-normalization-finite}
+\lean{EnvelopeProperty.EssentiallyFiniteTypeNormalization.finite_integralClosure}
+\leanok
+\uses{thm:bj-normalization-finite}
+Let $k$ be any field, let $D$ be an actual essentially finite type $k$-domain,
+and let $K$ be its actual fraction field. The SAME original integral closure
+$\overline D\subseteq K$ is a finite $D$-module. No perfectness, chosen finite
+presentation, normalization-finiteness or excellence certificate is supplied.
+\end{theorem}
+\begin{proof}
+The genuine essentially finite type structure gives an actual finitely generated
+subalgebra $C\subseteq D$ and an actual multiplicative subset $M\subseteq C$
+with $D=M^{-1}C$. The actual fraction field of $D$ is also the actual fraction
+field of $C$: clear a common original denominator in the numerator and
+denominator of each fraction. The genuine arbitrary-field finite-type
+normalization theorem makes $\overline C\subseteq K$ finite over $C$.
+
+Integrality is preserved when enlarging the actual base from $C$ to $D$, so the
+literal inclusions into $K$ construct an actual ring map
+$\overline C\longrightarrow\overline D$. All original elements of $M$ are units
+in $K$. The genuine localization theorem for integral closure, applied to the
+SAME field $K$, therefore identifies $\overline D$ as the actual localization
+of $\overline C$ at the original image of $M$. Localization of the actual finite
+module proves finiteness over $D$, with every scalar-tower and localization
+identity derived from these original inclusions.
+\end{proof}
+
+\begin{corollary}[Noetherianity of the same normalization]
+\label{algebra:actual-essentially-finite-type-normalization-noetherian}
+\lean{EnvelopeProperty.EssentiallyFiniteTypeNormalization.isNoetherianRing_integralClosure}
+\leanok
+\uses{algebra:actual-essentially-finite-type-normalization-finite}
+The same actual normalization is Noetherian.
+\end{corollary}
+\begin{proof}
+An actual essentially finite type algebra over a field is Noetherian.
+The preceding actual finite module structure makes its normalization a finite
+type algebra over that original Noetherian domain, hence Noetherian.
+\end{proof}

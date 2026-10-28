@@ -1,0 +1,51 @@
+\section{The original global-section maps in the infinitesimal Cech sequence}
+
+\begin{lemma}[Canonical original global sections and ordered degree-zero cohomology]
+\label{lem:fibre-infinitesimal-global-h0-cech}
+\uses{thm:fibre-infinitesimal-ordered-cech-short-exact}
+\lean{EnvelopeProperty.FibreInfinitesimalH0Cech.globalSectionsIso,EnvelopeProperty.FibreInfinitesimalH0Cech.globalSectionsIso_naturality}
+\leanok
+For every original open cover and every original module sheaf, its
+whole original global sections are canonically isomorphic, with their
+original base coefficients, to the degree-zero cohomology of its
+ordered Cech complex. This identification intertwines every original
+module-sheaf morphism with its induced degree-zero cohomology map.
+\end{lemma}
+\begin{proof}
+The sheaf gluing theorem identifies global sections with the kernel of
+the first ordered Cech differential, by restricting the same global
+section to every member of the original cover. A nonnegative cochain
+complex has no boundaries in degree zero, so that kernel is its entire
+degree-zero cohomology. The inclusion of this cohomology into the
+original degree-zero cochain module is injective. Both ways round the
+asserted naturality square have, at every ordered zero-tuple, the same
+original restriction followed by the same given module-sheaf morphism;
+its naturality says that this equals the reverse composite. The
+injective cohomology inclusion therefore proves the whole naturality
+square.
+\end{proof}
+
+
+\begin{corollary}[The genuine original global-section lifting obstruction]
+\label{cor:fibre-infinitesimal-global-section-obstruction}
+\uses{lem:fibre-infinitesimal-global-h0-cech,cor:fibre-infinitesimal-ordered-cech-long-exact}
+\lean{EnvelopeProperty.FibreInfinitesimalH0Cech.sectionBoundary,EnvelopeProperty.FibreInfinitesimalH0Cech.sectionBoundary_exact,EnvelopeProperty.FibreInfinitesimalH0Cech.sectionBoundary_eq_zero_iff}
+\leanok
+For an original affine open cover of a separated $X$, every whole
+original section on the literal infinitesimal $X_n$ has a canonical
+obstruction class in degree-one cohomology of the original ideal-power
+Cech complex. This obstruction vanishes exactly when that section is
+the original projection of a whole original global section on $X$.
+\end{corollary}
+\begin{proof}
+Use the preceding canonical identification on the actual infinitesimal
+pushforward module and follow it by the connecting morphism of the
+proved actual Cech long exact sequence. The same identification on
+$\mathcal O_X$ intertwines the literal original projection section map
+with its induced cohomology map, by the proved whole naturality square.
+Exactness of the long exact sequence at the third degree-zero term
+therefore transports along these two actual isomorphisms. This gives
+exactly the image of the whole original projection, with no section
+lift assumed. Its value on every original section is consequently
+zero precisely for sections that actually lift as asserted.
+\end{proof}

@@ -1,0 +1,160 @@
+\section{The original central curve carries the canonical leading field and order}
+
+Let \(i:C\hookrightarrow Y\) be a genuine closed immersion, \(x\in C\),
+\(S=\mathcal O_{Y,i(x)}\), and \(A=\mathcal O_{C,x}\).
+The original component equation \(\pi\in S\) satisfies
+\(\ker(i_x^\#)=(\pi)\). It is the equation of the chosen reduced component,
+not the product defining a whole crossing central fibre.
+
+\begin{definition}[The actual original central stalk quotient]
+\label{def:central-curve-original-stalk-quotient}
+\uses{def:fc-closed-immersion-principal-stalk-quotient,thm:fc-closed-immersion-stalk-order-length}
+\lean{EnvelopeProperty.CentralCurveLeadingOrders.stalkQuotientEquiv,EnvelopeProperty.CentralCurveLeadingOrders.stalkQuotientEquiv_mk}
+\leanok
+There is the canonical ring isomorphism
+\(e:S/(\pi)\xrightarrow{\sim}A\).
+For every original \(s\in S\), it satisfies
+\(e(\bar s)=i_x^\#(s)\).
+No field, residue, or order comparison is supplied.
+\end{definition}
+\begin{proof}
+The actual stalk map of the genuine closed immersion is surjective.
+Identify its actual kernel with the supplied original principal component
+ideal, and apply the first isomorphism theorem to that same map.
+The quotient-class formula is the literal first-isomorphism formula.
+This is the stalk-kernel form of the existing affine-equation quotient
+construction; it requires neither a new choice of a stalk map nor a
+codimension-one assertion about the ambient closed point.
+\end{proof}
+
+Assume now \(C\) is integral and \(S\) is a domain. Retain the original
+parameters \(z,\pi\) with \(\pi\) prime, \(\pi\nmid z\), and
+\(\mathfrak m_S=(\pi,z)\). Put \(R=S/(\pi)\), \(T=S_{(\pi)}\).
+
+\begin{definition}[Canonical leading field of the same original curve]
+\label{def:central-curve-original-leading-field}
+\uses{def:central-curve-original-stalk-quotient,lem:gauss-surface-canonical-vertical-leading-field}
+\lean{EnvelopeProperty.CentralCurveLeadingOrders.residualFractionEquiv,EnvelopeProperty.CentralCurveLeadingOrders.residualFractionEquiv_coefficient,EnvelopeProperty.CentralCurveLeadingOrders.verticalResidueCurveFieldEquiv,EnvelopeProperty.CentralCurveLeadingOrders.verticalResidueCurveFieldEquiv_coefficient}
+\leanok
+The actual quotient isomorphism induces
+\(F:\operatorname{Frac}R\xrightarrow{\sim}C.\mathrm{functionField}\).
+Composing with the existing canonical
+\(E_v:\kappa(T)\xrightarrow{\sim}\operatorname{Frac}R\) gives
+\(E_C:\kappa(T)\xrightarrow{\sim}C.\mathrm{functionField}\).
+For every \(s\in S\), both maps retain the actual coefficient diagram:
+\[
+ F(\bar s)=\iota_A(i_x^\#s),\qquad
+ E_C(\operatorname{res}_T(s))=\iota_A(i_x^\#s).
+\]
+The field \(\kappa(T)\) here is a function field, not the closed-point field
+\(\kappa_C(x)\).
+\end{definition}
+\begin{proof}
+The intrinsic stalk-to-generic-stalk map already makes the same original
+\(C.\mathrm{functionField}\) the fraction field of \(A\).
+Extend the internally constructed whole ring isomorphism \(e\) by the
+canonical fraction-ring universal property. Its coefficient law and the
+preceding quotient-class formula give the first displayed identity.
+Compose with the existing canonical vertical residue equivalence.
+Its already proved every-coefficient law gives the second identity.
+No independent fraction-field map or coefficient-matching certificate is
+introduced.
+\end{proof}
+
+\begin{lemma}[Actual fraction orders under a whole ring isomorphism]
+\label{lem:central-curve-fraction-order-ring-equiv}
+\uses{thm:fc-original-principal-ring-iso-order}
+\lean{EnvelopeProperty.CentralCurveLeadingOrders.ordFrac_ringEquiv}
+\leanok
+Let \(R_0,A_0\) be Noetherian domains of Krull dimension at most one,
+with actual fraction fields \(K_0,L_0\).
+For a genuine ring isomorphism \(e_0:R_0\simeq A_0\), let \(F_0:K_0\simeq L_0\)
+be its canonical induced fraction-field isomorphism. For every \(f\in K_0\),
+including zero,
+\[
+ \operatorname{ordFrac}_{R_0}(f)
+ =\operatorname{ordFrac}_{A_0}(F_0(f)).
+\]
+\end{lemma}
+\begin{proof}
+The already proved semilinear principal-quotient isomorphism preserves
+the actual module lengths over the respective original rings.
+Thus \(\operatorname{ord}_{R_0}(a)=\operatorname{ord}_{A_0}(e_0(a))\).
+For a nonzero \(a\), the native coefficient formula for
+\(\operatorname{ordFrac}\) expresses both sides by the same canonical
+embedding of that length; zero follows from preservation of zero.
+Write any actual \(f\) as a quotient of original coefficients with nonzero
+denominator. The canonical coefficient commutation and preservation of
+division extend the equality to every fraction.
+This gives exact normalized orders, without an unknown ramification factor.
+\end{proof}
+
+Assume for the remaining statements that \(S\) is Noetherian, \(C\) is
+locally Noetherian, \(\dim C\le1\), and \(x\ne\eta_C\).
+
+\begin{theorem}[The same curve's full fractional leading order]
+\label{thm:central-curve-original-leading-order}
+\uses{def:central-curve-original-leading-field,lem:central-curve-fraction-order-ring-equiv,lem:gauss-surface-original-residual-vertical-dvrs,thm:fc-curve-proper-support-points}
+\lean{EnvelopeProperty.CentralCurveLeadingOrders.residualOrder_eq_curveOrdHom,EnvelopeProperty.CentralCurveLeadingOrders.leadingResidue_order_eq_curveOrd}
+\leanok
+For every \(r\in\operatorname{Frac}R\), the old residual order is precisely
+the original curve order homomorphism:
+\[
+ \operatorname{residualOrder}(r)
+ = C.\operatorname{ordHom}_x(F(r)).
+\]
+For every actual unit \(u\in T^\times\), its actual leading image is nonzero
+and
+\[
+ \operatorname{residualOrder}(E_v(\operatorname{res}_T u))
+ =\exp\!\left(C.\operatorname{ord}_x(E_C(\operatorname{res}_T u))\right).
+\]
+\end{theorem}
+\begin{proof}
+The original curve dimension and nongeneric point give actual codimension
+one at \(x\). The old original parameter construction makes \(R\) a DVR,
+hence a Noetherian domain of dimension one.
+Apply the preceding exact fraction-order transport to the constructed
+quotient isomorphism \(e:R\simeq A\).
+The definition of the original curve's order homomorphism is the native
+fraction order of its same stalk \(A\), proving the first identity.
+The residue of an actual unit of \(T\) is a unit of its residue field.
+It remains nonzero under both actual field isomorphisms.
+Apply the original nonzero-function comparison between
+\(C.\operatorname{ordHom}_x\) and \(\exp(C.\operatorname{ord}_x)\).
+
+The first statement deliberately uses \(\operatorname{ordHom}\) at zero:
+the integer order at zero has a junk value and cannot give this exponential
+identity there. Leading images of vertical units can have poles at \(x\);
+their integer curve order can therefore be negative.
+\end{proof}
+
+\begin{theorem}[Original eventual orders with the actual curve coefficient]
+\label{thm:central-curve-original-eventual-order}
+\uses{thm:central-curve-original-leading-order,thm:gauss-surface-original-fraction-eventual-orders}
+\lean{EnvelopeProperty.CentralCurveLeadingOrders.exists_eventual_fieldOrder_curve}
+\leanok
+For every nonzero original \(f\in\operatorname{Frac}S\), internally produce
+\(a\in\mathbf Z\) and an actual \(u\in T^\times\) such that
+\[
+ f=\iota_T(u)\pi^a,\qquad \operatorname{verticalOrder}(f)=\exp(a),
+\]
+and, for all sufficiently large original \(N>0\),
+\[
+ \operatorname{weightedOrder}_N(f)
+ =\exp\!\left(aN+C.\operatorname{ord}_x(E_C(\operatorname{res}_T u))\right).
+\]
+All fraction embeddings and weighted DVRs are the unchanged old ones.
+\end{theorem}
+\begin{proof}
+Apply the existing all-fraction eventual theorem once. It internally gives
+the original \(a,b,u\), the factorization, the vertical order, the actual
+leading residue order \(\exp(b)\), and the eventual weighted order
+\(\exp(aN+b)\). The preceding true original-curve identity identifies that
+same leading residue order with the exponential of the same curve's native
+integer order. Injectivity of the integer exponential gives the equality
+with \(b\). Substitute it in the already proved eventual tail.
+This consumes the old theorem without assuming a leading-field/order
+comparison and without rebuilding its valuation family.
+\end{proof}
+

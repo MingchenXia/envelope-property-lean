@@ -1,0 +1,46 @@
+\section{Actual affine Cartier module pullback}
+
+\begin{lemma}[Canonical affine tensor formula for the actual module pullback comparison]
+\label{lem:affine-cartier-module-pullback-tensor}
+\uses{lem:actual-ideal-pullback-unit-sections}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_affineUnitTop,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_affine_tmul}
+\leanok
+For a morphism of affine schemes, the true affine pullback/extension-of-scalars
+isomorphism identifies the actual canonical ideal-module comparison with
+$s\otimes x\mapsto s f^\#(x)$ whenever the original ideal module is quasicoherent.
+\end{lemma}
+\begin{proof}
+The genuine affine pullback isomorphism sends $1\otimes x$ to the actual
+section supplied by the original adjunction unit. The previously proved
+whole unit-section formula therefore computes the included comparison
+image as the original scheme section image of $x$. True linearity in
+$\Gamma(X)$ gives the formula for every $s\otimes x$. No compatibility
+certificate for the actual affine isomorphism is assumed: its proved
+unit formula is used explicitly.
+\end{proof}
+
+\begin{lemma}[Genuine affine flat pullback of a Cartier ideal module]
+\label{lem:affine-cartier-module-pullback-iso}
+\uses{lem:affine-cartier-module-pullback-tensor,lem:affine-ideal-tensor-sections,lem:cartier-ideal-affine-module-trivializations}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.affine_toModulesComapPullbackMap_isIso}
+\leanok
+For an actual flat morphism of affine schemes and an actual effective
+Cartier ideal, the canonical actual sheaf-module pullback comparison to
+the module of its true geometric ideal comap is an isomorphism.
+\end{lemma}
+\begin{proof}
+The original Cartier ideal module is genuinely locally free, hence
+quasicoherent. Its actual geometric ideal comap is again Cartier under
+flatness, so its original ideal module is quasicoherent as well. Actual
+affine sheaf pullback preserves quasicoherence. On genuine top-level
+sections, compare the existing affine pullback/extension-of-scalars
+isomorphism and the actual tensor-to-comap-ideal section isomorphism.
+The preceding pure-tensor formula proves that their composite is exactly
+the actual canonical comparison, on the entire tensor product by
+additivity. Thus the canonical top section map is bijective. The genuine
+affine quasicoherent sheaf theorem promotes this top-section isomorphism
+to an isomorphism of the actual whole module sheaves. No Noetherianity,
+finite-generation, reducedness, global line-bundle comparison, or
+linearization premise is added. Global gluing and equivariance coherence
+remain subsequent obligations.
+\end{proof}

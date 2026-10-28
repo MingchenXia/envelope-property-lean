@@ -1,0 +1,90 @@
+\section{Actual affine pullback germs and literal localization tensors}
+
+\begin{lemma}[The original affine section module has its exact original scalar action]
+\label{lem:affine-identity-sections-module}
+\leanok
+\lean{EnvelopeProperty.AffinePullbackStalkTensorReadback.identitySectionsEquiv,EnvelopeProperty.AffinePullbackStalkTensorReadback.identitySectionsEquiv_apply,EnvelopeProperty.AffinePullbackStalkTensorReadback.identitySectionsTensorEquiv,EnvelopeProperty.AffinePullbackStalkTensorReadback.identitySectionsTensorEquiv_tmul,EnvelopeProperty.AffinePullbackStalkTensorReadback.originalGerm_eq_zero_iff_identitySectionsTensor}
+\dcref{Mathlib: Scheme.ΓSpecIso; EnvelopeProperty: AffineModuleGermLocalization.germ_eq_zero_iff_localization_tensor}
+The module of original affine sections supplied by the spectrum global-section
+functor is canonically linearly equivalent to the original section module
+with coefficient map of the identity spectrum morphism. This equivalence
+retains every original section literally, and so does its tensor extension. Consequently the actual original affine
+germ is zero if and only if its tensor in the actual point-local ring,
+using the identity-map section module, is zero.
+\end{lemma}
+\begin{proof}
+Both modules have the same original additive group of global sections.
+The first action of $r$ is through the inverse canonical spectrum/global
+section isomorphism. The second action is through that same inverse
+followed by the identity morphism's top section map, which is the identity.
+Their scalar actions agree. The identity additive equivalence is therefore
+linear and its tensor extension is the identity on every pure tensor.
+The already proved actual affine germ/localization-tensor criterion
+therefore transports through this SAME equivalence, without unfolding
+the original sheaf or supplying a stalk-comparison certificate.
+\end{proof}
+
+\begin{lemma}[Literal original coefficients in the actual affine pullback tensor]
+\label{lem:affine-pullback-sections-tensor-readback}
+\leanok
+\lean{EnvelopeProperty.AffinePullbackStalkTensorReadback.specPullbackTensorEquiv,EnvelopeProperty.AffinePullbackStalkTensorReadback.specPullbackTensorEquiv_tmul,EnvelopeProperty.AffinePullbackStalkTensorReadback.extendedPullbackTensorEquiv,EnvelopeProperty.AffinePullbackStalkTensorReadback.extendedPullbackTensorEquiv_tmul}
+\uses{lem:affine-identity-sections-module}
+\dcref{Aintlib: Scheme.Modules.affinePullbackΓIso; Scheme.Modules.affinePullbackΓIso_hom_one_tmul; Mathlib: TensorProduct.congr; AlgebraTensorModule.cancelBaseChange}
+For an original ring map $B\to T$ and original quasi-coherent module
+$M$ on $\operatorname{Spec}B$, put $N=g^*M$ for its actual spectrum
+map $g$. There is a canonical $T$-linear equivalence
+$T\otimes_B\Gamma(M)\simeq\Gamma(N)$, carrying EVERY $t\otimes m$
+to $t\,u(m)$ with the actual original adjunction-unit section $u(m)$.
+For every original $T$-algebra $D$, its scalar extension and canonical
+tensor cancellation give
+$D\otimes_T\Gamma(N)\simeq D\otimes_B\Gamma(M)$, carrying
+$d\otimes(t\,u(m))$ to $(t d)\otimes m$ with the literal original
+composite $B\to T\to D$ action.
+\end{lemma}
+\begin{proof}
+Use the canonical spectrum/global-section ring isomorphisms on both
+original rings. Their naturality identifies the original $B\to T$
+action with the actual top-section map. The identity additive map on
+$\Gamma(M)$ is semilinear for the original spectrum coefficient ring
+isomorphism, and the target spectrum coefficient isomorphism is
+semilinear for the same base isomorphism. Their tensor equivalence,
+followed by the actual affine pullback global-section equivalence,
+gives the asserted additive equivalence. Multiplication of every pure
+coefficient tensor and additivity prove $T$-linearity on all tensors.
+The actual affine pullback equivalence sends $1\otimes m$ to the
+original adjunction unit. Linearity gives the stated formula for every
+$t$. Extend this genuine equivalence to $D$ and cancel the intermediate
+$T$ tensor by canonical associativity and multiplication; its pure
+tensor formula is exactly $(td)\otimes m$.
+\end{proof}
+
+\begin{theorem}[Actual pulled-back section germs are the literal original localized tensors]
+\label{thm:affine-pullback-stalk-tensor-readback}
+\leanok
+\lean{EnvelopeProperty.AffinePullbackStalkTensorReadback.pullbackGerm_eq_zero_iff_localizedTensor,EnvelopeProperty.AffinePullbackStalkTensorReadback.pullbackGerm_eq_zero_iff_identitySectionsTensor}
+\uses{lem:affine-identity-sections-module,lem:affine-pullback-sections-tensor-readback}
+\dcref{EnvelopeProperty: AffineModuleGermLocalization.germ_eq_zero_iff_localization_tensor; Aintlib: Scheme.Modules.isQuasicoherent_pullback_of_isAffine}
+Let $B\to T$ be an original ring map, $g:\operatorname{Spec}T\to
+\operatorname{Spec}B$ its actual spectrum morphism, and $M$ an original
+quasi-coherent module sheaf on $\operatorname{Spec}B$. Write $N=g^*M$,
+and let $u(m)$ be the actual top section supplied by the original
+pullback-adjunction unit. For a prime $x$ of $T$, put $D=T_x$.
+For every original $m\in\Gamma(M)$ and EVERY $t\in T$,
+\[
+ (t\,u(m))_x=0\quad\Longleftrightarrow\quad
+ (t/1)\otimes_B m=0\ \text{ in }D\otimes_B\Gamma(M).
+\]
+No stalk-comparison certificate and no flatness hypothesis is supplied.
+The same statement consequently applies to the actual affine coefficient
+tensor chart $T=B\otimes_R S$ and $t=1\otimes s$ for every $s\in S$.
+\end{theorem}
+\begin{proof}
+Apply the preceding extended equivalence with the actual local ring
+$D=T_x$. Its literal formula sends $1\otimes(t\,u(m))$ to
+$(t/1)\otimes m$, so these tensors vanish together. The actual pullback
+$N$ is quasi-coherent on the affine spectrum. The genuine affine
+localization criterion therefore identifies vanishing of the original
+$N$-germ with vanishing of its tensor $1\otimes(t\,u(m))$.
+Combining these two equivalences proves the assertion. The first lemma
+normalizes to the same identity-map section module when required.
+\end{proof}

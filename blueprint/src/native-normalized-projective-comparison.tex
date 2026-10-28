@@ -1,0 +1,150 @@
+\subsection{Native polynomial Proj and the normalized graded seminorm model}
+\label{subsec:native-normalized-projective-comparison}
+
+The comparison is constructed from actual prime supports, homogeneous
+localizations and the true projective structure sheaf. The coefficient
+ring and its prescribed real seminorm are arbitrary. No chart certificate,
+residue valuation or global analytification identification is assumed.
+The native residue field below is the quotient of the genuine degree-zero
+projective stalk. It is not identified with the generally larger residue
+field of the affine cone seminorm.
+
+\begin{definition}[The genuine support and projective stalk seminorm]
+\label{projective:normalized-native-support-stalk}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.toRelevantGradedSpectrum,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_toRelevantGradedSpectrum,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeSupport,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_nativeSupport,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeSupport_toIdeal,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeSupport_mem_coordinateOpen,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.localValuation,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.localValuation_supp,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.homogeneousLocalValuation,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.homogeneousLocalValuation_supp,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeStalkValuation,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeStalkValuation_supp,
+  EnvelopeProperty.ProjBerk.iSup_nativeCoordinateOpen_eq_top}
+\leanok
+\uses{projective:general-normalized-spectrum,spectrum:graded-support,spectrum:relevant-graded-support,projective:native-scheme-coordinate-sections}
+A normalized graded polynomial seminorm defines its actual homogeneous
+prime kernel, avoiding the irrelevant ideal, and therefore a point of the
+actual polynomial Proj scheme. Extend the original seminorm to its ordinary
+localization at that prime, restrict it to the genuine homogeneous degree-
+zero localization, and transport it through the true projective stalk
+isomorphism. Its support is exactly the actual stalk maximal ideal.
+\end{definition}
+\begin{proof}
+The actual homogeneous projection inequality makes the valuation kernel
+homogeneous. Some normalized coordinate has value one; that coordinate
+belongs to the irrelevant ideal but not the kernel, proving relevance.
+Every denominator outside the kernel has nonzero seminorm, so actual
+valuation localization is available. In the ordinary localization, a
+fraction has zero value precisely when its numerator belongs to the
+original prime. The true localization maximal-ideal criterion therefore
+identifies the localized support with its maximal ideal. A homogeneous
+fraction is a unit exactly when its image in the ordinary local ring is,
+so the restricted homogeneous-localization support is also its maximal
+ideal. The genuine projective stalk ring isomorphism preserves units,
+proving the stated support identity in the actual stalk.
+\end{proof}
+
+\begin{theorem}[Actual native residue values and every coordinate section]
+\label{projective:normalized-native-residue-values}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_point,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_residue,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.homogeneousLocalValuation_mapId_chart,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_eval_homogeneousChart,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_eval_coordinateChart,
+  EnvelopeProperty.ProjBerk.nativeAbsoluteCoordinateHomeomorph,
+  EnvelopeProperty.ProjBerk.nativeAbsoluteCoordinateHomeomorph_val_apply}
+\leanok
+\uses{projective:normalized-native-support-stalk,projective:native-scheme-coordinate-sections,spectrum:localization-extension,scheme:affine-chart-section-values}
+The actual stalk valuation descends to the actual residue field of that
+projective point and defines a genuine native valued scheme point. In
+any coordinate chart, its value on every affine polynomial equals the
+whole ratio seminorm obtained from the original normalized point.
+Its underlying projective scheme support is the original homogeneous
+prime kernel.
+\end{theorem}
+\begin{proof}
+The proved maximal-ideal support supplies genuine quotient descent to the
+actual local residue field. The descended value on every residue of a
+stalk element equals the original stalk value.
+
+A coordinate is nonzero precisely when this true projective support lies
+in that coordinate open. The true affine-open section homeomorphism and the actual coordinate
+section-ring isomorphism also give an absolute native coordinate chart,
+preserving every coordinate polynomial section. Its injectivity identifies
+whole native points with matching affine polynomial seminorms.
+
+The actual section/germ comparison identifies
+each homogeneous fraction section with its image in the true homogeneous
+local ring at this support. Inclusion into the full ordinary localization
+preserves that entire fraction. Valuation localization uniqueness identifies
+this with the genuine principal-localization extension of the original
+seminorm. The actual ratio homomorphism therefore gives the stated value
+identity on every affine polynomial, rather than only on generators.
+\end{proof}
+
+\begin{theorem}[Actual prescribed-base native projective homeomorphism]
+\label{projective:normalized-native-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_eq_chart_inverse,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_mem_relativeLocus,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_val,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_onChart,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_injective,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativePoint_surjective,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.continuous_nativePoint,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_apply,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_point,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_support_toIdeal,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_val_apply,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_chart,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_symm_onChart,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_eval_form_of_val_X_eq_one}
+\leanok
+\uses{projective:normalized-native-residue-values,projective:general-relative-normalized-charts,projective:native-relative-coordinate-chart,scheme:separated-native-hausdorff}
+The normalized graded spectrum with prescribed coefficient seminorm $v$
+is homeomorphic to the actual native valued-point space of polynomial
+Proj over the whole base point $v$. This homeomorphism preserves the
+actual projective prime support and every genuine coordinate-chart
+polynomial evaluation.
+\end{theorem}
+\begin{proof}
+The preceding canonical residue construction supplies the point map.
+On a coordinate open, its whole evaluation identity identifies it with
+the composite of the genuine normalized relative chart and the inverse
+actual native relative chart. The proved coefficient structure diagram
+shows that it lies above the entire original prescribed base point.
+
+The actual coordinate opens cover Proj because the true irrelevant ideal
+is the ideal generated by all coordinate variables. Given any native
+point, choose such a chart, use its genuine affine seminorm, and apply
+the actual normalized inverse Gauss chart. The whole value identity and
+native chart injectivity recover that entire native point, proving
+surjectivity. For injectivity, equal native points have equal support;
+choose a nonzero coordinate for one normalized point, hence for both.
+The genuine native chart and normalized chart inverse recover the same
+whole normalized point.
+
+Each normalized coordinate open is open, and the just-proved chart
+identity expresses the map there as a composite of genuine continuous
+chart maps. These opens cover, proving global continuity. The normalized
+prescribed-base space is genuinely compact for arbitrary $v$. Polynomial
+Proj is genuinely separated; the actual native topology of a separated
+scheme is Hausdorff. A continuous bijection from this compact space to
+that Hausdorff native space is a homeomorphism. The homeomorphism keeps the genuine homogeneous prime ideal equal to
+the original valuation kernel and commutes with every entire relative
+coordinate chart; its inverse is the true Gauss inverse on any such
+chart. When the selected coordinate has value one, actual section
+evaluation of a degree-$d$ form $F/X_j^d$ equals the original normalized
+value of $F$, since its actual fraction denominator has value one.
+
+No boundedness of $v$,
+field, completeness, noetherian or coherent-sheaf hypothesis enters the
+argument. This identifies point spaces and topology; an analytic structure
+sheaf is a separate construction.
+\end{proof}

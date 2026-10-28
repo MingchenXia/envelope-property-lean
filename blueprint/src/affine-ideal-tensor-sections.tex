@@ -1,0 +1,26 @@
+\section{Actual affine ideal section base change}
+\begin{lemma}[Flat tensor base change of the actual affine ideal module sections]
+\label{lem:affine-ideal-tensor-sections}
+\uses{lem:ideal-tensor-base-change,lem:actual-ideal-module-whole-kernel}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.affineTensorSectionsEquiv,AlgebraicGeometry.Scheme.IdealSheafData.affineTensorSectionsEquiv_tmul}
+For an actual flat morphism $f:X\to Y$ of affine schemes and an original
+ideal sheaf $I$ on $Y$, there is a genuine linear isomorphism
+$\Gamma(X)\otimes_{\Gamma(Y)}\Gamma(Y,I)\simeq
+\Gamma(X,I\mathcal O_X)$, sending $s\otimes x$ to the actual original
+function $s f^\#(x)$. No principal-generator, domain, reducedness,
+finiteness or Noetherianity hypothesis is required.
+\end{lemma}
+\begin{proof}
+Identify each original affine ideal-module section space with its true
+affine ideal by the genuine section equivalence. The actual flat scheme
+morphism induces a genuinely flat map on the original affine section
+rings. Apply the preceding canonical tensor isomorphism for the actual
+original ideal. The true geometric comap's affine ideal is exactly its
+section-ring image, as proved from the actual closed-subscheme
+comap/map adjunction. Transport along that equality and the actual
+original section equivalence on $X$. These genuine equivalences compose
+to the result, and their explicit formulas give the stated pure-tensor
+formula in the original structure ring. The comparison with the actual
+module-sheaf pullback is a subsequent theorem.
+\end{proof}

@@ -1,0 +1,39 @@
+\section{The original twisted ratio line on the same normalized model}
+
+\begin{lemma}[Pulling back the same original line along an invariant projection]
+\label{lem:pl-original-invariant-projection-line-comparison}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.invariantProjectionLineComparison}
+\leanok
+Let $a,p:G\times N\to N$ be the actual action and projection, and let
+$q:N\to X$ be the unchanged original projection. If $a q=p q$ as whole
+scheme morphisms, every original $\mathcal O_X$-module $L$ has a canonical
+whole comparison $a^*q^*L\simeq p^*q^*L$.
+\end{lemma}
+\begin{proof}
+Use the canonical composition comparison to identify $a^*q^*L$ with
+$(a q)^*L$, the pullback congruence for the actual equality $a q=p q$,
+and the inverse composition comparison to reach $p^*q^*L$.
+\end{proof}
+
+\begin{theorem}[Whole group comparison of the original normalized polarization]
+\label{thm:pl-original-normalized-twisted-ratio-group-comparison}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousOriginalTwistNativeGmComparison,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTwistedRatioNativeGmComparison}
+\leanok
+\uses{thm:pl-original-normalized-projection-action-invariant,lem:pl-original-invariant-projection-line-comparison,thm:pl-original-normalized-cartier-factor-linearizations}
+The same actual original normalized PL model, with the same actual group
+action, carries an explicit whole group comparison on its original line
+$q^*\mathcal O_X(n)\otimes(I_N\otimes J_N^\vee)$. Its input consists only
+of the original homogeneous ideals, their actual coefficient-unit
+invariance and finite Gauss logs; no action on this line or comparison of
+the resulting modules is assumed.
+\end{theorem}
+\begin{proof}
+Apply the preceding lemma to the original twist line on the original
+variety. The original ratio factors are actual invertible ideals on the
+same normalized model, invariant under the actual group action. Their
+previously constructed canonical ratio comparison applies. Compose the
+canonical tensor pullback comparison, the tensor product of these two
+whole comparisons, and the inverse tensor pullback comparison for the
+projection. This is a comparison on the unchanged original tensor line
+over the entire original group product.
+\end{proof}

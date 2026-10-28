@@ -1,0 +1,38 @@
+\section{Whole original generator coefficients under affine frame restriction}
+
+\begin{definition}[The original generator on an actual framed open]
+\label{def:fc-original-generator-local-frame-scalar}
+\leanok
+\lean{EnvelopeProperty.GeneratedLineLocalCoefficients.localCoefficient, EnvelopeProperty.GeneratedLineLocalCoefficients.localCoefficient_scalar}
+\uses{def:fc-original-generated-line-frame-coefficients}
+On any actual original open $U$ with a genuine whole pullback frame
+of the original line, let $c_{U,i}$ be the same original generator's
+actual scalar in that frame. The entire pulled original section map
+followed by this actual frame is multiplication by $c_{U,i}$.
+\end{definition}
+\begin{proof}
+The genuine original pullback generating family retains each original
+basis index and section. Its composite with the actual frame is the
+original unit-module generator with the same scalar. The original
+unit scalar identity gives the entire sheaf-map equality.
+\end{proof}
+
+\begin{theorem}[Original affine restriction preserves the same coefficients]
+\label{thm:fc-original-generator-local-frame-restriction}
+\leanok
+\lean{EnvelopeProperty.GeneratedLineLocalCoefficients.localCoefficient_restrict}
+\uses{def:fc-original-generator-local-frame-scalar}
+For every original inclusion $W\subseteq U$, restrict the actual
+original frame through the native pullback-composition and unit
+isomorphisms. The coefficient of each same original generator on
+$W$ is exactly the actual original top-section pullback of $c_{U,i}$.
+No supplied compatibility of the iterated generating families is
+required.
+\end{theorem}
+\begin{proof}
+Native whole section pullback and actual frame transport preserve the
+original scalar identity along the literal original inclusion.
+The transported whole frame is the native restricted original frame.
+The original coefficient is recovered by evaluating its entire
+scalar endomorphism at one, giving the asserted whole-ring equality.
+\end{proof}

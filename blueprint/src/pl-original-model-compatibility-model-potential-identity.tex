@@ -1,0 +1,59 @@
+\section{The model potential of the normalized PL test configuration}
+
+Let $X$ be projectively normal, let $I,J$ be homogeneous ideals of
+$k[t][x_0,\dots,x_n]$ invariant under the parameter scaling and containing
+powers of $t$, and let $\mathcal X$ be the normalized simultaneous blowup of
+$\mathcal I(I),\mathcal I(J)$ on $X\times\mathbb A^1$ with its test
+configuration structure
+(Theorem~\ref{thm:pl-original-normalized-native-test-configuration}).  For a
+reference index $j$ and $n\ge0$ let
+$M=\pi^*\mathcal O_X(n)\otimes\mathcal I(I)\otimes\mathcal I(J)^\vee$ be the
+twisted ratio line, with the action and fibre-one comparisons of
+Corollary~\ref{cor:pl-original-normalized-native-test-configuration-line-inputs}.
+
+\begin{theorem}[The model potential is the ratio weight]
+\label{thm:pl-model-potential-ratio-weight}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousOriginalTwistNativeGmComparison_eq, EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationFibreOneLineIso_eq, EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioNativeGmLinearization_canonicalSection, EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeModelPotential_eq_ratioWeight}
+\uses{thm:twisted-ratio-model-potential,thm:pl-original-native-action-lift-canonical-ratio-section,local:actual-normalized-full-point-ratio-section,cor:pl-original-normalized-native-test-configuration-line-inputs,thm:pl-original-normalized-native-test-configuration-original-projection}
+\leanok
+At the Fubini–Study radius $r=e^{-1}$, for every trivially valued point $x$ of
+$X$ the native model potential of $M$ is the canonical ratio weight
+$\log|\mathcal I(I)|-\log|\mathcal I(J)|$ at the total Gauss point $z_x$ of
+$\mathcal X$ over $x$:
+\[
+  \phi_{\mathcal X,M}(x)=w_{I,J}(z_x).
+\]
+\end{theorem}
+\begin{proof}
+Apply Theorem~\ref{thm:twisted-ratio-model-potential}.  Its hypotheses hold:
+the original projection is invariant, lies over $k\to k[t]$ and restricts to
+the fibre-one identification and to the projection of the noncentral
+trivialisation; both Cartier factors miss the noncentral open because the
+ideals contain powers of $t$; the action comparison of $M$ is factorwise,
+with the invariant-projection comparison on the twist and the canonical
+Cartier group comparison on the ratio, and the latter fixes the canonical
+ratio section; the fibre-one identification of $M$ is factorwise with the
+noncentral trivialisation of the ratio.  For the section $s$ take the
+homogeneous section $x_i^n/x_j^n$ with $|x_i|(x)=1$; its model norm at $x$
+is $|x_i|(x)^n=1$.  Finally the canonical ratio section at the residue field
+of $z_x$ is the canonical generic ratio section, and minus the logarithm of
+its model norm is $w_{I,J}(z_x)$ by definition; the factor of the potential
+is positive, so the logarithms agree.
+\end{proof}
+
+\begin{corollary}[The model potential is the convex function]
+\label{cor:pl-model-potential-convex-function}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeModelPotential_eq_convex}
+\uses{thm:pl-model-potential-ratio-weight,thm:central-nef-tc-native-product-ideal}
+\leanok
+If $r\varphi(\beta(y))=w_{I,J}(y)+c$ at every point $y$ of $\mathcal X$ over
+the Gauss norm, where $\beta$ is the base restriction (as produced by
+Theorem~\ref{thm:central-nef-tc-native-product-ideal}), then
+$\phi_{\mathcal X,M}(h(w))=r\varphi(w)-c$ for every $w\in X^{\mathrm{an}}$,
+where $h$ identifies $X^{\mathrm{an}}$ with the trivially valued points of $X$.
+\end{corollary}
+\begin{proof}
+The original projection of the total Gauss point over $h(w)$ is $h(w)$, so
+the base restriction of $z_{h(w)}$ is $w$.  Evaluate the hypothesis at
+$z_{h(w)}$ and substitute Theorem~\ref{thm:pl-model-potential-ratio-weight}.
+\end{proof}

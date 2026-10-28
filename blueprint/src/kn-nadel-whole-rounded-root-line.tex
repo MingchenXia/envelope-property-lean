@@ -1,0 +1,60 @@
+\section{The actual integral rounded line on the whole adapted cover}
+
+\begin{definition}
+\label{def:kn-nadel-whole-rounded-root-line}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedIdeal,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedLine}
+\leanok
+For the original adapted cover $\pi:W\to X$, its original row ideals
+$J_i$, nonnegative integers $a_i$, and a line $M$ on $X$, put
+$J(a)=\prod_iJ_i^{a_i}$ and $N(M,a)=\pi^*M\otimes J(a)$.
+The product includes every original row. For
+$Q=M-\sum_i(a_i/m_i)D_i$, this is the integral line associated to
+$\pi^*Q$.
+\end{definition}
+
+\begin{lemma}
+\label{lem:kn-nadel-whole-rounded-root-power}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.clearedRoundedIdeal,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedIdeal_isInvertible,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedIdeal_power}
+\leanok
+\uses{lem:kn-nadel-whole-root-ideals}
+Under the original integral smooth perfect-field, tame positive degree,
+joined SNC and empty-row hypotheses, $J(a)$ is invertible. For every
+integer $d$ divisible by every $m_i$, set
+$K_d(a)=\prod_i I_{D_i}^{a_i(d/m_i)}$ on $X$. Then the equality of
+entire original ideal sheaves is $J(a)^d=K_d(a)\mathcal O_W$.
+\end{lemma}
+\begin{proof}
+Every $J_i$ is invertible by the whole row-ideal theorem. Powers and
+finite products of effective Cartier ideals are invertible. Commutativity
+of ideal multiplication gives
+$J(a)^d=\prod_iJ_i^{a_id}$. Since $m_i\mid d$, the exponent equals
+$m_i(a_i(d/m_i))$. The whole row-power identity
+$J_i^{m_i}=I_{D_i}\mathcal O_W$ therefore identifies each factor with
+$(I_{D_i}^{a_i(d/m_i)})\mathcal O_W$. Ideal inverse image preserves
+finite products, giving the asserted whole ideal equality.
+\end{proof}
+
+\begin{lemma}
+\label{lem:kn-nadel-whole-rounded-root-line-power}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedLine_isInvertible,EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.wholeRoundedLinePowerIso}
+\leanok
+\uses{lem:kn-nadel-whole-rounded-root-power}
+If $M$ is invertible, then the same entire $N(M,a)$ is invertible and
+there is an actual whole module isomorphism
+\[
+ N(M,a)^{\otimes d}\simeq
+ \pi^*\bigl(M^{\otimes d}\otimes K_d(a)\bigr).
+\]
+Neither a power comparison nor its local matching data is an input.
+\end{lemma}
+\begin{proof}
+Split the tensor power into the powers of the two actual factors.
+Pullback commutes with tensor powers, and multiplication identifies the
+tensor power of an invertible ideal module with its geometric ideal
+power. Apply the preceding equality to the latter. Both $K_d(a)$ and
+its ideal inverse image are effective Cartier ideals, so their canonical
+module pullback comparison is an isomorphism. Its inverse identifies
+the second factor with $\pi^*K_d(a)$. Finally the monoidal pullback
+isomorphism combines the two original factors into the displayed
+pullback of the original base line.
+\end{proof}

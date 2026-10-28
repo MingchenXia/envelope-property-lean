@@ -1,0 +1,79 @@
+\section{The actual zero ideal of an original line section}
+Let $X$ be any scheme, $L$ an original invertible module sheaf, and
+$s:\mathcal O_X\to L$ an actual section. Retain the existing sheaf dual,
+its actual contravariant map, and the original dual-unit isomorphism. Set
+\[
+ \epsilon_s:L^\vee\xrightarrow{s^\vee}\mathcal O_X^\vee
+       \xrightarrow{\sim}\mathcal O_X,\qquad
+ Z(s)=I_{\epsilon_s}.
+\]
+Here $I$ is the genuine quasi-coherent image ideal, not a prescribed chart ideal.
+Invertibility of $L$ implies invertibility and hence quasi-coherence of the
+same original $L^\vee$ by existing theorems.
+
+\begin{lemma}[The actual zero ideal on a genuine frame]
+\label{lem:line-section-zero-ideal-frame}
+\leanok
+\lean{EnvelopeProperty.LineSectionZeroIdeal.zeroIdeal,EnvelopeProperty.LineSectionZeroIdeal.zeroIdeal_ideal_of_frame}
+\uses{thm:quasicoherent-image-ideal}
+Let $X$ be any scheme, $L$ an original invertible module sheaf and
+$s:\mathcal O_X\to L$ an actual section. Let $Z(s)$ be the actual image ideal
+of the original dual map $s^\vee:L^\vee\to\mathcal O_X^\vee$ followed
+by the existing dual-unit isomorphism. For every actual affine open $U$ and actual over-site frame
+$e:L|_U\simeq\mathcal O_U$, put
+$c=e(s|_U(1))\in\Gamma(X,U)$. Then the actual original affine ideal is
+\[
+ Z(s)(U)=(c).
+\]
+No integrality, nonempty-open, field or regularity assumption is imposed.
+\end{lemma}
+\begin{proof}
+The defining original dual precomposition and dual-unit evaluation give
+$\epsilon_s(\alpha)=\alpha(s|_U(1))$ for every actual functional on $U$.
+The original frame $e$ itself is such a functional and its image is $c$.
+The literal image is an ideal, so it contains $(c)$.
+Conversely the SAME original frame inverse gives
+$s|_U(1)=c\,e^{-1}(1)$. Actual linearity of any original functional
+$\alpha$ gives $\epsilon_s(\alpha)=c\alpha(e^{-1}(1))$, which belongs
+to $(c)$. Hence the whole original image equals $(c)$. The genuine
+image-ideal affine formula identifies it with the stated actual $Z(s)(U)$.
+\end{proof}
+
+\begin{theorem}[An actual nonzero line section on an integral scheme is Cartier]
+\label{thm:line-section-zero-ideal-cartier}
+\leanok
+\lean{EnvelopeProperty.LineSectionZeroIdeal.zeroIdeal_isInvertible_of_ne_zero}
+\uses{lem:line-section-zero-ideal-frame}
+Let $X$ be integral, $L$ an original invertible module sheaf and
+$s:\mathcal O_X\to L$ an original nonzero section. Its original dual-map
+image ideal $Z(s)$ is invertible in the existing effective-Cartier ideal
+sense. No separate chart-regularity or generic-nonvanishing certificate
+is required.
+\end{theorem}
+\begin{proof}
+First the coefficient of $s$ in every frame on every nonempty open is
+nonzero. Indeed, if it were zero on such an open $U$, take any other
+nonempty framed open $V$. Irreducibility of the original integral scheme
+makes $U\cap V$ nonempty. Injectivity of the actual frame on $U$ makes the section vector
+zero there. Restrict that original vector to the intersection. Naturality
+of the original section and the frame on $V$ implies that the coefficient
+on $V$ restricts to zero on the same intersection. The original structure-ring restriction is injective on an
+integral scheme with nonempty target open, so that coefficient is zero
+on $V$. The actual line atlas covers $X$; sheaf separatedness gives the
+zero original section, and the existing unit-section correspondence then
+gives $s=0$, contradicting the hypothesis.
+Now fix any point and refine its existing invertible-sheaf frame to an
+actual affine neighbourhood $U$ of that point. This $U$ is nonempty.
+Its original section ring is a domain; the derived nonzero coefficient
+$c$ is therefore a nonzerodivisor. The preceding lemma identifies the
+same actual ideal $Z(s)(U)$ with $(c)$. These actual affine regular
+generators at every point are precisely the existing effective-Cartier
+ideal definition, proving the conclusion.
+\end{proof}
+
+This constructs no canonical differential or line factory. For an original
+birational morphism between smooth integral schemes of the same relative
+dimension, its existing differential section is a future consumer only
+after its nonzero hypothesis is genuinely derived from the original
+birational map. The latter fact and its DVR discrepancy identification
+are not assumptions or conclusions of the present two results.

@@ -1,0 +1,103 @@
+\subsection{The paper's actual finite-flat function norm and base change}
+\label{subsec:paper-flat-norm-base-change}
+
+\begin{theorem}[Actual paper fibre multiplicities and whole fibre points]
+\label{spectrum:paper-flat-fibre-identification}
+\lean{EnvelopeProperty.Berk.flatFibreMult_eq_spectrumFibreNormMult,
+EnvelopeProperty.Berk.absoluteFibreEquiv,
+EnvelopeProperty.Berk.absoluteFibreEquiv_apply_val}
+\leanok
+\uses{spectrum:nonetale-fibre-multiplicities,spectrum:trivial-field-bridge,
+spectrum:relative-integral-completed-fibres}
+Let $k$ be a field with trivial absolute value and let $A\to B$ be a finite
+map of commutative $k$-algebras. The existing paper multiplicity
+$\mathrm{flatFibreMult}_A(y)$ equals the generic spectrum multiplicity,
+namely the actual $H(x)$-dimension of the localized completed tensor fibre
+at the kernel corresponding to $y$, where $x=y|_A$. The old paper fibre
+and the whole generic spectrum fibre over $x$ are genuinely equivalent;
+on every point this equivalence simply forgets the trivial-base condition.
+\end{theorem}
+\begin{proof}
+The old and generic completed residue fields and completed tensor fibre
+maps agree on the actual point and coefficient maps. The existing old
+multiplicity formula and the generic local-dimension formula therefore
+give the same actual finite-dimensional localization, with no residue-only
+or reduced-fibre substitution. Restrict the genuine paper/relative-spectrum
+homeomorphism to the whole base fibre and compose with the actual relative
+fibre forget equivalence. The latter equips each absolute point over $x$
+with its forced coefficient values, since its restriction to $A$ is the
+whole point $x$. Converting equality fibres to inverse images of singleton
+sets gives the stated equivalence and its evaluation identity.
+\end{proof}
+
+\begin{theorem}[The actual paper norm is the generic weighted sum]
+\label{spectrum:paper-flat-norm-identification}
+\lean{EnvelopeProperty.Berk.extendFunction,
+EnvelopeProperty.Berk.extendFunction_toSpectrum,
+EnvelopeProperty.Berk.flatNormFun_eq_spectrumWeightedSum,
+EnvelopeProperty.Berk.extendFunction_comap}
+\leanok
+\uses{spectrum:paper-flat-fibre-identification}
+Let $u$ be an extended-real function on $\operatorname{Berk}_k(B)$.
+Extend it to the absolute spectrum by zero outside the trivial-$k$ locus.
+The existing $\mathrm{flatNormFun}(u)(x)$ is exactly the generic finite-fibre
+weighted sum of this extension. This actual extension commutes with
+pullback through every $k$-algebra homomorphism.
+\end{theorem}
+\begin{proof}
+On an old point, the defining coefficient values satisfy the extension's
+positive branch, which returns the original value of $u$. Reindex the
+existing finite paper sum through the preceding actual fibre equivalence,
+and replace each multiplicity by the proved generic dimension weight.
+The natural-number-to-real-to-EReal coefficient in the old definition is
+exactly the generic natural-number EReal coefficient.
+For pullback, an algebra homomorphism preserves every coefficient element;
+the trivial-base conditions are thus equivalent, and both branches of the
+actual extension agree. No regularizability or boundedness of $u$ is used.
+\end{proof}
+
+\begin{theorem}[Actual finite-flat function norms under coefficient base change]
+\label{spectrum:paper-flat-norm-base-change}
+\lean{EnvelopeProperty.Berk.flatNormFun_baseChange,
+EnvelopeProperty.Berk.flatNormFun_scalarExtension}
+\leanok
+\uses{spectrum:paper-flat-norm-identification,
+spectrum:all-function-finite-base-change,spectrum:all-function-scalar-extension}
+Assume only that $B$ is finite over $A$. For every commutative $k$-algebra
+$C$ over $A$, every actual point $x'$ of $\operatorname{Berk}_k(C)$, and
+every EReal function $u$ on $\operatorname{Berk}_k(B)$,
+\[
+ \mathrm{flatNorm}_{C\otimes_A B/C}(u\circ r_B)(x')
+ =\mathrm{flatNorm}_{B/A}(u)(x'|_A).
+\]
+For an arbitrary commutative $k$-algebra $S$, the same identity holds for
+the \emph{literal} scalar-extended map
+$S\otimes_kA\to S\otimes_kB$, with the actual right-inclusion restriction
+maps. Thus it applies in particular at supplied points with any prescribed
+compatible absolute value on an extension field $S$; it does not require
+the value on $S$ to be trivial or $S$ to be complete.
+The statements hold for every EReal function with Mathlib's actual
+extended-real additive conventions. Flatness, freeness, projectivity,
+separability, reducedness, infinitude and upper-finiteness are unnecessary.
+\end{theorem}
+\begin{proof}
+Rewrite both existing paper norms as the generic weighted sums and use
+compatibility of the extension with the actual pullback. The proved
+arbitrary-function finite-fibre comparison gives the first equality.
+For the literal scalar extension, apply its proved genuine tensor
+cancellation and the all-function scalar-extension comparison: the tensor
+isomorphism preserves every original element, while the local-dimension
+conservation theorem retains all nilpotent and inseparable thickness.
+Both comparisons regroup the genuine local dimension weights, rather
+than assuming the scalar-extension fibres are bijective. All EReal
+functions are permitted because EReal is an additive commutative monoid
+with the unconditional natural-scalar identity used by the generic
+producer. The given $x'$ is retained throughout; no point-extension
+existence theorem is asserted here.
+
+This is the affine pointwise base-change identity for the actual norm
+appearing in Fang--Han--Xia Lemma~5.13. The separate author's theorem
+that finite-flat norms preserve regularizable functions supplies that
+additional function-space statement; it is not an assumption in this
+pointwise proof.
+\end{proof}

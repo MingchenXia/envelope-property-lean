@@ -1,0 +1,217 @@
+\section{The same common leading functions give the whole weighted slope inequality}
+
+Let $C$ be an original integral normal projective curve over an arbitrary
+field $k$, with its actual structure map $p:C\to\operatorname{Spec}k$.
+Normality means that every original stalk is integrally closed. The
+projective factorization of this SAME $p$ derives properness, finite type,
+local Noetherianity and compactness. In particular the SAME original $C$
+is Noetherian. The dimension bound is $\dim C\le1$; the dimension-one
+case is the intended curve case.
+
+\begin{definition}[The whole original residue-degree weight]
+\label{def:gauss-common-leading-original-residue-weight}
+\uses{def:fc-affine-scheme-local-coefficients,def:fc-original-weighted-rational-order}
+\lean{EnvelopeProperty.GaussCommonLeadingDegree.residueWeight}
+\leanok
+For every original point $x\in C$ put
+\[
+ w_p(x)=\dim_k\kappa_C(x),
+\]
+using the SAME original coefficient action induced by the actual $p$.
+In real-valued sums this is the real cast of the literal native finite
+rank. It is nonnegative and is not replaced by $1$. At closed points
+these are the actual residue degrees over $k$; the generic-point term
+below vanishes because its native order is zero. No residue-field
+isomorphism, rational-point or unramified-branch hypothesis is supplied.
+For every original rational function $g$,
+\[
+ w_p(x)\operatorname{ord}_x(g)
+   =\bigl(\operatorname{weightedOrder}_{p,g}(x):\mathbf R\bigr).
+\]
+\end{definition}
+\begin{proof}
+Use the existing actual residue algebra of $p$ at the SAME original
+point. Its coefficient is the original evaluation of the original base
+scalar. Take the native rank over this exact action and cast it to the
+real numbers. Nonnegativity is the nonnegativity of a natural-number
+cast. The displayed identity follows by casting the definition of the
+old original integer weighted order and commuting the two real factors.
+Every original point and its original field are retained.
+\end{proof}
+
+\begin{theorem}[True finite support and real principal balance on the same curve]
+\label{thm:gauss-common-leading-real-principal-balance}
+\uses{thm:fc-original-curve-principal-weighted-balance,def:fc-original-weighted-rational-order,def:gauss-common-leading-original-residue-weight}
+\lean{EnvelopeProperty.GaussCommonLeadingDegree.principal_balance_real}
+\leanok
+For EVERY nonzero original $g\in C.\mathrm{functionField}$, the actual
+function $x\mapsto\operatorname{ord}_x(g)$ has finite support and
+\[
+ \sum_{x\in C}w_p(x)\operatorname{ord}_x(g)=0
+\]
+as a real finite-support sum. Neither support finiteness, a Cartier
+denominator nor a principal-divisor degree balance is an input.
+\end{theorem}
+\begin{proof}
+The actual projective factorization of $p$ derives the Noetherian
+hypotheses on $C$. Apply the already proved original rational-order
+finite-support theorem, which internally produces the two Cartier
+denominators from the actual normal-curve geometry.
+Apply the existing full original weighted principal-divisor theorem to
+this SAME nonzero $g$. That theorem derives the two genuine Cartier
+degree sums from the isomorphism of the original reciprocal denominator
+modules and their FULL original Euler characteristics. It already gives
+zero for the native integer weighted sum; no such degree argument is
+reproved here.
+
+Take the finite set given by the actual unweighted order support. Outside
+it both the native integer weighted function and the real weighted
+function vanish. Replace both whole original sums by their sums over
+that SAME finite set. The preceding original coefficient identity and
+finite-sum cast give the real cast of the old integer sum, hence zero.
+This retains every actual original residue-field degree.
+\end{proof}
+
+\begin{theorem}[Two true principal balances control the entire active slope]
+\label{thm:gauss-common-leading-global-weighted-max}
+\uses{thm:gauss-common-leading-real-principal-balance,def:gauss-common-leading-original-residue-weight,analysis:actual-finite-affine-active-max,analysis:actual-weighted-active-max-slope-sum,thm:fc-curve-proper-support-points}
+\lean{EnvelopeProperty.GaussCommonLeadingDegree.weighted_activeSlope_nonneg}
+\leanok
+Let $B_1,\ldots,B_n,B_t\ne0$ be actual original functions in
+$C.\mathrm{functionField}$ and let $r_1,\ldots,r_n\in\mathbf R$ be
+fixed BEFORE $x$. Let $I\subseteq\mathbf Q^n\times\mathbf Q$ be finite
+and nonempty and let $\beta:(\mathbf Q^n\times\mathbf Q)\to\mathbf R$
+be one fixed original intercept family. Put
+\[
+ \begin{split}
+  \gamma_{\ell,x}&=\operatorname{ord}_x(B_\ell)
+                   -r_\ell\operatorname{ord}_x(B_t),\\
+  s_j(x)&=-\sum_\ell j_\ell\gamma_{\ell,x},\\
+  I_0&=\{j\in I:\beta_j=\max_{i\in I}\beta_i\},\qquad
+  D(x)=\max_{j\in I_0}s_j(x).
+ \end{split}
+\]
+These are the actual old active set and active maximum. Then the actual
+$D:C\to\mathbf R$ has finite support, $D(\eta_C)=0$, and
+\[
+ \sum_{x\in C}w_p(x)D(x)\ge0.
+\]
+The sum is over ALL original points, equivalently all nongeneric closed
+points because the generic term is zero. Negative original orders and
+arbitrary fixed $r_\ell$ are included. The case $n=0$ is included.
+No individual zero balance or finite-support hypothesis is assumed.
+\end{theorem}
+\begin{proof}
+Apply the preceding true principal theorem to EACH $B_\ell$ and to the
+SAME common $B_t$. Let $S$ be the union of their actual finite native-order
+supports. It is finite even when $n=0$. Outside $S$ every original order
+in the displayed formulas is zero, hence every $\gamma_{\ell,x}$ and
+every $s_j(x)$ is zero. The actual active set is nonempty. Its maximum
+of the constant zero family is zero, so $D(x)=0$ outside $S$.
+Thus the actual support of $D$ is a subset of this true finite set.
+The generic point is the top point in the original specialization order
+and has coheight zero. The native integer order is zero off coheight
+one. Therefore all the same orders, slopes and their active maximum are
+zero at the actual generic point.
+
+All actual weighted functions involved vanish outside $S$. The TWO
+true principal balances for $B_\ell$ and $B_t$, on this SAME finite set,
+give for every $\ell$
+\[
+ \sum_{x\in S}w_p(x)\gamma_{\ell,x}
+ =\sum_{x\in S}w_p(x)\operatorname{ord}_x(B_\ell)
+    -r_\ell\sum_{x\in S}w_p(x)\operatorname{ord}_x(B_t)=0.
+\]
+Every $r_\ell$ is constant in $x$. Distribute the finite rational linear
+combination and interchange the two finite sums. For EVERY original $j$
+this derives, rather than assumes,
+\[
+ \sum_{x\in S}w_p(x)s_j(x)
+   =-\sum_\ell j_\ell\sum_{x\in S}w_p(x)\gamma_{\ell,x}=0.
+\]
+Apply the EXISTING weighted active-maximum theorem to the SAME actual
+$I,\beta,S,s,w_p$. Its weight nonnegativity is the original rank
+nonnegativity and its individual balances are the just-derived equalities.
+It gives $\sum_{x\in S}w_p(x)D(x)\ge0$. Outside $S$ the latter original
+weighted function vanishes, so its whole finite-support sum is this
+SAME finite sum. This proves the claim, without reproving the finite
+maximum inequality. For $n=0$ all coordinate sums are empty and the same
+argument gives zero slopes everywhere.
+\end{proof}
+
+\begin{theorem}[The original common Gauss profiles have nonnegative whole residue-weighted degree]
+\label{thm:gauss-common-leading-original-degree-nonnegative}
+\uses{thm:gauss-common-global-leading-convex-profiles,thm:gauss-common-leading-global-weighted-max,def:gauss-common-leading-original-residue-weight,scheme:native-regular-unit-local-psh,analysis:actual-finite-affine-active-max}
+\lean{EnvelopeProperty.GaussCommonLeadingDegree.exists_common_leading_degree_nonneg}
+\leanok
+Keep the actual original integral proper dominant
+$f:Y\to\operatorname{Spec}k[t]$, actual integral closed immersion
+$i:C\hookrightarrow Y$, true vertical $i(\eta_C)$, and genuine original
+local component geometry used by the frozen common-leading profile
+producer. Assume the SAME original $C$ is normal of dimension at most
+one and is genuinely projective over $k$ for its LITERAL structure map
+\[
+ p_C=C\xrightarrow{i}Y\xrightarrow{f}\operatorname{Spec}k[t]
+                \longrightarrow\operatorname{Spec}k.
+\]
+Let $u$ have the original native convex-PL property on $U$ at the prescribed
+paper Gauss radius. The old actual common $q_C$ is retained. Under its
+honest original applicability condition $q_C\in U$, retain the SAME
+$W,V$, original unit family, rational $I$, intercepts, active set,
+global $\Pi,e>0,U_t,A_\ell,U_\ell$, and original native profiles.
+
+The actual leading functions are the ORIGINAL generic stalk images
+$B_\ell=i^\#_{\eta_C}(U_\ell)$ and $B_t=i^\#_{\eta_C}(U_t)$.
+They are nonzero actual elements of the SAME $C.\mathrm{functionField}$.
+For the SAME actual local slopes
+\[
+ D_x=\max_{j\in I_0}
+       \left(-\sum_\ell j_\ell\left(
+        \operatorname{ord}_x(B_\ell)
+          -\frac{A_\ell}{e}\operatorname{ord}_x(B_t)\right)\right),
+\]
+internally derive finite support on the WHOLE original curve and
+\[
+ D_{\eta_C}=0,\qquad
+ \sum_{x\in C}[\kappa_C(x):k]D_x\ge0.
+\]
+The actual original weighted points, scales, values of $u$, exact
+quotients and their limits remain those of the already proved common
+profile theorem, with slope EXACTLY this $D_x$. There is no added
+support, balancing, global-leading matching, degree or norm certificate.
+All original closed-point residue degrees are retained.
+\end{theorem}
+\begin{proof}
+The genuine projective factorization of the literal $p_C$ supplies the
+same $C$ with its required local Noetherianity and compactness.
+Call the frozen common-leading profile producer once with the actual
+original geometry and original convex-PL hypothesis. It supplies the
+actual $q_C$. Under its original applicability condition it supplies
+all the SAME global and local data in the statement. In particular its
+true generic-stalk unit factors, global exponents and positive $e$ are
+chosen before every original local point.
+
+The actual generic closed-immersion stalk map takes each original unit
+to a unit of the actual original generic stalk of integral $C$. Thus
+every $B_\ell$ and the SAME $B_t$ is nonzero. Apply the preceding actual
+weighted-maximum theorem to THESE functions, the fixed real coefficients
+$r_\ell=A_\ell/e$, THESE actual original intercepts and active indices,
+and the literal original $p_C$. It derives the claimed whole finite
+support, generic zero and residue-weighted sum inequality internally.
+No vertical exponent is set to zero, and no original residue weight is
+replaced by a rational-point or degree-one weight.
+
+The active slope there has direction set the whole original $C$.
+At a fixed original point, evaluation of this same finite maximum is
+literally the active slope with singleton direction parameter used by
+the frozen profile theorem. Substitute this definitional equality in
+the old exact original function profiles, actual quotients and limits.
+All points, functions, scales, indices and original whole-field
+factorizations remain the same. This supplies precisely the claimed
+global weighted slope consumer.
+\end{proof}
+
+This chapter does not identify a generic section with a model-line
+frame, compare its orders with a line, or compute the degree of an
+original line bundle. Those separate dictionary and degree bridges
+are needed before a residual line-degree or LocalPositivity conclusion.

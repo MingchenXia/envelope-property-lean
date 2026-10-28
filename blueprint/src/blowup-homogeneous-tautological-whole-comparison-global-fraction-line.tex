@@ -1,0 +1,35 @@
+\begin{definition}[Original global fraction line]
+\label{def:whole-original-global-fraction-line-comparison}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalGlobalFractionWholeLineIso}
+\leanok
+\uses{prop:whole-original-global-coordinate-fraction-basis,prop:whole-original-global-blowup-fraction-basis}
+Let $v:W\to Z$ be the actual original native prescribed nonzero-generator
+fraction inclusion into the same global blowup. On the entire same fraction
+spectrum there is an isomorphism
+\[
+ v^*q^*\mathcal O(1)\simeq v^*\bigl(\mu^*j^*\mathcal O(d)\otimes(D\mathcal O_Z)\bigr).
+\]
+\end{definition}
+\begin{proof}
+The same original pivot coordinate pulled along $vq$ is a basis, and the old
+global lift of the same prescribed pivot polynomial pulled along $v$ is a
+basis. Compose the canonical iterated-pullback comparison with the inverse
+coordinate basis and then the old lifted basis. All objects, maps and bases
+are the actual original ones; both basis proofs are derived internally.
+\end{proof}
+
+\begin{proposition}[Original global fraction sections]
+\label{prop:whole-original-global-fraction-line-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalGlobalFractionWholeLineIso_section}
+\leanok
+\uses{def:whole-original-global-fraction-line-comparison,prop:whole-original-global-coordinate-fraction-ratios,prop:whole-original-global-form-fraction-ratios}
+The same fraction comparison carries $v^*q^*\sigma_i$ to $v^*\beta_i$ for
+every original prescribed polynomial $F_i$, where $\beta_i$ is its old lift
+on the entire original global ideal blowup.
+\end{proposition}
+\begin{proof}
+The original coordinate and old global form section have exactly the same
+original native ratio to their respective pivot bases. Cancellation of those
+bases sends the coordinate section to the old lifted section. Naturality of
+the canonical composition comparison retains the actual iterated pullback.
+\end{proof}

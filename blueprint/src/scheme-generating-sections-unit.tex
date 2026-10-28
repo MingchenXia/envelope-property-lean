@@ -1,0 +1,44 @@
+\section{Original generating sections and actual local unit coefficients}
+
+\begin{definition}[The actual morphism of an original generating section]
+\label{def:actual-generating-section-hom}
+\lean{EnvelopeProperty.SchemeGeneratingSectionsUnit.generatorHom,EnvelopeProperty.SchemeGeneratingSectionsUnit.generatorHom_ofEpi,EnvelopeProperty.SchemeGeneratingSectionsUnit.generatorHom_pullback}
+\leanok
+For a genuine original generating family $G$ of a module $M$, its $i$th
+section morphism is the SAME actual free-basis inclusion followed by its
+actual evaluation epimorphism. Taking images under an original epimorphism
+and taking actual pullbacks commute with these actual section morphisms,
+using the TRUE native unit comparison in the pullback case.
+\end{definition}
+\begin{proof}
+The quotient identity follows from the genuine evaluation-map identity for
+images of generators. For pullback, the actual free-module comparison
+maps each original basis inclusion to the pullback of that SAME inclusion,
+preceded by the actual inverse unit comparison. Compose this whole
+identity with the actual pulled evaluation epimorphism.
+\end{proof}
+
+\begin{theorem}[An original local unit sheaf has a unit among its generators]
+\label{thm:actual-local-unit-generator}
+\lean{EnvelopeProperty.SchemeGeneratingSectionsUnit.exists_isUnit_coefficient}
+\leanok
+\uses{def:actual-generating-section-hom}
+Let $A$ be ANY actual nonzero commutative local ring. For every original
+generating family $G$ of the actual unit module on $\operatorname{Spec}A$,
+some actual generator has unit coefficient in $A$, computed from its
+original top-open value at $1$ and the true global-section isomorphism.
+The family need not be finite.
+\end{theorem}
+\begin{proof}
+If every coefficient is a nonunit, all coefficients lie in the original
+maximal ideal. Pull the actual generating family back to the spectrum of
+the original residue field and identify the actual pulled unit module
+with the original unit module there. The preceding exact generator
+pullback identity and the true scalar-pullback formula show that every
+actual generator morphism is zero, because the original residue map kills
+every original coefficient. Coproduct extensionality makes the actual
+free evaluation map zero. This map is epic, so the identity of the actual
+unit module on the residue-field spectrum is zero. Evaluating at the
+original unit section and applying the true global-section isomorphism
+gives $1=0$ in the original residue field, a contradiction.
+\end{proof}

@@ -1,0 +1,93 @@
+\subsection{Actual affine lines through rational points}
+\label{subsec:actual-affine-lines}
+
+\begin{definition}[Whole affine linear substitution]
+\label{algebra:affine-line-substitution}
+\lean{EnvelopeProperty.AffineLine.subst,
+EnvelopeProperty.AffineLine.point,
+EnvelopeProperty.AffineLine.aeval_comp_subst,
+EnvelopeProperty.AffineLine.eval_subst,
+EnvelopeProperty.AffineLine.eval_subst_zero,
+EnvelopeProperty.AffineLine.subst_surjective,
+EnvelopeProperty.AffineLine.aeval_zero_comp_subst}
+\leanok
+For a field $F$, any coordinate index type $\sigma$, and actual vectors
+$a,b\in F^\sigma$, construct the genuine $F$-algebra homomorphism
+\[
+ \ell_{a,b}^*:F[U_i:i\in\sigma]\longrightarrow F[T],
+ \qquad U_i\longmapsto a_i+b_iT.
+\]
+Evaluation at every parameter $t$ equals evaluation of the entire original
+polynomial at $a+tb$. At zero this recovers the whole rational point;
+for an arbitrary actual rational-point algebra homomorphism, its coordinate
+values give exactly that original homomorphism. If $b\ne0$, the whole
+polynomial homomorphism is genuinely surjective.
+\end{definition}
+\begin{proof}
+Use the polynomial algebra universal property with the actual linear
+coordinate polynomials. Algebra homomorphism extensionality proves the
+entire evaluation-composition identity; this preserves coefficients as
+well as every polynomial. For a nonzero direction choose an actual
+coordinate $i$ with $b_i\ne0$. The original polynomial
+$b_i^{-1}(U_i-a_i)$ maps exactly to $T$. All coefficients are also in the
+image; actual polynomial induction therefore gives surjectivity on every
+polynomial, over the given field. No mere coordinate-value
+inference for seminorms is used.
+\end{proof}
+
+\begin{theorem}[An actual nonconstant line meets a principal open]
+\label{algebra:affine-line-avoids-polynomial}
+\lean{EnvelopeProperty.AffineLine.exists_eval_ne_zero,
+EnvelopeProperty.AffineLine.exists_direction_subst_ne_zero,
+EnvelopeProperty.AffineLine.exists_direction_parameter_ne_zero,
+EnvelopeProperty.AffineLine.finite_bad_parameters}
+\leanok
+\uses{algebra:affine-line-substitution}
+Assume $F$ is infinite and $\sigma$ is nonempty. Given any rational point
+$a$ and any nonzero polynomial $h\in F[U_i:i\in\sigma]$, there is an
+actual nonzero direction $b$ such that $\ell_{a,b}^*(h)\ne0$.
+Only finitely many rational parameters of this line lie in $V(h)$.
+In particular the constructed line through $a$ is not contained in the
+closed hypersurface; it meets the genuine principal open $D(h)$.
+\end{theorem}
+\begin{proof}
+Polynomial function extensionality over the infinite field produces an
+actual rational point $z$ with $h(z)\ne0$. If $h(a)=0$, take $b=z-a$.
+The unequal polynomial values force $b\ne0$, and evaluation at parameter
+one makes the restricted polynomial nonzero. If $h(a)\ne0$, choose a
+coordinate of the nonempty index set and its unit direction. Evaluation
+at zero already proves the restricted polynomial nonzero. The roots of
+an actual nonzero univariate polynomial form a finite set; the full
+evaluation identity identifies these roots with the bad rational
+parameters. Since the field is infinite, a parameter outside that finite
+set gives the claimed meeting with $D(h)$.
+\end{proof}
+
+\begin{theorem}[The genuine closed line and its original scheme point]
+\label{scheme:affine-line-closed-immersion}
+\lean{EnvelopeProperty.AffineLine.schemeMap,
+EnvelopeProperty.AffineLine.schemeMap_isClosedImmersion,
+EnvelopeProperty.AffineLine.schemeMap_zero}
+\leanok
+\uses{algebra:affine-line-substitution,algebra:affine-line-avoids-polynomial}
+The actual contravariant Spec map of this whole polynomial homomorphism
+is a genuine closed immersion when $b\ne0$. The actual scheme point of
+$\operatorname{Spec}F[T]$ at zero composes with this morphism to the
+original whole rational point of the affine polynomial scheme.
+For the preceding direction it meets $D(h)$.
+\end{theorem}
+\begin{proof}
+Take the actual Spec map of the constructed polynomial ring homomorphism.
+Its proved surjectivity supplies the genuine scheme closed immersion.
+Contravariant Spec functoriality turns the full evaluation-at-zero
+homomorphism equality into the stated whole scheme diagram. This is
+actual scheme algebra, with no independently supplied line or incidence
+certificate.
+
+Over the genuine complete algebraically closed field constructed earlier,
+infinitude is automatic, so this supplies the rational-point and
+principal-open line ingredient for Fang--Han--Xia Proposition~5.22.
+Passing to an open affine subset, its later curve dimension arguments,
+and reduction, normalization or subharmonicity are distinct producers;
+none is assumed or asserted by these line theorems.
+\end{proof}

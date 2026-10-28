@@ -1,0 +1,125 @@
+\subsection{Actual native projective maps are proper without coefficient bounds}
+
+All projective/native comparisons below are existing genuinely proved producers,
+not assumed point-space or properness certificates. Coefficient seminorms may be
+unbounded, nontrivial, nonfaithful, and over arbitrary commutative rings. This
+extends the previous bounded-proper-model statements in an independent direction.
+
+\begin{lemma}[Whole original polynomial bounds from normalized coordinate values]
+\label{spectrum:normalized-projective-polynomial-bounds}
+\uses{spectrum:topology}
+\lean{EnvelopeProperty.Berkovich.Spectrum.val_le_sup_coeff_of_variables_le_one}
+For ANY original commutative ring $R$, any variable type and any genuine polynomial
+seminorm $x$ with $|X_i|_x\le1$, every ORIGINAL polynomial satisfies
+\[
+ |F|_x\le \max_{m\in\operatorname{supp}F}|C(F_m)|_x.
+\]
+Consequently individual eventual bounds on its finite set of original coefficient
+values give a genuine eventual bound on $|F|$, without one simultaneous eventual
+bound over the whole coefficient ring or a global bound on the base valuation.
+\leanok
+\end{lemma}
+\begin{proof}
+Write the WHOLE original polynomial as its actual finite sum of monomials. The
+true ultrametric finite-sum inequality bounds its value by the largest original
+monomial value. A monomial is the original coefficient constant times the finite
+product of actual variable powers. True multiplicativity and $|X_i|\le1$ bound
+every such power and finite product by one, so the entire monomial is bounded by
+its original coefficient value. Take the genuine finite support maximum. The
+empty polynomial and zero ring cases are included. For eventual bounds, intersect
+only the finitely many actual coefficient events for this fixed original $F$,
+and take their finite maximum. No generator-value reconstruction is used.
+\end{proof}
+
+\begin{theorem}[Actual absolute normalized-projective coefficient restriction is proper]
+\label{spectrum:normalized-projective-coefficient-proper}
+\uses{spectrum:normalized-projective-polynomial-bounds,spectrum:closed-coordinate-ultrafilter-limit,projective:general-normalized-spectrum}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coefficientRestriction,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coefficientRestriction_val,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_coefficientRestriction,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isClosedEmbedding_evaluation,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isProperMap_coefficientRestriction,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isClosedMap_coefficientRestriction}
+For EVERY original commutative ring $R$ and $n\ge0$, the actual coefficient map
+from the genuine graded normalized polynomial spectrum of $\mathbf P^n_R$ to
+$\operatorname{Spectrum}R$ is proper, hence closed with compact inverse images
+of compact sets. No prescribed coefficient valuation or compactness of the whole
+absolute projective spectrum is assumed.
+\leanok
+\end{theorem}
+\begin{proof}
+The actual gradedness conditions and true finite-coordinate normalization
+$\max_i|X_i|=1$ are CLOSED in the full original polynomial seminorm spectrum.
+Compose that genuine closed subtype inclusion with the established actual closed
+evaluation embedding. Thus bounded-coordinate ultrafilters have ACTUAL limits
+inside the original normalized space.
+
+Given an original ultrafilter whose entire coefficient restriction converges in
+$\operatorname{Spectrum}R$, continuity of EVERY coefficient evaluation gives
+an individual eventual bound for each original coefficient value. All normalized
+coordinate values are at most one. The preceding finite-polynomial argument
+therefore bounds each original polynomial coordinate separately. Apply the true
+closed-evaluation ultrafilter producer to get an actual normalized-projective
+limit. Coefficient restriction is continuous by full pointwise evaluation.
+The genuine ultrafilter proper-map criterion proves properness. This is a direct
+properness proof, not an invalid converse from compact inverse images or an
+assumed fixed-base projective compactness statement.
+\end{proof}
+
+\begin{theorem}[Actual native polynomial projective projection is proper]
+\label{scheme:native-polynomial-projective-proper}
+\uses{spectrum:normalized-projective-coefficient-proper,projective:absolute-native-coefficient-restriction,scheme:affine-valued-point-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph_coefficientRestriction,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isProperMap_map_nativeStructureMap,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isClosedMap_map_nativeStructureMap}
+The genuine original structure map of ACTUAL native polynomial $\mathbf P^n_R$
+to ACTUAL native $\operatorname{Spec}R$ is proper for arbitrary $R$. It is closed,
+and has compact inverse images of compact sets and compact whole native fibres.
+The conclusion requires no boundedness of any coefficient valuation.
+\leanok
+\end{theorem}
+\begin{proof}
+Use the actual absolute native-normalized homeomorphism and actual native affine
+seminorm homeomorphism. Their full original structure-map square is DERIVED as
+follows. For any original normalized point, take $v$ to be its ACTUAL coefficient
+valuation. The existing exact fixed-coefficient locus theorem puts its whole
+native image above precisely the native basepoint of $v$. Thus the actual native
+structure projection is the whole coefficient restriction through the two true
+homeomorphisms. It retains EVERY original coefficient and the entire native
+basepoint. Transport the proved properness through those actual homeomorphisms.
+Closedness and compact inverse images/fibres follow from true properness.
+No native comparison, point bijection or polynomial-value hypothesis is supplied.
+\end{proof}
+
+\begin{theorem}[Actual closed projective embeddings and exact common-base restrictions]
+\label{scheme:native-closed-projective-map-proper}
+\uses{scheme:native-polynomial-projective-proper,scheme:native-closed-immersion,scheme:relative-valued-points}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isProperMap_map_closedProjective,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isProperMap_relativeMap_closedProjective}
+For a genuine closed immersion $j:Y\hookrightarrow\mathbf P^n_R$, the original
+native map of the composite $Y\to\operatorname{Spec}R$ is proper. For ANY actual
+common further structure map $\operatorname{Spec}R\to\operatorname{Spec}B$ and
+ANY prescribed real-valued $B$ seminorm, the SAME map on exact native fixed-base
+loci is proper, with no coefficient bound. The statements concern true original
+scheme maps and genuine geometric closed immersions, not native embedding data.
+\leanok
+\end{theorem}
+\begin{proof}
+The existing actual native closed-immersion theorem gives a genuine closed
+embedding for $j$, hence a proper map. Compose it with the previous actual native
+projective proper projection, retaining whole original scheme/native composition.
+For the common prescribed locus its actual source inclusion is closed because
+the actual native affine base is Hausdorff. Compose that true closed inclusion
+with the absolute proper map. The target subtype inclusion is continuous and
+injective; genuine proper-map cancellation proves properness of the original
+relative map. Exact whole basepoint functoriality supplies membership, rather
+than an independent source scalar-point extension.
+
+Applying these producers to literal Rees families requires the actual
+coefficient-preserving identification between their polynomial Proj target and
+the established native $\mathbf P^n_R$ comparison. Arbitrary finite index types,
+including the empty type, additionally require genuine variable reindexing or
+the true empty-Proj argument before that broader literal Rees consumer is claimed.
+Those scheme identifications are the next separate consumer, not assumed witness
+data or a claimed outcome of the present twelve producers.
+\end{proof}

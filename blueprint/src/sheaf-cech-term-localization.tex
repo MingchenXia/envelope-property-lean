@@ -1,0 +1,45 @@
+\section{Same original finite Cech term localization}
+
+\begin{lemma}[The original term section equivalence is natural under open restriction]
+\label{lem:sheaf-cech-term-section-restriction}
+\leanok
+\lean{EnvelopeProperty.SheafCechTermLocalization.factorRestriction,EnvelopeProperty.SheafCechTermLocalization.termSections_restrict_apply,EnvelopeProperty.SheafCechTermLocalization.termSections_restrict}
+Let $F$ be an actual module-valued sheaf over a commutative
+ring $A$, $U_i$ any original family of opens, and
+$V\subseteq W$ an original inclusion. In every degree,
+the true native equivalences from entire Cech term sections
+to the product of sections on tuple intersections identify
+the original whole term restriction with the SAME coordinate
+restrictions on those original intersections.
+\end{lemma}
+\begin{proof}
+The original tuple projection is a sheaf morphism, so it
+commutes with the original open restriction. The native
+tuple-section isomorphism is the original sheaf map of the
+canonical intersection equality. Presheaf composition and
+uniqueness of arrows between the same original opens prove
+each coordinate equality. Function extensionality gives the
+entire true linear-map square.
+\end{proof}
+
+\begin{proposition}[Actual finite Cech term restriction is localization]
+\label{prop:sheaf-finite-cech-term-localization}
+\leanok
+\lean{EnvelopeProperty.SheafCechTermLocalization.termRestriction_isLocalizedModule}
+If the original indexing set is finite and every actual tuple
+intersection restriction is an $S$-localization, the SAME
+whole native Cech term restriction is an $S$-localization.
+The original indexing set may be empty, and both original
+opens may be empty.
+\uses{lem:sheaf-cech-term-section-restriction,lem:finite-product-module-localization}
+\end{proposition}
+\begin{proof}
+The true finite common-denominator product theorem makes the
+actual coordinate restriction a localization at the SAME
+multiplicative set. Transport it through the preceding
+whole original linear equivalences and their genuine
+naturality square. No product/localization comparison
+certificate is supplied. The actual affine geometric
+localizations needed to apply this to principal opens
+still have to be proved.
+\end{proof}

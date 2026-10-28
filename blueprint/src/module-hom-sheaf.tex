@@ -1,0 +1,31 @@
+\section{The genuine sheaf of original module morphisms}
+
+\begin{theorem}[Module-linearity descends along a covering sieve]
+\label{thm:module-hom-original-linearity-descent}
+\lean{EnvelopeProperty.ModuleHomSheaf.ambientHom,EnvelopeProperty.ModuleHomSheaf.toAmbient,EnvelopeProperty.ModuleHomSheaf.toAmbient_injective,EnvelopeProperty.ModuleHomSheaf.restrictHom,EnvelopeProperty.ModuleHomSheaf.ambientHom_map_toAmbient,EnvelopeProperty.ModuleHomSheaf.homSubfunctor,EnvelopeProperty.ModuleHomSheaf.homSubfunctor_isSheaf,EnvelopeProperty.ModuleHomSheaf.localHomSheaf,EnvelopeProperty.ModuleHomSheaf.localHomEquiv}
+\leanok
+Let $R$ be a sheaf of rings on a site and $M,N$ original sheaves of
+$R$-modules. The local module morphisms $M|_U\to N|_U$ form a sheaf of
+types. Its sections retain the entire original module morphisms, with
+their original scalar actions.
+\end{theorem}
+\begin{proof}
+Forget scalar multiplication and form the existing sheaf of morphisms
+between the underlying additive sheaves. Inside it take the subpresheaf
+of those local morphisms that are $R$-linear. Restriction preserves
+linearity because both source and target restriction functors preserve
+the original scalar actions.
+
+It remains to show that this subpresheaf is closed under gluing. Suppose
+an additive local morphism becomes linear along a covering sieve.
+On any object over $U$, to compare its values on $rm$ and $r$ times its
+value on $m$, pull the sieve back to that object. The target module
+sheaf is separated for this covering sieve. On each covering arrow,
+naturality moves restriction through the additive morphism. Both
+source and target restriction maps preserve scalar multiplication, so
+the desired equality becomes the scalar-linearity equality for one of
+the original covering module morphisms. Separatedness proves it before
+restriction. Thus the glued additive morphism is itself linear. A
+subpresheaf of a sheaf closed under this local test is a sheaf, proving
+the assertion.
+\end{proof}

@@ -1,0 +1,198 @@
+\section{Actual original parameters on the selected regular paired surface}
+
+All stalks, coefficient maps and quotient maps below are the original ones.
+The geometric input to the final theorem is the same original closed-projective
+integral surface over $B=\operatorname{Spec}k[t]$, the same original closed
+central integral projective curve, and the actual entire altered pair.
+Neither a selected curve, its Cartier property, local generators, a residue
+field identification nor a norm comparison is an input to that final theorem.
+The already proved geometry selects the curve internally. The later
+unconditional original-model wrapper constructs the actual pair by the
+already proved alteration theorem; pair existence is not a new external input.
+
+\begin{lemma}[The original lifted component has its actual Cartier kernel]
+\label{lem:pl-gauss-paired-open-component-kernel-cartier}
+\uses{def:alteration-output,def:snc,lem:actual-cartier-component-dimension,thm:snc-regular-component-cartier,thm:cartier-dominant-pullback,def:variety}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceParameters.closed_component_kernel_isEffectiveCartierDivisor}
+\leanok
+Let $d$ be any actual altered pair over a field, with original open
+$e:R\hookrightarrow\overline R$ and original SNC datum $D$. For any
+native support component $E$ put $A=V(I_E)$, where
+$I_E=\mathcal I_{\overline R}(E)$ is its literal vanishing ideal,
+and let $\iota_E:A\hookrightarrow\overline R$ be the original inclusion.
+For any actual closed $j:A\hookrightarrow R$ with
+$j\gg e=\iota_E$, the actual original ideal sheaf $\ker j$ is
+an effective Cartier divisor on $R$.
+\end{lemma}
+\begin{proof}
+The original square with arrows $j,\operatorname{id}_A,e,\iota_E$
+is a pullback. Indeed the right triangle commutes, the identity is an
+isomorphism, and $e$ is a monomorphism: equality after $e$ uniquely
+identifies any two candidate lifts. Equivalently its actual comparison
+to $R\times_{\overline R}A$ is an isomorphism, and its composition
+with the original first projection is the same $j$.
+The original pullback-kernel theorem and invariance of the kernel
+under precomposition by this actual isomorphism give the whole ideal
+identity
+\[
+ \ker j=(\ker\iota_E).\operatorname{comap}(e)
+       =I_E.\operatorname{comap}(e).
+\]
+This is the entire original ideal, not merely its radical or support.
+The actual compactification is a field variety, hence locally
+Noetherian. The SNC component Cartier theorem applies to this same
+$I_E$. The original source and compactification are integral, and
+the nonempty open immersion $e$ is dominant: its open image is a
+nonempty open of an irreducible space, hence dense. The proved
+Cartier-preservation theorem along dominant integral morphisms
+therefore makes the actual pullback $I_E.\operatorname{comap}(e)$
+Cartier. The whole ideal identity proves the assertion. No generator,
+Cartier pullback certificate or field embedding was supplied.
+\end{proof}
+
+\begin{lemma}[Original regular curve stalks are DVRs and have an actual closed point]
+\label{lem:pl-gauss-paired-curve-stalks-dvr}
+\uses{def:regular-scheme,thm:fc-curve-proper-support-points}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceParameters.regular_curve_stalks_and_closed_point}
+\leanok
+Let $A$ be an actual integral regular scheme with $\dim A=1$.
+There is an actual nongeneric closed point $x_0$ of $A$.
+At every actual nongeneric $x\in A$, the SAME original local ring
+$Q=\mathcal O_{A,x}$ is a discrete valuation ring.
+\end{lemma}
+\begin{proof}
+If $A$ had only its generic point, all its points would be equal.
+The order of irreducible closed subsets is the specialization order
+of the points of a sober space. That one-point order has dimension
+at most zero, contradicting $\dim A=1$. Thus an actual point different
+from the generic point exists. The original integral-curve topology
+makes every such point closed and gives its actual coheight one.
+The scheme stalk dimension formula consequently gives
+$\dim\mathcal O_{A,x}=1$. Regularity applies to this literal stalk,
+so it is a Noetherian local ring. It is a domain because $A$ is
+integral. Regularity identifies its cotangent-space dimension over
+its OWN residue field with its ring dimension, hence with one.
+The Noetherian-local-domain DVR equivalence therefore makes this
+same ring a DVR. In particular it is not a field and its actual
+maximal ideal has a nonzero uniformizer. No equality of its residue
+field with the coefficient field is required.
+\end{proof}
+
+\begin{lemma}[Cartier equations and lifted original uniformizers give the actual parameters]
+\label{lem:pl-gauss-paired-original-cartier-parameters}
+\uses{lem:pl-gauss-paired-curve-stalks-dvr,def:fc-closed-immersion-principal-stalk-quotient,thm:fc-closed-immersion-stalk-order-length,alggeom:original-stalk-coefficient-map,alggeom:original-stalk-coefficient-triangle,alggeom:original-stalk-coefficient-injective,lem:scheme-stalk-coefficients-naturality}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceParameters.exists_original_cartier_parameters}
+\leanok
+Let $R,A$ be actual integral schemes, let $A$ be regular of dimension
+one, and let $j:A\hookrightarrow R$ be an actual closed immersion
+whose actual kernel ideal is Cartier. Suppose the ORIGINAL proper
+dominant $b_R:R\to B$ and actual $q_A:A\to\operatorname{Spec}k$
+satisfy the whole central triangle
+$j\gg b_R=q_A\gg\epsilon$, with $\epsilon$ the literal evaluation
+at zero morphism. For every nongeneric actual $x\in A$, set
+\[
+ S=\mathcal O_{R,j(x)},\quad Q=\mathcal O_{A,x},\quad
+ \psi=j_x^*:S\to Q,\quad
+ \rho=\operatorname{coefficientMap}(b_R,j(x)),\quad t_S=\rho(t).
+\]
+There are actual $\pi,z\in S$ with
+\[
+ \ker\psi=(\pi),\qquad \mathfrak m_S=(\pi,z),\qquad
+ \operatorname{Prime}(\pi),\qquad \pi\nmid z,\qquad
+ t_S\ne0,\qquad \pi\mid t_S.
+\]
+The actual $Q$ is a DVR, and an actual ring isomorphism
+$S/(\pi)\simeq Q$ sends EVERY original quotient class $[a]$ to
+$\psi(a)$. In this intermediate general lemma the Cartier hypothesis
+is an ordinary geometric premise; the final paired theorem derives
+it internally by the preceding whole-kernel producer.
+\end{lemma}
+\begin{proof}
+At the actual point $j(x)$, choose an actual affine Cartier
+neighborhood $U$ and its actual regular equation $f$ for
+$(\ker j)(U)$. The open $U$ is nonempty, its ring is a domain, and
+$f\ne0$. Define $\pi$ to be its ORIGINAL germ in $S$.
+The actual germ of an integral scheme is injective, so $\pi\ne0$.
+The proved original closed-immersion stalk-kernel theorem computes
+\[
+ \ker\psi=(\ker j)(U)S=(f)S=(\pi).
+\]
+The literal original $\psi$ is surjective because $j$ is closed.
+The target $Q$ is a domain, so this kernel is prime. Since
+$\pi\ne0$, the principal-ideal prime criterion makes $\pi$ a prime
+ELEMENT of the SAME $S$. The existing original principal-stalk-
+quotient isomorphism gives $S/(\pi)\simeq Q$ and its stated formula
+on every representative; no comparison map is supplied.
+
+The preceding curve-stalk result gives the actual DVR $Q$. Choose
+an actual irreducible uniformizer $\bar z$ of $Q$ with
+$\mathfrak m_Q=(\bar z)$ and $\bar z\ne0$. Surjectivity of the
+actual $\psi$ lifts it to an actual $z\in S$. Locality of the same
+stalk map gives $\psi^{-1}(\mathfrak m_Q)=\mathfrak m_S$.
+The original surjective ideal map/comap identity therefore gives
+\[
+ \mathfrak m_S=\psi^{-1}(\psi((z)))=(z)+\ker\psi=(\pi,z).
+\]
+If $\pi$ divided $z$, then $z\in\ker\psi$, contradicting
+$\psi(z)=\bar z\ne0$. This proves the required nondivisibility
+without choosing or replacing either local ring.
+
+The original coefficient map into every stalk is injective for
+an integral source, a reduced affine base and a dominant
+quasi-compact morphism. These hypotheses hold for the SAME $b_R$
+(properness gives quasi-compactness). Since $t\ne0$ in $k[t]$,
+its actual germ $t_S$ is nonzero. The whole original stalk
+coefficient triangle gives
+$\psi\circ\rho=\operatorname{coefficientMap}(j\gg b_R,x)$.
+The given whole central triangle identifies this map with the
+composition of evaluation at zero and the original coefficient
+map of $q_A$. To see this without any desired scalar certificate,
+compose the two original maps from the spectrum of $Q$ to their
+base schemes; the actual fromSpecStalk structure triangles and
+functoriality of Spec identify them, and faithfulness of Spec
+identifies the whole ring maps. Evaluating at $t$ gives
+$\psi(t_S)=0$. Thus $t_S\in(\pi)$, equivalently $\pi\mid t_S$.
+The quotient and all coefficient formulas concern the original
+maps. No assertion $t_S=u\pi^e$ is made, so crossings and
+multiplicities are retained.
+\end{proof}
+
+\begin{theorem}[The original paired surface internally supplies all actual local parameters]
+\label{thm:pl-gauss-paired-surface-actual-parameters}
+\uses{lem:pl-gauss-paired-data-central-component,thm:pl-gauss-paired-data-central-curve-finite,lem:pl-gauss-paired-open-component-kernel-cartier,lem:pl-gauss-paired-curve-stalks-dvr,lem:pl-gauss-paired-original-cartier-parameters,def:variety,def:alteration-output,lem:actual-cartier-component-dimension}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceGeometry.exists_regular_paired_surface_parameters}
+\leanok
+For the same actual original closed-projective integral surface of
+dimension two, its original closed central integral projective curve
+of dimension one, and the actual entire altered pair, there exist
+internally selected $E,A,j,g$ as in the proved paired-geometry
+consumer. The source is the SAME regular surface, its base map is
+proper, dominant and flat, $A$ is the SAME regular integral
+projective curve, $j$ is CLOSED, and $g$ is finite and dominant to
+the ORIGINAL central curve. All original whole model, base and
+field triangles hold. There is an actual nongeneric closed point
+$x_0\in A$, and at EVERY original nongeneric point of this SAME
+$A$ the entire preceding original parameter and quotient conclusion
+holds. No selected component, local curve, Cartier certificate,
+parameter or field/norm comparison is an input to this theorem.
+\end{theorem}
+\begin{proof}
+Apply the frozen original paired-geometry producer to the same
+original data and actual pair. It internally constructs the
+original support component, the actual closed $j$, the true finite
+dominant $g$, the regular source of dimension two, and the regular
+projective curve of dimension one. Retain every actual whole
+triangle supplied there. Apply the whole-kernel Cartier lemma to
+this SAME $E,j$ and the actual $j\gg e=\iota_E$ equality, obtaining
+the Cartier property of the ACTUAL $\ker j$ internally. The curve
+lemma supplies an actual nongeneric closed point and the original
+DVR stalks. For an arbitrary nongeneric $x$, use the preceding
+original parameter producer with $q_A=g\gg q_1$ and the supplied
+whole central triangle. Its ordinary hypotheses follow from the
+constructed geometric properties, and its outputs are the literal
+$S,Q,\psi,\rho$ at that $x$. Quantifying this construction over all
+such $x$ proves the assertion. The full pair itself is ordinary
+geometric output of the proved unconditional theorem used by the
+later original-model wrapper, and no existence theorem is assumed
+in place of that proved result.
+\end{proof}

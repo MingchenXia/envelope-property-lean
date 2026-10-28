@@ -1,0 +1,230 @@
+\section{Mixed Euler differences and the Nakai criterion}
+\label{sec:seshadri-nakai-criterion}
+
+Throughout, $p:X\to\operatorname{Spec}k$ is a projective morphism to the spectrum of a field,
+and all invertible and coherent modules live on $X$. Dimension means the Krull dimension of
+the underlying topological space. A line is \emph{ample} if a positive tensor power is the
+pullback of $\mathcal O(1)$ along a closed immersion into projective space over $k$
+compatible with $p$.
+
+\begin{definition}[Mixed Euler differences]
+\label{def:seshadri-mixed-euler-difference}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference}
+\leanok
+For a finite list $\lambda=(L_1,\dots,L_n)$ of modules and a module $F$ on $X$, define
+$I(\lambda;F)\in\mathbb Z$ recursively by $I(\varnothing;F)=\chi(X,F)$ and
+\[
+  I(L,\lambda;F)=I(\lambda;F\otimes L)-I(\lambda;F).
+\]
+Thus $I(L_1,\dots,L_n;F)=\Delta_{L_1}\cdots\Delta_{L_n}\chi(X,F)$. When the $L_i$ are
+invertible, $F$ is coherent and $n=\dim X$, this is the intersection number
+$L_1\cdots L_n\cdot F$.
+\end{definition}
+
+\begin{lemma}[Symmetry of mixed Euler differences]
+\label{lem:intersection-permutation}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_swap,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_perm}
+\leanok
+\uses{def:seshadri-mixed-euler-difference}
+$I(\lambda;F)$ depends only on the multiset $\lambda$: permuting the list does not change
+its value.
+\end{lemma}
+\begin{proof}
+It suffices to treat an adjacent transposition of the first two entries, the general case
+following by induction on the list and on permutations. Unfolding the definition twice,
+\[
+ I(L,M,\lambda;F)=I(\lambda;(F\otimes L)\otimes M)-I(\lambda;F\otimes L)
+   -I(\lambda;F\otimes M)+I(\lambda;F).
+\]
+Since $I(\lambda;-)$ is invariant under isomorphisms of the coefficient module (induction on
+$\lambda$, using invariance of $\chi$), the associativity and symmetry isomorphism
+$(F\otimes L)\otimes M\cong(F\otimes M)\otimes L$ makes this expression symmetric in $L,M$.
+\end{proof}
+
+\begin{lemma}[Additivity and push-forward]
+\label{lem:seshadri-mixed-euler-coherent-additivity}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_add,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_pushforward,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_eq_zero_of_isZero}
+\leanok
+\uses{def:seshadri-mixed-euler-difference}
+Let $\lambda$ consist of invertible modules. For a short exact sequence
+$0\to F_1\to F_2\to F_3\to0$ of coherent modules,
+$I(\lambda;F_2)=I(\lambda;F_1)+I(\lambda;F_3)$, and $I(\lambda;0)=0$. For a closed immersion
+$i:Y\to X$ and a quasi-coherent module $G$ on $Y$,
+$I(\lambda;i_*G)=I(i^*\lambda;G)$, computed on $Y$ with $p\circ i$.
+\end{lemma}
+\begin{proof}
+Induction on $\lambda$. For $\lambda=\varnothing$ these are additivity of $\chi$ on short
+exact sequences and invariance of $\chi$ under the affine push-forward $i_*$. Tensoring with
+an invertible $L$ is exact, and the projection formula $i_*G\otimes L\cong i_*(G\otimes i^*L)$
+reduces the inductive step to the statement for the shorter list, applied to both terms of
+the defining difference.
+\end{proof}
+
+\begin{theorem}[Vanishing beyond the dimension]
+\label{thm:seshadri-mixed-euler-dimension-vanishing}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_eq_zero_of_dimension_le,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_eq_unit_of_dimension_le}
+\leanok
+\uses{lem:seshadri-mixed-euler-coherent-additivity,lem:seshadri-original-section-dimension-drop}
+If $\dim X\le d$, $\lambda$ consists of $d+1$ invertible modules and $F$ is coherent, then
+$I(\lambda;F)=0$. Consequently, if $\lambda$ has $d$ invertible entries, then
+$I(\lambda;T)=I(\lambda;\mathcal O_X)$ for every invertible $T$.
+\end{theorem}
+\begin{proof}
+Induction on $d$. A finite filtration of $F$ whose graded pieces are push-forwards of
+invertible modules on reduced closures of points, together with
+Lemma~\ref{lem:seshadri-mixed-euler-coherent-additivity}, reduces to an integral $X$ and an
+invertible coefficient $T$. If $d=0$, then $L\otimes T\cong T$ for every invertible $L$ on
+the integral zero-dimensional $X$, so the single difference vanishes. If $d>0$, write the
+first entry as $L\cong(L\otimes B)\otimes B^{-1}$ where $L\otimes B$ and $B$ have nonzero
+sections $a,b$ (Serre's theorem for a power of $\mathcal O(1)$). The section sequences
+$0\to M\otimes B^{-1}\to M\to M|_{Z(b)}\to0$ express
+$I(L,\lambda';T)$ as a difference of mixed values on the zero schemes $Z(a)$ and $Z(b)$,
+which have dimension at most $d-1$; their lists have $d$ entries, so they vanish by
+induction. The second assertion is the case $\lambda'=(T,\lambda)$:
+$I(T,\lambda;\mathcal O_X)=I(\lambda;T)-I(\lambda;\mathcal O_X)=0$.
+\end{proof}
+
+\begin{theorem}[Top-degree multilinearity]
+\label{thm:seshadri-mixed-euler-product-additivity}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_tensor_add}
+\leanok
+\uses{thm:seshadri-mixed-euler-dimension-vanishing,lem:intersection-permutation}
+If $\dim X\le d$, $L,M$ and the entries of $\lambda$ are invertible with $|\lambda|+1=d$,
+and $F$ is coherent, then
+\[
+  I(L\otimes M,\lambda;F)=I(L,\lambda;F)+I(M,\lambda;F).
+\]
+\end{theorem}
+\begin{proof}
+Expanding the definition and using $F\otimes(L\otimes M)\cong(F\otimes L)\otimes M$ gives
+the exact identity
+$I(L\otimes M,\lambda;F)=I(L,\lambda;F)+I(M,\lambda;F)+I(L,M,\lambda;F)$. The last list has
+$d+1$ invertible entries, so its value vanishes by
+Theorem~\ref{thm:seshadri-mixed-euler-dimension-vanishing}.
+\end{proof}
+
+\begin{lemma}[Powers in an entry]
+\label{lem:intersection-power-entry}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_tensorPower_cons}
+\leanok
+\uses{thm:seshadri-mixed-euler-product-additivity}
+Under the hypotheses of Theorem~\ref{thm:seshadri-mixed-euler-product-additivity},
+$I(L^{\otimes r},\lambda;F)=r\,I(L,\lambda;F)$ for every $r\ge0$.
+\end{lemma}
+\begin{proof}
+For $r=0$ the entry is $\mathcal O_X$ and $F\otimes\mathcal O_X\cong F$, so the value is
+zero. The inductive step is Theorem~\ref{thm:seshadri-mixed-euler-product-additivity} for
+$L^{\otimes(r+1)}\cong L^{\otimes r}\otimes L$.
+\end{proof}
+
+\begin{lemma}[Cutting by a section]
+\label{lem:seshadri-mixed-euler-section-cut}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_sectionDifference}
+\leanok
+\uses{lem:seshadri-mixed-euler-coherent-additivity,lem:intersection-permutation,thm:line-section-zero-ideal-cartier}
+Let $X$ be integral, let $A$ be invertible with a nonzero section $s$, and let
+$i:D\hookrightarrow X$ be its zero scheme. For invertible $\lambda$ and $T$,
+\[
+  I(A,\lambda;T)=I\bigl(i^*\lambda;\,i^*(T\otimes A)\bigr)\quad\text{on }D.
+\]
+\end{lemma}
+\begin{proof}
+On the integral $X$ the section is injective, giving
+$0\to T\to T\otimes A\to i_*i^*(T\otimes A)\to0$. Additivity and push-forward
+(Lemma~\ref{lem:seshadri-mixed-euler-coherent-additivity}) give the case
+$\lambda=\varnothing$. For $\lambda=(K,\lambda')$, move $K$ behind $A$ by symmetry and apply
+the shorter case to the coefficients $T\otimes K$ and $T$, identifying
+$i^*((T\otimes K)\otimes A)\cong i^*(T\otimes A)\otimes i^*K$.
+\end{proof}
+
+\begin{theorem}[Positivity for ample lines]
+\label{thm:seshadri-ample-top-intersection-positive}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_replicate_nonneg_of_isAmple,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_replicate_closed_unit_le,
+EnvelopeProperty.SeshadriAmplenessCriterion.mixedEulerDifference_replicate_pos_of_isAmple,
+EnvelopeProperty.SeshadriAmplenessCriterion.isAmple_closedPullback}
+\leanok
+\uses{lem:intersection-power-entry,lem:seshadri-mixed-euler-section-cut,thm:projective-original-ample-section-prescribed-closed-set,lem:fc-original-ample-closed-restriction}
+Let $A$ be ample. Its restriction to every closed subscheme is ample. If $\dim X\le d$, then
+$I(A^d;F)\ge0$ for every coherent $F$, and $I(j^*A^d;\mathcal O_Z)\le I(A^d;\mathcal O_X)$
+for every closed immersion $j:Z\hookrightarrow X$. If $X$ is integral of dimension exactly
+$d$, then $A^d=I(A^d;\mathcal O_X)>0$.
+\end{theorem}
+\begin{proof}
+Restriction: pull back the closed embedding of a very ample power. Nonnegativity: by Serre
+vanishing, $\chi(F\otimes A^{\otimes m})=h^0(F\otimes A^{\otimes m})\ge0$ for $m\gg0$; this is
+a polynomial in $m$ of degree at most $d$ whose coefficient of $m^d$ is
+$I(A^d;F)/d!$, which therefore is nonnegative. Monotonicity: the ideal sequence
+$0\to\mathcal I_Z\to\mathcal O_X\to j_*\mathcal O_Z\to0$ and additivity give
+$I(A^d;\mathcal O_X)=I(A^d;\mathcal I_Z)+I(j^*A^d;\mathcal O_Z)$, and the first term is
+nonnegative. Positivity, by induction on $d$: for $d=0$ the integral zero-dimensional $X$ is
+the spectrum of a finite field extension of $k$, so $\chi(\mathcal O_X)>0$. For $d>0$ choose a
+closed integral $Z\subsetneq X$ of dimension $d-1$ and a nonzero section of some
+$A^{\otimes r}$, $r>0$, whose zero scheme $D$ contains $Z$. Then $\dim D\le d-1$ and, by
+Lemmas~\ref{lem:seshadri-mixed-euler-section-cut} and~\ref{lem:intersection-power-entry}
+together with Theorem~\ref{thm:seshadri-mixed-euler-dimension-vanishing},
+$r\,I(A^d;\mathcal O_X)=I(i^*A^{d-1};\mathcal O_D)\ge I(A|_Z^{d-1};\mathcal O_Z)>0$.
+\end{proof}
+
+\begin{theorem}[The integral step of the Nakai criterion]
+\label{thm:seshadri-integral-ampleness-step}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.closedPoint_ample_powerCut_of_positive_diagonal_and_properIntegralClosedAmple,
+EnvelopeProperty.SeshadriAmplenessCriterion.isAmple_of_positive_diagonal_and_properIntegralClosedAmple}
+\leanok
+\uses{thm:seshadri-original-proper-cut-native-ampleness,thm:fixed-coefficient-positive-common-power-generators,thm:seshadri-mixed-euler-dimension-vanishing}
+Let $X$ be integral with $0<d$ and $\dim X\le d$, and let $L$ be invertible with
+$L^d=I(L^d;\mathcal O_X)>0$. Suppose that $j^*L$ is ample for every closed immersion
+$j:Y\hookrightarrow X$ from an integral $Y$ that is not surjective. Then $L$ is ample.
+\end{theorem}
+\begin{proof}
+This is the inductive step of the proof of the Nakai--Moishezon criterion
+(Lazarsfeld, \emph{Positivity in algebraic geometry I}, Theorem~1.2.23). Write
+$L\cong(L\otimes B)\otimes B^{-1}$ with nonzero sections $a$ of $L\otimes B$ and $b$ of $B$.
+By hypothesis and strata ampleness, the restrictions of $L$ to the proper zero schemes
+$Z(a)$ and $Z(b)$ are ample (Theorem~\ref{thm:seshadri-original-proper-cut-native-ampleness}).
+Comparing $L^{\otimes m}$ with $L^{\otimes(m-1)}$ through the two section sequences and using
+Serre vanishing on the cuts, the higher cohomology of $L^{\otimes m}$ is eventually
+independent of $m$, while $\chi(L^{\otimes m})$ grows like $L^d m^d/d!\to\infty$. Hence
+$h^0(L^{\otimes m})\to\infty$, and for every closed point $x$ some positive power
+$L^{\otimes r}$ has a nonzero section vanishing at $x$; its zero scheme is a proper closed
+subscheme on which $L$ is ample, again by
+Theorem~\ref{thm:seshadri-original-proper-cut-native-ampleness}. Sections of powers of $L$
+then generate a positive power on the complement of such a cut, and the ampleness of $L$ on
+the cut lifts finitely many generators, so a positive power of $L$ is globally generated.
+Finally, for the pullback $H$ of $\mathcal O(1)$ along a projective embedding, the cut
+ampleness at all closed points yields a common positive power $L^{\otimes n}$ such that
+$L^{\otimes n}\otimes H^{-1}$ is generated by finitely many sections
+(Theorem~\ref{thm:fixed-coefficient-positive-common-power-generators}); hence
+$L^{\otimes n}$ is very ample.
+\end{proof}
+
+\begin{theorem}[Nakai criterion on projective schemes]
+\label{thm:nakai-general-projective}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.isAmple_of_positive_integral_closed_intersections_of_dimension_le,
+EnvelopeProperty.SeshadriAmplenessCriterion.isAmple_of_positive_integral_closed_intersections}
+\leanok
+\uses{thm:seshadri-integral-ampleness-step,thm:seshadri-original-strata-native-ampleness,thm:seshadri-original-dimzero-ample,thm:seshadri-original-proper-closed-map-dimension-drop,thm:native-projective-scheme-finite-dimension-bound,lem:actual-integral-projection-dimension-bound}
+Let $p:X\to\operatorname{Spec}k$ be projective, where $X$ may be empty, reducible or
+nonreduced, and let $L$ be invertible. If $(j^*L)^e\cdot Y=I(j^*L^e;\mathcal O_Y)>0$ for every
+closed immersion $j:Y\hookrightarrow X$ from an integral $Y$ of dimension $e>0$, then $L$ is
+ample.
+\end{theorem}
+\begin{proof}
+The hypothesis passes to closed subschemes, since a closed integral subscheme of a closed
+subscheme is a closed integral subscheme of $X$ and pullback is compatible with
+composition. By strata ampleness
+(Theorem~\ref{thm:seshadri-original-strata-native-ampleness}) it suffices to prove ampleness
+on each reduced point closure, which is integral of dimension at most a fixed bound $d$
+(Theorem~\ref{thm:native-projective-scheme-finite-dimension-bound}). We induct on $d$. In
+dimension zero every invertible module on an integral projective scheme is ample
+(Theorem~\ref{thm:seshadri-original-dimzero-ample}). If $X$ is integral with
+$\dim X\le d+1$, either $\dim X\le d$ and induction applies, or $\dim X=d+1$; then
+$L^{d+1}>0$ by hypothesis applied to the identity, every non-surjective closed integral
+$Y\hookrightarrow X$ has dimension at most $d$
+(Theorem~\ref{thm:seshadri-original-proper-closed-map-dimension-drop}), so $L|_Y$ is ample
+by induction, and Theorem~\ref{thm:seshadri-integral-ampleness-step} concludes.
+\end{proof}

@@ -1,0 +1,62 @@
+\subsection{Unconditional original blowup fibre constancy}
+
+\begin{theorem}[Geometric connectedness of the actual original blowup chart]
+\label{thm:fc-original-blowup-rees-geometrically-connected}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fcNativeRees_geometricallyConnected}
+\uses{thm:fc-projective-birational-geometrically-connected}
+Let $V$ be the original projectively normal variety and $B$ its original
+homogeneous blowup model. Choose a normalized coordinate of any original
+analytic base point. The literal finite-coordinate Rees projection over
+the corresponding whole affine coefficient chart is geometrically connected.
+\end{theorem}
+\begin{proof}
+The original base chart is a finite-type normal domain over the original
+field. The nonzero original homogeneous centre supplies an actual
+nonzero centre coefficient on this chart. Its original Rees quotient is
+reduced and has a dense-open birational inverse constructed by inverting
+that coefficient. The original homogeneous quotient immersion provides
+its actual projective factorization. The preceding projective
+birational geometric-connectedness theorem applies to these exact
+objects and maps.
+\end{proof}
+
+\begin{theorem}[Actual psh functions are constant on every original blowup fibre]
+\label{thm:fc-original-blowup-fibre-constancy}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_const_on_fibre}
+\uses{thm:fc-original-blowup-rees-geometrically-connected,cor:fc-analytic-constancy-original-geometrically-connected-rees}
+For the same original projectively normal base and blowup, an original
+psh function in the pullback class takes the same value at any two
+points with the same original projection. No countability or
+connected-fibre hypothesis is imposed.
+\end{theorem}
+\begin{proof}
+Choose a value-one homogeneous coordinate at the common projected
+point. The preceding theorem derives standard geometric connectedness
+of its actual original Rees projection. Genuine scalar base change
+preserves this property on the actual completed-residue-field fibre.
+The countability-free analytic fibre theorem applies: directed
+Fubini--Study regularization gives actual local convex psh nets,
+compactness and upper semicontinuity give maximum attainment, and the
+proved maximum principle on every geometrically connected proper
+scheme makes the whole original function constant. The established
+whole-fibre homeomorphism retains both original points and their exact
+function values.
+\end{proof}
+
+\begin{corollary}[Discharge of the original fibre-constancy class]
+\label{cor:fc-original-blowup-fibre-constancy-class}
+\leanok
+\lean{EnvelopeProperty.blowupFibreConstancy_proved}
+\uses{thm:fc-original-blowup-fibre-constancy}
+For every algebraically closed original base field the original
+\texttt{BlowupFibreConstancy} proposition holds without an additional
+mathematical assumption.
+\end{corollary}
+\begin{proof}
+Apply the preceding theorem to the arbitrary projectively normal base,
+original blowup, positive rational pullback class, original psh function
+and pair of points appearing in the class. Every geometric and analytic
+premise has already been constructed internally.
+\end{proof}

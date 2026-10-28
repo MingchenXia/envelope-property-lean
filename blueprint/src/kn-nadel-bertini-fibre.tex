@@ -1,0 +1,158 @@
+\section{Actual parameter fibres retain the original selected-section zero ideal}
+
+The universal incidence is the original whole zero-ideal subscheme. To use
+a good coefficient parameter for a divisor on the same original source,
+one must retain the entire scheme structure through its parameter fibre.
+This section constructs that comparison without a flatness assumption.
+
+\begin{lemma}[Original line-section zero ideals commute with arbitrary pullback]
+\label{lem:kn-nadel-bertini-zero-ideal-arbitrary-pullback}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.exists_affine_frame,
+EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.factor_pulled_coefficient,
+EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.affine_factor_ideal,
+EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.map_comap_top,
+EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.zeroIdeal_comap,
+EnvelopeProperty.Vanishing.NadelBertiniFibreIdeals.zeroIdeal_iso}
+\leanok
+\uses{lem:kn-nadel-bertini-open-zero-ideal}
+For any actual original morphism $f:Y\to X$, original invertible line $L$
+and original whole section morphism $\alpha:\mathcal O_X\to L$,
+\[
+ f^{-1}I(\alpha)\mathcal O_Y=I(f^*\alpha)
+\]
+as entire original ideal sheaves. An actual original line isomorphism
+carrying the section also preserves its entire original zero ideal.
+\end{lemma}
+\begin{proof}
+At every original point choose an actual affine open inside an original
+trivializing open of $L$. Its frame is obtained by native pullback through
+the actual open factor. Refine its inverse image to an original affine
+source open. The true factor-frame pairing carries the native pulled
+section's original coefficient to the actual pullback of the original
+coefficient. The original affine ideal-pullback formula sends the complete
+principal coefficient ideal to that same complete principal ideal. The
+original whole-ideal restriction formula identifies the other side with
+the pulled section's whole zero ideal on the same affine open. Transport
+through the actual top-section isomorphism and glue the resulting entire
+ideal equalities on the actual original affine cover. No flatness,
+radical or support condition is used. For a line isomorphism, compose the
+actual local frames with that same original isomorphism; native section
+composition gives identical complete coefficients, which glue likewise.
+\end{proof}
+
+\begin{lemma}[The actual original coefficient evaluation graph is cartesian]
+\label{lem:kn-nadel-bertini-evaluation-graph}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFibreGraph.graph,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGraph.graph_firstProjection,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGraph.graph_structureMap,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGraph.graph_isPullback,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGraph.graph_coefficient}
+\leanok
+\uses{def:kn-nadel-bertini-universal-incidence,lem:kn-nadel-bertini-rational-evaluation}
+For an original tuple $a=(a_0,\ldots,a_m)\in k^{m+1}$ over the
+original field $k$, let
+$e_a:\operatorname{Spec}k\to\operatorname{Spec}k[t_0,\ldots,t_m]$
+be its actual evaluation map. The actual graph
+$g_a:X\to X\times_k\operatorname{Spec}k[t_0,\ldots,t_m]$ has first
+projection equal to the original identity of $X$ and second projection
+$p\,e_a$. Its square with the original parameter projection and $e_a$ is
+cartesian.
+\end{lemma}
+\begin{proof}
+Evaluation of every original constant is the same original constant, so
+$e_a$ is a section of the original parameter structure map. The native
+pullback lift of the original identity and $p\,e_a$ therefore constructs
+the actual graph, with both original projection identities. Paste its
+square on the right with the original product square. The resulting whole
+square has identity horizontal maps and is cartesian. The original product
+square is cartesian, so the actual cartesian-square cancellation theorem
+proves the graph square cartesian as well.
+\end{proof}
+
+\begin{lemma}[The original universal section recovers the same selected linear combination]
+\label{lem:kn-nadel-bertini-selected-section}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFibreSection.id_unitTop,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.congr_unitTop,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.graphLineIso,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.graphLineIso_section,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.selectedSection,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.universal_section,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSection.universal_sectionHom}
+\leanok
+\uses{lem:kn-nadel-bertini-evaluation-graph,lem:kn-nadel-bertini-pullback-sections}
+The native pullback of the original universal section along $g_a$, in the
+actual original line comparison $g_a^*p_X^*L\simeq L$, is exactly the
+original whole section $\sum_a a_a s_a$.
+\end{lemma}
+\begin{proof}
+The original graph's first-projection identity constructs the line
+comparison through native pullback composition, congruence and identity.
+Those actual comparisons retain each original whole section. The native
+pullback unit preserves sums and transports each original scalar by the
+actual structure-ring pullback. The original graph's second-projection
+identity and the actual evaluation ring map send the original parameter
+variable $t_a$ to the original coefficient $a_a$, pulled along $p$.
+Linearity of the genuine original line comparison then gives the entire
+selected original linear combination, including zero coefficients.
+\end{proof}
+
+\begin{theorem}[The actual original incidence parameter fibre is the original selected hypersurface]
+\label{thm:kn-nadel-bertini-original-hypersurface-fibre}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.selectedIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.incidenceIdeal_comap_graph,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.fibreSquare,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.selectedFibreIso,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.selectedFibreIso_base,
+EnvelopeProperty.Vanishing.NadelBertiniFibreGeometry.selectedFibreIso_source}
+\leanok
+\uses{lem:kn-nadel-bertini-zero-ideal-arbitrary-pullback,lem:kn-nadel-bertini-evaluation-graph,lem:kn-nadel-bertini-selected-section}
+The actual parameter fibre of the original incidence at $e_a$ is
+canonically isomorphic, over the original $X$ and original coefficient
+base, to the entire zero-ideal subscheme of the actual selected original
+section $\sum_a a_a s_a$.
+\end{theorem}
+\begin{proof}
+The arbitrary-pullback whole-ideal theorem identifies the original
+incidence ideal pulled along the actual graph with the whole zero ideal
+of the native pulled universal section. Its actual original line
+comparison and the preceding exact whole-section identity identify this
+entire ideal with the selected original section's entire zero ideal.
+The native whole-ideal pullback subscheme is the actual fibre product of
+the graph and original incidence inclusion. Paste that genuine cartesian
+square with the preceding actual graph square. Its canonical native
+pullback is the original parameter fibre. Composing these genuine scheme
+isomorphisms gives the assertion; their actual projection identities give
+the original source and coefficient-base compatibility.
+\end{proof}
+
+\begin{corollary}[Good original parameters yield smooth selected original hypersurfaces]
+\label{cor:kn-nadel-bertini-good-selected-hypersurface}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFibreSmooth.fibre_smooth_of_mapsTo_open,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSmooth.selected_smooth_of_mapsTo_open,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSmooth.projectiveSelectedIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSmooth.projective_selected_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniFibreSmooth.exists_projective_smooth_selected}
+\leanok
+\uses{thm:kn-nadel-bertini-original-hypersurface-fibre,thm:kn-nadel-bertini-global-incidence-smooth,lem:kn-nadel-bertini-projective-good-open,lem:kn-nadel-bertini-rational-projective-good}
+Over an original field, an actual tuple whose original parameter point
+lies in the proved good open gives a smooth entire zero-ideal subscheme
+of the selected original section over that same original field. Moreover,
+for any original closed projective embedding of a smooth original scheme
+over a characteristic-zero field, actual coefficients with $a_0\ne0$
+and such a smooth entire selected zero-ideal subscheme are produced
+internally.
+\end{corollary}
+\begin{proof}
+Restrict the original parameter map to its proved smooth good open.
+The actual evaluation point factors through this same original open.
+Its actual fibre projection is smooth by native base-change stability.
+The preceding original whole-scheme comparison identifies that projection
+with the selected original hypersurface's original field structure map,
+so smoothness transports across the actual scheme isomorphism. For the
+existence assertion, the proved original global incidence smoothness and
+original proper nonsmooth-image construction give the actual
+generic-containing good open. The proved original rational-parameter
+producer selects an actual tuple with $a_0\ne0$ whose entire evaluation
+map lies in that same good open. Apply the just-proved selected
+hypersurface comparison to that actual tuple.
+\end{proof}

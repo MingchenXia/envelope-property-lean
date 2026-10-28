@@ -1,0 +1,83 @@
+\begin{lemma}[Closed restriction and the full Euler characteristic]
+\label{lem:seshadri-closed-cut-euler}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.eulerCharacteristic_closedRestriction}
+\leanok
+Let $X$ be a projective scheme over a field, let $i:D\hookrightarrow X$
+be a closed immersion, and let $L$ be an invertible sheaf on $X$.
+Writing $I_D$ for the actual kernel of $\mathcal O_X\to i_*\mathcal O_D$,
+one has
+\[
+ \chi(X,L)-\chi(X,I_D\otimes L)=\chi(D,i^*L).
+\]
+\end{lemma}
+\begin{proof}
+The closed-immersion structure morphism is surjective on affine sections,
+so $0\to I_D\to\mathcal O_X\to i_*\mathcal O_D\to0$ is exact.
+Tensoring with the invertible sheaf $L$ preserves exactness. The projection
+formula identifies its quotient with $i_*i^*L$. All three terms are coherent:
+the quotient is the pushforward along a closed immersion of an invertible
+sheaf, and the kernel is coherent because $X$ is Noetherian. Full coherent
+Euler additivity gives
+$\chi(X,L)=\chi(X,I_D\otimes L)+\chi(X,i_*i^*L)$.
+For a closed immersion, affine pushforward preserves quasicoherent
+cohomology in every degree, so the last summand is $\chi(D,i^*L)$.
+\end{proof}
+
+
+
+\begin{lemma}[The actual Cartier section cut]
+\label{lem:seshadri-section-cut-euler}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.eulerCharacteristic_sectionCut}
+\leanok
+\uses{lem:seshadri-closed-cut-euler}
+Suppose $X$ is integral and projective over a field, $A$ and $L$ are
+invertible sheaves, and $s\ne0$ is a global section of $A$.
+For its actual zero subscheme $i:D\hookrightarrow X$, one has
+\[
+ \chi(X,L)-\chi(X,A^{-1}\otimes L)=\chi(D,i^*L).
+\]
+\end{lemma}
+\begin{proof}
+On a nonempty affine trivializing open for $A$, the section is represented
+by a nonzero element of a domain. Multiplication by that element is
+injective and has image the actual zero ideal. These identifications
+agree on overlaps because they arise from evaluation against the same
+section. Consequently $A^{-1}$ identifies with $I_D$. Substitution in
+the preceding lemma proves the equality, with the same zero subscheme
+and the same pullback of $L$.
+\end{proof}
+
+\begin{lemma}[The first Euler difference along an actual section]
+\label{lem:seshadri-section-first-difference}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.eulerCharacteristic_sectionFirstDifference}
+\leanok
+\uses{lem:seshadri-section-cut-euler}
+Under the same hypotheses, for every invertible sheaf $M$ on $X$,
+\[
+ \chi(X,A\otimes M)-\chi(X,M)=\chi(D,i^*(A\otimes M)).
+\]
+\end{lemma}
+\begin{proof}
+Apply the actual Cartier section cut to $L=A\otimes M$.
+Associativity, symmetry, and the evaluation isomorphism for the original
+invertible sheaf $A$ identify $A^{-1}\otimes(A\otimes M)$ with $M$.
+Euler characteristic is invariant under this whole sheaf isomorphism.
+\end{proof}
+
+\begin{lemma}[The actual tensor-power finite difference]
+\label{lem:seshadri-tensor-power-first-difference}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.eulerCharacteristic_tensorPowerFirstDifference}
+\leanok
+\uses{lem:seshadri-section-first-difference}
+For every nonnegative integer $n$, the original tensor powers satisfy
+\[
+ \chi(X,A^{n+1})-\chi(X,A^n)=\chi(D,i^*(A^{n+1})).
+\]
+\end{lemma}
+\begin{proof}
+Use the first Euler difference with $M=A^n$. The symmetry and the genuine
+comparison between the monoidal tensor and the original sheafified tensor
+identify $A\otimes A^n$ with the recursively formed original $A^{n+1}$.
+Pulling back this same isomorphism identifies the original restrictions.
+Full Euler characteristic is invariant under both isomorphisms.
+\end{proof}

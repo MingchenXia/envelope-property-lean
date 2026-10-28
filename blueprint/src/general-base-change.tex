@@ -1,0 +1,140 @@
+\section{Change of prescribed base seminorm}\label{sec:general-base-change}
+
+Let $R\to S$ be a homomorphism of commutative rings and let $v$ on $R$
+and $w$ on $S$ be real-valued multiplicative ultrametric seminorms.
+Their compatibility means $w(r)=v(r)$ for every coefficient from $R$.
+All compatibility conditions in this section are explicit hypotheses.
+
+\begin{definition}[Restriction of coefficient seminorms]
+\label{spectrum:scalar-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.restrictScalars,
+EnvelopeProperty.Berkovich.RelativeSpectrum.restrictScalars_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_restrictScalars,
+EnvelopeProperty.Berkovich.RelativeSpectrum.restrictScalars_comap}
+\leanok
+\uses{spectrum:relative}
+For an $S$-algebra $B$ with its compatible $R$-algebra structure,
+every point of $\mathcal S_w(B)$ is a point of $\mathcal S_v(B)$
+by restriction of coefficients. This map leaves its entire seminorm
+on $B$ unchanged and is continuous.
+\end{definition}
+\begin{proof}
+For $r\in R$, its image in $B$ is the image of its image in $S$.
+The $B$-seminorm therefore takes value $w(r)=v(r)$ there.
+The resulting absolute spectrum point is unchanged, so all evaluation
+functions are unchanged and continuity follows from the subspace topology.
+\end{proof}
+
+\begin{theorem}[Restriction after scalar extension]
+\label{spectrum:base-change-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_baseChangeRestriction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChange_val_tmul,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction_val_aeval}
+\leanok
+\uses{spectrum:scalar-restriction,spectrum:pullback}
+For any commutative $R$-algebra $A$, restriction along
+$A\to S\otimes_R A$, $a\mapsto1\otimes a$, defines a continuous map
+\[
+ \rho:\mathcal S_w(S\otimes_R A)\longrightarrow\mathcal S_v(A).
+\]
+For every $a\in A$ and $s\in S$,
+$|a|_{\rho(x)}=|1\otimes a|_x$ and
+$|s\otimes a|_x=w(s)|a|_{\rho(x)}$.
+For every multivariate polynomial $p\in R[U_i]$ and family $a_i\in A$,
+the value of $p(a_i)$ under $\rho(x)$ equals the value of
+$p(1\otimes a_i)$ under $x$.
+\end{theorem}
+\begin{proof}
+Restrict coefficients from $S$ to $R$, then pull back along the actual
+tensor inclusion. This proves the value formula for every $a$ and
+continuity. A pure tensor is $(s\otimes1)(1\otimes a)$.
+The first factor is a base coefficient, so multiplicativity gives the
+pure-tensor formula. The tensor inclusion is an algebra homomorphism
+on the whole ring, and therefore commutes with polynomial evaluation,
+proving the last assertion on every polynomial.
+\end{proof}
+
+\begin{theorem}[Algebra-map functoriality]
+\label{spectrum:base-change-algebra-naturality}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeMap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeMap_tmul,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeMap_id,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeMap_comp}
+\leanok
+\uses{spectrum:base-change-restriction}
+For an $R$-algebra homomorphism $\varphi:A\to B$, the actual tensor
+homomorphism $\mathrm{id}_S\otimes\varphi$ induces continuous pullback
+on the $w$-relative spectra. Restriction commutes with this pullback
+and with $\varphi^*$ on every ring element. Tensor pullbacks preserve
+identities and reverse the composition of algebra homomorphisms.
+\end{theorem}
+\begin{proof}
+The tensor homomorphism sends $s\otimes a$ to $s\otimes\varphi(a)$
+and preserves every $S$ coefficient. Its composition with the right
+inclusion equals the right inclusion after $\varphi$, as homomorphisms
+on the full algebra. Pulling back gives the restriction square.
+Identity and composition follow from the corresponding identities
+of the actual tensor algebra homomorphisms.
+\end{proof}
+
+\begin{theorem}[Compatible scalar-map functoriality]
+\label{spectrum:base-change-scalar-naturality}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.scalarChangeComap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.scalarChangeComap_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_scalarChangeComap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction_scalarChangeComap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.scalarChangeComap_id,
+EnvelopeProperty.Berkovich.RelativeSpectrum.scalarChangeComap_comp}
+\leanok
+\uses{spectrum:base-change-restriction}
+Let $\tau:S\to T$ be an $R$-algebra homomorphism and let $u$ on $T$
+satisfy $u\circ\tau=w$. Pullback along
+$\tau\otimes\mathrm{id}_A$ defines a continuous map
+$\mathcal S_u(T\otimes_R A)\to\mathcal S_w(S\otimes_R A)$.
+It commutes with restriction to $A$. These maps obey identity and
+composition laws for compatible scalar maps.
+\end{theorem}
+\begin{proof}
+The tensor homomorphism sends an $S$ coefficient $s\otimes1$ to
+$\tau(s)\otimes1$, whose seminorm is $u(\tau(s))=w(s)$.
+It sends $1\otimes a$ to $1\otimes a$; this proves the restriction
+square on every $a\in A$. Continuity and the functorial identities
+follow from full homomorphism pullback and tensor map identities.
+\end{proof}
+
+\begin{theorem}[Direct and iterated scalar extension]
+\label{spectrum:base-change-iteration}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.scalarCompatibility_tower,
+EnvelopeProperty.Berkovich.RelativeSpectrum.iteratedBaseChangeHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.iteratedBaseChangeHomeomorph_val_tmul,
+EnvelopeProperty.Berkovich.RelativeSpectrum.iteratedBaseChangeHomeomorph_symm_val_tmul,
+EnvelopeProperty.Berkovich.RelativeSpectrum.baseChangeRestriction_iterated}
+\leanok
+\uses{spectrum:base-change-restriction}
+For a compatible tower $R\to S\to T$, cancellation of the middle
+tensor factor gives a canonical homeomorphism
+\[
+ \mathcal S_u\bigl(T\otimes_S(S\otimes_R A)\bigr)
+ \simeq\mathcal S_u(T\otimes_R A).
+\]
+It identifies successive restrictions to $A$ with direct restriction.
+\end{theorem}
+\begin{proof}
+The actual tensor algebra isomorphism sends
+$t\otimes(s\otimes a)$ to $st\otimes a$, with $s$ mapped into $T$.
+Its inverse sends $t\otimes a$ to $t\otimes(1\otimes a)$.
+Pullback along these inverse algebra homomorphisms gives inverse
+continuous maps of the spectra with prescribed base seminorm $u$.
+Under this comparison, the representative of every original $a\in A$
+is $1\otimes(1\otimes a)$ in both routes. Hence the two restrictions
+agree on every original ring element and thus as entire spectrum points.
+The compatibility of $u$ with $v$ follows by composing its explicit
+compatibility with $w$ and that of $w$ with $v$.
+\end{proof}
+
+These are genuine restriction maps. No assertion that base-change
+restriction is surjective, and no seminorm-extension existence
+hypothesis, is part of these constructions.

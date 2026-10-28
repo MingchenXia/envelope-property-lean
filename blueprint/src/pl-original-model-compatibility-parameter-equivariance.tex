@@ -1,0 +1,47 @@
+\section{Equivariance of the unchanged original parameter projection}
+
+\begin{lemma}[The original blowup parameter map has the standard action]
+\label{lem:pl-original-blowup-parameter-equivariance}
+\lean{EnvelopeProperty.ProjBerk.nativeClosedBlowupParameterStructure,EnvelopeProperty.ProjBerk.nativeClosedBlowupParameterOver,EnvelopeProperty.ProjBerk.nativeClosedParameterFamilyMap_parameter,EnvelopeProperty.ProjBerk.nativeClosedBlowupParameterOver_isModHom}
+\leanok
+The unchanged parameter map of the actual homogeneous-ideal blowup is
+equivariant for its constructed whole action and the actual standard
+multiplicative-group action on the ordinary affine parameter line.
+\end{lemma}
+\begin{proof}
+Use the actual whole coefficient-family product isomorphism to pull the
+required group-action square back to the Laurent coefficient family of
+the original blowup. The defining projection triangle of the family lift
+identifies the left composite with the original closed-family map followed
+by its parameter structure. The ambient-inclusion triangle and the
+coefficient-base square then identify this map with the Laurent coefficient
+parameter structure followed by the spectrum of $t\mapsto zt$.
+For the right composite, compare the two whole projections to the group
+and to the parameter line. The first projection identity of the actual
+blowup-family product isomorphism and its second coefficient projection
+identity identify this composite with the same Laurent coefficient
+parameter structure followed by the canonical whole group--parameter
+product comparison. Under that comparison the actual standard action is
+the spectrum of $t\mapsto zt$. The two entire composites agree.
+Cancellation of the product isomorphism proves the required equality.
+\end{proof}
+
+\begin{theorem}[The unchanged normalized parameter map is equivariant]
+\label{thm:pl-original-normalized-parameter-equivariance}
+\lean{EnvelopeProperty.ProjSubvariety.simultaneousNativeParameterOver,EnvelopeProperty.ProjSubvariety.simultaneousNativeParameterOver_isModHom,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeParameterOver_isModHom}
+\leanok
+\uses{lem:pl-original-blowup-parameter-equivariance,thm:pl-original-normalized-simultaneous-gm-action}
+The same normalized simultaneous model's unchanged original projection
+to the ordinary parameter line is equivariant for its constructed actual
+action and the actual standard parameter-line action.
+\end{theorem}
+\begin{proof}
+The original whole coordinate isomorphism is equivariant by the exact
+transport construction and preserves its original parameter projection.
+Its inverse followed by the preceding equivariant parameter map is
+therefore precisely the simultaneous blowup parameter map and is
+equivariant. The actual normalization projection is equivariant. Its
+composite with that simultaneous parameter map is the unchanged
+normalized parameter map, so functoriality of equivariant composition
+gives the assertion on the entire original group product.
+\end{proof}

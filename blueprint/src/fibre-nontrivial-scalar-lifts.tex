@@ -1,0 +1,71 @@
+\subsection{An actual universal nontrivial complete closed extension}
+
+\begin{definition}[The genuine nontrivial complete closed scalar field]
+\label{def:fc-nontrivial-complete-scalar-field}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussFieldNormedAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarField, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldNormed, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldComplete, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldUltrametric, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldAlgClosed, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldGaussAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldGaussNormedAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldTower, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarField_val_algebraMap, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldNormedAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarField_exists_one_lt_norm, EnvelopeProperty.Berkovich.RelativeSpectrum.fcNontrivialScalarFieldNontriviallyNormed, EnvelopeProperty.Berkovich.RelativeSpectrum.fcValuedAlgebraicClosure_isAlgebraic}
+\uses{lem:fc-gauss-scalar-tensor-lift,def:fc-rational-lift-field}
+For every ultrametric normed field $F$, take the actual completed
+algebraic closure $F_1$ of the original completed Gauss field of radius
+$1/2$. This is a genuine complete algebraically closed ultrametric field
+and an actual normed extension of $F$ preserving every original norm.
+It is nontrivially normed: the inverse image of the original Gauss
+coordinate has norm $2$. The valued algebraic closure used before
+completion remains algebraic over its actual complete Gauss base.
+\end{definition}
+\begin{proof}
+The actual completed base-Gauss field preserves every original
+coefficient norm, giving its normed base action. Apply the genuine
+completed algebraic closure construction, and inherit field,
+completeness, algebraic closedness and ultrametricity. Compose the true
+coefficient maps, with their actual scalar tower and both norm
+identities. The original Gauss coordinate has norm $1/2$, and the
+actual closure embedding preserves it, so its inverse has norm $2$.
+This supplies the genuine nontrivially normed field structure, retaining
+that same original norm. The coefficient-preserving WithAbs algebra
+equivalence with the ordinary actual algebraic closure proves
+algebraicity before completion.
+\end{proof}
+
+\begin{lemma}[The whole actual scalar pullback tower]
+\label{lem:fc-scheme-scalar-tower-map}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.scalarTowerMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.scalarTowerMap_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.scalarTowerMap_projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_scalarTowerMap}
+\uses{lem:fc-scheme-scalar-pullback}
+For an actual coefficient tower $R\to S\to T$, the literal iterated
+scheme pullback has a genuine morphism to the literal single final
+scalar pullback. Its whole final coefficient projection is unchanged,
+and its whole original scheme projection is the actual double
+projection. Native scalar restriction through this morphism equals the
+successive actual scalar restrictions on entire valued points.
+\end{lemma}
+\begin{proof}
+The two actual pullback coefficient squares and the genuine original
+coefficient tower identity give a commuting scheme square. Use the
+actual pullback universal property with original double projection and
+final structure morphism. Its two full projection identities give the
+asserted whole triangles. Native functoriality applied to the entire
+original projection triangle proves the whole valued-point identity.
+\end{proof}
+
+\begin{lemma}[Whole-scheme lifts through the genuine nontrivial closed extension]
+\label{lem:fc-scheme-nontrivial-complete-scalar-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_nontrivialScalarField}
+\uses{def:fc-nontrivial-complete-scalar-field,lem:fc-scheme-scalar-tower-map,lem:fc-scheme-gauss-scalar-lift,lem:fc-scheme-scalar-algebraic-completion-lift}
+For every actual $F$-scheme, its whole native scalar restriction from
+the literal $F_1$-scheme pullback is surjective. Here the same genuine
+nontrivial complete algebraically closed extension $F_1/F$ is fixed by
+$F$, independently of the original point or scheme.
+\end{lemma}
+\begin{proof}
+Construct an actual Gauss scalar lift of the original whole point.
+The actual Gauss field is complete. Its genuine valued algebraic
+closure is algebraic over it, so the proved whole-scheme
+algebraic-completion scalar lift lifts this entire point to the actual
+iterated scalar pullback. Map it through the preceding genuine
+scalar-tower morphism to the literal single $F_1$-pullback. The exact
+whole native tower identity and the two actual lift identities recover
+exactly the original whole point. No scalar-lift or composition
+certificate is supplied.
+\end{proof}

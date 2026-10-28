@@ -1,0 +1,89 @@
+\section{Actual Cartier restriction on overlapping geometric affine opens}
+
+\begin{lemma}[Every original form retains its actual restriction]
+\label{lem:cartier-geometric-form-iso-restriction}
+\leanok
+\uses{lem:cartier-geometric-chart-form-exchange}
+\lean{EnvelopeProperty.Cartier.GeometricCartierRestrictions.formIso_restrict}
+For an inclusion $U\subset V$ of original affine coordinate opens,
+the original native form restriction and the original geometric
+section restriction commute with the original form isomorphisms
+on every form and in every degree.
+\end{lemma}
+\begin{proof}
+The form isomorphism sends each form to its original exterior
+sheafification unit section, transported by the proved equality
+between the relative Frobenius preimage and the original affine
+open. The original unit is natural for the original inclusion.
+The native form map is the original raw exterior restriction by
+the established entire exterior restriction identity. The two
+composites of preimage transport and restriction have equal
+arrows in the category of opens, since those hom sets are
+subsingletons. Functoriality of the original sheaf identifies
+the transported restrictions and proves the asserted equality.
+\end{proof}
+
+\begin{theorem}[Every original native homology element retains its actual restriction]
+\label{thm:cartier-geometric-homology-transfer-restriction}
+\leanok
+\uses{lem:cartier-geometric-form-iso-restriction}
+\lean{EnvelopeProperty.Cartier.GeometricCartierRestrictions.nativeHomologyRestriction,EnvelopeProperty.Cartier.GeometricCartierRestrictions.homologyTransferIso_restrict}
+The original native homology restriction and the original homology
+restriction of evaluated geometric sections commute with the
+entire original homology-transfer isomorphisms.
+\end{theorem}
+\begin{proof}
+Every original native homology element is the class of an actual
+kernel cycle. The proved original transfer formula sends this
+class to the class of the cycle whose value is exactly the
+original unit section of that cycle's form. Original homology
+functoriality and the genuine scalar-restriction homology
+isomorphism send cycle classes to the classes of the original
+restricted cycles. The preceding form restriction theorem
+identifies the values of the two resulting cycles. Equality of
+kernel elements follows from equality of their values. Their
+actual original classes are therefore equal. Surjectivity of
+the cycle-class map gives the equality on every homology element.
+\end{proof}
+
+\begin{theorem}[The entire Cartier map on evaluated sections commutes with restriction]
+\label{thm:cartier-geometric-evaluated-cartier-restriction}
+\leanok
+\uses{thm:cartier-geometric-homology-transfer-restriction,thm:cartier-geometric-raw-exterior-restriction,lem:cartier-geometric-original-source-unit-restriction}
+\lean{EnvelopeProperty.Cartier.GeometricCartierRestrictions.inverseCartierIso_restrict}
+For every degree and every actual original section of the exterior
+cotangent sheaf on $V^{(p)}$, the original evaluated Cartier map
+commutes with restriction to $U^{(p)}$.
+\end{theorem}
+\begin{proof}
+The original affine exterior unit is an isomorphism, so each
+actual source section is its image of a raw form. The exact
+original-unit formula expresses Cartier of that image as native
+Cartier followed by the original homology transfer. The preceding
+transfer theorem moves restriction past this transfer. The
+existing all-algebra native Cartier naturality theorem, including
+zero endpoints, moves it past the same native Cartier map. The
+proved whole raw exterior restriction square moves it past the
+same original source exchange. Original source-unit naturality
+then identifies the result with Cartier of the original restricted
+section. No Cartier-map matching statement is an input.
+\end{proof}
+
+\begin{theorem}[Actual local Cartier sections of the global homology sheaf agree on overlaps]
+\label{thm:cartier-geometric-global-homology-cartier-restriction}
+\leanok
+\uses{thm:cartier-geometric-evaluated-cartier-restriction,thm:cartier-geometric-affine-homology-restriction}
+\lean{EnvelopeProperty.Cartier.GeometricCartierRestrictions.localSheafCartierSectionsIso_restrict}
+The entire original local Cartier isomorphisms from actual
+cotangent-sheaf sections to actual sections of the same global
+homology sheaf commute with every original affine coordinate-open
+inclusion, in every degree.
+\end{theorem}
+\begin{proof}
+The local map is evaluated Cartier followed by the original
+geometric affine homology comparison. Naturality of that entire
+comparison identifies restriction of the global homology sheaf
+with genuine homology restriction of evaluated sections. The
+preceding evaluated Cartier restriction theorem completes the
+whole local-map square.
+\end{proof}

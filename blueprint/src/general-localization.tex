@@ -1,0 +1,106 @@
+\section{Principal opens of general seminorm spectra}\label{sec:general-localization}
+
+Let $A$ be a commutative ring, let $f\in A$, and let $B$ be any localization of
+$A$ at the submonoid $\{f^n:n\ge0\}$. No reducedness, finite generation,
+or coefficient field is assumed. These statements generalize the principal-open
+identification used in \cite[\S5]{FHX}.
+
+\begin{lemma}[Seminorms extend to principal localizations]
+\label{spectrum:localization-extension}
+\lean{EnvelopeProperty.Berkovich.Spectrum.Away.lift,
+EnvelopeProperty.Berkovich.Spectrum.Away.comap_lift,
+EnvelopeProperty.Berkovich.Spectrum.Away.comap_injective,
+EnvelopeProperty.Berkovich.Spectrum.Away.comap_val_ne_zero,
+EnvelopeProperty.Berkovich.Spectrum.Away.val_mk',
+EnvelopeProperty.Berkovich.Spectrum.Away.lift_val_mk',
+EnvelopeProperty.Berkovich.Spectrum.Away.val_invSelf,
+EnvelopeProperty.Berkovich.Spectrum.Away.logAbs_mk'}
+\leanok
+\uses{spectrum:pullback,spectrum:logarithmic-evaluation}
+For $x\in\mathcal S(A)$ with $|f|_x\ne0$, there is a unique seminorm of $B$
+restricting to $x$. Its value on a fraction is
+$|a/f^n|=|a|_x/|f|_x^n$, and the value on $1/f$ is $|f|_x^{-1}$.
+Every seminorm of $B$ restricts to a seminorm with $|f|\ne0$.
+The logarithmic fraction formula is
+$\log|a/f^n|=\log|a|-n\log|f|$, with $\log|f|$ finite.
+\end{lemma}
+\begin{proof}
+The powers of $f$ lie outside the support of $x$, since their values are the
+nonzero numbers $|f|_x^n$. The valuation localization construction therefore
+extends $x$ to $B$ and gives the displayed fraction formula. Every element of
+$B$ has such a fraction representation, so the formula determines the
+extension uniquely. Conversely, the image of $f$ is a unit in $B$ and a
+multiplicative seminorm sends a unit to a nonzero value. Evaluating
+$f\cdot(1/f)=1$ gives the inverse formula. Applying the extended logarithm
+gives the final identity; its denominator has positive finite seminorm.
+\end{proof}
+
+\begin{theorem}[Principal-open homeomorphism]\label{spectrum:principal-open}
+\lean{EnvelopeProperty.Berkovich.Spectrum.Away.homeomorph,
+EnvelopeProperty.Berkovich.Spectrum.Away.range_comap,
+EnvelopeProperty.Berkovich.Spectrum.Away.isOpenEmbedding_comap,
+EnvelopeProperty.Berkovich.Spectrum.awayHomeomorph,
+EnvelopeProperty.Berkovich.Spectrum.isOpenEmbedding_awayComap}
+\leanok
+\uses{spectrum:localization-extension,spectrum:topology}
+Restriction identifies $\mathcal S(B)$ homeomorphically with the open subspace
+$\{x\in\mathcal S(A):|f|_x\ne0\}$. In particular it is an open embedding.
+The same statement applies to the canonical localization $A_f$.
+\end{theorem}
+\begin{proof}
+Restriction and the extension of the preceding lemma are inverse maps, and
+restriction is continuous. For every fraction $a/f^n$, the evaluation of the
+extension is the continuous quotient $|a|_x/|f|_x^n$ on this nonvanishing locus.
+The coordinate criterion for continuity gives a continuous inverse, hence a
+homeomorphism. The locus is open because evaluation at $f$ is continuous and
+$\R_{\ge0}\setminus\{0\}$ is open. Identifying with this subspace proves
+that restriction is an open embedding. The canonical localization is a
+particular instance of the same construction.
+\end{proof}
+
+\begin{theorem}[Relative principal opens]\label{spectrum:relative-principal-open}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.Away.lift,
+EnvelopeProperty.Berkovich.RelativeSpectrum.Away.homeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.Away.isOpenEmbedding_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.awayHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isOpenEmbedding_awayComap}
+\leanok
+\uses{spectrum:principal-open,spectrum:relative}
+Let $R$ be a commutative ring with a prescribed real-valued seminorm $v$.
+Suppose $A$ and $B$ are $R$-algebras and their structure maps are compatible
+with $A\to B$. Then restriction identifies $\mathcal S_v(B)$ homeomorphically
+with $\{x\in\mathcal S_v(A):|f|_x\ne0\}$, and is an open embedding.
+The same fraction and inverse formulas hold on these relative spectra.
+\end{theorem}
+\begin{proof}
+The absolute extension preserves the value of every element of $A$ and thus
+of every scalar in $R$. Compatibility of the structure maps shows that it
+preserves the prescribed base seminorm. Restriction has the same property,
+so the absolute inverse maps restrict to inverse maps between the relative
+spaces. Their evaluation formulas retain continuity on the nonvanishing
+relative locus, which is open by continuity of relative evaluation at $f$.
+The restricted maps therefore give the asserted homeomorphism and open embedding.
+\end{proof}
+
+\begin{corollary}[Trivial-field principal-open specialization]
+\label{spectrum:localization-trivial-field}
+\lean{EnvelopeProperty.Berk.Away.homeomorph,
+EnvelopeProperty.Berk.Away.homeomorph_apply_coe,
+EnvelopeProperty.Berk.Away.homeomorph_symm_apply,
+EnvelopeProperty.Berk.awayHomeomorph}
+\leanok
+\uses{spectrum:relative-principal-open,spectrum:trivial-field-bridge}
+\source{fhx-envelope-20261028:sec:normal-local-regularization}
+For an algebra $A$ over a trivially valued field $k$, the principal-open
+homeomorphism $(\Spec A_f)^\an\simeq\{x\in(\Spec A)^\an:|f|_x\ne0\}$
+is the specialization of the relative-spectrum homeomorphism.
+Its forward map is restriction and its inverse is the valuation extension.
+\end{corollary}
+\begin{proof}
+The trivial-field comparison homeomorphism preserves every evaluation and
+commutes with restriction. It therefore identifies the nonvanishing subsets
+on the two descriptions. Composing this comparison, the relative principal-open
+homeomorphism, and the inverse comparison gives the asserted homeomorphism.
+Evaluation preservation identifies its forward and inverse maps with the
+restriction and valuation extension, respectively.
+\end{proof}

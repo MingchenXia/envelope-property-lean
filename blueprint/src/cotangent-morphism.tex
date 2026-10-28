@@ -1,0 +1,32 @@
+\section{Differentials of actual scheme morphisms}
+
+Let $k$ be a field, let $f:X\to\operatorname{Spec}k$, and let $g:Y\to X$ be any morphism. No smoothness, integrality, dimension, or immersion hypothesis is imposed in this section.
+
+\begin{lemma}\label{sc0-cotangent-morphism:constants}
+\lean{EnvelopeProperty.CanonicalGeometry.schemeMorphism_constantSquare}
+\leanok
+For every open $U\subset X$, the actual structure ring map $g^\#: \mathcal O_X(U)\to\mathcal O_Y(g^{-1}U)$ carries the structural $k$-constants to the structural constants for $g f$.
+\end{lemma}
+\begin{proof}
+Naturality of $g^\#$ for $U\subset X$ identifies restriction after $g^\#_X$ with $g^\#_U$ after restriction. Compose this equality with the structure map from $k$, and use $(gf)^\#_X=g^\#_X f^\#_X$. This gives precisely the claimed equality of ring maps.
+\end{proof}
+
+\begin{definition}\label{sc0-cotangent-morphism:raw}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentMorphismDerivation, EnvelopeProperty.CanonicalGeometry.cotangentPresheafMorphism, EnvelopeProperty.CanonicalGeometry.cotangentPresheafMorphism_d}
+\leanok
+\uses{sc0-cotangent-morphism:constants}
+There is a natural morphism $\Omega^{\mathrm{pre}}_{X/k}\to g_*\Omega^{\mathrm{pre}}_{Y/k}$ whose value on a differential is $da\mapsto d(g^\#a)$.
+\end{definition}
+\begin{proof}
+On $U$ compose the actual universal derivation of $\mathcal O_Y(g^{-1}U)$ with $g^\#_U$. The Leibniz rule holds for the restricted $\mathcal O_X(U)$-action, since $g^\#$ is a ring homomorphism. The preceding lemma shows that this derivation annihilates $k$. Naturality of $g^\#$ and of the universal derivation show compatibility with restrictions. Thus these maps define an actual derivation into the pushed presheaf of modules. The universal property of the relative cotangent presheaf gives a unique morphism with the asserted differential formula.
+\end{proof}
+
+\begin{definition}\label{sc0-cotangent-morphism:sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentSheafMorphism, EnvelopeProperty.CanonicalGeometry.cotangentSheafMorphism_unit, EnvelopeProperty.CanonicalGeometry.cotangentSheafPullbackMap}
+\leanok
+\uses{sc0-cotangent-morphism:raw}
+The actual sheafified cotangent map is $\Omega_{X/k}\to g_*\Omega_{Y/k}$. Its adjoint is the actual relative differential morphism $g^*\Omega_{X/k}\to\Omega_{Y/k}$.
+\end{definition}
+\begin{proof}
+Postcompose the preceding raw map with the pushforward of the actual sheafification unit of $\Omega^{\mathrm{pre}}_{Y/k}$. The sheafification adjunction gives a unique map from $\Omega_{X/k}$ to the actual pushed sheaf, whose composite with the source unit is exactly that raw map. Apply the pullback--pushforward adjunction for the actual morphism $g$ to obtain its adjoint. Both constructions therefore use the genuine structure ring homomorphisms and the genuine sheafification units.
+\end{proof}

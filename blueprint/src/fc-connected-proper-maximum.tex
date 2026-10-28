@@ -1,0 +1,89 @@
+\subsection{Global maximum on connected proper native schemes}
+
+\begin{lemma}[Closed intermediates in finite-type curve chains]
+\label{lem:fc-closed-plain-curve-chain}
+\lean{EnvelopeProperty.FcSchemeCurveChains.closed_curveChain_of_connected_finiteType}
+\leanok
+A curve chain between two closed points of a finite-type scheme over an
+algebraically closed field can be chosen with every intermediate point closed.
+\end{lemma}
+\begin{proof}
+Induct on a given chain, proving the stronger assertion that its final point
+may be replaced by any closed specialization. In the empty chain, closedness
+of the initial point identifies the specialization with it. For the final
+curve from the previous intermediate point to the endpoint, choose a closed
+specialization of the previous intermediate point in its nonempty closed
+singleton closure, using the Jacobson property. A closed curve containing a
+point contains its singleton closure, so both new endpoints remain on the same
+original integral curve. Apply induction to the preceding chain and append
+this unchanged curve with the two new closed endpoints.
+\end{proof}
+
+\begin{lemma}[Maximum propagation at original closed supports]
+\label{lem:fc-finite-type-closed-support-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_of_closed_supports_finiteType}
+\leanok
+\uses{lem:fc-closed-plain-curve-chain,thm:fc-native-maximum-integral-closed-curve}
+On a connected finite-type scheme over a complete algebraically closed
+ultrametric normed field, an attained native locally psh global maximum at a
+closed support has the same value at every native point with closed support.
+\end{lemma}
+\begin{proof}
+Take the actual integral closed curve chain between the two original closed
+supports, and choose closed intermediates by the preceding lemma. At each
+intermediate construct a native point over the original field norm. Pullback
+to each original integral curve propagates the attained maximum by the integral
+scheme-curve maximum principle. The empty chain is handled by the integral
+reduced singleton scheme. Induction through the finite chain gives equality.
+\end{proof}
+
+\begin{lemma}[Rational comparison on an original integral proper scheme]
+\label{lem:fc-integral-proper-rational-comparison}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_section_of_isMaxOn_univ_integral_proper,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_section_integral_proper}
+\leanok
+\uses{lem:fc-finite-type-closed-support-maximum,lem:fc-rational-section-scalar-restriction}
+Let an integral proper scheme over a complete algebraically closed ultrametric
+normed field carry a native locally psh function. Any original native point
+and the native point of any original rational section have the same value if
+either point attains the original global maximum.
+\end{lemma}
+\begin{proof}
+Use the completed algebraic closure of the arbitrary point's completed residue
+field. The arbitrary point has an actual rational lift, and the original
+rational section has its actual scalar-changed rational section. Their entire
+native projections recover the original two points, and their lifted supports
+are closed. The original integral proper scheme is geometrically connected:
+its original global coefficient map is bijective by universal closedness and
+algebraic closedness, and genuine flat field base change preserves that whole
+field of global sections. Its actual scalar change is therefore connected.
+The unchanged locally psh function pulls back to the scalar-changed scheme,
+and the assumed original maximum pulls back to the appropriate lifted point.
+Apply the preceding closed-support maximum statement, reversing its two
+endpoints if needed, and use the exact native projection identities.
+\end{proof}
+
+\begin{theorem}[Connected proper native maximum principle]
+\label{thm:fc-connected-proper-native-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.exists_closed_support_maximizer_of_isMaxOn_univ,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_connected_proper}
+\leanok
+\uses{lem:fc-integral-proper-rational-comparison,lem:fc-finite-type-closed-support-maximum,lem:fc-actual-rational-section}
+On any connected proper scheme over a complete algebraically closed
+ultrametric normed field, a native locally psh function attaining a global
+maximum is constant.
+\end{theorem}
+\begin{proof}
+First take the original support of a maximizing point. Its singleton closure,
+with the vanishing-ideal reduced subscheme structure, is an actual integral
+closed subscheme and remains proper over the original field. The whole native
+point lifts to this closed subscheme. Choose an actual original rational
+section there. The integral proper comparison shows that its image in the
+original scheme attains the same maximum; this image has closed support.
+
+For any other original native point repeat the singleton-closure construction
+and choose an actual rational section of that integral proper subscheme. The
+two section images have closed support in the original scheme, so connected
+finite-type curve propagation gives them the same maximizing value. This
+second section therefore maximizes the pulled-back function on its integral
+proper subscheme. Apply integral proper comparison to the lifted arbitrary
+point and project back. Its value equals the original attained maximum.
+\end{proof}

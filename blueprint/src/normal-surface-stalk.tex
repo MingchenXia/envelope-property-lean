@@ -1,0 +1,17 @@
+\section{Actual nonclosed nongeneric stalks on an original normal surface}
+\begin{theorem}\label{thm:normal-surface-original-stalk-dimension}
+On an original integral Jacobson scheme of dimension at most two, the actual stalk at every nongeneric nonclosed original point has Krull dimension exactly one.
+\uses{thm:surface-nonclosed-nonzero-prime-height}
+\lean{EnvelopeProperty.NormalSurfaceStalk.stalk_dimension_eq_one}\leanok
+\end{theorem}
+\begin{proof}
+Choose a genuine nonempty original affine neighborhood of that same point. Its actual prime is nonzero, since the zero prime maps to the actual original generic point. It is not maximal: otherwise the original point would be locally closed in the whole scheme, and the original Jacobson property would make it closed. The affine section ring has dimension at most two, by the genuine open embedding into the same original scheme. Thus its actual prime has height one by the preceding theorem. The native affine stalk and its literal prime localization are isomorphic, and the latter has dimension equal to that actual height. This proves the statement for the same original stalk.
+\end{proof}
+\begin{theorem}\label{thm:normal-surface-original-stalk-dvr}
+If the original scheme is locally Noetherian and this same original stalk is integrally closed, then that actual original stalk is a DVR.
+\uses{thm:normal-surface-original-stalk-dimension}
+\lean{EnvelopeProperty.NormalSurfaceStalk.stalk_isDiscreteValuationRing}\leanok
+\end{theorem}
+\begin{proof}
+The actual original stalk is a Noetherian local domain of dimension one. Integral closedness and that actual dimension imply that all its nonzero prime ideals are maximal, so the genuine local normal-domain characterization makes every original ideal principal. Its dimension one prevents its maximal ideal from being zero, since a field has dimension zero. Hence the actual original local principal domain is a DVR. No supplied height, local dimension, principal-ideal or DVR certificate is used.
+\end{proof}

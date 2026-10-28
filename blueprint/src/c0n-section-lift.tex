@@ -1,0 +1,82 @@
+\section{A fixed bound for restriction of original relative projective sections}
+\label{sec:c0n-section-lift}
+
+All schemes and sections below are the actual original ones. In particular
+the coefficient ring may be $k[t]$. This restriction theorem is independent
+of the separate identification of ambient sections with homogeneous
+polynomials, and makes no normal-generation assumption on the closed scheme.
+
+\begin{lemma}[Tensoring the original unit and taking sections]
+\label{lem:c0n-line-unit-section-transport}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.unitTensor_epi_of_iso,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.lineUnit_epi_of_unitTensor}
+Let $F:\mathcal C\rightleftarrows\mathcal D:G$ be the actual strong monoidal
+left adjoint between braided monoidal categories, and let
+$T:\mathcal C\to\mathcal A$ be any functor. For an invertible
+object $L$ of $\mathcal C$, if $T(\eta_{\mathbf1}\otimes L)$ is an
+epimorphism, then $T(\eta_L)$ is an epimorphism. Here $\eta$ is the SAME
+original adjunction unit.
+\end{lemma}
+\begin{proof}
+Choose the genuine tensor inverse $Q$ and evaluation $L\otimes Q\simeq
+\mathbf1$. Let $E=(-)\otimes L$ and $E'=(-)\otimes F(L)$, with inverse
+functors tensoring by $Q$ and $F(Q)$. The actual monoidal tensor comparison
+$F(-\otimes Q)\simeq F(-)\otimes F(Q)$ has a right mate
+$G(-)\otimes L\simeq G(-\otimes F(L))$ for the composite adjunctions
+$E^{-1}\dashv E$ and $(E')^{-1}\dashv E'$. The unit identity for this
+mate, evaluated at $L$, identifies
+\[
+ \eta^{E^{-1}F}_L\,P_{F(L\otimes Q)}
+ =\eta^{F(E')^{-1}}_L\,G(\alpha_L).
+\]
+On the left, the composite-adjunction unit is an isomorphism followed by
+$\eta_{L\otimes Q}\otimes L$. Naturality with the actual evaluation
+$L\otimes Q\simeq\mathbf1$ transfers the stated epimorphism to this map.
+On the right, the composite unit is $\eta_L$ followed by an isomorphism.
+The mate and the monoidal comparison are also isomorphisms. Apply $T$,
+compose with those isomorphisms, and cancel them. This proves the assertion
+for the original $\eta_L$, without identifying an arbitrary replacement map
+with restriction by an assumption.
+\end{proof}
+
+\begin{lemma}[One bound lifts every original section of every larger twist]
+\label{lem:c0n-eventual-relative-section-restriction}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.structureUnit_triangle,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.unitTop_surjective_of_kernel_tensor_H_one,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_restriction_surjective_bound,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_section_lift_bound,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_power_section_lift_bound}
+Let $R$ be an original Noetherian commutative ring, and let
+$i:Y\hookrightarrow\mathbb P_R^N$ be the original closed immersion. Put
+$L_e=\mathcal O_{\mathbb P_R^N}(e)$, using coordinate $0$ of the original
+native projective construction. There exists $c_{\rm lift}\in\mathbb N$
+such that, for every $e\ge c_{\rm lift}$, the SAME native pullback map
+\[
+ \Gamma(\mathbb P_R^N,L_e)\longrightarrow\Gamma(Y,i^*L_e)
+\]
+is surjective. No section-lifting certificate, dimension restriction
+$N>0$, field replacement of $R$, or power-comparison input is assumed.
+\end{lemma}
+\begin{proof}
+Use the actual structure map $q:\mathcal O\to i_*\mathcal O_Y$ and its
+entire original sheaf kernel $K$. Closed immersion gives local section
+surjectivity of $q$ on the original affine opens, hence the genuine short
+exact sequence $0\to K\to\mathcal O\to i_*\mathcal O_Y\to0$.
+Both endpoint modules are quasicoherent. The ambient projective scheme is
+locally Noetherian, so the actual kernel is quasicoherent and of finite
+type. Existing original coherent projective Serre vanishing gives one
+$c_{\rm lift}$ with $H^1(K\otimes L_e)=0$ for every larger $e$.
+Tensoring the SAME short exact sequence by the genuine invertible $L_e$
+preserves exactness. The native long exact sheaf-cohomology sequence then
+makes its SAME terminal-open section quotient surjective.
+
+The pullback-unit comparison on the structure object is exactly $q$ after
+the original unit isomorphism $i^*\mathcal O\simeq\mathcal O_Y$.
+Consequently the preceding lemma, with $T$ the actual terminal-open
+evaluation functor, proves surjectivity of the actual adjunction unit on
+$L_e$. Finally the native equality $i^{-1}(\top)=\top$ identifies its
+sections with the actual native pullback of global sections. Thus every
+original section, not merely a chosen finite family, has an original lift.
+The bound depends only on the fixed immersion's actual kernel and is
+independent of all later multiplier-ideal indices. The already-proved
+native hyperplane-power comparison transports the same result to the
+original powers of $i^*\mathcal O(1)$ when required.
+\uses{lem:c0n-line-unit-section-transport}
+\end{proof}

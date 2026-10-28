@@ -1,0 +1,65 @@
+\begin{lemma}[The actual zero-scheme dimension is the original line degree]
+\label{lem:fc-original-zero-section-degree-dimension}
+\leanok
+\lean{EnvelopeProperty.CurveLineZeroSections.degree_eq_zeroScheme_finrank, EnvelopeProperty.CurveLineZeroSections.degree_pos_of_nonempty_zeroScheme}
+\uses{thm:fc-original-nonzero-section-degree-nonnegative}
+Let $X$ be the original integral projective curve over $k$, of dimension
+at most one.  For any original invertible $L$ and nonzero original
+$s:\mathcal O_X\to L$, let $Z(s)$ be its actual zero subscheme.  Then
+\[
+ \deg_k L=\dim_k\Gamma(Z(s),\mathcal O_{Z(s)}).
+\]
+If $Z(s)$ is nonempty, then $\deg_k L>0$.
+\end{lemma}
+\begin{proof}
+The actual dual evaluation of $s$ identifies the whole $L^\vee$ with its
+actual Cartier image ideal $I$.  Its support is proper and its actual
+closed subscheme is finite over $k$.  The full coherent Euler exact
+sequence gives $\deg I=-\dim_k\Gamma(Z(s),\mathcal O_{Z(s)})$.
+The true tensor/dual degree formula gives $\deg L^\vee=-\deg L$,
+yielding the asserted equality.  If $Z(s)$ has a point then its entire
+section ring is nontrivial.  This ring, with the actual original
+coefficient action, is finite dimensional over $k$, so its dimension is
+strictly positive.
+\end{proof}
+
+\begin{lemma}[Empty actual zero ideal gives a whole line trivialization]
+\label{lem:fc-original-zero-section-whole-trivialization}
+\leanok
+\lean{EnvelopeProperty.CurveLineZeroSections.topIdealModuleIso, EnvelopeProperty.CurveLineZeroSections.trivializationOfZeroIdealTop}
+\uses{lem:fc-original-zero-section-degree-dimension}
+For any original integral scheme, the actual unit ideal module is the
+structure module under its original inclusion.  If an original nonzero
+section of an invertible $L$ has unit zero ideal, it internally gives a
+whole isomorphism $L\simeq\mathcal O_X$.
+\end{lemma}
+\begin{proof}
+Every section of the structure module belongs to the unit ideal on every
+affine subopen, so the original whole ideal inclusion is an isomorphism.
+Compose this with the actual dual-section/image isomorphism to obtain
+$L^\vee\simeq\mathcal O_X$.  Tensor its inverse with $L$ and use the
+original canonical evaluation $L\otimes L^\vee\simeq\mathcal O_X$.
+This yields the whole original line isomorphism.
+\end{proof}
+
+\begin{theorem}[Globally generated degree zero detects the whole trivial line]
+\label{thm:fc-original-generated-line-degree-zero-trivial}
+\leanok
+\lean{EnvelopeProperty.CurveLineZeroSections.zeroIdeal_eq_top_of_degree_eq_zero, EnvelopeProperty.CurveLineZeroSections.degree_eq_zero_iff_trivial_of_generatingSections, EnvelopeProperty.CurveLineZeroSections.degree_pos_of_generatingSections_of_nontrivial}
+\uses{lem:fc-original-zero-section-degree-dimension,lem:fc-original-zero-section-whole-trivialization}
+On the same original integral projective curve, a genuinely globally
+generated original invertible line has degree zero if and only if the
+whole original line is trivial.  Consequently every such nontrivial
+original line has strictly positive degree.
+\end{theorem}
+\begin{proof}
+Actual generation at the original generic point supplies a nonzero
+original generator.  If its actual zero subscheme were nonempty, the
+preceding formula would give strictly positive degree.  Thus degree zero
+forces empty actual zero support, hence the unit zero ideal, and the
+preceding whole trivialization applies.  Conversely an actual whole
+isomorphism to the structure line gives degree zero by invariance of the
+true full Euler degree.  The nonnegative degree already proved for
+globally generated lines is therefore strictly positive in the
+nontrivial case.
+\end{proof}

@@ -1,0 +1,60 @@
+\section{Actual whole-complex native cycle classes and scalar restriction}
+\label{sec:module-complex-native-cycle-classes}
+
+\begin{theorem}[Every original cycle class under the actual native functors]
+\label{lem:native-module-complex-every-cycle-class}
+\lean{EnvelopeProperty.ModuleComplexNativeCycleClasses.cycleClass,EnvelopeProperty.ModuleComplexNativeCycleClasses.homologyMap_cycleClass,EnvelopeProperty.ModuleComplexNativeCycleClasses.restrictionHomologyIso,EnvelopeProperty.ModuleComplexNativeCycleClasses.restrictionHomologyIso_cycleClass}
+\leanok
+For any original cochain complex of actual modules, form the class
+of every element in the actual kernel of its native outgoing
+differential using the native cycle inclusion isomorphism and native
+homology projection. The actual native homology-functor map of any
+actual complex morphism takes every such cycle class to the class
+of its entire original middle image. Native scalar restriction
+preserves the entire actual whole-complex homology by a genuine
+isomorphism and retains the class of every same original cycle
+element under that isomorphism.
+\end{theorem}
+\begin{proof}
+Compute native homology using the same actual row on the native
+predecessor and successor, exactly as in the definition of the native
+homology functor. The native kernel-cycle isomorphism retains its
+entire original element after the actual cycle inclusion. Naturality
+of that actual inclusion and its monicity identify the mapped cycle
+with the native cycle of the entire original middle image.
+Naturality of the actual homology projection then identifies the
+entire original class, not only a selected spanning set of classes.
+
+The scalar-restricted whole complex has exactly the scalar
+restriction of that same native predecessor/degree/successor row.
+Use the already proved genuine native scalar-restriction row
+homology isomorphism. Its whole projection comparison and its
+same-element cycle-class formula therefore apply directly to the
+same entire native whole-complex homology, in every degree.
+\uses{lem:actual-module-homology-scalar-restriction}
+\end{proof}
+
+\begin{theorem}[Consecutive cycles retain the same native whole-complex element]
+\label{lem:native-module-complex-consecutive-cycles}
+\lean{EnvelopeProperty.ModuleComplexNativeCycleClasses.ofCycle,EnvelopeProperty.ModuleComplexNativeCycleClasses.ofCycle_val}
+\leanok
+Given actual consecutive native module maps $d_q:X_q\to X_{q+1}$
+with $d_{q+1}d_q=0$, every actual original element of $\ker d_q$
+defines a genuine kernel cycle of the same native cochain complex.
+The whole original element is unchanged. No choice of a different
+cycle representative or compatibility certificate is supplied.
+\end{theorem}
+\begin{proof}
+The native successor of $q$ in the nonnegative cochain shape is
+$q+1$. Transport only that outgoing target index, and use the actual
+native consecutive-complex differential formula. The given original
+kernel equality is now the required native outgoing kernel equality.
+The resulting subtype contains the same original element by its
+construction, in every degree including zero.
+\end{proof}
+
+These statements concern the actual native homology functor and its
+actual scalar-restriction preservation. Identifying an independently
+constructed cycle-quotient comparison with these actual native maps
+still requires the corresponding actual comparison proof. No sheaf
+descent, Deligne--Illusie or vanishing conclusion is asserted here.

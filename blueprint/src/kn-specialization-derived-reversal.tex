@@ -1,0 +1,49 @@
+\section{Actual reversal of a bounded cochain complex}
+
+\begin{lemma}[Reversal retains original tensor homology]
+\label{lem:kn-derived-cochain-reversal}
+\uses{thm:kn-derived-finite-free-triples}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReversal.reverseBaseChangeHomologyIso}
+\leanok
+For an actual integer-indexed cochain complex $K$ and integer $N$,
+restriction along $q\mapsto N-q$ constructs an actual nonnegative
+chain complex.  If the actual term $K^{N+1}$ is zero, its native
+degree-$q$ homology after any algebra base change is isomorphic to
+the native homology of the original scalar-extended three terms
+in degree $N-q$.  If $K$ has flat terms and finite native homology,
+the constructed reverse complex has those properties as well.
+\end{lemma}
+\begin{proof}
+Use the native complex-shape embedding from nonnegative descending
+indices to increasing integer indices.  In positive chain degrees,
+all three neighboring indices and actual maps are retained literally.
+At chain degree zero, the outgoing differential is zero; the actual
+original target term $K^{N+1}$ is zero too, so the cycle comparison
+is an isomorphism and the incoming comparison is the identity.
+These are comparisons of the actual scalar-extended original maps.
+Flatness is termwise, and finiteness transfers along the constructed
+native homology isomorphisms.
+\end{proof}
+
+\begin{corollary}[Specialization for the original bounded cochain complex]
+\label{cor:kn-derived-cochain-homology-specialization}
+\uses{lem:kn-derived-cochain-reversal,cor:kn-derived-chain-homology-specialization}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReversal.exists_cochain_homology_zero_neighborhood,EnvelopeProperty.Vanishing.SpecializationDerivedReversal.generic_cochain_homology_isZero_of_closed_fibre}
+\leanok
+Under these hypotheses, zero native homology at an original closed
+residue fibre in a degree $N-q$ persists on a produced principal open,
+and over an original domain it reaches the original fraction field.
+\end{corollary}
+\begin{proof}
+Transfer to the constructed reverse chain complex, apply the proved
+native chain specialization producer, and transfer back along its
+actual scalar-extended comparisons.
+\end{proof}
+
+\begin{remark}[Geometric base change remains separate]
+The nonflat geometric ordered-complex comparison is proved in
+Theorem~\ref{thm:kn-geometric-cech-base-change}.  Its interpretation
+as actual positive fibre sheaf cohomology is proved in
+Lemma~\ref{lem:kn-derived-geometric-fibre-cohomology}, separately
+from this reversal construction.
+\end{remark}

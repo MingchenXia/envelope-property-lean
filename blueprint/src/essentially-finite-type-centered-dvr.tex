@@ -1,0 +1,49 @@
+\subsection{Genuine centered discrete valuations on the original local models}
+
+\begin{lemma}[Original essentially finite type Rees charts are Noetherian]
+\label{algebra:actual-essentially-finite-type-rees-chart-noetherian}
+\lean{EnvelopeProperty.EssentiallyFiniteTypeCenteredDVR.isNoetherianRing_reesNormalChart}
+\leanok
+\uses{algebra:actual-essentially-finite-type-normalization-noetherian,def:bj-rees}
+For an actual essentially finite type domain $B$ over any field and an actual
+finite generator family, every SAME original normalized Rees chart in its
+actual fraction field is Noetherian.
+\end{lemma}
+\begin{proof}
+The actual unnormalized chart is generated over $B$ by the finite original
+ratios. It is therefore essentially finite type over the original field.
+Its actual fraction field is the original fraction field of $B$, since it is
+an intermediate original subalgebra. Apply the proved essentially finite type
+normalization theorem to that exact chart. Restricting scalars changes no
+underlying ring, so this is the asserted original normalized chart.
+\end{proof}
+
+\begin{theorem}[Every original local nonfield model admits a genuinely centered DVR]
+\label{algebra:actual-essentially-finite-type-centered-dvr-exists}
+\lean{EnvelopeProperty.EssentiallyFiniteTypeCenteredDVR.exists_centeredDVR}
+\leanok
+\uses{algebra:actual-essentially-finite-type-rees-chart-noetherian,algebra:actual-rees-index-exists,thm:actual-rees-local-center}
+Let $B$ be an actual local essentially finite type domain over any field,
+let $K$ be its actual fraction field, and suppose $B$ is not a field.
+There exists an actual subalgebra $V\subseteq K$ which is a discrete valuation
+ring and whose maximal ideal contracts along the ORIGINAL map $B\to V$
+EXACTLY to the original maximal ideal of $B$. No chosen valuation, DVR,
+center, resolution or alteration is supplied.
+\end{theorem}
+\begin{proof}
+The actual local domain is Noetherian. Choose a finite original generating set
+of its maximal ideal. That ideal is proper, and it is nonzero because $B$ is
+not a field. Thus at least one original generator is nonzero. The actual Rees
+existence theorem constructs an actual original index for this SAME family.
+The preceding lemma proves its actual normalized chart Noetherian, so the
+existing original Rees-ring theorem proves its SAME literal valuation subring
+is a DVR.
+
+For completeness, the exact center is derived rather than prescribed. Its
+selected generator lies in the chosen minimal prime and hence in the DVR's
+maximal ideal. Every original generator is divisible by that selected generator
+in the actual Rees ring. Thus the entire original maximal ideal maps into the
+DVR maximal ideal. Its contraction is a proper prime containing the original
+maximal ideal; maximality gives equality. This is precisely the genuine
+original local Rees-center theorem applied to the derived generating family.
+\end{proof}

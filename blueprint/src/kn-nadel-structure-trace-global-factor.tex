@@ -1,0 +1,47 @@
+\section{The original global regular structure trace}
+
+\begin{theorem}[The actual original rational trace has a unique regular global factor]
+\label{thm:kn-structure-trace-global-regular-factor}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.existsUnique_originalStructureTrace,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.originalStructureTrace,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.originalStructureTrace_factor,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.originalStructureTrace_unique}
+\leanok
+The same original normalized adapted cover $\pi:Y\to X$, under the
+original smooth SNC, empty-row, positive-degree and tameness hypotheses,
+has a unique actual $\mathcal O_X$-linear map
+\[
+ \operatorname{Tr}_{\pi}:\pi_*\mathcal O_Y\longrightarrow\mathcal O_X
+\]
+whose composite with the actual original inclusion into the generic-field
+pushforward is the actual original rational structure trace. The chart
+cover, local traces, local factor equations and their compatibility are
+all derived internally from the original data. No global free algebra,
+trace map, local-factor certificate or overlap certificate is a hypothesis.
+\uses{thm:kn-structure-trace-produced-whole-free-chart,lem:kn-structure-trace-local-regular-factor,lem:kn-structure-trace-generic-unit-mono,def:kn-structure-trace-rational}
+\end{theorem}
+\begin{proof}
+The original adapted-cover construction makes $\pi$ finite. Around each
+original point choose the whole free chart provided by the proved
+original chart producer, whose base contains that point. The actual
+coefficient spectra of these charts are open immersions covering $X$:
+the point in the base open is carried to its coefficient spectrum by
+the original affine-spectrum isomorphism, whose inverse followed by
+the original open inclusion returns the point.
+
+On each such coefficient spectrum the constructed actual local trace
+is a regular factor of the restriction of the same original rational
+trace. The native restriction functor and native pullback functor of
+an open immersion are naturally isomorphic. Conjugating the local
+trace by that isomorphism, and using its naturality on the original
+structural unit and rational map, gives a factorization of the actual
+pulled-back rational map through the actual pulled-back inclusion.
+
+The original structural unit into the generic-field pushforward is a
+monomorphism. Factorization through a monomorphism is detected on an
+actual open-immersion point cover: equivalently, the composite with its
+cokernel vanishes on that cover, hence vanishes globally, and exactness
+of the monomorphism--cokernel sequence produces the required global
+factor. Apply this criterion to the internally produced cover and
+factors. The result is the asserted actual global regular trace. If
+two such global maps have the same composite with the original
+inclusion, right cancellation by that monomorphism makes them equal.
+This also proves independence of all chart choices.
+\end{proof}

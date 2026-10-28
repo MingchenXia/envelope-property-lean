@@ -1,0 +1,61 @@
+\section{The actual original Cartier ratio section and intrinsic ideal potentials}
+
+\begin{definition}[Canonical original generic Cartier ratio section]
+\label{def:actual-cartier-ratio-generic-section}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericCartierRatioSection}
+\leanok
+\uses{def:actual-cartier-generic-inclusion-frame,cor:actual-dual-cartier-fiber-section-model-potential,thm:actual-model-line-tensor-norm}
+For two actual Cartier ideals $I,J$ on an original proper model,
+and nonzero intrinsic original ideal norm of $I$, take the genuine
+canonical generic unit section of the original ideal line $I$
+and the actual original fiber section of the canonical dual
+transpose of the original inclusion of $J$. Their true explicit
+pure tensor is an actual section on the same original generic
+fiber of the original line $I\otimes J^\vee$.
+\end{definition}
+
+\begin{theorem}[Actual Cartier ratio model norm and logarithm]
+\label{thm:actual-cartier-ratio-generic-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericCartierRatioSection}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericCartierRatioSection_log}
+\leanok
+\uses{def:actual-cartier-ratio-generic-section,lem:actual-cartier-generic-unit-section-model-norm,cor:actual-dual-cartier-fiber-section-model-potential}
+The genuine model norm of this actual original ratio section is
+$\|J\|_y/\|I\|_y$, using the intrinsic original ideal norms. Its
+original logarithmic norm is
+$\log\|J\|_y-\log\|I\|_y$.
+\end{theorem}
+\begin{proof}
+The actual explicit tensor norm theorem gives the product of the
+two genuine original factor norms. The canonical original generic
+unit section of $I$ has model norm reciprocal to the actual
+Cartier inclusion norm. The actual original fiber section of the
+canonical dual inclusion transpose for $J$ has exactly the actual
+original Cartier inclusion norm of $J$. Each inclusion norm is
+its corresponding intrinsic original model ideal norm. Taking
+the actual extended-real logarithm of this exact norm identity,
+using its original multiplication and inverse laws, gives the
+asserted difference with the indicated order. This order records
+the distinction between the logarithmic norm and the usual
+negative-logarithmic model weight. No tensor, dual metric, or
+rational trivialization certificate has been assumed.
+\end{proof}
+
+\begin{corollary}[Exact original ratio model weight]
+\label{cor:actual-cartier-ratio-model-weight}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericCartierRatioSection_weight}
+\leanok
+\uses{thm:actual-cartier-ratio-generic-model-norm,scheme:native-model-ideal-function}
+The negative original logarithmic norm of this actual ratio
+section is exactly
+$\log\|I\|_y-\log\|J\|_y$, the original ideal potential difference.
+\end{corollary}
+\begin{proof}
+The intrinsic ideal norm of $I$ is nonzero by hypothesis and at
+most one by the actual valuation-ring bound. Its logarithm is
+therefore a finite original extended real. The valid extended-real
+negation-of-difference identity consequently applies even if the
+original $J$ norm vanishes. Negating the preceding exact logarithmic
+norm formula yields the asserted potential difference with the
+proper order. No extra finiteness certificate is needed.
+\end{proof}

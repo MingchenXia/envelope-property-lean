@@ -1,0 +1,22 @@
+\begin{lemma}[Geometric ampleness restricts to original closed subschemes]
+\label{lem:fc-original-ample-closed-restriction}
+\lean{EnvelopeProperty.SchemeAmpleClosedRestriction.veryAmple_of_iso, EnvelopeProperty.SchemeAmpleClosedRestriction.veryAmple_pullback, EnvelopeProperty.SchemeAmpleClosedRestriction.ample_pullback}
+\leanok
+\uses{def:fc-original-geometric-line-ampleness}
+Let $p:X\to\operatorname{Spec}R$ and let $f:Y\hookrightarrow X$ be an
+actual closed immersion. Whole line isomorphisms preserve very ampleness.
+If $L$ is very ample, respectively ample, on $X$ over $R$, its whole
+original pullback is very ample, respectively ample, on $Y$ over $R$.
+\end{lemma}
+\begin{proof}
+Transport the actual closed projective embedding line comparison across
+the given line isomorphism. For restriction, compose the actual embedding
+of $X$ into projective space with $f$. A composite of closed immersions is
+a closed immersion, and the whole pullback composition isomorphism gives
+the required original embedding line on $Y$. For an ample line choose
+the positive very ample power in its geometric definition. Pullback
+preserves invertibility. The actual tensor-power pullback isomorphism
+identifies the pulled very ample power with that same positive tensor
+power of the pulled line. This supplies the geometric ample criterion
+on $Y$.
+\end{proof}

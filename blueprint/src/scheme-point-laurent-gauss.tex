@@ -1,0 +1,96 @@
+\section{The original completed point field gives the genuine Laurent Gauss product point}
+
+\begin{lemma}\label{lem:native-point-completed-field-coefficients}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.PointField}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.coefficientMap}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.coefficientMap_spec}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.coefficientMap_val}
+Let $x$ be any actual relative valued point of an original scheme $X$
+over a commutative valued ring $(R,v)$. Its actual completed stalk residue
+field $H(x)$ has a canonical coefficient map $\varphi_x:R\to H(x)$.
+The entire scheme coefficient triangle commutes and
+$|\varphi_x(a)|=v(a)$ for every original $a\in R$.
+\uses{scheme:actual-native-completed-field-point}
+\end{lemma}
+\begin{proof}
+Compose the original canonical field-valued point
+$\operatorname{Spec}H(x)\to X$ with the original structure map and use the
+full faithfulness of the affine spectrum functor to obtain the actual
+ring map. Mapping the actual norm point of $H(x)$ through its field-valued
+point recovers the entire original point $x$. Its prescribed-base equation
+therefore proves equality of the two original base points on
+$\operatorname{Spec}R$. Evaluate that whole equality on every original
+coefficient to get the asserted norm formula.
+\end{proof}
+
+\begin{definition}\label{def:native-point-laurent-gauss-family}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.point}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.originalProjection}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.parameterProjection}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.ordinaryParameterProjection}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.sourceOver}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.originalOverMap}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.parameterOverMap}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productMap}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.relativeSourcePoint}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productPoint}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productMap_fst}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productMap_snd}
+For $r>0$, take the actual Laurent Gauss point $z$ of
+$\operatorname{Spec}H(x)[T,T^{-1}]$ at radius $r$. Its original projection
+to $X$ is the spectrum of the actual coefficient inclusion followed by
+the original completed field point. Its Laurent parameter projection is
+the spectrum of the actual Laurent extension of $\varphi_x$.
+\uses{lem:native-point-completed-field-coefficients,thm:laurent-gauss-coefficient-naturality,spectrum:actual-laurent-gauss-valuation,def:native-multiplicative-group}
+\end{definition}
+\begin{proof}
+Both maps are actual scheme maps from the same Laurent spectrum. Their
+composites to the original $R$-spectrum agree, since their ring coefficient
+composites are the same $a\mapsto C(\varphi_x(a))$. They therefore give
+the original product map over $R$, using the actual Cartesian product.
+No valued point or projection matching is supplied as an input.
+\end{proof}
+
+\begin{theorem}\label{thm:native-point-laurent-gauss-projections}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.originalProjection_point}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.parameterProjection_point}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.ordinaryParameterProjection_point}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productPoint_fst}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.productPoint_snd}
+The whole original projection of $z$ to $X$ equals $x$. Its whole Laurent
+parameter projection is the actual Laurent Gauss point of $v$ at radius
+$r$. Consequently its projection to the ordinary parameter line is the
+actual polynomial Gauss point of $v$ at radius $r$.
+\uses{def:native-point-laurent-gauss-family,lem:native-point-completed-field-coefficients,thm:laurent-gauss-coefficient-naturality}
+\end{theorem}
+\begin{proof}
+Actual Laurent Gauss restriction on the coefficient field equals its
+original norm valuation. The canonical completed field point therefore
+recovers the entire original native $x$. The original Laurent coefficient
+map preserves every coefficient valuation by the preceding lemma, so
+whole Laurent Gauss naturality proves the second equality. Restricting it
+through the original polynomial localization proves the third equality.
+All equalities concern the entire valued points and all original
+coefficients, not only their scheme supports or parameter value.
+\end{proof}
+
+\begin{theorem}\label{thm:native-point-laurent-gauss-section-values}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentGauss.section_laurent_value}
+Let $U$ be any original open containing the support of $x$, and let
+$f=\sum_i a_iT^i$ be any Laurent polynomial with original coefficients
+$a_i\in\Gamma(X,U)$. Evaluating every coefficient through the actual
+original section map into $H(x)$, the actual Gauss value is
+$\max_{i\in\operatorname{supp}f}|a_i(x)|r^i$.
+\uses{def:native-point-laurent-gauss-family,cor:laurent-gauss-original-coefficient-maximum}
+\end{theorem}
+\begin{proof}
+The original section-to-completed-field map retains the actual native
+value of every original section. Apply the proved whole Laurent
+coefficient maximum formula to this actual ring map. The support is the
+original support of $f$, so zero values of some coefficients are retained
+without a nonvanishing premise.
+\end{proof}

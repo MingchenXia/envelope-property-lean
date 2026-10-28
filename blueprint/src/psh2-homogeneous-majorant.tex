@@ -1,0 +1,185 @@
+\section{PSH2 below a homogeneous majorant}\label{sec:psh2-hom-majorant}
+
+In revision \texttt{832e086} of \cite{FHX}, Proposition~2.1(1) states the decreasing-limit property PSH2 at every class, citing \cite[Theorem~4.5]{BJ22},
+whose proof rests on the false \cite[Lemma~4.6]{BJ22} (Proposition~\ref{prop:nn-bj-lemma46-false}); the revision of 2026-10-28 restricts
+\cite[Proposition~2.1(1)]{FHX} to nef classes and homogeneous nets (\cite[Remark~2.2]{FHX}). PSH2 is proved here at limit classes in the nef cone, for nets
+of homogeneous functions, for dominated maxima of homogeneous functions (Theorems~\ref{thm:nn-psh2-hom} and~\ref{thm:nn-hom-max-diagonal}) and under the
+envelope property at the limit class (Theorem~\ref{thm:nn-psh2-of-ep}). This section isolates what is missing in general: PSH2 holds for a decreasing net as
+soon as a single homogeneous $\theta$-psh function dominates all Legendre slices of the limit (Theorem~\ref{thm:hm-psh2-hom-majorant}). The proof is the
+dyadic-grid argument of \cite[Proposition~7.5]{FHX} (Proposition~\ref{prop:nn-homogeneous-slices}), with the majorant in place of the function $\Psi$ that
+the envelope property supplies there. It contains \cite[Lemma~7.4]{FHX} on models (Lemma~\ref{lem:hm-carrier-limit}).
+
+Throughout, $\mathcal X$ is a model over the algebraically closed trivially valued field $k$ (Definition~\ref{def:gl-model}), and we use the notation of
+Definition~\ref{def:gl-scaling}: $t\cdot v$ is the scaling action of $t>0$ on $\mathcal X^\an$, $(t\cdot u)(v)=t\,u(t^{-1}\cdot v)$, $\hat u=\inf_{t>0}t\cdot u$, and
+$\hat u_\lambda=\widehat{u-\lambda}$ for $\lambda\in\R$, so that $\hat u_\lambda(v)=\inf_{t>0}\bigl((t\cdot u)(v)-t\lambda\bigr)$.
+
+\begin{lemma}[Legendre reconstruction along convex rays]\label{lem:hm-convex-ray-reconstruction}
+\lean{EnvelopeProperty.MultiModel.scaleFun_ne_bot_of_scaleFun_convex, EnvelopeProperty.MultiModel.convexOn_rayFun_of_scaleFun_convex, EnvelopeProperty.MultiModel.eq_iSup_legendreSlice_of_scaleFun_convex}
+\leanok
+\uses{def:gl-scaling, lem:gl-scaling}
+\source{fhx-envelope-20261028:eq:Legendre-reconstruction, bj22-trivval:thm:homogpsh, bj22-trivval:lem:actionconvex}
+Let $u\colon\mathcal X^\an\to[-\infty,\infty)$ with $b=u(\star)\in\R$ and $u\le b$. Assume that for every $v\in\mathcal X^\an$ the ray $g_v(t)=(t\cdot u)(v)$,
+$t>0$, satisfies the convexity inequality
+\[
+g_v(t)\le\alpha\,g_v(t_1)+\beta\,g_v(t_2)\qquad(t_1,t_2>0,\ \alpha,\beta\ge0,\ \alpha+\beta=1,\ t=\alpha t_1+\beta t_2)
+\]
+in $[-\infty,\infty)$. Then:
+\begin{enumerate}
+\item for every $v$, $g_v$ is either identically $-\infty$ or real valued, and in the second case it is a convex function on $(0,\infty)$;
+\item $u=\sup_{\lambda<b}(\hat u_\lambda+\lambda)$ pointwise on $\mathcal X^\an$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $u<\infty$, every $g_v$ takes values in $[-\infty,\infty)$.
+
+(1) Let $g_v(t_0)>-\infty$ and $t>0$. With $\alpha=t_0/(t+t_0)>0$ and $\beta=t/(t+t_0)$ one has $\alpha t+\beta\,t_0^2/t=t_0$, so
+$g_v(t_0)\le\alpha g_v(t)+\beta g_v(t_0^2/t)$; as $g_v(t_0^2/t)<\infty$ and $\alpha>0$, this forces $g_v(t)>-\infty$. So $g_v$ is identically $-\infty$ or real
+valued, and in the second case the convexity inequality is ordinary convexity.
+
+(2) Taking $t=1$ in the definition gives $\hat u_\lambda(v)\le u(v)-\lambda$, hence $\sup_{\lambda<b}(\hat u_\lambda(v)+\lambda)\le u(v)$. For the converse fix $v$
+and write $g=g_v$. If $u(v)=g(1)=-\infty$ there is nothing to prove. Otherwise $g$ is real valued and convex by (1); let $c$ be a subgradient of $g$ at $1$, so
+$g(t)\ge g(1)+c(t-1)$ for all $t>0$. Since $u\le b$, $g(t)=t\,u(t^{-1}\cdot v)\le tb$. If $c>b$, then for $t>\max\{1,(c-g(1))/(c-b)\}$ we would get
+$tb\ge g(t)\ge g(1)+c(t-1)>tb$; hence $c\le b$. Let $\epsilon>0$ and $\lambda=c-\epsilon<b$. For $t>0$,
+$g(t)-t\lambda\ge g(1)-c+t\epsilon\ge g(1)-c$, so $\hat u_\lambda(v)\ge g(1)-c$ and $\hat u_\lambda(v)+\lambda\ge g(1)-\epsilon$. Letting $\epsilon\to0$ gives
+$\sup_{\lambda<b}(\hat u_\lambda(v)+\lambda)\ge u(v)$.
+\end{proof}
+
+\begin{lemma}[Slices of a decreasing limit]\label{lem:hm-limit-slices}
+\lean{EnvelopeProperty.MultiModel.isPSHHom_legendreSlice_of_antitone}
+\leanok
+\uses{lem:nn-ray-limit, thm:nn-psh2-hom, thm:gl-homog-decomposition}
+\source{bj22-trivval:thm:homogpsh, fhx-envelope-20261028:prop:homogeneous-slices}
+Let $(I,\le)$ be a nonempty directed set, $\theta_i\to\theta$ a net in $\R^r$, and $u_i\in\PSH(\mathcal X,\theta_i)$ a decreasing net with limit $u$. If
+$\lambda\in\R$ and $\lambda<u(\star)$, then $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
+\end{lemma}
+
+\begin{proof}
+For every $i$, $\lambda<u(\star)\le u_i(\star)$, so $(\hat u_i)_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta_i)$ (Theorem~\ref{thm:gl-homog-decomposition}). The map
+$f\mapsto\hat f_\lambda$ is increasing, so $((\hat u_i)_\lambda)_i$ is decreasing. Homogenization commutes with arbitrary pointwise infima, and so does the real
+translate by $-\lambda$; hence $\inf_i(\hat u_i)_\lambda=\hat u_\lambda$ (Lemma~\ref{lem:nn-ray-limit}(2)). Theorem~\ref{thm:nn-psh2-hom} gives
+$\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
+\end{proof}
+
+\begin{theorem}[PSH2 below a homogeneous majorant]\label{thm:hm-psh2-hom-majorant}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_homMajorant}
+\leanok
+\uses{lem:hm-convex-ray-reconstruction, lem:hm-limit-slices, lem:nn-ray-limit, thm:nn-hom-max-diagonal, prop:nn-homogeneous-slices, thm:gl-fs-system-theory, lem:gl-scaling, def:gl-psh}
+\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:prop:homogeneous-slices, bj22-trivval:thm:psh12}
+Let $(I,\le)$ be a nonempty directed set, $\theta_i\to\theta$ a net in $\R^r$, and $u_i\in\PSH(\mathcal X,\theta_i)$ a decreasing net with limit $u\not\equiv-\infty$;
+put $b=u(\star)$. Suppose that some $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ satisfies
+\[
+\hat u_\lambda\le\Psi\qquad\text{for every }\lambda<b.
+\]
+Then $u\in\PSH(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+\emph{The limit.} Since $u_i\le u_i(\star)$ (Theorem~\ref{thm:gl-fs-system-theory}(1)), $u\le b$ and $u<\infty$; a point where $u$ is finite gives $b>-\infty$, and
+$b\le u_i(\star)<\infty$. By Lemma~\ref{lem:nn-ray-limit}(1) the rays of $u$ satisfy the convexity inequality of Lemma~\ref{lem:hm-convex-ray-reconstruction}, which
+therefore gives
+\begin{equation}\label{eq:hm-reconstruction}
+u=\sup_{\lambda<b}(\hat u_\lambda+\lambda).
+\end{equation}
+
+\emph{Shifted slices.} For $\mu<0$ put $\varphi_\mu=\hat u_{b+\mu}$. By Lemma~\ref{lem:hm-limit-slices}, $\varphi_\mu\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$; the
+functions $\varphi_\mu$ decrease in $\mu$, because $f-\lambda$ decreases in $\lambda$ and homogenization is increasing; and $\varphi_\mu\le\Psi$ by hypothesis.
+Moreover $\Psi\le0$ (Lemma~\ref{lem:gl-scaling}(3)).
+
+\emph{The dyadic grid.} For $n\in\N$ put $h_n=2^{-n}$, let $J_n=\{j\in\mathbf Z:-n2^n\le j<0\}$, and
+\[
+U_n=\max\Bigl\{\Psi-n,\ \max_{j\in J_n}\bigl(\varphi_{jh_n}+(j+1)h_n\bigr)\Bigr\}.
+\]
+All constants $-n$ and $(j+1)h_n$, $j\in J_n$, are $\le0$. Termwise domination holds: let $n\le n'$. The term $\Psi-n'$ of $U_{n'}$ is dominated by the term
+$\Psi-n$ of $U_n$. Let $j'\in J_{n'}$ and $a'=j'h_{n'}$. If $a'<-n$, then $(j'+1)h_{n'}\le-n$ (both $j'$ and $-n2^{n'}$ are integers) and
+$\varphi_{a'}\le\Psi$, so the term is dominated by $\Psi-n$. If $a'\ge-n$, let $j=\lfloor j'2^{n-n'}\rfloor$; then $-n2^n\le j<0$, $a=jh_n\le a'$, so
+$\varphi_{a'}\le\varphi_a$, and $j'<(j+1)2^{n'-n}$ gives $(j'+1)h_{n'}\le(j+1)h_n$. Theorem~\ref{thm:nn-hom-max-diagonal}, applied with the constant class $\theta$,
+shows that $(U_n)$ decreases and that $U=\lim_nU_n\in\PSH(\mathcal X,\theta)$ unless $U\equiv-\infty$.
+
+\emph{Lower bound.} Let $\lambda<b$ and $\mu=\lambda-b<0$. If $\mu<-n$, then $\varphi_\mu+\mu\le\Psi-n$. Otherwise let $j=\lfloor\mu2^n\rfloor\in J_n$; then
+$jh_n\le\mu<(j+1)h_n$, so $\varphi_\mu+\mu\le\varphi_{jh_n}+(j+1)h_n$. In both cases $\hat u_\lambda+\lambda-b=\varphi_\mu+\mu\le U_n$, so
+\eqref{eq:hm-reconstruction} gives $u-b\le U_n$ for every $n$, hence $u-b\le U$. In particular $U(\star)\ge0$, so $U\not\equiv-\infty$ and $U\in\PSH(\mathcal X,\theta)$.
+
+\emph{Upper bound.} For $\mu<0$, $\varphi_\mu+\mu=\hat u_{b+\mu}+(b+\mu)-b\le u-b$ by \eqref{eq:hm-reconstruction}. Since $\Psi\le0$, every term of $U_n$ is at most
+$\max\{-n,\ u-b+h_n\}$, so $U\le\max\{-n,u-b+2^{-n}\}$ for every $n$, and therefore $U\le u-b$.
+
+Hence $u=U+b$, which lies in $\PSH(\mathcal X,\theta)$ (Theorem~\ref{thm:gl-fs-system-theory}(1)).
+\end{proof}
+
+
+\begin{corollary}[Majorants from the envelope property]\label{cor:hm-majorant-of-ep}
+\lean{EnvelopeProperty.MultiModel.exists_homMajorant_of_hasEnvelopeProperty}
+\leanok
+\uses{lem:hm-limit-slices, lem:gl-scaling, def:gl-psh, thm:hm-psh2-hom-majorant}
+\source{fhx-envelope-20261028:prop:BJ-package}
+Let $u_i\in\PSH(\mathcal X,\theta_i)$ be a decreasing net, $\theta_i\to\theta$, with limit $u\not\equiv-\infty$, $b=u(\star)$, and assume
+$\mathrm{EP}_{\mathcal X}(\theta)$. Then some $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ satisfies $\hat u_\lambda\le\Psi$ for every $\lambda<b$, namely
+$\Psi=(\sup_{\lambda<b}\hat u_\lambda)^\star$. In particular Theorem~\ref{thm:hm-psh2-hom-majorant} contains Theorem~\ref{thm:nn-psh2-of-ep}.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:hm-limit-slices} the family $\{\hat u_\lambda\}_{\lambda<b}$ is a nonempty family in $\PSH_{\mathrm{hom}}(\mathcal X,\theta)$, bounded above by $0$
+(Lemma~\ref{lem:gl-scaling}(3)). The envelope property gives $\Psi\in\PSH(\mathcal X,\theta)$, and $\Psi$ is homogeneous as the usc regularization of a supremum of
+homogeneous functions (Lemma~\ref{lem:gl-scaling}(5)). Finally $\hat u_\lambda\le\sup_{\lambda'<b}\hat u_{\lambda'}\le\Psi$.
+\end{proof}
+
+\begin{corollary}[Classes at which the constants are psh]\label{cor:hm-majorant-zero}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isPSH_zero}
+\leanok
+\uses{thm:hm-psh2-hom-majorant, lem:hm-limit-slices, lem:gl-scaling}
+Let $\theta\in\R^r$ with $0\in\PSH(\mathcal X,\theta)$. If $u_i\in\PSH(\mathcal X,\theta_i)$ is a decreasing net, $\theta_i\to\theta$ and $u=\lim_iu_i\not\equiv-\infty$,
+then $u\in\PSH(\mathcal X,\theta)$.
+\end{corollary}
+
+\begin{proof}
+The constant $0$ is homogeneous, so $0\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$. For $\lambda<u(\star)$, $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$
+(Lemma~\ref{lem:hm-limit-slices}), hence $\hat u_\lambda\le0$ (Lemma~\ref{lem:gl-scaling}(3)). Apply Theorem~\ref{thm:hm-psh2-hom-majorant} with $\Psi=0$.
+\end{proof}
+
+\begin{lemma}[Decreasing limits below a homogeneous carrier]\label{lem:hm-carrier-limit}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_homogeneous_carrier_limit, EnvelopeProperty.MultiModel.IsScaleHomogeneous.homogenization_add_coe_le}
+\leanok
+\uses{thm:hm-psh2-hom-majorant, lem:gl-scaling, def:gl-scaling, thm:gl-fs-system-theory}
+\source{fhx-envelope-20261028:lem:homogeneous-carrier-limit}
+Let $\theta\in\R^r$ and $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$. For $n\in\N$ let $A_n$ be a finite set and, for $a\in A_n$,
+$q_{n,a}\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ with $q_{n,a}\le\Psi$ and $c_{n,a}\in\R$. Suppose that $U_n=\max_{a\in A_n}(q_{n,a}+c_{n,a})$ decreases
+in $n$ and that $u=\lim_nU_n$ is not identically $-\infty$. Then $u\in\PSH(\mathcal X,\theta)$.
+\end{lemma}
+
+\begin{proof}
+If some $A_n$ were empty, $U_n$ and hence $u$ would be identically $-\infty$; so every $A_n$ is nonempty, and $U_n\in\PSH(\mathcal X,\theta)$ as a finite
+maximum of translates of $\theta$-psh functions (Theorem~\ref{thm:gl-fs-system-theory}(1)). Thus $(U_n)$ is a decreasing sequence in $\PSH(\mathcal X,\theta)$,
+with constant classes and limit $u\not\equiv-\infty$; by Theorem~\ref{thm:hm-psh2-hom-majorant} it suffices to show $\hat u_\lambda\le\Psi$ for every
+$\lambda<u(\star)$.
+
+Fix $\lambda$, put $C=\max_{a\in A_0}c_{0,a}$ and $D=\max\{C-\lambda,0\}$. Since $q_{0,a}\le\Psi$, $u-\lambda\le U_0-\lambda\le\Psi+D$. Homogenization
+is increasing, so $\hat u_\lambda\le\widehat{\Psi+D}$. For $t>0$ and $v\in\mathcal X^\an$, homogeneity of $\Psi$ gives
+$(t\cdot(\Psi+D))(v)=t\Psi(t^{-1}\cdot v)+tD=\Psi(v)+tD$. Hence $\widehat{\Psi+D}(v)\le\Psi(v)+tD$ for every $t>0$, and letting $t\to0$ gives
+$\widehat{\Psi+D}(v)\le\Psi(v)$ (if $\Psi(v)=-\infty$ there is nothing to prove). So $\hat u_\lambda\le\Psi$.
+\end{proof}
+
+\begin{remark}[Comparison with the source]\label{rmk:hm-carrier-limit-source}
+\uses{lem:hm-carrier-limit, thm:hm-psh2-hom-majorant}
+\source{fhx-envelope-20261028:lem:homogeneous-carrier-limit, fhx-envelope-20261028:prop:homogeneous-slices}
+\cite[Lemma~7.4]{FHX} is stated on an integral projective variety and also requires the term $\Psi-n$ among the constituents of $U_n$. Its proof builds a
+directed decreasing Fubini--Study net for $u$ from the functions $v\mapsto F(bv)+\epsilon$, where the carrier term makes the homogeneous parts of the
+approximants dominate $\Psi$. Lemma~\ref{lem:hm-carrier-limit} is the model form and is deduced instead from Theorem~\ref{thm:hm-psh2-hom-majorant}; the
+carrier term is not needed there, and the finite sets $A_n$ are nonempty because $u\not\equiv-\infty$. Neither the route to the main theorem nor
+Proposition~\ref{prop:nn-homogeneous-slices} uses Lemma~\ref{lem:hm-carrier-limit}.
+\end{remark}
+
+\begin{remark}[The majorant hypothesis]\label{rmk:hm-majorant-hypothesis}
+\notready
+\uses{thm:hm-psh2-hom-majorant, lem:hm-convex-ray-reconstruction, cor:hm-majorant-of-ep, cor:hm-majorant-zero, thm:nn-main}
+Since $\lambda\mapsto\hat u_\lambda$ is decreasing, the hypothesis of Theorem~\ref{thm:hm-psh2-hom-majorant} says $\Psi\ge u_\infty$, where
+$u_\infty=\sup_{\lambda\in\R}\hat u_\lambda$. This is the slope of $u$ at infinity: $u_\infty(v)=\lim_{s\to\infty}s^{-1}u(s\cdot v)$. Indeed, if $u(v)=-\infty$ then
+$g_v\equiv-\infty$ and both sides are $-\infty$. Otherwise $g=g_v$ is real valued and convex with $g(t)\le tb$ (Lemma~\ref{lem:hm-convex-ray-reconstruction}), so
+$L=\lim_{t\to0^+}g(t)$ exists in $(-\infty,0]$ and $s^{-1}u(s\cdot v)=g(1/s)\to L$ as $s\to\infty$. For every $\lambda$,
+$\hat u_\lambda(v)=\inf_{t>0}(g(t)-t\lambda)\le\lim_{t\to0^+}(g(t)-t\lambda)=L$. Conversely let $\epsilon>0$, choose $\delta\in(0,1)$ with $g(t)\ge L-\epsilon$ for
+$t\le\delta$, and a subgradient $c$ of $g$ at $1$. For $\lambda<0$ and $t\le\delta$, $g(t)-t\lambda\ge L-\epsilon$; for $t\ge\delta$,
+$g(t)-t\lambda\ge g(1)-c+t(c-\lambda)\ge g(1)-c+\delta(c-\lambda)$ as soon as $\lambda\le c$, which is $\ge L-\epsilon$ for $\lambda$ negative enough. So
+$\hat u_\lambda(v)\ge L-\epsilon$ for $\lambda$ negative enough, and $u_\infty(v)=L$. Thus PSH2 at $\theta$, for nets with limit $u$, reduces to the existence of a
+homogeneous $\theta$-psh majorant of the slope at infinity of $u$. Such a majorant exists under the envelope property at $\theta$
+(Corollary~\ref{cor:hm-majorant-of-ep}), in particular on unibranch models under the hypotheses of Theorem~\ref{thm:nn-main}, and it exists when $0\in\PSH(\mathcal X,\theta)$
+(Corollary~\ref{cor:hm-majorant-zero}); its existence at pseudoeffective classes outside the nef cone on non-unibranch models is not known.
+\end{remark}

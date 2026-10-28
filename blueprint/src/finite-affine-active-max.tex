@@ -1,0 +1,65 @@
+\subsection{Actual finite affine maxima and derived outgoing slope inequality}
+
+These are general finite real arithmetic theorems. Their inputs are original
+finite families of real numbers and slopes, not a harmonic function, local
+profile or slope-balancing certificate. The analytic consumers must still
+prove their OWN genuine affine-ray formulas and individual balancing.
+
+\begin{theorem}[Actual affine maxima have a genuine common positive active neighborhood]
+\label{analysis:actual-finite-affine-active-max}
+\lean{EnvelopeProperty.FiniteAffineMax.active,
+EnvelopeProperty.FiniteAffineMax.active_nonempty,
+EnvelopeProperty.FiniteAffineMax.activeSlope,
+EnvelopeProperty.FiniteAffineMax.exists_pos_eventual_max}
+Let $I$ be an ACTUAL finite nonempty set, $D$ any ACTUAL finite set,
+$b_i\in\mathbb R$, and $s_{i,d}\in\mathbb R$. Put
+$B=\max_{i\in I}b_i$, $I_0=\{i\in I:b_i=B\}$ and
+$M_d=\max_{i\in I_0}s_{i,d}$. The actual active set $I_0$ is nonempty.
+There EXISTS an actual $\varepsilon>0$ such that for EVERY $d\in D$ and
+EVERY $0\leq t<\varepsilon$,
+\[
+ \max_{i\in I}(b_i+s_{i,d}t)=B+M_dt.
+\]
+No common neighborhood, active-profile formula or bound on slopes is assumed.
+The empty $D$ case is included.
+\leanok
+\end{theorem}
+\begin{proof}
+The true maximum of a finite nonempty set is attained, so choose an ACTUAL
+$k\in I_0$. For every original inactive $i\in I\setminus I_0$ and
+$d\in D$, the actual affine difference
+$(b_i+s_{i,d}t)-(b_k+s_{k,d}t)$ is strictly negative at $t=0$.
+Its genuine real continuity gives a neighborhood of zero where it stays
+strictly negative. There are only finitely many original pairs $(i,d)$,
+so their actual finite intersection is still a neighborhood of zero.
+Choose a genuine positive metric-ball radius $\varepsilon$ inside it.
+For $0\leq t<\varepsilon$, EVERY inactive affine term is smaller than the
+actual active $k$ term, and thus cannot increase the maximum.
+For active $i$ the actual intercept is $B$; because $t\geq0$, its term is
+at most $B+M_dt$. The true finite maximum defining $M_d$ is attained by
+some actual active index, giving equality of the whole original maximum.
+If there are no inactive pairs the same neighborhood argument uses the
+whole real space, still providing an actual positive radius.
+\end{proof}
+
+\begin{theorem}[Individual actual balancing gives nonnegative total active-max slope]
+\label{analysis:actual-active-max-slope-sum}
+\lean{EnvelopeProperty.FiniteAffineMax.sum_activeSlope_nonneg}
+\uses{analysis:actual-finite-affine-active-max}
+With the SAME original finite families, suppose EVERY original member has
+actual zero total outgoing slope: $\sum_{d\in D}s_{i,d}=0$ for EVERY $i\in I$.
+Then $\sum_{d\in D}M_d\geq0$.
+Together with the preceding genuine neighborhood formula this proves the
+outgoing slope inequality for the ACTUAL maximum of these original affine
+profiles; it does not assert a general analytic maximum principle.
+\leanok
+\end{theorem}
+\begin{proof}
+Choose a genuine original active $k\in I_0$. For every $d\in D$, the true
+finite maximum gives $s_{k,d}\leq M_d$. Sum these actual inequalities over
+the original finite direction set, and use the GIVEN individual equality
+$\sum_ds_{k,d}=0$ to get the claimed nonnegative sum. Here individual
+balancing is an explicit arithmetic hypothesis: analytic consumers must
+derive it for their original functions, as in the physical rational-unit
+branch-balancing theorem. No inferred geometry is hidden in this lemma.
+\end{proof}

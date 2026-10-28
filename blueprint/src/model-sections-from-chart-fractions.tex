@@ -1,0 +1,54 @@
+\section{Whole model sections are exactly actual regular chart fractions}
+\label{sec:model-sections-from-chart-fractions}
+
+\begin{lemma}[Actual original chart fractions admit genuine homogeneous denominator clearing]
+\label{lem:model-chart-fraction-clearing}
+\lean{EnvelopeProperty.MultiModel.exists_clear_chart_fraction, EnvelopeProperty.MultiModel.exists_uniform_clear_chart_fractions}
+\leanok
+\uses{lem:gl-charts,def:gl-sections}
+\source{bj22-trivval:sec:tc}
+For an actual original multiprojective model, a rational coefficient $f$ whose
+fraction $f/D_j(a)$ belongs to its whole actual chart algebra admits an actual
+nonnegative clearing exponent $b$, with $a+b$ nonnegative and $fD_j(b)$ in the
+actual homogeneous piece of degree $a+b$. If these fractions are regular on
+every nonempty original coordinate chart, one common original exponent
+works on every such chart. No denominator-clearing premise is supplied.
+\end{lemma}
+\begin{proof}
+Represent the whole chart-algebra element by an actual homogeneous fraction
+$g/D_j(c)$. Choose a nonnegative exponent $n$ with $a+n$ nonnegative. The original
+fraction identity implies $fD_j(c+n)=gD_j(a+n)$. The right side belongs to the
+actual homogeneous piece by multiplication of actual pieces, giving one
+original clearing exponent. For all charts, there are only finitely many
+actual coordinate chart indices. Sum their internally obtained clearing
+exponents and add a nonnegative exponent offsetting every negative entry of
+$a$. The resulting exponent dominates every original chart exponent. Multiply
+each genuine homogeneous numerator by the remaining actual chart monomial;
+this retains its precise original degree and gives one common exponent.
+\end{proof}
+
+\begin{theorem}[Whole original graded sections are precisely whole regular chart fractions]
+\label{thm:model-sections-iff-chart-fractions}
+\lean{EnvelopeProperty.MultiModel.mem_sections_iff_chart_fractions}
+\leanok
+\uses{lem:model-chart-fraction-clearing,lem:gl-sections,lem:gl-model-change}
+\source{bj22-trivval:sec:tc}
+For every actual original integral multiprojective model, every integer
+multidegree $a$, and every coefficient $f$ in its original whole function field,
+$f$ is a genuine model global section exactly when its original fraction
+$f/D_j(a)$ belongs to the whole actual algebra of every original nonempty
+coordinate chart.
+\end{theorem}
+\begin{proof}
+A genuine section has actual regular chart fractions by the original section
+chart theorem. Conversely, the preceding internally derived common exponent
+$C$ clears all actual nonempty charts. The genuine coordinate pigeonhole
+argument makes $((M_c+1)C_c)_c$ admissible: every monomial of that multidegree
+either contains a zero original coordinate, when the product is zero, or
+has in each factor a coordinate with exponent at least $C_c$. Divide out those
+actual chart powers and multiply the remaining actual coordinate monomial
+by the already cleared whole homogeneous numerator. This gives precisely
+the genuine original admissibility condition defining the whole model
+section space. The original function field, homogeneous algebra and all
+coordinate charts are retained throughout, with no normality assumption.
+\end{proof}

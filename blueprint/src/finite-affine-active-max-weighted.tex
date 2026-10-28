@@ -1,0 +1,29 @@
+\subsection{The true residue-degree weighted finite-maximum inequality}
+
+\begin{theorem}[Actual weighted balancing gives nonnegative weighted maximum slope]
+\label{analysis:actual-weighted-active-max-slope-sum}
+\lean{EnvelopeProperty.FiniteAffineMax.sum_weighted_activeSlope_nonneg}
+\leanok
+\uses{analysis:actual-finite-affine-active-max}
+Let $I$ be an original finite nonempty index set and $D$ an original
+finite direction set. For real intercepts $b_i$, let $I_0$ be their
+ACTUAL maximizing indices, and let $M_d=\max_{i\in I_0}s_{i,d}$ be the
+SAME actual active directional maximum. Let $w_d\ge0$ be actual real
+weights. If EVERY original affine member has actual weighted balance
+$\sum_{d\in D}w_d s_{i,d}=0$, then
+$\sum_{d\in D}w_d M_d\ge0$.
+The empty direction set and zero weights are included. The previously
+proved actual common-neighborhood maximum formula is unchanged; no
+analytic slope, residue degree or geometric balancing statement is assumed
+or proved by this pure finite real inequality. Analytic consumers must
+produce their OWN actual slopes and actual residue-degree weights.
+\end{theorem}
+\begin{proof}
+The ACTUAL active set is nonempty by original finite-maximum attainment.
+Choose one of its original members $i_0$. For each original $d\in D$,
+$s_{i_0,d}\le M_d$. Multiply this actual inequality by the given actual
+nonnegative weight $w_d$ and sum on the same original direction set.
+The original weighted sum on the left is zero by the stated arithmetic
+balance for $i_0$, which proves the claim. Every original residue-degree
+weight is retained; no replacement by unweighted slopes is performed.
+\end{proof}

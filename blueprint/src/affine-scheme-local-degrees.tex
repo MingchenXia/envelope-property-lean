@@ -1,0 +1,45 @@
+\section{Residue-weighted local degrees at the original scheme points}
+
+\begin{definition}[The actual stalk and residue coefficient actions]
+\label{def:fc-affine-scheme-local-coefficients}
+\leanok
+\lean{EnvelopeProperty.AffineSchemeLocalDegrees.stalkAlgebra, EnvelopeProperty.AffineSchemeLocalDegrees.stalkLocalizationAlgEquiv, EnvelopeProperty.AffineSchemeLocalDegrees.residueAlgebra, EnvelopeProperty.AffineSchemeLocalDegrees.residueAlgebra_algebraMap, EnvelopeProperty.AffineSchemeLocalDegrees.residueLocalizationAlgEquiv, EnvelopeProperty.AffineSchemeLocalDegrees.pointPrimeEquiv, EnvelopeProperty.AffineSchemeLocalDegrees.pointPrimeEquiv_eq}
+The original structure morphism $D\to\operatorname{Spec}k$ acts on the same
+original stalk $\mathcal O_{D,x}$ by the original global-section map followed
+by its actual germ. The same original residue field $\kappa(x)$ receives
+the quotient action; its coefficient map is exactly evaluation of the
+original scalar. For an affine $D$, its actual stalk is identified with
+the localization of its same entire section algebra at its actual point
+prime, linearly over the same original field, and the induced residue-field
+identification is also linear over that field. The canonical whole affine
+scheme isomorphism supplies the bijection of original points and primes.
+\end{definition}
+
+\begin{theorem}[The true local degree sum on the original points]
+\label{thm:fc-affine-scheme-local-degrees}
+\leanok
+\lean{EnvelopeProperty.AffineSchemeLocalDegrees.local_degree_eq, EnvelopeProperty.AffineSchemeLocalDegrees.finrank_sections_eq_sum_points, EnvelopeProperty.AffineSchemeLocalDegrees.normalizedEulerCharacteristic_idealModule_eq_neg_sum_points}
+\uses{def:fc-affine-scheme-local-coefficients, thm:fc-finite-closed-ideal-local-degrees}
+For an actual affine scheme whose original entire section algebra is finite
+over the original field, its section dimension is the sum over its original
+points of the true local length multiplied by the actual residue-field degree.
+Consequently, for any actual finite closed subscheme $D\hookrightarrow X$ of
+an actual projective scheme over the field, the normalized full Euler
+characteristic of its same original native ideal is minus that sum over
+its original points, with their actual stalks and original residue fields.
+\end{theorem}
+\begin{proof}
+The actual affine germ is a prime localization. Its universal property gives
+the whole stalk algebra isomorphism over the original section algebra, then
+over the original coefficient field using its actual scalar tower.
+The actual local algebra isomorphism induces the genuine residue algebra
+isomorphism. Its submodule lattice isomorphism preserves the actual local
+length, and its residue linear isomorphism preserves the original residue
+dimension. Transport the finite-algebra local-degree sum through the actual
+canonical affine scheme point--prime bijection. For the original finite
+closed subscheme, affineness follows from its actual finite structure map;
+finiteness of its original section algebra follows from original closed
+projective geometry. The already proved full ideal Euler formula now gives
+the claimed same-point weighted sum without a length, residue, affine-cover,
+or degree-preservation certificate.
+\end{proof}

@@ -1,0 +1,114 @@
+\section{The fixed whole-chart square of the pushed canonical differential}
+
+Let $\pi:Y\to X$ be a morphism of schemes and let $C$ be an actual whole
+free chart of $\pi$: an affine open $U\subseteq X$ with open immersion
+$g:A=\operatorname{Spec}\Gamma(X,U)\to X$, the coefficient algebra $B$ of
+$C$ with scalar map $p:\operatorname{Spec}B\to A$, and the whole source
+open immersion $v:\operatorname{Spec}B\to Y$ onto $\pi^{-1}(U)$. These
+form the Cartesian square $g\circ p=\pi\circ v$. Fix a field $k$, a
+morphism $f:X\to\operatorname{Spec}k$ and $n\geq0$. As in the previous
+sections, $\omega_h^{(n)}$ is the $n$th exterior cotangent module of a
+morphism $h$ to $\operatorname{Spec}k$, and for a morphism $a$ the map
+$d_a:a^*\omega_h^{(n)}\to\omega_{h\circ a}^{(n)}$ is the exterior
+pullback differential. For an open immersion $j$, $\operatorname{Res}_j$
+is the restriction functor and $\rho_j:\operatorname{Res}_j\simeq j^*$ the
+fixed restriction--pullback comparison. The Cartesian restriction--pushforward
+comparison is
+$\kappa:\operatorname{Res}_g\circ\pi_*\simeq p_*\circ\operatorname{Res}_v$.
+Let $\chi:p^*g^*\omega_f^{(n)}\simeq v^*\pi^*\omega_f^{(n)}$ be the native
+comparison formed by the pullback-composition isomorphism for $(p,g)$, the
+pullback congruence for the equality $g\circ p=\pi\circ v$, and the inverse
+pullback-composition isomorphism for $(v,\pi)$, and let
+$H:\omega_{f\circ\pi\circ v}^{(n)}\to\omega_{f\circ g\circ p}^{(n)}$ be the
+transport along the equality $f\circ\pi\circ v=f\circ g\circ p$. In the
+formulas below, $u;w$ means first $u$, then $w$.
+
+\begin{definition}[The fixed pulled canonical comparison on a whole chart]
+\label{def:kn-native-chart-pulled-canonical-comparison}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalPullbackRestrictionIso}
+\uses{sc0-open-differential:pullback-isomorphism,lem:kn-structure-trace-chart-cartesian}
+\leanok
+The fixed pulled canonical comparison is
+\[
+ \Phi_A=\kappa_{\pi^*\omega_f^{(n)}};\,
+ p_*\bigl(\rho_{v,\pi^*\omega_f^{(n)}};\chi^{-1};p^*d_g\bigr):
+ \operatorname{Res}_g\pi_*\pi^*\omega_f^{(n)}\simeq
+ p_*p^*\omega_{f\circ g}^{(n)},
+\]
+where $d_g$ is invertible because $g$ is an open immersion.
+\end{definition}
+
+\begin{lemma}[The fixed chart comparisons as explicit isomorphism words]
+\label{lem:kn-native-chart-comparison-words}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.sourceMap_comp_eq,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalSourceRestrictionIso_eq_trans,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalPullbackRestrictionIso_eq_trans}
+\uses{def:kn-canonical-whole-chart-fixed-native-comparisons,def:kn-native-chart-pulled-canonical-comparison,lem:kn-structure-trace-chart-cartesian}
+\leanok
+The two composites $\operatorname{Spec}B\to\operatorname{Spec}k$ agree:
+$f\circ\pi\circ v=f\circ g\circ p$. The fixed source canonical comparison
+$\Phi_B:\operatorname{Res}_g\pi_*\omega_{f\circ\pi}^{(n)}\simeq
+p_*\omega_{f\circ g\circ p}^{(n)}$ equals
+$\kappa_{\omega_{f\circ\pi}^{(n)}};p_*(e_B)$ with
+$e_B=\rho_{v,\omega_{f\circ\pi}^{(n)}};d_v;H$, and the fixed pulled canonical
+comparison equals $\kappa_{\pi^*\omega_f^{(n)}};p_*(e_A)$ with
+$e_A=\rho_{v,\pi^*\omega_f^{(n)}};\chi^{-1};p^*d_g$; here $d_v$, $d_g$ and $H$
+are regarded as isomorphisms.
+\end{lemma}
+\begin{proof}
+The equality of composites follows from $g\circ p=\pi\circ v$ by
+associativity. The two descriptions of the comparisons are their definitions:
+each is $\kappa$ at the relevant object followed by the pushforward of the
+displayed composite of isomorphisms.
+\end{proof}
+
+\begin{theorem}[The fixed whole-chart differential square]
+\label{thm:kn-native-chart-differential-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalSourceRestrictionIso_differential,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.canonicalSourceRestrictionIso_differential_assoc}
+\uses{lem:kn-native-chart-comparison-words,thm:kn-native-restricted-differential-general-square,lem:kn-native-restricted-differential-functorial-assembly}
+\leanok
+With $\Phi_A,\Phi_B$ the fixed pulled and source canonical comparisons,
+\[
+ \operatorname{Res}_g\bigl(\pi_*d_\pi\bigr);\,\Phi_B
+ =\Phi_A;\,p_*\bigl(d_p\bigr),
+\]
+where on the right $d_p:p^*\omega_{f\circ g}^{(n)}\to
+\omega_{f\circ g\circ p}^{(n)}$ is the chart differential. No comparison
+isomorphism and no commuting square is an input. The same equality holds
+after composing both sides with an arbitrary morphism out of
+$p_*\omega_{f\circ g\circ p}^{(n)}$.
+\end{theorem}
+\begin{proof}
+Write $b=\rho_{v,\omega_{f\circ\pi}^{(n)}};d_v;H$ and
+$a=\rho_{v,\pi^*\omega_f^{(n)}};\chi^{-1};p^*d_g$ for the composites of
+morphisms, where $\chi^{-1}$ is written as the original inverse word: the
+composition comparison for $(v,\pi)$, the inverse of the congruence for
+$g\circ p=\pi\circ v$, and the inverse composition comparison for $(p,g)$.
+The restricted native differential square, applied to the arrows $g,\pi,p,v$
+of the chart (with $v$ an open immersion), gives
+\[
+ \operatorname{Res}_v(d_\pi);\,b=a;\,d_p .
+\]
+The homomorphism of $e_B$ is $b$, since the homomorphism of a composite of
+isomorphisms is the composite of their homomorphisms. For three composable
+isomorphisms $r,c,t$ one has $(r;c;t^{-1})^{-1}=t;c^{-1};r^{-1}$, and the
+inverses of the components of a natural isomorphism are the components of
+the inverse transformation; hence the homomorphism of $e_A$ is $a$.
+
+Apply $p_*$ to the restricted square:
+$p_*\operatorname{Res}_v(d_\pi);p_*(b)=p_*(a);p_*(d_p)$. Naturality of the
+Cartesian comparison $\kappa$ at $d_\pi$ gives
+$\operatorname{Res}_g(\pi_*d_\pi);\kappa_{\omega_{f\circ\pi}^{(n)}}
+=\kappa_{\pi^*\omega_f^{(n)}};p_*\operatorname{Res}_v(d_\pi)$. Combining the
+two equalities,
+\[
+ \operatorname{Res}_g(\pi_*d_\pi);\kappa_{\omega_{f\circ\pi}^{(n)}};p_*(b)
+ =\kappa_{\pi^*\omega_f^{(n)}};p_*(a);p_*(d_p).
+\]
+By the preceding lemma and the identification of the homomorphisms of
+$e_B,e_A$ with $b,a$, the left factor
+$\kappa_{\omega_{f\circ\pi}^{(n)}};p_*(b)$ is the homomorphism of $\Phi_B$ and
+$\kappa_{\pi^*\omega_f^{(n)}};p_*(a)$ is the homomorphism of $\Phi_A$. This is
+the asserted equality; it is the functorial assembly lemma applied with
+$F_1=\pi_*$, $F_2=\operatorname{Res}_g$, $G_1=\operatorname{Res}_v$,
+$G_2=p_*$ and $e=\kappa$. Composing both sides on the right with a further
+morphism and reassociating gives the whiskered form.
+\end{proof}

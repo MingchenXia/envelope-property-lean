@@ -1,0 +1,56 @@
+\section{Multiplication of the whole original base ideals}
+
+\begin{lemma}[Actual tensor-dual contraction]
+\label{lem:actual-invertible-tensor-dual-contraction}
+For original invertible sheaves $L,M$, the canonical original
+evaluations construct an isomorphism
+$L^\vee\otimes M^\vee\simeq(L\otimes M)^\vee$.
+On every open $U$, it sends original local dual sections $d,e$ to a
+functional satisfying
+\[
+ (d\otimes e)(s\otimes t)=d(s)e(t)
+\]
+for every original $s\in L(U)$ and $t\in M(U)$.
+\lean{EnvelopeProperty.InvertibleSheafBaseIdealMultiplication.dualTensorIso,EnvelopeProperty.InvertibleSheafBaseIdealMultiplication.dualTensorIso_pairing,EnvelopeProperty.InvertibleSheafBaseIdealMultiplication.dualTensorIso_eval_tensorSection}
+\leanok
+\end{lemma}
+\begin{proof}
+Interchange the two middle factors of
+$(L\otimes M)\otimes(L^\vee\otimes M^\vee)$, then apply the two
+original canonical evaluations and multiply in the structure sheaf.
+All these maps are isomorphisms. Tensoring by $L\otimes M$ is fully
+faithful, so comparison with its original canonical dual evaluation
+gives the asserted tensor-dual isomorphism and its entire pairing
+identity. Apply this identity to the four original pure sections.
+The actual tensor interchange, tensor-map naturality and unit
+multiplication evaluate it to the product of the two original
+contractions. This works on every open and uses no local frame.
+\end{proof}
+
+\begin{proposition}[Whole original base-ideal multiplication]
+\label{prop:actual-invertible-base-ideal-multiplication}
+For any two original invertible sheaves on any original scheme,
+\[
+ \mathfrak b(L)\mathfrak b(M)\subseteq\mathfrak b(L\otimes M).
+\]
+The same original global pure-tensor section realizes the product of
+every pair of original local evaluation coefficients.
+\uses{lem:actual-invertible-tensor-dual-contraction,prop:actual-line-global-section-evaluation,prop:actual-invertible-sheaf-base-ideal-affine}
+\lean{EnvelopeProperty.InvertibleSheafBaseIdealMultiplication.sectionEvaluation_tensorSection,EnvelopeProperty.InvertibleSheafBaseIdealMultiplication.baseIdeal_mul_le}
+\leanok
+\end{proposition}
+\begin{proof}
+Fix global sections $s,t$ and local dual sections $d,e$ on an affine
+open $U$. Restriction of the original global section $s\otimes t$
+is the pure tensor of their original restrictions. The preceding
+contraction identity identifies its evaluation against the actual
+tensor dual with $d(s|_U)e(t|_U)$, which therefore belongs to the
+whole original base ideal of $L\otimes M$.
+
+On $U$, the two original base ideals are the sums of the entire
+evaluation images over all original global sections. Ideal
+multiplication distributes over these arbitrary sums, and each
+product of coefficients belongs to the target ideal by the first
+paragraph. This proves inclusion on every original affine open,
+hence inclusion of the original ideal sheaves.
+\end{proof}

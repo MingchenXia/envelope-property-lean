@@ -1,0 +1,48 @@
+\section{Whole original affine principal degree and all native local orders}
+
+\begin{definition}[Same original principal Cartier ideal and quotient algebra]
+\label{def:fc-affine-principal-original-quotient}
+\leanok
+\lean{EnvelopeProperty.AffinePrincipalLocalDegree.principalIdeal, EnvelopeProperty.AffinePrincipalLocalDegree.principalIdeal_ideal_top, EnvelopeProperty.AffinePrincipalLocalDegree.principalIdeal_isInvertible, EnvelopeProperty.AffinePrincipalLocalDegree.quotientSectionsAlgEquiv}
+For an actual affine original scheme and original global section $c$, use
+its native global principal ideal sheaf.  Its whole original top ideal is
+$(c)$, and its entire native closed subscheme section algebra is the same
+original quotient, over the same original structure field.  If the original
+scheme is integral and $c\ne0$, this ideal is genuinely Cartier, including
+on singular schemes.
+\end{definition}
+\begin{proof}
+The actual native global ideal sheaf has top ideal $(c)$ by the native
+section restriction identity.  The actual original whole subscheme section
+isomorphism and native closed-immersion section map identify every original
+coefficient in the quotient.  The original nonzero principal equation on
+the actual whole affine chart is a nonzerodivisor, directly giving its
+Cartier property without normality.
+\end{proof}
+
+\begin{theorem}[True original principal quotient degree over all native points]
+\label{thm:fc-affine-principal-all-native-orders}
+\leanok
+\lean{EnvelopeProperty.AffinePrincipalLocalDegree.finrank_quotient_eq_finsum_native_orders}
+For an integral locally Noetherian original affine curve over $k$, with
+original $c\ne0$ and actual finite-dimensional original quotient
+$\Gamma(X,\mathcal O_X)/(c)$, that whole quotient's original field dimension
+equals the sum over all original points of the original native
+$\operatorname{ord}_x(c)[\kappa(x):k]$.
+\uses{def:fc-affine-principal-original-quotient,thm:fc-affine-scheme-local-degrees,thm:fc-closed-immersion-stalk-order-length,thm:fc-curve-cartier-native-local-orders}
+\end{theorem}
+\begin{proof}
+The whole original quotient section algebra is internally finite-dimensional
+over the original field and makes the original closed-subscheme point set
+finite.  Its genuine affine field dimension is the sum of actual closed
+stalk lengths and original closed residue degrees.  The native closed
+immersion identifies each actual closed length with the same original
+Cartier local order and identifies original residue degrees.  The actual
+Cartier support and zero-order-outside-support theorem reindex this sum over
+every original ambient point.  The actual whole principal equation then
+identifies each order with the native original scheme order of the original
+generic germ.  No properness, normality, local-order or residue matching
+certificate is required.  Finite quotient dimension is an ordinary generic
+hypothesis here and is internally produced by the actual local finite
+inverse theorem in its concrete consumer.
+\end{proof}

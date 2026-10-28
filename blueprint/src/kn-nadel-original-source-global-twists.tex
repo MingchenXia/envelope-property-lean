@@ -1,0 +1,54 @@
+\section{The original source and its entire global twist family}
+
+\begin{lemma}[The same source under an original base-line twist]
+\label{lem:kn-original-rounded-source-twist-isomorphism}
+\uses{lem:bundle-tensor-power-pullback}
+\lean{EnvelopeProperty.Vanishing.NadelOriginalTwistedRoundedSource.originalTwistedSourceIso}
+\leanok
+For any scheme morphism $\mu:Y\to X$, modules $Q$ on $Y$ and $A,H$
+on $X$, and $m\geq0$, there is an isomorphism
+\[
+ Q\otimes\mu^*(A\otimes H^{\otimes m})
+ \simeq (Q\otimes\mu^*A)\otimes(\mu^*H)^{\otimes m}.
+\]
+All factors and the pullback are the original ones.
+\end{lemma}
+\begin{proof}
+The tensor comparison for the same pullback identifies
+$\mu^*(A\otimes H^{\otimes m})$ with
+$\mu^*A\otimes\mu^*(H^{\otimes m})$.
+The pullback-power isomorphism identifies the second factor with
+$(\mu^*H)^{\otimes m}$. Tensor these comparisons with $Q$ and apply
+the associativity isomorphism. This gives the displayed isomorphism
+for every $m$, including zero, without an ampleness hypothesis.
+\end{proof}
+
+\begin{remark}[Conditional construction of the global source family]
+Fix the original smooth projective $X$ and original principalization
+$\mu:Y\to X$ of $I$, and let $Q$ be its original absolute rounded
+canonical module at $q\geq0$. Suppose that every ordinary denominator
+cover produced on $Y$ has an actual canonical trace with its native
+unit--differential degree identity. For an invertible $A$, let
+$A^{\otimes d}\simeq C\otimes B^{\otimes t}$, where $C$ is ample,
+$d>0$, $dq=t$, and the original finite sections generate $I\otimes B$.
+For an ample $H$ and $m\geq1$, put
+\[
+ A_m=A\otimes H^{\otimes m},\qquad
+ C_m=C\otimes H^{\otimes md}.
+\]
+The actual tensor-power, associativity and symmetry isomorphisms give
+$A_m^{\otimes d}\simeq C_m\otimes B^{\otimes t}$.
+Since $md>0$, the positive power of $H$ is ample and so is $C_m$.
+The original numerator-cover construction and the assumed actual
+trace and degree identity therefore give
+$H^{r+1}(Y,Q\otimes\mu^*A_m)=0$ for every $r\geq0$.
+The preceding source isomorphism gives
+\[
+ H^{r+1}\bigl(Y,(Q\otimes\mu^*A)\otimes
+                 (\mu^*H)^{\otimes m}\bigr)=0
+ \quad(m\geq1).
+\]
+Thus the precise eventual global family needed for projective
+localization has the internal bound one. This conditional argument
+supplies no existence proof for the canonical traces.
+\end{remark}

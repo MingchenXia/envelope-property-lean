@@ -1,0 +1,115 @@
+\section{Original line morphisms detected on the actual coefficient fibre}
+
+\begin{lemma}[The actual embedded coefficient field is flat]
+\label{lem:kn-original-line-embedded-field-flat}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.field_extension_flat}
+\leanok
+If a commutative ring $R$ embeds as an algebra in a field $k$, then $k$ is flat over
+the same original $R$.
+\end{lemma}
+\begin{proof}
+The injective algebra map makes the $R$ action on $k$ faithful, so $R$ is a domain.  It extends
+uniquely to the fraction field of $R$, retaining the original algebra
+map and its scalar tower.  The fraction field is a localization of $R$
+and is therefore flat over $R$.  The field $k$ is a vector space over
+that fraction field, hence flat.  Transitivity of flatness gives the claim.
+\end{proof}
+
+\begin{lemma}[Flat affine sections of the original line]
+\label{lem:kn-original-line-affine-sections-flat}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.affine_openSections_flat}
+\leanok
+\uses{lem:fc-scalar-module-open-restriction}
+Let $p:Y\to\operatorname{Spec}R$ be flat and let $N$ be an invertible
+module on the original $Y$.  On every original affine open $U$, the whole
+module $\Gamma(U,N)$, with the original structural $R$ action, is flat over $R$.
+\end{lemma}
+\begin{proof}
+The sections of an invertible module on an affine open are locally free
+of rank one over the original coordinate ring.  They are consequently
+flat over that coordinate ring.  Flatness of the original structural
+morphism makes the coordinate ring flat over the functions on the
+original affine base.  Transitivity makes these original section
+modules flat over those base functions.  The actual global-section
+isomorphism for $\operatorname{Spec}R$ identifies that scalar action
+with the literal original $R$ action, giving the assertion.
+\end{proof}
+
+\begin{lemma}[The actual affine pullback unit is injective]
+\label{lem:kn-original-line-affine-unit-injective}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.pullbackUnit_injective_affine}
+\leanok
+\uses{lem:kn-original-line-affine-sections-flat,lem:fc-module-flat-base-change-affine-open,lem:fc-scheme-module-flat-base-change-map}
+In the preceding situation, let $R\to S$ be an injective homomorphism
+of commutative rings and let $g:Y_S\to Y$ be its actual cartesian base
+change.  On every original affine open $U$, the original adjunction unit
+\[
+ \Gamma(U,N)\longrightarrow\Gamma(g^{-1}U,g^*N)
+\]
+is injective.  No flatness of $R\to S$ is needed for this assertion.
+\end{lemma}
+\begin{proof}
+The injection $R\to S$ remains injective after tensoring with the flat
+original section module.  The tensor unit $x\mapsto1\otimes x$ is therefore
+injective.  The actual affine quasicoherent section comparison is an
+isomorphism, without a coefficient-flatness assumption.  It sends every
+pure tensor $1\otimes x$ to precisely the original pullback-unit section.
+Their composite is thus the asserted injective unit.
+\end{proof}
+
+\begin{lemma}[The actual whole-open unit is a monomorphism]
+\label{lem:kn-original-line-unit-mono}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.pullbackUnit_injective,EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.pullbackUnit_mono}
+\leanok
+\uses{lem:kn-original-line-affine-unit-injective,lem:fc-scheme-module-flat-base-change-map}
+With the same original geometry and injective coefficient extension, the
+unit $N\to g_*g^*N$ is injective on every original open and is a monomorphism
+of the original module sheaves.
+\end{lemma}
+\begin{proof}
+If two sections on an original open have the same unit image, restrict
+to any affine neighborhood inside that open.  Naturality of the actual
+unit gives equality of their unit images on this affine neighborhood.
+The preceding lemma makes their restrictions equal.  Separatedness of
+the original sheaf makes the original sections equal.  Finally, two
+module-sheaf morphisms with equal composites with the unit agree on
+every section of every original open, hence agree as whole morphisms.
+\end{proof}
+
+\begin{theorem}[Actual coefficient pullback detects whole original line maps]
+\label{thm:kn-original-line-hom-injective}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.pullback_map_injective}
+\leanok
+\uses{lem:kn-original-line-unit-mono}
+For any original module $M$ and original invertible $N$, pullback by the
+actual $g$ is injective on the whole set $\operatorname{Hom}_Y(M,N)$.
+In particular this applies to every flat projective original arithmetic
+model and every injective original coefficient map into a field.
+\end{theorem}
+\begin{proof}
+Naturality identifies the composite of each original map with the
+target unit with the source unit followed by the actual pushforward
+of its actual pullback.  If the pullbacks agree, these composites
+agree.  The preceding genuine target monomorphism cancels, proving
+equality of the whole original maps.
+\end{proof}
+
+\begin{theorem}[The actual descended inverse identities hold on the model]
+\label{thm:kn-original-line-iso-from-descended-inverse}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.isoOfPulledInverse,EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.isoOfPulledInverse_hom,EnvelopeProperty.Vanishing.ArithmeticOriginalLineHom.isoOfPulledInverse_inv}
+\leanok
+\uses{thm:kn-original-line-hom-injective}
+Let $A,B$ be original invertible modules and let $a:A\to B$ and
+$b:B\to A$ be actual descended original morphisms.  If their actual
+pullbacks are inverse morphisms, then $a,b$ are inverse on the model.
+The resulting original isomorphism has precisely $a$ and $b$ as its maps.
+\end{theorem}
+\begin{proof}
+Functoriality sends each original composite to the corresponding
+composite of its actual pulled maps, and sends each original identity
+to the corresponding identity.  The assumed actual fibre inverse
+identities therefore make the pulled original composites equal to
+the pulled original identities.  Apply the whole-map injectivity
+theorem once with target $A$ and once with target $B$.  These two
+equalities construct the original isomorphism with the prescribed maps.
+\end{proof}

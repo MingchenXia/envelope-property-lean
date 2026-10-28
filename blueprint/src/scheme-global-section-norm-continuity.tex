@@ -1,0 +1,76 @@
+\section{Every original invertible line has continuous true whole-section norms}
+\label{sec:scheme-global-section-norm-continuity}
+
+\begin{lemma}[True global norms are bounded and actual generators attain one]
+\label{lem:scheme-original-global-generator-norms}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormContinuity.globalSectionNorm_le_one,EnvelopeProperty.SchemeGlobalSectionNormContinuity.exists_generator_norm_one}
+\leanok
+\uses{lem:generated-line-top-sections,thm:actual-model-line-generator-norm-one,thm:scheme-global-section-model-norm-isometry}
+On an actual proper original model over a bounded valued base, every
+whole section of an actual invertible line has true norm at most one.
+For every genuine global generating family of such a line, one of its
+same actual whole sections has norm exactly one at each original native
+point. Finiteness and integrality are not needed for these assertions.
+\end{lemma}
+\begin{proof}
+A whole section is an actual homomorphism from the original structure
+line. Its true fibre norm equals the true model homomorphism norm. The
+original valuative-center coefficients are integral, so this norm is at
+most one. For a generating family, its actual top sections give exactly
+its original free-basis generating homomorphisms. The genuine model-line
+generator theorem gives a member of norm one at the same native point.
+\end{proof}
+
+\begin{theorem}[True original section norms are finite tensor-generator maxima]
+\label{thm:scheme-original-section-tensor-generator-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormContinuity.globalSectionNorm_tensor_generators_sup}
+\leanok
+\uses{lem:scheme-original-global-generator-norms,thm:scheme-global-section-tensor-norm}
+Let $M,T$ be actual original invertible lines and let $(t_i)$ be any
+actual finite global generating family of $T$. Every original whole
+section $s$ of $M$ has true norm
+\[
+ \|s\|=\max_i\|s\otimes t_i\|
+\]
+at every actual original native point, using the actual sheafified tensor
+sections and the true proper-model norms. No norm formula or matching
+certificate is assumed.
+\end{theorem}
+\begin{proof}
+The genuine tensor-section norm theorem gives
+$\|s\otimes t_i\|=\|s\|\,\|t_i\|$. Each generator norm is at most one,
+so every tensor norm is at most $\|s\|$. At this same native point some
+actual generator has norm one, making its tensor norm exactly $\|s\|$.
+The finite supremum therefore equals the original norm, including if
+$s$ vanishes or the norm is zero at the given point.
+\end{proof}
+
+\begin{theorem}[Continuity for every whole section of every actual original invertible line]
+\label{thm:scheme-original-global-section-norm-continuous}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormContinuity.continuous_globalSectionNorm}
+\leanok
+\uses{thm:scheme-original-section-tensor-generator-norm,thm:native-ample-line-global-section-norm-continuous,thm:fc-original-ample-line-twist-very-ample,lem:scheme-ample-line-eventual-generation,thm:fc-affine-projectivity-polynomial-factorization}
+On every integral original scheme projective over its original field,
+the true original proper-model norm of every whole section of every
+actual original invertible line is continuous on the entire original
+native analytic space. No ampleness, global generation, norm continuity,
+model comparison or finite tensor-family certificate for the given line
+is an input.
+\end{theorem}
+\begin{proof}
+An actual projective factorization of the original scheme supplies a
+whole original pulled $\mathcal O(1)$, which is genuinely very ample and
+hence geometrically ample. Let it be $A$. Actual geometric ample-twist
+generation makes $A^{\otimes m}\otimes M$ very ample for every sufficiently
+large $m$. Actual eventual global generation also gives a genuine finite
+generating family of $T=A^{\otimes m}$ for all sufficiently large $m$.
+Choose one common $m$. The actual tensor symmetry makes $M\otimes T$
+geometrically ample as well. Every true whole-section norm on this
+numerator line is therefore continuous by the genuine ample-line theorem.
+Apply the preceding exact tensor-generator maximum to the given original
+$s$ and this internally constructed finite generating family. Each tensor
+section $s\otimes t_i$ is an actual whole section of that ample numerator,
+so each of its true norms is continuous. Their finite maximum is
+continuous and equals the same original norm of $s$ at every actual
+native point. This proves the full assertion, retaining zeros throughout.
+\end{proof}

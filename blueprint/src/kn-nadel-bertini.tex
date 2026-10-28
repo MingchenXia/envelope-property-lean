@@ -1,0 +1,351 @@
+\section{Universal hyperplanes and the missing simultaneous Bertini producer}
+
+Fix the original closed projective embedding $i:X\hookrightarrow\mathbf P^m_k$.
+Write $L=i^*\mathcal O(1)$ and let $s_0,\ldots,s_m$ be its actual pulled
+coordinate sections.  The affine coefficient parameter scheme is
+$V=\operatorname{Spec}k[t_0,\ldots,t_m]$.  On the original product
+$X_V=X\times_k V$, form the actual section
+$\sigma=\sum_{a=0}^m t_a\,p_X^*s_a$ of $p_X^*L$.
+Its actual zero-ideal subscheme $\mathcal I\subset X_V$ is the universal
+hyperplane incidence, with its two original product projections.
+The zero coefficient is retained; projectivizing the nonzero coefficient
+locus is a subsequent quotient, not part of this affine construction.
+
+\begin{definition}[The actual original universal incidence]
+\label{def:kn-nadel-bertini-universal-incidence}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniUniversal.parameterRing,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.product,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.productLine,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.coefficient,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.universalSection,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.incidenceIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.incidence,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.toSource,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.toParameters,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projections_commute,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.incidence_closed,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projectiveLine,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projectiveSections,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projectiveIncidence,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projectiveToSource,
+EnvelopeProperty.Vanishing.NadelBertiniUniversal.projectiveToParameters}
+\leanok
+The original universal incidence and its two projections are constructed by
+the displayed universal section and its actual canonical zero ideal.
+The inclusion into the original scalar product is a closed immersion, and
+the two original projections commute over the original coefficient base.
+\end{definition}
+\begin{proof}
+Pull back each original native coordinate section to the same original
+source and then to its actual coefficient product. Form their actual
+linear combination with the original polynomial coefficient variables.
+The actual image of dual evaluation is its genuine quasicoherent zero
+ideal. Its actual ideal-sheaf subscheme is the required incidence. The
+subscheme inclusion is closed, and its two composites with the genuine
+product projections satisfy the original product square.
+\end{proof}
+
+\begin{lemma}[Eliminating the actual pivot coefficient]
+\label{lem:kn-nadel-bertini-incidence-algebra}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.remainder,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.chartEquation,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.chartIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.chartEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.chart_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceAlgebra.chartProjection_smooth}
+\leanok
+Let $B$ be any commutative ring and let $(c_a)_{a\in S}$ be any finite
+family of actual elements of $B$.  The actual quotient
+\[
+ B[t_*,(t_a)_{a\in S}]/\bigl(t_*+\sum_{a\in S}c_a t_a\bigr)
+ \quad\simeq_B\quad B[(t_a)_{a\in S}]
+\]
+is obtained by retaining every original nonpivot variable and substituting
+$t_*=-\sum c_a t_a$.  Its actual structure morphism to
+$\operatorname{Spec}B$ is smooth.
+\end{lemma}
+\begin{proof}
+The actual multivariable polynomial equivalence which isolates the pivot
+variable carries the displayed relation to the monic linear polynomial
+$T-(-\sum c_a t_a)$ over $B[(t_a)]$.  The induced quotient algebra
+isomorphism followed by actual evaluation at $-\sum c_a t_a$ gives the
+claimed equivalence, including the original $B$ structure.  Polynomial
+algebras in finitely many variables are smooth over $B$. Transport
+smoothness by this genuine algebra equivalence and then apply the actual
+ring-to-affine-scheme smoothness comparison.
+\end{proof}
+
+\begin{lemma}[The actual coordinate sections give their own original frames]
+\label{lem:kn-nadel-bertini-projective-coordinate-frame}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.sourceOpen,
+EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.sectionHom,
+EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.section_isIso,
+EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.coordinateFrame,
+EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.coordinateFrame_section,
+EnvelopeProperty.Vanishing.NadelBertiniProjectiveFrames.sourceOpen_affine}
+\leanok
+\uses{def:kn-nadel-bertini-universal-incidence}
+On the actual original coordinate preimage $U_j$, the actual pulled
+coordinate section is an isomorphism from the original structure line to
+$L|_{U_j}$. Its actual inverse is a frame in which that same coordinate
+section is exactly one. For a closed embedding $i$, $U_j$ is affine.
+\end{lemma}
+\begin{proof}
+The native $j$th coordinate section is an isomorphism on its own original
+ambient chart. The genuine restriction/pullback comparison retains that
+whole map. Pull it back along the actual restriction of $i$ to $U_j$;
+whole-section pullback composition identifies the result with the same
+original coordinate section on $U_j$. Its inverse gives the claimed actual
+frame and the inverse identity gives the exact normalization. A closed
+immersion is affine and the ambient coordinate chart is affine, proving
+that its original preimage is affine.
+\end{proof}
+
+\begin{lemma}[The actual original affine coefficient product ring]
+\label{lem:kn-nadel-bertini-polynomial-product}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniPolynomial.sectionsEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniPolynomial.sectionsEquiv_X,
+EnvelopeProperty.Vanishing.NadelBertiniPolynomial.sectionsEquiv_C,
+EnvelopeProperty.Vanishing.NadelBertiniPolynomial.sectionsEquiv_eval,
+EnvelopeProperty.Vanishing.NadelBertiniPolynomial.sectionsEquiv_linearForm}
+\leanok
+\uses{def:kn-nadel-bertini-universal-incidence}
+For an actual original affine scheme $U$ over $\operatorname{Spec}R$, the
+whole ring of the actual original product $U\times_R\mathbf A^S_R$
+is the original polynomial ring $\Gamma(U)[(t_a)]$. Its actual isomorphism
+sends each original variable to the second-projection coefficient and each
+original constant to the first-projection section. It therefore retains
+the complete original universal linear polynomial.
+\end{lemma}
+\begin{proof}
+The original affine product's two actual projections construct the genuine
+pushout square of rings of sections, without a flatness premise. The
+original tensor-product pushout therefore identifies its whole section
+ring with $R[(t_a)]\otimes_R\Gamma(U)$. Commute the actual two factors
+and apply the genuine polynomial-algebra tensor equivalence. Its actual
+inverse retains the original variable as $1\otimes t_a$ and each original
+constant as $b\otimes1$. The original affine product comparison then gives
+the two stated projection formulas. Polynomial ring-map extensionality
+gives the whole evaluation formula, and actual sum and product preservation
+gives the entire linear-polynomial identity.
+\end{proof}
+
+\begin{lemma}[The actual universal section retains its original frame coefficients]
+\label{lem:kn-nadel-bertini-universal-frame-coefficient}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFrameCoefficients.unit_pullback_scalar,
+EnvelopeProperty.Vanishing.NadelBertiniFrameCoefficients.pulledFrame,
+EnvelopeProperty.Vanishing.NadelBertiniFrameCoefficients.pulledFrame_section,
+EnvelopeProperty.Vanishing.NadelBertiniFrameCoefficients.universal_frame_coefficient}
+\leanok
+\uses{def:kn-nadel-bertini-universal-incidence,lem:kn-nadel-bertini-polynomial-product,lem:kn-nadel-bertini-projective-coordinate-frame}
+Let $U$ be an actual original affine source carrying an actual line frame.
+The actual pulled frame on its original coefficient product sends the
+whole original universal section to the image of
+$\sum_a c_a t_a$ under the preceding actual product-ring equivalence,
+where $c_a$ is the coefficient of the same original section in that frame.
+\end{lemma}
+\begin{proof}
+The native unit-section pullback commutes with the original whole frame
+map. Its original structure-line unit comparison sends a pulled scalar
+section to its actual structure-ring pullback. This follows by pulling
+the whole structure-line scalar endomorphism and evaluating it at one.
+Thus the actual pulled frame sends each original pulled section to the
+actual pullback of its original coefficient. It retains sums and scalar
+multiplication. Apply that identity to every term of the actual universal
+section, commute the two original scalar factors, and use the complete
+linear-polynomial formula for the actual affine coefficient product.
+\end{proof}
+
+\begin{lemma}[The actual whole original affine incidence ideal]
+\label{lem:kn-nadel-bertini-affine-incidence-ideal}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAffineIncidence.zeroIdeal_top,
+EnvelopeProperty.Vanishing.NadelBertiniAffineIncidence.incidenceIdeal_top}
+\leanok
+\uses{def:kn-nadel-bertini-universal-incidence,lem:kn-nadel-bertini-universal-frame-coefficient}
+On an actual original affine source with its actual line frame, the whole
+original universal incidence ideal on the full coefficient product is the
+image of the actual principal ideal $(\sum c_a t_a)$ under the proved
+original polynomial-product ring equivalence.
+\end{lemma}
+\begin{proof}
+The original line-section zero ideal on an affine frame is precisely the
+principal ideal of the actual frame coefficient. Apply this genuine whole
+ideal statement on the original coefficient product, with the actual
+pulled frame and the actual universal section. The preceding exact frame
+coefficient theorem gives the image of the entire original linear
+polynomial. The image of its actual principal ideal is the principal ideal
+of its image. This identifies the whole original ideal, retaining all
+scheme structure and without passing to its radical.
+\end{proof}
+
+\begin{lemma}[Any actual unit pivot makes the original linear quotient smooth]
+\label{lem:kn-nadel-bertini-linear-pivot-smooth}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniLinearSmooth.linearForm,
+EnvelopeProperty.Vanishing.NadelBertiniLinearSmooth.linearIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniLinearSmooth.linearForm_pderiv,
+EnvelopeProperty.Vanishing.NadelBertiniLinearSmooth.linear_smooth}
+\leanok
+For a commutative ring $B$ and finite small variable set $S$, let
+$F=\sum_{a\in S}c_at_a$. If the actual original coefficient $c_j$ is one,
+the original structure algebra $B\to B[(t_a)]/(F)$ is smooth.
+\end{lemma}
+\begin{proof}
+Take the genuine polynomial presentation with the single original relation
+$F$. Assign its unique relation to the actual original pivot variable $j$.
+Its original partial derivative is $C(c_j)=1$. The resulting actual one by
+one Jacobian matrix is the identity, so its Jacobian is a unit in the
+original quotient. This constructs an actual submersive presentation of
+the original quotient, proving standard smoothness and then smoothness.
+No quotient is replaced by its reduction and no smoothness certificate is
+supplied.
+\end{proof}
+
+\begin{lemma}[Actual affine subscheme sections retain the original projection algebra]
+\label{lem:kn-nadel-bertini-affine-subscheme-sections}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSubschemeSections.quotientEquivSections,
+EnvelopeProperty.Vanishing.NadelBertiniSubschemeSections.quotientEquivSections_mk,
+EnvelopeProperty.Vanishing.NadelBertiniSubschemeSections.quotientAlgEquivSections}
+\leanok
+For any original affine scheme $Y$, whole original ideal sheaf $I$, and
+original morphism $g:Y\to X$, the actual closed subscheme's original
+section ring is isomorphic to $\Gamma(Y)/I(\top)$. It carries each original
+quotient class of $b$ to its actual restricted section. This constructs an
+actual algebra equivalence over $\Gamma(X)$ for the same original composite
+$I\hookrightarrow Y\to X$.
+\end{lemma}
+\begin{proof}
+The actual subscheme inclusion is a closed immersion with affine target,
+so it is surjective on global sections. The original whole ideal sheaf is
+its actual kernel; on an affine scheme this is exactly the kernel of the
+actual global-section map. The genuine quotient-kernel first isomorphism
+gives the ring equivalence and its entire original class formula. The
+original projection's composite formula on global sections proves
+compatibility with each original $\Gamma(X)$ scalar. This constructs the
+actual algebra equivalence rather than assuming such compatibility.
+\end{proof}
+
+\begin{lemma}[Actual original affine incidence projection is smooth]
+\label{lem:kn-nadel-bertini-affine-incidence-smooth}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAffineSmooth.sourceSectionsAlgEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniAffineSmooth.affine_toSource_smooth}
+\leanok
+\uses{lem:kn-nadel-bertini-affine-incidence-ideal,lem:kn-nadel-bertini-linear-pivot-smooth,lem:kn-nadel-bertini-affine-subscheme-sections}
+For an actual affine original source $U$, original line $L$ with an actual
+whole frame, and original section family $(s_a)$, suppose the coefficient
+of one original section in that frame is exactly one. The projection of
+the actual whole universal incidence to this same $U$ is smooth.
+\end{lemma}
+\begin{proof}
+Upgrade the original polynomial-product ring equivalence to an algebra
+equivalence over the same original $\Gamma(U)$, using its already proved
+constant-section formula. The entire original incidence ideal is the image
+of the whole original linear ideal. The induced quotient algebra
+equivalence transports the proved actual pivot smoothness to the original
+product-ring quotient. The actual affine subscheme-section algebra
+equivalence then transports it to the section ring of the same original
+incidence. The actual subscheme is affine because its original inclusion
+is closed with affine target. The affine ring-homomorphism criterion for
+smoothness now applies to its original source projection, whose scalar
+map is precisely the map retained throughout both algebra equivalences.
+\end{proof}
+
+\begin{lemma}[Native whole-section pullback retains its actual linear combination]
+\label{lem:kn-nadel-bertini-pullback-sections}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniPullbackSections.pullback_add,
+EnvelopeProperty.Vanishing.NadelBertiniPullbackSections.pullback_smul,
+EnvelopeProperty.Vanishing.NadelBertiniPullbackSections.frameViaFactor_unitSection}
+\leanok
+\uses{lem:kn-nadel-bertini-universal-frame-coefficient}
+For every actual scheme morphism, the native whole-section pullback
+preserves addition and carries $r s$ to the actual pulled scalar times the
+actual pulled section. If the same morphism factors through an original
+local frame, its actual factor frame sends the native pulled section to
+the actual pullback of the original local frame coefficient.
+\end{lemma}
+\begin{proof}
+The genuine pullback-adjunction unit is linear on the original module,
+where its pushforward scalar action is the original structure-ring
+pullback. The final transport from the inverse image of the whole open to
+the whole open preserves sums and transports exactly the same scalar.
+For the last assertion, replace the original whole section by its actual
+structure-line section morphism. The native factor-frame pairing carries
+this same original section morphism to the pulled structure-line scalar
+endomorphism. Evaluating the actual identity at one and using the original
+pullback-unit section comparison gives the claimed coefficient formula.
+\end{proof}
+
+\begin{lemma}[The actual original incidence is smooth over its original source]
+\label{lem:kn-nadel-bertini-incidence-bundle}
+\uses{def:kn-nadel-bertini-universal-incidence,lem:kn-nadel-bertini-incidence-algebra,lem:kn-nadel-bertini-projective-coordinate-frame,lem:kn-nadel-bertini-polynomial-product,lem:kn-nadel-bertini-universal-frame-coefficient,lem:kn-nadel-bertini-affine-incidence-ideal,lem:kn-nadel-bertini-linear-pivot-smooth,lem:kn-nadel-bertini-affine-subscheme-sections,lem:kn-nadel-bertini-affine-incidence-smooth,lem:kn-nadel-bertini-pullback-sections}
+The projection of the actual original universal incidence $\mathcal I$
+to the same original source $X$ is smooth. If $X$ is smooth over $k$,
+then so is the same original $\mathcal I$ over $k$.
+\end{lemma}
+\begin{proof}
+The original coordinate-section trivialization and actual pullback-unit
+naturality identify the coefficient of $\sigma$ on each affine subopen
+of $U_j$ with the displayed polynomial.  The actual line-section zero
+ideal is the principal ideal of this coefficient.  The preceding actual
+quotient equivalence identifies its full subscheme chart with affine
+$m$-space over that original affine subopen.  The $U_j$ cover $X$ and
+their inverse images cover the incidence.  Smoothness is local on source
+and target, so these actual identifications prove the assertion globally.
+Composition with the original smooth structure map gives the last claim.
+\end{proof}
+
+\begin{lemma}[A genuine open of smooth original hyperplane sections]
+\label{lem:kn-nadel-bertini-smooth-parameter-open}
+\uses{lem:kn-nadel-bertini-incidence-bundle}
+Suppose $k$ has characteristic zero and $X$ is smooth and projective over
+$k$.  There is a nonempty open in the original coefficient parameter
+scheme on which every original universal hyperplane fibre is smooth.
+The same conclusion holds simultaneously for any finite family of smooth
+closed projective subschemes, using their actual restricted sections.
+\end{lemma}
+\begin{proof}
+The original incidence is smooth over $k$ by the preceding lemma. Over the
+generic point of the parameter affine space, its affine coordinate rings
+are localizations of regular rings. They remain regular, and are smooth
+over the characteristic-zero generic field. Thus the actual nonsmooth
+locus of the parameter projection misses the generic fibre. That locus is
+closed; the parameter projection is proper because the original incidence
+is closed in $X\times V$ and $X$ is projective. Its image is therefore
+closed and misses the original generic point. The complement is the
+required nonempty original open. Apply the same argument to each original
+closed subscheme and intersect the finitely many resulting opens. The
+original parameter affine space is integral, so its generic point belongs
+to every such open. This constructs their common nonempty open.
+\end{proof}
+
+\begin{theorem}[The required simultaneous auxiliary divisors]
+\label{thm:kn-nadel-bertini-auxiliary-divisors}
+\uses{lem:kn-nadel-bertini-smooth-parameter-open}
+Let $X$ be the original smooth projective $d$-dimensional scheme over a
+characteristic-zero field, with the original finite
+SNC boundary $(D_i)$. For the original ample line bundles $A_i$, all
+sufficiently large common exponents $N$ allow actual divisors
+$H_{i,j}\in|A_i^N(-D_i)|$, $0\le j\le d$, such that the total original
+boundary remains SNC and, for each $i$, the original common intersection
+$\bigcap_{j=0}^d H_{i,j}$ is empty.
+\end{theorem}
+\begin{proof}
+For each of the finitely many $i$, ampleness makes $A_i^N(-D_i)$ very
+ample for all sufficiently large $N$; take one common bound. At each
+finite step use its actual closed projective embedding. Apply the previous
+parameter-open construction to all closed strata of the current original
+SNC boundary, including the intersections with the already selected
+auxiliary divisors. Require also that no positive-dimensional stratum is
+contained in the new hyperplane, and avoid the finitely many
+zero-dimensional strata. These are open conditions containing the
+parameter generic point. The infinite original field supplies an actual rational point in their
+common nonempty affine parameter open: take a nonempty principal subopen
+and use that a nonzero polynomial cannot vanish on all tuples over an
+infinite field. Pulling the
+universal section back to this actual point selects the required original
+divisor. The differential transversality to every original stratum gives
+actual SNC charts for the enlarged boundary. Each successive member for a
+fixed $i$ lowers the dimension of its previous nonempty intersection by
+one. After $d+1$ such members that intersection is empty. Carry out the
+finite induction over all original indices, retaining the earlier selected
+divisors at each step.
+\end{proof}

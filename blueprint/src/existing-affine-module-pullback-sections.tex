@@ -1,0 +1,31 @@
+\subsection{Affine module pullback sections}
+
+\begin{theorem}[Affine pullback sections and the original unit]
+\label{scheme:existing-affine-module-pullback-sections}
+\lean{AlgebraicGeometry.Scheme.Modules.affinePullbackUnitTop,AlgebraicGeometry.Scheme.Modules.affinePullbackΓIso,AlgebraicGeometry.Scheme.Modules.affinePullbackΓIso_hom_one_tmul,AlgebraicGeometry.Scheme.Modules.affinePullbackΓIso_naturality}
+\leanok
+For a morphism $g:Y\to X$ of schemes, the original pullback-adjunction
+unit gives a map $\eta_{g,M}:\Gamma(X,M)\to\Gamma(Y,g^*M)$,
+where the inverse image of the top open is identified with the top open.
+If $X,Y$ are affine and $M$ is quasicoherent, the original section
+extension functor gives an isomorphism
+\[
+ \Gamma(Y,\mathcal O_Y)\otimes_{\Gamma(X,\mathcal O_X)}\Gamma(X,M)
+       \simeq\Gamma(Y,g^*M).
+\]
+It sends $1\otimes m$ to $\eta_{g,M}(m)$ and is natural in every
+morphism between quasicoherent modules on $X$.
+\end{theorem}
+\begin{proof}
+Use the affine sheafification--global-sections adjunctions on $X$
+and $Y$. The existing pullback comparison identifies sheafification
+after extension of scalars with pullback after sheafification.
+Conjugating the literal affine section identifications with this
+comparison gives the displayed isomorphism. The unit identity for
+this conjugate of adjunctions identifies its value on $1\otimes m$
+with the original pullback unit, including the restriction from the
+inverse image of the top open. Naturality of the same conjugate
+natural transformation gives the asserted equality for every module
+morphism. These constructions use the original structure-ring map
+$g^*$ throughout.
+\end{proof}

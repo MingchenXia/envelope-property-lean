@@ -1,0 +1,36 @@
+\begin{lemma}[Original global sections of a proper projective ideal]
+\label{lem:fc-original-projective-ideal-global-sections}
+\lean{EnvelopeProperty.ProjectiveGeneratedIdeals.eq_top_of_nonzero_globalSection, EnvelopeProperty.ProjectiveGeneratedIdeals.globalSection_eq_zero_of_ne_top}
+\leanok
+\uses{lem:fc-original-projective-global-function-units}
+Let $X$ be the original integral projective scheme over $k$ and $I$ any
+original ideal sheaf.  An actual nonzero section of
+$\Gamma(X,I)$ forces $I=\mathcal O_X$.  Consequently every original
+global section of a proper $I$ is zero.
+\end{lemma}
+\begin{proof}
+The original ideal inclusion identifies its whole section with a nonzero
+original global function.  By projective integrality that function is a
+unit in the same original global ring.  Its restriction to every affine
+open is a unit lying in the original affine ideal, so every affine ideal
+is the unit ideal.  This gives equality of the whole original ideal
+sheaves.  The second assertion is the contrapositive.
+\end{proof}
+
+\begin{theorem}[Actual generated projective ideals are zero or unit]
+\label{thm:fc-original-generated-projective-ideal-zero-or-unit}
+\lean{EnvelopeProperty.ProjectiveGeneratedIdeals.eq_bot_or_top_of_generatingSections}
+\leanok
+\uses{lem:fc-original-projective-ideal-global-sections}
+Every genuinely globally generated original ideal on $X$ is either the
+zero ideal or the unit ideal.  No finite generating family is required.
+\end{theorem}
+\begin{proof}
+If the ideal is proper, all its original global generators vanish by the
+preceding lemma.  Compose the original free evaluation epimorphism with
+the actual original ideal inclusion.  Every coproduct component is zero,
+so the composite is zero.  Epimorphic cancellation makes the entire
+original ideal inclusion zero.  On every actual affine open the original
+ideal-module section comparison then makes every original ideal element
+zero.  Hence the whole original ideal sheaf is zero.
+\end{proof}

@@ -1,0 +1,115 @@
+\section{Actual original polynomial quotient charts of the universal incidence}
+
+The local Cartier argument uses a genuine open chart of the original
+incidence, with the exact original polynomial coefficient-ring map. An
+abstract isomorphic quotient ring or an externally supplied matching
+triangle does not suffice.
+
+\begin{lemma}[The native whole-ideal chart retains its actual parameter projection]
+\label{lem:kn-nadel-bertini-native-chart-parameter}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartCore.nativeChart_parameter,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartCore.coefficientPolynomialMap,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartCore.squareSectionsEquiv_parameter}
+\leanok
+For an original ideal $I$ on $Y$, actual affine open $V$, and original
+parameter map $q:Y\to\operatorname{Spec}A$, the native open chart
+$\operatorname{Spec}(\Gamma(Y,V)/I(V))\to I$ has parameter projection
+induced by the original coefficient map $A\to\Gamma(V)$, its actual
+original top-section isomorphism, and the original quotient map. In an
+actual cartesian polynomial coefficient square, the original parameter
+ring map is precisely the polynomial map induced by the original source
+coefficient map.
+\end{lemma}
+\begin{proof}
+The native subscheme-cover projection identity factors the actual chart
+through the original quotient-spectrum map and the original affine-open
+spectrum isomorphism. Naturality of that genuine affine spectrum
+isomorphism and the original spectrum global-section counit give exactly
+the claimed parameter triangle. For the cartesian polynomial square, the
+actual product comparison retains every original variable and constant.
+Its constant formula and the original cartesian square identify each
+original coefficient; polynomial ring-map extensionality proves the
+entire original parameter-ring identity.
+\end{proof}
+
+\begin{theorem}[The actual original incidence has polynomial quotient open charts]
+\label{thm:kn-nadel-bertini-original-polynomial-quotient-chart}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.productOpen,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.square,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.productOpen_affine,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.productAffineOpen,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.coefficients,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.polynomialEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.wholeIdeal,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChart.polynomialEquiv_parameter,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.nativeChart_isOpenImmersion,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.quotientRing,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.parameterRingMap,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.quotientEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.quotientEquiv_mk,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.quotientSpecIso,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.map,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.map_isOpenImmersion,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.map_opensRange,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartMap.map_parameter}
+\leanok
+\uses{lem:kn-nadel-bertini-native-chart-parameter,lem:kn-nadel-bertini-restricted-universal-frame,lem:kn-nadel-bertini-open-zero-ideal}
+For an original affine source open $U$ with an actual frame of $L|_U$,
+write $C=\Gamma(U)$ and $c_i$ for the original section coefficients in
+that frame. There is a genuine open chart
+\[
+ \nu:\operatorname{Spec} C[t_0,\ldots,t_m]/(\sum_i c_i t_i)
+ \longrightarrow\mathcal I
+\]
+whose original parameter map is precisely induced by
+$R[(t_i)]\to C[(t_i)]\to C[(t_i)]/(\sum_i c_i t_i)$.
+Its actual open range is the incidence inclusion's inverse image of the
+actual product inverse image of $U$. The full original incidence ideal
+on that product open is the image of the entire original linear ideal.
+\end{theorem}
+\begin{proof}
+The actual source-open product square is cartesian and affine. Its actual
+polynomial section-ring equivalence, followed by the original open
+section-ring isomorphism, retains both original projections. The native
+whole-ideal frame formula and the exact restricted universal-section
+coefficient formula identify the entire incidence ideal with the image
+of the original linear principal ideal. The induced quotient ring
+isomorphism gives an actual spectrum isomorphism to the native original
+subscheme-cover chart. Compose with that genuine native open chart to
+construct $\nu$. Its range follows from the actual isomorphism and the
+native chart range formula. The preceding parameter identity and the
+entire quotient-class formula transport the native parameter triangle to
+the stated original polynomial quotient-ring triangle.
+\end{proof}
+
+\begin{corollary}[Original projective coordinate quotient charts have a true unit pivot]
+\label{cor:kn-nadel-bertini-projective-polynomial-chart}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.sourceAffineOpen,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.coefficients,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.pivot_coefficient,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.quotientRing,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.parameterRingMap,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.map,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.map_isOpenImmersion,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.map_parameter,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.map_opensRange,
+EnvelopeProperty.Vanishing.NadelBertiniIncidenceChartProjective.maps_cover}
+\leanok
+\uses{thm:kn-nadel-bertini-original-polynomial-quotient-chart,lem:kn-nadel-bertini-projective-coordinate-frame}
+For each original coordinate preimage of an original closed projective
+embedding, the preceding chart is constructed from the actual inverse of
+that same original coordinate section. Its original pivot coefficient
+is exactly one, its parameter projection is the stated actual polynomial
+ring map, and these actual open charts cover the same original incidence.
+\end{corollary}
+\begin{proof}
+The original closed embedding makes every original coordinate preimage
+affine. The original coordinate section is invertible there, and its
+actual inverse normalizes that same original section to one. Apply the
+preceding construction to these actual frames. The native coordinate
+opens cover the original projective space; their actual original source
+preimages and product preimages therefore cover. The just-proved actual
+chart range formula then proves that these same original quotient charts
+cover the original incidence, without any matching or Cartier certificate
+as input.
+\end{proof}

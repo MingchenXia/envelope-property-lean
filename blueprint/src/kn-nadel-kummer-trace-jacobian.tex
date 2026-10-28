@@ -1,0 +1,108 @@
+\section{The actual coordinate-power canonical trace}
+
+\begin{lemma}[The whole monic-root trace against its original top coefficient]
+\label{lem:kn-nadel-root-trace-jacobian}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceJacobianRoot.rootBasis_coord,EnvelopeProperty.Vanishing.NadelKummerTraceJacobianRoot.rootMulMatrix_diagonal,EnvelopeProperty.Vanishing.NadelKummerTraceJacobianRoot.trace_eq_topCoefficient_jacobian}
+\leanok
+Let $R$ be any nontrivial commutative ring and let
+$B=R[y]/(y^{d+1}-a)$ be the actual original monic root algebra.  For every
+original $b\in B$, its native algebra trace satisfies
+\[
+  \operatorname{Tr}_{B/R}(b)
+    =\Lambda_d\big((d+1)y^d b\big),
+\]
+where $\Lambda_d$ is the actual last coefficient in the original native
+power basis.  The degree $d+1$ is the same original positive degree.
+\end{lemma}
+\begin{proof}
+The proved reverse-power multiplication pairing is the actual dual frame
+of the original native basis.  Thus the $i$th diagonal coefficient of
+multiplication by $b$ is the last coefficient of
+$y^{d-i}b y^i=y^d b$.  The native multiplication matrix therefore has the
+same actual top coefficient on all $d+1$ diagonal entries.  Summing these
+entries gives the native algebra trace and the displayed whole formula.
+\end{proof}
+
+\begin{lemma}[The whole trace through the original independent-root tower]
+\label{lem:kn-nadel-tower-trace-jacobian}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceJacobianTower.towerJacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobianTower.trace_eq_topCoefficient_jacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobianTower.evaluation_jacobian}
+\leanok
+\uses{lem:kn-nadel-root-trace-jacobian}
+For every actual independent-root stage, the native algebra trace is the
+original composed top coefficient evaluated against the product of the
+original root Jacobians carried through that same coefficient tower.
+Every actual universal tower evaluation sends this element to the product
+of the original positive-coordinate derivatives.
+\end{lemma}
+\begin{proof}
+Use native trace transitivity with the actual successive power bases.
+Apply the preceding whole formula at the last original monic root, then
+the induction hypothesis over the same original coefficient ring.
+Linearity of the genuine last coefficient moves the previously constructed
+Jacobian inside it along the actual coefficient inclusion.  This proves
+the full tower formula.  Original universal evaluation commutes with the
+actual tower steps and sends each actual adjoined root to its specified
+coordinate, so induction gives the displayed product under evaluation.
+\end{proof}
+
+\begin{theorem}[Native trace of the literal positive coordinate-power algebra]
+\label{thm:kn-nadel-polynomial-trace-jacobian}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.jacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.powerTrace,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.coordinateTower_jacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.powerTrace_eq_coefficientMap_jacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.powerTrace_powerMap_mul}
+\leanok
+\uses{lem:kn-nadel-tower-trace-jacobian}
+Let $A=R[x_1,\ldots,x_n]$, $B=R[y_1,\ldots,y_n]$ and let the actual map
+$\varphi:A\to B$ send $x_i$ to $y_i^{N_i}$, with the original positive
+$N_i=d_i+1$.  Let $\Lambda_{\mathrm{top}}:B\to A$ be the proved actual
+composed top-coefficient counit of this coordinate-power algebra.  For
+every original $b\in B$,
+\[
+ \operatorname{Tr}_{B/A}(b)=\Lambda_{\mathrm{top}}(Jb),\qquad
+ J=\prod_i N_i y_i^{N_i-1}.
+\]
+The trace uses precisely the actual power-map scalar algebra.  It also
+retains the whole original coefficient action:
+$\operatorname{Tr}_{B/A}(\varphi(a)b)=a\operatorname{Tr}_{B/A}(b)$.
+\end{theorem}
+\begin{proof}
+The proved original coordinate-tower algebra equivalence retains its whole
+coefficient map $\varphi$.  Native algebra trace is invariant under this
+actual algebra equivalence.  Transport the preceding whole tower trace
+formula and its evaluated Jacobian product through it.  The existing
+polynomial coefficient map is exactly the composed tower coefficient
+transported through the same original equivalence, giving the stated
+identity on every original polynomial.  Its actual power-map linearity
+also gives the stated whole coefficient-action formula.
+\end{proof}
+
+\begin{theorem}[Actual differential Jacobian and canonical counit normalization]
+\label{thm:kn-nadel-canonical-counit-intrinsic-trace}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.differential_power_X,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.differential_power_wedge,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.canonicalCounit_jacobian,EnvelopeProperty.Vanishing.NadelKummerTraceJacobian.canonicalCounit_pulledGenerator}
+\leanok
+\uses{thm:kn-nadel-polynomial-trace-jacobian}
+For the original ordered coordinate top generators, the actual native
+relative differential satisfies
+\[
+  \bigwedge_i d(\varphi(x_i))=J\,\omega_B.
+\]
+The already constructed native canonical counit $c$ therefore satisfies,
+for every original polynomial $b$,
+\[
+  c(b\,\varphi^*\omega_A)
+    =c(Jb\,\omega_B)=\operatorname{Tr}_{B/A}(b)\,\omega_A.
+\]
+\end{theorem}
+\begin{proof}
+The original coordinate-power formula and the native derivation power rule
+give $d(y_i^{N_i})=N_i y_i^{N_i-1}dy_i$.  The actual alternating multilinear
+map factors all these original scalars out of the same ordered wedge,
+giving the proved $J$ and the retained original top generator.
+The actual canonical counit already has its whole coefficient formula
+$c(g\omega_B)=\Lambda_{\mathrm{top}}(g)\omega_A$.
+Apply it to $g=Jb$ and use the preceding native trace identity.
+\end{proof}
+
+All these formulas hold over every nontrivial commutative coefficient ring,
+including the ramified locus.  They supply the intrinsic trace normalization
+for the separate actual finite-free base-change and \'etale-chart comparison
+producers.  Coordinate-change compatibility and global normalized-cover
+gluing are the subsequent geometric steps.

@@ -1,0 +1,144 @@
+\subsection{The genuine degree-zero charts of the original Rees quotient}
+
+\begin{lemma}[The actual quotient evaluation and original chart coefficients]
+\label{algebra:actual-rees-quotient-evaluation}
+\uses{algebra:actual-rees-presentation,algebra:actual-rees-homogeneous-kernel,graded:homogeneous-ideal-quotient-grading}
+\lean{EnvelopeProperty.ReesPresentation.quotientEvaluation,
+EnvelopeProperty.ReesPresentation.quotientEvaluation_mk,
+EnvelopeProperty.ReesPresentation.quotientEvaluation_algebraMap,
+EnvelopeProperty.ReesChart.Quotient,
+EnvelopeProperty.ReesChart.grading,
+EnvelopeProperty.ReesChart.quotientGradedRing,
+EnvelopeProperty.ReesChart.generator,
+EnvelopeProperty.ReesChart.generator_mem,
+EnvelopeProperty.ReesChart.quotientEvaluation_generator,
+EnvelopeProperty.ReesChart.Chart,
+EnvelopeProperty.ReesChart.coordinateRatio,
+EnvelopeProperty.ReesChart.coefficientZero,
+EnvelopeProperty.ReesChart.coefficients,
+EnvelopeProperty.ReesChart.chartAlgebra,
+EnvelopeProperty.ReesChart.chartVal}
+\leanok
+For arbitrary commutative $A$ and original family $g:\iota\to A$, let
+$Q=A[(Y_i)]/\ker\Phi_g$ with its GENUINE quotient total-degree grading.
+Evaluation of EVERY original polynomial at the actual $g_i$ descends to a
+true $A$-algebra homomorphism $e:Q\to A$, preserving every original coefficient.
+For each $j$, the ACTUAL degree-zero homogeneous localization
+\[
+ C_j=(Q[1/\overline Y_j])_0
+\]
+has the genuine original coefficient map $A\to C_j$ obtained from constant
+classes in the true degree-zero quotient component. No domain or nonzero
+hypothesis is needed for these coefficient constructions.
+\end{lemma}
+\begin{proof}
+Compose the original $\Phi_g$ with actual polynomial evaluation at $T=1$.
+On EVERY coefficient and variable, the result is the genuine polynomial
+homomorphism $Y_i\mapsto g_i$. Polynomial homomorphism extensionality gives
+equality on the entire original polynomial ring. Hence the SAME actual
+$\ker\Phi_g$ is killed by this evaluation; the true quotient universal
+property constructs $e$. Its original-class formula follows on every $H$,
+and its algebra law retains every original coefficient.
+
+The homogeneous quotient grading was proved from the actual ORIGINAL kernel.
+The class of each constant lies in its ACTUAL degree-zero component. These
+classes define a genuine ring homomorphism from $A$ into that component,
+which composes with the actual degree-zero localization map to give $A\to C_j$.
+This constructs its original algebra action, not a supplied unrelated action.
+All coefficient maps commute with the genuine ungraded localization map.
+Zero rings and empty/zero generator families are allowed in this lower cone.
+\end{proof}
+
+\begin{theorem}[Whole original chart evaluation into the actual fraction field]
+\label{algebra:actual-rees-chart-fraction-embedding}
+\uses{algebra:actual-rees-quotient-evaluation,algebra:actual-rees-presentation}
+\lean{EnvelopeProperty.ReesChart.localizationEvaluation,
+EnvelopeProperty.ReesChart.localizationEvaluation_algebraMap,
+EnvelopeProperty.ReesChart.toFractionRing,
+EnvelopeProperty.ReesChart.toFractionRing_mk,
+EnvelopeProperty.ReesChart.toFractionRing_injective}
+\leanok
+Now let the ORIGINAL $A$ be a domain and $g_j\ne0$. There is a genuinely
+constructed injective $A$-algebra homomorphism
+\[
+ C_j\longrightarrow\operatorname{Frac}A.
+\]
+It preserves EVERY original coefficient and sends EVERY actual homogeneous
+fraction $[H_d]/\overline Y_j^d$ to
+$H_d(g)/g_j^d$. No chart, normalization, component or injection certificate
+is an input; the actual quotient kernel is retained without radical replacement.
+\end{theorem}
+\begin{proof}
+Compose the ACTUAL $e:Q\to A$ with the original fraction-field inclusion.
+The image of $\overline Y_j$ is the genuine nonzero $g_j$, hence a unit in
+that SAME fraction field. The true ungraded localization universal property
+extends this WHOLE map through $Q[1/\overline Y_j]$. Restrict along the genuine
+degree-zero homogeneous-localization inclusion. Its coefficient square proves
+actual $A$-linearity, and the original fraction formula follows from the
+whole localization formula.
+
+To prove injectivity, subtract two actual elements and use a true homogeneous
+fraction representation of the result. The actual quotient grading supplies a
+SAME-DEGREE original homogeneous lift $H_d$ of its numerator. If its fraction
+value is zero, nonzero $g_j^d$ implies $H_d(g)=0$. The original homogeneous
+Rees identity gives $\Phi_g(H_d)=H_d(g)T^d=0$, so $H_d$ belongs to the SAME
+original quotient kernel. Its actual quotient numerator is therefore zero,
+and its whole homogeneous fraction is zero. This derives injection of the
+constructed entire map; no equality of seminorms from generator values is used.
+\end{proof}
+
+\begin{theorem}[The actual whole Rees chart is the original fraction-adjoin ring]
+\label{algebra:actual-rees-degree-zero-chart-equivalence}
+\uses{algebra:actual-rees-chart-fraction-embedding}
+\lean{EnvelopeProperty.ReesPresentation.aeval_mul_of_isHomogeneous,
+EnvelopeProperty.ReesChart.ratios,
+EnvelopeProperty.ReesChart.aeval_ratios,
+EnvelopeProperty.ReesChart.fractionAlgebra,
+EnvelopeProperty.ReesChart.range_toFractionRing_le_fractionAlgebra,
+EnvelopeProperty.ReesChart.ratios_mem_range_toFractionRing,
+EnvelopeProperty.ReesChart.toFractionRing_coordinateRatio,
+EnvelopeProperty.ReesChart.range_toFractionRing,
+EnvelopeProperty.ReesChart.fractionEquiv,
+EnvelopeProperty.ReesChart.fractionEquiv_coe,
+EnvelopeProperty.ReesChart.fractionEquiv_algebraMap}
+\leanok
+Under the same genuine original-domain and $g_j\ne0$ hypotheses, the WHOLE
+image of the constructed chart embedding is the ACTUAL subalgebra
+\[
+ A[g_i/g_j:i\in\iota]\subseteq\operatorname{Frac}A.
+\]
+Thus $C_j\simeq_A A[g_i/g_j]$ genuinely, preserving every original coefficient,
+every fraction generator and every original homogeneous numerator/denominator.
+The family need not be finite. Domain and the selected nonzero generator are
+used in this chart theorem, not hidden in the arbitrary-ring Rees presentation.
+\end{theorem}
+\begin{proof}
+Each actual degree-zero ratio $\overline Y_i/\overline Y_j$ lies in $C_j$ and
+maps to the true $g_i/g_j$, so the entire adjoined subalgebra is contained in
+the genuine image. Conversely represent ANY original chart element by a true
+homogeneous fraction and lift its numerator to an ORIGINAL same-degree $H_d$.
+Evaluate the proved WHOLE homogeneous presentation identity at the actual
+inverse of $g_j$ in its SAME original fraction field. Genuine polynomial
+homomorphism extensionality identifies this with scaling every original variable,
+so homogeneous scaling gives
+\[
+ H_d(g)/g_j^d=H_d((g_i/g_j)_i).
+\]
+The right side belongs to the ACTUAL subalgebra adjoined by those original
+ratios: its coefficients and all original variable images lie in that ring.
+This proves the reverse inclusion for EVERY chart element. Factor the actual
+injective map through its genuine whole image and the PROVED subalgebra
+equality. The resulting algebra equivalence has the entire original fraction
+formula and coefficient law; no Rees-chart isomorphism is assumed.
+\end{proof}
+
+\begin{remark}[Separate scheme and native consumers]
+The rings and grading here are the original homogeneous ideal quotient and
+its genuine degree-zero localizations. The separate actual quotient-Proj
+construction can therefore use these as its REAL affine chart rings and
+retain the whole coefficient triangle. Finite-family projectivity/properness,
+scheme-surjectivity, and comparison with the pre-existing encoded weakly-psh
+fraction charts are subsequent genuine consumers. No blowup scheme witness,
+analytic sheaf, native-point equivalence or potential-theoretic result is
+assumed or asserted in this algebraic chart slice.
+\end{remark}

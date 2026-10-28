@@ -1,0 +1,29 @@
+\section{Equality of the actual rank-one algebra preserves every original section norm}
+\begin{lemma}\label{lem:rank-one-algebra-derived-model-change}
+\lean{EnvelopeProperty.RankOneSameAlgebraNormComparison.coordAlg_eq_blockAlg,EnvelopeProperty.RankOneSameAlgebraNormComparison.isModelChange}
+\leanok
+\uses{lem:gl-model-change}
+Two actual rank-one models with the same entire original algebra satisfy both genuine coordinate-integrality conditions for change of model. No coordinate-integrality certificate is required in addition to their proved algebra equality.
+\end{lemma}
+\begin{proof}
+There is only one coordinate block, so the full coordinate algebra is precisely that block algebra. Each coordinate of either model belongs to its entire original algebra and hence, by the given equality of those same subalgebras, to the other model algebra. The defining original model integrality theorem makes it integral over the other model's full coordinate algebra, which is its sole block algebra. The whole model-algebra inclusion is equality, and integrality over the same entire algebra follows from its own inclusion. These prove every change-of-model condition.
+\end{proof}
+\begin{theorem}\label{thm:rank-one-algebra-native-norm-comparison}
+\lean{EnvelopeProperty.RankOneSameAlgebraNormComparison.nativePoint_restrictAn,EnvelopeProperty.RankOneSameAlgebraNormComparison.nativeHomeomorph_symm_eq_restrictAn,EnvelopeProperty.RankOneSameAlgebraNormComparison.nativeHomeomorph_symm_val}
+\leanok
+\uses{lem:rank-one-algebra-derived-model-change,lem:native-rank-one-same-algebra-scheme,thm:original-simultaneous-native-model-homeomorphism}
+The restriction map just derived agrees with the SAME actual native-projective-point homeomorphism induced by the algebra equality. Consequently the entire original polynomial seminorm is retained under that homeomorphism, including points with nongeneric support.
+\end{theorem}
+\begin{proof}
+Restriction along equality of the same subalgebras retains every polynomial value. The actual relevant homogeneous spectrum point therefore has the identical seminorm, prime kernel and native projective-stalk residue valuation; its proof of relevance is a property of this same point. Thus the actual whole native-projective-point maps agree. The actual native rank-one analytic homeomorphism is injective, so its inverse of this common native point is precisely the derived restriction map. This identifies the original native scheme homeomorphism with restriction on the entire analytic space.
+\end{proof}
+\begin{theorem}\label{thm:rank-one-same-algebra-entire-section-fs-psh}
+\lean{EnvelopeProperty.RankOneSameAlgebraNormComparison.sections_eq,EnvelopeProperty.RankOneSameAlgebraNormComparison.secAbs_nativeHomeomorph_symm,EnvelopeProperty.RankOneSameAlgebraNormComparison.termVal_nativeHomeomorph_symm,EnvelopeProperty.RankOneSameAlgebraNormComparison.pushFSData,EnvelopeProperty.RankOneSameAlgebraNormComparison.eval_pushFSData,EnvelopeProperty.RankOneSameAlgebraNormComparison.isFS_nativeHomeomorph_iff,EnvelopeProperty.RankOneSameAlgebraNormComparison.isPSH_nativeHomeomorph_iff}
+\leanok
+\uses{thm:rank-one-algebra-native-norm-comparison,lem:gl-model-change,def:gl-sections,def:gl-fs,def:gl-psh}
+Under this SAME native-projective-point homeomorphism, every actual integer-degree section module agrees, every original section norm and weighted term agrees at every point, and every original finite weighted FS datum retains its whole family, real weights and positive denominator with identical evaluation. The rank-one rational-class FS and rank-one real-class directed-net PSH predicates are equivalent under composition with this same homeomorphism.
+\end{theorem}
+\begin{proof}
+Equality of the whole model algebras implies the existing section hypothesis directly: a homogeneous element of the second algebra already belongs to the first, so the additional monomial degree can be zero. The actual derived change-of-model result therefore identifies the whole section modules in each integer degree and all section values under restriction. The preceding theorem identifies this restriction with the same native-projective homeomorphism, proving the norm and weighted-term formulas. Push each actual finite FS datum along the section-module identification, keeping its original family, denominator, weights and section membership. The nonzero-section condition defining an FS function is retained because the same actual coefficient belongs to the identical section module. Every term agrees, so the finite maximum and denominator yield identical evaluation, also for empty families or zero individual terms. The actual inverse transport proves both directions of FS equivalence. The whole directed-net PSH comparison for change of model applies to this same restriction homeomorphism and these FS identifications; hence it gives the displayed PSH equivalence after the already proved identification of homeomorphisms.
+\end{proof}
+These are rank-one model-degree predicates. They are not arbitrary numerical-class predicates, and no invariance of a fixed original line ray under arbitrary numerical equivalence is asserted. The interpretation of every simultaneous multigraded original line and section remains a next consumer. Whole projective numerical finite dimensionality and the paper topology remain open.

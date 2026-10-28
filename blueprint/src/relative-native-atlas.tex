@@ -1,0 +1,128 @@
+\subsection{Actual prescribed-base native affine atlas}
+\label{subsec:relative-native-atlas}
+
+All coefficient actions below are derived from the genuine structure morphism
+by the actual section maps. The construction concerns point spaces and their
+topological gluing. It supplies no analytic structure sheaf, model-center map,
+coherent-sheaf gluing or arbitrary-scheme Hausdorff conclusion.
+
+\begin{theorem}[Genuine section values in the native affine comparison]
+\label{scheme:affine-chart-section-values}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_map_ι_topIso,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_sectionBaseMap}
+\leanok
+\uses{scheme:native-affine-atlas,scheme:valued-open-embedding,
+scheme:affine-valued-point-homeomorphism,scheme:relative-section-coefficients}
+The actual native affine-open homeomorphism to the spectrum of $\Gamma(X,U)$
+preserves evaluation of every genuine section on $U$. For any native point
+supported in $U$, evaluating a derived coefficient from $R$ equals evaluation
+of that coefficient at its actual native image under the structure morphism.
+\end{theorem}
+\begin{proof}
+For the open inclusion, the actual inverse section isomorphism and the global
+section isomorphism of the open subscheme identify evaluation of $s\in\Gamma(X,U)$
+with evaluation of its genuine global section on the open subscheme. The real
+scheme affine isomorphism has global section pullback equal to the Spec global
+section isomorphism followed by this open global section isomorphism. Their
+actual inverse identities therefore identify the affine spectrum coordinate
+with the original native value of $s$.
+
+For a derived coefficient, genuine restriction preserves residue evaluation,
+and global evaluation naturality through the structure morphism identifies
+that value with the base native evaluation. This statement is proved on all
+native points, before imposing any coefficient norm condition.
+\end{proof}
+
+\begin{theorem}[Actual relative open restrictions]
+\label{scheme:relative-open-embedding}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.supportRelativeHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.openImmersionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.openImmersionHomeomorph_apply_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.range_map_of_isOpenImmersion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpenEmbedding_map_of_isOpenImmersion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.restrictionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.restrictionHomeomorph_apply_coe}
+\leanok
+\uses{scheme:valued-open-embedding,scheme:relative-valued-point-functor}
+A genuine open immersion commuting with the two structure maps induces an open
+embedding of native prescribed-base point spaces. Its image consists exactly
+of the fixed-base native target points whose scheme support belongs to the
+scheme open image. In particular actual open subschemes give the corresponding
+support-open restrictions of the fixed-base native point space.
+\end{theorem}
+\begin{proof}
+The already proved native open-immersion homeomorphism lands on the exact
+support-open image. Native functoriality and the actual commuting base diagram
+show that its source point has the fixed base point if and only if its target
+point does. Restrict this genuine homeomorphism to these exact predicates and
+reorder the support and coefficient conditions. The result is the asserted
+relative homeomorphism onto the support-open image. Its subtype inclusion is
+an open embedding, so the relative point map itself is an open embedding.
+No coefficient-field extension or valuation extension is needed.
+\end{proof}
+
+\begin{theorem}[Derived-coefficient affine relative chart]
+\label{scheme:relative-affine-open-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.mem_relativeLocus_iff_sectionCoefficients,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineOpenSpectrumHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineOpenSpectrumHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineOpenSpectrumHomeomorph_eq_sectionSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineOpenSpectrumHomeomorph_symm_coe}
+\leanok
+\uses{scheme:affine-chart-section-values,scheme:relative-open-embedding,
+scheme:relative-valued-points,spectrum:relative}
+For every genuine affine open $U$ of $X$ with structure map to
+$\operatorname{Spec}R$, its fixed-base native support-open subspace is
+homeomorphic to $\mathcal S_v(\Gamma(X,U))$, using the actual derived
+coefficient action on $\Gamma(X,U)$. Every section value is preserved.
+\end{theorem}
+\begin{proof}
+By the first theorem, the absolute affine chart preserves each derived
+coefficient value. A native point maps to the exact fixed base point precisely
+when all of its mapped original-ring values agree with $v$, because the
+proved affine base homeomorphism is injective and whole seminorm equality is
+coordinate equality. This is therefore exactly the prescribed-base predicate
+on the affine section-ring spectrum. Restrict the genuine absolute chart
+homeomorphism to this pair of predicates, then reorder the support and fixed
+base conditions. This constructs both inverse maps and continuity without an
+assumed unrelated algebra action or an assumed norm-preservation hypothesis.
+\end{proof}
+
+\begin{theorem}[Genuine relative affine point-space gluing]
+\label{scheme:relative-native-affine-atlas}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.supportOpens,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.openCoverGlueData,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.OpenCoverGlued,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.iUnion_supportOpens,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.openCoverGlueHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineChartInclusion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_affineChartInclusion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.openCoverGlueHomeomorph_affineChartInclusion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpenEmbedding_affineChartInclusion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineChartInclusion_eq_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineChartInclusion_jointly_surjective,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.canonicalAffineGlueHomeomorph}
+\leanok
+\uses{scheme:relative-affine-open-homeomorphism,scheme:native-open-cover-gluing,
+scheme:canonical-native-affine-atlas}
+Any actual scheme affine open cover yields genuine TopCat gluing of the
+prescribed-base native support opens, homeomorphic to the fixed-base native
+point space. Their pieces are parametrized by the relative spectra of the
+actual section rings with their derived coefficient actions. The inclusions
+are open embeddings and jointly surjective, and two representatives are
+identified exactly when their whole relative native points agree. All actual
+affine opens give such a canonical atlas for every scheme over the base.
+\end{theorem}
+\begin{proof}
+Inverse support opens remain open in the fixed-base subspace and still cover
+it, since every underlying scheme point lies in a member of the given cover.
+Apply the actual topological open-cover gluing construction. Parametrize each
+piece by the preceding genuine relative affine homeomorphism. Actual gluing
+inclusions are open embeddings; composing with chart inverse homeomorphisms
+proves the same for these relative-spectrum parameters. Joint surjectivity
+comes from the real gluing inclusions and chart bijections. The actual gluing
+homeomorphism maps each representative to its whole relative native point;
+injectivity proves the equality criterion. The already proved genuine cover
+by all affine opens supplies the canonical case.
+\end{proof}

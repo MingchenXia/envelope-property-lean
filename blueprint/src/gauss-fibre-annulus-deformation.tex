@@ -1,0 +1,116 @@
+\subsection{Actual polynomial inflation and the fibre annulus Gauss skeleton}
+\begin{theorem}[Whole polynomial Gauss inflation]
+\label{analytic:actual-polynomial-gauss-inflation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_eq_gauss_of_val_le,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_polynomialGaussInflation_prod,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.proj_polynomialGaussInflation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation_val_X,
+EnvelopeProperty.Berkovich.RelativeSpectrum.val_le_polynomialGaussInflation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation_eq_gauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussInflation_gauss}
+\leanok
+\uses{spectrum:gauss-maximality,spectrum:gauss-joint-continuity,spectrum:centered-gauss-whole-ray,spectrum:actual-line-gauss-inflation}
+Let $R,A$ be arbitrary commutative rings, let $R\to A$ be the original algebra
+map, and fix a real nonnegative valuation $v$ on $R$. For an ORIGINAL point
+$x\in\operatorname{Sp}_v(A[T])$ and $s\geq0$, define $I_s(x)$ by taking the
+Gauss valuation of radius $s$ over the WHOLE point $x$, translating the new
+variable $U$ to $U+T$, and restricting along the original map
+$A[T]\to A[T][U]$, $p\mapsto p(U)$ with every original coefficient retained.
+Thus $|p(I_s(x))|$ is the genuine Gauss value of $p(U+T)$ with coefficients
+evaluated by $x$. The construction is jointly continuous in $(x,s)$,
+retains every original $A$ coefficient, and satisfies
+\[
+ I_0(x)=x,\qquad |T(I_s(x))|=\max(|T(x)|,s),\qquad
+ |p(x)|\leq |p(I_s(x))| \quad(p\in A[T]).
+\]
+If $|T(x)|\leq s$, then $I_s(x)$ is the ENTIRE Gauss point of radius $s$
+over the restriction of $x$ to $A$. If $x=\eta_t(y)$ is itself an original
+Gauss point and $s\leq t$, then $I_s(x)=x$ as whole points.
+These assertions require no field, completeness, reducedness, bounded
+coefficient presentation, or nonzero radius hypothesis.
+\end{theorem}
+\begin{proof}
+All maps in the construction are the actual polynomial algebra maps. Joint
+continuity follows from the jointly continuous original Gauss construction
+and the continuous restriction along a fixed ring homomorphism. Translation
+fixes every constant, so the original coefficient restriction is unchanged.
+At radius zero, evaluation at $U=0$ gives $p(T)$, hence the entire point $x$.
+The polynomial $U+T$ has precisely its constant and degree-one coefficients,
+so its actual Gauss value is $\max(|T(x)|,s)$. Its constant coefficient after
+translation is $p(T)$; the genuine Gauss coefficient bound gives the lower
+bound for EVERY original polynomial.
+
+We prove translation invariance on a Gauss disc without imposing any
+coefficient binomial bound. If $z$ is any whole coefficient point and
+$|a(z)|\leq s$, the translated Gauss point over $z$ has coordinate value
+at most $\max(s,|a(z)|)\leq s$, and the same coefficient restriction.
+The already proved maximality of the original Gauss point therefore bounds
+its value on every polynomial above the translated value. Apply the same
+argument to the inverse translation $U\mapsto U-a$ and then to the polynomial
+obtained by forward translation. The inverse cancels as an actual algebra
+isomorphism, giving the reverse bound on EVERY polynomial. Thus forward
+translation fixes the whole Gauss point. Applying this with coefficient
+point $x$ and $a=T$ proves that, if $|T(x)|\leq s$, inflation equals the
+restriction of the untranslated Gauss point over $x$. Its entire finite
+coefficient supremum is precisely the Gauss point of radius $s$ over the
+original $A$ restriction. Finally, for $x=\eta_t(y)$ and $s\leq t$, inflation
+has coordinate value $t$ and coefficient restriction $y$. Gauss maximality
+bounds it above by $x$; the already proved lower bound gives the reverse
+inequality on EVERY original polynomial. Whole-point extensionality finishes.
+\end{proof}
+
+\begin{theorem}[A genuine strong deformation to the fibre annulus skeleton]
+\label{analytic:actual-fibre-annulus-gauss-deformation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.radius,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.gaussSection,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.radius_gaussSection,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformationPoint,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.radius_deformationPoint,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.continuous_deformationPoint,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformationPoint_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformationPoint_one,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformationPoint_gaussSection,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreAnnulus.deformationRel}
+\leanok
+\uses{analytic:actual-polynomial-gauss-inflation}
+With the same arbitrary original rings and valuation, fix an actual point
+$y\in\operatorname{Sp}_v(A)$ and nonnegative endpoints $\rho,r$. Let
+\[
+ \mathcal A_y[\rho,r]=\{x\in\operatorname{Sp}_v(A[T]):
+ x|_A=y,\ \rho\leq |T(x)|\leq r\}.
+\]
+The actual radius map $q(x)=|T(x)|$ to the ORIGINAL interval $[\rho,r]$
+and the actual Gauss section $j(t)=\eta_t(y)$ are continuous and $qj$ is
+exactly the identity. There is a constructed continuous homotopy from the
+identity of $\mathcal A_y[\rho,r]$ to $jq$, namely
+\[
+ H(\theta,x)=I_{\theta |T(x)|}(x),\qquad 0\leq\theta\leq1.
+\]
+This homotopy preserves the entire coefficient point $y$ and the exact
+original coordinate radius. It fixes EVERY point of the Gauss section for
+EVERY time, and hence is a genuine strong deformation to its actual image.
+No positivity or ordering of the endpoints is needed for the construction;
+if $\rho>r$ both the interval and the annulus are actually empty.
+\end{theorem}
+\begin{proof}
+Polynomial evaluation is continuous on the original spectrum, so $q$ is
+continuous into the indicated interval subtype. Joint Gauss continuity gives
+continuity of $j$, and the actual coordinate value of a Gauss point gives
+$q(j(t))=t$. For every allowed $\theta$, one has
+$\theta|T(x)|\leq |T(x)|$. The whole coefficient identity and the exact
+maximum formula from the previous theorem therefore put $H(\theta,x)$ in
+the SAME original fibre annulus and give $q(H(\theta,x))=q(x)$.
+Joint continuity of inflation, multiplication, and original coordinate
+evaluation proves continuity on $[0,1]\times\mathcal A_y[\rho,r]$ with its
+actual subspace topology. At time zero the whole inflation identity gives
+$x$. At time one the original coordinate bound gives the entire Gauss point
+$\eta_{|T(x)|}(y)=j(q(x))$. For a point $j(t)$, the inflation radius
+$\theta t\leq t$ and the whole Gauss fixed-point assertion give
+$H(\theta,j(t))=j(t)$. These are actual equalities of all original polynomial
+values, not assertions merely about supports or scheme points.
+\end{proof}

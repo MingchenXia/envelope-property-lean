@@ -1,0 +1,53 @@
+\section{Actual geometric ample lines have continuous whole-section norms}
+\label{sec:native-ample-line-norm-continuity}
+
+\begin{theorem}[Every whole ample-line weighted datum has continuous true evaluation]
+\label{thm:native-ample-line-whole-fs-continuous}
+\lean{EnvelopeProperty.NativeLineFubiniStudy.FSData.continuous_eval_of_isAmple}
+\leanok
+\uses{thm:native-ample-model-fs-evaluation,def:gl-fs,thm:projective-fixed-native-analytic-gluing}
+On an integral original scheme proper over its original field, actual
+geometric ampleness of an original line implies continuity of every
+whole-section weighted FS datum for that line on the entire original
+native point space. Zero families, arbitrary real weights and common
+zeroes are allowed. No norm, section, model or continuity comparison
+certificate is an input.
+\end{theorem}
+\begin{proof}
+The geometric ample criterion supplies a positive power, an actual closed
+projective embedding of the same original scheme, its whole original
+structure triangle and an isomorphism between the pulled original
+$\mathcal O(1)$ and that same original power line. Choose a nonempty actual
+projective coordinate open through the native original generic point.
+This constructs the genuine full-function-field model and the whole
+native homeomorphism. The actual weighted-datum transport theorem identifies
+its entire true original norm evaluation with evaluation of its actual
+model datum under this same homeomorphism. Every genuine model datum has
+continuous evaluation, without a nonzero-family requirement. Composition
+with the true native homeomorphism proves the assertion.
+\end{proof}
+
+\begin{theorem}[Every entire original ample-line section has continuous true norm]
+\label{thm:native-ample-line-global-section-norm-continuous}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormContinuity.continuous_of_isAmple}
+\leanok
+\uses{thm:native-ample-line-whole-fs-continuous,thm:scheme-global-section-model-norm-isometry}
+For every actual entire section of an actual geometrically ample original
+line on an integral proper original scheme, its true original model norm
+is continuous as a nonnegative-real-valued function on the same entire
+original native space, including its zero locus.
+\end{theorem}
+\begin{proof}
+Use the genuine original unit-tensor isomorphism to regard the original
+section as an entire section of the actual first tensor power. Give it
+weight zero in the one-term FS datum of degree and denominator one.
+The actual module-isomorphism norm theorem identifies the evaluation of
+this literal datum with the extended logarithm of the original section
+norm. The preceding theorem makes that extended logarithm continuous,
+even where the norm vanishes. The extended exponential is continuous
+and sends this logarithm back to the same nonnegative norm, viewed in
+the extended nonnegative reals. The inclusion of nonnegative reals into
+extended nonnegative reals is a topological embedding, so the original
+nonnegative-real norm is continuous. No exclusion of zero sections or
+zero native values is needed.
+\end{proof}

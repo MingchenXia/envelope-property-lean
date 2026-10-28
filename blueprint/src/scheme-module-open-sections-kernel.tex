@@ -1,0 +1,34 @@
+\section{Original module sections on every open as the actual Cech kernel}
+
+\begin{proposition}[Actual open-section kernel and augmentation]
+\label{prop:scheme-module-open-sections-kernel}
+\leanok
+\lean{EnvelopeProperty.SchemeModuleOpenSectionsKernel.openSectionsRestrictIso,EnvelopeProperty.SchemeModuleOpenSectionsKernel.openSectionsKernelIso,EnvelopeProperty.SchemeModuleOpenSectionsKernel.openSectionsKernelIso_hom_subtype}
+Let $M$ be an original module on a scheme $X$, let $U_i$ be an
+actual open cover, and let $W$ be ANY original open, including the
+empty open. Retain the original global coefficient ring through
+the actual base-linear module sheaf. Its sections on $W$ are
+canonically isomorphic to the kernel of the SAME sheaf-level
+Cech differential evaluated on $W$. Composing this WHOLE
+isomorphism with the actual kernel inclusion gives precisely
+the original sheaf augmentation evaluated on $W$.
+No quasicoherence, affineness, finiteness or nonempty-open
+hypothesis is required for this sheaf-condition step.
+\end{proposition}
+\begin{proof}
+Identify the original sections on $W$ with the whole global
+sections of the original module restricted to $W$, retaining
+the original coefficient action through the actual structure
+map. The inverse-image opens $U_i\cap W$ give its actual open
+cover. Native sheaf gluing identifies these whole global
+sections with the kernel of the first actual base-linear Cech
+differential. The already constructed whole restricted Cech
+complex isomorphism identifies its terms and differential with
+the SAME original sheaf-level Cech complex evaluated on $W$.
+Transport the kernel through that actual isomorphism. The
+native global augmentation equation and the actual restriction
+comparison equations give the asserted WHOLE augmentation
+identity. This remains a sheaf-condition producer; the
+geometric localizations of the Cech terms, needed for the
+whole principal-open localization theorem, remain unproved.
+\end{proof}

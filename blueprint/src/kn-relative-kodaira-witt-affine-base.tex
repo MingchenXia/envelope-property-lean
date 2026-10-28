@@ -1,0 +1,80 @@
+\section{Relative Kodaira over an affine base from the proved Witt decomposition}
+
+The relative Kodaira results use projectivity over the original affine base
+and smoothness over the original field. Projectivity over that field is not
+assumed. The absolute canonical module and the actual relatively ample line
+are retained throughout.
+
+\begin{lemma}[Native Frobenius cohomology over the original affine base]
+\label{lem:kn-relative-frobenius-native-cohomology}
+\lean{EnvelopeProperty.Vanishing.RelativeFrobeniusCohomology.relativePushforward_subsingleton_H_iff, EnvelopeProperty.Vanishing.RelativeFrobeniusCohomology.twistPullback_subsingleton_H_iff}
+\uses{lem:kn-frobenius-twist-module-unit,lem:fc-projective-finite-ordered-affine-cover,thm:affine-pushforward-cohomology-vanishing}
+\leanok
+Let $X/k$ be a scheme over a perfect field of characteristic $p$ and let
+$X\to\operatorname{Spec}R$ be actually projective, for any ring $R$.
+For every original quasicoherent module, the actual relative Frobenius
+pushforward preserves and reflects vanishing of positive sheaf cohomology.
+The corresponding native pullback under the perfect-field twist has the same
+property. No properness over $k$ or cohomology comparison is an input.
+\end{lemma}
+\begin{proof}
+Projectivity over the original affine base supplies separatedness and the
+actual finite ordered affine cover. The twist projection is a scheme
+isomorphism because the field is perfect. Its native adjunction unit compares
+the original module with the pushforward of its actual pullback. Relative
+Frobenius is affine. Apply the proved affine pushforward Cech comparison on
+this finite cover and its pullback to the twist.
+\end{proof}
+
+\begin{theorem}[Relative ample Kodaira on an actual Witt special fibre]
+\label{thm:kn-relative-ample-kodaira-witt-special-fibre}
+\lean{EnvelopeProperty.Vanishing.RelativePositiveHodgeVanishing.kodaira_of_wittLift}
+\uses{lem:kn-relative-frobenius-native-cohomology,cor:kn-finite-family-serre,lem:kn-exterior-finite-type,lem:kn-frobenius-diagonal-iteration,lem:kn-proved-global-witt-di,thm:kn-hypercohomology-zero-diagonal,lem:kn-amplified-cartier-bounded,lem:kn-di-amplified-target}
+\leanok
+For a smooth separated dimension-$n$ Witt-two lift over a perfect field of
+characteristic $p>n$, let $X$ be its actual special fibre. For any Noetherian
+ring $R$, actual projective map $X\to\operatorname{Spec}R$, and actual relatively
+ample line $L$, every positive cohomology group of $\omega_{X/k}\otimes L$
+vanishes. The global DI decomposition is supplied by its proved construction,
+with no caller DI or vanishing certificate.
+\end{theorem}
+\begin{proof}
+The already proved coherent Serre theorem over arbitrary Noetherian affine
+bases gives eventual vanishing for all absolute exterior cotangent modules
+twisted by sufficiently high powers of $L$. The actual native Frobenius
+cohomology comparisons above replace every previous appeal to projectivity
+over the field. The original connection-power complex, global proved DI
+isomorphism, and bounded hypercohomology diagonal give the same descent from
+$p m$ to $m$ on every total degree above $n$. Iterate to the eventual Serre
+endpoint and take top exterior degree and first power.
+\end{proof}
+
+For characteristic zero over a finite-type affine base, the arithmetic model
+retains the projective map to the modeled affine base, the smooth total space
+over its coefficient domain,
+and the original line. Canonical cohomology specialization applies the
+following comparison to its actual Witt point and special-fibre isomorphism.
+Together these give relative Kodaira vanishing over the original affine base.
+
+\begin{theorem}[The original relative line under an actual Witt special-fibre isomorphism]
+\label{thm:kn-relative-kodaira-original-witt-comparison}
+\lean{EnvelopeProperty.Vanishing.RelativeWittKodairaComparison.kodaira_of_specialFibreIso}
+\uses{thm:kn-relative-ample-kodaira-witt-special-fibre,def:kn-inverse-pullback-line,lem:kn-scheme-iso-positive-cohomology,lem:kn-scheme-iso-ample-pullback}
+\leanok
+Let $k$ be a perfect field of prime characteristic $p$, let
+$\widetilde X\to\operatorname{Spec}W_2(k)$ be smooth of relative dimension $n$
+and separated, and assume $n<p$. Let $R$ be any Noetherian commutative ring,
+let $f_Y:Y\to\operatorname{Spec}k$ and $g_Y:Y\to\operatorname{Spec}R$, and suppose
+there is an isomorphism $e:Y\simeq\widetilde X_k$ whose composite with the
+special fibre's field structure is $f_Y$. For every line $L$ relatively ample
+for $g_Y$, the positive cohomology of $\omega_{Y/k}\otimes L$ vanishes.
+The original map $g_Y$ and original line are retained.
+\end{theorem}
+\begin{proof}
+Pull the original line and affine-base map through the inverse isomorphism.
+Its actual positive-power embedding gives relative ampleness there. Apply the
+certificate-free relative Witt theorem. Quasicoherence and the native finite
+affine cover compare cohomology under the actual scheme isomorphism using the
+projective affine-base map. The original field triangle gives the native
+canonical pullback isomorphism, and the actual inverse line pullbacks cancel.
+\end{proof}

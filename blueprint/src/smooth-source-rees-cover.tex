@@ -1,0 +1,52 @@
+\section{Actual \'etale source coordinates on a finite unit Rees cover}
+
+\begin{lemma}[Literal unit-Rees charts are actual principal localizations]\label{lem:sc0-unit-rees-isLocalization}
+\lean{EnvelopeProperty.Char0.isLocalization_principalReesChart}
+\leanok
+\uses{lem:sc0-principal-rees-open-chart}
+For an actual unit-generating family in a literal subalgebra $C\subseteq K$,
+each literal nonzero Rees chart is an actual principal localization of $C$
+at its original denominator, under its literal inclusion map.
+\end{lemma}
+\begin{proof}
+The checked actual principal-cover ring equivalence preserves the original
+$C$-map, so it is an actual $C$-algebra equivalence. Transport the actual
+principal-localization property through that equivalence.
+\end{proof}
+
+\begin{corollary}[The pure source dimension is produced internally]\label{cor:sc0-smooth-source-unit-rees-etale-cover}
+\lean{EnvelopeProperty.Char0.exists_smooth_source_unit_rees_etale_cover}
+\leanok
+\uses{thm:sc0-smooth-source-unit-rees-etale-cover}
+For an arbitrary actual smooth literal affine domain over the perfect field,
+the dimension and actual finite unit-Rees \'etale source cover are produced
+internally, without a separate pure-dimension assumption.
+\end{corollary}
+\begin{proof}
+The actual affine domain has irreducible spectrum. The checked relative
+dimension constancy theorem therefore produces one pure smooth dimension
+for its actual structure map. Apply the preceding finite source-cover theorem
+at that dimension and retain all original source inclusion maps.
+\end{proof}
+
+\begin{theorem}[Actual smooth source gives a finite unit-Rees \'etale cover]\label{thm:sc0-smooth-source-unit-rees-etale-cover}
+\lean{EnvelopeProperty.Char0.exists_smooth_source_principal_rees_etale_cover}
+\leanok
+\uses{cor:sc0-finite-principal-rees-refinement,lem:sc0-affine-open-chart-ring-map-etale,lem:sc0-etale-image-coordinates,lem:sc0-leaf-chart-scalar-towers}
+A smooth pure-dimensional literal source $\operatorname{Spec}C$ over a
+perfect field has a finite unit-generating family of original functions
+whose literal nonzero Rees charts have actual \'etale coordinates of the
+original dimension. All source-algebra maps are the original inclusions;
+no global source-coordinate family is assumed.
+\end{theorem}
+\begin{proof}
+Use the checked actual affine \'etale cover for the empty SNC family. Its
+actual covering opens admit a finite principal refinement in $C$ whose
+functions generate the unit ideal. Every literal ratio-chart map is an
+actual open immersion with image the corresponding principal open, hence
+lies inside one actual source \'etale chart. Construct the actual affine
+factor ring map, its \'etaleness and its exact field-base scalar tower from
+the literal inclusion triangle. The actual image coordinates are then
+\'etale by composition. The checked principal-cover construction supplies
+actual point coverage, and its nonzero generator is produced internally.
+\end{proof}

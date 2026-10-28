@@ -1,0 +1,24 @@
+\section{The actual ideal of an original point closure at its native generic point}
+\begin{lemma}\label{lem:point-closure-inclusion-generic-point}
+The actual generic point of the native scheme-image closure of an original point maps under its actual closed inclusion to that same original point.
+\uses{scheme:actual-point-closure-integral-triangle}
+\lean{EnvelopeProperty.SchemePointClosureStalkIdeal.inclusion_genericPoint}\leanok
+\end{lemma}
+\begin{proof}
+The canonical residue-field point of the actual image closure is dominant, since it is the native schematic-image factorization of a quasi-compact field-valued morphism. Its unique point therefore maps to the actual generic point of the integral closure. The entire image triangle projects this same point to the original residue-field point in the original scheme, whose image is exactly the original point.
+\end{proof}
+\begin{theorem}\label{thm:integral-closed-subscheme-generic-stalk-ideal}
+Let $J$ be an ideal sheaf whose actual closed subscheme is integral. At the image of its native generic point, the actual stalk ideal of $J$ is the entire maximal ideal of the original ambient stalk.
+\lean{EnvelopeProperty.SchemePointClosureStalkIdeal.stalkIdeal_at_genericPoint}\leanok
+\end{theorem}
+\begin{proof}
+The actual closed-immersion stalk map is surjective, its kernel is exactly the actual stalk ideal of $J$, and its target at the native generic point is the function field of the integral closed subscheme. The kernel of a surjective homomorphism from a local ring to a field is its unique maximal ideal. These identities are for the actual original stalk map, so they identify the entire actual ideal.
+\end{proof}
+\begin{theorem}\label{thm:point-closure-original-stalk-maximal-ideal}
+At an original point $c$, the actual stalk ideal of its native scheme-image closure is precisely the maximal ideal of the same original stalk at $c$.
+\uses{lem:point-closure-inclusion-generic-point,thm:integral-closed-subscheme-generic-stalk-ideal}
+\lean{EnvelopeProperty.SchemePointClosureStalkIdeal.stalkIdeal_eq_maximalIdeal}\leanok
+\end{theorem}
+\begin{proof}
+The native point closure is integral. Apply the preceding theorem to its actual native image-kernel ideal sheaf. Its generic point maps to the unchanged original $c$ by the first lemma, so the actual ambient stalk and its maximal ideal are exactly those at that original point.
+\end{proof}

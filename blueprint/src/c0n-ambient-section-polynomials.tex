@@ -1,0 +1,151 @@
+\section{Original ambient projective sections are original homogeneous polynomials}
+\label{sec:c0n-ambient-section-polynomials}
+
+Let $R$ be an original commutative ring, $P=\mathbb P_R^N$ its original
+polynomial Proj, and let $e\geq0$ be integral. All coefficients below
+belong to $R$ itself. No field of fractions or field-only global-section
+representation is substituted for the original affine base. The target
+line is the original coordinate-hyperplane twist, with its native frames.
+A universe lift is applied only to the coordinate index of the auxiliary
+Laurent algebra; literal original polynomial renaming and its inverse
+recover the original coordinate type and original ring coefficients.
+
+\begin{lemma}[The actual native coordinate fractions have their genuine Laurent comparison]
+\label{lem:c0n-native-coordinate-laurent-comparison}
+\lean{DeJongAlterations.Geometry.ProperSteinProjectiveCech.polynomialCoordinateHomogeneousLaurentEquiv}
+\leanok
+Let $R$ be an original commutative ring, $I$ a finite linearly ordered
+coordinate set, $m\in\mathbf Z$ and $S\subset I$.  The actual homogeneous
+degree-$m$ piece of localization at $\prod_{i\in S}x_i$ is linearly
+equivalent to the entire actual Laurent module whose supported integral
+exponents sum to $m$ and can be negative only at coordinates in $S$.
+The map retains each original numerator and its original denominator.
+\end{lemma}
+\begin{proof}
+Use the already-proved native comparison in
+\nolinkurl{DeJongAlterations.Geometry.ProperSteinProjectiveCechPolynomialLocalization}.
+Distinct original polynomial exponent vectors remain distinct integral
+Laurent vectors, so the original polynomial map is injective.  Each
+inverted coordinate is a unit, and the actual localization equality
+criterion therefore proves injectivity of the genuine fraction map.
+For surjectivity, take one supported Laurent monomial.  Choose a natural
+power of the same coordinate product clearing its negative exponents.
+The resulting exponents are all nonnegative and have precisely the
+homogeneous degree of the required numerator.  The original polynomial
+monomial divided by that product power has exactly the original Laurent
+image.  Finite sums give every supported Laurent element.  The actual
+linear map is consequently bijective, giving the native linear
+equivalence without a field replacement or comparison certificate.
+\end{proof}
+
+\begin{lemma}[A whole nonnegative Laurent piece is a genuine polynomial piece]
+\label{lem:c0n-ambient-empty-laurent-polynomial}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.integral_homogeneous_isHomogeneous,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.exists_polynomial_of_empty_laurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.polynomial_unique_of_same_laurent}
+For a finite original coordinate type, every Laurent polynomial whose
+supported exponents are nonnegative and have total degree $e$ is the
+image of a unique original homogeneous polynomial of degree $e$.
+\end{lemma}
+\begin{proof}
+Use the actual polynomial-to-Laurent inclusion, which is injective
+because distinct natural exponent vectors remain distinct integral
+exponent vectors. The native homogeneous coordinate-product localization
+comparison for the empty coordinate set is onto this very Laurent
+piece. Its inverse supplies a genuine fraction with original polynomial
+numerator, total numerator degree $e+n\cdot0=e$, and denominator
+$(\prod_{i\in\varnothing}x_i)^n=1$. The actual denominator-clearing
+identity therefore identifies that same numerator's Laurent image with
+the original element. Its integral weighted degree equals the natural
+total degree, since every original weight is one. Injectivity gives
+uniqueness. This proof works for arbitrary coefficient rings, including
+the zero ring; it does not use a zero homogeneous prime.
+\uses{lem:c0n-native-coordinate-laurent-comparison}
+\end{proof}
+
+\begin{lemma}[The same native global section has one compatible Laurent expression]
+\label{lem:c0n-ambient-native-section-laurent}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.coefficient_transition_of_open_transition,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.nativeCoefficient,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.nativeCoefficient_overlap,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.nativeCoefficient_ext,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.nativeCoefficient_homogeneousSection,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalPolynomialToLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalPolynomialToLaurent_X_isUnit,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalLocalizationToLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalLocalizationToLaurent_algebraMap,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalAwayToLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalAwayToLaurent_mk_clear,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalAwayToLaurent_awayMap,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartAwayEquiv,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.overlapAwayEquiv,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartToLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.overlapToLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartAway_restrict_left,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartAway_restrict_right,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.overlapToLaurent_restrict_left,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.overlapToLaurent_restrict_right,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartToLaurent_coefficient_clear,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.overlapToLaurent_transition_clear,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.originalAwayToLaurent_shift_mem,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.sectionLaurent,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.sectionLaurent_eq,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.sectionLaurent_mem_singleton}
+For an original global section $s$ of the actual twist $\mathcal O(e)$,
+let $c_i$ be its coefficient in the original frame on $D_+(x_i)$.
+Map the genuine degree-zero homogeneous fraction $c_i$ into the original
+Laurent algebra and multiply by $x_i^e$. The resulting expressions
+$\lambda_i$ are equal for all original indices. Each has total degree
+$e$, and only coordinate $i$ can have a negative exponent in
+$\lambda_i$. The same native frame coefficients detect equality of
+entire original global sections; the coefficient of an original
+homogeneous polynomial section is the same original $F/x_i^e$.
+\end{lemma}
+\begin{proof}
+Native restriction of a global module section commutes with the original
+frame isomorphisms. The proved original frame transition says on the
+whole overlap that $c_i=(x_k/x_i)^e c_k$. Native Proj restriction
+naturality identifies these restrictions with the genuine maps between
+the original coordinate localizations. Every inverted coordinate is an
+actual unit in the original Laurent algebra. Multiplication by $x_i^e$
+therefore gives $c_i x_i^e=c_k x_k^e$ in that algebra, using the same
+original functions and maps. For the support claim, take the native
+homogeneous numerator and denominator of $c_i$. The denominator is a
+power of the actual $x_i$ and the numerator has the same original
+homogeneous degree as that power. After multiplication by $x_i^e$,
+total degree is exactly $e$ and all uninverted exponents remain
+nonnegative. Native localization injectivity and clearing establish
+these identities with arbitrary coefficient torsion retained.
+\uses{lem:fc-original-homogeneous-form-coefficients}
+\end{proof}
+
+\begin{lemma}[The entire compatible expression has no negative coordinate]
+\label{lem:c0n-ambient-compatible-nonnegative}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.compatible_singleton_laurent_mem_empty,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.sectionLaurent_mem_empty}
+The common expression of the preceding lemma is supported on the whole
+original nonnegative degree-$e$ exponent set, including $N=0$.
+\end{lemma}
+\begin{proof}
+For $N\geq1$, fix any coordinate $i$ and choose a different original
+coordinate $k$. The common expression equals its expression on chart
+$k$, where coordinate $i$ is not inverted. Hence every supported
+exponent at $i$ is nonnegative. This holds for every original $i$.
+If $N=0$, there is exactly one coordinate and its exponent equals the
+entire total degree $e\geq0$, so it is nonnegative as well. Thus the
+same conclusion includes projective zero-space over the original ring,
+without an implicit nontrivial-coordinate-type assumption.
+\uses{lem:c0n-ambient-native-section-laurent}
+\end{proof}
+
+\begin{theorem}[Every whole original ambient section has an actual homogeneous lift]
+\label{thm:c0n-ambient-section-homogeneous-lift}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.chartToLaurent_injective,EnvelopeProperty.Char0.RelativeProjectiveSectionPolynomial.exists_homogeneous_polynomial}
+For every original $s\in\Gamma(P,\mathcal O(e))$ there exist an actual
+$F\in R[x_0,\ldots,x_N]$, homogeneous of degree $e$, such that
+\[
+ s=\operatorname{homogeneousSection}(F)
+\]
+in the original coordinate-hyperplane twist. The conclusion uses the
+native global section of the same original form, with the original
+coefficient ring and the same original frames; no desired lifting map
+or comparison certificate is a premise.
+\end{theorem}
+\begin{proof}
+Form the compatible Laurent expression of the original section and
+apply the two preceding lemmas. The empty-coordinate reconstruction
+then produces the actual original degree-$e$ polynomial $F$.
+On each original chart its original polynomial section has coefficient
+$F/x_i^e$, by the proved native homogeneous-section coefficient formula.
+The constructed equality of Laurent images and invertibility of the
+same $x_i^e$ show that this equals $c_i$; actual localization
+injectivity brings the equality back to the entire original chart
+section ring. The original frame isomorphism is injective, so both
+module sections restrict equally on every chart. The original
+coordinate opens cover $P$, and its genuine sheaf separatedness proves
+equality of the entire original global sections. All arguments in the
+previous lemmas include $N=0$, and all maps retain $R$, in particular
+when $R=k[t]$.
+\uses{lem:c0n-ambient-empty-laurent-polynomial,lem:c0n-ambient-compatible-nonnegative,thm:fc-original-homogeneous-form-section,lem:fc-original-homogeneous-form-frame-coefficient,lem:c0n-polynomial-original-index-reconstruction,lem:c0n-polynomial-localization-laurent-faithful}
+\end{proof}
+
+The separate fixed-subscheme restriction-surjectivity theorem is needed
+before this ambient lifting result lifts sections on an original closed
+projective subscheme. Neither result alone supplies the entire final
+characteristic-zero envelope theorem.

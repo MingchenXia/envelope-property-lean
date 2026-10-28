@@ -1,0 +1,31 @@
+\section{The genuine Euler relation of original cochain complexes}
+
+\begin{definition}[The first two cohomology groups' Euler index]
+\label{def:fc-cohomology-euler-additivity}
+\leanok
+\lean{EnvelopeProperty.CohomologyEulerAdditivity.eulerIndex}
+For an actual cochain complex of $k$-vector spaces, set
+$e(C)=\dim H^0(C)-\dim H^1(C)$.
+\end{definition}
+
+\begin{theorem}[Exact cohomology gives the Euler relation]
+\label{thm:fc-cohomology-euler-additivity}
+\leanok
+\lean{EnvelopeProperty.CohomologyEulerAdditivity.eulerIndex_add}
+\uses{def:fc-cohomology-euler-additivity}
+Let $0\to A\to B\to C\to0$ be an actual short exact sequence of
+nonnegative cochain complexes. If their actual groups in degrees zero
+and one are finite dimensional and $H^2(A)=0$, then
+$e(B)=e(A)+e(C)$.
+\end{theorem}
+\begin{proof}
+The genuine cohomology long exact sequence gives
+$0\to H^0(A)\to H^0(B)\to H^0(C)\to H^1(A)\to H^1(B)\to H^1(C)\to0$.
+Its first arrow is injective because the complexes have no preceding
+negative degree. Its last arrow is surjective because the next group
+$H^2(A)$ vanishes. At each intermediate term, the actual image of the
+incoming map is the kernel of the outgoing map. Apply rank-nullity
+to each outgoing map, identify the actual image and kernel dimensions,
+and cancel the image dimensions in the alternating sum. Rearranging
+gives the stated formula.
+\end{proof}

@@ -1,0 +1,241 @@
+\section{Unibranch varieties}\label{sec:var-unibranch}
+
+Fang--Han--Xia call an integral projective variety $X$ over an algebraically closed field $k$
+\emph{unibranch} if every local ring $\mathcal O_{X,x}$ has one branch, and state that this is
+equivalent to bijectivity of the normalization \cite[Tags~0C37, 0C3B]{Stacks} and, over $k$, to
+its being a universal homeomorphism \cite[\S1.1 and Lemma~8.1]{FHX}. This section takes
+bijectivity of the normalization as the definition, for an arbitrary integral scheme, proves its
+equivalence with the stalk-wise definition (Lemma~\ref{lem:var-unibranch-stalks}) and with the
+other notions of the Stacks Project \cite[Tags~0BPZ, 0BQ2, 0C37, 0C3B]{Stacks}, and transfers it
+to the multiprojective model of a presentation of $X$, where the model theorems of
+Section~\ref{subsec:gl-main} apply.
+
+Throughout, $X$ is an integral scheme with function field $K(X)$, and $\nu\colon X^\nu\to X$ is
+the normalization of $X$ in $K(X)$
+(\ref{scheme:actual-integral-normalization-affine-charts}). For a nonempty affine open
+$U=\operatorname{Spec}A$ of $X$, the domain $A$ has fraction field $K(X)$, and
+$\nu^{-1}(U)\cong\operatorname{Spec}B_U$ over $U$, where $B_U$ is the integral closure of $A$ in
+$\operatorname{Frac}A$. The morphism $\nu$ is integral and surjective
+(\ref{scheme:actual-integral-normalization-surjective}). A local ring $R$ is \emph{unibranch} if
+$R_{\mathrm{red}}$ is a domain whose integral closure in its fraction field is local, and
+\emph{geometrically unibranch} if moreover the residue field extension of this integral closure
+over $R$ is purely inseparable (\ref{algebra:actual-structural-unibranch-local-ring}).
+
+\begin{definition}[Unibranch integral schemes]\label{def:var-unibranch}
+\lean{EnvelopeProperty.Variety.IsUnibranch, EnvelopeProperty.Variety.isUnibranch_iff_injective}
+\leanok
+\uses{scheme:actual-integral-normalization-affine-charts, scheme:actual-integral-normalization-surjective}
+\source{fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:lem:unibranch-universal}
+An integral scheme $X$ is \emph{unibranch} if its normalization $\nu\colon X^\nu\to X$ is
+bijective. Since $\nu$ is surjective, $X$ is unibranch if and only if $\nu$ is injective.
+\cite[\S1.1]{FHX} defines unibranchness stalk-wise, by requiring that every local ring
+$\mathcal O_{X,x}$ have one branch, and states its equivalence with bijectivity of $\nu$; this
+equivalence is Lemma~\ref{lem:var-unibranch-stalks}, which holds for every integral scheme.
+\end{definition}
+
+\begin{proof}
+Surjectivity of $\nu$ is lying over for the integral extensions $A\subseteq B_U$ on the affine
+opens $U=\operatorname{Spec}A$ of $X$ (\ref{scheme:actual-integral-normalization-surjective}).
+\end{proof}
+
+\begin{lemma}[Normalization primes and unibranch localizations]\label{lem:var-unibranch-ring}
+\lean{EnvelopeProperty.Variety.injective_comap_normalization_iff, EnvelopeProperty.Variety.isGeometricallyUnibranchLocalRing_atPrime_of_injective_comap}
+\leanok
+\uses{algebra:actual-structural-unibranch-local-ring, algebra:structural-domain-normalization-primes, lem:gl-radicial, thm:normalization-finite-arbitrary-field}
+Let $A$ be a domain and $B$ the integral closure of $A$ in $\operatorname{Frac}A$.
+\begin{enumerate}
+\item The map $\operatorname{Spec}B\to\operatorname{Spec}A$ is injective if and only if
+  $A_{\mathfrak p}$ is unibranch for every prime $\mathfrak p$ of $A$.
+\item Let $k$ be an algebraically closed field and $A$ a finitely generated $k$-algebra. If
+  $\operatorname{Spec}B\to\operatorname{Spec}A$ is injective, then $A_{\mathfrak p}$ is
+  geometrically unibranch for every prime $\mathfrak p$ of $A$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Fix a prime $\mathfrak p$ of $A$ and put $S=A\setminus\mathfrak p$. The integral closure $C$ of
+$A_{\mathfrak p}$ in $\operatorname{Frac}A$ is the localization $S^{-1}B$, and it is integral over
+$A_{\mathfrak p}$. Since $A_{\mathfrak p}$ is a domain, it is unibranch if and only if $C$ is
+local.
+
+Let $\mathfrak q$ be a prime of $B$ over $\mathfrak p$. Then $\mathfrak q\cap S=\emptyset$, so
+$\mathfrak qC$ is a prime of $C$ with $\mathfrak qC\cap B=\mathfrak q$. It lies over the maximal
+ideal $\mathfrak pA_{\mathfrak p}$, hence is maximal, $C$ being integral over $A_{\mathfrak p}$.
+Conversely, every maximal ideal $M$ of $C$ lies over the maximal ideal of $A_{\mathfrak p}$ (by
+integrality), so $M\cap B$ is a prime of $B$ over $\mathfrak p$, and $M=(M\cap B)C$. Hence
+$\mathfrak q\mapsto\mathfrak qC$ is a bijection from the primes of $B$ over $\mathfrak p$ onto the
+maximal ideals of $C$; by lying over, there is at least one such prime.
+
+(1) If $\operatorname{Spec}B\to\operatorname{Spec}A$ is injective, there is exactly one prime of
+$B$ over $\mathfrak p$, so $C$ is local. Conversely, if every $C$ is local, two primes of $B$
+with the same contraction $\mathfrak p$ give the same maximal ideal of $C$, hence are equal.
+
+(2) The $A$-module $B$ is finite (\ref{thm:normalization-finite-arbitrary-field}). Injectivity of
+$\operatorname{Spec}B\to\operatorname{Spec}A$ gives injectivity of
+$\operatorname{MaxSpec}B\to\operatorname{MaxSpec}A$, so by Lemma~\ref{lem:gl-radicial} two ring
+maps from $B$ into a reduced ring which agree on $A$ are equal. By (1), $C$ is local, with residue
+field $\kappa(\mathfrak q)$ for the unique prime $\mathfrak q$ of $B$ over $\mathfrak p$. Two
+$\kappa(\mathfrak p)$-embeddings of $\kappa(\mathfrak q)$ into an algebraic closure $\Omega$ of
+$\kappa(\mathfrak q)$ give two ring maps $B\to\kappa(\mathfrak q)\to\Omega$ which agree on $A$;
+they are therefore equal on $B$, hence on $\kappa(\mathfrak q)=\operatorname{Frac}(B/\mathfrak q)$.
+Thus $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ admits at most one embedding into an algebraically
+closed field over $\kappa(\mathfrak p)$, that is, it is purely inseparable, and $A_{\mathfrak p}$
+is geometrically unibranch.
+\end{proof}
+
+\begin{lemma}[Injectivity of the normalization is affine-local]\label{lem:var-unibranch-affine}
+\lean{EnvelopeProperty.Variety.injective_projection_iff_affine, EnvelopeProperty.Variety.injective_domainNormalization_projection_iff}
+\leanok
+\uses{scheme:actual-integral-normalization-affine-charts}
+The normalization $\nu$ of an integral scheme $X$ is injective if and only if, for every nonempty
+affine open $U=\operatorname{Spec}A$ of $X$, the map $\operatorname{Spec}B_U\to\operatorname{Spec}A$
+is injective.
+\end{lemma}
+
+\begin{proof}
+For a nonempty affine open $U=\operatorname{Spec}A$, the chart
+$\iota_U\colon\operatorname{Spec}B_U\to X^\nu$ is an open immersion with image $\nu^{-1}(U)$, and
+$\nu\circ\iota_U$ is the composite of $\operatorname{Spec}B_U\to\operatorname{Spec}A$ with the open
+immersion $j_U\colon\operatorname{Spec}A\to X$ of $U$
+(\ref{scheme:actual-integral-normalization-affine-charts}).
+
+If $\nu$ is injective and $w,w'\in\operatorname{Spec}B_U$ have the same image in
+$\operatorname{Spec}A$, then $\nu(\iota_U(w))=\nu(\iota_U(w'))$, so $\iota_U(w)=\iota_U(w')$ and
+$w=w'$, open immersions being injective.
+
+Conversely, let $y,y'\in X^\nu$ with $\nu(y)=\nu(y')=x$, and choose an affine open neighbourhood
+$U=\operatorname{Spec}A$ of $x$; it is nonempty. Then $y,y'\in\nu^{-1}(U)$, so $y=\iota_U(w)$ and
+$y'=\iota_U(w')$. The images of $w$ and $w'$ in $\operatorname{Spec}A$ have the same image $x$
+under the injective map $j_U$, so they are equal; by hypothesis $w=w'$, hence $y=y'$.
+\end{proof}
+
+\begin{lemma}[Unibranch schemes have unibranch stalks]\label{lem:var-unibranch-stalks}
+\lean{EnvelopeProperty.Variety.isUnibranch_iff_forall_affine, EnvelopeProperty.Variety.isUnibranch_iff_isUnibranchLocalRing_stalk, EnvelopeProperty.Variety.affineStalkRingEquiv, EnvelopeProperty.Variety.isUnibranchLocalRing_stalk_fromSpec_iff}
+\leanok
+\uses{def:var-unibranch, lem:var-unibranch-ring, lem:var-unibranch-affine, algebra:actual-structural-unibranch-ring-equivalence}
+\source{fhx-envelope-20261028:lem:unibranch-universal}
+For an integral scheme $X$ the following are equivalent:
+\begin{enumerate}
+\item $X$ is unibranch;
+\item for every nonempty affine open $U=\operatorname{Spec}A$ of $X$ and every prime
+  $\mathfrak p$ of $A$, the local ring $A_{\mathfrak p}$ is unibranch;
+\item every local ring $\mathcal O_{X,x}$, $x\in X$, is unibranch.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1)$\Leftrightarrow$(2) is Definition~\ref{def:var-unibranch} together with
+Lemmas~\ref{lem:var-unibranch-affine} and~\ref{lem:var-unibranch-ring}(1). For an affine open
+$U=\operatorname{Spec}A$ and the point $x\in U$ corresponding to a prime $\mathfrak p$ of $A$,
+the open immersion $\operatorname{Spec}A\to X$ induces an isomorphism
+$\mathcal O_{X,x}\cong A_{\mathfrak p}$, and unibranchness is invariant under ring isomorphisms
+(\ref{algebra:actual-structural-unibranch-ring-equivalence}). Since every point of $X$ lies in a
+(nonempty) affine open, (2)$\Leftrightarrow$(3).
+\end{proof}
+
+\begin{theorem}[Unibranch varieties]\label{thm:var-unibranch-tfae}
+\lean{EnvelopeProperty.Variety.isUnibranch_tfae, EnvelopeProperty.Variety.isGeometricallyUnibranchScheme_of_isUnibranch, EnvelopeProperty.Variety.isUnibranch_of_isGeometricallyUnibranchScheme, EnvelopeProperty.Variety.isUnibranch_iff_isGeometricallyUnibranchScheme}
+\leanok
+\uses{lem:var-unibranch-stalks, lem:var-unibranch-ring, lem:var-unibranch-affine, scheme:actual-structural-unibranch-stalk-normalization, scheme:actual-integral-geometric-unibranch-normalization-radicial, algebra:actual-structural-unibranch-ring-equivalence}
+\source{fhx-envelope-20261028:lem:unibranch-universal, fhx-envelope-20261028:cor:intro-characterization}
+Let $X$ be an integral scheme locally of finite type over an algebraically closed field $k$. The
+following are equivalent:
+\begin{enumerate}
+\item $X$ is unibranch, i.e.\ its normalization $\nu$ is bijective;
+\item every local ring $\mathcal O_{X,x}$ is unibranch;
+\item every local ring $\mathcal O_{X,x}$ is geometrically unibranch;
+\item $\nu$ is universally injective.
+\end{enumerate}
+The implication (3)$\Rightarrow$(1) holds for every integral scheme.
+\end{theorem}
+
+\begin{proof}
+(1)$\Leftrightarrow$(2) is Lemma~\ref{lem:var-unibranch-stalks}, and (3)$\Rightarrow$(2) holds by
+definition. (1)$\Rightarrow$(3): let $x\in X$ and let $U=\operatorname{Spec}A$ be an affine open
+neighbourhood of $x$; then $A$ is a finitely generated $k$-algebra. By
+Lemma~\ref{lem:var-unibranch-affine}, $\operatorname{Spec}B_U\to\operatorname{Spec}A$ is
+injective, so by Lemma~\ref{lem:var-unibranch-ring}(2) the localization $A_{\mathfrak p}$ at the
+prime $\mathfrak p$ of $x$ is geometrically unibranch, and so is
+$\mathcal O_{X,x}\cong A_{\mathfrak p}$
+(\ref{algebra:actual-structural-unibranch-ring-equivalence}). (3)$\Rightarrow$(4) is
+\ref{scheme:actual-integral-geometric-unibranch-normalization-radicial}. (4)$\Rightarrow$(1): a
+universally injective morphism is injective, and $\nu$ is surjective. None of the implications
+(3)$\Rightarrow$(4)$\Rightarrow$(1) uses $k$.
+\end{proof}
+
+\begin{remark}[Universal homeomorphism]\label{rmk:var-unibranch-universal-homeomorphism}
+\uses{thm:var-unibranch-tfae}
+The normalization $\nu$ is integral, hence universally closed, and surjective. Condition (4) of
+Theorem~\ref{thm:var-unibranch-tfae} therefore says that $\nu$ is a universal homeomorphism
+\cite[Tag~04DF]{Stacks}; this is the equivalence with a universal homeomorphism stated in
+\cite[\S1.1]{FHX}. The theorem also identifies the definition of \cite[\S1.1]{FHX} (every local
+ring has one branch) with bijectivity of the normalization, and both with the stalk-wise
+definitions of \cite[Tag~0BQ2]{Stacks} used in the proof of \cite[Lemma~8.1]{FHX}.
+\end{remark}
+
+\subsection{Unibranchness and the model of a presentation}\label{subsec:var-unibranch-presentation}
+
+A \emph{presentation} of an integral scheme $X$ over a field $k$, with structure morphism
+$p\colon X\to\operatorname{Spec}k$, consists of morphisms $q_c\colon X\to\mathbb P^{d_c}_k$ over
+$\operatorname{Spec}k$, $c=0,\dots,r$, with $q_0$ a closed immersion. Its multiprojective model
+$\mathcal P$ (\ref{thm:finite-projective-native-field-models}) has coordinates
+$x^{(c)}_i\in K(X)$, the generic values of the coordinate ratios of $q_c$, and chart algebras
+$A_j\subseteq K(X)$ for $j=(j_0,\dots,j_r)$. Let $f\colon X\to\mathbb P^N_k$ be the composite of
+$(q_c)_c$ with the Segre embedding; it is a closed immersion, since $q_0$ is. For each $j$ let
+$U_j=\bigcap_c q_c^{-1}\bigl(D_+(x_{j_c})\bigr)$, the preimage under $f$ of the standard affine
+open corresponding to $j$ (\ref{lem:original-finite-segre-chart-preimage}).
+
+\begin{lemma}[Unibranch localizations along ring isomorphisms]\label{lem:var-unibranch-localizations-iso}
+\lean{EnvelopeProperty.Variety.forall_isUnibranchLocalRing_atPrime_of_ringEquiv, EnvelopeProperty.Variety.forall_isUnibranchLocalRing_atPrime_iff_of_ringEquiv}
+\leanok
+\uses{algebra:actual-structural-unibranch-ring-equivalence}
+Let $e\colon A\to B$ be a ring isomorphism. Then $A_{\mathfrak p}$ is unibranch for every prime
+$\mathfrak p$ of $A$ if and only if $B_{\mathfrak P}$ is unibranch for every prime $\mathfrak P$
+of $B$.
+\end{lemma}
+
+\begin{proof}
+For a prime $\mathfrak P$ of $B$ put $\mathfrak p=e^{-1}(\mathfrak P)$. Then $e$ maps
+$A\setminus\mathfrak p$ onto $B\setminus\mathfrak P$, so it induces a ring isomorphism
+$A_{\mathfrak p}\cong B_{\mathfrak P}$, and unibranchness is invariant under ring isomorphisms
+(\ref{algebra:actual-structural-unibranch-ring-equivalence}). This proves one implication; the
+other follows by applying it to $e^{-1}$.
+\end{proof}
+
+\begin{theorem}[Unibranch transfer to presentation models]\label{thm:var-unibranch-presentation}
+\lean{EnvelopeProperty.Variety.isUnibranch_iff_presentation, EnvelopeProperty.Variety.isUnibranch_iff_presentation_of_eq, EnvelopeProperty.Variety.model_coord_ne_zero_iff, EnvelopeProperty.Variety.exists_chartIndex_mem}
+\leanok
+\uses{lem:var-unibranch-stalks, lem:var-unibranch-localizations-iso, def:gl-unibranch, thm:finite-projective-native-field-models, thm:actual-original-family-whole-chart-sections, lem:original-finite-segre-chart-preimage, thm:projective-native-coordinate-chart-support}
+\source{fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:cor:intro-characterization}
+Let $k$ be algebraically closed, $X$ an integral scheme over $k$ with a presentation
+$(q_c)_{c=0}^r$, and $\mathcal P$ its multiprojective model. Then $X$ is unibranch
+(Definition~\ref{def:var-unibranch}) if and only if $\mathcal P$ is unibranch
+(Definition~\ref{def:gl-unibranch}).
+\end{theorem}
+
+\begin{proof}
+Since $k$ is algebraically closed, $\mathcal P$ is unibranch if and only if, for every chart
+index $j$ with $x^{(c)}_{j_c}\neq0$ for all $c$, every localization of $A_j$ at a prime is
+unibranch (\ref{def:gl-unibranch}). By Lemma~\ref{lem:var-unibranch-stalks}, $X$ is unibranch if
+and only if every localization at a prime of $\Gamma(X,U)$, $U$ nonempty affine, is unibranch,
+if and only if every stalk $\mathcal O_{X,x}$ is unibranch.
+
+A coordinate $x^{(c)}_i$ of $\mathcal P$ is nonzero if and only if $q_c^{-1}(D_+(x_i))$ is
+nonempty (\ref{thm:projective-native-coordinate-chart-support}). Let $j$ be a chart index with all
+$x^{(c)}_{j_c}\neq0$. Then all $q_c^{-1}(D_+(x_{j_c}))$ are nonempty, so $U_j$ is nonempty
+(it contains the generic point), $U_j$ is affine as the preimage of an affine open under the
+closed immersion $f$, and there is a ring isomorphism $\Gamma(X,U_j)\cong A_j$
+(\ref{thm:actual-original-family-whole-chart-sections}).
+
+If $X$ is unibranch, every localization of $\Gamma(X,U_j)$ at a prime is unibranch, hence so is
+every localization of $A_j$ at a prime (Lemma~\ref{lem:var-unibranch-localizations-iso}); thus
+$\mathcal P$ is unibranch.
+
+Conversely, let $\mathcal P$ be unibranch and $x\in X$. Since the standard opens cover
+$\mathbb P^{d_c}$, choose $j_c$ with $q_c(x)\in D_+(x_{j_c})$. Then each
+$q_c^{-1}(D_+(x_{j_c}))$ contains $x$, so all coordinates $x^{(c)}_{j_c}$ are nonzero, and
+$x\in U_j$. Every localization of $A_j$ at a prime is unibranch, hence so is every localization of
+$\Gamma(X,U_j)$ at a prime (Lemma~\ref{lem:var-unibranch-localizations-iso}), in particular
+$\mathcal O_{X,x}$, which is the localization of $\Gamma(X,U_j)$ at the prime of $x$. By
+Lemma~\ref{lem:var-unibranch-stalks}, $X$ is unibranch.
+\end{proof}

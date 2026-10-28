@@ -1,0 +1,63 @@
+\section{Actual affine-frame coefficients of original generated lines}
+
+\begin{definition}[Coefficients of the original generators in an actual frame]
+\label{def:fc-original-generated-line-frame-coefficients}
+\leanok
+\lean{EnvelopeProperty.SchemeGeneratedLineCoefficients.framedGenerators, EnvelopeProperty.SchemeGeneratedLineCoefficients.coefficient, EnvelopeProperty.SchemeGeneratedLineCoefficients.coefficient_apply, EnvelopeProperty.SchemeGeneratedLineCoefficients.span_coefficients_eq_top}
+\uses{def:fc-original-generator-coefficient-opens, thm:fc-original-generator-coefficient-cover}
+Given an actual original generating family $G$ of $L$ and a genuine
+whole frame $e:L\simeq O_X$, use the same original family followed by
+$e$ to obtain its actual scalar coefficients $c_i$. On an affine
+scheme these same whole coefficients generate the unit ideal.
+\end{definition}
+\begin{proof}
+Compose the original evaluation epimorphism with the genuine whole
+frame. This retains the same original basis indices and original
+section maps. The actual coefficient-open cover producer for the
+structure line gives generation of the whole unit ideal on an affine
+scheme.
+\end{proof}
+
+\begin{theorem}[Actual frame changes and pullbacks preserve the original coefficients]
+\label{thm:fc-original-generated-line-coefficient-naturality}
+\leanok
+\lean{EnvelopeProperty.SchemeGeneratedLineCoefficients.exists_unit_coefficient_transition, EnvelopeProperty.SchemeGeneratedLineCoefficients.coefficient_pullback}
+\uses{def:fc-original-generated-line-frame-coefficients}
+Changing the actual whole line frame multiplies the entire original
+coefficient family by one genuine original global unit, derived from
+the two actual frames. Under any literal original scheme morphism,
+pull back the original family and the actual frame; each resulting
+coefficient is exactly the actual original coefficient map applied
+to its same original coefficient. No frame-transition or coefficient
+preservation data are supplied.
+\end{theorem}
+\begin{proof}
+The composite of the two genuine whole frames is an actual
+structure-line automorphism and hence multiplication by one genuine
+original global unit. Apply this whole identity to each original
+section. For pullback, use the original generator pullback formula,
+native functoriality, and the actual unit comparison. The original
+structure-line coefficient pullback identity gives the asserted
+whole-ring equality.
+\end{proof}
+
+\begin{lemma}[Finite actual coordinates with a harmless zero coordinate]
+\label{lem:fc-original-generated-line-padded-coordinates}
+\leanok
+\lean{EnvelopeProperty.SchemeGeneratedLineCoefficients.paddedCoefficients, EnvelopeProperty.SchemeGeneratedLineCoefficients.paddedCoefficients_map, EnvelopeProperty.SchemeGeneratedLineCoefficients.paddedCoefficients_unit, EnvelopeProperty.SchemeGeneratedLineCoefficients.span_paddedCoefficients_eq_top}
+\uses{thm:fc-original-generated-line-coefficient-naturality}
+A finite original coefficient family is relabeled by its actual
+finite index equivalence and one zero coordinate is added. The
+whole resulting tuple still generates the same unit ideal. Every
+original ring map and multiplication by a genuine global unit
+commute with this actual relabeling and zero coordinate, including
+the empty original family.
+\end{lemma}
+\begin{proof}
+Every original coefficient occurs in the nonzero-index part under
+the actual finite index equivalence, so generation of the unit ideal
+is retained. Ring maps preserve zero, and a unit times zero is zero;
+the claimed identities follow separately on the zero coordinate
+and each original index. No new section or altered original line
+is introduced.
+\end{proof}

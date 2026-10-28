@@ -1,0 +1,28 @@
+\section{The actual structure trace on a free affine chart}
+
+\begin{lemma}[A native algebra trace produces the actual affine sheaf map]
+\label{lem:kn-structure-trace-affine-sheaf}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTraceSections,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_sections}
+\leanok
+Let $A\to B$ be the actual algebra of a finite free affine chart and
+$p:\operatorname{Spec}B\to\operatorname{Spec}A$ its actual spectrum map.
+The native algebra trace determines an actual module-sheaf morphism
+$p_*\mathcal O_{\operatorname{Spec}B}\to\mathcal O_{\operatorname{Spec}A}$.
+Under the original native affine section identifications, its whole
+section map is precisely $\operatorname{Tr}_{B/A}$ on every coefficient.
+No sheaf trace, matching equality, or normalization certificate is input.
+\uses{lem:kn-structure-trace-affine-base-change}
+\end{lemma}
+\begin{proof}
+The actual source pushforward and actual target structure module are
+quasicoherent, since the source map is affine. Their genuine affine
+section identifications give the source module $B$ and the target
+module $A$, with the original $A$-actions. Compose the first
+identification, the native $A$-linear algebra trace, and the inverse
+of the second identification. The inverse affine quasicoherent
+equivalence lifts this actual module homomorphism to the required
+sheaf morphism. Full faithfulness states that applying the same
+section functor recovers the entire original composite. Thus the
+construction preserves every original coefficient, rather than only
+a chosen generator.
+\end{proof}

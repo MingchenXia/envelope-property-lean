@@ -1,0 +1,85 @@
+\subsection{Genuine functoriality of proper model centers}
+\label{subsec:proper-center-functoriality}
+
+The prescribed seminorm $v$ on the arbitrary commutative ring $R$ is
+bounded on every coefficient. Both actual structure maps to
+$\operatorname{Spec}R$ are proper. The intervening scheme morphism need
+only commute with those structure maps; no properness assumption on it,
+Noetherian hypothesis or field base is imposed.
+
+\begin{lemma}[Actual valuation-ring pullback]
+\label{scheme:proper-center-valuation-ring-map}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_val,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_maximalIdeal_comap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocalHom_centerRingMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_fraction,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.residueBaseMap_naturality,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_base}
+\leanok
+\uses{scheme:bounded-native-valuative-square,scheme:relative-valued-point-functor,
+scheme:valued-point-pullback}
+For a commuting scheme morphism $g:X\to Y$ and a native prescribed-base
+point $y$ of $X$, the genuine residue-field map
+$\kappa(g(x))\to\kappa(x)$ restricts to a ring homomorphism
+$V_{g(y)}\to V_y$ preserving every valuation value. It is local, contracts
+the maximal ideal exactly, and commutes with the actual generic inclusions
+and the genuine bounded coefficient maps.
+\end{lemma}
+\begin{proof}
+The native image valuation is the actual pullback through the residue-field
+map. Each element of $V_{g(y)}$ therefore maps into $V_y$, proving the
+codomain-restricted ring map and its entire value preservation. The maximal
+ideals of these valuation rings consist exactly of elements of value
+smaller than one, so their contraction is exact. This is precisely the
+local-homomorphism criterion for two actual local rings. The generic
+inclusion square follows on every ring element by construction. Actual
+global residue evaluation naturality and the commuting structure-map
+section diagram prove coefficient equality in the residue fields, and
+valuation-ring subtype injectivity upgrades it to actual coefficient equality
+inside the valuation rings. Equality of values alone is not used to infer
+coefficient equality.
+\end{proof}
+
+\begin{theorem}[Whole proper lifts commute with model morphisms]
+\label{scheme:proper-center-lift-naturality}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift_naturality}
+\leanok
+\uses{scheme:proper-center-valuation-ring-map,scheme:proper-native-center}
+The constructed proper lifts satisfy the whole scheme equality
+\[
+ \operatorname{Spec}V_y\longrightarrow X\xrightarrow{g}Y
+ =\operatorname{Spec}V_y\longrightarrow\operatorname{Spec}V_{g(y)}
+   \longrightarrow Y.
+\]
+\end{theorem}
+\begin{proof}
+Form the actual valuative square for $Y$ with valuation ring $V_y$,
+fraction field $\kappa(x)$ and top map the genuine residue point of $X$
+followed by $g$. The first candidate lift is the actual proper lift for
+$X$ followed by $g$; its two triangles commute by the original triangles
+and the actual base diagram. The second candidate is the actual valuation-ring
+Spec map followed by the proper lift for $Y$. Its generic triangle follows
+from the genuine ring inclusion square, the proper generic triangle, and
+actual residue-field map naturality. Its base triangle follows from the
+actual coefficient ring equality above. Separatedness of the proper map
+for $Y$ makes the two genuine whole lift structures equal, hence the two
+scheme morphisms equal. No generic extension or lift identity is assumed.
+\end{proof}
+
+\begin{theorem}[Actual centers commute with proper model morphisms]
+\label{scheme:proper-center-map}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_closedPoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_map}
+\leanok
+\uses{scheme:proper-center-lift-naturality,scheme:proper-center-valuation-ring-map}
+The true model centers obey $g(c(y))=c(g(y))$.
+\end{theorem}
+\begin{proof}
+The valuation-ring map is genuinely local, so its Spec map takes the
+closed point of $V_y$ to the closed point of $V_{g(y)}$. Evaluate the
+whole lift naturality equality at that actual closed point. By the
+center definition the two resulting scheme points are exactly the
+asserted centers. This concerns the constructed model centers, distinct
+from the already functorial kernel supports.
+\end{proof}

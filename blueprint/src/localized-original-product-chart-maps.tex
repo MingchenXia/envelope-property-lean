@@ -1,0 +1,49 @@
+\subsection{Whole original maps from selected charts into actual product localizations}
+
+\begin{lemma}[Original fractions construct the selected-to-product localization map]
+\label{algebra:actual-localized-original-product-chart-map}
+\lean{EnvelopeProperty.exists_originalProductChartLocalizationMap}
+\leanok
+\uses{algebra:actual-product-rees-chart-ratios,algebra:actual-rees-degree-zero-chart-equivalence}
+Let $A$ be ANY commutative DOMAIN, let $I$ be finite and let original families
+$G_i:J_i\to A$ be given.  Fix an actual selection $J$ with original
+$P_J=\prod_iG_i(J_i)\ne0$, an index $i$, and an actual selected $d\in J_i$
+with $G_i(d)\ne0$.  In the ORIGINAL product chart $B_J$, put
+$h=P_{J[i:=d]}/P_J$, its true homogeneous coordinate ratio.  Construct a
+genuine injective $A$-algebra map from the ACTUAL localization
+$B_J[1/h]$ into the SAME original fraction field, extending the whole
+original product-chart map.  Construct also an ACTUAL $A$-algebra map
+\[
+ \operatorname{ReesChart}(G_i,d)\longrightarrow B_J[1/h]
+\]
+whose ENTIRE composite into that SAME field is the ORIGINAL selected-chart
+map.  No localization, injectivity, scalar action, fraction comparison or
+chart map is supplied as a certificate.  Individual $J_i$ may be infinite.
+\end{lemma}
+\begin{proof}
+The original product-chart map $\iota:B_J\hookrightarrow\operatorname{Frac}A$
+is genuinely injective.  The actual replacement-ratio formula gives
+$\iota(h)=G_i(d)/G_i(J_i)\ne0$, so the real principal-localization universal
+property constructs its whole extension $\tau:B_J[1/h]\to\operatorname{Frac}A$.
+This extension is injective: if two original numerators have equal images
+after localization, applying $\tau$ gives equality under $\iota$;
+conversely equality under $\iota$ gives equality of the original numerators
+and hence of their localization images.  The true localization injectivity
+criterion proves injectivity on EVERY localization element.
+
+For each original $k\in J_i$, use the real localization fraction with numerator
+the ORIGINAL product-chart replacement coordinate $P_{J[i:=k]}/P_J$ and
+denominator the ORIGINAL $h$.  Its actual $\tau$ image is
+\[
+ \frac{G_i(k)/G_i(J_i)}{G_i(d)/G_i(J_i)}=G_i(k)/G_i(d).
+\]
+All cancellations use the two actual nonzero original factors.
+Consequently the entire original selected-chart fraction-adjoin algebra is
+contained in the ACTUAL image of $\tau$.  Compose its genuine original
+fraction-chart isomorphism with this literal subalgebra inclusion and the
+inverse of the actual injective-map range isomorphism of $\tau$.  This gives
+the claimed whole algebra map.  Its entire field-composite identity follows
+from the true inverse laws on EVERY selected-chart element, retaining each
+original coefficient and coordinate.  No generator-value inference replaces
+equality of whole ring homomorphisms.
+\end{proof}

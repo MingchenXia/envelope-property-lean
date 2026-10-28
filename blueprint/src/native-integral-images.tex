@@ -1,0 +1,85 @@
+\subsection{Actual native images and lifts of integral scheme morphisms}
+\label{subsec:native-integral-images}
+
+\begin{theorem}[Genuine integral-image lifting of whole native points]
+\label{scheme:integral-native-image}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.exists_map_eq_of_point_mem_integralImage,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.range_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.map_surjective_of_isIntegralHom}
+\leanok
+\uses{spectrum:integral-image,scheme:native-closed-immersion,
+scheme:affine-chart-section-values}
+For an actual integral scheme morphism $f:X\to Y$, a native valued point
+$y$ of $Y$ has a whole native preimage precisely when its actual scheme
+support lies in the genuine scheme image of $f$. Thus
+\[
+ \operatorname{im}(f^{\mathrm{val}})
+ =\{y:\operatorname{supp}(y)\in\operatorname{im}(f)\}.
+\]
+If the actual scheme-point map is surjective, so is its native map.
+No field, coefficient bound, finite-type, noetherian, separatedness or
+completeness hypothesis is required.
+\end{theorem}
+\begin{proof}
+Necessity is the original definition of the native support map. For
+sufficiency, let $x\in X$ be an actual scheme preimage witness for the
+support of $y$, and choose a genuine affine target open $U$ containing
+that support. Its preimage under the integral morphism is affine,
+and the original section homomorphism
+$\alpha:\Gamma(Y,U)\to\Gamma(X,f^{-1}U)$ is integral.
+
+The native affine chart of $y$ is a real seminorm $z$ of the target
+section ring. If an actual section $a$ lies in $\ker\alpha$, then its
+source residue evaluation at $x$ is zero. Genuine scheme evaluation
+naturality identifies this zero with the target residue evaluation of
+$a$ pulled back under the actual residue-field embedding
+$\kappa(f(x))\to\kappa(x)$. That embedding is injective, so the original
+target residue element is zero. The original valuation of $y$ therefore
+vanishes on $a$. This proves the actual kernel obstruction
+$\ker\alpha\subseteq\operatorname{supp}(z)$ using equality of residue
+elements, rather than only numerical generator values.
+
+The independently constructed integral-spectrum image theorem produces
+an actual whole seminorm of the source section ring pulling back to
+$z$. Take its inverse genuine source native affine chart. The entire
+native affine chart square identifies the native image's whole target
+section seminorm with $z$. Injectivity of the actual target chart then
+recovers the original whole native point $y$. The chosen scheme point
+$x$ was only used to prove the obstruction; no assertion is made that
+the constructed valuation has that particular source support.
+
+This proves sufficiency and the exact image equality. Actual
+scheme-point surjectivity supplies a support preimage witness for every
+native point, proving native surjectivity without a native lift
+certificate or additional point-extension axiom.
+\end{proof}
+
+\begin{theorem}[Exact integral images above a common prescribed base point]
+\label{scheme:relative-integral-native-image}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_map_eq_of_point_mem_integralImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.range_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_surjective_of_isIntegralHom}
+\leanok
+\uses{scheme:integral-native-image,scheme:relative-native-closed-immersion}
+For an actual commuting integral morphism over $\operatorname{Spec}R$
+and any prescribed real seminorm $v$ on $R$, a native point above $v$
+has a native preimage above that same whole base point exactly when its
+support lies in the actual scheme image. Scheme-point surjectivity
+therefore implies native fixed-base surjectivity. No bound on $v$ or
+proper or separated structure morphism is needed.
+\end{theorem}
+\begin{proof}
+First construct the whole absolute lift by the preceding theorem.
+The real structure diagram and whole native composition identity
+identify the source fixed-base locus with the target-locus preimage.
+Consequently the actual lift lies above the same entire prescribed
+base point $v$. Restrict it to that source subtype; equality of its
+original entire native image gives the required whole relative point
+equality. Necessity and actual scheme surjectivity then give the two
+remaining conclusions.
+
+This is a common-coefficient theorem. It does not claim surjectivity
+for an arbitrary differently prescribed source coefficient seminorm
+under a general coefficient change, nor construct a normalization,
+curve or analytic potential.
+\end{proof}

@@ -1,0 +1,157 @@
+\section{Actual smoothness of the original variety and parameter family}
+
+The original chart condition is algebraic smoothness of the original
+quotient chart algebras. This section proves smoothness of the actual
+native scheme morphisms. The whole defining ideal, original field action,
+original chart coordinates, and original parameter projection are retained.
+No scheme comparison or smoothness certificate is an extra input.
+
+\begin{lemma}[The original affine coordinate rings coincide as algebras]
+\label{lem:c0n-family-original-chart-coordinates}
+\lean{EnvelopeProperty.Char0.MultiplierFamilySmoothness.chartCoordinateEquiv,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.rename_dehom,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.chartCoordinateEquiv_chartMk}
+\leanok
+For every original coordinate $j$, the old degree-zero chart algebra
+$k[x]_{(x_j)}$ is isomorphic as a $k$-algebra to the native affine coordinate
+polynomial ring with variables indexed by $i\ne j$. On a homogeneous
+original polynomial $F$ of degree $d$, the actual class $F/x_j^d$ goes to
+its original dehomogenization at $x_j=1$.
+\end{lemma}
+\begin{proof}
+Use the proved original chart dehomogenization isomorphism to the
+polynomial ring in $\dim\mathbb P$ variables, followed by the actual
+renaming equivalence $a\mapsto j.\mathrm{succAbove}(a)$ onto the variables
+other than $j$. Checking the selected coordinate and each remaining
+coordinate identifies the entire polynomial homomorphism with the native
+dehomogenization. The original homogeneous-fraction formula then gives
+the claimed identity on every original form, including its coefficient
+action.
+\end{proof}
+
+\begin{lemma}[Whole native chart sections are the original quotient chart algebra]
+\label{lem:c0n-family-original-chart-quotient}
+\lean{EnvelopeProperty.Char0.MultiplierFamilySmoothness.chartIdeal_map_eq,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.coordinateQuotientEquiv,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartOpen,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartOpen_isAffine,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartAlgebra,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartCoordinateSectionsEquiv,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartSectionsEquiv,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartCoordinateSectionsEquiv_pullback,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.coordinateQuotientEquiv_mk_homogeneous,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartSectionsEquiv_pullback_homogeneous,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartSectionsEquiv_coefficients}
+\leanok
+\uses{lem:c0n-family-original-chart-coordinates}
+Let $j$ be an original coordinate not belonging to the original prime
+homogeneous ideal $I$. The actual native inverse-image coordinate open
+has its entire section algebra isomorphic to the original quotient chart
+algebra $k[x]_{(x_j)}/I_{(x_j)}$, with every original dehomogenized
+polynomial and scalar preserved. This is an equality of whole ideal
+quotients, not an equality of supports or radicals.
+\end{lemma}
+\begin{proof}
+For one inclusion, write any element of the original chart ideal as a
+homogeneous fraction $F/x_j^d$ with $F\in I$, using the actual prime ideal
+and $x_j\notin I$. The preceding coordinate equivalence sends it to the
+original dehomogenization of $F$, so it belongs to the entire native
+image ideal. Conversely decompose any original $F\in I$ into its finitely
+many homogeneous components, all still in $I$. The original chart
+fractions of these components belong to $I_{(x_j)}$ and map to their
+actual dehomogenizations; adding them gives the dehomogenization of $F$.
+Thus the two entire ideals correspond. Apply the genuine quotient
+algebra equivalence and compose with the proved native quotient-section
+algebra equivalence. All maps preserve the original scalar action by
+construction.
+\end{proof}
+
+\begin{theorem}[Original smooth algebra charts imply smoothness of the original native field map]
+\label{thm:c0n-original-native-variety-smooth}
+\lean{EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChartSections_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChart_structure,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeChart_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeAffineCover,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeStructure_smooth}
+\leanok
+\uses{lem:c0n-family-original-chart-quotient}
+If the original projective subvariety has smooth charts, its actual
+native structure morphism to the original field spectrum is smooth.
+No native scheme smoothness, chosen atlas or field-map comparison is
+supplied.
+\end{theorem}
+\begin{proof}
+The inverse images of the actual ambient coordinate opens cover the
+same original native closed scheme. On a coordinate not in $I$, transport
+the given original quotient-algebra smoothness along the preceding whole
+algebra equivalence. The native affine-spectrum smoothness criterion and
+the actual affine-open spectrum isomorphism prove smoothness of that
+same original chart field morphism. Its scalar map is the original
+structure-map action from the section-algebra comparison. If $x_j\in I$,
+its native dehomogenization is $1$, so the entire coordinate ideal is the
+unit ideal. Its actual coordinate ring is the zero ring, which is
+standard smooth of relative dimension zero over the field; thus this
+empty chart is included correctly. Native source-locality for smoothness
+on the actual coordinate cover proves the displayed original global
+structure morphism smooth.
+\end{proof}
+
+\begin{lemma}[The whole actual parameter quotient is the original variety product]
+\label{lem:c0n-family-original-product-iso}
+\lean{EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProductInclusion,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProductInclusion_isClosedImmersion,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProduct_kernel,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProductIso,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProductIso_inclusion,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProductIso_projection,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyPullbackIso,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyPullbackIso_projection,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyToOriginal}
+\leanok
+The same original projective quotient obtained by extending $I$ to
+$k[t][x]$ is isomorphic to the actual original closed product model of
+$X\times\mathbb A^1$. Its entire original polynomial-base projection
+commutes with the isomorphism.
+\end{lemma}
+\begin{proof}
+Compose the actual homogeneous quotient closed immersion with the proved
+ambient polynomial-line product isomorphism. Its actual kernel ideal
+sheaf is the native polynomial-line ideal of the entire coefficient
+extension of $I$. The proved whole original product-cut-ideal identity
+identifies precisely that kernel with the original closed product model's
+ideal. An actual closed immersion is isomorphic to its genuine scheme
+image; transport this genuine image scheme along that whole kernel-ideal
+equality. The native image-inclusion triangle and the actual ambient
+product projection identity give the whole asserted original projection
+triangle. No scheme isomorphism is assumed.
+\end{proof}
+
+\begin{theorem}[The same original parameter family is smooth over the parameter and over the original field]
+\label{thm:c0n-actual-original-family-smooth}
+\lean{EnvelopeProperty.Char0.MultiplierFamilySmoothness.nativeProductStructure_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyProjection_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.polynomialBase_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyAbsoluteStructure,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyAbsoluteStructure_smooth,
+EnvelopeProperty.Char0.MultiplierFamilySmoothness.familyToOriginal_structure}
+\leanok
+\uses{thm:c0n-original-native-variety-smooth,lem:c0n-family-original-product-iso}
+Under the original smooth-chart condition, the actual original parameter
+projection is smooth, and its actual composite with $\operatorname{Spec}k[t]
+\to\operatorname{Spec}k$ is smooth. The original whole parameter-family
+scheme and both original coefficient maps are retained. Pure relative
+dimension is a separate subsequent consequence of this smoothness and
+the already proved integrality.
+\end{theorem}
+\begin{proof}
+The original native closed product model is genuinely isomorphic over
+$k[t]$ to the pullback of the original native variety field map along the
+actual polynomial coefficient morphism. The preceding original variety
+smoothness is preserved by this genuine base change. Its original
+polynomial-base projection is therefore smooth. Transport through the
+preceding same-family isomorphism and whole projection triangle to prove
+smoothness of the same original parameter projection. The actual
+polynomial algebra $k[t]$ is smooth over $k$, so composition gives the
+asserted same-family total field smoothness. No dimension or vanishing
+certificate is inserted in this argument.
+\end{proof}

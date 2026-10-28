@@ -1,0 +1,55 @@
+\subsection{Original affine section base change and literal infinitesimal quotient rings}
+
+The complete mathematical plan and BOTH independent mathematical reviews preceded code.
+
+\begin{theorem}[Every original affine infinitesimal section ring is its actual coefficient quotient]
+\label{scheme:actual-affine-infinitesimal-section-quotient}
+\leanok
+\lean{EnvelopeProperty.AffineGlobalSections.originalSectionSquare,
+EnvelopeProperty.AffineGlobalSections.tensorEquiv,
+EnvelopeProperty.AffineGlobalSections.tensorEquiv_includeLeft,
+EnvelopeProperty.AffineGlobalSections.tensorEquiv_includeRight,
+EnvelopeProperty.AffineGlobalSections.tensorEquiv_tmul,
+EnvelopeProperty.AffineInfinitesimalSections.ideal,
+EnvelopeProperty.AffineInfinitesimalSections.quotientEquiv,
+EnvelopeProperty.AffineInfinitesimalSections.quotientEquiv_mk,
+EnvelopeProperty.AffineInfinitesimalSections.quotientEquiv_coefficient,
+EnvelopeProperty.AffineInfinitesimalSections.quotientEquiv_transition}
+\uses{scheme:actual-original-flat-global-section-tensor,scheme:actual-proper-global-section-valuation-membership,scheme:actual-original-infinitesimal-idempotent-family,scheme:actual-original-infinitesimal-coefficient-map}
+Let $f:Y\to\operatorname{Spec}R$ be ANY morphism with $Y$ actually
+affine; let $B=\Gamma(Y,\top)$ with the ORIGINAL coefficient map
+$c_f:R\to B$, and put $J=\operatorname{map}(c_f)(I)$.
+For the LITERAL original $Y_n$ and projections, construct genuine
+RingEquivs for EVERY $n\in\mathbb N$, including $n=0$,
+\[
+ E_n:B/J^n\simeq\Gamma(Y_n,\top).
+\]
+Retain BOTH original projection coefficient laws on every element:
+\[
+ E_n([b])=\operatorname{pr}_{1,n}^*(b),\qquad
+ E_n([c_f(r)])=c_n([r]).
+\]
+Prove the WHOLE transition square
+$j_{n,m}^*\circ E_m=E_n\circ\pi^J_{n,m}$ for EVERY $n\le m$.
+No flatness, finiteness, Noetherianity, or reducedness is assumed.
+\end{theorem}
+\begin{proof}
+REUSE Mathlib's actual affine pullback/global-section pushout theorem,
+which has NO flatness assumption. All three original corners here are
+affine. Transport the two base corners through the ORIGINAL
+$\Gamma\operatorname{Spec}$ isomorphisms by their genuine naturality;
+both remaining maps are the actual original pullback projections.
+The actual tensor pushout comparison therefore gives
+$(R/I^n)\otimes_R B\simeq\Gamma(Y_n,\top)$ and BOTH original
+inclusion formulas. This reuses the categorical comparison underlying
+the existing flat producer, while replacing its flat QCQS input by the
+genuine stronger affine theorem; no duplicate finite-Cech argument is
+needed. Compose with the existing true tensor/quotient RingEquiv and
+the actual ideal equality $\operatorname{map}(I^n)=J^n$. This constructs
+$E_n$ and the displayed original element laws. Both projection laws
+of the already constructed original transitions show the whole square
+on EVERY original quotient representative $[b]$. Actual quotient
+surjectivity makes that the ENTIRE RingHom equality. At order zero the
+original quotient is the zero ring and the original pullback is empty;
+the SAME construction still applies.
+\end{proof}

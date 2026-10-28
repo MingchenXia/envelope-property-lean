@@ -1,0 +1,24 @@
+\section{Tensoring by the original line preserves quasicoherence}
+
+\begin{lemma}[Original tensoring by an invertible sheaf preserves quasicoherence]
+\label{lem:scheme-original-invertible-tensor-quasicoherent}
+\lean{EnvelopeProperty.SchemeInvertibleTensorQuasicoherent.restrictTensorIsoOfFrame,EnvelopeProperty.SchemeInvertibleTensorQuasicoherent.isQuasicoherent_tensorRight}
+\leanok
+For every original scheme, original quasicoherent module $M$ and original
+invertible module $L$, the true original tensor $M\otimes L$ is quasicoherent.
+A genuine original frame of $L$ on an open gives an actual isomorphism
+$(M\otimes L)|_U\simeq M|_U$ retaining the original restriction and unit maps.
+\end{lemma}
+\begin{proof}
+From the original invertibility cover, take all original affine opens
+contained in its members. The genuine affine-open basis shows that these
+still cover the original scheme, and original frame restriction gives an
+actual frame of the same original line on each such open. The true
+restriction-tensor comparison, original line frame and actual tensor unit
+identify the original restricted tensor with the original restriction of
+$M$. That restriction is quasicoherent, so the original restricted tensor
+is quasicoherent as well. On each original affine open, the actual over-site
+module comparison gives quasicoherence there. Genuine cover locality then
+proves quasicoherence of the whole original tensor. No cover, frame or
+quasicoherence certificate for the result is supplied as an extra premise.
+\end{proof}

@@ -1,0 +1,38 @@
+\section{Every original branch factor in the same mixed top differential}
+
+\begin{lemma}[The entire original coordinate top form has all root factors]
+\label{lem:kn-global-trace-native-mixed-bounded-wedge}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCoordinateTopDifferential_factor}
+\leanok
+In the same entire original mixed quotient, the original pulled coordinate
+top form is divisible by
+\[
+ \prod_{i\in I} t_i^{N_i-1}.
+\]
+Thus there is an actual original top form $\eta$ with
+\[
+ d\tau^{\mathrm{ord}}(dx_1\wedge\cdots\wedge dx_n)
+       =\left(\prod_{i\in I}t_i^{N_i-1}\right)\eta.
+\]
+All original active factors occur simultaneously.  The distinct positions
+are those selected by the original SNC injection $\sigma:I\hookrightarrow
+\{1,\ldots,n\}$, and every original unit derivative is retained in the
+produced factors.  No desired bounded-image assertion is a hypothesis.
+\uses{lem:kn-global-trace-native-root-differential-factor}
+\end{lemma}
+\begin{proof}
+The native ordinary exterior pullback takes the original coordinate wedge
+to the wedge of the differentials of the original coefficient images.
+For each active $i$ the preceding root-equation identity expresses the
+entry in position $\sigma(i)$ as $t_i^{N_i-1}$ times an actual original
+differential vector.  Distinct active rows have distinct positions by
+injectivity of $\sigma$.  In each selected position choose this internally
+produced factor vector; keep every unselected vector and attach coefficient
+one to its position.  The alternating-map scalar formula pulls the product
+of all position coefficients outside the same original wedge.  The
+selected-position coefficient function is the original root-power function
+on the image of the injection and is one off that image.  Restrict its
+finite product to that image, reindex through the actual injective map,
+and obtain exactly the displayed product over all original active rows.
+The resulting wedge of the produced vectors is $\eta$.
+\end{proof}

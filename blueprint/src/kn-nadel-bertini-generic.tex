@@ -1,0 +1,130 @@
+\section{The actual Bertini good open from regularity in characteristic zero}
+
+This annex concerns the projection from the actual universal incidence to its
+original affine coefficient scheme.  It is a general geometric producer: the
+source may be disconnected or empty and is not assumed integral or dominant.
+Let $k$ be a field of characteristic zero, let $S$ be an integral $k$-scheme,
+and let $f:Y\to S$ be proper and locally of finite presentation.  Assume that
+the original total scheme $Y$ is regular.  For universal incidence the separate
+original coordinate-chart construction proves $Y$ smooth over $k$ and hence
+regular; regularity is not a generic-fibre smoothness certificate.
+
+\begin{lemma}[The actual generic fibre retains the original regular local rings]
+\label{lem:kn-nadel-bertini-generic-regular}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniGenericStalks.stalkMap_isIso_of_flat_preimmersion,
+EnvelopeProperty.Vanishing.NadelBertiniGenericStalks.fromSpecResidueField_flat,
+EnvelopeProperty.Vanishing.NadelBertiniGenericStalks.isRegular_of_flat_preimmersion,
+EnvelopeProperty.Vanishing.NadelBertiniGenericStalks.genericFiber_isRegular}
+\leanok
+The actual scheme-theoretic generic fibre $Y_\eta$ is regular.
+\end{lemma}
+\begin{proof}
+The stalk of $S$ at its actual generic point is its function field, so the
+actual residue-field point morphism $e:\operatorname{Spec}\kappa(\eta)\to S$
+is flat.  It is also a preimmersion.  Base change gives those same two
+properties for the original first projection $i:Y_\eta\to Y$.  Each actual
+stalk map of $i$ is surjective by preimmersion, and is injective because a flat
+local ring homomorphism is faithfully flat.  These actual original stalk maps
+are therefore isomorphisms.  Transfer the original regular local ring at
+$i(z)$ across this map to the local ring at every $z\in Y_\eta$.
+\end{proof}
+
+\begin{lemma}[Smoothness of the whole actual generic fibre]
+\label{lem:kn-nadel-bertini-generic-smooth}
+\uses{lem:kn-nadel-bertini-generic-regular}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniGenericSmooth.pointScalar,
+EnvelopeProperty.Vanishing.NadelBertiniGenericSmooth.residueField_charZero,
+EnvelopeProperty.Vanishing.NadelBertiniGenericSmooth.genericFiber_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniGenericSmooth.genericFiber_smooth_of_smooth}
+\leanok
+The actual morphism $Y_\eta\to\operatorname{Spec}\kappa(\eta)$ is smooth.
+\end{lemma}
+\begin{proof}
+The original structure morphism $S\to\operatorname{Spec}k$ induces the actual
+field homomorphism $k\to\mathcal O_{S,\eta}\to\kappa(\eta)$.  It is injective,
+so its target has characteristic zero and is perfect.  Local finite
+presentation of the original $f$ passes to its actual generic fibre.  Over
+this perfect field, Hironaka's native regularity--smoothness equivalence
+therefore applies to the whole actual fibre, using the preceding regularity
+producer at every fibre point.
+\end{proof}
+
+\begin{lemma}[The actual proper-image good parameter open]
+\label{lem:kn-nadel-bertini-generic-good-open}
+\uses{lem:kn-nadel-bertini-generic-smooth}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.genericFiber_le_smoothLocus,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.smooth_morphismRestrict_of_preimage_le_smoothLocus,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.goodOpen,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.goodOpen_preimage_le,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.goodOpen_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.genericPoint_mem_goodOpen,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.goodOpen_specification,
+EnvelopeProperty.Vanishing.NadelBertiniGenericOpen.goodOpen_specification_of_smooth}
+\leanok
+Let $B=Y\setminus\operatorname{Sm}(f)$ be the complement of the original
+relative smooth locus.  The actual open
+$V=S\setminus f(B)$ contains the actual generic point, is nonempty and dense,
+and the original restricted morphism $f^{-1}V\to V$ is smooth.
+\end{lemma}
+\begin{proof}
+The original relative smooth locus is open.  Properness makes its closed
+complement's actual image closed, so the displayed $V$ is an actual target
+open.  Every original point of $Y$ over $\eta$ belongs to the original smooth
+locus: compare the smooth generic-fibre stalk map across the two actual flat
+preimmersion stalk isomorphisms in the original fibre square.  Thus $\eta$
+is absent from $f(B)$ and lies in $V$.  This also proves nonemptiness and,
+because $S$ is integral, density.  By construction the original preimage
+$f^{-1}V$ lies in the original smooth locus.  The original source and target
+open immersion stalk maps are isomorphisms, so the actual restricted
+morphism is smooth.
+\end{proof}
+
+The two flat-preimmersion arguments and the open-restriction stalk comparison
+adapt the native proofs in the DeJongAlterations files
+\texttt{GenericFiberIntegral.lean} and
+\texttt{CurveFibrationMarkedOpenSmooth.lean}.  They are used without any
+curve, geometric-connectedness, integrality-of-source, or dominance premise.
+The generic-fibre smoothness in the final producer is proved internally;
+it is not supplied as a Bertini certificate.
+
+
+\begin{lemma}[The actual original projective incidence parameter good open]
+\label{lem:kn-nadel-bertini-projective-good-open}
+\uses{def:kn-nadel-bertini-universal-incidence,lem:kn-nadel-bertini-generic-good-open}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniGenericIncidence.toParameters_proper,
+EnvelopeProperty.Vanishing.NadelBertiniGenericIncidence.projectiveToParameters_proper,
+EnvelopeProperty.Vanishing.NadelBertiniGenericIncidence.projectiveToParameters_locallyOfFinitePresentation,
+EnvelopeProperty.Vanishing.NadelBertiniGenericIncidence.projectiveGoodOpen,
+EnvelopeProperty.Vanishing.NadelBertiniGenericIncidence.projectiveGoodOpen_specification}
+\leanok
+For the original closed projective embedding $j:X\hookrightarrow\mathbf P^m_k$,
+the original actual incidence projection $\pi:\mathcal I\to
+\operatorname{Spec}k[t_0,\ldots,t_m]$ is proper and locally of finite
+presentation.  If the same original total incidence structure
+$\mathcal I\to X\to\mathbf P^m_k\to\operatorname{Spec}k$ is smooth, its
+actual good coefficient open is internally produced as the complement of
+the proper image of its original nonsmooth locus.  That same actual open
+contains the generic point, is nonempty and dense, has original preimage
+inside the original relative smooth locus, and carries a smooth restriction
+of the original $\pi$.
+\end{lemma}
+\begin{proof}
+The original source $X$ is proper over $k$ because its actual embedding is
+closed and the original native projective-space structure map is proper.
+Its original product projection to the actual coefficient scheme is proper
+by base change.  The same original incidence's zero-ideal inclusion is
+closed, hence proper.  Compose these actual maps to obtain properness of
+$\pi$, without an extra family certificate.  The actual coefficient scheme
+is Noetherian, so local finite type of this same proper map gives local
+finite presentation.  It is integral because its literal polynomial ring
+over $k$ is a domain.  Apply the preceding source-smooth producer to the
+same original incidence, its same original parameter projection, and its
+same original $k$ structure.  It proves whole generic-fibre smoothness and
+all the stated good-open properties internally.
+\end{proof}
+
+The independent original incidence-chart/gluing producer supplies the
+hypothesis on the total incidence from smoothness of the original $X/k$.
+This annex does not assert that arbitrary smooth divisors, simultaneous
+strata, rational good parameters or final SNC auxiliary divisors have
+already been chosen.

@@ -1,0 +1,165 @@
+\section{Actual bounded polynomial generators of the original multiplier cone ideal}
+\label{sec:c0n-cone-generators}
+
+Keep the original smooth projective subvariety $X$, its actual parameter
+family $i:Y\hookrightarrow\mathbb P^M_{k[t]}$, original lower-bounded
+obstacle $\varphi$, and the entire original scheme multiplier ideal
+$K_m$.  Its cone ideal is the already defined original $B_m$, obtained
+from the native homogeneous representative of $(i_*K_m)$ and the original
+parameter exchange and cone quotient.  The only vanishing assumption is
+the named relative ample Nadel proposition; polynomial representatives,
+evaluation images, bounded generators and Fubini--Study conclusions are
+not inputs.
+
+\begin{lemma}[Actual tensor-ideal inclusion and original included sections]
+\label{lem:c0n-cone-generators-included-sections}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.idealTensorInclusion,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsEvaluation.includedSection,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsEvaluation.includedSection_sectionHom}
+\leanok
+For a whole original ideal $K$, invertible module $L$, and genuine
+generating family $G$ of $K\otimes L$, compose its original evaluation
+with $K\otimes L\to L$ induced by the actual ideal inclusion.  Its
+original basis morphisms give actual global sections $s_a$ of the same
+$L$, indexed by the same $G.I$.
+\end{lemma}
+\begin{proof}
+Tensor the original $K\hookrightarrow\mathcal O_Y$ by $L$ and compose
+with the native left-unit comparison.  Compose each original free basis
+inclusion and the original epimorphic evaluation with this morphism.
+The actual unit-Hom/global-section equivalence, evaluated at the original
+unit section on the whole scheme, gives $s_a$.  Applying the same native
+section-Hom constructor recovers exactly those original composites.
+No independent coefficient module or chosen scalar section intervenes.
+\end{proof}
+
+\begin{lemma}[The included original generators have exactly the whole ideal image]
+\label{lem:c0n-cone-generators-whole-image}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.cancellationIso,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.cancellationIso_inclusion,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.coefficientEpimorphism,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.coefficientEpimorphism_epi,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsTensor.coefficientEpimorphism_inclusion,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsEvaluation.familyEvaluation_eq_tensorEvaluation,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsEvaluation.includedEvaluation_imageIdeal}
+\leanok
+The genuine family evaluation of the preceding same sections against
+$L^{-1}$ has whole geometric image exactly $K$.
+\end{lemma}
+\begin{proof}
+Tensor the original epimorphism
+$\mathcal O_Y^{(G.I)}\twoheadrightarrow K\otimes L$ by $L^{-1}$.
+The actual invertible tensor functor preserves that epimorphism.  Its
+native inverse evaluation cancels $L\otimes L^{-1}$, producing an actual
+epimorphism from the original free-tensor-dual source onto $K$.
+Naturality of this cancellation and the native unit comparisons show
+that its composite with the original ideal inclusion is precisely the
+family evaluation of the same included sections.  Verify this equality
+on the original coproduct basis; preservation of the coproduct by the
+invertible tensor functor and the genuine free-tensor-dual isomorphism
+retain the same index and section morphisms.  Thus this is a genuine
+epi--mono image factorization of the actual original evaluation map.
+The uniqueness of the categorical image, read on whole ideal-module
+sections on every affine open, identifies its whole ideal image with
+$K$.  Neither an expected image equality nor generation of an unrelated
+full-section base ideal is assumed.
+\uses{lem:c0n-cone-generators-included-sections}
+\end{proof}
+
+\paragraph{The actual fixed lift range.}
+From the named Nadel proposition and original smooth charts, choose one
+$c_0$ before all $d,\varphi,m$ such that
+$i^*\mathcal O(md+c_0)\otimes K_m$ has finite genuine generators.
+There is one further bound $b$, depending only on the original inclusion,
+such that for $c=c_0+b$ every original module
+$i^*\mathcal O(md+c)\otimes K_m$ has finite genuine generators and every
+included original section has an actual homogeneous polynomial lift of
+exact degree $md+c$ over $k[t]$.
+
+Use the proved original uniform multiplier-generation producer for $c_0$.
+The proved fixed closed-embedding restriction bound supplies $b$ before
+all varying data.  The actual $H^b$ has finite generators pulled from the
+native ambient monomial family.  Tensor these with the actual original
+multiplier generating family, and use native symmetry, pullback
+monoidality and projective twist addition to identify the result with
+$i^*\mathcal O(md+c_0+b)\otimes K_m$.  Swap the two factors if necessary
+before applying the preceding included-section construction.  Because
+$md+c_0+b\geq b$, the proved actual restriction theorem lifts each section
+to an original ambient $\mathcal O(md+c)$ section.  The independently
+proved ambient section--homogeneous-polynomial theorem represents that
+same whole section by a polynomial in $k[t][x_0,\ldots,x_M]$ of exact
+degree $md+c$.  Both lifts are deductions from the actual geometry.
+
+
+\begin{lemma}[The actual lifted finite polynomials recover the whole original scheme ideal]
+\label{lem:c0n-cone-generators-polynomial-whole-ideal}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsSheaf.homogeneousFamilyIdeal,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsSheaf.homogeneousFamilyIdeal_sheaf_eq_iSup,EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsSheaf.homogeneousFamilyIdeal_comap_eq}
+\leanok
+Let $F_a$ be the actual polynomial lifts just constructed, and let $J$
+be their homogeneous span.  On the actual original parameter family,
+$(\widetilde J)\mathcal O_Y=K_m$ as whole ideal sheaves.
+\end{lemma}
+\begin{proof}
+The same actual polynomial lifts pull back to the included original
+sections.  The proved native ideal-of-a-section pullback theorem
+identifies the entire section ideal of each lift with the corresponding
+section ideal on the original family.  The native finite family
+image theorem, and preservation of suprema by geometric ideal comap,
+therefore identify the whole comap of $\widetilde J$ with the image of
+that same original family evaluation.  The second lemma identifies that
+whole image with $K_m$.  The finite homogeneous-evaluation theorem uses
+exactly the span of these lifted forms, with no saturation replacement
+before this equality of actual scheme ideals is established.
+\uses{lem:c0n-cone-generators-whole-image,lem:c0n-original-homogeneous-section-ideal,thm:c0n-original-uniform-buffer-growth,lem:c0n-relative-homogeneous-polynomial-lift}
+\end{proof}
+
+\begin{lemma}[Actual finite polynomial representatives give both original cone bounds]
+\label{lem:c0n-cone-generators-actual-cone-bounds}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierConeGeneratorsAlgebra.hasBoundedPolynomialConeGenerators_of_lifts}
+\leanok
+For the original family, original whole ideal $K$, and a finite genuine
+generating family of $K\otimes i^*\mathcal O(e)$, suppose actual homogeneous
+forms $F_a$ of degree $e$ pull back to the same included sections.
+Then the original $\operatorname{coneIdeal}(K)$ has bounded polynomial
+generators of degree $e$.  Its desired whole scheme image or cone
+saturation comparison is not an input to this lemma.
+\end{lemma}
+\begin{proof}
+The preceding whole ideal lemma proves that the homogeneous span $J$ of
+the same forms has whole comap exactly $K$.  The native ideal-sheaf
+adjunction gives $\widetilde J\subset i_*K$, so the native homogeneous
+representative adjunction gives $J\subset\operatorname{Rep}(i_*K)$.
+Mapping the actual original cone quotient gives the lower cone bound.
+The canonical representative has whole comap $K$ as well; the proved
+same-family saturation theorem gives the opposite saturated bound.
+The inverse parameter exchange takes the finite image of $a\mapsto F_a$
+to a finite set of original polynomials, and the actual cone quotient
+identity preserves both spans.  Every original parameter coefficient is
+homogeneous of degree $e$ by the proved coefficient-swap theorem.  These
+are the exact three clauses of the bounded-polynomial-generator predicate.
+\uses{lem:c0n-cone-generators-polynomial-whole-ideal,lem:c0n-canonical-scheme-cone-representative,lem:c0n-scheme-cone-saturation-product,lem:c0n-relative-homogeneous-parameter-coefficients}
+\end{proof}
+
+\begin{proposition}[Actual uniformly bounded polynomial generators of the original cone ideals]
+\label{prop:c0n-original-bounded-polynomial-cone-generators}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierConeGenerators.exists_uniform_bounded_polynomial_generators}
+\leanok
+Assume the named Nadel proposition and the original smooth charts of $X$.
+There is one $c\geq0$, chosen before all $d,\varphi$, their lower bounds,
+and $m$, such that the original $B_m$ satisfies
+\nolinkurl{HasBoundedPolynomialConeGenerators X B_m (m*d+c)}.
+No polynomial lifting, evaluation-image, saturation, or desired FS
+certificate is supplied to this final conclusion.
+\end{proposition}
+\begin{proof}
+Choose the finite actual generator index and actual homogeneous lifts
+internally as above, and take the finite set of their original polynomials.
+By the whole scheme-ideal equality, their homogeneous ideal maps into the
+native representative of the entire original extended multiplier ideal;
+the original cone quotient therefore sends their span into $B_m$.
+Conversely the canonical native representative has whole comap $K_m$.
+The proved original coordinate-localization/saturation theorem, applied
+to the actual equality in the previous lemma, gives containment of $B_m$
+in the saturation of the span of those same cone classes.  All annihilator
+powers are constructed by that theorem.  Finally apply the inverse of
+the original parameter exchange to each entire polynomial.  Its proved
+coefficient theorem shows that every original $t$-coefficient is
+homogeneous of the same $x$-degree $md+c$, hence of degree at most that
+bound.  The actual parameter-exchange/cone-quotient identity preserves
+the whole span and both ideal containments.  These are exactly the three
+clauses of the stated bounded-polynomial-generator property.  Individual
+$t$-components are never asserted to lie in $B_m$.
+\uses{lem:c0n-cone-generators-actual-cone-bounds,thm:c0n-original-uniform-buffer-growth,lem:c0n-relative-homogeneous-polynomial-lift}
+\end{proof}

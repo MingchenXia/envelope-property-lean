@@ -1,0 +1,66 @@
+\section{Actual line fibers and model norms at genuine proper centers}
+
+\begin{lemma}[Actual valuative model frame and actual original generic line]
+\label{lem:scheme-line-actual-center-frame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericLineModule}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLineModule}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerGenericMap}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLineGenericIso}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_centerLineUnitIso}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameGenericIso}
+\leanok
+\uses{lem:actual-local-spectrum-line-triviality}
+Let $y$ be an original valued point of a proper scheme over bounded
+original coefficients, let $V_y$ be its actual residue-field valuation
+ring and $c_y:\operatorname{Spec}V_y\to X$ the genuine proper center
+lift. For every original invertible module sheaf $\mathcal L$, the
+actual line $c_y^*\mathcal L$ has a global original frame. Pulling
+that frame along $\operatorname{Spec}\kappa(y)\to\operatorname{Spec}V_y$
+gives an actual global frame of the original generic line
+$y^*\mathcal L$, using the genuine valuative triangle and native
+pullback comparisons.
+\end{lemma}
+\begin{proof}
+Original invertibility is preserved by actual module pullback, so
+$c_y^*\mathcal L$ is invertible. The valuation ring $V_y$ is local;
+apply local-spectrum line triviality. The actual valuative generic
+triangle is $j_yc_y=y$. Thus the native pullback composition followed
+by its native equality comparison identifies $j_y^*c_y^*\mathcal L$
+with $y^*\mathcal L$. Pull back the actual global valuative frame and
+use the actual structure-unit pullback comparison. Composing with
+the inverse of this actual generic comparison is the required frame
+on the entire original generic line.
+\end{proof}
+
+\begin{definition}[The genuine frame norm on the actual generic line]
+\label{def:scheme-line-actual-center-frame-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameCoefficient}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm_zero}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm_add_le_max}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm_eq_zero_iff}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm_smul}
+\leanok
+\uses{lem:scheme-line-actual-center-frame}
+For an actual valuative frame $e:c_y^*\mathcal L\simeq\mathcal O$,
+let $e_\eta:y^*\mathcal L\simeq\mathcal O$ be the actual generic
+frame just constructed. On the entire original generic-line global
+section module, set
+\[
+ \lvert s\rvert_e=\lvert\Gamma(e_\eta)(s)\rvert_y,
+\]
+using the actual canonical identification
+$\Gamma(\operatorname{Spec}\kappa(y),\mathcal O)=\kappa(y)$.
+This vanishes exactly for the zero section, satisfies the
+nonarchimedean triangle inequality, and scales by the original
+residue-field valuation under original scalar multiplication.
+\end{definition}
+\begin{proof}
+Both the actual generic frame and the actual affine structure-ring
+identification are isomorphisms, so the coefficient is zero exactly
+when $s=0$. Their additive and scalar identities transport the
+original residue-field valuation's zero, multiplication and
+nonarchimedean inequalities to the stated section module. This uses
+the original fiber and actual pullback sheaves, not an auxiliary
+one-dimensional vector space.
+\end{proof}

@@ -1,0 +1,41 @@
+\section{The Euler relation for the same original coherent sheaves}
+
+\begin{theorem}[Actual global sections are actual degree-zero Cech cohomology]
+\label{thm:fc-scheme-coherent-euler-zero}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerExact.fieldSectionsCechZeroIso, EnvelopeProperty.SchemeCoherentEulerExact.fieldComplexFunctor, EnvelopeProperty.SchemeCoherentEulerExact.fieldComplexHomologyIso}
+\uses{def:fc-scheme-coherent-euler-index}
+On any actual open cover, the original base-field global sections are
+linearly isomorphic to degree-zero homology of the original field-linear
+Cech complex. Consequently its degree-zero-minus-degree-one Euler index
+is the actual original coherent Euler index.
+\end{theorem}
+\begin{proof}
+The actual sheaf axiom identifies global sections with the kernel of
+the first Cech differential. A nonnegative cochain complex has zero
+preceding differential at degree zero, so its degree-zero homology is
+that same kernel, with no quotient by a nonzero image. The canonical
+base-field restriction and exactness of restriction of scalars preserve
+these whole module isomorphisms.
+\end{proof}
+
+\begin{theorem}[The genuine coherent Euler relation]
+\label{thm:fc-scheme-coherent-euler-exact}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerExact.fieldComplexFunctor_preservesZeroMorphisms, EnvelopeProperty.SchemeCoherentEulerExact.eulerIndex_eq_fieldComplex, EnvelopeProperty.SchemeCoherentEulerExact.eulerIndex_add}
+\uses{thm:fc-scheme-coherent-euler-zero, thm:fc-cohomology-euler-additivity, thm:fc-scheme-coherent-euler-index}
+For an actual short exact sequence of original finite-type quasicoherent
+modules on an actual projectively factored scheme over a field, if the
+whole original left sheaf has vanishing $H^2$, then the original coherent
+Euler index of the middle module is the sum of those of the endpoints.
+\end{theorem}
+\begin{proof}
+Take the actual finite affine cover. Its intersections are affine since
+the actual scheme is separated, so taking the true base-linear Cech
+complex preserves the original short exact sequence. Restricting the
+actual scalar action to the original field is exact. Projective coherent
+finiteness gives the six finite-dimensional original cohomology groups.
+Affine-intersection acyclicity transports the actual whole sheaf $H^2$
+vanishing to the original Cech complex. Apply the genuine long-exact
+cohomology Euler relation and the preceding whole degree-zero comparison.
+\end{proof}

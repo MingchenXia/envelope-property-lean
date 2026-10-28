@@ -1,0 +1,78 @@
+\section{Intrinsic multiplier ideals of the original smooth scheme affine opens}
+
+\begin{lemma}[Nonzero generic stalk gives the actual nonzero affine ideals]\label{lem:sc0-original-generic-stalk-affine-nonzero}
+\lean{EnvelopeProperty.Char0.affineIdeal_ne_bot_of_generic_stalk_ne_bot}
+\leanok
+On the original integral scheme $X$, let $I$ be an actual scheme
+ideal sheaf whose actual generic stalk is nonzero. For every original
+nonempty affine open $U$, the actual original ideal $I(U)$ is nonzero.
+\end{lemma}
+\begin{proof}
+The generic point belongs to the nonempty open $U$. The actual
+generic stalk ideal is the extension of $I(U)$ along the actual
+generic germ. If $I(U)$ were zero, this extension would be zero,
+contrary to its stated nonzero generic stalk.
+\end{proof}
+
+\begin{definition}[The original affine intrinsic multiplier ideal]\label{def:sc0-original-scheme-multiplier-affine-ideal}
+\lean{EnvelopeProperty.Char0.schemeMultiplierAffineIdeal}
+\leanok
+\uses{lem:sc0-original-generic-stalk-affine-nonzero,thm:sc0-scheme-sections-function-field-equiv,thm:sc0-scheme-sections-function-field-fraction}
+For the original structure morphism $f:X\to\operatorname{Spec} k$,
+original ideal sheaf $I$ with nonzero generic stalk, and rational $q$,
+define its affine multiplier ideal on every original nonempty affine
+$U$ as follows. Map the whole actual ideal $I(U)$ along the actual
+generic-germ equivalence $e_U:\Gamma(X,U)\simeq C_U\subset K(X)$,
+form the full all-divisorial-DVR multiplier ideal on that literal
+source $C_U$, and take its comap along $e_U$. On the empty open,
+take its unique unit ideal.
+\end{definition}
+
+\begin{theorem}[Exact original nonempty principal compatibility]\label{thm:sc0-original-scheme-multiplier-principal-nonempty}
+\lean{EnvelopeProperty.Char0.map_schemeMultiplierAffineIdeal_basicOpen_nonempty}
+\leanok
+\uses{def:sc0-original-scheme-multiplier-affine-ideal,thm:sc0-smooth-original-field-subalgebra,thm:sc0-scheme-sections-function-field-basic-localization,thm:sc0-full-multiplier-away-localization}
+Suppose the actual original $f$ is smooth in characteristic zero.
+For every original nonempty affine $U$ and nonempty intrinsic basic
+open $D(s)$, extension along the actual original scheme restriction
+maps this whole affine multiplier ideal to its whole actual affine
+multiplier ideal on $D(s)$.
+\end{theorem}
+\begin{proof}
+Use the actual generic-germ equivalences $e_U$ and $e_{D(s)}$.
+Their exact restriction square identifies the actual section
+restriction with the literal inclusion $C_U\subset C_{D(s)}$.
+Both actual fraction fields are the original $K(X)$, original
+smoothness proves smoothness of $C_U$, and the actual basic-open
+localization theorem proves that this literal inclusion is
+localization at $e_U(s)$.
+
+The original ideal-sheaf restriction axiom and the actual square
+give equality between the extension of $e_U(I(U))$ to $C_{D(s)}$
+and the actual ideal $e_{D(s)}(I(D(s)))$. The full multiplier
+localization theorem therefore gives exact equality of their whole
+actual multiplier ideals. Finally transport that equality back along
+the same actual square. Algebraically, for ring equivalences
+$e:R\simeq S$ and $d:T\simeq P$ and a commuting square
+$d a=b e$, extension of $e^{-1}(J)$ along $a$ is
+$d^{-1}(J P)$. This follows by expressing comap along an equivalence
+as map along its inverse and composing the actual ring maps. Apply
+this identity to the actual restriction square to obtain precisely
+the claimed original section-ring equality.
+\end{proof}
+
+\begin{theorem}[The complete actual basic-open ideal-sheaf axiom]\label{thm:sc0-original-scheme-multiplier-principal}
+\lean{EnvelopeProperty.Char0.map_schemeMultiplierAffineIdeal_basicOpen}
+\leanok
+\uses{thm:sc0-original-scheme-multiplier-principal-nonempty}
+For every actual original affine $U$ and every original section $s$,
+including empty basic opens, the actual affine multiplier ideals
+satisfy the full original ideal-sheaf basic-open restriction axiom.
+\end{theorem}
+\begin{proof}
+If $D(s)$ is nonempty, then so is $U$, and the preceding theorem
+applies with these actual nonempty opens. If $D(s)$ is empty, its
+actual section ring is a subsingleton by the sheaf axiom for the
+empty open. Its ideals are therefore identical, so the asserted
+equality holds there as well.
+\end{proof}

@@ -1,0 +1,65 @@
+\section{Compact bounds in general seminorm spectra}\label{sec:general-spectrum-topology}
+
+Let $A$ be any commutative ring. All upper bounds below are finite nonnegative
+real numbers and are prescribed separately for every element of $A$.
+
+\begin{lemma}[Closed realization by evaluations]\label{spectrum:closed-evaluation-embedding}
+\lean{EnvelopeProperty.Berkovich.Spectrum.range_toFun,
+EnvelopeProperty.Berkovich.Spectrum.isClosedEmbedding_toFun}
+\leanok
+\uses{spectrum:affine-seminorm,spectrum:topology}
+The evaluation map $\mathcal S(A)\to\R_{\ge0}^{A}$ is a closed embedding.
+Its image consists exactly of the functions $w:A\to\R_{\ge0}$ satisfying
+$w(0)=0$, $w(1)=1$, $w(ab)=w(a)w(b)$, and
+$w(a+b)\le\max\{w(a),w(b)\}$ for all $a,b\in A$.
+\end{lemma}
+\begin{proof}
+Every seminorm satisfies these four conditions. Conversely, the conditions
+give a multiplicative ultrametric seminorm, so they define an element of
+$\mathcal S(A)$ whose evaluation function is $w$. The evaluation map is
+injective and induces the topology by definition. Each equality in the four
+conditions is closed because the coordinate maps and multiplication on
+$\R_{\ge0}$ are continuous. Each inequality is closed because coordinate
+maps and maximum are continuous and the order relation on $\R_{\ge0}$ is closed.
+The intersection over all $a,b\in A$ is therefore closed, proving the assertion.
+\end{proof}
+
+\begin{theorem}[Compact coordinate bounds]\label{spectrum:compact-coordinate-bounds}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isCompact_setOf_forall_val_le}
+\leanok
+\uses{spectrum:closed-evaluation-embedding}
+For any function $M:A\to\R_{\ge0}$, the set
+$\{x\in\mathcal S(A):|a|_x\le M(a)\text{ for every }a\in A\}$ is compact.
+\end{theorem}
+\begin{proof}
+Under the closed evaluation embedding, this set is the intersection of the
+closed image of $\mathcal S(A)$ with the product $\prod_{a\in A}[0,M(a)]$.
+Each interval is compact, so the product is compact by Tychonoff's theorem.
+The intersection is closed in that product and consequently compact.
+Transporting compactness through the evaluation embedding gives the asserted result.
+\end{proof}
+
+\begin{corollary}[Compact relative bounds]\label{spectrum:compact-relative-bounds}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_setOf_forall_val_le}
+\leanok
+\uses{spectrum:compact-coordinate-bounds,spectrum:relative}
+Let $R$ be any commutative ring with a prescribed real-valued ultrametric seminorm $v$,
+and let $A$ be a commutative $R$-algebra. For every $M:A\to\R_{\ge0}$, the set
+$\{x\in\mathcal S_v(A):|a|_x\le M(a)\text{ for all }a\in A\}$ is compact.
+\end{corollary}
+\begin{proof}
+The prescribed-base locus is closed in $\mathcal S(A)$: it is the intersection,
+over $r\in R$, of the closed conditions $|r|_x=v(r)$.
+Its intersection with the compact coordinate-bounded set is therefore compact.
+The relative spectrum has the induced subspace topology, so this is exactly
+the asserted relative compactness statement.
+\end{proof}
+
+\begin{remark}\label{spectrum:compact-bounds-scope}
+\uses{spectrum:compact-coordinate-bounds,spectrum:compact-relative-bounds}
+The bound $M$ is arbitrary and the resulting set may be empty. No compatibility
+of $M$ with the ring operations is needed for compactness, and no finite generation,
+field, trivial valuation, or completeness assumption is imposed. In particular,
+any specified finite-valued norm bound can be used as $M$, without identifying
+the resulting compact set with the analytic spectrum of a Banach ring.
+\end{remark}

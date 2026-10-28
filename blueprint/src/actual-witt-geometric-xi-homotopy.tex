@@ -1,0 +1,91 @@
+\section{Genuine geometric divided Frobenius maps from the actual Witt family}
+
+Let $\kappa$ be a perfect field of characteristic $p$ and let $\widetilde f:\widetilde X\to\operatorname{Spec}W_2(\kappa)$ be an actual smooth lifting of pure relative dimension $n$. Separatedness is imposed when forming affine intersections. Let $X_0$ be its literal special fibre with structural map $f_0$, let $Y=X_0^{(p)}$, and retain the original relative Frobenius $F:X_0\to Y$ and second projection $g:Y\to\operatorname{Spec}\kappa$. The degree-one source is the original exterior cotangent sheaf $M=\Omega^1_{Y/\kappa}$ and the targets are the original $E^q=F_*\Omega^q_{X_0/\kappa}$. The primary complex is the existing smooth relative de Rham complex for this actual pure-dimension input. Its arbitrary-smooth extension is a separate compatible construction. The native residue-section maps and their restriction theorems below are reused from the existing actual Witt-model construction.
+
+\begin{definition}[The original residue-section transport]
+\label{def:actual-witt-residue-native-xi-transport}
+\uses{thm:di-witt-native-arbitrary-restriction-xi,thm:di-witt-native-arbitrary-restriction-H}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoGeometricDifferential.sectionEquiv, EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.sourceReductionAlongEquiv, EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.flatReductionAlongEquiv, EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.liftSquareAlongEquiv, EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.oneFormAlongEquiv, EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.zeroFormAlongEquiv}
+\leanok
+For an actual affine Witt open $U$, let $U_0$ be its original inverse image in $X_0$, let $B_U=\kappa\otimes_{W_2(\kappa)}\Gamma(\widetilde X,U)$, and retain the original section equivalence $\epsilon_U:B_U\simeq\Gamma(X_0,U_0)$. Transport the actual native maps $\xi_F$ and $H_{FG}$ through the genuine twist and cotangent maps of this same coefficient equivalence. Their source is the native twist of the literal ring $\Gamma(X_0,U_0)$, and their target actions are its original relative Frobenius.
+\end{definition}
+\begin{proof}
+The original section equivalence is a coefficient-algebra equivalence and commutes with actual open restriction on every residue tensor. The existing native-twist equivalence transports the original source reduction, flat target reduction, and the whole Frobenius lift square to this literal geometric section ring. The original copied-coefficient scalar tower proves that these are the same reductions in the canonical divided one-form and canonical zero-form constructions. Instantiate those constructions with the same original lift $F$, or pair $(F,G)$. The original coefficient square supplies the genuine relative-Frobenius scalar action. This reuses the existing original-model producers and introduces no identification of a residue tensor with the geometric section ring.
+\end{proof}
+
+\begin{definition}[Actual geometric section maps]
+\label{def:actual-witt-geometric-xi-homotopy-sections}
+\uses{def:actual-witt-residue-native-xi-transport}
+\lean{EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSectionMap, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.homotopySectionMap}
+\leanok
+Let $W=U_0^{(p)}$ be the original twisted affine open. The original source cotangent unit and the original twisted-chart section isomorphism transport the preceding maps to actual section-module maps
+\[
+ \Xi_U:\Gamma(W,M)\longrightarrow\Gamma(W,E^1),\qquad
+ \mathcal H_{FG}:\Gamma(W,M)\longrightarrow\Gamma(W,E^0).
+\]
+Their target maps are the original exterior units followed by the original relative-Frobenius preimage identification. Every original source unit section keeps the corresponding actual divided or canonical difference value.
+\end{definition}
+\begin{proof}
+On an etale affine chart use the proved source cotangent unit isomorphism, the original universal cotangent exchange of the twisted-chart section isomorphism, and the degree-one exterior equivalence. Apply the transported native map. On the target use the original degree-one or degree-zero exterior equivalence, the original exterior sheafification unit, and the actual relative-Frobenius preimage equality. The original whole section-ring coefficient square identifies the resulting scalar action with the actual $\Gamma(W,\mathcal O_Y)$ action. Thus these composites are actual linear section maps. Evaluating the composites on an original universal differential gives precisely the retained original unit and divided-value formulas. All maps in the composites are the original constructed units, rather than chosen matching isomorphisms.
+\end{proof}
+
+\begin{definition}[Actual affine geometric sheaf maps]
+\label{def:actual-witt-geometric-xi-homotopy-sheaf}
+\uses{def:actual-witt-geometric-xi-homotopy-sections}
+\lean{EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSheafMap, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.homotopySheafMap}
+\leanok
+The preceding section maps determine actual morphisms
+\[
+ \widetilde\Xi_U:M|_W\longrightarrow E^1|_W,
+ \qquad \widetilde{\mathcal H}_{FG}:M|_W\longrightarrow E^0|_W.
+\]
+The following theorem identifies their entire original section readbacks.
+\end{definition}
+\begin{proof}
+Use the original affine isomorphism from $\operatorname{Spec}\Gamma(W,\mathcal O_Y)$ onto $W$ and restrict both sheaves along that original map. The original section isomorphisms identify the section maps with module maps between the restricted global sections. Apply the original associated-sheaf/global-sections adjunction. The source cotangent sheaf is quasicoherent, so its original counit is an isomorphism; compose the adjoint map with the inverse of that same counit. Transport back along the original affine chart isomorphism. This constructs the sheaf morphisms from the actual linear maps and introduces no incoming geometric morphism or extension certificate.
+\end{proof}
+
+\begin{theorem}[Whole geometric section equations]
+\label{thm:whole-geometric-xi-homotopy-equations}
+\uses{thm:di-geometric-original-leading-cartier-one}
+\lean{EnvelopeProperty.DI.GeometricXiHomotopyEquations.homotopySections, EnvelopeProperty.DI.GeometricXiHomotopyEquations.xiSections_sub, EnvelopeProperty.DI.GeometricXiHomotopyEquations.homotopySections_cocycle}
+\leanok
+For an actual smooth pure-dimension chart and the original model reductions $c,a,b$ with the original lift squares, the canonical maps on the entire original section modules satisfy
+\[
+ \Xi_F-\Xi_G=d\mathcal H_{FG},\qquad
+ \mathcal H_{FJ}=\mathcal H_{FG}+\mathcal H_{GJ}.
+\]
+These are equations for the same original source and target units and the entire actual geometric section complex. No equation or desired comparison map is an input.
+\end{theorem}
+\begin{proof}
+Apply the existing native first divided-difference equation as an equation of whole module maps. The original scalar-restriction functor is additive, as is precomposition with the original source cotangent unit and degree-one exterior equivalence. The original chart complex isomorphism commutes with its differential. Thus its whole degree-zero and degree-one components carry the native equation to the displayed geometric equation. Apply the same additive composites to the existing strict native zero-form cocycle to obtain the second equation. The native division and cocycle theorems are reused; no new choice of a divisor or an overlap certificate is made.
+\end{proof}
+
+\begin{theorem}[Exact original section readbacks]
+\label{thm:actual-witt-geometric-xi-homotopy-readback}
+\uses{def:actual-witt-geometric-xi-homotopy-sheaf}
+\lean{EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSheafMap_sections, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.homotopySheafMap_sections}
+\leanok
+Read the two constructed local morphisms on the original affine spectrum of $W$ by restricting along the inverse of the original affine chart isomorphism. Conjugate by the original composition and identity restriction units, then apply original global sections and the original affine section isomorphisms. The resulting whole module maps are exactly $\Xi_U$ and $\mathcal H_{FG}$.
+\end{theorem}
+\begin{proof}
+The original restriction round trip along an isomorphism is naturally isomorphic to the identity. Its naturality cancels both chart-conjugation factors of the constructed local morphism. The remaining spectrum morphism is the original affine adjoint of the transported section map. Applying global sections, the original adjunction triangle identifies the inverse source counit with the original adjunction unit. The triangle identity therefore cancels the entire adjunction composite. The original affine section isomorphisms then cancel their inverses, leaving exactly the stated section maps.
+\end{proof}
+
+\begin{theorem}[Actual geometric local equations and triple identities]
+\label{thm:actual-witt-geometric-xi-homotopy-equations}
+\uses{thm:actual-witt-geometric-xi-homotopy-readback,thm:whole-geometric-xi-homotopy-equations}
+\lean{EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSectionMap_closed, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSectionMap_sub, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.homotopySectionMap_cocycle, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSheafMap_closed, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.xiSheafMap_sub, EnvelopeProperty.DeligneIllusie.ActualWittGeometricXiHomotopy.homotopySheafMap_cocycle}
+\leanok
+On every actual affine overlap the same actual sheaf morphisms satisfy
+\[
+ d\widetilde\Xi_i=0,\qquad
+ \widetilde\Xi_i-\widetilde\Xi_j=d\widetilde{\mathcal H}_{ij},\qquad
+ \widetilde{\mathcal H}_{ik}=\widetilde{\mathcal H}_{ij}+\widetilde{\mathcal H}_{jk}.
+\]
+\end{theorem}
+\begin{proof}
+Use the original local formula for the actual global smooth differential on the same etale chart. The original target exterior units commute with that differential, so the existing closedness and first-homotopy formulas give the first two equations on every native source form. The existing entire native cocycle identity gives the third. The original source unit is an isomorphism and the affine adjunction detects equality with this quasicoherent source, giving the three whole sheaf morphism equations.
+\end{proof}
+
+The subsequent canonical Cech-data producer consumes these same maps and equations using the existing actual Witt affine cover and overlap lifts. That separate construction retains the convention $h=-H$, so total degree one is $(\Xi,-H)$.

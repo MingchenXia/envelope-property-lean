@@ -1,0 +1,87 @@
+\subsection{Dirichlet interpolation on the actual finite boundary}\label{subsec:fc-line-dirichlet}
+
+\begin{lemma}[Separation of distinct hole boundaries]\label{lem:fc-hole-boundary-separation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeBoundaryPoint, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeBoundaryPoint_mem_boundary, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeRadius_le_center_distance, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeRadius_lt_center_distance_of_boundary_ne, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeRadius_lt_outer_of_boundary_ne}
+\leanok
+\uses{def:fc-standard-affinoid, lem:fc-inflation-linear}
+Distinct open holes have centre distance at least each of their radii.
+If their Gauss boundary points are distinct and $r_i\le r_j$, then
+$r_i<|a_i-a_j|$. A hole boundary point distinct from the outer boundary has
+radius strictly smaller than the outer radius.
+\end{lemma}
+
+\begin{proof}
+If $|a_i-a_j|<r_j$, the actual evaluation point at $a_i$ belongs to both
+positive-radius open holes, contradicting disjointness. Interchanging the
+holes gives the other inequality. If the first radius is at most the second
+and the centre distance were at most the first, both radii and the centre
+distance would coincide. Centres in one closed disc have the same Gauss
+point at its radius, contradicting the distinct-boundary hypothesis.
+Finally an inner radius equal to the outer radius gives the same Gauss point
+as the outer boundary by the centre bound.
+\end{proof}
+
+\begin{lemma}[Independent boundary logarithmic potentials]\label{lem:fc-dirichlet-independent}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletPotential, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletPotential_outer, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletPotential_coefficients_eq_zero}
+\leanok
+\uses{lem:fc-hole-boundary-separation, lem:fc-radial-skeleton-subset}
+Choose one original hole for each of finitely many distinct non-outer boundary
+points, with index set $I$. The functions
+\[
+ p_i(x)=\log r_0-\log|T-a_i|_x\quad (i\in I)
+\]
+are linearly independent as real functions on the actual affinoid $U$.
+Each vanishes at the outer boundary.
+\end{lemma}
+
+\begin{proof}
+Suppose $\sum_i\gamma_i p_i=0$ on $U$ and some coefficient is nonzero.
+Choose a nonzero coefficient with least hole radius, say $\gamma_j$.
+Its radius $r_j$ is strictly smaller than $r_0$ and, by the preceding lemma,
+strictly smaller than every centre distance $|a_j-a_i|$ for another nonzero
+coefficient. Since the family is finite, choose $t>r_j$ smaller than $r_0$
+and all those distances. Both $\zeta_{a_j,r_j}$ and $\zeta_{a_j,t}$ belong
+to $U$ by the radial-segment containment theorem. At the second point and
+the first point every active coordinate except $j$ has the same value
+$|a_j-a_i|$, whereas the $j$th values are $t$ and $r_j$. Subtracting the two
+zero sums gives $\gamma_j(\log r_j-\log t)=0$. Positive radii and strict
+monotonicity of the logarithm contradict $\gamma_j\ne0$.
+At the outer boundary every hole coordinate has value $r_0$, proving the
+last assertion.
+\end{proof}
+
+\begin{theorem}[The actual Dirichlet solution]\label{thm:fc-dirichlet-existence}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletPotential_sum_isHarmonic, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletEvaluationMap, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletEvaluationMap_injective, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.dirichletEvaluationMap_surjective, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.exists_isHarmonic_boundary_values, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.existsUnique_isHarmonic_boundary_values}
+\leanok
+\uses{lem:fc-dirichlet-independent, thm:fc-harmonic-weak-maximum, cor:fc-harmonic-boundary-uniqueness}
+For every real function $\beta$ on the actual finite boundary $\partial U$,
+there is a unique harmonic function $h$ on $U$ with $h|_{\partial U}=\beta$.
+This includes no holes, zero outer radius, coincident Gauss boundary points,
+and zero-length radial segments.
+\end{theorem}
+
+\begin{proof}
+Let $I=\partial U\setminus\{\zeta_{a_0,r_0}\}$ as a set of actual points,
+so each distinct non-outer boundary point occurs exactly once. Choose an
+original hole representing each point. Consider the square real linear map
+\[
+ E\colon\mathbf R^I\longrightarrow\mathbf R^I,\qquad
+ E(\gamma)_j=\sum_i\gamma_i p_i(\zeta_{a_j,r_j}).
+\]
+If $E(\gamma)=0$, its harmonic sum vanishes at every boundary point,
+including the outer point. The weak boundary maximum principle, applied to
+the sum and its negative, makes it zero on all of $U$. The independence
+lemma gives $\gamma=0$. Thus $E$ is injective, hence surjective because its
+finite-dimensional domain and codomain coincide. Solve
+$E(\gamma)_j=\beta(\zeta_{a_j,r_j})-\beta(\zeta_{a_0,r_0})$ and put
+$h=\beta(\zeta_{a_0,r_0})+\sum_i\gamma_i p_i$. This is a constant plus a
+finite real linear combination of the original logarithmic hole coordinates,
+hence harmonic, and has exactly the prescribed boundary values.
+Using actual boundary points removes duplicate coordinates and zero-length
+segments automatically; for the empty index set the same argument gives
+the constant solution.
+The difference of two solutions is harmonic and has zero boundary values.
+The weak boundary maximum principle applied to that difference and its
+negative makes the difference zero on $U$, proving uniqueness as an actual
+function.
+\end{proof}

@@ -1,0 +1,55 @@
+\section{Simultaneous factors in genuine Jacobian neighborhoods}
+
+\begin{lemma}[Native products and coordinate monomial products]\label{lem:sc0-native-family-monomial-product}
+\lean{EnvelopeProperty.Char0.prod_span_monomial_family}
+\leanok
+Taking the actual native ideal on an affine open preserves finite products.
+Consequently, a finite family of coordinate monomial ideals has total ideal
+the coordinate monomial whose exponents are the sums of the family exponents.
+\end{lemma}
+\begin{proof}
+The native ideal construction is multiplicative and sends the unit ideal to
+the unit ideal. Evaluate its monoid homomorphism on the finite product.
+Products of principal monomial ideals are principal ideals of the product;
+commute the two finite products and add powers of each fixed coordinate.
+\end{proof}
+
+\begin{definition}[Actual simultaneous family Jacobian neighborhood]\label{def:sc0-snc-family-jacobian-neighbourhood}
+\lean{EnvelopeProperty.Char0.SNCFamilyJacobianNeighbourhood}
+\leanok
+An actual adapted Jacobian neighborhood for a finite family retains the
+actual affine chart, its actual \'etale coordinates and adapted boundary
+components, the actual monomial formula for every family factor in those
+same coordinates, and the actual principal-neighborhood Jacobian identity
+for their total transform. This is literal existential geometric output.
+\end{definition}
+
+\begin{lemma}[Such simultaneous neighborhoods exist at every closed point]\label{lem:sc0-snc-family-jacobian-at-closed}
+\lean{EnvelopeProperty.Char0.exists_snc_family_jacobian_neighbourhood_at_closed}
+\leanok
+\uses{def:sc0-snc-family-jacobian-neighbourhood,lem:sc0-native-family-monomial-product,lem:sc0-snc-simultaneous-neighbourhood,thm:sc0-native-snc-jacobian-neighbourhood}
+If the actual product of the finite family is the actual SNC total transform
+and the original map is isomorphic off that total ideal, every closed point
+has such a simultaneous family Jacobian neighborhood in actual source
+\'etale coordinates.
+\end{lemma}
+\begin{proof}
+Use the checked actual simultaneous SNC factor chart. Its factor monomials
+give the total-transform monomial by the preceding product calculation.
+Apply the actual principal Jacobian-neighborhood theorem using exactly those
+adapted coordinates, retaining every factor formula on the original chart.
+\end{proof}
+
+\begin{lemma}[The simultaneous neighborhoods give a genuine finite cover]\label{lem:sc0-finite-snc-family-jacobian-cover}
+\lean{EnvelopeProperty.Char0.exists_finite_snc_family_jacobian_neighbourhood_cover}
+\leanok
+\uses{lem:sc0-snc-family-jacobian-at-closed}
+On a quasi-compact actual smooth final scheme, finitely many simultaneous
+family Jacobian neighborhoods cover the whole scheme.
+\end{lemma}
+\begin{proof}
+Choose and shrink at every closed point before selecting a finite subcover.
+The actual smooth finite-type scheme is Jacobson, so every point lies in
+its closed specialization's chosen open neighborhood. These actual shrunk
+opens therefore cover, and compactness selects finitely many of them.
+\end{proof}

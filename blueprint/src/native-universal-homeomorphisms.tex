@@ -1,0 +1,122 @@
+\subsection{Actual universal-homeomorphism invariance of native points}
+\label{subsec:native-universal-homeomorphisms}
+
+\begin{theorem}[Valuations are determined through genuine inseparable powers]
+\label{valuation:purely-inseparable-restriction-injective}
+\lean{EnvelopeProperty.Valuation.comap_injective_of_isPurelyInseparable}
+\leanok
+Let $K$ be a field, $L$ a commutative domain and $\varphi:K\to L$ an
+actual purely inseparable homomorphism. For every linearly ordered
+commutative value monoid with zero $\Gamma$, pullback under $\varphi$ is
+injective on genuine valuations $L\to\Gamma$.
+No real-norm, target-field, completeness or characteristic restriction
+is imposed; real-valued residue-field valuations are a specialization.
+\end{theorem}
+\begin{proof}
+Use the actual coefficient action induced by $\varphi$. Choose its true
+exponential characteristic $q$, which is positive, including $q=1$ in
+characteristic zero. The actual purely inseparable domain extension
+makes every $b\in L$ admit a positive power representation
+$b^{q^n}=\varphi(a)$ for some actual $a\in K$ and $n\ge0$.
+
+If two valuations have the same entire restriction to $K$, their
+values of this original scalar $\varphi(a)$ agree. Multiplicativity
+identifies them with the $q^n$-th powers of their two values of $b$.
+Positive-power injectivity in the actual linearly ordered value monoid
+therefore identifies these values of $b$. This holds for every element
+of $L$ and thus proves equality of the entire valuations. No valuation
+extension, comparison or uniqueness certificate is assumed.
+\end{proof}
+
+\begin{theorem}[Actual universal injectivity implies whole native point injectivity]
+\label{scheme:universally-injective-native-map}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.residueFieldMap_isPurelyInseparable_of_universallyInjective,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.map_injective_of_universallyInjective}
+\leanok
+\uses{valuation:purely-inseparable-restriction-injective,scheme:valued-point-pullback}
+For any actual universally injective morphism $f:X\to Y$ of schemes,
+its original native valued-point map is injective. The original
+scheme residue-field maps are genuinely purely inseparable. No
+integrality, properness, separation or coefficient bound is needed
+for this injection conclusion.
+\end{theorem}
+\begin{proof}
+Mathlib's actual scheme universally injective criterion gives both
+scheme-point injectivity and purely inseparable actual residue-field
+maps. These are derived from the true algebraic hypothesis, rather
+than stipulated native residue comparisons.
+
+Two native points with equal whole native images first have the same
+scheme support, by this actual scheme-point injectivity. After
+identifying the source supports, equality of the native images is
+equality of the two source residue valuations restricted under the
+same actual target-to-source residue-field homomorphism. That
+homomorphism is genuinely purely inseparable. The preceding actual
+inseparable power theorem therefore proves equality of both whole
+source residue valuations, identifying the entire original native
+points. No native bijection or generator-value certificate is used.
+\end{proof}
+
+\begin{theorem}[Genuine universal-homeomorphism conditions give an absolute native homeomorphism]
+\label{scheme:integral-surjective-native-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.isHomeomorph_map_of_integral_surjective_universallyInjective,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.universalHomeomorph,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.universalHomeomorph_apply}
+\leanok
+\uses{scheme:universally-injective-native-map,scheme:integral-native-proper-map,
+scheme:integral-native-image}
+If an actual scheme morphism $f:X\to Y$ is integral, universally
+injective and surjective on scheme points, its original native map is
+a homeomorphism of the whole absolute native spaces. These are true
+algebraic universal-homeomorphism conditions. The resulting genuine
+homeomorphism retains the original entire native point map.
+No bounded coefficients, separatedness, finite-type, noetherian,
+field or completeness hypothesis is imposed on these schemes.
+\end{theorem}
+\begin{proof}
+The preceding derived power theorem makes the original native map
+injective. Genuine integral-image lifting and actual scheme-point
+surjectivity make it surjective on entire native points. The original
+native map is independently continuous, and the actual integral native
+proper-map theorem makes it closed. The genuine continuous-closed-
+bijective criterion therefore proves it is a homeomorphism without a
+compactness or Hausdorff assumption. Its canonical homeomorphism
+construction has precisely the original whole native map as its
+forward function. In particular it preserves the actual support map
+and every original residue evaluation transported through the genuine
+scheme morphism; it does not replace the map by a support-only model.
+No native inverse or bijection certificate is assumed, and no
+normalization or geometric-unibranch construction is claimed.
+\end{proof}
+
+\begin{theorem}[Native universal-homeomorphism invariance above every common prescribed base point]
+\label{scheme:relative-native-universal-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_injective_of_universallyInjective,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isHomeomorph_map_of_integral_surjective_universallyInjective,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.universalHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.universalHomeomorph_apply}
+\leanok
+\uses{scheme:universally-injective-native-map,scheme:relative-integral-native-proper-map,
+scheme:relative-integral-native-image}
+For any actual commuting scheme morphism over $\operatorname{Spec}R$
+satisfying these three true algebraic conditions, the native spaces
+over any common prescribed real seminorm $v$ are homeomorphic under
+the original whole fixed-base map. No bound on $v$ or proper or
+separated structure morphism is required.
+\end{theorem}
+\begin{proof}
+Equality of whole relative images implies equality of their absolute
+native images; the derived absolute injection identifies the original
+source points, and subtype equality gives relative injection. The
+actual same-base integral-image theorem supplies a whole relative lift
+of every native target point. The genuine relative integral native
+proper-map theorem makes the continuous original relative map closed.
+Thus its real continuous-closed-bijective criterion yields the stated
+homeomorphism, whose forward function remains the original entire
+prescribed-base native map.
+
+The assertion uses a common exact base point and actual algebraic
+morphism hypotheses. It does not assert a differently prescribed
+source point extension under arbitrary coefficient change, and does
+not claim an analytic structure-sheaf or normalization identification.
+\end{proof}

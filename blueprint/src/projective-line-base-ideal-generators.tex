@@ -1,0 +1,36 @@
+\section{Finite original generators of the whole projective base ideal}
+
+\begin{proposition}[One finite global family generates every affine base ideal]
+\label{prop:projective-line-base-ideal-finite-global-generators}
+Let $X\to\operatorname{Spec}R$ be an actual projective factorization,
+where $R$ is noetherian, and let $L$ be an invertible sheaf on $X$.
+There is one finite subset $G\subseteq\Gamma(X,L)$ such that
+\[
+ \mathfrak b(L)=\sum_{s\in G}\operatorname{im}
+       (L^\vee\xrightarrow{d\mapsto d(s)}\mathcal O_X).
+\]
+In particular, this same finite family computes the whole original
+base ideal on every affine open.
+\uses{def:actual-invertible-sheaf-base-ideal,prop:actual-line-global-section-evaluation}
+\lean{EnvelopeProperty.ProjectiveLineBaseIdealGenerators.exists_finite_global_generators}
+\leanok
+\end{proposition}
+\begin{proof}
+Invertibility makes $L$ quasicoherent and finitely presented. Finite
+coherent cohomology for the given projective factorization therefore
+makes $\Gamma(X,L)$ a finite module over $\Gamma(\operatorname{Spec}R,\mathcal O)$.
+Choose a finite generating set $G$ for this entire module, and let
+$J$ be the sum of its actual section-evaluation image ideals.
+
+Fix an affine open $U$ and any local dual section $d$ on $U$.
+The global sections $s$ whose coefficient $d(s|_U)$ belongs to
+$J(U)$ form a submodule over the same base ring: evaluation and
+restriction preserve zero and sums, and multiplication by a base
+function multiplies the coefficient by that function's image on
+$U$. This submodule contains every element of $G$, hence contains
+all global sections. Thus every original evaluation image is
+contained in $J$, so $\mathfrak b(L)\subseteq J$. Each summand of
+$J$ is one of the original summands defining $\mathfrak b(L)$,
+which gives the opposite inclusion. The family $G$ was chosen once
+globally, before $U$ and $d$, so it works on every affine open.
+\end{proof}

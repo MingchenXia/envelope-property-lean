@@ -1,0 +1,86 @@
+\section{Principalization on the original global Nadel scheme}
+
+\begin{lemma}\label{lem:kn-nadel-generic-nonzero-everywhere}
+\lean{EnvelopeProperty.Vanishing.NadelPrincipalization.nonzeroEverywhere_of_generic}
+\leanok
+On an integral scheme $X$, if the original ideal $I$ is nonzero at
+the generic point, it is nonzero at every stalk.
+\end{lemma}
+\begin{proof}
+The generic point specializes to each $x$.  The generic stalk ideal is
+the extension of $I_x$ along the native specialization map.  If $I_x$
+were zero, its extension would be zero, contradicting the original
+generic nonvanishing.  This uses the original ideal and its actual stalk
+maps and introduces no resolution datum.
+\end{proof}
+
+\begin{definition}\label{def:kn-nadel-original-global-bp}
+\lean{EnvelopeProperty.Vanishing.NadelPrincipalization.originalTriple,EnvelopeProperty.Vanishing.NadelPrincipalization.sequence}
+\leanok
+\uses{lem:kn-nadel-generic-nonzero-everywhere}
+For the original integral smooth projective $f:X\to\operatorname{Spec}k$
+of dimension $n$ and original ideal $I$ nonzero at the generic point,
+construct the algebraic principalization triple with precisely this $X$,
+$f$, $I$, $n$ and the empty boundary.  Denote its actual Hironaka BP
+sequence by $S$.
+\end{definition}
+\begin{proof}
+Original projectivity gives finite type, quasi-compactness and
+separatedness.  Original smoothness gives the prescribed pure relative
+dimension and the empty SNC boundary.  The lemma proves the required
+nonzero-at-every-stalk condition internally.  Apply the existing proved
+algebraic BP construction to this actual triple.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-nadel-original-global-principalization}
+\lean{EnvelopeProperty.Vanishing.NadelPrincipalization.sequence_isSmooth,EnvelopeProperty.Vanishing.NadelPrincipalization.stage_smoothOfRelativeDimension,EnvelopeProperty.Vanishing.NadelPrincipalization.totalTransform_isIdealOfSncDivisor,EnvelopeProperty.Vanishing.NadelPrincipalization.last_isProjectiveFactorization,EnvelopeProperty.Vanishing.NadelPrincipalization.isIso_restrict_compl}
+\leanok
+\uses{def:kn-nadel-original-global-bp}
+The produced finite sequence consists of smooth-centre blowups, its
+last structure morphism $S.\mathrm{composite}\,f$ is smooth of the same
+dimension $n$ and has an actual finite projective embedding, and the
+total transform $I\mathcal O_{S.\mathrm{last}}$ is the ideal of an SNC
+divisor.  Its composite is an isomorphism over the original complement
+of the support of $I$.
+\end{theorem}
+\begin{proof}
+The proved centre theorem of algebraic principalization gives smoothness
+of every actual centre for this triple.  The smooth-centre blowup
+dimension theorem propagates the original $n$ through the finite sequence.
+The original projective embedding and the proved polynomial projectivity
+of a blowup succession construct a projective factorization of the last
+structure morphism.  The BP monomial theorem applies to the original
+ideal, giving the actual SNC total transform.  The BP isomorphism-locus
+theorem gives the complement of the union of the original ideal support
+and the singular locus of the original boundary; the empty boundary has
+empty singular locus, so this is precisely the original ideal complement.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-nadel-original-principalization-integral}
+\lean{EnvelopeProperty.Vanishing.NadelPrincipalization.genericPoint_mem_unitLocus,EnvelopeProperty.Vanishing.NadelPrincipalization.unitLocus_dense,EnvelopeProperty.Vanishing.NadelPrincipalization.last_nonempty,EnvelopeProperty.Vanishing.NadelPrincipalization.last_isIntegral,EnvelopeProperty.Vanishing.NadelPrincipalization.composite_isProper,EnvelopeProperty.Vanishing.NadelPrincipalization.exists_dense_isIso}
+\leanok
+\uses{thm:kn-nadel-original-global-principalization}
+The original generic point belongs to the actual unit locus of $I$.
+This open is dense, the actual last scheme is nonempty and integral,
+and the actual composite $S.\mathrm{last}\to X$ is proper and isomorphic
+over that same dense open.
+\end{lemma}
+\begin{proof}
+The generic stalk is the original function field, so its maximal ideal
+is zero.  Generic nonvanishing of $I$ therefore excludes the generic
+point from its support.  A nonempty open in the original integral scheme
+is dense.  Its inverse under the proved actual isomorphism supplies a
+point on the last scheme.  For a finite blowup sequence on an integral
+scheme, final nonemptiness forces each intermediate blowup to be
+nonempty, hence its centre has proper support; the proved native blowup
+integrality theorem then propagates integrality.  Properness follows
+from the actual finite succession of blowups on the original Noetherian
+scheme.  The original support complement is the asserted dense
+isomorphism locus.
+\end{proof}
+
+This constructs global principalization from the original geometric data.
+It does not assert the global multiplier pushforward formula, birational
+canonical acyclicity, or higher-direct-image local vanishing.  Those remain
+the separate obligations of Lemma~\ref{lem:kn-nadel-original-resolution}
+and Lemma~\ref{lem:kn-nadel-local-vanishing}.

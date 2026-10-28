@@ -1,0 +1,64 @@
+\section{Kodaira vanishing over the original arbitrary affine base in characteristic zero}
+
+\begin{theorem}[The original relative ample Kodaira theorem]
+\label{thm:kn-relative-kodaira-characteristic-zero}
+\lean{EnvelopeProperty.Vanishing.RelativeKodairaCharacteristicZero.kodaira}
+\uses{lem:kn-relative-arithmetic-smooth-ample-model,lem:kn-relative-arithmetic-closed-kodaira,thm:relative-canonical-produced-witt-specialization,lem:relative-original-canonical-square-cohomology}
+\leanok
+Let $k$ be a field of characteristic zero, let $R$ be any
+finite-type $k$-algebra, and let
+$f:X\to\operatorname{Spec}k$ be separated and smooth of
+relative dimension $n$.  Let
+$g:X\to\operatorname{Spec}R$ be compatible with $f$, and let
+$L$ be the same original $g$-ample line.  Then
+\[
+ H^{q+1}(X,\omega_{X/k}\otimes L)=0
+ \qquad(q\geq0).
+\]
+The algebra $R$ may have zero divisors or nilpotents, and the
+smooth scheme $X$ may be disconnected.  Projectivity over $k$
+is not assumed.
+\end{theorem}
+\begin{proof}
+Construct the actual smooth integer coefficient domain
+$A\subset k$, the separate finitely presented algebra $B/A$,
+and the smooth separated dimension-$n$ model $Y/A$, projective
+over $B$, with the actual relatively ample line $M$ whose whole
+original pullback is $L$.  This construction retains the
+original cartesian square with $X/k$ and the original affine
+base fibre $k\otimes_A B\simeq R$.
+
+Compute the canonical-twisted model cohomology on the finite
+ordered affine cover furnished by relative projectivity over
+$B$.  Its complex is bounded, has terms flat over $A$ by the
+smoothness of $Y/A$, and has homology finite over $B$ by
+projective cohomology finiteness.  Generic freeness therefore
+gives one coefficient open where all its finitely many
+possibly nonzero homology modules are locally free over $A$.
+Choose a closed point of this open with finite residue field
+$\kappa$ of characteristic $p>n$, together with the actual
+coefficient lift $A\to W_2(\kappa)$ supplied by the smoothness
+of $A/\mathbb Z$.  Relative Witt Kodaira, using the actual
+special-fibre comparison and the original pulled-back $M$,
+annihilates the closed-fibre positive canonical-twisted
+cohomology.
+
+At this same point the localized homology modules of the
+coefficient complex are free, with arbitrary rank.  Tensor
+homology base change for this bounded flat complex identifies
+the closed-fibre homology with the residue scalar extension
+of those free modules.  A free module with zero scalar
+extension to a nonzero field is zero.  Thus the localized
+homology is zero and so is its extension to the injective
+coefficient field $k$.  The actual affine-cover fibre
+comparison identifies this with canonical-twisted cohomology
+on the original-field fibre of $Y/A$.
+
+Finally the original cartesian square identifies that fibre
+with the whole original $X$.  Smooth canonical base change
+identifies the pulled-back canonical model with
+$\omega_{X/k}$, and the whole original-line isomorphism
+identifies the other factor with $L$.  Cohomology transports
+through these actual module and scheme isomorphisms, proving
+the asserted vanishing.
+\end{proof}

@@ -1,0 +1,110 @@
+\subsection{Actual base-open isomorphisms and whole native model lifts}
+\label{subsec:native-base-open-modifications}
+
+\begin{theorem}[Whole native restrictions over an actual coefficient open]
+\label{scheme:native-base-open-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isoOverHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isoOverHomeomorph_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.point_mem_baseOpen_preimage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenRestrictionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenRestrictionHomeomorph_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.point_mem_modificationOpen,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modificationOpen_structure_commutes,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modificationOpenRestrictionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modificationOpenRestrictionHomeomorph_apply}
+\leanok
+\uses{scheme:relative-open-embedding,scheme:relative-valued-point-functor}
+Let $R$ be any commutative ring, $\nu$ any real-valued seminorm on $R$,
+and $f:X\to\operatorname{Spec}R$ an actual scheme structure map.
+If an actual open $U\subseteq\operatorname{Spec}R$ contains the scheme
+support of the whole prescribed base point, every fixed-$\nu$ native
+point of $X$ has its support in $f^{-1}U$. The actual open restriction
+therefore induces a genuine homeomorphism on whole prescribed-base
+native point spaces. Genuine commuting scheme isomorphisms likewise
+induce whole prescribed-base homeomorphisms. For an actual commuting
+morphism, its true source open is the actual preimage of the target
+coefficient-open preimage, and the genuine restricted scheme structure
+triangle commutes.
+\end{theorem}
+\begin{proof}
+Apply the support projection to the entire native basepoint equality.
+It identifies the actual image of every source support with the
+prescribed base support, and hence places it in $U$. The true native
+open-restriction homeomorphism identifies actual points of the open
+subscheme with precisely that support preimage. The just-derived
+support condition makes this preimage the entire fixed-base space.
+Actual scheme isomorphisms give native homeomorphisms through genuine
+residue-field maps; whole native functoriality and the true commuting
+structure triangle preserve the entire prescribed base point in both
+directions. Neither native surjectivity nor a point-lifting witness
+is supplied as an assumption. For a commuting source morphism, apply
+its entire original scheme structure triangle to obtain the same
+source-support containment. The actual morphism-restriction square and
+the original structure triangle give the complete restricted coefficient
+diagram.
+\end{proof}
+
+\begin{theorem}[Actual base-open modifications give full prescribed-base homeomorphisms]
+\label{scheme:native-base-open-modification}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenModificationHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenModificationHomeomorph_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenModificationHomeomorph_point,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.baseOpenModificationHomeomorph_eval,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.existsUnique_map_eq_of_isIso_over_baseOpen,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.basePoint_mem_basicOpen_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.principalBaseModificationHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.principalBaseModificationHomeomorph_apply}
+\leanok
+\uses{scheme:native-base-open-restriction}
+Let $\mu:X\to Y$ commute with the actual structure maps to
+$\operatorname{Spec}R$. Suppose the genuine scheme restriction of
+$\mu$ over $f_Y^{-1}U$ is an isomorphism, where $U$ is an actual base
+open containing the prescribed base support. The entire native
+fixed-$\nu$ map induced by $\mu$ is a homeomorphism. Its forward map
+is the original whole native map and it preserves every section value
+through the actual section pullback. In particular every whole target
+point has a unique whole source lift. For $U=D(g)$, it suffices that
+$\nu(g)\ne0$. No properness, boundedness, field, finite type,
+Noetherianity or native-bijection certificate is required.
+\end{theorem}
+\begin{proof}
+All target supports lie in the true target open $f_Y^{-1}U$ by the
+preceding producer. The entire commuting base diagram similarly puts
+all source supports in its actual inverse image under $\mu$. On these
+real open subschemes the given genuine restricted scheme morphism is
+an isomorphism. Conjugate its whole prescribed-base native homeomorphism
+by the actual open-restriction homeomorphisms. The real restriction
+scheme square and full native functoriality identify this conjugate
+with the original map induced by $\mu$, on entire residue-valued
+points. Both inverse laws prove unique whole point lifts. Genuine
+section evaluation naturality gives all original section values,
+rather than only a support or generator comparison. On $D(g)$ the
+prescribed basepoint support is the true valuation kernel, so
+$\nu(g)\ne0$ is precisely its membership in that actual open.
+\end{proof}
+
+\begin{theorem}[Actual proper centers and intrinsic ideals under these lifts]
+\label{scheme:proper-base-open-modification-model-functions}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_baseOpenModificationHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_baseOpenModificationHomeomorph_symm,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_baseOpenModificationHomeomorph_symm}
+\leanok
+\uses{scheme:native-base-open-modification,scheme:proper-center-map,scheme:proper-model-ideal-pullback}
+If both actual structure maps are proper and the model coefficient
+seminorm is bounded by one on $R$, the whole lifted point's actual
+proper center maps to the original point's center. For every actual
+target ideal sheaf, the true geometric pullback ideal has the same
+intrinsic norm and logarithm under the whole native homeomorphism.
+\end{theorem}
+\begin{proof}
+The preceding homeomorphism is exactly the original whole native map.
+Apply actual proper-center functoriality to the genuine commuting
+scheme triangle. The genuine ideal-sheaf pullback norm and logarithm
+identities then apply to the actual lifted point. These are actual
+geometric pullbacks and centers; the topological isomorphism alone
+is not used to assume any center or model-function equality. Properness
+and bounded model coefficients occur only in these center/ideal
+corollaries, not in the homeomorphism construction. Arbitrary ideals
+on the source are not asserted to descend, and no analytic coherent
+sheaf, Cartier or potential comparison is asserted.
+\end{proof}

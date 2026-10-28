@@ -1,0 +1,24 @@
+\section{The native finite-field trace respects whole scheme isomorphisms}
+
+\begin{lemma}[Whole original finite-field trace invariance]
+\label{lem:kn-structure-trace-field-iso}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.fieldStructureTrace_iso_top}
+\leanok
+Let $q:Z\to\operatorname{Spec}K$ be finite over the field $K$ and
+$e:W\simeq Z$ any actual scheme isomorphism. For every original whole
+section of $Z$, its native trace for $q$ equals the native trace of its
+actual pullback for the original composite $W\to Z\to\operatorname{Spec}K$.
+No coefficient-map or trace-matching certificate is assumed.
+\uses{lem:kn-structure-trace-field-producer}
+\end{lemma}
+\begin{proof}
+The actual map on whole sections of $e$ is a ring isomorphism. It is an
+isomorphism of the original $K$-algebras: the coefficient action is the
+original map on sections composed with the inverse spectrum--sections
+isomorphism for $K$, and the formula for sections of a composite scheme
+map makes this square commute on every coefficient. Native algebra
+trace is invariant under this algebra isomorphism, since the two
+multiplication endomorphisms are conjugate. Apply the proved whole
+section formula for the actual finite-field sheaf trace on each side.
+This gives the asserted equality for every original section.
+\end{proof}

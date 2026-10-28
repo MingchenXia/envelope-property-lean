@@ -1,0 +1,44 @@
+\section{Every original local section has its native trace coefficient}
+
+\begin{lemma}[The original local trace on every actual section]
+\label{lem:kn-structure-trace-original-local-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnSpec_top}
+\leanok
+For every actual section of the restriction of the original
+$\pi_*\mathcal O_Y$ to a whole free chart's base coefficient spectrum,
+the constructed local trace has coefficient equal to the native algebra
+trace of its image under the actual whole chart pushforward comparison.
+This includes sections on that whole local inverse image; extension to
+a global section of $Y$ is not required.
+\uses{lem:kn-structure-trace-original-local-map,lem:kn-structure-trace-raw-top}
+\end{lemma}
+\begin{proof}
+By construction the actual local trace is the whole chart pushforward
+comparison, followed by the native affine sheaf trace, followed by the
+inverse actual unit restriction isomorphism. Read its value through
+the forward actual unit isomorphism. The two unit isomorphisms cancel
+on every section, and the proved native affine whole-section trace
+formula gives the stated coefficient.
+\end{proof}
+
+\begin{lemma}[Every original local section specializes to the actual field trace]
+\label{lem:kn-structure-trace-original-local-field-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnSpec_fieldBaseChange_top}
+\leanok
+After any field specialization of the original coefficient ring of a
+whole free chart, the coefficient of the actual local trace on every
+original local section equals the actual finite-field sheaf trace of
+its image under the actual first projection from the entire base change.
+No matching identity is supplied, and the original section need not
+extend to the whole original source.
+\uses{lem:kn-structure-trace-original-local-value,lem:kn-structure-trace-affine-field-specialization}
+\end{lemma}
+\begin{proof}
+The preceding lemma reads the same local trace through its whole chart
+comparison. Apply the proved affine-to-field specialization formula to
+that actual whole chart section. It identifies the image of the affine
+trace coefficient with the actual field trace of the actual first
+projection pullback of that section. Substituting the preceding local
+trace coefficient equality proves the assertion for every original
+local section.
+\end{proof}

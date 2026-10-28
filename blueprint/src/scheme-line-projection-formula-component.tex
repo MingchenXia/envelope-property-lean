@@ -1,0 +1,43 @@
+\section{Components of the same original line projection formula}
+
+\begin{lemma}[The original projection-formula component]
+\label{lem:line-pf-original-hom-component}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.projectionFormulaOfTensorInverse_hom_component}
+\uses{lem:line-pf-original-inverse-tensor-mate,lem:line-pf-original-unit-normalization}
+\leanok
+Let $F\dashv G$ be the original adjunction, let $F$ be braided strong
+monoidal, and let $P_M$ be the original inverse-tensor projection formula
+for the original inverse pair $(M,Q,e)$.  For every $N$, its original
+hom is
+\[
+ P_M(N)=\eta_{G(N)\otimes M}\,
+   G(\delta_{G(N),M})\,
+   G(\epsilon_N\otimes\mathrm{id}_{F(M)}).
+\]
+No alternative projection morphism is chosen.
+\end{lemma}
+\begin{proof}
+Naturality of the original $P_M$ at $\epsilon_N:F(G(N))\to N$
+identifies its component at $N$ after precomposition by
+$G(\epsilon_N)\otimes\mathrm{id}$.  Precompose further by
+$\eta_{G(N)}\otimes\mathrm{id}$ and use the original right triangle.
+The already proved strong tensor-unit identity for the same original
+$P_M$ rewrites the resulting component at $F(G(N))$, giving the formula.
+\end{proof}
+
+\begin{lemma}[The actual native component]
+\label{lem:line-pf-native-hom-component}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.lineProjectionFormulaObj_hom_component}
+\uses{lem:line-pf-original-hom-component,thm:fc-original-scheme-line-projection-formula}
+\leanok
+The same formula holds for the actual original scheme pullback,
+pushforward, their native adjunction, original invertible line, and
+original projection-formula object.  Its inverse tensorator is that of
+the unchanged original pullback monoidal structure.
+\end{lemma}
+\begin{proof}
+Specialize the preceding identity using the already proved native
+pullback braiding, whose monoidal parent is definitionally the original
+pullback monoidal structure.  The inverse pair is exactly the original
+sheaf dual and original evaluation used in the original line PF.
+\end{proof}

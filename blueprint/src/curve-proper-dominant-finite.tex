@@ -1,0 +1,25 @@
+\section{Actual proper dominant maps from original integral curves are finite}
+\begin{lemma}\label{lem:curve-proper-closed-subset-finite}
+Every actual proper closed subset of an original Noetherian integral scheme of dimension at most one has finitely many actual points.
+\uses{thm:fc-curve-proper-support-points}
+\lean{EnvelopeProperty.CurveProperDominantFinite.finite_closed_subset}\leanok
+\end{lemma}
+\begin{proof}
+Take its actual vanishing ideal sheaf. Its support is exactly the original closed subset. The genuine proper-support closed-subscheme theorem gives finitely many actual points of the same native subscheme, whose original closed inclusion has precisely that support as its image.
+\end{proof}
+\begin{lemma}\label{lem:curve-proper-dominant-fibers-finite}
+An actual proper dominant map from an original Noetherian integral scheme of dimension at most one to a nontrivial integral scheme has finite actual fibers.
+\uses{lem:curve-proper-closed-subset-finite}
+\lean{EnvelopeProperty.CurveProperDominantFinite.finite_preimage_singleton}\leanok
+\end{lemma}
+\begin{proof}
+A nongeneric original source point is closed. Properness makes its actual image closed, so it cannot map to the generic point of a nontrivial integral target. Thus the generic fiber contains only the original generic source point. For a nongeneric target point, its actual closure excludes the original target generic point; dominance sends source generic point to target generic point, so the inverse image of that closure is a proper original closed subset of the source. The first lemma makes that subset finite, and hence its actual fiber finite.
+\end{proof}
+\begin{theorem}\label{thm:curve-proper-dominant-finite}
+Every such same actual proper dominant morphism is finite, with no finite-map or flatness hypothesis.
+\uses{lem:curve-proper-dominant-fibers-finite}
+\lean{EnvelopeProperty.CurveProperDominantFinite.isFinite}\leanok
+\end{theorem}
+\begin{proof}
+Properness implies local finite type. The actual finite-fiber criterion gives local quasi-finiteness, and the native proper quasi-finite theorem gives finiteness of the same original morphism.
+\end{proof}

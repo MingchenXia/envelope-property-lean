@@ -1,0 +1,52 @@
+\section{Positive rational ample sums come from actual original ample lines}
+\label{sec:native-numerical-rational-ample-lines}
+
+\begin{lemma}[Actual ample-line representatives of finite positive integer sums]
+\label{lem:native-numerical-integer-ample-line-sums}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_ample_integer_line_sum}
+\leanok
+\uses{thm:fc-original-ample-line-positive-powers,thm:fc-original-ample-tensor-ample,lem:native-numerical-line-tensor-power}
+\source{bj22-trivval:sec:tc}
+For a nonempty finite family of actual geometrically ample lines $A_i$
+on integral projective $X$ and positive integers $m_i$, there is an
+actual geometrically ample line $L$ with the exact original numerical
+class $[L]=\sum_i m_i[A_i]$.
+\end{lemma}
+\begin{proof}
+The positive actual power $A_i^{\otimes m_i}$ is genuinely geometrically
+ample and has numerical class $m_i[A_i]$. For a one-element family use
+this actual power itself. For a larger family, take the actual tensor
+of the first power with the inductively constructed ample line for the
+remaining original family. Actual ample tensor closure and numerical
+tensor additivity prove the assertion. Nonemptiness ensures that no
+ampleness of the structure line is presumed.
+\end{proof}
+
+\begin{theorem}[Positive rational original ample sums have actual ample representatives]
+\label{thm:native-numerical-rational-ample-lines}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_rational_ample_line_representative}
+\leanok
+\uses{lem:native-numerical-integer-ample-line-sums}
+\source{bj22-trivval:sec:tc}
+For every nonempty finite family of actual geometrically ample original
+lines $A_i$ and strictly positive rational coefficients $q_i$, there
+exist an internally derived positive integer $d$ and an actual original
+geometrically ample line $L$ such that
+\[
+ \sum_i q_i[A_i]=\frac1d[L]
+\]
+in the same original real numerical quotient. Neither a denominator nor
+numerical ampleness invariance is supplied as an assumption.
+\end{theorem}
+\begin{proof}
+Take $d$ to be the product of the positive reduced denominators of the
+original finite rational family. For each index let $m_i$ be its
+nonnegative reduced numerator multiplied by all the other denominators.
+The reduced fraction identity proves $q_i=m_i/d$, and strict positivity
+of $q_i$ makes $m_i$ a positive natural number. The preceding theorem
+constructs an actual geometrically ample $L$ whose original numerical
+class is $\sum_i m_i[A_i]$. Real scalar distributivity through this exact
+finite sum gives the asserted equality with $(1/d)[L]$. The construction
+uses actual geometry of ample powers and tensors throughout, so it
+requires no numerical converse to ampleness.
+\end{proof}

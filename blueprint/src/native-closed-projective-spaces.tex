@@ -1,0 +1,85 @@
+\subsection{Actual closed projective subvarieties in the normalized model}
+\label{subsec:native-closed-projective-spaces}
+
+\begin{theorem}[Genuine closed-projective normalized comparison]
+\label{projective:native-closed-normalized-comparison}
+\lean{EnvelopeProperty.ProjBerk.normalizedClosedLocus,
+  EnvelopeProperty.ProjBerk.isClosed_normalizedClosedLocus,
+  EnvelopeProperty.ProjBerk.nativeClosedProjectiveHomeomorph,
+  EnvelopeProperty.ProjBerk.nativeClosedProjectiveHomeomorph_apply,
+  EnvelopeProperty.ProjBerk.nativeClosedProjectiveHomeomorph_support_toIdeal}
+\leanok
+\uses{scheme:relative-native-closed-immersion,projective:normalized-native-homeomorphism}
+Let $P$ be the polynomial projective scheme
+\[
+ P=\operatorname{Proj}(R[X_0,\ldots,X_n]),
+\]
+and let $g:X\to P$ be an actual closed immersion of schemes. For any prescribed real seminorm $v$ on $R$, the
+native valued-point space of $X$ over the true composite base morphism
+is homeomorphic to the normalized fixed-base projective points whose
+actual homogeneous prime support lies in the genuine scheme image of
+$g$. This normalized locus is closed. The entire native image point and
+its full original polynomial seminorm kernel are preserved.
+\end{theorem}
+\begin{proof}
+The actual scheme image is closed. The normalized support map is genuinely
+continuous, so its inverse image is a true closed normalized locus.
+The proved prescribed-base native closed-immersion homeomorphism
+identifies the native points of $X$ with the actual support-closed locus
+in native projective space. The genuine global normalized/native
+homeomorphism preserves precisely that prime support, so restricting it
+to this true locus gives another genuine homeomorphism. Compose the
+first map with the inverse of this restriction.
+
+The support-image homeomorphism retains the original whole native map,
+and the second restricted homeomorphism has genuine inverse identities.
+Their composition therefore preserves the entire native image point,
+not only its support or coordinate norms. The already proved genuine
+native prime-support identity identifies that point's entire homogeneous
+prime ideal with the full polynomial valuation kernel of the resulting
+normalized point. No presentation, chart or point-comparison certificate
+is assumed.
+\end{proof}
+
+\begin{theorem}[Actual closed-projective compactness and closed-subscheme specialization]
+\label{projective:native-closed-projective-compactness}
+\lean{EnvelopeProperty.ProjBerk.compactSpace_nativeClosedProjective,
+  EnvelopeProperty.ProjBerk.t2Space_nativeClosedProjective,
+  EnvelopeProperty.ProjBerk.isCompact_nativeClosedProjective_relativeLocus,
+  EnvelopeProperty.ProjBerk.nativeProjectiveSubschemeHomeomorph,
+  EnvelopeProperty.ProjBerk.nativeProjectiveSubschemeHomeomorph_apply,
+  EnvelopeProperty.ProjBerk.compactSpace_nativeProjectiveSubscheme}
+\leanok
+\uses{projective:native-closed-normalized-comparison,projective:native-fixed-base-compactness,scheme:relative-native-closed-immersion}
+The actual prescribed-base native space of $X$ is compact and Hausdorff,
+and its whole fixed-base locus is a compact subset of the absolute native
+space. These assertions hold for arbitrary $R$ and $v$, without any
+uniform coefficient bound. For every actual ideal-sheaf datum $I$ on
+polynomial projective space, its true closed subscheme has the resulting
+homeomorphism to normalized points supported on the genuine support of
+$I$, retaining the entire original inclusion map, and is compact.
+\end{theorem}
+\begin{proof}
+Actual native projective space above $v$ is genuinely compact without
+bounding all coefficient values. The proved relative native closed
+embedding of $g$ has closed image there, and its genuine subspace
+identification transports compactness to its source. Equivalently the
+preceding homeomorphism identifies the source with a closed subset of
+the compact normalized fixed-base space. That normalized space is
+Hausdorff, so the genuine embedding also gives Hausdorffness of the
+source. The compact-subtype criterion yields compactness of its original
+fixed-base locus in the absolute native point space.
+
+For ideal-sheaf data, Mathlib constructs the actual closed subscheme and
+its actual closed immersion, with scheme image precisely the datum's
+true support. Apply the preceding comparison and compactness producers
+to that inclusion. The proved image/support identity rephrases the
+normalized locus as the stated support locus; the full native inclusion
+point remains unchanged.
+
+The proofs retain nilpotents, empty closed subschemes and $n=0$, and need
+no field, completeness, reducedness, finite-generation or noetherian
+assumption. No nonemptiness of a closed subscheme is asserted. This is a
+point-space and topology comparison, not an analytic structure-sheaf or
+coherent analytic ideal identification.
+\end{proof}

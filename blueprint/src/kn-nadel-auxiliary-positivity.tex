@@ -1,0 +1,77 @@
+\section{Actual positive auxiliary powers for the original components}
+
+\begin{lemma}[The original invertible twist in its original tensor order]
+\label{lem:kn-nadel-auxiliary-eventual-very-ample}
+\lean{EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_eventual_twist_isVeryAmple}
+\leanok
+\uses{thm:fc-original-ample-line-twist-very-ample}
+For the original integral $X\to\operatorname{Spec}R$, ample line $H$
+and invertible line $M$, the actual module $M\otimes H^{\otimes r}$
+is geometrically very ample for every sufficiently large original $r$.
+\end{lemma}
+\begin{proof}
+Use the existing actual eventual very-ampleness producer for
+$H^{\otimes r}\otimes M$. The whole native tensor symmetry transports
+its internally constructed embedding and original twist comparison to
+the displayed original tensor order.
+\end{proof}
+
+\begin{theorem}[A common actual ample power for all original denominators]
+\label{thm:kn-nadel-auxiliary-positive-powers}
+\lean{EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_uniform_auxiliary_power,
+EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_auxiliary_power,
+EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_uniform_auxiliary_power_tensorObj}
+\leanok
+\uses{thm:fc-original-ample-line-twist-very-ample,
+lem:fc-original-ample-eventual-very-ample}
+Let $f:X\to\operatorname{Spec}R$ be the original morphism with $X$
+integral, let $H$ be an original geometrically ample line, and let
+$(M_i)_{i\in I}$ be a finite original family of invertible modules.
+For original positive integers $m_i$, there is an internally produced
+integer $r>0$ such that $H^{\otimes r}$ is very ample and
+\[
+ (H^{\otimes r})^{\otimes m_i}\otimes M_i
+\]
+is very ample for every original $i$. All structure morphisms and whole
+modules in these assertions are the original ones. Neither auxiliary
+lines, generating sections nor projective embeddings are supplied.
+\end{theorem}
+\begin{proof}
+Actual eventual twisted very ampleness supplies one threshold for every
+original $H^{\otimes t}\otimes M_i$, by taking the maximum of the finitely
+many actual thresholds. Its proof constructs finite global generators
+from the original positive-power ample datum, then combines the original
+embedding with the generated projective map through the actual Segre
+embedding. Independently, actual eventual very ampleness of the original
+$H$ gives a threshold for $H^{\otimes r}$ itself.
+
+Take $r$ larger than both thresholds. Since every original $m_i\geq1$,
+one has $r m_i\geq r$. Thus the first threshold proves very ampleness of
+$H^{\otimes r m_i}\otimes M_i$. The actual whole iterated-power
+isomorphism identifies this with the displayed original module. The same
+actual exponent $r$ works simultaneously for the whole finite family.
+\end{proof}
+
+\begin{corollary}[Original component inverses and the actual auxiliary systems]
+\label{cor:kn-nadel-auxiliary-component-powers}
+\lean{EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_component_auxiliary_power,
+EnvelopeProperty.Vanishing.NadelAuxiliaryPositivity.exists_component_auxiliary_power_tensorObj}
+\leanok
+\uses{thm:kn-nadel-auxiliary-positive-powers}
+Let $D_i$ be the original component lines. The actual common auxiliary
+line $H_i=H^{\otimes r}$ can be chosen internally so that $H_i$ and
+$H_i^{\otimes m_i}\otimes D_i^\vee$ are very ample for every original
+$i$. In particular this applies to $D_i=\mathcal O(D_i^{\mathrm{geom}})$,
+whose actual dual is the original inverse component line.
+The same conclusion holds for the actual sheafified tensor product,
+with the original power as first factor and the original component
+inverse as second factor.
+\end{corollary}
+\begin{proof}
+Apply the theorem to the actual duals of the original component lines;
+their invertibility is derived from that of the original lines. The
+native whole tensor comparison transports the same constructed closed
+embedding and twist isomorphism to the actual sheafified tensor object.
+No smooth auxiliary divisor or section is asserted by this positivity
+step: those are subsequent Bertini producers.
+\end{proof}

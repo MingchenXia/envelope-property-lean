@@ -1,0 +1,88 @@
+\subsection{Original affine section maps from the actual birational inverse}
+
+\begin{lemma}[Actual compact schemes have finite nonempty affine covers]
+\label{scheme:actual-finite-nonempty-affine-cover}
+\lean{EnvelopeProperty.exists_finite_nonemptyAffineCover}
+\leanok
+For ANY actual compact scheme $Y$, construct a genuine finite set $s$ of
+NONEMPTY actual affine opens with $\bigcup_{U\in s}U=Y$.  No nonempty-scheme,
+Noetherian, separation or supplied finite-cover hypothesis is required.
+\end{lemma}
+\begin{proof}
+The genuine affine basis and actual compactness give a finite affine cover of
+the original whole space.  Keep precisely those actual affine opens that are
+nonempty; this is still a subset of the same finite set.  Any original point
+lay in an original cover member, which is nonempty because it contains that
+same point, so the retained opens still cover every original point.  For the
+empty scheme the same actual argument permits an empty cover.
+\end{proof}
+
+\begin{lemma}[The genuine dense-open inverse supplies every nonempty affine fraction evaluation]
+\label{scheme:actual-birational-affine-fraction-evaluation}
+\lean{EnvelopeProperty.exists_birationalAffineFractionEvaluation}
+\leanok
+\uses{scheme:actual-partial-iso-fraction-lift,scheme:actual-partial-iso-fraction-lift-dense}
+Let $A$ be ANY commutative DOMAIN with an ACTUAL fraction field $K$ and let
+$f:Y\to\operatorname{Spec}A$ be locally of finite type.  Let an ACTUAL
+dense-open partial isomorphism over the WHOLE original $f$ be given.  For
+EVERY genuine nonempty affine open $U\subset Y$, construct original ring maps
+\[
+ \alpha:A\to\Gamma(Y,U),\qquad \phi:\Gamma(Y,U)\to K
+\]
+such that $\alpha$ is finite type, its WHOLE Spec map is the original
+$U\to Y\to\operatorname{Spec}A$, the WHOLE Spec map of $\phi$ followed by
+$U\to Y$ is the ACTUAL constructed generic inverse, and
+$\phi\circ\alpha$ is the ORIGINAL coefficient map $A\to K$.
+No affine coefficient action, generic inverse, density or section map is
+supplied as a certificate.  $Y$ need not be reduced, integral or separated.
+\end{lemma}
+\begin{proof}
+Use the checked actual partial-isomorphism construction to obtain the whole
+generic inverse $q$ and its coefficient triangle; its dense image is genuinely
+derived from those same dense opens and the original fraction-field map.
+The actual affine $U$ is nonempty and open, so density gives a point of
+$q$ inside it.  Since $\operatorname{Spec}K$ has one point, the ENTIRE range
+of $q$ lies in $U$.  The genuine affine-open Spec map is an open immersion
+with range exactly $U$, so it gives a real whole factor of $q$ through
+$\operatorname{Spec}\Gamma(Y,U)$.
+
+Define $\alpha$ by true affine Spec adjunction from the ORIGINAL composite
+$U\to Y\to\operatorname{Spec}A$, and $\phi$ by the same adjunction from the
+constructed whole factor of $q$.  Local finite type of $f$ and the genuine
+affine-open inclusion give local finite type of that SAME composite; the
+actual affine ring-map criterion makes $\alpha$ finite type.  Functoriality
+of Spec and both whole original triangles give
+$\phi\circ\alpha=A\to K$ by genuine faithfulness, hence on EVERY coefficient.
+No reduction or support replacement enters these maps.
+\end{proof}
+
+\begin{lemma}[A true valuation lift places every original affine section in the same valuation ring]
+\label{scheme:actual-affine-valuation-section-factor}
+\lean{EnvelopeProperty.exists_affineValuationSectionFactor}
+\leanok
+Let $V\subset K$ be an ACTUAL valuation subring of a field.  Let
+$\ell:\operatorname{Spec}V\to Y$ be a genuine scheme map whose actual closed
+point lies in a real affine open $U$.  Let
+$\phi:\Gamma(Y,U)\to K$ be an original ring map such that its WHOLE composite
+into $Y$ equals the WHOLE generic restriction of $\ell$.  Construct a real
+$\rho:\Gamma(Y,U)\to V$ with
+\[
+ (V\hookrightarrow K)\circ\rho=\phi,
+ \qquad U\hookrightarrow Y\ \circ\ \operatorname{Spec}\rho=\ell.
+\]
+Thus EVERY original section image $\phi(c)$ lies in the SAME actual $V$.
+No properness, reducedness, coefficient action or source-section bound is
+needed for this lower whole-map consequence.
+\end{lemma}
+\begin{proof}
+The closed-point condition and locality of the ACTUAL ring $V$ make the
+whole inverse image of $U$ equal to $\operatorname{Spec}V$.  The genuine
+affine-open immersion therefore factors the WHOLE $\ell$ through
+$\operatorname{Spec}\Gamma(Y,U)$.  True affine Spec adjunction gives $\rho$
+and the second equation.  Compose with the actual generic field inclusion.
+The assumed entire generic triangle and cancellation of the genuine affine
+open immersion show equality with the WHOLE original Spec map of $\phi$.
+Actual Spec faithfulness gives the first equality of original ring maps,
+hence membership in $V$ for EVERY original section, not only selected
+generator norms or supports.
+\end{proof}

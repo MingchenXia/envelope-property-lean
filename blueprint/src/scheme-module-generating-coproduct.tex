@@ -1,0 +1,22 @@
+\section{Actual original coproduct generating families}
+
+\begin{lemma}[The original summand generators generate the whole coproduct]
+\label{lem:scheme-original-coproduct-generating-sections}
+\lean{EnvelopeProperty.SchemeModuleGeneratingCoproduct.evaluation,EnvelopeProperty.SchemeModuleGeneratingCoproduct.evaluation_epi,EnvelopeProperty.SchemeModuleGeneratingCoproduct.generatingSections,EnvelopeProperty.SchemeModuleGeneratingCoproduct.generatingSections_isFiniteType}
+\leanok
+For any family of original scheme modules with original generating families,
+the union of these families defines a genuine free evaluation epimorphism
+onto the same whole original coproduct. A finite family of finite generating
+families gives an actual finite generating family of that coproduct.
+\end{lemma}
+\begin{proof}
+Use the genuine free-Hom equivalence on the images of all original summand
+generators under the actual coproduct inclusions. On the free module of each
+summand's generators, this actual evaluation factors as its original
+surjective evaluation followed by the original summand inclusion. If two
+maps out of the whole coproduct agree after the evaluation, precomposition
+with these factors and cancellation of each original evaluation show that
+they agree on every original summand. Coproduct extensionality gives equality,
+which proves epimorphism. The actual generator index is the dependent sum of
+the original indices, hence finite under the stated finite hypotheses.
+\end{proof}

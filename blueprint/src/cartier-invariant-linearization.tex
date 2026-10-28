@@ -1,0 +1,74 @@
+\section{Canonical module linearization of actual invariant Cartier ideals}
+\begin{lemma}[Whole pullback inclusion and actual composition]
+\label{lem:cartier-whole-pullback-inclusion}
+\uses{lem:actual-ideal-module-canonical-pullback-comp,thm:actual-cartier-module-global-flat-pullback}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.pullbackModuleInclusion,AlgebraicGeometry.Scheme.IdealSheafData.pullbackModuleInclusion_eq,AlgebraicGeometry.Scheme.IdealSheafData.pullbackModuleInclusion_comp,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.pullbackModuleInclusion_mono}
+The actual pullback of the original ideal inclusion followed by the genuine
+structure-module comparison is its canonical geometric comap inclusion.
+It respects native whole pullback composition. For a Cartier ideal under
+a flat morphism this whole module inclusion is a monomorphism.
+\end{lemma}
+\begin{proof}
+Use the actual canonical ideal-module inclusion triangle for the first
+identity. Naturality of native pullback composition moves the original
+ideal inclusion past that composition isomorphism, and the genuine
+structure-module unit composition identity gives the second assertion.
+For the last assertion the actual canonical Cartier comparison is an
+isomorphism by global flat base change, and the geometric ideal inclusion
+is an actual monomorphism. Their composite is therefore a monomorphism.
+\end{proof}
+
+\begin{lemma}[Canonical comparison of two whole invariant Cartier pullbacks]
+\label{lem:cartier-invariant-module-iso}
+\uses{lem:cartier-whole-pullback-inclusion,lem:actual-ideal-module-equality-iso}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_hom_comp_canonical,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_hom_inclusion,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_hom_unique}
+If two actual flat scheme morphisms from the same original source pull
+back the entire Cartier ideal to the same geometric ideal, their actual
+module pullbacks have a canonical isomorphism. It preserves the entire
+included structure-module section map and is uniquely determined by that
+whole inclusion identity.
+\end{lemma}
+\begin{proof}
+Compose the genuine canonical flat Cartier comparison for the first
+morphism, the module isomorphism from the literal entire ideal equality,
+and the inverse of the genuine canonical comparison for the second
+morphism. Cancelling its actual inverse proves the stated canonical-map
+formula. Compose with the actual final ideal inclusion; whole ideal
+equality preserves the original inclusion, giving the true ambient
+inclusion identity. The second whole pullback inclusion is a monomorphism
+by the preceding lemma, so cancellation proves uniqueness. No module
+comparison or linearization is assumed.
+\end{proof}
+
+\begin{lemma}[Transitivity and actual pullback naturality]
+\label{lem:cartier-invariant-module-coherence}
+\uses{lem:cartier-invariant-module-iso,lem:cartier-whole-pullback-inclusion}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_refl,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_trans,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_pullback,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_congr,AlgebraicGeometry.Scheme.IdealSheafData.pullbackComparisonIso,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.invariantModuleIso_pullback_iso}
+These canonical invariant Cartier module isomorphisms have the identity
+and transitivity laws. Pulling one back along any actual morphism whose two composites are flat
+agrees with the canonical comparison of the composite maps, conjugated
+by the genuine native pullback-composition isomorphisms.
+\end{lemma}
+\begin{proof}
+For identity and transitivity, compose the actual candidate map with the
+whole final pullback inclusion. The preceding normalization and actual
+associativity reduce it to the original first inclusion. Uniqueness
+therefore gives the claimed genuine entire sheaf map equality. For
+pullback, postcompose both candidates with native composition for the
+second morphism and its whole pullback inclusion. This is a monomorphism.
+The true pullback-inclusion composition identity turns the pulled-back
+side into the actual pullback of its normalization followed by the
+original structure-module comparison. Functoriality and the actual
+normalization identify it with the whole first composite inclusion.
+The other side gives that same map by normalization for the genuine
+composite ideal equality. Cancel the actual final monomorphism. This is
+whole scheme functoriality, before specialization to the actual group
+unit and multiplication diagrams. In particular the base morphism itself
+need not be flat, as is needed for the actual group unit section. When
+the two original scheme maps are literally equal, equality induction and
+the true identity law give exactly the native pullback equality
+isomorphism, with no chosen comparison map.
+\end{proof}

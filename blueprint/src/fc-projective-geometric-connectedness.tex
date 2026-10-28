@@ -1,0 +1,50 @@
+\subsection{Geometric connectedness of the whole original projective birational fibre}
+
+\begin{theorem}[Every original field-valued fibre is connected]
+\label{thm:fc-projective-birational-field-fibre-connected}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGeometricConnectedness.connectedSpace_fieldFibre}
+\uses{thm:fc-projective-completed-local-fibre-model,thm:fibre-projective-formal-sections,thm:fc-compatible-local-sections-connected-first-model}
+Let $F$ be a field, let $A$ be a normal domain of finite type over $F$,
+and let $f:X\to\operatorname{Spec}A$ have a projective factorization and
+be birational with reduced source. For every field extension $K/F$ and
+every $F$-algebra map $w:A\to K$, the entire scheme-theoretic fibre
+$X\times_A\operatorname{Spec}K$ is connected.
+\end{theorem}
+\begin{proof}
+Construct the actual complete flat Noetherian local $A$-algebra $B$ with
+residue field $K$ associated to $w$. The literal base-changed scheme
+$X_B$ has a projective factorization, and its coefficient homomorphism
+$B\to\Gamma(X_B,\mathcal O)$ is bijective: proper birationality over the
+normal domain $A$ first identifies $\Gamma(X,\mathcal O)$ with $A$, and
+genuine flat QCQS base change then identifies the full section ring with
+$B$. No normality or reducedness of the completed model is required.
+Actual projective formal functions identify $\Gamma(X_B,\mathcal O)$
+with the ring of compatible whole sections of all positive-order
+maximal-ideal thickenings. This compatible-section ring is therefore
+local, because it is isomorphic to $B$. Every idempotent on the actual
+closed fibre lifts uniquely to compatible idempotents on these
+nilpotent thickenings, and a local ring has only the idempotents $0$ and
+$1$. The compatible-section ring is nontrivial, so the closed fibre is
+nonempty. The correspondence of global idempotents with clopen subsets
+therefore makes this whole fibre connected. Finally the exact
+closed-fibre base-change isomorphism identifies this scheme with the
+whole original fibre over $w$. This argument never identifies the
+nonreduced closed-fibre global-section ring with $K$.
+\end{proof}
+
+\begin{theorem}[Standard geometric connectedness without an extra input]
+\label{thm:fc-projective-birational-geometrically-connected}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGeometricConnectedness.geometricallyConnected}
+\uses{thm:fc-projective-birational-field-fibre-connected}
+Under the preceding hypotheses the actual original morphism $f$ is
+geometrically connected in the standard scheme-theoretic sense.
+\end{theorem}
+\begin{proof}
+For an arbitrary field-valued point $\operatorname{Spec}K\to\operatorname{Spec}A$,
+use its actual coefficient homomorphism $A\to K$ to equip $K$ with the
+composite $F$-algebra structure. The preceding theorem proves
+connectedness of its literal pullback. Since every field-valued point
+is obtained this way, this is precisely geometric connectedness.
+\end{proof}

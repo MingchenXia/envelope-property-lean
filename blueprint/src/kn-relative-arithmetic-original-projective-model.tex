@@ -1,0 +1,38 @@
+\section{A produced model of the entire original relative embedding}
+
+\begin{lemma}[Arithmetic descent starts from the original relative geometry]
+\label{lem:kn-relative-arithmetic-original-projective-stage}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticOriginalProjectiveModel.exists_original_projective_stage}
+\uses{lem:kn-relative-arithmetic-affine-base-model,lem:kn-relative-arithmetic-fixed-projective-ambient,lem:kn-relative-arithmetic-smooth-closed-model}
+\leanok
+Let $k$ have characteristic zero, let $R$ be an arbitrary finite-type
+$k$-algebra, and suppose
+$f:X\to\operatorname{Spec}k$ is separated and smooth of relative
+dimension $n$.  Let $g:X\to\operatorname{Spec}R$ be an original
+projective morphism compatible with $f$, and fix an original closed
+embedding $j:X\hookrightarrow\mathbb P_R^d$ over $g$.
+Then the original affine base internally produces a finite arithmetic
+algebra $B/A$, and the original whole closed embedding internally
+produces a finite coefficient stage and a smooth relative-dimension-$n$
+model of $X$ closed in the corresponding scalar extension of
+$\mathbb P_B^d$.  The entire original $j$ and all structure morphisms
+are recovered under the original field fibre.
+\end{lemma}
+\begin{proof}
+Apply the affine-base model lemma to the given $R$ to obtain the
+actual coefficient ring $A\subset k$, the separate finitely
+presented algebra $B$, and the whole original tensor isomorphism.
+The prescribed-ambient lemma makes $\mathbb P_B^d$ a
+finite-presentation model of the entire original $\mathbb P_R^d$.
+The original $f$ is quasi-compact: it is the composite of the
+projective $g$ with the affine morphism
+$\operatorname{Spec}R\to\operatorname{Spec}k$.  It is
+quasi-separated because it is separated, and it is locally of
+finite presentation because it is smooth.  Thus the smooth closed
+model lemma applies to this actual ambient model and the given
+closed immersion $j$.  It produces the stated coefficient stage,
+whole smooth model, and closed embedding, including the original
+recovery equation.  None of these steps uses properness over $k$;
+projectivity over the original $R$ supplies only the required
+quasi-compactness.
+\end{proof}

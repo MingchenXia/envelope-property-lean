@@ -1,0 +1,47 @@
+\section{The actual positive ideal generator has its original whole scalar}
+
+This file concerns the original Cartier-ideal basis itself.  Its complete
+node has frozen source, compiled-module and actual-type verification.
+The ideal and its positive generator
+are retained; no dual ideal or projective hyperplane ideal is substituted.
+
+\begin{lemma}[The genuine regular-generator basis has its actual included scalar]
+\label{lem:resume-original-regular-generator-whole-scalar}
+\uses{lem:regular-generator-module-equiv,lem:cartier-ideal-affine-module-trivializations,lem:actual-ideal-module-pullback-map,lem:scheme-original-global-section-hom}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.regularGeneratorModuleIso_inclusion}
+\leanok
+Let $X$ be an original scheme, $I$ an original geometric ideal, and $U$
+an original affine open.  Let $g\in\Gamma(X,U)$ be a non-zero-divisor
+with $I(U)=(g)$.  Set $f:\operatorname{Spec}\Gamma(X,U)\to X$ equal
+to the actual native affine spectrum map.  The existing genuine basis
+\[
+ \kappa_g:\mathcal O_{\operatorname{Spec}\Gamma(X,U)}
+       \xrightarrow{\sim} I.\operatorname{toModules}|_f
+\]
+has the following equality of entire original module morphisms:
+its composite with the restricted actual ideal inclusion and actual
+restricted-structure-unit isomorphism is multiplication by the image
+of the SAME original $g$ under the native spectrum-section isomorphism.
+This is a derived normalization of the actual existing basis, not an
+input comparing that basis with a desired section.
+\end{lemma}
+\begin{proof}
+The existing basis is the tilde of the actual linear equivalence
+$r\mapsto rg$ into $I(U)$, followed by the actual ideal-section
+equivalence, the original affine restriction-section equivalence and
+the genuine tilde--global-sections counit.  The native tilde functor's
+top-section naturality and the counit's top-section identity show that
+this composite takes the original unit section to precisely the actual
+ideal-module section represented by $g$.
+
+The original ideal-section equivalence preserves its included original
+function.  The original affine restriction-section equivalence is the
+actual original restriction map; its structure-unit comparison carries
+that included function to the image of $g$ under the native
+spectrum-section isomorphism.  Thus the displayed whole composite takes
+one to that original function.  Both maps are original module morphisms
+from the original structure unit.  Its actual unit-Hom/global-section
+equivalence makes equality at one an equality of their entire original
+module morphisms.  No division by $g$ occurs in this calculation; its
+regularity is used only in the already constructed genuine basis.
+\end{proof}

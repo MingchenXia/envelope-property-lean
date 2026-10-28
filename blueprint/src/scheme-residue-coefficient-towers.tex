@@ -1,0 +1,25 @@
+\section{Actual residue coefficient towers for original scheme maps}
+\begin{lemma}\label{lem:scheme-stalk-coefficients-naturality}
+For any original scheme map $p:Y\to Z$, structure $f:Z\to\operatorname{Spec}R$, and point $z\in Y$, the native stalk map preserves every original $R$ coefficient.
+\uses{alggeom:original-stalk-coefficient-triangle}
+\lean{EnvelopeProperty.SchemeResidueCoefficientTowers.stalkMap_coefficients}\leanok
+\end{lemma}
+\begin{proof}
+Apply the faithful spectrum functor. The equality becomes the original whole stalk-point naturality square, followed by the original structure map. The actual native stalk structure triangles give the result.
+\end{proof}
+\begin{definition}\label{def:scheme-residue-coefficient-map}
+The same native residue-field map $\kappa(pz)\to\kappa(z)$ is an $R$-algebra map for the original structure-stalk quotient actions.
+\uses{lem:scheme-stalk-coefficients-naturality}
+\lean{EnvelopeProperty.SchemeResidueCoefficientTowers.residueFieldMapAlgHom}\leanok
+\end{definition}
+\begin{proof}
+Use the original native residue map. Its value on a scalar is the residue of the original stalk coefficient. The preceding coefficient equality proves the required compatibility without changing either quotient action.
+\end{proof}
+\begin{lemma}\label{lem:scheme-trait-residue-coefficient-tower}
+For any actual local trait $q:\operatorname{Spec}V\to Y$ with its original whole structure diagram, the native map from the residue field of its projected center to $\kappa(V)$ is the composite of the native projected-point residue map and the native trait residue map, as $R$-algebra maps.
+\uses{def:scheme-residue-coefficient-map}
+\lean{EnvelopeProperty.SchemeResidueCoefficientTowers.traitResidue_comp}\leanok
+\end{lemma}
+\begin{proof}
+The actual native trait residue composition theorem gives equality of the underlying ring maps. The preceding algebra structures retain those exact maps and all original coefficients, so extensionality gives the equality of algebra maps.
+\end{proof}

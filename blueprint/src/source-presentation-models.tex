@@ -1,0 +1,296 @@
+\section{Presentation models: signed sections, norms and Fubini--Study functions}
+\label{sec:source-presentation-models}
+
+Throughout, $k$ is a field, $X$ is an integral scheme with a projective morphism
+$p\colon X\to\operatorname{Spec}k$, and $K(X)$ is its function field. This chapter compares
+the line bundles, global sections, norms and Fubini--Study functions of $X$ with those of the
+multiprojective model attached to a finite family of projective morphisms. It extends the
+comparison of Theorems~\ref{thm:original-whole-tensor-model-section-realization}
+and~\ref{thm:original-family-original-base-whole-tensor-norm}, proved there in nonnegative
+degrees, to all integer degrees. Negative degrees are needed: a class with a negative coordinate
+is unavoidable for a non-nef class, since a nonnegative combination of globally generated
+classes is nef.
+
+\subsection{Presentations}
+
+\begin{definition}[Presentations]
+\label{def:pm-presentation}
+\lean{EnvelopeProperty.FiniteProjectiveNativeFieldModels.pivot, EnvelopeProperty.FiniteProjectiveNativeFieldModels.model}
+\leanok
+\uses{thm:finite-projective-native-field-models, thm:original-simultaneous-native-model-homeomorphism}
+A \emph{presentation} of $X$ is a family of morphisms $q_c\colon X\to\PP^{d_c}_k$ over $k$,
+$c=0,\dots,r$, such that $q_0$ is a closed immersion. Its \emph{factor lines} are
+$F_c=q_c^*\mathcal O(1)$. For each $c$ let $z_c$ be an index with $q_c^{-1}D_+(X_{z_c})\neq
+\emptyset$ (the \emph{pivot}). The \emph{model} $\mathcal P$ of the presentation is the
+multiprojective model in $K(X)$ of rank $r+1$ with coordinates $z^{(c)}_a=X_a/X_{z_c}$
+(Theorem~\ref{thm:finite-projective-native-field-models}), and
+$H\colon X^{\mathrm{an}}\to\mathcal P^{\mathrm{an}}$ is the homeomorphism of
+Theorem~\ref{thm:original-simultaneous-native-model-homeomorphism}. A \emph{presentation of a
+class} $\theta\in N^1(X)_\R$ is a presentation together with $\theta_m\in\R^{r+1}$ such that
+$\theta=\sum_c\theta_{m,c}[F_c]$.
+\end{definition}
+
+\begin{definition}[Factor lines and signed lines]
+\label{def:pm-signed-line}
+\leanok
+\lean{EnvelopeProperty.Variety.presentationFactorLine,
+EnvelopeProperty.Variety.presentationFactorLine_isInvertible,
+EnvelopeProperty.Variety.signedProjectiveLine,
+EnvelopeProperty.Variety.signedProjectiveLine_isInvertible,
+EnvelopeProperty.Variety.signedProjectiveLine_natCast}
+\uses{def:pm-presentation}
+For $n\in\Z^{r+1}$ let $L(n)=\bigotimes_cq_c^*\mathcal O(n_c)$, where $\mathcal O(1)$ on
+$\PP^{d}$ is the dual of the ideal sheaf of a coordinate hyperplane and $\mathcal O(-1)$ is that
+ideal sheaf; $\mathcal O(n)$ is the $|n|$-th tensor power of one of them. $L(n)$ is invertible.
+For $n\ge0$ it is the line of Definition~\ref{def:original-whole-tensor-normalized-coefficient}.
+\end{definition}
+
+\begin{lemma}[Classes and powers of signed lines]
+\label{lem:pm-line-class}
+\leanok
+\lean{EnvelopeProperty.Variety.lineClass_tensorLine,
+EnvelopeProperty.Variety.lineClass_signedProjectiveLine,
+EnvelopeProperty.Variety.tensorLineIso, EnvelopeProperty.Variety.tensorLinePowerIso,
+EnvelopeProperty.Variety.twistPowerIso, EnvelopeProperty.Variety.signedProjectiveLinePowerIso}
+\uses{def:pm-signed-line, thm:native-numerical-generated-line-sums,
+lem:coherent-projective-original-twist-addition,
+lem:coherent-projective-coordinate-twist-independence, thm:native-numerical-line-family-maps}
+For $n\in\Z^{r+1}$, $[L(n)]=\sum_cn_c[F_c]$ in $N^1(X)_\R$. For $e\in\N$,
+$L(en)\cong L(n)^{\otimes e}$.
+\end{lemma}
+\begin{proof}
+\leanok
+The class of a tensor product is the sum of the classes. On $\PP^d$ the twists add under
+tensor product, $\mathcal O(a)\otimes\mathcal O(b)\cong\mathcal O(a+b)$
+(Lemma~\ref{lem:coherent-projective-original-twist-addition}), and they do not depend on the
+chosen hyperplane (Lemma~\ref{lem:coherent-projective-coordinate-twist-independence}). Pullback
+commutes with tensor products, so $a\mapsto[q_c^*\mathcal O(a)]$ is additive on $\Z$, hence equal
+to $a[F_c]$. For the powers, $\mathcal O(ea)\cong\mathcal O(a)^{\otimes e}$ by induction on $e$;
+pull back, and use $(A\otimes B)^{\otimes e}\cong A^{\otimes e}\otimes B^{\otimes e}$.
+\end{proof}
+
+\begin{lemma}[Every class has a presentation]
+\label{lem:pm-exists-presentation}
+\leanok
+\lean{EnvelopeProperty.Variety.exists_presentation}
+\uses{def:pm-presentation, lem:pm-line-class, thm:native-numerical-whole-field-presentations}
+Every $\theta\in N^1(X)_\R$ has a presentation.
+\end{lemma}
+\begin{proof}
+\leanok
+By Theorem~\ref{thm:native-numerical-whole-field-presentations} there is a product embedding
+$f\colon X\to\prod_{c=0}^{n+1}\PP^{d_c}$ over $k$ whose first projection is a closed immersion,
+and real numbers $a_i$ with $\theta=\sum_{i<n}a_i([F_{i+2}]-[F_1])$. Take $q_c$ the projections
+of $f$ and $\theta_m=(0,-\sum_ia_i,a_0,\dots,a_{n-1})$.
+\end{proof}
+
+\begin{lemma}[Ample classes have positive presentations]
+\label{lem:pm-exists-positive-presentation}
+\leanok
+\lean{EnvelopeProperty.Variety.exists_presentation_with_first_factor,
+EnvelopeProperty.Variety.exists_positive_presentation,
+EnvelopeProperty.Variety.isAmple_presentationFactorLine_zero}
+\uses{def:pm-presentation, thm:native-numerical-ample-family-openness,
+thm:native-numerical-positive-ample-sums, lem:fc-original-very-ample-is-ample,
+lem:fc-original-ample-line-twist-generation, thm:generated-line-family-closed-projection}
+\source{fhx-envelope-20261028:cor:intro-characterization}
+Every class $\omega$ in the ample cone has a presentation with all coordinates $\omega_{m,c}>0$.
+The first factor line of every presentation is ample.
+\end{lemma}
+\begin{proof}
+\leanok
+The pullback of $\mathcal O(1)$ by a closed immersion into $\PP^N$ over $k$ is very ample, hence
+ample (Lemma~\ref{lem:fc-original-very-ample-is-ample}). Fix such a closed immersion $i$ and
+put $F_0=i^*\mathcal O(1)$. By openness of the ample cone along $F_0$
+(Theorem~\ref{thm:native-numerical-ample-family-openness}) there is $\varepsilon>0$ with
+$\omega-\varepsilon[F_0]$ ample, and by Theorem~\ref{thm:native-numerical-positive-ample-sums}
+$\omega-\varepsilon[F_0]=\sum_jc_j[A_j]$ with $c_j>0$ and $A_j$ ample. Some power $A_j^{N_j}$,
+$N_j>0$, is generated by finitely many global sections
+(Lemma~\ref{lem:fc-original-ample-line-twist-generation}); these define morphisms $q_{j+1}$ to
+projective spaces with $q_{j+1}^*\mathcal O(1)\cong A_j^{N_j}$. With $q_0=i$, the same
+construction as in Theorem~\ref{thm:generated-line-family-closed-projection} (with the first
+factor prescribed) gives a presentation, and
+$\omega=\varepsilon[F_0]+\sum_j(c_j/N_j)[F_{j+1}]$.
+\end{proof}
+
+\subsection{Chart frames and the pivot coefficient}
+
+Fix a presentation and $n\in\Z^{r+1}$. For a multi-index $a$ with $a_c\in\{0,\dots,d_c\}$ write
+$U_a=\bigcap_cq_c^{-1}D_+(X_{a_c})$; it is the preimage of a standard chart under the Segre
+morphism, hence affine.
+
+\begin{definition}[Chart frames]
+\label{def:pm-chart-frame}
+\leanok
+\lean{EnvelopeProperty.Variety.twistChartFrame, EnvelopeProperty.Variety.signedFactorFrame,
+EnvelopeProperty.Variety.signedFrame, EnvelopeProperty.Variety.signedChartFrameOn,
+EnvelopeProperty.Variety.signedOverFrameOn, EnvelopeProperty.Variety.signedGeneratorOn,
+EnvelopeProperty.Variety.signedJointOpen, EnvelopeProperty.Variety.signedChartFrame,
+EnvelopeProperty.Variety.signedChartCoefficient}
+\uses{def:pm-signed-line}
+On every open $V\subseteq U_a$, the line $L(n)$ has the frame $e_a=\bigotimes_cq_c^*e_{a_c}$,
+where $e_{a_c}$ is the standard frame of $\mathcal O(n_c)$ on $D_+(X_{a_c})$ (whose generator
+is ``$X_{a_c}^{n_c}$''). Its generator is $\varepsilon_a\in\Gamma(V,L(n))$. For a global
+section $s$, its coefficient $s_a\in\Gamma(U_a,\mathcal O_X)$ is defined by $s=s_a\varepsilon_a$
+on $U_a$.
+\end{definition}
+
+\begin{lemma}[Restriction and transition of chart frames]
+\label{lem:pm-frame-transition}
+\leanok
+\lean{EnvelopeProperty.Variety.frameViaFactor_signedFrame,
+EnvelopeProperty.Variety.subopenFrame_transition,
+EnvelopeProperty.Variety.signedFactorFrame_transition, EnvelopeProperty.Variety.signedTransition,
+EnvelopeProperty.Variety.signedFrame_transition,
+EnvelopeProperty.Variety.restrictOpenTrivialization_signedChartFrameOn,
+EnvelopeProperty.Variety.germ_appLE_transitionUnit, EnvelopeProperty.Variety.germ_signedTransition}
+\uses{def:pm-chart-frame, thm:projective-chart-generic-transitions}
+The restriction of the frame $e_a$ from $V$ to a smaller open is the frame $e_a$ there. On
+$V\subseteq U_a\cap U_b$,
+\[
+e_a=\kappa_{ab}\,e_b,\qquad
+\kappa_{ab}=\prod_cq_c^*\Bigl(\frac{X_{b_c}}{X_{a_c}}\Bigr)^{n_c}\in\Gamma(V,\mathcal O_X)^\times,
+\]
+and the image of $\kappa_{ab}$ in $K(X)$ is $\prod_c(X_{b_c}/X_{a_c})^{n_c}$, evaluated at the
+generic point.
+\end{lemma}
+\begin{proof}
+\leanok
+On the overlap $D_+(X_i)\cap D_+(X_j)$ of $\PP^d$ the standard frames of $\mathcal O(m)$
+satisfy $e_i=(X_j/X_i)^m e_j$ for every $m\in\Z$ (the transition of the integer twists). The
+frames on $X$ are obtained by pulling back along $q_c$, restricting to $V$ and tensoring; these
+operations commute with restriction and multiply transition functions. The image in $K(X)$ of
+$q_c^*(X_j/X_i)$ is the generic coordinate ratio
+(Theorem~\ref{thm:projective-chart-generic-transitions}).
+\end{proof}
+
+\begin{definition}[The pivot coefficient]
+\label{def:pm-pivot-coefficient}
+\leanok
+\lean{EnvelopeProperty.Variety.signedPivot, EnvelopeProperty.Variety.signedPivotOpen,
+EnvelopeProperty.Variety.signedPivotFrame, EnvelopeProperty.Variety.signedGenericFrame,
+EnvelopeProperty.Variety.signedCoefficient, EnvelopeProperty.Variety.signedCoefficient_injective,
+EnvelopeProperty.Variety.signedCoefficient_zero}
+\uses{def:pm-chart-frame}
+Let $z$ be the pivot. The generic fibre $L(n)_\eta$ is a one-dimensional $K(X)$-vector space
+with basis the germ of $\varepsilon_z$. The \emph{coefficient} of a global section $s$ of
+$L(n)$ is the coordinate of its germ in this basis. It is injective in $s$.
+\end{definition}
+
+\begin{lemma}[Chart coefficients]
+\label{lem:pm-pivot-coefficient}
+\leanok
+\lean{EnvelopeProperty.Variety.signedGeneratorOn_transition,
+EnvelopeProperty.Variety.signedGenericFrame_generatorOn,
+EnvelopeProperty.Variety.signedGenericFrame_eq_chartOn,
+EnvelopeProperty.Variety.signedGenericFrame_sectionOn,
+EnvelopeProperty.Variety.chartDenZ_eq_inv_prod, EnvelopeProperty.Variety.germ_signedChartCoefficient}
+\uses{def:pm-pivot-coefficient, lem:pm-frame-transition}
+If all $q_c^{-1}D_+(X_{a_c})$ are nonempty, then for every section $\sigma$ of $L(n)$ over a
+nonempty open $V\subseteq U_a$, written $\sigma=x\varepsilon_a$, the coordinate of the germ of
+$\sigma$ is $x\,\tilde z_a^n$, where $\tilde z_a^n=\prod_c(z^{(c)}_{a_c})^{n_c}$ is the chart
+denominator of $\mathcal P$. In particular $s_a=\operatorname{coefficient}(s)/\tilde z_a^n$ for
+global sections.
+\end{lemma}
+\begin{proof}
+\leanok
+By Lemma~\ref{lem:pm-frame-transition}, on $W=V\cap U_z$ the generators satisfy
+$\varepsilon_z=\kappa\varepsilon_a$ with $\kappa$ of generic value
+$\prod_c(X_{z_c}/X_{a_c})^{n_c}$. Hence the coordinate of $\varepsilon_a$ is
+$\prod_c(X_{a_c}/X_{z_c})^{n_c}=\prod_c(z^{(c)}_{a_c})^{n_c}$, and the coordinate of
+$x\varepsilon_a$ is the image of $x$ multiplied by $\tilde z_a^n$.
+\end{proof}
+
+\subsection{Sections and norms}
+
+\begin{lemma}[Signed sections are model sections]
+\label{lem:pm-signed-sections}
+\leanok
+\lean{EnvelopeProperty.Variety.signedChartSectionsEquiv,
+EnvelopeProperty.Variety.signedChartSectionsEquiv_apply,
+EnvelopeProperty.Variety.model_coord_ne_zero_of_nonempty,
+EnvelopeProperty.Variety.nonempty_of_model_coord_ne_zero,
+EnvelopeProperty.Variety.signedCoefficient_mem_sections,
+EnvelopeProperty.Variety.signedCoefficient_surjective,
+EnvelopeProperty.Variety.signedWholeSectionsEquiv,
+EnvelopeProperty.Variety.signedWholeSectionsEquiv_apply,
+EnvelopeProperty.Variety.signedCoefficient_signedWholeSectionsEquiv_symm}
+\uses{lem:pm-pivot-coefficient, thm:model-sections-iff-chart-fractions,
+thm:actual-original-family-whole-chart-sections, def:gl-sections}
+For every $n\in\Z^{r+1}$ the coefficient is a bijection
+$\Gamma(X,L(n))\to R_n(\mathcal P)$ onto the sections of degree $n$ of the model.
+\end{lemma}
+\begin{proof}
+\leanok
+The charts $U_a$ with all $q_c^{-1}D_+(X_{a_c})$ nonempty are exactly those with all
+$z^{(c)}_{a_c}\neq0$, and $\Gamma(U_a,\mathcal O_X)\cong A_a$, the chart algebra of
+$\mathcal P$, compatibly with $K(X)$
+(Theorem~\ref{thm:actual-original-family-whole-chart-sections}). By
+Lemma~\ref{lem:pm-pivot-coefficient}, $\operatorname{coefficient}(s)/\tilde z_a^n=s_a\in A_a$
+for every such chart, so the coefficient lies in $R_n(\mathcal P)$
+(Theorem~\ref{thm:model-sections-iff-chart-fractions}); it is injective because the germ at the
+generic point determines a section of an invertible sheaf on an integral scheme. Conversely,
+given $g\in R_n(\mathcal P)$, the sections $(g/\tilde z_a^n)\varepsilon_a$ over the charts
+$U_a$ all have coordinate $g$ by Lemma~\ref{lem:pm-pivot-coefficient}, hence the same germ;
+so they agree on overlaps, cover $X$ and glue to a global section with coefficient $g$.
+\end{proof}
+
+\begin{lemma}[Norms of signed sections]
+\label{lem:pm-signed-norms}
+\leanok
+\lean{EnvelopeProperty.Variety.signedSectionNorm_eq_chartValue,
+EnvelopeProperty.Variety.signedSectionNorm_eq_secAbs_segreBase,
+EnvelopeProperty.Variety.signedGlobalSectionNorm_eq_secAbs}
+\uses{lem:pm-signed-sections, thm:original-family-native-proper-center-chart,
+thm:original-family-native-whole-chart-values, lem:gl-sections}
+For every $y\in X^{\mathrm{an}}$ and every global section $s$ of $L(n)$,
+$|s|(y)=|\operatorname{coefficient}(s)|_{H(y)}$, the absolute value of a section of degree $n$
+of the model.
+\end{lemma}
+\begin{proof}
+\leanok
+Choose a chart $a$ with $|z^{(c)}_{a_c}|_{H(y)}=1$ for all $c$. The center of $y$ lies in $U_a$
+(Theorem~\ref{thm:original-family-native-proper-center-chart}), where $\varepsilon_a$ generates,
+so $|s|(y)=|s_a|(y)$; this is $|s_a|$ at the chart point of $H(y)$
+(Theorem~\ref{thm:original-family-native-whole-chart-values}). By
+Lemma~\ref{lem:pm-pivot-coefficient} and Lemma~\ref{lem:gl-sections},
+$|g|_v=|g/\tilde z_a^n|_{\iota_a(v)}\prod_c|z^{(c)}_{a_c}|_v^{n_c}$ for $g\in R_n(\mathcal P)$,
+and the product is one.
+\end{proof}
+
+\subsection{The Fubini--Study dictionary}
+
+\begin{theorem}[Fubini--Study functions of a presentation model]
+\label{thm:pm-fs-dictionary}
+\leanok
+\lean{EnvelopeProperty.Variety.isFS_iff_presentation}
+\uses{lem:pm-signed-sections, lem:pm-signed-norms, def:gl-fs,
+def:native-numerical-whole-section-fs-data}
+\source{bj22-trivval:defi:FS}
+Let $a\in\Q^{r+1}$ and $\psi\colon\mathcal P^{\mathrm{an}}\to[-\infty,\infty)$. Then $\psi$ is a
+Fubini--Study function of class $a$ on $\mathcal P$ if and only if there are an integer $m>0$
+with $ma\in\Z^{r+1}$, an invertible sheaf $M\cong L(ma)$ and finitely many global sections
+$s_j$ of $M$, not all zero, and real numbers $\lambda_j$, such that
+$\psi(H(y))=m^{-1}\max_j(\log|s_j|(y)+\lambda_j)$ for all $y\in X^{\mathrm{an}}$.
+\end{theorem}
+\begin{proof}
+\leanok
+A model Fubini--Study function $m^{-1}\max_j(\log|f_j|+\lambda_j)$, $f_j\in R_{ma}(\mathcal P)$,
+corresponds to the sections $s_j$ of $L(ma)$ with coefficients $f_j$
+(Lemma~\ref{lem:pm-signed-sections}); conversely the sections of $M$ are transported to
+$L(ma)$ by the isomorphism, which preserves norms, and then to $R_{ma}(\mathcal P)$ by the
+coefficient. The weights are unchanged, nonvanishing is preserved, and the norms agree by
+Lemma~\ref{lem:pm-signed-norms}.
+\end{proof}
+
+\begin{lemma}[Classes of presentation Fubini--Study data]
+\label{lem:pm-fs-class}
+\leanok
+\lean{EnvelopeProperty.Variety.numericalClass_eq_lineFamilyMap}
+\uses{thm:pm-fs-dictionary, lem:pm-line-class}
+In Theorem~\ref{thm:pm-fs-dictionary}, the class $m^{-1}[M]$ is $\sum_ca_c[F_c]$.
+\end{lemma}
+\begin{proof}
+\leanok
+$m^{-1}[M]=m^{-1}[L(ma)]=\sum_cm^{-1}(ma_c)[F_c]$ by Lemma~\ref{lem:pm-line-class}.
+\end{proof}

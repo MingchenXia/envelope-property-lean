@@ -1,0 +1,155 @@
+\subsection{Ideal functions on the bounded affine locus}
+\label{subsec:ideal-functions}
+
+Let $k$ be a trivially valued field, $A$ a commutative $k$-algebra and
+$Y=\operatorname{Spec} A$. The ideal functions of
+\cite[\S2.1]{FHX} are evaluated using generators in the local ring at a
+semivaluation's center. The following affine statements impose precisely the
+boundedness needed for independence of the generators. They do not construct
+the projective Gauss extension or glue coherent ideal sheaves across charts.
+
+\begin{definition}[Bounded points and ideal norms]
+\label{def:bounded-ideal-norm}
+\lean{EnvelopeProperty.Berk.IsBounded, EnvelopeProperty.Berk.idealNorm,
+EnvelopeProperty.Berk.idealLog, EnvelopeProperty.Berk.idealNorm_le_one,
+EnvelopeProperty.Berk.idealLog_le_zero}
+\leanok
+\uses{def:berk,def:general-ideal-norm,spectrum:trivial-field-bridge}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+A point $x\in Y^{\mathrm{an}}$ is bounded on $A$ if $|a|_x\le1$ for every
+$a\in A$. For an ideal $I\subseteq A$ put
+\[
+ |I|_x=\sup_{a\in I}|a|_x\in[0,+\infty],\qquad
+ \log|I|(x)=\log |I|_x\in[-\infty,+\infty].
+\]
+If $x$ is bounded then $|I|_x\le1$ and $\log|I|(x)\le0$.
+\end{definition}
+
+\begin{lemma}[Evaluation of generated ideals]
+\label{lem:ideal-norm-span}
+\lean{EnvelopeProperty.Berk.idealNorm_span,
+EnvelopeProperty.Berk.idealNorm_span_finset,
+EnvelopeProperty.Berk.idealNorm_span_finset_eq_of_span_eq}
+\leanok
+\uses{def:bounded-ideal-norm,lem:general-ideal-norm-generators}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+If $x$ is bounded and $S\subseteq A$, then
+\[
+ |(S)|_x=\sup_{s\in S}|s|_x.
+\]
+In particular, if $I=(f_1,\ldots,f_r)$ then
+$|I|_x=\max_{1\le i\le r}|f_i|_x$, with the empty maximum equal to $0$.
+Consequently this maximum is independent of the finite generating family.
+\end{lemma}
+\begin{proof}
+Every $s\in S$ lies in $(S)$, giving the lower bound. Write
+$M=\sup_{s\in S}|s|_x$. The set of $a\in A$ satisfying $|a|_x\le M$
+contains $S$ and $0$, is closed under addition by the ultrametric inequality,
+and is closed under multiplication by $b\in A$, since
+$|ba|_x=|b|_x|a|_x\le|a|_x\le M$. It therefore contains $(S)$,
+giving the upper bound. A supremum over a finite set is its maximum;
+applying the equality to either generating family proves independence.
+\end{proof}
+
+\begin{lemma}[Ideal arithmetic]
+\label{lem:ideal-norm-arithmetic}
+\lean{EnvelopeProperty.Berk.idealNorm_sup,
+EnvelopeProperty.Berk.idealNorm_mul,
+EnvelopeProperty.Berk.idealNorm_pow}
+\leanok
+\uses{lem:ideal-norm-span,lem:general-ideal-norm-arithmetic}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For a bounded point $x$ and ideals $I,J\subseteq A$,
+\[
+ |I+J|_x=\max\{|I|_x,|J|_x\},\qquad
+ |IJ|_x=|I|_x|J|_x,\qquad |I^n|_x=|I|_x^n.
+\]
+The zero ideal has norm $0$ and the unit ideal has norm $1$.
+\end{lemma}
+\begin{proof}
+View $x$ as a multiplicative seminorm on its coordinate ring. The generic
+ideal arithmetic lemma gives the sum and product identities for this
+seminorm, even without boundedness.
+The norm of the zero ideal is $|0|_x=0$; the norm of the unit ideal is
+at most $1$ by boundedness and at least $|1|_x=1$. Induction on $n$,
+using the product equality and the unit ideal base case, proves the
+power equality.
+\end{proof}
+
+\begin{lemma}[Logarithmic ideal formulas]
+\label{lem:ideal-log-arithmetic}
+\lean{EnvelopeProperty.Berk.idealLog_sup,
+EnvelopeProperty.Berk.idealLog_mul,
+EnvelopeProperty.Berk.idealLog_pow,
+EnvelopeProperty.Berk.idealLog_span_finset,
+EnvelopeProperty.Berk.continuousOn_idealLog_of_span_eq}
+\leanok
+\uses{lem:ideal-norm-span,lem:ideal-norm-arithmetic,lem:general-ideal-log}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For a bounded point $x$,
+\[
+ \log|I+J|(x)=\max\{\log|I|(x),\log|J|(x)\},\qquad
+ \log|IJ|(x)=\log|I|(x)+\log|J|(x),
+\]
+and $\log|I^n|(x)=n\log|I|(x)$.
+For $I=(f_1,\ldots,f_r)$,
+$\log|I|(x)=\max_i\log|f_i|(x)$, with the empty maximum equal
+to $-\infty$. In particular the function determined by a finitely
+generated ideal is continuous on the bounded affine locus.
+\end{lemma}
+\begin{proof}
+The extended logarithm is order preserving and sends a product of
+nonnegative extended real numbers to the sum of their logarithms.
+Applying it to the preceding equalities gives the displayed formulas,
+including the cases of a zero ideal norm. Its value at $0$ is
+$-\infty$ and at $1$ is $0$, so the power formula includes $n=0$.
+For finite generators it carries their maximum to the maximum of the
+logarithms. Each function $x\mapsto\log|f_i|_x$ is continuous;
+finite maxima of continuous functions are continuous, also for the
+empty family, whose value is the constant $-\infty$.
+\end{proof}
+
+\begin{lemma}[Vanishing locus of an ideal function]
+\label{lem:ideal-function-vanishing}
+\lean{EnvelopeProperty.Berk.idealNorm_eq_zero_iff,
+EnvelopeProperty.Berk.idealLog_eq_bot_iff}
+\leanok
+\uses{def:bounded-ideal-norm,def:analytic-zero-locus,lem:analytic-affine-quotient,
+lem:general-ideal-norm-generators}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For every affine analytic point $x$, without a boundedness assumption,
+$|I|_x=0$ if and only if $I$ is contained in the support of $x$.
+Equivalently $\log|I|(x)=-\infty$ exactly on the analytification of the
+zero locus of $I$.
+\end{lemma}
+\begin{proof}
+The supremum defining $|I|_x$ is zero if and only if every nonnegative
+term $|a|_x$, $a\in I$, is zero. The support of the seminorm is its
+zero ideal, so this condition is precisely $I\subseteq\operatorname{supp}(x)$.
+The logarithm of a nonnegative extended real number equals $-\infty$
+if and only if that number is zero.
+\end{proof}
+
+\begin{lemma}[Pullback of affine ideal functions]
+\label{lem:ideal-function-pullback}
+\lean{EnvelopeProperty.Berk.IsBounded.comap,
+EnvelopeProperty.Berk.idealNorm_map,
+EnvelopeProperty.Berk.idealLog_map}
+\leanok
+\uses{lem:ideal-norm-span,lem:general-ideal-pullback}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+Let $\varphi\colon A\to B$ be a $k$-algebra map and let $y$ be a
+bounded point of $(\operatorname{Spec} B)^{\mathrm{an}}$. Its restriction
+$x=\varphi^{\mathrm{an}}(y)$ is bounded on $A$. For the extended ideal
+$IB=(\varphi(a):a\in I)$,
+\[
+ |IB|_y=|I|_x,\qquad \log|IB|(y)=\log|I|(x).
+\]
+\end{lemma}
+\begin{proof}
+For $a\in A$, $|a|_x=|\varphi(a)|_y\le1$, proving boundedness.
+The extended ideal is generated by the images of all elements of $I$;
+the generator formula gives
+$|IB|_y=\sup_{a\in I}|\varphi(a)|_y=\sup_{a\in I}|a|_x$.
+Taking logarithms gives the second equality.
+\end{proof}

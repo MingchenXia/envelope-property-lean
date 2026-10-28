@@ -1,0 +1,57 @@
+\section{Actual Rees trees subordinate to geometric neighborhoods}
+
+\begin{lemma}[Refining a realized Rees tree]\label{lem:sc0-rees-cover-refinement}
+\lean{EnvelopeProperty.Char0.exists_rees_cover_refinement}
+\leanok
+\uses{cor:sc0-finite-principal-rees-refinement,thm:sc0-actual-sequence-rees-cover}
+Let a finite Rees tree rooted at $C\subseteq K$ have actual leaf open
+immersions into a scheme $Y$, with commuting structure triangles over a scheme
+$X$. For any actual open cover of $Y$, there is a new finite Rees tree rooted at
+$C$ whose leaf spectra map by actual open immersions into $Y$, whose structure
+triangles still commute, and whose images are subordinate to that cover. Every
+point in the image of an original leaf remains in the image of a new leaf.
+\end{lemma}
+\begin{proof}
+Induct on the original finite tree. At a leaf, pull the given open cover back
+along its actual open immersion. Choose a finite principal refinement of that
+cover of $\operatorname{Spec}C$, with functions generating the unit ideal, and
+replace the leaf by that Rees node with leaf children. The actual ratio-chart
+maps have images exactly the chosen principal opens, so their composites with
+the old leaf immersion have the required images and cover every old leaf
+point. Their structure triangles follow from the original triangle and
+composition of subalgebra inclusions. At an existing node, perform the
+construction on every child and retain the node and its original generators.
+The refined child triangles compose with the original inclusion to give the
+root triangle. Each branch has finitely many new descendants, and all
+original branches are retained.
+\end{proof}
+
+\begin{corollary}[Subordinate Rees charts of an actual blowup sequence]\label{cor:sc0-actual-rees-cover-subordinate}
+\lean{EnvelopeProperty.Char0.exists_actual_rees_cover_subordinate}
+\leanok
+\uses{cor:sc0-rees-subordinate-affine-cover,thm:sc0-actual-sequence-rees-cover}
+For an actual finite blowup sequence over $\operatorname{Spec}C$, isomorphic
+over a nonempty open, and any actual open cover of its final scheme, there is
+a finite actual Rees leaf cover subordinate to the chosen cover and retaining
+the original inclusion triangles to $\operatorname{Spec}C$.
+\end{corollary}
+\begin{proof}
+First realize the actual blowup sequence by the checked finite Rees cover.
+Apply the subordinate affine-cover corollary with the identity structure map
+of $\operatorname{Spec}C$. The identity factors in the refined triangles cancel.
+\end{proof}
+
+\begin{corollary}[A subordinate actual affine leaf cover]\label{cor:sc0-rees-subordinate-affine-cover}
+\lean{EnvelopeProperty.Char0.exists_rees_leaf_cover_subordinate}
+\leanok
+\uses{lem:sc0-rees-cover-refinement}
+If the original actual leaf maps cover $Y$, the refined actual leaf maps also
+cover $Y$. In particular an actual blowup sequence realized by a Rees tree can
+be refined so that every leaf image lies in one chosen geometric neighborhood,
+while retaining its original root and structure map.
+\end{corollary}
+\begin{proof}
+For a point of $Y$, choose an original leaf point mapping to it and then a new
+leaf point mapping to that original image. The refined leaf maps are actual
+open immersions by the lemma, so they give an actual finite affine open cover.
+\end{proof}

@@ -1,0 +1,44 @@
+\section{Actual dual Cartier section metrics from canonical evaluation}
+
+\begin{theorem}[True original transpose model norm]
+\label{thm:actual-dual-transpose-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_dualTranspose}
+\leanok
+\uses{lem:actual-invertible-dual-transpose-pairing,lem:actual-model-tensor-hom-norm,lem:actual-model-hom-norm-composition,cor:actual-model-hom-norm-identity-isomorphism}
+The genuine model morphism norm of the actual canonical original
+dual transpose of $\alpha:M\to\mathcal O_X$ equals the genuine
+model morphism norm of the original $\alpha$ itself.
+\end{theorem}
+\begin{proof}
+Tensor the actual transpose with the original identity of $M$.
+Actual tensor morphism norm multiplicativity and the original
+identity norm one say that this tensor morphism has norm equal to
+the original transpose norm. The actual whole transpose pairing
+identity says that following it by actual canonical evaluation
+is the true original right-unit comparison followed by $\alpha$.
+Both the actual canonical evaluation and the actual right-unit
+comparison are whole original line-module isomorphisms, hence
+have genuine model morphism norm one. True original composition
+norm multiplication therefore says that the same tensor morphism
+norm is exactly the model norm of $\alpha$. These two equalities
+prove the assertion without a dual metric compatibility input.
+\end{proof}
+
+\begin{corollary}[Actual original dual Cartier inclusion section potential]
+\label{cor:actual-dual-cartier-inclusion-model-potential}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_dualCartierInclusion}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_dualCartierInclusion_log}
+\leanok
+\uses{thm:actual-dual-transpose-model-norm,thm:actual-cartier-inclusion-model-norm,cor:actual-cartier-inclusion-model-log}
+The model morphism norm of the canonical original dual Cartier
+inclusion section is the intrinsic original model ideal norm.
+Its actual extended-real logarithm is the original model ideal
+logarithm, including zero norms.
+\end{corollary}
+\begin{proof}
+Apply the preceding theorem to the actual original ideal line and
+its original inclusion into the actual structure module. Its
+original inclusion model norm is the intrinsic original ideal
+norm by the proved whole Cartier metric identity. Apply the
+original extended-real logarithm to this exact norm equality.
+\end{proof}

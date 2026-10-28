@@ -1,0 +1,49 @@
+\section{The bounded canonical unit on the whole adapted cover}
+
+\begin{definition}[Bounded canonical pullback into the whole pushforward]
+\label{def:kn-nadel-bounded-canonical-pushforward-unit}
+\uses{thm:kn-nadel-original-bounded-canonical-sheaf-factor}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalPushforward.wholeRoundedCanonicalPullback}
+\leanok
+Under the hypotheses of the original bounded canonical factor theorem,
+let $\pi:W\to X$ be the same whole adapted normalization, let
+$J_a=\prod_i J_i^{a_i}$ with $a_i<m_i$, and write
+$\delta:\pi^*\omega_X\to\omega_W$ for its original canonical differential.
+Choose the factor
+$\theta:\pi^*\omega_X\to\omega_W\otimes J_a$ supplied by that theorem.
+The bounded canonical unit is the morphism
+\[
+ j_a:\omega_X\longrightarrow\pi_*(\omega_W\otimes J_a),
+ \qquad j_a=\eta_{\omega_X}\,;\,\pi_*\theta,
+\]
+where $\eta$ is the unit of the original module adjunction
+$\pi^*\dashv\pi_*$. The whole rounded ideal and every component of $W$
+are retained.
+\end{definition}
+
+\begin{lemma}[The entire bounded unit has the original inclusion composite]
+\label{lem:kn-nadel-bounded-canonical-pushforward-unit-factor}
+\uses{def:kn-nadel-bounded-canonical-pushforward-unit,thm:kn-nadel-original-bounded-canonical-sheaf-factor}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalPushforward.wholeRoundedCanonicalPullback_inclusion}
+\leanok
+Let $\iota_a:\omega_W\otimes J_a\to\omega_W$ be the inclusion induced by
+the same whole ideal. The bounded canonical unit satisfies
+\[
+ j_a\,;\,\pi_*\iota_a
+   =\eta_{\omega_X}\,;\,\pi_*\delta.
+\]
+\end{lemma}
+\begin{proof}
+The internally produced factor satisfies $\theta\,;\,\iota_a=\delta$.
+Associativity and functoriality of the original pushforward therefore give
+\[
+ \begin{aligned}
+ j_a\,;\,\pi_*\iota_a
+ &=\eta_{\omega_X}\,;\,\pi_*\theta\,;\,\pi_*\iota_a\\
+ &=\eta_{\omega_X}\,;\,\pi_*(\theta\,;\,\iota_a)\\
+ &=\eta_{\omega_X}\,;\,\pi_*\delta.
+ \end{aligned}
+\]
+Every morphism in this calculation is defined on the same whole covering
+scheme and the same original sheaves.
+\end{proof}

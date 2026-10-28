@@ -1,0 +1,69 @@
+\section{Logarithmic Jacobian bounds at actual discrete valuations}
+
+\begin{lemma}[Logarithmic derivatives in a DVR]\label{lem:sc0-dvr-logarithmic-derivative}
+\lean{EnvelopeProperty.Char0.dvd_uniformizer_mul_derivation, EnvelopeProperty.Char0.dvd_derivation_of_uniformizer_eq_zero}
+\leanok
+Let $V$ be an actual discrete valuation ring, $\pi$ an actual uniformizer,
+and $D:V\to V$ an actual derivation over the coefficient ring. For every
+$x\in V$, one has $x\mid\pi D(x)$. If $D(\pi)=0$, then $x\mid D(x)$.
+\end{lemma}
+\begin{proof}
+The assertion for zero follows because its derivative is zero. Write a
+nonzero $x$ uniquely up to units as $u\pi^m$ with $u$ a unit. The power
+Leibniz identity gives
+\[
+ \pi D(\pi^m)=\pi^m mD(\pi).
+\]
+The ordinary Leibniz identity then shows that $\pi^m$ divides
+$\pi D(u\pi^m)$. Multiplication by the unit $u$ does not change divisibility.
+If $D(\pi)=0$, the derivative of $\pi^m$ vanishes, so $D(u\pi^m)$ is already
+a multiple of $\pi^m$ and hence of $x$.
+\end{proof}
+
+\begin{lemma}[An actual logarithmic determinant is divisible by the coordinate product]\label{lem:sc0-dvr-logarithmic-determinant}
+\lean{EnvelopeProperty.Char0.prod_dvd_uniformizer_mul_jacobian, EnvelopeProperty.Char0.sum_addVal_le_one_add_addVal_jacobian}
+\leanok
+\uses{lem:sc0-dvr-logarithmic-derivative}
+Let $D_0,D_1,\ldots,D_r$ be actual derivations of a DVR $V$, with
+$D_j(\pi)=0$ for every $j>0$. For every $(r+1)$-tuple $x_i\in V$,
+\[
+ \prod_i x_i \quad\mid\quad \pi\det(D_jx_i).
+\]
+Consequently $\sum_i\operatorname{ord}_V(x_i)\le
+1+\operatorname{ord}_V\det(D_jx_i)$.
+\end{lemma}
+\begin{proof}
+Multiply the first column of the actual derivative matrix by $\pi$. Every
+entry in its $i$th row is divisible by $x_i$ by the preceding lemma.
+Choose the quotients in $V$ and factor $x_i$ from row $i$; the determinant
+is therefore divisible by $\prod_i x_i$. Multiplication of the first column
+multiplies the determinant by $\pi$, proving the divisibility. Apply the
+actual normalized additive valuation to the divisibility and use its product
+formula and $\operatorname{ord}_V\pi=1$. Zero coordinates give infinite values
+on both sides and are included.
+\end{proof}
+
+\begin{theorem}[The actual DVR coordinate Jacobian satisfies the logarithmic bound]\label{thm:sc0-actual-dvr-logarithmic-jacobian}
+\lean{EnvelopeProperty.Char0.dvrCoordinatePartial, EnvelopeProperty.Char0.dvrCoordinatePartial_uniformizer_some, EnvelopeProperty.Char0.coe_det_dvrCoordinatePartial, EnvelopeProperty.Char0.sum_addVal_le_logDiscrepancy}
+\leanok
+\uses{lem:sc0-dvr-logarithmic-determinant,lem:c0-dvr-jacobian}
+Let $V\subseteq K$ be an actual divisorial valuation ring over a
+characteristic-zero field $F$, with actual fraction field $K$, uniformizer
+$\pi$, and residue-transcendence coordinates $u_i$. For every actual family
+$z_i\in V$, the actual Jacobian in the produced coordinates $(\pi,u)$ satisfies
+\[
+ \sum_i\operatorname{ord}_V(z_i)\le
+ 1+\operatorname{ord}_V\operatorname{Jac}_{(\pi,u)}(z).
+\]
+Thus its actual log discrepancy bounds the sum of the coordinate orders.
+\end{theorem}
+\begin{proof}
+The produced field-coordinate partial derivatives preserve the actual DVR.
+Restrict their values to $V$ using this proved preservation; the ordinary
+linearity and Leibniz identities restrict to actual derivations of $V$.
+Every residue-coordinate partial annihilates $\pi$ by the actual Kronecker
+coordinate identity. Apply the preceding determinant bound. Mapping its
+DVR-valued matrix determinant into $K$ gives precisely the original actual
+field-coordinate Jacobian, so the normalized valuation in the bound is the
+one defining the actual log discrepancy.
+\end{proof}

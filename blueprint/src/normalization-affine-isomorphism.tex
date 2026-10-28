@@ -1,0 +1,46 @@
+\section{The actual normalization is an isomorphism on original normal affine opens}
+
+\begin{lemma}[Actual normal stalks on an original affine open]
+\label{lem:actual-normal-affine-open-section-ring}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.affine_sections_isIntegrallyClosed_on}
+\leanok
+For an actual nonempty affine open of an original integral scheme,
+integral closedness of the actual original stalks on that open
+derives integral closedness of its same original affine section ring.
+\end{lemma}
+\begin{proof}
+Localize the original affine domain at each actual maximal ideal.
+The native spectrum stalk isomorphism and the actual affine open
+immersion stalk isomorphism identify it with the original scheme
+stalk at the corresponding actual point, which belongs to the
+original open. It is integrally closed by the hypothesis on actual
+original stalks. The original local criterion for integral
+closedness then gives integral closedness of the same original
+affine section ring.
+\end{proof}
+
+\begin{lemma}[Original normal affine opens are unchanged by actual normalization]
+\label{lem:actual-normalization-affine-isomorphism}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.projection_isIso_on_affine}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.projection_isIso_on_normal_affine}
+\leanok
+\uses{lem:actual-normal-affine-open-section-ring,scheme:actual-integral-normalization-affine-charts}
+On an actual nonempty affine open whose original section domain is
+integrally closed, the actual whole original normalization
+projection restricts to an isomorphism. Actual normality of the
+original stalks on the open is sufficient and derives this ring
+condition internally.
+\end{lemma}
+\begin{proof}
+The literal original integral-closure inclusion of an integrally
+closed original domain into its own original fraction field is
+bijective, so its true spectrum map is an isomorphism. The actual
+original normalization chart is exactly the spectrum of that
+literal original integral closure and covers the entire original
+inverse image of this open. The whole original chart projection
+diagram identifies the restricted original projection, up to
+genuine original affine isomorphisms, with the actual spectrum map
+of this bijective inclusion. Thus the whole original restricted
+projection is an isomorphism. Apply the preceding actual affine
+normality criterion for the stalk-based version.
+\end{proof}

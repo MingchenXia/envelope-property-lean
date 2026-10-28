@@ -1,0 +1,70 @@
+\section{Proper-model norms of arbitrary original residue-fibre vectors}
+
+\begin{definition}[Transport of an original residue-fibre vector]
+\label{def:original-residue-vector-transport}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.pullbackResidueSection_eq_affinePullbackUnitTop, EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedResidueSection}
+\uses{berkovich:actual-residue-module-pullback-iso,def:fc-induced-native-residue-frame}
+\leanok
+For any scheme morphism $g:Y\to Z$, a point $y\in Y$, an original
+module $M$ on $Z$, and an actual isomorphism $\alpha:g^*M\simeq N$,
+transport any vector $s$ in the residue fibre $M(g(y))$ first along
+the actual field homomorphism $\kappa(g(y))\to\kappa(y)$ and then
+along the residue pullback of $\alpha$. Denote the resulting vector
+of $N(y)$ by $s_Y$. No extension of $s$ to a model section is required.
+\end{definition}
+
+\begin{lemma}[The induced frame preserves every residue coefficient]
+\label{lem:original-residue-vector-frame-coefficient}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedResidueSection_frameSection, EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedResidueSection_coefficient, EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedResidueSection_valuation}
+\uses{def:original-residue-vector-transport,def:fc-induced-native-residue-frame,lem:fc-native-unit-section-morphism}
+\leanok
+Let $e$ be any actual residue-fibre frame of $M$ at $g(y)$, and let
+$e_Y$ be its canonical induced frame on $N(y)$. The coefficient
+$e_Y(s_Y)$ is the image of the original coefficient $e(s)$ under
+the same actual residue-field homomorphism. Consequently its value
+under the valuation at $y$ equals the value of $e(s)$ at the image
+valued point.
+\end{lemma}
+\begin{proof}
+The entire composition of the residue-module pullback comparison,
+the residue pullback of $\alpha$, and the induced frame is the
+pullback of $e$ followed by the canonical structure-sheaf comparison.
+Apply this identity to the actual residue-field pullback of $s$.
+Naturality of that pullback for $e$ identifies the resulting vector
+with the pullback of $e(s)$. The structure-sheaf comparison maps
+this vector to its image under the actual map of spectra. Naturality
+of global sections of an affine spectrum identifies this image with
+the stated field image. The valuation of the image valued point is
+defined by composition with this same field map, giving the equality
+of values, including when the vector is zero.
+\end{proof}
+
+\begin{theorem}[The proper-model norm of every original residue vector]
+\label{thm:proper-model-arbitrary-residue-vector-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_framedResiduePullback, EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_sourceResidueFrame_modelLineNorm_residueSections}
+\uses{lem:original-residue-vector-frame-coefficient,prop:generated-line-generic-frame-norms}
+\leanok
+Assume $Z\to\operatorname{Spec}R$ is proper, the base valuation is
+bounded by one, and $M$ is invertible. For any valued point of an
+arbitrary source $Y\to Z$, every vector $s\in M(g(y))$ satisfies
+\[
+ \|s\|_M=|e_Y(s_Y)|\,\|e^{-1}(1)\|_M.
+\]
+In particular one induced source residue frame computes the norm
+of every vector simultaneously with no extra factor. The source
+scheme need not be proper and its valuation need not be bounded
+on its whole coordinate ring.
+\end{theorem}
+\begin{proof}
+In the one-dimensional target residue fibre the actual frame gives
+$s=e(s)e^{-1}(1)$. Homogeneity of the original proper-model norm
+therefore gives the product of the value of $e(s)$ and the norm of
+$e^{-1}(1)$. Substitute the coefficient-value identity of the preceding
+lemma to obtain the displayed formula. Properness provides the actual
+valuation-ring center of the image point, and invertibility gives a
+frame over its local valuation ring. The residue pullback of that
+frame has inverse-unit section of norm one, because its coefficient
+in this same valuative frame is one. Use this target frame and its
+canonical induced source frame. The formula then holds with unit
+factor for every residue vector at once.
+\end{proof}

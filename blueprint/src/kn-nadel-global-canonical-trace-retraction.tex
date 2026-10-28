@@ -1,0 +1,94 @@
+\section{The actual unit-cover coefficient retraction}
+
+This is support for constructing the canonical trace on the same original
+mixed cover.  It does not assert the intrinsic normalization or overlap
+comparison for the canonical candidate.
+
+\begin{lemma}[Normalized trace on the whole original coefficient cover]
+\label{lem:kn-global-trace-unit-coefficient-retraction}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverCoefficientRetraction,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverCoefficientRetraction_one,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverCoefficientRetraction_algebraMap}
+\leanok
+Let $A$ be a nonzero algebra over the original characteristic-zero field
+$k$, and let $S$ be the same entire unit-root algebra with original
+positive root degrees $N_i$.  Set $D=\prod_iN_i$.  The actual native map
+\[
+ \epsilon:S\longrightarrow A,\qquad
+ \epsilon(s)=D^{-1}\operatorname{Tr}_{S/A}(s)
+\]
+is $A$-linear and satisfies $\epsilon(1)=1$ and
+$\epsilon(a)=a$ for every original base coefficient $a$.
+\uses{lem:kn-nadel-whole-cover-degree,lem:kn-nadel-whole-cover-trace-degree}
+\end{lemma}
+\begin{proof}
+The cited whole-cover degree theorem supplies an actual finite monic
+basis of the entire $S$, retaining all root factors.  Its actual native
+trace of $1$ is the same integer $D$.  Positivity makes $D$ nonzero in
+the original characteristic-zero field, so its original image in $A$
+is a unit.  Multiplying the native $A$-linear trace map by the inverse
+of this produced unit defines $\epsilon$.  The equality
+$D^{-1}D=1$ proves $\epsilon(1)=1$.  For $a\in A$, apply linearity to
+the original scalar equality $a=a\cdot1$ in $S$; the unit formula gives
+$\epsilon(a)=a\epsilon(1)=a$.
+\end{proof}
+
+\begin{lemma}[Splitting of the original scalar-extension unit]
+\label{lem:kn-global-trace-unit-section-retraction}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverSectionsRetraction,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverSectionsRetraction_tmul,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoverSectionsRetraction_unit}
+\leanok
+For every original $A$-module $M$, the actual native scalar extension
+has an $A$-linear map
+\[
+ r_M:S\otimes_A M\longrightarrow M,\qquad
+ r_M(s\otimes m)=\epsilon(s)m.
+\]
+Its composite with the original scalar-extension adjunction unit
+$m\mapsto1\otimes m$ is the identity on the entire original module $M$.
+All restricted scalar actions are the original ones.
+\uses{lem:kn-global-trace-unit-coefficient-retraction}
+\end{lemma}
+\begin{proof}
+The published scalar-restriction equivalence identifies the original
+$A$ action on the first tensor factor with restriction along $A\to S$.
+Tensor the actual linear map $\epsilon$ with the identity of $M$ and
+compose with $A\otimes_A M\simeq M$.  This gives the displayed pure-tensor
+formula.  For the restricted native $A$ action it is linear because
+$\epsilon(as)m=a\epsilon(s)m$; tensor induction gives the same equality
+on arbitrary elements.  Its value at the original adjunction unit is
+$\epsilon(1)m=m$.  Equality on every original $m$ proves the whole
+composite identity.  No splitting certificate is an input.
+\end{proof}
+
+\begin{lemma}[The actual original mixed canonical candidate]
+\label{lem:kn-global-trace-mixed-canonical-candidate}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalCandidate}
+\leanok
+Write $F$ for the internally constructed \texttt{mixedExtendedCounit}
+on the same whole unit cover, and write $M_B$ and $M_A$ for the actual
+original canonical section modules of the whole mixed source and its
+base.  The original data produce the $A$-linear composite
+\[
+ M_B\xrightarrow{\eta} S\otimes_A M_B
+   \xrightarrow{F}S\otimes_A M_A\xrightarrow{r_{M_A}}M_A.
+\]
+No normalization, overlap, duality or retraction certificate is an input.
+\uses{lem:kn-global-trace-mixed-extended-counit,lem:kn-global-trace-unit-section-retraction}
+\end{lemma}
+\begin{proof}
+Apply the actual scalar-extension adjunction unit to $M_B$.  Restrict the
+internally produced $S$-linear map $F$ along the same original $A\to S$,
+then compose with the already produced coefficient section retraction
+$r_{M_A}$.  All three maps are $A$-linear with the stated actual source
+and target; their categorical composition gives the asserted original
+candidate.
+\end{proof}
+
+\paragraph{Remaining original mixed-candidate comparisons.}
+Producing its intrinsic
+canonical normalization still requires the original differential
+readbacks in the extended map.  After those computations, faithful
+extension and the whole-pure uniqueness argument compare its actual
+extension with $F$ and give the original overlap equality.  None of
+these remaining comparisons is claimed by the two splitting lemmas.
+The factor $D^{-1}$ here normalizes only the auxiliary coefficient
+retraction; the desired canonical trace retains the original degree
+of the mixed cover over its original base.

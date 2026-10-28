@@ -1,0 +1,42 @@
+\section{Coefficient transitions preserve the original relative geometry}
+
+\begin{lemma}[An arbitrary arithmetic coefficient extension]
+\label{lem:kn-relative-arithmetic-scalar-transition}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticScalarTransition.relative_isPullback,EnvelopeProperty.Vanishing.RelativeArithmeticScalarTransition.isAmple,EnvelopeProperty.Vanishing.RelativeArithmeticScalarTransition.original_isPullback}
+\leanok
+Let $g:Y\to\operatorname{Spec}D$ have composite
+$f:Y\to\operatorname{Spec}A$, and let $S$ be any $A$-algebra.
+The original coefficient extension
+$Y_S=Y\times_A S$ has a canonical map
+$g_S:Y_S\to\operatorname{Spec}(S\otimes_A D)$ which is the base
+change of $g$.  Its composite to $\operatorname{Spec}S$ is the
+original second projection.  Every original relatively ample line
+pulls back to a relatively ample line for $g_S$.  If an actual
+cartesian original-field square $X=Y\times_A k$ is given and
+$S\subset k$ contains $A$, the canonical original map
+$X\to Y_S$ has the original field structure and is cartesian;
+successive module pullbacks recover the original pullback from $Y$.
+\end{lemma}
+\begin{proof}
+The tensor affine square identifies
+$\operatorname{Spec}(S\otimes_A D)$ with
+$\operatorname{Spec}S\times_A\operatorname{Spec}D$.
+The two original projections of $Y_S$, with the first followed by
+$g$, induce $g_S$.  Its composites are the original projections by
+the product universal property.  Pasting with the tensor affine
+square gives the defining square for $Y_S$; cancellation shows
+that $g_S$ is the base change of $g$.  Pull back the actual closed
+projective embedding and original positive power witnessing
+relative ampleness.  Projective space base change and compatibility
+of module tensor powers with pullback give the same positive-power
+criterion on $Y_S$.
+
+For the original field, the map $X\to Y_S$ is induced by
+$X\to Y$ and $X\to\operatorname{Spec}k\to\operatorname{Spec}S$.
+Their coefficient composites agree by the original cartesian
+square.  Pasting its proposed field square with the defining square
+of $Y_S$ gives that original cartesian square.  Cancellation again
+proves the new field square cartesian.  The first projection of
+$X\to Y_S$ is the original map to $Y$, so associativity of module
+pullback gives the stated whole-module recovery isomorphism.
+\end{proof}

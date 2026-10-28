@@ -1,0 +1,43 @@
+\section{Original field degrees of nonflat local principal quotients}
+
+\begin{theorem}[Actual finite local length gives finite field dimension]
+\label{thm:fc-local-length-field-degree}
+\leanok
+\lean{EnvelopeProperty.LocalPrincipalFieldDegrees.finite_of_finiteLength, EnvelopeProperty.LocalPrincipalFieldDegrees.finrank_eq_length_mul_residue_finrank}
+Let $R$ be an actual local algebra over the original field $k$, with
+finite-dimensional original residue field.  Any actual finite-length
+$R$-module $M$ is internally finite-dimensional over $k$ and satisfies
+$\dim_k M=\ell_R(M)[\kappa(R):k]$.
+\uses{thm:fc-artinian-local-restriction-length}
+\end{theorem}
+\begin{proof}
+The actual local-target coefficient restriction formula computes the
+original $k$-length as the product of two finite lengths.  Thus it internally
+gives finite dimension over $k$.  Taking natural parts of the same equality
+gives the claimed original field dimension, without choosing a new scalar
+action or supplying a finite-dimensionality certificate for $M$.
+\end{proof}
+
+\begin{theorem}[True nonflat local principal field degree]
+\label{thm:fc-nonflat-local-principal-field-degree}
+\leanok
+\lean{EnvelopeProperty.LocalPrincipalFieldDegrees.principalQuotient_finite, EnvelopeProperty.LocalPrincipalFieldDegrees.finrank_principalQuotient}
+Let $R$ be an actual local Noetherian domain of dimension at most one over
+$k$, with actual finite residue degree, and $B$ an actual finite domain
+algebra with injective original coefficient map.  For every original
+$a\ne0$, the same whole quotient $B/aB$ is internally finite over $k$ and
+\[
+ \dim_k(B/aB)=\operatorname{rank}_R(B)
+ \operatorname{ord}_R(a)[\kappa(R):k].
+\]
+\uses{thm:fc-finite-algebra-principal-degree,thm:fc-local-length-field-degree}
+\end{theorem}
+\begin{proof}
+The nonzero original $a$ annihilates the entire finite quotient, so genuine
+one-dimensional finite length is derived.  Apply the preceding field-degree
+formula and the nonflat principal-colength theorem.  Every coefficient
+action is the original scalar tower.  No normality, flatness, supplied
+basis, or target degree equality enters this local statement.  Scheme
+finite-fibre transport and global singular-curve degree scaling remain
+separate tasks.
+\end{proof}

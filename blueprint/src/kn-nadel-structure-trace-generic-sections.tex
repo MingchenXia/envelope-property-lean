@@ -1,0 +1,46 @@
+\section{The original local functions give the same actual generic sections}
+
+\begin{lemma}[The whole chart comparison is the actual pullback on functions]
+\label{lem:kn-structure-trace-chart-function-readback}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.pushforwardIso_top_eq_appLE}
+\leanok
+On every whole section of the actual original restricted pushforward,
+the actual chart comparison is precisely pullback of that original
+local function along the original source chart map, with the entire
+coefficient spectrum as its target open.
+\uses{lem:kn-structure-trace-chart-cartesian,lem:kn-structure-trace-original-local-map}
+\end{lemma}
+\begin{proof}
+The original cartesian square identifies the inverse image of the
+base chart's whole image with the source chart's whole image. The
+cartesian unit comparison restricts the original function along this
+identity and then applies the actual source open-immersion section
+isomorphism. The section formula for that isomorphism is the actual
+pullback to the whole source chart. Naturality of pullback on functions
+combines these two restrictions into the asserted single actual map.
+\end{proof}
+
+\begin{lemma}[Every original local function has its same whole original generic section]
+\label{lem:kn-structure-trace-original-generic-section}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericOriginalSection,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericFiberIso_originalSection}
+\leanok
+The actual generic first projection pulls every original local function
+on the whole inverse image of a nonempty chart to a whole section of
+the same entire original generic fiber. Computing this section through
+the actual whole chart, its first projection, and the proved generic
+fiber isomorphism gives exactly that same section. No function-matching
+identity is assumed.
+\uses{lem:kn-structure-trace-chart-function-readback,lem:kn-structure-trace-chart-generic-iso}
+\end{lemma}
+\begin{proof}
+The original generic point lies in the nonempty chart, and the source
+of the actual generic point has a single point. Thus its inverse image
+of that chart is the whole field spectrum, and the generic fiber first
+projection pulls every original local function to a whole generic
+fiber section. The preceding lemma identifies the chart value with
+the actual pullback on functions. The original first-projection identity
+for the whole generic fiber isomorphism identifies the composite map
+from the original generic fiber through the chart with the actual
+original first projection. Applying the composition identity for
+pullback on functions proves equality on every original local function.
+\end{proof}

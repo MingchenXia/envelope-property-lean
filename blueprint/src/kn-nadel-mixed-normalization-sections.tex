@@ -1,0 +1,31 @@
+\section{Native values of the whole mixed canonical comparison}
+
+\begin{lemma}
+\label{lem:kn-nadel-mixed-comparison-native-tensor}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedExtendedSectionsIso_tmul}
+\leanok
+\uses{lem:kn-global-trace-native-mixed-sections,lem:kn-global-trace-native-spectrum}
+Let $B$ be the entire original mixed quotient, $S$ the entire original
+unit-root cover and $C=S\otimes_A B$. Assume the original coordinates
+are etale and every original degree is positive and invertible.
+For every $s\in S$ and every original canonical section $w\in\omega_B$,
+the produced comparison satisfies
+\[
+ E_{\omega}(s\otimes w)=\operatorname{im}_{S\to C}(s)\,
+   \delta_{C/B}(w).
+\]
+Here $\delta_{C/B}$ is the actual adjoint sheaf canonical differential
+of the same tensor-right inclusion $B\to C$. No comparison formula is
+an input.
+\end{lemma}
+\begin{proof}
+The original module comparison is the tensor cancellation isomorphism
+for the actual pushout, followed by the native canonical sections
+isomorphism along the etale map $\operatorname{Spec}(C)\to
+\operatorname{Spec}(B)$. Tensor cancellation sends $s\otimes w$ to
+$\operatorname{im}_{S\to C}(s)\otimes w$. The native sections
+isomorphism is the affine pullback comparison followed by the actual
+sheaf differential; its proved tensor formula gives the displayed
+value for every $w$. All coefficient actions are those of the original
+rings, and every original unit-root factor remains present.
+\end{proof}

@@ -1,0 +1,87 @@
+\section{Canonical whole tensor-power pullback coherence}
+
+\begin{lemma}\label{lem:actual-power-iso-functoriality}
+\lean{EnvelopeProperty.BundleTensorPowerPullbackCoherence.powerIso_refl,EnvelopeProperty.BundleTensorPowerPullbackCoherence.powerIso_trans,EnvelopeProperty.BundleTensorPowerPullbackCoherence.powerIso_symm}
+\leanok
+\uses{lem:bundle-tensor-power-isomorphism,lem:cartier-actual-monoidal-explicit-tensor-naturality}
+The genuine explicit tensor-power construction preserves identity,
+composition and inverse of every whole original module isomorphism.
+\end{lemma}
+\begin{proof}
+The explicit tensor of two isomorphisms is the tensor of their
+underlying module-presheaf isomorphisms followed by sheafification.
+Both operations preserve identity and composition: for composition,
+the tensor interchange law combines the two maps in each factor,
+and functoriality of sheafification combines their images. Induct
+on the power. At zero the power isomorphism is the identity of the
+structure sheaf. At a successor the preceding tensor identities
+and the induction hypothesis prove identity and composition.
+Apply the composition identity to an isomorphism and its inverse;
+the identity case then identifies the power of the inverse with
+the inverse power isomorphism.
+\end{proof}
+
+\begin{lemma}\label{lem:actual-power-pullback-successor}
+\lean{EnvelopeProperty.BundleTensorPowerPullbackCoherence.pullbackIso_succ}
+\leanok
+\uses{lem:bundle-tensor-power-pullback,lem:cartier-actual-monoidal-explicit-tensor-naturality}
+For every actual $f:Y\to X$ and module $M$, the canonical comparison
+$f^*(M^{\otimes(n+1)})\simeq(f^*M)^{\otimes(n+1)}$ is the genuine
+explicit tensor pullback comparison followed by the tensor of the
+previous power comparison and the identity of $f^*M$.
+\end{lemma}
+\begin{proof}
+Expand the actual power pullback comparison. Naturality of the
+native-to-explicit tensor comparison moves the tensor of the
+previous power comparison and the identity past the final
+explicit comparison. The remaining three maps are exactly the
+canonical explicit tensor pullback comparison. Associativity of
+composition gives the asserted equality of whole isomorphisms.
+\end{proof}
+
+\begin{lemma}\label{lem:actual-power-pullback-naturality}
+\lean{EnvelopeProperty.BundleTensorPowerPullbackCoherence.pullbackIso_naturality}
+\leanok
+\uses{lem:actual-power-pullback-successor,lem:cartier-original-tensor-pullback-naturality}
+The genuine tensor-power pullback comparisons are natural in every
+whole original module isomorphism, for every nonnegative power.
+\end{lemma}
+\begin{proof}
+At zero both power isomorphisms are identity maps, so the two
+composites are the native structure-unit comparison. At a successor
+expand the preceding recursion on both sides. Naturality of the
+canonical explicit tensor pullback comparison moves the tensor of
+the original power isomorphism and the original isomorphism through
+that comparison. Tensor functoriality then combines this map with
+the two pullback power comparisons. The induction hypothesis in
+the first factor and the unchanged map in the second factor give
+exactly the other composite.
+\end{proof}
+
+\begin{theorem}\label{thm:actual-power-pullback-composition}
+\lean{EnvelopeProperty.BundleTensorPowerPullbackCoherence.pullbackIso_comp,EnvelopeProperty.BundleTensorPowerPullbackCoherence.pullbackIso_congr}
+\leanok
+\uses{lem:actual-power-iso-functoriality,lem:actual-power-pullback-successor,lem:cartier-canonical-explicit-tensor-pullback-composition,lem:actual-power-pullback-naturality}
+For actual composable scheme maps, the genuine whole tensor-power
+pullback comparison commutes with the native pullback-composition
+isomorphism, including its power on the original module. It also
+commutes with the native comparison of any two equal scheme maps.
+\end{theorem}
+\begin{proof}
+For composition induct on the power. At zero the statement is the
+native composition identity for the structure-unit comparisons.
+At a successor expand both power comparisons using the explicit
+tensor recursion. First apply naturality of explicit tensor
+pullback to the previous power comparison. The tensor interchange
+law then combines the previous two power comparisons with the
+power of the native composition isomorphism. The induction
+hypothesis identifies the first factor; the second factor is the
+native composition isomorphism itself. The genuine composition
+identity for canonical explicit tensor pullback identifies the
+remaining composite with the native composition comparison on
+the original successor tensor power followed by its direct
+pullback comparison. This is the claimed whole isomorphism.
+For equal maps substitute the equality. The native equal-map
+comparison becomes identity, and its power becomes identity by
+the preceding functoriality lemma, proving that identity as well.
+\end{proof}

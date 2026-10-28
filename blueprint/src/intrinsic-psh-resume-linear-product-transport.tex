@@ -1,0 +1,97 @@
+\subsection{The same whole-section comparison preserves actual tensor products}
+The following construction uses the canonical unit and tensor comparisons
+for the original sheaf pullback. In particular, its tensor-product identity
+is proved from those comparisons rather than prescribed as extra data.
+
+\begin{definition}[Actual whole-section pullback]
+\label{def:intrinsic-resume-whole-section-pullback}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalSections.wholePullbackSection}
+\leanok
+For an actual scheme morphism $f:X\to Y$, a module sheaf $A$ on $Y$, and
+$s\in H^0(Y,A)$, let $f^\natural s\in H^0(X,f^*A)$ be the pullback
+adjunction-unit image of $s$ on $f^{-1}Y$, identified with the equal whole
+open $X$.
+\end{definition}
+\begin{proof}
+The pullback adjunction unit is a module morphism from $A$ to the
+pushforward of $f^*A$. Its component on the whole target gives a section
+on $f^{-1}Y=X$, so it has exactly the asserted source and target.
+\end{proof}
+
+\begin{lemma}[The actual unit-normalized value on each whole section]
+\label{lem:intrinsic-resume-whole-section-unit-value}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalSections.wholePullbackSection_eq_sectionAtOne}
+\leanok
+\uses{def:intrinsic-resume-whole-section-pullback}
+Let $\alpha_s:\mathcal O_Y\to A$ be the original structure-module
+morphism with $\alpha_s(1)=s$. Then $f^\natural s$ is the value at $1$
+of the actual unit-normalized pullback of $\alpha_s$.
+\end{lemma}
+\begin{proof}
+Naturality of the pullback adjunction unit commutes its component on
+$A$ through $\alpha_s$. Its component on the structure module sends the
+unit to the inverse actual pullback-unit comparison applied to
+$f^\sharp(1)$. The latter is $1$, since the original ring map preserves
+units. Evaluating naturality at $1$ therefore gives the stated actual
+unit-normalized section value on $X$.
+\end{proof}
+
+\begin{lemma}[The same original whole-section isomorphism has this inverse]
+\label{lem:intrinsic-resume-whole-section-iso-inverse}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalSections.isoPullbackTopSections_inv_wholePullbackSection}
+\leanok
+\uses{lem:intrinsic-resume-whole-section-unit-value,def:seven-original-iso-pullback-whole-sections-route,thm:seven-iso-top-section-inverse-coherence}
+For an actual scheme isomorphism $e:X\simeq Y$, the inverse of the
+existing whole-section comparison on $A$ sends every $s$ to
+$e^\natural s$.
+\end{lemma}
+\begin{proof}
+Express $s$ as $\alpha_s(1)$ using its original structure-module morphism.
+The existing inverse top-section coherence identifies its image with
+the value at $1$ of the same unit-normalized pulled morphism. The
+preceding lemma identifies that value with $e^\natural s$. Both
+identifications hold for every original whole section, proving the
+inverse formula for exactly the existing isomorphism.
+\end{proof}
+
+\begin{lemma}[Whole pullback commutes with the same module morphisms]
+\label{lem:intrinsic-resume-whole-section-pullback-naturality}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalSections.wholePullbackSection_map}
+\leanok
+\uses{def:intrinsic-resume-whole-section-pullback}
+For every actual module morphism $a:A\to B$ on $Y$ and every whole
+section $s$, the original pulled morphism sends $f^\natural s$ to
+$f^\natural(a(s))$.
+\end{lemma}
+\begin{proof}
+Naturality of the pullback adjunction unit with respect to $a$ says
+that applying its component on $A$ and then the pushforward of $f^*a$
+is the same as first applying $a$ and then its component on $B$.
+Evaluate this equality on the whole target and then at $s$. The
+identification $f^{-1}Y=X$ gives exactly the stated whole-section equality.
+\end{proof}
+
+\begin{theorem}[The canonical tensor pullback multiplies actual whole sections]
+\label{thm:intrinsic-resume-whole-section-pullback-tensor}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalSections.canonicalTensorPullbackIso_wholePullbackSection}
+\leanok
+\uses{def:intrinsic-resume-whole-section-pullback,lem:intrinsic-resume-whole-section-pullback-naturality,lem:cartier-ratio-canonical-pullback,lem:tc-seven-canonical-power-transport}
+For every scheme morphism $f:X\to Y$, original module sheaves $A,B$ on
+$Y$, and whole sections $s,t$, the actual canonical tensor pullback
+isomorphism sends $f^\natural(s\otimes t)$ to
+$f^\natural s\otimes f^\natural t$.
+\end{theorem}
+\begin{proof}
+Use the genuine coherent tensor product before its canonical comparison
+with the explicit sheafified tensor. The pullback cotensorator sends the
+adjunction-unit image of a pure tensor section to the pure tensor of the
+two unit images. Naturality of the adjunction unit commutes the coherent
+to explicit tensor isomorphism through the pullback. In the defining
+composite of the canonical explicit tensor pullback, this pulled
+isomorphism cancels its inverse. The remaining cotensorator gives the
+two pulled factors, and the target coherent to explicit comparison gives
+their actual sheafified tensor section. Finally restriction from
+$f^{-1}Y$ to the equal whole open commutes with both sheaf morphisms and
+the actual tensor-section product, proving the stated whole-section law.
+\end{proof}
+

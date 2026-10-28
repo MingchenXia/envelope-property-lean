@@ -1,0 +1,72 @@
+\section{Actual standard-unit whole-section and point-fiber lifting}
+The inputs are the actual original adjunction unit on sections and an
+original generating family. The unit is assumed surjective. No cut
+ampleness, Serre bound, or final local generation is asserted.
+
+\begin{lemma}[The same whole section lifts under the original unit]
+\label{lem:original-standard-unit-whole-section-lift}
+\lean{EnvelopeProperty.SchemeLineSectionStandardUnitLifting.exists_wholeSection_lift_of_standardUnit_surjective}
+\leanok
+For any original scheme morphism $g:Y\to X$ and module $M$, if the
+actual original pullback--pushforward adjunction unit at $M$ is onto on
+top-open sections, every actual whole $q:\mathcal O_Y\to g^*M$ is the
+actual pullback of some original whole $t:\mathcal O_X\to M$.
+\end{lemma}
+\begin{proof}
+Take the original value of $q$ at one. Apply the native top-open
+pushforward transport and the stated surjectivity to choose an original
+section of $M$, and take its native associated whole morphism $t$.
+The existing component formula for the original adjunction unit on a top
+section identifies its value with the original pulled $t$ on the
+preimage of the top open. Original morphism naturality across the
+canonical preimage-top equality transports this identity to the same
+original top open of $Y$. The original section/unit-Hom equivalence
+then gives the whole equality $g^*t=q$. The scalar and top-open
+transports are those of the actual original unit; no chosen comparison
+or desired whole-map equality is an input.
+\end{proof}
+
+\begin{lemma}[An original generating family has a nonzero original fiber generator]
+\label{lem:original-generating-family-nonzero-fiber}
+\lean{EnvelopeProperty.SchemeLineSectionStandardUnitLifting.exists_generator_pullbackSectionHom_ne_zero}
+\leanok
+For any original invertible $N$ on $Y$, any original generating family
+$G$ of $N$, and any original point $y$, one of the same original whole
+generator maps has nonzero pullback to the canonical residue-field point.
+\end{lemma}
+\begin{proof}
+Pull the original generating family to the original residue spectrum.
+The existing local-spectrum line trivialization gives a whole frame of
+the actual pulled line. Transport the same pulled generating family
+along this actual frame. The existing unit-coefficient theorem for an
+original local-spectrum unit generating family supplies an original
+index with unit coefficient. Native generator pullback and epimorphic
+image identities identify its original whole generator with the
+pullback of the same original generator followed by that frame.
+A zero pullback would make the coefficient zero, contradicting its
+being a unit in the original residue field.
+\end{proof}
+
+\begin{lemma}[A lifted original cut generator stays nonzero at its original ambient point]
+\label{lem:original-standard-unit-generator-lift-nonzero-fiber}
+\lean{EnvelopeProperty.SchemeLineSectionStandardUnitLifting.exists_nonzero_pointFiber_lift_of_standardUnit_surjective}
+\leanok
+For any original $g:Y\to X$, original invertible $M$, original generating
+family of $g^*M$, and actual surjectivity of the standard original unit
+on top sections, every original $y\in Y$ has an original whole
+$t:\mathcal O_X\to M$ whose original residue pullback at $g(y)$ is
+nonzero.
+\uses{lem:original-standard-unit-whole-section-lift,lem:original-generating-family-nonzero-fiber}
+\end{lemma}
+\begin{proof}
+Choose the original nonzero fiber generator at $y$ and lift its whole
+map by the first lemma. The native scheme residue-field square is
+$\operatorname{Spec}(\kappa(y)\leftarrow\kappa(g(y)))\to X$ equal to
+$i_y$ followed by the same original $g$. Native pullback-composition
+and equal-map section identities preserve this exact square. If the
+original residue pullback of $t$ at $g(y)$ were zero, its further
+pullback would be zero, contradicting the nonzero original generator
+at $y$ after cancellation of the native whole comparison isomorphisms.
+No residue-field isomorphism or fiber matching is required.
+\end{proof}
+

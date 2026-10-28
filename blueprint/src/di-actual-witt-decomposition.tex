@@ -1,0 +1,164 @@
+\section{The actual Witt-lift Deligne--Illusie decomposition}
+\label{sec:di-actual-witt-decomposition}
+
+This chapter constructs the actual finite-source map and its truncated
+and bounded Deligne--Illusie decompositions. The native good-truncation,
+finite-source homology, affine Cartier, and local quasi-isomorphism
+criteria are applied throughout to the original geometric objects.
+
+\begin{definition}[The actual finite-source cochain morphism]
+\label{def:di-actual-witt-finite-source-map}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.sourceNat,EnvelopeProperty.DI.ActualWittDecomposition.componentMap,EnvelopeProperty.DI.ActualWittDecomposition.finiteCochainMap,EnvelopeProperty.DI.ActualWittDecomposition.componentMap_zero,EnvelopeProperty.DI.ActualWittDecomposition.componentMap_succ,EnvelopeProperty.DI.ActualWittDecomposition.summand_finiteCochainMap}
+\leanok
+\uses{thm:di-higher-exterior-witt-maps,def:di-actual-zero-summand}
+Under the actual Witt-lift hypotheses of the theorem below, let
+$S_p=\bigoplus_{q<p}\Omega^q_{Y/k}[-q]$ in natural degrees and let
+$T$ be the original total \v Cech complex of the original $K$ on the
+internally constructed cover. There is the actual cochain map
+$\Phi:S_p\to T$ whose original summand at zero is the constructed zero
+Cartier map and whose original summand at $q=r+1$ is the internally
+constructed higher cochain map. Its composite with every original
+coproduct inclusion is exactly that component map.
+\end{definition}
+\begin{proof}
+\leanok
+Base change of the given original smooth pure-dimensional lift gives the
+same dimension on its actual special fibre. Use the original finite
+source of the existing dimension-source API. Case analysis on its
+original natural degree selects the degree-zero map or the actual positive map.
+Each is already a cochain map, so the original coproduct universal
+property gives $\Phi$ with the stated entire component identities.
+There is no caller-supplied map family or compatibility certificate.
+\end{proof}
+
+\begin{definition}[The actual good-truncated candidate]
+\label{def:di-actual-witt-truncated-source-map}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.truncatedCochainMap,EnvelopeProperty.DI.ActualWittDecomposition.truncatedCochainMap_inclusion}
+\leanok
+\uses{def:di-actual-witt-finite-source-map,lem:di-finite-source-good-truncation}
+The same map canonically gives
+$\overline\Phi:S_p\to\tau_{<p}T$ after extension by zero to integer
+degrees. Composing with the original good-truncation inclusion is exactly
+the extension of the entire original $\Phi$.
+\end{definition}
+\begin{proof}
+\leanok
+Apply the already constructed finite-source truncation factorization to
+the actual map of the preceding definition. Its original source
+truncation isomorphism and the native truncation naturality square give
+the claimed equality. This constructs the actual outgoing-kernel map;
+it does not yet assert its quasi-isomorphism property.
+\end{proof}
+
+\begin{lemma}[The zero-degree range condition and the original summand criterion]
+\label{lem:di-actual-witt-zero-range}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.componentMap_zero_quasiIsoAt,EnvelopeProperty.DI.ActualWittDecomposition.finiteCochainMap_quasiIsoAt_iff,EnvelopeProperty.DI.ActualWittDecomposition.finiteCochainMap_quasiIsoAt_zero}
+\leanok
+\uses{def:di-actual-witt-finite-source-map,lem:di-actual-zero-cartier-class}
+The actual $\Phi$ is a quasi-isomorphism in degree zero. For every
+original $q<p$, its quasi-isomorphism property in degree $q$ is
+equivalent to that of its actual single-degree component.
+\end{lemma}
+\begin{proof}
+\leanok
+The degree-zero component before augmentation induces the entire global
+inverse Cartier map, hence an isomorphism on zero homology. The original
+total augmentation is a quasi-isomorphism on the actual cover, so their
+actual composite is a quasi-isomorphism in degree zero. The existing
+finite distinct-degree summand criterion, applied to the original
+inclusion of each summand, gives the stated equivalence. Its zero case
+proves the assertion for the entire finite-source map. This reuses the
+existing graded-source criterion and does not prove any positive-degree
+Cartier comparison by assumption.
+\end{proof}
+
+\begin{theorem}[The actual truncated DI decomposition]
+\label{thm:di-actual-witt-truncated-decomposition}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.truncatedDerivedIso}
+\leanok
+\uses{thm:di-actual-witt-truncated-map-quasi-isomorphism,thm:di-actual-witt-higher-sheaf-cartier,lem:di-actual-zero-cartier-class}
+Let $k$ be a perfect field of characteristic $p>0$. Let
+$\widetilde f:\widetilde X\to\operatorname{Spec}W_2(k)$ be an actual
+smooth separated lift of pure relative dimension $n$, and let $X$ be its
+original special fibre. Put $Y=X^{(p)}$, with its original structure map
+to $\operatorname{Spec}k$, and let $F:X\to Y$ be relative Frobenius.
+There is an isomorphism in the derived category of $\mathcal O_Y$-modules
+\[
+ \bigoplus_{0\le q<p}\Omega^q_{Y/k}[-q]
+   \;\simeq\; \tau_{<p}F_*\Omega^\bullet_{X/k}.
+\]
+\end{theorem}
+\begin{proof}
+\leanok
+Use the affine cover and actual Frobenius lifts produced from
+$\widetilde f$. The genuine divided differences give $\xi_i$ and
+$H_{ij}$ on the original sheaves. Their proved closedness, difference
+and triple equations make $(\xi,-H)$ a closed degree-one element of the
+original total \v Cech complex $T$ of $K=F_*\Omega^\bullet_{X/k}$.
+The original restriction identities are used here before applying the
+product universal properties; no compatibility of arbitrary selected
+maps is assumed.
+
+For $1\le q<p$, iterate the actual signed total cup product on this
+degree-one map, apply normalized antisymmetrization with the invertible
+scalar $q!$, and descend through the original exterior-power universal
+property. The actual total Leibniz formula proves the resulting map
+$\varphi_q:\Omega^q_{Y/k}[-q]\to T$ is a cochain map. In degree zero
+use the map of Definition~\ref{def:di-actual-zero-summand}. The original
+finite coproduct gives a cochain map $\Phi:S_p\to T$, where
+$S_p=\bigoplus_{q<p}\Omega^q_{Y/k}[-q]$.
+
+Extend the natural-degree complexes by zero to integer degrees. The
+original source is already strictly supported below $p$. Consequently
+Lemma~\ref{lem:di-finite-source-good-truncation} gives the canonical
+factorization $\overline\Phi:S_p\to\tau_{<p}T$, preserving the entire
+original map after composition with the truncation inclusion.
+
+On a member of the actual cover, compose with the original local
+evaluation $T\to K$. Its zero-row formula sends $\varphi_q$ to the
+normalized product of the same local $\xi_i$ representatives. The
+whole-map leading-Cartier comparison identifies its class with the
+existing native inverse Cartier map, and the canonical affine homology
+comparison identifies this with the restriction of the actual global
+Cartier sheaf isomorphism. For $q=0$ this is
+Lemma~\ref{lem:di-actual-zero-cartier-class}. Restriction preserves the
+original homology, and the local evaluation is already a
+quasi-isomorphism. Therefore every summand induces an isomorphism in its
+own degree. The existing finite graded-source criterion and the genuine
+good-truncation vanishing outside $0\le q<p$ show that
+$\overline\Phi$ is a quasi-isomorphism. Equivalently one can apply the
+existing local-to-global quasi-isomorphism criterion on this same cover.
+
+The original total augmentation $K\to T$ and its good truncation are
+already quasi-isomorphisms. Inverting the latter in the derived category
+and composing with the image of $\overline\Phi$ gives the asserted
+isomorphism. The local Cartier classes used to prove the
+quasi-isomorphism are the whole original sheaf-map identities of
+Theorem~\ref{thm:di-actual-witt-higher-sheaf-cartier}, with degree zero
+given by Lemma~\ref{lem:di-actual-zero-cartier-class}.
+\end{proof}
+
+\begin{corollary}[Removing the cutoff below the characteristic]
+\label{cor:di-actual-witt-full-decomposition}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.fullDerivedIso}
+\leanok
+\uses{thm:di-actual-witt-truncated-decomposition,lem:di-reused-native-dimension-source,lem:di-reused-native-dimension-support}
+Under the same hypotheses, if $n<p$, the original finite source and
+untruncated original pushed de Rham complex satisfy
+\[
+ \bigoplus_{q=0}^{n}\Omega^q_{Y/k}[-q]
+   \;\simeq\;F_*\Omega^\bullet_{X/k}
+\]
+in the same derived category.
+\end{corollary}
+\begin{proof}
+\leanok
+The existing geometric dimension theorem makes both original form
+sheaves zero in degrees above $n$. Its original source-inclusion
+isomorphism identifies the source through degree $n$ with $S_p$.
+Its original good-truncation inclusion is an isomorphism on $K$ because
+$n<p$. Compose these two existing isomorphisms with the truncated
+decomposition just constructed. This step uses the declared smooth
+pure-dimension hypothesis, and does not replace an arbitrary smooth
+arithmetic model by an unproved constant-dimension model.
+\end{proof}

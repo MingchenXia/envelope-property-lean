@@ -1,0 +1,83 @@
+\subsection{Genuine rational lifts of whole native scheme points}
+
+\begin{lemma}[The original completed point field has its actual base action]
+\label{lem:fc-rational-point-field-coefficients}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcPointFieldCoefficient, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcPointFieldCoefficient_spec, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcPointFieldCoefficient_norm}
+\uses{lem:fc-affine-fibre-model}
+The actual canonical completed stalk residue-field scheme point derives
+the entire original coefficient map from the original base field.
+Its whole scheme base triangle holds, and every original coefficient
+norm is preserved.
+\end{lemma}
+\begin{proof}
+Apply the actual full Spec functor to the genuine canonical
+completed-field point followed by the original structure morphism.
+The Spec preimage identity gives the whole triangle. The norm point
+of the actual canonical completed-field point recovers the whole
+original native point, which already prescribes every base norm.
+Native functoriality and the actual affine base-point homeomorphism
+therefore prove the entire coefficient norm identity.
+\end{proof}
+
+\begin{definition}[The actual completed algebraic closure of a point field]
+\label{def:fc-rational-lift-field}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftField, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldNormedField, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldComplete, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldUltrametric, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldAlgClosed, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldPointAlgebra, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldPointNormedAlgebra, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldAlgebra, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftField_val_algebraMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftFieldNormedAlgebra}
+\uses{lem:fc-rational-point-field-coefficients}
+For an original native point $x$, take the genuine completed algebraic
+closure $F_x$ of its actual completed stalk residue field. This is an
+actual complete algebraically closed ultrametric field in the original
+universe. The preceding true coefficient action, followed by the actual
+completed algebraic closure embedding, gives its original normed base
+field extension and preserves every original coefficient norm.
+\end{definition}
+\begin{proof}
+Use the actual completed algebraic closure construction on the genuine
+completed stalk residue field. Inherit its field, completeness,
+ultrametricity and algebraic closedness. Compose the actual coefficient
+maps. The completed algebraic closure embedding and the preceding
+coefficient map both preserve every norm, deriving the original normed
+algebra structure. No field embedding or compatible norm is supplied.
+\end{proof}
+
+\begin{lemma}[An actual rational section lifting every whole native point]
+\label{lem:fc-scheme-rational-point-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftSection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftSection_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalLiftSection_projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalScalarLift, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalScalarLift_nativeMap}
+\uses{def:fc-rational-lift-field,lem:fc-scheme-scalar-pullback}
+Every whole native scheme point $x$ has an actual $F_x$-rational section
+of the literal $F_x$-scheme pullback. Its norm point restricts to the
+entire original valued point $x$.
+\end{lemma}
+\begin{proof}
+The canonical completed stalk residue-field point, preceded by the
+actual completed algebraic closure coefficient extension, commutes with
+the original base field by the proved entire triangle. The genuine
+scheme pullback universal property therefore constructs its rational
+section, with new structure composite identity and exact original
+projection triangle. The isometric completed algebraic closure
+embedding maps its norm point to the norm point of the completed
+residue field. The latter's actual canonical scheme point recovers
+exactly the original whole native point.
+\end{proof}
+
+\begin{lemma}[Original rational sections lift through any normed extension]
+\label{lem:fc-scheme-rational-section-base-change}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_nativeProjection}
+\uses{lem:fc-scheme-scalar-pullback}
+Every actual $F$-rational section has an actual $E$-rational section of
+the literal scalar-changed scheme for every normed extension $E/F$.
+The whole structure and original projection triangles hold, and its
+norm point projects to the entire original rational native point.
+\end{lemma}
+\begin{proof}
+Compose the actual coefficient Spec morphism with the original rational
+section and use the identity new-base component in the genuine
+pullback universal property. The original section identity gives the
+actual commuting square. The two pullback projection identities prove
+the whole triangles. Norm preservation under the actual normed field
+extension identifies the full native norm points, giving the entire
+original rational point.
+\end{proof}

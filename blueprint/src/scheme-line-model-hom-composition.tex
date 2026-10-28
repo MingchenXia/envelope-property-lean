@@ -1,0 +1,42 @@
+\section{Original model morphism norms respect actual composition}
+
+\begin{lemma}[True whole original composition norm]
+\label{lem:actual-model-hom-norm-composition}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_comp}
+\leanok
+\uses{def:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-norm-one-section}
+For actual morphisms $\alpha:M\to N$ and $\beta:N\to P$ of
+original invertible modules on an original proper model, the
+genuine model morphism norm of their whole original composite is
+the product of their original model morphism norms.
+\end{lemma}
+\begin{proof}
+Take an actual section of the original residue-field pullback of
+$M$ with genuine model norm one. Pulling back the actual original
+composite equals the actual composite of the two pulled module
+morphisms. The original norm scaling theorem computes the norm of
+its image both directly and successively. Since the chosen actual
+section has norm one, the direct calculation gives precisely the
+model norm of the composite. The successive calculation gives the
+product of the two original morphism norms. Commutativity of the
+original scalar value monoid gives the stated order.
+\end{proof}
+
+\begin{corollary}[Identity and whole original isomorphisms]
+\label{cor:actual-model-hom-norm-identity-isomorphism}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_id}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_iso}
+\leanok
+\uses{def:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-norm-one-section,lem:scheme-line-actual-model-isomorphism-isometry}
+The actual original identity has model morphism norm one. Every
+actual whole original line-module isomorphism also has model
+morphism norm one.
+\end{corollary}
+\begin{proof}
+For the identity, the norm scaling theorem applied to an actual
+norm-one section gives one as its morphism norm. For an actual
+whole original isomorphism, the original model norm isometry
+identity identifies the image of such a section as another actual
+norm-one section. The same exact original norm scaling theorem
+then gives morphism norm one.
+\end{proof}

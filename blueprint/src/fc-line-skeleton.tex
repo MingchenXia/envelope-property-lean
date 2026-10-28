@@ -1,0 +1,75 @@
+\subsection{An explicit radial retraction}\label{subsec:fc-line-skeleton}
+
+\begin{lemma}[Centre independence of inflation]\label{lem:fc-inflation-centre-independent}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_center_independent, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_fix_gauss}
+\leanok
+\uses{lem:fc-inflation-linear, lem:fc-linear-determination}
+Over an algebraically closed valued field, $H_a(x,s)=H_b(x,s)$ for every
+$a,b,x,s$. Moreover, $H_a(\zeta_{b,r},s)=\zeta_{b,r}$ whenever $s\le r$.
+\end{lemma}
+
+\begin{proof}
+For every $c$, both sides of the first equality have linear value
+$\max\{|T-c|_x,s\}$, so linear determination proves equality. For the second,
+the inflated value is $\max\{\max\{|b-c|,r\},s\}$, which equals
+$\max\{|b-c|,r\}$ because $s\le r$. Apply linear determination again.
+\end{proof}
+
+\begin{definition}[The radial skeleton and its radius]\label{def:fc-radial-skeleton}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialSkeleton, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.skeletonRadius}
+\leanok
+\uses{def:fc-standard-affinoid}
+For the actual standard affinoid $U$, set
+\[
+ S_U=\{\zeta_{a_0,r_0}\}\cup
+ \bigcup_{j=1}^m\{\zeta_{a_j,s}:r_j\le s\le r_0\},\qquad
+ q_U(x)=\min\bigl(\{r_0\}\cup\{|T-a_j|_x:1\le j\le m\}\bigr).
+\]
+The outer radius is included in this finite minimum even when there are no
+holes. Thus the definition covers zero outer radius and the empty-hole case.
+\end{definition}
+
+\begin{lemma}[The radial skeleton lies in the affinoid]\label{lem:fc-radial-skeleton-subset}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialSkeleton_subset, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.skeletonRadius_outer, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.skeletonRadius_segment}
+\leanok
+\uses{def:fc-radial-skeleton, lem:fc-standard-boundary}
+One has $S_U\subseteq U$. For each point $z=\zeta_{a_j,s}$ of a displayed
+radial interval, $q_U(z)=s$. Also $q_U(\zeta_{a_0,r_0})=r_0$.
+\end{lemma}
+
+\begin{proof}
+The outer Gauss point belongs to $U$. For $r_j\le s\le r_0$, the value of
+$T-a_0$ at $\zeta_{a_j,s}$ is $\max\{|a_j-a_0|,s\}\le r_0$.
+For each hole $i$ its value is $\max\{|a_j-a_i|,s\}$, no smaller than the
+corresponding value at $\zeta_{a_j,r_j}\in U$, so it is at least $r_i$.
+This proves containment. Every hole-coordinate value at $\zeta_{a_j,s}$
+is at least $s$, and the $j$th equals $s$; the cap $r_0$ is also at least
+$s$. Hence the finite minimum is $s$. At the outer Gauss point every
+hole-coordinate value equals $r_0$, by the centre bound, so its capped
+minimum equals $r_0$ as well.
+\end{proof}
+
+\begin{theorem}[The actual continuous radial retraction]\label{thm:fc-radial-retraction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction_eq_self}
+\leanok
+\uses{lem:fc-inflation-centre-independent, def:fc-radial-skeleton,
+  lem:fc-radial-skeleton-subset, lem:fc-standard-inflation}
+The function $\tau_U(x)=H_{a_0}(x,q_U(x))$ on $U$ takes values in $S_U$,
+is continuous, and fixes every point of $S_U$. Thus it is a retraction
+$U\to S_U$.
+\end{theorem}
+
+\begin{proof}
+The function $q_U$ is continuous because it is the minimum of finitely many
+continuous functions. Its value is at most $r_0$, so inflation stays in $U$.
+The finite minimum is attained. If it is the cap $r_0$, the endpoint identity
+gives the outer Gauss point. If it is $|T-a_j|_x$, its value belongs to
+$[r_j,r_0]$, since $x\in U$. Change the inflation centre to $a_j$ and use
+the endpoint identity to obtain $\zeta_{a_j,q_U(x)}\in S_U$.
+Joint continuity of inflation proves continuity of $\tau_U$ as a map into
+the analytic line, and then as a map into the subspace $S_U$.
+On a displayed radial interval the preceding lemma says $q_U(\zeta_{a_j,s})=s$;
+inflation by radius $s$ fixes that Gauss point by centre independence.
+The same argument fixes the outer Gauss point. This proves the retraction
+identity on all of $S_U$.
+\end{proof}

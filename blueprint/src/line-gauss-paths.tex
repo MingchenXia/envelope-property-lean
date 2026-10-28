@@ -1,0 +1,153 @@
+\subsection{Whole Gauss rays in actual principal-open lines}
+\label{subsec:line-gauss-paths}
+
+\begin{theorem}[Actual centered Gauss points and radius-zero evaluation]
+\label{spectrum:centered-gauss-whole-ray}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_val_X_sub_C,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_centeredGauss_prod,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_centeredGauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_injective}
+\leanok
+\uses{spectrum:gauss-point,spectrum:gauss-joint-continuity,spectrum:gauss-zero-radius}
+Let $R,A$ be arbitrary commutative rings, $A$ an actual $R$-algebra,
+and let $y$ be a whole point of its spectrum above a prescribed
+real-valued coefficient seminorm on $R$. For $a\in A$ and every
+$r\ge0$, translation $T\mapsto T+a$ followed by the genuine Gauss
+extension gives an actual whole point of $A[T]$ above the same
+prescribed coefficient seminorm. The value of $T-a$ is exactly $r$.
+At $r=0$ the entire point is evaluation at $a$ followed by $y$.
+The family is jointly continuous in $y,r$, and its radius path is injective.
+\end{theorem}
+\begin{proof}
+Pull back the actual Gauss point through the genuine polynomial
+translation algebra isomorphism, restricted along the original
+coefficient algebra. Whole-point pullback retains every original
+coefficient value. The translation sends the entire polynomial $T-a$
+to $T$, whose Gauss value is exactly $r$. At radius zero the Gauss
+value is the actual constant coefficient; the true translated constant
+coefficient is $p(a)$ for every original polynomial $p$, so all
+polynomial values agree with the genuine evaluation pullback.
+Actual Gauss joint continuity and whole-ring restriction give joint
+continuity. For a fixed original point, continuity is proved on every
+whole polynomial evaluation in the independently defined topology.
+The exact $T-a$ value distinguishes every two radii, proving injectivity.
+No field, finite-generation, boundedness or positive-radius hypothesis
+is used in these constructions and whole-point identities.
+\end{proof}
+
+\begin{theorem}[Positive radii retain every nonzero polynomial over a field]
+\label{spectrum:centered-gauss-generic-support}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_val_ne_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_support_eq_bot}
+\leanok
+\uses{spectrum:centered-gauss-whole-ray,spectrum:relative-support}
+If the coefficient algebra is a field, each positive-radius centered
+Gauss point has nonzero value on every nonzero original polynomial.
+Its actual scheme support ideal is therefore zero.
+\end{theorem}
+\begin{proof}
+The true translation isomorphism retains nonzeroness of the whole
+polynomial. Choose one actual nonzero coefficient of its translated
+image. Every valuation on a field has zero value only on zero, so this
+coefficient has positive value. A positive radius gives positive value
+to its original weighted coefficient. The genuine Gauss coefficient
+lower bound then makes the full polynomial value positive. Applying
+this to every original polynomial identifies the whole support ideal
+with zero; support equality is derived from all function values.
+\end{proof}
+
+\begin{theorem}[The whole ray lifts to the actual principal-open line]
+\label{spectrum:centered-gauss-principal-open-lift}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.eval_val_le_centeredGauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGauss_val_ne_zero_of_eval,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_val_algebraMap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_val_X_sub_C,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_centeredGaussAway,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_injective}
+\leanok
+\uses{spectrum:centered-gauss-whole-ray,spectrum:relative-principal-open}
+For $g\in A[T]$ suppose the actual evaluation point has nonzero $g$
+value. Then the entire centered ray, including radius zero, has nonzero
+$g$ value and lifts to every actual localization of $A[T]$ away from $g$.
+The coefficient algebra maps must form their actual scalar tower.
+Every original polynomial value is preserved, the localized $T-a$
+coordinate still has value $r$, and the entire lifted ray is continuous
+and injective.
+\end{theorem}
+\begin{proof}
+The true constant coefficient of the translated $g$ is $g(a)$.
+Its weighted coefficient lower bound therefore bounds every entire
+ray value of $g$ below by its nonzero original evaluation value,
+for every nonnegative radius. Use the genuine principal-localization
+valuation lift, with this derived nonvanishing condition. Its whole
+original-element formula retains every original polynomial value;
+in particular it retains the exact centered-coordinate radius.
+Every actual localized element has a true fraction representation
+$p/g^n$. Its value along the lift is the original ray value of $p$
+divided by the original ray value of $g$ to the power $n$.
+Both numerator and denominator vary continuously and the denominator
+never vanishes. Whole coordinatewise continuity proves continuity
+of the entire localization lift. The centered-coordinate identity
+again distinguishes all radii. These are actual localizations and
+whole valuation extensions, not chosen principal-open certificates.
+\end{proof}
+
+\begin{theorem}[Actual evaluation points are not isolated in their line opens]
+\label{spectrum:line-evaluation-not-isolated}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.exists_centeredGaussAway_ne_in_nhds,
+EnvelopeProperty.Berkovich.RelativeSpectrum.not_isOpen_singleton_centeredGaussAway_zero}
+\leanok
+\uses{spectrum:centered-gauss-principal-open-lift}
+Every neighborhood of the entire radius-zero evaluation lift contains
+a distinct point of the actual principal-open line at positive radius.
+Consequently this whole evaluation point is not isolated. This holds
+over the arbitrary coefficient rings and prescribed seminorms above.
+\end{theorem}
+\begin{proof}
+Zero belongs to the closure of the positive radii in the genuine
+nonnegative-real topology. Continuity pulls back every neighborhood
+of the whole radius-zero lift to a neighborhood of zero.
+Intersect its eventual membership with the frequently positive-radius
+condition to obtain an actual positive radius whose lift is in the
+given neighborhood. Injectivity makes that whole point distinct from
+the original radius-zero point. An open singleton would be such a
+neighborhood and would contradict this derived distinct-point property.
+No maximum principle or subharmonic-function hypothesis is asserted.
+\end{proof}
+
+\begin{theorem}[Field evaluation points are approached through generic support]
+\label{spectrum:line-evaluation-generic-closure}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_val_ne_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_support_eq_bot,
+EnvelopeProperty.Berkovich.RelativeSpectrum.centeredGaussAway_zero_mem_closure_generic}
+\leanok
+\uses{spectrum:centered-gauss-generic-support,spectrum:centered-gauss-principal-open-lift,spectrum:relative-support}
+When the coefficient algebra is a field, each positive-radius localized
+point has nonzero value on every nonzero entire localized function
+and has zero support ideal. The whole actual evaluation lift is in
+the closure of this generic-support locus of the principal-open line.
+There is no completeness, algebraic-closure, infinitude, characteristic
+or nontrivial-valuation assumption.
+\end{theorem}
+\begin{proof}
+Represent an original nonzero localized function by a true fraction
+$p/g^n$. Its numerator is nonzero, since a zero numerator would make
+the original fraction zero. The preceding positive-radius field
+Gauss theorem makes its entire numerator value nonzero, and the
+derived original denominator value is nonzero. The fraction value
+is thus nonzero. Applying this to every entire localized function
+gives the zero support ideal.
+
+Continuity carries the closure of positive radii into the closure
+of their actual point image. Every point of this image has the just
+proved generic support, so monotonicity of closure puts the whole
+radius-zero evaluation lift in the asserted locus closure.
+This is density at the constructed whole evaluation point, derived
+in the valuation topology. It does not infer native density from
+scheme support density, assert density on every algebraic curve,
+or prove a subharmonic maximum principle.
+\end{proof}

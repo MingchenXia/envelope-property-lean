@@ -1,0 +1,50 @@
+\section{The original coherent ideal-power maps in Rees Cech coordinates}
+
+\begin{lemma}[The original ideal-power inclusions in every Rees degree]
+\label{lem:fibre-ideal-power-cech-inclusion-comparison}
+\uses{lem:fibre-ideal-power-module-inclusions}
+\lean{EnvelopeProperty.FibreIdealPowerCechMaps.inclusion_term,EnvelopeProperty.FibreIdealPowerCechMaps.inclusion_complex,EnvelopeProperty.FibreIdealPowerCechMaps.inclusion_homology}
+\leanok
+For a finite ordered affine family on a separated original scheme,
+the canonical original coherent ideal-power Cech identifications
+intertwine the whole sheaf inclusion from power $m$ to power $n\le m$
+with the literal higher-to-lower inclusion on every Rees-degree Cech
+term, on the entire complexes, and on their cohomology in every degree.
+All coefficient actions are the original $R$ actions.
+\end{lemma}
+\begin{proof}
+On an original affine intersection, the proved coherent section
+identification retains the underlying original function. The actual
+sheaf inclusion and the literal ideal-power inclusion both retain
+exactly that function, so the whole factor square commutes. Taking
+the product over all ordered intersections proves the entire term
+square. The actual maps and identifications commute with all original
+restrictions and alternating differentials; the term squares therefore
+assemble into the asserted whole cochain square. The naturality of
+cohomology under original scalar restriction, followed by functoriality
+of cohomology on that cochain square, proves the same comparison in
+every cohomological degree.
+\end{proof}
+
+\begin{lemma}[Original coefficient multiplication in every Rees degree]
+\label{lem:fibre-ideal-power-cech-multiplication-comparison}
+\uses{lem:fibre-ideal-power-coefficient-multiplication,lem:fibre-ideal-power-cech-inclusion-comparison}
+\lean{EnvelopeProperty.FibreIdealPowerCechMaps.multiply_term,EnvelopeProperty.FibreIdealPowerCechMaps.multiply_complex,EnvelopeProperty.FibreIdealPowerCechMaps.multiply_homology}
+\leanok
+Under the same identifications, actual multiplication by any original
+$a\in I^e$ from power $d$ to power $e+d$ is the literal homogeneous
+Rees multiplication, on every entire original Cech term, complex and
+cohomology group.
+\end{lemma}
+\begin{proof}
+The actual sheaf multiplication on an affine intersection multiplies
+its entire original function by its original coefficient section. The
+coefficient section equals the coefficient homomorphism of that same
+actual Rees chart. Consequently its image under the whole section
+identification is exactly literal homogeneous multiplication on the
+same ideal power. These whole factor identities give the product term
+identity. Functoriality of the unchanged alternating differential gives
+the whole complex identity; naturality of cohomology under the original
+scalar restriction and functoriality on the complex identity give the
+asserted cohomology comparison in every degree.
+\end{proof}

@@ -1,0 +1,61 @@
+\subsection{The original coefficient map into the actual stalk}
+
+\begin{definition}[Original stalk coefficients]
+\label{alggeom:original-stalk-coefficient-map}
+\lean{EnvelopeProperty.SchemeStalkCoefficients.coefficientMap}
+\leanok
+For an actual $f:X\to\operatorname{Spec}R$ and an original point $x$, the
+coefficient map $R\to\mathcal O_{X,x}$ is the original structure map on global
+sections followed by the actual germ at $x$, using the genuine
+$R\simeq\Gamma(\operatorname{Spec}R)$ comparison.
+\end{definition}
+\begin{proof}
+Use the actual original stalk algebra structure induced by $f$.
+\end{proof}
+
+\begin{lemma}[Whole original structure triangle]
+\label{alggeom:original-stalk-coefficient-triangle}
+\lean{EnvelopeProperty.SchemeStalkCoefficients.fromSpecStalk_structureMap}
+\leanok
+\uses{alggeom:original-stalk-coefficient-map}
+The original stalk morphism followed by $f$ is exactly the spectrum of this
+actual original coefficient map, as a whole scheme morphism.
+\end{lemma}
+\begin{proof}
+Test the whole maps into the original affine base on actual global sections.
+The native stalk morphism's global pullback is the original germ followed by
+the actual inverse $\Gamma\operatorname{Spec}$ isomorphism. Its composition
+with $f$ is precisely the defined coefficient map. The actual affine
+$\Gamma\operatorname{Spec}$ naturality cancels the two corners.
+\end{proof}
+
+\begin{lemma}[Exact original coefficient-center prime]
+\label{alggeom:original-stalk-coefficient-center}
+\lean{EnvelopeProperty.SchemeStalkCoefficients.maximalIdeal_comap_coefficientMap}
+\leanok
+\uses{alggeom:original-stalk-coefficient-triangle}
+The actual stalk maximal ideal contracts along the original coefficient map
+EXACTLY to the original prime $f(x)$ in $\operatorname{Spec}R$.
+\end{lemma}
+\begin{proof}
+Evaluate the whole preceding triangle at the actual stalk closed point.
+The genuine original stalk morphism sends this actual closed point exactly
+to $x$. The original Spec map acts by the actual prime-ideal contraction,
+which gives exactly the asserted equality.
+\end{proof}
+
+\begin{lemma}[True original coefficient injectivity]
+\label{alggeom:original-stalk-coefficient-injective}
+\lean{EnvelopeProperty.SchemeStalkCoefficients.coefficientMap_injective}
+\leanok
+\uses{alggeom:original-stalk-coefficient-map}
+If $X$ is integral, $R$ is reduced, and $f$ is actually quasi-compact and
+dominant, then the SAME original stalk coefficient map is injective.
+\end{lemma}
+\begin{proof}
+Actual dominance over a reduced target gives scheme-theoretic dominance.
+Quasi-compactness makes the whole original structure map injective on actual
+global sections. The actual germ on the original integral scheme is injective,
+and the genuine affine-base global-section comparison is an isomorphism.
+Their original composite is therefore injective.
+\end{proof}

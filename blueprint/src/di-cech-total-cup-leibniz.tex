@@ -1,0 +1,76 @@
+\section{The actual signed total product is a differential product}
+
+\begin{lemma}[The original total differential is a derivation]
+\label{lem:di-cech-total-cup-leibniz}
+\uses{def:di-cech-total-cup,thm:di-cech-total-cup-pure-input,thm:di-cech-total-tensor-ext,lem:native-cech-ordered-cup-leibniz,thm:di-cech-cup-derham-leibniz,thm:di-cech-total-inclusion-differential,def:di-cech-total-degree-map,thm:di-cech-bidegree-map-total-inclusion}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCup_leibniz}
+Let $K=F_*\Omega^\bullet_{X/k}$ be the original relative Frobenius
+de Rham complex of the original smooth scheme and let
+$T=\operatorname{Tot}\check C(K)$ be its original sheaf Cech total.
+For the actual signed product $\mu$ on $T$, the entire sheaf-map
+identity is
+\[
+ d_T\circ\mu_{a,b}=
+ \mu_{a+1,b}\circ(d_T\otimes1)
+ +(-1)^a\mu_{a,b+1}\circ(1\otimes d_T).
+\]
+All terms have their original equality transports to the same total
+degree $a+b+1$. No closedness, vanishing, or comparison premise is
+supplied for this identity.
+\end{lemma}
+\begin{proof}
+\leanok
+Each total degree is the finite coproduct of its original bidegree
+pieces. The actual tensor product is additive in each input map.
+The finite original projection--injection decompositions of both
+identities therefore show that a morphism from $T^a\otimes T^b$
+is determined by precomposing with every pair of original bidegree
+injections. Fix such a pair, with form and Cech degrees $(q,j)$ and
+$(r,j')$, so that $a=q+j$ and $b=r+j'$.
+
+On this pair, the actual total product is
+$(-1)^{jr}$ times the original ordered cup followed by the original
+injection in bidegree $(q+r,j+j')$. The original total differential
+on an injection has its de Rham part and its Cech part with
+coefficient $(-1)^q$. The actual factor de Rham product rule, after
+the original tuple projections and restriction naturality, gives
+the de Rham rule for this whole ordered cup. Its Cech rule is the
+preceding whole-map identity. Thus both sides of the asserted
+total identity expand into the same four original component maps.
+Their coefficients are as follows.
+
+For differentiation of the first form input, both coefficients
+are $(-1)^{jr}$. For differentiation of the second form input,
+the coefficient on the left is $(-1)^{jr+q}$, while on the right
+it is $(-1)^{q+j+j(r+1)}$; the exponents differ by $2j$.
+For the first Cech input, the two coefficients are
+$(-1)^{jr+q+r}$ and $(-1)^{q+(j+1)r}$, which agree.
+For the second Cech input, the two coefficients are
+$(-1)^{jr+q+r+j}$ and $(-1)^{q+j+r+jr}$, which agree.
+This proves equality after every original pair of injections.
+The original finite tensor-total detection statement gives the
+whole sheaf-map identity. All degree transports in the calculation
+are equalities of indices of these same original objects.
+\end{proof}
+
+\begin{corollary}[Products of actual total cycles are closed]
+\label{cor:di-cech-total-cup-closed}
+\uses{lem:di-cech-total-cup-leibniz,thm:di-cech-total-cup-section-restriction}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCupSection_closed}
+On every original open $W$, if actual sections $x\in T^a(W)$ and
+$y\in T^b(W)$ satisfy $d_Tx=0$ and $d_Ty=0$, then the actual original
+section product satisfies $d_T\mu_{a,b}(x,y)=0$.
+\end{corollary}
+\begin{proof}
+\leanok
+Evaluate the preceding whole-map identity on the original tensor
+section $x\otimes y$. Actual tensor functoriality carries it to the
+original pairs $(d_Tx,y)$ and $(x,d_Ty)$. The first tensor section
+is zero because its first entry is zero; the second is zero because
+its second entry is zero. Their actual linear images and their
+signed sum are zero. This proves the assertion on the same open
+$W$, including empty opens, without any exactness assumption on
+sections.
+\end{proof}

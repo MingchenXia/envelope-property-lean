@@ -1,0 +1,118 @@
+\section{The same original vertical generic stalk from every component point}
+
+Let $Y$ be integral. For an actual specialization $\eta\leadsto p$ in $Y$,
+write $S=\mathcal O_{Y,p}$, $D=\mathcal O_{Y,\eta}$ and let
+$j:S\longrightarrow D$ be the original specialization map of the structure
+sheaf. No localization, ring isomorphism, valuation comparison, or equality
+of native points is an input.
+
+\begin{definition}[The original generization coefficient map]
+\label{def:gauss-common-original-generization-map}
+\lean{EnvelopeProperty.GaussCommonVerticalStalks.generizationMap}
+\leanok
+The coefficient map is exactly $j=\mathcal O_Y(\eta\leadsto p)$.
+Put $P=j^{-1}(\mathfrak m_D)$, with its derived prime-ideal structure.
+\end{definition}
+\begin{proof}
+Use the actual structure-sheaf specialization homomorphism, with its
+induced algebra structure on $D$. The inverse image of the genuine maximal
+ideal is prime. This construction does not choose an affine presentation
+or a substitute local map.
+\end{proof}
+
+\begin{lemma}[The actual generization stalk is the actual localization]
+\label{lem:gauss-common-original-generization-localization}
+\uses{def:gauss-common-original-generization-map}
+\lean{EnvelopeProperty.GaussCommonVerticalStalks.generization_isLocalization}
+\leanok
+With the original coefficient action $j$, $D$ is the localization of the
+SAME $S$ at $P$.
+\end{lemma}
+\begin{proof}
+Choose one actual affine neighborhood $V$ of $p$. Specialization places
+$\eta$ in the same $V$. Put $A=\Gamma(V,\mathcal O_Y)$ and retain the
+actual germ maps $g_p:A\to S$ and $g_\eta:A\to D$.
+The structure-sheaf specialization identity gives
+$j g_p=g_\eta$. The existing affine-stalk localization theorem makes
+$D$ a localization of $A$ at the prime corresponding to $\eta$.
+
+Every element outside $P$ has image outside $\mathfrak m_D$, hence has a
+unit image in $D$. Given $d\in D$, its actual affine-stalk fraction
+representation gives $a,b\in A$ with $g_\eta(b)$ a unit and
+$d g_\eta(b)=g_\eta(a)$. Thus $g_p(b)\notin P$ and
+$d j(g_p(b))=j(g_p(a))$, which is the required fraction representation
+over $S$. Finally, both original stalks inject into the SAME integral
+function field. Composition of specialization maps shows that the map
+from $S$ to that field factors through $j$, so $j$ is injective. Equality
+of two images therefore already implies equality of the two original
+coefficients; the localization equality axiom holds with denominator $1$.
+These three actual properties prove the asserted localization structure.
+\end{proof}
+
+Now let $i:C\hookrightarrow Y$ be a genuine closed immersion with $C$
+integral, let $x\in C$, $p=i(x)$ and $\eta=i(\eta_C)$. The original
+specialization $\eta_C\leadsto x$ gives the original
+$\eta\leadsto p$. Suppose the actual local equation $\pi\in S$ is prime
+and satisfies $\ker(i_x^\#)=(\pi)$. This is a geometric equation for the
+chosen component, not a supplied valuation, center, or ring comparison.
+
+\begin{lemma}[The true component equation identifies the actual generization prime]
+\label{lem:gauss-common-original-component-prime}
+\uses{def:gauss-common-original-generization-map}
+\lean{EnvelopeProperty.GaussCommonVerticalStalks.component_generizationPrime}
+\leanok
+For this SAME original generization map, $P=(\pi)$.
+\end{lemma}
+\begin{proof}
+The actual closed-immersion stalk map
+\[
+ i_{\eta_C}^\#:D\to\mathcal O_{C,\eta_C}=C.\mathrm{functionField}.
+\]
+It is surjective. Its kernel is therefore the genuine maximal ideal of $D$.
+Naturality of the actual stalk maps for $\eta_C\leadsto x$ gives
+\[
+ i_{\eta_C}^\# j
+ =\bigl(\mathcal O_{C,x}\longrightarrow C.\mathrm{functionField}\bigr)i_x^\#.
+\]
+The displayed stalk-to-function-field map is injective because $C$ is
+integral. Consequently the kernel of the displayed composite is exactly
+$\ker(i_x^\#)$. The left-hand description is precisely
+$j^{-1}(\mathfrak m_D)=P$, and the original component equation identifies
+the right-hand kernel with $(\pi)$.
+\end{proof}
+
+\begin{theorem}[The same vertical DVR is the same original global generic stalk]
+\label{thm:gauss-common-original-component-stalk}
+\uses{lem:gauss-common-original-generization-localization,lem:gauss-common-original-component-prime,def:gauss-surface-original-residual-vertical-rings,lem:gauss-surface-original-residual-vertical-dvrs}
+\lean{EnvelopeProperty.GaussCommonVerticalStalks.componentStalkEquiv,EnvelopeProperty.GaussCommonVerticalStalks.componentStalkEquiv_coefficient,EnvelopeProperty.GaussCommonVerticalStalks.componentStalk_isDVR}
+\leanok
+There is an internally constructed actual ring isomorphism
+\[
+ E_x:S_{(\pi)}\xrightarrow{\sim}\mathcal O_{Y,i(\eta_C)}.
+\]
+For EVERY original $s\in S$ it satisfies
+$E_x(s/1)=j(s)$. If this SAME $S$ is Noetherian, then the SAME original
+generic stalk $\mathcal O_{Y,i(\eta_C)}$ is an actual DVR.
+Neither an isomorphism nor a DVR structure on that generic stalk is
+supplied as an input.
+\end{theorem}
+\begin{proof}
+The preceding two lemmas make the original generic stalk a localization
+of $S$ at the prime complement of the SAME $(\pi)$. The old original
+vertical ring is the literal localization at that same multiplicative
+set. The localization universal property gives the canonical
+$S$-algebra isomorphism between these two actual rings. Its algebra
+coefficient law is exactly the stated formula, retaining every original
+coefficient and the actual specialization map.
+
+Under the genuine Noetherian hypothesis, the existing original vertical
+ring theorem derives that $S_{(\pi)}$ is a DVR from the original nonzero
+prime parameter. Transfer that structure through the constructed whole
+ring isomorphism. No normalization theorem or additional regularity,
+codimension, valuation, or native-point certificate is needed here.
+\end{proof}
+
+This checkpoint identifies the actual rings and maps needed for a common
+vertical point. It does not yet assert equality of normalized native
+points, equality of their whole function-field norms, a common active
+family for source convexity, or a residual degree inequality.

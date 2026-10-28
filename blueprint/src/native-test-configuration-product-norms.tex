@@ -1,0 +1,59 @@
+\section{Actual total-model norms through the noncentral product}
+
+\begin{theorem}\label{thm:native-tc-product-polynomial-gauss-source}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productGaussSource, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productGaussSource_map}
+\leanok
+For every original valued point $x$ and positive radius $r$, the
+actual product Gauss point extends the entire polynomial Gauss
+valuation through the actual composite map from the noncentral
+product into the total test configuration and then the parameter
+line. Its native image is exactly the previously constructed
+relative total-space Gauss point, as a whole valued point.
+\uses{thm:native-tc-global-laurent-sections}
+\end{theorem}
+\begin{proof}
+Composition of the native point maps identifies the image under
+the composite with the image of the actual total-space Gauss point
+under the original parameter projection. The latter has the whole
+original polynomial Gauss valuation by construction. This proves
+the prescribed-base condition. The same whole point identity makes
+the two relative total-space points equal, since their base proofs
+are propositions.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-product-frame-true-norm}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_productResidueFrame_gaussPowerSectionNorm}
+\leanok
+Let the original field be trivially valued and let $0<r\leq1$.
+Assume the actual total-space module $M$ is invertible, with its
+original action linearization and fibre-one identification with $L$.
+For every integer $n\geq0$ and original point $x$, there exists a
+native residue-fibre frame of the actual product pullback of
+$L^{\otimes n}$ at the product Gauss point such that, simultaneously
+for every original $s\in H^0(\mathcal X,M^{\otimes n})$, the true
+proper-total-model norm of $s$ at the actual total Gauss point equals
+the native valuation of the coefficient of its actually transported
+product section in that frame. The frame is derived from the actual
+proper center, and no proper-model norm is assigned to the noncentral
+Laurent product.
+\uses{thm:native-tc-product-polynomial-gauss-source,thm:proper-model-norm-source-frame-existence,thm:native-tc-global-laurent-sections}
+\end{theorem}
+\begin{proof}
+The polynomial Gauss valuation is bounded by one because the field
+valuation is trivial and the radius is at most one. The original
+test-configuration projection is proper, and $M^{\otimes n}$ is
+invertible. Apply the proper-target source-frame existence theorem
+to the actual product-to-total morphism, its actual relative product
+Gauss point and the genuine whole line-power isomorphism derived
+from the original action and fibre data. This yields one native
+source residue frame computing every original whole section norm.
+The preceding whole relative-point equality identifies the target
+with the original total Gauss point. The actual global pullback unit
+is the section obtained by pulling the original section morphism
+and evaluating at one; the two canonical original section-morphism
+constructions coincide by definition. Hence the target norm is
+exactly the already defined original total-space section norm.
+The source coefficient is precisely the previously defined actual
+transported product section. Every zero section and degree zero are
+retained throughout.
+\end{proof}

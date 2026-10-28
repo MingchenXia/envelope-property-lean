@@ -1,0 +1,56 @@
+\section{The relative differential determinant}
+
+\begin{definition}[The actual relative differential determinant]\label{def:sc0-relative-differential-determinant}
+\lean{EnvelopeProperty.Char0.relativeDifferentialMatrix,EnvelopeProperty.Char0.relativeDifferentialDet,EnvelopeProperty.Char0.relativeDifferentialDet_eq_etaleJacobian}
+\leanok
+Let $R\to A$ be a map of $k$-algebras and suppose the actual differential modules
+have bases $b_R$ and $b_A$ of the same finite rank. The relative differential
+determinant is the determinant of the matrix of the genuine map
+$\Omega_{R/k}\to\Omega_{A/k}$ in these bases, with the $i$th source vector written
+in the target basis as its $i$th column.
+\end{definition}
+
+\begin{lemma}[The relative determinant is a unit for an \'etale map]\label{lem:sc0-relative-differential-det-unit}
+\lean{EnvelopeProperty.Char0.differentialBasisBaseChange,EnvelopeProperty.Char0.differentialBasisBaseChange_apply,EnvelopeProperty.Char0.isUnit_relativeDifferentialDet}
+\leanok
+\uses{def:sc0-relative-differential-determinant,lem:sc0-etale-differential-basis}
+If $R\to A$ is formally \'etale, its actual relative differential determinant is
+a unit.
+\end{lemma}
+\begin{proof}
+The differential base-change isomorphism carries the base change of $b_R$ to a
+basis of $\Omega_{A/k}$. The displayed determinant is therefore the determinant
+of the change from this transported basis to $b_A$, hence is a unit.
+\end{proof}
+
+\begin{lemma}[The relative determinant commutes with differential base change]\label{lem:sc0-relative-differential-det-basechange}
+\lean{EnvelopeProperty.Char0.kaehlerDifferential_map_comp_tower,EnvelopeProperty.Char0.relativeDifferentialDet_baseChange}
+\leanok
+\uses{def:sc0-relative-differential-determinant}
+Let $R\to A\to L$ be a tower of $k$-algebras, with $A\to L$ formally \'etale.
+Write the differential bases after base change to $L$ using the actual
+differential base-change isomorphism. The relative determinant over $L$ is the
+image of the original determinant under $A\to L$.
+\end{lemma}
+\begin{proof}
+Base-change compatibility of differential maps identifies each source vector's
+image in $\Omega_{L/k}$. The coordinate functional of the transported target basis
+sends this image to the image of its original coordinate. Thus every matrix
+entry is the image of the original entry, and the determinant commutes with the
+ring homomorphism because it is an integral polynomial in the matrix entries.
+\end{proof}
+
+\begin{lemma}[Generic nonvanishing from the actual common fraction field]\label{lem:sc0-relative-differential-det-nonzero}
+\lean{EnvelopeProperty.Char0.relativeDifferentialDet_ne_zero_of_common_etale_target,EnvelopeProperty.Char0.relativeDifferentialDet_ne_zero_of_common_fractionField}
+\leanok
+\uses{lem:sc0-relative-differential-det-unit,lem:sc0-relative-differential-det-basechange}
+If the domains $R$ and $A$ have an actual common fraction field $L$ and the maps
+form the original scalar tower, their relative differential determinant is nonzero.
+\end{lemma}
+\begin{proof}
+Localizations are formally \'etale. The two actual differential base-change
+isomorphisms identify the images of $b_R$ and $b_A$ with two bases of the same
+$L$-vector space $\Omega_{L/k}$. Hence the determinant's image in $L$ is the unit
+determinant of their basis change. A zero original determinant would have zero
+image, contradicting that a unit in the nonzero field $L$ is nonzero.
+\end{proof}

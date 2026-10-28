@@ -1,0 +1,80 @@
+\section{Actual test-configuration product power coherence}
+
+\begin{definition}\label{def:native-tc-product-original-line-iso}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLineIso}
+\leanok
+\uses{thm:native-test-configuration-line-trivialization,thm:native-tc-global-laurent-sections}
+The original action linearization and the original fibre-one
+identification give a whole line isomorphism on the actual product
+$X\times\mathbb G_m$: pull back the genuine unit-open line
+isomorphism through the actual inverse product trivialization,
+and compose with the native comparisons for the actual total and
+original projection maps. Denote this isomorphism by $\beta$.
+\end{definition}
+\begin{proof}
+Write $a$ for the actual product-to-unit-open isomorphism, $b$ for
+the unit-open inclusion into the total space and $c$ for the
+unit-open original projection. Write $g=ab$ and $f$ for the product
+projection, with the actual equality $ac=f$. The isomorphism is
+the composite of the inverse native comparison for $ab$, the
+pullback by $a$ of the original unit-open line isomorphism, the
+native comparison for $ac$, and the native comparison of $ac=f$.
+Each factor is an actual whole original module isomorphism, so
+their composite is an actual whole $g^*M\simeq f^*L$.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-literal-product-power-coherence}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLinePowerIso_coherence}
+\leanok
+\uses{def:native-tc-product-original-line-iso,prop:native-test-configuration-line-powers,thm:actual-power-pullback-composition,lem:actual-power-pullback-naturality,lem:actual-power-iso-functoriality}
+For every $n\geq0$, the literal original product line-power
+isomorphism $\beta_n:g^*(M^{\otimes n})\simeq f^*(L^{\otimes n})$
+equals the genuine comparison to $(g^*M)^{\otimes n}$, followed
+by $\beta^{\otimes n}$, followed by the inverse genuine comparison
+from $(f^*L)^{\otimes n}$. This is equality of whole original
+isomorphisms derived from the original action and fibre-one data.
+\end{theorem}
+\begin{proof}
+For the actual comparison between iterated pullback and composite
+pullback, power coherence gives a commuting square whose vertical
+maps are the genuine power pullback comparisons. Reversing that
+square treats the inverse comparison for $ab$. Naturality of power
+pullback gives the square for the pullback of the original
+unit-open line isomorphism: the two comparisons in the definition
+of its literal power cancel with their inverses. Composition
+coherence supplies the square for $ac$, and equal-map coherence
+supplies the square for $ac=f$. Compose these four actual squares.
+The intermediate vertical comparisons cancel, and functoriality
+of the genuine power isomorphism identifies the lower composite
+with the power of the actual four-factor isomorphism $\beta$.
+Thus $\beta_n$ followed by the reference power comparison equals
+the total power comparison followed by $\beta^{\otimes n}$.
+Cancel the reference comparison to obtain the stated whole
+identity. All squares include degree zero by the native
+structure-unit composition identities.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-product-power-frame-coherence}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLinePowerIso_pulledFrame}
+\leanok
+\uses{thm:native-tc-literal-product-power-coherence,lem:actual-power-pullback-naturality,lem:fc-actual-power-frame-iso-naturality,def:fc-actual-pulled-power-frame}
+Let $t:W\to X\times\mathbb G_m$ be any actual scheme map, and let
+$e:t^*f^*L\simeq\mathcal O_W$ be an actual whole frame. Pulling
+back the literal $\beta_n$ and then applying the actual reference
+power frame equals the actual total power frame of the degree-one
+frame $t^*\beta$ followed by $e$, with the genuine iterated power
+pullback comparisons on both sides. In particular the entire
+family of transported frames is determined by one actual frame
+and the original action and fibre-one data.
+\end{theorem}
+\begin{proof}
+Pull back the preceding whole identity through $t$ and compose
+with the genuine pulled power frame of $e$. The inverse reference
+power comparison cancels its actual inverse. Naturality of the
+genuine power pullback comparison moves the power of $t^*\beta$
+past the comparison for $t$. Naturality of the actual whole power
+frame identifies its composite with the power frame of
+$t^*\beta$ followed by $e$. These equalities give the stated entire
+frame identity for every $n$, including zero, without a frame
+preservation premise or a frame on the entire product.
+\end{proof}

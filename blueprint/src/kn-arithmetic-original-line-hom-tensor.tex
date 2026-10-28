@@ -1,0 +1,119 @@
+\section{Whole original Hom maps from actual coefficient tensors}
+
+\begin{lemma}\label{lem:kn-original-line-hom-section-additive}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.homSectionEquiv_add,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.homSectionEquiv_symm_add,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.homSectionAddEquiv}
+\leanok
+\uses{sc0-hom-section-base-change:original-hom-section}
+The original whole Hom-to-global-Hom-line-section correspondence is additive.
+Its inverse is additive as well.
+\end{lemma}
+\begin{proof}
+Tensoring by the actual invertible module is an equivalence of the original
+preadditive module category. Since it preserves binary products and zero,
+it is additive, and its genuine inverse is additive. The original
+adjunction Hom correspondence is therefore additive. Composition with the
+original unit and tensor identifications and evaluation at one retain
+additivity. The inverse of this additive bijection is additive.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-original-line-hom-section-scalar}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.structureScalar,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.homSectionEquiv_scalar}
+\leanok
+\uses{lem:kn-original-line-hom-section-additive}
+For a top structure section $r$, scalar multiplication of an original Hom
+section corresponds to the actual action on the source module obtained
+by tensoring the structure-line endomorphism defined by $r$, using the
+original left unit identification.
+\end{lemma}
+\begin{proof}
+Use naturality of the genuine adjunction Hom correspondence in its unit
+input. Its precomposition by the actual structure-line endomorphism is
+precisely the displayed source action, with both original unit maps.
+Evaluating the entire resulting structure-line map at one multiplies its
+original top section by $r$.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-original-line-structure-scalar-pullback}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.structureScalar_naturality,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.structureScalar_pullback}
+\leanok
+\uses{lem:kn-original-line-hom-section-scalar}
+The actual structure-scalar action is natural in the whole original module,
+and actual scheme pullback carries it to the same action of the actual
+pulled top structure section.
+\end{lemma}
+\begin{proof}
+Naturality follows from the original left unit naturality and interchange
+of the two tensor factors. Apply the genuine monoidal functor identities
+for the left unit and tensor to compute its actual pullback. The native
+unit comparison identifies the resulting unit endomorphism with the
+structure-line endomorphism of the original pulled top section.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-original-line-map-tensor-formula}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.mapOfTensor_add,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.mapOfTensor_zero,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.mapOfTensor_tmul}
+\leanok
+\uses{lem:kn-original-line-hom-section-additive,lem:kn-original-line-hom-section-scalar}
+The actual original map constructed from a global Hom-line section tensor
+is additive in that tensor. A pure coefficient tensor $s\otimes m$, with
+$m$ corresponding to the original whole map $a$, constructs precisely the
+original pulled map preceded by the actual structure-scalar action of $s$.
+\end{lemma}
+\begin{proof}
+Use the additive inverse Hom-section correspondence and the original linear
+section-tensor map. For the pure tensor, the section-tensor comparison is
+the original pulled top section multiplied by the original coefficient
+section. The actual Hom-line comparison is module linear. The genuine
+Hom-pullback theorem and preceding scalar formula identify the resulting
+section with that of the stated actual whole map. Injectivity of the
+original Hom-section correspondence gives equality of whole maps.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-original-line-map-tensor-transition}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.transitionIso_naturality,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.mapOfTensor_transition}
+\leanok
+\uses{lem:kn-original-line-map-tensor-formula,lem:kn-original-line-structure-scalar-pullback}
+For the actual coefficient tower $R\to S\to T$, pullback of the whole
+map constructed from an original section tensor $z\in S\otimes_R H$
+to the actual $T$ fibre, under the canonical original-family pullback
+comparisons, equals the whole map constructed from the actual image
+of $z$ in $T\otimes_R H$. No intermediate flatness is required.
+\end{theorem}
+\begin{proof}
+Both operations are additive in $z$, so use tensor induction. At zero the
+claim follows from the zero maps. For $s\otimes m$, write $m$ as the genuine
+Hom-section of its original whole inverse-correspondence map. Apply the
+preceding pure-tensor formula. Actual pullback retains its structure-scalar
+action, and this action commutes with the original-family comparison.
+Naturality of that canonical comparison retains the original whole map.
+The actual coefficient projection identifies the pulled coefficient with
+the image of $s$ in $T$. Apply the pure-tensor formula again.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-original-line-whole-map-finite-descent}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.mapOfTensor_recovery,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.exists_pair_maps_recovery}
+\leanok
+\uses{thm:kn-original-line-map-tensor-transition,lem:kn-arithmetic-original-line-coefficients,thm:fc-flat-module-global-sections}
+Let the original family be quasi-compact and separated, let $R\to k$ be
+flat with $k$ a field, and let $A,B$ be original invertible modules.
+Every actual pair of original $k$-fibre maps $a:A_k\to B_k$ and
+$b:B_k\to A_k$ is the actual pullback of two maps on one finite
+coefficient subalgebra, under the canonical original-family comparisons.
+\end{theorem}
+\begin{proof}
+The actual flat global-section comparison converts both original whole
+maps to tensors in their original Hom-line section modules. Finite tensor
+coefficient descent puts both tensors on one finitely generated coefficient
+subalgebra. The canonical section-tensor map and original inverse Hom-section
+correspondence construct two actual whole morphisms there. The whole-map
+transition theorem and the literal tensor coefficient equalities recover
+exactly $a,b$ on the actual original $k$ fibre. No intermediate flatness or
+Hom-line comparison certificate is required.
+\end{proof}

@@ -1,0 +1,52 @@
+\section{Relative Kodaira on the actual arithmetic closed fibre}
+
+\begin{lemma}[The actual coefficient lift produces the whole special-fibre comparison]
+\label{lem:kn-relative-arithmetic-witt-special-fibre}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticWittComparison.specialFibreIso,EnvelopeProperty.Vanishing.RelativeArithmeticWittComparison.specialFibreIso_hom_structure}
+\leanok
+Let $f:Y\to\operatorname{Spec}A$, let $\kappa$ be a perfect field
+of characteristic $p$, and let an actual coefficient map
+$A\to W_2(\kappa)$ reduce to $\rho:A\to\kappa$.
+The original $\rho$-fibre $Y_\kappa$ is canonically isomorphic,
+over the same $\kappa$, to the special fibre of the actual
+Witt base change of $Y$.
+\end{lemma}
+\begin{proof}
+The whole coefficient reduction equation gives a commuting
+triangle of the corresponding spectra.  The two projections
+of $Y_\kappa$ therefore induce a map to the Witt base change.
+Pasting its proposed reduction square with the defining Witt
+base-change square gives the defining $\rho$-fibre square.
+Cancellation proves the reduction square cartesian.  Its
+cartesian comparison isomorphism, followed by the canonical
+symmetry exchanging the two fibre factors, is the asserted
+special-fibre isomorphism.  The second projection of the
+cartesian comparison, followed by the symmetry identity, is
+exactly the original structure map to $\operatorname{Spec}\kappa$.
+\end{proof}
+
+\begin{lemma}[Relative ample Kodaira for the actual coefficient closed fibre]
+\label{lem:kn-relative-arithmetic-closed-kodaira}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticWittComparison.kodaira_on_residue_fibre}
+\uses{lem:kn-relative-arithmetic-witt-special-fibre,thm:kn-relative-kodaira-original-witt-comparison,lem:kn-relative-arithmetic-scalar-transition}
+\leanok
+Suppose in addition that $Y/A$ is separated and smooth of
+relative dimension $n<p$, and that it has a compatible map to
+$\operatorname{Spec}B$ for a finite-type $A$-algebra $B$.
+For every actual relatively ample $M$ and every positive
+cohomological degree, the actual $\rho$-fibre has vanishing
+cohomology of its absolute canonical module over $\kappa$
+twisted by the same pulled-back $M$.
+\end{lemma}
+\begin{proof}
+The actual Witt base change is separated and smooth of the
+same relative dimension by base change.  The original
+$\rho$-fibre is identified with its special fibre by the
+preceding isomorphism over the same $\kappa$.
+Its separate affine base is the actual tensor algebra
+$\kappa\otimes_A B$, a finite-type algebra over the field
+$\kappa$ and hence noetherian.  The coefficient-transition
+lemma retains relative ampleness of the pulled-back $M$ over
+this same affine algebra.  Apply relative Witt Kodaira using
+the produced special-fibre isomorphism and $n<p$.
+\end{proof}

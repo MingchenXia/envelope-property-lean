@@ -1,0 +1,49 @@
+\section{The original relative ample power identity is produced on the model}
+
+\begin{lemma}[An ample arithmetic model of the original line]
+\label{lem:kn-relative-arithmetic-original-ample-model}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticOriginalAmpleModel.exists_original_ample_model}
+\uses{lem:kn-relative-arithmetic-original-line-model,lem:kn-relative-arithmetic-scalar-transition,thm:kn-arithmetic-original-line-power-iso}
+\leanok
+Let $f:X\to\operatorname{Spec}k$ be separated and smooth of
+relative dimension $n$ over a characteristic-zero field, and let
+$g:X\to\operatorname{Spec}R$ be the original compatible map to
+an arbitrary finite-type $k$-algebra.  Every actual $g$-ample
+line $L$ has an internally produced arithmetic model $M$ on a
+smooth separated dimension-$n$ arithmetic family, relatively
+ample over a separate finite-presentation affine algebra whose
+original field fibre is the same $R$.  The actual whole original
+pullback of $M$ is $L$.
+\end{lemma}
+\begin{proof}
+The original ampleness datum supplies a positive integer $r$,
+the actual closed embedding $j:X\hookrightarrow\mathbb P_R^d$,
+and the original isomorphism $j^*\mathcal O(1)\simeq L^{\otimes r}$.
+Apply the original-line model lemma to this same $j$ and $L$.
+It constructs $M$ and a relatively very ample $T$ on the same
+arithmetic model, together with actual original pullback
+isomorphisms to $L$ and $j^*\mathcal O(1)$.  Tensor-power
+compatibility combines them into an isomorphism between the
+original-field pullbacks of $M^{\otimes r}$ and $T$.
+
+The coefficient model is smooth, hence flat, and is
+quasi-compact and separated.  Consequently flat scalar
+extension of global sections holds for its quasicoherent
+Hom-lines.  Express the given isomorphism and its inverse as
+finite tensors of original sections with coefficients in $k$.
+Adjoin those finitely many coefficients to the arithmetic
+domain.  These tensors construct actual whole maps between
+the corresponding model lines.  Their original pullbacks are
+the given inverse maps.  Flatness of the model and injectivity
+of the coefficient inclusion in $k$ detect both inverse
+identities, so the constructed maps are an actual model
+isomorphism $M_S^{\otimes r}\simeq T_S$.
+
+The coefficient-transition lemma preserves the actual very
+ampleness of $T_S$, so this same positive power $r$ proves
+relative ampleness of $M_S$.  Every other required geometric
+property and the entire original pullback of $M_S$ is retained
+under that scalar extension.  This argument uses only
+quasi-compactness and separatedness for global sections;
+properness over the arithmetic coefficient domain is unnecessary.
+\end{proof}

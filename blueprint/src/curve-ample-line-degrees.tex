@@ -1,0 +1,45 @@
+\begin{lemma}[True degree of an original tensor power]
+\label{lem:fc-original-line-tensor-power-degree}
+\lean{EnvelopeProperty.CurveAmpleLineDegrees.degree_tensorPower}
+\leanok
+\uses{thm:fc-original-curve-line-degree-tensor}
+Let $p:C\to\operatorname{Spec}k$ be an original integral projective scheme
+of dimension at most one. For every original invertible line $L$ and
+natural exponent $r$, the actual full Euler degree satisfies
+$\deg_p(L^{\otimes r})=r\deg_p(L)$.
+\end{lemma}
+\begin{proof}
+The zeroth actual tensor power is the original structure line, whose
+normalized Euler degree is zero. The successor power is the actual
+sheafified tensor product of the previous power with $L$. Its canonical
+comparison to the categorical tensor and true degree additivity give
+the sum of the preceding degree and $\deg_p(L)$. Induction and the
+identity $(r+1)\deg_p(L)=r\deg_p(L)+\deg_p(L)$ prove the formula.
+\end{proof}
+
+\begin{theorem}[Geometric ample lines have strictly positive true curve degree]
+\label{thm:fc-original-geometric-ample-curve-degree-positive}
+\lean{EnvelopeProperty.CurveAmpleLineDegrees.degree_pos_of_isVeryAmple, EnvelopeProperty.CurveAmpleLineDegrees.degree_pos_of_isAmple, EnvelopeProperty.CurveAmpleLineDegrees.degree_pos_on_closedIntegralCurve}
+\leanok
+\uses{lem:fc-trivial-embedding-line-dimension-zero,lem:fc-original-line-tensor-power-degree,lem:fc-original-ample-closed-restriction,thm:fc-original-generated-line-degree-zero-trivial}
+Let $p:C\to\operatorname{Spec}k$ be an original integral scheme with
+$0<\dim C\leq1$. Every original geometrically very ample or ample line
+has strictly positive actual normalized full coherent Euler degree.
+Every original ample line on a projective scheme has strictly positive
+true degree on each original closed integral curve.
+\end{theorem}
+\begin{proof}
+The original coordinate sections of $\mathcal O(1)$ generate it globally.
+Pullback along the actual embedding and its whole line isomorphism
+therefore give original global generators of the very ample line. Its
+nontriviality is forced by the original positive dimension and the
+embedding nontriviality theorem. The zero-degree characterization for
+an original globally generated line gives strictly positive true degree.
+For an ample line choose the actual positive very ample power supplied
+by its geometric definition. Its true degree is the positive exponent
+times the original true line degree. Since that product is strictly
+positive, the original integer degree is strictly positive. Finally,
+restrict the actual ample geometric datum to each actual closed
+integral curve and apply the same result to that original one-dimensional
+scheme and its original coefficient projection.
+\end{proof}

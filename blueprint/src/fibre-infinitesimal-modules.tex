@@ -1,0 +1,100 @@
+\section{The genuine infinitesimal short exact sequence of module sheaves}
+
+\begin{lemma}[The whole original ideal-power module is the actual section kernel]
+\label{lem:fibre-infinitesimal-whole-module-kernel}
+\uses{lem:fibre-infinitesimal-projection-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalModules.sectionMap,EnvelopeProperty.FibreInfinitesimalModules.sectionMap_app,EnvelopeProperty.FibreInfinitesimalModules.projection_isLocallyMem_iff,EnvelopeProperty.FibreInfinitesimalModules.inclusion_comp_sectionMap,EnvelopeProperty.FibreInfinitesimalModules.sequence,EnvelopeProperty.FibreInfinitesimalModules.section_exact,EnvelopeProperty.FibreInfinitesimalModules.section_injective}
+\leanok
+For the literal original $q_n:X_n\to X$, the genuine canonical module
+map $\mathcal O_X\to q_{n*}\mathcal O_{X_n}$ has on every original
+open the actual section map $q_n^\sharp$. The same geometric ideal-power
+module $(I\mathcal O_X)^n$ includes into $\mathcal O_X$, and its whole
+section space on every open is exactly the kernel of this map. The
+inclusion is injective on every original open.
+\end{lemma}
+\begin{proof}
+The canonical module map to the pushforward of the structure module is
+the genuine original scheme section map. Membership in the actual
+kernel ideal sheaf implies that this section vanishes, by locality of
+sections. Conversely, if an entire section vanishes, its restriction to
+every affine open vanishes by naturality. The actual affine kernel
+calculation therefore puts every such restriction in the same
+geometric ideal power. This is exactly the defining membership condition
+for its genuine ideal module on the original open. Consequently its
+subtype inclusion is injective, its image is the entire section kernel,
+and its composite with the canonical section map is zero on every
+open. These maps form the stated actual complex of sheaves of modules.
+\end{proof}
+
+\begin{lemma}[The original ideal module is the categorical kernel]
+\label{lem:fibre-infinitesimal-categorical-kernel}
+\uses{lem:fibre-infinitesimal-whole-module-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalModules.kernelLift,EnvelopeProperty.FibreInfinitesimalModules.kernelLift_inclusion,EnvelopeProperty.FibreInfinitesimalModules.kernelIsLimit,EnvelopeProperty.FibreInfinitesimalModules.sequence_exact}
+\leanok
+The actual inclusion of $(I\mathcal O_X)^n$ is a categorical kernel
+of $\mathcal O_X\to q_{n*}\mathcal O_{X_n}$; in particular the same
+original complex is exact.
+\end{lemma}
+\begin{proof}
+Let a morphism of module sheaves into $\mathcal O_X$ have zero composite
+with the genuine section map. On every original open its entire image
+lies in the kernel just calculated, so regard each value as a section
+of the same ideal module. The original morphism is additive, linear and
+commutes with restriction; the resulting subtype-valued map has all
+three properties because its underlying functions are unchanged. It
+therefore gives a genuine morphism into the original ideal module.
+Composing with inclusion recovers the original morphism on every open.
+Uniqueness follows from the injective subtype inclusion. This is the
+categorical kernel universal property and proves exactness.
+\end{proof}
+
+\begin{proposition}[The original infinitesimal module sequence is short exact]
+\label{prop:fibre-infinitesimal-module-short-exact}
+\uses{lem:fibre-infinitesimal-categorical-kernel,lem:fibre-infinitesimal-projection-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalModules.sectionMap_isLocallySurjective,EnvelopeProperty.FibreInfinitesimalModules.sectionMap_epi,EnvelopeProperty.FibreInfinitesimalModules.sequence_shortExact}
+\leanok
+For every order $n\ge0$ there is a genuine short exact sequence on the
+same original scheme $X$,
+\[
+ 0\longrightarrow (I\mathcal O_X)^n\longrightarrow\mathcal O_X
+ \longrightarrow q_{n*}\mathcal O_{X_n}\longrightarrow0,
+\]
+using the actual ideal-module inclusion and actual canonical scheme
+section map. No affine, Noetherian, flatness, properness or
+positive-order hypothesis is required.
+\end{proposition}
+\begin{proof}
+The first map is a monomorphism and is the categorical kernel by the
+preceding lemma. The second map is locally surjective: around every
+point of any original open, choose an original affine open contained
+in it. Every restricted section on its actual inverse image lifts to
+an original section there, by the proved closed-immersion affine
+surjectivity theorem. Thus its image sieve covers every original open.
+The corresponding morphism of sheaves of abelian groups is an
+epimorphism; the faithful forgetful functor from sheaves of modules
+reflects epimorphisms. Together with the proved kernel this gives the
+asserted actual short exact sequence.
+\end{proof}
+
+
+\begin{corollary}[The original sequence on every affine intersection]
+\label{cor:fibre-infinitesimal-affine-module-short-exact}
+\uses{prop:fibre-infinitesimal-module-short-exact,lem:fibre-infinitesimal-projection-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalModules.sectionSequence,EnvelopeProperty.FibreInfinitesimalModules.sectionSequence_exact,EnvelopeProperty.FibreInfinitesimalModules.affine_sectionSequence_shortExact}
+\leanok
+Evaluation of the original sequence on any open $W\subset X$ is exact
+at its middle module, with its actual $\mathcal O_X(W)$-module
+structures. On every affine open $U$, it is a short exact sequence of
+$\mathcal O_X(U)$-modules. Thus the same assertion holds on every affine
+intersection of any original open cover.
+\end{corollary}
+\begin{proof}
+Evaluation retains the two original section maps and their zero
+composite. Their section kernel on every open was identified above
+with the image of the original ideal module, proving exactness there.
+On an affine open the inclusion is injective and the second map is
+surjective by the closed-immersion affine section theorem. These three
+properties are precisely short exactness of modules. An intersection
+that is affine is itself an affine open, so it has the stated
+sequence with its unchanged original section maps and scalars.
+\end{proof}

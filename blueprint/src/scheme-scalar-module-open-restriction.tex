@@ -1,0 +1,25 @@
+\section{Literal scalar sections and original open restriction}
+
+\begin{lemma}\label{lem:fc-scalar-module-open-restriction}
+\lean{EnvelopeProperty.SchemeScalarModuleOpenRestriction.nativeSectionsIso,EnvelopeProperty.SchemeScalarModuleOpenRestriction.openRestrictIso,EnvelopeProperty.SchemeScalarModuleOpenRestriction.openRestrictIso_apply}
+\leanok
+\uses{lem:fc-scheme-scalar-module-presheaf,prop:scheme-module-open-sections-kernel}
+For an original $p:X\to\operatorname{Spec}R$, any original module $M$
+and any original open $U$, the literal $R$-module of sections agrees
+with the native module of sections over the spectrum's coordinate
+ring, restricted along the genuine spectrum section isomorphism.
+Every section retains its actual original presheaf transport under this identification.
+It is consequently isomorphic to the literal whole $R$-module of
+sections of $M|_U$ on the original open subscheme $U$ over $R$.
+\end{lemma}
+\begin{proof}
+Both first modules have the same underlying original sections. Their
+actions agree because restricting the original map on top sections is
+its original map from the base top open to $U$. The identity on the
+original additive group is therefore an $R$-linear isomorphism.
+Apply it on each side of the native whole open-restriction section
+isomorphism, after restricting scalars through the actual spectrum
+section isomorphism. At the open subscheme's top, use the literal top
+coefficient comparison. This gives the claimed entire module
+isomorphism, with no chosen section or trivialization.
+\end{proof}

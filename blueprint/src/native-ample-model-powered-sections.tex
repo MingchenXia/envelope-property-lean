@@ -1,0 +1,44 @@
+\section{Actual arbitrary original section powers in the same ample model}
+\label{sec:native-ample-model-powered-sections}
+
+\begin{theorem}[True original section powers give same-model coefficients and norms]
+\label{thm:native-ample-model-powered-section-norm}
+\lean{EnvelopeProperty.NativeAmpleModelPoweredSections.poweredSection,EnvelopeProperty.NativeAmpleModelPoweredSections.poweredSection_norm}
+\leanok
+\uses{thm:native-ample-model-section-block-map,thm:scheme-global-section-block-power-norm,thm:scheme-global-section-model-norm-isometry,lem:gl-sections}
+Fix genuine original positive-power embedding data identifying the first
+pulled projective twist with $L^{\otimes r}$ on the same original integral
+scheme. For every entire original section $s$ of $L^{\otimes d}$, take its
+actual original $r$th tensor power and transport it through the genuine whole
+original exponent isomorphism to $L^{\otimes rd}$. The whole block comparison
+sends this actual original section to a section of degree $d$ of the same one
+model over the entire original native function field. At every actual original
+native point, its genuine model section norm is exactly $\lVert s\rVert^r$.
+\end{theorem}
+\begin{proof}
+The actual original section-power construction lands first in
+$L^{\otimes dr}$. The true original exponent equality identifies this whole
+module with $L^{\otimes rd}$, and the actual whole section isomorphism preserves
+its true model norm. The entire block comparison identifies that same norm
+with genuine model section norm under the same whole analytic homeomorphism.
+The proved actual original section-power norm formula gives the asserted
+$r$th power. No section-power coefficient or metric-comparison premise enters.
+\end{proof}
+
+\begin{theorem}[Pointwise nonvanishing and logarithmic values of the same powers]
+\label{thm:native-ample-model-powered-section-lognorm}
+\lean{EnvelopeProperty.NativeAmpleModelPoweredSections.poweredSection_norm_ne_zero_iff,EnvelopeProperty.NativeAmpleModelPoweredSections.poweredSection_logNorm}
+\leanok
+\uses{thm:native-ample-model-powered-section-norm}
+If $r>0$, the actual powered model section has nonzero norm at a point exactly
+when the original whole section has nonzero true norm there. For all $r\ge0$,
+its model logarithmic section norm is $r\log\lVert s\rVert$, with the actual
+extended-real conventions, including zero original norms.
+\end{theorem}
+\begin{proof}
+Apply the preceding genuine norm identity and the exact nonvanishing criterion
+for a positive integer power. For the logarithmic identity, coerce the actual
+nonnegative norm into the extended nonnegative reals and apply the genuine
+extended-real logarithm-of-power theorem. Zero norms are included by that same
+theorem; no positivity assumption on the individual section norm is used.
+\end{proof}

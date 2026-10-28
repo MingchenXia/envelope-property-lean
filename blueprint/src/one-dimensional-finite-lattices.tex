@@ -1,0 +1,38 @@
+\section{Actual finite-colength free lattices on arbitrary one-dimensional domains}
+
+\begin{theorem}[Original finite torsion modules have finite length]
+\label{thm:fc-one-dimensional-torsion-finite-length}
+\leanok
+\lean{EnvelopeProperty.OneDimensionalFiniteLattices.finiteLength_of_nonzero_annihilator, EnvelopeProperty.OneDimensionalFiniteLattices.finiteLength_of_isTorsion}
+Over an original Noetherian domain of dimension at most one,
+every original finite torsion module has genuinely finite length.
+No normality, principal ideal property or finite-length certificate
+is supplied.
+\end{theorem}
+\begin{proof}
+Finite original generation gives one actual nonzero common
+annihilator. The actual principal quotient by this element has
+finite length by the original dimension bound. The original module
+is finite over this actual Artinian quotient, hence is Artinian
+as an original module; original finite generation over the
+Noetherian ring gives the other half of finite length.
+\end{proof}
+
+\begin{theorem}[A genuine full-rank free lattice of finite colength]
+\label{thm:fc-one-dimensional-full-free-lattice}
+\leanok
+\lean{EnvelopeProperty.OneDimensionalFiniteLattices.exists_fullRank_freeSubmodule}
+\uses{thm:fc-one-dimensional-torsion-finite-length}
+Every original finite module over this SAME original domain has
+an actual free submodule of its original generic rank whose
+original quotient has finite length. The original module need not
+be free, flat or torsion-free.
+\end{theorem}
+\begin{proof}
+Choose an actual original independent family of the full original
+generic rank, using native finite rank existence. Its actual span
+has the genuine original span basis. Native quotient rank
+additivity makes the SAME original quotient rank zero, hence
+torsion. The preceding actual torsion finite-length theorem gives
+finite colength without any chosen lattice or support certificate.
+\end{proof}

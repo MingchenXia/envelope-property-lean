@@ -1,0 +1,46 @@
+\section{The actual coordinate blowup Jacobian}
+
+\begin{lemma}[The original coordinate chart's Jacobian]
+\label{lem:kn-blowup-canonical-coordinate-jacobian}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalJacobian.jacobianMatrix,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalJacobian.pivot_row,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalJacobian.complementary_block,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalJacobian.determinant}
+\leanok
+For the actual chart of the blowup of
+$(x_0,\ldots,x_{r-1})$ in the original polynomial ring
+$A[x_0,\ldots,x_{n-1}]$, with $j<r\leq n$, the Jacobian determinant of
+the actual original chart substitution is $x_j^{r-1}$.
+\end{lemma}
+\begin{proof}
+The native chart substitution sends $x_i$ to $x_ix_j$ for
+$i<r$, $i\ne j$, and fixes the remaining original coordinates.
+Its $j$-th derivative row is the original $j$-th unit row. The complementary
+diagonal block has entry $x_j$ for exactly $r-1$ original coordinates,
+and entry one for all other coordinates. The genuine determinant of the
+same original Jacobian is their product.
+\end{proof}
+
+\begin{theorem}[The actual top Kähler wedge on the original blowup chart]
+\label{thm:kn-blowup-canonical-coordinate-wedge}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalJacobian.top_wedge}
+\leanok
+\uses{lem:kn-blowup-canonical-coordinate-jacobian}
+In the actual top exterior power of the original relative Kähler module,
+the ordered wedge of differentials of the same actual chart substitution
+equals $x_j^{r-1}$ times the original ordered coordinate wedge.
+\end{theorem}
+\begin{proof}
+Use the existing native polynomial Kähler differential basis. Its
+coordinates on the actual differentials of the original substituted
+functions are the actual partial derivatives. The existing genuine top
+exterior determinant formula therefore gives precisely the preceding
+Jacobian, with the same original ordering and polynomial ring.
+\end{proof}
+
+\begin{remark}[Scope]
+This is an actual polynomial-chart calculation. The canonical sheaf
+comparison on the whole blowup, its compatibility under adapted etale
+charts, and derived direct-image acyclicity are separate producers.
+No Jacobian, exterior comparison or vanishing certificate is supplied.
+\end{remark}

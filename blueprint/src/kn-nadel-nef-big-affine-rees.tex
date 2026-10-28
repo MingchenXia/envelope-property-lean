@@ -1,0 +1,175 @@
+\section{The actual original Rees hyperplane comparison}
+
+\begin{lemma}[An actual original open-chart frame descends to its entire open image]
+\leanok
+\label{lem:kn-nadel-nef-big-open-image-frame}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigOpenMapFrames.imageComparison,
+EnvelopeProperty.Vanishing.NadelNefBigOpenMapFrames.frameOnImage,
+EnvelopeProperty.Vanishing.NadelNefBigOpenMapFrames.frameOnImage_pullback}
+For an actual open immersion $j:T\to V$ and actual whole frame
+$j^*M\simeq\mathcal O_T$, construct a whole frame of the same original
+$M$ on its actual open image $U=j(T)$. Pulling this frame back through
+the actual isomorphism $T\simeq U$ recovers the given entire original
+frame through the genuine composition and unit comparisons.
+\end{lemma}
+\begin{proof}
+The actual original factorization is $T\xrightarrow{r}U\hookrightarrow V$,
+with $r$ an isomorphism. Actual module pullback along $r$ is an equivalence.
+Compose the genuine pullback-composition comparison, the equality of the
+original composite with $j$, the supplied actual whole frame, and the
+inverse unit-pullback comparison. This gives an actual isomorphism between
+the images under $r^*$ of $M|_U$ and $\mathcal O_U$. Full faithfulness of
+this actual pullback equivalence produces its unique preimage isomorphism.
+Its pulled entire isomorphism is the constructed one. Composing with the
+same unit comparison gives exactly the claimed original-frame identity.
+No coordinate or section matching condition is added.
+\end{proof}
+
+\begin{lemma}[The original generated-line map retains an arbitrary actual affine open chart]
+\leanok
+\label{lem:kn-nadel-nef-big-generated-open-map}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigGeneratedOpenMap.projectiveMap_on_affine_openMap,
+EnvelopeProperty.Vanishing.NadelNefBigAffineMapSpectrum.baseCoefficients_spec,
+EnvelopeProperty.Vanishing.NadelNefBigAffineMapSpectrum.affineMap_spec}
+\uses{lem:kn-nadel-nef-big-open-image-frame}
+For the original invertible line $M$, original finite global generating
+family and its actual projective map, restriction along any original
+affine open immersion $j:T\to V$ gives exactly the affine projective
+map of the same actual pulled generating family in any supplied actual
+whole frame of $j^*M$.
+\end{lemma}
+\begin{proof}
+Let $U=j(T)$ and $r:T\simeq U$ be the actual image isomorphism. The
+preceding lemma gives the genuine frame on $U$, whose pullback is the
+specified original frame through the actual composition comparison.
+The original projective map restricts to the actual affine generator
+map on this original affine open $U$. Pull it through the actual $r$.
+Actual affine generator-map naturality expresses the result by the
+double pulled original family and pulled original frame on $T$.
+
+The actual free-basis pullback formula and the actual section-composition
+comparison identify each whole double pulled original generator with
+the same original generator pulled along $j$. The preceding frame identity
+identifies the entire scalar coefficient of each such original generator.
+Consequently their entire original padded tuples are equal, with the
+same original base-ring homomorphism and same original indices. The
+defining affine projective tuple map depends on these exact data, so the
+whole original affine maps agree, proving the assertion. On an original
+spectrum, the genuine spectrum--section-ring isomorphism transports this
+same map to the literal original ring tuple: the original coefficient
+homomorphism and every original tuple value are recovered by its two
+inverse identities. Thus this comparison retains the original coefficient
+ring, not just an unspecified isomorphic ring.
+\end{proof}
+
+\begin{lemma}[The same original finite ideal generators retain their zero padding]
+\leanok
+\label{lem:kn-nadel-nef-big-padded-ideal-generators}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigPaddedGenerators.padded_zero,
+EnvelopeProperty.Vanishing.NadelNefBigPaddedGenerators.padded_generator,
+EnvelopeProperty.Vanishing.NadelNefBigPaddedGenerators.span_padded}
+A finite original family generating $I$ remains a family generating the
+same entire original $I$ after ordering its actual indices and adjoining
+one original zero generator. Its original indices keep their original
+values and the added coefficient is exactly zero.
+\end{lemma}
+\begin{proof}
+The finite index equivalence merely relabels the original members. Every
+old member occurs at its successor index, and the new zero occurs at the
+first index. Thus the padded family spans at least the same original ideal.
+Every padded value is either an old member or zero, so it lies in that
+same ideal. The two inclusions prove equality of the whole original ideals.
+\end{proof}
+
+\begin{lemma}[The original exceptional generator charts are exact target inverse opens]
+\leanok
+\label{lem:kn-nadel-nef-big-exact-coordinate-preimages}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.projectiveMap,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.on_chart,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.chart_preimage_coordinate,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.preimage_coordinate,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.chart_preimage_zero,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveCharts.preimage_zero}
+\uses{lem:kn-nadel-nef-big-generated-open-map,lem:kn-nadel-nef-big-padded-ideal-generators,lem:kn-nadel-nef-big-exceptional-generators,lem:kn-nadel-nef-big-exceptional-coefficients}
+For an original commutative ring and actual finite generators $g_i$ of its
+original ideal, let $q$ be the actual projective map of the constructed
+exceptional generating family. The inverse image of the original coordinate
+open indexed by $g_i$ is exactly the original Rees chart of $g_i$. The
+inverse image of the added zero-coordinate open is empty.
+\end{lemma}
+\begin{proof}
+Restrict to an arbitrary original Rees chart of $a\in I$. The preceding
+whole-map formula identifies the restriction of $q$ with the original affine
+map whose coefficients in the genuine pivot frame are $g_i/a$. The actual
+tuple map has coordinate inverse opens $D(g_i/a)$. These are exactly the
+inverse images of the original $g_i$-chart, by the original native Rees
+chart-overlap formula. The zero padding gives $D(0)=\varnothing$. Every
+point of the actual blowup lies in an actual original $a$-chart. Thus equality
+on these chart inverse images proves both whole original open equalities.
+\end{proof}
+
+\begin{lemma}[The genuine exceptional-line projective map is closed]
+\leanok
+\label{lem:kn-nadel-nef-big-exceptional-projective-closed}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveTuple.span_padded_ratios,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveTuple.on_chart_tuple,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveTuple.chart_isImmersion,
+EnvelopeProperty.Vanishing.NadelNefBigTargetAtlas.restrict_isImmersion_of_exact_chart,
+EnvelopeProperty.Vanishing.NadelNefBigTargetAtlas.restrict_isImmersion_of_empty_preimage,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveClosed.projection_isProper,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveClosed.projectiveMap_structure,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveClosed.isImmersion,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveClosed.isProper,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalProjectiveClosed.isClosedImmersion}
+\uses{lem:kn-nadel-nef-big-exact-coordinate-preimages,lem:kn-nadel-nef-big-rees-chart-generators}
+The actual map $q$ of the same finite exceptional generators is a closed
+immersion into the original projective space.
+\end{lemma}
+\begin{proof}
+On the target coordinate open of $g_i$, the preceding lemma identifies the
+ENTIRE inverse image with the original affine chart of $g_i$. In its pivot
+frame, the original map is the actual tuple of ratios $g_j/g_i$, with pivot
+one and the same original zero padding. The proved whole-algebra generation
+of these ratios makes the genuine homogeneous-localization map surjective.
+Hence its map to that original target affine chart is closed, in particular
+an immersion. The zero-coordinate inverse image is empty and its restriction
+is a closed immersion. These are restrictions over a cover of the TARGET;
+target-locality therefore gives that the whole original $q$ is an immersion.
+
+The original finite ideal generators also give an actual surjective graded
+polynomial presentation of the original Rees algebra. Its native Proj map
+is closed and lies over the original affine base, which proves the original
+blowup projection proper. The actual $q$ lies over this same original
+projection and the original projective-space structure is separated. Thus
+$q$ itself is proper. An immersion with proper, hence closed, image is a
+closed immersion. This argument does not infer a whole immersion merely
+from immersions on a cover of the source.
+\end{proof}
+
+\begin{lemma}[The actual exceptional ideal line is relatively very ample]
+\leanok
+\label{lem:kn-nadel-nef-big-exceptional-relative-very-ample}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigExceptionalRelativeVeryAmple.isVeryAmple_of_generators,
+EnvelopeProperty.Vanishing.NadelNefBigExceptionalRelativeVeryAmple.isVeryAmple}
+\uses{lem:kn-nadel-nef-big-exceptional-projective-closed}
+For an original domain and an original finitely generated ideal, the same
+whole exceptional ideal module on the actual affine blowup is very ample
+relative to its original blowup projection.
+\end{lemma}
+\begin{proof}
+Choose a finite family from the original finite-generation hypothesis and
+apply the preceding closed-map construction to this actual family. The
+actual generated-line hyperplane comparison over the original domain
+identifies the pullback of the original projective hyperplane line with
+the same entire exceptional ideal module. Its original structure triangle
+is already proved. These actual data satisfy the genuine definition of
+relative very ampleness. No immersion, hyperplane matching, or desired
+positivity certificate is supplied as an input.
+\end{proof}
+
+This closes the actual affine relative-positivity producer only. Global
+projective-base twisted positivity, the weighted correction for an actual
+blowup sequence, and the original numerical nef-and-big/Kodaira bridge
+remain separate open obligations in the preceding chapter. No source
+numerical bigness definition or full Kawamata--Viehweg/Nadel conclusion
+is changed by these results.

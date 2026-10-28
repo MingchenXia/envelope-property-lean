@@ -1,0 +1,54 @@
+\section{A Witt point in the actual relative cohomology free loci}
+
+\begin{lemma}[Simultaneous local freeness on a principal open]
+\label{lem:kn-relative-arithmetic-simultaneous-free-open}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticFreeStage.exists_simultaneous_free_principal_open}
+\uses{thm:actual-local-generic-freeness}
+\leanok
+Let $A$ be a noetherian domain, let $B$ be any finite-type $A$-algebra,
+and let $(M_i)_{i\in I}$ be a finite family of finite $B$-modules.
+There is a nonzero $a\in A$ such that, for every prime $P$ of $A$
+with $a\notin P$, each $(M_i)_P$ is free over $A_P$.
+The modules $M_i$ need not be finite over $A$, and their free ranks
+over $A_P$ need not be finite.
+\end{lemma}
+\begin{proof}
+The zero ideal is a minimal prime of the domain $A$.  Generic freeness
+places it in the interior of the $A$-free locus of every $M_i$.
+The intersection $U$ of these finitely many interiors is open and
+contains the zero ideal.  Write its closed complement as $V(S)$ for
+some subset $S\subset A$.  Since the zero ideal does not belong to
+$V(S)$, there is $a\in S$ with $a\ne0$.  If $a\notin P$, then
+$S\nsubseteq P$, so $P\notin V(S)$ and $P\in U$.  By definition of
+the free loci, every $(M_i)_P$ is free over $A_P$.
+\end{proof}
+
+\begin{lemma}[A common large-characteristic Witt point]
+\label{lem:kn-relative-arithmetic-simultaneous-free-witt-point}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticFreeStage.exists_simultaneous_free_witt_point}
+\uses{lem:kn-relative-arithmetic-simultaneous-free-open,thm:arithmetic-original-closed-point-witt-lift}
+\leanok
+In addition suppose that $A$ has characteristic zero and is smooth
+and of finite type over $\mathbb Z$.  Given a nonzero $s\in A$ and
+an integer $N$, there are a maximal ideal $P$ avoiding $s$, a prime
+$p>N$, the finite residue field $\kappa=A/P$ of characteristic $p$,
+and a ring homomorphism $A\to W_2(\kappa)$ lifting the original
+quotient map.  At this same $P$, all the localized modules $(M_i)_P$
+are free over $A_P$.
+\end{lemma}
+\begin{proof}
+Choose $a\ne0$ from the preceding lemma.  The element
+$as(N!)\in A$ is nonzero, since $A$ is a characteristic-zero domain.
+A finite-type integer algebra is Jacobson.  The intersection of its
+maximal ideals is its nilradical, which is zero here.  Thus there is
+a maximal ideal $P$ not containing $as(N!)$.  Primality shows that
+$P$ avoids both $a$ and $s$, so every $(M_i)_P$ is free over $A_P$.
+The residue field of a maximal ideal of a finite-type integer algebra
+is finite; its characteristic is a prime $p$.  If $p\leq N$, then
+$p\mid N!$, so $N!\in P$, a contradiction.  Hence $p>N$.
+The reduction $W_2(\kappa)\to\kappa$ is surjective and has square-zero
+kernel.  Formal smoothness of $A$ over $\mathbb Z$ lifts the original
+$\mathbb Z$-algebra map $A\to\kappa$ across this reduction.  Its
+underlying ring homomorphism is the asserted Witt lift and has exactly
+the required reduction.
+\end{proof}

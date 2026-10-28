@@ -1,0 +1,68 @@
+\begin{lemma}[An original very ample line is geometrically ample]
+\label{lem:fc-original-very-ample-is-ample}
+\lean{EnvelopeProperty.AmpleLineTwistGeneration.isAmple_of_isVeryAmple}
+\leanok
+\uses{def:fc-original-geometric-line-ampleness}
+Every actual original geometrically very ample line is geometrically ample.
+\end{lemma}
+\begin{proof}
+The original embedding line is invertible. The canonical whole first
+actual tensor-power isomorphism identifies its actual first power with
+the original line. Transporting the original very ample embedding across
+the inverse of this isomorphism supplies the positive exponent one in
+the geometric ample criterion.
+\end{proof}
+
+\begin{lemma}[Eventual generation after every original invertible twist]
+\label{lem:fc-original-ample-line-twist-generation}
+\lean{EnvelopeProperty.AmpleLineTwistGeneration.exists_eventual_generatingSections}
+\leanok
+\uses{thm:positive-power-projective-eventual-generation}
+Let $A$ be an original geometrically ample line over the original base
+$R$, and let $B$ be any original invertible line. There is a threshold
+$N$ such that every actual original $A^{\otimes m}\otimes B$, $m\geq N$,
+has a genuine finite global generating family.
+\end{lemma}
+\begin{proof}
+Choose the positive integer $r$ and original closed projective embedding
+whose original first twist pulls back to $A^{\otimes r}$. For each of
+the finitely many residues $a<r$, the original invertible module
+$B\otimes A^{\otimes a}$ is finite type and quasicoherent. The genuine
+projective coherent generation theorem gives a threshold $N_a$ for all
+its pulled-back original projective twists. Let $T$ be the maximum of
+these finitely many thresholds. For $m\geq Tr$, write $m=a+rd$, with
+$a=m\bmod r$ and $d=\lfloor m/r\rfloor\geq T$. The actual projective
+twist at $d$ equals $A^{\otimes rd}$ by the canonical whole positive-power
+comparison. The original tensor associator and actual tensor-power
+addition identify the produced module with $B\otimes A^{\otimes m}$.
+The original symmetry identifies this with $A^{\otimes m}\otimes B$.
+Transport the produced actual finite global generating family through
+these whole isomorphisms. Its evaluation remains epic and its index
+set remains finite, proving the claim for every original $m\geq Tr$.
+\end{proof}
+
+\begin{theorem}[Eventual very ampleness after every original invertible twist]
+\label{thm:fc-original-ample-line-twist-very-ample}
+\lean{EnvelopeProperty.AmpleLineTwistGeneration.exists_eventual_isVeryAmple, EnvelopeProperty.AmpleLineTwistGeneration.exists_uniform_eventual_isVeryAmple}
+\leanok
+\uses{lem:fc-original-ample-line-twist-generation,thm:fc-original-very-ample-tensor-generated}
+If the original scheme is integral, every original invertible $B$ has
+$A^{\otimes m}\otimes B$ geometrically very ample for all sufficiently
+large $m$. For any finite family of original invertible lines, one
+common threshold works simultaneously for all the original lines and
+all their actual duals.
+\end{theorem}
+\begin{proof}
+Fix an original positive very ample power $A^{\otimes r}$. Take a
+threshold $N$ for the preceding actual finite generation theorem applied
+to $B$. For $m\geq N+r$, the original
+$A^{\otimes(m-r)}\otimes B$ is genuinely finite globally generated.
+The actual tensor with the original very ample $r$th power is very
+ample by the established graph and Segre theorem. The original
+associator and actual tensor-power addition identify this tensor with
+$A^{\otimes m}\otimes B$, retaining its original coefficient projection.
+For a finite original family apply this result to every original line
+and its actual dual. Take the maximum of the two thresholds for each
+index and then their finite maximum. Above that one threshold every
+one of the asserted original very ample lines is thereby produced.
+\end{proof}

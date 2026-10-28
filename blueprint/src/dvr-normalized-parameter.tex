@@ -1,0 +1,45 @@
+\subsection{The original DVR parameter gives the whole prescribed Gauss base}
+
+\begin{lemma}[A strictly small nonzero parameter has the true Gauss evaluation]
+\label{berkovich:actual-trivial-parameter-gauss-evaluation}
+\lean{EnvelopeProperty.Berk.valuation_aeval_eq_gauss_of_lt_one}
+\leanok
+For an actual trivially valued-field analytic seminorm $y$ on an original
+$k$-algebra and an original element $t$ with $0<|t|_y<1$, evaluation of EVERY
+original polynomial at $t$ has value equal to its actual Gauss norm of radius
+$|t|_y$. No Gauss-comparison or polynomial-preservation premise is supplied.
+\end{lemma}
+\begin{proof}
+For a nonzero original polynomial choose the least actual support index $j$.
+The actual nonzero coefficient images all have norm one. Thus every original
+summand of index $i$ has norm $|t|_y^i$. Since $0<|t|_y<1$, the summand of
+index $j$ strictly dominates all the others. The genuine ultrametric strict
+maximum theorem computes the actual evaluated sum as $|t|_y^j$. The same
+least-index inequalities compute the actual weighted coefficient maximum as
+$|t|_y^j$. The zero polynomial is immediate.
+\end{proof}
+
+\begin{theorem}[The actual original nonunit DVR parameter has the whole prescribed base]
+\label{berkovich:actual-dvr-normalized-parameter-gauss-base}
+\lean{EnvelopeProperty.Berk.dvrFractionPoint_exists_normalized_parameter}
+\leanok
+\uses{berkovich:actual-trivial-parameter-gauss-evaluation}
+Let $V$ be an actual DVR over the original field $k$, let $K$ be its actual
+fraction field with its actual scalar tower, and let $t\in\mathfrak m_V$ be
+an original nonzero element. There exists an actual positive normalization
+$c$ such that the genuine original DVR fraction-field analytic point
+$\exp(-c\,\operatorname{ord}_V)$ gives $|t|=e^{-1}$, and its value on EVERY
+original polynomial in $t$ is exactly the original trivial-coefficient Gauss
+valuation of radius $e^{-1}$. No normalized value or Gauss-base certificate
+is supplied.
+\end{theorem}
+\begin{proof}
+The actual DVR order of $t$ is a finite positive integer $n$: finiteness follows
+from $t\ne0$ and positivity from $t\in\mathfrak m_V$. Take $c=1/n>0$.
+The genuine fraction-field extension of the original DVR norm retains exactly
+the value $\exp(-c n)=e^{-1}$ on the SAME original element $t$.
+Its coefficient field retains its original trivial valuation. Apply the
+preceding actual polynomial-evaluation theorem with this genuine norm.
+The established parameter equality identifies its radius with precisely
+$e^{-1}$, yielding the whole original Gauss-base identity.
+\end{proof}

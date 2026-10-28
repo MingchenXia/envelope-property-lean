@@ -1,0 +1,121 @@
+\section{The original affine leading comparison for the higher Witt maps}
+
+Use the original $Y,g,P,K,T$, canonical Witt cover, and actual maps $\Phi_q$
+constructed in the preceding higher-exterior chapter. All evaluations and units
+below retain those same original objects and scalar actions.
+
+\begin{lemma}[The original unit preserves the last-entry exterior product]
+\label{lem:di-higher-exterior-unit-product}
+\lean{EnvelopeProperty.DI.CechHigherExteriorUnitProducts.wedgeProduct_init_last, EnvelopeProperty.DI.CechHigherExteriorUnitProducts.targetUnit, EnvelopeProperty.DI.CechHigherExteriorUnitProducts.targetUnit_product, EnvelopeProperty.DI.CechHigherExteriorUnitProducts.targetUnit_init_last}
+\leanok
+For an original module presheaf $P$, a tuple $(m_0,\ldots,m_q)$ on an open
+$V$, and the original exterior sheafification units $\eta_j$, the product
+$\eta_q(m_0\wedge\cdots\wedge m_{q-1})\wedge\eta_1(m_q)$ equals
+$\eta_{q+1}(m_0\wedge\cdots\wedge m_q)$, after the equality
+$1+q=q+1$ of its degree indices. The same identity holds after restriction
+along an equality of original opens.
+\end{lemma}
+\begin{proof}
+\leanok
+The original sheaf product on two unit images is the unit image of the
+original homogeneous exterior product. Its inclusion into the exterior
+algebra is literal multiplication. The product of the first $q$ generators
+and the last generator is the product of the whole ordered tuple, by the
+last-entry formula for a finite product. Injectivity of the homogeneous
+submodule inclusion gives equality of the raw exterior elements. The
+sheafification unit gives the asserted section equality. Restriction of
+the original product is the product of the original restrictions; applying
+this equality to the original open-equality restriction gives the final
+assertion, with every degree transport unchanged.
+\end{proof}
+
+\begin{lemma}[The chosen Witt lift preserves the ordered source-unit product]
+\label{lem:di-higher-exterior-witt-unit-product}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.model_rawUnit, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.model_rawUnit_value, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.model_rawUnit_product}
+\uses{lem:di-higher-exterior-unit-product,cor:di-actual-witt-exterior-leading-cartier}
+Let $U$ be an affine member of the smooth Witt lifting, choose its original
+etale coordinates and a lift $F$ of residue Frobenius, and let $W$ be the
+corresponding original twisted special-fibre open. Write $C^q$ for the
+original affine exterior map of that same $F$, and $\eta_q$ for the
+original exterior sheafification unit on $W$. For every $q\geq0$ and every
+raw tuple $(m_0,\ldots,m_q)$ on $W$,
+\[
+ C^{q+1}\eta_{q+1}(m_0,\ldots,m_q)
+ =C^q\eta_q(m_0,\ldots,m_{q-1})\wedge C^1\eta_1(m_q),
+\]
+where the right side uses the original pushed-form product and the equality
+$1+q=q+1$ of degree indices. This assertion requires no bound $q<p$.
+\end{lemma}
+\begin{proof}
+\leanok
+The original cotangent comparison is induced by the original coefficient
+square and the original affine section-ring isomorphism. Its exterior
+extension sends the original raw wedge of the $m_j$ to the native wedge
+of their images under that same cotangent comparison. Composing the inverse
+of the original exterior-unit isomorphism with the forward unit therefore
+identifies $\eta_q(m)$ with the inverse native-domain image of this native
+wedge. The proved source-wedge formula for $C^q$ sends it to the original
+target unit of the ordered wedge of the divided one-forms of $F$ applied
+to these same cotangent images. Applying the preceding lemma to the initial
+$q$ entries and the last entry gives the stated formula, including the
+original relative-preimage restriction. All steps retain the original
+coefficient inclusion and its induced module actions.
+\end{proof}
+
+\begin{theorem}[The original affine leading representative]
+\label{thm:di-higher-exterior-witt-leading-component}
+\lean{EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.memberExterior, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.memberOne, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.memberOrdered, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.memberHigher_raw, EnvelopeProperty.DI.ActualWittHigherExteriorEvaluation.memberHigher}
+\leanok
+\uses{lem:di-higher-exterior-witt-unit-product,lem:di-higher-exterior-unit-product,thm:di-higher-exterior-witt-maps,cor:di-actual-witt-exterior-leading-cartier,def:native-cech-ordered-cup,thm:di-total-cup-original-factor-evaluation,lem:di-reused-native-normalization,lem:di-cech-total-zero-row-projection}
+Fix a member $W_i$ of the original canonical Witt cover and its internally
+chosen lift $F_i$. Let $e_i:T|_{W_i}\to K|_{W_i}$ be the original local
+evaluation, obtained from the zero-Cech-row projection and the actual
+restriction--pushforward counit. For $0<q<p$, the degree-$q$ component
+of $\Phi_q|_{W_i}e_i$ on sections is the entire original affine exterior
+map $C_i^q$ obtained from the published native exterior extension of the
+same divided Frobenius $F_i$.
+\end{theorem}
+\begin{proof}
+\leanok
+The original degree-one component has zero-row part the adjoint of the
+canonical $\xi_i$. The definition of that canonical component transports
+the original member map only along the singleton-intersection equality.
+The actual counit triangle therefore gives
+$e_i^1\tau^1=\xi_i$ as a whole over-open sheaf morphism. The proved
+actual-Witt one-form comparison identifies this same $\xi_i$ on sections
+with $C_i^1$; no new local lift or coefficient identification is chosen.
+
+The original total product evaluated in Cech degree zero can only use
+zero-Cech-degree factors. Its Koszul coefficient is then one. The actual
+total-product projection formula and the original target-unit product
+formula thus show, by induction through the fixed ordered recursion,
+that $e_i^q\mu_q$ is the ordered exterior product of these same one-form
+images. The published source-wedge formula for $C_i^q$ is exactly that
+product on each original source wedge. This last equality can also be
+read in the ambient exterior algebra: multiplication is associative,
+and the native ordered-product formula for $\iota_{\mathrm{multi}}$
+identifies the product on an initial tuple followed by its last entry
+with the product on the whole tuple. The degree-equality transports
+retain the same ambient exterior-algebra value.
+
+Let $a_i(v)=C_i^q(\eta_q(v))$ on the original raw cotangent inputs.
+It is alternating because $\eta_q$ is alternating and $C_i^q$ is linear.
+The preceding induction proves the whole multilinear equality
+$e_i^q\mu_q=a_i$, rather than assuming it. The existing recovery theorem,
+with the actual structural map $k\to\mathcal O_Y(W_i)$ and $q<p$, gives
+$e_i^q\phi_q(\eta_q(v))=C_i^q(\eta_q(v))$ on every raw wedge.
+The factorial inverse is taken in the original field and then mapped
+to the original section ring, so this argument also covers empty opens.
+
+For completeness, these values determine the entire section map on
+this affine open. The actual affine exterior-unit comparison identifies
+$\Gamma(W_i,\Omega_Y^q)$ with the original exterior power
+$\bigwedge^q_{\mathcal O_Y(W_i)}P(W_i)$, retaining its original unit map.
+Simple wedges span that module over the original ring
+$\mathcal O_Y(W_i)$. The native chart and source-unit formulas above
+identify the value on each such original wedge, and linearity therefore
+gives the entire equality on $\Gamma(W_i,\Omega_Y^q)$. This generation argument
+is used only on the genuine affine member, not on arbitrary global opens.
+
+\end{proof}

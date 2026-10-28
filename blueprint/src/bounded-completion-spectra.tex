@@ -1,0 +1,114 @@
+\subsection{Actual bounded spectra and norm completions}
+\label{subsec:bounded-completion-spectra}
+
+\begin{theorem}[Whole bounded seminorms extend uniquely to the actual completion]
+\label{spectrum:actual-bounded-completion-extension}
+\lean{EnvelopeProperty.Berkovich.Spectrum.IsNormBounded,
+EnvelopeProperty.Berkovich.Spectrum.isNormBounded_iff,
+EnvelopeProperty.Berkovich.Spectrum.lipschitz_toH_of_isNormBounded,
+EnvelopeProperty.Berkovich.Spectrum.continuous_val_of_isNormBounded,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionToH,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionToH_coe,
+EnvelopeProperty.Berkovich.Spectrum.continuous_normCompletionToH,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionToH_unique,
+EnvelopeProperty.Berkovich.Spectrum.norm_normCompletionToH_le,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionLift,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionLift_val_coe,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionLift_isNormBounded,
+EnvelopeProperty.Berkovich.Spectrum.normCompletionLift_val_apply,
+EnvelopeProperty.Berkovich.Spectrum.normCompletion_ext}
+\leanok
+\uses{spectrum:completed-residue-field}
+Let $A$ be a seminormed commutative ring. Give its actual separated
+norm completion $\widehat A$ the genuine completed ring structure.
+Every multiplicative ultrametric seminorm $x$ on $A$ satisfying
+$|a|_x\leq\|a\|$ for every original element has a UNIQUE
+multiplicative ultrametric extension to $\widehat A$ satisfying
+$|b|\leq\|b\|$ for every completion element. The extension preserves
+all original values, not merely a chosen dense generating family.
+The usual boundedness condition $|a|_x\leq C\|a\|$ for some
+$C>0$ is equivalent to this contractivity. Neither completeness
+nor an ultrametric norm on $A$ is needed for this completion
+statement. Empty bounded spectra are allowed.
+\end{theorem}
+\begin{proof}
+First, usual boundedness implies contractivity by the genuine
+positive-power argument: multiplicativity gives
+$|a|^m\leq C\|a^m\|\leq C\|a\|^m$; taking positive
+$m$th roots and letting $m$ tend to infinity gives
+$|a|\leq\|a\|$. Conversely contractivity gives the bound with
+$C=1$. This is the existing power-multiplicative bounded-map theorem,
+applied to the true map into the completed residue field.
+
+Use the actual completed residue field $\mathcal H(x)$, with the
+canonical original ring map $A\to\mathcal H(x)$. Its value on every
+$a$ has norm exactly $|a|_x$. The displayed whole bound therefore
+makes this actual ring homomorphism contractive: apply it to
+$a-a'$ to bound the distance of the images. Hence it is uniformly
+continuous and extends through the genuine norm completion to a
+continuous ring homomorphism $\widehat A\to\mathcal H(x)$. Actual
+completion density proves that its norm remains bounded by the
+completion norm, on every completion element. Pull back the genuine
+norm valuation of $\mathcal H(x)$ along this entire ring map.
+This constructs the claimed ultrametric multiplicative seminorm
+and preserves every original value by the actual extension law.
+The extension is also the unique continuous RING homomorphism
+into this actual $\mathcal H(x)$ extending the given original
+ring map: equality of continuous maps on the true dense original
+image proves their equality on the entire completion.
+
+For uniqueness, any contractive seminorm on $\widehat A$ is
+continuous as a real-valued function. Indeed its ultrametric
+triangle inequality implies the usual reverse triangle estimate
+$\bigl||b|-|b'|\bigr|\leq|b-b'|\leq\|b-b'\|$.
+Two such actual seminorms agreeing on every original element agree
+on the true dense original image, hence everywhere. This argument
+also handles a nonseparated original seminorm: zero-norm original
+elements have zero value, so the separated completion loses no
+value of a bounded point.
+\end{proof}
+
+\begin{theorem}[The actual completion preserves the entire bounded spectrum]
+\label{spectrum:actual-bounded-completion-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.NormBoundedSpectrum,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.compactSpace,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionComap,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionLift,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionComap_completionLift,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionLift_completionComap,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.continuous_completionComap,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionHomeomorph,
+EnvelopeProperty.Berkovich.NormBoundedSpectrum.completionHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.RelativeNormBoundedSpectrum,
+EnvelopeProperty.Berkovich.RelativeNormBoundedSpectrum.completionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeNormBoundedSpectrum.completionHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.RelativeNormBoundedSpectrum.compactSpace}
+\leanok
+\uses{spectrum:actual-bounded-completion-extension,spectrum:compact-coordinate-bounds}
+The genuine restriction along $A\to\widehat A$ is a homeomorphism
+from the contractive bounded spectrum of $\widehat A$ to that of
+$A$, for their actual evaluation topologies. Both bounded spectra
+are compact Hausdorff. If $A$ has an actual coefficient-ring action,
+this restricts to a homeomorphism for every prescribed coefficient
+seminorm, with all original coefficient values preserved. No
+coefficient bound or extension-existence certificate is assumed.
+\end{theorem}
+\begin{proof}
+Each actual contractivity condition $|a|\leq\|a\|$ is closed in
+the genuine evaluation topology. The spectrum is a closed subspace
+of the full product of nonnegative-real evaluation coordinates;
+restricting every coordinate to its true finite norm interval
+gives compactness by the actual coordinate-bound compactness
+theorem. Hausdorffness is inherited from the spectrum.
+
+The actual coefficient completion map is a ring homomorphism, so
+its pullback on spectra is continuous; its norm equality on every
+original element preserves contractivity. The preceding true
+extension and uniqueness theorem proves bijectivity on whole
+points. A continuous bijection from a compact space to a Hausdorff
+space is a genuine homeomorphism. For prescribed coefficients,
+restriction and extension preserve every original scalar value;
+restrict this actual homeomorphism to their exact coefficient
+loci, with their genuine subspace topologies. No separate inverse
+or unrelated topology is postulated.
+\end{proof}

@@ -1,0 +1,65 @@
+\section{Native parameter substitutions}
+
+\begin{lemma}[Native coefficient functor and unit substitutions]
+\label{lem:native-parameter-unit-iso}
+\uses{lem:pl-parameter-scaling-hom}
+\lean{EnvelopeProperty.ProjBerk.nativeCoefficientMap_comp,EnvelopeProperty.ProjBerk.nativeCoefficientMap_id,EnvelopeProperty.parameterScaleEquiv,EnvelopeProperty.ProjBerk.nativeCoefficientIso,EnvelopeProperty.ProjBerk.nativeParameterScaleIso}
+\leanok
+Actual native polynomial Proj coefficient maps preserve composition and
+identity.  Every unit parameter substitution induces an actual scheme
+automorphism of polynomial Proj over the parameter ring; its inverse is
+the substitution by the inverse unit.
+\end{lemma}
+\begin{proof}
+The two graded coefficient maps for a composite agree on every entire
+polynomial, since coefficient mapping composes.  The composition and
+identity laws for genuine Proj maps therefore give the claimed scheme
+identities.  Parameter substitution by a unit and by its inverse compose
+to the identity on the whole original coefficient polynomial ring.
+Apply the contravariant native coefficient functor to these inverse ring
+maps to obtain the actual inverse scheme morphisms.
+\end{proof}
+
+\begin{lemma}[Whole native ideal sheaves under parameter scaling]
+\label{lem:native-parameter-ideal-invariance}
+\uses{lem:native-parameter-unit-iso,lem:pl-parameter-monomial-ideal-invariance}
+\lean{EnvelopeProperty.ProjBerk.nativeHomogeneousIdealSheaf_comap_parameterScale,EnvelopeProperty.ProjBerk.nativeConstantIdeal_comap_parameterScale}
+\leanok
+An actual homogeneous ideal invariant under the whole coefficient unit
+substitution has exactly the same genuine native ideal sheaf after
+pullback by the actual parameter-scaling scheme automorphism.
+In particular every homogeneous base ideal extended to the parameter
+polynomial ring has this invariance, with no added invariance hypothesis.
+\end{lemma}
+\begin{proof}
+The previously proved full coefficient-base-change identity identifies
+the genuine quotient-kernel sheaf pullback with the sheaf of the whole
+image homogeneous ideal.  The actual ring-ideal equality therefore gives
+the equality of entire sheaves.  For a base ideal the composite
+$R\to R[t]\xrightarrow{t\mapsto ut}R[t]$ is precisely the original
+coefficient inclusion; coefficient mapping hence fixes every original
+base polynomial and its entire generated image ideal.
+\end{proof}
+
+These unit automorphisms are an intermediate geometric construction.  A
+full algebraic multiplicative-group action additionally requires its
+Laurent-parameter family and its action diagrams.
+
+\begin{lemma}[Actual closed-subscheme unit automorphisms]
+\label{lem:native-closed-parameter-unit-iso}
+\uses{lem:native-parameter-ideal-invariance}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.subschemeIsoOfComap,AlgebraicGeometry.Scheme.IdealSheafData.subschemeIsoOfComap_hom_ι,EnvelopeProperty.ProjBerk.nativeClosedParameterScaleIso,EnvelopeProperty.ProjBerk.nativeClosedParameterScaleIso_hom_ι}
+\leanok
+Every homogeneous base ideal defines an actual closed native family over
+the parameter polynomial ring.  The actual parameter-unit automorphism
+preserves this very closed subscheme and induces its actual scheme
+automorphism, with the exact ambient-inclusion triangle.
+\end{lemma}
+\begin{proof}
+More generally an actual scheme isomorphism carrying the whole target
+ideal back to the source ideal induces an actual closed-subscheme map.
+Apply the same construction to the inverse isomorphism.  The two
+composites are identities, as follows after composing with the closed
+immersions, which are monomorphisms.  Use the preceding proved
+whole-sheaf invariance for the actual homogeneous base ideal.
+\end{proof}

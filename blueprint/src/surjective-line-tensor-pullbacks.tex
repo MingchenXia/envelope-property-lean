@@ -1,0 +1,180 @@
+\subsection{Actual coefficient tensors and the original unreduced line preimage}
+\label{subsec:surjective-line-tensor-pullbacks}
+
+\begin{theorem}[Entire tensor comparison with the original quotient]
+\label{algebra:surjective-base-change-original-quotient}
+\lean{EnvelopeProperty.SurjectiveBaseChange.ideal,
+EnvelopeProperty.SurjectiveBaseChange.quotientRingEquiv,
+EnvelopeProperty.SurjectiveBaseChange.quotientRingEquiv_mk,
+EnvelopeProperty.SurjectiveBaseChange.coefficientMap,
+EnvelopeProperty.SurjectiveBaseChange.quotientAlgebra,
+EnvelopeProperty.SurjectiveBaseChange.tensorQuotientEquiv,
+EnvelopeProperty.SurjectiveBaseChange.tensorQuotientEquiv_one_tmul,
+EnvelopeProperty.SurjectiveBaseChange.coefficientMap_algebraMap,
+EnvelopeProperty.SurjectiveBaseChange.coefficientMap_eq_of_comp,
+EnvelopeProperty.SurjectiveBaseChange.tensorQuotientEquiv_tmul,
+EnvelopeProperty.SurjectiveBaseChange.quotient_isScalarTower}
+\leanok
+Let $R\to S$ be a genuinely surjective homomorphism of arbitrary
+commutative rings and $B$ any actual $R$-algebra. Put
+$I=\ker(R\to S)B$, retaining the original ideal rather than its radical.
+There is a canonical descended $S$-action on $B/I$ and an actual
+$S$-algebra isomorphism $S\otimes_R B\simeq B/I$. Every original
+$1\otimes b$ maps to the original class of $b$, and $s\otimes b$
+maps to the product of the descended $s$ and that original class.
+The entire original coefficient square commutes and characterizes
+the descended coefficient map. The actual scalar tower is retained.
+\end{theorem}
+\begin{proof}
+The genuine tensor/quotient isomorphism identifies $B/I$ with
+$B\otimes_R(R/\ker(R\to S))$. Commute the factors and apply the
+actual first isomorphism theorem for the given surjective coefficient
+map. This constructs a whole ring isomorphism with $S\otimes_R B$
+which retains every original $b$ as $1\otimes b$. Transport the
+actual $S$ coefficient inclusion through its inverse to define the
+descended action. The inverse ring map is an $S$-algebra isomorphism
+for this actual action. Multiplicativity gives the full pure-tensor
+formula, with no argument restricted to generators.
+
+The genuine tensor balance identity identifies both images of every
+original $r\in R$, proving the entire coefficient square and actual
+scalar tower. Surjectivity of $R\to S$ makes any other coefficient
+map with that same whole square equal to this constructed map on
+every $s\in S$. No finiteness, flatness, domain, reducedness or rank
+comparison is assumed, and every original nilpotent is retained.
+\end{proof}
+
+\begin{theorem}[Genuine finite, free, rank and etale pullback]
+\label{algebra:surjective-base-change-free-etale}
+\lean{EnvelopeProperty.SurjectiveBaseChange.finite,
+EnvelopeProperty.SurjectiveBaseChange.free,
+EnvelopeProperty.SurjectiveBaseChange.finrank,
+EnvelopeProperty.SurjectiveBaseChange.etale,
+EnvelopeProperty.SurjectiveBaseChange.isReduced_of_field}
+\leanok
+\uses{algebra:surjective-base-change-original-quotient}
+The rank values here are Lean's natural-valued \texttt{Module.finrank};
+for an infinite free basis this convention gives zero. In every finite
+module application it is the usual finite free rank.
+The actual quotient action above preserves module finiteness, module
+freeness and etaleness of the original $R$-algebra. When the original
+module is free and the coefficient rings satisfy the strong rank
+condition, its free rank equals the $S$-free rank of the whole original
+quotient. If $S$ is a field and the original algebra is etale, the
+actual original quotient is reduced.
+\end{theorem}
+\begin{proof}
+Tensor base change preserves actual finite modules, actual free
+modules and etale algebras. Transport these structures through the
+proved whole $S$-algebra isomorphism. Its actual linear equivalence
+identifies ranks, and the genuine tensor basis rank theorem identifies
+the scalar-extended free rank with the original free rank. Over a
+field, the true formally unramified algebra is reduced. No finite
+module assumption is required for the free-rank equality itself, and
+no generic-degree or normalization comparison is inferred here.
+\end{proof}
+
+\begin{theorem}[Actual etale domain algebras are reduced]
+\label{algebra:etale-domain-generic-reduced}
+\lean{EnvelopeProperty.isReduced_of_etale_of_domain}
+\leanok
+If $R$ is any domain and $B$ an actual etale $R$-algebra, then $B$ is
+reduced. There is no Noetherian or finite-module assumption.
+\end{theorem}
+\begin{proof}
+Let $K$ be the genuine fraction field of $R$. The actual algebra
+$K\otimes_R B$ is etale over $K$, hence formally unramified and
+reduced. Etaleness makes the original $B$ flat over $R$, while the
+actual fraction field is a faithful $R$-algebra. Flat tensoring of the
+injective original coefficient map therefore makes the whole map
+$B\to K\otimes_R B$, $b\mapsto1\otimes b$, injective. Every original
+nilpotent maps to zero in the reduced generic algebra and is therefore
+zero by this actual injection. This is a proof through actual generic
+base change, with no reducedness certificate as an input.
+\end{proof}
+
+\begin{theorem}[Literal line tensor equals the entire original unreduced preimage]
+\label{algebra:line-tensor-original-unreduced-preimage}
+\lean{EnvelopeProperty.AffineLine.originalLine_ker_le,
+EnvelopeProperty.AffineLine.originalLineHom,
+EnvelopeProperty.AffineLine.originalLineHom_comp,
+EnvelopeProperty.AffineLine.originalLineHom_principalLineHom,
+EnvelopeProperty.AffineLine.linePreimageIdeal_eq_surjectiveBaseChange,
+EnvelopeProperty.AffineLine.lineTensorPullbackEquiv,
+EnvelopeProperty.AffineLine.lineTensorPullbackEquiv_one_tmul,
+EnvelopeProperty.AffineLine.lineTensorPullbackEquiv_symm_mk,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_eq_originalNormalization_comp}
+\leanok
+\uses{algebra:surjective-base-change-original-quotient,algebra:localized-line-original-preimage,algebra:whole-normalized-line-product-map}
+Let $F$ be any field, let $a,b$ be the actual affine-line coefficients,
+and suppose the chosen direction coordinate $b_j$ is nonzero. Write
+$R=F[\mathbf X]_g$ and $C=F[T]_{g(a+bT)}$, and let
+$\phi:R\to B$ be any actual $F$-algebra homomorphism. For the original
+transverse equation image ideal $I\subseteq B$, there is an actual
+whole coefficient homomorphism $C\to B/I$ and a genuine
+$C$-algebra isomorphism $C\otimes_R B\simeq B/I$.
+Both directions retain every original $B$ element. The actual line
+map to the whole component normalization product factors through this
+entire original unreduced quotient, with its proved original map.
+\end{theorem}
+\begin{proof}
+The actual localized line substitution is surjective because the
+nonzero direction coordinate gives a true polynomial preimage of $T$,
+and the original principal-localization denominators are retained.
+Its exact kernel is the localized original transverse equation ideal.
+Extending this exact ideal along $\phi$ is exactly the original $I$,
+by the actual composition law for ideal images; there is no radical.
+Consequently the original composite $R\to B\to B/I$ kills the entire
+line substitution kernel. The genuine surjective universal property
+constructs $C\to B/I$ and proves its whole original $R$ triangle.
+
+Apply the preceding actual surjective base-change construction and
+the proved ideal equality. The two genuine quotient actions agree:
+on every element of $C$, choose an actual $R$ preimage and use the
+entire original coefficient square. This makes the ring comparison an
+algebra isomorphism for the actual descended line homomorphism, not
+an action assumed to agree. Its original-element formulas and both
+inverse laws prove the entire asserted comparison. Finally choose an
+actual $R$ preimage of each element of $C$. The existing full original
+ambient formula for the normalized line product and the actual
+unreduced normalization-map quotient formula prove equality of the
+entire line homomorphisms through $B/I$. No component, reducedness,
+normalization identification or rank certificate is supplied.
+\end{proof}
+
+\begin{theorem}[Actual line pullback transports original free rank and etaleness]
+\label{algebra:line-tensor-free-rank-etale}
+\lean{EnvelopeProperty.AffineLine.originalLineHom_finite,
+EnvelopeProperty.AffineLine.originalLineHom_free,
+EnvelopeProperty.AffineLine.originalLineHom_etale,
+EnvelopeProperty.AffineLine.originalLineHom_finrank,
+EnvelopeProperty.AffineLine.originalLineQuotient_isReduced_of_etale}
+\leanok
+\uses{algebra:line-tensor-original-unreduced-preimage,algebra:surjective-base-change-free-etale,algebra:etale-domain-generic-reduced}
+Actual finiteness, freeness or etaleness of the given ambient map
+passes to the entire original line pullback. Rank means the same
+natural-valued \texttt{Module.finrank} convention above. If $g$ and $g(a+bT)$
+are nonzero and the original module is free, the free rank of that
+original module equals the line-free rank of the actual unreduced
+preimage. Actual ambient etaleness and $g(a+bT)\ne0$ make the whole
+original line quotient reduced.
+\end{theorem}
+\begin{proof}
+The literal comparison transports the genuine tensor finite, free and
+etale structures to the actual line action on $B/I$. Nonzero $g$ and
+nonzero line restriction make the actual ambient and line localizations
+domains, so both satisfy the strong rank condition. The actual linear
+equivalence and true tensor free-rank theorem give the equality of
+these two free ranks. For reducedness, the actual line algebra is
+etale over the genuine domain $C$; apply the preceding proved generic
+reducedness producer.
+
+These statements may be applied on a genuine chosen etale or free
+principal open by using its actual localized homomorphism. They do
+not construct such an open, identify normalization with the original
+quotient on that open, compare the normalized product rank with an
+original generic degree, or assert degree preservation when the
+original generic pullback is nonreduced. Those next comparisons
+require genuine further algebra; nilpotent and inseparable cases
+are not erased by a claimed degree identity.
+\end{proof}

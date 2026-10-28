@@ -1,0 +1,41 @@
+\section{The actual Leray comparison from local acyclicity}
+\label{sec:kn-nadel-leray-cech}
+
+\begin{lemma}[Positive cohomology through actual inverse-image intersections]
+\label{lem:kn-nadel-leray-acyclic-intersections}
+\lean{EnvelopeProperty.Vanishing.NadelLerayCech.subsingleton_H_iff_ordered_zero,EnvelopeProperty.Vanishing.NadelLerayCech.subsingleton_H_iff_pushforward}
+\leanok
+Let $f:Y\to X$ be any scheme morphism, let $X$ be separated, and let
+$U_i$ be a finite affine open cover of $X$.  Let $M$ be a module on $Y$
+whose actual pushforward is quasicoherent.  Suppose that the restriction
+of $M$ to every nonempty finite tuple intersection of the inverse images
+$f^{-1}U_i$ has zero positive cohomology.  Then, for each $q>0$,
+\[
+ H^q(Y,M)=0\quad\Longleftrightarrow\quad H^q(X,f_*M)=0.
+\]
+The intersections and both modules are the actual original ones; no
+affineness of $f$ is required.
+\end{lemma}
+\begin{proof}
+The inverse-image opens cover $Y$.  Their assumed acyclicity on every
+tuple intersection makes their actual Cech complex compute positive
+cohomology vanishing of $M$.  Its ordered normalized complex has the
+same homology, since the finite index set admits a linear order.
+The corresponding ordered complex for $f_*M$ is canonically identical:
+in every degree the actual sections on $f^{-1}(U_{i_0}\cap\cdots\cap
+U_{i_a})$ are the sections of $f_*M$ on that intersection, with the
+same restriction maps and original scalar action.  Inverse image
+preserves these finite intersections, giving the entire cochain
+isomorphism, including its differentials.
+
+Every tuple intersection of the $U_i$ is affine because $X$ is separated.
+Quasicoherence of $f_*M$ gives acyclicity on those intersections.
+The same Cech comparison therefore computes its positive cohomology
+vanishing.  Transport zero homology through the actual cochain
+isomorphism to obtain both implications.
+
+For a principalization, the local acyclicity premise must be proved by
+the local vanishing argument.  This comparison does not prove local
+vanishing and does not add it to the temporary DI input or to a final
+Nadel theorem's assumptions.
+\end{proof}

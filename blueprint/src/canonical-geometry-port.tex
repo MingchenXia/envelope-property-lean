@@ -1,0 +1,2764 @@
+\section{Actual cotangent, exterior and canonical line sheaves}
+
+This Mathlib-only proof cone is ported from the actual sibling project
+\texttt{BingWangEntropy}. Exact upstream source hashes, the original
+source locations, the source commit and every namespace/import compatibility
+diff are retained in the accompanying provenance manifest. The objects
+are actual original scheme module sheaves. Their differential and
+rank-one frame properties are proved from actual smoothness and
+localization. No vanishing or uniform multiplier-generation theorem
+is claimed by these constructions.
+
+\begin{definition}[The literal relative exterior canonical sheaf]
+\label{sc0-canonical-port:can:actual-relative-exterior-canonical-object}
+\uses{sc0-canonical-port:ext:relative-exterior-cotangent-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.canonicalLineSheaf}
+\leanok
+For \(n\in\mathbb N\), let \(\mathcal K_{X/K,n}\)
+be the actual sheafification of the presheaf
+\(V\mapsto\bigwedge^n_{\Gamma(X,V)}\Omega_{\Gamma(X,V)/K}\),
+with its actual semilinear differential restriction maps.
+Thus its sheaf is literally the actual relative exterior
+cotangent sheaf \(\Omega^{[n]}_{X/K}\). Smoothness below
+produces its line atlas when the relative dimension is \(n\).
+\end{definition}
+
+\begin{theorem}[Basis-free exterior transport under an actual coefficient-ring isomorphism]
+\label{sc0-canonical-port:can:basis-free-semilinear-exterior-transport}
+\uses{sc0-canonical-port:ext:semilinear-exterior-map}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorSemilinearMap_bijective_of_ringIso}
+\leanok
+A bijective semilinear map \(h:M\to N\) for an actual ring
+isomorphism \(\rho:R\simeq S\) induces an actual exterior equivalence.
+Its inverse is induced by the inverse semilinear map, without a basis.
+\end{theorem}
+\begin{proof}
+Apply injectivity of \(h\) to test additivity of its inverse.
+For \(s\in S\), the image under \(h\) of
+\(\rho^{-1}(s)h^{-1}(y)\) is \(sy\), proving inverse semilinearity.
+Apply the actual exterior construction to \(h\) and its inverse.
+Their composites fix every pure wedge by the inverse identities.
+Wedges span, so the composites are identities everywhere.
+\end{proof}
+
+\begin{theorem}[Raw relative exterior cotangent presheaves restrict along actual open immersions]
+\label{sc0-canonical-port:can:raw-exterior-cotangent-open-restriction}
+\uses{sc0-canonical-port:can:basis-free-semilinear-exterior-transport,sc0-canonical-port:geom:cotangent-presheaf-open-immersion-restriction,sc0-canonical-port:ext:relative-exterior-cotangent-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentOpenImmersionSemilinear,EnvelopeProperty.CanonicalGeometry.exteriorCotangentOpenImmersionComponent,EnvelopeProperty.CanonicalGeometry.exteriorCotangentOpenImmersionComponent_wedge,EnvelopeProperty.CanonicalGeometry.exteriorCotangentPresheafOpenImmersionMap,EnvelopeProperty.CanonicalGeometry.exteriorCotangentOpenImmersionComponent_bijective,EnvelopeProperty.CanonicalGeometry.exteriorCotangentPresheafOpenImmersionIso}
+\leanok
+For an actual open immersion \(g:U\to X\), the raw relative exterior
+cotangent presheaf of \(f\circ g\) is naturally isomorphic to the
+restricted raw exterior cotangent presheaf of \(f\), with actual
+coefficient-ring scalar transport.
+\end{theorem}
+\begin{proof}
+The actual cotangent-presheaf restriction isomorphism supplies
+coefficient-ring isomorphisms and bijective semilinear differential
+maps on every open. Apply basis-free exterior transport.
+On pure wedges, both restriction composites are wedges of the equal
+cotangent composites. Wedge spanning proves full naturality.
+The pointwise inverse identities give the presheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[Actual relative exterior cotangent sheaves restrict along open immersions]
+\label{sc0-canonical-port:can:relative-exterior-cotangent-sheaf-open-restriction}
+\uses{sc0-canonical-port:can:raw-exterior-cotangent-open-restriction,sc0-canonical-port:geom:sheafification-open-immersion-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafOpenImmersionIso}
+\leanok
+The actual relative exterior cotangent sheaf of \(f\) restricts
+along \(g\) to that of \(f\circ g\).
+\end{theorem}
+\begin{proof}
+The actual open-immersion sheafification comparison identifies
+restricted exterior sheafification with sheafification of the
+restricted raw exterior presheaf. Sheafify the preceding raw
+presheaf isomorphism and compose the two actual comparisons.
+\end{proof}
+
+\begin{theorem}[A genuine standard-smooth chart identifies the global exterior sheaf with its actual coordinate exterior module]
+\label{sc0-canonical-port:can:actual-smooth-chart-exterior-coordinate-comparison}
+\uses{sc0-canonical-port:can:relative-exterior-cotangent-sheaf-open-restriction,sc0-canonical-port:geom:affine-chart-structural-constants,sc0-canonical-port:ext:actual-affine-exterior-sheaf-comparison}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothAffineChartExteriorCotangentSheafIso}
+\leanok
+Let \(V\subset X\) be an actual affine open. Suppose its
+actual structural ring map \(K\to A=\Gamma(X,V)\)
+is standard smooth of relative dimension \(n\).
+Restriction of \(\Omega^{[n]}_{X/K}\) along its native
+spectrum chart is isomorphic to the associated sheaf of
+\(\bigwedge^n_A\Omega_{A/K}\).
+\end{theorem}
+\begin{proof}
+The genuine open-restriction comparison gives the actual
+relative exterior sheaf of the inherited affine structure.
+The actual structural-constant identity makes this the actual
+coordinate structure of \(A\). Standard smoothness produces
+an actual \(A\)-basis of \(\Omega_{A/K}\) with \(n\)
+elements. The accepted finite-free affine exterior comparison,
+with that produced basis, identifies the exterior sheaf with
+the associated sheaf of the actual exterior module.
+Composing these genuine isomorphisms gives the claimed map.
+\end{proof}
+
+\begin{theorem}[Genuine standard-smooth scheme charts give actual relative top-exterior frames]
+\label{sc0-canonical-port:can:actual-smooth-chart-relative-top-frame}
+\uses{sc0-canonical-port:can:relative-exterior-cotangent-sheaf-open-restriction,sc0-canonical-port:geom:smooth-scheme-standard-smooth-coordinate-cover,sc0-canonical-port:geom:affine-chart-structural-constants,sc0-canonical-port:ext:standard-smooth-actual-top-exterior-frame,sc0-canonical-port:can:actual-relative-exterior-canonical-object,sc0-canonical-port:can:actual-smooth-chart-exterior-coordinate-comparison}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothCanonicalAffineChartFrame,EnvelopeProperty.CanonicalGeometry.smooth_canonicalLineSheaf_local_frame}
+\leanok
+For an actual smooth relative-dimension-\(n\) structure
+\(f:X\to\operatorname{Spec}K\), each genuine standard-smooth affine
+chart supplies an actual local frame of \(\Omega_{X/K}^{[n]}\).
+\end{theorem}
+\begin{proof}
+Restrict the actual relative exterior sheaf through its genuine
+open-immersion comparison. The actual structural-constant identity
+identifies the inherited affine structure with its coordinate
+\(K\)-algebra structure. The latter is actually standard smooth of
+relative dimension \(n\), so its proved relative top-exterior frame
+applies, with a differential basis produced by smoothness.
+Transport that frame through the genuine affine chart isomorphism
+and the actual open-restriction comparison. This gives the actual
+local frame on the original open.
+\end{proof}
+
+\begin{theorem}[Actual smooth top-exterior frames construct a genuine global line atlas]
+\label{sc0-canonical-port:can:actual-smooth-relative-exterior-line-atlas}
+\uses{sc0-canonical-port:can:actual-smooth-chart-relative-top-frame,sc0-canonical-port:geom:smooth-scheme-standard-smooth-coordinate-cover}
+\lean{EnvelopeProperty.CanonicalGeometry.smoothCanonicalLineAtlas,EnvelopeProperty.CanonicalGeometry.smoothCanonicalLineBundle,EnvelopeProperty.CanonicalGeometry.smoothCanonicalLineBundle_sheaf}
+\leanok
+The actual relative top exterior cotangent sheaf of a smooth
+relative-dimension-\(n\) scheme over \(K\) has a produced genuine
+line atlas. Its intrinsic line object has sheaf literally
+\(\Omega_{X/K}^{[n]}\).
+\end{theorem}
+\begin{proof}
+For each actual point \(x\), choose the produced standard-smooth
+affine open \(V_x\) containing it and its produced actual frame.
+These genuine opens cover, since \(x\in V_x\) for every \(x\).
+The point-indexed cover and its actual frames form a line atlas
+on the actual relative exterior sheaf. Packaging that actual sheaf
+and atlas gives the intrinsic line object. No frame or line-atlas
+conclusion was assumed as an input.
+\end{proof}
+
+\begin{definition}[Actual affine scalar actions and coordinate constants]
+\label{sc0-canonical-port:geom:affine-coordinate-scalar-actions}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCoordinateMap,EnvelopeProperty.CanonicalGeometry.affineCoordinateMap_naturality,EnvelopeProperty.CanonicalGeometry.specPresheafToAModules,EnvelopeProperty.CanonicalGeometry.specPresheafAModuleMap,EnvelopeProperty.CanonicalGeometry.specPresheafToAModules_sheaf}
+\leanok
+For a commutative ring \(A\) and \(X=\operatorname{Spec}A\),
+the actual map \(A\to\mathcal O_X(U)\) is the canonical
+global-coordinate identification followed by restriction.
+These maps commute with restriction. Every actual structure-module
+presheaf can consequently be regarded as a presheaf of actual
+\(A\)-modules by restricting scalars through these maps;
+its morphisms give actual \(A\)-linear presheaf maps.
+For an actual module sheaf, this action is the usual affine
+coordinate action.
+\end{definition}
+
+\begin{theorem}[Natural affine coordinate-linear maps into a sheaf are regular-function linear]
+\label{sc0-canonical-port:geom:affine-coordinate-linear-map-upgrade}
+\uses{sc0-canonical-port:geom:affine-coordinate-scalar-actions}
+\lean{EnvelopeProperty.CanonicalGeometry.affinePresheafHomOfAModuleHom}
+\leanok
+If \(P\) is an actual structure-module presheaf and
+\(N\) an actual structure-module sheaf on
+\(\operatorname{Spec}A\), every natural affine
+\(A\)-linear map \(P\to N\) is linear over each actual
+regular-function ring \(\mathcal O_X(U)\).
+\end{theorem}
+\begin{proof}
+On a principal open \(D(r)\), both section modules have
+their actual \(A_r\)-actions. Any \(A\)-linear map
+between them is \(A_r\)-linear: it commutes with
+multiplication by \(r\), and hence with its inverse,
+so with every fraction \(a/r^k\).
+For a regular function \(t\) on an arbitrary \(U\),
+cover \(U\) by principal opens contained in it.
+Naturality restricts the claimed identity
+\(h_U(ts)=t h_U(s)\) to the just-proved identity on
+each such open. Target sheaf separation makes the
+identity hold on \(U\), proving the upgrade.
+\end{proof}
+
+\begin{theorem}[Actual maps on the principal-open basis extend uniquely]
+\label{sc0-canonical-port:geom:affine-principal-basis-extension}
+\uses{sc0-canonical-port:geom:affine-coordinate-linear-map-upgrade}
+\lean{EnvelopeProperty.CanonicalGeometry.affineBasisExtend,EnvelopeProperty.CanonicalGeometry.affineBasisExtend_apply,EnvelopeProperty.CanonicalGeometry.affineBasisHomExt}
+\leanok
+An actual natural \(A\)-linear map on the principal-open
+basis from an actual structure-module presheaf \(P\)
+to an actual module sheaf \(N\) extends uniquely to an
+actual structure-module presheaf map \(P\to N\).
+The extension equals its prescribed map on every
+principal open. Two such presheaf maps are equal if
+their principal-open components are equal.
+\end{theorem}
+\begin{proof}
+For \(s\in P(U)\), restrict to each principal open
+\(D(r)\subset U\) and apply its prescribed map.
+On intersections \(D(r)\cap D(t)=D(rt)\), naturality
+makes their further restrictions equal. The actual
+sheaf axiom therefore glues them to a unique section
+of \(N(U)\). This construction commutes with
+restriction, addition, and the affine \(A\)-action,
+since each identity holds locally and gluing is unique.
+The preceding theorem makes it regular-function linear.
+On a principal open the prescribed image already has
+all these restrictions, so uniqueness gives the stated
+component equality. The same separation argument on
+this basis proves uniqueness and the final equality
+criterion.
+\end{proof}
+
+\begin{theorem}[Actual localized maps give a natural principal-open comparison]
+\label{sc0-canonical-port:geom:affine-localized-basis-comparison}
+\uses{sc0-canonical-port:geom:affine-coordinate-scalar-actions}
+\lean{EnvelopeProperty.CanonicalGeometry.affineLocalizedBasisHom,EnvelopeProperty.CanonicalGeometry.affineLocalizedBasisIso}
+\leanok
+Let \(M\) be an actual \(A\)-module and \(P\) an
+actual structure-module presheaf on \(\operatorname{Spec}A\).
+Suppose actual \(A\)-linear maps \(\phi_U:M\to P(U)\)
+commute with restrictions and, for every \(r\in A\),
+\(\phi_{D(r)}\) makes \(P(D(r))\) the actual module
+localization of \(M\) at the powers of \(r\).
+Then there is a natural isomorphism on the actual
+principal-open basis
+\(P(D(r))\simeq\widetilde M(D(r))\), taking
+\(\phi_{D(r)}(m)\) to the actual localized image of \(m\).
+\end{theorem}
+\begin{proof}
+Both modules on a principal open are actual localizations
+of \(M\) at the powers of \(r\). The localization
+universal property gives unique inverse maps fixing
+the images of every \(m\). For an inclusion of
+principal opens, each restriction composite fixes the
+same original images, by the naturality of \(\phi\)
+and the actual associated-sheaf restriction. Uniqueness
+of localized maps makes these composites equal. This
+proves naturality, as well as the asserted generator
+formula and actual basis isomorphism.
+\end{proof}
+
+\begin{theorem}[Actual affine sheafification comparison maps]
+\label{sc0-canonical-port:geom:affine-localized-sheafification-maps}
+\uses{sc0-canonical-port:geom:affine-localized-basis-comparison,sc0-canonical-port:geom:affine-principal-basis-extension}
+\lean{EnvelopeProperty.CanonicalGeometry.affinePresheafSheafification,EnvelopeProperty.CanonicalGeometry.affinePresheafSheafificationUnit,EnvelopeProperty.CanonicalGeometry.affineLocalizedPresheafHom,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationHom,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationInv,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationHom_fac,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationHom_unit_apply,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationInv_apply}
+\leanok
+Under the actual localized-map hypotheses of
+Theorem~\ref{sc0-canonical-port:geom:affine-localized-basis-comparison}, let
+\(q:P\to P^\#\) be the actual module sheafification
+unit, and \(\beta_r:P(D(r))\simeq\widetilde M(D(r))\)
+the proved comparison. There are actual sheaf maps
+\(h:P^\#\to\widetilde M\) and
+\(j:\widetilde M\to P^\#\) satisfying on each
+principal open
+\[
+ h(q(x))=\beta_r(x),\qquad
+ j(y)=q(\beta_r^{-1}(y)).
+\]
+The first factors the uniquely extended presheaf comparison.
+\end{theorem}
+\begin{proof}
+Extend the actual basis comparison to a presheaf map
+\(P\to\widetilde M\) by
+Theorem~\ref{sc0-canonical-port:geom:affine-principal-basis-extension}.
+Sheafification's unique extension property gives
+\(h\) factoring this map through \(q\), proving
+its displayed formula on the basis.
+Compose the inverse basis comparison with the actual
+unit \(q\). These maps are natural on the basis,
+so the same extension theorem produces a map
+\(\widetilde M\to P^\#\). Both objects are actual
+sheaves; this is the actual sheaf map \(j\), and
+the extension's basis formula is exactly the second
+displayed identity.
+\end{proof}
+
+\begin{theorem}[Actual localized maps produce the global affine sheaf isomorphism]
+\label{sc0-canonical-port:geom:affine-localized-sheafification-isomorphism}
+\uses{sc0-canonical-port:geom:affine-localized-sheafification-maps,sc0-canonical-port:geom:affine-principal-basis-extension}
+\lean{EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationHom_inv_id,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationInv_hom_id,EnvelopeProperty.CanonicalGeometry.affineLocalizedSheafificationIso}
+\leanok
+Under those same explicit localized-map hypotheses,
+the actual maps \(h,j\) are inverse, giving an actual
+\(\mathcal O_X\)-module sheaf isomorphism
+\(P^\#\simeq\widetilde M\).
+\end{theorem}
+\begin{proof}
+On every principal open, the two formulas of the
+preceding theorem give \(h(j(y))=y\). Equality on the
+basis gives \(h\circ j=\mathrm{id}\) on the actual
+associated sheaf.
+They also give \(j(h(q(x)))=q(x)\) on each principal
+open. The basis extension uniqueness makes the
+presheaf composites on \(P\) equal everywhere.
+The sheafification universal property determines
+maps out of \(P^\#\) by their composite with \(q\),
+so \(j\circ h=\mathrm{id}\) on \(P^\#\).
+Thus the two maps are actual inverses and give the
+asserted sheaf isomorphism.
+\end{proof}
+
+\begin{definition}[The actual affine relative cotangent objects]
+\label{sc0-canonical-port:geom:actual-affine-cotangent-objects}
+\uses{sc0-canonical-port:geom:cotangent-presheaf,sc0-canonical-port:geom:affine-coordinate-scalar-actions}
+\lean{EnvelopeProperty.CanonicalGeometry.affineBaseRingMap,EnvelopeProperty.CanonicalGeometry.affineStructuralMap,EnvelopeProperty.CanonicalGeometry.affineCotangentModule,EnvelopeProperty.CanonicalGeometry.affineCotangentTilde,EnvelopeProperty.CanonicalGeometry.affineCotangentAPresheaf,EnvelopeProperty.CanonicalGeometry.affineBaseRingMap_coordinateMap}
+\leanok
+For a field \(K\) and a commutative \(K\)-algebra \(A\),
+the actual structural morphism is
+\(\operatorname{Spec}A\to\operatorname{Spec}K\),
+the coordinate relative differential module is
+\(M=\Omega_{A/K}\), and its actual associated sheaf
+is \(\widetilde M\). The actual cotangent presheaf
+can be regarded as an affine \(A\)-module presheaf.
+Its structural constants on each open are the actual
+composite \(K\to A\to\mathcal O_X(U)\).
+\end{definition}
+
+\begin{theorem}[Actual affine differential maps satisfy the localized-module hypotheses]
+\label{sc0-canonical-port:geom:actual-affine-differential-localized-maps}
+\uses{sc0-canonical-port:geom:actual-affine-cotangent-objects,sc0-canonical-port:geom:affine-cotangent-localization}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCotangentToOpen,EnvelopeProperty.CanonicalGeometry.affineCotangentToOpen_d,EnvelopeProperty.CanonicalGeometry.affineCotangentToOpen_naturality,EnvelopeProperty.CanonicalGeometry.affineCotangentToOpen_isLocalized}
+\leanok
+The actual maps
+\(\phi_U:\Omega_{A/K}\to\Omega_{\mathcal O_X(U)/K}\)
+send \(da\) to the actual differential of its restricted
+coordinate function. They commute with restriction.
+On every actual principal open they make the target
+the actual module localization of \(\Omega_{A/K}\).
+\end{theorem}
+\begin{proof}
+The commutative actual structural-constant square induces
+these maps by the Kähler universal property, with the
+stated formula on universal differential generators.
+For restriction to a smaller open, the two candidate
+composites agree on every \(da\), because the actual
+coordinate functions and actual derivation commute
+with restriction. The generators span, so the composites
+agree. On \(D(r)\), the target is the actual
+differential module of \(A_r\); its canonical
+localization description is
+Theorem~\ref{sc0-canonical-port:geom:affine-cotangent-localization}.
+This proves the actual localized-module property
+of the displayed canonical map.
+\end{proof}
+
+\begin{theorem}[The actual affine cotangent sheaf is the associated coordinate differential sheaf]
+\label{sc0-canonical-port:geom:actual-affine-cotangent-sheaf-comparison}
+\uses{sc0-canonical-port:geom:actual-affine-differential-localized-maps,sc0-canonical-port:geom:affine-localized-sheafification-isomorphism,sc0-canonical-port:geom:cotangent-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCotangentSheafIso,EnvelopeProperty.CanonicalGeometry.affineCotangentModuleIso}
+\leanok
+There is an actual sheaf isomorphism on
+\(X=\operatorname{Spec}A\),
+\[
+ \Omega_{X/K}\simeq\widetilde{\Omega_{A/K}}.
+\]
+The coordinate differential object is the actual
+Kähler module for the original \(K\)-algebra structure.
+\end{theorem}
+\begin{proof}
+The actual localized-map hypotheses are produced by
+Theorem~\ref{sc0-canonical-port:geom:actual-affine-differential-localized-maps}.
+Apply Theorem~\ref{sc0-canonical-port:geom:affine-localized-sheafification-isomorphism}
+to the actual cotangent presheaf and actual coordinate
+differential module. Its sheafification is exactly
+\(\Omega_{X/K}\) by definition. The categorical
+coordinate differential construction uses the original
+ring map \(K\to A\); the induced algebra action is
+that same action. Thus its generators and relations
+are exactly those of the original \(\Omega_{A/K}\),
+giving the asserted identification and actual sheaf
+comparison.
+\end{proof}
+
+\begin{theorem}[An actual standard-smooth presentation gives a free cotangent sheaf]
+\label{sc0-canonical-port:geom:standard-smooth-actual-cotangent-sheaf-frame}
+\uses{sc0-canonical-port:geom:standard-smooth-differential-basis,sc0-canonical-port:geom:actual-affine-cotangent-sheaf-comparison}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothAffineCotangentModuleFrame,EnvelopeProperty.CanonicalGeometry.standardSmoothAffineCotangentSheafFrame,EnvelopeProperty.CanonicalGeometry.standardSmoothAffineCotangentSheaf_locallyFree}
+\leanok
+If \(A\) is actually standard smooth of relative
+dimension \(n\) over \(K\), its actual cotangent
+sheaf on \(\operatorname{Spec}A\) has a sheaf frame
+to the free structure-module sheaf on \(n\) generators.
+In particular this actual cotangent sheaf is locally free.
+\end{theorem}
+\begin{proof}
+The actual standard-smooth presentation produces a
+coordinate differential basis of \(n\) vectors by
+Theorem~\ref{sc0-canonical-port:geom:standard-smooth-differential-basis}.
+Its coordinate map is an actual module frame to \(A^n\).
+Apply the actual associated-sheaf functor to that
+linear isomorphism; localizing its basis maps on
+principal opens gives inverse sheaf maps to the free
+structure-module sheaf. Compose with the actual
+cotangent comparison of the preceding theorem.
+This gives the stated actual free sheaf frame, which
+itself supplies the local bases required for native
+local freeness.
+\end{proof}
+
+\begin{definition}[Structural constants on every open set]
+\label{sc0-canonical-port:geom:structural-constant-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.constantRingPresheaf,EnvelopeProperty.CanonicalGeometry.schemeConstantPresheafMap}
+\leanok
+Let \(K\) be a field, let \(X\) be a scheme, and let
+\(f:X\to\operatorname{Spec}K\) be its structural morphism.
+Write \(\underline K\) for the constant presheaf of rings.
+The structural constant map on an open set \(U\subset X\) is
+\[
+ K\simeq\Gamma(\operatorname{Spec}K,\mathcal O)
+ \xrightarrow{f^\#}\Gamma(X,\mathcal O_X)
+ \longrightarrow\mathcal O_X(U).
+\]
+These maps define a morphism \(\underline K\to\mathcal O_X\)
+of presheaves of rings.
+\end{definition}
+
+\begin{definition}[The objectwise relative differential presheaf]
+\label{sc0-canonical-port:geom:cotangent-presheaf}
+\uses{sc0-canonical-port:geom:structural-constant-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentPresheaf,EnvelopeProperty.CanonicalGeometry.cotangentPresheafDerivation}
+\leanok
+For each open \(U\), put
+\(P(U)=\Omega_{\mathcal O_X(U)/K}\), with its actual
+\(\mathcal O_X(U)\)-module structure. If \(V\subset U\), the
+restriction is the map induced by \(\mathcal O_X(U)\to\mathcal
+O_X(V)\); on differentials it sends \(da\) to
+\(d(a|_V)\). The maps \(a\mapsto da\) form a derivation
+\(d_P:\mathcal O_X\to P\) over \(\underline K\).
+\end{definition}
+
+\begin{theorem}[The universal derivation of the differential presheaf]
+\label{sc0-canonical-port:geom:cotangent-presheaf-universal}
+\uses{sc0-canonical-port:geom:cotangent-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentPresheafUniversal,EnvelopeProperty.CanonicalGeometry.cotangentPresheafHomEquiv}
+\leanok
+For every presheaf \(N\) of \(\mathcal O_X\)-modules,
+postcomposition with \(d_P\) is a bijection between
+\(\mathcal O_X\)-linear presheaf maps \(P\to N\) and
+\(\underline K\)-derivations \(\mathcal O_X\to N\).
+\end{theorem}
+\begin{proof}
+Given a derivation \(D\), the universal property of
+\(\Omega_{\mathcal O_X(U)/K}\) gives a unique
+\(\mathcal O_X(U)\)-linear map \(h_U\) satisfying
+\(h_U(da)=D_U(a)\). For \(V\subset U\), the two candidate
+restriction composites agree on every generator \(da\), because
+\(D\) commutes with restriction. They therefore agree on the whole
+differential module. Thus \((h_U)\) is a presheaf map.
+Its composite with \(d_P\) is \(D\). Uniqueness on every open
+set gives uniqueness as a presheaf map. Conversely, composing any
+linear presheaf map with \(d_P\) is a derivation, so these
+constructions are inverse.
+\end{proof}
+
+\begin{definition}[The actual relative cotangent sheaf]
+\label{sc0-canonical-port:geom:cotangent-sheaf}
+\uses{sc0-canonical-port:geom:cotangent-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentSheaf,EnvelopeProperty.CanonicalGeometry.cotangentSheafificationMap}
+\leanok
+The relative cotangent sheaf \(\Omega_{X/K}\) is the
+sheafification of \(P\) as a presheaf of
+\(\mathcal O_X\)-modules. Write
+\(\eta:P\to\Omega_{X/K}\) for its canonical map.
+\end{definition}
+
+\begin{definition}[Differentiation into the cotangent sheaf]
+\label{sc0-canonical-port:geom:cotangent-sheaf-derivation}
+\uses{sc0-canonical-port:geom:cotangent-presheaf,sc0-canonical-port:geom:cotangent-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentDerivation}
+\leanok
+Define \(d_X=\eta\circ d_P\). This is a derivation of actual
+regular functions over the structural constant presheaf, with
+values in the underlying presheaf of \(\Omega_{X/K}\).
+\end{definition}
+
+\begin{lemma}[Differentiation laws and restriction]
+\label{sc0-canonical-port:geom:cotangent-derivation-laws}
+\uses{sc0-canonical-port:geom:cotangent-sheaf-derivation}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentDerivation_add,EnvelopeProperty.CanonicalGeometry.cotangentDerivation_mul,EnvelopeProperty.CanonicalGeometry.cotangentDerivation_constant,EnvelopeProperty.CanonicalGeometry.cotangentDerivation_restrict}
+\leanok
+For regular functions \(a,b\) on \(U\) and a structural
+constant \(c\in K\),
+\[
+ d_X(a+b)=d_Xa+d_Xb,\qquad
+ d_X(ab)=a\,d_Xb+b\,d_Xa,\qquad d_X(c)=0.
+\]
+For \(V\subset U\), one also has
+\(d_X(a|_V)=(d_Xa)|_V\).
+\end{lemma}
+\begin{proof}
+The same identities hold for the universal derivation \(d_P\)
+on each differential module. Apply the linear map \(\eta_U\)
+to the additive and product identities, and apply it to the zero
+identity for constants. Naturality of both \(d_P\) and
+\(\eta\) gives the restriction identity.
+\end{proof}
+
+\begin{theorem}[The actual cotangent sheaf represents derivations]
+\label{sc0-canonical-port:geom:cotangent-sheaf-universal}
+\uses{sc0-canonical-port:geom:cotangent-presheaf-universal,sc0-canonical-port:geom:cotangent-sheaf,sc0-canonical-port:geom:cotangent-sheaf-derivation}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentSheafHomEquiv,EnvelopeProperty.CanonicalGeometry.cotangentSheafHomEquiv_apply,EnvelopeProperty.CanonicalGeometry.cotangentSheaf_derivation_factorization}
+\leanok
+For every sheaf \(N\) of \(\mathcal O_X\)-modules and every
+relative derivation \(D:\mathcal O_X\to N\), there is a unique
+sheaf morphism \(h:\Omega_{X/K}\to N\) with
+\(D=h\circ d_X\). Consequently, postcomposition with \(d_X\)
+is a bijection from \(\operatorname{Hom}_{\mathcal O_X}
+(\Omega_{X/K},N)\) to the relative derivations into \(N\).
+\end{theorem}
+\begin{proof}
+Theorem~\ref{sc0-canonical-port:geom:cotangent-presheaf-universal} gives a unique
+presheaf map \(P\to N\) inducing \(D\). The universal
+property of sheafification gives a unique sheaf map \(h\)
+whose composite with \(\eta\) is this map. It satisfies
+\(h\circ d_X=D\). If another sheaf map has that property,
+its composite with \(\eta\) agrees with the unique presheaf
+map on the generators \(da\), hence everywhere. Uniqueness
+in sheafification then makes the sheaf maps equal. This also
+identifies the stated bijection explicitly as postcomposition.
+\end{proof}
+
+\begin{lemma}[The actual module on an open set]
+\label{sc0-canonical-port:geom:cotangent-open-module}
+\uses{sc0-canonical-port:geom:structural-constant-presheaf,sc0-canonical-port:geom:cotangent-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentOpenAlgebra,EnvelopeProperty.CanonicalGeometry.cotangentPresheafSectionsModule,EnvelopeProperty.CanonicalGeometry.cotangentPresheafSectionsEquiv}
+\leanok
+Give \(A=\mathcal O_X(U)\) the \(K\)-algebra structure
+defined by the structural constants. Then the presheaf section
+module \(P(U)\) is canonically \(A\)-linearly isomorphic to
+the actual module \(\Omega_{A/K}\).
+\end{lemma}
+\begin{proof}
+The construction of \(P\) takes the relative differential module
+of the structural constant ring map on each open set. Its ring
+action is multiplication by actual elements of \(A\). Thus the
+two modules have the same generators \(da\), the same additivity,
+Leibniz, and constant relations, and the same \(A\)-action.
+The identity on generators defines inverse \(A\)-linear maps.
+\end{proof}
+
+\begin{theorem}[Standard smoothness gives objectwise differential freeness]
+\label{sc0-canonical-port:geom:cotangent-presheaf-smooth-rank}
+\uses{sc0-canonical-port:geom:cotangent-open-module,sc0-canonical-port:geom:standard-smooth-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentPresheaf_free_of_standardSmooth,EnvelopeProperty.CanonicalGeometry.cotangentPresheaf_rank_of_standardSmooth}
+\leanok
+If the actual structural algebra \(A=\mathcal O_X(U)\) is
+standard smooth over \(K\), then \(P(U)\) is free over \(A\).
+If \(A\ne0\) and this algebra is standard smooth of relative
+dimension \(n\), its module rank is \(n\).
+These are statements about the presheaf module on the specified
+open set.
+\end{theorem}
+\begin{proof}
+The standard-smooth presentation produces the basis of
+Lemma~\ref{sc0-canonical-port:geom:standard-smooth-differential-basis}. For standard
+smoothness without a specified dimension, its finite submersive
+presentation gives a basis indexed by the unselected coordinates.
+Transport that basis through Lemma~\ref{sc0-canonical-port:geom:cotangent-open-module}
+to prove freeness. In relative dimension \(n\), the produced
+basis has \(n\) elements. Since \(A\ne0\), the rank of a
+finite free module is the cardinality of its basis, giving \(n\).
+\end{proof}
+
+\begin{lemma}[Structural constants on an actual affine scheme]
+\label{sc0-canonical-port:geom:affine-structural-constants}
+\uses{sc0-canonical-port:geom:structural-constant-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.affine_schemeConstantPresheafMap,EnvelopeProperty.CanonicalGeometry.affineCotangentPresheafSectionsEquiv}
+\leanok
+Let \(A\) be a commutative \(K\)-algebra and
+\(X=\operatorname{Spec}A\) with its induced structural morphism.
+On every open \(U\subset X\), the structural constant map is
+the actual composite \(K\to A\to\mathcal O_X(U)\).
+With this algebra structure, \(P(U)\) is canonically
+\(\mathcal O_X(U)\)-linearly isomorphic to
+\(\Omega_{\mathcal O_X(U)/K}\).
+\end{lemma}
+\begin{proof}
+On the full affine open, the canonical identification
+\(A\simeq\Gamma(\operatorname{Spec}A,\mathcal O)\) is natural
+in ring maps. Thus the map induced by
+\(\operatorname{Spec}A\to\operatorname{Spec}K\) is exactly
+\(K\to A\). Restricting to \(U\) gives the displayed
+composite. Now apply Lemma~\ref{sc0-canonical-port:geom:cotangent-open-module} with
+this identified structural algebra.
+\end{proof}
+
+\begin{theorem}[Principal-open differential localization]
+\label{sc0-canonical-port:geom:affine-cotangent-localization}
+\uses{sc0-canonical-port:geom:affine-structural-constants,sc0-canonical-port:geom:etale-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCotangentLocalizationEquiv,EnvelopeProperty.CanonicalGeometry.affineCotangentPresheafLocalizationEquiv,EnvelopeProperty.CanonicalGeometry.affineCotangentLocalizationEquiv_tmul_D}
+\leanok
+For \(r\in A\), put
+\(B=\mathcal O_{\operatorname{Spec}A}(D(r))\), with its actual
+localization map \(A\to B\). There are canonical
+\(B\)-linear isomorphisms
+\[
+ B\otimes_A\Omega_{A/K}\simeq\Omega_{B/K}\simeq P(D(r)).
+\]
+The first sends \(b\otimes da\) to \(b\,d(\overline a)\),
+where \(\overline a\) is the image of \(a\) in \(B\).
+\end{theorem}
+\begin{proof}
+The actual ring of regular functions on \(D(r)\) is the
+localization of \(A\) at the powers of \(r\). For any
+\(B\)-module, a \(K\)-derivation of \(A\) extends uniquely
+to this ring by the formula
+\(D(a/r^m)=r^{-m}D(a)-m a r^{-m-1}D(r)\).
+This formula respects localization equality: multiplying a relation
+by a sufficiently high power of \(r\), differentiating it, and
+then inverting \(r\) makes the corresponding derivative relation
+zero. The Leibniz rule is immediate after expressing both terms
+with a common denominator. Uniqueness follows by differentiating
+\(rr^{-1}=1\).
+Consequently the universal modules for these derivations are
+\(B\otimes_A\Omega_{A/K}\) and \(\Omega_{B/K}\), yielding
+inverse maps. Their defining rule on universal differentials gives
+the asserted pure-tensor formula. The second isomorphism is
+Lemma~\ref{sc0-canonical-port:geom:affine-structural-constants} on this open set.
+\end{proof}
+
+\begin{definition}[Actual open-immersion module-presheaf restriction]
+\label{sc0-canonical-port:geom:open-immersion-module-presheaf-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersionStructurePresheafMap,EnvelopeProperty.CanonicalGeometry.openImmersionPresheafRestrict}
+\leanok
+For an actual open immersion \(g:Y\to X\), the
+actual coefficient map on an open \(W\subset Y\)
+is the inverse of the native isomorphism
+\(\Gamma(X,gW)\simeq\Gamma(Y,W)\).
+Restrict a structure-module presheaf \(P\) using its
+actual values on \(gW\), with the \(\Gamma(Y,W)\)-action
+transported through that inverse. Restrictions are the
+actual restrictions of \(P\).
+\end{definition}
+
+\begin{lemma}[An actual coefficient-ring isomorphism induces a bijective differential map]
+\label{sc0-canonical-port:geom:kaehler-coefficient-isomorphism-bijective}
+\uses{sc0-canonical-port:geom:cotangent-open-module}
+\lean{EnvelopeProperty.CanonicalGeometry.kaehlerCoefficientMap_bijective}
+\leanok
+Let \(R,B,C\) be commutative rings, let \(R\to B\)
+and \(R\to C\) be actual structure maps, and let
+\(e:B\simeq C\) be an actual ring isomorphism commuting
+with those structure maps. The canonical semilinear map
+\(\Omega_{B/R}\to\Omega_{C/R}\) induced by \(e\)
+is bijective.
+\end{lemma}
+\begin{proof}
+The universal derivation induces the map \(db\mapsto d(e(b))\).
+The inverse ring isomorphism commutes with the same constants,
+so it induces \(dc\mapsto d(e^{-1}(c))\). Each composite
+fixes all universal differentials, which generate the
+corresponding module over its coefficient ring. Semilinearity
+therefore makes each composite the identity, proving bijectivity.
+\end{proof}
+
+\begin{lemma}[Actual open-immersion coefficient isomorphisms preserve structural constants]
+\label{sc0-canonical-port:geom:open-immersion-constant-squares}
+\uses{sc0-canonical-port:geom:open-immersion-module-presheaf-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersion_constantSquare,EnvelopeProperty.CanonicalGeometry.openImmersion_constantSquare_inv}
+\leanok
+For an actual \(f:X\to\operatorname{Spec}K\), an actual
+open immersion \(g:Y\to X\), and an open \(W\subset Y\),
+the actual isomorphism \(\Gamma(X,gW)\simeq\Gamma(Y,W)\)
+sends the structural constants for \(f\) to those for
+\(f\circ g\). Its inverse sends them back.
+\end{lemma}
+\begin{proof}
+Structural constants are obtained from the actual field
+spectrum global-section isomorphism, followed by the structure
+morphism's global-section map and then restriction to the
+specified open. Naturality of the structure-sheaf map of \(g\)
+identifies the restricted composite with that for \(f\circ g\).
+This proves the forward equality for every constant. Applying
+the inverse coefficient isomorphism and its inverse identity
+gives the backward equality.
+\end{proof}
+
+\begin{lemma}[The actual restricted sheafification unit remains locally bijective]
+\label{sc0-canonical-port:geom:open-immersion-restricted-sheafification-unit}
+\uses{sc0-canonical-port:geom:open-immersion-module-presheaf-restriction,sc0-canonical-port:geom:sheafification-open-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationMap,EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationMap_underlying,EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationMap_locally_bijective}
+\leanok
+For any actual structure-module presheaf \(P\) on \(X\)
+and actual open immersion \(g:Y\to X\), the restricted
+actual unit \(P\to P^{\mathrm{sh}}\) is a natural map
+from the restricted presheaf to the restriction of its
+sheafification. Its underlying additive-presheaf map is
+literally the restricted unit. It is locally injective
+and locally surjective on \(Y\).
+\end{lemma}
+\begin{proof}
+On each open use the actual unit component on its image open.
+Transport of the scalar action through the inverse coefficient
+isomorphism preserves its linearity, and the unit's naturality
+preserves restriction. This proves the asserted underlying map.
+The actual unit is locally bijective on \(X\). Pull any
+cover giving local lifts, or giving equality of two unit
+preimages, back through the open immersion. These pulled-back
+opens cover the relevant open of \(Y\), and the same actual
+component identities hold there. Hence both local surjectivity
+and local injectivity hold on \(Y\).
+\end{proof}
+
+\begin{theorem}[Actual cotangent presheaves restrict along open immersions]
+\label{sc0-canonical-port:geom:cotangent-presheaf-open-immersion-restriction}
+\uses{sc0-canonical-port:geom:cotangent-sheaf,sc0-canonical-port:geom:cotangent-open-module,sc0-canonical-port:geom:kaehler-coefficient-isomorphism-bijective,sc0-canonical-port:geom:open-immersion-constant-squares,sc0-canonical-port:geom:open-immersion-module-presheaf-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentPresheafOpenImmersionMap,EnvelopeProperty.CanonicalGeometry.cotangentPresheafOpenImmersionIso}
+\leanok
+For an actual open immersion \(g:U\to X\), restriction
+of the actual cotangent presheaf of \(f\), with scalars
+transported through the actual open-immersion coefficient-ring
+isomorphisms, is naturally isomorphic to the actual cotangent
+presheaf of \(f\circ g\).
+\end{theorem}
+\begin{proof}
+On each open of \(U\), the actual open immersion identifies
+its regular-function ring with that on its image open in \(X\).
+Structural constants commute with these isomorphisms because
+the structure morphism of \(U\) is \(f\circ g\).
+The universal property of K\"ahler differentials therefore gives
+the semilinear differential map induced by each coefficient-ring
+isomorphism. The differential map induced by the inverse ring
+isomorphism is its inverse: both composites send every universal
+differential \(da\) to \(da\), and those differentials generate
+the module. These maps are natural under restriction, since
+both paths send \(da\) to the differential of the same
+restricted regular function. Transporting the scalar actions
+then gives the asserted natural module-presheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[Actual sheafification commutes with open-immersion restriction]
+\label{sc0-canonical-port:geom:sheafification-open-immersion-restriction}
+\uses{sc0-canonical-port:geom:sheafification-open-restriction,sc0-canonical-port:geom:open-immersion-restricted-sheafification-unit}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationMap_becomes_iso,EnvelopeProperty.CanonicalGeometry.schemeSheafificationCounitIso,EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationIso}
+\leanok
+For an actual open immersion \(g:U\to X\) and an actual
+structure-module presheaf \(P\), the restriction to \(U\)
+of the sheafification of \(P\) is naturally isomorphic
+to the sheafification of the restricted presheaf.
+\end{theorem}
+\begin{proof}
+Identify the open immersion with the restriction to its actual
+open image, using its actual scheme isomorphism onto that image.
+Under this identification its open-site functor is the ordinary
+inclusion of the opens contained in that image. Restrict the
+sheafification unit to this open site. Any local lift and any
+local equality required by local bijectivity may be intersected
+with the image open, so the restricted unit remains locally
+bijective. Its induced map between actual sheafifications is
+therefore an isomorphism: locally a section has a lift, and
+local equalities give injectivity by sheaf separation.
+The actual restricted sheaf is already a sheaf, so its
+sheafification counit is an isomorphism. Composing these two
+isomorphisms gives the claimed comparison. Transport back
+through the actual isomorphism onto the image; this retains
+the comparison's unit identity and naturality.
+\end{proof}
+
+\begin{theorem}[Actual cotangent sheaves restrict along open immersions]
+\label{sc0-canonical-port:geom:cotangent-sheaf-open-immersion-restriction}
+\uses{sc0-canonical-port:geom:cotangent-presheaf-open-immersion-restriction,sc0-canonical-port:geom:sheafification-open-immersion-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentSheafOpenImmersionIso}
+\leanok
+There is an actual natural structure-module sheaf isomorphism
+\[
+ g^*(\Omega_{X/K})\simeq\Omega_{U/K}
+\]
+for restriction along an actual open immersion \(g:U\to X\).
+\end{theorem}
+\begin{proof}
+The preceding sheafification comparison identifies the left
+side with the sheafification of the restricted actual cotangent
+presheaf. The actual cotangent-presheaf restriction isomorphism
+identifies this presheaf with the actual cotangent presheaf of
+\(f\circ g\). Applying sheafification gives the displayed
+actual sheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[An actual affine-open structure is its coordinate structure]
+\label{sc0-canonical-port:geom:affine-chart-structural-constants}
+
+\lean{EnvelopeProperty.CanonicalGeometry.affineChartStructuralMap,EnvelopeProperty.CanonicalGeometry.affineChartAlgebra,EnvelopeProperty.CanonicalGeometry.affineChartStructuralMap_eq_affineStructuralMap}
+\leanok
+For a genuine affine open \(V\subset X\), its actual
+chart morphism \(\operatorname{Spec}\Gamma(X,V)\to X\),
+followed by \(f\), is the spectrum morphism of the actual
+structural map \(K\to\Gamma(X,V)\).
+\end{theorem}
+\begin{proof}
+The spectrum/global-section equivalence identifies morphisms
+from the actual affine chart to \(\operatorname{Spec}K\)
+with actual ring maps \(K\to\Gamma(X,V)\). The ring map
+of the displayed composite is precisely the actual structural
+global-section map followed by restriction to \(V\), by
+naturality of the actual structure-sheaf maps. This is the
+asserted structural constant map. Full faithfulness of spectrum
+makes the two actual scheme morphisms equal.
+\end{proof}
+
+\begin{theorem}[Smooth scheme morphisms yield actual standard-smooth coordinate charts]
+\label{sc0-canonical-port:geom:smooth-scheme-standard-smooth-coordinate-cover}
+\uses{sc0-canonical-port:geom:affine-chart-structural-constants,sc0-canonical-port:geom:smooth-scheme-chart-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.smooth_cotangent_affine_chart,EnvelopeProperty.CanonicalGeometry.smoothCotangentChart,EnvelopeProperty.CanonicalGeometry.smoothCotangentCharts_coversTop}
+\leanok
+If \(f\) is smooth of relative dimension \(n\), every
+point of \(X\) lies in an actual affine open chart whose
+actual coordinate algebra over \(K\) is standard smooth
+of relative dimension \(n\). These charts cover \(X\).
+\end{theorem}
+\begin{proof}
+The actual smooth-relative-dimension chart property supplies
+affine source and target opens around the given point and its
+image, with the actual induced coordinate-ring map standard
+smooth of relative dimension \(n\). The target open is
+nonempty. Since the spectrum of the field \(K\) has one
+point, that target open is all of \(\operatorname{Spec}K\).
+Transport its global-section ring through the actual
+\(\Gamma(\operatorname{Spec}K,\mathrm{top})\simeq K\)
+isomorphism. The preceding structural-constant equality
+identifies the transported map with the actual chart's
+\(K\)-algebra structure. Transporting a standard-smooth
+presentation along the ring isomorphism retains its equations,
+Jacobian unit, and relative dimension. This yields the
+asserted actual standard-smooth coordinate chart at every point.
+\end{proof}
+
+\begin{lemma}[Actual free sheaves retain their basis under open restriction]
+\label{sc0-canonical-port:geom:actual-free-sheaf-open-transport}
+\uses{sc0-canonical-port:geom:open-immersion-module-presheaf-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersionRestrictFreeIso,EnvelopeProperty.CanonicalGeometry.schemeOverEquivInverseFreeIso}
+\leanok
+For an actual open immersion, restriction of the actual
+free structure-module sheaf on an index set \(I\)
+is the actual free sheaf on the same \(I\).
+Likewise, the actual equivalence between module sheaves on
+an open subscheme and module sheaves on its open site
+transports the free sheaf to the free sheaf on \(I\).
+\end{lemma}
+\begin{proof}
+A free sheaf is the direct sum indexed by \(I\) of
+copies of the actual structure sheaf, with its native
+unit basis sections. Open restriction sends the structure
+sheaf to the structure sheaf by the actual coefficient
+isomorphisms. It preserves these sums: the restricted maps
+from every summand have the same universal property, since
+restriction to an open has its native adjoint and preserves
+colimits. Thus the basis-preserving map is an isomorphism.
+For the open-site equivalence, the actual unit isomorphism
+identifies restriction followed by its inverse with the
+identity. Apply that identity and the just obtained free
+restriction isomorphism to identify the inverse image of
+the free sheaf with the free sheaf on the same basis set.
+\end{proof}
+
+\begin{theorem}[The actual cotangent sheaf on an affine chart is its coordinate differential sheaf]
+\label{sc0-canonical-port:geom:actual-affine-chart-cotangent-comparison}
+\uses{sc0-canonical-port:geom:cotangent-sheaf-open-immersion-restriction,sc0-canonical-port:geom:affine-chart-structural-constants,sc0-canonical-port:geom:actual-affine-cotangent-sheaf-comparison}
+\lean{EnvelopeProperty.CanonicalGeometry.affineChartCotangentSheafIso}
+\leanok
+For any actual affine open \(V\subset X\), give
+\(\Gamma(X,V)\) the actual structural \(K\)-algebra.
+Restriction of the actual cotangent sheaf along the
+native chart \(\operatorname{Spec}\Gamma(X,V)\to X\)
+is isomorphic to the associated sheaf of the actual
+\(\Omega_{\Gamma(X,V)/K}\) module.
+No smoothness hypothesis is needed for this comparison.
+\end{theorem}
+\begin{proof}
+Actual cotangent open restriction identifies the left side
+with the cotangent sheaf of the inherited affine structural
+morphism. The actual affine-chart constant equality makes
+that structural morphism the spectrum of the actual
+\(K\to\Gamma(X,V)\) map. The proved actual affine
+cotangent comparison then identifies its cotangent sheaf
+with the associated sheaf of its coordinate differential
+module. Compose these genuine sheaf isomorphisms.
+\end{proof}
+
+\begin{theorem}[Actual smooth affine charts give rank-n cotangent sheaf frames]
+\label{sc0-canonical-port:geom:smooth-scheme-actual-cotangent-chart-frame}
+\uses{sc0-canonical-port:geom:smooth-scheme-standard-smooth-coordinate-cover,sc0-canonical-port:geom:cotangent-sheaf-open-immersion-restriction,sc0-canonical-port:geom:standard-smooth-actual-cotangent-sheaf-frame,sc0-canonical-port:geom:affine-chart-structural-constants,sc0-canonical-port:geom:actual-free-sheaf-open-transport,sc0-canonical-port:geom:actual-affine-chart-cotangent-comparison}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothCotangentAffineChartFrame,EnvelopeProperty.CanonicalGeometry.smooth_cotangent_local_frame,EnvelopeProperty.CanonicalGeometry.smoothCotangentChartFrame}
+\leanok
+On each genuine affine chart in this cover, the restriction
+of the actual cotangent sheaf \(\Omega_{X/K}\) is
+isomorphic to the free structure-module sheaf of rank \(n\).
+\end{theorem}
+\begin{proof}
+The actual open-immersion cotangent restriction isomorphism
+identifies the restricted sheaf with the actual cotangent
+sheaf of that affine chart's inherited structural morphism.
+The structural-constant equality identifies this morphism
+with the actual affine coordinate structure. The chart
+algebra is actually standard smooth of relative dimension
+\(n\), so Theorem~\ref{sc0-canonical-port:geom:standard-smooth-actual-cotangent-sheaf-frame}
+supplies its actual free rank-\(n\) cotangent sheaf frame.
+Compose these actual isomorphisms to obtain the required
+frame on the restriction of \(\Omega_{X/K}\).
+\end{proof}
+
+\begin{corollary}[The actual cotangent sheaf of a smooth scheme is locally free]
+\label{sc0-canonical-port:geom:smooth-scheme-actual-cotangent-locally-free}
+\uses{sc0-canonical-port:geom:smooth-scheme-actual-cotangent-chart-frame,sc0-canonical-port:geom:smooth-scheme-standard-smooth-coordinate-cover}
+\lean{EnvelopeProperty.CanonicalGeometry.smoothCotangentLocalGeneratorsData,EnvelopeProperty.CanonicalGeometry.smoothCotangentLocalGeneratorsData_isLocallyFreeData,EnvelopeProperty.CanonicalGeometry.smooth_cotangentSheaf_locallyFree}
+\leanok
+For an actual smooth relative-dimension-\(n\) structure
+morphism over \(K\), the actual cotangent sheaf is locally
+free, with actual rank-\(n\) frames on the cover above.
+\end{corollary}
+\begin{proof}
+Each point belongs to one of the produced actual affine
+opens. The actual free-frame isomorphism there supplies
+\(n\) local basis sections, and the inverse frame
+expresses every restricted section as their actual
+regular-function linear combination. These give local
+generators together with their linear independence at each
+point. They are exactly local free presentations of the
+actual sheaf on a cover, which proves local freeness.
+\end{proof}
+
+\begin{definition}[Valuation threshold subspace]
+\label{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationFiltration}
+\leanok
+Let \(K\subseteq F\) be fields, let \(V\) be a vector space over
+\(K\), and let \(\iota:V\to F\) be a \(K\)-linear map. Let
+\(v:F\to\R\cup\{+\infty\}\) be an additive valuation, with
+\(v(0)=+\infty\), \(v(1)=0\),
+\[
+ v(xy)=v(x)+v(y),\qquad
+ v(x+y)\geq\min\{v(x),v(y)\},
+\]
+and suppose that \(v(c)=0\) for every \(c\in K^*\). For each real
+\(a\), define
+\[
+ \mathcal F^a_v(V,\iota)=\{s\in V:a\leq v(\iota(s))\}.
+\]
+The valuation has finite value on nonzero elements of \(F\).
+\end{definition}
+
+\begin{lemma}[Subspace closure and decreasing thresholds]
+\label{sc0-canonical-port:fil:valuation-subspace}
+\uses{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.mem_valuationFiltration,EnvelopeProperty.CanonicalGeometry.valuationFiltration_antitone,EnvelopeProperty.CanonicalGeometry.valuation_smul_of_ne_zero}
+\leanok
+Every \(\mathcal F^a_v(V,\iota)\) is a \(K\)-linear subspace. If
+\(a\leq b\), then
+\(\mathcal F^b_v(V,\iota)\subseteq\mathcal F^a_v(V,\iota)\).
+\end{lemma}
+\begin{proof}
+The zero vector belongs because its representative has value
+\(+\infty\). If \(s,t\) have value at least \(a\), linearity and the
+valuation inequality give
+\(v(\iota(s+t))\geq\min\{v(\iota(s)),v(\iota(t))\}\geq a\).
+For \(c=0\), the vector \(cs\) is zero. For \(c\ne0\), linearity,
+multiplicativity, and triviality on \(K^*\) give
+\(v(\iota(cs))=v(c)+v(\iota(s))=v(\iota(s))\).
+These observations prove scalar closure. Finally, \(b\leq v(\iota(s))\)
+and \(a\leq b\) imply \(a\leq v(\iota(s))\), proving the inclusion.
+\end{proof}
+
+\begin{lemma}[Multiplicative threshold inequality]
+\label{sc0-canonical-port:fil:valuation-product}
+\uses{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuation_product_threshold}
+\leanok
+For \(s,t\in F\) and real \(a,b\), if \(v(s)\geq a\) and
+\(v(t)\geq b\), then \(v(st)\geq a+b\).
+Consequently, whenever section-representative maps respect products,
+the product of sections in thresholds \(a\) and \(b\) belongs to
+threshold \(a+b\) in the product degree.
+\end{lemma}
+\begin{proof}
+The valuation identity gives \(v(st)=v(s)+v(t)\). Addition preserves
+the order on \(\R\cup\{+\infty\}\), so this is at least \(a+b\).
+Applying this assertion to the representatives of a pair of sections
+gives the final assertion.
+\end{proof}
+
+\begin{lemma}[Finite value of a nonzero represented vector]
+\label{sc0-canonical-port:fil:valuation-finite}
+\uses{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuation_ne_top_of_injective}
+\leanok
+If \(\iota\) is injective and \(s\ne0\), then
+\(v(\iota(s))\ne+\infty\).
+\end{lemma}
+\begin{proof}
+Injectivity and \(\iota(0)=0\) imply \(\iota(s)\ne0\). A valuation
+on a field has infinite value only at zero, proving the assertion.
+\end{proof}
+
+\begin{lemma}[Units have value zero at a center]
+\label{sc0-canonical-port:fil:centered-unit-zero}
+\lean{EnvelopeProperty.CanonicalGeometry.valuation_unit_eq_zero}
+\leanok
+Let \(A\) be a commutative ring, let \(f:A\to F\) be a unital ring
+homomorphism to a field, and let \(v\) be an additive valuation of
+\(F\). Suppose that \(v(f(r))\geq0\) for all \(r\in A\).
+Then \(v(f(u))=0\) for every unit \(u\in A^\times\).
+In particular, this applies to the local ring at the center of a
+valuation.
+\end{lemma}
+\begin{proof}
+The images of \(u\) and \(u^{-1}\) multiply to one, so
+\(v(f(u))+v(f(u^{-1}))=v(1)=0\). Both summands are nonnegative by
+the hypothesis. Thus each is zero.
+\end{proof}
+
+\begin{lemma}[Independence of a local frame]
+\label{sc0-canonical-port:fil:frame-invariance}
+\uses{sc0-canonical-port:fil:centered-unit-zero}
+\lean{EnvelopeProperty.CanonicalGeometry.valuation_frame_independent}
+\leanok
+Under the hypotheses of Lemma~\ref{sc0-canonical-port:fil:centered-unit-zero}, for every
+unit \(u\in A^\times\) and every \(s\in F\),
+\[
+ v(f(u)s)=v(s).
+\]
+Thus two local representatives differing by a unit in the local ring
+have the same value.
+\end{lemma}
+\begin{proof}
+Multiplicativity and Lemma~\ref{sc0-canonical-port:fil:centered-unit-zero} give
+\(v(f(u)s)=v(f(u))+v(s)=0+v(s)=v(s)\). This includes \(s=0\).
+\end{proof}
+
+\begin{lemma}[The unique least-value term survives a finite sum]
+\label{sc0-canonical-port:fil:unique-minimum-no-cancellation}
+\uses{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuation_sum_eq_of_unique_min}
+\leanok
+Let \(f_j\in F\) be a finite family indexed by a finite set \(S\).
+If \(i\in S\), \(v(f_i)\) is finite, and
+\(v(f_i)<v(f_j)\) for every \(j\in S\setminus\{i\}\), then
+\[
+ v\left(\sum_{j\in S}f_j\right)=v(f_i).
+\]
+\end{lemma}
+\begin{proof}
+If \(v(x)<v(y)\), the valuation inequality gives
+\(v(x+y)\geq v(x)\). A strict inequality would, by applying the
+same inequality to \(x=(x+y)-y\), imply
+\(v(x)\geq\min\{v(x+y),v(y)\}>v(x)\), a contradiction.
+Thus \(v(x+y)=v(x)\). Repeated application of the valuation
+inequality shows that the sum over \(S\setminus\{i\}\) has value
+at least the minimum of its term values, which is strictly greater
+than \(v(f_i)\). The empty sum has value \(+\infty\), so it
+satisfies the same strict bound. Apply the preceding equality with
+\(x=f_i\) and \(y\) equal to that sum.
+\end{proof}
+
+\begin{lemma}[Distinct values give linearly independent vectors]
+\label{sc0-canonical-port:fil:distinct-values-independent}
+\uses{sc0-canonical-port:fil:valuation-filtration,sc0-canonical-port:fil:valuation-finite,sc0-canonical-port:fil:unique-minimum-no-cancellation}
+\lean{EnvelopeProperty.CanonicalGeometry.linearIndependent_of_injective_valuation}
+\leanok
+Suppose \(\iota\) is injective. Any family of nonzero vectors
+whose representative values are pairwise distinct is linearly
+independent over \(K\).
+\end{lemma}
+\begin{proof}
+Consider a linear relation with at least one nonzero coefficient.
+Triviality on \(K^*\) preserves the value of each term with nonzero
+coefficient. Among those terms, choose the unique one of smallest
+value \(a\). Lemma~\ref{sc0-canonical-port:fil:unique-minimum-no-cancellation} says
+that the value of the entire sum is \(a\), which is finite. Its
+representative is therefore nonzero. Linearity of \(\iota\) shows
+that the original linear combination cannot be zero.
+\end{proof}
+
+\begin{definition}[Actual valuation value set]
+\label{sc0-canonical-port:fil:valuation-value-set}
+\uses{sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationValues}
+\leanok
+Let
+\[
+ \mathcal V_v(V,\iota)
+ =\{a\in\R:\text{there exists }s\ne0\text{ with }v(\iota(s))=a\}.
+\]
+For each \(a\) in this set, choose one vector \(s_a\) realizing
+its value. This choice uses only membership in the actual value set.
+\end{definition}
+
+\begin{lemma}[One vector per actual value is independent]
+\label{sc0-canonical-port:fil:value-representatives-independent}
+\uses{sc0-canonical-port:fil:valuation-value-set,sc0-canonical-port:fil:distinct-values-independent}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationValueRepresentative,EnvelopeProperty.CanonicalGeometry.valuationValueRepresentative_spec,EnvelopeProperty.CanonicalGeometry.valuationValueRepresentative_linearIndependent}
+\leanok
+If \(\iota\) is injective, the selected family \((s_a)_{a\in\mathcal V_v(V,\iota)}\)
+is linearly independent over \(K\).
+\end{lemma}
+\begin{proof}
+Each selected vector is nonzero and has value equal to its index.
+Distinct indices therefore give distinct actual values. Every finite
+subfamily is independent by Lemma~\ref{sc0-canonical-port:fil:distinct-values-independent}.
+Linear independence means exactly that every finite linear relation
+has all coefficients zero, so the entire family is independent.
+\end{proof}
+
+\begin{lemma}[Finite jumping values]
+\label{sc0-canonical-port:fil:finite-jumping-values}
+\uses{sc0-canonical-port:fil:valuation-finite,sc0-canonical-port:fil:valuation-value-set,sc0-canonical-port:fil:value-representatives-independent}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationValues_finite,EnvelopeProperty.CanonicalGeometry.valuationValues_card_le_finrank}
+\leanok
+Suppose \(V\) has finite dimension \(N\) and \(\iota\) is injective.
+The values of the nonzero represented vectors form a finite set of
+at most \(N\) real numbers.
+\end{lemma}
+\begin{proof}
+If more than \(N\) distinct values occurred, selecting one nonzero
+vector at each of \(N+1\) such values would contradict
+Lemma~\ref{sc0-canonical-port:fil:value-representatives-independent} and the dimension
+bound for a linearly independent family. This proves finiteness
+and the cardinality bound.
+\end{proof}
+
+\begin{lemma}[Actual exterior maps of semilinear maps]
+\label{sc0-canonical-port:ext:semilinear-exterior-map}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorSemilinearAlternating,EnvelopeProperty.CanonicalGeometry.exteriorSemilinearMap,EnvelopeProperty.CanonicalGeometry.exteriorSemilinearMap_ιMulti}
+\leanok
+Let \(\rho:R\to S\) be a homomorphism of commutative rings
+and \(h:M\to N\) a \(\rho\)-semilinear map of actual
+modules. For every \(d\geq0\), there is an actual
+\(\rho\)-semilinear map
+\[
+ \bigwedge_R^d M\longrightarrow\bigwedge_S^d N,
+ \qquad m_1\wedge\cdots\wedge m_d
+ \longmapsto h(m_1)\wedge\cdots\wedge h(m_d).
+\]
+These maps preserve identity maps and composition.
+\end{lemma}
+\begin{proof}
+Restrict the target scalar action through \(\rho\).
+The displayed map of \(d\)-tuples is then
+\(R\)-multilinear and alternating. The actual exterior-power
+universal property supplies the unique linear map on the
+source exterior power, which is exactly the required
+semilinear map. Pure wedges span the exterior power,
+so equality on those wedges proves the identity and
+composition assertions. For \(d=0\), the map is
+\(\rho\) on the zeroth exterior powers, with the
+same universal property and inverse-free functorial identities.
+\end{proof}
+
+\begin{lemma}[An actual linear equivalence gives an actual exterior equivalence]
+\label{sc0-canonical-port:ext:linear-exterior-equivalence}
+\uses{sc0-canonical-port:ext:semilinear-exterior-map}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorLinearEquiv,EnvelopeProperty.CanonicalGeometry.exteriorLinearEquiv_ιMulti}
+\leanok
+An actual \(R\)-linear equivalence \(M\simeq N\)
+induces an actual linear equivalence of each exterior
+power, taking a pure wedge to the wedge of its images.
+\end{lemma}
+\begin{proof}
+Apply the preceding exterior map to the actual linear
+equivalence and its inverse. Their composites are the
+exterior maps of the identity, as can be checked on
+every generating pure wedge. Thus the two exterior
+maps are inverse and have the stated wedge formula.
+\end{proof}
+
+\begin{theorem}[Actual exterior base change of a free module]
+\label{sc0-canonical-port:ext:finite-free-exterior-base-change}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorBasisBaseChangeEquiv,EnvelopeProperty.CanonicalGeometry.exteriorBasisBaseChangeEquiv_basis,EnvelopeProperty.CanonicalGeometry.exteriorBasisBaseChangeEquiv_wedge}
+\leanok
+Let \(R\to S\) be an actual ring map and \(M\) an actual
+\(R\)-module with an ordered basis. For every \(d\geq0\),
+the actual canonical comparison
+\[
+ S\otimes_R\bigwedge_R^d M
+ \simeq\bigwedge_S^d(S\otimes_R M)
+\]
+sends \(1\otimes(m_1\wedge\cdots\wedge m_d)\) to
+\((1\otimes m_1)\wedge\cdots\wedge(1\otimes m_d)\).
+It takes every scalar-extended basis wedge to the
+corresponding actual scalar-extended wedge basis vector.
+\end{theorem}
+\begin{proof}
+The increasing \(d\)-fold wedges of the ordered basis
+form an actual basis of the source exterior module.
+Expansion of each vector has finite support; multilinear
+expansion proves wedge spanning, repeated indices vanish,
+and each alternating coordinate determinant extracts
+the coefficient of the corresponding increasing wedge,
+proving independence. The base-changed module has the
+actual base-changed basis, so the same argument gives
+its exterior basis. Mapping the scalar-extended source
+wedge basis to that target wedge basis constructs an
+actual linear equivalence. For an arbitrary pure wedge,
+the coefficients in these two bases are the coordinate
+determinants. The ring map preserves every determinant
+because it preserves finite sums, products, and signs.
+Thus the equivalence has the stated formula on every
+pure wedge. Scalar linearity extends this to all
+actual tensors. For \(d=0\) this is the ordinary
+scalar-extension identification with \(S\).
+\end{proof}
+
+\begin{theorem}[Actual localization of a free module localizes its exterior modules]
+\label{sc0-canonical-port:ext:free-module-exterior-localization}
+\uses{sc0-canonical-port:ext:semilinear-exterior-map,sc0-canonical-port:ext:linear-exterior-equivalence,sc0-canonical-port:ext:finite-free-exterior-base-change}
+\lean{EnvelopeProperty.CanonicalGeometry.algebraExteriorLinearMap,EnvelopeProperty.CanonicalGeometry.algebraExteriorLinearMap_wedge,EnvelopeProperty.CanonicalGeometry.exteriorLocalizedModuleEquiv,EnvelopeProperty.CanonicalGeometry.exteriorLocalizedModuleEquiv_wedge,EnvelopeProperty.CanonicalGeometry.algebraExteriorLinearMap_isLocalizedModule}
+\leanok
+Let \(S\subset R\) be a multiplicative subset and
+\(B=S^{-1}R\) an actual localization. Let \(M\)
+have an actual ordered \(R\)-basis, and let
+\(f:M\to N\) be an actual \(R\)-linear localization
+map, with the compatible actual \(B\)-module action
+on \(N\). Its literal wedge map takes values in
+\(\bigwedge_B^dN\) and is itself an actual module
+localization map. There is an actual \(B\)-linear
+comparison
+\[
+ B\otimes_R\bigwedge_R^dM\simeq\bigwedge_B^dN,
+ \quad 1\otimes\bigwedge_jm_j\longmapsto\bigwedge_jf(m_j).
+\]
+\end{theorem}
+\begin{proof}
+The actual localization property of \(f\) identifies
+\(N\) with \(B\otimes_RM\), carrying \(f(m)\)
+to \(1\otimes m\). Compose the proved free exterior
+base-change comparison with the exterior equivalence
+of this actual module equivalence. Its wedge formula
+is exactly the displayed formula. In particular the
+actual wedge map from \(\bigwedge_R^dM\) agrees,
+on every generating wedge, with the scalar-extension
+unit followed by this equivalence. These maps therefore
+agree everywhere. Scalar extension by the actual
+localization has its actual localization universal
+property; composing with this proved target equivalence
+retains that property. Hence the literal wedge map,
+not only a chosen basis map, is a module localization map.
+\end{proof}
+
+\begin{corollary}[Actual exterior differential localization on free charts]
+\label{sc0-canonical-port:ext:free-differential-principal-open}
+\uses{sc0-canonical-port:ext:finite-free-exterior-base-change,sc0-canonical-port:ext:linear-exterior-equivalence}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorKaehlerLocalizationEquiv,EnvelopeProperty.CanonicalGeometry.exteriorKaehlerLocalizationEquiv_wedge}
+\leanok
+Let \(K\to A\to B\) be compatible actual maps of
+commutative rings, with \(B\) an actual localization
+of \(A\) at a multiplicative subset. If \(\Omega_{A/K}\)
+has an actual ordered \(A\)-basis, there is an actual
+\(B\)-linear isomorphism
+\[
+ B\otimes_A\bigwedge_A^d\Omega_{A/K}
+ \simeq\bigwedge_B^d\Omega_{B/K}.
+\]
+It sends a scalar-extended pure wedge to the wedge
+of its actual localized differential images.
+\end{corollary}
+\begin{proof}
+Actual differential localization gives
+\(B\otimes_A\Omega_{A/K}\simeq\Omega_{B/K}\),
+with \(1\otimes da\mapsto d(a|_B)\): a derivation
+extends to fractions by differentiating their actual
+inverse relation, which gives this differential
+universal property and inverse maps. Apply the proved
+free exterior base-change comparison to the actual
+basis of \(\Omega_{A/K}\), then take the exterior
+equivalence of this actual differential localization
+isomorphism. The two wedge formulas compose to the
+asserted literal localized-differential formula.
+\end{proof}
+
+\begin{definition}[The exterior presheaf of an actual module presheaf]
+\label{sc0-canonical-port:ext:exterior-presheaf}
+\uses{sc0-canonical-port:ext:semilinear-exterior-map,sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorPresheafRestriction,EnvelopeProperty.CanonicalGeometry.exteriorPresheafRestriction_mk,EnvelopeProperty.CanonicalGeometry.exteriorPresheaf,EnvelopeProperty.CanonicalGeometry.exteriorPresheaf_map_mk}
+\leanok
+For an actual structure-module presheaf \(P\), set
+\(P_d(U)=\bigwedge_{\mathcal O_X(U)}^dP(U)\).
+On \(V\subset U\), use the actual exterior map of
+the semilinear presheaf restriction. Thus restriction
+of a pure wedge is the actual wedge of its restricted
+sections. Identity and composition, checked on the
+generating wedges, make this an actual module presheaf.
+\end{definition}
+
+\begin{theorem}[Presheaf maps are compatible actual alternating families]
+\label{sc0-canonical-port:ext:exterior-presheaf-universal}
+\uses{sc0-canonical-port:ext:exterior-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.PresheafAlternatingFamily,EnvelopeProperty.CanonicalGeometry.exteriorPresheafDescApp,EnvelopeProperty.CanonicalGeometry.exteriorPresheafDescApp_mk,EnvelopeProperty.CanonicalGeometry.exteriorPresheafDesc,EnvelopeProperty.CanonicalGeometry.exteriorPresheafHomEquiv}
+\leanok
+For any actual structure-module presheaf \(N\), maps
+\(P_d\to N\) are in bijection with families of actual
+alternating \(\mathcal O_X(U)\)-multilinear maps
+\(P(U)^d\to N(U)\) compatible with actual restriction.
+On each open the inverse map is the actual universal
+linear map, taking a pure wedge to that alternating value.
+\end{theorem}
+\begin{proof}
+Compose a presheaf map with the actual pure-wedge maps
+to obtain the compatible family. Conversely the actual
+exterior universal property on each open gives a unique
+linear map taking wedges to the prescribed values.
+On a smaller open, its two restriction composites
+agree on wedges by the family's compatibility.
+Wedges span, so the composites agree everywhere,
+proving actual presheaf naturality. The objectwise
+universal inverse identities show these constructions
+are inverse, establishing the claimed bijection.
+\end{proof}
+
+\begin{definition}[The actual exterior module sheaf]
+\label{sc0-canonical-port:ext:exterior-sheaf}
+\uses{sc0-canonical-port:ext:exterior-presheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorSheaf,EnvelopeProperty.CanonicalGeometry.exteriorSheafificationMap,EnvelopeProperty.CanonicalGeometry.exteriorSheafSection,EnvelopeProperty.CanonicalGeometry.exteriorSheafSection_restrict}
+\leanok
+Define \(\mathcal E_d(P)\) to be the actual module
+sheafification of \(P_d\), with its actual canonical
+unit map. Composing the actual pure-wedge maps with
+this unit gives alternating operations on actual
+presheaf sections with values in \(\mathcal E_d(P)\).
+They commute with actual restriction, by naturality
+of the unit and the wedge restriction formula.
+\end{definition}
+
+\begin{theorem}[The exterior sheaf represents compatible alternating families]
+\label{sc0-canonical-port:ext:exterior-sheaf-universal}
+\uses{sc0-canonical-port:ext:exterior-sheaf,sc0-canonical-port:ext:exterior-presheaf-universal}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorSheafHomEquiv}
+\leanok
+For any actual module sheaf \(N\), morphisms
+\(\mathcal E_d(P)\to N\) are in bijection with the
+restriction-compatible alternating families of
+Theorem~\ref{sc0-canonical-port:ext:exterior-presheaf-universal}.
+\end{theorem}
+\begin{proof}
+Module sheafification identifies morphisms out of its
+actual sheafification with presheaf maps from its defining
+presheaf to the underlying presheaf of \(N\).
+Compose this actual adjunction bijection with the
+proved exterior-presheaf bijection. Both are defined
+by composition with the canonical unit and wedge
+maps, giving the asserted alternating interpretation.
+\end{proof}
+
+\begin{theorem}[Actual exterior presheaves and sheaves commute with open-site restriction]
+\label{sc0-canonical-port:ext:exterior-open-restriction}
+\uses{sc0-canonical-port:ext:exterior-presheaf,sc0-canonical-port:ext:exterior-sheaf,sc0-canonical-port:geom:sheafification-open-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorPresheafOverIso,EnvelopeProperty.CanonicalGeometry.exteriorSheafOverIso}
+\leanok
+On the actual site of opens contained in \(U\),
+restriction of the actual exterior presheaf is
+isomorphic to the exterior presheaf of the restricted
+presheaf. Restriction of \(\mathcal E_d(P)\) is
+isomorphic to the actual sheafification of that
+restricted exterior presheaf.
+\end{theorem}
+\begin{proof}
+On an open contained in \(U\), the coefficient ring
+and section module are exactly the original ones
+on that same open. Thus the exterior objects coincide;
+their restriction maps coincide on every pure wedge,
+hence everywhere. These objectwise identity maps
+are therefore an actual presheaf isomorphism.
+Compose its sheafification with the proved actual
+open-site sheafification comparison to obtain the
+actual exterior-sheaf restriction isomorphism.
+\end{proof}
+
+\begin{definition}[The actual relative exterior cotangent presheaf and sheaf]
+\label{sc0-canonical-port:ext:relative-exterior-cotangent-sheaf}
+\uses{sc0-canonical-port:geom:cotangent-presheaf,sc0-canonical-port:ext:exterior-presheaf,sc0-canonical-port:ext:exterior-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentPresheaf,EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheaf}
+\leanok
+For an actual \(f:X\to\operatorname{Spec}K\), with
+\(K\) a field, take the objectwise actual exterior
+powers of its actual cotangent presheaf and then
+sheafify. Denote the resulting actual sheaf by
+\(\Omega_{X/K}^{[d]}\). This construction is made
+from the actual regular-function differential modules.
+\end{definition}
+
+\begin{lemma}[Actual affine coordinate differential maps]
+\label{sc0-canonical-port:ext:affine-ordinary-differential-coordinate-map}
+\uses{sc0-canonical-port:geom:actual-affine-cotangent-objects,sc0-canonical-port:geom:actual-affine-differential-localized-maps}
+\lean{EnvelopeProperty.CanonicalGeometry.affineOrdinaryCotangentToOpen,EnvelopeProperty.CanonicalGeometry.affineOrdinaryCotangentToOpen_naturality,EnvelopeProperty.CanonicalGeometry.affineOrdinaryCotangentToOpen_isLocalized,EnvelopeProperty.CanonicalGeometry.affineOrdinaryCotangentSemilinear}
+\leanok
+Let \(K\) be a field and \(A\) an actual commutative
+\(K\)-algebra. For every open of \(\operatorname{Spec}A\),
+there is an actual coordinate map from ordinary
+\(\Omega_{A/K}\) to the actual cotangent-presheaf
+module on that open. It is semilinear for the actual
+coordinate regular-function map, is natural under
+restriction, and on \(D(r)\) is an actual module
+localization map at the powers of \(r\).
+\end{lemma}
+\begin{proof}
+Transport the proved actual affine cotangent coordinate
+map through the actual coordinate differential-module
+isomorphism to ordinary \(\Omega_{A/K}\).
+This isomorphism preserves the actual differential
+images, so the map retains both restriction naturality
+and the coordinate scalar action. On a principal
+open, composing a genuine module localization map
+with this proved source linear equivalence retains
+its universal property. This gives the asserted
+actual localization map and semilinear description.
+\end{proof}
+
+\begin{lemma}[Actual affine coordinate exterior maps and their localization property]
+\label{sc0-canonical-port:ext:affine-exterior-coordinate-map}
+\uses{sc0-canonical-port:ext:affine-ordinary-differential-coordinate-map,sc0-canonical-port:ext:semilinear-exterior-map,sc0-canonical-port:ext:free-module-exterior-localization,sc0-canonical-port:ext:relative-exterior-cotangent-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentModule,EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentToOpen,EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentToOpen_wedge,EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentToOpen_naturality,EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentToOpen_isLocalized}
+\leanok
+The actual coordinate module is \(\bigwedge_A^d\Omega_{A/K}\).
+Its actual map to the relative exterior presheaf on
+an open takes every pure wedge to the wedge of the
+actual differential coordinate images. These maps
+are natural under restriction. If \(\Omega_{A/K}\)
+has an actual ordered basis, the map on every
+principal open is an actual module localization map.
+\end{lemma}
+\begin{proof}
+Apply the actual semilinear exterior construction
+to the preceding actual differential coordinate map.
+The pure-wedge formula follows from its universal
+construction. On restriction, both composites have
+the same pure-wedge values by differential naturality;
+wedge spanning proves equality on the entire module.
+On a principal open the differential coordinate map
+is an actual localization map, its coefficient ring
+is the actual localization of \(A\), and the source
+has the assumed actual basis. The proved free-module
+exterior localization theorem therefore gives the
+actual localization property for this literal map.
+\end{proof}
+
+\begin{theorem}[Actual affine relative exterior sheaves are associated exterior differential modules]
+\label{sc0-canonical-port:ext:actual-affine-exterior-sheaf-comparison}
+\uses{sc0-canonical-port:ext:affine-exterior-coordinate-map,sc0-canonical-port:geom:affine-localized-sheafification-isomorphism}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorCotangentSheafIso}
+\leanok
+If \(\Omega_{A/K}\) has an actual ordered basis,
+there is an actual structure-module sheaf isomorphism
+\[
+ \Omega_{\operatorname{Spec}A/K}^{[d]}
+ \simeq\widetilde{\bigwedge_A^d\Omega_{A/K}}.
+\]
+\end{theorem}
+\begin{proof}
+The preceding coordinate exterior maps are actual
+natural maps and supply actual localized-module
+comparisons on every principal open. Apply the
+proved affine localized-sheafification comparison
+with the actual module \(\bigwedge_A^d\Omega_{A/K}\)
+and its actual exterior cotangent presheaf.
+Its hypotheses have been produced by those actual
+maps, so it gives precisely the displayed actual
+sheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[An actual finite differential basis gives an actual affine top-exterior line frame]
+\label{sc0-canonical-port:ext:actual-affine-top-exterior-frame}
+\uses{sc0-canonical-port:ext:actual-affine-exterior-sheaf-comparison,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:affine-tilde-line-bundle}
+\lean{EnvelopeProperty.CanonicalGeometry.affineTopExteriorSheafFrame,EnvelopeProperty.CanonicalGeometry.affineExteriorCanonicalLineBundle}
+\leanok
+If \(\Omega_{A/K}\) has an actual basis indexed
+by \(\{0,\ldots,n-1\}\), its actual relative top
+exterior sheaf has a frame to the unit structure-module
+sheaf. This produces an actual line atlas on that sheaf.
+\end{theorem}
+\begin{proof}
+The actual finite differential basis gives an actual
+one-element basis of its top exterior module, hence
+an actual module trivialization to \(A\).
+The associated-sheaf functor transports that actual
+trivialization to a frame of the associated top
+exterior sheaf. Compose with the preceding actual
+relative exterior-sheaf comparison. This gives a
+true global affine frame, and its single top open
+forms a genuine line atlas.
+\end{proof}
+
+\begin{corollary}[Actual standard smoothness produces the affine top-exterior line frame]
+\label{sc0-canonical-port:ext:standard-smooth-actual-top-exterior-frame}
+\uses{sc0-canonical-port:ext:actual-affine-top-exterior-frame,sc0-canonical-port:geom:standard-smooth-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothTopExteriorSheafFrame,EnvelopeProperty.CanonicalGeometry.standardSmoothExteriorCanonicalLineBundle}
+\leanok
+For an actual standard-smooth relative-dimension-\(n\)
+\(K\)-algebra, the actual relative top exterior sheaf
+has a produced frame and actual line atlas, without
+a differential-basis or line-frame premise.
+\end{corollary}
+\begin{proof}
+The actual standard-smooth presentation supplies the
+proved basis indexed by \(\operatorname{Fin}n\).
+Apply the preceding actual affine top-exterior frame
+construction to that produced basis.
+\end{proof}
+
+\begin{definition}[The actual associated affine dual exterior module sheaf]
+\label{sc0-canonical-port:ext:actual-affine-dual-exterior-module-sheaf}
+\uses{sc0-canonical-port:geom:affine-canonical-module}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorAnticanonicalSheaf}
+\leanok
+Define the actual affine dual exterior module sheaf as
+\(\widetilde{\operatorname{Hom}_A(\bigwedge_A^n\Omega_{A/K},A)}\).
+This is the associated sheaf of the actual coordinate
+module dual. Its identification with an intrinsic
+sheaf dual on arbitrary schemes is a separate statement.
+\end{definition}
+
+\begin{theorem}[Actual affine dual exterior module sheaves have produced line frames]
+\label{sc0-canonical-port:ext:actual-affine-dual-exterior-frame}
+\uses{sc0-canonical-port:ext:actual-affine-dual-exterior-module-sheaf,sc0-canonical-port:geom:anticanonical-dual-frame,sc0-canonical-port:geom:affine-tilde-line-bundle,sc0-canonical-port:geom:standard-smooth-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorAnticanonicalSheafFrame,EnvelopeProperty.CanonicalGeometry.affineExteriorAnticanonicalLineBundle,EnvelopeProperty.CanonicalGeometry.standardSmoothExteriorAnticanonicalLineBundle}
+\leanok
+An actual \(\operatorname{Fin}n\)-indexed differential
+basis produces an actual frame and line atlas on this
+affine associated dual sheaf. Actual standard smoothness
+of relative dimension \(n\) produces that basis and
+therefore this actual dual line atlas.
+\end{theorem}
+\begin{proof}
+The actual dual of the top-wedge basis trivializes the
+coordinate dual module. The associated-sheaf functor
+transports its actual linear trivialization to an
+actual sheaf frame; taking the whole affine open gives
+a line atlas. In the standard-smooth case, its actual
+presentation supplies the differential basis, so the
+same construction gives the claimed actual atlas.
+\end{proof}
+
+\begin{theorem}[Actual affine top-exterior and dual-module frames give a tensor frame]
+\label{sc0-canonical-port:ext:actual-affine-exterior-dual-tensor-frame}
+\uses{sc0-canonical-port:ext:actual-affine-top-exterior-frame,sc0-canonical-port:ext:actual-affine-dual-exterior-frame,sc0-canonical-port:geom:tensor-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorDualTensorFrame}
+\leanok
+Under the actual finite differential-basis hypothesis,
+the tensor of the actual affine associated dual exterior
+sheaf and the actual relative top exterior sheaf has
+an actual frame to the unit structure-module sheaf.
+\end{theorem}
+\begin{proof}
+Tensor their proved actual frames to identify their
+actual tensor sheaf with the tensor of two unit sheaves.
+The actual tensor unit isomorphism identifies that
+sheaf with the unit sheaf. This composition is the
+asserted actual tensor frame.
+\end{proof}
+
+\begin{theorem}[Actual coordinate dual tensor evaluation is a linear isomorphism]
+\label{sc0-canonical-port:ext:actual-affine-coordinate-dual-evaluation}
+\uses{sc0-canonical-port:geom:anticanonical-dual-frame,sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorEvaluationEquiv,EnvelopeProperty.CanonicalGeometry.affineExteriorEvaluationEquiv_tmul}
+\leanok
+With \(M=\bigwedge_A^n\Omega_{A/K}\) and an actual
+\(\operatorname{Fin}n\)-indexed differential basis,
+there is an actual linear isomorphism
+\(M^\vee\otimes_AM\simeq A\) whose value at every
+pure tensor \(\varphi\otimes x\) is literally
+\(\varphi(x)\).
+\end{theorem}
+\begin{proof}
+Let \(g\) be the actual top-wedge generator, and
+write \(x=a g\) using its actual one-element basis.
+The actual dual trivialization sends \(\varphi\)
+to \(\varphi(g)\); the actual primal trivialization
+sends \(x\) to \(a\). Tensor these actual linear
+isomorphisms and use \(A\otimes_AA\simeq A\).
+The resulting map sends \(\varphi\otimes x\)
+to \(\varphi(g)a=a\varphi(g)=\varphi(a g)=\varphi(x)\).
+Its construction from actual linear isomorphisms
+makes it an actual linear isomorphism, proving both
+claims.
+\end{proof}
+
+\begin{definition}[Actual sections of a module sheaf]
+\label{sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleSections,EnvelopeProperty.CanonicalGeometry.bundleSectionsModule,EnvelopeProperty.CanonicalGeometry.bundleSectionsSMulCommClass}
+\leanok
+Let \(X\) be a scheme and \(\mathcal L\) a sheaf of
+\(\mathcal O_X\)-modules. For an open \(U\subseteq X\), let
+\(\Gamma(U,\mathcal L)=\mathcal L(U)\), retaining its actual
+\(\mathcal O_X(U)\)-module structure and restriction maps.
+\end{definition}
+
+\begin{definition}[The actual tensor sheaf]
+\label{sc0-canonical-port:geom:tensor-sheaf}
+\uses{sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleTensorPresheaf,EnvelopeProperty.CanonicalGeometry.bundleTensor}
+\leanok
+For sheaves \(\mathcal L,\mathcal N\) of
+\(\mathcal O_X\)-modules, form the tensor presheaf
+\[
+ U\longmapsto\mathcal L(U)\otimes_{\mathcal O_X(U)}\mathcal N(U),
+\]
+with the maps induced by restriction of sections and scalars.
+Define \(\mathcal L\otimes\mathcal N\) to be its sheafification.
+\end{definition}
+
+\begin{definition}[Pure tensors of actual local sections]
+\label{sc0-canonical-port:geom:pure-tensor-sections}
+\uses{sc0-canonical-port:geom:tensor-sheaf,sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.tensorSection}
+\leanok
+For \(s\in\Gamma(U,\mathcal L)\) and
+\(t\in\Gamma(U,\mathcal N)\), write \(s\boxtimes t\) for the
+image of \(s\otimes t\) under the canonical sheafification map,
+as a section of \(\mathcal L\otimes\mathcal N\) on \(U\).
+\end{definition}
+
+\begin{lemma}[Bilinearity of actual tensor sections]
+\label{sc0-canonical-port:geom:tensor-section-bilinearity}
+\uses{sc0-canonical-port:geom:pure-tensor-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.tensorSection_add_left,EnvelopeProperty.CanonicalGeometry.tensorSection_add_right,EnvelopeProperty.CanonicalGeometry.tensorSection_zero_left,EnvelopeProperty.CanonicalGeometry.tensorSection_zero_right,EnvelopeProperty.CanonicalGeometry.tensorSection_smul_left,EnvelopeProperty.CanonicalGeometry.tensorSection_smul_right,EnvelopeProperty.CanonicalGeometry.tensorSectionBilinear}
+\leanok
+The pure tensor operation is additive in each variable and satisfies
+\(0\boxtimes t=0\) and \(s\boxtimes0=0\).
+It is also linear in both variables over \(\mathcal O_X(U)\):
+\((a s)\boxtimes t=a(s\boxtimes t)=s\boxtimes(a t)\).
+Thus it defines an actual bilinear map of the section modules.
+\end{lemma}
+\begin{proof}
+The tensor-product identities give
+\((s+s')\otimes t=s\otimes t+s'\otimes t\) and
+\(s\otimes(t+t')=s\otimes t+s\otimes t'\), with zero tensors
+zero. The sheafification unit is a module homomorphism on each
+open, so preserves those sums and zero. Applying it proves the
+sum and zero identities. The tensor identities also give
+\((a s)\otimes t=a(s\otimes t)=s\otimes(a t)\).
+The same module homomorphism preserves scalar multiplication,
+proving linearity in both variables and the bilinear-map assertion.
+\end{proof}
+
+\begin{lemma}[Tensor section multiplication commutes with restriction]
+\label{sc0-canonical-port:geom:tensor-section-restriction}
+\uses{sc0-canonical-port:geom:pure-tensor-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.tensorSection_restrict}
+\leanok
+For \(V\subseteq U\),
+\[
+ (s\boxtimes t)|_V=(s|_V)\boxtimes(t|_V).
+\]
+\end{lemma}
+\begin{proof}
+The presheaf tensor restriction sends a pure tensor to the pure
+tensor of its restricted factors. Naturality of the sheafification
+unit says that applying it before restricting is the same as
+restricting the tensor first and then applying the unit on \(V\).
+This is exactly the displayed identity.
+\end{proof}
+
+\begin{definition}[Tensor sheaf powers and their genuine global sections]
+\label{sc0-canonical-port:geom:tensor-sheaf-powers}
+\uses{sc0-canonical-port:geom:tensor-sheaf,sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleTensorPower,EnvelopeProperty.CanonicalGeometry.bundlePowerGlobalSections}
+\leanok
+For an actual module sheaf \(\mathcal L\), set
+\[
+ \mathcal L^{\otimes0}=\mathcal O_X,\qquad
+ \mathcal L^{\otimes(n+1)}=\mathcal L^{\otimes n}\otimes\mathcal L.
+\]
+Its degree-\(n\) section space is the actual module
+\(\Gamma(X,\mathcal L^{\otimes n})\).
+No finite-dimensionality, positivity, or Hilbert asymptotic is
+included in this construction.
+\end{definition}
+
+\begin{definition}[Degree-successor multiplication on actual sections]
+\label{sc0-canonical-port:geom:successor-section-product}
+\uses{sc0-canonical-port:geom:tensor-sheaf-powers,sc0-canonical-port:geom:pure-tensor-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.bundlePowerSectionMul,EnvelopeProperty.CanonicalGeometry.bundlePowerGlobalSectionMul}
+\leanok
+For \(s\in\Gamma(U,\mathcal L^{\otimes n})\) and
+\(t\in\Gamma(U,\mathcal L)\), define their successor product
+as \(s\boxtimes t\in\Gamma(U,\mathcal L^{\otimes(n+1)})\).
+In particular this gives the actual degree-successor product on
+global sections when \(U=X\).
+\end{definition}
+
+\begin{lemma}[The actual successor product respects restrictions]
+\label{sc0-canonical-port:geom:successor-product-restriction}
+\uses{sc0-canonical-port:geom:successor-section-product,sc0-canonical-port:geom:tensor-section-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.bundlePowerSectionMul_restrict}
+\leanok
+The degree-successor product restricts to the degree-successor
+product of the restricted sections on each smaller open.
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{sc0-canonical-port:geom:tensor-section-restriction} with
+\(\mathcal N=\mathcal L\) and first factor
+\(\mathcal L^{\otimes n}\). Its target sheaf is precisely the
+recursively defined \(\mathcal L^{\otimes(n+1)}\).
+\end{proof}
+
+\begin{definition}[Genuine local rank-one frames]
+\label{sc0-canonical-port:geom:local-line-bundle-frames}
+\uses{sc0-canonical-port:geom:module-sheaf-sections}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas,EnvelopeProperty.CanonicalGeometry.IntrinsicLineBundle}
+\leanok
+A local frame of \(\mathcal L\) on \(U\) is an isomorphism of
+actual sheaves of \(\mathcal O_U\)-modules
+\(\mathcal L|_U\simeq\mathcal O_U\).
+A rank-one atlas consists of an open cover \((U_i)\) and one such
+frame on each \(U_i\). An intrinsic line bundle is an actual
+\(\mathcal O_X\)-module sheaf supplied with such an atlas.
+\end{definition}
+
+\begin{definition}[The affine canonical and anticanonical modules]
+\label{sc0-canonical-port:geom:affine-canonical-module}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonicalModule,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalModule}
+\leanok
+Let \(A\) be a commutative \(K\)-algebra, and let
+\(\Omega_{A/K}\) be its actual module of K\"ahler differentials.
+For an integer \(n\geq0\), define
+\[
+ \omega_{A/K}^{(n)}=\bigwedge_A^n\Omega_{A/K},\qquad
+ (\omega_{A/K}^{(n)})^{-1}
+   =\operatorname{Hom}_A(\omega_{A/K}^{(n)},A).
+\]
+These are the top differential and its module dual when the
+relative differential rank is \(n\).
+\end{definition}
+
+\begin{theorem}[Actual rank-one canonical frames from a differential basis]
+\label{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+\uses{sc0-canonical-port:geom:affine-canonical-module}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonicalBasis,EnvelopeProperty.CanonicalGeometry.affineCanonicalGenerator,EnvelopeProperty.CanonicalGeometry.affineCanonicalGenerator_eq_wedge,EnvelopeProperty.CanonicalGeometry.affineCanonicalTrivialization,EnvelopeProperty.CanonicalGeometry.affineCanonicalTrivialization_generator,EnvelopeProperty.CanonicalGeometry.affineCanonical_eq_smul_generator}
+\leanok
+If \((e_i)_{i=0}^{n-1}\) is an \(A\)-basis of
+\(\Omega_{A/K}\), then
+\(\kappa=e_0\wedge\cdots\wedge e_{n-1}\) is a one-element
+basis of \(\omega_{A/K}^{(n)}\). It gives an actual
+\(A\)-linear isomorphism \(\omega_{A/K}^{(n)}\simeq A\).
+\end{theorem}
+\begin{proof}
+Exterior products of \(n\) vectors span the exterior power by its
+construction. Expand each vector in the specified differential
+basis and distribute the wedge. Terms with a repeated basis index
+are zero by alternation. Every remaining term uses all \(n\)
+basis indices and is its permutation sign times \(\kappa\).
+Thus \(\kappa\) spans.
+The determinant of the \(n\) coordinate columns is an alternating
+\(A\)-multilinear form, so it induces a linear map
+\(\delta:\omega_{A/K}^{(n)}\to A\) with \(\delta(\kappa)=1\).
+If \(a\kappa=0\), applying \(\delta\) gives \(a=0\), proving
+independence. Therefore \(a\mapsto a\kappa\) and \(\delta\)
+are inverse linear isomorphisms. For \(n=0\), the zeroth exterior
+power is \(A\), the empty wedge is one, and the determinant is
+one; the same assertions hold.
+\end{proof}
+
+\begin{theorem}[The actual anticanonical dual frame]
+\label{sc0-canonical-port:geom:anticanonical-dual-frame}
+\uses{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineAnticanonicalBasis,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalGenerator,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalTrivialization,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalGenerator_apply_generator,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalTrivialization_apply,EnvelopeProperty.CanonicalGeometry.affineAnticanonical_eq_smul_generator,EnvelopeProperty.CanonicalGeometry.affineCanonical_finite_free,EnvelopeProperty.CanonicalGeometry.affineAnticanonical_finite_free,EnvelopeProperty.CanonicalGeometry.affineCanonical_finrank,EnvelopeProperty.CanonicalGeometry.affineAnticanonical_finrank}
+\leanok
+Under the differential-basis hypothesis above, the functional
+\(\delta\) with \(\delta(\kappa)=1\) is a one-element basis of
+\((\omega_{A/K}^{(n)})^{-1}\), giving an actual
+\(A\)-linear isomorphism of that dual module with \(A\).
+Both modules are free and finite. If \(A\ne0\), each has rank one.
+\end{theorem}
+\begin{proof}
+Every element of the canonical module is uniquely \(a\kappa\).
+An \(A\)-linear functional \(\psi\) satisfies
+\(\psi(a\kappa)=a\psi(\kappa)\), so
+\(\psi=\psi(\kappa)\delta\). If \(b\delta=0\), evaluating
+at \(\kappa\) gives \(b=0\). Thus \(\delta\) is a basis and
+\(\psi\mapsto\psi(\kappa)\) is the indicated isomorphism.
+A one-element basis proves freeness and finite generation, and in
+a nonzero coefficient ring its index cardinality is rank one.
+\end{proof}
+
+\begin{corollary}[The polynomial canonical wedge and its normalized dual]
+\label{sc0-canonical-port:geom:polynomial-canonical-frame}
+\uses{sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.polynomialCanonicalBasis,EnvelopeProperty.CanonicalGeometry.polynomialCanonicalGenerator,EnvelopeProperty.CanonicalGeometry.polynomialCanonicalGenerator_eq_wedge,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonicalBasis,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonicalGenerator,EnvelopeProperty.CanonicalGeometry.polynomialCanonical_finite_free,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonical_finite_free,EnvelopeProperty.CanonicalGeometry.polynomialCanonical_finrank,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonical_finrank,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonicalGenerator_apply_generator}
+\leanok
+For \(A=K[X_0,\ldots,X_{n-1}]\), the canonical module has the
+actual frame \(\mathrm dX_0\wedge\cdots\wedge\mathrm dX_{n-1}\),
+and its dual has the actual frame that evaluates this wedge to one.
+These modules are finite free, and each has rank one if \(K\ne0\).
+This includes \(n=0\).
+\end{corollary}
+\begin{proof}
+Apply Theorems~\ref{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+and \ref{sc0-canonical-port:geom:anticanonical-dual-frame} to the differential basis
+produced in Theorem~\ref{sc0-canonical-port:geom:polynomial-differential-basis}.
+Their empty-basis cases give the asserted zero-dimensional case.
+\end{proof}
+
+\begin{lemma}[The unique full exterior index]
+\label{sc0-canonical-port:geom:top-exterior-full-index}
+\lean{EnvelopeProperty.CanonicalGeometry.topExteriorIndexEquiv,EnvelopeProperty.CanonicalGeometry.topExteriorIndexEquiv_symm_orderEmb}
+\leanok
+The family of \(n\)-element subsets of \(\{0,\ldots,n-1\}\)
+has exactly one element, the full set. Its increasing enumeration
+is the identity on that ordered index set, including \(n=0\).
+\end{lemma}
+\begin{proof}
+A proper subset of a finite set has strictly smaller cardinality,
+so an \(n\)-element subset of this \(n\)-element set is the
+full set. An increasing bijection from this finite ordered set
+to itself must fix the least element, then the next least, and
+successively every element; it is the identity. For the empty
+index set there is one subset of cardinality zero, and one empty
+enumeration, giving the same assertions.
+\end{proof}
+
+\begin{lemma}[Canonical wedge coordinates are actual determinants]
+\label{sc0-canonical-port:geom:canonical-wedge-determinant}
+\uses{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonicalTrivialization_apply_wedge}
+\leanok
+For the differential basis \(b=(e_j)\) and any \(n\) differential
+vectors \(v_i\), the canonical trivialization sends
+\(v_0\wedge\cdots\wedge v_{n-1}\) to
+\(\det(b_j^*(v_i))_{i,j}\).
+\end{lemma}
+\begin{proof}
+Expand each \(v_i=\sum_j b_j^*(v_i)e_j\) and distribute the
+wedge. Repeated indices vanish, and each permutation of the full
+index set contributes its sign times the product of its coordinate
+entries. The coefficient of \(\kappa\) is therefore the
+permutation expansion of the stated determinant. The trivialization
+extracts exactly that coefficient.
+\end{proof}
+
+\begin{lemma}[Actual canonical transition determinants are units]
+\label{sc0-canonical-port:geom:canonical-transition-unit}
+\uses{sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:canonical-wedge-determinant}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonical_transition_isUnit,EnvelopeProperty.CanonicalGeometry.affineCanonical_transition_det_isUnit}
+\leanok
+For two actual differential bases \(b,b'\), the scalar changing
+their canonical generators is a unit, equal to
+\(\det(b_j^*(b'_i))_{i,j}\).
+\end{lemma}
+\begin{proof}
+Each canonical generator is a basis, so write
+\(\kappa'=a\kappa\) and \(\kappa=d\kappa'\) uniquely.
+Substitution gives \(\kappa=da\kappa\), and independence of
+\(\kappa\) forces \(da=1\). Thus \(a\) is a unit with inverse
+\(d\). Lemma~\ref{sc0-canonical-port:geom:canonical-wedge-determinant} computes
+\(a\) as the displayed determinant.
+\end{proof}
+
+\begin{theorem}[Differential bases transported through actual formally etale maps]
+\label{sc0-canonical-port:geom:etale-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineDifferentialBasisOfFormallyEtale,EnvelopeProperty.CanonicalGeometry.affineDifferentialBasisOfFormallyEtale_apply}
+\leanok
+Let \(K\to A\to B\) be compatible homomorphisms of commutative
+rings, with \(A\to B\) formally etale. If \((e_i)_{i=0}^{n-1}\)
+is an \(A\)-basis of \(\Omega_{A/K}\), the images of these
+actual differential vectors form a \(B\)-basis of
+\(\Omega_{B/K}\).
+\end{theorem}
+\begin{proof}
+Formal etaleness gives the differential base-change isomorphism
+\(B\otimes_A\Omega_{A/K}\simeq\Omega_{B/K}\).
+One way to see this is by testing linear maps into any \(B\)-module:
+they correspond to \(K\)-derivations, and a derivation of \(A\)
+has a unique extension to \(B\) by the unique lifting property
+for the square-zero extension \(B\oplus N\). This is precisely
+the universal isomorphism of the represented differential modules.
+Base change of a free module with basis \((e_i)\) has basis
+\((1\otimes e_i)\); the isomorphism sends these vectors to their
+actual differential images. Transporting this basis proves the
+claim and the stated formula for its vectors.
+\end{proof}
+
+\begin{corollary}[Actual differential bases on localization charts]
+\label{sc0-canonical-port:geom:localization-differential-basis}
+\uses{sc0-canonical-port:geom:etale-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.affineDifferentialBasisOfLocalization}
+\leanok
+If \(B=S^{-1}A\) is an actual localization, an \(A\)-basis of
+\(\Omega_{A/K}\) produces a \(B\)-basis of \(\Omega_{B/K}\).
+\end{corollary}
+\begin{proof}
+A derivation extends uniquely through a localization by
+\(D(a/s)=D(a)/s-aD(s)/s^2\). Equivalently the localization is
+formally etale: units lift uniquely across a square-zero ideal,
+so its defining inversion property gives unique infinitesimal lifts.
+Apply Theorem~\ref{sc0-canonical-port:geom:etale-differential-basis}.
+\end{proof}
+
+\begin{corollary}[Actual formally etale polynomial charts produce canonical frames]
+\label{sc0-canonical-port:geom:etale-polynomial-canonical-frame}
+\uses{sc0-canonical-port:geom:etale-differential-basis,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.polynomialEtaleDifferentialBasis,EnvelopeProperty.CanonicalGeometry.polynomialEtaleDifferentialBasis_apply,EnvelopeProperty.CanonicalGeometry.polynomialEtale_canonical_anticanonical}
+\leanok
+Let \(B\ne0\) be a commutative \(K\)-algebra with a compatible
+formally etale map \(K[X_0,\ldots,X_{n-1}]\to B\).
+The actual differentials of the images of \(X_i\) form a basis
+of \(\Omega_{B/K}\). The canonical module and its actual dual
+are finite free of rank one, with the top wedge and its dual frames.
+\end{corollary}
+\begin{proof}
+The polynomial differential basis comes from
+Theorem~\ref{sc0-canonical-port:geom:polynomial-differential-basis}.
+Theorem~\ref{sc0-canonical-port:geom:etale-differential-basis} transports it to the
+actual differentials of the coordinate images in \(B\).
+Apply Theorems~\ref{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+and \ref{sc0-canonical-port:geom:anticanonical-dual-frame} to this produced basis.
+Their one-element bases give finite freeness and, since \(B\ne0\),
+rank one for both modules.
+\end{proof}
+
+\begin{corollary}[Actual polynomial localizations produce canonical frames]
+\label{sc0-canonical-port:geom:polynomial-localization-canonical-frame}
+\uses{sc0-canonical-port:geom:localization-differential-basis,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.polynomialLocalizationDifferentialBasis,EnvelopeProperty.CanonicalGeometry.polynomialLocalization_canonical_anticanonical}
+\leanok
+If \(B\ne0\) is an actual localization of
+\(K[X_0,\ldots,X_{n-1}]\), its actual differential module has
+rank \(n\) with the localized coordinate differential basis.
+Its canonical module and its actual dual are finite free of rank one.
+\end{corollary}
+\begin{proof}
+Apply Corollary~\ref{sc0-canonical-port:geom:localization-differential-basis} to the
+polynomial basis, and then apply the canonical and dual frame
+constructions to the resulting basis over \(B\). Their finite
+one-element bases give the asserted finite freeness and rank.
+\end{proof}
+
+\begin{lemma}[Tensor sheaves transport actual sheaf isomorphisms]
+\label{sc0-canonical-port:geom:tensor-sheaf-isomorphisms}
+\uses{sc0-canonical-port:geom:tensor-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleTensorIso}
+\leanok
+Actual sheaf isomorphisms \(\mathcal L\simeq\mathcal L'\)
+and \(\mathcal N\simeq\mathcal N'\) induce an isomorphism
+\(\mathcal L\otimes\mathcal N\simeq
+\mathcal L'\otimes\mathcal N'\).
+\end{lemma}
+\begin{proof}
+On each open, tensor the two linear isomorphisms. Tensoring their
+inverses gives an inverse; naturality of both original maps makes
+these isomorphisms commute with presheaf restrictions. Apply
+sheafification to the two inverse presheaf maps. Their compositions
+are still identities, giving the asserted sheaf isomorphism.
+\end{proof}
+
+\begin{lemma}[The actual tensor sheaf has the structure sheaf as unit]
+\label{sc0-canonical-port:geom:tensor-sheaf-unit}
+\uses{sc0-canonical-port:geom:tensor-sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleSheafificationIso,EnvelopeProperty.CanonicalGeometry.bundleTensorLeftUnitIso}
+\leanok
+Sheafifying the underlying presheaf of an actual sheaf recovers
+that sheaf canonically. For every actual module sheaf
+\(\mathcal L\), there is an isomorphism
+\(\mathcal O_X\otimes\mathcal L\simeq\mathcal L\).
+\end{lemma}
+\begin{proof}
+Maps from a sheafification to a sheaf are exactly maps from its
+original presheaf. If the original presheaf already satisfies the
+sheaf condition, its identity extends uniquely to a map inverse
+to the sheafification unit; checking each composite uses this
+same uniqueness. Objectwise, the maps
+\(a\otimes s\mapsto a s\) and \(s\mapsto1\otimes s\)
+are inverse module maps and commute with restriction. Thus the
+tensor presheaf \(\mathcal O_X\otimes\mathcal L\) is
+isomorphic to the underlying presheaf of \(\mathcal L\).
+Sheafifying and using the first assertion proves the unit identity.
+\end{proof}
+
+\begin{lemma}[A global frame gives an actual rank-one atlas]
+\label{sc0-canonical-port:geom:global-frame-line-atlas}
+\uses{sc0-canonical-port:geom:local-line-bundle-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.trivialIntrinsicLineBundle,EnvelopeProperty.CanonicalGeometry.intrinsicLineBundleOfFrame}
+\leanok
+The structure sheaf is an intrinsic line bundle. More generally,
+an actual sheaf isomorphism \(\mathcal L\simeq\mathcal O_X\)
+gives a rank-one atlas for \(\mathcal L\).
+\end{lemma}
+\begin{proof}
+Use the one-open cover consisting of \(X\) itself. The identity
+frames the structure sheaf. For the general assertion, restrict
+the given global isomorphism to this open. This is the required
+actual frame and covers every point.
+\end{proof}
+
+\begin{theorem}[An actual affine linear trivialization gives a line sheaf]
+\label{sc0-canonical-port:geom:affine-tilde-line-bundle}
+\uses{sc0-canonical-port:geom:global-frame-line-atlas}
+\lean{EnvelopeProperty.CanonicalGeometry.affineSheafFrameOfTrivialization,EnvelopeProperty.CanonicalGeometry.affineLineBundleOfTrivialization}
+\leanok
+Let \(A\) be a commutative ring and \(M\) an actual
+\(A\)-module with a linear isomorphism \(M\simeq A\).
+The actual associated module sheaf \(\widetilde M\) on
+\(\operatorname{Spec}A\) has a global sheaf frame to the
+structure sheaf and hence an intrinsic line-bundle atlas.
+\end{theorem}
+\begin{proof}
+On every principal open \(D(r)\), localization transports the
+linear isomorphism to \(M_r\simeq A_r\). These localized maps
+commute with further localization and are inverse. Thus they
+give inverse sheaf maps \(\widetilde M\simeq\widetilde A\).
+The latter sheaf is the actual structure sheaf, since its
+principal-open sections and restriction maps are \(A_r\) and
+the standard localization maps. This proves the global frame.
+Apply Lemma~\ref{sc0-canonical-port:geom:global-frame-line-atlas}.
+\end{proof}
+
+\begin{corollary}[Actual affine canonical and dual line sheaves]
+\label{sc0-canonical-port:geom:affine-canonical-line-sheaves}
+\uses{sc0-canonical-port:geom:affine-tilde-line-bundle,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonicalLineBundle,EnvelopeProperty.CanonicalGeometry.affineAnticanonicalLineBundle}
+\leanok
+An actual basis of \(\Omega_{A/K}\) with \(n\) vectors
+produces intrinsic line bundles on \(\operatorname{Spec}A\)
+whose sheaves are the associated sheaves of the actual top
+exterior differential module and its actual linear dual.
+\end{corollary}
+\begin{proof}
+Theorems~\ref{sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+and \ref{sc0-canonical-port:geom:anticanonical-dual-frame} give their actual linear
+trivializations to \(A\). Applying
+Theorem~\ref{sc0-canonical-port:geom:affine-tilde-line-bundle} to each gives the
+displayed sheaves with genuine global frames and atlases.
+\end{proof}
+
+\begin{corollary}[The polynomial chart produces actual canonical line sheaves]
+\label{sc0-canonical-port:geom:polynomial-canonical-line-sheaves}
+\uses{sc0-canonical-port:geom:affine-canonical-line-sheaves}
+\lean{EnvelopeProperty.CanonicalGeometry.polynomialCanonicalLineBundle,EnvelopeProperty.CanonicalGeometry.polynomialAnticanonicalLineBundle}
+\leanok
+For \(A=K[X_0,\ldots,X_{n-1}]\), the actual canonical
+exterior module and its actual dual give intrinsic line bundles
+on \(\operatorname{Spec}A\) without a differential-basis
+hypothesis.
+\end{corollary}
+\begin{proof}
+The actual polynomial differential basis is produced in
+Theorem~\ref{sc0-canonical-port:geom:polynomial-differential-basis}. Use it in
+Corollary~\ref{sc0-canonical-port:geom:affine-canonical-line-sheaves}. Its empty
+basis case also supplies the construction when \(n=0\).
+\end{proof}
+
+\begin{theorem}[A global sheaf frame produces every tensor-power frame]
+\label{sc0-canonical-port:geom:globally-framed-tensor-powers}
+\uses{sc0-canonical-port:geom:tensor-sheaf-powers,sc0-canonical-port:geom:tensor-sheaf-isomorphisms,sc0-canonical-port:geom:tensor-sheaf-unit,sc0-canonical-port:geom:global-frame-line-atlas}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleTensorPowerTrivialization,EnvelopeProperty.CanonicalGeometry.bundleTensorPowerLineBundle}
+\leanok
+If \(\mathcal L\) has an actual global frame
+\(\mathcal L\simeq\mathcal O_X\), then every actual
+\(\mathcal L^{\otimes n}\) has a global frame to
+\(\mathcal O_X\), and hence a rank-one atlas.
+\end{theorem}
+\begin{proof}
+For \(n=0\), the power is the structure sheaf. Suppose the
+power \(n\) has the constructed frame. Tensor it with the
+given frame of \(\mathcal L\), using
+Lemma~\ref{sc0-canonical-port:geom:tensor-sheaf-isomorphisms}; then apply the
+structure-sheaf unit isomorphism of
+Lemma~\ref{sc0-canonical-port:geom:tensor-sheaf-unit}. This frames the recursive
+power \(n+1\). Induction produces every frame, and
+Lemma~\ref{sc0-canonical-port:geom:global-frame-line-atlas} gives its atlas.
+\end{proof}
+
+\begin{lemma}[Actual frame coefficients are linear and natural]
+\label{sc0-canonical-port:geom:local-frame-coefficients}
+\uses{sc0-canonical-port:geom:local-line-bundle-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.coefficients,EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.coefficients_restrict}
+\leanok
+A local sheaf frame \(e\) on \(U\) gives on every
+\(V\subset U\) an actual linear isomorphism
+\(e_V:\Gamma(V,\mathcal L)\simeq\mathcal O_X(V)\).
+For \(W\subset V\),
+\(e_W(s|_W)=e_V(s)|_W\).
+\end{lemma}
+\begin{proof}
+Evaluate the actual sheaf isomorphism on \(V\). Its evaluated
+inverse proves the linear isomorphism. Naturality of the sheaf
+map on the inclusion \(W\subset V\) is exactly the asserted
+coefficient identity.
+\end{proof}
+
+\begin{theorem}[Overlap coefficients determine actual sections]
+\label{sc0-canonical-port:geom:atlas-section-separation}
+\uses{sc0-canonical-port:geom:local-frame-coefficients,sc0-canonical-port:geom:local-line-bundle-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.chartCoefficients,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.section_ext}
+\leanok
+For a genuine atlas \((U_i,e_i)\) and a section \(s\) on
+\(U\), define its chart coefficient to be
+\((e_i)_{U\cap U_i}(s|_{U\cap U_i})\).
+If two actual sections \(s,t\) on \(U\) have equal chart
+coefficients for every \(i\), then \(s=t\).
+\end{theorem}
+\begin{proof}
+Each evaluated frame is injective, so equal coefficients imply
+equal restrictions on \(U\cap U_i\). These intersections
+cover \(U\), because the atlas covers \(X\). The separation
+part of the sheaf axiom makes sections equal when their
+restrictions on an open cover are equal, proving \(s=t\).
+\end{proof}
+
+\begin{lemma}[Actual rank-one transitions are units with a cocycle]
+\label{sc0-canonical-port:geom:rank-one-transition-units}
+\lean{EnvelopeProperty.CanonicalGeometry.rankOneAutomorphismUnit,EnvelopeProperty.CanonicalGeometry.rankOneAutomorphism_apply,EnvelopeProperty.CanonicalGeometry.sectionFrameTransition,EnvelopeProperty.CanonicalGeometry.sectionFrameTransition_coefficients,EnvelopeProperty.CanonicalGeometry.sectionFrameTransition_self,EnvelopeProperty.CanonicalGeometry.sectionFrameTransition_cocycle}
+\leanok
+For a commutative ring \(A\), every \(A\)-linear
+automorphism \(h:A\to A\) is multiplication by the actual
+unit \(h(1)\). For two linear frames \(e,f:M\simeq A\),
+let \(u_{ef}=(f\circ e^{-1})(1)\). Then
+\[
+ f(s)=u_{ef}e(s),\quad u_{ee}=1,\quad
+ u_{eg}=u_{fg}u_{ef}.
+\]
+\end{lemma}
+\begin{proof}
+Linearity gives \(h(a)=a h(1)\). The inverse map gives
+\(h(1)h^{-1}(1)=1\), so \(h(1)\) is a unit.
+Apply this identity to \(f\circ e^{-1}\) to get the
+coefficient formula. The identity automorphism gives \(u_{ee}=1\).
+For three frames, substitute the two coefficient identities
+successively and evaluate at \(s=e^{-1}(1)\). This gives
+the stated cocycle equality of units.
+\end{proof}
+
+\begin{lemma}[Actual sheaf transition units restrict as regular functions]
+\label{sc0-canonical-port:geom:sheaf-frame-transition-units}
+\uses{sc0-canonical-port:geom:local-frame-coefficients,sc0-canonical-port:geom:rank-one-transition-units}
+\lean{EnvelopeProperty.CanonicalGeometry.localBundleFrameTransition,EnvelopeProperty.CanonicalGeometry.localBundleFrameTransition_coefficients,EnvelopeProperty.CanonicalGeometry.localBundleFrameTransition_cocycle,EnvelopeProperty.CanonicalGeometry.localBundleFrameTransition_restrict}
+\leanok
+For frames \(e,f\) on opens containing \(W\), their actual
+transition \(u_{ef,W}\in\mathcal O_X(W)^\times\) satisfies
+\(f_W(s)=u_{ef,W}e_W(s)\) and the same cocycle identity.
+For \(Z\subset W\), \(u_{ef,Z}=u_{ef,W}|_Z\).
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{sc0-canonical-port:geom:rank-one-transition-units} to the
+evaluated linear frames on \(W\); this gives the unit and
+cocycle identities. Let \(s=e_W^{-1}(1)\). Naturality of
+the coefficient maps gives \(e_Z(s|_Z)=1\) and
+\(f_Z(s|_Z)=f_W(s)|_Z\). The first coefficient identity
+on \(Z\) identifies its left side with \(u_{ef,Z}\);
+the one on \(W\) identifies the restricted right side with
+\(u_{ef,W}|_Z\). This proves the restriction formula.
+\end{proof}
+
+\begin{theorem}[A centered valuation gives frame-independent actual section values]
+\label{sc0-canonical-port:geom:sheaf-frame-valuation-invariance}
+\uses{sc0-canonical-port:geom:sheaf-frame-transition-units,sc0-canonical-port:fil:centered-unit-zero}
+\lean{EnvelopeProperty.CanonicalGeometry.localBundleFrame_valuation_independent}
+\leanok
+Let \(W\) lie in two actual frame opens. Let
+\(\iota:\mathcal O_X(W)\to F\) be a ring map to a field
+with an additive real valuation \(v\), and assume
+\(v(\iota(a))\geq0\) for every actual regular function
+\(a\) on \(W\). For each actual section \(s\),
+\(v(\iota(f_W(s)))=v(\iota(e_W(s)))\).
+\end{theorem}
+\begin{proof}
+The transition formula gives \(f_W(s)=u e_W(s)\), where
+\(u\) is an actual regular unit. Its value is zero because
+the nonnegative values of \(u\) and \(u^{-1}\) add to zero,
+as in Lemma~\ref{sc0-canonical-port:fil:centered-unit-zero}. The valuation product
+law now proves the equality, including an infinite section value.
+\end{proof}
+
+\begin{definition}[The actual local section filtration]
+\label{sc0-canonical-port:geom:actual-local-section-filtration}
+\uses{sc0-canonical-port:geom:local-frame-coefficients,sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.localBundleSectionFiltration,EnvelopeProperty.CanonicalGeometry.mem_localBundleSectionFiltration}
+\leanok
+For a frame \(e\) and a centered valued-field map \(\iota\)
+as above, set
+\[
+ \mathcal F^a\Gamma(W,\mathcal L)
+ =\{s:a\leq v(\iota(e_W(s)))\}.
+\]
+This is the actual \(\mathcal O_X(W)\)-submodule obtained
+by pulling the valuation ideal back through the actual
+coefficient linear isomorphism.
+\end{definition}
+
+\begin{theorem}[The actual section filtration is decreasing and independent of frame]
+\label{sc0-canonical-port:geom:local-section-filtration-invariance}
+\uses{sc0-canonical-port:geom:actual-local-section-filtration,sc0-canonical-port:geom:sheaf-frame-valuation-invariance}
+\lean{EnvelopeProperty.CanonicalGeometry.localBundleSectionFiltration_antitone,EnvelopeProperty.CanonicalGeometry.localBundleSectionFiltration_frame_independent}
+\leanok
+If \(a\leq b\), then \(\mathcal F^b\subset\mathcal F^a\).
+On a common open with the stated centered map, the whole
+actual section filtration is independent of the chosen frame.
+\end{theorem}
+\begin{proof}
+If a section value is at least \(b\), it is at least \(a\),
+proving the inclusion. Theorem~\ref{sc0-canonical-port:geom:sheaf-frame-valuation-invariance}
+makes the two frame values equal for every section. Comparing
+the identical threshold inequalities proves equality of the
+submodules for every real threshold.
+\end{proof}
+
+\begin{lemma}[The unselected coordinates of a submersive presentation]
+\label{sc0-canonical-port:geom:submersive-free-coordinates}
+\lean{EnvelopeProperty.CanonicalGeometry.submersiveFreeIndexEquiv}
+\leanok
+Let \(P\) be a finite submersive presentation of a commutative
+\(K\)-algebra \(A\), with coordinates indexed by \(I\),
+equations indexed by \(J\), and an injective selection
+\(s:J\to I\) of Jacobian coordinates. Then
+\(I\setminus s(J)\) has cardinality
+\(\dim P=|I|-|J|\), and admits a bijection with
+\(\{0,\ldots,\dim P-1\}\).
+\end{lemma}
+\begin{proof}
+Injectivity of \(s\) makes its image have cardinality \(|J|\).
+The image and its complement partition \(I\), so subtraction
+gives the stated cardinality. Enumerating the finite complement
+gives a bijection with its cardinality's standard finite index set.
+\end{proof}
+
+\begin{theorem}[The Jacobian relations produce an actual differential basis]
+\label{sc0-canonical-port:geom:submersive-differential-basis}
+\uses{sc0-canonical-port:geom:submersive-free-coordinates}
+\lean{EnvelopeProperty.CanonicalGeometry.submersiveDifferentialBasis,EnvelopeProperty.CanonicalGeometry.submersiveDifferentialBasis_apply,EnvelopeProperty.CanonicalGeometry.submersiveDifferentials_finite_free,EnvelopeProperty.CanonicalGeometry.submersiveDifferentials_finrank}
+\leanok
+For the presentation \(P\) above, assume that the determinant
+of its evaluated Jacobian matrix in the selected coordinates is
+a unit in \(A\). The actual differentials of the unselected
+coordinate images, enumerated as in
+Lemma~\ref{sc0-canonical-port:geom:submersive-free-coordinates}, form an
+\(A\)-basis of \(\Omega_{A/K}\).
+Thus this module is finite free; if \(A\ne0\), its rank is
+\(\dim P\).
+\end{theorem}
+\begin{proof}
+If the presentation equations are \(F_j\), the differential
+module is generated by the coordinate differentials, subject to
+the relations
+\[
+ \sum_{i\in I}\overline{\frac{\partial F_j}{\partial X_i}}
+ \,d\overline X_i=0\quad(j\in J).
+\]
+Indeed, every relation in the defining ideal is a sum of multiples
+of the \(F_j\), whose derivative modulo that ideal is the
+corresponding sum of multiples of \(dF_j\).
+Separate selected and unselected coordinates. The selected block
+of this relation matrix is invertible, by the adjugate formula
+and the unit determinant. Multiplying the relations by its inverse
+expresses each selected differential uniquely as a linear
+combination of the unselected differentials.
+The resulting quotient of the free coordinate module is therefore
+the free module on the unselected coordinates: the map that keeps
+the unselected coordinates and substitutes these formulas for the
+selected ones kills exactly the submodule of relations. Its
+inverse inserts the unselected differentials in the quotient.
+This proves the basis assertion. Its finite index set gives
+finite generation and freeness, and, over a nonzero ring, its
+cardinality gives the stated rank.
+\end{proof}
+
+\begin{corollary}[A presentation with an invertible actual Jacobian]
+\label{sc0-canonical-port:geom:jacobian-differential-basis}
+\uses{sc0-canonical-port:geom:submersive-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.jacobianPresentation_dimension,EnvelopeProperty.CanonicalGeometry.jacobianDifferentialBasis,EnvelopeProperty.CanonicalGeometry.jacobianDifferentialBasis_is_coordinate}
+\leanok
+Let a presentation of \(A\) have \(n+r\) coordinates and
+\(r\) equations, with an injective choice of \(r\) Jacobian
+coordinates. If its actual evaluated Jacobian determinant is a
+unit, then \(\Omega_{A/K}\) has a basis indexed by
+\(\{0,\ldots,n-1\}\). Each basis vector is
+\(d\overline X_j\) for an actual unselected coordinate \(j\).
+\end{corollary}
+\begin{proof}
+The presentation dimension is \((n+r)-r=n\). The unit
+Jacobian condition turns this data into a submersive presentation.
+Apply Theorem~\ref{sc0-canonical-port:geom:submersive-differential-basis} and
+reindex its basis by this equality of dimensions. Its explicit
+unselected-coordinate formula gives the last assertion.
+\end{proof}
+
+\begin{corollary}[Canonical and dual frames produced by the Jacobian]
+\label{sc0-canonical-port:geom:jacobian-canonical-frames}
+\uses{sc0-canonical-port:geom:jacobian-differential-basis,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.jacobianCanonicalFrame,EnvelopeProperty.CanonicalGeometry.jacobianAnticanonicalFrame,EnvelopeProperty.CanonicalGeometry.jacobian_canonical_anticanonical}
+\leanok
+For the presentation of Corollary~\ref{sc0-canonical-port:geom:jacobian-differential-basis},
+the actual top exterior module
+\(\bigwedge_A^n\Omega_{A/K}\) and its actual \(A\)-linear
+dual have linear trivializations to \(A\), given by the produced
+differential basis and its dual wedge. Both modules are finite
+free; if \(A\ne0\), both have rank one.
+\end{corollary}
+\begin{proof}
+The produced differential basis has \(n\) vectors. Its top
+wedge is a one-element basis of the top exterior module by
+Theorem~\ref{sc0-canonical-port:geom:canonical-frame-from-differential-basis}.
+Evaluation on that vector is the dual trivialization of
+Theorem~\ref{sc0-canonical-port:geom:anticanonical-dual-frame}. Their one-element
+bases prove finite freeness and, for a nonzero ring, rank one.
+\end{proof}
+
+\begin{lemma}[Unit transitions between actual Jacobian frames]
+\label{sc0-canonical-port:geom:jacobian-transition-unit}
+\uses{sc0-canonical-port:geom:jacobian-differential-basis,sc0-canonical-port:geom:canonical-transition-unit}
+\lean{EnvelopeProperty.CanonicalGeometry.jacobian_canonical_transition_det_isUnit}
+\leanok
+If two presentations of the same \(A/K\) have invertible
+Jacobians and relative dimension \(n\), the determinant of
+the coordinate change between their produced differential bases
+is a unit in \(A\).
+\end{lemma}
+\begin{proof}
+Both produced lists are actual bases of the same differential
+module. Their coordinate-change matrices are inverse: expanding
+one basis in the other and then back gives the identity on each
+basis vector. Taking determinants makes the two determinants
+inverse units, as also expressed in
+Lemma~\ref{sc0-canonical-port:geom:canonical-transition-unit}.
+\end{proof}
+
+\begin{theorem}[Standard smoothness produces a differential basis]
+\label{sc0-canonical-port:geom:standard-smooth-differential-basis}
+\uses{sc0-canonical-port:geom:submersive-differential-basis}
+\lean{EnvelopeProperty.CanonicalGeometry.exists_standardSmoothDifferentialBasis,EnvelopeProperty.CanonicalGeometry.standardSmoothDifferentialBasis,EnvelopeProperty.CanonicalGeometry.standardSmoothDifferentials_finite_free,EnvelopeProperty.CanonicalGeometry.standardSmoothDifferentials_finrank}
+\leanok
+Let \(A\) be an actual standard-smooth \(K\)-algebra of
+relative dimension \(n\). Then \(\Omega_{A/K}\) admits a
+basis indexed by \(\{0,\ldots,n-1\}\), obtained from a
+submersive presentation of dimension \(n\).
+In particular the module is finite free; if \(A\ne0\),
+its rank is \(n\).
+\end{theorem}
+\begin{proof}
+Standard smoothness of relative dimension \(n\) supplies a
+finite submersive presentation with dimension \(n\), including
+the actual unit Jacobian condition. Apply
+Theorem~\ref{sc0-canonical-port:geom:submersive-differential-basis} to that
+presentation and reindex by its dimension equality. This gives
+the basis rather than assuming one. The finite-free and rank
+conclusions follow from that basis as in the same theorem.
+\end{proof}
+
+\begin{corollary}[Canonical frames of actual standard-smooth algebras]
+\label{sc0-canonical-port:geom:standard-smooth-canonical-frames}
+\uses{sc0-canonical-port:geom:standard-smooth-differential-basis,sc0-canonical-port:geom:canonical-frame-from-differential-basis,sc0-canonical-port:geom:anticanonical-dual-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothCanonicalFrame,EnvelopeProperty.CanonicalGeometry.standardSmoothAnticanonicalFrame,EnvelopeProperty.CanonicalGeometry.standardSmooth_canonical_anticanonical}
+\leanok
+For an actual standard-smooth algebra of relative dimension
+\(n\), the actual top differential module and its actual
+linear dual have linear trivializations to \(A\). They are
+finite free and, if \(A\ne0\), of rank one.
+\end{corollary}
+\begin{proof}
+Apply the top-wedge and dual constructions to the produced
+basis of Theorem~\ref{sc0-canonical-port:geom:standard-smooth-differential-basis}.
+The top wedge and its dual are one-element bases, so their
+coordinate maps give the trivializations and the asserted ranks.
+\end{proof}
+
+\begin{theorem}[Actual affine chart frames for a smooth scheme morphism]
+\label{sc0-canonical-port:geom:smooth-scheme-chart-frames}
+\uses{sc0-canonical-port:geom:standard-smooth-differential-basis,sc0-canonical-port:geom:standard-smooth-canonical-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.smoothRelativeDimension_chart_frames,EnvelopeProperty.CanonicalGeometry.smoothRelativeDimension_chart_basis_and_ranks}
+\leanok
+Let \(f:X\to Y\) be a scheme morphism smooth of relative
+dimension \(n\), and let \(x\in X\). There are affine open
+sets \(U\subset Y\) and \(V\subset X\), with \(x\in V\)
+and \(V\subset f^{-1}(U)\), such that, for the actual
+homomorphism \(B=\mathcal O_Y(U)\to A=\mathcal O_X(V)\),
+\(\Omega_{A/B}\) has a produced basis of \(n\) vectors and
+rank \(n\). The actual modules
+\(\bigwedge_A^n\Omega_{A/B}\) and
+\(\operatorname{Hom}_A(\bigwedge_A^n\Omega_{A/B},A)\)
+are finite free of rank one and have linear frames to \(A\).
+\end{theorem}
+\begin{proof}
+The affine-local characterization of smoothness of relative
+dimension gives such \(U,V\) with the actual restriction
+homomorphism standard smooth of relative dimension \(n\).
+Theorem~\ref{sc0-canonical-port:geom:standard-smooth-differential-basis} supplies
+the basis. The coordinate ring \(A\) is nonzero: the point
+\(x\in V\) corresponds under the affine chart to a prime ideal,
+and the zero ring has no prime ideals. Thus the rank assertion
+and the finite-free rank-one assertions of
+Corollary~\ref{sc0-canonical-port:geom:standard-smooth-canonical-frames} apply.
+The same corollary gives the actual linear frames. These are
+claims about the displayed coordinate modules, before any
+comparison or gluing of differential sheaves.
+\end{proof}
+
+\begin{definition}[Actual module-presheaf restriction to an open site]
+\label{sc0-canonical-port:geom:module-presheaf-over-open}
+\lean{EnvelopeProperty.CanonicalGeometry.bundlePresheafOver}
+\leanok
+For an actual module presheaf \(P\) on \(X\) and an
+actual open \(U\), let \(P|_U\) on the site of opens
+\(V\subset U\) be the actual module \(P(V)\) with its
+original restriction maps and actual ring \(\mathcal O_X(V)\).
+\end{definition}
+
+\begin{lemma}[The restricted sheafification unit is locally bijective]
+\label{sc0-canonical-port:geom:restricted-sheafification-unit}
+\uses{sc0-canonical-port:geom:module-presheaf-over-open}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleSheafificationOverMap,EnvelopeProperty.CanonicalGeometry.bundleSheafificationOverMap_underlying,EnvelopeProperty.CanonicalGeometry.bundleSheafificationOverMap_locally_bijective}
+\leanok
+Restricting the actual unit \(P\to P^\#\) gives the
+actual map \(P|_U\to P^\#|_U\). Its underlying additive
+presheaf map is the literal restriction of that unit.
+It is locally bijective: equality of images is locally
+equality of original sections, and each target section is
+locally an image of an original section.
+\end{lemma}
+\begin{proof}
+The restricted map applies the original unit on each actual
+open \(V\subset U\), so its underlying map has the
+claimed description. The unit of sheafification is locally
+injective and locally surjective by its local equivalence
+construction. Every cover witnessing these properties on
+\(V\) has all its opens contained in \(V\subset U\),
+so it is also a cover on the open site. Hence the same
+local witnesses prove both properties after restriction.
+\end{proof}
+
+\begin{lemma}[Open-site sheafification inverts the actual restricted unit]
+\label{sc0-canonical-port:geom:open-site-unit-inversion}
+\uses{sc0-canonical-port:geom:restricted-sheafification-unit}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleSheafificationOverMap_becomes_iso,EnvelopeProperty.CanonicalGeometry.bundleOverCounitIso}
+\leanok
+Sheafifying the restricted unit on the open site makes it
+an isomorphism. Sheafifying the underlying presheaf of an
+actual sheaf on that site canonically recovers that sheaf.
+\end{lemma}
+\begin{proof}
+A locally bijective map induces a sheaf isomorphism:
+locally surjective representatives give a locally defined
+inverse on each target section; local injectivity makes
+these representatives independent of choices and compatible
+on overlaps. The sheaf axiom glues them to a unique inverse.
+Apply this to the restricted unit of the preceding lemma.
+If the original object is already a sheaf, its unit is
+inverted by the sheafification counit: both composites
+are identities by the unique extension property for maps
+from the original presheaf. This gives the second assertion.
+\end{proof}
+
+\begin{theorem}[Actual module sheafification commutes with open restriction]
+\label{sc0-canonical-port:geom:sheafification-open-restriction}
+\uses{sc0-canonical-port:geom:open-site-unit-inversion}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleOverSheafificationIso}
+\leanok
+There is an actual sheaf isomorphism
+\(P^\#|_U\simeq(P|_U)^\#\).
+\end{theorem}
+\begin{proof}
+Sheafify the restricted unit. By
+Lemma~\ref{sc0-canonical-port:geom:open-site-unit-inversion}, it gives an
+isomorphism from \((P|_U)^\#\) to the sheafification
+of the underlying presheaf of \(P^\#|_U\). The latter
+object is already a sheaf, so the canonical counit is an
+isomorphism to \(P^\#|_U\). Compose these two actual
+isomorphisms and invert, giving the asserted direction.
+\end{proof}
+
+\begin{lemma}[Actual objectwise tensor restriction]
+\label{sc0-canonical-port:geom:tensor-presheaf-open-restriction}
+\uses{sc0-canonical-port:geom:tensor-sheaf,sc0-canonical-port:geom:module-presheaf-over-open}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleOverTensorPresheaf,EnvelopeProperty.CanonicalGeometry.bundleOverTensorPresheafIso}
+\leanok
+Restricting the actual tensor presheaf of \(\mathcal L\)
+and \(\mathcal N\) to \(U\) gives the actual objectwise
+tensor presheaf of their restricted sheaves. The comparison
+is the identity on each actual tensor module over
+\(\mathcal O_X(V)\) for \(V\subset U\).
+\end{lemma}
+\begin{proof}
+Both objects have at \(V\) exactly
+\(\mathcal L(V)\otimes_{\mathcal O_X(V)}\mathcal N(V)\).
+Both restriction maps send \(s\otimes t\) to the pure
+tensor of its two restrictions. Pure tensors generate, so
+these maps agree everywhere. Objectwise identities thus
+form the asserted actual presheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[Actual local frames tensor on their common open]
+\label{sc0-canonical-port:geom:local-tensor-frame}
+\uses{sc0-canonical-port:geom:sheafification-open-restriction,sc0-canonical-port:geom:tensor-presheaf-open-restriction,sc0-canonical-port:geom:tensor-sheaf-unit,sc0-canonical-port:geom:local-line-bundle-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.tensor}
+\leanok
+Actual frames of \(\mathcal L\) and \(\mathcal N\)
+on the same actual open \(U\) construct an actual frame
+of \(\mathcal L\otimes\mathcal N\) on \(U\).
+\end{theorem}
+\begin{proof}
+First commute the tensor sheaf's sheafification with open
+restriction by Theorem~\ref{sc0-canonical-port:geom:sheafification-open-restriction}.
+Its defining restricted tensor presheaf is the tensor of
+the two restricted sheaves by the preceding lemma.
+Tensor the two actual sheaf frames to identify this
+presheaf with the tensor of the two structure-sheaf
+presheaves. Multiplication gives its unit isomorphism.
+Sheafification and its counit recover \(\mathcal O_U\),
+as in Lemma~\ref{sc0-canonical-port:geom:tensor-sheaf-unit}. Composing these
+actual isomorphisms gives the required local frame.
+\end{proof}
+
+\begin{theorem}[A genuine local atlas produces every actual tensor-power atlas]
+\label{sc0-canonical-port:geom:local-atlas-tensor-powers}
+\uses{sc0-canonical-port:geom:local-tensor-frame,sc0-canonical-port:geom:tensor-sheaf-powers,sc0-canonical-port:geom:local-line-bundle-frames}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.tensorPower,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.tensorPower,EnvelopeProperty.CanonicalGeometry.IntrinsicLineBundle.tensorPower}
+\leanok
+A frame on \(U\) constructs a frame of every actual
+\(\mathcal L^{\otimes n}\) on \(U\). Consequently any
+genuine line-bundle atlas constructs an atlas of every
+power on its original open cover, and each power is an
+actual intrinsic line bundle.
+\end{theorem}
+\begin{proof}
+At \(n=0\), the actual power is the structure sheaf, with
+its identity frame on \(U\). Given the frame at \(n\),
+tensor it with the original frame by
+Theorem~\ref{sc0-canonical-port:geom:local-tensor-frame}; the target is the
+recursive actual power \(n+1\). Induction produces every
+local frame. Apply this construction to each chart of
+the original actual atlas and retain its actual opens,
+index set, and covering proof. The constructed frames
+then give an atlas and the corresponding intrinsic line
+bundle for each power, without a global frame premise.
+\end{proof}
+
+\begin{definition}[Valuation threshold ideals]
+\label{sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationIdeal,EnvelopeProperty.CanonicalGeometry.mem_valuationIdeal}
+\leanok
+Let \(A\) be a commutative ring, \(F\) a field, and
+\(f:A\to F\) a unital ring homomorphism. Let
+\(w:F\to\R\cup\{+\infty\}\) be an additive valuation, and
+assume \(w(f(r))\geq0\) for every \(r\in A\). For a real
+threshold \(a\), define
+\[
+ \mathfrak a_a(w,f)=\{r\in A:a\leq w(f(r))\}.
+\]
+This subset is an ideal of \(A\).
+\end{definition}
+\begin{proof}
+The zero element has value \(+\infty\), so belongs to the subset.
+If \(r,s\) belong, the additive valuation inequality gives
+\[
+ w(f(r+s))\geq\min\{w(f(r)),w(f(s))\}\geq a.
+\]
+Also \(w(f(-r))=w(-1)+w(f(r))=w(f(r))\), since
+\(w(-1)=0\): multiplicativity applied to \((-1)^2=1\) gives
+\(2w(-1)=0\). Thus the subset is an additive subgroup.
+For \(t\in A\) and \(r\) in the subset, nonnegativity yields
+\[
+ w(f(tr))=w(f(t))+w(f(r))\geq0+a=a.
+\]
+It is therefore closed under multiplication by arbitrary ring
+elements, proving ideal closure.
+\end{proof}
+
+\begin{lemma}[Decreasing ideal thresholds]
+\label{sc0-canonical-port:alg:valuation-ideal-antitone}
+\uses{sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationIdeal_antitone}
+\leanok
+If \(a\leq b\), then
+\(\mathfrak a_b(w,f)\subseteq\mathfrak a_a(w,f)\).
+\end{lemma}
+\begin{proof}
+For an element of \(\mathfrak a_b(w,f)\),
+\(w(f(r))\geq b\geq a\), which is exactly membership in
+\(\mathfrak a_a(w,f)\).
+\end{proof}
+
+\begin{lemma}[Whole-ring and proper thresholds]
+\label{sc0-canonical-port:alg:valuation-ideal-top}
+\uses{sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationIdeal_eq_top_iff,EnvelopeProperty.CanonicalGeometry.valuationIdeal_ne_top}
+\leanok
+For every real \(a\),
+\[
+ \mathfrak a_a(w,f)=A\quad\Longleftrightarrow\quad a\leq0.
+\]
+In particular, every positive threshold gives a proper ideal.
+\end{lemma}
+\begin{proof}
+If \(a\leq0\), nonnegativity gives \(a\leq w(f(r))\) for every
+\(r\), proving equality with \(A\). Conversely, equality makes
+\(1\) belong to the ideal, and its value is
+\(w(f(1))=w(1)=0\), so \(a\leq0\). For \(a>0\), the
+contrapositive proves properness.
+\end{proof}
+
+\begin{lemma}[Products add element thresholds]
+\label{sc0-canonical-port:alg:valuation-ideal-product-elements}
+\uses{sc0-canonical-port:alg:valuation-ideal,sc0-canonical-port:fil:valuation-product}
+If \(r\in\mathfrak a_a(w,f)\) and
+\(s\in\mathfrak a_b(w,f)\), then
+\(rs\in\mathfrak a_{a+b}(w,f)\).
+\end{lemma}
+\begin{proof}
+Multiplicativity of \(f\) and \(w\) gives
+\(w(f(rs))=w(f(r))+w(f(s))\geq a+b\), as in
+Lemma~\ref{sc0-canonical-port:fil:valuation-product}. This inequality is the claimed
+membership.
+\end{proof}
+
+\begin{lemma}[Products of valuation ideals]
+\label{sc0-canonical-port:alg:valuation-ideal-product}
+\uses{sc0-canonical-port:alg:valuation-ideal,sc0-canonical-port:alg:valuation-ideal-product-elements}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationIdeal_mul_le}
+\leanok
+For all real \(a,b\),
+\[
+ \mathfrak a_a(w,f)\,\mathfrak a_b(w,f)
+ \subseteq\mathfrak a_{a+b}(w,f).
+\]
+\end{lemma}
+\begin{proof}
+The ideal product consists of finite sums of products \(r_i s_i\)
+with \(r_i\in\mathfrak a_a(w,f)\) and
+\(s_i\in\mathfrak a_b(w,f)\). Each product belongs to
+\(\mathfrak a_{a+b}(w,f)\) by
+Lemma~\ref{sc0-canonical-port:alg:valuation-ideal-product-elements}. Since this is an
+ideal, it contains every finite sum of those products, proving the
+inclusion.
+\end{proof}
+
+\begin{definition}[The positive valuation ideal]
+\label{sc0-canonical-port:alg:positive-valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.positiveValuationIdeal,EnvelopeProperty.CanonicalGeometry.mem_positiveValuationIdeal}
+\leanok
+Under the ring, map, valuation, and nonnegativity hypotheses of
+Definition~\ref{sc0-canonical-port:alg:valuation-ideal}, set
+\[
+ \mathfrak p(w,f)=\{r\in A:0<w(f(r))\}.
+\]
+This subset is an ideal of \(A\).
+\end{definition}
+\begin{proof}
+The value at zero is \(+\infty>0\). If two values are strictly
+positive, their minimum is strictly positive, so the valuation
+inequality gives additive closure. Negation preserves the value.
+For \(t\in A\), \(w(f(t))\geq0\), so multiplying an element
+of strictly positive value by \(t\) again gives strictly positive
+value. These are the ideal axioms.
+\end{proof}
+
+\begin{lemma}[Primality of the positive valuation ideal]
+\label{sc0-canonical-port:alg:positive-valuation-ideal-prime}
+\uses{sc0-canonical-port:alg:positive-valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.positiveValuationIdeal_isPrime}
+\leanok
+The ideal \(\mathfrak p(w,f)\) is prime.
+\end{lemma}
+\begin{proof}
+It is proper because \(w(f(1))=0\). Suppose \(rs\) belongs
+while neither \(r\) nor \(s\) belongs. Nonnegativity and failure
+of strict positivity then give \(w(f(r))=w(f(s))=0\).
+Multiplicativity would imply \(w(f(rs))=0\), contradicting
+membership of \(rs\). Thus one factor belongs, proving primality.
+\end{proof}
+
+\begin{lemma}[Valuation-ideal quotient kernel]
+\label{sc0-canonical-port:alg:valuation-quotient-kernel}
+\uses{sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationIdeal_quotient_eq_zero_iff}
+\leanok
+For the canonical quotient homomorphism
+\(q_a:A\to A/\mathfrak a_a(w,f)\),
+\[
+ \ker q_a=\mathfrak a_a(w,f).
+\]
+Consequently \(q_a(r)=0\) if and only if
+\(a\leq w(f(r))\).
+\end{lemma}
+\begin{proof}
+The quotient identifies two elements exactly when their difference
+belongs to the ideal. Taking the second element to be zero shows
+that the class of \(r\) vanishes exactly when
+\(r\in\mathfrak a_a(w,f)\). This proves the kernel equality,
+and the defining membership condition gives the displayed
+valuation criterion. No finite-dimensionality of this quotient is
+used in the argument.
+\end{proof}
+
+\begin{definition}[The finite-piece map into the valuation quotient]
+\label{sc0-canonical-port:alg:finite-piece-quotient-map}
+\uses{sc0-canonical-port:alg:valuation-ideal}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationPieceQuotientMap}
+\leanok
+Let \(K\) be a field, \(A\) a commutative \(K\)-algebra,
+\(F\) a field extension of \(K\), and \(f:A\to F\) a unital
+\(K\)-algebra homomorphism. Suppose that \(w(f(r))\geq0\)
+for all \(r\in A\). Let \(V\) be a \(K\)-vector space with
+linear \(\iota:V\to A\). Define
+\[
+ \pi_a:V\longrightarrow A/\mathfrak a_a(w,f),
+ \qquad x\longmapsto[\iota(x)].
+\]
+This is a \(K\)-linear map, with no injectivity assumption on
+\(f\) or \(\iota\).
+\end{definition}
+
+\begin{lemma}[The kernel of the actual finite-piece quotient map]
+\label{sc0-canonical-port:alg:finite-piece-quotient-kernel}
+\uses{sc0-canonical-port:alg:finite-piece-quotient-map,sc0-canonical-port:alg:valuation-quotient-kernel,sc0-canonical-port:fil:valuation-filtration}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationPieceQuotientMap_ker}
+\leanok
+In the setting of Definition~\ref{sc0-canonical-port:alg:finite-piece-quotient-map},
+suppose in addition that \(w\) is trivial on \(K^*\). Then
+\[
+ \ker\pi_a=\mathcal F^a_w(V,f\circ\iota).
+\]
+\end{lemma}
+\begin{proof}
+The class \([\iota(x)]\) vanishes precisely when
+\(\iota(x)\in\mathfrak a_a(w,f)\), by
+Lemma~\ref{sc0-canonical-port:alg:valuation-quotient-kernel}. This is precisely the
+inequality \(a\leq w(f(\iota(x)))\) defining the threshold
+subspace. Equality follows for every vector \(x\).
+\end{proof}
+
+\begin{lemma}[Finite-piece rank and nullity]
+\label{sc0-canonical-port:alg:finite-piece-rank-nullity}
+\uses{sc0-canonical-port:alg:finite-piece-quotient-map,sc0-canonical-port:alg:finite-piece-quotient-kernel}
+\lean{EnvelopeProperty.CanonicalGeometry.valuationPiece_colength_add_filtration}
+\leanok
+Under the hypotheses of Lemma~\ref{sc0-canonical-port:alg:finite-piece-quotient-kernel},
+if \(V\) has finite dimension, then
+\[
+ \dim_K\operatorname{im}\pi_a
+ +\dim_K\mathcal F^a_w(V,f\circ\iota)=\dim_K V.
+\]
+Only the image of this finite-dimensional piece is counted here;
+the entire quotient \(A/\mathfrak a_a(w,f)\) need not be finite
+ dimensional.
+\end{lemma}
+\begin{proof}
+The first isomorphism theorem identifies
+\(\operatorname{im}\pi_a\) with \(V/\ker\pi_a\).
+Extend a basis of \(\ker\pi_a\) to a basis of \(V\).
+The classes of the added basis vectors form a basis of this
+quotient: they span by the extended basis decomposition, and a
+linear combination vanishing in the quotient belongs to the kernel,
+forcing all its added coordinates to vanish. Thus their number is
+\(\dim_K V-\dim_K\ker\pi_a\). Substitute the kernel equality of
+Lemma~\ref{sc0-canonical-port:alg:finite-piece-quotient-kernel} to obtain the formula.
+\end{proof}
+
+\begin{theorem}[Actual affine polynomial differential basis]
+\label{sc0-canonical-port:geom:polynomial-differential-basis}
+\lean{KaehlerDifferential.mvPolynomialBasis,KaehlerDifferential.mvPolynomialBasis_apply}
+\mathlibok
+For \(A=K[X_0,\ldots,X_{n-1}]\), the actual module
+\(\Omega_{A/K}\) has \(A\)-basis
+\((\mathrm dX_i)_{i=0}^{n-1}\).
+\end{theorem}
+\begin{proof}
+Define the derivation \(D:A\to A^n\) by the tuple of formal
+partial derivatives. The universal property of K\"ahler differentials
+gives a linear map \(\Phi:\Omega_{A/K}\to A^n\) sending
+\(\mathrm dP\) to \((\partial_iP)_i\). Define the opposite
+linear map \(\Psi:(a_i)_i\mapsto\sum_i a_i\mathrm dX_i\).
+Since \(\partial_iX_j\) is the Kronecker delta,
+\(\Phi\Psi\) is the identity. The identity
+\(\mathrm dP=\sum_i(\partial_iP)\mathrm dX_i\) holds for
+constants and the generators \(X_j\), and is preserved under
+addition and multiplication by the derivation product law.
+Polynomial induction therefore proves it for every \(P\).
+The elements \(\mathrm dP\) generate the differential module,
+so \(\Psi\Phi\) is also the identity. This constructs the claimed
+basis by an actual module isomorphism with \(A^n\).
+\end{proof}

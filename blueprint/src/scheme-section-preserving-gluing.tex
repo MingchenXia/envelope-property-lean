@@ -1,0 +1,63 @@
+\section{Whole original line comparisons glued by the same original sections}
+
+\begin{definition}[Genuine original pullback comparisons on the over-site]
+\label{def:fc-section-preserving-over-comparison}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionPreservingGluing.overPullbackIso, EnvelopeProperty.SchemeSectionPreservingGluing.overIsoOfPullback, EnvelopeProperty.SchemeSectionPreservingGluing.overIsoOfPullback_section}
+For actual original modules $M,N$ and an original open $U$, an
+actual isomorphism $M|_U\simeq N|_U$ in the native pullback category
+gives an actual original over-site isomorphism. If it preserves
+the original pulled section maps, the over-site isomorphism
+preserves the SAME original section maps too.
+\end{definition}
+\begin{proof}
+Compose the original over-site restriction equivalence with the
+native restriction--pullback isomorphism. Conjugate the actual
+local isomorphism by this natural comparison and use full
+faithfulness to return to the original over-site. Naturality and
+the genuine pullback structure-unit comparison transport the
+original section identity without changing its original section.
+\end{proof}
+
+\begin{theorem}[Original section identities survive actual restriction]
+\label{thm:fc-section-preserving-restriction}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionPreservingGluing.over_map_isIso_of_pullbackSectionHom, EnvelopeProperty.SchemeSectionPreservingGluing.bundleRestriction_section}
+The original over-site section identity restricts to every
+subordinate original open. If an original section is an
+isomorphism in native pullback on an open, its original over-site
+map is an isomorphism there too.
+\end{theorem}
+\begin{proof}
+Restriction has the literal original component on every subordinate
+open, so the whole section identity restricts componentwise.
+For the isomorphism assertion, cancel the native pullback unit
+comparison, then conjugate by the genuine restriction equivalence.
+Full faithfulness reflects actual isomorphisms.
+\end{proof}
+
+\begin{theorem}[Actual local section-preserving comparisons glue globally]
+\label{thm:fc-section-preserving-global-gluing}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionPreservingGluing.overComparisons_compatible, EnvelopeProperty.SchemeSectionPreservingGluing.glueOfSections, EnvelopeProperty.SchemeSectionPreservingGluing.glueOfSections_restrict, EnvelopeProperty.SchemeSectionPreservingGluing.glueOfSections_section}
+\uses{def:fc-section-preserving-over-comparison,thm:fc-section-preserving-restriction,thm:fc-line-section-factorization}
+Let actual original sections $s_j$ of $M$ and $t_j$ of $N$ be
+given. On an actual original open cover, suppose actual original
+local isomorphisms carry every original $s_j$ to the SAME $t_j$,
+and on each cover open one chosen original $t_j$ is an actual
+isomorphism. These ordinary local data construct an actual whole
+original isomorphism $M\simeq N$ carrying every SAME original
+$s_j$ to $t_j$. The overlap matching is derived internally.
+\end{theorem}
+\begin{proof}
+On an overlap choose the original pivot section belonging to the
+first cover member. Its pullback is an isomorphism there by the
+genuine original factor identity, and the first local comparison
+therefore makes the corresponding original section of $M$ an
+isomorphism too. Both restricted local comparisons send this SAME
+section to the same original section of $N$. Cancel it to derive
+equality of the whole original overlap maps. Genuine original
+module-Hom descent glues the isomorphisms and their original
+inverses. The same descent uniqueness makes every original
+section identity hold on the entire original scheme.
+\end{proof}

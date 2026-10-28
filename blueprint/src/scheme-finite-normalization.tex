@@ -1,0 +1,19 @@
+\subsection{Finite normalization of the original locally finite type scheme}
+\begin{theorem}[The literal generic-field normalization projection is finite]
+\label{thm:actual-scheme-normalization-finite}
+\lean{EnvelopeProperty.IntegralSchemeNormalization.projection_isFinite_of_locallyOfFiniteType}
+\leanok
+\uses{thm:normalization-finite-arbitrary-field,scheme:actual-integral-normalization-affine-charts,scheme:relative-section-coefficients,scheme:actual-nonempty-affine-open-cover,scheme:existing-hironaka-original-section-finite-type}
+Let $k$ be ANY field, $X$ any integral scheme, and $f:X\to\operatorname{Spec}k$ an original locally finite type morphism. Then the EXISTING original generic-field normalization projection $\nu:N(X)\to X$ is finite. No quasi-compactness, separatedness, properness, projectivity, finite affine cover, dimension bound or smoothness assumption is imposed on $X$ or $f$.
+\end{theorem}
+\begin{proof}
+Use the existing cover of $X$ by its nonempty affine opens. For any such original $U$, retain the SAME original sectionBaseAlgebra of $f$. Its scalar map is definitionally the scalar map of the already existing structure $f.\mathrm{sectionsAlgebra}(U)$: both are the original inverse spectrum global-section map followed by the actual section restriction of $f$. Directly apply the existing Hironaka theorem \texttt{finiteType\_sectionsAlgebra}; it already derives finite type from the original locally finite type structure for an arbitrary commutative base ring, hence in particular for this original field. No section finite-type argument is reconstructed. Since $X$ is integral and $U$ is nonempty affine, this original ring is a domain.
+
+Apply the EXISTING arbitrary-field integral-closure finiteness producer to this original finite type algebra over $k$ and its original fraction ring. The standard finite-spectrum-map criterion makes its original coefficient inclusion a finite scheme morphism. No affine normalization theorem, algebraic normalization argument or alternative global normalization factory is reconstructed. The EXISTING generic-field normalization chartMap identifies this SAME affine normalization with the entire preimage $\nu^{-1}(U)$: the chart map is an open immersion and its actual image is exactly that original preimage. The existing whole coefficient-square theorem says chartMap followed by $\nu$ equals the literal affine normalization projection followed by $U.\mathrm{fromSpec}$.
+
+The two actual open immersions chartMap and the inclusion of $\nu^{-1}(U)$ have equal ranges, so the existing open-immersion range isomorphism identifies their original sources over $N(X)$. Under this genuine identification and $U\simeq\operatorname{Spec}\Gamma(X,U)$, the WHOLE restriction of $\nu$ is the existing affine finite projection: postcomposing with the original open inclusion and cancelling that monomorphism verifies the equality from the cited coefficient square. Hence every actual target-cover restriction of $\nu$ is finite. Finiteness is Zariski local at the target, so the SAME original $\nu$ is finite globally, including when the cover is infinite.
+\end{proof}
+
+\begin{remark}
+The finite projection is proper by the existing finite-morphism theorem. If an original structural map of $X$ is already proper, its composite with $\nu$ is therefore proper by existing composition, without a new wrapper. The arbitrary-field algebraic finiteness theorem is reused in its full scope; no perfectness, Frobenius-finiteness or extra finite-normalization certificate is supplied.
+\end{remark}

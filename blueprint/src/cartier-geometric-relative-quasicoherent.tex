@@ -1,0 +1,49 @@
+\section{Affine geometric relative Frobenius and quasicoherent complex terms}
+
+\begin{theorem}[Affineness of the original geometric relative Frobenius]
+\label{thm:cartier-geometric-relative-frobenius-affine}
+\leanok
+\uses{thm:cartier-original-entire-scheme-relative-frobenius,thm:cartier-original-frobenius-affine-pushforward}
+\lean{EnvelopeProperty.Cartier.GeometricRelativeFrobeniusQuasicoherent.isAffineHom_map}
+For the original $f:X\to\operatorname{Spec}k$ in prime characteristic
+$p$, its actual relative Frobenius $F:X\to X^{(p)}$ is affine.
+No smoothness, perfection, nonemptiness or affine-comparison
+certificate is required.
+\end{theorem}
+\begin{proof}
+The original base field Frobenius is a morphism between affine
+schemes, hence affine. Its base change $\pi_1:X^{(p)}\to X$ is
+therefore affine. The whole original projection identity says
+$\pi_1\circ F=F_X$, where $F_X$ is the original absolute Frobenius.
+The latter is affine by the proved original affine-Frobenius theorem.
+For an affine morphism $g$, a composite $g\circ h$ is affine exactly
+when $h$ is affine. Apply this cancellation property to $g=\pi_1$
+and $h=F$. It yields affineness of the same actual relative
+Frobenius, without replacing its source, target or section maps.
+\end{proof}
+
+\begin{theorem}[Quasicoherence of every original geometric complex term]
+\label{thm:cartier-geometric-relative-complex-quasicoherent}
+\leanok
+\uses{thm:cartier-geometric-relative-frobenius-affine,thm:smooth-original-exterior-quasicoherent,def:cartier-geometric-chart-section-complex}
+\lean{EnvelopeProperty.Cartier.GeometricRelativeFrobeniusQuasicoherent.complex_term_isQuasicoherent}
+If the original $f$ is smooth of relative dimension $n$, every term
+of the original global geometric relative complex
+$K=F_*\Omega^\bullet_{X/k}$ is quasicoherent as a module on the
+same actual $X^{(p)}$.
+\end{theorem}
+\begin{proof}
+In degree $q$, the actual original term is precisely
+$F_*\Omega^q_{X/k}$ by the definition of the global complex.
+The original smooth exterior-cotangent quasicoherence theorem applies
+in every degree, including degree zero. The preceding theorem makes
+the same original $F$ affine. Pushforward of a quasicoherent module
+along an affine scheme morphism is quasicoherent. Apply this theorem
+to the actual original exterior module and the actual original
+relative Frobenius. Its output is exactly the stated term of $K$.
+\end{proof}
+
+Affineness and termwise quasicoherence supply the geometric hypotheses
+for an affine comparison with associated module complexes. They do
+not themselves identify homology of sections with sections of the
+global homology sheaf or construct a global Cartier isomorphism.

@@ -1,0 +1,48 @@
+\subsection{Genuine good-open isomorphisms of the original Rees scheme}
+\begin{theorem}[The actual Rees projection is an isomorphism off each original generator]
+\label{scheme:actual-rees-good-open-isomorphism}
+\lean{EnvelopeProperty.ReesPresentation.coefficient_mul_coordinateRatio,
+EnvelopeProperty.ReesPresentation.projection_preimage_basicOpen_subset,
+EnvelopeProperty.ReesPresentation.chartToAway,
+EnvelopeProperty.ReesPresentation.chartToAway_injective,
+EnvelopeProperty.ReesPresentation.isOpenImmersion_specMap_chartToAway,
+EnvelopeProperty.ReesPresentation.range_specMap_chartToAway,
+EnvelopeProperty.ReesPresentation.goodOpenLift,
+EnvelopeProperty.ReesPresentation.instIsOpenImmersion_goodOpenLift,
+EnvelopeProperty.ReesPresentation.goodOpenLift_comp_projection,
+EnvelopeProperty.ReesPresentation.range_goodOpenLift,
+EnvelopeProperty.ReesPresentation.isPullback_goodOpenLift,
+EnvelopeProperty.ReesPresentation.isIso_projection_over_generator}
+\leanok
+\uses{scheme:actual-rees-coordinate-cover,scheme:actual-rees-projection-surjective,algebra:actual-rees-chart-away-equivalence}
+Let $A$ be any commutative ring and $g_i$ any original family, with any actual
+index $j$ (including $g_j=0$ and zero-divisor or nilpotent coefficients). The SAME original Rees scheme projection becomes a
+genuine isomorphism over the original principal open $D(g_j)$ of
+$\operatorname{Spec}A$. No finite-family, Noetherianity, field or comparison
+certificate is needed.
+\end{theorem}
+\begin{proof}
+First show that the whole preimage of $D(g_j)$ lies in the original coordinate
+chart $D_+(Y_j)$. Lift an arbitrary actual source point into the proved genuine
+coordinate cover, say the chart of $Y_i$. In this SAME actual chart,
+the whole original homogeneous relation gives
+$g_i(Y_j/Y_i)=g_j$. The true coefficient triangle identifies membership over
+$D(g_j)$ with nonmembership of the ORIGINAL coefficient $g_j$ in the actual
+chart prime. The relation then forces $Y_j/Y_i$ outside that prime. The true
+Proj chart intersection formula says precisely that the original source
+point lies in $D_+(Y_j)$. This proves the whole scheme-open inclusion using
+actual original prime ideals.
+
+The whole original chart map into $A[1/g_j]$ is the genuinely proved original
+inclusion, and $A[1/g_j]$ is genuinely its localization at the original
+coefficient $g_j$. Its Spec map followed by the actual $j$-chart immersion
+is an open immersion into the original Rees scheme. Every original
+coefficient commutes, so its WHOLE projection triangle is the canonical
+Spec map $\operatorname{Spec}A[1/g_j]\to\operatorname{Spec}A$.
+The actual localization image is the chart principal open of $g_j$; the
+preceding entire preimage inclusion shows this is exactly the original
+projection preimage of $D(g_j)$. The actual open-immersion pullback criterion
+therefore gives a genuine pullback square with the identity on
+$\operatorname{Spec}A[1/g_j]$. The base-changed original projection is thus
+an isomorphism, including its original coefficient and section maps.
+\end{proof}

@@ -1,0 +1,21 @@
+\subsection{Boundary comparison from actual local maxima}\label{subsec:fc-line-boundary-comparison}
+
+\begin{lemma}[Compact connected boundary comparison]\label{lem:fc-line-boundary-comparison}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.le_zero_of_boundary_of_local_max_plateau}
+\leanok
+\uses{def:fc-standard-affinoid, lem:fc-line-topology}
+Let $U$ be an actual standard affinoid and let $f:U\to[-\infty,+\infty]$
+be continuous. Suppose $f\le0$ on the actual Gauss boundary. Suppose also
+that every positive interior local maximum of the ambient function $f$
+has an ambient neighbourhood on which $f$ is constant. Then $f\le0$ on $U$.
+\end{lemma}
+
+\begin{proof}
+If a positive value occurs, compactness supplies a positive global maximum.
+Its locus is nonempty and closed by continuity, and avoids the boundary.
+Every point of this locus is therefore an interior local maximum. The
+assumed local constancy makes the locus open relative to $U$. Connectedness
+then makes it all of $U$, contradicting the boundary inequality at the outer
+Gauss point. This is a general topological lemma; subsequent applications
+derive its local hypothesis from the actual rational-unit maximum theorem.
+\end{proof}

@@ -1,0 +1,40 @@
+\subsection{Proper native maximum over an arbitrary complete base field}
+
+\begin{lemma}[Actual lifts through the completed algebraic closure]
+\label{lem:fc-native-complete-algebraic-closure-surjective}
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_completeAlgebraicClosure}
+\leanok
+For every scheme over a complete ultrametric normed field, every whole
+original native point lifts to the literal scalar-changed scheme over the
+constructed completed algebraic closure of that field.
+\end{lemma}
+\begin{proof}
+Extend the original norm to the actual algebraic closure and give it the
+resulting ultrametric norm. This is an algebraic norm-preserving extension.
+The proved scalar-restriction surjectivity theorem for the completion of an
+algebraic normed extension constructs a lift of each original native point.
+Its scalar-changed scheme is exactly the pullback along the coefficient map
+to the constructed completed algebraic closure. All original coordinate
+values and the entire original support are retained by the native projection.
+\end{proof}
+
+\begin{theorem}[Geometrically connected proper native maximum principle]
+\label{thm:fc-geometrically-connected-proper-native-maximum}
+\uses{lem:fc-native-complete-algebraic-closure-surjective,thm:fc-connected-proper-native-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_geometricallyConnected_proper}
+\leanok
+Let a proper scheme over a complete ultrametric normed field have geometrically
+connected fibres over that field. Every native locally psh function attaining
+a global maximum is constant on the whole original native point space.
+\end{theorem}
+\begin{proof}
+Take the constructed completed algebraic closure of the original field.
+The actual scalar-changed scheme is proper by base change and connected by
+the original geometric connectedness. Pull back the unchanged native locally
+psh function through the genuine native scalar restriction. Lift the original
+maximizing point and any other original point using the preceding surjectivity
+theorem. The first lift is an actual global maximizer of the pulled-back
+function. The connected proper native maximum principle over the constructed
+complete algebraically closed field equates the two lifted values. Their
+whole native projections recover the original points, proving the assertion.
+\end{proof}

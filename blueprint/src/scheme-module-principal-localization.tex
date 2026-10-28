@@ -1,0 +1,51 @@
+\section{Whole quasicoherent sections localize at the original parameter}
+
+\begin{lemma}[Every original affine tuple restriction is parameter localization]
+\label{lem:scheme-module-affine-tuple-localization}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalLocalization.factorRestriction_isLocalizedModule}
+Let $X$ be a separated scheme, $\pi:X\to B$ any morphism,
+$M$ a quasicoherent module on $X$, $r\in\Gamma(B,\mathcal O_B)$,
+and $(U_i)$ a family of affine opens. For every nonempty finite tuple,
+the original restriction from its intersection $C$ to
+$C\cap\pi^{-1}D(r)$ is localization at the same original $r$,
+with its original $\Gamma(B,\mathcal O_B)$-module actions.
+\uses{sc0-affine-global-parameter:actual-restriction-localization}
+\end{lemma}
+\begin{proof}
+Separatedness makes $C$ affine: finite nonempty intersections
+of affine opens are affine because the diagonal is affine.
+Apply the affine-open localization theorem to this very $C$
+and the same original coefficient map. The tuple source at
+$X$ equals $C$ and its target at $\pi^{-1}D(r)$ equals
+$C\cap\pi^{-1}D(r)$. These equalities identify the actual
+restriction maps and coefficient actions, yielding the claim.
+\end{proof}
+
+\begin{theorem}[Whole original section restriction is localization]
+\label{thm:scheme-module-whole-principal-localization}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalLocalization.restriction_isLocalizedModule}
+If $X$ is quasicompact and separated, for every such $\pi,M,r$
+the entire original restriction
+\[
+ \Gamma(X,M)\longrightarrow\Gamma(\pi^{-1}D(r),M)
+\]
+is localization at the same $r$ as a map of original
+$\Gamma(B,\mathcal O_B)$-modules. Empty schemes and zero
+parameters are included.
+\uses{lem:scheme-module-affine-tuple-localization,prop:sheaf-finite-cech-term-localization,prop:scheme-module-cech-localization-criterion}
+\end{theorem}
+\begin{proof}
+Choose a finite affine open cover of $X$ using quasicompactness.
+In both degrees zero and one, every tuple intersection
+restriction localizes by the preceding lemma. The entire
+Cech term restriction therefore localizes by the finite
+product theorem, using common powers of the same $r$.
+The original section modules are the actual Cech kernels,
+and these identifications commute with the original open
+restrictions. The two-term kernel-localization theorem
+therefore proves that the entire original section restriction
+is localization. A finite empty cover is permitted throughout,
+so no nonemptiness hypothesis has been used.
+\end{proof}

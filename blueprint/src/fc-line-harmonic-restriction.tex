@@ -1,0 +1,54 @@
+\subsection{Actual harmonic restriction and polynomial units}\label{subsec:fc-line-harmonic-restriction}
+
+\begin{lemma}[A nonvanishing linear logarithm is actually harmonic]\label{lem:fc-linear-unit-log-harmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isHarmonic_logLinear_of_nonvanishing}
+\leanok
+\uses{def:fc-actual-harmonic, lem:fc-inflation-linear}
+If $T-a$ does not vanish at any actual point of a standard affinoid $U$,
+its real logarithm is an actual harmonic function on $U$.
+\end{lemma}
+
+\begin{proof}
+The rigid point $a$ is outside $U$. If it is outside the outer closed
+disc, the ultrametric inequality makes $|T-a|$ constant throughout $U$.
+Otherwise it lies in one of the actual open holes, say centred at $a_j$.
+The strict inequality $|a-a_j|<r_j\le|T-a_j|_x$ gives
+$|T-a|_x=|T-a_j|_x$ at every $x\in U$. Its logarithm is therefore one
+of the literal original harmonic coordinates.
+\end{proof}
+
+\begin{lemma}[Actual harmonic restriction]\label{lem:fc-actual-harmonic-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.restrict, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineHarmonicOn_harmonicExpression}
+\leanok
+\uses{lem:fc-linear-unit-log-harmonic, lem:fc-harmonic-vector-space}
+An actual harmonic function on a standard affinoid restricts to an actual
+harmonic function on every actual standard subaffinoid. In particular,
+an ambient harmonic expression is harmonic on the whole carrier in the
+local test-affinoid sense.
+\end{lemma}
+
+\begin{proof}
+Every original hole coordinate is nonvanishing on the original carrier,
+hence on the subaffinoid. Apply the preceding lemma to each coordinate
+and take its literal finite real linear combination and constant term.
+\end{proof}
+
+\begin{lemma}[Actual polynomial-unit logarithms]\label{lem:fc-polynomial-unit-log-harmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isLineHarmonicOn_polynomialRealLog, EnvelopeProperty.Berkovich.RelativeSpectrum.isLineHarmonicOn_rationalRealLog}
+\leanok
+\uses{lem:fc-linear-unit-log-harmonic, lem:fc-harmonic-vector-space,
+  def:fc-actual-line-harmonic-on}
+The real logarithm of a polynomial is harmonic on every actual domain on
+which its actual evaluations are all nonzero. The same holds for the real
+logarithm of an actual polynomial ratio on its common unit locus.
+\end{lemma}
+
+\begin{proof}
+Split the original polynomial over the algebraically closed field.
+Nonvanishing of the whole polynomial implies nonvanishing of each linear
+factor. Its real logarithm is the logarithm of the original leading
+coefficient plus the sum of the original root logarithms with their actual
+multiplicities. Apply the linear-unit lemma and actual harmonic vector
+operations. A polynomial ratio is the actual difference of its two
+polynomial logarithms on the common unit locus.
+\end{proof}

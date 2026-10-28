@@ -1,0 +1,399 @@
+\section{Retaining the original line in an arithmetic family}
+
+\begin{lemma}[The original normalized tuple map over a domain base]
+\label{lem:kn-arithmetic-original-line-chart}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineChart.affineTupleMap_eq_eval_chart}
+\leanok
+Let $R$ be a domain, let $A$ be any commutative ring, and let
+$r:R\to A$ and $a_0,\ldots,a_m\in A$ be the original coefficient map and
+unit-ideal tuple.  If $a_i=1$, the actual native tuple morphism
+$\operatorname{Spec} A\to\mathbb P^m_R$ is the coordinate-chart map
+whose polynomial coordinates are precisely the original $a_j$.
+\end{lemma}
+\begin{proof}
+Use the universal tuple over the domain $R[x_j:j\ne i]$, with pivot $1$.
+The established domain-source Rees-chart formula applies to that tuple.
+Evaluate the free variables at the original $a_j$.  Native naturality of
+the entire tuple morphism gives the required equality of scheme morphisms;
+polynomial extensionality identifies its chart map with the original
+evaluation map.  In particular $A$ need not be a domain or reduced.
+\end{proof}
+
+\begin{lemma}[Whole original maps and actual Hom-line sections under pullback]
+\label{lem:kn-arithmetic-original-line-power-sections}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.topSectionEquiv,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.homLine,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.homSectionEquiv,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.pulledHomLineIso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.equiv_pullback,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerSections.homSectionEquiv_pullback}
+\leanok
+Let $A$ be an actual original invertible sheaf and $B$ an original module.
+Whole original maps $A\to B$ are precisely actual global sections of the
+original $B\otimes A^\vee$.  This correspondence commutes with every actual
+scheme pullback, using the derived evaluation-preserving dual comparison
+and the canonical pullback-adjunction unit on actual global sections.
+\end{lemma}
+\begin{proof}
+The native tensor-dual adjunction gives the whole Hom/structure-line-map
+equivalence.  Evaluation at one identifies original structure-line maps
+with actual whole global sections; the inverse is the native top-section
+homomorphism.  The established native monoidal Hom-section pullback theorem
+and the genuine unit/tensor comparisons give the actual Hom-line
+comparison.  Evaluation at one and the canonical pullback unit section
+formula then give the claimed literal global-section equality.  No
+Hom-section compatibility or dual-matching certificate is assumed.
+\end{proof}
+
+\begin{lemma}[The actual section tensor map through a coefficient tower]
+\label{lem:kn-arithmetic-original-line-power-basechange}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transition,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transition_fst,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transition_snd,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.isPullback_transition,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transitionIso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transitionIso_eq,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.transitionIso_unitTop,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerBaseChange.globalComparison_transition}
+\leanok
+\uses{lem:kn-arithmetic-original-line-power-sections}
+For the original coefficient tower $R\to S\to T$, the actual canonical
+section map $S\otimes_R\Gamma(X,M)\to\Gamma(X_S,M_S)$, pulled through
+the genuine projection $X_T\to X_S$ and actual whole iterated-pullback
+comparison, is exactly the original section map for $T$ composed with
+the literal tensor coefficient map. Neither $R\to S$ nor $S\to T$
+is assumed flat.
+\end{lemma}
+\begin{proof}
+Construct the actual intermediate projection by the genuine scalar
+pullback and retain both original projection equations.  Whole unit
+section functoriality proves the comparison on an original section.
+Actual coefficient-map naturality retains each scalar in a pure tensor.
+Both canonical maps are additive, so tensor induction proves equality
+for every original tensor.  This is a produced comparison, rather than
+a base-change matching premise.
+\end{proof}
+
+\begin{lemma}[Actual later-stage morphisms from the original field maps]
+\label{lem:kn-arithmetic-original-line-power-morphisms}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.mapOfTensor,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.mapOfTensor_section,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.mapOfTensor_one_tmul,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.tensorOfMap,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.mapOfTensor_tensorOfMap,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.exists_pair_tensor_lifts,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerMorphisms.mapOfTensor_section_recovery}
+\leanok
+\uses{lem:kn-arithmetic-original-line-power-sections,
+lem:kn-arithmetic-original-line-power-basechange,
+lem:kn-arithmetic-original-line-coefficients}
+Let the original family be compact and separated, let $A,B$ be its actual
+invertible modules, and let the original field extension $R\to k$ be flat.
+Every original whole field-fibre map from $A_k$ to $B_k$ supplies an actual
+tensor in $k\otimes_R\Gamma(X,B\otimes A^\vee)$, whose constructed
+whole field-fibre map is exactly the given original map. Two original maps
+in opposite directions supply tensors at one produced finite coefficient
+stage. The canonical section map defines actual whole module morphisms
+over that stage, without flatness of that intermediate coefficient map.
+\end{lemma}
+\begin{proof}
+Use the actual Hom-line comparison and actual global-section base-change
+equivalence to construct each original tensor.  The inverse Hom/section
+correspondence recovers the original whole map; both inverse identities
+follow from the genuine isomorphisms used in this construction.  Apply
+simultaneous finite tensor-coefficient lifting to the two original tensors.
+At that actual common coefficient stage, use the canonical section tensor
+map, the derived Hom-line comparison and the inverse original Hom-section
+equivalence to construct the actual forward and reverse morphisms.
+The literal section tensor of each constructed map is retained by the
+proved inverse identities. The proved actual tensor-tower comparison gives
+the actual original section after the larger coefficient pullback.
+Whole-map recovery after the later coefficient transition is supplied by
+the actual whole-map finite-descent theorem, proved from native scalar
+and additive Hom-section compatibility and tensor induction.
+\end{proof}
+
+\begin{theorem}[The actual original line isomorphism descends]
+\label{thm:kn-arithmetic-original-line-power-iso}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerIso.isoOfRecoveredPair,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerIso.exists_iso_stage,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerIso.exists_iso_stage_of_proper}
+\leanok
+\uses{lem:kn-arithmetic-original-line-power-morphisms,
+thm:kn-original-line-whole-map-finite-descent,
+lem:kn-original-line-embedded-field-flat,
+lem:kn-original-line-cartesian-inverse}
+Let the original flat family be compact and separated over $R\subset k$,
+and let $A,B$ be its actual original invertible modules. Every actual whole
+field-fibre isomorphism $A_k\simeq B_k$ descends to an internally constructed
+isomorphism $A_C\simeq B_C$ over a produced finitely generated coefficient
+subalgebra $R\subset C\subset k$. Both entire original morphisms, forward
+and inverse, are recovered. Properness of the original family suffices for
+the compactness and separatedness premises.
+\end{theorem}
+
+\begin{proof}
+The actual embedding in the field derives flatness of $R\to k$ through
+the genuine fraction field, without identifying $k$ with that fraction field.
+Construct the two original tensors and a common finite coefficient lift;
+the actual section maps and actual Hom-section transport produce the forward
+and reverse model maps and their exact whole original recoveries.
+Conjugating by the actual iterated-pullback comparisons shows that their
+two actual original-fibre composites are identities. The proved cartesian
+coefficient square and actual injective coefficient Hom detection then
+detect each identity on the model. These two model maps are therefore the
+actual morphisms of a genuine isomorphism. No model isomorphism, model map,
+or model inverse is a supplied input.
+\end{proof}
+
+\begin{theorem}[An actual ample arithmetic model of the original ample line]
+\label{thm:kn-arithmetic-original-ample-model}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerModel.ample_of_iso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerModel.exists_ample_scalar_stage,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerModel.exists_ample_canonical_family,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLinePowerModel.exists_original_ample_model}
+\leanok
+\uses{thm:kn-arithmetic-original-line-model,
+lem:kn-arithmetic-original-line-power-fibre,
+thm:kn-arithmetic-original-line-power-iso,
+thm:kn-arithmetic-original-dimension-spread,
+thm:kn-ample-scalar-extension}
+Let $X\to\operatorname{Spec}k$ be the original smooth morphism of relative
+dimension $n$ and let $L$ be the original geometrically ample invertible
+module. Its original ample datum internally constructs a closed projective
+embedding $j$, the actual canonical arithmetic family of that same $j$,
+a produced finite-type integer coefficient subalgebra $S\subset k$, and
+an actual ample model $L_S$ on that same canonical family. The family is
+smooth of the original relative dimension $n$, and the entire original
+pullback of $L_S$ is isomorphic to the original $L$ itself.
+Neither a model line, a model power isomorphism, nor a model ampleness
+certificate is supplied as an input. The ambient projective dimension
+is distinct from the original relative dimension $n$.
+\end{theorem}
+\begin{proof}
+Extract the actual positive exponent $r$ and original closed embedding
+$j$ from the original ample criterion, together with its actual original
+$j^*\mathcal O(1)\simeq L^{\otimes r}$. The existing original-family
+producer constructs an actual finite coefficient stage of that same $j$
+where the family has relative dimension $n$. Construct the original line
+model there, retaining the entire original pullback comparison.
+That comparison gives the actual original field-fibre isomorphism between
+the model's $r$th power and the original first projective twist. The preceding
+isomorphism-descent theorem constructs a genuine further-stage power
+isomorphism, including its inverse, using the actual finite coefficient maps.
+The actual original first twist is very ample; genuine scalar base change
+retains its very ampleness. Native power/pullback comparison and the
+constructed power isomorphism therefore prove ampleness of the same model
+line. The canonical cartesian family transition transfers this actual model
+to the canonical later integer coefficient family, preserving the original
+relative dimension and whole original line pullback.
+The original $L$ is retained throughout, and is not replaced by its power.
+\end{proof}
+
+\begin{lemma}[Original sections on an arbitrary affine source]
+\label{lem:kn-arithmetic-original-line-tuple}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineTuple.pulledPivot_isIso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineTuple.pulledCoordinate_relation}
+\leanok
+\uses{lem:kn-arithmetic-original-line-chart}
+In the preceding situation, the original pulled-back $i$th coordinate
+section of $\mathcal O(1)$ is an isomorphism, and the original $j$th section
+is its scalar multiple by precisely $a_j$ in the original affine ring.
+\end{lemma}
+\begin{proof}
+On the genuine universal polynomial domain the original chart section
+isomorphism and coordinate relation follow from the established projective
+chart trivialization.  Pull back both statements along the actual universal
+evaluation map.  Native pullback functoriality and naturality of
+$\Gamma(\operatorname{Spec}(-),\mathcal O)$ retain the literal original
+scalar $a_j$.  This argument requires no domain hypothesis on the source.
+\end{proof}
+
+\begin{theorem}[The actual generated-line morphism on the original scheme]
+\label{thm:kn-arithmetic-original-line-generated}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineGenerated.projectiveTwistIso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineGenerated.projectiveTwistIso_sectionHom,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineGenerated.exists_projective_morphism}
+\leanok
+\uses{lem:kn-arithmetic-original-line-tuple}
+Let $X\to\operatorname{Spec}R$ be any scheme over a domain, and let $M$
+be the original invertible module with a finite family of global generators.
+There is an actual morphism $g:X\to\mathbb P^b_R$ over the original base
+and an actual isomorphism $g^*\mathcal O(1)\simeq M$.
+\end{theorem}
+\begin{proof}
+Use the established original generated-line morphism.  On the genuine
+affine neighborhoods where an original generator trivializes $M$, the
+preceding lemma identifies the original pulled coordinate pivot and all
+its original scalar ratios.  The pivot identifies $g^*\mathcal O(1)$ with
+$M$ there, preserving every original generating section.  Preservation of
+the same sections proves compatibility on the actual overlaps, so the
+existing section-preserving gluing theorem gives the whole isomorphism.
+The morphism's original base triangle is the established one.  No
+integrality, connectedness, or reducedness of $X$ is assumed.
+\end{proof}
+
+\begin{theorem}[An expression retaining the original line itself]
+\label{thm:kn-arithmetic-original-line-expression}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineExpression.untwistIso,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineExpression.exists_original_line_expression}
+\leanok
+\uses{thm:kn-arithmetic-original-line-generated}
+Let $j:X\hookrightarrow\mathbb P^d_R$ be the original closed embedding
+over a domain and let $L$ be the original invertible module.  There are
+actual $N,b$ and an actual $g:X\to\mathbb P^b_R$ over the original base
+with
+\[
+g^*\mathcal O(1)\simeq L\otimes j^*\mathcal O(N),\qquad
+g^*\mathcal O(1)\otimes(j^*\mathcal O(N))^\vee\simeq L.
+\]
+\end{theorem}
+\begin{proof}
+Closed-projective Serre generation applied to the original finite-type
+quasicoherent line $L$ constructs the actual finite generating family of
+$L\otimes j^*\mathcal O(N)$.  Apply the preceding theorem to that actual
+family.  The second isomorphism uses the genuine dual evaluation for the
+same pulled projective twist and the original monoidal associator and
+unitor.  Neither an original positive power of $L$ nor a desired comparison
+is supplied as an input.
+\end{proof}
+
+\begin{theorem}[A constructed morphism on the same original family descends]
+\label{thm:kn-arithmetic-original-line-descent}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineDescent.originalBaseChangeMap,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineDescent.exists_projective_morphism_baseChange}
+\leanok
+Let $A\subset k$ be the original Noetherian coefficient ring in a field,
+let $Y\to\operatorname{Spec}A$ be quasi-compact and quasi-separated,
+and let the original $X$ be its actual scalar fibre over $k$, with the
+original cartesian square.  Every actual morphism $g:X\to\mathbb P^b_k$
+over $k$ descends to an actual $g_B:Y\times_A B\to\mathbb P^b_B$ for
+a produced finitely generated subalgebra $A\subset B\subset k$.
+The entire original morphism is recovered under the original scalar maps.
+\end{theorem}
+\begin{proof}
+Use the native filtered system of finitely generated subalgebras of $k$.
+The actual top and bottom scalar isomorphisms place the original cartesian
+family in this system.  Native finite-presentation approximation for the
+projective target produces a morphism to $\mathbb P^b_A$ on a later base
+change of this same family, together with its whole original equation.
+Cancel the actual bottom scalar isomorphism to identify this source with
+the literal $Y\times_A B$.  The original over-base equation then lifts
+the constructed morphism through the actual cartesian projective
+coefficient square, giving $g_B$.  Equality of both actual pullback
+projections proves the whole original comparison.  No later morphism,
+finite coefficient model of $g$, or desired comparison is assumed.
+\end{proof}
+
+\begin{lemma}[Canonical transitions retain the original map]
+\label{lem:kn-arithmetic-original-line-transition}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.scalarOriginalMap_transition,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.originalPullbackTransitionIso}
+\leanok
+For every actual coefficient inclusion $S\subset T$, the canonical
+transition $X_T\to X_S$ composed with the entire original map
+$X\to X_T$ equals the original map $X\to X_S$.  Consequently every
+module on $X_S$ has the same original pullback after this transition.
+\end{lemma}
+\begin{proof}
+Compare the two actual projections defining the canonical coefficient
+pullback.  Their whole original equations agree under the actual scalar
+inclusions.  Native pullback composition gives the displayed module
+comparison, with the same original $X$ as source.
+\end{proof}
+
+\begin{theorem}[An actual model of the original line]
+\label{thm:kn-arithmetic-original-line-model}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.exists_scalar_projective_morphism,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.modelLine,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.modelLine_isInvertible,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.exists_original_line_model,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.exists_original_line_model_relativeDimension}
+\leanok
+\uses{thm:kn-arithmetic-original-line-expression,
+thm:kn-arithmetic-original-line-descent,
+lem:kn-arithmetic-original-line-transition}
+Let $X_S$ be the actual canonical arithmetic family of the original closed
+embedding, at any given finite-type integer coefficient stage $S$.
+For the actual original invertible $L$ there is a produced finite-type
+coefficient enlargement $S\subset T\subset k$ and an internally
+constructed invertible $L_T$ on the same canonical $X_T$, with an actual
+whole isomorphism $L_T|_X\simeq L$.  If the given $X_S$ is smooth of the
+original relative dimension $n$, the same $X_T$ retains that dimension.
+\end{theorem}
+\begin{proof}
+Construct the original two-twist expression and its actual projective
+morphism.  Descend that morphism on the actual $X_S$ using finite-presentation
+approximation.  The actual cartesian canonical transition identifies the
+produced scalar base change with $X_T$, so the whole original morphism
+comparison survives.  Define
+$L_T=g_T^*\mathcal O(1)\otimes(j_T^*\mathcal O(N))^\vee$.
+Its invertibility is obtained from the actual two original projective
+twists.  Genuine pullback composition, the proved projective coefficient
+twist comparison, and native pullback of the dual give its actual original
+pullback.  Compose with the already constructed untwisting isomorphism to
+recover the original $L$ itself.  The same canonical transition preserves
+the previously proved relative dimension.  No line-model or desired
+original-line comparison is an input.
+\end{proof}
+
+\begin{lemma}[The original positive-power comparison on the actual original fibre]
+\label{lem:kn-arithmetic-original-line-power-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.originalPowerComparison,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineFamily.originalPowerComparisonOnLiteralFibre}
+\leanok
+\uses{thm:kn-arithmetic-original-line-model}
+Given the constructed original comparison $a_T^*L_T\simeq L$ and the
+original ample datum $j^*\mathcal O(1)\simeq L^{\otimes r}$, there is
+an actual isomorphism
+\[
+a_T^*(L_T^{\otimes r})\simeq a_T^*(j_T^*\mathcal O(1)).
+\]
+It also gives the same actual comparison on the literal native scalar fibre
+of $X_T$ over $k$.
+\end{lemma}
+\begin{proof}
+Apply native pullback of tensor powers to the actual original model
+comparison and compose the original positive-power datum with the
+inverse of the proved whole scalar-twist pullback isomorphism.
+The actual canonical original pullback square identifies $X$ with the
+literal fibre. Pull the constructed comparison along the inverse of that
+actual isomorphism and use native pullback composition on both sides.
+\end{proof}
+
+\begin{remark}[Retaining the complete ample-model coefficients]
+The original power comparison and its inverse now descend by the actual
+finite-coefficient and Hom-detection construction above; that comparison,
+rather than the tensor-difference expression alone, proves model ampleness.
+A further coefficient enlargement need not preserve smoothness of the
+coefficient ring over the integers. The separate arithmetic-stage producer
+therefore smooth-localizes the resulting coefficient stage before selecting
+the large-characteristic point and its Witt lift, retaining all model and
+power-comparison coefficients. Kodaira vanishing is not asserted here.
+\end{remark}
+
+\begin{lemma}[Finite original tensor coefficients descend simultaneously]
+\label{lem:kn-arithmetic-original-line-coefficients}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineCoefficients.coefficientMap,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineCoefficients.coefficientMap_tmul,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineCoefficients.exists_fg_tensor_lift,
+EnvelopeProperty.Vanishing.ArithmeticOriginalLineCoefficients.exists_fg_tensor_pair_lift}
+\leanok
+Let $R\to k$ be the original coefficient algebra, let $M,N$ be the original
+$R$-modules, and fix any finitely generated stage $B_0\subset k$.
+Every original $z\in k\otimes_R M$ and $w\in k\otimes_R N$ lift
+simultaneously to tensors over a produced finitely generated
+$R$-subalgebra $B_0\subset B\subset k$, under the literal original
+coefficient inclusions and identity maps of $M,N$.
+\end{lemma}
+\begin{proof}
+An actual tensor is a finite sum of pure tensors.  Adjoin its actual finite
+coefficient set to the fixed stage and form the same sum with the original
+module entries.  The original tensor map sends that sum to the original
+tensor term by term.  For two different modules first lift one tensor,
+then lift the other over a stage containing the first produced stage.
+Transport the first tensor by the actual coefficient inclusion; functoriality
+of the literal tensor map retains its entire original value.  No flatness
+of the enlargement, finite-module assumption, or tensor-lift certificate is
+used.
+\end{proof}

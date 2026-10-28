@@ -1,0 +1,123 @@
+\subsection{Actual projective schemes of homogeneous ideal quotients}
+\label{subsec:homogeneous-projective-quotients}
+
+\begin{theorem}[Genuine homogeneous-quotient projective closed immersion]
+\label{graded:projective-homogeneous-quotient-immersion}
+\lean{EnvelopeProperty.GradedQuotient.awayMap_surjective,
+EnvelopeProperty.GradedQuotient.quotientSchemeMap,
+EnvelopeProperty.GradedQuotient.isPullback_awayMap,
+EnvelopeProperty.GradedQuotient.instIsClosedImmersion_quotientSchemeMap}
+\leanok
+\uses{graded:homogeneous-ideal-quotient-grading}
+Let $A$ be a commutative algebra over an arbitrary commutative ring $R$,
+with an actual internal natural-number grading, and let $J$ be a genuine
+homogeneous ideal. The actual graded quotient constructed above gives
+a canonical scheme morphism
+\[
+ \operatorname{Proj}(A/J)\longrightarrow\operatorname{Proj}(A).
+\]
+This genuine Mathlib projective-spectrum morphism is a closed immersion.
+It retains the original ideal, including nilpotents and powers; no
+radical replacement, field, domain, noetherian or finite-generation
+assumption is used.
+\end{theorem}
+\begin{proof}
+The original quotient map is genuinely graded, and its image of the
+actual irrelevant ideal is the quotient irrelevant ideal. These proved
+facts supply the precise input to the actual Mathlib projective-spectrum
+scheme morphism, rather than an assumed projective-chart certificate.
+
+Fix any original homogeneous element $s$ of positive degree. Every
+actual element of the degree-zero homogeneous localization of $A/J$
+away from the image of $s$ has a genuine fraction representation with
+numerator in degree $n\deg(s)$ and denominator the $n$th power of that
+image. The proved same-degree quotient lift of the numerator gives an
+actual original homogeneous fraction with denominator $s^n$. The true
+homogeneous-localization map sends this entire fraction to the selected
+quotient fraction. Consequently the entire away-ring map is surjective,
+including the degenerate case in which the quotient localization is zero.
+
+The actual projective-spectrum functoriality theorem gives the whole
+commuting square between these two actual affine spectra and their
+canonical open immersions into the projective schemes. Its exact
+basic-open preimage formula identifies the whole source chart as the
+preimage of the target chart. The actual open-immersion pullback theorem
+therefore makes this a genuine scheme pullback square.
+
+The actual spectrum map of the surjective away-ring homomorphism is a
+closed immersion. The preceding true pullback identification conjugates
+it to the restriction of the original projective scheme map to the
+selected target affine chart. The actual homogeneous affine open cover
+covers all of the target projective scheme. Since closed immersion is
+local at the target, these derived closed immersions prove the assertion
+for the entire canonical projective morphism. In particular actual
+surjectivity on stalks and the closed topological embedding are obtained
+from genuine scheme closed immersions, without independent certificates.
+\end{proof}
+
+\begin{theorem}[True original-ideal image and homogeneous localization kernel]
+\label{graded:projective-homogeneous-quotient-ideal-sheaf}
+\lean{EnvelopeProperty.GradedQuotient.quotientIdealSheaf,
+EnvelopeProperty.GradedQuotient.quotientIdealSheaf_support,
+EnvelopeProperty.GradedQuotient.mem_quotientIdealSheaf_awayToSection_iff,
+EnvelopeProperty.GradedQuotient.awayMap_mk_eq_zero_iff,
+EnvelopeProperty.GradedQuotient.quotientIdealSheaf_awayToSection_comap,
+EnvelopeProperty.GradedQuotient.quotientPoint,
+EnvelopeProperty.GradedQuotient.quotientSchemeMap_quotientPoint,
+EnvelopeProperty.GradedQuotient.range_quotientSchemeMap,
+EnvelopeProperty.GradedQuotient.quotientIdealSheaf_support_eq_zeroLocus,
+EnvelopeProperty.GradedQuotient.mem_quotientIdealSheaf_awayToSection_mk_iff}
+\leanok
+\uses{graded:projective-homogeneous-quotient-immersion,graded:homogeneous-ideal-quotient-grading}
+The preceding actual closed immersion has its genuine kernel ideal sheaf.
+Its support and the scheme image are exactly the relevant original
+homogeneous prime ideals containing $J$. On an actual positive-degree
+homogeneous chart $D_+(s)$, its entire ideal pulls back under the true
+homogeneous-localization section isomorphism to the kernel of the actual
+away-ring quotient map. In particular, for a same-degree fraction
+$a/s^n$, membership in this ideal is precisely
+\[
+ \text{there exists }m\geq0\text{ such that }s^m a\in J.
+\]
+This is the original localization annihilator criterion, not a radical
+or reduced quotient criterion.
+\end{theorem}
+\begin{proof}
+For a relevant homogeneous prime $p$ containing $J$, take its actual
+ideal image in $A/J$. The genuine quotient prime-ideal theorem shows
+this image is prime, and the actual graded ideal map makes it homogeneous.
+Original quotient map/comap cancellation recovers all of $p$. If the
+quotient irrelevant ideal lay in the image prime, the proved entire
+irrelevant-image equality and map/comap adjunction would put the original
+irrelevant ideal in $p$, contradicting relevance. Thus the actual image
+prime defines a quotient projective point, whose whole scheme image is
+$p$. Conversely every original element of $J$ maps to zero in $A/J$, so
+it belongs to the entire contracted prime of every quotient point. This
+proves the stated genuine image equality without replacing $J$ by any
+radical or assuming a prime-lift certificate.
+
+Take the actual kernel ideal sheaf of the proved closed immersion.
+A closed immersion is quasi-compact, so on every actual affine open
+its real sheaf ideal is exactly the kernel of the original section map.
+Its support is the closure of the scheme image. The actual closed
+embedding makes that image closed, so its support is the image itself.
+
+On a positive homogeneous chart, the entire projective functoriality
+identity equates the original away-to-section map followed by the actual
+section pullback with the genuine away-ring quotient map followed by the
+quotient away-to-section map. The latter map is an actual isomorphism,
+so a section's pullback is zero exactly when its whole away-ring quotient
+image is zero. This proves membership for every original away-ring
+element and therefore the full pulled-back ideal equality.
+
+For the selected fraction $a/s^n$, forget the genuine homogeneous
+localization into its actual ordinary localization; this map is injective.
+Its quotient image is the ordinary quotient fraction with numerator the
+class of $a$ and denominator the class of $s^n$. The true localization
+zero criterion says this fraction is zero precisely when a power of the
+class of $s$ annihilates the class of $a$. The actual quotient kernel
+criterion translates this to $s^m a\in J$. This proves the formula on
+the original ideal, retaining all local nilpotent structure. It does not
+assert that the associated sheaf recovers irrelevant-supported parts of
+$J$ from its global sections, nor compare a coherent analytic sheaf.
+\end{proof}

@@ -1,0 +1,46 @@
+\section{The actual global range quasi-isomorphism}
+\label{sec:di-actual-witt-global-quasi-isomorphism}
+
+\begin{theorem}[Actual positive-degree and finite-range quasi-isomorphisms]
+\label{thm:di-actual-witt-positive-range}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.higherCochainMap_quasiIsoAt,EnvelopeProperty.DI.ActualWittDecomposition.finiteCochainMap_quasiIsoAt}
+\leanok
+\uses{thm:di-actual-witt-higher-sheaf-cartier,lem:di-actual-witt-zero-range,lem:di-reused-native-cover-detection}
+Under the original smooth separated pure-dimensional Witt-lift
+hypotheses over the original perfect characteristic-$p$ field, the actual
+higher map is a quasi-isomorphism in its source degree $r+1<p$.
+Consequently the actual finite coproduct map $\Phi$ is a
+quasi-isomorphism in every degree $0\le q<p$.
+\end{theorem}
+\begin{proof}
+\leanok
+On each original cover member, the entire class of its evaluated
+cochain is the restriction of the original global Cartier isomorphism,
+so it is invertible. Cancel the original single-object homology
+isomorphism, the original restriction-homology isomorphism and the
+already proved native local-evaluation quasi-isomorphism. Naturality of
+the native restriction homology square shows that the restriction of
+the original higher homology map is invertible. The existing original
+cover criterion detects this globally. Degree zero is already proved.
+In positive degree use the actual finite-summand identity and the
+existing distinct-degree coproduct homology criterion. Every comparison
+is derived from the original geometry; no class or range condition is
+an additional input.
+\end{proof}
+
+\begin{theorem}[The actual good-truncated map is a quasi-isomorphism]
+\label{thm:di-actual-witt-truncated-map-quasi-isomorphism}
+\lean{EnvelopeProperty.DI.ActualWittDecomposition.truncatedCochainMap_quasiIso}
+\leanok
+\uses{thm:di-actual-witt-positive-range,def:di-actual-witt-truncated-source-map}
+The original constructed map $\overline\Phi:S_p\to\tau_{<p}T$ is a
+quasi-isomorphism.
+\end{theorem}
+\begin{proof}
+\leanok
+Apply the proved finite-source range criterion to the actual finite
+map, using the range quasi-isomorphisms just established. Extension by
+zero controls negative degrees, genuine good truncation controls the
+degrees at least $p$, and the original source-truncation isomorphism
+retains the same actual map below the cutoff.
+\end{proof}

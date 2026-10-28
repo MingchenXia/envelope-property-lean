@@ -1,0 +1,26 @@
+\section{Eventual global generation of the original ample line}
+
+\begin{lemma}\label{lem:scheme-ample-line-eventual-generation}
+\leanok
+\lean{EnvelopeProperty.SchemeAmpleLineGlobalGeneration.exists_eventual_generatingSections}
+Let $R$ be a commutative ring, $p:X\to\operatorname{Spec}R$ a scheme,
+and $L$ the original invertible module. Suppose $L$ is ample in the geometric
+positive-power criterion: for some $r>0$ there is a closed immersion
+$i:X\hookrightarrow\mathbf P_R^n$ over the original base and an isomorphism
+$i^*\mathcal O(1)\simeq L^{\otimes r}$.
+Then there is $N\in\mathbf N$ such that every original power
+$L^{\otimes m}$, $m\ge N$, has a finite family of global generating sections.
+\uses{thm:positive-power-projective-eventual-generation}
+\end{lemma}
+
+\begin{proof}
+Extract $r$, its positivity, the actual closed immersion, and the whole module
+isomorphism from the geometric ample datum. Apply eventual generation from
+positive-power projective data to this same immersion and line, using its
+zeroth coordinate hyperplane. That theorem applies Serre generation separately
+to the finitely many residue powers $L^{\otimes a}$, $0\le a<r$, takes one
+common bound, and uses $m=a+r\lfloor m/r\rfloor$ to transport the resulting
+finite families to the actual module $L^{\otimes m}$. Thus its bound covers
+every sufficiently large exponent. No global-generation hypothesis or
+compatibility certificate is added to the ample datum.
+\end{proof}

@@ -1,0 +1,19 @@
+\section{Every original tensor section determines the coherent tensor map}
+
+\begin{lemma}[Native coherent tensor extensionality]
+\label{lem:scheme-native-coherent-tensor-ext}
+\lean{EnvelopeProperty.SchemeTensorSectionExt.tensorSection_hom_ext}
+\leanok
+For arbitrary modules $M,N,P$ on a scheme $X$, two morphisms
+$M\otimes N\to P$ are equal whenever they agree on every actual pure
+tensor section over every original open of $X$. No global generation
+or affine hypothesis is required.
+\end{lemma}
+\begin{proof}
+Precompose both maps by the inverse of the original monoidal tensor
+comparison. The existing sheafification tensor extensionality reduces
+equality to the original sheafification-unit images of pure tensors.
+Those images followed by this inverse comparison are precisely the
+original native tensor sections. The given equality therefore applies
+to every required section, and the comparison is an isomorphism.
+\end{proof}

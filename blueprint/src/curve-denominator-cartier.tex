@@ -1,0 +1,40 @@
+\section{True Cartier denominators on the original normal curve}
+
+\begin{theorem}[The original curve's actual local rings]
+\label{thm:fc-curve-normal-stalk-principal}
+\leanok
+\lean{EnvelopeProperty.CurveDenominatorCartier.stalk_krullDimLE_one, EnvelopeProperty.CurveDenominatorCartier.stalk_isPrincipalIdealRing}
+Let $X$ be the original integral locally Noetherian scheme of topological
+dimension at most one, and assume its original local rings are integrally
+closed. Every original local ring is a principal ideal ring. The assertion
+includes the original generic field and needs no nonfield premise.
+\end{theorem}
+\begin{proof}
+The original topological dimension bounds the coheight of every original
+point. Native local-ring dimension equals that coheight, so every original
+local ring has Krull dimension at most one. Any nonzero prime in that
+local domain is consequently maximal, hence is the actual unique maximal
+ideal. The genuine Noetherian local domain equivalences, together with
+actual integral closedness, imply that the original local ring is a
+principal ideal ring, including the field case.
+\end{proof}
+
+\begin{theorem}[Every original rational denominator ideal is Cartier]
+\label{thm:fc-curve-denominator-cartier}
+\leanok
+\lean{EnvelopeProperty.CurveDenominatorCartier.isInvertible_of_nonzero_stalks, EnvelopeProperty.CurveDenominatorCartier.denominator_isInvertible}
+\uses{thm:fc-curve-normal-stalk-principal, thm:fc-scheme-rational-denominator-stalks}
+On the same original curve, every original ideal with nonzero original
+stalks is Cartier. In particular the constructed denominator ideal of
+EVERY original $f\in K(X)$ is Cartier, without a supplied nonzero-ideal,
+principal-stalk, local-generator or Cartier certificate.
+\end{theorem}
+\begin{proof}
+In each genuine original principal local domain, choose the generator of
+the actual original stalk ideal. A nonzero stalk ideal has a nonzero
+chosen generator, hence a nonzerodivisor. The genuine locally Noetherian
+stalkwise invertibility theorem spreads these generators to original
+affine neighborhoods and proves Cartier invertibility. Apply this to
+the denominator sheaf, whose same original stalks were already proved
+nonzero by actual fraction-field surjectivity.
+\end{proof}

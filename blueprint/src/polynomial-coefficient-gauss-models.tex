@@ -1,0 +1,136 @@
+\subsection{Whole Gauss coefficient interchange and genuine projective model logs}
+\label{subsec:polynomial-coefficient-gauss-models}
+
+\begin{theorem}[True coefficient/variable interchange on whole polynomials]
+\label{polynomial:coefficient-variable-interchange}
+\lean{EnvelopeProperty.polynomialCoefficientSwap,
+EnvelopeProperty.polynomialCoefficientSwap_X,
+EnvelopeProperty.polynomialCoefficientSwap_C,
+EnvelopeProperty.polynomialCoefficientSwap_monomial,
+EnvelopeProperty.polynomialCoefficientSwap_monomial_coeff,
+EnvelopeProperty.polynomialCoefficientSwap_coeff_homogeneousComponent}
+\leanok
+For arbitrary commutative coefficient semirings there is an actual algebra
+isomorphism between multivariable polynomials with polynomial coefficients
+and polynomials with multivariable coefficients. It sends each entire
+coefficient polynomial to its true coefficientwise constant-polynomial
+image and each multivariable variable to its constant polynomial image.
+Its univariate coefficients commute with every original multivariable
+homogeneous-component operator.
+\end{theorem}
+\begin{proof}
+Compose the actual Mathlib polynomial/optional-variable algebra isomorphisms
+in their appropriate inverse directions. These actual isomorphisms have
+whole-ring inverse laws. Their true constant and variable formulas imply
+the asserted coefficient-polynomial and variable identities by polynomial
+algebra-homomorphism extensionality and actual coefficient commutation.
+An entire multivariable monomial with coefficient polynomial $q$ maps to
+the true coefficientwise image of $q$, multiplied by the constant
+multivariable monomial. Taking its univariate coefficient gives the
+original multivariable monomial with the corresponding actual coefficient
+of $q$. A homogeneous-component operator retains or kills that entire
+monomial according to its original multivariable degree. Thus both
+orders of the claimed operations agree on every genuine monomial;
+additive polynomial induction proves agreement on every whole polynomial.
+No generator-value norm inference or ring-interchange certificate is used.
+\end{proof}
+
+\begin{theorem}[Generic whole Gauss naturality and grading stability]
+\label{polynomial:gauss-coefficient-grading-stability}
+\lean{EnvelopeProperty.Berkovich.Spectrum.gauss_comap,
+EnvelopeProperty.Berkovich.Spectrum.polynomialGauss,
+EnvelopeProperty.Berkovich.Spectrum.polynomialGauss_val_X,
+EnvelopeProperty.Berkovich.Spectrum.polynomialGauss_val_C,
+EnvelopeProperty.Berkovich.Spectrum.polynomialGauss_isPolynomialGraded,
+EnvelopeProperty.Berkovich.Spectrum.continuous_polynomialGauss_prod,
+EnvelopeProperty.Berkovich.Spectrum.isBounded_gauss,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.polynomialGauss,
+EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_polynomialGauss_prod,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.polynomialGauss,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.polynomialGauss_val_apply,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.continuous_polynomialGauss}
+\leanok
+\uses{polynomial:coefficient-variable-interchange,spectrum:gauss-point,spectrum:gauss-joint-continuity,projective:general-normalized-spectrum,projective:general-relative-normalized-charts}
+An actual ring homomorphism commutes with genuine Gauss pullback for
+arbitrary seminorms and nonnegative radii, including radius zero.
+Interchanging coefficients in the Gauss extension of a genuinely graded
+multivariable seminorm produces another genuinely graded multivariable
+seminorm. It retains all original variable values, and its entire
+coefficient restriction is the genuine Gauss extension of the original
+coefficient seminorm. Normalization therefore gives a true relative
+normalized projective point for that precise Gauss coefficient seminorm.
+\end{theorem}
+\begin{proof}
+The two Gauss restrictions have identical original weighted coefficient
+values, by the actual polynomial coefficient-map formula. The genuine
+Gauss coefficient-bound criterion and lower bound for every coefficient
+prove both whole seminorm inequalities, identifying the entire points
+without assuming coefficient-map injectivity or finite supports survive.
+
+For the interchanged Gauss point, the preceding entire coefficient and
+homogeneous-component commutation makes each projected weighted coefficient
+value at most its original weighted coefficient value, by genuine
+original gradedness. Each is bounded by the full original Gauss norm.
+The genuine Gauss bound criterion then bounds the entire homogeneous
+projection by the entire point norm. The independently proved projection
+criterion yields true gradedness on every whole polynomial. Constant
+variable values follow from the actual algebra interchange and Gauss
+constant formula. The entire coefficient-polynomial formula and the
+preceding Gauss naturality identify the prescribed coefficient
+restriction; normalized variables give the asserted actual projective
+point. No field, boundedness, completeness or positive-radius hypothesis
+is needed for these generic identities. Whole-ring pullback is continuous
+in the pointwise topology, and the genuine Gauss construction is jointly
+continuous in the point and radius. Restricting these actual continuous
+maps to the derived normalized and fixed-coefficient subtypes proves
+the stated continuity. Finally, if every original coefficient value
+and the radius are at most one, every weighted coefficient value is
+at most one. The true Gauss bound criterion proves whole-point boundedness.
+\end{proof}
+
+\begin{theorem}[Actual bounded polynomial coefficient model and original Gauss ideal function]
+\label{projective:gauss-polynomial-model-ideal-log}
+\lean{EnvelopeProperty.ProjBerk.gaussModelPoint,
+EnvelopeProperty.ProjBerk.gaussModelPoint_val_apply,
+EnvelopeProperty.ProjBerk.gaussModelCoefficient_le_one,
+EnvelopeProperty.ProjBerk.continuous_gaussModelPoint,
+EnvelopeProperty.ProjBerk.phiNorm_eq_nativeModelIdealNorm,
+EnvelopeProperty.ProjBerk.phiIdeal_eq_nativeModelIdealLog}
+\leanok
+\uses{polynomial:gauss-coefficient-grading-stability,projective:native-homogeneous-model-ideal-representation,projective:ideal-spectrum-bridge,projective:paper-normalized-spectrum-bridge,lem:general-ideal-pullback}
+For the old normalized projective point over a trivially valued field,
+the actual Gauss extension of radius $e^{-1}$ defines, after the true
+coefficient interchange, a native normalized projective point over the
+MODEL coefficient ring $k[t]$ with its genuine bounded Gauss seminorm.
+For an actual homogeneous ideal $J\subseteq k[t][X_0,\ldots,X_n]$,
+let $I$ be its entire original image in $(k[X_0,\ldots,X_n])[t]$ under
+the preceding true interchange. The old whole Gauss ideal norm and
+$\phi_I$ equal the intrinsic actual proper-center model norm and logarithm
+of the genuine projective kernel ideal sheaf attached to $J$.
+\end{theorem}
+\begin{proof}
+The old point specializes the genuine trivial-coefficient normalized
+point, with every original polynomial value retained. The preceding
+Gauss stability and entire coefficient identity give the true relative
+normalized point over the actual polynomial coefficient ring $k[t]$.
+The original coefficient values on $k$ are at most one and $e^{-1}\le1$;
+the genuine coefficientwise Gauss bound criterion therefore bounds every
+actual coefficient polynomial in $k[t]$. This is a bound on the model
+ring, not on a nontrivially valued coefficient field.
+
+Apply the proved actual center-stalk homogeneous model-ideal representation
+to this genuine normalized projective point and original ideal $J$.
+The actual ideal-map identity under the entire ring interchange, evaluated
+at the proved bounded old Gauss point, identifies its whole original
+ideal norm with that of $I$. The existing old ideal-bridge producer
+identifies this with the original old Gauss ideal norm. Taking the true
+extended logarithm and the old proved log-of-sup identity gives $\phi_I$,
+including zero ideals and negative infinity. Every equality concerns
+entire original polynomial evaluations and whole ideal suprema; original
+powers and nonradical ideals are retained.
+
+This identifies the actual projective model over the genuine coefficient
+ring and its point/ideal functions. It does not assert a scheme product
+isomorphism with $\mathbb P^n_k\times\mathbb A^1_k$ or a coherent analytic
+structure-sheaf comparison before constructing those separate producers.
+\end{proof}

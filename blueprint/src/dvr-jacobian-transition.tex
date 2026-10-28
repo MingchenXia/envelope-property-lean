@@ -1,0 +1,56 @@
+\section{Coordinate invariance of actual divisorial discrepancies}
+
+\begin{lemma}[The field-coordinate Jacobian chain rule]\label{lem:sc0-field-jacobian-chain-rule}
+\lean{EnvelopeProperty.Char0.partialDeriv_matrix_comp, EnvelopeProperty.Char0.jacobian_comp, EnvelopeProperty.Char0.jacobian_self}
+\leanok
+\uses{lem:c0-dvr-jacobian}
+For two actual finite transcendence bases $w,v$ of a characteristic-zero
+field extension $K/F$, and any actual tuple $z$ of the same size,
+\[
+ \operatorname{Jac}_{w}(z)=
+ \operatorname{Jac}_{w}(v)\operatorname{Jac}_{v}(z).
+\]
+The Jacobian of a transcendence basis with respect to itself is one.
+\end{lemma}
+\begin{proof}
+Expand each actual $w$-coordinate partial derivation in the actual
+$v$-coordinate partial basis. Its coefficient at the $v_j$-partial is its
+value on $v_j$. Evaluating this equality on each $z_i$ gives multiplication
+of the actual derivative matrices. Taking determinants gives the formula.
+The Kronecker identities for the partials identify the self matrix with
+the identity, whose determinant is one.
+\end{proof}
+
+\begin{lemma}[Actual DVR coordinate transitions have unit Jacobian]\label{lem:sc0-dvr-jacobian-transition-unit}
+\lean{EnvelopeProperty.Char0.isUnit_dvr_coordinate_jacobian}
+\leanok
+\uses{lem:sc0-field-jacobian-chain-rule,lem:c0-dvr-jacobian}
+Two actual DVR coordinate systems obtained from uniformizers and residue
+transcendence bases have transition Jacobians lying in the actual DVR, and
+these transition Jacobians are units.
+\end{lemma}
+\begin{proof}
+Every coordinate belongs to the actual DVR, and the actual partials preserve
+that DVR, so both transition determinants belong to it. Apply the chain
+rule to the first coordinate system through the second and back to itself.
+The self determinant is one. Thus the two actual DVR-valued determinants
+multiply to one in the field and, by injectivity of the literal DVR
+inclusion, in the DVR. Each is therefore a unit of the DVR.
+\end{proof}
+
+\begin{theorem}[The actual log discrepancy is independent of DVR coordinates]\label{thm:sc0-dvr-log-discrepancy-coordinate-independent}
+\lean{EnvelopeProperty.Char0.logDiscrepancy_coordinate_independent}
+\leanok
+\uses{lem:sc0-dvr-jacobian-transition-unit,lem:sc0-field-jacobian-chain-rule}
+For any actual tuple of source functions in the DVR, its actual log
+discrepancy $1+\operatorname{ord}_V\operatorname{Jac}$ is the same in either
+of the preceding actual DVR coordinate systems.
+\end{theorem}
+\begin{proof}
+The chain rule writes the first source-function Jacobian as the second one
+times the actual coordinate-transition Jacobian. This identity holds in the
+DVR because every determinant belongs to it and its inclusion is injective.
+The transition factor is a unit, so its normalized additive valuation is
+zero. The product formula gives equality of the two Jacobian orders and
+hence of the two actual discrepancies, including zero Jacobians.
+\end{proof}

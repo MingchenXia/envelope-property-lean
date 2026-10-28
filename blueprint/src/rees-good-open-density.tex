@@ -1,0 +1,58 @@
+\subsection{Dense original good opens over regular centers}
+\begin{lemma}[Principal opens of regular elements are dense]
+\label{scheme:regular-principal-open-dense}
+\lean{EnvelopeProperty.dense_basicOpen_of_mem_nonZeroDivisors}
+\leanok
+Let $R$ be any commutative ring and let $r\in R$ be a non-zero-divisor.
+Then the actual principal open $D(r)$ is dense in $\operatorname{Spec}R$.
+\end{lemma}
+\begin{proof}
+Every power of $r$ is a non-zero-divisor, so the original localization
+map $R\to R[1/r]$ is injective. The closure of its actual spectrum image
+is the zero locus of its kernel, hence the whole spectrum. That image
+is exactly $D(r)$. This argument also includes the zero ring.
+\end{proof}
+\begin{theorem}[Both original Rees good opens are dense]
+\label{scheme:actual-rees-good-open-density}
+\lean{EnvelopeProperty.ReesPresentation.coefficient_mem_nonZeroDivisors,EnvelopeProperty.ReesPresentation.dense_projection_preimage_basicOpen}
+\leanok
+\uses{scheme:actual-rees-good-open-isomorphism,scheme:regular-principal-open-dense,scheme:actual-rees-coordinate-cover}
+Let $A$ be any commutative ring, let $(g_i)_{i\in I}$ be any family,
+and suppose the original $g_j$ is a non-zero-divisor in $A$.
+Then $D(g_j)$ is dense in the original target and its full inverse image
+is dense in the SAME original Rees scheme. The actual projection is
+therefore an isomorphism between these genuine dense opens.
+\end{theorem}
+\begin{proof}
+On EVERY original coordinate chart indexed by $i$, the genuine whole
+chart ring injects into the original $A[1/g_i]$. Localization preserves
+regularity of the original $g_j$, and injectivity reflects it back to
+its original coefficient image in the chart. Thus the preceding lemma
+makes the actual principal open of that coefficient dense in every
+original chart. The whole coefficient projection triangle identifies
+this open with the inverse image of the original target $D(g_j)$.
+For any nonempty open subset of the Rees scheme, choose an actual point
+and a member of the genuine coordinate affine open cover above that point.
+Its open inverse image is nonempty, so it meets the dense chart principal
+open. Mapping that point back gives a point of the desired intersection
+in the SAME original scheme. Target density follows from the lemma,
+and the previously proved actual good-open pullback isomorphism gives
+the asserted isomorphism. No integrality, reducedness, Noetherianity,
+finite generation, or supplied birationality comparison is used here.
+\end{proof}
+\begin{theorem}[Surjectivity for a regular original center]
+\label{scheme:actual-rees-regular-center-surjective}
+\lean{EnvelopeProperty.ReesPresentation.basicOpen_subset_range_projection,EnvelopeProperty.ReesPresentation.projection_surjective_of_mem_nonZeroDivisors}
+\leanok
+\uses{scheme:actual-rees-good-open-density,scheme:actual-rees-presentation-proper}
+If the original family is finite and one of its original generators is
+a non-zero-divisor, the SAME original proper Rees projection is surjective.
+\end{theorem}
+\begin{proof}
+The actual good-open lift shows that the image contains all of the
+original $D(g_j)$. That open is dense by the preceding result. The proved
+properness of the SAME projection makes its actual whole image closed.
+A closed set containing this dense open is the entire original target.
+Thus every original target point has a genuine source point. No domain
+assumption or point-lifting witness is supplied.
+\end{proof}

@@ -1,0 +1,167 @@
+\section{Original native fixed-Gauss convex profiles}
+
+Keep an ORIGINAL integral scheme $X$, its ORIGINAL morphism
+$f:X\to\operatorname{Spec}k[T]$, and an ORIGINAL point $p\in X$.
+Put $S=\mathcal O_{X,p}$, with its actual stalk coefficient map
+$\phi_p:k[T]\to S$ induced by $f$, and $t_p=\phi_p(T)$.
+The $k$-action is the restriction of THIS map, not a separately supplied
+action. Assume this original local ring is Noetherian and has original
+parameters $\mathfrak m_S=(\pi,z)$ with $\pi$ prime, $\pi\nmid z$,
+$t_p\ne0$, and $\pi\mid t_p$. Fix $0<r<1$.
+These are honest local geometric inputs; no global surface existence,
+valuation family, field/norm identification, order pair or profile is input.
+
+\begin{lemma}[Canonical original-stalk field points and whole section values]
+\label{lem:gauss-native-original-stalk-point-sequence}
+\uses{thm:gauss-surface-actual-fixed-radius-points,thm:gauss-surface-actual-fixed-radius-convergence,lem:actual-specified-field-native-valued-generic-point,scheme:valued-point-topology,scheme:relative-section-coefficients,scheme:relative-affine-open-homeomorphism,spectrum:trivial-field-bridge,scheme:relative-valued-points}
+\lean{EnvelopeProperty.GaussRegularSurfaceConvexProfiles.stalkCoefficientMap,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.stalkParameter,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.genericFieldMap,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.genericFieldMap_germ,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeWeightedPoint,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeVerticalPoint,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeWeightedPoint_underlying,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeVerticalPoint_underlying,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeWeightedPoint_eval,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeVerticalPoint_eval,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.tendsto_nativeWeightedPoint}
+\leanok
+\leavevmode\par
+Let $K=\operatorname{Frac}S$. Construct the SAME normalized actual points
+$w_N,w_{\mathrm{vert}}$ of the frozen real-norm theorem. There are canonical ORIGINAL
+native points $q_N,q_{\mathrm{vert}}$ of $X$ over the exact radius-$r$ Gauss base, such
+that $q_N\to q_{\mathrm{vert}}$, all underlying scheme points equal the original generic
+point, and for EVERY original nonempty open $V$ and original section $a$
+its actual section value at $q_N$ or $q_{\mathrm{vert}}$ equals its value at $w_N$ or
+$w_{\mathrm{vert}}$ after the canonical ORIGINAL generic germ in $K$.
+\end{lemma}
+\begin{proof}
+The actual original function field of $X$ is the fraction ring of its
+actual original stalk $S$. Thus the canonical fraction-ring algebra
+isomorphism $K\simeq_S K(X)$ is internally available. Give $K$ the inverse
+actual generic-field action and apply the existing specified-field native
+generic-point construction. Its whole-section evaluation theorem gives
+exactly the asserted equality. The actual stalk/generic-germ square
+identifies the image of every original polynomial coefficient with
+$\phi_p$ in $S$ followed by its original map into $K$. The frozen theorem's
+EVERY-polynomial Gauss equality therefore proves actual membership in the
+exact prescribed-base native locus. Its whole-field convergence and the
+existing continuity of the specified-field generic-point map prove the
+native convergence. Passing to the fixed-base subspace preserves it.
+The existing underlying-point theorem gives the original generic point.
+Every original nonempty Zariski open contains that point, so all of the
+claimed evaluations are defined. No original field or norm square is
+assumed: each comes from the actual stalk and generic-germ maps.
+\end{proof}
+
+\begin{lemma}[All actual original unit-log expressions have derived profiles]
+\label{lem:gauss-native-original-unit-profiles}
+\uses{lem:gauss-native-original-stalk-point-sequence,thm:gauss-surface-actual-fixed-radius-convergence,lem:gauss-surface-parameter-positive-vertical-order,def:gauss-surface-same-field-native-orders,lem:gauss-surface-canonical-vertical-leading-field}
+\lean{EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeScale,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.nativeScale_pos,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.tendsto_nativeScale,EnvelopeProperty.GaussRegularSurfaceConvexProfiles.exists_unit_profiles}
+\leanok
+\leavevmode\par
+For any ORIGINAL nonempty open $V$ and finite original units
+\[
+ a_i\in\Gamma(X,V)^\times,
+\]
+internally obtain their true vertical orders
+$A_i$ and true canonical leading-residue orders $B_i$. With the SAME actual
+parameter orders $e>0,c$ and
+\[
+ \varepsilon_N=-\log r/d_N(t_p)>0,
+\]
+eventually
+\[
+ \log|a_i(q_N)|=\log|a_i(q_{\mathrm{vert}})|
+       -\varepsilon_N\bigl(B_i-(A_i/e)c\bigr)
+\]
+simultaneously for EVERY index $i$. Thus EVERY rational affine unit-log
+expression $L_j$ has actual eventual profile
+\[
+ L_j(q_N)=b_j+\varepsilon_N s_j,\quad
+ b_j=L_j(q_{\mathrm{vert}}),\quad
+ s_j=-\sum_i j_i\bigl(B_i-(A_i/e)c\bigr).
+\]
+The orders, profiles, coefficient triangles and nonzero evaluations are
+conclusions, not inputs.
+\end{lemma}
+\begin{proof}
+The original generic germ of each original unit is nonzero because the
+original integral scheme injects every original nonempty open section ring
+into its actual function field. Transport through the canonical isomorphism
+of the preceding lemma and apply the frozen all-fraction log-profile
+producer to these actual nonzero elements of $K$. Its $e,c$ are selected
+once from the SAME original $t_p$, independently of $i$; its $A_i,B_i$ are
+native vertical and canonical leading-residue orders. Finiteness of the
+index set combines the actual eventual tails. The preceding whole-section
+value equality identifies the actual original section logarithms without a
+norm-matching premise. Taking the genuine rational linear combination and
+adding its actual constant proves the asserted affine profile. Values at
+$q_{\mathrm{vert}}$ give exactly $b_j$, including every nonzero vertical intercept.
+\end{proof}
+
+\begin{theorem}[SOURCE convexity produces the actual active-index quotient]
+\label{thm:gauss-native-convex-active-profile}
+\uses{lem:gauss-native-original-unit-profiles,scheme:native-regular-unit-local-psh,analysis:actual-finite-affine-active-max,lem:gauss-native-original-stalk-point-sequence}
+\lean{EnvelopeProperty.GaussRegularSurfaceConvexProfiles.exists_convex_active_profile}
+\leanok
+\leavevmode\par
+Let $U$ be an ORIGINAL native domain over the radius-$r$ Gauss base, let
+$u$ be an ORIGINAL extended-real function on that same native space, and
+assume the literal source predicate
+$\operatorname{RelativeSchemeValuedPoint.IsConvexPLOn}(U,u)$ and $q_{\mathrm{vert}}\in U$.
+Internally obtain its original local finite unit-log maximum
+$u=\max_{j\in I}L_j$ near $q_{\mathrm{vert}}$. Put
+\[
+ I_0=\{j\in I:b_j=\max_{h\in I}b_h\},\qquad
+ D=\max_{j\in I_0}s_j.
+\]
+Then $I_0$ is genuinely nonempty, and for the SAME actual original native
+sequence one has eventually
+\[
+ u(q_N)\in\mathbf R,\qquad
+ u(q_N)=u(q_{\mathrm{vert}})+\varepsilon_ND,\qquad
+ \frac{u(q_N)-u(q_{\mathrm{vert}})}{\varepsilon_N}=D.
+\]
+The true quotient tends to $D$. No supplied list of units, active indices,
+profile, slope, derivative, norm equality, harmonic predicate or positivity
+conclusion occurs among the inputs.
+\end{theorem}
+\begin{proof}
+Apply the literal source definition at the actual $q_{\mathrm{vert}}$. It supplies an
+actual open analytic neighborhood $W$ containing $q_{\mathrm{vert}}$, an original Zariski
+open $V$, actual units $a_i$, a nonempty finite rational index set $I$ and
+the original maximum identity on $W$. Since $q_N\to q_{\mathrm{vert}}$, the SAME actual
+$q_N$ eventually belongs to $W$. Its underlying generic point also belongs
+to $V$. Apply the preceding unit-profile lemma to those internally supplied
+units and combine its finite tails with this genuine neighborhood tail.
+
+The actual finite-real maximum has a nonempty active set $I_0$. The existing
+finite-affine-maximum theorem supplies $\delta>0$ such that for every
+$0\le\varepsilon<\delta$,
+$\max_j(b_j+\varepsilon s_j)=\max_j b_j+\varepsilon D$.
+The actual parameter scales are positive and tend to zero because their
+actual denominators are eventually $eN+c$ with $e>0$. Hence the displayed
+identity applies eventually to THESE actual scales. The original maximum
+identity at $q_N$ and $q_{\mathrm{vert}}$ gives the asserted exact equality for the
+ORIGINAL $u$. The finite maximum is real, so extended-real conversion loses
+nothing. Divide by the strictly positive actual scale to obtain the exact
+eventual quotient; eventual constancy proves the limit.
+\end{proof}
+
+\paragraph{Subsequent weighted-degree boundary, not an input to this producer.}
+For application to the original line, the global surface/SNC construction must
+produce the actual original surface and selected actual central component
+$C$, the actual stalk/parameter data above at every closed point of the
+proper normal curve, and the actual original generic-field triangles.
+It must identify all actual $q_{\mathrm{vert}}$ with one common original vertical point.
+The canonical leading-residue field at each stalk must identify with the
+SAME $K(C)$ and its actual local curve order, with its actual original $k$-residue-degree
+weight on the central curve. These are geometric identifications, not desired slope or balance
+certificates. The numerical part separately produces the ORIGINAL model
+line's rational section and actual whole-point norm dictionary, regauged
+with vertical order zero, and identifies its full degree with the genuine
+weighted residual orders. The fixed-point producer assumes none of those conclusions.
+
+Once those actual diagrams are derived, the weighted argument uses two
+literal principal balances. For a common actual generic uniformizer, the
+corrected order is the curve order of the actual leading $f_i$ minus
+$(A_i/e)$ times the curve order of the actual leading $t_p$. Each has finite
+support and whole residue-weighted sum zero by the genuine original
+principal-degree theorem. Thus each $s_j$ has weighted sum zero. The SAME
+active set is selected at the common original $q_{\mathrm{vert}}$; its maximum $D$ is
+pointwise at least any one fixed active $s_j$. Nonnegative true residue
+weights give $\sum_x[\kappa(x):k]D(x)\ge0$. The actual line-degree identity of the
+numerical part then gives the desired nonnegative original
+curve degree. Neither global equality nor positivity is silently supplied
+to the active-profile theorem.

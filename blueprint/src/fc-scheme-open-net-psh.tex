@@ -1,0 +1,42 @@
+\subsection{Genuine open-cover locality of directed native PL limits}
+
+\begin{lemma}[Directed PL limits descend through an actual open immersion]
+\label{lem:fc-native-directed-pl-open-descent}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLNetLimitOn.of_comp_openImmersion}
+\leanok
+A decreasing directed original regular-unit convex PL presentation descends
+through an actual open immersion to every open subset of its whole native
+image, preserving the original entire function.
+\end{lemma}
+\begin{proof}
+Push each source regular unit through the inverse original section-ring
+isomorphism of the open immersion. Its whole native open embedding preserves
+every unit logarithm and sends presentation neighborhoods to open
+neighborhoods. Extend each source approximating function to the target by the
+unique original inverse native point on the actual image, assigning zero
+elsewhere. Every point under consideration lies in that image, so this
+extension preserves the original inequalities and infima. Each transported
+term is convex PL by the genuine inverse section maps; the unchanged directed
+index therefore gives the asserted directed limit.
+\end{proof}
+
+\begin{lemma}[Local directed presentations descend and glue]
+\label{lem:fc-native-directed-pl-open-cover}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyNetPSHOn.of_comp_openImmersion,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyNetPSHOn.of_openCover}
+\leanok
+\uses{lem:fc-native-directed-pl-open-descent}
+The local directed native PL class descends through actual open immersions
+and glues along every genuine original scheme open cover.
+\end{lemma}
+\begin{proof}
+At each original target point choose its actual inverse native point in the
+relevant open immersion. Send the source presentation neighborhood through
+the genuine native open embedding; its image is open and remains in the
+desired target subset. The preceding lemma transports its entire directed
+presentation. For a whole original scheme open cover, choose the actual
+cover index of the original support and use the genuine open-immersion native
+range theorem to lift the entire original point to that chart. Apply the same
+local descent to its given chart presentation. These original image
+neighborhoods and their transported limits prove the desired local property
+at every original target point.
+\end{proof}

@@ -1,0 +1,36 @@
+\subsection{Actual rational logarithms are subharmonic}\label{subsec:fc-line-rational-log-subharmonic}
+
+\begin{lemma}[Actual polynomial-ratio logarithms]\label{lem:fc-rational-ratio-log-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_logAbs_polynomialRatio}
+\leanok
+\uses{thm:fc-polynomial-log-subharmonic, lem:fc-polynomial-unit-log-harmonic,
+  lem:fc-line-subharmonic-harmonic-addition}
+On an actual open domain on which $q$ never vanishes, the actual extended
+logarithm $\log(|p|/|q|)$ is subharmonic, allowing $p$ to vanish.
+\end{lemma}
+
+\begin{proof}
+The actual extended identity is $\log(|p|/|q|)=\log|p|-\log|q|$.
+For $p=0$ at a point both sides equal $-\infty$; otherwise this is the
+ordinary logarithm identity for positive actual values. The polynomial
+logarithm is actually subharmonic and the real denominator logarithm is
+actually harmonic on its true unit locus. Apply actual harmonic addition.
+\end{proof}
+
+\begin{theorem}[Logarithms in the actual localized rational algebra]\label{thm:fc-localized-rational-log-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalLog, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_rationalLog}
+\leanok
+\uses{lem:fc-rational-ratio-log-subharmonic, def:fc-line-rational-functions}
+For every element of the actual localized rational algebra of a standard
+affinoid $U$, its actual extended logarithm is subharmonic on
+$\operatorname{int}(U)$.
+\end{theorem}
+
+\begin{proof}
+Represent the actual localization element as $p/D^n$, where $D$ is the
+literal product of the original hole coordinates. Every original point
+of $U$ has nonzero $D$ value, hence nonzero denominator value. The proved
+original localization evaluation formula identifies its actual value with
+the original ratio at every point. Apply the preceding result and the
+local comparison invariance under equality on the source domain.
+\end{proof}

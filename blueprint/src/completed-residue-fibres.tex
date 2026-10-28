@@ -1,0 +1,134 @@
+\subsection{Fibres over completed residue fields}
+\label{subsec:completed-residue-fibres}
+
+Let $A\to B$ be a homomorphism of arbitrary commutative rings, represented
+as an $A$-algebra structure on $B$, and let $x\in\mathcal S(A)$. Write
+$H(x)$ for its genuine completed residue field, $C=H(x)\otimes_A B$, and
+$v_{H(x)}(c)=\lVert c\rVert$ for its prescribed nonarchimedean norm.
+The constructions below require no original coefficient field, trivial norm,
+integrality, finite generation, or completeness of $A$ or $B$.
+
+\begin{lemma}[Tensor evaluation at a fibre point]
+\label{spectrum:fibre-tensor-evaluation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreHom,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_tmul,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_one_tmul,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_tmul_one,
+EnvelopeProperty.Berkovich.Spectrum.algebraMap_tmul_one_eq,
+EnvelopeProperty.Berkovich.Spectrum.fibrePoint,
+EnvelopeProperty.Berkovich.Spectrum.fibrePoint_val_tmul}
+\leanok
+\uses{spectrum:completed-residue-field,spectrum:completed-residue-field-pullback}
+If $y\in\mathcal S(B)$ restricts to $x$, there is an actual ring homomorphism
+\[
+ e_y:H(x)\otimes_A B\longrightarrow H(y),\qquad
+ c\otimes b\longmapsto H(A\to B)(c)\,\iota_y(b).
+\]
+Pullback of the norm of $H(y)$ gives a real seminorm on $C$ restricting
+exactly to the norm of $H(x)$. On elementary tensors its value is
+$\lVert c\rVert\,|b|_y$, and restriction along $b\mapsto1\otimes b$
+recovers $y$.
+\end{lemma}
+\begin{proof}
+The completed residue-field map preserves norms and commutes with the
+maps from $A$. Thus it and $B\to H(y)$ are compatible $A$-algebra maps,
+and the tensor universal property constructs $e_y$.
+Pullback of the genuine norm valuation is a multiplicative ultrametric
+seminorm. Norm preservation on $H(x)$ proves the prescribed restriction;
+multiplicativity and norm preservation on $B$ give the tensor formula and
+the asserted recovery of $y$.
+\end{proof}
+
+\begin{theorem}[Completed-residue-field fibre equivalence]
+\label{spectrum:fibre-equivalence}
+\lean{EnvelopeProperty.Berkovich.Spectrum.Fibre,
+EnvelopeProperty.Berkovich.Spectrum.fibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.fibreRestrict_val,
+EnvelopeProperty.Berkovich.Spectrum.continuous_fibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.fibreRestrict_fibrePoint,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_restrict_comp_toH,
+EnvelopeProperty.Berkovich.Spectrum.fibrePoint_fibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.fibreEquiv}
+\leanok
+\uses{spectrum:fibre-tensor-evaluation,spectrum:completed-residue-field-pullback}
+Restriction along $B\to C$ gives a continuous map
+\[
+ \mathcal S_{v_{H(x)}}(C)\longrightarrow
+ \{y\in\mathcal S(B):y|_A=x\}.
+\]
+This map is a bijection. Its inverse assigns to $y$ the norm pulled back
+along $e_y$. This assertion is an equivalence of point sets with a continuous
+restriction map; inverse continuity is a separate assertion.
+\end{theorem}
+\begin{proof}
+For a prescribed-norm point $z$ of $C$, let $y$ be its restriction to $B$.
+The tensor balancing relation identifies $1\otimes a$ with
+$\iota_x(a)\otimes1$, and the prescribed norm therefore gives
+$|a|_y=|a|_x$. Thus restriction lands in the claimed fibre, continuously
+by continuous seminorm pullback.
+The preceding lemma proves restriction after tensor evaluation is the identity.
+For the other identity, the genuine completed-field map $H(y)\to H(z)$
+is an isometry. The two ring maps from $H(x)$ to $H(z)$, respectively
+through $H(y)$ and through $C\to H(z)$, agree on $\kappa(x)$:
+the residue-field universal property reduces their agreement to elements
+of $A$, where it is the tensor balancing relation. Both maps are continuous
+and $\kappa(x)$ is dense in $H(x)$, so they agree everywhere.
+Consequently the two maps from $C$ to $H(z)$ agree on every elementary
+tensor and hence on every tensor element by additivity. Norm preservation
+of $H(y)\to H(z)$ and $C\to H(z)$ now proves equality of the entire
+seminorms. This proves the second inverse identity.
+No existence of a point above an arbitrary point under a separate base
+extension is asserted here.
+\end{proof}
+
+\begin{lemma}[Limits of coordinate-bounded ultrafilters]
+\label{spectrum:bounded-ultrafilter-limit}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.exists_ultrafilter_limit_of_eventually_bounded}
+\leanok
+\uses{spectrum:topology,spectrum:closed-evaluation-embedding,spectrum:relative}
+In any prescribed-base real seminorm spectrum, suppose an ultrafilter
+has a finite upper bound eventually on each evaluation coordinate,
+with bounds and eventual sets allowed to depend on that coordinate.
+Then the ultrafilter converges to a point of the same prescribed-base spectrum.
+\end{lemma}
+\begin{proof}
+For each ring element $a$, map the ultrafilter under evaluation at $a$.
+Its eventual bound places it in a compact interval $[0,M_a]$, so this
+mapped ultrafilter converges. Choose these limits for all coordinates.
+The product topology makes the evaluation-function ultrafilter converge
+to their product. The seminorm spectrum is closed in the evaluation
+product, and the prescribed-base locus is closed in it. Their closed
+embedding therefore contains the limit and reflects convergence,
+giving a limit in the prescribed-base spectrum itself.
+No single eventual set bounding all coordinates at once is required.
+\end{proof}
+
+\begin{theorem}[Completed-residue-field fibre homeomorphism]
+\label{spectrum:fibre-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreRestrict_val_tmul,
+EnvelopeProperty.Berkovich.Spectrum.isProperMap_fibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.isClosedMap_fibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.fibreHomeomorph,
+EnvelopeProperty.Berkovich.Spectrum.fibreHomeomorph_apply,
+EnvelopeProperty.Berkovich.Spectrum.fibreHomeomorph_symm_apply,
+EnvelopeProperty.Berkovich.Spectrum.continuous_fibrePoint}
+\leanok
+\uses{spectrum:bounded-ultrafilter-limit,spectrum:fibre-equivalence,
+spectrum:base-change-restriction}
+The genuine equivalence of the prescribed-norm tensor spectrum with
+the fibre is a homeomorphism for arbitrary commutative $A$-algebras $B$.
+No finite-generation or local-compactness hypothesis is required.
+\end{theorem}
+\begin{proof}
+Consider an ultrafilter of tensor points whose restrictions converge
+to a point of the original fibre. Every evaluation $|b|$ of those
+restrictions is eventually bounded by continuity. The generic prescribed-base
+tensor formula gives $|c\otimes b|=\lVert c\rVert|b|$.
+Every tensor is a finite sum of elementary tensors, so the ultrametric
+inequality supplies an eventual bound for each tensor evaluation.
+The preceding lemma gives a convergent tensor point. Continuous restriction
+and uniqueness of limits identify its image with the original fibre limit.
+This is the ultrafilter lifting criterion for a proper map, so restriction
+is closed. It is already a continuous bijection by the fibre equivalence.
+Its inverse is therefore continuous, yielding the stated homeomorphism.
+\end{proof}

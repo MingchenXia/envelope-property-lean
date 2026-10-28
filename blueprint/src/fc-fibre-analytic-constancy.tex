@@ -1,0 +1,50 @@
+\subsection{Complete analytic fibre constancy from the actual geometric input}
+
+\begin{theorem}[Analytic constancy on a geometrically connected completed fibre]
+\label{thm:fc-analytic-constancy-completed-geometrically-connected}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_const_on_fibre_of_geometricallyConnected_completedFibre}
+\leanok
+\uses{thm:fc-whole-completed-fibre-directed-pl,thm:fc-proper-directed-native-maximum,lem:fc-native-completed-fibre-maximum-attainment}
+If the literal actual completed-residue-field scheme fibre of an original
+blowup is geometrically connected, every original global blowup psh potential
+of class $(a,0)$ is constant on the whole original analytic fibre. No
+countability of the original field is assumed.
+\end{theorem}
+\begin{proof}
+The original finite Rees projection is proper, so its literal completed scheme
+fibre is proper by actual base change. Pull back the original psh potential
+through the exact whole-fibre homeomorphism. It belongs to the local directed
+native regular-unit PL class by the proved whole-fibre restriction theorem,
+and it attains a global maximum by actual original fibre compactness and
+upper semicontinuity. Apply the proper geometrically connected directed
+native maximum principle over the actual original completed residue field.
+Every original fibre point has its exact inverse image under the whole-fibre
+homeomorphism. Evaluating the resulting whole native equality at these inverse
+images proves equality of the unchanged original potential values.
+\end{proof}
+
+\begin{corollary}[The actual original Rees geometric input suffices]
+\label{cor:fc-analytic-constancy-original-geometrically-connected-rees}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_const_on_fibre_of_geometricallyConnected_ReesProjection}
+\leanok
+\uses{thm:fc-analytic-constancy-completed-geometrically-connected}
+If the actual original finite Rees projection over an original affine base
+chart is geometrically connected, the same whole original analytic fibre
+constancy holds.
+\end{corollary}
+\begin{proof}
+The literal completed scheme fibre is the actual base change of that original
+Rees projection. Geometric connectedness is stable under this actual base
+change, and the preceding theorem applies.
+\end{proof}
+
+\begin{remark}[The remaining geometric producer]
+\label{rmk:fc-analytic-step-geometric-frontier}
+The geometric connectedness here is the standard property of the literal
+original scheme morphism or its literal actual completed fibre. It remains
+to be derived from normality of the original base by the genuine formal
+functions and original global-section comparison. No fibre-constancy class,
+maximum principle, topology property, local psh certificate or point-lift
+data are assumed in these analytic conclusions. This reduction does not
+assert that the remaining geometric producer has already been proved.
+\end{remark}

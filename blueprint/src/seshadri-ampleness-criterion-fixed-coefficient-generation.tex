@@ -1,0 +1,73 @@
+\section{A common positive power for an original fixed coefficient}
+Fix an integral projective scheme $p:X\to\operatorname{Spec}k$ over a field,
+and original invertible modules $E,L$. Suppose $b>0$ and an actual
+original generating family of $L^b$ is given. For every original closed
+point $x$, suppose there are $r_x>0$ and a nonzero original section
+$s_x:\mathcal O_X\to L^{r_x}$ whose literal zero ideal contains $x$,
+and on that actual zero subscheme the original restricted $L$ is ample.
+These are ordinary intermediate geometric assumptions. No ampleness
+of $L$ on $X$ or fixed coefficient generation is assumed.
+
+\begin{lemma}[An original closed point has a frame at a positive multiple]
+\label{lem:fixed-coefficient-closed-point-multiple-frame}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientGeneration.exists_multiple_openFrame_of_cut}
+\leanok
+For an original $x$ and one of the displayed actual cuts through $x$,
+there are $m_x>0$, an original open $U_x$ containing $x$, and an
+original whole $t_x:\mathcal O_X\to E\otimes L^{b m_x}$ whose
+restriction to this same open is an isomorphism.
+\uses{thm:original-fixed-cut-uniform-local-generation}
+\end{lemma}
+\begin{proof}
+Apply uniform local generation on this same original cut, obtaining a
+bound $N_x$ for exponents $n+r_x$. Set $m_x=N_x+r_x+1$.
+Since $b\ge1$, we have $b m_x\ge N_x+r_x$.
+Thus $n_x=b m_x-r_x\ge N_x$ and $n_x+r_x=b m_x$.
+Use the actual theorem at the same original point $x$ and this exponent.
+It supplies the original whole section and original open frame at
+$E\otimes L^{n_x+r_x}$. The displayed equality identifies this actual
+power with $E\otimes L^{b m_x}$. The chosen $m_x$ is positive.
+\end{proof}
+
+\begin{theorem}[Actual finite generation at one common positive power]
+\label{thm:fixed-coefficient-positive-common-power-generators}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionFixedCoefficientGeneration.exists_positive_power_fixedCoefficient_generatingSections}
+\leanok
+There is $n>0$ and an actual finite original generating family of
+$E\otimes L^n$.
+\uses{lem:fixed-coefficient-closed-point-multiple-frame}
+\end{theorem}
+\begin{proof}
+Choose the preceding original section and open for each closed point.
+The existing compact $T_0$ closed-point coverage theorem shows these
+opens cover all of $X$. Compactness selects finitely many of them.
+Let $M$ be the maximum of their indices $m_x$ and $1$.
+For every selected index $i$, we have $m_i\le M$.
+
+Fix any original point $x$ of $X$ and a selected $U_i$ containing it.
+The actual generating family of $L^b$ internally produces an actual
+finite generating family of $L^{b(M-m_i)}$ by the existing multiple-power
+producer. The existing generator frame theorem supplies one of these
+same original generators $u$ and an actual affine neighborhood $V$ of
+$x$ on which $u$ is an isomorphism. On $W=U_i\cap V$, the original
+$t_i$ and original $u$ remain isomorphisms, by actual pullback through
+the original open inclusions. The existing tensor-section pullback
+identity makes their original whole tensor section an isomorphism on $W$.
+The original associator and original power-addition isomorphism give
+\[
+ (E\otimes L^{b m_i})\otimes L^{b(M-m_i)}
+ \simeq E\otimes L^{b m_i+b(M-m_i)}
+ =E\otimes L^{b M}.
+\]
+The last equality follows from $m_i+(M-m_i)=M$.
+Postcomposing the actual whole tensor section with this internal whole
+isomorphism preserves its actual frame on the same original $W$.
+This constructs such a whole section and frame neighborhood for every
+original point, all for the same original $E\otimes L^{bM}$.
+Apply the existing compact open-frame producer to obtain actual finite
+original generating sections of this same module. Finally $bM>0$
+because $b>0$ and $M\ge1$. The original generating family, the displayed
+cuts, and their ampleness are ordinary assumptions to be supplied by
+the separate numerical argument; no resulting section, frame cover,
+common exponent or evaluation epimorphism is an input.
+\end{proof}

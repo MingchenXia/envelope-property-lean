@@ -1,0 +1,100 @@
+\section{Length-two Witt arithmetic for divided Frobenius}
+\label{sec:witt-two-arithmetic}
+
+Let $p$ be prime, let $k$ be a perfect field of
+characteristic $p$, and let $W_2(k)$ be the actual ring
+of length-two $p$-typical Witt vectors. Coordinates
+are denoted $(x_0,x_1)$. These elementary scalar facts
+supply the arithmetic for divided Frobenius maps;
+they do not assert existence of a scheme lift or a
+Deligne--Illusie splitting.
+
+\begin{definition}[The original reduction map]
+\label{def:witt-two-reduction}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwo.reduction,EnvelopeProperty.DeligneIllusie.WittTwo.reduction_apply,EnvelopeProperty.DeligneIllusie.WittTwo.reduction_surjective}
+The first Witt coordinate defines a surjective ring
+homomorphism $\rho:W_2(k)\to k$.
+\end{definition}
+\begin{proof}
+The constant coefficient of a full Witt vector is a
+ring homomorphism. It vanishes on the kernel of
+truncation to two coordinates, because a vector in
+that kernel has zero first coordinate. It therefore
+factors through the surjective truncation map. The
+result sends a two-coordinate vector to its first
+coordinate. For $a\in k$, the truncated Teichmuller
+vector $[a]$ has first coordinate $a$, proving
+surjectivity.
+\end{proof}
+
+\begin{lemma}[Multiplication by the prime]
+\label{lem:witt-two-prime-coordinates}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwo.mul_prime_coeff_zero,EnvelopeProperty.DeligneIllusie.WittTwo.mul_prime_coeff_one}
+For every $x\in W_2(k)$, the actual Witt product
+$x p$ has coordinates $(0,x_0^p)$.
+\uses{def:witt-two-reduction}
+\end{lemma}
+\begin{proof}
+Choose a full Witt vector truncating to $x$. In
+characteristic $p$, the coordinates of its product
+with $p$ are zero in degree zero and the $p$th power
+of the preceding coordinate in each positive degree.
+Truncation is a ring homomorphism and preserves the
+first two coordinates, giving the assertion.
+\end{proof}
+
+\begin{lemma}[Square-zero prime and its annihilator]
+\label{lem:witt-two-prime-annihilator}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwo.mul_prime_eq_zero_iff,EnvelopeProperty.DeligneIllusie.WittTwo.prime_square_zero}
+For $x\in W_2(k)$, one has $xp=0$ if and only if
+$\rho(x)=0$. In particular, $p^2=0$ in $W_2(k)$.
+\uses{lem:witt-two-prime-coordinates}
+\end{lemma}
+\begin{proof}
+The product formula gives $xp=0$ if and only if
+$x_0^p=0$. As $k$ is a field and $p$ is positive,
+this is equivalent to $x_0=0$, which is
+$\rho(x)=0$. Since $\rho$ is a ring homomorphism
+and $k$ has characteristic $p$, it sends $p$ to
+zero. Applying the first assertion to $x=p$
+gives $p^2=0$.
+\end{proof}
+
+\begin{lemma}[The reduction kernel is exactly the prime ideal]
+\label{lem:witt-two-prime-kernel}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwo.exists_mul_prime_iff}
+An element $x$ of the same Witt ring is a multiple
+of $p$ if and only if $\rho(x)=0$.
+\uses{lem:witt-two-prime-coordinates,lem:witt-two-prime-annihilator}
+\end{lemma}
+\begin{proof}
+If $x=yp$, its first coordinate is zero by the
+product formula. Conversely suppose $x_0=0$.
+Perfectness gives $b\in k$ with $b^p=x_1$.
+Take $y$ to be the truncated Teichmuller vector
+$[b]$. The product $yp$ has coordinates
+$(0,b^p)=(x_0,x_1)$, so it equals $x$.
+\end{proof}
+
+\begin{lemma}[Uniqueness of division after reduction]
+\label{lem:witt-two-divided-prime-uniqueness}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwo.mul_prime_eq_iff}
+For $x,y\in W_2(k)$, the equality $xp=yp$ holds
+if and only if $\rho(x)=\rho(y)$. Thus dividing
+an element of $pW_2(k)$ by $p$ determines a unique
+residue in $k$.
+\uses{lem:witt-two-prime-annihilator,lem:witt-two-prime-kernel}
+\end{lemma}
+\begin{proof}
+Distributivity identifies $xp-yp$ with $(x-y)p$.
+The annihilator formula says that this vanishes
+if and only if $\rho(x-y)=0$. Additivity of
+$\rho$ identifies the latter equality with
+$\rho(x)=\rho(y)$. Existence of a division for
+every element of $pW_2(k)$ is the preceding lemma.
+\end{proof}

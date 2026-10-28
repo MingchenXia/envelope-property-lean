@@ -1,0 +1,46 @@
+\section{Descent of the same original line on the relative arithmetic model}
+
+\begin{lemma}[The original line and relative embedding descend together]
+\label{lem:kn-relative-arithmetic-original-line-model}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticOriginalLineModel.exists_original_line_model}
+\uses{lem:kn-relative-arithmetic-original-geometric-model,lem:kn-relative-arithmetic-original-line-expression,lem:kn-relative-arithmetic-scalar-transition,thm:kn-arithmetic-original-line-descent}
+\leanok
+Under the original relative projective hypotheses, every original
+invertible module $L$ has an actual invertible arithmetic model
+$M$ on a finite coefficient enlargement of the produced smooth
+relative projective model.  Its whole original pullback is exactly
+$L$.  The relative very ample model $T$ of the same original
+$j^*\mathcal O(1)$, the total smooth dimension, separatedness,
+and the actual affine-base tensor fibre are all retained.
+\end{lemma}
+\begin{proof}
+Write the original line as
+$L\simeq h^*\mathcal O_{\mathbb P_k^b}(1)
+\otimes(j^*\mathcal O_{\mathbb P_R^d}(N))^\vee$
+using the mixed projective expression.  Start with the produced
+relative arithmetic model and its very ample line $T$ recovering
+$j^*\mathcal O(1)$.  The original field morphism $h$ descends to a
+morphism $h_S:Y_S\to\mathbb P_S^b$ at a finite coefficient
+enlargement, because the source model is quasi-compact and
+quasi-separated and projective space is finitely presented.
+The recovery equation identifies its original pullback with $h$.
+Let $T_S$ be the actual pullback of $T$, and define
+$M=h_S^*\mathcal O(1)\otimes(T_S^{\otimes N})^\vee$.
+Both factors are invertible, so $M$ is invertible.
+
+Pullback commutes with tensor products, duals of invertible
+modules, and all tensor powers.  The original identification of
+$T$ therefore identifies the original pullback of
+$T_S^{\otimes N}$ with
+$(j^*\mathcal O(1))^{\otimes N}=j^*\mathcal O(N)$.
+The original recovery equation for $h_S$, followed by the whole
+projective twist coefficient comparison, identifies its first
+factor with $h^*\mathcal O(1)$.  Thus the whole pullback of $M$
+is exactly the displayed expression for the original $L$.
+The coefficient-transition lemma retains the relative very ample
+line and the actual original-field square.  Smoothness of the
+same dimension, separatedness, and quasi-compactness are stable
+under this coefficient base change.  The modeled affine algebra
+is its actual tensor extension, whose original fibre remains $R$
+by tensor associativity.
+\end{proof}

@@ -1,0 +1,51 @@
+\section{Actual divisorial localizations of an \'etale leaf}
+
+\begin{lemma}[The source Jacobian ideal of an actual divisorial localization is the unit ideal]\label{lem:sc0-dvr-source-localization-unit-jacobian}
+\lean{EnvelopeProperty.Char0.dvrOriginalSourceJacobianIdeal_localization_eq_top}
+\leanok
+\uses{thm:sc0-derivation-source-localization,lem:sc0-original-dvr-tuple-field-jacobian}
+If the actual essentially finite-type DVR $V$ is a localization of its
+actual source subalgebra $E$, the ideal generated in $V$ by all original
+$E$-function Jacobians in actual DVR coordinates is the unit ideal.
+\end{lemma}
+\begin{proof}
+For the source $V$ itself, take the tuple consisting of its actual
+uniformizer and residue-transcendence coordinates. Its derivative matrix
+is the identity, so its determinant is one and the generated ideal is
+the unit ideal. Actual source localization preserves every derivative
+determinant ideal. Applying that theorem to $E\to V$ identifies the
+original $E$-function ideal with this unit ideal.
+\end{proof}
+
+\begin{theorem}[The actual \'etale leaf determinant is a unit at a divisorial localization]\label{thm:sc0-dvr-etale-leaf-localization-unit}
+\lean{EnvelopeProperty.Char0.isUnit_dvrLeafDet_of_localization}
+\leanok
+\uses{lem:sc0-dvr-source-localization-unit-jacobian,thm:sc0-etale-derivation-jacobian-ideal}
+Let $E\subseteq V$ be the actual localization above and $v_i$ actual
+\'etale coordinates of $E$, indexed in the same finite dimension as the
+actual DVR differential coordinates. Then
+$\det(\partial_jv_i)$ is a unit in $V$.
+\end{theorem}
+\begin{proof}
+The genuine source derivative determinant ideal factors as the ideal
+of $\det(\partial_jv_i)$ times the extension of the genuine identity-source
+\'etale coordinate Jacobian ideal of $E$. The latter ideal is the unit
+ideal, because the tuple $v_i$ itself has identity differential matrix
+in its actual \'etale basis. The source derivative ideal is also the
+unit ideal by the preceding lemma. Thus the principal determinant ideal
+is the unit ideal, so its actual generator is a unit.
+\end{proof}
+
+\begin{corollary}[Total \'etale coordinate order is at most one]\label{cor:sc0-dvr-etale-leaf-localization-orders}
+\lean{EnvelopeProperty.Char0.sum_addVal_leaf_le_one_of_localization}
+\leanok
+\uses{thm:sc0-dvr-etale-leaf-localization-unit,lem:sc0-dvr-leaf-coordinate-logarithmic-bound}
+At an actual divisorial localization of an actual \'etale leaf,
+$\sum_i\operatorname{ord}_V(v_i)\le1$.
+\end{corollary}
+\begin{proof}
+The proved coordinate logarithmic bound is
+$\sum_i\operatorname{ord}_V(v_i)\le1+\operatorname{ord}_V\det(\partial_jv_i)$.
+The determinant is an actual unit by the preceding theorem, so its
+normalized order is zero. Substitution gives the claimed bound.
+\end{proof}

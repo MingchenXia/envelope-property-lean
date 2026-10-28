@@ -1,0 +1,38 @@
+\section{The genuine projection formula for the original line sheaf}
+
+\begin{definition}[Projection formula from an actual inverse tensor pair]
+\label{def:fc-projection-formula-tensor-inverse}
+\leanok
+\lean{EnvelopeProperty.SchemeLineProjectionFormula.projectionFormulaOfTensorInverse}
+For a genuine monoidal left adjoint $F$ with its actual right adjoint $G$,
+and an actual inverse tensor pair $L\otimes Q\simeq\mathbf1$, there is an
+actual whole natural isomorphism
+$G(-)\otimes L\simeq G(-\otimes F(L))$.
+\end{definition}
+\begin{proof}
+The actual inverse pair gives genuine right-tensor equivalences with inverse
+right tensor by $Q$. The true monoidal tensor and unit isomorphisms send this
+to an actual inverse pair $F(L),F(Q)$. The original monoidal tensorator gives
+the natural whole commutation of $F$ with right tensor by $Q$. Taking its
+conjugate through the actual composite adjunctions of these equivalences and
+$F\dashv G$ gives the displayed isomorphism of the actual right adjoints.
+\end{proof}
+
+\begin{theorem}[Whole original line projection formula]
+\label{thm:fc-original-scheme-line-projection-formula}
+\leanok
+\lean{EnvelopeProperty.SchemeLineProjectionFormula.lineProjectionFormula, EnvelopeProperty.SchemeLineProjectionFormula.lineProjectionFormulaObj}
+\uses{def:fc-projection-formula-tensor-inverse}
+For every original scheme morphism $g:Y\to X$, every original invertible
+module sheaf $L$ on $X$, and every original module sheaf $N$ on $Y$, the same
+actual pushforward and same actual tensor satisfy the whole isomorphism
+$g_*N\otimes L\simeq g_*(N\otimes g^*L)$, natural in the entire original $N$.
+No properness, affineness, flatness or projection-formula input is needed.
+\end{theorem}
+\begin{proof}
+Use the actual original pullback--pushforward adjunction, the genuine original
+monoidal pullback, and the canonical evaluation isomorphism of the actual
+original line with its genuine original sheaf dual. The preceding true
+categorical construction produces the whole natural isomorphism; evaluate
+it at the same original module $N$.
+\end{proof}

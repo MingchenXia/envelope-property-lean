@@ -1,0 +1,79 @@
+\subsection{The actual closure of an original residue point is a genuine residual curve}
+
+\begin{definition}[Actual whole point closure and original maps]
+\label{scheme:actual-residue-point-closure}
+\lean{EnvelopeProperty.SchemePointClosureCurve.closure,EnvelopeProperty.SchemePointClosureCurve.inclusion,EnvelopeProperty.SchemePointClosureCurve.genericMap,EnvelopeProperty.SchemePointClosureCurve.structureMap}
+\leanok
+For ANY actual scheme $Y$ and ANY original point $z\in Y$, take the NATIVE
+scheme-theoretic image of the original morphism
+$\operatorname{Spec}\kappa_Y(z)\to Y$. This is the genuine reduced point
+closure, with its original closed inclusion, native original residue-field
+point and original structure map over any given coefficient field.
+\end{definition}
+\begin{proof}
+All objects are constructed from the original native residue-field morphism
+and its actual scheme-image kernel. No point closure, integrality or residue
+comparison is supplied.
+\end{proof}
+
+\begin{theorem}[The original whole residue point is retained in its true integral closure]
+\label{scheme:actual-point-closure-integral-triangle}
+\lean{EnvelopeProperty.SchemePointClosureCurve.genericMap_inclusion,EnvelopeProperty.SchemePointClosureCurve.closure_isIntegral,EnvelopeProperty.SchemePointClosureCurve.genericMap_isPreimmersion}
+\leanok
+\uses{scheme:actual-residue-point-closure,scheme:integral-schematic-image}
+The original whole residue-field morphism is EXACTLY its actual canonical
+map to the closure followed by the actual closed inclusion. The constructed
+closure is integral, and the SAME actual native generic point map is a
+preimmersion.
+\end{theorem}
+\begin{proof}
+The whole triangle is native image factorization. The one-point field
+spectrum makes the source map quasi-compact; its source is integral, so the
+actual image is integral. The original residue-field morphism is a genuine
+native preimmersion. Its factor through the actual closed image remains a
+preimmersion by cancellation of the closed inclusion.
+\end{proof}
+
+\begin{definition}[The SAME native closure function field is the original residue field]
+\label{scheme:actual-point-closure-original-residue-field}
+\lean{EnvelopeProperty.SchemePointClosureCurve.residueAlgebra,EnvelopeProperty.SchemePointClosureCurve.functionFieldEquiv,EnvelopeProperty.SchemePointClosureCurve.functionFieldAlgEquiv}
+\leanok
+\uses{scheme:actual-point-closure-integral-triangle,scheme:generic-field-original-coefficients}
+The actual native function field of this SAME original point closure is
+canonically isomorphic to the SAME original $\kappa_Y(z)$. For an actual
+structure map to a field $k$, this is an actual $k$-algebra isomorphism,
+retaining the original native structure-map stalk actions on both sides.
+\end{definition}
+\begin{proof}
+The actual native generic point of the image is dominant. Its true
+field-point coefficient homomorphism is injective because its source is a
+field. Since it is a preimmersion, the SAME actual stalk map is surjective;
+the native stalk transports and closed-point stalk isomorphism therefore
+make the SAME field coefficient map surjective. This constructs the genuine
+isomorphism. The original residue-field morphism's coefficient triangle is
+exactly the native stalk coefficient map followed by the native residue
+quotient. The proved whole generic coefficient theorem therefore preserves
+EVERY original coefficient and upgrades the isomorphism to an actual
+$k$-algebra isomorphism.
+\end{proof}
+
+\begin{theorem}[True residual-curve dimension and properness]
+\label{scheme:actual-point-closure-curve-dimension}
+\lean{EnvelopeProperty.SchemePointClosureCurve.structureMap_isProper,EnvelopeProperty.SchemePointClosureCurve.dimension_eq}
+\leanok
+\uses{scheme:actual-point-closure-original-residue-field,scheme:actual-global-function-field-dimension}
+If the original $Y$ is proper over $k$, its actual point closure is proper.
+For ANY original $Y$ locally finite type over $k$, if the SAME original
+$\kappa_Y(z)$ has actual transcendence degree $d$, the WHOLE actual point
+closure has dimension $d$. In particular a true degree-one original
+residue field produces a genuinely proper integral residual curve.
+\end{theorem}
+\begin{proof}
+The actual closure inclusion is a closed immersion, so properness composes
+with the original proper structure map. Actual local finite type also
+composes. Transfer the SAME original residue-field degree through the
+proved actual native coefficient algebra isomorphism and apply the genuine
+whole scheme function-field dimension theorem. No curve-dimension or
+residue-field identification certificate is assumed for the constructed
+closure, and no numerical positivity is claimed.
+\end{proof}

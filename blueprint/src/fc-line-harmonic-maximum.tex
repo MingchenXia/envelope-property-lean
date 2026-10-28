@@ -1,0 +1,64 @@
+\subsection{Boundary comparison for actual harmonic functions}\label{subsec:fc-line-harmonic-maximum}
+
+\begin{theorem}[Weak maximum on the whole finite boundary]\label{thm:fc-harmonic-weak-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_exists_boundary_max, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_exists_boundary_ge}
+\leanok
+\uses{def:fc-actual-harmonic, lem:fc-standard-inflation,
+  lem:fc-standard-boundary, thm:fc-harmonic-local-maximum}
+Every actual harmonic expression on a standard affinoid attains its maximum
+at one of the actual points of the finite Gauss boundary. Consequently, for
+every $x\in U$ there is $z\in\partial U$ with $h(x)\le h(z)$.
+\end{theorem}
+
+\begin{proof}
+The actual carrier is nonempty and compact, and the expression is continuous
+on it, so a maximum $M$ is attained. Suppose no boundary point attains $M$.
+Every point of the maximum locus is then in the topological interior of $U$.
+At such a point the global maximum inequality on $U$ is an actual local
+maximum inequality in the analytic line. Coordinate positivity follows from
+the positive hole radii. The all-point local maximum theorem therefore makes
+the expression constant on an actual neighbourhood. Thus the maximum locus
+is open in $U$. It is closed in $U$ by continuity and nonempty by attainment.
+Since $U$ is connected, this locus is all of $U$. It contains the outer Gauss
+boundary point, contradicting the supposition. A boundary maximum exists,
+and comparison with it gives the asserted inequality for every point.
+No distinctness or positive-length condition on boundary segments is used.
+\end{proof}
+
+\begin{corollary}[Zero boundary and Dirichlet uniqueness]\label{cor:fc-harmonic-boundary-uniqueness}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eq_zero_of_boundary_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eq_of_boundary_eq, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.eq_of_boundary}
+\leanok
+\uses{thm:fc-harmonic-weak-maximum}
+A harmonic function with zero values on the actual boundary is zero on $U$.
+Two actual harmonic functions with the same boundary values are equal.
+\end{corollary}
+
+\begin{proof}
+Apply the weak maximum principle to the function and its negative. Both are
+at most zero on $U$, so the function is zero there. The difference of two
+harmonic expressions has coefficients given by the differences of their
+constants and finite coefficient vectors, hence is harmonic. Apply the zero
+boundary result to their difference. This proves equality of the actual
+functions and does not assert uniqueness of coefficient witnesses.
+\end{proof}
+
+\begin{theorem}[Strong maximum on an interior component]\label{thm:fc-harmonic-component-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eq_on_interior_component}
+\leanok
+\uses{thm:fc-harmonic-local-maximum, lem:fc-standard-boundary,
+  lem:fc-harmonic-retraction}
+If a harmonic expression has its global maximum on $U$ at an interior point
+$x$, it is constant on the connected component of $x$ in
+$U\setminus\partial U$.
+\end{theorem}
+
+\begin{proof}
+Restrict the expression to the open interior. Its maximum locus is relatively
+closed by continuity. At every point of that locus the global maximum
+inequality gives an actual local maximum in the analytic line; the all-point
+local maximum theorem makes the locus relatively open as well. It is a
+clopen subset of the interior containing $x$. Every connected component
+meeting a clopen subset lies in that subset. Thus the whole interior
+component of $x$ has the same value. This formulation permits boundary
+points which are internal vertices of the skeleton.
+\end{proof}

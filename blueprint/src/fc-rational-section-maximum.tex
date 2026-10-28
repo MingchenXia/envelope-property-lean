@@ -1,0 +1,53 @@
+\subsection{Genuine rational sections and unchanged scalar restriction}
+
+\begin{lemma}[Rational sections over the original algebraically closed field]
+\label{lem:fc-actual-rational-section}
+\lean{EnvelopeProperty.exists_rational_section_of_finiteType_nonempty}
+\leanok
+Every nonempty scheme locally of finite type over an algebraically closed
+field has a section of its original field structure morphism.
+\end{lemma}
+\begin{proof}
+Choose a nonempty affine open and a maximal ideal in its coordinate ring.
+The residue field is finite over the original base field by Zariski's lemma.
+Algebraic closedness makes its original coefficient map bijective, hence an
+isomorphism of base-field algebras. Compose the inverse field isomorphism on
+spectra with the actual residue-field point. The original coefficient triangle
+then becomes the identity.
+\end{proof}
+
+\begin{lemma}[Closed native points of genuine sections]
+\label{lem:fc-native-point-rational-section}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.sectionNativePoint,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_support_sectionNativePoint}
+\leanok
+A section of the original structure morphism carries the original field norm
+to a native point. If the structure morphism is separated, the support of this
+point is closed.
+\end{lemma}
+\begin{proof}
+Map the prescribed norm point of the base spectrum through the section.
+The section identity proves the prescribed-base condition. The composite of
+the section with the separated structure morphism is the identity, a closed
+immersion, so the section itself is a closed immersion. It maps the closed
+singleton support on the field spectrum to the asserted closed singleton.
+\end{proof}
+
+\begin{lemma}[Exact rational scalar lifts and closed supports]
+\label{lem:fc-rational-section-scalar-restriction}
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_sectionNativePoint,EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isClosed_support_fcRationalScalarLift}
+\leanok
+Under a norm-preserving field extension, the scalar-changed rational section
+restricts to the entire original native section point. For every original
+native point, its constructed rational lift over the completed algebraic
+closure of its completed residue field has closed support when the original
+structure morphism is separated.
+\end{lemma}
+\begin{proof}
+The pullback universal property identifies the original projection of the
+scalar-changed section with the original section after coefficient extension.
+Mapping the extension's norm point through this triangle and using the
+norm-preserving coefficient identity gives equality of the whole original
+native points. The constructed rational lift is itself the native point of
+an actual section. Separatedness survives scalar change, so the preceding
+closed-support statement applies to that section.
+\end{proof}

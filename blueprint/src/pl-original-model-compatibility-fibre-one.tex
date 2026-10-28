@@ -1,0 +1,72 @@
+\section{The original parameter-one line on the normalized PL model}
+
+\begin{lemma}[The entire original parameter-one fibre is noncentral]
+\label{lem:pl-original-normalized-fibre-one-noncentral}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.range_fst_subset_basicOpen_X,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneInclusion,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneInclusion_range,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneNoncentralLift,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneNoncentralLift_inclusion}
+\leanok
+\uses{def:actual-normalized-pl-ratio-noncentral-trivialization}
+Let $\nu:\widetilde{\mathcal X}\to\mathcal X$ be the normalization of the
+simultaneous blowup of two original vertical ideals on $X\times\mathbb A^1$.
+Let $\pi:\widetilde{\mathcal X}\to\mathbb A^1$ be its original structure map.
+The canonical inclusion $i:\pi^{-1}(1)\to\widetilde{\mathcal X}$ factors
+through the entire noncentral open $\pi^{-1}(D(t))$.
+\end{lemma}
+\begin{proof}
+The Cartesian square defining the original fibre gives
+$\pi\circ i=1\circ q$, where $q$ is its canonical map to $\operatorname{Spec}k$.
+The image of $t$ in the residue ring along the point $1$ is the unit $1$.
+It therefore belongs to no prime ideal of that fibre. Hence the image of $i$
+is contained in $\pi^{-1}(D(t))$. The universal property of the open immersion
+gives a unique factorization through this open, with the same original fibre
+inclusion as its composite.
+\end{proof}
+
+\begin{theorem}[The same original normalized fibre one is the original variety]
+\label{thm:pl-original-normalized-fibre-one-variety}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.baseChangeFibreIso,EnvelopeProperty.PLOriginalModelCompatibility.baseChangeFibreIso_hom,EnvelopeProperty.ProjSubvariety.nativeProductFibreOneIso,EnvelopeProperty.ProjSubvariety.nativeProductFibreOneIso_hom,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneProductIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneProductIso_hom,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneNativeIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneNativeIso_hom,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousFibreOneOverIso}
+\leanok
+\uses{lem:pl-original-fibre-map-neighbourhood-isomorphism,lem:pl-original-normalized-fibre-one-noncentral,thm:actual-normalized-pl-model-noncentral-product}
+Suppose $X$ is the original projectively normal variety and the two original
+homogeneous ideals contain powers of the original parameter. The same original
+normalized simultaneous model has its actual scheme-theoretic fibre at $1$
+isomorphic to the original native scheme $X$. The isomorphism is exactly the
+canonical original fibre inclusion followed by the original normalized-model
+projection to $X$.
+\end{theorem}
+\begin{proof}
+The normalization-blowup composite is an isomorphism over the entire original
+noncentral open of $X\times\mathbb A^1$, by normality of the original variety
+and the whole original ideal parameter-power comparison. The preceding two
+lemmas therefore identify its actual fibre at $1$ with the actual product
+fibre at $1$. The existing whole product-coordinate isomorphism identifies
+this latter fibre with the base change of $X$ along
+$\operatorname{Spec}k\xrightarrow{1}\mathbb A^1\to\operatorname{Spec}k$.
+This composite is the identity because evaluation at $1$ preserves every
+coefficient. Pullback pasting and the identity-base pullback give the required
+isomorphism with $X$. The two original Cartesian projection equations, followed
+by the original product-to-$X$ projection equation, give the claimed entire
+formula for its morphism.
+\end{proof}
+
+\begin{theorem}[Original ratio and projective line on the entire parameter-one fibre]
+\label{thm:pl-original-normalized-fibre-one-line}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioFibreOneIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTwistedRatioFibreOneIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTwistedRatioFibreOneIdentification}
+\leanok
+\uses{lem:pl-original-normalized-fibre-one-noncentral,thm:actual-normalized-pl-projective-twist-noncentral}
+Suppose the two original homogeneous ideals contain powers of the original
+parameter. On the entire canonical original fibre over $1$, the normalized
+Cartier ratio has an explicit whole module trivialization. The normalized projective twist tensor
+this ratio restricts to the original $O(n)$ pulled back along the same
+original fibre-to-$X$ projection.
+\end{theorem}
+\begin{proof}
+Factor the actual original fibre inclusion through the noncentral open by the
+preceding lemma. Pull the whole noncentral ratio trivialization back along
+this factorization. The canonical pullback composition isomorphism identifies
+its source with the pullback along the original fibre inclusion; the unit
+pullback isomorphism identifies its target with the original fibre structure
+module. For the polarized line, pull back the whole noncentral projective-line
+comparison along the same factorization. Pullback composition and the exact
+factorization identity give the original composite projection to $X$.
+No replacement fibre, chosen point or chart comparison is used.
+\end{proof}

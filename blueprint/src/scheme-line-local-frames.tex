@@ -1,0 +1,64 @@
+\section{Actual local frames compute the original proper-model line norm}
+
+\begin{definition}[Actual line frame transported through a factor]
+\label{def:actual-line-frame-via-factor}
+\lean{AlgebraicGeometry.Scheme.Modules.frameFactorIso}
+\lean{AlgebraicGeometry.Scheme.Modules.frameViaFactor}
+\leanok
+For actual morphisms $g:B\to C$, $b:C\to D$, their actual
+composite $f$, and an actual unit frame of $b^*M$, transport the
+frame to $f^*M$ using the inverse native pullback composition
+isomorphism, the actual pullback of the frame by $g$, and the native
+pullback-unit isomorphism. Equal composites are transported by the
+native pullback equality comparison.
+\end{definition}
+
+\begin{lemma}[Actual transported frame composition]
+\label{lem:actual-line-frame-via-factor-composition}
+\lean{AlgebraicGeometry.Scheme.Modules.frameViaFactor_comp}
+\leanok
+\uses{def:actual-line-frame-via-factor}
+Transporting an actual local frame first through $g$ and then
+through $i$ gives the same entire original frame as transporting
+through $ig$ at once, with the native original comparison maps.
+\end{lemma}
+\begin{proof}
+The native threefold pullback associativity identity, with its
+actual composite equalities, identifies the two whole composition
+comparisons. Inverting that equality identifies their inverse
+prefixes. Naturality of the actual pullback composition comparison
+moves the whole actual original frame across it. The actual
+pullback-unit composition identity cancels the remaining unit
+comparisons. This proves equality of the actual whole frame
+morphisms, hence of their original isomorphisms.
+\end{proof}
+
+\begin{corollary}[Original proper-model norm in an actual local frame]
+\label{cor:actual-line-model-norm-local-frame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerOpenFactor}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerOpenFactor_comp}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLocalFrame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.localGenericFactor}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.localGenericFactor_comp}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.localFrameGenericIso}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameGenericIso_localFrame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_eq_localFrame}
+\leanok
+\uses{lem:actual-local-spectrum-affine-factor,lem:actual-line-frame-via-factor-composition,scheme:proper-native-center,def:scheme-line-actual-model-norm}
+An actual unit frame of the original line on any original open
+neighborhood of the true proper center computes the norm on the
+same original residue-field pullback line. Its coefficient is
+computed by pulling that actual local frame along the actual
+residue-field morphism into that open.
+\end{corollary}
+\begin{proof}
+The actual proper valuative lift factors through this original
+open, because its closed point maps into it. Pull the given
+original local frame back along the resulting actual center
+factor. Its actual generic frame agrees with the direct original
+residue-field pullback frame by the preceding composition
+identity and the genuine valuative generic triangle. The original
+frame-independence theorem computes the original model norm in
+this actual frame. Thus it equals the original residue valuation
+of the stated coefficient.
+\end{proof}

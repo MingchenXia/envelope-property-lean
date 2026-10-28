@@ -1,0 +1,41 @@
+\subsection{Actual dominant morphisms retain all native local coefficients}
+
+\begin{lemma}[The genuine generic-stalk map of an original dominant morphism]
+\label{lem:actual-dominant-function-field-map}
+\lean{EnvelopeProperty.DominantFunctionFieldMaps.stalk_coefficients}
+\leanok
+An actual dominant morphism $p:X\to Y$ of the SAME original integral schemes
+sends their original generic points to one another. Its original native stalk
+map at that SAME generic point therefore defines a genuine field embedding
+$K(Y)\to K(X)$. For EVERY original point $x\in X$, the entire original stalk
+coefficient square commutes with this field embedding.
+\end{lemma}
+\begin{proof}
+The image of the original generic point has closure containing the actual
+whole image of $p$, hence by dominance its closure is all of $Y$. Original
+integrality identifies it with the SAME native generic point of $Y$.
+Transport along this actual equality and take the genuine original stalk map
+at the generic point of $X$. These are field homomorphisms, so their composite
+is injective. Native stalk-map naturality for the specialization of the
+original generic point to $x$, followed by the same generic-point equality,
+gives the coefficient square on the WHOLE original stalk. No preservation
+condition on its elements is supplied.
+\end{proof}
+
+\begin{lemma}[Every original stalk map of the dominant morphism is injective]
+\label{lem:actual-dominant-stalk-injectivity}
+\uses{lem:actual-dominant-function-field-map}
+\lean{EnvelopeProperty.DominantFunctionFieldMaps.stalkMap_injective}
+\leanok
+For the SAME dominant morphism between integral schemes, EVERY original
+native stalk map is injective. On EVERY original nonempty open, the genuine
+generic field embedding takes an original section's generic germ to the
+original generic germ of its actual pullback section.
+\end{lemma}
+\begin{proof}
+The original stalk embeds in its original fraction field. The whole
+coefficient square just established and injectivity of the actual field
+embedding force injectivity of the original stalk map. Applying the same
+square to the actual germ of any original whole section and the original
+native germ-pullback naturality proves the last equality.
+\end{proof}

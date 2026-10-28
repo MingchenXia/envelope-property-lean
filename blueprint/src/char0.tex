@@ -1,0 +1,655 @@
+\section{Theorem 3.1 for projective space in characteristic zero}\label{sec:char0-blueprint}
+
+This chapter proves the envelope property of $\PP^n$ (\cite[Theorem~3.1]{FHX}, Theorem~\ref{thm:pn-ep})
+when $k$ is a countable algebraically closed field of characteristic $0$, the standing assumption of
+\cite[\S5]{FHX}. For this case \cite{FHX} cites \cite[Theorem~5.20]{BJ22}, whose proof resolves the
+singularities of a test configuration and uses the asymptotic multiplier ideals of its base ideals,
+their subadditivity and their uniform global generation (Nadel vanishing). The route below is
+different and uses none of these; Remark~\ref{rmk:c0-source} compares the two.
+\begin{itemize}
+\item As in characteristic $p$ (Remark~\ref{rmk:bj-pn-ep-assembly}), it suffices to show that
+$\mathrm P_d(\phi)=\sup_m m^{-1}\phi_{J_m(\phi)}$ is $d$-psh for a PL obstacle $\phi\le0$. This follows from the
+uniform estimate $m\,\mathrm P_d(\phi)\le\phi_{J_{m+2}(\phi)}+N_0$ (Proposition~\ref{prop:c0-key-inequality}),
+which gives uniform convergence of $m^{-1}\phi_{J_m}$ (Theorem~\ref{thm:c0-envelope-pl}).
+\item The field $k$ is embedded in $\mathbf C$, and the divisorial valuation rings over $k$ are extended to
+$\mathbf C$ without changing orders (Lemma~\ref{lem:c0-base-change-dvr}).
+\item The analytic input is Demailly's lower bound for Bergman kernels, obtained from the
+Ohsawa--Takegoshi extension theorem at a point and globalized on $\mathbf C^{n+2}$ by H\"ormander's
+$L^2$ estimate with polynomial weights (Proposition~\ref{prop:c0-l2-extension}). It produces, for
+$J_q=J_q(\phi)$ and $c=m/q$, finitely many polynomials of $x$-degree $\le md+2$ which are square
+integrable against $|J_q|^{-2c}$ and whose modulus dominates $|J_q|^{c}$
+(Corollary~\ref{cor:c0-bergman-lower}).
+\item The valuative input is the bound $\operatorname{ord}_V(f)>c\operatorname{ord}_V(g)-A(V)$ for polynomials $f$ which are
+square integrable against $|g|^{-2c}$, at every divisorial valuation ring $V$
+(Proposition~\ref{prop:c0-valuative-bound}). It is proved in coordinates at a general point of the
+divisor of $V$; no resolution of singularities is used.
+\end{itemize}
+
+\begin{convention}\label{conv:c0}
+\uses{conv:bj-pn, def:pn-div, def:pn-gauss}
+In this chapter $k$ is a countable algebraically closed field of characteristic $0$, $n\ge1$, $N=n+2$, and
+$z=(x_0,\dots,x_n,t)$, so that $R[t]=k[x,t]=k[z]$ is the coordinate ring of the affine cone over
+$\PP^n\times\A^1$ and the discrete valuation rings of Definition~\ref{def:pn-div} are subrings of
+$k(z)$. On $\mathbf C^N=\mathbf C^{n+1}_x\times\mathbf C_t$ we use the Lebesgue measure $\lambda$ and
+$|z|^2=|x|^2+|t|^2$; $B(y,r)$ is the open ball. For a finite family $g=(g_1,\dots,g_s)$ of holomorphic
+functions, not all identically zero, $|g|=(\sum_j|g_j|^2)^{1/2}$, $Z(g)=\{|g|=0\}$, and $\log|g|$ takes the
+value $-\infty$ on $Z(g)$. For $c>0$ and $f$ holomorphic we say that \emph{$f$ is square integrable
+against $|g|^{-2c}$} if $\int_K|f|^2|g|^{-2c}\,d\lambda<\infty$ for every compact $K$ (the integrand is
+read as $0$ where $f=0$). A polynomial in $\mathbf C[x,t]$ is \emph{$x$-homogeneous} of degree $e$ if it
+is homogeneous of degree $e$ in $x$, and \emph{bihomogeneous} if moreover it is a monomial in $t$; its
+$x$-degree and $t$-degree are its degrees in $x$ and in $t$.
+\end{convention}
+
+\subsection{Divisorial valuation rings and extension of scalars}
+
+\begin{definition}[Divisorial valuation rings]\label{def:c0-dvr}
+\lean{EnvelopeProperty.BirationalDVR, EnvelopeProperty.BirationalDVR.ordIdeal}
+\leanok
+\uses{conv:c0}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+Let $F$ be a field and $N\ge1$. A \emph{divisorial valuation ring over $F$} (in the variables
+$z_1,\dots,z_N$) is a discrete valuation ring $V$ with $F[z]\subseteq V\subseteq F(z)$ which is essentially of
+finite type over $F$. We write $\operatorname{ord}_V$ for its normalized valuation, $\mathfrak m_V$ and $\kappa_V$ for its maximal
+ideal and residue field, $\operatorname{ord}_V(g)=\min_j\operatorname{ord}_V(g_j)$ for a finite family of elements of $V$, and
+$\operatorname{ord}_V(I)=\min_{f\in I}\operatorname{ord}_V(f)$ for an ideal $I$ of $F[z]$. A point $v\in(\PP^n)^\an$ is divisorial
+(Definition~\ref{def:pn-div}) if and only if $\log|g|_{\sigma(v)}=-c\operatorname{ord}_V(g)$ on $k[z]$ for some
+$c\in\Q_{>0}$ and some divisorial valuation ring $V$ over $k$ in the $N=n+2$ variables $z$.
+\end{definition}
+
+\begin{lemma}[Residue fields of divisorial valuation rings]\label{lem:c0-residue-trdeg}
+\lean{EnvelopeProperty.Char0.BirationalDVR.trdeg_residueField, EnvelopeProperty.Char0.trdeg_residueField_add_one, EnvelopeProperty.Char0.height_eq_of_isMaximal_mvPolynomial}
+\leanok
+\uses{def:c0-dvr}
+Let $V$ be a divisorial valuation ring over a field $F$ in $N$ variables. Then $\kappa_V$ is a finitely
+generated field extension of $F$ of transcendence degree $N-1$.
+\end{lemma}
+
+\begin{proof}
+Since $V$ is essentially of finite type, $V=E_P$ for a finitely generated $F$-subalgebra $E\subseteq V$
+containing $z_1,\dots,z_N$ and $P=\mathfrak m_V\cap E$; then $K\coloneqq\operatorname{Frac}E=F(z)$ and $\kappa_V=\operatorname{Frac}(E/P)$ is
+finitely generated over $F$. Let $\bar u_1,\dots,\bar u_r$ be a transcendence basis of $\kappa_V$ over $F$ and,
+enlarging $E$, let $u_i\in E$ be lifts. A nonzero $h\in F[u]$ has nonzero residue $h(\bar u)$, so $h$ is a unit
+of $V$: the $u_i$ are algebraically independent and $F'\coloneqq F(u)\subseteq V$. A uniformizer $\pi$ of $V$ is
+transcendental over $F'$: an equation $\pi^e+a_1\pi^{e-1}+\dots+a_e=0$ with $a_i\in F'\subseteq V$ and $a_e\ne0$, a unit,
+would give $a_e\in\pi V$. Hence $s\coloneqq\operatorname{trdeg}_{F'}K=N-r\ge1$.
+
+Let $S=F[u]\setminus\{0\}$, $E'=S^{-1}E\subseteq V$ and $P'=S^{-1}P$. Then $E'$ is a finitely generated $F'$-domain with
+fraction field $K$ and $E'_{P'}=V$, so $\operatorname{ht}P'=1$. The domain $E'/P'=S^{-1}(E/P)\subseteq\kappa_V$ is finitely
+generated over $F'$ and algebraic over it ($\kappa_V$ is algebraic over $F(\bar u)$), hence finite dimensional, hence a
+field: $P'$ is maximal. By Noether normalization there are $y_1,\dots,y_s\in E'$, algebraically independent over $F'$,
+with $E'$ finite over $A_0=F'[y_1,\dots,y_s]$. The prime $\mathfrak m_0=P'\cap A_0$ is maximal, as $E'/P'$ is a field integral
+over $A_0/\mathfrak m_0$.
+
+Every maximal ideal $\mathfrak M$ of $F'[y_1,\dots,y_s]$ has height $\ge s$. By induction on $s$, write
+$F'[y]=R_1[y_s]$ with $R_1=F'[y_1,\dots,y_{s-1}]$. The quotient $F'[y]/\mathfrak M$ is finite over $F'$ (Zariski's lemma), so
+the domain $R_1/\mathfrak p$, $\mathfrak p=\mathfrak M\cap R_1$, is finite over $F'$ and $\mathfrak p$ is maximal. A chain
+$\mathfrak q_0\subsetneq\dots\subsetneq\mathfrak q_{s-1}=\mathfrak p$ of primes of $R_1$ (induction) gives the chain
+$\mathfrak q_0[y_s]\subsetneq\dots\subsetneq\mathfrak p[y_s]\subsetneq\mathfrak M$: the ideals $\mathfrak q[y_s]$ are prime since
+$F'[y]/\mathfrak q[y_s]=(R_1/\mathfrak q)[y_s]$, the inclusions are strict on contracting to $R_1$, and $\mathfrak p[y_s]\ne\mathfrak M$ because
+$(R_1/\mathfrak p)[y_s]$ is not a field.
+
+Since $A_0$ is integrally closed and the domain $E'$ is integral over it, going down holds for $A_0\subseteq E'$. A chain
+of primes of length $\ge s$ ending at $\mathfrak m_0$ therefore lifts to a chain of the same length ending at $P'$. Hence
+$1=\operatorname{ht}P'\ge s\ge1$, so $s=1$ and $r=N-1$.
+\end{proof}
+
+\begin{lemma}[Tensor products over an algebraically closed field]\label{lem:c0-tensor-domain}
+\lean{EnvelopeProperty.isDomain_tensorProduct_of_isAlgClosed, EnvelopeProperty.eq_zero_of_forall_algHom_eq_zero}
+\leanok
+Let $k$ be an algebraically closed field and $A$, $B$ $k$-algebras which are domains. Then $A\otimes_kB$ is a domain.
+\end{lemma}
+
+\begin{proof}
+$A\otimes_kB\ne0$. Let $\alpha,\beta\in A\otimes_kB$ with $\alpha\beta=0$. Their $A$-coefficients lie in a finitely generated
+subalgebra $A_0\subseteq A$, and $A_0\otimes_kB\to A\otimes_kB$ is injective ($k$ is a field), so we may assume $A$ finitely
+generated. Write $\alpha=\sum_ia_i\otimes b_i$ and $\beta=\sum_jc_j\otimes d_j$ with $(b_i)$ and $(d_j)$ each linearly independent
+over $k$. For a maximal ideal $\mathfrak m$ of $A$ we have $A/\mathfrak m=k$ (Nullstellensatz), and the $k$-algebra map
+$A\otimes_kB\to B$, $a\otimes b\mapsto\bar ab$, sends $\alpha\beta$ to $(\sum_i\bar a_ib_i)(\sum_j\bar c_jd_j)=0$; as $B$ is a domain
+and the $b_i$, $d_j$ are independent, all $\bar a_i$ or all $\bar c_j$ vanish. So every maximal ideal contains
+$I_1=(a_i)_i$ or $I_2=(c_j)_j$, hence contains $I_1I_2$. The Jacobson radical of the finitely generated reduced
+$k$-algebra $A$ is $0$, so $I_1I_2=0$, and $I_1=0$ or $I_2=0$ since $A$ is a domain; that is, $\alpha=0$ or $\beta=0$.
+\end{proof}
+
+\begin{lemma}[Extension of scalars of divisorial valuation rings]\label{lem:c0-base-change-dvr}
+\lean{EnvelopeProperty.BirationalDVR.baseChange, EnvelopeProperty.BirationalDVR.irreducible_toBaseChange, EnvelopeProperty.BirationalDVR.addVal_toBaseChange_sum, EnvelopeProperty.BirationalDVR.ord_baseChange_sum, EnvelopeProperty.BirationalDVR.coneBaseChange, EnvelopeProperty.BirationalDVR.ord_coneBaseChange_sum}
+\leanok
+\uses{def:c0-dvr, lem:c0-tensor-domain}
+\source{bj22-trivval:sec:Gauss}
+Let $k$ be algebraically closed, $K'\supseteq k$ a field, and $V$ a divisorial valuation ring over $k$ in $N$ variables.
+Then $V\otimes_kK'$ is a domain, $\mathfrak m_V\otimes_kK'$ is a prime ideal, and
+$V_{K'}\coloneqq(V\otimes_kK')_{\mathfrak m_V\otimes K'}$ is a divisorial valuation ring over $K'$ in the same variables, with
+uniformizer $\pi\otimes1$ for a uniformizer $\pi$ of $V$, such that
+\[
+\operatorname{ord}_{V_{K'}}\Bigl(\sum_\beta f_\beta\otimes b_\beta\Bigr)=\min_\beta\operatorname{ord}_V(f_\beta)
+\]
+for all finite families $f_\beta\in V$ and $b_\beta\in K'$ with the $b_\beta$ linearly independent over $k$.
+\end{lemma}
+
+\begin{proof}
+$V\otimes_kK'$ and $\kappa_V\otimes_kK'=(V\otimes_kK')/(\mathfrak m_V\otimes K')$ are domains (Lemma~\ref{lem:c0-tensor-domain}), so the
+ideal is prime. Write $V=S^{-1}E$ with $E$ a finitely generated $k$-algebra; then $V\otimes_kK'=S^{-1}(E\otimes_kK')$ is a
+localization of a finitely generated $K'$-algebra, hence Noetherian, and $V_{K'}$ is a Noetherian local domain, essentially
+of finite type over $K'$. Its maximal ideal is generated by $\pi\otimes1$, since $\mathfrak m_V=\pi V$, and $\pi\otimes1\ne0$ by
+flatness of $K'$ over $k$; a Noetherian local domain whose maximal ideal is principal and nonzero is a discrete
+valuation ring. As $E\subseteq k(z)$ and $k(z)\otimes_kK'$ is the localization of $K'[z]=k[z]\otimes_kK'$ at the nonzero elements
+of $k[z]$, we get $K'[z]\subseteq V_{K'}\subseteq K'(z)$.
+For the formula, write $f_\beta=\pi^{n_\beta}\varepsilon_\beta$ with $\varepsilon_\beta\in V^\times$ (the terms with $f_\beta=0$ may be dropped) and let
+$n=\min n_\beta$. Then $\sum f_\beta\otimes b_\beta=(\pi\otimes1)^n\bigl(\sum_{n_\beta=n}\varepsilon_\beta\otimes b_\beta+(\pi\otimes1)\gamma\bigr)$ with
+$\gamma\in V\otimes K'$. The elements $1\otimes b_\beta$ are linearly independent over $\kappa_V$ in $\kappa_V\otimes_kK'$, and the
+$\bar\varepsilon_\beta$ are nonzero, so the bracket has nonzero image $\sum_{n_\beta=n}\bar\varepsilon_\beta\otimes b_\beta$ in $\kappa_V\otimes K'$, that is, it
+is a unit of $V_{K'}$. Hence the order is $n$.
+\end{proof}
+
+\begin{corollary}[Orders and filtrations under extension of scalars]\label{cor:c0-base-change-orders}
+\lean{EnvelopeProperty.BirationalDVR.mem_baseChange_ordIdeal_iff, EnvelopeProperty.BirationalDVR.ord_baseChange_one_tmul, EnvelopeProperty.BirationalDVR.iInf_ord_baseChange_map, EnvelopeProperty.BirationalDVR.mem_span_coneMap_ordIdeal_iff, EnvelopeProperty.BirationalDVR.ord_coneBaseChange_map, EnvelopeProperty.BirationalDVR.iInf_ord_coneBaseChange_map}
+\leanok
+\uses{lem:c0-base-change-dvr}
+In the setting of Lemma~\ref{lem:c0-base-change-dvr}:
+\begin{enumerate}
+\item for a $k$-subspace $W\subseteq k[z]$ and $\mu\in\R$,
+$\{G\in W\otimes_kK':\operatorname{ord}_{V_{K'}}(G)\ge\mu\}=\{f\in W:\operatorname{ord}_V(f)\ge\mu\}\otimes_kK'$, and the same holds for finite
+intersections of such conditions attached to finitely many divisorial valuation rings $V_1,\dots,V_r$ over $k$;
+\item for an ideal $I\subseteq k[z]$, $\operatorname{ord}_{V_{K'}}(IK'[z])=\operatorname{ord}_V(I)$; for $f\in k[z]$, $\operatorname{ord}_{V_{K'}}(f)=\operatorname{ord}_V(f)$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(1) Fix a $k$-basis $(b_\beta)$ of $K'$. Every $G\in W\otimes K'$ is uniquely $\sum_\beta f_\beta\otimes b_\beta$ with $f_\beta\in W$, and by
+Lemma~\ref{lem:c0-base-change-dvr} $\operatorname{ord}(G)\ge\mu$ if and only if $\operatorname{ord}_V(f_\beta)\ge\mu$ for all $\beta$. For finitely many
+$V_i$ the condition on $G$ is again that every coordinate $f_\beta$ satisfies all conditions. (2) If $I=(g_1,\dots,g_s)$, an
+element $\sum h_jg_j$ of $IK'[z]$ has order $\ge\min_j\operatorname{ord}(g_j)$, and $\operatorname{ord}_{V_{K'}}(g_j)=\operatorname{ord}_V(g_j)$ by the formula with a single
+term $b=1$.
+\end{proof}
+
+\begin{lemma}[Embedding in the complex numbers]\label{lem:c0-embedding}
+\lean{EnvelopeProperty.nonempty_ringHom_complex}
+\leanok
+A countable algebraically closed field $k$ of characteristic $0$ admits a field embedding $\iota\colon k\to\mathbf C$.
+\end{lemma}
+
+\begin{proof}
+Let $T$ be a transcendence basis of $k$ over $\Q$; it is countable. A transcendence basis $T'$ of $\mathbf C$ over $\Q$ is
+uncountable, since the algebraic closure of $\Q(T'')$ is countable for countable $T''$. Choose an injection $T\to T'$;
+it induces a field embedding $\Q(T)\to\Q(T')\subseteq\mathbf C$, which extends to the algebraic extension $k$ of $\Q(T)$ because
+$\mathbf C$ is algebraically closed.
+\end{proof}
+
+\subsection{Coordinates at the generic point of a divisor}
+
+In this subsection $F$ is a field of characteristic $0$ and $V$ a divisorial valuation ring over $F$ in $N$ variables, with
+fraction field $K=F(z)$.
+
+\begin{lemma}[Divisorial valuation rings as local rings of curves]\label{lem:c0-dvr-curve}
+\lean{EnvelopeProperty.Char0.curveDVR, EnvelopeProperty.Char0.isDiscreteValuationRing_curveDVR, EnvelopeProperty.Char0.mem_curveDVR_iff, EnvelopeProperty.Char0.curveB, EnvelopeProperty.Char0.isDedekindDomain_curveB, EnvelopeProperty.Char0.exists_mul_mem_curveB, EnvelopeProperty.Char0.mem_of_mul_mem_curveB, EnvelopeProperty.Char0.curveBToResidue_surjective, EnvelopeProperty.Char0.isSeparable_curveField}
+\leanok
+\uses{lem:c0-residue-trdeg}
+Let $u_2,\dots,u_N\in V$ lift a transcendence basis of $\kappa_V$ over $F$ (Lemma~\ref{lem:c0-residue-trdeg}) and let $\pi$ be a
+uniformizer. Then $L\coloneqq F(u_2,\dots,u_N)\subseteq V$, $\pi$ is transcendental over $L$, $K$ is a finite separable extension of
+$L(\pi)$, and $A\coloneqq L[\pi]_{(\pi)}$ is a discrete valuation ring with $A\subseteq V$ and $\pi A=\mathfrak m_V\cap A$. The integral closure
+$B$ of $A$ in $K$ is a free $A$-module of rank $[K:L(\pi)]$ and a Dedekind domain contained in $V$, and $V=B_{\mathfrak n}$ for
+$\mathfrak n=\mathfrak m_V\cap B$. The residue field $\kappa_V=B/\mathfrak n$ is finite over $L$, and $\mathfrak nB_{\mathfrak n}=\pi B_{\mathfrak n}$.
+\end{lemma}
+
+\begin{proof}
+As in the proof of Lemma~\ref{lem:c0-residue-trdeg}, nonzero elements of $F[u]$ are units of $V$, so $L\subseteq V$, and $\pi$ is
+transcendental over $L$. Since $\operatorname{trdeg}_FK=N$, $K$ is algebraic over $L(\pi)$, hence finite (it is finitely generated), and
+separable (characteristic $0$). An element $Q(\pi)/S(\pi)$ of $A$ with $S(0)\ne0$ has $S(\pi)\equiv S(0)\in L^\times$ modulo
+$\mathfrak m_V$, so $A\subseteq V$ and $\mathfrak m_V\cap A=\pi A$. As $A$ is a Noetherian integrally closed domain and $K/L(\pi)$ is separable,
+$B$ is finite over $A$, torsion free, hence free over the principal ideal domain $A$, of rank $[K:L(\pi)]$; it is the
+integral closure of a Dedekind domain in a finite separable extension, hence Dedekind. $B\subseteq V$ because $V$ is integrally
+closed and contains $A$. The localization $B_{\mathfrak n}$ is a discrete valuation ring with fraction field $K$ and $V$ dominates
+it; if $x\in V\setminus B_{\mathfrak n}$ then $x^{-1}\in\mathfrak nB_{\mathfrak n}\subseteq\mathfrak m_V$, contradicting $x\in V$. So $V=B_{\mathfrak n}$, and
+$\mathfrak nB_{\mathfrak n}=\mathfrak m_V=\pi V$. Finally $\kappa_V$ is algebraic over $L$ (it has transcendence degree $N-1$ over $F$ and
+contains the image of $L$) and finitely generated, hence finite.
+\end{proof}
+
+\begin{lemma}[A primitive coordinate]\label{lem:c0-dvr-primitive}
+\lean{EnvelopeProperty.Char0.IsPrimitiveCoordinate, EnvelopeProperty.Char0.exists_isPrimitiveCoordinate}
+\leanok
+\uses{lem:c0-dvr-curve}
+In the setting of Lemma~\ref{lem:c0-dvr-curve} there is $\theta\in B$ such that
+\begin{enumerate}
+\item $K=L(\pi)(\theta)$, and the residue $\xi=\bar\theta\in\kappa_V$ is nonzero and generates $\kappa_V$ over $L$;
+\item the minimal polynomial $F_\theta$ of $\theta$ over $L(\pi)$ lies in $A[T]$, and its reduction $\bar F_\theta\in L[T]$ modulo $\pi$
+has $\xi$ as a simple root: $\bar F_\theta=G\cdot T^{e}$ with $G$ the minimal polynomial of $\xi$ over $L$, separable, $G(0)\ne0$;
+\item $V=A[\theta]_{\mathfrak n'}$ with $\mathfrak n'=\mathfrak m_V\cap A[\theta]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak n=\mathfrak n_1,\mathfrak n_2,\dots,\mathfrak n_g$ be the maximal ideals of $B$ containing $\pi$, so that $\pi B=\prod_j\mathfrak n_j^{e_j}$ with $e_1=1$
+(Lemma~\ref{lem:c0-dvr-curve}). The extension $\kappa_V/L$ is finite separable; choose a primitive element $\xi\ne0$ (replace a
+primitive element $\xi_0$ by $\xi_0+1$ if $\xi_0=0$, by $1$ if $\kappa_V=L$). By the Chinese remainder theorem there is $\theta_1\in B$ with
+$\theta_1\equiv\xi$ modulo $\mathfrak n_1$ and $\theta_1\in\mathfrak n_j$ for $j\ge2$. Let $I=\mathfrak n_1\cdots\mathfrak n_g\supseteq\pi B$, so $I$ spans $K$ over $L(\pi)$,
+and let $W_1,\dots,W_h$ be the proper intermediate fields of $K/L(\pi)$ (finitely many, $K/L(\pi)$ being finite separable).
+Some $a\in I$ lies in no $W_i$: otherwise let $W_1,\dots,W_{h'}$ be a minimal subfamily covering $I$; $h'\ge2$ since $I$ spans
+$K$; choose $a_1\in I\setminus(W_2\cup\dots\cup W_{h'})$ (so $a_1\in W_1$) and $b\in I\setminus W_1$; the elements $b+\lambda a_1\in I$, $\lambda\in F$, are not
+in $W_1$, so two of them with $\lambda\ne\lambda'$ lie in the same $W_i$, $2\le i\le h'$ ($F$ is infinite), whence $a_1\in W_i$, a contradiction. In the same way some $\theta=\theta_1+\lambda a$, $\lambda\in F$, lies in no $W_i$: two values in one $W_i$ would put $a$
+in $W_i$. This $\theta$ satisfies (1), since $\theta\equiv\theta_1$ modulo $I$.
+
+(2) $\theta$ is integral over the integrally closed domain $A$, so $F_\theta\in A[T]$, monic of degree $[K:L(\pi)]=\operatorname{rank}_AB$. As $\theta$
+generates $K$, $F_\theta$ is the characteristic polynomial of multiplication by $\theta$ on $K$ over $L(\pi)$, hence on the free $A$-module
+$B$. Reducing modulo $\pi$, $\bar F_\theta$ is the characteristic polynomial of $\theta$ on $B/\pi B\cong\prod_jB/\mathfrak n_j^{e_j}$ over $L$. On
+$B/\mathfrak n_1=\kappa_V$ it is the minimal polynomial $G$ of the primitive element $\xi$; on $B/\mathfrak n_j^{e_j}$, $j\ge2$, $\theta$ is nilpotent and the
+characteristic polynomial is a power of $T$. So $\bar F_\theta=G\,T^{e}$, $G$ is separable, and $G(0)\ne0$ because $G$ is irreducible and
+$\xi\ne0$; thus $\xi$ is a simple root.
+
+(3) $C\coloneqq A[\theta]\cong A[T]/(F_\theta)$, and $C/\pi C\cong L[T]/(\bar F_\theta)$. Lift $G$ and $T^e$ to monic $\widetilde G,H\in A[T]$; then
+$F_\theta=\widetilde GH+\pi Q$ with $Q\in A[T]$. The prime $\mathfrak n'$ contains $\pi$ and corresponds to the factor $G$, so
+$\mathfrak n'=(\pi,\widetilde G(\theta))$; $H(\theta)\notin\mathfrak n'$ since $\xi^e\ne0$. In $C_{\mathfrak n'}$, $0=F_\theta(\theta)$ gives
+$\widetilde G(\theta)=-\pi Q(\theta)H(\theta)^{-1}$, so the maximal ideal is $\pi C_{\mathfrak n'}$. Hence $C_{\mathfrak n'}$ is a Noetherian local domain with
+nonzero principal maximal ideal, a discrete valuation ring, with fraction field $L(\pi)(\theta)=K$, and $V$ dominates it
+($C\subseteq B\subseteq V$, $\mathfrak n'=\mathfrak m_V\cap C$). As in Lemma~\ref{lem:c0-dvr-curve}, $V=C_{\mathfrak n'}$.
+\end{proof}
+
+\begin{lemma}[Partial derivatives and the log discrepancy]\label{lem:c0-dvr-jacobian}
+\lean{EnvelopeProperty.Char0.partialDeriv, EnvelopeProperty.Char0.partialDeriv_mem, EnvelopeProperty.Char0.jacobian, EnvelopeProperty.Char0.jacobian_ne_zero, EnvelopeProperty.Char0.BirationalDVR.jacobian_mem_and_ne_zero, EnvelopeProperty.Char0.logDiscrepancy, EnvelopeProperty.Char0.BirationalDVR.logDiscrepancy_ne_top}
+\leanok
+\uses{lem:c0-dvr-primitive}
+\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
+In the setting of Lemma~\ref{lem:c0-dvr-primitive}, write $w_1=\pi$, $w_j=u_j$ for $2\le j\le N$. The partial derivatives
+$\partial/\partial w_j$ of $L(\pi)=F(w_1,\dots,w_N)$ extend uniquely to $F$-derivations $\partial_j$ of $K$, and $\partial_j(V)\subseteq V$.
+The Jacobian $\mathrm{Jac}_V\coloneqq\det(\partial_jz_i)_{i,j}\in V$ is nonzero. We put
+$A(V)\coloneqq1+\operatorname{ord}_V(\mathrm{Jac}_V)\in\mathbf Z_{\ge1}$ (the log discrepancy of $\operatorname{ord}_V$ with respect to $z$, for the coordinates chosen).
+\end{lemma}
+
+\begin{proof}
+For a derivation $D$ of $L(\pi)$ and $P\in L(\pi)[T]$ let $P^D$ be obtained by applying $D$ to the coefficients. Since $F_\theta$ is
+separable, $F_\theta'(\theta)\ne0$, and $D$ extends uniquely to $K=L(\pi)[T]/(F_\theta)$ by $D(P(\theta))=P^D(\theta)+P'(\theta)D\theta$ with
+$D\theta=-F_\theta^D(\theta)/F_\theta'(\theta)$; this is well defined because, for this choice of $D\theta$, the expression
+$P^D(\theta)+P'(\theta)D\theta$ vanishes for $P=F_\theta Q$. The $\partial_j$ preserve $A$ (quotient rule; they act on $L=F(u)$ and on $\pi$), and $F_\theta'(\theta)$ is a unit of $V$ because its
+residue $\bar F_\theta'(\xi)$ is nonzero (Lemma~\ref{lem:c0-dvr-primitive}(2)); so $\partial_j\theta\in V$, and by the quotient rule
+$\partial_j(A[\theta]_{\mathfrak n'})\subseteq A[\theta]_{\mathfrak n'}=V$. Hence $\mathrm{Jac}_V\in V$. If $\mathrm{Jac}_V=0$, there is $0\ne(c_j)\in K^N$ with
+$\sum_jc_j\partial_jz_i=0$ for all $i$; then $D=\sum_jc_j\partial_j$ is an $F$-derivation of $K=F(z)$ vanishing on the generators $z_i$, so
+$D=0$, while $D(w_j)=c_j$, a contradiction.
+\end{proof}
+
+\subsection{The valuative bound}
+
+In this subsection $F=\mathbf C$.
+
+\begin{lemma}[Analytic coordinates at a general point of the divisor]\label{lem:c0-analytic-chart}
+\lean{EnvelopeProperty.Char0.exists_analyticChart, EnvelopeProperty.Char0.exists_chartTheta, EnvelopeProperty.Char0.chartEv, EnvelopeProperty.Char0.eventually_det_chartMap, EnvelopeProperty.Char0.det_restrictScalars_real}
+\leanok
+\uses{lem:c0-dvr-primitive, lem:c0-dvr-jacobian}
+Let $V$ be a divisorial valuation ring over $\mathbf C$ in $N$ variables and $f_1,\dots,f_p\in\mathbf C[z]$ nonzero. There are
+$u_0\in\mathbf C^{N-1}$, $\delta\in(0,1)$ and a holomorphic map $\mu\colon U\to\mathbf C^N$ on
+$U=\{(s,u)\in\mathbf C\times\mathbf C^{N-1}:|s|<\delta,\ |u-u_0|<\delta\}$, with bounded image, such that
+\begin{enumerate}
+\item $f_i\circ\mu=s^{\operatorname{ord}_V(f_i)}h_i$ with $h_i$ holomorphic and without zeros on $U$, for $1\le i\le p$;
+\item $\det D\mu=s^{A(V)-1}h_0$ with $h_0$ holomorphic and without zeros on $U$;
+\item $\mu$ is injective on $U\cap\{s\ne0\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Use the coordinates $\pi,u,\theta$ of Lemmas~\ref{lem:c0-dvr-curve}--\ref{lem:c0-dvr-jacobian}. Every $r\in V\setminus\{0\}$ is
+$\pi^{\operatorname{ord}_V r}\varepsilon_r$ with $\varepsilon_r=P_r(\theta)/S_r(\theta)$, $P_r,S_r\in A[T]$ and $\bar P_r(\xi),\bar S_r(\xi)\ne0$ in $\kappa_V=L[T]/(G)$
+(Lemma~\ref{lem:c0-dvr-primitive}(3)). Write $\pi=p_0(z)/p_1(z)$ and $u_j=q_j(z)/r_j(z)$ with polynomials, $p_1,r_j\ne0$, and
+apply the following to the finite family $\mathcal F$ consisting of $f_1,\dots,f_p,p_1,r_2,\dots,r_N$ and $\mathrm{Jac}_V$.
+
+\emph{Choice of $u_0$.} The finitely many elements of $L=\mathbf C(u)$ involved are: the coefficients (in $\pi$ and $T$) of the
+numerators and denominators of the coefficients of $F_\theta,P_r,S_r$ ($r\in\mathcal F$) and of $z_i=P_{z_i}(\theta)/S_{z_i}(\theta)$; the
+constant terms $S(0)\in L^\times$ of these denominators $S(\pi)$; the discriminant of $G$; and, for each $Q\in\{\bar P_r,\bar S_r,
+\bar F_\theta/G\}$, the resultant $\operatorname{Res}_T(G,Q)\ne0$ ($G$ irreducible does not divide $Q$). Choose $u_0$ at which all of them are
+regular and the nonzero ones do not vanish (the complement of the zero set of a nonzero polynomial is nonempty), and a root
+$\theta_0$ of $G(u_0,T)$. Then $\theta_0$ is a simple root of $F_\theta(0,u_0,T)=\bar F_\theta(u_0,T)$, and $Q(u_0,\theta_0)\ne0$ for the $Q$
+above.
+
+\emph{The chart.} The coefficients of $F_\theta$ are holomorphic near $(0,u_0)$ and $\partial_TF_\theta(0,u_0,\theta_0)\ne0$, so the holomorphic
+implicit function theorem gives a holomorphic $\vartheta(s,u)$ near $(0,u_0)$ with $\vartheta(0,u_0)=\theta_0$ and
+$F_\theta(s,u,\vartheta(s,u))=0$. Evaluation $\pi\mapsto s$, $u\mapsto u$, $\theta\mapsto\vartheta$ defines a ring homomorphism $\mathrm{ev}$ from the
+subring of $V$ of elements $P(\theta)/S(\theta)$ whose denominators $S$ are products of the $S_r$ and of the denominators above, to
+holomorphic functions on a neighbourhood of $(0,u_0)$ (it is well defined: if $P(\theta)/S(\theta)=P'(\theta)/S'(\theta)$, then after clearing denominators $c(w)(PS'-P'S)=\Phi\cdot M$ with $0\ne c\in\mathbf C[w]$ and $\Phi$ the minimal polynomial of $\theta$ with cleared denominators, so $PS'-P'S$ vanishes on the graph of $\vartheta$ off the Lebesgue-null set $\{c=0\}$ (Lemma~\ref{lem:c0-analytic-basics}(4)), hence everywhere near $(0,u_0)$ by continuity; $F_\theta(\vartheta)=0$ alone does not suffice, because the coefficients of the quotient need not be regular at $(0,u_0)$). Put
+$\mu=(\mathrm{ev}(z_1),\dots,\mathrm{ev}(z_N))$. For $r\in\mathcal F$, $\mathrm{ev}(r)=s^{\operatorname{ord}_Vr}\mathrm{ev}(\varepsilon_r)$ and
+$\mathrm{ev}(\varepsilon_r)(0,u_0)=\bar P_r(u_0,\theta_0)/\bar S_r(u_0,\theta_0)\ne0$; since $\mathrm{ev}(f)=f\circ\mu$ for polynomials $f$, shrinking
+$U$ gives (1). Differentiating $F_\theta(s,u,\vartheta)=0$ gives $\partial\vartheta/\partial w_j=\mathrm{ev}(\partial_j\theta)$, and by the chain rule
+$\partial\,\mathrm{ev}(r)/\partial w_j=\mathrm{ev}(\partial_jr)$; hence $\det D\mu=\mathrm{ev}(\mathrm{Jac}_V)$, which gives (2). For (3), the identities
+$p_1\pi=p_0$ and $r_ju_j=q_j$ in $V$ give $p_1(\mu(s,u))\,s=p_0(\mu(s,u))$ and $r_j(\mu(s,u))\,u_j=q_j(\mu(s,u))$; on $\{s\ne0\}$ the factors
+$p_1\circ\mu$, $r_j\circ\mu$ have no zeros by (1), so $(s,u)$ is a function of $\mu(s,u)$. Shrinking $U$ makes $\mu(U)$ bounded.
+\end{proof}
+
+\begin{proposition}[Valuative bound for square integrable polynomials]\label{prop:c0-valuative-bound}
+\lean{EnvelopeProperty.Char0.valuativeBound_of_coordinates, EnvelopeProperty.Char0.valuativeBound_forall_dvr, EnvelopeProperty.Char0.neg_one_lt_of_setLIntegral_rpow_lt_top}
+\leanok
+\uses{lem:c0-analytic-chart, lem:c0-analytic-basics}
+\source{demailly-analytic-methods, fhx-envelope-20261028:lem:divisorial-trace-estimate}
+Let $V$ be a divisorial valuation ring over $\mathbf C$ in $N$ variables, $g=(g_1,\dots,g_s)$ polynomials not all zero, $c>0$ real,
+and $f\in\mathbf C[z]$ square integrable against $|g|^{-2c}$. Then $\operatorname{ord}_V(f)>c\operatorname{ord}_V(g)-A(V)$.
+\end{proposition}
+
+\begin{proof}
+We may assume $f\ne0$ and drop the $g_j$ that vanish. Apply Lemma~\ref{lem:c0-analytic-chart} to $f,g_1,\dots,g_s$, shrink $U$ so that
+the functions $h$ are bounded above and below on $U$ in modulus, and put $a=\operatorname{ord}_V f$, $b=\operatorname{ord}_V g=\min_j\operatorname{ord}_V g_j$,
+$\alpha=A(V)-1$. On $U$: $|f\circ\mu|^2\ge c_1|s|^{2a}$, $|g\circ\mu|^2\le C_2|s|^{2b}$ (as $|s|<1$ and $\operatorname{ord}_Vg_j\ge b$), and $|g\circ\mu|>0$ on
+$U_*=U\cap\{s\ne0\}$; the real Jacobian of the holomorphic map $\mu$ is $|\det D\mu|^2\ge c_3|s|^{2\alpha}$. Since $\mu$ is injective and $C^1$
+on $U_*$, the change of variables formula and the hypothesis on the compact set $\overline{\mu(U)}$ give
+\[
+\infty>\int_{\mu(U_*)}|f|^2|g|^{-2c}\,d\lambda=\int_{U_*}|f\circ\mu|^2|g\circ\mu|^{-2c}|\det D\mu|^2\,d\lambda
+\ge c_1c_3C_2^{-c}\int_{U_*}|s|^{2(a-cb+\alpha)}\,d\lambda(s,u).
+\]
+By Fubini and polar coordinates in $s$ (Lemma~\ref{lem:c0-analytic-basics}(3)) the last integral is finite only if $a-cb+\alpha>-1$,
+that is, $\operatorname{ord}_Vf>c\operatorname{ord}_Vg-A(V)$.
+\end{proof}
+
+\begin{corollary}[Analytic lower bounds give valuative upper bounds]\label{cor:c0-valuative-upper}
+\lean{EnvelopeProperty.Char0.ValuativeUpperBound, EnvelopeProperty.Char0.ValuativeUpperBound.of_valuative_bound, EnvelopeProperty.Char0.valuativeUpperBound_holds}
+\leanok
+\uses{prop:c0-valuative-bound}
+Let $P=(P_1,\dots,P_r)$ and $G=(G_1,\dots,G_s)$ be polynomials, $G$ not all zero, and $a,b\in\mathbf Z_{>0}$. Suppose that for every
+compact $K\subseteq\mathbf C^N$ there is $c_K>0$ with $|P|^b\ge c_K|G|^a$ on $K$. Then $b\operatorname{ord}_V(P)\le a\operatorname{ord}_V(G)$ for every divisorial
+valuation ring $V$ over $\mathbf C$ in $N$ variables.
+\end{corollary}
+
+\begin{proof}
+$P$ is not identically zero, since otherwise $G$ would vanish everywhere. Choose $j_0$ with $\operatorname{ord}_VG_{j_0}=\operatorname{ord}_VG$ and let
+$\ell\ge1$ be an integer and $f=G_{j_0}^{a\ell}$. On a compact $K$, where $P\ne0$, $|f|^2|P|^{-2b\ell}\le|G|^{2a\ell}|P|^{-2b\ell}\le c_K^{-2\ell}$, and
+where $P=0$ also $G=0$ and $f=0$; so $f$ is square integrable against $|P|^{-2b\ell}$. Proposition~\ref{prop:c0-valuative-bound} gives
+$a\ell\operatorname{ord}_VG>b\ell\operatorname{ord}_VP-A(V)$; divide by $\ell$ and let $\ell\to\infty$.
+\end{proof}
+
+\subsection{\texorpdfstring{$L^2$}{L2} extension with polynomial growth}
+
+\begin{lemma}[Standard facts from analysis]\label{lem:c0-analytic-basics}
+\lean{EnvelopeProperty.Char0.taylorCoeff, EnvelopeProperty.Char0.torusIntegral_cauchy, EnvelopeProperty.Char0.hasSum_taylorCoeff, EnvelopeProperty.Char0.setIntegral_Icc_eq_taylorCoeff, EnvelopeProperty.Char0.volume_mvPolynomial_zeroSet_eq_zero, EnvelopeProperty.Char0.exists_differentiableOn_ae_eq_of_weakDbarEq_zero, EnvelopeProperty.Char0.not_integrableOn_ball_inv_norm_sub_sq_pow, EnvelopeProperty.Char0.eq_zero_of_lintegral_pole_ne_top, EnvelopeProperty.Char0.integrableOn_ball_norm_rpow_iff}
+\leanok
+\begin{enumerate}
+\item (Weyl's lemma for $\bar\partial$.) A function $u\in L^2_{\mathrm{loc}}(\Omega)$ on an open $\Omega\subseteq\mathbf C^N$ with $\bar\partial u=0$ in the sense of
+distributions agrees almost everywhere with a holomorphic function on $\Omega$.
+\item (Cauchy's formula.) An entire function $F$ on $\mathbf C^N$ is the sum of its Taylor series $\sum_\gamma c_\gamma z^\gamma$, locally
+uniformly, and $c_\gamma\rho^\gamma=(2\pi)^{-N}\int_{[0,2\pi]^N}F(\rho_1e^{i\vartheta_1},\dots,\rho_Ne^{i\vartheta_N})e^{-i\langle\gamma,\vartheta\rangle}\,d\vartheta$ for
+$\rho\in\R_{>0}^N$.
+\item $\int_{B(y,r)}|z-y|^{-2N}d\lambda=\infty$, and for $\delta>0$, $\kappa\in\R$: $\int_{\{|s|<\delta\}}|s|^{2\kappa}d\lambda(s)<\infty$ in $\mathbf C$ if and only if
+$\kappa>-1$.
+\item The zero set of a nonzero polynomial is $\lambda$-null.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Convolution with a mollifier commutes with $\bar\partial$; the regularizations $u_\epsilon$ are holomorphic and converge to $u$ in
+$L^2_{\mathrm{loc}}$, and $L^2_{\mathrm{loc}}$ limits of holomorphic functions are holomorphic (mean value inequality). (2) Iterate the
+one-variable Cauchy formula on polydiscs. (3) Polar coordinates: $\int_0^r\rho^{-2N}\rho^{2N-1}d\rho=\infty$ and
+$\int_0^\delta\rho^{2\kappa+1}d\rho<\infty$ if and only if $\kappa>-1$. (4) Induction on $N$ with Fubini: for all but finitely many values of the
+last variable the polynomial in the remaining variables is nonzero.
+\end{proof}
+
+\begin{lemma}[Weights of bihomogeneous families]\label{lem:c0-weight}
+\lean{EnvelopeProperty.Char0.leviFormC0, EnvelopeProperty.Char0.leviFormC0_log_add_sum_normSq, EnvelopeProperty.Char0.le_leviFormC0_log_add_sum_normSq, EnvelopeProperty.Char0.normSqFam_xtRot, EnvelopeProperty.Char0.exists_normSqFam_le, EnvelopeProperty.Char0.rpow_neg_le_normSqFam_rpow_neg, EnvelopeProperty.Char0.volume_normSqFam_eq_zero, EnvelopeProperty.Char0.exists_normSqFam_le_on_compact, EnvelopeProperty.Char0.le_leviFormC0_log_one_add_norm_sq, EnvelopeProperty.Char0.le_leviFormC0_weight}
+\leanok
+\uses{conv:c0, lem:c0-analytic-basics}
+Let $g=(g_1,\dots,g_s)$ be bihomogeneous polynomials of $x$-degree $D$ in $\mathbf C[x,t]$, not all zero, $c>0$, and
+$\varphi=c\log|g|$.
+\begin{enumerate}
+\item For holomorphic $h_1,\dots,h_p$ and $\epsilon>0$, $\log(\sum_j|h_j|^2+\epsilon)$ is smooth and plurisubharmonic and decreases to
+$\log\sum_j|h_j|^2$ as $\epsilon\downarrow0$; in particular $\varphi$ and $\log|z-y|$ are plurisubharmonic.
+\item $|g(e^{i\vartheta}x,e^{i\eta}t)|=|g(x,t)|$ for real $\vartheta,\eta$.
+\item There are $C_g>0$ and $\beta\in\N$ with $|g(x,t)|^2\le C_g(1+|x|^2)^D(1+|t|^2)^\beta$; hence
+$e^{-2\varphi}\ge C_g^{-c}(1+|x|^2)^{-cD}(1+|t|^2)^{-c\beta}$.
+\item $Z(g)$ is $\lambda$-null, and $\varphi$ is bounded above on compact sets.
+\item $\log(1+|z|^2)$ is smooth with Levi form $\ge(1+|z|^2)^{-2}|\xi|^2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) With $S=\sum|h_j|^2+\epsilon$ and $\partial h_j(\xi)=\sum_i\xi_i\partial h_j/\partial z_i$, the Levi form of $\log S$ is
+$S^{-2}\bigl(S\sum_j|\partial h_j(\xi)|^2-|\sum_j\bar h_j\partial h_j(\xi)|^2\bigr)\ge0$ by the Cauchy--Schwarz inequality; decreasing limits of
+plurisubharmonic functions are plurisubharmonic. (2) $g_j(e^{i\vartheta}x,e^{i\eta}t)=e^{iD\vartheta+i\lambda_j\eta}g_j(x,t)$ for $g_j=s_j(x)t^{\lambda_j}$. (3)
+Each monomial $x^\alpha t^\lambda$ of $g_j$ has $|\alpha|=D$, so $|x^\alpha t^\lambda|\le(1+|x|^2)^{D/2}(1+|t|^2)^{\beta/2}$ with $\beta$ the largest
+$t$-degree. (4) $Z(g)\subseteq Z(g_j)$ for $g_j\ne0$ (Lemma~\ref{lem:c0-analytic-basics}(4)), and $|g|$ is continuous. (5) The Levi form is
+$(1+|z|^2)^{-2}\bigl((1+|z|^2)|\xi|^2-|\langle\xi,z\rangle|^2\bigr)$.
+\end{proof}
+
+\begin{lemma}[The Ohsawa--Takegoshi theorem at a point]\label{lem:c0-ot-point}
+\lean{EnvelopeProperty.Char0.exists_extension_from_point_ball, EnvelopeProperty.Char0.plurisubharmonicOn_mul_logNormSqFam}
+\leanok
+\source{demailly-analytic-methods, demailly92-regularization}
+For every $r>0$ there is $C_r>0$ such that for every $y\in\mathbf C^N$ and every plurisubharmonic $\psi$ on $B(y,r)$ with $\psi(y)>-\infty$
+there is a holomorphic function $f$ on $B(y,r)$ with $f(y)=1$ and $\int_{B(y,r)}|f|^2e^{-\psi}\,d\lambda\le C_re^{-\psi(y)}$.
+\end{lemma}
+
+\begin{proof}
+This is the Ohsawa--Takegoshi extension theorem from the point $\{y\}$ in the bounded pseudoconvex domain $B(y,r)$,
+\cite[Corollary~13.9, Remark~13.10]{DemAM}, used in the same way in the proof of \cite[Theorem~14.2]{DemAM}; translate to $y=0$.
+\end{proof}
+
+\begin{lemma}[H\"ormander's estimate on balls]\label{lem:c0-hormander-bounded}
+\lean{EnvelopeProperty.Char0.hormander_ball, EnvelopeProperty.Char0.exists_holomorphic_ball}
+\leanok
+\source{demailly-analytic-methods}
+Let $R>0$, $\Phi$ a smooth plurisubharmonic function on a neighbourhood of $\overline{B(0,R+1)}\subseteq\mathbf C^N$, $v=\sum_jv_jd\bar z_j$ a
+smooth $(0,1)$-form with compact support in $B(0,R)$ and $\bar\partial v=0$, and $g\ge0$ measurable, supported in $B(0,R)$, with
+$|\sum_jv_j\bar\xi_j|^2\le g\cdot L_\Phi(\xi)$ for all $\xi\in\mathbf C^N$ ($L_\Phi$ the Levi form) and $\int g e^{-\Phi}<\infty$. There is
+$u\in L^2_{\mathrm{loc}}(B(0,R))$ with $\bar\partial u=v$ on $B(0,R)$ and $\int_{B(0,R)}|u|^2e^{-\Phi}\,d\lambda\le2\int ge^{-\Phi}\,d\lambda$.
+\end{lemma}
+
+\begin{proof}
+This is H\"ormander's $L^2$ estimate for the $\bar\partial$-equation on the bounded convex domain $B(0,R+1)$ with the weight
+$e^{-\Phi}$, in the twisted form with the Levi form of the weight \cite[Theorems~5.1 and 5.2]{DemAM}, restricted to $B(0,R)$.
+\end{proof}
+
+\begin{lemma}[H\"ormander's estimate on $\mathbf C^N$ with polynomial weights]\label{lem:c0-hormander-global}
+\lean{EnvelopeProperty.Char0.exists_entire_hormander_global, EnvelopeProperty.Char0.exists_entire_hormander_global_weights, EnvelopeProperty.Char0.hormanderWeight, EnvelopeProperty.Char0.iSup_exp_neg_hormanderWeight}
+\leanok
+\uses{lem:c0-hormander-bounded, lem:c0-weight}
+\source{demailly-analytic-methods}
+Let
+\[
+ \Phi_0=\sum_{a=1}^pc_a\log\sum_j|h_{a,j}|^2,\qquad c_a>0,
+\]
+where the $h_{a,j}$ are entire and not all identically zero for each $a$. Set
+$\Phi=\Phi_0+\log(1+|z|^2)$. Let $v$ be a smooth $(0,1)$-form with compact support, $\bar\partial v=0$, and
+$I=\int|v|^2(1+|z|^2)^2e^{-\Phi}d\lambda<\infty$. Then there is $u\in L^2_{\mathrm{loc}}(\mathbf C^N)$ with $\bar\partial u=v$ and
+$\int_{\mathbf C^N}|u|^2e^{-\Phi}d\lambda\le2I$.
+\end{lemma}
+
+\begin{proof}
+For $\epsilon\in(0,1]$ let $\Phi_\epsilon=\sum_ac_a\log(\sum_j|h_{a,j}|^2+\epsilon)+\log(1+|z|^2)$, smooth plurisubharmonic, decreasing to $\Phi$
+(Lemma~\ref{lem:c0-weight}(1)). By Lemma~\ref{lem:c0-weight}(1),(5), $L_{\Phi_\epsilon}(\xi)\ge(1+|z|^2)^{-2}|\xi|^2$, so
+$|\sum v_j\bar\xi_j|^2\le g\,L_{\Phi_\epsilon}(\xi)$ with $g=|v|^2(1+|z|^2)^2$, independent of $\epsilon$, and $\int ge^{-\Phi_\epsilon}\le I$ since
+$\Phi_\epsilon\ge\Phi$. Let $\operatorname{supp}v\subseteq B(0,R_0)$. For integers $R\ge R_0$, Lemma~\ref{lem:c0-hormander-bounded} gives $u_{R,\epsilon}$ on $B(0,R)$
+with $\bar\partial u_{R,\epsilon}=v$ and $\int_{B(0,R)}|u_{R,\epsilon}|^2e^{-\Phi_\epsilon}\le2I$. On each ball $B(0,R')$ the weights $e^{-\Phi_\epsilon}$ are bounded
+above and below, so for fixed $\epsilon$ the restrictions are bounded in $L^2(B(0,R'))$; a diagonal subsequence converges weakly on every
+ball to some $u_\epsilon$, with $\bar\partial u_\epsilon=v$ (test against compactly supported forms) and, by weak lower semicontinuity of the norm of
+$L^2(B(0,R'),e^{-\Phi_\epsilon}\lambda)$, $\int_{B(0,R')}|u_\epsilon|^2e^{-\Phi_\epsilon}\le2I$ for all $R'$, hence on $\mathbf C^N$. For $\epsilon\le\epsilon'$,
+$e^{-\Phi_{\epsilon'}}\le e^{-\Phi_\epsilon}$, so $\int|u_\epsilon|^2e^{-\Phi_{\epsilon'}}\le2I$; again a diagonal subsequence $\epsilon=1/\ell\to0$ converges weakly on every ball to
+some $u$ with $\bar\partial u=v$ and $\int|u|^2e^{-\Phi_{\epsilon'}}\le2I$ for every $\epsilon'$. Monotone convergence as $\epsilon'\downarrow0$ gives
+$\int|u|^2e^{-\Phi}\le2I$.
+\end{proof}
+
+\begin{lemma}[Square integrable entire functions of polynomial growth]\label{lem:c0-polynomial-growth}
+\lean{EnvelopeProperty.Char0.exists_mvPolynomial_of_lintegral_polyWeight, EnvelopeProperty.Char0.polyWeight_add_le}
+\leanok
+\uses{lem:c0-analytic-basics}
+Let $F$ be an entire function on $\mathbf C^{n+1}_x\times\mathbf C_t$ and $a,b\ge0$ with
+$\|F\|^2\coloneqq\int|F|^2(1+|x|^2)^{-a}(1+|t|^2)^{-b}d\lambda<\infty$. Then $F$ is a polynomial with $x$-degree $\le a-n-1$ and $t$-degree
+$\le b-1$.
+\end{lemma}
+
+\begin{proof}
+Write $F=\sum c_{\alpha,\lambda}x^\alpha t^\lambda$ (Lemma~\ref{lem:c0-analytic-basics}(2)). For $\rho,\sigma\ge1$ let
+$S=\{\rho\le|x_i|\le2\rho\ \forall i,\ \sigma\le|t|\le2\sigma\}$. Integrating Cauchy's formula over the radii in polar coordinates,
+\[
+|c_{\alpha,\lambda}|\rho^{|\alpha|}\sigma^\lambda\Bigl(\tfrac32\rho^2\Bigr)^{n+1}\tfrac32\sigma^2(2\pi)^N\le\int_S|F|\,d\lambda\le
+\lambda(S)^{1/2}\Bigl(\sup_S(1+|x|^2)^a(1+|t|^2)^b\Bigr)^{1/2}\|F\|,
+\]
+Here
+\[
+ \lambda(S)\le C\rho^{2(n+1)}\sigma^2,\qquad
+ \sup_S(1+|x|^2)^a(1+|t|^2)^b\le C\rho^{2a}\sigma^{2b}.
+\]
+Hence
+$|c_{\alpha,\lambda}|\le C'\rho^{a-n-1-|\alpha|}\sigma^{b-1-\lambda}\|F\|$ for all $\rho,\sigma\ge1$. Letting $\rho\to\infty$ (resp.\ $\sigma\to\infty$) shows
+$c_{\alpha,\lambda}=0$ if $|\alpha|>a-n-1$ (resp.\ $\lambda>b-1$).
+\end{proof}
+
+\begin{proposition}[$L^2$ extension from a point with polynomial growth]\label{prop:c0-l2-extension}
+\lean{EnvelopeProperty.Char0.exists_entire_extension, EnvelopeProperty.Char0.exists_polynomial_extension, EnvelopeProperty.Char0.c0Weight}
+\leanok
+\uses{lem:c0-ot-point, lem:c0-hormander-global, lem:c0-polynomial-growth, lem:c0-weight, lem:c0-analytic-basics}
+\source{demailly-analytic-methods, demailly92-regularization}
+Let $g$, $D$, $c$, $\varphi$, $C_g$, $\beta$ be as in Lemma~\ref{lem:c0-weight}, $M=cD$, and $\omega=e^{-2\varphi}(1+|z|^2)^{-N-1}$. For every compact
+$K\subseteq\mathbf C^N$ there is $C_K$ such that for every $y\in K\setminus Z(g)$ there is a polynomial $F$ with $F(y)=1$,
+$\int|F|^2\omega\,d\lambda\le C_Ke^{-2\varphi(y)}$, $x$-degree $\le M+2$ and $t$-degree $\le c\beta+N$.
+\end{proposition}
+
+\begin{proof}
+Let $R_K=\max_K|z|$ and $y\in K\setminus Z(g)$. (1) Lemma~\ref{lem:c0-ot-point} with $r=1$ and $\psi=2\varphi$ gives $f$ holomorphic on $B(y,1)$ with
+$f(y)=1$ and $\int_{B(y,1)}|f|^2e^{-2\varphi}\le C_1e^{-2\varphi(y)}$. (2) Fix a smooth $\chi\colon\mathbf C^N\to[0,1]$ equal to $1$ on $B(0,1/2)$ with
+support in $B(0,1)$, let $\chi_y=\chi(\cdot-y)$ and $v=f\,\bar\partial\chi_y$, extended by $0$: a smooth $\bar\partial$-closed $(0,1)$-form supported in
+$\{1/2\le|z-y|\le1\}$. (3) Let $\Phi_0=2\varphi+2N\log|z-y|=c\log\sum_j|g_j|^2+N\log\sum_i|z_i-y_i|^2$ and $\Phi=\Phi_0+\log(1+|z|^2)$. On the
+support of $v$, $e^{-\Phi}\le2^{2N}e^{-2\varphi}$, so $I=\int|v|^2(1+|z|^2)^2e^{-\Phi}\le C_2e^{-2\varphi(y)}$ with
+$C_2=2^{2N}\sup|\bar\partial\chi|^2(1+(R_K+1)^2)^2C_1$. Lemma~\ref{lem:c0-hormander-global} gives $u$ with $\bar\partial u=v$ and
+$\int|u|^2e^{-\Phi}\le2C_2e^{-2\varphi(y)}$. (4) $F\coloneqq\chi_yf-u$ has $\bar\partial F=0$, so it is (almost everywhere equal to) an entire
+function (Lemma~\ref{lem:c0-analytic-basics}(1)). On $B(y,1/2)$, $u=f-F$ is holomorphic, and $\varphi$ is bounded above there
+(Lemma~\ref{lem:c0-weight}(4)), so $\int_{B(y,1/2)}|u|^2|z-y|^{-2N}<\infty$; by Lemma~\ref{lem:c0-analytic-basics}(3) and continuity, $u(y)=0$. Hence
+$F(y)=1$. (5) Since $|z-y|^2\le2(1+R_K^2)(1+|z|^2)$, $\omega\le(2(1+R_K^2))^Ne^{-\Phi}$, and $\int|\chi_yf|^2\omega\le C_1e^{-2\varphi(y)}$; so
+$\int|F|^2\omega\le C_Ke^{-2\varphi(y)}$ with $C_K=2C_1+4(2(1+R_K^2))^NC_2$. (6) By Lemma~\ref{lem:c0-weight}(3) and
+$1+|z|^2\le(1+|x|^2)(1+|t|^2)$, $\omega\ge C_g^{-c}(1+|x|^2)^{-M-N-1}(1+|t|^2)^{-c\beta-N-1}$, and Lemma~\ref{lem:c0-polynomial-growth} with $a=M+N+1$,
+$b=c\beta+N+1$ shows that $F$ is a polynomial of $x$-degree $\le M+N+1-(n+1)=M+2$ and $t$-degree $\le c\beta+N$.
+\end{proof}
+
+\begin{corollary}[Polynomials dominating a fractional power]\label{cor:c0-bergman-lower}
+\lean{EnvelopeProperty.Char0.bergmanSpace, EnvelopeProperty.Char0.wNormSq_weightedHomogeneousComponent_le, EnvelopeProperty.Char0.exists_homogeneous_basis, EnvelopeProperty.Char0.exists_sum_norm_le, EnvelopeProperty.Char0.exists_homogeneous_lower_bound, EnvelopeProperty.Char0.exists_homogeneous_lower_bound_of_bihomogeneous, EnvelopeProperty.Char0.BergmanLowerBound, EnvelopeProperty.Char0.bergmanLowerBound_holds}
+\leanok
+\uses{prop:c0-l2-extension, lem:c0-weight, lem:c0-analytic-basics}
+\source{demailly-analytic-methods}
+In the setting of Proposition~\ref{prop:c0-l2-extension} there are finitely many $x$-homogeneous polynomials $P_1,\dots,P_r$ of
+$x$-degree $\le M+2$, each square integrable against $|g|^{-2c}$, such that for every compact $K$ there is $c_K>0$ with
+$|P|\ge c_K|g|^c$ on $K$.
+\end{corollary}
+
+\begin{proof}
+Let $W$ be the space of polynomials $F$ of $x$-degree $\le M+2$ and $t$-degree $\le c\beta+N$ with $\|F\|_\omega^2=\int|F|^2\omega\,d\lambda<\infty$. It is a
+finite dimensional vector space, and $\|\cdot\|_\omega$ is a norm on it ($\omega>0$ almost everywhere). The measure $\omega\lambda$ is invariant under
+$x\mapsto e^{i\vartheta}x$ (Lemma~\ref{lem:c0-weight}(2)), so for $F\in W$ the $x$-homogeneous components
+$F_e=(2\pi)^{-1}\int_0^{2\pi}e^{-ie\vartheta}F(e^{i\vartheta}x,t)\,d\vartheta$ satisfy $\|F_e\|_\omega\le\|F\|_\omega$ (Minkowski's inequality) and lie in $W$. Let
+$P_1,\dots,P_r$ be a basis of $W$ consisting of $x$-homogeneous polynomials. Each $P_k$ is square integrable against $|g|^{-2c}=e^{-2\varphi}$,
+since $\int_K|P_k|^2e^{-2\varphi}\le\sup_K(1+|z|^2)^{N+1}\|P_k\|_\omega^2$. By equivalence of norms on $W$ there is $C_W$ with
+$\sum|a_k|\le C_W\|\sum a_kP_k\|_\omega$. For $y\in K\setminus Z(g)$ let $F_y=\sum_ka_kP_k\in W$ be given by Proposition~\ref{prop:c0-l2-extension}; then
+$1=|F_y(y)|\le\sum_k|a_k|\,|P(y)|\le C_WC_K^{1/2}e^{-\varphi(y)}|P(y)|$, so $|P(y)|\ge c_K|g(y)|^c$ with $c_K=(C_WC_K^{1/2})^{-1}$. On $Z(g)$ the
+inequality is trivial.
+\end{proof}
+
+\subsection{Assembly}
+
+In this subsection $k$, $\iota\colon k\to\mathbf C$ (Lemma~\ref{lem:c0-embedding}), $d\in\mathbf Z_{>0}$ and a rational PL function $\phi\le0$ on
+$(\PP^n)^\an$ are fixed; $\phi=\psi_1-\psi_2$ with $\psi_\nu\in\mathcal H_\Q(b_\nu)$, and $J_m=J_m(\phi)$ (Definition~\ref{def:bj-Jm}). For
+$h\in k[z]$ let $h^\iota\in\mathbf C[z]$ be its image, and for a divisorial point $v$ with ring $V$ (Definition~\ref{def:c0-dvr}) let $V_{\mathbf C}$
+be its extension of scalars along $\iota$ (Lemma~\ref{lem:c0-base-change-dvr}).
+
+\begin{lemma}[Finitely many valuations define $J_m$]\label{lem:c0-shilov-description}
+\lean{EnvelopeProperty.ProjBerk.IsRatPL.exists_shilov_description}
+\leanok
+\uses{lem:bj-shilov, def:bj-Jm, lem:bj-fs-basic, def:c0-dvr}
+\source{bj22-trivval:lem:Shilov}
+There are divisorial points $v_1,\dots,v_r$, with rings $V_i$ and constants $c_i\in\Q_{>0}$ as in Definition~\ref{def:c0-dvr}, and real numbers
+$\gamma_1,\dots,\gamma_r$ such that for every $m\ge1$,
+\[
+V_m(\phi)=\{g\in R_{md}[t]:\operatorname{ord}_{V_i}(g)\ge m\gamma_i\text{ for }1\le i\le r\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\Sigma=\{v_1,\dots,v_r\}$ be given by Lemma~\ref{lem:bj-shilov} for $\psi_1$, and $\gamma_i=-\phi(v_i)/c_i$ ($\phi$ is finite valued). The element
+$g=0$ lies in both sets. For $0\ne g=\sum_\lambda s_\lambda t^\lambda\in R_{md}[t]$, $m^{-1}\log|g|_{\sigma(\cdot)}=m^{-1}\max_\lambda(\log|s_\lambda|-\lambda)$ is a
+Fubini--Study function for $\mathcal O(d)$, so $\varphi_g=m^{-1}\log|g|_{\sigma(\cdot)}+\psi_2\in\mathcal H^{\mathrm{gf}}_\Q(d+b_2)$
+(Lemma~\ref{lem:bj-fs-basic}). Now $g\in V_m(\phi)$ if and only if $\varphi_g\le\psi_1$ everywhere, if and only if (Lemma~\ref{lem:bj-shilov})
+$\varphi_g\le\psi_1$ on $\Sigma$, if and only if $\log|g|_{\sigma(v_i)}\le m\phi(v_i)$ for all $i$, that is, $-c_i\operatorname{ord}_{V_i}(g)\le m\phi(v_i)$.
+\end{proof}
+
+\begin{proposition}[The key inequality]\label{prop:c0-key-inequality}
+\lean{EnvelopeProperty.ProjBerk.IsRatPL.exists_key_inequality}
+\leanok
+\uses{lem:c0-shilov-description, cor:c0-bergman-lower, prop:c0-valuative-bound, cor:c0-valuative-upper, lem:c0-base-change-dvr, cor:c0-base-change-orders, lem:c0-dvr-jacobian, lem:c0-embedding, lem:bj-Jm-basic, thm:bj-divisorial-comparison, thm:bj-psh-basic}
+\source{bj22-trivval:thm:contenvlisse, fhx-envelope-20261028:eq:smooth-Q-test-sandwich}
+There is $N_0\in\N$ such that for all $m,q\ge1$, $\frac mq\phi_{J_q}\le\phi_{J_{m+2}}+N_0$ on $(\PP^n)^\an$.
+\end{proposition}
+
+\begin{proof}
+Let $v_i,V_i,c_i,\gamma_i$ be as in Lemma~\ref{lem:c0-shilov-description}, $A_i=A(V_{i,\mathbf C})$ (Lemma~\ref{lem:c0-dvr-jacobian} for the divisorial
+valuation ring $V_{i,\mathbf C}$ over $\mathbf C$), and $\tau_i=\operatorname{ord}_{V_i}(t)=1/c_i>0$ (as $\log|t|_{\sigma(v_i)}=-1$). Put
+$N_0=\max_i\lceil(A_i+2|\gamma_i|)/\tau_i\rceil$.
+
+Fix $m,q\ge1$. By Lemma~\ref{lem:bj-Jm-basic}, $J_q$ is generated by finitely many bihomogeneous $g_1,\dots,g_s$ of $x$-degree $qd$, not all zero.
+Apply Corollary~\ref{cor:c0-bergman-lower} to $g^\iota=(g_1^\iota,\dots,g_s^\iota)$, $D=qd$ and $c=m/q$, so $M=md$: we get $x$-homogeneous
+$P_1,\dots,P_r\in\mathbf C[z]$ of $x$-degree $\le md+2$, square integrable against $|g^\iota|^{-2m/q}$, with $|P|^q\ge c_K^q|g^\iota|^m$ on compact
+sets $K$.
+
+\emph{Step 1: $t^{N_0}x^\alpha P_k\in J_{m+2}\mathbf C[z]$ whenever $|\alpha|=(m+2)d-\deg_xP_k$.} By Proposition~\ref{prop:c0-valuative-bound} at $V_{i,\mathbf C}$ and
+Corollary~\ref{cor:c0-base-change-orders}(2), $\operatorname{ord}_{V_{i,\mathbf C}}(P_k)>\frac mq\operatorname{ord}_{V_i}(J_q)-A_i\ge m\gamma_i-A_i$, because every generator
+$g_j\in V_q(\phi)$ has $\operatorname{ord}_{V_i}(g_j)\ge q\gamma_i$ (Lemma~\ref{lem:c0-shilov-description}). As $x_l,t\in V_i$,
+$G=t^{N_0}x^\alpha P_k$ has $\operatorname{ord}_{V_{i,\mathbf C}}(G)\ge N_0\tau_i+m\gamma_i-A_i\ge(m+2)\gamma_i$ for every $i$. $G$ is $x$-homogeneous of degree
+$(m+2)d$; let $W\subseteq R_{(m+2)d}[t]$ be the finite dimensional subspace of $t$-degree $\le\deg_tG$. By Lemma~\ref{lem:c0-shilov-description} and
+Corollary~\ref{cor:c0-base-change-orders}(1), $G\in(W\cap V_{m+2}(\phi))\otimes_k\mathbf C\subseteq J_{m+2}\mathbf C[z]$.
+
+\emph{Step 2: divisorial points.} Let $v\in(\PP^n)^{\divv}$ with ring $V$ and constant $c_v$. As $\max_l|x_l|_v=1$, some $x_l$ has
+$\operatorname{ord}_V(x_l)=0$, hence $\operatorname{ord}_{V_{\mathbf C}}(x_l^e)=0$. By Step~1 and Corollary~\ref{cor:c0-base-change-orders}(2), for each $k$,
+\[
+\operatorname{ord}_V(J_{m+2})=\operatorname{ord}_{V_{\mathbf C}}(J_{m+2}\mathbf C[z])\le N_0\operatorname{ord}_V(t)+\operatorname{ord}_{V_{\mathbf C}}(P_k).
+\]
+Taking the minimum over $k$ and applying Corollary~\ref{cor:c0-valuative-upper} with $(a,b)=(m,q)$ at $V_{\mathbf C}$:
+$\operatorname{ord}_V(J_{m+2})\le N_0\operatorname{ord}_V(t)+\frac mq\operatorname{ord}_{V_{\mathbf C}}(g^\iota)=N_0\operatorname{ord}_V(t)+\frac mq\operatorname{ord}_V(J_q)$. Multiplying by $-c_v$, and using
+$c_v\operatorname{ord}_V(t)=1$ and $\phi_I(v)=-c_v\operatorname{ord}_V(I)$, we get $\phi_{J_{m+2}}(v)+N_0\ge\frac mq\phi_{J_q}(v)$.
+
+\emph{Step 3.} $u=\frac mq\phi_{J_q}$ is $md$-psh ($q^{-1}\phi_{J_q}\in\mathcal H_\Q(d)$ by Lemma~\ref{lem:bj-Jm-basic}, and Theorem~\ref{thm:bj-psh-basic}), and
+$h=\phi_{J_{m+2}}+N_0$ is continuous and real valued. Since $u\le h$ on $(\PP^n)^{\divv}$ (Step~2), Theorem~\ref{thm:bj-divisorial-comparison} gives
+$u\le h$ everywhere.
+\end{proof}
+
+\begin{theorem}[Envelopes of PL obstacles in characteristic zero]\label{thm:c0-envelope-pl}
+\lean{EnvelopeProperty.ProjBerk.IsRatPL.isPSH_envelope_nat_of_nonpos_of_inputs}
+\leanok
+\uses{prop:c0-key-inequality, prop:bj-envelope-Jm, lem:bj-Jm-basic, thm:bj-psh-basic}
+\source{bj22-trivval:lem:envline, bj22-trivval:thm:contenvlisse, fhx-envelope-20261028:eq:smooth-Q-limit}
+In the setting of this subsection, $m^{-1}\phi_{J_m}$ converges uniformly to $\mathrm P_d(\phi)$ on $(\PP^n)^\an$, and $\mathrm P_d(\phi)\in\PSH(d)$.
+\end{theorem}
+
+\begin{proof}
+$\phi$ is continuous, bounded and $\le0$, so $\mathrm Q\coloneqq\mathrm P_d(\phi)=\sup_qq^{-1}\phi_{J_q}$ (Proposition~\ref{prop:bj-envelope-Jm}). Taking the
+supremum over $q$ in Proposition~\ref{prop:c0-key-inequality}, $m\mathrm Q\le\phi_{J_{m+2}}+N_0$ for $m\ge1$. Since $\mathrm Q\le\phi\le0$, for $m'\ge3$
+\[
+\mathrm Q-\frac{N_0}{m'}\le\frac{(m'-2)\mathrm Q-N_0}{m'}\le\frac1{m'}\phi_{J_{m'}}\le\mathrm Q,
+\]
+so $m'^{-1}\phi_{J_{m'}}\to\mathrm Q$ uniformly. These functions lie in $\mathcal H_\Q(d)\subseteq\PSH(d)$ (Lemma~\ref{lem:bj-Jm-basic}), and
+$\PSH(d)$ is closed under uniform limits of sequences (Theorem~\ref{thm:bj-psh-basic}(2)), so $\mathrm Q\in\PSH(d)$.
+\end{proof}
+
+\begin{theorem}[Envelope property of $\PP^n$ in characteristic zero]\label{thm:c0-pn-ep}
+\lean{EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero_of_inputs, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero_of_valuativeUpperBound, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_ringHom_complex_of_inputs}
+\leanok
+\uses{thm:c0-envelope-pl, lem:c0-embedding, lem:bj-envppty, prop:bj-envelope-criterion, lem:bj-env-basic, lem:bj-pl-lattice, thm:bj-psh-basic, def:pn-ep}
+\source{fhx-envelope-20261028:thm:smooth-EP, bj22-trivval:thm:contenvlisse}
+Let $k$ be a countable algebraically closed field of characteristic $0$. Every $\theta\ge0$ has the envelope property on $\PP^n$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:bj-envppty} applied to rationals $\theta_j\downarrow\theta$ with $\theta_j>\theta$, it suffices to treat $\theta=a\in\Q_{>0}$. By
+Proposition~\ref{prop:bj-envelope-criterion} it suffices that $\mathrm P_a(\phi)$ is $a$-psh for every $\phi\in\operatorname{PL}$. Choose $m\ge1$ with
+$d=ma\in\mathbf Z$ and a rational constant $c\ge\max m\phi$; by Lemma~\ref{lem:bj-env-basic},
+$\mathrm P_a(\phi)=m^{-1}(\mathrm P_d(m\phi-c)+c)$, and $m\phi-c\le0$ is PL (Lemma~\ref{lem:bj-pl-lattice}). Theorem~\ref{thm:c0-envelope-pl} (with the embedding of
+Lemma~\ref{lem:c0-embedding}) shows that $\mathrm P_d(m\phi-c)$ is $d$-psh, hence $\mathrm P_a(\phi)$ is $a$-psh (Theorem~\ref{thm:bj-psh-basic}).
+\end{proof}
+
+\begin{remark}[Relation to the sources]\label{rmk:c0-source}
+\uses{thm:c0-pn-ep, rmk:bj-char-zero, rmk:bj-pn-ep-assembly}
+\cite[Theorem~5.20]{BJ22} in characteristic $0$ passes to a resolution $\mathcal X$ of a test configuration $(\mathcal X,\mathcal L)$ with
+$\phi=\phi_{\mathcal L}$, and compares the base ideals $\mathfrak a_m$ of $m\mathcal L$ with the asymptotic multiplier ideals
+$\mathfrak b_m=\mathcal J(\mathfrak a_\bullet^m)$: $\mathfrak a_m\subseteq\mathfrak b_m$, subadditivity $\mathfrak b_{m\ell}\subseteq\mathfrak b_m^\ell$, and uniform global
+generation of $\mathfrak b_m\otimes\mathcal O(m\mathcal L+m_0\mathcal A)$. Here the ideals $J_m$ on the affine cone replace the test
+configuration (Remark~\ref{rmk:bj-test-configurations}), as in the characteristic $p$ argument of \cite[\S3]{FHX}, and multiplier ideals
+are not used as ideals at all. Only the finite dimensional spaces of square integrable polynomials of bounded degree of
+Corollary~\ref{cor:c0-bergman-lower} enter. The two properties of $\mathfrak b_m$ used by Boucksom--Jonsson become:
+\begin{itemize}
+\item subadditivity, which gives $m^{-1}\phi_{\mathfrak b_m}\ge\mathrm P$, is replaced by the lower bound $|P|\ge c_K|J_q|^{m/q}$ from the
+Ohsawa--Takegoshi theorem at a point (Demailly's estimate $\varphi_m\ge\varphi-C/m$ for Bergman kernels, \cite[Theorem~14.2]{DemAM}), turned
+into $\operatorname{ord}_V(P)\le\frac mq\operatorname{ord}_V(J_q)$ by Corollary~\ref{cor:c0-valuative-upper};
+\item uniform global generation (Nadel vanishing and Castelnuovo--Mumford regularity, with $K_{\PP^n}+(n+1)H=0$) is replaced by
+H\"ormander's estimate on $\mathbf C^{n+2}$ with polynomial weights, which bounds the $x$-degree by $md+2$ instead of $md$; the loss
+of $2$ is absorbed by passing from $J_m$ to $J_{m+2}$.
+\end{itemize}
+The valuative bound $\operatorname{ord}_V(\mathcal J(I^c))\ge c\operatorname{ord}_V(I)-A(V)$, the analogue of \cite[Lemma~3.3]{FHX}, is only needed in the
+direction of Proposition~\ref{prop:c0-valuative-bound}, which is computed at a general point of the divisor of $V$ (the change of
+variables formula of \cite[Proposition~5.8]{DemAM} in a single chart) and needs no resolution of singularities. The constant $N_0$ of
+Proposition~\ref{prop:c0-key-inequality} comes from the log discrepancies of finitely many divisorial valuations, as the constant
+$A_S(w)$ in \cite[\S3]{FHX}. Countability of $k$ is used only to embed $k$ into $\mathbf C$.
+\end{remark}

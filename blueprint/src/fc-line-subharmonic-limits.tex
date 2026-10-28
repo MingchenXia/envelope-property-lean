@@ -1,0 +1,30 @@
+\subsection{Decreasing families in actual harmonic comparison}\label{subsec:fc-line-subharmonic-limits}
+
+\begin{theorem}[Infima of decreasing directed families]\label{thm:fc-line-subharmonic-directed-inf}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.iInf_directed}
+\leanok
+\uses{def:fc-actual-line-subharmonic, lem:fc-harmonic-vector-space,
+  lem:fc-standard-boundary}
+Let $(u_i)$ be a nonempty family of actual subharmonic functions on $\Omega$,
+directed downward for the pointwise order on $\Omega$. Then
+$u=\inf_i u_i$ is subharmonic on $\Omega$. In particular this holds for a
+decreasing net or sequence.
+\end{theorem}
+
+\begin{proof}
+An infimum of upper semicontinuous functions is upper semicontinuous. It
+cannot take $+\infty$, since it lies below any one member of the nonempty
+family. Fix an actual standard affinoid $U\subseteq\Omega$, a harmonic
+function $h$, and boundary inequalities $u\le h$. Let $\epsilon>0$.
+At each actual boundary point $z$, the infimum inequality and
+$h(z)<h(z)+\epsilon$ give an index $i(z)$ such that
+$u_{i(z)}(z)<h(z)+\epsilon$. The actual boundary is finite. Downward
+directedness supplies one index $k$ with $u_k\le u_{i(z)}$ on $\Omega$
+for every such boundary index. Thus $u_k\le h+\epsilon$ on the whole
+boundary. The function $h+\epsilon$ is actually harmonic, so comparison
+for $u_k$ gives $u\le u_k\le h+\epsilon$ throughout $U$.
+For a fixed point of $U$, this inequality for every positive $\epsilon$
+implies $u\le h$. Indeed, if $h<u$, choose a finite real number $b$
+strictly between them; taking $\epsilon=b-h$ contradicts the preceding
+inequality. This proves the required actual comparison.
+\end{proof}

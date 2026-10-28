@@ -1,0 +1,38 @@
+\section{The genuine original-source DVR Jacobian ideal is coordinate invariant}
+
+\begin{lemma}[The original DVR tuple determinant is the actual field Jacobian]\label{lem:sc0-original-dvr-tuple-field-jacobian}
+\lean{EnvelopeProperty.Char0.coe_original_source_dvr_tuple_det}
+\leanok
+\uses{lem:c0-dvr-jacobian,def:sc0-original-source-dvr-jacobian-ideal}
+An actual original-source tuple determinant, computed with restricted DVR
+partials and mapped into the actual fraction field, is exactly its actual
+field-coordinate Jacobian after the simultaneous finite index identification.
+\end{lemma}
+\begin{proof}
+Regard the original function tuple as an actual tuple indexed by the DVR
+coordinate set through the inverse index equivalence. The actual DVR partials
+map to their original field partials by construction. Their matrix is the
+simultaneous row and column reindexing of the actual field-coordinate
+Jacobian matrix. Determinant commutes with the literal inclusion and is
+unchanged by this simultaneous reindexing.
+\end{proof}
+
+\begin{theorem}[The genuine original-source DVR Jacobian ideal is coordinate independent]\label{thm:sc0-original-dvr-jacobian-ideal-coordinate-independent}
+\lean{EnvelopeProperty.Char0.dvrOriginalSourceJacobianIdeal_coordinate_independent, EnvelopeProperty.Char0.dvrOriginalSourceJacobianIdeal_order_coordinate_independent}
+\leanok
+\uses{lem:sc0-original-dvr-tuple-field-jacobian,lem:sc0-dvr-jacobian-transition-unit,lem:sc0-field-jacobian-chain-rule}
+For two actual DVR coordinate systems on the same finite residue index set,
+the genuine all-original-source DVR Jacobian ideals are equal. The exact
+orders defining the original-source discrepancy are therefore equal.
+\end{theorem}
+\begin{proof}
+For every original function tuple, the field Jacobian chain rule multiplies
+its second actual determinant by the actual transition determinant to obtain
+the first. All three determinants lie in the actual DVR, and the inclusion
+into the actual fraction field is injective, so this is an equality in the
+DVR. The transition determinant is an actual unit by the proved inverse
+transition identity. Thus every generator of the first ideal is a unit
+multiple of the corresponding generator of the second, and conversely,
+using its actual inverse unit. Taking spans proves equality of the genuine
+ideals. Apply the normalized ideal order function to that equality.
+\end{proof}

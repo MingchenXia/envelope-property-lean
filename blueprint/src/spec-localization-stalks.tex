@@ -1,0 +1,36 @@
+\section{Actual native stalk and residue maps of spectrum localizations}
+
+\begin{theorem}[Original local ring maps of localizations]
+\label{thm:fc-spec-localization-local-ring-maps}
+\leanok
+\lean{EnvelopeProperty.SpecLocalizationStalks.localRingHom_bijective}
+For an actual localization $R\to S=M^{-1}R$ and every original prime
+$q\subset S$, the same original induced map
+$R_{q\cap R}\to S_q$ is bijective.
+\end{theorem}
+\begin{proof}
+The native iterated-localization theorem makes the actual original $S_q$
+another localization of $R$ at the complement of $q\cap R$.  The original
+local ring map commutes with the original coefficients, so the genuine
+localization universal property proves its bijectivity.  No domain,
+Noetherianity, local isomorphism or coefficient-matching premise is added.
+\end{proof}
+
+\begin{theorem}[Whole native stalk and residue-map isomorphisms]
+\label{thm:fc-spec-localization-native-stalk-residue}
+\leanok
+\lean{EnvelopeProperty.SpecLocalizationStalks.stalkMap_isIso, EnvelopeProperty.SpecLocalizationStalks.residueFieldMap_isIso}
+The actual original native map $\operatorname{Spec}S\to\operatorname{Spec}R$
+has an isomorphism on every original stalk and every original residue field,
+using its literal native \texttt{stalkMap} and \texttt{residueFieldMap}.
+\uses{thm:fc-spec-localization-local-ring-maps}
+\end{theorem}
+\begin{proof}
+The native spectrum stalk-map comparison conjugates the same induced local
+ring map by the actual original stalk-localization isomorphisms.  Its
+bijectivity gives an actual native stalk isomorphism; the native residue
+field map of that isomorphism gives the original residue-map result.
+No point, stalk, residue action, or desired degree comparison is supplied.
+This is a localization foundation; the finite-curve global degree sum still
+requires its genuine scheme and finite-fibre consumers.
+\end{proof}

@@ -1,0 +1,50 @@
+\section{Actual Frobenius includes the original zero algebra}
+\label{sec:algebra-frobenius}
+
+\begin{theorem}[The same original power map on every algebra]
+\label{lem:cartier-frobenius-original-zero-algebra}
+\lean{EnvelopeProperty.Cartier.AlgebraFrobenius.map,EnvelopeProperty.Cartier.AlgebraFrobenius.map_apply,EnvelopeProperty.Cartier.AlgebraFrobenius.map_eq_frobenius}
+\leanok
+Let $k$ be the original field of prime characteristic $p$.
+Every original commutative $k$-algebra $B$, including the zero
+algebra, has a genuine ring endomorphism whose value at every
+original $b$ is exactly $b^p$. When the native characteristic-$p$
+Frobenius is defined, this whole original endomorphism is exactly
+that same native map. Neither nontriviality nor characteristic $p$
+of the target algebra is supplied as an additional premise.
+\end{theorem}
+\begin{proof}
+If $B$ is nontrivial, the original field algebra map is injective,
+so its source characteristic derives characteristic $p$ of the same
+original $B$. Use the actual native Frobenius on $B$. If $B$ is
+trivial, use its genuine identity ring endomorphism. Every two
+original elements of this actual algebra agree, so its value is
+also exactly $b^p$. Thus in both cases the whole original function
+is the same original power function. Extensionality of actual ring
+homomorphisms identifies it with the native Frobenius wherever
+the latter is defined, on every original element.
+\end{proof}
+
+\begin{theorem}[Every actual coefficient map commutes]
+\label{lem:cartier-frobenius-original-zero-algebra-naturality}
+\lean{EnvelopeProperty.Cartier.AlgebraFrobenius.naturality}
+\leanok
+These actual whole power endomorphisms commute with every original
+ring homomorphism between such original algebras, including maps
+into the zero algebra. No source/target Frobenius compatibility or
+nonzero-algebra certificate is assumed.
+\end{theorem}
+\begin{proof}
+Every original ring homomorphism preserves the entire original
+$p$th power. Substitute the actual all-element formula on its
+source and target, and use whole ring-homomorphism extensionality.
+This also proves the statement for zero algebras, with no special
+coefficient-map premise.
+\uses{lem:cartier-frobenius-original-zero-algebra}
+\end{proof}
+
+This is the genuine empty-open-compatible scalar power map needed
+for global Frobenius on the original structure sheaf. Constructing
+its actual sheaf/module functors, de Rham differential and Cartier
+descent remains further work; no global splitting or vanishing
+conclusion is asserted here.

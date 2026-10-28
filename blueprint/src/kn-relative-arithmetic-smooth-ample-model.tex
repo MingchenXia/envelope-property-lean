@@ -1,0 +1,32 @@
+\section{A smooth coefficient domain for the original relative ample model}
+
+\begin{lemma}[Smooth arithmetic coefficients retain the entire original ample line]
+\label{lem:kn-relative-arithmetic-smooth-ample-model}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticSmoothAmpleModel.exists_original_smooth_ample_model}
+\uses{lem:kn-relative-arithmetic-original-ample-model,lem:kn-relative-arithmetic-scalar-transition,def:arithmetic-actual-localized-coefficient-ring}
+\leanok
+The original relative ample arithmetic model can be chosen over
+an actual integer subalgebra $A\subset k$ which is smooth and
+of finite type over $\mathbb Z$.  It retains the separate
+finitely presented affine-base algebra with original fibre $R$,
+the total smooth dimension $n$, separatedness, the actual
+relative ampleness, and the whole original-line pullback.
+\end{lemma}
+\begin{proof}
+Take the produced ample model over its finite-type integer
+coefficient domain $A_0\subset k$.  The generic point of $A_0$
+lies in its smooth locus over $\mathbb Z$, so choose a nonzero
+$s\in A_0$ such that $A_0[1/s]$ is smooth.  Its actual embedding
+in $k$ identifies it with an integer subalgebra $A\subset k$
+containing $A_0$.  This algebra is of finite type over
+$\mathbb Z$ and, therefore, also of finite type over $A_0$.
+Regard it as a finite coefficient stage and apply the actual
+coefficient-transition lemma to the whole prior family.
+Smoothness of total dimension $n$, separatedness, and
+quasi-compactness are preserved by this base change, as is the
+actual relative ampleness of the same model line.  The modeled
+affine algebra becomes its actual tensor extension, remains
+finitely presented, and has original field fibre $R$ by tensor
+associativity.  The transition's original-field square and
+whole-module pullback isomorphism retain the same original $L$.
+\end{proof}

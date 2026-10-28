@@ -1,0 +1,72 @@
+\subsection{Actual ideal sheaves from original homogeneous ideals}
+\label{subsec:projective-ideal-representation}
+
+This concerns actual scheme IdealSheafData and genuine quotient kernel ideals.
+The constructed homogeneous representative need not recover a previously chosen
+graded ideal, and no analytic coherent sheaf comparison is asserted.
+
+\begin{theorem}[Whole homogeneous form sections on actual coordinate overlaps]
+\label{projective:actual-homogeneous-form-overlap-sections}
+\lean{EnvelopeProperty.ProjBerk.nativeCoordinateIdeal,
+EnvelopeProperty.ProjBerk.exists_homogeneous_coordinateDehom,
+EnvelopeProperty.ProjBerk.nativeFormSection,
+EnvelopeProperty.ProjBerk.homogeneousChartRatioHom_dehom_of_isHomogeneous,
+EnvelopeProperty.ProjBerk.nativeFormSection_germ,
+EnvelopeProperty.ProjBerk.nativeFormSection_X_unit_iff,
+EnvelopeProperty.ProjBerk.nativeFormSection_X_basicOpen,
+EnvelopeProperty.ProjBerk.nativeFormSection_germ_ratio}
+\leanok
+\uses{projective:native-homogeneous-chart-coordinates,projective:native-scheme-coordinate-sections}
+For an arbitrary commutative ring $R$, actual polynomial Proj coordinate
+ideals and homogeneous form sections are defined through the true coordinate
+section-ring isomorphisms. Every coordinate polynomial has a genuine
+homogeneous numerator. On overlaps, original homogeneous section germs satisfy
+$F/X_\ell^d=(X_j/X_\ell)^d(F/X_j^d)$ in the actual projective stalk, and
+the basic open of $X_j/X_\ell$ is precisely $U_\ell\cap U_j$.
+\end{theorem}
+\begin{proof}
+Apply the actual degree-zero homogeneous-localization fraction representation
+to the genuine coordinate-ratio image of every polynomial, then dehomogenize
+through the proved whole-ring inverse. The real section/germ isomorphism maps
+these fractions into the actual degree-zero prime localization, whose embedding
+into the ordinary prime localization is injective. Unit denominator cancellation
+there proves the full overlap identity. Its unit criterion proves the actual
+basic-open equality, without any reducedness or domain assumption on $R$.
+\end{proof}
+
+\begin{theorem}[Actual ideal sheaves represented by original homogeneous ideals]
+\label{projective:actual-homogeneous-ideal-sheaf-representation}
+\lean{EnvelopeProperty.ProjBerk.nativeHomogeneousRepresentative,
+EnvelopeProperty.ProjBerk.nativeHomogeneousRepresentative_dehom_le,
+EnvelopeProperty.ProjBerk.mem_nativeHomogeneousRepresentative_of_isHomogeneous,
+EnvelopeProperty.ProjBerk.nativeFormSection_restrict_mem,
+EnvelopeProperty.ProjBerk.exists_nativeFormSection_power_mem,
+EnvelopeProperty.ProjBerk.exists_nativeHomogeneousRepresentative_power_mem,
+EnvelopeProperty.ProjBerk.nativeHomogeneousRepresentative_dehom_eq,
+EnvelopeProperty.ProjBerk.nativeHomogeneousRepresentative_quotientIdealSheaf,
+EnvelopeProperty.ProjBerk.exists_homogeneous_ideal_quotientIdealSheaf}
+\leanok
+\uses{projective:actual-homogeneous-form-overlap-sections,scheme:ideal-sheaf-data-stalk,graded:native-polynomial-quotient-coordinate-ideal}
+Every actual IdealSheafData on polynomial Proj is the genuine quotient kernel
+ideal sheaf of a constructed original homogeneous ideal, with equality on
+entire original affine ideals and no radical replacement. No Noetherianity or
+finite generation is an input.
+\end{theorem}
+\begin{proof}
+Intersect the pullbacks of the original whole coordinate ideals under each
+actual dehomogenization map, and take its genuine homogeneous core. Its image
+in each coordinate ideal is contained in the original ideal. Conversely lift
+any element of one original chart ideal to a genuine homogeneous form $F$.
+On every other coordinate chart, the true overlap germ identity puts the
+corresponding form section in the localized original ideal. Actual affine
+ideal membership detection by its stalk images and the genuine ideal-sheaf
+localization law yield a power of the actual coordinate ratio that clears this
+membership. There are finitely many original coordinates, so choose one common
+exponent $N$. The actual homogeneous form $X_j^N F$ then belongs to every
+original chart ideal, and hence to the constructed homogeneous core, while its
+de-homogenization on chart $j$ is the original chosen element. Thus all whole
+coordinate ideal images agree. The genuine homogeneous quotient kernel chart
+comparison identifies these with the real quotient ideal-sheaf coordinate
+ideals. The actual coordinate cover detects equality of whole IdealSheafData,
+proving the statement while retaining all nilpotents and powers.
+\end{proof}

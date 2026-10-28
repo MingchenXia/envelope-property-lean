@@ -1,0 +1,34 @@
+\section{Actual principal refinements as Rees nodes}
+
+\begin{lemma}[The actual principal Rees chart is the original basic open]\label{lem:sc0-principal-rees-open-chart}
+\lean{EnvelopeProperty.Char0.principalReesChartMap_eq,EnvelopeProperty.Char0.isOpenImmersion_principalReesChartMap,EnvelopeProperty.Char0.range_principalReesChartMap}
+\leanok
+\uses{lem:sc0-principal-cover-chart}
+Let $C\subseteq K$ be a subalgebra of a field and let a finite family $g_i$ generate
+the unit ideal of $C$. For every nonzero $g_i$, the actual inclusion morphism
+$\operatorname{Spec}C[g_j/g_i]_j\to\operatorname{Spec}C$ is an open immersion
+with image exactly $D(g_i)$.
+\end{lemma}
+\begin{proof}
+The checked principal-cover ring isomorphism identifies the actual ratio ring
+with $C[1/g_i]$, compatibly with the original inclusion of $C$. Applying the
+spectrum functor identifies the displayed map with the composite of an actual
+isomorphism and the localization open immersion, whose image is $D(g_i)$.
+\end{proof}
+
+\begin{lemma}[The actual principal Rees charts form a finite cover]\label{lem:sc0-principal-rees-finite-cover}
+\lean{EnvelopeProperty.Char0.exists_mem_principalReesChartMap,EnvelopeProperty.Char0.principalReesOpenCover,EnvelopeProperty.Char0.finite_principalReesOpenCover_index,EnvelopeProperty.Char0.exists_nonzero_of_span_eq_top}
+\leanok
+\uses{lem:sc0-principal-rees-open-chart}
+These actual nonzero Rees charts form a finite affine open cover of
+$\operatorname{Spec}C$. The generating family has a nonzero member, so it is an
+allowed internal node of a finite Rees tree.
+\end{lemma}
+\begin{proof}
+If a prime contained every $g_i$, it would contain their unit ideal, a
+contradiction. Thus every point lies in some $D(g_i)$ with $g_i$ outside its
+prime, and such $g_i$ is nonzero. The preceding lemma supplies its actual chart
+point. The index set is a subtype of the original finite family. The zero prime
+of $C$ is an actual point, so the same argument supplies a nonzero member of the
+generating family.
+\end{proof}

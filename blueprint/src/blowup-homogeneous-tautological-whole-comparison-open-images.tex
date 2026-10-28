@@ -1,0 +1,32 @@
+\begin{definition}[Whole module comparison on an open image]
+\label{def:whole-module-open-image-comparison}
+\lean{EnvelopeProperty.SchemeModuleOpenImages.comparison}
+\leanok
+\uses{thm:fc-line-section-factorization}
+Let $c:W\to B$ be an open immersion, let $M,N$ be modules on $B$, and let $e:c^*M\simeq c^*N$. There is a canonical whole module comparison between $M|_{c(W)}$ and $N|_{c(W)}$.
+\end{definition}
+\begin{proof}
+The canonical isomorphism from $W$ to its open image has an inverse $d:c(W)\to W$ satisfying $dc=\iota$, where $\iota:c(W)\to B$ is the inclusion. Pull $e$ back by $d$ and compose on either side with the canonical factor pullback comparisons $d^*c^*M\simeq\iota^*M$ and $d^*c^*N\simeq\iota^*N$.
+\end{proof}
+
+\begin{proposition}[Section preservation on the open image]
+\label{prop:whole-module-open-image-sections}
+\lean{EnvelopeProperty.SchemeModuleOpenImages.comparison_section}
+\leanok
+\uses{def:whole-module-open-image-comparison,thm:fc-line-section-factorization}
+If $\alpha:\mathcal O_B\to M$ and $\beta:\mathcal O_B\to N$ satisfy $c^*\alpha\,e=c^*\beta$, then the open image comparison carries $\iota^*\alpha$ to $\iota^*\beta$.
+\end{proposition}
+\begin{proof}
+Pull the assumed equality back by $d$. Pullback preserves composition, so it equates $d^*c^*\alpha$ followed by $d^*e$ with $d^*c^*\beta$. The two factor comparison naturality identities identify these sections with $\iota^*\alpha$ and $\iota^*\beta$. The two middle inverse comparisons cancel, giving the asserted equality.
+\end{proof}
+
+\begin{proposition}[The original sections on the actual fraction open images]
+\label{prop:whole-original-fraction-open-image-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalFractionOpenImageComparison_section}
+\leanok
+\uses{prop:whole-module-open-image-sections,def:whole-original-fraction-line-comparison,prop:whole-original-fraction-line-sections}
+For the prescribed finite equal-degree original generators, the comparison on the open image of each actual nonzero original fraction chart sends every original projective coordinate section to the original ideal-valued lift of the same original homogeneous polynomial. The original Rees map, its original coefficient homomorphism, and both whole original modules are retained.
+\end{proposition}
+\begin{proof}
+On the actual native fraction spectrum, the original whole line comparison preserves all prescribed coordinate sections. Apply open image section preservation to that actual comparison and those actual two sections. Its hypotheses are supplied by the original fraction theorem, so no whole comparison or matching certificate is an input.
+\end{proof}

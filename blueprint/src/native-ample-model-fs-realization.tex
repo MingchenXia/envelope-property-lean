@@ -1,0 +1,54 @@
+\section{Every genuine finite model FS family lifts to actual original ample sections}
+\label{sec:native-ample-model-fs-realization}
+
+\begin{theorem}[Whole original ample-line realization of every model datum]
+\label{thm:native-ample-model-fs-realization}
+\lean{EnvelopeProperty.NativeAmpleModelFSRealization.ofModelData,EnvelopeProperty.NativeAmpleModelFSRealization.ofModelData_eval,EnvelopeProperty.NativeAmpleModelFSRealization.ofModelData_isRational}
+\leanok
+\uses{thm:native-ample-model-section-block-map,def:native-line-whole-section-fs,thm:native-ample-model-fs-evaluation,def:gl-fs}
+Assume throughout this statement that the original scheme $X$ is integral.
+Fix the same genuine original positive-power embedding data with $r>0$.
+For each nonnegative rational original class $a$, every genuine model FS datum
+of class $a/r$ is realized by actual entire original tensor-power sections of
+$L$, with the same original positive denominator and the same weights. Its
+whole weighted evaluation on every actual original native point equals the
+original model evaluation under the same analytic homeomorphism. Original
+rational weights remain rational.
+\end{theorem}
+\begin{proof}
+The model degree $d$ is nonnegative because its denominator is positive and
+$a/r\ge0$. The original whole linear block equivalence lifts every model
+section of degree $d$ to an actual original section of $L^{\otimes rd}$.
+Its degree equation is $rd=ma$, so the same original denominator and weights
+give genuine original line FS data. Take the finite image of all the original
+model terms under this actual entire inverse equivalence. Every lifted section
+retains its true original model norm as the original genuine model section
+norm. Thus each logarithmic term, the entire finite supremum and the whole
+weighted function agree. Rationality holds with the same original weights.
+No whole-section lift or finite-family realization certificate is an input.
+\end{proof}
+
+\begin{theorem}[Exact finite rational FS comparison on the actual original ample ray]
+\label{thm:native-ample-model-finite-fs-iff}
+\lean{EnvelopeProperty.NativeAmpleModelFSRealization.ofModelData_noCommonZero_iff,EnvelopeProperty.NativeAmpleModelFSRealization.isFinFS_iff}
+\leanok
+\uses{thm:native-ample-model-fs-realization,thm:native-ample-model-finite-fs-transport,def:gl-fs}
+Assume throughout this statement that the original scheme $X$ is integral.
+For $a\ge0$, a function on the entire original native point space is an actual
+finite rational FS function of the original line $L$ and class $a$ if and only
+if its transport under the same homeomorphism is a genuine model finite FS
+function of class $a/r$. The actual lifted finite family has no common zero
+exactly when its original model family has no common zero, on both entire
+point spaces.
+\end{theorem}
+\begin{proof}
+The exact true norm identity for each actual lifted section gives pointwise
+nonvanishing in both directions. Use the actual finite image and surjectivity
+of the entire native homeomorphism to compare the no-common-zero conditions
+on both whole spaces. Combine this with unchanged rationality and the proved
+whole function identity. The forward implication is the preceding actual
+section-power construction; the reverse implication uses this genuine whole
+linear section realization. The statement concerns the actual fixed original
+ample-line ray and does not assert independence of an arbitrary numerical
+representative or the complete global psh or envelope theorem.
+\end{proof}

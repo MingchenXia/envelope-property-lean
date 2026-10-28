@@ -1,0 +1,64 @@
+\section{Whole numerator sections and multiplication by the original rational function}
+
+\begin{theorem}[Genuine numerators on every original open]
+\label{thm:fc-scheme-denominator-numerator-sections}
+\leanok
+\lean{EnvelopeProperty.SchemeRationalDenominatorSections.germ_restriction, EnvelopeProperty.SchemeRationalDenominatorSections.exists_numerator, EnvelopeProperty.SchemeRationalDenominatorSections.isLocallyMem_iff}
+\uses{thm:fc-scheme-rational-denominator-stalks}
+On every nonempty original open $U$ of the original integral scheme $X$,
+a section $s$ belongs to the constructed denominator ideal sheaf of the
+original $f\in K(X)$ if and only if there is a section $b$ of the SAME
+original structure sheaf on the SAME whole $U$ such that
+$\operatorname{germ}(b)=\operatorname{germ}(s)f$ in the original $K(X)$.
+\end{theorem}
+\begin{proof}
+Use all nonempty original affine subopens of $U$ as a cover. Actual
+ideal-sheaf membership gives a genuine numerator on each of these affine
+opens. Original generic germs commute with actual restrictions. Hence
+two local numerators have equal original generic germs on a nonempty
+overlap, and genuine integrality makes that original generic-germ map
+injective. On an empty overlap the original section ring is zero.
+The original structure sheaf therefore glues these numerators into a
+section of the SAME whole $U$. Restricting to any member of this actual
+cover proves its asserted original generic-germ identity. Conversely,
+restrict a genuine numerator to every nonempty original affine subopen;
+its original generic-germ identity proves denominator membership there.
+Empty affine subopens have zero section ring and impose no further
+condition.
+\end{proof}
+
+\begin{definition}[The original whole multiplication morphism]
+\label{def:fc-scheme-denominator-multiplication}
+\leanok
+\lean{EnvelopeProperty.SchemeRationalDenominatorSections.numerator, EnvelopeProperty.SchemeRationalDenominatorSections.germ_numerator, EnvelopeProperty.SchemeRationalDenominatorSections.numerator_mem, EnvelopeProperty.SchemeRationalDenominatorSections.multiplicationSection, EnvelopeProperty.SchemeRationalDenominatorSections.multiplicationHom, EnvelopeProperty.SchemeRationalDenominatorSections.multiplicationHom_coefficient}
+\uses{thm:fc-scheme-denominator-numerator-sections}
+For original $f,g\in K(X)$ with $fg=1$, the unique numerator of a section
+of $D_X(f)$ is a section of $D_X(g)$: its product with $g$ is the original
+section. Take this actual numerator on each nonempty original open and
+zero on an empty open. This defines a whole original module morphism
+$D_X(f)\to D_X(g)$, linear over the original structure sheaf, whose
+literal coefficient in the original $K(X)$ is multiplication by $f$.
+\end{definition}
+
+\begin{theorem}[Whole original reciprocal denominator isomorphism]
+\label{thm:fc-scheme-denominator-reciprocal-iso}
+\leanok
+\lean{EnvelopeProperty.SchemeRationalDenominatorSections.reciprocalIso, EnvelopeProperty.SchemeRationalDenominatorSections.reciprocalIso_coefficient}
+\uses{def:fc-scheme-denominator-multiplication}
+For every nonzero original rational function $f$, multiplication by this
+same original $f$ gives a whole original module isomorphism
+$D_X(f)\simeq D_X(f^{-1})$. No supplied local numerator, gluing map,
+module isomorphism, Cartier datum or principal-balance premise is used.
+\end{theorem}
+\begin{proof}
+Unique numerators respect addition and multiplication by original
+sections, by their literal field coefficients and original generic-germ
+injectivity. They commute with actual restriction by the same identity;
+empty target opens have zero section ring. This gives the asserted whole
+module morphism. Compose multiplication by $f$ with multiplication by
+$f^{-1}$. On every nonempty original open its coefficient is the original
+section times $ff^{-1}=1$, so actual generic-germ injectivity gives the
+identity section map. Empty opens again have zero section modules. Thus
+the two whole original morphisms are inverse, with the stated literal
+coefficient formula.
+\end{proof}

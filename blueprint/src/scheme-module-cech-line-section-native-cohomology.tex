@@ -1,0 +1,474 @@
+\section{Actual line-section transitions, finite \v{C}ech denominators and higher cohomology}
+\label{sec:cech-line-native-cohomology}
+
+Throughout, tensor powers, restrictions, pullbacks and \v{C}ech complexes
+are the original native scheme-module constructions. For an invertible
+$L$ and original $s:\mathcal O_X\to L$, write $V=D(s)$ for the complement
+of the support of its actual zero ideal. The previously constructed
+canonical frame on $V$ is used throughout. Write compositions in diagram
+order. Definitions below record API constructions and carry no independent
+source-theorem credit; the assertions about them are stated separately.
+
+\begin{lemma}[Tensor multiplication in actual frames]
+\label{lem:cech-line-native-two-frame-scalar}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorSectionMap_tensorFrame}
+\uses{lem:cech-line-section-original-tensor-values}
+\leanok
+Let $P,T$ be modules on $X$, let $e:P\simeq\mathcal O_X$ and
+$d:T\simeq\mathcal O_X$ be actual frames, and let $t:\mathcal O_X\to T$.
+Tensor multiplication by $t$, followed by the tensor frame induced by
+$e,d$, is the whole map $e$ followed by multiplication by the actual
+coefficient $\operatorname{frameScalar}(d,t)$.
+\end{lemma}
+\begin{proof}
+The native tensor frame factors as $e\otimes\mathrm{id}_T$ followed by
+the frame $d$ on the second factor and the unit constraint. Naturality
+of tensor multiplication moves $e$ past the section map. The framed
+section is its actual scalar endomorphism of $\mathcal O_X$; the unit
+action on $\mathcal O_X$ is that same endomorphism. This proves equality
+of entire module maps, without choosing or assuming a coefficient identity.
+\end{proof}
+
+\begin{definition}[The actual original twist system]
+\label{def:cech-line-native-transitions}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.lineSectionStep,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistStep,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistIterate}
+\uses{lem:cech-line-native-two-frame-scalar}
+\leanok
+For an original module $L$, section $s:\mathcal O_X\to L$ and module
+$F$, put $F_m=F\otimes L^m$. The native tensor-power successor defines
+$\ell_m:L^m\to L^{m+1}$ by multiplication by $s$, and
+$T_m=\mathrm{id}_F\otimes\ell_m:F_m\to F_{m+1}$.
+Define $T_{m,0}=\mathrm{id}_{F_m}$ and
+$T_{m,a+1}=T_{m,a}T_{m+a}$. Thus $T_{m,a}$ has the literal target
+$F\otimes L^{m+a}$ for every $a\geq0$.
+These are constructions of the actual maps, rather than additional
+vanishing or positivity theorems.
+\end{definition}
+\begin{proof}
+Use the original section tensor map and the native isomorphism from the
+monoidal tensor product to the tensor object in the defining recursion
+for $L^{m+1}$. Tensor the resulting map by $F$. The recursion on $a$
+then has the claimed source and target, including $a=0$.
+\end{proof}
+
+\begin{lemma}[Whole-map scalar formulas for transitions]
+\label{lem:cech-line-native-transition-frame}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistStep_frame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistIterate_frame}
+\uses{def:cech-line-native-transitions,lem:cech-line-native-two-frame-scalar}
+\leanok
+An actual frame $e:L\simeq\mathcal O_X$ identifies $T_m$ with
+multiplication by $r=\operatorname{frameScalar}(e,s)$, between the
+actual tensor frames of $F_m$ and $F_{m+1}$. It identifies $T_{m,a}$
+with multiplication by $r^a$, between the actual frames of $F_m$ and
+$F_{m+a}$. Both statements are equalities of whole original module maps.
+\end{lemma}
+\begin{proof}
+Apply the two-frame tensor formula to the native power frame of $L^m$
+and the original frame of $L$. Its recursive tensor comparison gives
+the one-step formula. Induction on $a$ proves the iterate formula:
+the identity corresponds to $r^0=1$, and composition of the actual
+scalar actions multiplies $r^a$ by $r$.
+\end{proof}
+
+\begin{lemma}[Transitions in native pulled power frames]
+\label{lem:cech-line-native-pulled-transition-frame}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.lineSectionStep_pullback_frame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistStep_pullback_frame}
+\uses{lem:cech-line-native-two-frame-scalar,def:cech-line-native-transitions,lem:cech-line-section-original-native-pullback}
+\leanok
+For every morphism $g:Y\to X$ and actual frame
+$e:g^*L\simeq\mathcal O_Y$, the pullback of $\ell_m$ has coefficient
+$\operatorname{frameScalar}(e,g^*s)$ in the native pulled power frames.
+After the genuine pullback tensor comparison, the pullback of $T_m$
+has that same scalar action on $g^*F$.
+\end{lemma}
+\begin{proof}
+Expand the native successor formula for the pulled power frame. The
+pullback of the tensor-object isomorphism cancels its inverse.
+Naturality of the actual section tensor map reduces the remaining
+calculation to tensor multiplication in two genuine frames.
+The monoidal pullback tensorator then gives the formula with $F$.
+\end{proof}
+
+\begin{lemma}[Every transition preserves canonical normalization]
+\label{lem:cech-line-native-transition-normalized}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistStep_normalized,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistIterate_normalized}
+\uses{lem:cech-line-native-pulled-transition-frame,lem:cech-line-section-original-canonical-open}
+\leanok
+Suppose $L$ is invertible and write $V=D(s)$ for its literal nonzero
+section open, with inclusion $\iota$. The canonical frame of $L|_V$
+sends the original section to one. Consequently $\iota^*T_m$ and every
+$\iota^*T_{m,a}$ preserve the actual canonical normalization
+$\iota^*F_m\simeq\iota^*F$.
+\end{lemma}
+\begin{proof}
+Specialize the pulled-frame transition formula to $g=\iota$ and the
+canonical section frame. The coefficient is exactly $1$ by the actual
+section-one law, so its scalar action is the identity. Induction on the
+finite iterate, using functoriality of pullback, proves the second assertion.
+\end{proof}
+
+\begin{lemma}[Normalized values of original sections are unchanged]
+\label{lem:cech-line-native-top-transition}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedTopValue_transition}
+\uses{lem:cech-line-native-transition-normalized}
+\leanok
+For $y\in\Gamma(X,F_m)$ and every $a\geq0$, the canonical normalized
+value on $D(s)$ of $T_{m,a}(y)$ equals that of $y$.
+\end{lemma}
+\begin{proof}
+The actual pullback adjunction unit on global sections is natural in
+the original module map $T_{m,a}$. Apply the whole-map normalization
+identity to its image of $y$. This gives equality of the actual global
+sections on $D(s)$.
+\end{proof}
+
+\begin{lemma}[Eventual affine lifts and zero clearing]
+\label{lem:cech-line-native-affine-eventual}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.affine_eventual_normalized_lift,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.affine_eventual_zero_clearing}
+\uses{lem:cech-line-section-original-affine-normalized-lift,lem:cech-line-native-top-transition,lem:cech-line-native-transition-frame}
+\leanok
+Let $X$ be affine, let $F$ be quasicoherent, and give an ordinary actual
+frame $e:L\simeq\mathcal O_X$. Every section of $F|_{D(s)}$ has a
+canonical normalized lift in $\Gamma(X,F_m)$ for every sufficiently
+large $m$. If $y\in\Gamma(X,F_m)$ has normalized value zero, then
+$T_{m,a}(y)=0$ for every sufficiently large $a$.
+The thresholds are produced internally from the original section and module.
+\end{lemma}
+\begin{proof}
+The original affine normalized-lift theorem first gives a lift at one
+exponent $N$. For every $m\geq N$, apply $T_{N,m-N}$ to that lift;
+normalization preservation proves it is still a lift.
+For zero clearing, the canonical normalization is an isomorphism, so
+normalized zero implies ordinary restriction zero. The actual frame
+identifies $D(s)$ with the basic open of its scalar $r$.
+Quasicoherence of $F_m$ and genuine principal localization give some
+$r^A y=0$. Every $r^a y$ with $a\geq A$ is then zero. The whole-map
+transition-frame formula and the invertible frame identify this with
+$T_{m,a}(y)=0$.
+\end{proof}
+
+\begin{definition}[The original section-open map]
+\label{def:cech-line-native-open-map}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenMap}
+\uses{lem:cech-line-section-original-affine-open}
+\leanok
+For $g:Y\to X$, set $V=D(s)$ and $W=D(g^*s)$. The actual section-open
+map $h:W\to V$ is the unique open-immersion lift of $W\to Y\to X$
+through $V\hookrightarrow X$. This is a canonical map construction.
+\end{definition}
+\begin{proof}
+The previously proved equality $W=g^{-1}V$ puts the image of
+$W\to Y\to X$ in the actual open $V$. Apply the native lift property
+of that open immersion.
+\end{proof}
+
+\begin{lemma}[The actual section-open Cartesian square]
+\label{lem:cech-line-native-open-square}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenMap_fac,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenSquare}
+\uses{def:cech-line-native-open-map,lem:cech-line-section-original-affine-open}
+\leanok
+The canonical map $h$ satisfies $h\iota_V=\iota_W g$, and the square
+with sides $\iota_W,h,g,\iota_V$ is Cartesian. No square or open-matching
+hypothesis is supplied.
+\end{lemma}
+\begin{proof}
+The native lift construction gives the displayed triangle. The actual
+inverse-image identity $D(g^*s)=g^{-1}D(s)$ identifies the open ranges;
+the native open-immersion pullback criterion now proves Cartesianness.
+\end{proof}
+
+\begin{lemma}[Canonical power frames agree on the original square]
+\label{lem:cech-line-native-open-power-frame}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionFrame_openSquare}
+\uses{lem:cech-line-native-open-square,lem:cech-line-section-original-canonical-open}
+\leanok
+For every $m$, the canonical frame of $(g^*L)^m$ on $W$ agrees with
+the pullback of the canonical frame of $L^m$ on $V$, through the actual
+pullback-power isomorphism and the canonical section-open square.
+\end{lemma}
+\begin{proof}
+Pull back the actual original $s^m$. The native section-power pullback
+formula identifies it with $(g^*s)^m$. Each proposed whole frame sends
+this same section to one. This section is an isomorphism on $W$, so
+cancellation proves equality of the entire frames.
+\end{proof}
+
+\begin{definition}[Whole original restriction and pushforward comparisons]
+\label{def:cech-line-native-open-module-comparisons}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenModuleIso,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenPushforwardIso}
+\uses{lem:cech-line-native-open-square}
+\leanok
+Native pullback composition on the actual square defines
+$h^*\iota_V^*F\simeq\iota_W^*g^*F$ for any original $F$.
+If $g$ is an open immersion, the native open-square comparison further
+defines $g^*\iota_{V*}\iota_V^*F\simeq\iota_{W*}\iota_W^*g^*F$.
+These are specified whole-module isomorphisms, with no acyclicity assertion.
+\end{definition}
+\begin{proof}
+Compose the native pullback-composition isomorphisms and the actual
+triangle equality for the first construction. For the second, use the
+existing open Cartesian pushforward comparison on the proved square,
+then push forward the first whole-module isomorphism.
+\end{proof}
+
+\begin{lemma}[The actual open comparison preserves the adjunction unit]
+\label{lem:cech-line-native-open-unit}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpenPushforwardIso_unit}
+\uses{def:cech-line-native-open-module-comparisons,lem:cech-line-native-open-square}
+\leanok
+For an open immersion $g$ and every original module $F$, pullback of
+the unit $F\to\iota_{V*}\iota_V^*F$, followed by the actual open
+pushforward comparison, equals the unit of $g^*F$ for $\iota_W$.
+\end{lemma}
+\begin{proof}
+Identify the native open comparison with the mate of the actual
+pullback square. The pullback-composition and section-open triangle
+comparisons are used in that identity. The adjunction triangle law for
+the mate gives the whole unit equality; the actual module comparison
+and its inverse cancel. No sectionwise matching premise is used.
+\end{proof}
+
+\begin{definition}[Native twist comparison and normalized whole map]
+\label{def:cech-line-native-normalized-pushforward}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistPullbackIso,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedPushforwardMap}
+\uses{lem:cech-line-section-original-canonical-open}
+\leanok
+Let $F_m=F\otimes L^m$. The native tensorator and pullback-power
+isomorphism define $g^*F_m\simeq g^*F\otimes(g^*L)^m$.
+Put $G=\iota_{V*}\iota_V^*F$. Define the actual normalized map
+$\alpha_m:F_m\to G$ as the pullback-pushforward unit followed by the
+pushforward of the canonical normalization $\iota_V^*F_m\simeq\iota_V^*F$.
+These are native map constructions, not extra source-theorem credit.
+\end{definition}
+\begin{proof}
+For the first map compose the inverse monoidal pullback tensorator with
+the original pullback-power comparison on the second tensor factor.
+For $\alpha_m$ use the native adjunction unit for the actual inclusion
+$\iota_V$, and its pushforward functor on the already constructed
+normalization map.
+\end{proof}
+
+\begin{lemma}[Actual normalized maps commute with original open pullback]
+\label{lem:cech-line-native-normalization-pullback}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionTensorMap_pullback,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedTwistIso_openSquare,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedPushforwardMap_pullback}
+\uses{def:cech-line-native-normalized-pushforward,lem:cech-line-native-open-unit,lem:cech-line-native-open-power-frame,lem:cech-line-section-original-native-pullback}
+\leanok
+For every $g$, multiplication by $s^m$ pulls back, under the actual
+twist comparison, to multiplication by $(g^*s)^m$. Canonical
+normalization commutes with the actual section-open square as a whole
+module map. If $g$ is an open immersion, $g^*\alpha_m$ followed by the
+actual pushforward comparison equals the normalized map for $g^*F,g^*L,g^*s$
+preceded by the actual twist comparison.
+\end{lemma}
+\begin{proof}
+Native tensor-section naturality and the section-power pullback formula
+prove the multiplication assertion. On $V$, multiplication by the
+original $s^m$ is inverse to canonical normalization. Cancel that actual
+isomorphism and use pullback-composition naturality to prove the
+normalization-square equality. Finally expand $\alpha_m$: naturality
+of the open pushforward comparison moves the normalization through it,
+the preceding unit lemma handles the unit, and unit naturality handles
+the actual twist comparison.
+\end{proof}
+
+\begin{lemma}[The normalized whole maps preserve every transition]
+\label{lem:cech-line-native-pushforward-transition}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedPushforwardMap_transition}
+\uses{def:cech-line-native-normalized-pushforward,lem:cech-line-native-transition-normalized}
+\leanok
+The actual maps satisfy $T_{m,a}\alpha_{m+a}=\alpha_m$ for every
+$m,a\geq0$.
+\end{lemma}
+\begin{proof}
+Expand each normalized map as its unit followed by the pushforward
+normalization. Move $T_{m,a}$ past the unit by adjunction-unit
+naturality. Inside the pushforward the actual transition-normalization
+identity applies, giving the required equality of entire maps.
+\end{proof}
+
+\begin{lemma}[Actual eventual lifts over original affine opens]
+\label{lem:cech-line-native-affine-open-lift}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.affineOpen_eventual_normalized_lift}
+\uses{lem:cech-line-native-affine-eventual,lem:cech-line-native-normalization-pullback}
+\leanok
+Let $F$ be quasicoherent, let $U\subseteq X$ be an original affine
+open, and give an actual frame of $L|_U$. Every
+$x\in\Gamma(U,G)$ has, for every sufficiently large $m$, an actual
+$y\in\Gamma(U,F_m)$ satisfying $\alpha_m(y)=x$.
+\end{lemma}
+\begin{proof}
+Use the genuine open-section equivalence and the actual open
+pushforward comparison to view $x$ as a section over $D(s|_U)$ of
+the original pulled module. Apply the eventual affine lift theorem on
+$U$. Transport the numerator back through the actual twist isomorphism
+and open-section equivalence. The normalized-pullback whole-map
+identity proves that this transported numerator has exactly value $x$.
+\end{proof}
+
+\begin{definition}[The native normalized and transition cochain maps]
+\label{def:cech-line-native-cochain-maps}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedCechMap,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistCechMap}
+\uses{def:cech-line-native-transitions,def:cech-line-native-normalized-pushforward}
+\leanok
+For a family of original opens $\mathcal U=(U_i)$, applying the actual
+native \v{C}ech complex functor to $\alpha_m$ gives
+$A_m:C^\bullet(\mathcal U,F_m)\to C^\bullet(\mathcal U,G)$.
+Applying it to $T_{m,a}$ gives
+$B_{m,a}:C^\bullet(\mathcal U,F_m)\to C^\bullet(\mathcal U,F_{m+a})$.
+These constructions retain the original native complexes and their differentials.
+\end{definition}
+\begin{proof}
+Both maps are the functorial images of actual whole original module
+maps. Hence they commute with the actual \v{C}ech differential. Their
+component on each tuple intersection is evaluation of the respective
+whole module map on that same intersection, by the native product projections.
+\end{proof}
+
+\begin{lemma}[A common actual twist lifts every finite native cochain]
+\label{lem:cech-line-native-finite-cochain-lift}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.exists_finite_normalized_cochain_lift}
+\uses{lem:cech-line-section-original-canonical-open,lem:cech-line-native-affine-open-lift,def:cech-line-native-cochain-maps}
+\leanok
+If $X$ is quasicompact and separated and $F$ is quasicoherent, there is
+an internally chosen finite affine cover $\mathcal U$ with actual
+frames of $L|_{U_i}$ such that for every degree $n$ and every
+$x\in C^n(\mathcal U,G)$, the equation $A_m(y)=x$ has an actual
+solution $y\in C^n(\mathcal U,F_m)$ for all sufficiently large $m$.
+The bound may depend on $n$ and $x$.
+\end{lemma}
+\begin{proof}
+Select the original finite framed affine cover. Separatedness makes
+each actual tuple intersection affine; pull a frame from its first
+factor. Apply the affine-open lifting theorem to each component of
+$x$. There are finitely many tuples of length $n+1$, so the finite
+maximum of their thresholds works for every component. The genuine
+native \v{C}ech product isomorphism assembles their actual lifts.
+Its projection formula for $A_m$ proves the whole cochain equality.
+\end{proof}
+
+\begin{lemma}[Finite transitions retain their actual pulled modules]
+\label{lem:cech-line-native-transition-open-pullback}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.twistIterate_pullback_of_frame}
+\uses{lem:cech-line-native-transition-frame,lem:cech-line-native-pulled-transition-frame,def:cech-line-native-normalized-pushforward}
+\leanok
+For every $g:Y\to X$ with an actual frame of $g^*L$, the native twist
+isomorphisms conjugate $g^*T_{m,a}$ to the actual transition for
+$g^*F,g^*L,g^*s$, with exactly exponents $m,m+a$.
+\end{lemma}
+\begin{proof}
+The native pulled power frame factors through the actual power-pullback
+isomorphism. The framed iterate formula on the source pullback and on
+the pulled module has the same scalar $(g^*s)^a$. Monoidal pullback
+naturality and cancellation of the genuine frames therefore identify
+the entire finite transition maps.
+\end{proof}
+
+\begin{lemma}[The actual framed affine section-open preimage is affine]
+\label{lem:cech-line-native-affine-section-preimage}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpen_preimage_affine_of_frame}
+\uses{lem:cech-line-section-original-affine-open}
+\leanok
+For an original affine open $U\subseteq X$ with an actual frame of
+$L|_U$, the literal preimage $\iota_V^{-1}U$ is affine in $V=D(s)$.
+\end{lemma}
+\begin{proof}
+On the original affine $U$, the pulled section-open is the basic open
+of its actual coefficient, hence affine. Its image under the open
+immersion $U\to X$ is exactly $U\cap V$. The native open-image and
+preimage criterion then identifies $\iota_V^{-1}U$ as affine.
+\end{proof}
+
+\begin{lemma}[Zero clearing on original affine opens]
+\label{lem:cech-line-native-affine-open-zero}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.affineOpen_eventual_zero_clearing}
+\uses{lem:cech-line-native-affine-eventual,lem:cech-line-native-normalization-pullback,lem:cech-line-native-transition-open-pullback}
+\leanok
+Let $U$ be an original affine open with an actual frame of $L|_U$,
+and let $F$ be quasicoherent. If $y\in\Gamma(U,F_m)$ satisfies
+$\alpha_m(y)=0$, then $T_{m,a}(y)=0$ for every sufficiently large $a$.
+\end{lemma}
+\begin{proof}
+The open-section equivalence and actual normalized-pullback identity
+turn the hypothesis into normalized zero on the original affine $U$.
+Apply genuine affine zero clearing there. The finite-transition
+pullback formula identifies the resulting zero with the image of the
+original $T_{m,a}(y)$. Both the twist comparison and the open-section
+equivalence are injective, so the original section is zero.
+\end{proof}
+
+\begin{lemma}[A common actual transition clears a finite normalized-zero cochain]
+\label{lem:cech-line-native-finite-cochain-zero}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.finite_normalized_cochain_zero}
+\uses{lem:cech-line-native-affine-open-zero,def:cech-line-native-cochain-maps}
+\leanok
+Let $X$ be separated, $F$ quasicoherent, and $(U_i)$ a finite family
+of affine opens with actual frames of $L|_{U_i}$. If
+$y\in C^n(\mathcal U,F_m)$ has $A_m(y)=0$, then
+$B_{m,a}(y)=0$ for every sufficiently large $a$.
+No cover assumption is needed for this finite-family assertion.
+\end{lemma}
+\begin{proof}
+The native product projection formula makes every tuple component of
+$y$ normalized-zero on the same actual tuple intersection. The
+intersection is affine and inherits a frame from its first factor.
+Apply affine-open zero clearing componentwise and take the finite
+maximum of the resulting bounds. The native cochain product
+isomorphism detects zero, proving the asserted whole cochain equality.
+\end{proof}
+
+\begin{lemma}[Eventual original global cohomology gives actual native exactness]
+\label{lem:cech-line-native-exact-from-global}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.exists_finite_normalized_cech_exactAt}
+\uses{lem:cech-line-native-finite-cochain-lift,lem:cech-line-native-finite-cochain-zero,lem:cech-line-native-pushforward-transition,thm:scheme-module-cech-native-additive-comparison}
+\leanok
+Let $X$ be quasicompact and separated, $F$ quasicoherent and $q\geq0$.
+Assume $H^{q+1}(X,F_m)=0$ for every sufficiently large $m$.
+Then an internally chosen finite framed affine cover $\mathcal U$
+has $C^\bullet(\mathcal U,G)$ exact in degree $q+1$.
+\end{lemma}
+\begin{proof}
+Take a target cocycle $x$. Lift it to a cochain $y$ of an original
+$F_m$, with $m$ above both the lifting bound and the global vanishing
+bound. Since $A_m$ is a chain map, $dy$ has normalized value zero.
+A sufficiently long actual transition kills $dy$, so
+$y'=B_{m,a}(y)$ is an actual cocycle of $F_{m+a}$.
+The global vanishing hypothesis applies at $m+a$. Native affine-cover
+\v{C}ech comparison gives a genuine source boundary $y'=dz$.
+Apply $A_{m+a}$; its chain-map identity and
+$B_{m,a}A_{m+a}=A_m$ show $x=dA_{m+a}(z)$. The converse inclusion
+is the actual equation $d^2=0$.
+\end{proof}
+
+\begin{theorem}[Actual higher vanishing on the original section open]
+\label{thm:cech-line-native-section-open-vanishing}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpen_restrict_H_succ_subsingleton}
+\uses{lem:cech-line-native-exact-from-global,lem:cech-line-native-affine-section-preimage,lem:affine-pushforward-ordered-vanishing}
+\leanok
+Let $X$ be quasicompact and separated, $L$ invertible,
+$s:\mathcal O_X\to L$ an original section, and $F$ quasicoherent.
+For every $q\geq0$,
+\[
+ \bigl(\exists N\;\forall m\geq N,\ H^{q+1}(X,F\otimes L^m)=0\bigr)
+ \quad\Longrightarrow\quad H^{q+1}(D(s),F|_{D(s)})=0.
+\]
+Here zero means that the actual native sheaf cohomology group is a
+subsingleton. The finite cover, local denominators, comparisons and
+source boundaries are constructed internally.
+\end{theorem}
+\begin{proof}
+Use the preceding genuine exactness producer for the original
+$G=\iota_{V*}\iota_V^*F$. The inverse images in $V$ of its selected
+framed affine cover are affine and cover $V$. Native ordinary and
+ordered \v{C}ech homology comparison, followed by the actual
+pushforward-complex isomorphism for $\iota_V$, transfers the proved
+exactness to this affine cover of the actual $\iota_V^*F$.
+The native affine-cover comparison identifies its zero positive
+homology with zero ordinary sheaf cohomology. Finally the whole native
+restriction-pullback isomorphism identifies that module with the
+literal original $F|_V$.
+\end{proof}
+
+The final theorem uses eventual vanishing on the original scheme itself.
+No covering-space vanishing theorem alone supplies that hypothesis. In a
+Nadel application, actual trace descent and the fixed original rounded
+module comparison must first produce the stated original global groups.

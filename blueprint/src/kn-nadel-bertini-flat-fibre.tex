@@ -1,0 +1,42 @@
+\section{Actual flat hypersurface fibres remain Cartier}
+
+\begin{lemma}\label{lem:kn-nadel-principal-quotient-exact}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.mulMap,EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.quotientMap,EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.mulMap_exact}
+\leanok
+For an algebra $B$ over a commutative ring $A$ and $h\in B$, the actual
+$A$-linear maps $B\xrightarrow{h}B\to B/(h)$ form an exact pair, and
+the actual quotient map is surjective.
+\end{lemma}
+\begin{proof}
+The kernel of the quotient map is the original principal ideal $(h)$.
+Membership in this ideal is precisely membership in the image of actual
+multiplication by $h$.  The native quotient map is surjective.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-nadel-flat-principal-fibre-regular}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.mulMap_lTensor_injective,EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.mulMap_lTensor_apply,EnvelopeProperty.Vanishing.NadelBertiniFlatFibre.tensor_regular}
+\leanok
+\uses{lem:kn-nadel-principal-quotient-exact}
+Suppose $h$ is a nonzerodivisor in the actual $B$, and $B/(h)$ is flat
+over $A$.  For every commutative $A$-algebra $S$, the actual element
+$1\otimes h$ is a nonzerodivisor in $S\otimes_A B$.
+No flatness assumption on $S$ is required.
+\end{theorem}
+\begin{proof}
+The preceding pair is a short exact sequence.  The native flat-cokernel
+tensor-exactness theorem implies that tensoring multiplication by $h$
+with any $A$-module remains injective.  On each actual pure tensor
+this map is $s\otimes b\mapsto s\otimes hb$, which equals multiplication
+by $1\otimes h$ in the actual tensor algebra.  Additivity extends the
+identity to every tensor.  Hence multiplication by that same element
+is injective, proving the assertion.
+\end{proof}
+
+For the universal incidence equation, the normalized coefficient of one
+parameter is one, so its actual equation is a nonzerodivisor before
+specialization.  Restricting to the proved good parameter open makes the
+actual incidence morphism flat.  The theorem therefore supplies the
+genuine Cartier condition on each original field fibre.  This is the
+missing extra argument beyond smoothness of a fibre alone; its eventual
+application still retains the actual incidence charts and their quotient
+identifications.

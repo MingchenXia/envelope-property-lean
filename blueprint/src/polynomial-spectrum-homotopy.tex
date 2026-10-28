@@ -1,0 +1,65 @@
+\subsection{Polynomial extensions preserve the actual homotopy type}
+\begin{theorem}[A whole polynomial spectrum retracts to its coefficient spectrum]
+\label{analytic:polynomial-spectrum-homotopy-equivalence}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialProjection,
+EnvelopeProperty.Berkovich.RelativeSpectrum.zeroGaussSection,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialRadialGaussMap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussDeformation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialGaussContraction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialRetraction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialRetractionRel,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialHomotopyEquiv,
+EnvelopeProperty.Berkovich.RelativeSpectrum.contractibleSpace_polynomial_iff}
+\leanok
+\uses{analytic:actual-polynomial-gauss-inflation}
+For arbitrary commutative rings $R,A$, the original algebra map $R\to A$,
+and a valuation $v:R\to\mathbb R_{\geq0}$, the actual coefficient
+projection $p:\operatorname{Sp}_v(A[T])\to\operatorname{Sp}_v(A)$ is a
+homotopy equivalence. Its specified inverse is the ORIGINAL zero-radius
+Gauss section $j(y)=\eta_0(y)$. More precisely $pj$ is the identity, and
+there is an explicit homotopy from the identity to $jp$ that fixes every
+point of $j(\operatorname{Sp}_v(A))$ throughout. Thus the actual polynomial
+spectrum is contractible if and only if the actual coefficient spectrum
+is contractible, including the case when these spaces are empty.
+\end{theorem}
+\begin{proof}
+The original coefficient projection and joint Gauss construction give
+continuous maps $p,j$, with $pj=\mathrm{id}$ on every whole original point.
+First use $H(\theta,x)=I_{\theta|T(x)|}(x)$. Its true joint continuity
+and whole endpoint identities give a homotopy from $x$ to
+$\eta_{|T(x)|}(p(x))$, retaining every original coefficient value.
+Follow it by
+\[
+ K(\theta,x)=\eta_{(1-\theta)|T(x)|}(p(x)).
+\]
+Both the coefficient point and radius vary continuously in their actual
+original spaces. On every original polynomial the genuine Gauss value is a
+finite supremum of continuous coefficient values times continuous radius
+powers; this proves joint continuity of both phases directly. Its endpoints are the preceding map and $j(p(x))$. Concatenate
+the two homotopies. If $x=j(y)$ then $|T(x)|=0$, and both phases are
+identically $j(y)$ by the whole Gauss inflation identities. This gives
+the asserted homotopy relative to the actual section image. The continuous
+maps $p,j$ and the constructed inverse homotopies form a genuine homotopy
+equivalence, from which the contractibility equivalence follows. No point
+existence assumption, field, completeness or coefficient faithfulness is used.
+\end{proof}
+
+\begin{corollary}[The actual affine line over a valued ring is contractible]
+\label{analytic:valued-ring-affine-line-contractible}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.contractibleSpace_self,
+EnvelopeProperty.Berkovich.RelativeSpectrum.contractibleSpace_affineLine}
+\leanok
+\uses{analytic:polynomial-spectrum-homotopy-equivalence}
+For ANY commutative ring $R$ and valuation $v:R\to\mathbb R_{\geq0}$,
+the whole original relative affine line $\operatorname{Sp}_v(R[T])$ is
+contractible. This allows nonfields, nonfaithful valuations and trivial
+valuations.
+\end{corollary}
+\begin{proof}
+Every point of $\operatorname{Sp}_v(R)$ has the SAME value $v(a)$ on
+EVERY original $a\in R$, by the defining prescribed-base condition and
+the identity coefficient map. Whole-point extensionality identifies the
+space with the single actual point $v$. The constant homotopy to that
+point contracts it. Apply the polynomial homotopy equivalence above with
+$A=R$ to obtain contractibility of the original relative affine line.
+\end{proof}

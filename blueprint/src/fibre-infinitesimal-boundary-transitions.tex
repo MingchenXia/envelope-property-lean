@@ -1,0 +1,78 @@
+\section{The original infinitesimal transitions and their obstructions}
+
+\begin{lemma}[Transitions of the genuine infinitesimal exact sequences]
+\label{lem:fc-infinitesimal-sequence-transitions}
+\leanok
+\lean{EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.quotientTransition, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.quotientTransition_app, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.sectionMap_transition, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.quotientTransition_appTop, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.quotientTransition_baseSectionsMap, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.sequenceTransition}
+\uses{lem:fc-rees-cech-degree-transitions}
+For $n\leq m$, the original map $X_n\to X_m$ induces the actual map
+of pushforward structure modules on $X$.  On every original open it is
+the entire pullback map on the corresponding original inverse-image
+open.  Together with the original inclusion
+$I^m\mathcal O_X\to I^n\mathcal O_X$ and the identity of
+$\mathcal O_X$, it gives a morphism between the two original exact
+sequences of infinitesimal structure modules.
+\end{lemma}
+\begin{proof}
+Push the canonical structure-module map for $X_n\to X_m$ forward to
+$X$, and use the actual composition equality of the original
+projections.  The pushforward composition and equality isomorphisms
+give the stated module map; on an open, their definition is restriction
+along that composition equality, so its value is exactly the original
+scheme pullback on the inverse-image open.  The projection square
+commutes because the original transition composed with the original
+projection is the original lower-order projection.  The ideal-power
+square commutes since each original inclusion retains every underlying
+section.  These two squares are the required morphism of exact
+sequences.
+\end{proof}
+
+\begin{lemma}[Naturality of the original global-section obstruction]
+\label{lem:fc-infinitesimal-boundary-transitions}
+\leanok
+\lean{EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.complexSequenceTransition, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.connecting_naturality, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.sectionBoundary_naturality, EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.sectionBoundary_transition_apply}
+\uses{lem:fc-infinitesimal-sequence-transitions}
+On an ordered affine cover of $X$, the connecting maps to the original
+ideal-power cohomology commute with every original infinitesimal
+transition.  In degree zero this is naturality of the obstruction of
+each entire original infinitesimal global section.
+\end{lemma}
+\begin{proof}
+Apply the original ordered Čech functor to the morphism of exact
+sequences.  Its rows are short exact on every affine intersection.
+Naturality of the connecting morphism of a short exact sequence of
+complexes therefore gives the claimed cohomology square.  In degree
+zero, the original global-section to Čech-cohomology isomorphism is
+natural for every module morphism.  Composing that naturality square
+with the connecting square gives the obstruction square.  The
+pushforward transition on entire global sections is the literal
+pullback along $X_n\to X_m$, by its whole-open formula.
+\end{proof}
+
+
+\begin{lemma}[The obstruction of a compatible original infinitesimal family]
+\label{lem:fc-infinitesimal-compatible-section-boundary}
+\leanok
+\lean{EnvelopeProperty.FibreInfinitesimalBoundaryTransitions.compatible_sectionBoundary}
+\uses{lem:fc-infinitesimal-boundary-transitions,lem:fc-rees-cech-degree-transitions}
+Let $U$ be a finite ordered affine cover of the separated $R$-scheme
+$X$.  Suppose $(s_n)$ is a compatible family of entire original
+sections on the positive-order models $X_{n+1}$.  Identify the
+cohomology of $I^{n+1}\mathcal O_X$ with the original degree-$(n+1)$
+Rees--\v Cech cohomology using the coefficient-preserving comparison.
+Then the degree-one obstructions of $s_n$ form a compatible family in
+those same original cohomology modules, for all original
+higher-to-lower power maps.
+\end{lemma}
+\begin{proof}
+For $n\leq m$, naturality of the preceding obstruction identifies the
+image of the obstruction of $s_m$ under
+$H^1(I^{m+1}\mathcal O_X)\to H^1(I^{n+1}\mathcal O_X)$ with the
+obstruction of the pullback of $s_m$ to $X_{n+1}$.  The pullback is
+$s_n$ by compatibility of the given family.  The comparison with the
+original Rees degree complexes intertwines the entire ideal-power
+inclusion with its actual higher-to-lower degree map.  Applying that
+commuting square gives precisely the asserted equality between the
+two compared obstruction classes.  This argument applies to every
+$n\leq m$ and uses no vanishing or section-lifting premise.
+\end{proof}

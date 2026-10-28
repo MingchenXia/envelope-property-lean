@@ -1,0 +1,27 @@
+\section{Recovering the whole geometric unit ideal from actual restriction}
+
+\begin{lemma}[A genuinely invertible restricted inclusion gives the whole unit ideal]
+\label{lem:ideal-module-restriction-unit}
+\leanok
+\lean{EnvelopeProperty.IdealModuleRestrictionUnit.comap_eq_top_of_isIso_restrict}
+Let $I$ be an actual ideal sheaf on any scheme $X$, and let $U$
+be any original open. If the actual original ideal-module inclusion
+$I\hookrightarrow\mathcal O_X$ becomes an isomorphism after
+native restriction to $U$, then the whole geometric ideal
+$I\mathcal O_U$ is the unit ideal.
+\uses{scheme:existing-ideal-module-affine-sections}
+\end{lemma}
+\begin{proof}
+On every original affine open $V$ of $U$, the genuinely invertible
+restricted inclusion is surjective on sections. Lift the original
+unit section through this very inclusion. Its preimage is an actual
+section of the original ideal module on the original image of $V$,
+and its value is exactly one. The genuine affine ideal-module
+membership criterion therefore places one in the original affine
+ideal, making it the whole ring. The actual open-immersion formula
+for geometric ideal pullback identifies the ideal on $V$ with
+the inverse image of this whole ideal under the original section
+ring isomorphism. It too is the whole ring. This proves the entire
+ideal-sheaf equality, with no finiteness, nonempty or affine-$U$
+assumption.
+\end{proof}

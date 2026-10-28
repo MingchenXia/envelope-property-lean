@@ -1,0 +1,72 @@
+\section{A zero diagonal annihilates bounded hypercohomology}
+
+Let $\mathcal A$ be an abelian category and let $K^\bullet$ be a
+cochain complex with terms zero outside a finite interval.  For an object
+$A$ of $\mathcal A$, write
+\[
+ \mathbb H_A^t(K^\bullet)
+ =\operatorname{Hom}_{D(\mathcal A)}(A[-t],K^\bullet).
+\]
+For abelian sheaves and the constant free abelian sheaf $A=\mathbb Z$,
+this is sheaf hypercohomology.  A sheaf $B$ in degree $i$ contributes
+$\operatorname{Ext}^{t-i}(A,B)$ when $t-i\geq0$.
+
+\begin{lemma}[The exact sequence of consecutive brutal tails]
+\label{lem:kn-hypercohomology-brutal-tail}
+\lean{EnvelopeProperty.Vanishing.HypercohomologyBrutalTail.sequence_shortExact}
+\leanok
+For an integer $a$, let $K_{\geq a}^\bullet$ have the original terms
+and differentials in degrees at least $a$ and zero terms below $a$.
+There is a degreewise short exact sequence
+\[
+ 0\longrightarrow K_{\geq a+1}^\bullet
+ \longrightarrow K_{\geq a}^\bullet
+ \longrightarrow K^a[-a]\longrightarrow0.
+\]
+\end{lemma}
+\begin{proof}
+The first arrow is the identity in every degree above $a$ and zero
+otherwise.  The second arrow is the identity in degree $a$ and zero
+otherwise.  Both commute with the original differentials: the first
+has zero source below $a+1$, while the second has zero target outside
+degree $a$.  In each degree below $a$ all terms are zero; in degree
+$a$ the sequence is $0\to0\to K^a\xrightarrow{1}K^a\to0$; in each
+degree above $a$ it is $0\to K^i\xrightarrow{1}K^i\to0\to0$.
+These are short exact, proving the assertion in the category of
+complexes.
+\end{proof}
+
+\begin{theorem}[Bounded zero-diagonal hypercohomology]
+\label{thm:kn-hypercohomology-zero-diagonal}
+\lean{EnvelopeProperty.Vanishing.HypercohomologyDiagonal.subsingleton_hom_of_bounded_terms,EnvelopeProperty.Vanishing.HypercohomologyDiagonal.subsingleton_single_hypercohomology_of_H}
+\leanok
+\uses{lem:kn-hypercohomology-brutal-tail}
+Suppose $K^i=0$ outside $a\leq i<b$.  If
+\[
+ \operatorname{Hom}_{D(\mathcal A)}(S,K^i[-i])=0
+ \quad(a\leq i<b),
+\]
+then $\operatorname{Hom}_{D(\mathcal A)}(S,K^\bullet)=0$.
+In particular, for a bounded complex of abelian sheaves and an integer
+$t\geq b-1$, vanishing of every $H^{t-i}(K^i)$ on this whole diagonal
+implies $\mathbb H^t(K^\bullet)=0$.
+\end{theorem}
+\begin{proof}
+The brutal tail starting in degree $b$ is zero.  Descend through the
+finitely many integers $b-1,\ldots,a$.  At each step apply
+$\operatorname{Hom}(S,-)$ to the distinguished triangle associated
+to the short exact sequence of consecutive tails.  Exactness gives
+\[
+ \operatorname{Hom}(S,K_{\geq i+1}^\bullet)
+ \longrightarrow\operatorname{Hom}(S,K_{\geq i}^\bullet)
+ \longrightarrow\operatorname{Hom}(S,K^i[-i]).
+\]
+The outer groups are zero by induction and hypothesis, hence so is
+the middle group.  The final tail is canonically the original complex,
+since all its terms below $a$ are zero.  For sheaves take
+$S=\mathbb Z[-t]$.  Shifting both arguments identifies the last
+single-term Hom group with
+$\operatorname{Ext}^{t-i}(\mathbb Z,K^i)=H^{t-i}(K^i)$.
+No finite-dimensionality, duality, or decomposition assumption enters
+this argument.
+\end{proof}

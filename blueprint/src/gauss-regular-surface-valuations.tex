@@ -1,0 +1,150 @@
+\section{Actual weighted DVR charts of an original regular local surface}
+
+Let $S$ be a Noetherian local domain with maximal ideal
+$\mathfrak m=(\pi,z)$. Assume that $\pi$ is an original prime element and that
+$z\notin(\pi)$. These are actual regular parameters; no valuation, normalized
+chart, dominance, fraction-field comparison, or desired order formula is an
+input. Fix an original integer $N>0$ and put $c=z^N$.
+
+\begin{definition}[The same literal weighted surface chart]
+\label{def:gauss-regular-surface-weighted-chart}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuations.relation,
+EnvelopeProperty.GaussRegularSurfaceValuations.chart,
+EnvelopeProperty.GaussRegularSurfaceValuations.coefficientMap,
+EnvelopeProperty.GaussRegularSurfaceValuations.chartParameter}
+\leanok
+Use the actual original polynomial and quotient
+\[
+ F_N=\pi U-z^N\in S[U],\qquad B_N=S[U]/(F_N).
+\]
+The coefficient map $S\to B_N$ and the element $u_N\in B_N$ are the actual
+quotient maps of the original constants and $U$. Their original relation is
+$\pi u_N=z^N$.
+\end{definition}
+\begin{proof}
+This is precisely the genuine polynomial quotient \texttt{AdjoinRoot} of
+$F_N$, with its original coefficient map and original root. The quotient
+annihilates $F_N$, giving the displayed literal coefficient identity.
+No integral closure or replacement of the original surface ring is used.
+\end{proof}
+
+\begin{lemma}[Original prime-parameter saturation and actual chart domain]
+\label{lem:gauss-regular-surface-chart-domain}
+\uses{def:gauss-regular-surface-weighted-chart}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuations.relation_saturated,
+EnvelopeProperty.GaussRegularSurfaceValuations.chart_isDomain}
+\leanok
+The actual ideal $(F_N)$ is saturated under multiplication by every original
+power of $\pi$, and the SAME literal quotient $B_N$ is a domain. Evaluation
+$U\mapsto z^N/\pi$ embeds it in the original $S[1/\pi]$, and then in the SAME
+original fraction field of $S$. In particular the original coefficient map
+is injective.
+\end{lemma}
+\begin{proof}
+The original prime property and $z\notin(\pi)$ give $z^N\notin(\pi)$.
+Suppose $\pi P=F_NQ$ in the actual polynomial ring. Reduce every original
+coefficient modulo $(\pi)$. The original quotient $S/(\pi)$ is a domain and
+the image of $z^N$ is nonzero. Thus $0=-\overline{z^N}\,\overline Q$ forces
+$\overline Q=0$. Every original coefficient of $Q$ is therefore divisible by
+$\pi$, so $Q=\pi Q_1$ in $S[U]$. Cancel the original nonzero $\pi$ in this
+domain to obtain $P=F_NQ_1$. Iterate this implication for powers of $\pi$.
+
+Localize the ORIGINAL coefficients away from $\pi$. There $F_N$ is the
+original unit $\pi$ times the monic polynomial $U-z^N/\pi$. Its quotient is
+therefore the same domain $S[1/\pi]$, by actual evaluation and division by a
+monic linear polynomial. Polynomial localization commutes with this original
+coefficient localization. If an original polynomial maps to zero under the
+stated evaluation, its membership in the localized relation ideal clears
+by a genuine power of $\pi$. The saturation just proved cancels that power,
+so its original kernel is exactly $(F_N)$. This gives the actual asserted
+embedding and hence the domain property of the SAME quotient $B_N$.
+\end{proof}
+
+\begin{lemma}[The actual closed-centre prime of the original chart]
+\label{lem:gauss-regular-surface-chart-closed-prime}
+\uses{def:gauss-regular-surface-weighted-chart,lem:gauss-regular-surface-chart-domain}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuations.closedPrime,
+EnvelopeProperty.GaussRegularSurfaceValuations.chart_residueIso,
+EnvelopeProperty.GaussRegularSurfaceValuations.closedPrime_isPrime}
+\leanok
+The original extended ideal $\mathfrak p_N=\mathfrak mB_N$ is prime, and its
+actual quotient, with the original coefficient and variable maps, is
+\[
+ B_N/\mathfrak p_N\simeq\kappa(S)[U].
+\]
+In particular $u_N\notin\mathfrak p_N$, while the original images of $\pi,z$
+belong to $\mathfrak p_N$.
+\end{lemma}
+\begin{proof}
+Apply the genuine double polynomial quotient isomorphism to the original
+ideal $\mathfrak m$ and the literal relation $F_N$. Both $\pi,z$ belong to
+$\mathfrak m$, and $N>0$, so the image of $F_N$ in $\kappa(S)[U]$ is the zero
+polynomial. Its additional quotient by zero is canonically itself. The
+isomorphism retains EVERY original constant and sends the original $u_N$ to
+$U$. This target is a domain, and $U$ is nonzero in it. Therefore the actual
+extended ideal is prime and does not contain $u_N$. The two parameter
+memberships are the original ideal-map memberships.
+\end{proof}
+
+\begin{theorem}[An internally constructed original DVR with exact parameter orders]
+\label{thm:gauss-regular-surface-original-dvr}
+\uses{lem:gauss-regular-surface-chart-domain,lem:gauss-regular-surface-chart-closed-prime}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuations.localRing,
+EnvelopeProperty.GaussRegularSurfaceValuations.localCoefficientMap,
+EnvelopeProperty.GaussRegularSurfaceValuations.localParameter,
+EnvelopeProperty.GaussRegularSurfaceValuations.local_maximalIdeal,
+EnvelopeProperty.GaussRegularSurfaceValuations.localRing_isDVR,
+EnvelopeProperty.GaussRegularSurfaceValuations.localParameter_irreducible,
+EnvelopeProperty.GaussRegularSurfaceValuations.parameter_addVal,
+EnvelopeProperty.GaussRegularSurfaceValuations.vertical_addVal,
+EnvelopeProperty.GaussRegularSurfaceValuations.localCenter,
+EnvelopeProperty.GaussRegularSurfaceValuations.fractionEmbedding,
+EnvelopeProperty.GaussRegularSurfaceValuations.fractionEmbedding_injective,
+EnvelopeProperty.GaussRegularSurfaceValuations.fractionEmbedding_coefficient,
+EnvelopeProperty.GaussRegularSurfaceValuations.localFractionRing}
+\leanok
+The SAME actual localization $V_N=(B_N)_{\mathfrak p_N}$ is a Noetherian local
+domain and a discrete valuation ring. Its actual maximal ideal is generated
+by the original image of $z$, which is a genuine uniformizer. With the native
+normalized additive valuation of this constructed DVR,
+\[
+ \operatorname{ord}_{V_N}(z)=1,\qquad
+ \operatorname{ord}_{V_N}(\pi)=N.
+\]
+Its original coefficient map is centred at the SAME $\mathfrak m$, and its
+actual fraction field is the SAME original $\operatorname{Frac}S$, through
+an injective actual map retaining every original coefficient and the relation
+$u_N=z^N/\pi$. No DVR or valuation-family certificate is supplied.
+\end{theorem}
+\begin{proof}
+The polynomial quotient $B_N$ is Noetherian and, by the preceding actual
+kernel argument, a domain. Its prime localization $V_N$ inherits both
+properties and is local. The original $u_N$ avoids $\mathfrak p_N$, so its
+actual localization image is a unit. The actual maximal ideal of $V_N$ is
+$\mathfrak p_NV_N=(\pi,z)V_N$. The literal relation $\pi u_N=z^N$ and $N>0$
+show that $\pi$ belongs to the ideal generated by $z$. Thus the SAME maximal
+ideal is $(z)$. The image of $z$ is nonzero by the original domain embeddings,
+and belongs to the maximal ideal, so the local domain is not a field. The
+Noetherian local principal-maximal-ideal criterion now derives that THIS
+$V_N$ is a DVR, and its original $z$ is irreducible, hence a uniformizer.
+Its true native order is one. Apply the native additive valuation to the
+original relation: the actual unit $u_N$ has order zero, so the order of
+$\pi$ equals the order of $z^N$, namely $N$.
+
+Every original member of $\mathfrak m$ maps into $\mathfrak p_N$ and hence
+into the actual localization maximal ideal. Every original element outside
+$\mathfrak m$ is a unit in $S$ and remains a unit in $V_N$. This proves the
+WHOLE exact centre equality. The embedding of $B_N$ into the original
+$\operatorname{Frac}S$ extends to its actual prime localization, since every
+original denominator there is nonzero and hence maps to a unit in that
+field. Its injectivity follows from the actual embedding and the localization
+kernel criterion. Finally every element of the original $\operatorname{Frac}S$
+is a ratio of two original elements of $S$, hence of their actual images in
+$V_N$. This establishes the actual fraction-ring structure with that SAME
+map and SAME original coefficients.
+\end{proof}
+
+The present construction supplies actual DVRs and exact original parameter
+orders. Pointwise approximation of the vertical valuation, normalized fixed
+Gauss coefficient values, convergence and residual difference quotients are
+subsequent statements; they are not assumed or claimed by this checkpoint.

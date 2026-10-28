@@ -1,0 +1,34 @@
+\section{Whole module sections on an original affine cartesian square}
+
+\begin{lemma}\label{lem:fc-affine-cartesian-module-base-change}
+\lean{EnvelopeProperty.AffineCartesianModuleBaseChange.tensorEquiv,EnvelopeProperty.AffineCartesianModuleBaseChange.tensorEquiv_tmul}
+\leanok
+\uses{lem:fc-affine-module-flat-base-change}
+Let $R\to S$ be an original homomorphism of commutative rings and let
+$g:Y\to X$, $p:X\to\operatorname{Spec}R$ and
+$q:Y\to\operatorname{Spec}S$ form an actual cartesian square over this
+homomorphism. Suppose the original $X$ and $Y$ are affine. For every
+original quasicoherent module $M$ on $X$, the original coefficient maps
+and original pullback give an equivalence
+\[
+ S\otimes_R\Gamma(X,M)\simeq_S\Gamma(Y,g^*M).
+\]
+Every original pure tensor $s\otimes m$ maps to the actual coefficient
+$q^*(s)$ times the original pullback-adjunction-unit section of $m$.
+No flatness or section comparison certificate is required.
+\end{lemma}
+\begin{proof}
+The genuine affine cartesian square makes the entire square of original
+coordinate rings a pushout. Transport the two spectrum coordinate
+rings through their actual spectrum section isomorphisms. Thus, with
+$A=\Gamma(X,\mathcal O_X)$ and $B=\Gamma(Y,\mathcal O_Y)$, the actual
+ring $B$ is the pushout of $A$ and $S$ over $R$, with their literal
+coefficient maps. The square also proves the required two scalar tower
+identities. Tensor cancellation for this actual pushout identifies
+$S\otimes_R\Gamma(X,M)$ with $B\otimes_A\Gamma(X,M)$. The native
+quasicoherent affine pullback equivalence identifies the latter whole
+module with $\Gamma(Y,g^*M)$. Its value on $1\otimes m$ is the original
+pullback unit. Both maps are linear over the actual coefficient rings,
+so the tensor cancellation formula and this native unit formula prove
+the assertion on every $s\otimes m$.
+\end{proof}

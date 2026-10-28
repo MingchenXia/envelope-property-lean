@@ -1,0 +1,61 @@
+\subsection{Actual local DVR centers determine the entire original real valuation}
+
+\begin{lemma}[The whole original local valuation overring is the original DVR]
+\label{lem:actual-local-valuation-overring}
+\lean{EnvelopeProperty.LocalDVRRealValuations.localMap_bijective}
+\leanok
+Let $R$ be an original valuation ring in its SAME actual fraction field $K$.
+For an original real-valued valuation $v$ of $K$, any actual local ring map
+$R\to O_v$ whose composite with the original inclusion into $K$ is the
+original fraction-field coefficient map is bijective. In particular the
+ENTIRE original ring $R$ is the actual integer ring of $v$.
+\end{lemma}
+\begin{proof}
+The native valuation-ring local-overring theorem makes the actual map from
+$R$ onto the whole image of $O_v$ in $K$ bijective. The original inclusion of
+$O_v$ is injective, so the given local map itself is bijective. Its original
+coefficient triangle identifies the actual $v$-bounded elements of $K$ with
+the whole image of $R$, proving the integer-ring assertion. No surjectivity,
+valuation preservation, or identification of local centers is assumed.
+\end{proof}
+
+\begin{lemma}[Every genuine local DVR center gives a positive whole real scale]
+\label{lem:actual-local-dvr-real-scale}
+\uses{lem:actual-local-valuation-overring}
+\lean{EnvelopeProperty.LocalDVRRealValuations.exists_positive_realScale}
+\leanok
+If the SAME original ring $R$ is a DVR, the above actual local coefficient
+map internally determines $s>0$ such that the ENTIRE original real valuation
+$v$ is exactly the genuine real scaling at $s$ of the native original
+maximal-ideal valuation of $R$ on its SAME fraction field $K$.
+\end{lemma}
+\begin{proof}
+Choose an actual original uniformizer $\pi$. Its real value is strictly
+positive by injectivity of the original fraction-field map and is strictly
+less than one by locality of the actual map into $O_v$. Set
+$s=-\log v(\pi)>0$. The actual native DVR valuation of this SAME $\pi$ is
+$\exp(-1)$, whose genuine real scale at $s$ equals $v(\pi)$ by equality of
+actual logarithms. Every actual original unit has value one under BOTH
+valuations. Original DVR factorization of every nonzero ring element as a
+unit times a power of $\pi$ proves equality on ALL original ring elements,
+including zero. Every original fraction is a quotient of such original
+elements; the valuations preserve the quotient, proving equality on the
+ENTIRE original field without any regularity or completeness assumption.
+\end{proof}
+
+\begin{lemma}[The original real parameter is unique]
+\label{lem:actual-local-dvr-real-scale-unique}
+\uses{lem:actual-local-dvr-real-scale}
+\lean{EnvelopeProperty.LocalDVRRealValuations.existsUnique_positive_realScale}
+\leanok
+The genuine real scaling parameter of the SAME native original DVR
+valuation is unique, including among all nonnegative real parameters.
+Thus the original real valuation with its actual local DVR center determines
+one unique positive original parameter.
+\end{lemma}
+\begin{proof}
+Evaluate the actual whole valuations on an original uniformizer. Its native
+value is $\exp(-1)$, so the true real logarithm at parameter $s$ is $-s$.
+Equality of the original valuations therefore gives equality of their
+parameters, and the positive parameter constructed above is unique.
+\end{proof}

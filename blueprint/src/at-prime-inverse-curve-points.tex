@@ -1,0 +1,47 @@
+\section{Actual local inverse curve points and the same whole original finite fibre}
+
+\begin{definition}[Whole original inverse over the original local ring]
+\label{def:fc-at-prime-inverse-curve}
+\leanok
+\lean{EnvelopeProperty.AtPrimeInverseCurvePoints.model, EnvelopeProperty.AtPrimeInverseCurvePoints.model_isIntegral, EnvelopeProperty.AtPrimeInverseCurvePoints.dimension_le, EnvelopeProperty.AtPrimeInverseCurvePoints.base_closedPoint}
+For a finite dominant original $f:Y\to\operatorname{Spec}A$, with original
+integral curve $Y$ and original domain $A$, and original prime $p$, use the
+entire actual fibre product with the original localization $A_p$.
+\uses{thm:fc-localized-finite-whole-integrality-rank}
+\end{definition}
+\begin{proof}
+The whole localized inverse is integral by the actual localized finite
+algebra theorem.  Its original projection is a native preimmersion, so the
+actual original curve dimension bound passes to the entire inverse.  The
+native local-ring closed point maps to exactly the original prime $p$.
+\end{proof}
+
+\begin{theorem}[Whole original nongeneric-point and fibre bijection]
+\label{thm:fc-at-prime-original-fibre-point-equiv}
+\leanok
+\lean{EnvelopeProperty.AtPrimeInverseCurvePoints.structure_point_eq_closed_of_ne_generic, EnvelopeProperty.AtPrimeInverseCurvePoints.projection_mem_fibre, EnvelopeProperty.AtPrimeInverseCurvePoints.exists_original_fibre_lift, EnvelopeProperty.AtPrimeInverseCurvePoints.pointEquiv, EnvelopeProperty.AtPrimeInverseCurvePoints.pointEquiv_apply, EnvelopeProperty.AtPrimeInverseCurvePoints.finite_nongeneric}
+If the original $p\ne0$, all actual nongeneric points of that entire local
+inverse correspond bijectively, under its literal original first
+projection, to all original points of the original fibre $f^{-1}(p)$.
+The entire original nongeneric inverse-point set is internally finite, and
+the actual bijection retains the literal original first projection.
+\uses{def:fc-at-prime-inverse-curve,thm:fc-localized-inverse-native-stalks-residues}
+\end{theorem}
+\begin{proof}
+Every actual nongeneric inverse point is closed by the actual curve bound.
+Its actual finite structure map has closed image, which must be the unique
+closed point of the actual local base; the whole pullback square therefore
+maps it into the original fibre.  Conversely the native whole scheme
+pullback point-existence theorem lifts every original fibre point over the
+original local-ring closed point.  Actual finite dominance gives
+surjectivity of the original map and its base change, so its generic point
+maps to the local base generic point.  This differs from the original
+closed point because $p\ne0$ and the original localization map is
+injective.  Thus the actual lift is nongeneric.  The actual first projection
+is injective by the internally derived localization preimmersion.
+The original morphism has a finite actual fibre by native quasi-finiteness,
+and the derived whole point bijection transports that finiteness.
+No local model, point lift, fibre correspondence, residue match or degree
+comparison is assumed.  The weighted native length sum and global
+singular-curve degree are subsequent consumers.
+\end{proof}

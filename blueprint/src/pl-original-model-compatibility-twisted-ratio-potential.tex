@@ -1,0 +1,171 @@
+\section{The model potential of a twisted canonical ratio line}
+
+Let $\mathcal X=(\mathcal X\to\mathbb A^1,\ \mathbb G_m\text{-action},\
+\mathcal X_1\cong X)$ be a test configuration of a proper $k$-scheme $X$, let
+$U=\mathcal X|_{t\neq0}$ be its noncentral open, let $\pi:\mathcal X\to X$ be
+a morphism with $\pi|_U$ equal to the projection of the trivialisation
+$U\cong X\times\mathbb G_m$ and $\pi|_{\mathcal X_1}$ equal to the fibre-one
+identification, and let $L$ be invertible on $X$.  Let $K,J$ be invertible
+ideal sheaves on $\mathcal X$, invariant under the action, whose supports miss
+$U$.  The \emph{twisted ratio line} is
+$M=\pi^*L\otimes K\otimes J^\vee$, and its \emph{canonical ratio section}
+along a morphism $f$ factoring through $U$ is
+$\sigma_f=(f^*K\to\mathcal O)^{-1}\otimes f^*(J\hookrightarrow\mathcal O)^\vee$.
+We compute the native model potential (Definition~\ref{def:native-tc-original-model-potential})
+of $M$.
+
+\begin{lemma}[Calculus of pulled and tensor sections]
+\label{lem:twisted-ratio-section-calculus}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_map, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_comp_inv, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_congr, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_scalar, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_unit_comp, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.tensorSectionHom_rightUnit, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pulledTensorSection, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pulledTensorSection_comp_hom, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_pulledTensorSection, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pulledTensorSection_congr, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pulledTensorSection_pullbackIsoAlong}
+\leanok
+For a morphism $f$ and sections $a$ of $f^*T$, $b$ of $f^*R$ write
+$\langle a,b\rangle_f$ for the section of $f^*(T\otimes R)$ obtained from
+$a\otimes b$ through the tensorator of $f^*$ and the comparison of the
+monoidal and explicit tensor products.  Then:
+(i) $f^*$ of sections is functorial and compatible with the composition and
+equality comparisons of pullbacks, and a scalar factor pulls back to the
+pulled scalar;
+(ii) $g^*\langle a,b\rangle_f$, transported by $g^*f^*\cong(fg)^*$, is
+$\langle g^*a,g^*b\rangle_{fg}$ transported factorwise;
+(iii) if a comparison $\alpha:f^*(T\otimes R)\cong g^*(T\otimes R)$ has the
+tensor law $\alpha\langle\cdot,\cdot\rangle_f=\langle\alpha_T\cdot,\alpha_R\cdot\rangle_g$,
+then its base change along any $h$ sends $\langle a,b\rangle_{hf}$ to
+$\langle h^*\alpha_T\, a,h^*\alpha_R\, b\rangle_{hg}$;
+(iv) a tensor section with a scalar second factor contracts to the scalar
+multiple of the first factor.
+\end{lemma}
+\begin{proof}
+(i) A pulled section is the inverse structure-sheaf comparison followed by
+the pulled morphism; functoriality is functoriality of $f^*$, the
+composition rule is the coherence of the structure-sheaf comparison with
+$g^*f^*\cong(fg)^*$, and equality comparisons are identities after
+substituting the equality.  (ii) The pulled pure tensor section is the pure
+tensor of the pulled sections followed by the tensorator; the composition
+comparison is a monoidal natural isomorphism, so it carries the iterated
+tensorator to the tensorator of the composite, and it is natural for the
+explicit tensor comparison.  (iii) Write $h^*\alpha$ between the composition
+comparisons and apply (ii) on both sides; the tensor law of $\alpha$ and
+naturality of the tensorator of $h^*$ move $\alpha$ onto the factors.
+(iv) Every endomorphism of the structure sheaf is multiplication by a global
+function; scalars pass through tensor sections, and the tensor section with
+the unit section followed by the right unitor is the first factor.
+\end{proof}
+
+\begin{lemma}[Naturality of the canonical ratio section]
+\label{lem:twisted-ratio-canonical-section-natural}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.canonicalPulledRatioSection_eq_pulledTensorSection, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_canonicalPulledRatioSection, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackSectionHom_twistedCanonicalSection, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.twistedCanonicalSection_comp_inv, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.twistedCanonicalSection_congr, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pullbackResidueSection_twistedCanonical, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.transportedResidueSection_twistedCanonical}
+\uses{lem:twisted-ratio-section-calculus,thm:original-pl-canonical-ratio-section-transport}
+\leanok
+If $K$ pulls back to invertible inclusions along $g$ and $fg$, then
+$f^*\sigma_g=\sigma_{fg}$ and $f^*\langle g^*s,\sigma_g\rangle_g=\langle (fg)^*s,\sigma_{fg}\rangle_{fg}$.
+In particular the residue pullback of the fibre of
+$\langle s,\sigma\rangle$ at $g(y)$ is the fibre at $y$ of
+$\langle g^*s,\sigma_g\rangle_g$, and its transport by any comparison
+$\Phi:g^*M\cong P$ is the fibre of $\Phi\langle g^*s,\sigma_g\rangle_g$.
+\end{lemma}
+\begin{proof}
+The canonical ratio section is $\langle (f^*K\to\mathcal O)^{-1},
+f^*\delta\rangle_f$ with $\delta$ the transpose of $J\hookrightarrow\mathcal O$.
+The pulled numerator inverse is the numerator inverse along the composite,
+because pulled inclusions compose with the structure comparison; the
+denominator part is a pulled section.  Apply Lemma~\ref{lem:twisted-ratio-section-calculus}(ii).
+The residue statements follow by writing the residue comparison as a
+composition comparison followed by an equality comparison.
+\end{proof}
+
+\begin{lemma}[Structural laws of the tensor-form comparisons]
+\label{lem:twisted-ratio-comparison-laws}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.canonicalTensorPullbackIso_comparison_tensor_law, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.invariantComparison_pullbackSectionHom, EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.pulledTensorSection_unitTrivialization, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_twistLaw_of_iso, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_fibreOneLaw_of_iso}
+\uses{lem:twisted-ratio-section-calculus}
+\leanok
+A comparison of explicit tensor products built factorwise from $\alpha_T$ and
+$\alpha_R$ through the canonical tensor-pullback isomorphisms has the tensor
+law of Lemma~\ref{lem:twisted-ratio-section-calculus}(iii); the comparison of
+a pullback along an invariant projection fixes pulled sections; and a
+factorwise fibre-one identification with trivialised second factor $e$ sends
+$\langle a,b\rangle$ to $(e\circ b)\cdot a$.  The last two laws hold for every
+comparison equal, as an isomorphism, to the invariant-projection comparison,
+respectively to the factorwise fibre-one identification.
+\end{lemma}
+\begin{proof}
+Unfold the canonical tensor-pullback isomorphisms; the explicit and monoidal
+tensor comparisons are natural, so the comparison is the tensorator,
+$\alpha_T\otimes\alpha_R$, and the inverse tensorator.  The invariant
+comparison is a composite of composition and equality comparisons, which
+fix pulled sections by Lemma~\ref{lem:twisted-ratio-section-calculus}(i).
+The last law is Lemma~\ref{lem:twisted-ratio-section-calculus}(iv) after the
+right-unit identification of the explicit tensor with the unit.
+\end{proof}
+
+\begin{proposition}[Transport of the twisted canonical section]
+\label{prop:twisted-ratio-section-transport}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.TwistedRatioCalculus.comp_trans_seven_hom, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitOpenLineIso_eq_explicit, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_inclusion_isIso, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step0, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step1, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step2, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step3, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step4, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step5, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_section_step6, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_unitOpenLineIso_section, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_productTotalLineIso_section}
+\uses{lem:twisted-ratio-canonical-section-natural,lem:twisted-ratio-comparison-laws,cor:original-pl-group-canonical-ratio-section}
+\leanok
+Let the action comparison of $M$ have the tensor law with factors
+$\alpha_T$ (fixing pulled sections of $\pi^*L$) and $\alpha_R$ (fixing the
+canonical ratio section along the action lift of $U$), and let the fibre-one
+identification of $M$ be factorwise with trivialisation $e_R$ of the ratio on
+$\mathcal X_1$.  For every global section $s$ of $L$, the whole noncentral
+line comparison sends $\langle \iota_U^*\pi^*s,\sigma_{\iota_U}\rangle$ to
+$\varepsilon\cdot w^*s$, where $\varepsilon$ is the pulled value of
+$e_R\circ\sigma_{\mathcal X_1}$; transported to $X\times\mathbb G_m$, the
+corresponding section of the pulled $M$ is sent to $\mathrm{pr}_1^*(\varepsilon_X s)$,
+with $\varepsilon_X$ a global unit of $X$.
+\end{proposition}
+\begin{proof}
+The noncentral comparison is the equality comparison $\iota_U=\ell\circ a$
+($\ell$ the action lift, $a$ the action), the base change of the action
+comparison along $\ell$, the equality comparison $\ell\circ p=\zeta\circ
+\iota_1$ ($p$ the projection, $\zeta$ the fibre projection), the inverse
+composition comparison, $\zeta^*$ of the fibre-one identification, and the
+composition and equality comparisons to $w=\pi\circ\iota_U$.  Follow the
+section through: the equality comparisons and
+Lemma~\ref{lem:twisted-ratio-canonical-section-natural} keep its form, the
+action step is Lemma~\ref{lem:twisted-ratio-section-calculus}(iii) with the
+invariance of the canonical section
+(Corollary~\ref{cor:original-pl-group-canonical-ratio-section}) and of pulled
+sections, the fibre-one step is the last law of
+Lemma~\ref{lem:twisted-ratio-comparison-laws}, and the remaining comparisons
+compose pulled sections.  On $X\times\mathbb G_m$ the comparison is the
+pullback along $U\cong X\times\mathbb G_m$; the scalar pulls back along
+$X\times\mathbb G_m\to U\to\mathcal X_1\cong X$, which is $\mathrm{pr}_1$
+followed by the inverse fibre-one identification.  The unit $\varepsilon_X$
+is invertible because the canonical ratio section is a frame off both
+supports (Theorem~\ref{thm:original-canonical-ratio-section-frame}).
+\end{proof}
+
+\begin{theorem}[The model potential of a twisted ratio line]
+\label{thm:twisted-ratio-model-potential}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.twistedRatio_mapOverBase_productGauss, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleNormFactor_twistedRatio, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeNormFactor_twistedRatio, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_twistedRatio}
+\uses{prop:twisted-ratio-section-transport,thm:pl-original-native-factor-arbitrary-residue-vector,def:native-tc-original-model-potential,thm:original-canonical-ratio-section-frame}
+\leanok
+Under the hypotheses of Proposition~\ref{prop:twisted-ratio-section-transport},
+if $\pi\colon\mathcal X\to X$ lies over $k\to k[t]$, then for every
+$0<r\le1$ and every trivially valued point $x$ of $X$ with a global section $s$
+of $L$ such that $\|s\|(x)\neq0$,
+\[
+  \phi_{\mathcal X,M}(x,r)=-\log\|\sigma\|(z_{x,r}),
+\]
+where $z_{x,r}$ is the radius-$r$ Gauss point of $\mathcal X$ over $x$ and
+$\sigma$ is the canonical ratio section at its residue field.
+\end{theorem}
+\begin{proof}
+Let $c$ be the defining factor of the potential for any centre-open frame of
+$L$ at $x$.  By the residue formula of the factor
+(Theorem~\ref{thm:pl-original-native-factor-arbitrary-residue-vector}), every
+vector $v$ of the fibre of $M$ at $z_{x,r}$ satisfies
+$\|v\|=c\,|\mathrm{coef}(\Phi v)|$, the coefficient being taken in the
+reference frame at the product Gauss point.  Take $v$ the fibre of
+$\langle\pi^*s,\sigma\rangle$.  Its model norm is
+$\|s\|(x)\,\|\sigma\|(z_{x,r})$: model norms are multiplicative on tensor
+sections and the model norm of a pulled section is the model norm at the
+image point, which is $x$.  By
+Proposition~\ref{prop:twisted-ratio-section-transport} and
+Lemma~\ref{lem:twisted-ratio-canonical-section-natural}, $\Phi v$ is the fibre
+of $\mathrm{pr}_1^*(\varepsilon_X s)$; its only Laurent coefficient is
+$\varepsilon_X s$ in degree $0$, so its reference coefficient has value
+$\|\varepsilon_Xs\|(x)=\|s\|(x)$, a unit of the structure sheaf having model
+norm one.  Hence $\|s\|(x)\|\sigma\|(z_{x,r})=c\,\|s\|(x)$ and
+$c=\|\sigma\|(z_{x,r})$.  Taking $-\log$ gives the potential.
+\end{proof}

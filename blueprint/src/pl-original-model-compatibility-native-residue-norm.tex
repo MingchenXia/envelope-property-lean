@@ -1,0 +1,28 @@
+\section{The actual native factor on arbitrary original residue vectors}
+
+\begin{theorem}[The native transition factor computes every original residue vector]
+\label{thm:pl-original-native-factor-arbitrary-residue-vector}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_centerFrameGenericIso_unitSection,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleTargetFrame_residue_unit_norm,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleNormFactor_residue_formula}
+\leanok
+\uses{thm:proper-model-arbitrary-residue-vector-norm}
+For an actual test configuration and its original line comparison and
+fibre-one identification, choose any original reference frame at the
+prescribed original point. The true model norm of every residue vector
+at its actual Gauss orbit point equals the constructed native transition
+factor times the original reference-frame coefficient value of the
+transported residue vector. The vector need not extend to a global
+section on the original total space, and the original group product
+need not be proper.
+\end{theorem}
+\begin{proof}
+Choose the actual proper-center target frame used in the definition of
+the native factor. Its unit section has model norm one, because the
+target frame is obtained from a frame on the actual valuation-ring
+center. The arbitrary-residue pullback formula expresses the original
+model norm as the coefficient value in the induced model frame times
+this unit norm. The whole transition unit between the chosen reference
+frame and this induced model frame compares the coefficients of every
+residue vector, including vectors without global extensions. Its value
+is exactly the defined native factor. Substitute the unit norm one
+and the actual transition coefficient identity.
+\end{proof}

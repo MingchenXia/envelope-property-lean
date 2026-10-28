@@ -1,0 +1,118 @@
+\section{Original geometry and positive cohomology across a scheme isomorphism}
+
+Fix an actual scheme isomorphism $e:X\simeq Y$.  Every pullback below
+uses its actual forward map, so a module on $Y$ pulls back to a module
+on $X$.
+
+\begin{lemma}[The actual module unit and quasicoherence across an isomorphism]
+\label{lem:kn-scheme-iso-module-unit}
+\leanok
+\lean{EnvelopeProperty.Vanishing.SchemeIsoGeometry.pullbackPushforwardUnitIso,EnvelopeProperty.Vanishing.SchemeIsoGeometry.pullback_isQuasicoherent}
+For every original module $M$ on $Y$, the actual adjunction unit gives
+$M\simeq e_*e^*M$.  If $M$ is quasicoherent, so is the same actual
+$e^*M$.
+\end{lemma}
+\begin{proof}
+Pullback along a scheme isomorphism is an equivalence.  Its actual
+right adjoint is pushforward, so the unit of this adjunction is an
+isomorphism at every original module.  An isomorphism is an open
+immersion, and its pullback comparison with open restriction identifies
+$e^*M$ with the original restriction of $M$.  Restriction preserves
+quasicoherence, proving the second assertion.
+\end{proof}
+
+\begin{lemma}[Whole positive original cohomology vanishing is invariant]
+\label{lem:kn-scheme-iso-positive-cohomology}
+\leanok
+\lean{EnvelopeProperty.Vanishing.SchemeIsoGeometry.pullback_subsingleton_H_iff}
+\uses{lem:kn-scheme-iso-module-unit}
+Let $p:Y\to\operatorname{Spec}R$ have an actual projective
+factorization and let $M$ be quasicoherent.  For every $q>0$,
+\[
+ H^q(X,e^*M)=0\quad\Longleftrightarrow\quad H^q(Y,M)=0.
+\]
+\end{lemma}
+\begin{proof}
+The projective factorization gives separatedness of $Y$ and an actual
+finite ordered affine cover.  The original inverse images under $e$
+form an affine cover of $X$.  Both original quasicoherent modules are
+acyclic on the actual affine intersections.  The native ordered affine
+Cech pushforward comparison therefore identifies vanishing of whole
+positive cohomology of $e^*M$ with that of its actual pushforward.
+The preceding whole module unit identifies this pushforward with the
+same original $M$.  Applying the actual cohomology functor to this
+unit gives the stated equivalence of vanishing.
+\end{proof}
+
+\begin{lemma}[The original geometric ample datum pulls back]
+\label{lem:kn-scheme-iso-ample-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.SchemeIsoGeometry.isAmple_pullback,EnvelopeProperty.Vanishing.SchemeIsoGeometry.isAmple_pullback_of_triangle}
+\uses{lem:fc-original-ample-closed-restriction}
+If the original line $L$ is geometrically ample over $p$, the actual
+line $e^*L$ is geometrically ample over $p\circ e$.
+If $p\circ e=p_X$, this is ampleness over the same specified $p_X$.
+\end{lemma}
+\begin{proof}
+Take the original positive power $r$ and its actual closed projective
+embedding exhibiting $L^{\otimes r}$ as the pullback of the original
+$\mathcal O(1)$.  The composite embedding with $e$ is closed because
+$e$ is an isomorphism.  Native pullback composition and the actual
+comparison $e^*(L^{\otimes r})\simeq(e^*L)^{\otimes r}$ give precisely
+the same embedding criterion for $e^*L$, with the original positive
+$r$ unchanged.  Its invertibility is preserved by actual pullback.
+Transporting the structural map along the given triangle gives the
+last assertion.
+\end{proof}
+
+\begin{lemma}[Original exterior and canonical modules across a compatible isomorphism]
+\label{lem:kn-scheme-iso-exterior-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.SchemeIsoGeometry.inv_structure,EnvelopeProperty.Vanishing.SchemeIsoGeometry.exteriorPullbackIso,EnvelopeProperty.Vanishing.SchemeIsoGeometry.canonicalPullbackIso}
+\uses{sc0-canonical-port:can:relative-exterior-cotangent-sheaf-open-restriction}
+Let $f_X:X\to\operatorname{Spec}k$ and $f_Y:Y\to\operatorname{Spec}k$
+be the specified original structural maps over a field, with
+$f_Y\circ e=f_X$.  For every $i$ there is an actual module isomorphism
+\[
+ e^*\Omega^i_{Y/k}\simeq\Omega^i_{X/k}.
+\]
+In degree $d$ this is the comparison of the same original canonical
+objects.  The inverse isomorphism has the inverse structural triangle
+$f_X\circ e^{-1}=f_Y$.
+\end{lemma}
+\begin{proof}
+Use the actual restriction-versus-pullback comparison for the open
+immersion $e$, followed by the native open-immersion exterior
+cotangent comparison.  Its target is the actual exterior module
+relative to the composite $f_Y\circ e$.  Transport that structural map
+along the given triangle, obtaining the original $f_X$-relative
+module.  The canonical object is by definition this same actual
+exterior construction in the specified degree $d$.  Composing the
+original structural triangle with $e^{-1}$ proves the inverse one.
+\end{proof}
+
+\begin{corollary}[The same original powers and canonical twists are retained]
+\label{cor:kn-scheme-iso-hodge-tensor-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.SchemeIsoGeometry.exteriorTensorPullbackIso,EnvelopeProperty.Vanishing.SchemeIsoGeometry.hodgeTensorPowerPullbackIso,EnvelopeProperty.Vanishing.SchemeIsoGeometry.canonicalTwistPullbackIso,EnvelopeProperty.Vanishing.SchemeIsoGeometry.canonicalTensorObjPullbackIso}
+\uses{lem:kn-scheme-iso-exterior-pullback}
+For every original module $L$ and every $m,i$,
+\[
+ e^*(L^{\otimes m}\otimes\Omega^i_{Y/k})
+ \simeq(e^*L)^{\otimes m}\otimes\Omega^i_{X/k}.
+\]
+The unpowered exterior twist and the original canonical-first twist
+also have their whole actual pullback comparisons; in particular,
+$e^*(\omega_Y\otimes L)\simeq\omega_X\otimes e^*L$ when $d$ is the
+specified smooth relative dimension.
+\end{corollary}
+\begin{proof}
+The actual strong monoidal pullback comparison separates the two
+original tensor factors.  Apply the native power-pullback isomorphism
+to the first factor and the preceding actual exterior comparison to
+the second.  The unpowered and canonical-first statements use the
+same tensor comparison in the displayed original order of factors.
+The native comparison between the monoidal tensor and the explicitly
+sheafified coherent tensor gives the same whole comparison for that
+original coherent tensor as well.
+\end{proof}

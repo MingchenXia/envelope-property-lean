@@ -1,0 +1,78 @@
+\section{The whole original specified-generator blowup chart}
+
+\begin{theorem}[The original Rees morphism on its entire generator chart]
+\label{thm:resume-blowup-affine-generator-chart-readback}
+\uses{def:blowup-projective-coefficient-map,def:blowup-projective-affine-map,lem:affine-blowup-chart-ring,lem:affine-blowup-chart-over-base,lem:segre-native-chart-closed-immersion,lem:segre-native-coordinate-overlap}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.affineGeneratorChartReadback}
+\leanok
+Let $R$ be a commutative ring, $A$ a domain, $r:R\to A$ a ring
+homomorphism, and $I\subset A$ an ideal.  Let
+$g:\{0,\ldots,m\}\to A$ span exactly $I$, and fix $i$ with $g_i\ne0$.
+Retain the original Rees morphism
+\[
+ q=\operatorname{affineProjectiveMap}(r,I,g):
+       \operatorname{Bl}_I(\operatorname{Spec}A)\longrightarrow\mathbf P_R^m
+\]
+and the original fraction-chart inclusion
+$\alpha_i:\operatorname{Spec}S_i\to\operatorname{Bl}_I(\operatorname{Spec}A)$,
+where $S_i=A[I/g_i]\subset\operatorname{Frac}(A)$.
+Let $\iota_i:\operatorname{Spec}C_i\to\mathbf P_R^m$ be the original
+polynomial coordinate chart, with
+$C_i=R[Y_j/Y_i\mid j\ne i]$.  Define the actual polynomial evaluation
+\[
+ \theta_i:C_i\longrightarrow S_i,\qquad
+ c\longmapsto r(c),\qquad Y_j/Y_i\longmapsto g_j/g_i,
+\]
+where the coefficient and ratio on the right are the original elements
+of the original fraction subalgebra.  Then the entire scheme morphisms
+satisfy
+\[
+       \alpha_i q=\operatorname{Spec}(\theta_i)\,\iota_i.
+\]
+The assertion holds for $m=0$ and for zero members of the generator
+family; the only nonzero condition concerns the selected chart denominator.
+\end{theorem}
+\begin{proof}
+Let $G:R[Y_0,\ldots,Y_m]\to\mathcal R(I)$ be the composite of the
+original coefficientwise map with the original specified-generator Rees
+presentation.  It is a graded homomorphism and
+$G(Y_j)=g_jT$ for every $j$.  Surjectivity of the original presentation
+and the actual coefficient irrelevant-ideal containment give the
+irrelevant-ideal condition for $G$.  Functoriality of the native
+projective spectrum identifies $\operatorname{Proj}(G)$ with the same
+original $q$.
+
+The original isomorphism from the degree-zero localization at $g_iT$
+to $S_i$ is evaluation at $T=1/g_i$.  Transport it along the proved
+identity $G(Y_i)=g_iT$; call the resulting original ring homomorphism
+$e_i$.  The original fraction-chart inclusion is the spectrum of this
+map followed by the native basic-open inclusion.  Naturality of the
+native basic-open morphism under $\operatorname{Proj}(G)$ therefore gives
+\[
+ \alpha_i q=
+ \operatorname{Spec}\bigl(e_i\circ G_{(Y_i)}\bigr)
+       \bigl(D_+(Y_i)\hookrightarrow\mathbf P_R^m\bigr).
+\]
+Here $G_{(Y_i)}$ is the actual degree-zero homogeneous-localization map.
+
+Use the existing whole-ring coordinate-chart isomorphism, whose inverse
+sends $Y_j/Y_i$ to its actual homogeneous fraction.  The resulting map
+from $C_i$ to $S_i$ sends that fraction to
+\[
+ e_i\!\left(\frac{G(Y_j)}{G(Y_i)}\right)
+   =e_i\!\left(\frac{g_jT}{g_iT}\right)=\frac{g_j}{g_i}.
+\]
+The first equality is the actual localization numerator formula, and
+the last is the existing fraction-chart evaluation on the original
+whole ring.  The equality $G(Y_j)=g_jT$ replaces the numerator itself;
+no equality of point evaluations or reduced ideals is used.
+The coefficient structure triangle of the same $q$, followed by the
+original chart structure triangle, shows that every constant $c$ maps
+to the original coefficient $r(c)\in S_i$.  Polynomial-ring
+homomorphism extensionality now identifies this entire ring map with
+$\theta_i$.  Combining the preceding spectrum identity with the
+original coordinate-chart isomorphism proves the displayed equality.
+All parent views of the original ring structures used in forming these
+maps are identified by literal structure equalities; the value-preserving
+transport does not introduce another ring action.
+\end{proof}

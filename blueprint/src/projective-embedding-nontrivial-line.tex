@@ -1,0 +1,41 @@
+\begin{lemma}[Trivial projective twisting forces all ideals to be zero or unit]
+\label{lem:fc-trivial-projective-twist-ideals}
+\lean{EnvelopeProperty.ProjectiveEmbeddingNontrivialLine.ideal_eq_bot_or_top_of_trivial}
+\leanok
+\uses{thm:fc-original-generated-projective-ideal-zero-or-unit}
+Let $X$ be an integral projective scheme over a field, and let
+$i:X\hookrightarrow\mathbf P^n_k$ be a closed immersion. If
+$i^*\mathcal O(1)$ is trivial, every original ideal sheaf on $X$ is zero
+or the unit ideal.
+\end{lemma}
+\begin{proof}
+All positive tensor powers of the given trivialization identify the actual
+pulled-back twists $i^*\mathcal O(d)$ with $\mathcal O_X$. The scheme is
+locally Noetherian because it is of finite type over a field. Thus any
+original ideal sheaf $I$ is a finite type quasicoherent module. Projective
+Serre generation gives global generators for $I\otimes i^*\mathcal O(d)$
+for some $d$. The whole twist trivialization and the tensor unitor
+transport these generators to $I$ itself. The original generated-ideal
+theorem now makes $I$ zero or unit.
+\end{proof}
+
+\begin{lemma}[Trivial embedding line forces dimension zero]
+\label{lem:fc-trivial-embedding-line-dimension-zero}
+\lean{EnvelopeProperty.ProjectiveEmbeddingNontrivialLine.dimension_le_zero_of_trivial, EnvelopeProperty.ProjectiveEmbeddingNontrivialLine.nontrivial_of_isVeryAmple}
+\leanok
+\uses{lem:fc-trivial-projective-twist-ideals}
+Under the preceding hypotheses the topological dimension of $X$ is at
+most zero. Consequently the actual embedding line of any integral
+positive-dimensional projective scheme is nontrivial.
+\end{lemma}
+\begin{proof}
+For each original point $x$, take the original vanishing ideal of the
+closed subset $\overline{\{x\}}$. Its support is exactly that closed
+subset. The ideal cannot be the unit ideal since its support contains
+$x$. It is therefore zero, and its support is all of $X$. Hence every
+point has closure $X$. The underlying scheme space is $T_0$, so equality
+of singleton closures makes all its points equal. A space with at most
+one point is discrete, and every irreducible closed subset is maximal.
+Its topological dimension is therefore at most zero. A positive-dimensional
+scheme consequently admits no trivialization of its embedding line.
+\end{proof}

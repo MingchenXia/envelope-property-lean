@@ -1,0 +1,54 @@
+\subsection{The literal original projection of the actual normalized model}
+
+\begin{lemma}[The whole polarized-model projection is the literal original composition]
+\label{local:actual-normalized-original-projection}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousOriginalProjection_eq}
+\leanok
+\uses{local:actual-original-product-scheme-projection}
+For the original ideal pair with finite original Gauss logarithms, the already
+constructed polarized-model projection to the same original $X$ is literally
+the composition of the actual normalization projection, the actual original
+simultaneous blowup projection, and the original product projection.
+\end{lemma}
+\begin{proof}
+Expand the already constructed projection and its actual product pullback
+isomorphism. The genuine pullback pasting and symmetry projection identities
+identify its whole original variety projection with the original product
+projection. Associativity gives the asserted literal three-map composition.
+No replacement model or supplied projection comparison is used.
+\end{proof}
+
+\begin{lemma}[The original coefficient-base square]
+\label{local:actual-normalized-original-projection-base}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousOriginalProjection_over_base}
+\leanok
+\uses{local:actual-normalized-original-projection}
+This original composition followed by the original $k$-structure equals the
+normalized model's actual $k[t]$-structure followed by the literal coefficient
+map on spectra induced by $k\to k[t]$.
+\end{lemma}
+\begin{proof}
+The original product projection satisfies that exact coefficient-base square.
+Compose it with the literal original blowup and normalization maps and use
+associativity and the definitions of their actual structure morphisms.
+\end{proof}
+
+\begin{theorem}[Every original restricted point is the whole literal projection]
+\label{local:actual-normalized-original-projection-native-point}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAnalyticHomeomorph_normalizedSimultaneousBaseRestrictionAt}
+\leanok
+\uses{local:actual-normalized-original-projection-base}
+For every actual normalized-model point over the Gauss valuation of $k[t]$,
+the derived original analytic restriction corresponds to precisely the entire
+native point mapped by this literal composed scheme projection. In particular,
+the original support and original residue valuation are both retained.
+\end{theorem}
+\begin{proof}
+The actual product-point restriction is the whole original scheme projection
+on prescribed-base native points. Apply this established equality to the
+actual image of the normalized-model point under normalization and blowup.
+Functoriality of whole native-point mapping identifies the resulting three
+successive maps with the map of the actual composed original projection.
+The Gauss valuation restricts to the trivial valuation on every original
+coefficient, giving the required exact prescribed-base map.
+\end{proof}

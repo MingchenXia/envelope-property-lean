@@ -1,0 +1,48 @@
+\section{The actual base ideal of an original invertible sheaf}
+
+\begin{definition}[The whole base ideal]
+\label{def:actual-invertible-sheaf-base-ideal}
+\source{bj22-trivval:sec:FS}
+Let $L$ be an actual invertible $\mathcal O_X$-module. For EACH original
+$s\in\Gamma(X,L)$, take the actual canonical contraction
+$e_s:L^\vee\to\mathcal O_X$, $d\mapsto d(s)$, formed by the original
+section-Hom map, tensor unit comparison and canonical dual evaluation.
+Define $\mathfrak b(L)$ as the sum, over ALL actual original global
+sections, of the actual image ideal sheaves $\operatorname{im}e_s$.
+\lean{EnvelopeProperty.InvertibleSheafBaseIdeal.sectionEvaluation,EnvelopeProperty.InvertibleSheafBaseIdeal.sectionIdeal,EnvelopeProperty.InvertibleSheafBaseIdeal.baseIdeal}
+\leanok
+\end{definition}
+\begin{proof}
+The dual of the original line is invertible, hence genuinely
+quasicoherent. The canonical whole-image producer
+\texttt{QuasicoherentImageIdeal.imageIdeal} therefore gives an actual
+ideal sheaf for each $e_s$, using the entire original affine images.
+This reuses the producer integrated concurrently from main. The
+ideal-sheaf lattice admits
+arbitrary sums, computed by the entire sums of affine ideals, so the
+definition uses every original global section and no selected family.
+This is the coordinate-free base ideal of the cited source definition.
+\end{proof}
+
+\begin{proposition}[The entire original affine base ideals]
+\label{prop:actual-invertible-sheaf-base-ideal-affine}
+For every original affine open $U$,
+\[
+ \mathfrak b(L)(U)=\sum_{s\in\Gamma(X,L)}
+   \operatorname{im}\bigl(\Gamma(U,L^\vee)
+                   \xrightarrow{\,d\mapsto d(s|_U)\,}\Gamma(U,\mathcal O_X)\bigr).
+\]
+Every original evaluation coefficient belongs to this SAME whole
+ideal. It is the least actual ideal sheaf containing every section
+evaluation image.
+\lean{EnvelopeProperty.InvertibleSheafBaseIdeal.baseIdeal_ideal,EnvelopeProperty.InvertibleSheafBaseIdeal.evaluation_mem_baseIdeal,EnvelopeProperty.InvertibleSheafBaseIdeal.baseIdeal_le_iff}
+\leanok
+\end{proposition}
+\begin{proof}
+Affine ideals of an arbitrary sum of actual ideal sheaves equal the
+sum of their actual affine ideals. Each of those is, by construction
+and proved localization, the entire original evaluation-map image.
+The coefficient assertion is membership in its corresponding summand.
+The least-ideal assertion is the universal property of the actual
+supremum in the original ideal-sheaf lattice.
+\end{proof}

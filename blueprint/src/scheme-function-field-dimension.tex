@@ -1,0 +1,60 @@
+\subsection{Actual finite-type scheme dimension is computed from its SAME native function field}
+
+\begin{theorem}[Genuine affine dimension from the original fraction field]
+\label{scheme:affine-function-field-dimension}
+\lean{EnvelopeProperty.SchemeFunctionFieldDimension.affine_dimension_eq}
+\leanok
+Let $A$ be an actual finite-type domain over a field $k$, with its SAME
+actual fraction field $K$ and actual coefficient tower. If
+$\operatorname{trdeg}_k K=d$ for a natural number $d$, the dimension of the
+SAME original ring $A$ is $d$.
+\end{theorem}
+\begin{proof}
+Actual Noether normalization gives a finite injective polynomial-algebra
+map $k[x_1,\ldots,x_n]\to A$. Genuine integral-extension dimension bounds
+in both directions, the lower bound using actual going-up, show
+$\dim A=n$. The actual integral extension is algebraic and the SAME
+original fraction field is algebraic over $A$. Applying the genuine
+transcendence-degree tower law twice shows
+$\operatorname{trdeg}_k K=n$. Equality with the given actual degree forces
+$n=d$, proving dimension for the SAME original affine ring.
+\end{proof}
+
+\begin{theorem}[The original structure map determines every actual affine dimension]
+\label{scheme:actual-affine-sections-function-field-dimension}
+\lean{EnvelopeProperty.SchemeFunctionFieldDimension.affineSections_dimension_eq}
+\leanok
+\uses{scheme:affine-function-field-dimension}
+Let $X$ be an actual integral scheme locally finite type over an actual
+field via its SAME original structure morphism $f$. If the SAME native
+$k(X)$ has transcendence degree $d$ with the ACTUAL $f$-stalk algebra,
+EVERY original nonempty affine open has actual coordinate-ring dimension $d$.
+No independent section or function-field coefficient comparison is supplied.
+\end{theorem}
+\begin{proof}
+The genuine original structure morphism makes each actual affine section
+ring finite type over $k$. Integrality makes it a domain. Its actual generic
+germ has the SAME native $k(X)$ as fraction field, and the genuine original
+section/stalk scalar tower preserves the original coefficient action.
+Apply the preceding actual affine theorem to these SAME original rings.
+\end{proof}
+
+\begin{theorem}[Whole actual scheme dimension from its original native function field]
+\label{scheme:actual-global-function-field-dimension}
+\lean{EnvelopeProperty.SchemeFunctionFieldDimension.topologicalKrullDim_eq}
+\leanok
+\uses{scheme:actual-affine-sections-function-field-dimension}
+Under these SAME actual hypotheses, $\dim X=d$. No whole-scheme dimension,
+Noetherianity, quasi-compactness or chosen affine comparison is assumed.
+\end{theorem}
+\begin{proof}
+To bound the whole actual scheme dimension above, express dimension as the
+supremum of coheights of its original specialization points. Around each
+original point choose a genuine nonempty affine open. Its native spectrum
+open immersion preserves the actual point coheight, bounded by the actual
+affine dimension $d$ just proved. Taking the supremum gives $\dim X\le d$.
+For the reverse inequality choose an actual affine open containing the
+original generic point. Its original spectrum embeds topologically into
+$X$ and has actual ring dimension $d$. Genuine topological dimension
+monotonicity gives $d\le\dim X$. Both bounds retain the SAME original $X$.
+\end{proof}

@@ -1,0 +1,51 @@
+\section{Actual whole tensor powers under original isomorphisms and pullback}
+
+\begin{lemma}[Original isomorphisms act on every actual tensor power]
+\label{lem:bundle-tensor-power-isomorphism}
+\leanok
+\lean{EnvelopeProperty.BundleTensorPowerPullback.powerIso}
+For any original module isomorphism $e:L\simeq M$ on any scheme,
+the SAME actual sheafified tensor powers admit an isomorphism
+$L^{\otimes n}\simeq M^{\otimes n}$ for every $n\geq0$.
+\end{lemma}
+\begin{proof}
+At zero use the identity on the actual original unit module.
+At a successor use the true sheafified tensor isomorphism of
+the induction isomorphism with the original $e$. No invertibility
+or matching premise is needed for these actual module isomorphisms.
+\end{proof}
+
+\begin{lemma}[Iterated original powers are the same multiplied power]
+\label{lem:bundle-tensor-power-multiplication}
+\leanok
+\lean{EnvelopeProperty.BundleTensorPowerPullback.powerMulIso}
+For every actual original module $L$ and $m,n\geq0$, the actual
+iterated sheafified power $(L^{\otimes m})^{\otimes n}$ is isomorphic
+to the SAME original power $L^{\otimes mn}$.
+\end{lemma}
+\begin{proof}
+Induct on $n$. The zero powers are the actual original unit.
+At a successor use the actual tensor comparison and tensor the
+induction isomorphism with the identity of $L^{\otimes m}$.
+The genuine original power-addition isomorphism gives exponent
+$mn+m$, which is exactly $m(n+1)$.
+\end{proof}
+
+\begin{lemma}[Every actual original tensor power commutes with genuine pullback]
+\label{lem:bundle-tensor-power-pullback}
+\leanok
+\lean{EnvelopeProperty.BundleTensorPowerPullback.pullbackIso}
+For any original scheme morphism $f:Y\to X$, original module $L$
+and $n\geq0$, the whole native pullback of the original actual
+sheafified tensor power is isomorphic to the actual tensor power
+of the SAME original pulled module.
+\end{lemma}
+\begin{proof}
+At zero use the genuine native unit pullback isomorphism. At a
+successor compare the original explicit sheafified tensor to the
+actual monoidal tensor, apply the genuine native pullback tensor
+isomorphism, tensor the induction isomorphism with the identity
+of the original pulled module, and return to the actual explicit
+sheafified tensor. These are full actual module isomorphisms for
+arbitrary morphisms, without flatness or invertibility assumptions.
+\end{proof}

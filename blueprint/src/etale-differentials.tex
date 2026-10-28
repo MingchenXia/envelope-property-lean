@@ -1,0 +1,47 @@
+\section{Actual differential coordinates and Jacobian determinants}
+
+\begin{lemma}[A genuine differential basis from an \'etale coordinate map]\label{lem:sc0-etale-differential-basis}
+\lean{EnvelopeProperty.Char0.etaleDifferentialBasis,EnvelopeProperty.Char0.etaleDifferentialBasis_apply,EnvelopeProperty.Char0.schemeEtaleDifferentialBasis,EnvelopeProperty.Char0.schemeEtaleDifferentialBasis_apply}
+\leanok
+Let $A$ be a $k$-algebra and let $v_1,\ldots,v_n\in A$ define an \'etale map
+$k[t_1,\ldots,t_n]\to A$. Then $dv_1,\ldots,dv_n$ form an actual $A$-basis of
+$\Omega_{A/k}$. In particular, adapted affine \'etale coordinates on a scheme
+provide this basis for their actual ring of sections.
+\end{lemma}
+\begin{proof}
+The polynomial differential module is free on the $dt_i$. For a formally \'etale
+map the natural base-change map
+$A\otimes_{k[t]}\Omega_{k[t]/k}\to\Omega_{A/k}$ is an isomorphism. Transport the
+base-changed polynomial basis along this isomorphism. Its $i$th vector is exactly
+$d(v_i)$ by the defining compatibility of the differential map.
+\end{proof}
+
+\begin{lemma}[Actual coordinate partial derivatives]\label{lem:sc0-etale-partial-derivatives}
+\lean{EnvelopeProperty.Char0.etalePartialDeriv,EnvelopeProperty.Char0.etalePartialDeriv_apply,EnvelopeProperty.Char0.derivation_ext_etale}
+\leanok
+\uses{lem:sc0-etale-differential-basis}
+In the preceding situation the dual basis defines actual $k$-derivations
+$\partial_j:A\to A$ with $\partial_j(v_i)=\delta_{ij}$. Every derivation
+$D:A\to A$ is determined by the values $D(v_i)$.
+\end{lemma}
+\begin{proof}
+Compose each dual basis functional with the universal derivation $d:A\to\Omega_{A/k}$.
+The dual-basis identity gives the displayed coordinate values. A derivation's
+linear factor through $\Omega_{A/k}$ is determined by its values on the basis
+$dv_i$, hence by $D(v_i)$; the universal derivation factorization then determines
+the derivation itself.
+\end{proof}
+
+\begin{lemma}[An \'etale coordinate change has unit Jacobian]\label{lem:sc0-etale-unit-jacobian}
+\lean{EnvelopeProperty.Char0.etaleJacobian,EnvelopeProperty.Char0.isUnit_etaleJacobian}
+\leanok
+\uses{lem:sc0-etale-partial-derivatives}
+If both $v$ and $z$ are \'etale coordinate systems of length $n$ on the same
+$k$-algebra, the actual determinant $\det(\partial_j z_i)$ is a unit.
+\end{lemma}
+\begin{proof}
+The displayed matrix is the transition matrix from the differential basis $dz_i$
+to the basis $dv_j$. The reverse basis change gives its matrix inverse. Taking
+determinants of their product gives a multiplicative inverse of the displayed
+determinant.
+\end{proof}

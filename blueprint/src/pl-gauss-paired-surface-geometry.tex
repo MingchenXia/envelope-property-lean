@@ -1,0 +1,240 @@
+\section{The original central curve inside an actual regular altered pair}
+
+Let $k$ be a field, put $B=\operatorname{Spec}k[t]$, and write
+$\epsilon:\operatorname{Spec}k\to B$ and $\gamma:B\to\operatorname{Spec}k$
+for the original evaluation-at-zero and coefficient morphisms. Thus
+$\epsilon\gg\gamma=\operatorname{id}$. Let $N$ be integral, with
+an actual projective dominant $b:N\to B$ and $\dim N=2$. Let
+$C_1$ be integral and projective over $k$, with actual structure $q_1$,
+$\dim C_1=1$, and an actual closed immersion $c_1:C_1\hookrightarrow N$
+such that $c_1\gg b=q_1\gg\epsilon$.
+
+Put $p_N=b\gg\gamma$ and $Z=b^{-1}V(t)$. An actual altered pair for
+$(N,p_N,Z)$ consists here of the original alteration $a:R\to N$,
+open immersion $e:R\hookrightarrow\overline R$, their field structures,
+regular integral projective $\overline R$, and an actual SNC ideal
+sheaf datum $D$ on $\overline R$. Its whole structure triangles are
+retained and its actual support satisfies
+\[
+ |D|=e(a^{-1}Z)\cup(\operatorname{im}e)^c.
+\]
+The following are geometric consumers of this entire actual pair data.
+They do not assert that pair data is an external existence input: the
+unconditional original-model theorem constructs it by the already proved
+alteration theorem. No selected component, central curve above $C_1$,
+local equation or parameter system is part of the pair input.
+
+\begin{lemma}[The selected actual SNC component stays in the open source]
+\label{lem:pl-gauss-paired-data-central-component}
+\uses{def:alteration-output,def:variety,def:projective-over,def:snc,lem:divisor-components,cor:proper-central-fiber-closed-compactification-image,lem:sm-dj-dim-alteration,lem:sm-dj-dim-finite,cor:function-field-dimension-dense-open,lem:actual-cartier-component-dimension,thm:proper-flattening-dedekind-native-flat,lem:regular-open,thm:snc-regular-component-cartier}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceGeometry.exists_component_lift_through_central_curve, EnvelopeProperty.PLGaussPairedSurfaceGeometry.exists_regular_component_through_central_curve}
+\leanok
+For the actual pair just described there is an actual native support
+component $E$ of $D$ such that
+\[
+ E\subseteq e(a^{-1}Z)\subseteq\operatorname{im}e.
+\]
+Let $C_2$ be the literal reduced vanishing-ideal closed scheme of this
+same $E$, with original $\iota_E:C_2\hookrightarrow\overline R$.
+There is an actual closed immersion $j:C_2\hookrightarrow R$ with
+$j\gg e=\iota_E$, and an actual $w\in C_2$ such that
+$(j\gg a)(w)=c_1(\eta_{C_1})$.
+The actual schemes $R$ and $\overline R$ are regular integral surfaces,
+$C_2$ is a regular integral projective curve of dimension one, and
+$b_R=a\gg b$ is proper, dominant and flat over the same $B$.
+\end{lemma}
+\begin{proof}
+Properness of $a$ and projectivity of $b$ make $b_R$ proper. Its base
+change along $\epsilon$ is proper over $k$. The pair's whole field
+triangles give
+$e\gg p_{\overline R}=b_R\gg\gamma$. The proper-central-fibre
+producer therefore proves that the entire actual subset
+$H=e(b_R^{-1}V(t))=e(a^{-1}Z)$ is closed in $\overline R$.
+Here $\operatorname{im}\epsilon=V(t)$ follows from the actual kernel
+$(t)$ of evaluation at zero. No absolute properness of $R$ is used.
+
+Surjectivity of the original alteration chooses $y\in R$ with
+$a(y)=c_1(\eta_{C_1})$. The actual central triangle implies
+$b_R(y)\in V(t)$, hence $e(y)\in H$. Choose the actual irreducible
+component of the support space $|D|$ through this very point, and let
+$E$ be its native ambient closed image. This is a genuine support
+component, containing $e(y)$ and contained in $|D|$.
+Both $H$ and $(\operatorname{im}e)^c$ are closed. Their union contains
+$E$, so irreducibility forces $E$ into one of them. The second choice
+is impossible because $e(y)\in E\cap\operatorname{im}e$.
+Thus $E\subseteq H\subseteq\operatorname{im}e$.
+
+The actual open-immersion lifting property gives $j$ on the literal
+reduced closed component $C_2$, with $j\gg e=\iota_E$. The composite
+is a closed immersion and $e$ is separated, so closed-immersion
+postcomposition cancellation makes the same $j$ closed. A point $w$
+of the original reduced component above $e(y)$ exists because its
+closed immersion has precisely image $E$. Injectivity of $e$ and
+the whole factorization give $j(w)=y$, and hence the asserted actual
+point above $c_1(\eta_{C_1})$.
+
+The alteration preserves the whole finite-type field dimension,
+giving $\dim R=\dim N=2$. The actual dense open inclusion $e$ into
+the integral field variety $\overline R$ preserves dimension, so
+$\dim\overline R=2$. The SNC datum is Cartier; the actual Cartier
+component dimension formula gives
+$\dim C_2+1=\dim\overline R=2$. The finite-type field dimension of
+$C_2$ is a natural number, and this equality forces $\dim C_2=1$.
+The native reduced support component is integral. Singleton SNC
+intersection regularity applies to its literal vanishing-ideal
+scheme, making $C_2$ regular. Closedness of $\iota_E$ and the actual
+projective embedding of $\overline R$ make $C_2$ projective over $k$.
+Regularity of $R$ is inherited through the original open immersion.
+The original dominant alteration followed by dominant $b$ makes
+$b_R$ dominant. Since $R$ is integral and $k[t]$ is Dedekind, the
+proved native dominant-to-Dedekind theorem makes this same $b_R$
+flat. No dimension, properness, flatness or component certificate
+was supplied beyond the ordinary original geometry and actual pair.
+\end{proof}
+
+\begin{theorem}[The same selected regular curve maps finitely and dominantly to the original curve]
+\label{thm:pl-gauss-paired-data-central-curve-finite}
+\uses{lem:pl-gauss-paired-data-central-component,lem:pl-gauss-original-native-polynomial-structure-whole-equality,def:pl-gauss-original-homogeneous-cut,lem:pl-gauss-original-surface-central-curve-component,lem:pl-gauss-original-coefficient-cut-support,lem:pl-gauss-reduced-original-image-kernel,thm:curve-proper-dominant-finite,thm:fc-curve-finite-map-projective,lem:pl-gauss-original-native-structure-projective-factorization}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceGeometry.exists_regular_curve_over_central_curve}
+\leanok
+From the same actual pair and ordinary $N,b,C_1,q_1,c_1$ data one
+can internally choose the preceding actual $E,C_2,j$ and an actual
+finite dominant $g:C_2\to C_1$ such that the whole maps satisfy
+\[
+ j\gg a=g\gg c_1,\qquad
+ j\gg b_R=(g\gg q_1)\gg\epsilon,\qquad
+ \iota_E\gg p_{\overline R}=g\gg q_1.
+\]
+The same original field morphism $g\gg q_1$ has an actual closed
+projective factorization. The target $C_1$ is not required to be
+normal, and $g$ is not assumed flat.
+\end{theorem}
+\begin{proof}
+Choose the preceding component internally. Extract an actual relative
+projective embedding of $N$ from the given projective factorization
+of $b$; its native structure is the same original $b$. Let $K_0$ be
+its literal original parameter cut. The already proved original
+surface component theorem supplies the actual closed
+$u:C_1\hookrightarrow K_0$ with $u\gg\iota_0=c_1$ and
+$\operatorname{im}u$ a genuine irreducible component of $K_0$.
+
+Since $E\subseteq H$ and $e$ is injective, the entire image of
+$j\gg a$ lies in $Z=|K_0|$. Reducedness of $C_2$ identifies the
+whole image kernel with the vanishing ideal of its closed image.
+The support inclusion therefore gives the actual ideal inclusion
+needed to lift through $\iota_0$. This constructs
+$v:C_2\to K_0$ with $v\gg\iota_0=j\gg a$.
+The point $w$ above the original generic curve point satisfies
+$v(w)=u(\eta_{C_1})$, by injectivity of $\iota_0$.
+The closure of $\operatorname{im}v$ is irreducible. It contains
+$\overline{\{u(\eta_{C_1})\}}=\operatorname{im}u$, since $u$ is
+closed and $C_1$ is integral. Maximality of this genuine component
+of $K_0$ forces the whole closure into $\operatorname{im}u$.
+Thus the entire actual image of $v$ is contained in the image of $u$.
+Reduced-source image-kernel equality gives the actual closed-lift
+ideal inclusion. Lifting through the same $u$ gives $g$, and cancelling
+$\iota_0$ in its whole factorization proves $j\gg a=g\gg c_1$.
+
+The same point satisfies $g(w)=\eta_{C_1}$, by injectivity of $u$.
+Its image therefore contains the generic point and is dense, so $g$
+is dominant. The actual composite $j\gg a$ is proper. It equals
+$g\gg c_1$, and $c_1$ is separated, hence proper postcomposition
+cancellation makes $g$ proper. The original source $C_2$ is
+Noetherian and has dimension one. The target has dimension one
+and is nontrivial: otherwise its integral space has a single point
+and dimension zero. The proved proper-dominant integral-curve
+theorem now makes this actual $g$ finite without target normality.
+The existing finite-composite projective-factorization producer
+applied to this $g$ and the original $q_1$ proves the asserted
+projectivity of the same $g\gg q_1$.
+
+Compose the whole model triangle with $b$ and substitute the
+original central triangle to obtain the second equality. Composing
+it with $\gamma$ gives $j\gg a\gg p_N=g\gg q_1$.
+The pair's actual field triangles and $j\gg e=\iota_E$ identify
+the left side with $\iota_E\gg p_{\overline R}$, proving the
+third whole equality. No field structure or original map is replaced.
+\end{proof}
+
+\begin{theorem}[Actual Cartier and curve parameters at every nongeneric curve point]
+\label{thm:pl-gauss-paired-data-local-parameters}
+\uses{thm:pl-gauss-paired-data-central-curve-finite,def:snc,thm:snc-regular-component-cartier,lem:node-fitting-ideal-sheaf-stalks,lem:node-fitting-ideal-sheaf-stalk-kernel,thm:node-fitting-ideal-sheaf-actual-stalk-quotient,thm:fc-curve-proper-support-points,def:regular-scheme,alggeom:original-stalk-coefficient-map,alggeom:original-stalk-coefficient-triangle,alggeom:original-stalk-coefficient-injective,lem:scheme-stalk-coefficients-naturality}
+\lean{EnvelopeProperty.PLGaussPairedSurfaceGeometry.exists_regular_paired_surface_parameters}
+\notready
+The same pair and ordinary original surface and curve data internally
+give $E,C_2,j,g$ as above, and the following holds at every nongeneric
+$x\in C_2$. Put
+\[
+ y=j(x),\quad S=\mathcal O_{R,y},\quad Q=\mathcal O_{C_2,x},\quad
+ \psi=j_x^*:S\to Q,\quad
+ \rho:k[t]\to S,\quad t_S=\rho(t),
+\]
+where $\rho$ is the literal original stalk coefficient map of $b_R$.
+There are actual $\pi,z\in S$ such that
+\[
+ \ker\psi=(\pi),\qquad \mathfrak m_S=(\pi,z),\qquad
+ \pi\text{ is prime},\qquad \pi\nmid z,\qquad
+ t_S\ne0,\qquad \pi\mid t_S.
+\]
+The same $\psi$ is surjective and induces the actual quotient
+$S/(\pi)\simeq Q$. The original ring $Q$ is a discrete valuation
+ring. Intersections with other boundary components and their
+multiplicities are retained.
+\end{theorem}
+\begin{proof}
+Choose the preceding curve internally and fix $x$. Write
+$\overline x=\iota_E(x)=e(j(x))$. The proved SNC component Cartier
+theorem makes the actual vanishing ideal of $E$ effective Cartier.
+Choose one of its original Cartier affine neighbourhoods at
+$\overline x$, with actual regular section $f$ generating the
+entire component ideal. The neighbourhood is nonempty and its
+section ring is a domain, since $\overline R$ is integral.
+Thus $f\ne0$. Its germ $\overline\pi$ is nonzero by original
+integral-scheme germ injectivity. The whole stalk-ideal computation
+on this very affine neighbourhood gives
+$I_{E,\overline x}=(\overline\pi)$.
+
+The actual open inclusion induces a ring isomorphism
+$\mathcal O_{\overline R,e(y)}\simeq S$. Use the actual stalk
+congruence for $j\gg e=\iota_E$ to identify its original domain
+point with $\overline x$, and transport $\overline\pi$ through
+these very ring isomorphisms to $\pi\in S$. The whole stalk-map
+composition and this congruence preserve the same maps into $Q$.
+The actual closed-subscheme kernel theorem therefore gives
+$\ker\psi=(\pi)$; the original stalk quotient identifies
+$S/(\pi)$ with $Q$, carrying each original class to its image
+under this same $\psi$. Injectivity of the transported isomorphisms
+gives $\pi\ne0$. The ring $Q$ is a domain, since $C_2$ is integral,
+so this kernel is prime. A nonzero generator of a prime principal
+ideal is prime, proving the required property of the actual $\pi$.
+
+The nongeneric point of an integral dimension-one curve has actual
+coheight one. The original stalk-dimension formula gives
+$\dim Q=1$. Singleton SNC regularity makes this same $Q$ a regular
+Noetherian local ring. Its cotangent space therefore has dimension
+one. The Noetherian local-domain discrete-valuation equivalences
+make $Q$ a principal ideal domain. It is not a field, since its
+dimension is one, so it is a discrete valuation ring. Choose an
+actual nonzero uniformizer $\overline z$ with
+$\mathfrak m_Q=(\overline z)$.
+The actual closed immersion $j$ makes $\psi$ surjective; lift
+$\overline z$ to $z\in S$. This actual local map satisfies
+$\psi^{-1}(\mathfrak m_Q)=\mathfrak m_S$. Surjective ideal
+map/comap gives
+\[
+ \mathfrak m_S=\psi^{-1}((\psi(z)))=(z)+\ker\psi=(\pi,z).
+\]
+Because $\psi(z)=\overline z\ne0$, the element $z$ is not in
+$(\pi)$, giving $\pi\nmid z$.
+
+The actual integral source $R$ has proper dominant coefficient
+structure $b_R$. The proved original stalk-coefficient injectivity
+theorem applies to the reduced ring $k[t]$, so its original nonzero
+parameter maps to $t_S\ne0$. The already proved actual whole
+central triangle and stalk-coefficient naturality give
+$\psi(t_S)=0$, because evaluation at zero kills $t$.
+Thus $t_S\in\ker\psi=(\pi)$ and $\pi\mid t_S$.
+This uses a genuine Cartier component equation and the original
+curve uniformizer; it neither assumes a full adapted parameter
+system nor requires $t_S$ to be a unit times a power of $\pi$.
+\end{proof}

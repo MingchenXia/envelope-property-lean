@@ -1,0 +1,199 @@
+\subsection{Constructed original Rees domination of a closed projective birational witness}
+
+The coefficient ring in the final theorem is an arbitrary commutative domain.
+No Noetherian, finite-type over a field, characteristic, or valuation hypothesis is
+used. A REAL closed projective embedding and REAL dense-open inverse data are
+retained as geometric input. This does not construct a projective modification of
+an arbitrary proper birational morphism; that Chow-type boundary remains separate.
+
+\begin{lemma}[The actual dense-open inverse gives the whole fraction-field map]
+\label{scheme:actual-partial-iso-fraction-lift}
+\lean{EnvelopeProperty.fractionSpec_range_subset_denseOpen,
+EnvelopeProperty.PartialIso.fractionLift,
+EnvelopeProperty.PartialIso.fractionLift_comp}
+For any actual fraction field $K$ of a domain $A$, the entire image of
+$\operatorname{Spec}K\to\operatorname{Spec}A$ lies in every genuine dense open.
+Consequently actual partial-isomorphism data from $Y$ to $\operatorname{Spec}A$
+construct a genuine map $\operatorname{Spec}K\to Y$. If the original partial
+isomorphism is over $f:Y\to\operatorname{Spec}A$, the whole constructed map
+composed with $f$ is exactly the original coefficient map on spectra.
+\leanok
+\end{lemma}
+\begin{proof}
+The original fraction-field ring map is injective. The true spectrum closure
+formula therefore makes its image dense. Every dense base open is nonempty,
+so it meets this actual image. The spectrum of a field has only one point;
+hence every original source point maps into that open. The genuine
+open-immersion lifting property constructs the map into the target open of the
+partial isomorphism. Compose with the inverse of its actual scheme isomorphism
+and then the source-open immersion. Its true over-base equation and the actual
+open-lift identity give equality of ENTIRE scheme morphisms to the coefficient
+scheme, including their section maps. No generic inverse or point-lift
+certificate is assumed.
+\end{proof}
+
+\begin{lemma}[Actual projective geometry constructs original finite coordinates]
+\label{projective:actual-generic-original-coordinates}
+\uses{projective:native-homogeneous-chart-isomorphism,projective:native-structure-morphism,projective:support}
+\lean{EnvelopeProperty.ProjBerk.exists_coordinateEvaluation,
+EnvelopeProperty.ProjBerk.exists_original_fraction_family,
+EnvelopeProperty.ProjBerk.exists_original_coordinateFamily}
+An actual field-valued point of the original polynomial $\mathbf P^n_A$, over
+the true coefficient map $A\to K$, lies in a genuine coordinate chart. It is the
+whole scheme map of an actual $A$-algebra homomorphism from that coordinate ring
+to $K$. When $A$ is a domain and $K$ its actual fraction field, there are
+original elements $g_0,\ldots,g_n\in A$ and an actual index $j$ with $g_j\ne0$
+such that every chart coordinate is $g_i/g_j$. The ENTIRE original field-valued
+projective map is retained, not only its support or numerical coordinate values.
+The intermediate coefficient-chart assertion needs only a commutative $A$ and
+an actual field $K$ with its given $A$-algebra action.
+\leanok
+\end{lemma}
+\begin{proof}
+The actual irrelevant ideal is the original variable ideal. Its genuine
+coordinate basic opens therefore cover the same projective scheme. Choose a
+chart at the image of the unique field point. All field-spectrum points agree,
+so the whole image lies in that actual open. The real coordinate open immersion
+lifts the original scheme map; full faithfulness of Spec gives its whole ring
+homomorphism. The original projective coefficient triangle proves its actual
+$A$-algebra law on every coefficient.
+
+Set the selected coordinate equal to one and take the other genuine chart
+coordinate elements in $K$. The real localization common-denominator theorem
+for this finite family gives a single original non-zero-divisor $d\in A$ and
+original numerators. Because the selected coordinate is one, injectivity of
+$A\to K$ identifies its numerator with $d$. It is genuinely nonzero. Actual
+field cancellation gives all $g_i/g_j$ identities, while the already proved
+whole chart factorization retains the original projective morphism.
+\end{proof}
+
+\begin{lemma}[The literal finite-coordinate Rees immersion and original chart square]
+\label{scheme:actual-standard-rees-immersion}
+\uses{scheme:actual-polynomial-proj-reindexing,scheme:actual-rees-presentation-proper,scheme:actual-rees-projection-surjective,projective:native-homogeneous-chart-isomorphism,projective:native-structure-morphism,graded:homogeneous-ideal-quotient-grading}
+\lean{EnvelopeProperty.ReesPresentation.standardFamily,
+EnvelopeProperty.ReesPresentation.standardImmersion,
+EnvelopeProperty.ReesPresentation.standardImmersion_isClosedImmersion,
+EnvelopeProperty.ReesPresentation.standardImmersion_comp_structureMap,
+EnvelopeProperty.ReesPresentation.standardGradedMap,
+EnvelopeProperty.ReesPresentation.standardGradedMap_irrelevant_le,
+EnvelopeProperty.ReesPresentation.standardImmersion_eq_map,
+EnvelopeProperty.ReesPresentation.standardGradedMap_X,
+EnvelopeProperty.ReesPresentation.standardChartMap,
+EnvelopeProperty.ReesPresentation.chartImmersion_comp_standardImmersion}
+For ANY commutative $A$ and original family $g:\operatorname{Fin}(n+1)\to A$,
+the SAME original Rees scheme has a constructed closed immersion into the
+original standard $\mathbf P^n_A$, and its ENTIRE coefficient triangle commutes.
+Its actual selected chart map is the original homogeneous-localization map
+induced by the genuine original graded polynomial homomorphism. Its whole
+scheme chart square commutes. Neither domain nor nonzero-generator assumptions
+are needed in this lower cone. The harmless universe lift of the index changes
+none of its actual coefficient elements.
+\leanok
+\end{lemma}
+\begin{proof}
+Use the original homogeneous kernel quotient immersion into polynomial Proj
+and compose it with the genuine finite-variable rename scheme isomorphism.
+The first map is a true closed immersion and the second an isomorphism.
+Their actual coefficient triangles give the entire original projection.
+The resulting graded ring homomorphism is the original quotient map composed
+with inverse variable renaming. Real irrelevant-image inequalities compose,
+so its actual Proj map is defined. Genuine Proj composition identifies it with
+the constructed immersion as a WHOLE scheme morphism.
+
+Every original variable maps to the selected original quotient variable.
+Thus the induced homogeneous-localization map has exactly the original source
+and target denominator submonoids. The actual Proj homogeneous-chart square
+then gives the full chart scheme identity. No chart, cartesian square or
+projective-map certificate is supplied; the original homogeneous kernel,
+including nilpotents and zero-family cases, is unchanged.
+\end{proof}
+
+\begin{lemma}[Derived original coordinates recover the entire generic projective map]
+\label{scheme:actual-rees-generic-projective-comparison}
+\uses{scheme:actual-standard-rees-immersion,projective:native-homogeneous-chart-coordinates,projective:native-homogeneous-chart-isomorphism,algebra:actual-rees-chart-fraction-embedding,algebra:actual-rees-degree-zero-chart-equivalence}
+\lean{EnvelopeProperty.ReesPresentation.standardGradedMap_C,
+EnvelopeProperty.ReesPresentation.standardChartMap_coefficient,
+EnvelopeProperty.ReesPresentation.standardChartMap_coordinate,
+EnvelopeProperty.ReesPresentation.nativeCoordinateInclusion_eq_away,
+EnvelopeProperty.ReesPresentation.genericChartMap_eq,
+EnvelopeProperty.ReesPresentation.genericLift_comp_standardImmersion}
+Let $A$ be a domain and $g_j\ne0$. Whenever actual chart coordinates in
+$\operatorname{Frac}A$ equal the derived original fractions $g_i/g_j$, the
+entire original homogeneous-chart RingHoms agree. Hence the original generic
+Rees lift composed with its standard immersion is EXACTLY the original
+field-valued projective chart morphism.
+\leanok
+\end{lemma}
+\begin{proof}
+The genuine graded polynomial map retains every original constant class.
+Its actual homogeneous-localization map therefore retains every whole
+coefficient and every original ratio element. Compose it with the injective
+original chart evaluation into the SAME fraction field. Compare with the
+original coordinate-ring homomorphism, precomposed by actual homogeneous-chart
+dehomogenization. On every original coefficient the two RingHoms agree by their
+true $A$-algebra laws. On every original polynomial variable they agree by
+the actual original fractions. Polynomial RingHom extensionality proves
+WHOLE equality. Surjectivity of the genuine homogeneous-chart equivalence
+then proves equality on every original homogeneous fraction.
+
+The actual coordinate inclusion is the true homogeneous chart inclusion
+precomposed with the genuine coordinate-ring isomorphism. The preceding whole
+ring-map equality and the actual Rees chart square therefore give equality of
+ENTIRE generic scheme morphisms. This is ring-map extensionality, never an
+inference that seminorm generator values determine all polynomial values.
+\end{proof}
+
+\begin{theorem}[A closed projective birational witness is dominated by a constructed original Rees scheme]
+\label{scheme:actual-closed-projective-rees-domination}
+\uses{scheme:actual-partial-iso-fraction-lift,projective:actual-generic-original-coordinates,scheme:actual-rees-generic-projective-comparison,scheme:actual-original-rees-integral,algebra:actual-rees-chart-fraction-embedding,scheme:actual-reduced-closed-factorization}
+\lean{EnvelopeProperty.ReesPresentation.denseRange_chartImmersion,
+EnvelopeProperty.ReesPresentation.denseRange_genericLift,
+EnvelopeProperty.ReesPresentation.range_standardImmersion_subset,
+EnvelopeProperty.ReesPresentation.exists_standardRees_domination}
+Let $A$ be ANY domain. Let $\iota:Y\hookrightarrow\mathbf P^n_A$ be a REAL
+closed immersion, and let $f:Y\to\operatorname{Spec}A$ be its actual original
+coefficient projection. Assume genuine partial-isomorphism data with dense
+source and target opens, over this SAME $f$ and the identity of
+$\operatorname{Spec}A$. Then there are actual original $g_i\in A$, an index
+$j$ with $g_j\ne0$, and a constructed whole map
+\[
+ \delta:\operatorname{ReesScheme}(g_i)\longrightarrow Y
+\]
+such that $\iota\circ\delta$ is the actual standard Rees immersion and
+$f\circ\delta$ is the ENTIRE original Rees projection. The resulting
+$\delta$ is itself an actual closed immersion. No source-integrality,
+generic-agreement, image-containment or factorization certificate is an input.
+\leanok
+\end{theorem}
+\begin{proof}
+The first lemma constructs the actual generic inverse $q$ into $Y$ and retains
+its full coefficient triangle. Compose it with $\iota$. The second lemma
+constructs an actual chart, original finite numerators $g_i$ and a nonzero
+selected denominator. The fourth lemma identifies the original generic Rees
+map followed by its standard immersion with the WHOLE $\iota\circ q$.
+
+The actual good-open lift is dense in the same Rees scheme by the original
+nonzero generator. Its whole factorization through the selected chart makes
+that actual chart dense. The original chart RingHom into $\operatorname{Frac}A$
+is injective, so the true spectrum closure formula makes its induced map dense
+in that chart. Composition gives density of the ACTUAL original generic Rees
+lift in the whole original Rees scheme. This derives generic density from
+actual algebra and topology, rather than assuming it.
+
+The inverse image of the genuine closed set $\iota(Y)$ under the actual
+standard Rees immersion is closed. The whole generic-map identity puts its
+actual dense generic image inside this inverse image. Hence the inverse image
+is the entire original source, proving genuine image containment. The SAME
+Rees scheme is reduced, so the proved reduced-source closed-immersion
+factorization constructs $\delta$ and its whole first triangle. The true
+original coefficient triangles give its entire second triangle. Finally the
+composite $\iota\circ\delta$ and $\iota$ are actual closed immersions, which
+makes $\delta$ a true closed immersion as well. No target reducedness is needed.
+\end{proof}
+
+\begin{remark}[Remaining boundary]
+This is an actual closed-projective witness theorem. It neither constructs
+such an embedding from an arbitrary proper birational witness nor proves a
+Chow lemma. It does not replace original ideals by radicals, alter the old
+weakly-psh definition, or assert classical potential-theoretic comparisons.
+\end{remark}

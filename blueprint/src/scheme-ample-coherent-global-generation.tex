@@ -1,0 +1,42 @@
+\section{Finite global generators for the original ample powers}
+\begin{theorem}[Coherent generation from genuine native ampleness]
+\label{thm:original-native-ample-coherent-global-generation}
+\lean{EnvelopeProperty.SchemeAmpleCoherentGlobalGeneration.exists_eventual_generatingSections}
+\leanok
+Let $X$ be a scheme over $\operatorname{Spec}R$, where $R$ is any
+commutative ring. Let $L$ be an original invertible module, ample in the
+native sense: some actual $L^r$, $r>0$, is the pullback of the actual
+$\mathcal O(1)$ by a closed projective embedding over the same base.
+For every original quasicoherent finite-type module $E$, there is $N$
+such that every $E\otimes L^m$, $m\geq N$, has an actual finite family of
+original global generating sections and its actual free evaluation is epic.
+No integral or Noetherian hypothesis, auxiliary twist, basis, or generator
+certificate is input.
+\end{theorem}
+\begin{proof}
+Unpack the native ample predicate internally. Keep the same positive
+integer $r$, actual closed embedding $i$, original line $L$, and whole
+isomorphism $L^r\cong i^*\mathcal O(1)$ throughout. For each residue
+$a\in\{0,\ldots,r-1\}$ put $E_a=E\otimes L^a$. Existing tensoring
+results give actual quasicoherence and finite type of this same module.
+Apply the already proved closed-projective global-generation theorem to
+$E_a$ and the actual coordinate twist of degree $d$. Obtain bounds $N_a$
+and actual finite generators for every $d\geq N_a$. This reuses the
+existing global-generation core; no cohomological Serre proof is repeated.
+
+Put $B=\max_a N_a$ and $N=rB$. If $m\geq N$, use the actual quotient
+and remainder $m=a+rd$, where $0\leq a<r$. Then $d\geq B\geq N_a$.
+The existing whole original power comparison
+$L^{rd}\cong i^*\mathcal O(d)$ includes the actual degree-zero unit
+case. Its inverse, the original associator, the same tensor-power addition
+isomorphism, and the literal quotient--remainder equality give an actual
+whole isomorphism
+\[
+ (E\otimes L^a)\otimes i^*\mathcal O(d)\cong E\otimes L^m.
+\]
+Transport the actual generating family through this actual isomorphism
+using the native generating-section equivalence. Its actual finite index
+set is preserved, and its actual free evaluation remains epic by composition
+with the whole isomorphism. The finite residue maximum gives one bound
+before every original exponent, with no incoming generator choice.
+\end{proof}

@@ -1,0 +1,29 @@
+\section{The joint original relative arithmetic family}
+
+\begin{lemma}[The prescribed relative projective ambient is modeled]
+\label{lem:kn-relative-arithmetic-fixed-projective-ambient}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticJointModel.projectiveAmbient_isPullback,EnvelopeProperty.Vanishing.RelativeArithmeticJointModel.projectiveAmbient_fixedModel_isFP}
+\uses{lem:kn-relative-arithmetic-affine-base-model,def:arithmetic-fixed-model-coefficient-corners}
+\leanok
+Suppose $A\subset k$ is an arithmetic coefficient domain, $B$ is
+finitely presented over $A$, and $e:k\otimes_A B\simeq R$ is the
+actual original affine-base isomorphism.  Then
+$\mathbb P_R^d\to\mathbb P_B^d$ is the entire original-field fibre
+of $\mathbb P_B^d\to\operatorname{Spec}A$.  This gives a
+finite-presentation ambient model in the directed system of finite
+coefficient enlargements of $A$ in $k$.
+\end{lemma}
+\begin{proof}
+The tensor isomorphism gives the actual cartesian square for
+$\operatorname{Spec}R$ over $\operatorname{Spec}B$.  Projective
+space commutes with its base change along $B\to R$, so paste that
+square with the tensor affine square.  This gives the asserted
+whole ambient cartesian square.  The morphism
+$\mathbb P_B^d\to\operatorname{Spec}B$ is of finite presentation,
+and so is $\operatorname{Spec}B\to\operatorname{Spec}A$; their
+composite is of finite presentation.  Identify the first coefficient
+stage with $A$ using its injective inclusion in $k$, and the limit
+coefficient ring with $k$.  Transporting the displayed cartesian
+square through these base isomorphisms gives the claimed model,
+preserving each original projection.
+\end{proof}

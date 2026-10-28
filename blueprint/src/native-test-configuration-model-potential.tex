@@ -1,0 +1,93 @@
+\section{Actual native model potentials and finite rational FS minorants}
+
+Use the actual original test configuration, original total invertible
+line $M$, fibre-one line $L$, action and fibre-one identifications.
+All values and norms refer to these original objects.
+
+\begin{definition}\label{def:native-tc-original-model-potential}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_eq_compatibleFactor}
+\leanok
+For every $0<r\leq1$ and actual original native point $x$, define
+\[
+ \phi_{\mathcal X,L}(x,r)=-\log c_{\mathcal X,L}(x,r),
+\]
+where the factor is the actual native valuation of the original
+geometric frame-transition unit. It is a finite real-valued function.
+For ample $L$ its values are independent of all original center-open
+frame choices.
+\uses{def:native-tc-intrinsic-native-unit-factor,thm:native-tc-intrinsic-factor-original-frame-independence}
+\end{definition}
+\begin{proof}
+The original geometric frames define a genuine unit in the actual
+product residue field. Its native valuation is strictly positive,
+so its real logarithm is finite. Original ampleness proves the
+factor equals the factor formed from every other original
+center-open frame. Applying the same real logarithm and negation
+proves the asserted independence of this function.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-original-potential-weighted-fs}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerFamilyNorm_eq_nativeFactor,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_weightedFSData_eval}
+\leanok
+For every positive original degree $n$, every actual original finite
+family $G$, every $0<r\leq1$ and every original point $x$,
+\[
+ \operatorname{FS}_{n,G,r}(x)=\phi_{\mathcal X,L}(x,r)
+ +\frac1n\log\max_{s\in G}\lVert s\rVert_{\mathcal X,r,x}.
+\]
+The same actual native factor also computes the whole finite-family
+norm in all degrees, including zero, as $c^n$ times the maximum of
+the actual weighted Laurent coefficient norms.
+\uses{def:native-tc-original-model-potential,cor:native-tc-coherent-all-power-family-norms,thm:native-tc-original-weighted-fs-evaluation}
+\end{theorem}
+\begin{proof}
+Take the finite maximum in the actual all-degree all-section norm
+formula for the defined native factor. Multiplication by $c^n$
+preserves finite maxima, and taking the union of original Laurent
+supports is exactly the actual finite coefficient/exponent family.
+Taking the extended logarithm and dividing by positive $n$ gives
+$\log c+\operatorname{FS}_{n,G,r}$. Add the finite real $-\log c$
+to this equality. Cancellation gives the displayed identity, also
+when a family is empty or vanishes at the point.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-original-potential-finite-rational-fs-minorants}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_finiteFS_modelPotential_minorants}
+\leanok
+Suppose the original fibre-one line is ample and put $r=e^{-1}$.
+There is an original integer $N$ such that for every positive
+$n\geq N$ an actual original finite family $G_n$, chosen before
+all points, defines a genuine finite rational FS function of the
+original $L$ and original class one, and
+\[
+ \operatorname{FS}_{n,G_n,r}(x)
+ =\phi_{\mathcal X,L}(x,r)+\frac1n
+   \log\lVert\mathfrak a_n\rVert_{\mathcal X,r,x}
+ \leq\phi_{\mathcal X,L}(x,r)
+\]
+for every actual original point. Here $\mathfrak a_n$ is the base
+ideal of all original global sections of $M^{\otimes n}$.
+\uses{thm:native-tc-original-potential-weighted-fs,thm:native-test-configuration-actual-gauss-finite-norm-family,cor:native-tc-original-rational-fs-families,def:native-tc-original-normalized-log-ideal}
+\end{theorem}
+\begin{proof}
+Actual original ampleness supplies the finite family in each eventual
+degree, simultaneously computing the entire base-ideal norm at all
+points with strictly positive finite maximum. Substitute this norm
+identity in the preceding formula. Its logarithm is finite, so the
+FS value is not negative infinity. The actual native FS nonvanishing
+criterion then supplies a nonzero section norm at every point,
+proving that there is no common native zero. The original Laurent
+weights are integers times $\log(e^{-1})=-1$, so they are rational;
+these actual data give the stated finite rational FS function.
+Finally every actual model ideal norm is at most one. Its extended
+logarithm is nonpositive, and division by the positive original
+degree preserves this inequality. Adding the finite actual model
+potential proves the displayed bound.
+\end{proof}
+
+\begin{remark}
+These are genuine original FS minorants of the defined native model
+potential. The source Cartier-model identification and the reverse
+section-extension comparison for the final envelope formula remain
+separate geometric steps.
+\end{remark}

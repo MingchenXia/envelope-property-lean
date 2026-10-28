@@ -1,0 +1,69 @@
+\subsection{Pure polynomial Proj and actual proper Rees presentation schemes}
+\begin{theorem}[The true polynomial projective structure map]
+\label{scheme:actual-polynomial-proj-proper}
+\lean{EnvelopeProperty.PolynomialProj.coefficientZero,
+EnvelopeProperty.PolynomialProj.coefficientZero_coe,
+EnvelopeProperty.PolynomialProj.coefficientZero_bijective,
+EnvelopeProperty.PolynomialProj.coefficientZeroIso,
+EnvelopeProperty.PolynomialProj.Scheme,
+EnvelopeProperty.PolynomialProj.projection,
+EnvelopeProperty.PolynomialProj.projection_isProper}
+\leanok
+For any commutative ring $A$ and any finite variable type $I$, the ACTUAL
+scheme $\operatorname{Proj}A[Y_i]_{i\in I}$ has a genuine proper structure
+morphism to $\operatorname{Spec}A$. Every original coefficient is retained
+through the actual degree-zero ring isomorphism. No field, domain,
+Noetherianity, nonempty variable type or reducedness is required.
+\end{theorem}
+\begin{proof}
+The true constant map $A\to(A[Y_i])_0$ is injective, by injectivity of the
+original polynomial coefficient map. It is surjective because the actual
+homogeneous-degree-zero projection of every polynomial is its ORIGINAL
+constant coefficient. This yields a genuine ring isomorphism, with the same
+coefficient map on every element.
+
+The polynomial algebra is finite type over $A$ for the actual finite type
+of variables, hence finite type over its genuine degree-zero ring through
+the actual coefficient tower. The existing proper Proj-to-degree-zero
+construction applies. Compose it with the actual Spec map of the proved
+coefficient isomorphism. This proves properness of the SAME structure map,
+including empty polynomial Proj and zero coefficient rings.
+\end{proof}
+
+\begin{theorem}[The actual homogeneous Rees presentation gives a proper scheme]
+\label{scheme:actual-rees-presentation-proper}
+\lean{EnvelopeProperty.ReesPresentation.grading,
+EnvelopeProperty.ReesPresentation.Scheme,
+EnvelopeProperty.ReesPresentation.immersion,
+EnvelopeProperty.ReesPresentation.instIsClosedImmersion_immersion,
+EnvelopeProperty.ReesPresentation.projection,
+EnvelopeProperty.ReesPresentation.immersion_comp_projection,
+EnvelopeProperty.ReesPresentation.projection_isProper}
+\leanok
+\uses{scheme:actual-polynomial-proj-proper,algebra:actual-rees-homogeneous-kernel,graded:projective-homogeneous-quotient-immersion}
+For any original commutative $A$ and finite family $g_i\in A$, let
+$K$ be the ORIGINAL kernel of $A[Y_i]\to A[T]$, $Y_i\mapsto g_iT$.
+The genuine scheme
+$\operatorname{Proj}(A[Y_i]/K)$, with the actual quotient grading,
+has a real closed immersion into $\operatorname{Proj}A[Y_i]$ and a genuine
+proper projection to $\operatorname{Spec}A$. Its projection is EXACTLY the
+composite of this original closed immersion and original polynomial
+structure morphism. All nilpotents and original ideal relations are retained.
+\end{theorem}
+\begin{proof}
+The proved full Rees coefficient formulas show that the ORIGINAL kernel is
+homogeneous; no radical or alternate ideal is selected. The actual homogeneous
+quotient grading therefore makes its true Proj scheme and canonical quotient
+morphism. The proved quotient-Proj theorem gives a genuine closed immersion
+on these SAME rings. Compose this morphism with the preceding original
+polynomial projective structure map. Closed immersions are proper, and the
+latter structure map is proper for the actual finite family, so the whole
+composite is proper. The required factorization is its actual definition,
+not an assumed comparison diagram.
+
+This constructs the actual proper scheme presentation. Identifying its
+whole degree-zero charts with the original fractional blowup charts, proving
+surjectivity in the nonzero-domain case and identifying the grading with the
+literal coefficient-power Rees grading are subsequent genuine comparisons;
+none is a hypothesis of this lower properness producer.
+\end{proof}

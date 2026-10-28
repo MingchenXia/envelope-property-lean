@@ -1,0 +1,133 @@
+\subsection{Actual rigid line and etale-curve nonisolation without field-completeness assumptions}
+\label{subsec:rigid-etale-curve-nonisolation}
+
+\begin{lemma}[A genuine continuous map with finite fibre preserves nonisolation]
+\label{topology:actual-finite-fibre-nonisolation}
+\lean{EnvelopeProperty.not_isOpen_singleton_image_of_continuous_of_finite_fibre}
+\leanok
+For an actual continuous map $f:Z\to W$, a point $z$ of a $T_1$
+source, and an ACTUAL finite fibre over $f(z)$, nonisolation of $z$
+implies nonisolation of $f(z)$. The target need not be separated.
+\end{lemma}
+\begin{proof}
+An open image singleton would have open preimage equal to the real
+finite fibre. It is a neighborhood of $z$. In a $T_1$ space every
+finite neighborhood isolates each of its points: remove the other
+finitely many closed singleton points from this neighborhood. This
+would give an open source singleton, contradicting nonisolation.
+No properness, open map or fibre-bijection hypothesis is needed.
+\end{proof}
+
+\begin{theorem}[Actual polynomial scalar restriction has finite whole point fibres]
+\label{spectrum:actual-finite-polynomial-scalar-restriction}
+\lean{EnvelopeProperty.polynomial_map_moduleFinite,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialScalarRestriction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialScalarRestriction_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_polynomialScalarRestriction,
+EnvelopeProperty.Berkovich.RelativeSpectrum.finite_fibre_polynomialScalarRestriction}
+\leanok
+\uses{spectrum:finite-completed-fibres,spectrum:scalar-restriction}
+Let $S/R$ be an actual finite coefficient algebra with compatible
+prescribed valuations. The genuine polynomial coefficient map
+$R[T]\to S[T]$ induces continuous whole fixed-base scalar
+restriction, and every actual point fibre is finite. Neither
+coefficient injectivity, field, completeness nor a chosen fibre
+correspondence is assumed.
+\end{theorem}
+\begin{proof}
+Restrict the original coefficient valuation through the true scalar
+tower, then pull back the ENTIRE polynomial valuation along actual
+coefficient mapping. Compatibility on every original scalar proves
+the exact target fixed-base membership, and pointwise original
+polynomial evaluation proves continuity.
+
+The actual polynomial tensor coefficient homomorphism from
+$R[T]\otimes_R S$ onto $S[T]$ is genuinely surjective: each
+original monomial is the image of its original scalar monomial
+tensored with its entire coefficient. Its whole coefficient law
+makes it linear for the SAME original polynomial coefficient map.
+Finite scalar modules remain finite under actual base change and
+this true quotient, so that polynomial coefficient map is finite.
+This finite-module primitive works even for commutative semirings. Its whole absolute seminorm fibres are
+finite by the proved completed-residue classification. The original
+relative fibre injects into that actual fibre by retaining its
+whole underlying seminorm. Thus its point set really is finite,
+without an inference from finitely many scheme supports.
+\end{proof}
+
+\begin{theorem}[Every actual nonzero-support line point is nonisolated]
+\label{spectrum:actual-rigid-line-nonisolation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.residueField_finite_of_nonzero_polynomial_support,
+EnvelopeProperty.Berkovich.RelativeSpectrum.not_isOpen_singleton_of_nonzero_polynomial_support,
+EnvelopeProperty.Berkovich.RelativeSpectrum.neBot_nhdsNE_of_nonzero_polynomial_support}
+\leanok
+\uses{topology:actual-finite-fibre-nonisolation,spectrum:actual-finite-polynomial-scalar-restriction,scheme:actual-native-line-evaluation-nonisolation,spectrum:residue-field}
+For ANY field $F$ with ANY prescribed real valuation, every actual
+point of the relative seminorm space of $F[T]$ with nonzero
+support is nonisolated. Finite residue degree, a rational lift,
+field completeness, perfection and algebraic closure are not
+supplied as hypotheses.
+\end{theorem}
+\begin{proof}
+The actual nonzero support prime is maximal in the true polynomial
+PID. Its original quotient is finite over $F$, by the genuine
+finite-type one-dimensional nonzero-quotient theorem. Since this
+prime is maximal, its actual quotient-to-residue-field map is
+bijective. Thus its ORIGINAL residue field $\kappa$ is genuinely
+finite over $F$; no degree witness is assumed.
+
+The already constructed residue valuation $w$ of the actual point
+restricts to the entire prescribed valuation of $F$, by its proved
+original-ring residue formula. The canonical original parameter
+class $a\in\kappa$ gives a genuine rational evaluation point of
+$\kappa[T]$ over $w$. On EVERY polynomial, actual evaluation after
+coefficient mapping equals the original polynomial image in the
+true residue field: both entire homomorphisms agree on all original
+coefficients and the original $T$. The residue-valuation formula
+therefore identifies its scalar restriction with the ORIGINAL
+whole line point.
+
+This rational $\kappa$ line point is nonisolated by the actual
+centered Gauss ray. Its relative space is genuinely $T_1$, and the
+proved polynomial scalar restriction has a true finite point
+fibre. Apply the preceding pure topological lemma, then the
+singleton/punctured-neighborhood identity. ONLY THE LINE was
+rationalized: $\kappa[T]$ is an actual polynomial domain over a
+field regardless of inseparability. No domain, reducedness or
+normality of a scalar-extended curve is asserted or used.
+\end{proof}
+
+\begin{theorem}[Actual closed points on genuine etale affine curves are nonisolated]
+\label{scheme:actual-rigid-etale-line-chart-nonisolation}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_line_chart_nonzero_support,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_affine_closed_of_etale}
+\leanok
+\uses{spectrum:actual-rigid-line-nonisolation,scheme:actual-general-etale-native-open-map,scheme:relative-affine-valued-point-homeomorphism}
+A native point whose actual image under a genuine etale line chart
+has nonzero polynomial support is nonisolated. In particular, for
+an actual etale $F[T]\to_F C$, EVERY native point with genuine
+maximal support in $C$ is nonisolated. No residue-degree, rational
+lift, chart-openness, completion, perfectness, domain or
+nonisolation certificate is assumed.
+\end{theorem}
+\begin{proof}
+The actual affine native homeomorphism carries the preceding proved
+nonisolation of whole line seminorms to the actual native line.
+The genuine etale native map is open by the proved algebraic
+producer. A hypothetical open source singleton would therefore
+have open image singleton, contradicting actual line nonisolation.
+
+For the closed-point assertion, genuine etaleness supplies actual
+finite type over the ORIGINAL polynomial ring and hence over $F$.
+The true quotient by the original maximal support is a field of
+finite type over $F$, so its residue extension is algebraic and
+finite by the actual field finite-type theorem. The actual image
+of the original chart coordinate in that field is therefore
+algebraic over $F$. Its genuine nonzero annihilating polynomial
+belongs to the ENTIRE contraction of the original support under
+the chart map. Thus the actual line support is nonzero. Apply the
+proved chart result to the original whole native point. This
+establishes the rigid topological input without any unsafe claim
+that a curve remains normal or reduced after arbitrary field
+extension, and without a curve-potential comparison.
+\end{proof}

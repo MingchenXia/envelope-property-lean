@@ -1,0 +1,110 @@
+\subsection{Actual closed immersions of native valued scheme points}
+\label{subsec:native-closed-immersions}
+
+\begin{theorem}[Genuine closed immersion and exact support-closed image]
+\label{scheme:native-closed-immersion}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.residueFieldMap_bijective_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.closedImmersionResidueIso,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.map_injective_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.exists_map_eq_of_point_mem_closedImage,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.range_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_map,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.isClosedEmbedding_map_restrict_affine,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.isClosedEmbedding_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.closedImmersionResidueIso_hom,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.isProperMap_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.closedImmersionHomeomorph,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.closedImmersionHomeomorph_apply_coe,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.subschemeHomeomorph,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.subschemeHomeomorph_apply_coe,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.subschemeAffineSpectrumHomeomorph,
+  EnvelopeProperty.Berkovich.SchemeValuedPoint.subschemeAffineSpectrumHomeomorph_val_mk}
+\leanok
+\uses{scheme:affine-chart-section-values,spectrum:surjective-closed-embedding,scheme:valued-open-embedding,scheme:canonical-native-affine-atlas}
+An actual closed immersion $f:X\to Y$ of arbitrary schemes induces a
+closed embedding of native valued-point spaces. Its image consists
+exactly of native points whose true scheme support lies in the genuine
+closed scheme image. The resulting map is a homeomorphism onto this
+support-closed locus. No Hausdorff, field, noetherian or finite-type
+hypothesis is required. The induced native map is also a proper
+topological map. For actual scheme ideal-sheaf data $I$, its
+actual closed subscheme therefore identifies with the native points
+supported on the genuine scheme support of $I$. On every actual affine
+open $U$ its native points are genuinely parametrized by the seminorm
+spectrum of $\Gamma(Y,U)/I(U)$, preserving every original section value.
+\end{theorem}
+\begin{proof}
+Actual closed immersions have injective scheme-point maps and surjective
+stalk maps. A genuine residue class on the source comes from a source
+stalk element and hence from a target stalk element. Residue naturality
+therefore makes the actual residue-field map surjective; as a field map
+it is injective. The genuine inverse residue-field isomorphism lifts
+every valued point over the closed scheme image, and whole residue
+values give injectivity of the resulting native point map. This proves
+the exact image statement, not merely inclusion in that image.
+
+For every actual affine open $U$ of $Y$, its genuine preimage is affine
+and the actual section homomorphism
+$\Gamma(Y,U)\to\Gamma(X,f^{-1}U)$ is surjective. The independently proved
+native affine-open homeomorphisms identify the entire restricted native
+map with seminorm pullback under this actual section map: residue and
+section evaluation naturality agree on every section. The proved
+surjective-ring-map spectrum theorem makes that pullback a closed
+embedding. Conjugate by the genuine affine-open homeomorphisms.
+
+All genuine affine support opens cover the target native space. The true
+topological locality theorem for closed embeddings at an open cover of
+the target therefore gives the global closed embedding. Its canonical
+homeomorphism onto its image, together with the exact support-image
+equality, gives the stated support-closed homeomorphism. The construction
+uses actual scheme maps, stalks, residues and all section values; it
+assumes no native embedding or chart compatibility certificate. A
+closed embedding is proper, since it is a closed continuous injection
+with fibers empty or singletons; this gives the proper-map conclusion.
+Mathlib constructs the actual closed immersion of the scheme defined
+by ideal-sheaf data and proves its scheme image is precisely the support
+of that datum. Specializing the proved homeomorphism gives its stated
+native support interpretation. The actual closed-subscheme structure
+sheaf has its proved section-ring isomorphism with $\Gamma(Y,U)/I(U)$
+on each affine open. Its whole inclusion section map is precisely the
+quotient map followed by this isomorphism. Compose the genuine native
+affine homeomorphism with that actual ring isomorphism; the inclusion
+section formula and true evaluation naturality give every quotient
+polynomial value, without an assumed quotient-chart certificate.
+\end{proof}
+
+\begin{theorem}[Prescribed-base closed immersion]
+\label{scheme:relative-native-closed-immersion}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.relativeLocus_preimage_eq,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosedEmbedding_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.range_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isProperMap_map_of_isClosedImmersion,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.closedImmersionHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.closedImmersionHomeomorph_apply_coe,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.subschemeHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.subschemeHomeomorph_apply_coe}
+\leanok
+\uses{scheme:native-closed-immersion,scheme:relative-valued-point-functor}
+For every actual commuting diagram over $\operatorname{Spec}R$ and every
+prescribed real seminorm $v$ on $R$, an actual closed immersion gives a
+closed embedding of the native spaces above the entire base point $v$.
+Its image is again exactly the native points supported in the actual
+closed scheme image, and it is homeomorphic to that true closed locus. The relative map is also proper.
+In particular this applies to the actual
+closed subscheme of any scheme ideal-sheaf datum, using its genuine
+composite structure map.
+\end{theorem}
+\begin{proof}
+The whole native composition identity and the genuine commuting diagram
+show that an absolute lift of a target point above $v$ is itself above
+$v$. Restrict the already proved absolute closed embedding to these
+actual fixed-base subtypes. This is the original native relative map,
+not a new map with a stipulated base norm. The absolute support-image
+argument and the whole base identity give the exact relative image.
+Restricting the genuine embedding homeomorphism gives the claimed
+relative homeomorphism, without a bound on any coefficient values. Its
+proved closed embedding
+also makes it a genuine proper topological map. Applying this to the
+actual closed-subscheme inclusion and its true composite base structure
+map gives the ideal-sheaf-data specialization.
+\end{proof}

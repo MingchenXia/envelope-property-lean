@@ -1,0 +1,130 @@
+\section{Cohomology and the actual Frobenius twist projection}
+
+\begin{lemma}[The original module is recovered from its Frobenius-twist pullback]
+\label{lem:kn-frobenius-twist-module-unit}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomology.twistProjectionIso,EnvelopeProperty.Vanishing.FrobeniusCohomology.twistPullbackUnitIso}
+\leanok
+Let $k$ be perfect of characteristic $p$, let $f:X\to\operatorname{Spec}k$,
+and let $\pi:X^{(p)}\to X$ be the first projection of the actual pullback
+by the Frobenius of $\operatorname{Spec}k$.  For every module $M$ on $X$,
+the actual pullback unit gives an isomorphism
+$M\simeq\pi_*\pi^*M$.
+\end{lemma}
+\begin{proof}
+The Frobenius of the perfect field is a ring automorphism.  Its induced
+scheme morphism is therefore an isomorphism, and so is its base change
+$\pi$.  Pullback by a scheme isomorphism is an equivalence, with inverse
+the pullback by its inverse.  The pullback--pushforward adjunction is
+therefore an adjoint equivalence.  Its unit at the original module $M$
+is the claimed isomorphism.
+\end{proof}
+
+\begin{theorem}[Positive cohomology vanishing is invariant under the actual twist projection]
+\label{thm:kn-frobenius-twist-module-cohomology}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomology.twistPullback_subsingleton_H_iff}
+\leanok
+\uses{lem:kn-frobenius-twist-module-unit}
+Let $X$ be projective over the perfect field $k$ and let $M$ be an
+actual quasicoherent module on $X$.  For every $q>0$,
+\[
+ H^q(X^{(p)},\pi^*M)=0\quad\Longleftrightarrow\quad H^q(X,M)=0.
+\]
+\end{theorem}
+\begin{proof}
+Choose the finite standard affine cover supplied by a projective
+embedding of $X$.  Its inverse image under the isomorphism $\pi$ is
+an affine cover of $X^{(p)}$.  Separatedness makes every intersection
+affine, and quasicoherence makes its positive cohomology zero.
+Consequently the two actual ordered Cech complexes compute vanishing
+of the respective sheaf cohomology groups.  Sections of $\pi_*\pi^*M$
+on any original open are exactly sections of $\pi^*M$ on its inverse
+image; these equalities commute with all restriction maps.  They give
+the actual Cech-complex isomorphism.  Finally use the pullback-unit
+module isomorphism to identify $\pi_*\pi^*M$ with the original $M$.
+\end{proof}
+
+\begin{theorem}[Actual relative-Frobenius pushforward and positive cohomology]
+\label{thm:kn-relative-frobenius-pushforward-cohomology}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomology.relativePushforward_subsingleton_H_iff}
+\leanok
+\uses{lem:kn-frobenius-twist-module-unit}
+For a projective scheme $X$ over the perfect field $k$, a quasicoherent
+module $M$, and the actual relative Frobenius $F:X\to X^{(p)}$, one has
+$H^q(X^{(p)},F_*M)=0$ if and only if $H^q(X,M)=0$ for every $q>0$.
+\end{theorem}
+\begin{proof}
+The relation $\pi F=F_X$ expresses $F$ as the absolute Frobenius
+followed by the inverse of the twist projection.  The absolute
+Frobenius fixes the underlying points and all open subsets, hence
+is affine.  The projection is an isomorphism, so $F$ is affine.
+Pull back the original finite projective affine cover along $\pi$.
+Apply the actual affine-pushforward Cech comparison on this cover;
+all finite intersections are affine and quasicoherent modules have
+zero positive cohomology on them.  Its sectionwise pushforward
+identity gives precisely the stated equivalence.
+\end{proof}
+
+\begin{lemma}[Differentials under an actual structural field automorphism]
+\label{lem:kn-field-automorphism-differentials}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomologyDifferentials.baseAutomorphismCotangentIso,EnvelopeProperty.Vanishing.FrobeniusCohomologyDifferentials.baseAutomorphismExteriorIso}
+\leanok
+For a field automorphism $\sigma:k\simeq k$ and a structure map
+$h:Y\to\operatorname{Spec}k$, the cotangent presheaves for $h$ and
+$\operatorname{Spec}\sigma\circ h$ are canonically isomorphic by maps
+fixing every differential $da$.  Their exterior sheaves are isomorphic
+in every degree.
+\end{lemma}
+\begin{proof}
+If the structural constants of a scheme are precomposed with a field
+automorphism $\sigma$, their image is unchanged.  Every derivation
+annihilating one structural constant map therefore annihilates the
+other.  The universal properties produce inverse cotangent-presheaf
+maps, each sending every differential $da$ to the same $da$.  Their
+composites are the identity by uniqueness of maps from the universal
+cotangent module.  Exterior powers commute with these maps and with
+restriction: on a spanning pure wedge this follows from naturality of
+the cotangent map.  Sheafification gives an isomorphism in every exterior degree.
+\end{proof}
+
+\begin{lemma}[Differentials retain the actual Frobenius base automorphism]
+\label{lem:kn-frobenius-twist-differentials}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomologyDifferentials.twistExteriorIso}
+\leanok
+\uses{lem:kn-field-automorphism-differentials,lem:kn-frobenius-twist-module-unit}
+For every exterior degree $i$, the actual first-projection pullback
+$\pi^*\Omega^i_{X/k}$ is isomorphic to $\Omega^i_{X^{(p)}/k}$, where
+the latter uses the second-projection structure morphism.
+\end{lemma}
+\begin{proof}
+For the Frobenius twist, the pullback square says that the first
+projection followed by the original structure map is the second
+projection followed by the base Frobenius.  The perfect-field base
+Frobenius is an actual automorphism.  First use the cotangent
+open-immersion comparison along the scheme isomorphism $\pi$, then
+apply the preceding structural-automorphism comparison.  This gives
+exactly the sheaf relative to the second projection.
+\end{proof}
+
+\begin{theorem}[Actual Hodge-tensor vanishing on the Frobenius twist]
+\label{thm:kn-frobenius-twist-hodge-cohomology}
+\lean{EnvelopeProperty.Vanishing.FrobeniusCohomologyHodge.twistHodge_subsingleton_H_iff}
+\leanok
+\uses{thm:kn-frobenius-twist-module-cohomology,lem:kn-frobenius-twist-differentials}
+Let $X$ be smooth projective over the perfect field $k$, and $L$ an
+ample line on $X$.  Write $L'=\pi^*L$.  For all $m,i\geq0$ and $q>0$,
+\[
+ H^q(X^{(p)},(L')^{\otimes m}\otimes\Omega^i_{X^{(p)}/k})=0
+ \quad\Longleftrightarrow\quad
+ H^q(X,L^{\otimes m}\otimes\Omega^i_{X/k})=0.
+\]
+\end{theorem}
+\begin{proof}
+Pullback commutes with the tensor product and its tensor powers.
+The actual exterior comparison identifies the pullback of the original
+Hodge tensor with the displayed tensor on the twist.  The original
+tensor is quasicoherent: smooth exterior sheaves are locally free,
+and tensoring with an invertible power preserves quasicoherence.
+The original ample datum supplies projectivity.  Apply the preceding
+actual pullback-cohomology equivalence to that whole original module
+and transport along the tensor comparison.
+\end{proof}

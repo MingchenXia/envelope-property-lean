@@ -1,0 +1,122 @@
+\subsection{Native points with an arbitrary prescribed coefficient seminorm}
+\label{subsec:relative-native-points}
+
+The coefficient ring may be any commutative ring. Its prescribed real
+ultrametric seminorm is fixed on every coefficient, including zero.
+Only the affine native base point space is known to be Hausdorff; no
+Hausdorff hypothesis or conclusion for an arbitrary scheme is used.
+
+\begin{theorem}[Exact closed native coefficient locus]
+\label{scheme:relative-valued-points}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.basePoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.spectrumHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.basePoint_eval,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.relativeLocus,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.mem_relativeLocus,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isClosed_relativeLocus,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosedEmbedding_subtypeVal}
+\leanok
+\uses{scheme:affine-valued-point-homeomorphism,scheme:valued-point-pullback,
+scheme:valued-point-topology,spectrum:relative}
+Let $R$ be a commutative ring with prescribed real seminorm $v$ and let
+$f:X\to\operatorname{Spec}R$ be an actual scheme morphism. Let the native
+base point be the inverse image of the genuine point $v$ under the native
+affine homeomorphism. Native points of $X$ mapping to this exact whole base
+point form a closed subspace.
+\end{theorem}
+\begin{proof}
+The proved affine homeomorphism identifies the native point space of
+$\operatorname{Spec}R$ with the Hausdorff seminorm spectrum of $R$, so a
+singleton native base point is closed. The actual native map induced by
+$f$ is continuous, and the exact coefficient locus is its inverse image
+of that singleton. Thus it is closed, and its subtype inclusion is a
+closed embedding. No separation property of the total scheme is needed.
+\end{proof}
+
+\begin{theorem}[Continuous native morphisms over the actual base]
+\label{scheme:relative-valued-point-functor}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_map,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_id,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_comp,
+EnvelopeProperty.Berkovich.relativeSchemeValuedPointFunctor}
+\leanok
+\uses{scheme:relative-valued-points,scheme:valued-point-pullback}
+A commuting scheme morphism over $\operatorname{Spec}R$ induces a continuous
+map of the corresponding native prescribed-base spaces. The maps obey whole
+point identity and composition laws and form an actual functor from schemes
+over $\operatorname{Spec}R$ to topological spaces.
+\end{theorem}
+\begin{proof}
+Native composition identifies the image under the target structure morphism
+with the image under the source structure morphism. The commuting diagram
+therefore preserves the exact fixed base point. Restrict the continuous native
+map to the two subspaces. Whole-point identity and composition descend from
+the genuine residue-field pullback laws. These laws give the actual over-category
+functor, without any point-existence or scalar-extension-surjectivity assumption.
+\end{proof}
+
+\begin{theorem}[Actual affine prescribed-base comparison]
+\label{scheme:relative-affine-valued-point-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mem_affine_relativeLocus_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_apply_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_symm_apply_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineStructureMap_commutes,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_map}
+\leanok
+\uses{scheme:relative-valued-points,scheme:relative-valued-point-functor,
+scheme:affine-valued-point-homeomorphism,spectrum:relative}
+For an actual $R$-algebra $A$, the native coefficient locus for the actual
+map $\operatorname{Spec}A\to\operatorname{Spec}R$ is homeomorphic to
+$\mathcal S_v(A)$. It preserves every element value and commutes with
+the genuine Spec maps of $R$-algebra homomorphisms.
+\end{theorem}
+\begin{proof}
+The native affine homeomorphism is natural for the actual coefficient ring
+homomorphism. Mapping a native point to the fixed base point is therefore
+equivalent to restricting its entire original-ring seminorm to $v$.
+Equality of the whole seminorm means equality on every coefficient, precisely
+the defining relative-spectrum locus. Restrict the genuine absolute
+homeomorphism to this exact pair of subspaces. The whole-point ring-map
+naturality gives element preservation and relative algebra-map naturality.
+No field, triviality, completeness or finite-type hypothesis is used.
+\end{proof}
+
+\begin{theorem}[Genuine coefficient action on scheme section rings]
+\label{scheme:relative-section-coefficients}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.sectionBaseMap,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.sectionBaseAlgebra,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.sectionBaseMap_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.eval_sectionBaseMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.sectionSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.sectionSpectrum_val_apply,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_sectionSpectrum}
+\leanok
+\uses{scheme:relative-valued-points,scheme:valued-point-pullback,scheme:valued-points,
+scheme:valued-point-topology,spectrum:relative}
+For a genuine structure morphism $f:X\to\operatorname{Spec}R$ and any
+scheme open $U$, compose the actual global section identification of $R$,
+the actual structure-map section pullback, and genuine restriction to $U$.
+This defines a canonical coefficient ring map $R\to\Gamma(X,U)$ and its
+induced $R$-algebra action. Evaluating these actual coefficients at every
+native prescribed-base point supported in $U$ gives exactly $v$. The
+resulting actual relative-spectrum section evaluation is continuous on
+its genuine local domain.
+\end{theorem}
+\begin{proof}
+The composite is a ring homomorphism because all three maps are genuine
+scheme section ring maps. It supplies the algebra action rather than assuming
+an unrelated one. Actual section restriction preserves residue evaluation,
+and actual global evaluation naturality identifies its coefficient value
+with evaluation at the mapped native base point. That whole point is the
+fixed inverse image of $v$, so the affine evaluation identity gives $v(r)$
+for every $r\in R$. Thus genuine local section evaluations also define
+relative-spectrum points for this actual coefficient action. Their value
+on every local section is the original native evaluation. Every such
+evaluation is continuous on the open domain where the section is defined;
+compose with the two subtype inclusions and use the coordinate criterion
+for relative-spectrum continuity.
+\end{proof}

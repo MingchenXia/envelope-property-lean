@@ -1,0 +1,134 @@
+\section{Additivity of native model potentials and exact FS functions}
+\label{sec:native-tc-nef-fs-tensor-potential}
+
+Let $X$ be integral, $\pi\colon\mathcal X\to\mathbf A^1$ a test configuration of $X$, and
+$(M,\alpha,e)$, $(H,\beta,f)$ linearized lines with generic lines $L,K$.  Write
+$\varphi_M$, $\varphi_H$ for their native model potentials at the fixed Gauss radius, and
+use the linearizations of tensor products and powers of
+Lemma~\ref{lem:native-tc-nef-fs-whole-tensor-comparisons}.
+
+\begin{theorem}[Native norm factors multiply]
+\label{thm:native-tc-nef-fs-tensor-native-factor}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeNormFactor_tensor_comparisons}
+\uses{lem:native-tc-nef-fs-whole-tensor-comparisons,
+lem:native-tc-nef-fs-product-tensor-coherence,
+lem:native-tc-nef-fs-induced-residue-tensor-frame,
+lem:native-tc-nef-fs-reference-support-tensor-frame,
+lem:native-tc-nef-fs-native-factor-arbitrary-center,
+thm:native-tc-intrinsic-factor-original-frame-independence,
+thm:actual-original-common-affine-line-frames,
+lem:actual-center-generic-tensor-frame,
+thm:fc-original-ample-tensor-ample,
+thm:fc-actual-power-frame-transition-units}
+\source{bj22-trivval:sec:tc}
+If $L$ and $K$ are ample, then at every point and radius the native norm factor of
+$M\otimes H$ is the product of the native norm factors of $M$ and of $H$.
+\end{theorem}
+
+\begin{proof}
+Since $L$ and $K$ are invertible, there is an affine open $U$ containing the centre of the
+given point on which both $L$ and $K$ are trivial; fix frames $e_L,e_K$ there and use the
+tensor frame $e_L\otimes e_K$ for $L\otimes K$.  At the valuation centre of the Gauss point
+in the total space, use the tensor of the two chosen centre frames of $M$ and $H$; its
+generic frame is the tensor of their generic frames
+(Lemma~\ref{lem:actual-center-generic-tensor-frame}).
+
+The line $L\otimes K$ is ample because $X$ is integral
+(Theorem~\ref{thm:fc-original-ample-tensor-ample}).  Hence, by
+Lemma~\ref{lem:native-tc-nef-fs-native-factor-arbitrary-center}, the native factor of
+$M\otimes H$ is the valuation of the transition unit between the reference frame induced
+by $e_L\otimes e_K$ and the model frame induced by the tensor centre frame.  By
+Theorem~\ref{thm:native-tc-intrinsic-factor-original-frame-independence} the native factors
+of $M$ and $H$ are computed in the same way with $e_L$, resp.\ $e_K$, on the same open $U$.
+
+The product comparison of the tensor data is the tensor of the two product comparisons,
+conjugated by the pullback tensorators
+(Lemma~\ref{lem:native-tc-nef-fs-product-tensor-coherence}); induced residue frames and
+reference support frames commute with tensor products
+(Lemmas~\ref{lem:native-tc-nef-fs-induced-residue-tensor-frame}
+and~\ref{lem:native-tc-nef-fs-reference-support-tensor-frame}).  Therefore both the
+reference frame and the model frame of $M\otimes H$ are the same inverse tensorator
+followed by the tensor frame of the frames of $M$ and $H$.  A common preceding isomorphism
+cancels in a transition unit, and the transition unit of two tensor frames is the product
+of the transition units.  The residue valuation is multiplicative.
+\end{proof}
+
+\begin{theorem}[Native model potentials add]
+\label{thm:native-tc-nef-fs-tensor-native-potential}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_tensor_comparisons}
+\uses{thm:native-tc-nef-fs-tensor-native-factor, def:native-tc-original-model-potential}
+If $L$ and $K$ are ample, the native model potential of $M\otimes H$ is
+$\varphi_M+\varphi_H$.
+\end{theorem}
+
+\begin{proof}
+The native potential is minus the logarithm of the positive native factor.  Apply
+Theorem~\ref{thm:native-tc-nef-fs-tensor-native-factor} and $\log(cd)=\log c+\log d$ for
+$c,d>0$.
+\end{proof}
+
+\begin{theorem}[Native potential of a power-tensor line]
+\label{thm:native-tc-nef-fs-power-tensor-native-potential}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_powerTensor_comparisons}
+\uses{thm:native-tc-nef-fs-tensor-native-potential, thm:native-tc-nef-fs-power-potential}
+If $L^{\otimes b}$ and $K^{\otimes a}$ are ample, the native model potential of
+$M^{\otimes b}\otimes H^{\otimes a}$ is $b\varphi_M+a\varphi_H$.
+\end{theorem}
+
+\begin{proof}
+Apply Theorem~\ref{thm:native-tc-nef-fs-tensor-native-potential} to the linearized lines
+$M^{\otimes b}$ and $H^{\otimes a}$, whose generic lines $L^{\otimes b}$, $K^{\otimes a}$
+are ample, and then Theorem~\ref{thm:native-tc-nef-fs-power-potential} to each factor.
+\end{proof}
+
+\begin{theorem}[Exact FS functions from a centrally nef line]
+\label{thm:native-tc-nef-fs-actual-potential-sum-finite-fs}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.isFinFS_power_tensor_potential_sum_of_central_nef}
+\uses{thm:native-tc-nef-fs-perturbed-model-exact,
+thm:native-tc-nef-fs-power-tensor-native-potential}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+Assume moreover that $k$ is infinite, $\mathcal X$ is integral and dominant over
+$\mathbf A^1$, $M|_{\mathcal X_0}$ is nef and $H|_{\mathcal X_0}$ is ample.  If $a>0$ and
+$L^{\otimes b}$, $K^{\otimes a}$ are ample, then $b\varphi_M+a\varphi_H$ is a finite
+rational Fubini--Study function of class $1$ for $L^{\otimes b}\otimes K^{\otimes a}$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:native-tc-nef-fs-perturbed-model-exact} the native model potential of
+$M^{\otimes b}\otimes H^{\otimes a}$ is such a function, and by
+Theorem~\ref{thm:native-tc-nef-fs-power-tensor-native-potential} it equals
+$b\varphi_M+a\varphi_H$ at every point.
+\end{proof}
+
+\begin{corollary}[Division by the nef exponent]
+\label{cor:native-tc-nef-fs-potential-add-div}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.isFinFS_potential_add_div_of_central_nef}
+\uses{thm:native-tc-nef-fs-actual-potential-sum-finite-fs,
+lem:native-tc-nef-fs-ray-denominator-division}
+\source{fhx-envelope-20261028:eq:FS-function}
+Under the hypotheses of Theorem~\ref{thm:native-tc-nef-fs-actual-potential-sum-finite-fs}
+and $b>0$, the function $\varphi_M+\frac ab\varphi_H$ is a finite rational Fubini--Study
+function of class $1/b$ for $L^{\otimes b}\otimes K^{\otimes a}$, defined by the same
+sections and weights.
+\end{corollary}
+
+\begin{proof}
+Divide the realization of Theorem~\ref{thm:native-tc-nef-fs-actual-potential-sum-finite-fs}
+by $b$ (Lemma~\ref{lem:native-tc-nef-fs-ray-denominator-division}); the resulting
+function is $b^{-1}(b\varphi_M+a\varphi_H)=\varphi_M+\frac ab\varphi_H$.
+\end{proof}
+
+\begin{remark}
+In the application to the local positivity lemma of Fang--Han--Xia, $\varphi_M$ is
+(up to the normalizations $r\varphi=\varphi_M+c$) the given locally convex function and
+$H$ is an auxiliary line ample on the central fibre.  Letting $b\to\infty$ for fixed $a$
+then exhibits $\varphi_M$ as a uniform limit of Fubini--Study functions, provided
+$\varphi_H$ is bounded.  The construction of $H$, the bound on $\varphi_H$, and the
+passage from these native functions to Fubini--Study functions on $X^{\mathrm{an}}$ are
+not part of this chapter.
+\end{remark}

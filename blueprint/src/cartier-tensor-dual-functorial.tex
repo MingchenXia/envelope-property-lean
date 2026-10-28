@@ -1,0 +1,22 @@
+\section{Actual tensor and dual functoriality of the Cartier ratio sheaf}
+\begin{lemma}[Whole explicit tensor and sheaf dual preserve actual isomorphism laws]
+\label{lem:cartier-actual-tensor-dual-functorial}
+\uses{lem:actual-cartier-ratio-line-sheaf}
+\leanok
+\lean{AlgebraicGeometry.Scheme.Modules.tensorObjCongr_refl,AlgebraicGeometry.Scheme.Modules.tensorObjCongr_trans,AlgebraicGeometry.Scheme.Modules.dualIsoObj_refl,AlgebraicGeometry.Scheme.Modules.dualIsoObj_trans}
+The actual sheafified tensor comparison preserves genuine identity and
+composition isomorphisms, and the actual sheaf dual preserves identities
+and reverses genuine compositions.
+\end{lemma}
+\begin{proof}
+For the tensor, take the original whole underlying presheaf-module
+isomorphisms, tensor them using the genuine monoidal category of
+presheaves, and apply actual sheafification. The original tensor identity
+and tensor-composition law and true functoriality of sheafification prove
+the stated whole isomorphism equalities. For the sheaf dual, its original
+map is precomposition by the actual whole sheaf morphism on every
+original over-site. The genuine already proved dual identity and reversed
+composition equations therefore give precisely the corresponding entire
+isomorphism identities. No choice of local frames or comparison premise
+is used.
+\end{proof}

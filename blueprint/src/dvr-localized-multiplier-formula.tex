@@ -1,0 +1,48 @@
+\section{Exact multiplier cutoffs at actual divisorial leaf localizations}
+
+\begin{lemma}[Rounding a monomial of total coordinate order at most one]\label{lem:sc0-multiplier-rounding-order-one}
+\lean{EnvelopeProperty.Char0.weighted_multiplier_floor_eq_of_sum_le_one}
+\leanok
+If nonnegative integers $r_l$ on a finite index set satisfy $\sum_l r_l\le1$,
+then for all rational $q$ and nonnegative integers $d_l,a_l$,
+\[
+ \max\{0,\lfloor q\sum_l d_lr_l\rfloor-\sum_l a_lr_l\}
+ =\sum_l\max\{0,\lfloor qd_l\rfloor-a_l\}r_l.
+\]
+\end{lemma}
+\begin{proof}
+Either all $r_l$ vanish, in which case both sides are zero, or one is
+positive. That one must equal one because their sum is at most one,
+and all others must be zero. All three sums then evaluate at the same
+single index, and the displayed equality follows.
+\end{proof}
+
+\begin{theorem}[The exact rounded monomial formula at a divisorial leaf localization]\label{thm:sc0-multiplier-localized-leaf-formula}
+\lean{EnvelopeProperty.Char0.dvrMultiplierContribution_eq_monomial_comap_of_localization}
+\leanok
+\uses{lem:sc0-multiplier-rounding-order-one,cor:sc0-dvr-etale-leaf-localization-orders,thm:sc0-dvr-etale-leaf-localization-unit,cor:sc0-dvr-leaf-source-jacobian-order}
+Let $C\subseteq E\subseteq V\subseteq K$ be actual source and leaf
+subalgebras with $V$ an actual essentially finite-type divisorial DVR
+which is a localization of the actual \'etale leaf $E$. Suppose
+$\mathfrak aE=(\prod_l v_{c(l)}^{d_l})$ and the genuine original-source
+leaf Jacobian ideal is $(\prod_l v_{c(l)}^{a_l})$, with distinct boundary
+coordinates. Then the contribution of $V$ to the actual original-source
+multiplier ideal is exactly the inverse image in $C$ of
+\[
+ \left(\prod_l v_{c(l)}^{\max\{0,\lfloor qd_l\rfloor-a_l\}}\right)V.
+\]
+\end{theorem}
+\begin{proof}
+The actual leaf-coordinate derivative determinant is a unit, so the
+exact source Jacobian order formula reduces to
+$\sum_l a_l\operatorname{ord}_V(v_{c(l)})$.
+The original ideal order is
+$\sum_l d_l\operatorname{ord}_V(v_{c(l)})$, by actual extension of its
+monomial identity. All coordinate orders are finite and their sum is
+at most one; distinctness gives the same bound on the boundary subset.
+The preceding rounding lemma thus identifies the actual DVR cutoff
+exponent with the order of the displayed rounded monomial. Membership
+in either corresponding DVR ideal is that the original element has
+at least this order. Taking the literal inverse image in $C$ proves
+the equality of actual original-source ideals.
+\end{proof}

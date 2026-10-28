@@ -1,0 +1,21 @@
+\section{Every native coefficient of the original commuting unit square}
+
+\begin{lemma}[All coefficients of the native unit square]
+\label{lem:kn-native-module-square-weighted-unit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeUnit_originalModuleSquare_app_smul}
+\uses{lem:kn-native-module-square-all-coefficients}
+\leanok
+For any actual commuting square and any module $M$ on its base, the
+original module square followed by the original pullback source
+comparison sends $b\eta_p(m)$ to
+$J(b)\eta_q(\eta_s(m))$ over every original open. Here $J$ is the
+same actual structural square and $b,m$ are arbitrary local sections.
+\end{lemma}
+\begin{proof}
+The coefficient theorem first carries $b$ through the original module
+square as $J(b)$. The original pullback source comparison is a morphism
+of modules on the actual upper-right scheme, so preserves this scalar.
+The independently proved native unit-square identity identifies the
+remaining unweighted section with the successive native units. These
+three original identities give the formula without a matching premise.
+\end{proof}

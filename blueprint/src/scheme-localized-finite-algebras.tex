@@ -1,0 +1,64 @@
+\section{The whole original finite inverse at actual coefficient localizations}
+
+\begin{theorem}[Original finite dominant coefficient algebra]
+\label{thm:fc-localized-finite-original-coefficients}
+\leanok
+\lean{EnvelopeProperty.SchemeLocalizedFiniteAlgebras.coefficientMap_injective, EnvelopeProperty.SchemeLocalizedFiniteAlgebras.sections_module_finite}
+For an actual domain $A$ and finite dominant map
+$f:Y\to\operatorname{Spec}A$ with integral original $Y$, the actual original whole coefficient map
+$A\to\Gamma(Y,\mathcal O_Y)$ is injective and finite.
+\end{theorem}
+\begin{proof}
+Actual dominance gives native scheme-theoretic dominance and hence
+injectivity of the original section map.  Actual finiteness gives the
+original finite section map; compose with the native
+$\Gamma\operatorname{Spec}A=A$ identification.
+\end{proof}
+
+\begin{theorem}[Whole localized inverse is integral and keeps generic rank]
+\label{thm:fc-localized-finite-whole-integrality-rank}
+\leanok
+\lean{EnvelopeProperty.SchemeLocalizedFiniteAlgebras.baseChange_sections_isDomain, EnvelopeProperty.SchemeLocalizedFiniteAlgebras.baseChange_isIntegral, EnvelopeProperty.SchemeLocalizedFiniteAlgebras.baseChange_sections_finrank}
+Let $A$ be a domain and $S$ the actual localization at a multiplicative
+set of original nonzerodivisors.  The entire original base-change scheme
+$Y\times_{\operatorname{Spec}A}\operatorname{Spec}S$ is integral, and its
+whole original $S$-section algebra has the same generic rank as the
+original whole $A$-section algebra of $Y$.
+\uses{thm:fc-localized-finite-original-coefficients}
+\end{theorem}
+\begin{proof}
+The actual native whole affine section tensor equivalence identifies the
+original inverse algebra with $S\otimes_A\Gamma(Y,\mathcal O_Y)$, preserving
+the original two coefficient maps.  This actual tensor algebra is the
+localization of the original domain section algebra at the image of the
+same original multiplicative set, so is a domain.  Native affine spectrum
+and section equivalence therefore give integrality of the entire inverse
+scheme.  Genuine localized-module and localized-ring rank equalities
+preserve the original generic rank.
+\end{proof}
+
+\begin{theorem}[Actual nonflat local inverse principal field degree]
+\label{thm:fc-localized-finite-principal-field-degree}
+\leanok
+\lean{EnvelopeProperty.SchemeLocalizedFiniteAlgebras.baseChange_principal_fieldDegree}
+If the same original $S$ is a local Noetherian domain of dimension at most
+one over the original field $k$ with finite actual residue degree, every
+nonzero original $a\in S$ has
+\[
+ \dim_k\bigl(\Gamma(Y_S,\mathcal O_{Y_S})/a\bigr)
+ =\operatorname{rank}_A\Gamma(Y,\mathcal O_Y)\,
+   \operatorname{ord}_S(a)[\kappa(S):k].
+\]
+\uses{thm:fc-localized-finite-whole-integrality-rank,thm:fc-nonflat-local-principal-field-degree}
+\end{theorem}
+\begin{proof}
+The original finite inverse is integral and finite over $S$, and its
+coefficient map is injective by the true whole tensor equivalence and
+injectivity after the actual flat localization.  The local principal-field
+degree theorem internally gives finite quotient dimension and the claimed
+formula, followed by the derived original generic-rank equality.  The
+original finite $f$ need not be flat or normal.  No inverse algebra,
+quotient dimension, rank or degree comparison is supplied.  Actual
+stalk/fibre comparison and the global singular-curve line-degree sum remain
+separate consumers.
+\end{proof}

@@ -1,0 +1,35 @@
+\section{Actual semilinear principal quotient lengths}
+
+\begin{theorem}[True length under original semilinear bijections]
+\label{thm:fc-semilinear-original-length}
+\leanok
+\lean{EnvelopeProperty.SemilinearPrincipalLengths.length_eq_of_semilinear_bijective}
+A genuinely bijective original semilinear module map over a genuinely
+surjective original coefficient map identifies the actual respective-ring
+module lengths.
+\end{theorem}
+\begin{proof}
+The original semilinear map induces the native order isomorphism between
+the respective original submodule lattices.  The actual module lengths are
+their actual lattice Krull dimensions, so agree.  No replacement scalar
+action or length equality is supplied.
+\end{proof}
+
+\begin{theorem}[Original principal quotients and orders under ring isomorphisms]
+\label{thm:fc-original-principal-ring-iso-order}
+\leanok
+\lean{EnvelopeProperty.SemilinearPrincipalLengths.principalQuotientMap, EnvelopeProperty.SemilinearPrincipalLengths.principalQuotientMap_bijective, EnvelopeProperty.SemilinearPrincipalLengths.ord_ringEquiv}
+For an actual original ring isomorphism $e:R\simeq S$ and original $a\in R$,
+the native original principal quotient map $R/(a)\to S/(e(a))$ is bijective
+and semilinear over that same $e$.  Consequently the actual original
+principal orders $\operatorname{ord}_R(a)$ and
+$\operatorname{ord}_S(e(a))$ agree.
+\uses{thm:fc-semilinear-original-length}
+\end{theorem}
+\begin{proof}
+The native quotient ring isomorphism maps each original residue class to
+the class of its actual original image.  Its original multiplication rule
+gives the true semilinear scalar identity.  Apply the respective-ring length
+theorem to these literal principal quotients.  No domain, flatness,
+Noetherianity, chosen order or preservation certificate is required.
+\end{proof}

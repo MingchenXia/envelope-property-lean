@@ -1,0 +1,83 @@
+\subsection{Absolute native projective point spaces and all coefficient restrictions}
+\label{subsec:native-absolute-projective-comparison}
+
+\begin{theorem}[Genuine absolute normalized/native projective homeomorphism]
+\label{projective:absolute-normalized-native-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_onChart,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_injective,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativePoint_surjective,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_nativePoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeEquiv,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeEquiv_symm_onChart,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_nativeEquiv_symm,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph_apply,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph_point,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph_chart}
+\leanok
+\uses{projective:normalized-native-residue-values,projective:general-normalized-spectrum,projective:native-scheme-coordinate-sections}
+For an arbitrary commutative ring $R$, its absolute normalized graded
+polynomial seminorm model is homeomorphic to the actual absolute native
+valued-point space of polynomial Proj. The map is the canonical true
+projective stalk-residue construction, preserves the actual homogeneous
+prime support and commutes with every whole affine coordinate chart.
+No coefficient seminorm is fixed and no compactness is asserted for
+this absolute space.
+\end{theorem}
+\begin{proof}
+On any coordinate open, the already proved true fraction and polynomial
+section identities identify the canonical native point with the inverse
+actual absolute native coordinate chart of the whole normalized chart
+point. Actual coordinate opens cover both spaces. Equal native points
+have equal support, so share a nonzero coordinate; native and normalized
+whole chart injectivity then identify their entire normalized points.
+For every native point, choose an actual coordinate chart, take its
+true affine spectrum point and use the genuine inverse normalized Gauss
+chart. The entire native chart identity recovers that original native
+point. These arguments prove bijectivity without any coefficient bound.
+
+On each source coordinate open, the canonical native map is a composite
+of genuine continuous chart maps, proving its global continuity. Its
+inverse on each actual target coordinate open is precisely the true
+native chart followed by the genuine normalized Gauss inverse and its
+open inclusion. The inverse identities proved above establish this
+entire inverse formula. These genuine target opens cover, so the
+inverse is globally continuous. Thus the actual bijection is a
+homeomorphism without a compactness or Hausdorffness hypothesis.
+The canonical point and whole chart identities give the asserted
+support and chart preservation.
+\end{proof}
+
+\begin{theorem}[Every prescribed coefficient restriction is the genuine relative comparison]
+\label{projective:absolute-native-coefficient-restriction}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteHomeomorph_mem_relativeLocus,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteRelativeHomeomorph,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.nativeAbsoluteRelativeHomeomorph_eq}
+\leanok
+\uses{projective:absolute-normalized-native-homeomorphism,projective:normalized-native-homeomorphism}
+For any prescribed real seminorm $v$ of $R$, a normalized point's
+absolute native image lies above the entire base point $v$ exactly when
+all its original coefficient values equal $v$. Restricting the absolute
+homeomorphism to these actual loci gives exactly the previously proved
+relative normalized/native homeomorphism as a whole point map and
+homeomorphism.
+\end{theorem}
+\begin{proof}
+If all coefficient values equal $v$, the actual relative canonical-point
+construction already proves the whole base point equality. Conversely,
+suppose the actual absolute native image lies above $v$. Surjectivity
+of the genuine relative comparison supplies a relative normalized
+point with exactly that whole native image. Absolute injectivity then
+identifies its whole normalized seminorm with the original one, proving
+the required equality on every coefficient, including zero.
+
+Restrict the genuine absolute homeomorphism using this proved if-and-
+only-if condition. Both restricted and existing relative maps use the
+same canonical actual projective stalk-residue point. Equality of their
+whole functions therefore identifies the two homeomorphisms. The
+relative compactness theorem remains a separate genuine consequence of
+fixed coefficient bounds for individual polynomials; the absolute
+homeomorphism imposes no globally bounded coefficients or absolute
+compactness claim. No analytic structure-sheaf or cone-residue-field
+identification is asserted.
+\end{proof}

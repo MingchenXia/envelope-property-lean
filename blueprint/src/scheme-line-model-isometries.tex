@@ -1,0 +1,63 @@
+\section{Actual module isomorphisms preserve the original model norm}
+
+\begin{lemma}[Original module isomorphisms preserve genuine generic frames]
+\label{lem:scheme-line-actual-generic-frame-naturality}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameGenericIso_natural}
+\leanok
+\uses{lem:scheme-line-actual-center-frame}
+For an actual original module isomorphism
+$a:\mathcal M\simeq\mathcal N$ and an actual valuative frame $e$ of
+$\mathcal N$, composing its actual center pullback with $e$ gives a
+frame of $\mathcal M$. Its actual generic frame is the original
+generic pullback of $a$ followed by the actual generic frame of $e$.
+\end{lemma}
+\begin{proof}
+The actual generic-comparison isomorphism is the native pullback
+composition followed by the native equality comparison from the
+actual valuative triangle. It is consequently natural in every
+original module morphism. Its inverse naturality on $a$ moves the
+actual generic pullback of $a$ through that inverse comparison.
+Functoriality of the original center and generic pullbacks then
+identifies the two displayed composites of actual frames.
+\end{proof}
+
+\begin{lemma}[An actual whole original line isomorphism is an isometry]
+\label{lem:scheme-line-actual-model-isomorphism-isometry}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_mapIso}
+\leanok
+\uses{lem:scheme-line-actual-generic-frame-naturality,def:scheme-line-actual-model-norm}
+Every actual original module-sheaf isomorphism between invertible
+sheaves is an isometry of their genuine proper-model norms on the
+same original residue-field pullback line fibers.
+\end{lemma}
+\begin{proof}
+Choose a derived actual valuative frame $e$ of the target. Compute
+its original model norm in that frame. For the source use the actual
+center pullback of the given isomorphism followed by $e$; frame
+independence permits this frame. The preceding genuine generic-frame
+naturality identifies its coefficient with the target coefficient of
+the actual original generic image of the section. Their original
+residue-field valuations, hence the two model norms, are equal.
+\end{proof}
+
+\begin{lemma}[The actual structure-module model norm is the original scalar norm]
+\label{lem:scheme-line-actual-model-unit-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_unit}
+\leanok
+\uses{def:scheme-line-actual-model-norm}
+For the actual structure-module line, the genuine proper-model norm
+is the original residue-field valuation after the canonical original
+structure-module pullback comparison.
+\end{lemma}
+\begin{proof}
+Use the actual structure-unit pullback comparison at the genuine
+valuative center as the actual center frame. Monoidality of the
+original structure-unit comparison for successive pullbacks identifies
+its generic frame with the canonical structure-unit pullback
+comparison at the original residue point: the native comparison
+satisfies the true composition equation, and the native equality
+comparison satisfies the true unit equation along the valuative
+triangle. Cancel these actual comparison isomorphisms. By the
+definition of the original frame norm the result is exactly the
+original residue-field scalar valuation, as stated.
+\end{proof}

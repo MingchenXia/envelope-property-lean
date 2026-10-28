@@ -1,0 +1,31 @@
+\section{The genuine homogeneous action on Rees cohomology}
+
+\begin{lemma}[Homogeneous scalars preserve the original degree shift]
+\label{lem:fc-rees-cech-homogeneous-action}
+\leanok
+\lean{EnvelopeProperty.FcReesCechHomogeneousAction.chartCoefficient_monomial, EnvelopeProperty.FcReesCechHomogeneousAction.termPowerEquiv_symm_lof, EnvelopeProperty.FcReesCechHomogeneousAction.homogeneousScalar, EnvelopeProperty.FcReesCechHomogeneousAction.term_homogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.gradedHomogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.degreeInclusion_homogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.homologyInclusion_homogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.ordered_homogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.originalHomologyIso, EnvelopeProperty.FcReesCechHomogeneousAction.originalHomologyIso_homogeneous, EnvelopeProperty.FcReesCechHomogeneousAction.reesModule_homogeneous}
+\uses{lem:fc-rees-cech-degree-inclusions,lem:fc-rees-cech-homogeneous-multiplication,lem:fc-rees-cech-homology-module}
+Let $X\to\operatorname{Spec}R$ be separated and let $(U_i)$ be a finite
+linearly ordered family of affine opens.  For $a\in I^e$, multiplication by
+the genuine Rees monomial $at^e$ on the structure-module Čech complex of
+the schematic Rees family carries the original degree-$d$ summand into
+the original degree-$(e+d)$ summand.  Under the canonical cohomology
+decomposition its action on that summand is the cohomology map induced
+by multiplication by $a$ on the original ideal-power sections.
+\end{lemma}
+\begin{proof}
+The coefficient decomposition sends the polynomial $xt^d$ to the
+degree-$d$ inclusion of $x$, on every original intersection.  Conversely,
+polynomial coefficients show that the inverse image of this inclusion
+is exactly $xt^d$.  The original coefficient map sends $at^e$ to
+$(a|_V)t^e$ on an affine intersection $V$, where $a|_V$ is its original
+structural coefficient.  Thus its product with $xt^d$ is
+$(a|_V)x t^{e+d}$, at every intersection.  This proves equality of the
+entire term maps.  Homogeneous multiplication commutes with the
+original restrictions, so these maps give the equality of cochain maps.
+Applying cohomology preserves their equality and compositions.  The
+cohomology decomposition preserves each original summand inclusion;
+linearity of the structure-module comparison and of the homology
+functor therefore identifies the genuine scalar action with the stated
+degree-shift map on every cohomology class.
+\end{proof}

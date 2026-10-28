@@ -1,0 +1,38 @@
+\section{Simultaneous monomials in literal leaf rings}
+
+\begin{lemma}[Factor identities transfer through the actual boundary ideals]\label{lem:sc0-family-leaf-factor-transport}
+\lean{EnvelopeProperty.Char0.idealOfSpecSheaf_comap_monomial_factor, EnvelopeProperty.Char0.exists_family_factor_monomials_in_leaf_coordinates}
+\leanok
+\uses{lem:sc0-leaf-chart-ideal-transport}
+Suppose a native factor ideal on an actual chart is a monomial in generators
+of its actual boundary component ideals. If actual coordinates on a contained
+literal leaf cut out the actual pulled-back boundary ideals, that same factor
+is the same exponent monomial in those actual leaf coordinates.
+\end{lemma}
+\begin{proof}
+Rewrite the original factor ideal as the product of the powers of its actual
+boundary component ideals. Pull this actual ideal identity through the
+actual affine factor ring map. Ideal extension preserves products and powers,
+and the checked actual boundary-ideal identities on the leaf turn the result
+into the asserted coordinate monomial. This depends only on the actual
+component ideals, so any actual adapted leaf coordinates cutting them out work.
+\end{proof}
+
+\begin{theorem}[A contained leaf has simultaneous factor and Jacobian monomials]\label{thm:sc0-family-leaf-jacobian-monomials}
+\lean{EnvelopeProperty.Char0.exists_family_leaf_coordinates_jacobian_monomials}
+\leanok
+\uses{lem:sc0-family-leaf-factor-transport,def:sc0-snc-family-jacobian-neighbourhood,thm:sc0-leaf-jacobian-unit-monomial}
+An actual literal domain leaf contained in an actual simultaneous family
+Jacobian neighborhood has actual \'etale coordinates in which every actual
+pulled-back family factor and the total transform are monomial and the literal
+original-base coordinate Jacobian is an actual unit times a boundary monomial.
+\end{theorem}
+\begin{proof}
+Forget the family momentarily and apply the checked actual contained-leaf
+Jacobian theorem. It gives actual leaf coordinates and actual identities for
+the pulled-back boundary ideals. The actual simultaneous neighborhood retains
+every factor's original native monomial formula. Apply the preceding ideal
+transport lemma to each factor with those same actual leaf boundary ideals.
+Retain the already produced exact total-transform identity and literal unit
+Jacobian formula. Thus all factor and Jacobian data use the same leaf coordinates.
+\end{proof}

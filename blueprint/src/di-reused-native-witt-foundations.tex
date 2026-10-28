@@ -1,0 +1,100 @@
+\section{Reused native Witt restriction foundations}
+\label{sec:di-reused-native-witt-foundations}
+
+The two native restriction results below are reused from an earlier part of the formalization; their theorem
+statements, Lean bindings and proofs are unchanged.
+
+Let $k$ be a perfect field of characteristic $p$, let $A,A'$ be smooth
+$W_2(k)$-algebras, and let $\beta:A\to A'$ be an actual etale
+$W_2(k)$-algebra map. Retain the original copied-Witt source algebras
+$R_A$, residue tensors $B_A=k\otimes_{W_2(k)}A$, relative twists
+$T_A=\operatorname{RelativeFrobenius.twist}(k\to B_A,p)$, and their
+proved reductions and geometric relative Frobenius maps. Let $F,G$
+be genuine native lifts, with their original reduction identities.
+The maps $F',G'$ are the canonical restricted lifts along $\beta$,
+not additional chosen compatible lifts. Write $\rho$ and $u_q$ for
+the original cotangent and exterior maps induced by the residue tensor
+map. The symbols $\xi_F,H_{F,G}$ denote the canonical divided maps
+of these same native models.
+
+\begin{theorem}[The actual arbitrary Witt restriction preserves the canonical divided one-form]
+\label{thm:di-witt-native-arbitrary-restriction-xi}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.oneFormMap_restrictedLift,EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.sectionOneFormMap_restrictedLift}
+\leanok
+\uses{thm:witt-two-etale-restricted-lift-exists}
+For the SAME canonical zero-safe native maps,
+\[
+ u_1\circ\xi_F=\xi_{F'}\circ\rho.
+\]
+The public Witt theorem takes $\beta,F$ and their genuine etale/lift
+conditions; it does not take $F'$ or a commuting lift square or the
+asserted $\xi$ square as additional data. In the actual scheme
+specialization even $\beta$ is the internally constructed original restriction.
+\end{theorem}
+\begin{proof}
+The etale extension theorem gives
+$\beta F=F'\beta_R$. The actual source-reduction naturality gives
+$a_{A'}\beta_R=\tau a_A$, and target reduction gives
+$b_{A'}\beta=\bar\beta b_A$.
+For $r\in R_A$, the existing actual divisor-existence theorem gives
+$\eta\in\Omega^1_{A/W'}$ with $p\eta=dF(r)$.
+Its actual image $\Omega(\beta)(\eta)$ satisfies
+\[
+ p\Omega(\beta)(\eta)=dF'(\beta_R(r)),
+\]
+by the internally derived whole commuting lift square.
+The original cotangent reduction maps satisfy, on EVERY lifted form,
+\[
+ \Omega(\bar\beta)\operatorname{red}_A(\eta)
+   =\operatorname{red}_{A'}\Omega(\beta)(\eta).
+\]
+To prove this auxiliary square, check a universal $dx$ using
+$b_{A'}\beta=\bar\beta b_A$. The same equation identifies their
+scalar factors on $x\eta$, and span induction on the original
+$A$-cotangent module proves equality for every form. All coefficient
+towers follow from the actual copy-$W'$ algebra maps and reductions.
+No characteristic instance on either residue algebra is used.
+
+Apply \texttt{oneFormMap\_\allowbreak{}D\_\allowbreak{}of\_\allowbreak{}lift} to $\eta$ and its image.
+Singleton-wedge naturality, proved by the original degree-one
+canonical exterior-map formula, converts that cotangent square into
+\[
+ u_1\xi_F(d a_A(r))=\xi_{F'}(d a_{A'}(\beta_R(r)))
+                    =\xi_{F'}\rho(d a_A(r)).
+\]
+Surjectivity of $a_A$ covers every $dt$ in the true native source,
+and those universal differentials span $\Omega^1_{T_A^B/k}$.
+Both composites are $T_A^B$-linear into the same scalar-restricted
+geometric-$\beta$ target; span induction proves their whole-map equality.
+This proof applies when the source or target residue algebra is zero.
+\end{proof}
+
+\begin{theorem}[The actual arbitrary Witt restriction preserves the canonical difference term]
+\label{thm:di-witt-native-arbitrary-restriction-H}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.zeroFormTerm_restrictedLift,EnvelopeProperty.DeligneIllusie.WittTwoNativeTwistRestriction.sectionZeroFormTerm_restrictedLift}
+\leanok
+\uses{thm:witt-two-etale-restricted-lift-exists}
+For two arbitrary genuine original lifts $F,G$, and their actual
+restricted lifts $F',G'$, the SAME canonical zero-form terms satisfy
+\[
+ u_0\circ H_{F,G}=H_{F',G'}\circ\rho.
+\]
+No equality between independently chosen lifts is assumed.
+\end{theorem}
+\begin{proof}
+For $r\in R_A$, the common reduction of $F(r)$ and $G(r)$ and
+$\ker b_A=pA$ produce $z\in A$ with
+$pz=F(r)-G(r)$. The original whole lift restriction equations give
+$p\beta(z)=F'(\beta_R(r))-G'(\beta_R(r))$.
+The original \texttt{FrobeniusLiftDifference.\allowbreak{}cotangentMap\_\allowbreak{}D} and
+\texttt{difference\_\allowbreak{}eq\_\allowbreak{}of\_\allowbreak{}lift} identify the canonical value on
+$d a_A(r)$ with $b_A(z)$, and its restricted value with
+$b_{A'}(\beta(z))$. These agree under $\bar\beta$ by actual
+reduction naturality. The original exterior degree-zero equivalence
+carries this equality to $u_0$. As before, source-reduction
+surjectivity and cotangent span induction prove equality on every
+form and hence of whole scalar-restricted module maps. Flatness of
+the original reductions makes this value independent of the internally
+chosen divisor; it is the same canonical $H$, not a chosen primitive.
+\end{proof}
+

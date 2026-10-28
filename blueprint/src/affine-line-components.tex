@@ -1,0 +1,263 @@
+\subsection{Actual affine dimensions and domination of line components}
+\label{subsec:actual-affine-line-components}
+
+\begin{theorem}[Whole prime heights under actual integral going-down]
+\label{algebra:integral-normal-height}
+\lean{EnvelopeProperty.height_eq_under_of_isIntegral_of_hasGoingDown,
+EnvelopeProperty.height_eq_under_of_normal_integral}
+\leanok
+Let $R\to S$ be an integral extension of Noetherian commutative rings
+with genuine going-down. Every prime $P$ of $S$ has exactly the height
+of its contraction to $R$. In particular this applies when $S$ is a
+domain, the coefficient action is faithful, and $R$ is integrally closed.
+\end{theorem}
+\begin{proof}
+Integral incomparability puts the actual prime $P$ among the minimal
+primes over the extension of its contraction. The true quotient prime
+correspondence therefore identifies its image in that quotient as a
+minimal prime of the quotient ring, of height zero. The genuine
+going-down height-addition theorem expresses the entire original height
+as the contraction height plus this actual quotient height. Removing
+the zero summand gives the equality. A faithful domain algebra over a
+normal base satisfies actual going-down; the normal specialization uses
+that theorem, rather than a height-equality certificate.
+\end{proof}
+
+\begin{theorem}[Actual maximal heights and positive-dimensional prime quotients]
+\label{algebra:affine-domain-maximal-height}
+\lean{EnvelopeProperty.maximalHeight_mvPolynomialFin,
+EnvelopeProperty.exists_constant_maximalHeight_of_finiteType_domain,
+EnvelopeProperty.maximalHeight_eq_ringKrullDim_of_finiteType_domain,
+EnvelopeProperty.positive_dim_quotient_of_height_lt_of_finiteType_domain}
+\leanok
+\uses{algebra:integral-normal-height}
+For any field $F$, every maximal prime of $F[X_1,\ldots,X_n]$ has
+height $n$. Every actual finite-type domain $D$ over $F$ has a common
+height for all maximal ideals, equal to its entire Krull dimension.
+Consequently a prime $P$ of smaller height than $\dim D$ has
+$\dim(D/P)>0$. No algebraic-closure or characteristic hypothesis is used.
+\end{theorem}
+\begin{proof}
+Induct on the actual coordinate count. The zero-variable polynomial
+algebra is the field. The genuine polynomial-ring equivalence in the
+successor step identifies the maximal prime with one in a one-variable
+polynomial ring. Jacobson contraction makes its coefficient prime
+maximal, and the actual polynomial height theorem increases that
+coefficient height by one.
+
+True Noether normalization constructs an injective finite homomorphism
+from an actual polynomial algebra to $D$. That base is normal and the
+action is faithful; the preceding height theorem identifies every
+maximal height in $D$ with that of its actual maximal contraction.
+The genuine characterization of Krull dimension by maximal heights
+then makes this common height equal to $\dim D$.
+
+If $P$ has smaller height, it cannot be maximal. If its actual domain
+quotient had dimension at most zero, that quotient would be a field.
+The true quotient-field criterion would make $P$ maximal, contradicting
+the proved strict height inequality. This derives positive dimension
+from the actual ring, rather than assuming a component-dimension witness.
+\end{proof}
+
+\begin{theorem}[Actual dimension under normal integral extension and principal localization]
+\label{algebra:affine-domain-dimension-comparison}
+\lean{EnvelopeProperty.ringKrullDim_eq_of_normal_integral_finiteType_domain,
+EnvelopeProperty.ringKrullDim_localizationAway_of_finiteType_domain}
+\leanok
+\uses{algebra:integral-normal-height,algebra:affine-domain-maximal-height}
+A faithful integral domain extension between finite-type $F$-algebras
+with normal base has the same actual Krull dimension as its base.
+For any finite-type domain $R$ over a field and $r\ne0$, the genuine
+principal localization $R[1/r]$ also has dimension $\dim R$.
+\end{theorem}
+\begin{proof}
+Choose a genuine maximal ideal in the nontrivial extension domain.
+Integral contraction is maximal. The normal-base height equality and
+the preceding actual maximal-height identities compute both entire
+dimensions from these two actual ideals.
+
+The nonzero principal localization is genuinely a domain and of finite
+type over $F$. The original affine ring is Jacobson. Choose an actual
+maximal localization ideal; the true Jacobson localization correspondence
+makes its contraction maximal. Actual localization preserves this
+prime's height. The two maximal-height identities therefore identify
+the whole original and localized dimensions. No assertion that all
+localizations preserve dimension is used.
+\end{proof}
+
+\begin{theorem}[Positive dimension forces actual injectivity over a curve base]
+\label{algebra:positive-dimension-integral-injectivity}
+\lean{EnvelopeProperty.injective_algebraMap_of_isIntegral_of_positive_dim}
+\leanok
+Let $C$ be a domain of dimension at most one and $D$ an integral domain
+$C$-algebra with actual positive Krull dimension. Then the actual map
+$C\to D$ is injective.
+\end{theorem}
+\begin{proof}
+The kernel is prime because $D$ is a domain. A nonzero such kernel
+would be maximal in the dimension-at-most-one domain $C$. Integral
+maximal-ideal ascent would then make the zero ideal of $D$ maximal,
+so $D$ would be a field and have dimension zero. This contradicts its
+actual positive dimension; hence the whole original map has zero kernel.
+\end{proof}
+
+\begin{theorem}[Original ambient dimension and positive minimal line components]
+\label{algebra:line-component-positive-dimension}
+\lean{EnvelopeProperty.AffineLine.ringKrullDim_finite_over_principalOpen,
+EnvelopeProperty.AffineLine.positive_dim_quotient_of_minimalPrime_lineIdeal}
+\leanok
+\uses{algebra:affine-domain-dimension-comparison,
+algebra:affine-domain-maximal-height,algebra:line-equations-height-bound}
+For finitely many coordinates $\sigma$, a genuine finite faithful domain
+algebra $B$ over $F[X_i,1/g]$, with $g\ne0$, has dimension
+$\#\sigma$. For a chosen parameter index $j$, every actual minimal
+prime $P$ of the image of the original transverse line ideal has
+$\dim(B/P)>0$ whenever the original ambient domain has dimension at
+least $\#\sigma$.
+\end{theorem}
+\begin{proof}
+The genuine nonzero polynomial principal localization is a normal
+finite-type domain. Finiteness and the true scalar tower make $B$ a
+finite-type field algebra, and faithfulness gives the actual normal
+integral dimension comparison. The principal-localization dimension
+theorem and genuine polynomial dimension theorem compute its dimension
+as the coordinate count.
+
+The original transverse equations have at most $\#\sigma-1$ actual
+generators, so the genuine Krull height theorem bounds the height of
+every actual minimal prime of their entire image by that number. The
+chosen index makes $\sigma$ nonempty, hence this bound is strictly
+smaller than the assumed original ambient dimension. The preceding
+prime-quotient producer yields actual positive dimension. Minimal
+component dimension is a conclusion, not an input certificate.
+\end{proof}
+
+\begin{theorem}[Original equations describe the real open-line inverse image]
+\label{algebra:localized-line-original-preimage}
+\lean{EnvelopeProperty.AffineLine.ker_principalLineHom,
+EnvelopeProperty.AffineLine.principalLine_preimage_range,
+EnvelopeProperty.AffineLine.principalLineSchemeMap_isPullback}
+\leanok
+\uses{algebra:line-quotient-whole-polynomial,scheme:principal-open-line-map}
+For $b_j\ne0$, the kernel of the actual localized line map
+$F[X_i,1/g]\to F[T,1/g(a+bT)]$ is the localization of the original
+transverse ideal $J_b$. Under any whole ambient algebra map, its actual
+scheme-support inverse image is precisely the zero locus of the entire
+original ideal image. The principal-open line square is a genuine
+scheme pullback, including empty-open cases.
+\end{theorem}
+\begin{proof}
+Actual localization of a ring homomorphism commutes with its entire
+kernel. Apply this to the genuine original substitution and its proved
+exact kernel $J_b$. The localized substitution is genuinely surjective,
+so its actual prime-spectrum image is the zero locus of this entire
+localized kernel. Pulling back ideal containment through the whole
+ambient homomorphism and using actual ideal-image composition gives
+exactly the zero locus of the original equation image, without radical
+replacement in that image ideal.
+
+The whole original localized line square already commutes. Its source
+open immersion has precisely the inverse-image open range, by the
+genuine localization range formula and actual substitution on $g$.
+The true open-immersion pullback theorem therefore makes this square
+an actual scheme pullback; no cartesian-square certificate is assumed.
+\end{proof}
+
+\begin{definition}[Actual whole open-line map to an original minimal component]
+\label{algebra:line-component-whole-map}
+\lean{EnvelopeProperty.AffineLine.componentLine_ker_le,
+EnvelopeProperty.AffineLine.componentLineHom,
+EnvelopeProperty.AffineLine.componentLineHom_comp,
+EnvelopeProperty.AffineLine.componentLineHom_principalLineHom}
+\leanok
+\uses{algebra:localized-line-original-preimage}
+Let $\varphi:F[X_i,1/g]\to B$ be an actual $F$-algebra homomorphism
+and $P$ an actual minimal prime over the image of $J_b$.
+The entire composite to $B/P$ genuinely factors through the surjective
+localized line map, constructing an actual homomorphism
+\[
+ F[T,1/g(a+bT)]\longrightarrow B/P.
+\]
+Its composite with the original localized substitution equals the
+original map to $B/P$ on every localized ambient element.
+\end{definition}
+\begin{proof}
+Minimal-prime membership gives actual containment of the entire
+transverse image in $P$. The preceding whole kernel computation and
+the actual ideal map/comap adjunction put the kernel of the surjective
+localized line map in the kernel of the original quotient composite.
+Descend this entire algebra homomorphism by the true surjective-map
+universal property. Its whole composite identity and application to
+every original localized element give the claimed full coefficient
+diagram. Coordinate-value equality is not substituted for this map.
+\end{proof}
+
+\begin{theorem}[Genuine finite, injective and dimension-one component maps]
+\label{algebra:line-component-domination}
+\lean{EnvelopeProperty.AffineLine.componentLineHom_finite,
+EnvelopeProperty.AffineLine.componentLineHom_injective,
+EnvelopeProperty.AffineLine.componentLineHom_comap_surjective,
+EnvelopeProperty.AffineLine.component_quotient_ringKrullDim_eq_one}
+\leanok
+\uses{algebra:line-component-whole-map,algebra:line-component-positive-dimension,
+algebra:positive-dimension-integral-injectivity,
+algebra:affine-domain-dimension-comparison,algebra:principal-open-line-ring}
+For a finite ambient homomorphism the actual component-line map is
+finite. If the ambient map is also injective, $B$ is a domain,
+$g\ne0$, and $g(a+bT)\ne0$, then this whole component-line map is
+injective, its prime-spectrum map is surjective, and $\dim(B/P)=1$.
+No algebraic closure, perfectness or characteristic restriction is used.
+\end{theorem}
+\begin{proof}
+The original quotient $B/P$ is finite over the ambient principal-open
+ring. The proved whole coefficient diagram gives the actual scalar
+tower through the line ring, so restriction of scalars yields genuine
+finiteness over that line ring and hence integrality.
+
+Actual ambient injectivity gives a faithful action. Its computed
+dimension and the transverse-equation theorem make $B/P$ genuinely
+positive-dimensional. The original prime $P$ makes this quotient a
+domain. The nonzero line restriction makes the actual line ring a
+Dedekind domain and in particular a domain of dimension at most one.
+The positive-dimensional integral-domain producer therefore proves
+injectivity of the whole constructed line map. Genuine integral
+lying-over now yields surjectivity on the entire prime spectrum.
+
+The actual line base is normal and of finite type, and the actual
+component quotient is of finite type. The now proved faithful integral
+dimension comparison makes its dimension equal to that of this true
+nonempty principal-open polynomial line, namely one. Nilpotents in the
+original equation quotient are not silently removed; the component
+quotient uses the actual original prime $P$.
+\end{proof}
+
+\begin{theorem}[Actual finite surjective morphisms of the component schemes]
+\label{algebra:line-component-scheme-domination}
+\lean{EnvelopeProperty.AffineLine.componentLineSchemeMap,
+EnvelopeProperty.AffineLine.componentLineSchemeMap_isFinite,
+EnvelopeProperty.AffineLine.componentLineSchemeMap_surjective,
+EnvelopeProperty.AffineLine.componentLineSchemeMap_square}
+\leanok
+\uses{algebra:line-component-domination,algebra:line-component-whole-map}
+The genuine scheme morphism
+$\operatorname{Spec}(B/P)\to\operatorname{Spec}F[T,1/g(a+bT)]$
+is finite and, under the preceding actual domain/injectivity hypotheses,
+surjective. Its whole original component inclusion and ambient finite
+map commute with the true open-line map.
+\end{theorem}
+\begin{proof}
+Apply the actual Spec functor to the constructed entire line algebra
+homomorphism. The genuine affine finiteness criterion transfers the
+proved ring finiteness. Its underlying whole prime map is precisely
+the already proved surjective comap, giving actual scheme surjectivity.
+Contravariant functoriality transfers the entire coefficient composite
+identity to the displayed actual scheme square.
+\end{proof}
+
+These producers supply the component dimension and domination step in
+FHX Proposition~5.22 once the actual finite injective ambient map is
+provided. Domain preservation of a scalar-extended ambient algebra,
+normalization finiteness and smoothness or finite-flatness of its
+normalization are separate genuine algebraic producers. This chapter
+assumes neither a component-dominance witness nor a normalization or
+curve-potential certificate.

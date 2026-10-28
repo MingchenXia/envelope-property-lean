@@ -1,0 +1,67 @@
+\section{Prime exactness in actual flat Witt modules}
+\label{sec:witt-two-flat-modules}
+
+Let $W=W_2(k)$ for a perfect characteristic-$p$
+field $k$, and let $M$ be an actual flat $W$-module.
+Write $\mu_M(m)=pm$ for its original scalar
+multiplication map.
+
+\begin{definition}[The original multiplication map]
+\label{def:witt-two-module-prime}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFlat.primeSmul}
+Multiplication by the original prime scalar defines
+a $W$-linear map $\mu_M:M\to M$.
+\end{definition}
+\begin{proof}
+Distributivity proves additivity, and commutativity
+of $W$ gives $p(am)=a(pm)$ for each scalar $a$.
+These are precisely linearity of the stated map.
+\end{proof}
+
+\begin{theorem}[The original flat-module prime sequence is exact]
+\label{thm:witt-two-flat-prime-exact}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFlat.primeSmul_exact,EnvelopeProperty.DeligneIllusie.WittTwoFlat.prime_smul_eq_zero_iff}
+The actual sequence $M\xrightarrow{\mu_M}M
+\xrightarrow{\mu_M}M$ is exact. Equivalently,
+$pm=0$ if and only if $m=pn$ for some original
+$n\in M$.
+\uses{def:witt-two-module-prime,lem:witt-two-prime-annihilator,lem:witt-two-prime-kernel}
+\end{theorem}
+\begin{proof}
+In $W$ itself, the preceding scalar results give
+$\ker\mu_W=\ker\rho=pW=\operatorname{im}\mu_W$.
+Thus the original sequence $W\xrightarrow{\mu_W}W
+\xrightarrow{\mu_W}W$ is exact. Tensor this exact
+sequence with $M$. Flatness of the actual module
+preserves exactness. Under the canonical original
+map $W\otimes_W M\to M$, $a\otimes m\mapsto am$,
+the tensored multiplication map sends $a\otimes m$
+to $pa\otimes m$, whose image is $p(am)$.
+Additivity and generation by pure tensors therefore
+identify both tensored maps with $\mu_M$. The
+canonical tensor map is an isomorphism, so exactness
+transports to the asserted sequence on $M$.
+
+Explicitly, if $pm=0$, the tensor corresponding to
+$m$ lies in the kernel of the second tensored map.
+Tensor exactness supplies a preimage; its image in
+$M$ is the required $n$. Conversely $m=pn$ gives
+$pm=p^2n=0$ by the actual Witt square-zero relation.
+\end{proof}
+
+\begin{corollary}[Uniqueness of division modulo prime multiples]
+\label{cor:witt-two-flat-division-uniqueness}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFlat.prime_smul_eq_iff}
+For $m,n\in M$, one has $pm=pn$ if and only if
+$m-n$ belongs to the actual image $pM$.
+\uses{thm:witt-two-flat-prime-exact}
+\end{corollary}
+\begin{proof}
+The equation $pm=pn$ is equivalent to
+$p(m-n)=0$ by distributivity. Exactness identifies
+this with the existence of an original $z$ such
+that $m-n=pz$, which is exactly membership in $pM$.
+\end{proof}

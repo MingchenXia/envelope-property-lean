@@ -1,0 +1,48 @@
+\section{Intrinsic coherent Euler index on the actual projective scheme}
+
+\begin{definition}[Actual field cohomology and Euler index]
+\label{def:fc-scheme-coherent-euler-index}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerIndex.baseScalar, EnvelopeProperty.SchemeCoherentEulerIndex.fieldSections, EnvelopeProperty.SchemeCoherentEulerIndex.fieldCech, EnvelopeProperty.SchemeCoherentEulerIndex.fieldSectionsIso, EnvelopeProperty.SchemeCoherentEulerIndex.fieldCechIso, EnvelopeProperty.SchemeCoherentEulerIndex.fieldCechCoverIso, EnvelopeProperty.SchemeCoherentEulerIndex.finiteAffineCover, EnvelopeProperty.SchemeCoherentEulerIndex.finiteAffineOpens, EnvelopeProperty.SchemeCoherentEulerIndex.fieldHOne, EnvelopeProperty.SchemeCoherentEulerIndex.eulerIndex, EnvelopeProperty.SchemeCoherentEulerIndex.normalizedEulerIndex, EnvelopeProperty.SchemeCoherentEulerIndex.fieldHOneSheafIso}
+For an actual quasi-compact separated scheme $C$ over a field $k$, use
+its finite affine subcover and the actual base-linear Cech complex of
+an original module $M$. Restrict the scalar action along the canonical
+isomorphism $k\simeq\Gamma(\operatorname{Spec}k,\mathcal O)$.
+Write $H^1_k(C,M)$ for its degree-one homology and $H^0_k(C,M)$ for
+its actual original global sections, with this original scalar action.
+The coherent Euler index is
+$e(M)=\dim_k H^0_k(C,M)-\dim_k H^1_k(C,M)$, and its normalized index
+is $e(M)-e(\mathcal O_C)$. On a proper curve this is the usual
+cohomological definition of the degree of a line bundle.
+\end{definition}
+
+\begin{theorem}[Finiteness and intrinsic comparison]
+\label{thm:fc-scheme-coherent-euler-index}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerIndex.fieldSections_finite, EnvelopeProperty.SchemeCoherentEulerIndex.fieldCech_succ_finite, EnvelopeProperty.SchemeCoherentEulerIndex.finiteAffineCover_finite, EnvelopeProperty.SchemeCoherentEulerIndex.finiteAffineOpens_cover, EnvelopeProperty.SchemeCoherentEulerIndex.finiteAffineOpens_isAffine, EnvelopeProperty.SchemeCoherentEulerIndex.fieldHOne_finite, EnvelopeProperty.SchemeCoherentEulerIndex.fieldHOne_finrank_eq, EnvelopeProperty.SchemeCoherentEulerIndex.eulerIndex_eq_of_iso, EnvelopeProperty.SchemeCoherentEulerIndex.normalizedEulerIndex_eq_of_iso, EnvelopeProperty.SchemeCoherentEulerIndex.normalizedEulerIndex_unit, EnvelopeProperty.SchemeCoherentEulerIndex.eulerIndex_eq_on_cover}
+\uses{def:fc-scheme-coherent-euler-index}
+If the actual structure morphism admits a projective factorization and
+$M$ is finite type and quasicoherent, both vector spaces above are
+finite dimensional. The degree-one space compares to the whole
+original sheaf cohomology group $H^1(C,M)$. Every other finite affine
+cover gives the same dimensions. Isomorphic original modules have
+the same Euler index and normalized index; the normalized index of
+the original structure line is zero.
+\end{theorem}
+\begin{proof}
+The true finite affine cover is obtained from quasi-compactness. Its
+actual affine intersections are acyclic for quasicoherent coefficients.
+The native two-cover double complex supplies an isomorphism of
+base-linear positive cohomology groups between any two such covers;
+its exact rows and columns follow from the actual affine intersection
+acyclicity. Restricting these isomorphisms along the actual base-field
+isomorphism preserves the entire coefficient action. The genuine
+affine-Cech comparison identifies the underlying additive group with
+the whole original sheaf $H^1$. Genuine projective coherent cohomology
+finiteness applies to the original global sections and original
+Cech homology. The canonical base-field isomorphism then makes both
+spaces finite dimensional over $k$. Original module isomorphisms
+induce linear isomorphisms on sections and Cech homology, hence preserve
+their dimensions and both indices. The structure-line assertion is
+integer subtraction of the same index.
+\end{proof}

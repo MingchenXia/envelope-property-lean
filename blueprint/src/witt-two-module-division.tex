@@ -1,0 +1,87 @@
+\section{Canonical linear division in original flat Witt modules}
+\label{sec:witt-two-module-division}
+
+For the actual flat $W_2(k)$-module $M$, let $pM$
+be the range of its original prime scalar map,
+and let $\overline M=M/pM$ be the actual module quotient.
+
+\begin{definition}[Original prime image and reduction]
+\label{def:witt-two-module-prime-image}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.primeSubmodule,EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.Reduction,EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.primeMultiple}
+The original linear map $m\mapsto pm$ has actual
+range submodule $pM$. Its value at each $m$,
+regarded as an element of that range, is the prime
+multiple of $m$. Reduction is the original quotient
+module $M/pM$.
+\uses{def:witt-two-module-prime}
+\end{definition}
+\begin{proof}
+A linear map has a range submodule, and each of its
+values belongs to that range with the original
+argument as a preimage. The quotient by this
+submodule is a module with its canonical linear
+projection, giving all the stated constructions.
+\end{proof}
+
+\begin{theorem}[Canonical original linear division]
+\label{thm:witt-two-module-linear-division}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.dividePrimeEquiv,EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.dividePrime_primeMultiple}
+There is an actual $W_2(k)$-linear equivalence
+$\delta_M:pM\simeq\overline M$, whose value
+on every original prime multiple $pm$ is the
+original quotient class $\overline m$.
+\uses{def:witt-two-module-prime-image,thm:witt-two-flat-prime-exact}
+\end{theorem}
+\begin{proof}
+The first isomorphism theorem applied to the actual
+map $\mu_M$ gives
+$M/\ker\mu_M\simeq\operatorname{im}\mu_M=pM$,
+sending $\overline m$ to $pm$. Prime exactness
+identifies the actual submodules
+$\ker\mu_M=pM$. The induced quotient identification
+therefore gives an equivalence $M/pM\simeq pM$.
+Take its inverse. On $pm$, the inverse first
+isomorphism map returns the class of $m$ in
+$M/\ker\mu_M$, and the quotient identification
+returns exactly its original class in $M/pM$.
+This proves the formula and linearity of the same map.
+\end{proof}
+
+\begin{definition}[The original maps on prime images and quotients]
+\label{def:witt-two-module-prime-functoriality}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.primeMap,EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.reductionMap}
+Every actual $W_2(k)$-linear map $T:M\to N$
+induces original linear maps $pT:pM\to pN$
+and $\overline T:\overline M\to\overline N$.
+\uses{def:witt-two-module-prime-image}
+\end{definition}
+\begin{proof}
+For any $pm$, linearity gives $T(pm)=pT(m)$,
+so $T$ preserves the actual prime image submodules.
+Restricting $T$ therefore defines $pT$, and the
+same submodule preservation induces the actual
+quotient map $\overline T$.
+\end{proof}
+
+\begin{theorem}[Naturality of the same divided maps]
+\label{thm:witt-two-module-division-naturality}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoModuleDivision.dividePrime_naturality}
+If $M$ and $N$ are actual flat modules, every
+original linear $T:M\to N$ satisfies
+$\delta_N\circ pT=\overline T\circ\delta_M$
+on the entire original prime image.
+\uses{thm:witt-two-module-linear-division,def:witt-two-module-prime-functoriality}
+\end{theorem}
+\begin{proof}
+Every element of $pM$ is $pm$ for an original
+$m$. The left side at $pm$ is
+$\delta_N(pT(m))=\overline{T(m)}$ by the original
+value formula. The right side is
+$\overline T(\overline m)=\overline{T(m)}$ by
+the original induced quotient map. Thus the two
+linear maps agree on every element of their domain.
+\end{proof}

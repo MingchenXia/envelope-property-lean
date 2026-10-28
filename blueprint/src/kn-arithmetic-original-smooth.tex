@@ -1,0 +1,142 @@
+\section{Smooth arithmetic families from the original smooth fibre}
+
+\begin{lemma}[Smoothness descends on the actual residue fibre]
+\label{lem:kn-arithmetic-original-smooth-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.smooth_fibre_of_smooth_baseChange}
+\leanok
+Suppose a square with upper scheme $X'$, lower scheme $T$, right
+morphism $g:Y\to S$, and bottom morphism $T\to S$ is cartesian.
+If the original upper structural morphism $X'\to T$ is smooth, then,
+for every $t\in T$, the actual fibre $Y_{h(t)}$ is smooth over its
+original residue field $\kappa(h(t))$.
+\end{lemma}
+\begin{proof}
+Take the native residue fibres of the whole cartesian square.  Their
+square is again cartesian, with bottom arrow
+$\operatorname{Spec}\kappa(t)\to\operatorname{Spec}\kappa(h(t))$.
+A homomorphism between fields is faithfully flat, and its spectrum is
+quasicompact and surjective.  The original smooth morphism has smooth
+residue fibre by base change.  Faithfully flat descent of smoothness
+in this actual fibre square proves the assertion.  No generic-fibre
+smoothness hypothesis is supplied separately.
+\end{proof}
+
+\begin{lemma}[The original standard chart produces its dimension-preserving model]
+\label{lem:kn-arithmetic-original-dimension-chart-model}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.exists_original_standard_chart_model}
+\leanok
+Let the original morphism to the coefficient-system limit be smooth of
+relative dimension $n$. Every original point has an actual affine open
+neighbourhood with a finite-presentation coefficient model smooth of
+that same relative dimension $n$.
+\end{lemma}
+\begin{proof}
+Use the actual standard-smooth chart of relative dimension $n$ over the
+whole original affine base, with its original coefficient map and
+structural triangle. Native Noetherian descent for standard-smooth
+algebras retains $n$ and produces a finite coefficient algebra and a
+whole tensor equivalence. The spectrum of this equivalence is the
+actual cartesian model. The original chart isomorphism transports
+that model back to the unchanged original affine neighbourhood.
+\end{proof}
+
+\begin{theorem}[The same original fixed family retains its relative dimension]
+\label{thm:kn-arithmetic-original-dimension-spread}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.exists_relativeDimension_fixed_model_baseChange}
+\leanok
+\uses{lem:kn-arithmetic-original-dimension-chart-model}
+Suppose the original morphism is smooth of relative dimension $n$ and
+has a fixed finite-presentation model in the actual finite-coefficient
+approximation system. At some produced later coefficient stage, the
+base change of this same fixed model is smooth of relative dimension
+$n$.
+\end{theorem}
+\begin{proof}
+The original scheme is quasicompact because it is the affine-system
+limit of base changes of its finite-presentation model. Take a finite
+subcover of the actual standard charts of the preceding lemma.
+Native approximation descends each chart to an actual open of a later
+base change of the fixed original model. The original chart model and
+this descended open become isomorphic after a further coefficient
+extension, so the open has the same relative-dimension-$n$ property.
+
+Choose a common later stage for the finitely many chart stages.
+Relative-dimension-$n$ smoothness persists on each inverse-image open
+by actual base change. Their union pulls back to the whole original
+scheme. The native finite-presentation limit theorem then gives a
+further stage where the union is the entire actual model. Since
+smoothness of relative dimension $n$ is local on the source, those
+opens prove the asserted property for that same model at the produced
+stage. No smooth-model or relative-dimension certificate is supplied
+as a final vanishing hypothesis.
+\end{proof}
+
+\begin{theorem}[The original prescribed dimension on the actual arithmetic family]
+\label{thm:kn-arithmetic-original-dimension-family}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.exists_relativeDimension_smooth_projective_arithmetic_family,EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.isPullback_scalarTransition}
+\leanok
+\uses{thm:kn-arithmetic-original-dimension-spread}
+The actual smooth projective arithmetic family of the original closed
+embedding can be produced with the original prescribed relative
+dimension $n$. Its arithmetic base is smooth and finite type over
+$\mathbb Z$, its original field fibre is the whole original $X$ with
+the original structural morphism, and all original projective twists
+are recovered as whole sheaves.
+\end{theorem}
+\begin{proof}
+Apply fixed-model dimension spreading to the actual original model
+constructed earlier, preserving its original top and bottom coefficient
+isomorphisms. The produced stage is a finite-type integer subalgebra
+of the original field. Its canonical pullback family has the
+prescribed dimension, and the original whole cartesian square is
+unchanged. Localize the actual arithmetic stage on a produced
+nonzero smooth principal open. The canonical coefficient transition
+is itself an actual pullback square, so dimension-$n$ smoothness
+persists. The already proved original embedding and projective-twist
+comparisons apply to this same enlarged coefficient subalgebra.
+\end{proof}
+
+\begin{theorem}[Actual dimension-preserving Witt and residue families]
+\label{thm:kn-arithmetic-original-dimension-witt}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.exists_relativeDimension_witt_stage,EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.exists_relativeDimension_witt_stage_over,EnvelopeProperty.Vanishing.ArithmeticOriginalSmooth.residueSpecialFibreIso_hom_structure}
+\leanok
+\uses{thm:kn-arithmetic-original-dimension-family}
+For any prescribed characteristic bound at least $n$, the same
+original family produces an actual closed residue field of prime
+characteristic $p>n$ and an actual smooth length-two Witt family of
+relative dimension $n$. The actual residue family is canonically
+isomorphic, over that same residue field, to the literal special
+fibre used by the temporary DI input.
+\end{theorem}
+\begin{proof}
+Apply the actual arithmetic closed-point/Witt coefficient lift to
+the dimension-preserving smooth arithmetic base. Its actual further
+localization preserves the family and its relative dimension by the
+canonical coefficient square. Base change by the produced whole
+Witt coefficient homomorphism gives the actual Witt family; base
+change by its actual residue quotient gives the actual residue
+family. Smoothness of the same prescribed dimension survives both
+base changes, and the produced prime exceeds the chosen bound.
+
+The whole Witt reduction equality gives the existing actual residue
+family isomorphism to the pullback in the opposite factor order.
+Compose it with the canonical pullback symmetry. Its first projection
+is exactly the original residue structural morphism, so it identifies
+the actual family with the literal DI special fibre over the
+unchanged residue field. No supplied fibre-comparison certificate
+is used.
+
+If original-line descent has already enlarged the coefficient stage,
+start with that actual finite-type stage and its proved
+relative-dimension property. The same localization and closed-point
+construction retains the entire given stage in the produced Witt
+base. Thus all original-line coefficients are fixed before choosing
+the arithmetic closed point; smoothness of that enlarged integer
+base is produced by localization.
+\end{proof}
+
+Earlier constructions supply the actual projective arithmetic and Witt-family
+constructions reused here. Their model twists recover
+$j^*\mathcal O(d)$. For an arbitrary ample $L$, a very ample power
+$L^r$ does not by itself descend $L$; a separate construction
+provides the required actual line descent.

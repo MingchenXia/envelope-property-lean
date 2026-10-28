@@ -1,0 +1,22 @@
+\begin{lemma}[Actual affine module sections under scalar base change]
+\label{lem:fc-affine-module-flat-base-change}
+\lean{EnvelopeProperty.AffineModuleFlatBaseChange.sections,EnvelopeProperty.AffineModuleFlatBaseChange.tensorEquiv,EnvelopeProperty.AffineModuleFlatBaseChange.tensorEquiv_tmul}
+\leanok
+Let $p:U\to\operatorname{Spec}R$ have actual affine source, let $M$ be
+an original quasicoherent module, and let $S$ be an actual $R$-algebra.
+For the original cartesian base change $g:U_S\to U$, its actual whole
+module of sections is canonically $S\otimes_R\Gamma(U,M)$.
+The image of $s\otimes m$ is the original coefficient $s$ times the
+original pullback-unit section of $m$.
+\end{lemma}
+\begin{proof}
+The original affine cartesian square is the actual pushout of its
+whole rings of functions. The genuine affine module pullback theorem
+identifies sections with extension of scalars from $\Gamma(U,\mathcal O_U)$.
+The ring pushout and tensor associativity identify that extension with
+$S\otimes_R\Gamma(U,M)$. On $1\otimes m$ the native affine theorem gives
+the actual pullback unit. Linearity supplies every $s\otimes m$.
+No local section comparison or ring-pushout certificate is an input
+to this lemma. Its use on original affine opens will be combined with
+the genuine restriction/pullback unit square.
+\end{proof}

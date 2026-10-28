@@ -1,0 +1,41 @@
+\section{The actual rounded target of the original projection formula}
+
+\begin{definition}[The whole rounded canonical projection comparison]
+\label{def:kn-nadel-rounded-canonical-projection-comparison}
+\uses{thm:fc-original-scheme-line-projection-formula,def:kn-nadel-whole-rounded-root-line}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalProjectionFormula.wholeRoundedProjectionFormulaIso}
+\leanok
+For the same original normalization $\pi:W\to X$, an invertible base line
+$M$, and the whole ideal $J_a$, the original line projection formula gives
+an isomorphism
+\[
+ E_{M,a}:\pi_*(\omega_W\otimes J_a)\otimes M
+   \simeq \pi_*(\omega_W\otimes N_a),
+ \qquad N_a=\pi^*M\otimes J_a.
+\]
+It is the original projection formula for $\omega_W\otimes J_a$, followed
+by the pushforward of the canonical comparison
+\[
+ (\omega_W\otimes J_a)\otimes\pi^*M
+ \simeq\omega_W\otimes(J_a\otimes\pi^*M)
+ \simeq\omega_W\otimes(\pi^*M\otimes J_a).
+\]
+The first arrow is the associator and the second is induced by the
+braiding. All tensors and comparison maps are on the same original
+schemes and modules.
+\end{definition}
+
+\begin{definition}[Twisted original bounded canonical unit]
+\label{def:kn-nadel-twisted-bounded-canonical-unit}
+\uses{def:kn-nadel-bounded-canonical-pushforward-unit,def:kn-nadel-rounded-canonical-projection-comparison}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalProjectionFormula.wholeRoundedCanonicalTwistedPullback}
+\leanok
+Under the original bounded-factor hypotheses and $a_i<m_i$, define the
+morphism to the whole rounded canonical pushforward by
+\[
+ j_{M,a}:\omega_X\otimes M\longrightarrow\pi_*(\omega_W\otimes N_a),
+ \qquad j_{M,a}=(j_a\otimes\mathrm{id}_M)\,;\,E_{M,a}.
+\]
+Here $j_a$ is the already constructed original bounded canonical unit;
+the target comparison is the internally defined $E_{M,a}$ above.
+\end{definition}

@@ -1,0 +1,143 @@
+\section{Actual faithfully flat descent of the canonical-map gluing data}
+\label{sec:kn-nadel-faithfully-flat-descent}
+
+The descent condition here is the ordinary equality of two actual
+pullbacks of a module homomorphism.  It is not an additional permanent
+input to Nadel vanishing.  Its geometric verification for the original
+cover must use the actual cross-chart maps and the intrinsic trace
+compatibility already proved above.
+
+\begin{lemma}[Actual coefficient paths and native scalar composition]
+\label{lem:kn-nadel-faithfully-flat-coefficient-paths}
+\lean{EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapRing,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapLeft,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapRight,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlap_square,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapBase,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.extensionPathUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.extensionPathMap,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.extensionPathMap_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.extensionPathIso,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.extensionPathIso_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathIso,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathIso_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathIso_inv_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathLift,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathLift_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathPullback,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.compositionPathPullback_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoLeft,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoRight,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbackLeft,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbackRight,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoLeft_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoRight_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoLeft_inv_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapIsoRight_inv_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapLeft_tensor,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapRight_tensor}
+\leanok
+For any actual commutative ring map $f:A\to S$, the literal overlap
+$D=S\otimes_A S$ has its two actual coefficient maps $p_0,p_1:S\to D$
+and the proved whole equality $p_0f=p_1f$.  Each path identifies the
+original extension $D\otimes_A M$ with the corresponding iterated
+native extension $D\otimes_{S,p_i}(S\otimes_A M)$.  These internally
+constructed whole identifications send $1\otimes m$ to
+$1\otimes(1\otimes m)$, and their inverses send
+$d\otimes(s\otimes m)$ to $dp_i(s)\otimes m$.
+\end{lemma}
+\begin{proof}
+Construct the actual ring and its two inclusions by native algebra
+tensor product.  Tensor balancing proves their whole equality on
+the original $A$.  For equal original coefficient paths, regard the
+actual adjunction unit for the target path as an $A$-linear map for
+the source path; its scalar law follows pointwise from the proved
+ring-map equality.  Native scalar-extension universality extends
+this map.  It preserves every pure tensor.  The same construction
+for the reverse path is its actual inverse, because extension
+morphisms are determined by their original unit generators.
+Compose this internally produced path identification with native
+composition of scalar extension.  The native composition unit
+formula gives the stated forward value.  Its inverse value follows
+from whole final-ring linearity and the actual tensor balancing
+relation.  No identification of desired descended maps is assumed.
+\end{proof}
+
+\begin{lemma}[The actual overlap tensor comparison]
+\label{lem:kn-nadel-faithfully-flat-tensor-comparison}
+\lean{EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coaction,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coaction_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.outerUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.outerUnit_apply,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.scalarTensorIso,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.restrictedTensorIso,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.tensorModule,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.tensorAlgebraTransport,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.tensorAlgebraTransport_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coactionTensorIso,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coactionTensorIso_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coactionTensorIso_outerUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.rightTensorUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.rightTensorUnit_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.rightTensorUnit_outerUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapAlgebra,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapBase_eq_algebraMap,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapAlgebra_eq,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapTensor,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTriple,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTripleAddHom,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTriple_injective,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTriple_add,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTriple_zero,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapToTriple_tmul,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapLiftLeft,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapLiftRight,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapLeft_coaction,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapRight_tensorUnit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.overlapRight_coaction}
+\leanok
+For every original $A$-module $M$, the actual overlap extension has
+an injective additive comparison with the original triple tensor
+$S\otimes_A(S\otimes_A M)$, sending
+$(s\otimes t)\otimes m$ to $s\otimes(t\otimes m)$.
+The native coaction object has its actual $S$-linear triple tensor
+model.  Under these two genuine comparisons, the first overlap
+unit lift of every extended section $z$ is its original coaction
+$\delta_M(z)$; the second is its original outer unit $1\otimes z$.
+\end{lemma}
+\begin{proof}
+Native scalar restriction and extension retain the original
+coefficient map.  The actual tensor algebra structural map is the
+proved original overlap map; equality of these descriptions
+transports the coefficient tensor module and preserves pure
+tensors.  Compose that genuine transport with native tensor
+associativity.  Every factor is an internally constructed linear
+equivalence, hence their whole additive comparison is injective.
+Its pure-tensor formula retains both original coefficients.
+
+The native scalar-extension unit and restriction give the actual
+coaction object and its triple tensor model.  Their whole outer
+unit formula is the literal $1\otimes z$ formula.  Apply the
+preceding inverse composition formula to the two overlap unit
+lifts.  On $s\otimes m$, their tensor-model values are respectively
+$s\otimes(1\otimes m)$ and $1\otimes(s\otimes m)$.  The first is
+the original coaction value, the second the original outer-unit
+value.  Additivity and actual tensor induction prove these whole
+section formulas without a supplied comparison diagram.
+\uses{lem:kn-nadel-faithfully-flat-coefficient-paths}
+\end{proof}
+
+\begin{lemma}[The actual overlap and the native scalar-extension coaction]
+\label{lem:kn-nadel-faithfully-flat-overlap-coaction}
+\lean{EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbackLeft_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbackRight_unit,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.coaction_of_pullbacks,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbacks_of_coaction,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbacks_eq_iff_coaction}
+\leanok
+For an actual commutative ring map $f:A\to S$ and an original
+$A$-module $M$, form the actual ring $D=S\otimes_A S$, its left and
+right coefficient maps, and the original structural map $A\to D$.
+The native scalar-extension adjunction gives
+\[
+ \delta_M:S\otimes_A M\longrightarrow S\otimes_A(S\otimes_A M),
+ \qquad s\otimes m\longmapsto s\otimes(1\otimes m).
+\]
+The two actual $D$-pullbacks of an $S$-linear map
+$\lambda:S\otimes_A M\to S\otimes_A N$, identified through the
+native scalar-composition isomorphisms, agree if and only if
+$\delta_N\lambda=(1\otimes\lambda)\delta_M$.
+\end{lemma}
+\begin{proof}
+Both actual overlap coefficient maps have the same composite with
+$f$ by the tensor balancing law.  Native composition of scalar
+extension identifies each iterated pullback with extension through
+that actual common map.  On an original unit pure tensor, the left
+pullback followed by the actual tensor associator has value
+$\delta_N(\lambda(1\otimes m))$; the right has value
+$1\otimes\lambda(1\otimes m)$.  These formulas follow from the
+native scalar-composition unit formula and actual tensor balancing.
+Scalar-extension homomorphisms are determined by their values on
+$1\otimes m$.  The same native unit formula for $\delta_M$ therefore
+proves the claimed equivalence of whole-map equalities, retaining
+the original overlap ring and both coefficient maps.
+\uses{lem:kn-nadel-faithfully-flat-coefficient-paths,lem:kn-nadel-faithfully-flat-tensor-comparison}
+\end{proof}
+
+\begin{theorem}[Unique descent of an actual compatible module map]
+\label{thm:kn-nadel-faithfully-flat-module-map-descent}
+\lean{EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.comparison_full,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.comparison_faithful,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.existsUnique_of_coaction,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.existsUnique_descendedMap,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.descendedMap,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.descendedMap_baseChange,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.descendedMap_unique,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.pullbacks_baseChange,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.nativeTensorMorphism,EnvelopeProperty.Vanishing.NadelFaithfullyFlatDescent.existsUnique_linearMap}
+\leanok
+Suppose $f:A\to S$ is faithfully flat.  For arbitrary original
+$A$-modules $M,N$, every actual $S$-linear map
+$\lambda:S\otimes_A M\to S\otimes_A N$ whose two actual native
+$D$-pullbacks agree is the scalar extension of a unique actual
+$A$-linear map $g:M\to N$:
+\[
+ S\otimes_A g=\lambda.
+\]
+No descended map, comparison isomorphism, or effective-descent
+certificate is supplied as an input.
+\end{theorem}
+\begin{proof}
+Use the preceding actual overlap calculation to make $\lambda$ a
+morphism between the native comparison coalgebras of the two
+original modules.  Native faithfully flat module descent proves
+that the actual scalar-extension functor is comonadic.  Its actual
+comparison functor for the original extension/restriction adjunction
+is therefore full and faithful.  Take the preimage of this actual
+coalgebra morphism.  The whole comparison-map equality gives the
+stated whole scalar-extension equality, and faithfulness gives
+uniqueness.  This reuses the existing generic module-descent theorem;
+only the original overlap and its concrete homomorphism interface
+are new.
+\uses{lem:kn-nadel-faithfully-flat-overlap-coaction}
+\end{proof}
+
+Subsequent application to the original finite flat Kummer cover must
+construct the actual overlap identifications and verify this descent
+condition using the proved genuine K\"ahler/canonical trace diagrams.
+The lemma does not replace those geometric obligations with a final
+vanishing hypothesis.  Global canonical duality, local vanishing,
+and Nadel vanishing remain separate goals.

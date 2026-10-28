@@ -1,0 +1,98 @@
+\section{The actual numerical quotient carries its canonical curve-weak topology}
+\label{sec:native-numerical-curve-topology}
+
+\begin{definition}[The whole original curve-degree embedding]
+\label{def:native-numerical-curve-weak-topology}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.numericalDegreeVector,EnvelopeProperty.NativeRealNumericalClasses.curveWeakTopology}
+\leanok
+\uses{thm:native-real-numerical-classes}
+For an actual scheme projective over its original field, give its actual
+real numerical quotient the topology induced by its whole linear map into
+$\prod_C\mathbf R$, where $C$ ranges over all actual closed integral curves
+and the coordinate is the true full Euler degree on the original curve.
+This is the curve-weak topology on that same original quotient.
+\end{definition}
+
+\begin{theorem}[Actual separating degrees give a Hausdorff real vector topology]
+\label{thm:native-numerical-curve-weak-vector-topology}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.numericalDegreeVector_injective,EnvelopeProperty.NativeRealNumericalClasses.numericalDegreeVector_isEmbedding,EnvelopeProperty.NativeRealNumericalClasses.curveWeakT2Space,EnvelopeProperty.NativeRealNumericalClasses.curveWeakTopologicalAddGroup,EnvelopeProperty.NativeRealNumericalClasses.curveWeakContinuousSMul}
+\leanok
+\uses{def:native-numerical-curve-weak-topology,thm:native-real-numerical-classes}
+The whole original degree map is a topological embedding. In particular,
+this curve-weak topology is Hausdorff, addition and negation are continuous,
+and scalar multiplication by real numbers is jointly continuous.
+\end{theorem}
+\begin{proof}
+All actual curve degrees jointly separate the original numerical quotient,
+so the whole degree map is injective. The topology was induced by that
+same map, hence it is a topological embedding into the Hausdorff product.
+Addition, negation and real scalar multiplication are coordinatewise
+continuous on the product. The map preserves these operations as an actual
+linear map. Its induced topology therefore makes all these same operations
+continuous on the original numerical quotient.
+\end{proof}
+
+\begin{theorem}[Actual numerical convergence is precisely convergence of every original curve degree]
+\label{thm:native-numerical-curve-weak-convergence}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.continuous_iff_curveDegree,EnvelopeProperty.NativeRealNumericalClasses.tendsto_iff_curveDegree,EnvelopeProperty.NativeRealNumericalClasses.continuous_curveDegree}
+\leanok
+\uses{thm:native-numerical-curve-weak-vector-topology}
+A map from any topological space into the original numerical quotient is
+continuous if and only if each of its true original curve degrees is
+continuous. For any filter, a net converges to an original numerical class
+if and only if every actual original curve degree converges to its degree
+on that class. In particular, every true original curve-degree functional
+is continuous.
+\end{theorem}
+\begin{proof}
+The induced topology tests continuity and convergence after composition
+with the whole degree embedding. The product topology tests either condition
+at every coordinate. These coordinates are literally the actual original
+curve-degree functionals. Applying the continuity assertion to the identity
+map proves each functional continuous.
+\end{proof}
+
+\begin{theorem}[Every actual finite line-family map is continuous]
+\label{thm:native-numerical-line-family-continuous}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.continuous_lineFamilyMap,EnvelopeProperty.NativeRealNumericalClasses.tendsto_lineFamilyMap}
+\leanok
+\uses{thm:native-numerical-curve-weak-convergence,thm:native-numerical-line-family-maps}
+For every actual finite family of original invertible lines, the entire
+original real coefficient map into the same numerical quotient is
+continuous. Convergence of its actual coefficient vectors consequently
+gives convergence of their actual original numerical classes.
+\end{theorem}
+\begin{proof}
+On every original curve its degree is the finite sum of each original
+coefficient times the fixed true full Euler degree of that same line.
+Each coefficient projection is continuous, as is multiplication by this
+fixed real degree. Their finite sum is continuous. The preceding
+coordinatewise criterion proves continuity of the entire original family
+map, and continuity implies the asserted filter convergence.
+\end{proof}
+
+\begin{theorem}[The genuine original nef cone is curve-weakly closed]
+\label{thm:native-numerical-nef-curve-weak-closed}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.isClosed_nefCone}
+\leanok
+\uses{thm:native-numerical-curve-weak-convergence,thm:native-numerical-nef-cone}
+The actual cone cut out by the true degrees on every original closed
+integral curve is closed in this same original curve-weak numerical space.
+\end{theorem}
+\begin{proof}
+For each original curve, its actual degree is continuous, so its inverse
+image of the closed real half-line $[0,\infty)$ is closed. The genuine
+original nef cone is their entire intersection, which is closed.
+\end{proof}
+
+\begin{remark}
+This construction makes no finite-dimensionality assumption. The numerical
+space in the FHX and BJ definitions has its finite-dimensional real vector
+space topology. Genuine projective numerical finite dimensionality and its
+identification with this canonical curve-weak topology remain mathematical
+obligations. Convergence proved here is explicitly curve-weak until that
+identification is established; it does not by itself close the full general
+numerical-class psh comparison. Varying original-line approximants can now
+be defined on this actual topological quotient without restricting them to
+a fixed line ray.
+\end{remark}

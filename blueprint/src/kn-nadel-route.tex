@@ -1,0 +1,757 @@
+\section{The original Nadel target and its remaining proof producers}
+\label{sec:kn-nadel-route}
+
+This section gives a proof route to Nadel vanishing for the original
+multiplier ideal, rather than a new vanishing hypothesis.  Every new node
+below is a mathematical proof obligation: none is marked as Lean-complete.
+The proved global Deligne--Illusie decomposition supplies the upstream proof of
+ordinary Kodaira vanishing. Kawamata--Viehweg vanishing, local vanishing,
+canonical duality, and Nadel vanishing are to be proved, not supplied as
+additional inputs to a final theorem.
+The ordinary Kodaira deduction in
+Theorem~\ref{thm:kn-original-characteristic-zero-kodaira} uses the actual
+global decomposition of the original Witt model. No decomposition premise
+is required of the original characteristic-zero vanishing statement.
+
+Throughout the algebraic part, $k$ is a characteristic-zero field, $X$ is
+a smooth integral projective $k$-scheme of dimension $d$, and
+$\omega_X=\bigwedge^d\Omega^1_{X/k}$.  Write $\mathcal J_X(I^c)$ for the
+\emph{actual} ideal
+\texttt{Char0.schemeMultiplierIdealSheaf} of the original nonzero coherent
+ideal sheaf $I$, with $c\in\Q_{\geq0}$.  Its affine definition uses every
+divisorial DVR of the original function field; it is not a choice of a
+finite list of valuations or a newly defined rounded ideal.  Its module
+is of finite presentation.  A positive-degree assertion $H^q=0$ means
+\texttt{Subsingleton (Sheaf.H M.sheaf (r+1))} for every $r\in\N$, using
+the actual tensor module $M$ on the original scheme.
+
+The original source application requires a twist uniform in a multiplier
+ideal's index.  It appears in the proof of Boucksom--Jonsson's
+\texttt{thm:contenvlisse}, after equation \texttt{e508}, and in
+Fang--Han--Xia's proof of \texttt{prop:entropy\_approximation}.  The sources are \cite{BJ22} and \cite{FHX} (revision of 2026-10-28).
+The latter explicitly invokes Nadel vanishing and Castelnuovo--Mumford
+regularity to choose one twist for all sufficiently divisible indices.
+Ordinary coherent Serre vanishing with a bound depending on the index
+does not establish this assertion.
+\source{bj22-trivval:thm:contenvlisse,fhx-envelope-20261028:prop:entropy_approximation}
+
+\begin{theorem}[The original algebraic ideal-power Nadel statement]
+\label{thm:kn-nadel-original-target}
+\notready
+Let $A,B$ be line bundles on the original $X$.  Suppose that
+$I\otimes B$ is globally generated and that the rational numerical class
+$A-cB$ is nef and big.  Then
+\[
+ H^q\bigl(X,\omega_X\otimes A\otimes\mathcal J_X(I^c)\bigr)=0
+ \qquad(q>0).
+\]
+The multiplier module, $A$, and the original structure morphism are
+retained literally in the conclusion.
+\end{theorem}
+\begin{proof}
+Use the internally produced log resolution of
+Lemma~\ref{lem:kn-nadel-original-resolution}.  On it, put
+$Q=\mu^*A-cF$, where $I\mathcal O_Y=\mathcal O_Y(-F)$.
+The evaluation map for $I\otimes B$ pulls back to a surjection onto
+$\mu^*B\otimes\mathcal O_Y(-F)$, so that line is globally generated
+and nef.  Consequently
+\[
+ Q=\mu^*(A-cB)+c(\mu^*B-F)
+\]
+is nef and big.  Its fractional support lies in the SNC divisor $F$,
+and $\lceil Q\rceil=\mu^*A-\lfloor cF\rfloor$.
+Theorem~\ref{thm:kn-nadel-snc-kv} kills all positive cohomology of
+$\omega_Y\otimes\mu^*A\otimes\mathcal O_Y(-\lfloor cF\rfloor)$.
+Lemma~\ref{lem:kn-nadel-local-vanishing}, the original whole-module
+formula, and the actual line projection formula identify its derived
+pushforward with
+$\omega_X\otimes A\otimes\mathcal J_X(I^c)$ concentrated in degree zero.
+The Leray spectral sequence therefore identifies the two cohomology
+groups in every degree, proving the displayed assertion.
+\uses{lem:kn-nadel-original-resolution,thm:kn-nadel-snc-kv,lem:kn-nadel-local-vanishing,def:sc0-original-global-multiplier-ideal-sheaf,thm:sc0-original-global-multiplier-module-finite-presentation}
+\end{proof}
+
+\begin{lemma}[Produce the original global principalization and module formula]
+\label{lem:kn-nadel-original-resolution}
+\notready
+Starting from the original $X$ and $I$, produce a projective birational
+map $\mu:Y\to X$, given by a finite sequence of blowups in smooth
+centres, such that $Y$ is smooth of dimension $d$ and
+$I\mathcal O_Y=\mathcal O_Y(-F)$ for an effective divisor $F$ whose
+support, together with the exceptional locus, is SNC.  For every
+$c\in\Q_{\geq0}$, construct on the same original $X$ an isomorphism
+\[
+ \mathcal J_X(I^c)\simeq
+ \mu_*\bigl(\omega_Y\otimes(\mu^*\omega_X)^\vee
+                         \otimes\mathcal O_Y(-\lfloor cF\rfloor)\bigr)
+ \tag{N1}
+\]
+of the whole actual modules, preserving the original ideal inclusion
+and canonical differential map.  No chosen resolution, multiplier
+comparison, or canonical identification is an input to the producer.
+\end{lemma}
+\begin{proof}
+Apply characteristic-zero principalization to the original coherent
+ideal, including accumulated exceptional divisors in the boundary at
+each step.  The centres are smooth, avoid the locus where the ideal is
+already a unit, and have normal crossings with that boundary.  The
+termination invariant supplies a finite sequence.  Its final total
+transform is invertible and monomial in local SNC equations, giving
+the stated $F$; blowups preserve projectivity and dimension.
+
+To prove (N1), work on an original smooth affine chart with etale
+coordinates.  The already proved actual BP formula computes the entire
+multiplier module from its internally produced smooth-centre sequence,
+not just a kernel or the image of a selected section.  Compare this
+sequence and the restriction of $\mu$ on a common smooth principalizing
+refinement.  For each original divisorial DVR, change of variables for
+the canonical differential identifies the condition for a rational
+section to be regular in the rounded relative canonical module with
+\[
+ c\,\operatorname{ord}_V(I)
+ <\operatorname{ord}_V(a)+1+\operatorname{ord}_V(K_{V/X}).
+\]
+For completeness, the SNC calculation also covers divisors above $Y$:
+divide the section times the canonical Jacobian by the monomial
+$\prod t_i^{\lfloor cf_i\rfloor}$.  Its regularity gives nonnegative
+order in every DVR centred on $Y$.  For the reduced SNC divisor,
+$A_Y(V)\geq\sum_i\operatorname{ord}_V(t_i)$, while every coefficient
+$cf_i-\lfloor cf_i\rfloor$ is strictly less than one.  These inequalities
+give the displayed strict multiplier condition for every such DVR.
+Conversely the DVRs of the divisors on $Y$ give the required rounded
+regularity.  Thus no valuation is discarded.  The full all-DVR
+definition gives the same module on both principalizations.
+Equality on their common function
+field also identifies the original inclusion and differential maps.
+These affine identifications commute with restriction, so they glue to
+the whole module isomorphism (N1).  This is an $H^0$ pushforward formula;
+the argument asserts no vanishing of higher direct images.
+\uses{sc0-bp-geometric-multiplier-module:whole-original-module,thm:rounded-snc-original-independent,def:sc0-original-global-multiplier-ideal-sheaf,thm:sc0-original-global-multiplier-ideal-affine-values}
+\end{proof}
+
+The existing concrete base case of (N1) is
+\nolinkurl{Char0.exists_BP_pushforwardRounded_iso_multiplierModule}
+in \path{Char0/BPGeometricMultiplierModule.lean}.  It produces the
+same actual affine BP sequence and the whole formula for every rational
+exponent.  A global original-scheme principalization/comparison as above
+and higher-direct-image vanishing remain separate producers.
+
+\begin{lemma}[The normalized SNC cyclic cover is not generally smooth]
+\label{lem:kn-nadel-normalization-warning}
+\notready
+Even in characteristic zero, normalization of a cyclic cover of a
+smooth scheme with SNC branch support need not be smooth.
+\end{lemma}
+\begin{proof}
+Over an algebraically closed field of characteristic zero consider
+$z^2=xy$ over $\mathbb A^2_{x,y}$.  Its branch divisor is the union of
+the two coordinate axes, hence SNC.  The hypersurface is integral,
+Cohen--Macaulay, and regular in codimension one: its only singular point
+is the origin, of codimension two.  Serre's criterion therefore shows
+that it is already normal.  At the origin the Jacobian row
+$(-y,-x,2z)$ is zero, so the hypersurface is singular there.  Thus
+normalization does not make this cover a smooth input for ordinary
+Kodaira vanishing.
+\end{proof}
+
+\begin{lemma}[Canonical finite duality on the existing normalized-cover branch]
+\label{lem:kn-nadel-normalized-canonical-duality}
+\notready
+For the actual normalized SNC cyclic cover $\pi:Z\to X$ already used
+by the normalized eigensheaf comparison, prove its finiteness and
+Cohen--Macaulay property, construct its genuine dualizing sheaf
+$\omega_Z$, and construct
+\[
+ \pi_*\omega_Z\simeq
+ \mathcal Hom_X(\pi_*\mathcal O_Z,\omega_X)
+ \simeq\bigoplus_{i=0}^{n-1}\omega_X\otimes E_i^\vee.
+ \tag{N2}
+\]
+Here $E_i$ is the same actual eigensheaf in the existing whole
+normalized pushforward, and $\omega_Z$ is not declared to be a locally
+free top exterior cotangent module on a singular scheme.
+\end{lemma}
+\begin{proof}
+The original finite monic cover has a finite generic algebra.  Over the
+excellent smooth base its integral closure is finite, so the actual
+normalization projection is finite.  The already constructed SNC local
+normalization has a free rounded monomial basis over the base.  This
+proves finite local freeness, and hence the Cohen--Macaulay property
+over the regular base.  On an affine chart with finite locally free
+algebra $C$ over the smooth algebra $R$, use
+$\operatorname{Hom}_R(C,\omega_R)$ with its genuine $C$-action as the
+finite dualizing module.  Its duality adjunction and its localization
+maps identify these modules on overlaps, giving $\omega_Z$ and the
+first isomorphism in (N2).  Dualize the existing whole eigensheaf
+isomorphism.  Finite direct sums commute with duality and the $E_i$
+are actual lines, giving the second isomorphism.  The already proved
+dual-rounded comparison then identifies each displayed coefficient
+with the same original rounded canonical tensor module.  The original
+evaluation and trace maps must be retained when gluing; an unrelated
+module with isomorphic ranks is insufficient.
+\uses{lem:kn-normalized-projection-affine,lem:kn-normalized-weighted-cohomology,lem:kn-nadel-cyclic-dual-rounded,cor:kn-nadel-cyclic-canonical-rounded}
+\end{proof}
+
+The current normalized-cover cohomology theorem transports an
+\emph{unknown} cohomology group across an actual affine projection.
+It proves no cover vanishing.  Formula (N2) is its first missing
+canonical producer, and still would not justify applying ordinary
+Kodaira on the singular $Z$.  The proof below instead produces a
+different, genuinely smooth adapted cover.  It needs no unproved
+``vanishing on the normalized cover'' premise and does not require
+(N2) as a hypothesis.
+
+\begin{lemma}[Produce a smooth adapted denominator cover]
+\label{lem:kn-nadel-smooth-adapted-cover}
+\notready
+Let $Y$ be smooth projective and let $Q$ be a rational Cartier divisor
+whose fractional support is SNC.  Produce a finite surjective flat
+map $\tau:W\to Y$ with the entire $W$ smooth projective of the same
+dimension, such that $\tau^*Q$ is an integral Cartier divisor.  Preserve the actual pullback
+line and the facts that ampleness, nefness and bigness pull back along
+$\tau$.  The analogous construction is valid for smooth
+quasi-projective $Y$, with projectivity over a prescribed affine base
+preserved.
+\end{lemma}
+\begin{proof}
+Write the fractional support as $\bigcup D_i$, with denominator $m_i$
+on $D_i$.  For each $i$ choose a sufficiently positive line $H_i$ so
+that $m_iH_i-D_i$ is very ample.  Over the infinite field $k$, Bertini
+and avoidance give $d+1$ divisors $A_{ij}$ in that linear system such
+that their union with all $D_i$ is SNC and, for each fixed $i$, the
+$A_{ij}$ have empty common intersection.  Take the cyclic root covers
+of all the sections with divisor $D_i+A_{ij}\in|m_iH_i|$, form their
+fibre product, and normalize its finite generic algebra.  Finiteness
+is proved by the actual local finite free normalization models below;
+the entire generic algebra and all its factors are retained.
+
+Here the simultaneous roots are essential.  At a point of $D_i$, some
+$A_{ij_0}$ is absent.  After an etale extension extracting roots of
+units, that equation supplies a root of a parameter for $D_i$ alone.
+The ratios with the other roots supply roots of the parameters of
+the $A_{ij}$ through the point.  The SNC condition makes all these
+parameters distinct.  The integral closure of the local fibre product
+is thus, etale locally, obtained by adjoining independent roots of
+regular parameters, followed by a finite etale algebra.  Its local
+power bases prove that it is regular and finite free over the base.
+This proves smoothness and flatness, including descent from the etale
+unit-root extension.  No assertion that a single equation
+$z^m=\prod x_i^{a_i}$ is smooth has been used.
+
+Every divisor above $D_i$ now has ramification multiplicity divisible
+by $m_i$, so $\tau^*Q$ is integral.  A finite pullback preserves
+ampleness, nefness and bigness.  Finiteness preserves projectivity
+over the original base.  On a quasi-projective source choose the
+auxiliary systems from an ample line after a projective embedding;
+the same finite Bertini and local computation apply.  The construction and the finite-pullback ampleness proof retain the
+whole possibly disconnected cover. No assumption that $k$ contains
+roots of unity is required.
+\end{proof}
+
+\begin{lemma}[The actual rounded canonical summand on the smooth cover]
+\label{lem:kn-nadel-smooth-cover-rounded-summand}
+\notready
+For the cover just constructed, set
+$N=\mathcal O_W(\tau^*Q)$.  Construct original inclusion and projection
+maps exhibiting
+\[
+ \omega_Y\otimes\mathcal O_Y(\lceil Q\rceil)
+ \quad\text{as a direct summand of}\quad
+ \tau_*(\omega_W\otimes N).
+ \tag{N3}
+\]
+These maps are produced from the cover, not supplied as a retraction
+or as a canonical identification certificate.
+\end{lemma}
+\begin{proof}
+Write $Q=M-\sum_i(a_i/m_i)D_i$, where $M=\lceil Q\rceil$ and
+$0\leq a_i<m_i$.  Lemma~\ref{lem:kn-nadel-whole-root-ideals} constructs
+from all actual original row roots the invertible ideals $J_i$ with
+$J_i^{m_i}=I_{D_i}\mathcal O_W$.  Put $J=\prod_iJ_i^{a_i}$, so that
+$N=\tau^*\mathcal O_Y(M)\otimes J$.
+
+The original canonical differential factors through $\omega_W\otimes J$
+by Lemma~\ref{lem:kn-nadel-bounded-ramification-factor}.  The regular
+canonical trace of Lemma~\ref{lem:kn-nadel-whole-canonical-trace} has
+composite $D\,\mathrm{id}$ with that differential, where $D$ is the
+positive degree of the whole original cover.  Adjoint the factorization,
+restrict the actual trace along the ideal inclusion, and multiply the
+trace by $D^{-1}$.  Tensoring by $\mathcal O_Y(M)$ and the actual line
+projection formula give the required retraction, exactly as in
+Lemma~\ref{lem:kn-nadel-trace-rounded-retraction}.  No invariant-sheaf
+identification is a premise.  Applying actual sheaf cohomology preserves
+the identity composite, and the actual affine pushforward comparison
+identifies the cover cohomology.
+\uses{lem:kn-nadel-whole-root-ideals,lem:kn-nadel-whole-canonical-trace,lem:kn-nadel-bounded-ramification-factor,lem:kn-nadel-trace-rounded-retraction,lem:kn-normalized-affine-cohomology}
+\end{proof}
+
+\begin{lemma}[Ample rational SNC vanishing from ordinary Kodaira]
+\label{lem:kn-nadel-ample-q-vanishing}
+\notready
+If $Q$ is ample with SNC fractional support on smooth projective
+$Y$, then $H^q(Y,\omega_Y\otimes\mathcal O_Y(\lceil Q\rceil))=0$
+for all $q>0$.
+\end{lemma}
+\begin{proof}
+The constructed smooth cover makes $N=\mathcal O_W(\tau^*Q)$ an
+actual ample line.  Ordinary characteristic-zero Kodaira vanishing
+on the actual whole smooth projective $W$ kills
+$H^q(W,\omega_W\otimes N)$.  Finite affine pushforward and the
+actual retraction (N3) then kill the desired group.  This uses the
+upstream ordinary Kodaira theorem, whose proof is the DI/arithmetic
+route; it uses no Kawamata--Viehweg or Nadel vanishing hypothesis.
+\uses{thm:kn-original-characteristic-zero-kodaira,lem:kn-nadel-smooth-adapted-cover,lem:kn-nadel-smooth-cover-rounded-summand}
+\end{proof}
+
+\begin{lemma}[Canonical acyclicity of actual smooth-centre blowups]
+\label{lem:kn-nadel-smooth-blowup-canonical}
+\notready
+For a blowup $\sigma:V\to Y$ of a smooth scheme in a smooth centre
+containing no irreducible component of $Y$,
+construct $R\sigma_*\omega_V\simeq\omega_Y$, with its actual
+canonical map.  This holds for a finite composition of such blowups
+and after twisting by a line pulled back from $Y$.
+\end{lemma}
+\begin{proof}
+The empty centre is defined by the unit ideal and its blowup is an
+isomorphism. A codimension-one smooth centre under the stated condition
+is an effective Cartier divisor, whose blowup is also an isomorphism.
+Codimension zero is excluded: blowing up the zero ideal gives the empty
+scheme and would make the asserted canonical comparison false.
+In codimension $r\geq2$, choose actual adapted affine neighbourhoods
+of the centre, etale over affine space, with the whole centre ideal
+pulled back from the coordinate ideal.  The actual Rees blowup is the
+flat base change of the whole coordinate blowup.  On that original
+coordinate model, every tuple intersection of the original chart cover
+is the spectrum of its actual polynomial ring localized at the product
+of the relevant ratios.  The original restriction maps retain all
+coefficients and monomials under these identifications.
+
+Decompose each actual Cech cochain into its finite set of Laurent
+weights.  The centre-coordinate weights have nonnegative total sum,
+equal to the original radial degree.  Thus their negative support omits
+at least one centre index.  Inserting that index gives the alternating
+support contraction in every positive degree.  It respects the actual
+restriction maps and differentials.  Summing the primitives over the
+finite weight support proves exactness of the whole original Cech
+complex in every positive degree, hence the actual structure-sheaf
+cohomology vanishing.  Its degree-zero sections are the original
+polynomial base ring, through the original blowup projection.
+
+For the actual etale coefficient algebra, the genuine geometric Cech
+comparison identifies the entire coefficient-changed complex with the
+flat tensor extension of this model complex.  Flat tensor extension
+preserves exactness; its degree-zero comparison retains the original
+coefficient map.  This proves the structure-sheaf assertion on each
+actual adapted affine neighbourhood, with no acyclicity hypothesis
+supplied by the neighbourhood construction.
+
+Let $E$ be the actual exceptional subscheme.  Its whole flat base-change
+identification is projective space of dimension $r-1$ over the original
+centre ring, and the actual line restriction is
+$\mathcal O_V(jE)|_E=\mathcal O_E(-j)$.  For $1\leq j\leq r-1$ every
+cohomology group of this last line, including degree zero, vanishes.
+The true Cartier exact sequences
+\[
+ 0\longrightarrow\mathcal O_V((j-1)E)
+ \longrightarrow\mathcal O_V(jE)
+ \longrightarrow i_*\mathcal O_E(-j)\longrightarrow0
+\]
+therefore propagate the positive vanishing and the original degree-zero
+section isomorphism from $j=0$ to $j=r-1$.
+
+The entire coordinate Jacobian and its etale transport construct
+$\sigma^*\omega_Y\simeq\omega_V\otimes I_E^{r-1}$, preserving the
+actual canonical differential.  The actual Cartier ideal-power/tensor
+comparison gives the equivalent positive-divisor formula.  The line
+projection formula now proves the canonical pushforward identification
+and all positive acyclicity on the adapted affine preimages, retaining
+the original canonical map.  To extend from the adapted chart cover to
+an arbitrary affine base open, its finite affine refinement has acyclic
+inverse-image tuple intersections by the same flat coefficient
+calculation.  The actual Cech comparison of
+Lemma~\ref{lem:kn-nadel-leray-acyclic-intersections} proves vanishing on
+that whole affine preimage.  Thus $R\sigma_*\omega_V=\omega_Y$.
+The same local comparison and canonical maps give the assertion for a
+finite composition; actual line projection proves the pulled-line
+version.  This derives the assertion from the explicit blowup
+calculation without adding a general local-vanishing premise.
+For the actual principalization sequence, the centre condition is proved
+internally.  Its final scheme is nonempty by
+Lemma~\ref{lem:kn-nadel-original-principalization-integral}; its actual
+maps imply nonemptiness at every intermediate blowup.  Inductively the
+ambient stages are integral.  A centre containing their whole component
+would have zero ideal and empty blowup, a contradiction.  Thus the
+application supplies no new centre or acyclicity certificate.
+\end{proof}
+
+\begin{lemma}[Integral nef-and-big Kodaira from the ample rational case]
+\label{lem:kn-nadel-integral-nef-big}
+\notready
+If $D$ is an integral nef and big divisor on smooth projective $Y$,
+then $H^q(Y,\omega_Y\otimes\mathcal O_Y(D))=0$ for $q>0$.
+\end{lemma}
+\begin{proof}
+The genuine numerical Kodaira lemma for interior-pseudoeffective
+bigness, including its numerical-to-geometric positivity comparison,
+gives a decomposition $D=A_0+E_0$ with $A_0$ ample rational and
+$E_0$ effective rational.  Resolve $E_0$ by smooth-centre blowups.
+On the resulting $\mu:V\to Y$, subtract a sufficiently small positive
+exceptional divisor from $\mu^*A_0$ to make it ample, and add that
+divisor to $\mu^*E_0$.  This gives
+$\mu^*D=A+E$ with $A$ ample rational and $E$ effective SNC rational;
+the exceptional divisor is included in that SNC boundary.  The
+exceptional correction exists because a negative exceptional
+combination for a composite of blowups is relatively ample; for a
+small correction, its sum with the pulled-back ample class is ample.
+
+Choose rational $\varepsilon>0$ with $\varepsilon<1$ and every
+coefficient of $\varepsilon E$ less than one.  The rational divisor
+\[
+ Q_\varepsilon=\mu^*D-\varepsilon E
+              =(1-\varepsilon)\mu^*D+\varepsilon A
+\]
+is ample, its fractional support is SNC, and
+$\lceil Q_\varepsilon\rceil=\mu^*D$.  The ample rational result kills
+the positive cohomology of $\omega_V\otimes\mu^*\mathcal O_Y(D)$.
+Canonical acyclicity of the actual blowup sequence identifies this
+with the requested cohomology on $Y$.
+\uses{lem:kn-nadel-ample-q-vanishing,lem:kn-nadel-smooth-blowup-canonical}
+\end{proof}
+
+\begin{theorem}[Prove global SNC Kawamata--Viehweg vanishing]
+\label{thm:kn-nadel-snc-kv}
+\notready
+If $Q$ is rational nef and big with SNC fractional support on smooth
+projective $Y$, then
+\[
+ H^q(Y,\omega_Y\otimes\mathcal O_Y(\lceil Q\rceil))=0
+ \qquad(q>0).
+\]
+\end{theorem}
+\begin{proof}
+The internally constructed smooth adapted cover makes $\tau^*Q$
+an integral nef and big divisor on the smooth projective $W$.
+Lemma~\ref{lem:kn-nadel-integral-nef-big} gives vanishing there.
+The actual normalized-trace retraction (N3) and affine cohomology
+comparison return the desired group as a direct summand of a zero
+group.  In particular, this theorem is proved from ordinary Kodaira,
+covering, blowup, positivity and duality producers.  It is not an
+additional final input called ``KV vanishing''.
+\uses{lem:kn-nadel-smooth-adapted-cover,lem:kn-nadel-smooth-cover-rounded-summand,lem:kn-nadel-integral-nef-big}
+\end{proof}
+
+\begin{lemma}[Derive local vanishing on the produced resolution]
+\label{lem:kn-nadel-local-vanishing}
+\notready
+For the actual $\mu,F$ of
+Lemma~\ref{lem:kn-nadel-original-resolution},
+\[
+ R^j\mu_*\bigl(\omega_Y\otimes
+                  \mathcal O_Y(-\lfloor cF\rfloor)\bigr)=0
+ \qquad(j>0).
+ \tag{N4}
+\]
+Equivalently the higher images of the same rounded relative canonical
+module in (N1) vanish.
+\end{lemma}
+\begin{proof}
+Choose an ample $H$ and an integer $a$ so that $I\otimes H^a$ is
+globally generated.  Thus $\mu^*(aH)-F$ is nef.  For all large $m$,
+\[
+ Q_m=\mu^*(mH)-cF
+    =c(\mu^*(aH)-F)+\mu^*((m-ca)H)
+\]
+is nef and big with SNC fractional support.  Global SNC KV gives
+$H^j(Y,\omega_Y\otimes\mathcal O_Y(-\lfloor cF\rfloor)
+                    \otimes\mu^*H^m)=0$ for every $j>0$.
+Properness gives coherence of every actual higher direct image in
+(N4); there are only finitely many possibly nonzero degrees.
+Serre vanishing on $X$, projection formula, and Leray then identify
+\[
+ H^0\bigl(X,R^j\mu_*(\omega_Y(-\lfloor cF\rfloor))\otimes H^m\bigr)
+ \simeq
+ H^j\bigl(Y,\omega_Y(-\lfloor cF\rfloor)\otimes\mu^*H^m\bigr)=0
+\]
+for $m$ sufficiently large.  The same coherent sheaf twisted by
+$H^m$ is globally generated for large $m$, so zero global sections
+force it to be zero.  Untwisting proves (N4).  Projection formula
+with $\omega_X^\vee$ gives the relative-canonical version.  The map
+$\mu$ is generally not affine; affine pushforward acyclicity cannot
+replace this argument.
+\uses{lem:kn-nadel-original-resolution,thm:kn-nadel-snc-kv}
+\end{proof}
+
+\begin{corollary}[The effective rational-divisor form]
+\label{cor:kn-nadel-q-divisor}
+\notready
+Let $\Delta$ be any effective rational divisor on the original
+smooth projective $X$, with no SNC requirement on $X$.  Choose a
+positive integer $N$ with $N\Delta$ integral Cartier, and define
+\[
+ \mathcal J_X(\Delta)
+   =\mathcal J_X\bigl(\mathcal O_X(-N\Delta)^{1/N}\bigr)
+\]
+using the actual original ideal construction.  This is independent
+of $N$.  If $A-\Delta$ is nef and big, then
+$H^q(X,\omega_X\otimes A\otimes\mathcal J_X(\Delta))=0$ for $q>0$.
+\end{corollary}
+\begin{proof}
+At each original divisorial DVR, the product of the exponent $1/N$
+and the order of the ideal $\mathcal O_X(-N\Delta)$ is exactly the
+order of $\Delta$.  The full valuative inequalities therefore prove
+independence of $N$, including at exceptional divisors.  Apply the
+original ideal-power theorem with $I=\mathcal O_X(-N\Delta)$,
+$B=\mathcal O_X(N\Delta)$ and $c=1/N$.  The tensor $I\otimes B$ is
+the actual unit line and $A-cB=A-\Delta$, proving the claim.
+\uses{thm:kn-nadel-original-target,def:sc0-original-global-multiplier-ideal-sheaf}
+\end{proof}
+
+\begin{corollary}[Uniform generation for the original graded base ideals]
+\label{cor:kn-nadel-asymptotic-uniform-generation}
+\notready
+Let $I_\bullet$ be an actual graded sequence of nonzero ideal sheaves
+on $X$ and let $M$ be a line such that $I_p\otimes M^p$ is globally
+generated for every positive $p$.  For a very ample $H$, put
+$G=\omega_X\otimes H^{d+1}$.  Then
+\[
+ G\otimes M^m\otimes\mathcal J_X(\|I_\bullet^m\|)
+ \quad\text{is globally generated for every }m\geq1.
+ \tag{N5}
+\]
+The ideal is the existing whole
+\texttt{schemeAsymptoticMultiplierIdealSheaf}; $G$ is independent
+of $m$.
+\end{corollary}
+\begin{proof}
+The proved whole-sheaf stabilization gives, for this $m$, a positive
+index $p$ with
+$\mathcal J_X(\|I_\bullet^m\|)=\mathcal J_X(I_p^{m/p})$.
+For $1\leq i\leq d$ apply the original Nadel theorem with
+\[
+ I=I_p,\qquad c=m/p,\qquad B=M^p,\qquad
+ A=M^m\otimes H^{d+1-i}.
+\]
+Its positivity difference is exactly $(d+1-i)H$, which is ample;
+the assumed generation is precisely that of $I_p\otimes B$.
+Thus all groups in the Castelnuovo--Mumford zero-regularity test
+for the sheaf in (N5) vanish.  Degrees greater than $d$ vanish by
+dimension.  Castelnuovo--Mumford regularity gives global generation.
+Although the stabilizing $p$ depends on $m$, the cancelling expression
+for $A-cB$ proves that $G$ does not.  This is the uniform assertion
+needed in the source, rather than an eventual Serre statement for
+each separately chosen multiplier ideal.
+\uses{thm:kn-nadel-original-target,thm:sc0-original-global-asymptotic-stabilization,def:sc0-original-global-asymptotic-multiplier-ideal}
+\end{proof}
+
+\begin{theorem}[The relative extension needed for test configurations]
+\label{thm:kn-nadel-relative-source-application}
+\notready
+Let $f:X\to S$ be projective, with $X$ smooth integral quasi-projective over
+$k$ and $S$ affine of finite type over $k$.  The original ideal-power
+Nadel statement holds with ``nef and big'' interpreted relative to
+$f$ and with conclusion
+\[
+ R^q f_*(\omega_X\otimes A\otimes\mathcal J_X(I^c))=0
+ \qquad(q>0).
+ \tag{N6}
+\]
+If $H$ is relatively very ample and $I_p\otimes M^p$ is relatively
+globally generated, the analogue of (N5) is relatively globally
+generated, hence globally generated over the affine base.  This is
+the version to apply to the smooth resolved test configurations in
+the original Boucksom--Jonsson and Fang--Han--Xia arguments.
+\end{theorem}
+\begin{proof}
+First derive relative ordinary Kodaira from the \emph{proved absolute}
+SNC KV theorem.  For an $f$-ample line $L$, choose $a>0$ giving a
+closed immersion $X\hookrightarrow\mathbb P^N_S$ with
+$L^a=\mathcal O(1)|_X$.  Compactify $S$ by its closure in projective
+space so its complement is the support of an ample Cartier divisor
+$D_\infty$.  Close the same immersion over this compactification
+and resolve the boundary, without changing the smooth open $X$.
+After a large base twist, the ambient $\mathcal O(1)$ extends to an
+ample line $P$ on the possibly singular closure.  Its pullback to
+the resolution is nef and big.  A rational section of the original
+$L$ identifies a divisor of $P$ whose restriction to $X$ is exactly
+$a$ times the original divisor of $L$, since the base twist is
+trivial on $S$.  Consequently the rational divisor $Q=P/a$ restricts
+to that \emph{integral original divisor}, and
+$\mathcal O(\lceil Q\rceil)|_X=L$; no replacement of $L$ by $L^a$
+occurs in the conclusion.  Resolve the boundary so that the
+fractional support of this actual $Q$ is SNC.
+
+For every $t\geq0$, $Q+t f^*D_\infty$ is nef and big with the same
+fractional support.  Absolute SNC KV kills positive cohomology of
+its rounded canonical sheaf on the smooth compactification.
+Taking the direct limit over poles along $f^*D_\infty$ gives
+$H^q(X,\omega_X\otimes L)=0$ for $q>0$.  This direct limit is the
+actual open-restriction cohomology, since the boundary is the
+support of that effective Cartier divisor.  On the affine $S$,
+Leray and coherence identify this with zero of
+$R^q f_*(\omega_X\otimes L)$.  This proves relative ordinary
+Kodaira while keeping the original line.
+
+Now repeat the adapted-cover and finite-duality argument over $S$
+to prove the relative ample rational case.  Relative Kodaira's
+decomposition, a smooth-centre resolution, and a small effective
+SNC exceptional correction give the relative integral nef-and-big
+case by exactly the divisor
+$(1-\varepsilon)\mu^*D+\varepsilon A$ used above.  This decomposition
+comes from relative section growth and relative Serre generation;
+over the affine base its effective rational divisor is an actual
+global divisor.  Canonical blowup acyclicity is local on the target
+and thus gives the same derived pushforward comparison.  The
+adapted denominator cover then proves relative SNC KV.  All these
+are producers to be implemented; no relative KV premise is added
+to (N6).
+
+For the actual principalization $\mu:Y\to X$, $-F$ is $\mu$-globally
+generated because it is the invertible total transform of $I$.
+Thus $-cF$ is $\mu$-nef and $\mu$-big: the generic fibre of the
+birational map has dimension zero.  Relative SNC KV applied to
+$\mu$, locally over affine opens in $X$, proves (N4) on this
+quasi-projective source as well.  The actual multiplier formula
+glues from the same affine all-DVR formula.  Finally
+$\mu^*A-cF$ is nef and big over $S$ by the original positivity
+and generation assumptions.  Relative SNC KV and the just derived
+local vanishing identify its derived pushforward with the sheaf
+in (N6), proving (N6) by Leray.  Apply it to the stabilized
+constituents with $A=M^mH^{d+1-i}$ and $B=M^p$ as above.
+Relative Castelnuovo--Mumford regularity gives the fixed uniform
+generation statement.  A common divisible index clears the
+original rational line classes in the source application; the
+fixed twist can be enlarged once to a chosen ample twist,
+independently of $m$: relative Serre generation makes
+$H^{m_0}\otimes(\omega_X\otimes H^{d+1})^\vee$ generated for one
+sufficiently large $m_0$.  Tensoring its evaluation map with (N5)
+gives generation of $M^m\otimes H^{m_0}\otimes\mathcal J_X(\|I_\bullet^m\|)$
+for every relevant $m$.
+\uses{thm:kn-nadel-snc-kv,lem:kn-nadel-smooth-adapted-cover,lem:kn-nadel-smooth-cover-rounded-summand,lem:kn-nadel-smooth-blowup-canonical,lem:kn-nadel-original-resolution,cor:kn-nadel-asymptotic-uniform-generation}
+\source{bj22-trivval:thm:contenvlisse,fhx-envelope-20261028:prop:entropy_approximation}
+\end{proof}
+
+\begin{theorem}[The additional analytic arbitrary-weight Nadel target]
+\label{thm:kn-nadel-analytic-arbitrary-weight}
+\notready
+Let $(X,\omega)$ be a weakly pseudoconvex K\"ahler manifold, $F$ a
+holomorphic line bundle, and $h$ a singular Hermitian metric, with
+local norm $|v|_h=|v|e^{-\varphi}$.  Suppose
+$\mathrm i\Theta_{F,h}\geq\varepsilon\omega$ for a continuous
+strictly positive function $\varepsilon$.  For the actual analytic
+multiplier ideal of locally integrable $|a|^2e^{-2\varphi}$,
+\[
+ H^q(X,K_X\otimes F\otimes\mathcal J(h))=0\qquad(q>0).
+ \tag{N7}
+\]
+This includes weights without algebraic or rational-divisor
+singularities.  It is an additional target, not a consequence of
+replacing its ideal by an algebraic one.
+\end{theorem}
+\begin{proof}
+Produce the sheaf $\mathcal L^q$ of $F$-valued measurable $(d,q)$
+forms for which the form and its distributional $\bar\partial$ are
+locally square integrable with weight $e^{-2\varphi}$.
+Its degree-zero closed germs are exactly
+$K_X\otimes F\otimes\mathcal J(h)$: a distributionally holomorphic
+coefficient has a holomorphic representative and the weight
+condition is the defining multiplier integrability.  The local
+weighted $L^2$ solution theorem on small balls makes this complex
+exact in positive degrees.  Multiplication by smooth cutoff
+functions preserves the domain, so these sheaves are fine and
+acyclic.  This constructs an actual resolution of the original
+analytic ideal tensor sheaf.
+
+For a closed positive-degree global form, choose a smooth
+plurisubharmonic exhaustion $\psi$ and a convex increasing
+$\chi$ growing fast enough that the relevant weighted integrals,
+including the inverse curvature bound, converge after multiplying
+the metric by $e^{-\chi\circ\psi}$.  The extra curvature is
+semipositive.  The global weighted $L^2$ estimate therefore solves
+$\bar\partial v=u$.  On every compact set the extra exhaustion
+weight and its inverse are bounded, so this solution belongs to
+the original local weighted complex.  Its positive cohomology is
+zero, and the acyclic resolution proves (N7).
+
+Thus a formal proof must produce the original weighted form sheaves,
+distributional domain, fine resolution, local solution theorem,
+and global exhaustion estimate.  Existing coherence or DEL
+subadditivity for holomorphic germ ideals supplies none of these
+global cohomology identifications by itself.  This is the actual
+proof of Demailly's Nadel theorem, \cite[Theorem~5.11]{DemAM}.
+It is a separate analytic proof; no $L^2$ estimate is assumed
+as an extra input to the algebraic theorem above.
+\end{proof}
+
+\begin{lemma}[Compare algebraic singularities with the original analytic ideal]
+\label{lem:kn-nadel-algebraic-analytic-comparison}
+\notready
+On a smooth complex algebraic variety, if in algebraic local
+generators of the original $I$ a weight has the form
+\[
+ \varphi=\frac c2\log\Bigl(\sum_j|g_j|^2\Bigr)+O(1),
+ \qquad c\in\Q_{\geq0},
+\]
+then its actual analytic multiplier ideal is the analytification of
+the original $\mathcal J_X(I^c)$.  For projective $X$, GAGA identifies
+the cohomology of the same canonical line tensor ideal in the two
+categories.
+\end{lemma}
+\begin{proof}
+Use the actual log resolution of $I$.  In local SNC coordinates its
+pullback generators are a common monomial times generators of the
+unit ideal.  Bounded changes of weight do not change local
+integrability.  Change of variables multiplies the measure by the
+squared absolute value of the actual holomorphic Jacobian.  Thus a
+coefficient $a$ is integrable precisely when, for each component,
+\[
+ \operatorname{ord}(a\circ\mu)
+ +\operatorname{ord}(K_{Y/X})-c\operatorname{ord}(F)>-1.
+\]
+The product one-variable integrals give this strict inequality,
+equivalently the rounded relative canonical condition with
+$-\lfloor cF\rfloor$.  Change of variables and the full original
+multiplier formula identify the entire analytic ideal, respecting
+restriction, not just its values away from the exceptional set.
+Coherence and GAGA then give the stated projective cohomology
+comparison.  This comparison has to be proved for the existing
+analytic germ object; it is explicitly not supplied by
+\texttt{Char0/AnalyticMultiplierSubadditivity.lean}, whose header
+records it as open.  Arbitrary quasi-PSH weights need not have this
+finite algebraic form.  Extending by regularization would require
+additional equisingularity or strong-openness and curvature-preserving
+cohomology arguments, so the general assertion (N7) remains an
+independent obligation.
+\uses{lem:kn-nadel-original-resolution,def:sc0-original-global-multiplier-ideal-sheaf}
+\end{proof}
+
+\paragraph{Reference and implementation boundary.}
+Demailly \cite[\S6.D, especially (6.23)--(6.25)]{DemAM} states the
+SNC rounding, change-of-variables multiplier formula, and
+Kawamata--Viehweg vanishing.  Its proof of (6.25) uses analytic Nadel;
+that proof cannot be used here to derive Nadel from KV without a
+cycle.  The algebraic argument above instead uses the adapted-cover
+method described there as the original Kawamata--Viehweg approach
+and developed in Esnault--Viehweg, \emph{Lectures on Vanishing
+Theorems}, DMV Seminar~20 (1992): smooth simultaneous root covers,
+the regular canonical trace, ordinary Kodaira, and the explicit blowup
+calculation.  Local tame finite duality constructs the regular trace;
+the actual differential and its normalized trace composite construct
+the rounded retraction.
+The repository currently contains Demailly's source, not a formal
+implementation of those covering and duality constructions.
+
+After the proved dual-rounded and normalized-cohomology comparisons,
+the first missing producer on that existing normalized-cover branch
+is (N2), including the actual canonical/dualizing object and its maps.
+The first missing producer that can introduce \emph{vanishing} on the
+acyclic algebraic route above is the genuinely smooth adapted cover
+and its actual rounded canonical retraction (N3).  The existing single
+normalized SNC cover does not satisfy its smoothness conclusion.
+Global original-ideal principalization, proper higher-direct-image
+machinery/local vanishing, and the positivity/relative applications
+also remain obligations.  The current logarithmic Serre result and
+empty-boundary comparison do not provide a logarithmic DI splitting
+or a logarithmic vanishing theorem for a nonempty boundary.  In
+particular this section claims neither Nadel nor the arbitrary-weight
+analytic theorem as formally completed.

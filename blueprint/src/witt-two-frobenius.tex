@@ -1,0 +1,70 @@
+\section{The original length-two Witt Frobenius automorphism}
+\label{sec:witt-two-frobenius}
+
+Retain the actual ring $W_2(k)$ for a perfect
+characteristic-$p$ field. The relative Frobenius
+lift uses its actual coefficient Frobenius
+automorphism, rather than a characteristic-$p$
+power map on the mixed-characteristic Witt ring.
+
+\begin{definition}[The original truncated Witt Frobenius]
+\label{def:witt-two-frobenius}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFrobenius.frobenius,EnvelopeProperty.DeligneIllusie.WittTwoFrobenius.frobenius_coeff}
+The original full Witt Frobenius induces an actual
+ring endomorphism $\sigma:W_2(k)\to W_2(k)$,
+with $\sigma(x)_i=x_i^p$ on both actual Witt
+coordinates.
+\uses{def:witt-two-reduction}
+\end{definition}
+\begin{proof}
+In characteristic $p$ for the coefficient field,
+the actual full Witt Frobenius raises each Witt
+coordinate to its $p$th power. Hence it sends a
+full vector whose first two coordinates vanish to
+another such vector. Its composite with original
+truncation therefore vanishes on the kernel of
+truncation. Factor this actual composite ring map
+through the surjective original truncation map.
+The resulting endomorphism is the asserted one.
+Representing a truncated vector by its full vector
+with later coordinates zero gives the displayed
+formula on each of its two coordinates.
+\end{proof}
+
+\begin{lemma}[Compatibility with the original residue Frobenius]
+\label{lem:witt-two-frobenius-reduction}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFrobenius.reduction_frobenius}
+The same actual ring map satisfies
+$\rho(\sigma(x))=\rho(x)^p$ for every original
+Witt vector $x$.
+\uses{def:witt-two-frobenius,def:witt-two-reduction}
+\end{lemma}
+\begin{proof}
+The original reduction is the degree-zero Witt
+coordinate, so this is exactly the degree-zero
+instance of the proved full coordinate formula.
+\end{proof}
+
+\begin{theorem}[The actual Witt Frobenius is an automorphism]
+\label{thm:witt-two-frobenius-equivalence}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoFrobenius.frobenius_bijective,EnvelopeProperty.DeligneIllusie.WittTwoFrobenius.frobeniusEquiv}
+The same original endomorphism is bijective and
+hence an actual ring automorphism of $W_2(k)$.
+\uses{def:witt-two-frobenius}
+\end{theorem}
+\begin{proof}
+If two images agree, their two coordinates have
+equal $p$th powers. Injectivity of Frobenius in
+the original perfect field gives equality of both
+original coordinates, so the vectors agree.
+For any actual vector $x$, take the vector whose
+coordinate $i$ is the unique Frobenius root of
+$x_i$ in $k$. The proved coordinate formula shows
+that its image is exactly $x$. This proves
+surjectivity, and the actual ring endomorphism
+with these two properties gives the claimed
+original ring automorphism.
+\end{proof}

@@ -1,0 +1,41 @@
+\subsection{Locality of actual subharmonic comparison}\label{subsec:fc-line-subharmonic-locality}
+
+\begin{lemma}[Upper semicontinuous compact boundary comparison]\label{lem:fc-line-usc-boundary-comparison}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.le_zero_of_boundary_of_local_max_plateau_usc}
+\leanok
+\uses{lem:fc-line-topology}
+An upper semicontinuous extended-real function on an actual standard
+affinoid, nonpositive on its actual boundary, is nonpositive everywhere
+if every positive interior local maximum has an actual local plateau.
+\end{lemma}
+
+\begin{proof}
+Upper semicontinuity on the actual compact carrier supplies a maximum.
+If positive, its locus is a nonempty closed superlevel set, avoids the
+boundary, and is open by the derived local plateaux. Connectedness makes
+it the whole carrier, contradicting the value at the outer boundary.
+\end{proof}
+
+\begin{theorem}[Locality on actual open domains]\label{thm:fc-line-subharmonic-locality}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_of_locally, EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_iff_locally}
+\leanok
+\uses{def:fc-actual-line-subharmonic, thm:fc-line-subharmonic-strong-maximum,
+  lem:fc-actual-harmonic-restriction, lem:fc-line-subharmonic-harmonic-addition,
+  lem:fc-line-usc-boundary-comparison}
+On an actual open domain over an algebraically closed nontrivially valued
+field, a function is subharmonic if it is subharmonic on a neighbourhood
+of each point. Thus actual subharmonic functions form a local class.
+\end{theorem}
+
+\begin{proof}
+Upper semicontinuity and exclusion of positive infinity are local.
+For an actual harmonic test function $h$ on an actual standard affinoid
+$U$, write its literal original logarithmic expression and consider
+$F=u-h$. This is upper semicontinuous on $U$, and nonpositive on the
+boundary. Near each interior point, restrict $u$ to an actual local
+subharmonic neighbourhood inside the interior of $U$. Actual harmonic
+restriction makes $-h$ harmonic there, so $F$ is actually subharmonic
+there. The proved actual strong maximum principle supplies its local
+plateau at every local maximum. Apply the upper semicontinuous compact
+boundary lemma and rearrange $F\le0$ to obtain the literal comparison.
+\end{proof}

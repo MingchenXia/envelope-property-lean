@@ -1,0 +1,40 @@
+\subsection{Properness genuinely derives the original reciprocal chart cover}
+
+\begin{lemma}[Whole affine reciprocal identities force an actual principal-open cover]
+\label{scheme:actual-proper-affine-reciprocal-cover}
+\lean{EnvelopeProperty.iSup_basicOpen_eq_top_of_proper_affine_reciprocals}
+\leanok
+\uses{scheme:actual-proper-local-valuation-lift,scheme:actual-affine-valuation-section-factor}
+Let $A,B$ be commutative rings, $K$ a field, and $\iota:B\to_A K$ an actual
+injective algebra map.  Let $f:Y\to\operatorname{Spec}A$ be actually proper,
+let $q:\operatorname{Spec}K\to Y$ retain the WHOLE coefficient triangle, and
+let actual affine opens $U_i$ cover $Y$.  Suppose actual original ring maps
+$\phi_i:\Gamma(U_i)\to K$ have WHOLE Spec composites $q$.  Let ORIGINAL
+$r_i\in B$ and ORIGINAL $s_i\in\Gamma(U_i)$ satisfy the ELEMENT identities
+\[
+ \iota(r_i)\,\phi_i(s_i)=1\quad\hbox{in the SAME }K.
+\]
+Then the ACTUAL principal opens $D(r_i)$ cover $\operatorname{Spec}B$.
+Neither a cover of $\operatorname{Spec}B$, a valuation ring, local lift,
+unit, center nor principalization statement is input.  The index family
+need not be finite; $B$ need not have a separate domain hypothesis.
+\end{lemma}
+\begin{proof}
+Fix ANY actual prime $p\subset B$.  The checked local valuation/proper-lift
+construction derives a REAL $V\subset K$ containing all original $B$ values,
+with maximal ideal contracting EXACTLY to $p$, and a genuine
+$\ell:\operatorname{Spec}V\to Y$ retaining the ENTIRE original generic $q$.
+Its actual closed point lies in some original affine $U_i$ by the given cover
+of $Y$.  The checked whole affine section-factor construction then gives
+$\rho_i:\Gamma(U_i)\to V$ whose ENTIRE coefficient composite into the SAME
+$K$ is $\phi_i$.
+
+The ORIGINAL reciprocal element identity now holds in the SAME $V$, because
+the original inclusion $V\hookrightarrow K$ is injective.  Thus the original
+image of $r_i$ in $V$ has a genuine inverse $\rho_i(s_i)$, so is a UNIT.
+It is outside the ACTUAL maximal ideal of $V$.  Its exact original contraction
+therefore gives $r_i\notin p$, which means the ORIGINAL point $p$ lies in
+$D(r_i)$.  Since $p$ was arbitrary, the WHOLE principal-open supremum is top.
+No finite type, Noetherianity, reduction, real valuation, completeness,
+boundedness or native-point certificate enters this argument.
+\end{proof}

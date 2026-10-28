@@ -1,0 +1,86 @@
+\subsection{Existing original component-extraction inputs}
+
+\begin{lemma}[Existing multigraded torus extraction]
+\label{lem:actual-multigraded-torus-component-extraction}
+\lean{EnvelopeProperty.scaleVar,EnvelopeProperty.scaleVar_monomial,EnvelopeProperty.coeff_scaleVar,EnvelopeProperty.varPart_mem_span_scaleVar,EnvelopeProperty.monomial_coeff_mem_of_scaleVar,EnvelopeProperty.MultiModel.scaleVar_mem_imageS,EnvelopeProperty.MultiModel.imageS_self}
+\leanok
+\uses{def:gl-model}
+Let $k$ be ANY field, $A$ ANY commutative $k$-algebra, and
+$\tau$ ANY variable type. Retain the EXISTING original map
+$s_{c,u}$ of $A[Z_i\mid i\in\tau]$ given by $Z_c\mapsto uZ_c$,
+fixing every other variable and every original $A$ coefficient.
+Its exact monomial and coefficient formulas are
+\[
+ s_{c,u}(bZ^m)=u^{m(c)}bZ^m,\qquad
+ (s_{c,u}p)_m=u^{m(c)}p_m.
+\]
+If $k$ is infinite, the part of $p$ of degree $n$ in $Z_c$ belongs to the original
+$k$-linear span of $\{s_{c,u}p:u\in k^\times\}$.
+If in addition $\tau$ is finite and an original $k$-submodule $N$ is stable under all these nonzero
+scalings, then every original monomial component $p_aZ^a$ of every
+$p\in N$ belongs to $N$.
+For an ORIGINAL model $X$ with coefficient field $K$ and any field
+extension $E/K$ with its original $k$ scalar tower, let $S_E'$ be the
+literal coefficientwise image of $X.S$ in $E[Z_1,\ldots,Z_r]$.
+For ANY field $k$, this original image is stable under every
+$s_{c,u}$, including $u=0$. For $E=K$ it is exactly $X.S$.
+\end{lemma}
+\begin{proof}
+The existing scaling map is the original polynomial evaluation at
+the displayed variables; multiplication of its monomials gives both
+formulas. Let $D$ be the largest degree in the chosen variable among
+the finite support of $p$. For $n>D$ the part is zero. Otherwise take
+$D+1$ actual distinct units of the infinite field. Their Vandermonde
+matrix has nonzero determinant and is invertible. The $n$-th row of
+its inverse expresses the chosen degree part as the indicated
+$k$-linear combination, by the exact original coefficient formula.
+For the final assertion, apply this one-variable projection
+successively to the finite set of variables. The coefficient at
+$m$ after a set of projections is $p_m$ precisely when each already
+selected coordinate of $m$ agrees with $a$, and zero otherwise.
+After all variables it is exactly $p_aZ^a$. These are the existing
+original proofs, with no completeness, field norm or reducedness
+assumption on $A$.
+For the model image, every original component is still in that image,
+by its original grading and the coefficientwise map. Expand the finite
+original polynomial support. The exact scaling formula multiplies
+each such component by an original $k$ scalar, so their sum is still
+in the same image. For the identity extension the coefficient map is
+the identity on every original coefficient, giving the exact image
+equality. No normalization is needed for this image assertion.
+\end{proof}
+
+\begin{lemma}[Existing original DVR and parameter components]
+\label{lem:actual-original-rees-component-inputs}
+\lean{EnvelopeProperty.addVal_ringEquiv_apply,EnvelopeProperty.algebraMap_dvd_algebraMap_C_coeff_mul_X_pow}
+\leanok
+\uses{def:bj-rees,algebra:rootable-action-fixes-minimal-primes}
+Every ring automorphism of ANY discrete valuation ring preserves its
+normalized additive valuation, including its value at zero.
+Let $k$ be algebraically closed, $A$ ANY domain and original
+$k$-algebra, and $g_i=a_it^{n_i}\in A[t]$. Suppose the normalized
+chart of an actual original Rees index $x$ is Noetherian, and retain
+its entire original valuation ring $V_x$ and inclusion $\eta_x$.
+Then for every original $F\in A[t]$ and $n\in\mathbb N$,
+\[
+ \eta_x(F)\mid\eta_x(t^nF_n).
+\]
+No finite-type hypothesis on $A$ or membership of a power of $t$ in
+the generated ideal is needed for this existing component assertion.
+\end{lemma}
+\begin{proof}
+In the first assertion, write a nonzero original element as a unit
+times a power of an irreducible. A ring automorphism sends the unit
+to a unit and the irreducible to an irreducible, preserving the same
+power and thus its normalized value. Zero is fixed.
+For the second, the original parameter action $t\mapsto ut$ preserves
+each original chart, integral closure and selected principal ideal.
+The rootable-action minimal-prime argument fixes the actual prime,
+so it restricts to a ring automorphism of the SAME $V_x$. Its
+normalized order is unchanged by the first assertion. Distinct
+nonzero scalars and the existing one-variable Vandermonde identity
+express $t^nF_n$ as a $k$-linear combination of the scaled original
+$F$'s. Each is divisible by $\eta_x(F)$, so the entire sum is as well.
+These are the existing original parameter and valuation assertions;
+the shared minimal-prime argument preserves their original types.
+\end{proof}

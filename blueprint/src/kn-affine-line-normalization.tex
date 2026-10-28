@@ -1,0 +1,233 @@
+\section{Affine line traces and their normalization}
+\label{sec:kn-affine-line-normalization}
+
+Throughout, $A\to B$ is a homomorphism of commutative rings,
+$\beta:\operatorname{Spec}B\to\operatorname{Spec}A$ is its spectrum map, and for an
+$\mathcal O_{\operatorname{Spec}A}$-module $M$ and a section $m\in\Gamma(M)$ we write
+$\beta^*m\in\Gamma(\operatorname{Spec}B,\beta^*M)$ for the image of $m$ under the
+adjunction unit $M\to\beta_*\beta^*M$. This section proves that the trace of differential
+forms along a finite free affine cover is characterized by its normalization
+$\tau(b\cdot\beta^*w)=\operatorname{Tr}_{B/A}(b)\,w$; this is the affine form of the
+trace used for finite cyclic covers by Esnault--Viehweg (\emph{Lectures on vanishing theorems}, \S3).
+
+\begin{lemma}[Section presentations of the pullback unit]
+\label{lem:kn-affine-line-section-presentation}
+\uses{lem:kn-canonical-affine-native-unit-readback,lem:kn-canonical-affine-native-raw-map}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawSection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineSectionOfRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineSectionOfRaw_rawSection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawSection_sectionOfRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawPullbackUnit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawPullbackUnit_eq_unit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawUnit_map_toSection}
+\leanok
+For a scheme $X$ and an $\mathcal O_X$-module $N$, the global sections of $N$ as an abelian
+group and as a $\Gamma(X,\mathcal O_X)$-module have the same underlying set, and the two
+identifications between them are mutually inverse. For an
+$\mathcal O_{\operatorname{Spec}A}$-module $M$, the section $\beta^*m$ is the value of the
+adjunction unit at $m$, and for every morphism $D:\beta^*M\to N$ the section
+$D(\beta^*m)$ is the top component of $D$ applied to $\beta^*m$.
+\end{lemma}
+\begin{proof}
+All identifications keep the underlying section. The pulled-back top section is the unit
+section on the inverse image of the whole space, which is the whole space; the identity
+restriction fixes it. The value $D(\beta^*m)$ is by definition the top component of $D$
+evaluated at this section.
+\end{proof}
+
+\begin{lemma}[Morphisms out of an affine quasicoherent module]
+\label{lem:kn-affine-qcoh-hom-ext-top}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineSpecModules_hom_ext_top}
+\leanok
+Let $P,N$ be $\mathcal O_{\operatorname{Spec}A}$-modules with $P$ quasicoherent. Two
+morphisms $f,g:P\to N$ that agree on $\Gamma(\operatorname{Spec}A,P)$ are equal.
+\end{lemma}
+\begin{proof}
+Let $\varepsilon_P:\Gamma(P)^\sim\to P$ be the counit of the adjunction between the
+associated-sheaf functor $(-)^\sim$ and global sections. Naturality of the counit gives
+$f\circ\varepsilon_P=\varepsilon_N\circ\Gamma(f)^\sim$ and likewise for $g$. By hypothesis
+$\Gamma(f)=\Gamma(g)$, hence $f\circ\varepsilon_P=g\circ\varepsilon_P$. Since $P$ is
+quasicoherent, $\varepsilon_P$ is an isomorphism, so $f=g$.
+\end{proof}
+
+\begin{lemma}[Generation of affine pullback sections]
+\label{lem:kn-affine-pullback-top-generation}
+\uses{lem:affine-pullback-sections-tensor-readback,lem:kn-canonical-affine-native-unit-readback}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePullbackTop_induction}
+\leanok
+Let $M$ be a quasicoherent $\mathcal O_{\operatorname{Spec}A}$-module. Every element of
+$\Gamma(\operatorname{Spec}B,\beta^*M)$ is a finite sum of sections $r\cdot\beta^*m$ with
+$r\in\Gamma(\operatorname{Spec}B,\mathcal O)$ and $m\in\Gamma(M)$. Consequently a property
+of such sections which holds for $0$, for every $r\cdot\beta^*m$, and is stable under sums,
+holds for every section.
+\end{lemma}
+\begin{proof}
+The comparison $B\otimes_A\Gamma(M)\to\Gamma(\operatorname{Spec}B,\beta^*M)$ is a
+$B$-linear isomorphism sending $b\otimes m$ to $b\cdot\beta^*m$, where $b$ acts through
+$B\cong\Gamma(\operatorname{Spec}B,\mathcal O)$. Every element of the tensor product is a
+finite sum of pure tensors; apply the comparison and use additivity.
+\end{proof}
+
+\begin{lemma}[Morphisms out of a pushed pullback]
+\label{lem:kn-affine-pushforward-pullback-hom-ext}
+\uses{lem:kn-affine-qcoh-hom-ext-top,lem:kn-affine-pullback-top-generation}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardPullback_hom_ext}
+\leanok
+Let $M$ be a quasicoherent $\mathcal O_{\operatorname{Spec}A}$-module and $N$ any
+$\mathcal O_{\operatorname{Spec}A}$-module. Two morphisms $f,g:\beta_*\beta^*M\to N$ with
+$f(r\cdot\beta^*m)=g(r\cdot\beta^*m)$ for all $r\in\Gamma(\operatorname{Spec}B,\mathcal O)$
+and $m\in\Gamma(M)$ are equal.
+\end{lemma}
+\begin{proof}
+Pullback between affine schemes and pushforward along an affine morphism preserve
+quasicoherence, so $\beta_*\beta^*M$ is quasicoherent, and
+$\Gamma(\operatorname{Spec}A,\beta_*\beta^*M)=\Gamma(\operatorname{Spec}B,\beta^*M)$. By
+Lemma~\ref{lem:kn-affine-qcoh-hom-ext-top} it suffices that $f$ and $g$ agree on this group.
+Both are additive, so the set where they agree contains $0$ and is closed under sums; it
+contains every $r\cdot\beta^*m$ by hypothesis, hence is everything by
+Lemma~\ref{lem:kn-affine-pullback-top-generation}.
+\end{proof}
+
+\begin{definition}[The affine pulled-line trace]
+\label{def:kn-affine-pulled-line-trace}
+\uses{lem:kn-structure-trace-affine-sheaf,thm:fc-original-scheme-line-projection-formula}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePulledLineTrace,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePulledLineTrace_eq_transported}
+\leanok
+Assume $B$ is a finite free $A$-module, let
+$\tau:\beta_*\mathcal O_{\operatorname{Spec}B}\to\mathcal O_{\operatorname{Spec}A}$ be the
+structure-sheaf trace (the algebra trace of $B/A$ on sections), and let $M$ be an invertible
+$\mathcal O_{\operatorname{Spec}A}$-module. The \emph{pulled-line trace} $T_M$ is the composite
+\[
+ \beta_*\beta^*M\cong\beta_*(\mathcal O\otimes\beta^*M)
+ \xrightarrow{\ \pi^{-1}\ }\beta_*\mathcal O\otimes M
+ \xrightarrow{\ \tau\otimes M\ }\mathcal O\otimes M\cong M,
+\]
+where $\pi$ is the projection formula for the invertible module $M$ and the outer maps are
+the left-unit constraints.
+\end{definition}
+
+\begin{lemma}[Values of the pulled-line trace]
+\label{lem:kn-affine-pulled-line-trace-value}
+\uses{def:kn-affine-pulled-line-trace,lem:line-pf-unit-trace-native-local-coefficient,lem:kn-structure-trace-raw-top}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePulledLineTrace_tmul,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePulledLineTrace_coefficient,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePulledLineTrace_trace_value}
+\leanok
+For $r\in\Gamma(\operatorname{Spec}B,\mathcal O)$ and $m\in\Gamma(M)$,
+$T_M(r\cdot\beta^*m)=\tau(r)\cdot m$, and $\tau(r)$ is the image of
+$\operatorname{Tr}_{B/A}(r)$ under $A\cong\Gamma(\operatorname{Spec}A,\mathcal O)$, where
+$r$ is read in $B$ through $\Gamma(\operatorname{Spec}B,\mathcal O)\cong B$.
+\end{lemma}
+\begin{proof}
+The projection formula sends $r\otimes m$ to $r\otimes\beta^*m$ and the left-unit
+constraint sends $s\otimes x$ to $s\cdot x$; hence the inverse composite sends
+$r\cdot\beta^*m$ to $r\otimes m$, then $\tau\otimes M$ gives $\tau(r)\otimes m$, and the
+left unit gives $\tau(r)\cdot m$. The coefficient statement is the value of the structure
+trace on global sections.
+\end{proof}
+
+\begin{definition}[The affine canonical differential]
+\label{def:kn-affine-algebra-canonical-differential}
+\uses{sc0-exterior-cotangent-morphism:sheaf,sc0-affine-canonical-sheaf-image:structure}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalDifferential}
+\leanok
+Let $k$ be a field and $\varphi:A\to B$ a homomorphism of $k$-algebras, with structural
+morphisms $f_A,f_B$ to $\operatorname{Spec}k$, so that $f_A\circ\beta=f_B$. The
+\emph{affine canonical differential}
+$d\beta:\beta^*\Omega^n_{f_A}\to\Omega^n_{f_B}$ is the exterior pullback map
+$\beta^*\Omega^n_{f_A}\to\Omega^n_{f_A\circ\beta}$ followed by the identification
+$\Omega^n_{f_A\circ\beta}=\Omega^n_{f_B}$.
+\end{definition}
+
+\begin{lemma}[Composites with an adjoint on pulled-back sections]
+\label{lem:kn-affine-pullback-adjoint-unit-value}
+\uses{lem:kn-affine-line-section-presentation}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawModuleMap_comp_pullbackUnit}
+\leanok
+Let $M$ be an $\mathcal O_{\operatorname{Spec}A}$-module, $P,Q$ two
+$\mathcal O_{\operatorname{Spec}B}$-modules, $p:\beta^*M\to P$ and $e:P\to Q$ morphisms, and
+let $\delta:M\to\beta_*P$ be the adjoint of $p$, i.e.\ the unit $M\to\beta_*\beta^*M$
+followed by $\beta_*p$. Then $(e\circ p)(\beta^*m)=e(\delta(m))$ for every
+$m\in\Gamma(M)$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:kn-affine-line-section-presentation}, $\beta^*m$ is the value of the unit at
+$m$, and $p$ applied to it is $(\beta_*p\circ\mathrm{unit})(m)=\delta(m)$. Apply $e$.
+\end{proof}
+
+\begin{lemma}[The canonical differential on pulled-back forms]
+\label{lem:kn-affine-algebra-canonical-differential-unit}
+\uses{def:kn-affine-algebra-canonical-differential,sc0-exterior-pullback-sections:adjunction,thm:kn-canonical-affine-native-differential-readback,lem:kn-affine-pullback-adjoint-unit-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalDifferential_unitTop}
+\leanok
+Assume $f_A$ is smooth of relative dimension $n$. For every $n$-form $w$ over $A$,
+$d\beta(\beta^*w)=\varphi^*w$, where $\varphi^*w\in\Gamma(\Omega^n_{f_B})$ is the native
+pullback of forms along $\varphi$.
+\end{lemma}
+\begin{proof}
+The exterior pullback map is adjoint to the exterior differential
+$\delta:\Omega^n_{f_A}\to\beta_*\Omega^n_{f_A\circ\beta}$, so by
+Lemma~\ref{lem:kn-affine-pullback-adjoint-unit-value} the value of $d\beta$ on $\beta^*w$ is
+the identification $\Omega^n_{f_A\circ\beta}=\Omega^n_{f_B}$ applied to $\delta(w)$. By
+Theorem~\ref{thm:kn-canonical-affine-native-differential-readback} this is the native
+pullback $\varphi^*w$.
+\end{proof}
+
+\begin{lemma}[Abstract normalization criterion]
+\label{lem:kn-affine-line-normalization-abstract}
+\uses{lem:kn-affine-pushforward-pullback-hom-ext,lem:kn-canonical-affine-native-raw-map,lem:kn-canonical-affine-native-unit-readback}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforward_comp_eq_of_values}
+\leanok
+Let $M$ be a quasicoherent $\mathcal O_{\operatorname{Spec}A}$-module and $P$ an
+$\mathcal O_{\operatorname{Spec}B}$-module, and let $D:\beta^*M\to P$,
+$T:\beta_*P\to M$ and $S:\beta_*\beta^*M\to M$ be morphisms. Let
+$\Phi:\Gamma(M)\to\Gamma(P)$ and $t:B\to A$ be maps of sets such that, for all
+$w\in\Gamma(M)$, $b\in B$, $r\in\Gamma(\operatorname{Spec}B,\mathcal O)$ and $m\in\Gamma(M)$,
+\[
+ D(\beta^*w)=\Phi(w),\qquad T(b\cdot\Phi(w))=t(b)\cdot w,\qquad
+ S(r\cdot\beta^*m)=t(\bar r)\cdot m,
+\]
+where $\bar r\in B$ corresponds to $r$ under $B\cong\Gamma(\operatorname{Spec}B,\mathcal O)$.
+Then $T\circ\beta_*D=S$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:kn-affine-pushforward-pullback-hom-ext} it suffices to compare both sides on
+$r\cdot\beta^*m$. Since $D$ is $\mathcal O_{\operatorname{Spec}B}$-linear,
+$D(r\cdot\beta^*m)=r\cdot\Phi(m)=\bar r\cdot\Phi(m)$, the last equality because $B$ acts on
+global sections through $B\cong\Gamma(\operatorname{Spec}B,\mathcal O)$. Hence
+$T(D(r\cdot\beta^*m))=t(\bar r)\cdot m=S(r\cdot\beta^*m)$.
+\end{proof}
+
+\begin{theorem}[Normalization criterion for affine line traces]
+\label{thm:kn-affine-line-normalization-criterion}
+\uses{lem:kn-affine-line-normalization-abstract,lem:kn-affine-pulled-line-trace-value,lem:kn-affine-algebra-canonical-differential-unit}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalDifferential_comp_eq_affinePulledLineTrace}
+\leanok
+Let $k$ be a field, $A\to B$ a homomorphism of $k$-algebras making $B$ a finite free
+$A$-module, and assume $f_A$ smooth of relative dimension $n$. Let
+$T:\beta_*\Omega^n_{f_B}\to\Omega^n_{f_A}$ be a morphism such that
+\[
+ T(b\cdot\varphi^*w)=\operatorname{Tr}_{B/A}(b)\,w
+ \qquad\text{for all } b\in B \text{ and all $n$-forms $w$ over } A.
+\]
+Then $T\circ\beta_*(d\beta)=T_{\Omega^n_{f_A}}$, the pulled-line trace of the canonical
+module $\Omega^n_{f_A}$.
+\end{theorem}
+\begin{proof}
+The module $\Omega^n_{f_A}$ is invertible, in particular quasicoherent. Apply
+Lemma~\ref{lem:kn-affine-line-normalization-abstract} with $M=\Omega^n_{f_A}$,
+$P=\Omega^n_{f_B}$, $D=d\beta$, $S=T_{\Omega^n_{f_A}}$, $\Phi=\varphi^*$ and
+$t=\operatorname{Tr}_{B/A}$. Its first hypothesis is
+Lemma~\ref{lem:kn-affine-algebra-canonical-differential-unit}, its second is the assumption on
+$T$, and its third is Lemma~\ref{lem:kn-affine-pulled-line-trace-value}.
+\end{proof}
+
+\begin{lemma}[The criterion on a mixed Kummer chart]
+\label{lem:kn-affine-line-normalization-mixed-chart}
+\uses{lem:kn-affine-line-normalization-abstract,lem:kn-affine-pulled-line-trace-value,lem:kn-affine-algebra-canonical-differential-unit,lem:kn-canonical-mixed-native-sheaf-candidate,lem:kn-nadel-mixed-original-native-canonical-input}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalSheafCandidate_differential_of_native}
+\leanok
+Let $A$ be a $k$-algebra with étale coordinates $x$, let $B$ be the mixed Kummer algebra
+$A[t]/(t_i^{N_i}-d_i)$ with positive degrees invertible in $A$, and let
+$T:\beta_*\Omega^n_B\to\Omega^n_A$ be the mixed sheaf candidate. Assume that
+$T(b\cdot\varphi^*w)=\operatorname{Tr}_{B/A}(b)\,w$ for all $b\in B$ and all forms $w$ over
+$A$. Then $T\circ\beta_*(d\beta)=T_{\Omega^n_A}$.
+\end{lemma}
+\begin{proof}
+$B$ is finite free over $A$ and $f_A$ is smooth of relative dimension $n$. Apply
+Lemma~\ref{lem:kn-affine-line-normalization-abstract} as in
+Theorem~\ref{thm:kn-affine-line-normalization-criterion}.
+\end{proof}

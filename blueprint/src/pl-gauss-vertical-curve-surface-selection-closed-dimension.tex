@@ -1,0 +1,91 @@
+\section{Strict dimension for an actual proper closed integral image}
+The maps here are the original scheme morphisms, and all whole dimensions
+are computed from genuine original irreducible closed chains. No finite
+dimension, maximal-chain or image-comparison certificate is an input.
+
+\begin{lemma}[The whole original integral finite-type dimension is a natural number]
+\label{lem:pl-gauss-original-whole-dimension-natural}
+\uses{thm:pl-gauss-original-whole-dimension-equals-affine,scheme:actual-affine-finite-field-point}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionClosedDimension.exists_whole_dimension_eq_natCast}
+\leanok
+Let $k$ be any field and let the actual integral $Y$ have an actual
+locally finite-type structure $p:Y\to\operatorname{Spec}k$. Then there
+is a natural number $n$ with $\dim Y=n$ for the whole original scheme.
+No global quasi-compactness or supplied finite-dimension bound is needed.
+\end{lemma}
+\begin{proof}
+The actual integral scheme is nonempty. Choose an actual nonempty affine
+neighbourhood of its genuine generic point. The original affine base map
+makes its SAME actual coordinate ring a finite-type $k$-algebra. The
+coordinate ring is nonzero because the affine is nonempty in an integral
+scheme. Genuine Noether normalization gives a finite injective polynomial
+algebra map into this ring. Incomparability bounds its prime-chain
+dimension by the finite number of variables, while nonzeroness gives a
+nonnegative dimension. Its actual ring dimension is therefore a natural
+number, by the existing finite-type ring theorem. The proved whole
+original scheme/affine dimension equality identifies that SAME dimension
+with $\dim Y$. All chosen affine and algebra data are internally derived.
+\end{proof}
+
+\begin{theorem}[A nonsurjective actual closed integral image has strictly smaller whole dimension]
+\label{thm:pl-gauss-original-proper-closed-image-strict-dimension}
+\uses{lem:pl-gauss-original-whole-dimension-natural}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionClosedDimension.dimension_add_one_le_of_not_surjective}
+\leanok
+In the same original field-finite-type integral $Y$, let $D$ be integral
+and let $c:D\hookrightarrow Y$ be an actual closed immersion. If the
+actual point map of $c$ is not surjective, then
+\[
+ \dim D+1\le\dim Y.
+\]
+No finite dimension, chain, prime or prescribed image representative is
+supplied. Local finite type of $D$ is derived from the actual composition.
+\end{theorem}
+\begin{proof}
+The actual closed immersion is locally finite type; composing with the
+original field structure gives the SAME $D$ a locally finite-type field
+structure. By the preceding lemma $\dim D=n$ for an internally obtained
+natural $n$. Krull dimension is the supremum of lengths of actual strict
+chains of original irreducible closed subsets; the finite integer value
+is attained. Choose such a genuine chain of length $n$.
+
+The actual closed embedding sends an original irreducible closed subset
+to its original closed image. This map on irreducible closeds is strictly
+monotone, since the actual point map is inducing and injective. Thus the
+whole chosen chain maps to a strict chain of the SAME length in $Y$.
+Every image member lies in the actual closed range of $c$. The original
+point map is nonsurjective, so this range is a proper subset of $Y$.
+Consequently its last chain member is strictly below the whole original
+$Y$, which is itself irreducible closed because $Y$ is integral. Append
+this actual whole $Y$ to the mapped chain. This gives a genuine strict
+chain of length $n+1$ in the original target, hence $n+1\le\dim Y$.
+Substituting the actual original equality $\dim D=n$ proves the claim.
+\end{proof}
+
+\begin{corollary}[Equal successor dimensions force the actual closed map to be surjective]
+\label{cor:pl-gauss-original-equal-successor-dimensions-surjective}
+\uses{lem:pl-gauss-original-whole-dimension-natural,thm:pl-gauss-original-proper-closed-image-strict-dimension}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionClosedDimension.surjective_of_dimension_add_one_eq}
+\leanok
+For the same actual $p$ and original closed immersion $c:D\hookrightarrow Y$
+with integral source and target, if their actual whole successor dimensions
+satisfy $\dim D+1=\dim Y+1$, the actual point map $c$ is surjective.
+This conditional dimension comparison will be discharged by the actual
+cut-component dimension theorems in the horizontal-selection consumer.
+\end{corollary}
+\begin{proof}
+If $c$ were nonsurjective, the preceding theorem would give
+$\dim D+1\le\dim Y$. Substitute the given actual successor-dimension
+equality. The first lemma gives $\dim Y=n$ for a genuine natural number,
+so the resulting inequality is $n+1\le n$, impossible. This is actual
+surjectivity of the original point map, not a replacement of its source,
+image, kernel or scheme structure by a proxy.
+\end{proof}
+
+This strict-dimension theorem applies to an actual selected cut component
+contained in an actual original central component. The two exact original
+component-dimension theorems give equal successor dimensions. Surjectivity
+then puts that central component's original generic-image point back in
+the SAME cut, contradicting the cut's internally proved avoidance. Actual
+horizontal selection, its coefficient dominance, normalization and the
+surface induction are subsequent consumers, not conclusions here.

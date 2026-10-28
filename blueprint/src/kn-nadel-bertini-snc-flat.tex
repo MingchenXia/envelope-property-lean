@@ -1,0 +1,254 @@
+\section{Actual localized flat Cartier fibres at original good parameters}
+
+Retain the original base ring $A$, chart algebra $B$, equation $h\in B$,
+and original parameter homomorphism $\varphi:A\to k$.  Let $g\in A$ have
+unit image under this same $\varphi$.  Write $A_g=A[1/g]$,
+$B_g=A_g\otimes_A B$, and $Q_g=A_g\otimes_A(B/(h))$.
+These are the actual scalar localization rings and the original principal
+quotient, not replacement algebra certificates.
+
+\begin{lemma}[The actual localized principal quotient and equation]
+\label{lem:kn-nadel-bertini-snc-flat-localized-quotient}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.localizedRing,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.localizedQuotient,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.localizedEquation,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.principalQuotientIso,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.principalQuotientIso_mk_tmul,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.localizedEquation_regular,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.ringLocalizationIso,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBaseChange.quotientLocalizationIso}
+\leanok
+The actual whole principal quotient $B_g/(1\otimes h)$ is canonically
+isomorphic as an $A_g$-algebra to $Q_g$, retaining the whole original
+quotient map.  If multiplication by the original $h$ is injective on $B$,
+then multiplication by its actual $1\otimes h$ is injective on $B_g$.
+The latter two rings are the actual ring localizations at the original
+image of $g$.
+\end{lemma}
+\begin{proof}
+Use the native tensor/principal-quotient algebra equivalence.  Its extended
+ideal is exactly the principal ideal of the same original $1\otimes h$;
+the native formula on every pure tensor retains the actual quotient map.
+The actual localization $A_g$ is flat over $A$, so tensoring the original
+injective principal multiplication map with $A_g$ is injective.  Its entire
+linear map is actual multiplication by $1\otimes h$.  Native localization
+base change identifies each actual tensor localization with localization
+of the original ring away from its original image of $g$.
+\end{proof}
+
+\begin{lemma}[Original parameter fibres from localized quotient flatness]
+\label{lem:kn-nadel-bertini-snc-flat-original-fibre}
+\uses{lem:kn-nadel-bertini-snc-flat-localized-quotient,thm:kn-nadel-flat-principal-fibre-regular}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.parameterLift,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.parameterLift_comp,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.fibreIso,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.fibreIso_tmul,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.fibreIso_equation,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFibre.tensor_regular_of_localized_flat}
+\leanok
+Suppose the actual $Q_g$ is flat over the actual $A_g$ and the original
+$h$ is regular.  Then the original $1\otimes h$ is regular in the actual
+original parameter fibre $k\otimes_{A,\varphi}B$.
+\end{lemma}
+\begin{proof}
+The original unit $\varphi(g)$ uniquely extends the same original scalar
+map to $A_g\to k$, with its exact original scalar triangle.  Transfer the
+actual $Q_g$ flatness across the proved whole principal-quotient
+isomorphism.  The native flat-principal-fibre theorem therefore proves
+regularity in $k\otimes_{A_g}B_g$.  Native cancellation of this actual
+scalar base change identifies this whole ring with the original
+$k\otimes_A B$, and its whole pure-tensor formula retains the same
+original $1\otimes h$.  Transport the actual injectivity across this
+actual algebra isomorphism.
+\end{proof}
+
+The required flatness is only on an actual principal neighbourhood of the
+chosen original good parameter.  Smoothness of the original incidence
+projection restricted to that actual open supplies it; the whole original
+quotient is never assumed flat over the whole original parameter ring.
+The separate comparison of the actual parameter fibre with the zero ideal
+of the same original selected section remains the whole-scheme producer.
+
+
+\begin{theorem}[The original good parameter internally supplies localized flatness]
+\label{thm:kn-nadel-bertini-snc-flat-good-parameter}
+\uses{lem:kn-nadel-bertini-snc-flat-original-fibre,lem:kn-nadel-bertini-generic-good-open}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatAffine.quotientStructure,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatAffine.localizedQuotient_flat_of_smooth_basicOpen,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatAffine.localizedQuotient_flat_of_globalGoodOpen,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatAffine.exists_unit_basicOpen_neighbourhood,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatAffine.tensor_regular_of_globalGoodOpen}
+\leanok
+Retain the original global proper locally finitely presented incidence
+projection $\pi:Y\to\operatorname{Spec}A$, its actual good open, and an
+actual original open quotient chart
+$\nu:\operatorname{Spec}(B/(h))\to Y$ with its actual original parameter
+projection triangle.  If the actual original point defined by
+$\varphi:A\to K$ lies in that good open and $h$ is regular, then the same
+original $1\otimes h$ is regular in $K\otimes_A B$.  Localized quotient
+flatness is proved internally and is not an extra input.
+\end{theorem}
+\begin{proof}
+The native principal-open basis internally chooses $D(g)$ containing
+that same original point and contained in the original good open.  Native
+spectrum evaluation gives $\varphi(g)\ne0$, a unit in the original field.
+The original chart is an open immersion, so pullback of the original
+relative smooth locus is exactly that of its actual composite with $\pi$.
+The genuine good-open property therefore makes the original chart
+projection smooth over $D(g)$.  The native actual tensor-product spectrum
+square is Cartesian, and $\operatorname{Spec}A_g\simeq D(g)$ retains its
+whole original inclusion.  Cartesian pasting with the actual restriction
+square proves $\operatorname{Spec}Q_g\to\operatorname{Spec}A_g$ smooth.
+The native affine ring/scheme comparison then gives actual $A_g$-flatness
+of this same $Q_g$.  Apply the preceding original-parameter-fibre producer.
+At no stage is the whole $B/(h)$ required flat over the whole $A$.
+\end{proof}
+
+\begin{lemma}[The original polynomial parameter fibre retains the entire selected equation]
+\label{lem:kn-nadel-bertini-snc-flat-polynomial-evaluation}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.coefficientMap,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.chartEvaluation,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.chartEvaluation_comp_coefficientMap,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.evaluationMap,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.evaluationMap_tmul,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.constantMap,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.tensor_variable,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.constantMap_algebraMap,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.constantMap_chartEvaluation,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.fibreEvaluationIso,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.chartEvaluation_linearForm,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatPolynomial.fibreEvaluationIso_linearForm}
+\leanok
+For the original $k$-algebra $C$ and actual tuple $a:S\to k$, with
+$A=k[(t_i)]$ and $B=C[(t_i)]$, the original coefficient map and original
+point evaluation internally give the entire original ring isomorphism
+\[
+ k\otimes_{A,\operatorname{ev}_a}B\simeq C,\qquad
+ r\otimes F\longmapsto r\,F(a).
+\]
+It retains every original variable, base scalar, whole original polynomial,
+and the whole original equation
+$1\otimes\sum_i c_i t_i\mapsto\sum_i a_i c_i$.
+\end{lemma}
+\begin{proof}
+The complete original coefficient/evaluation square commutes on every
+original polynomial.  Its actual tensor universal property gives the
+forward ring map; the inverse sends each original $c$ to $1\otimes c$.
+The actual original tensor balancing relations identify $a_i\otimes1$
+with $1\otimes t_i$ and retain each original base scalar.  Native polynomial
+induction therefore proves the inverse identity for every whole original
+polynomial.  Native tensor induction proves it on the entire original
+fibre ring.  The whole pure-tensor and linear-form formulas follow from
+the actual ring maps and original finite sum.  Every scalar algebra in the
+statement is explicitly installed from the original coefficient homomorphism
+or the same original evaluation homomorphism, rather than an identity
+algebra on a shared carrier.
+\end{proof}
+
+The actual coordinate-chart constructor and its whole original parameter
+triangle are supplied by the proved original incidence chart producer.
+The following assembly consumes these actual maps and the whole
+selected-equation formula above to prove the original selected zero ideal
+Cartier and preserve SNC; no matching or Cartier certificate is input.
+
+
+\begin{lemma}[The actual good parameter gives a regular original selected coefficient]
+\label{lem:kn-nadel-bertini-snc-flat-selected-coefficient}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatSelected.selectedEquation_regular_of_globalGoodOpen}
+\leanok
+\uses{thm:kn-nadel-bertini-snc-flat-good-parameter,lem:kn-nadel-bertini-snc-flat-polynomial-evaluation,lem:kn-nadel-bertini-snc-universal-equation-regular}
+On an actual original unit-pivot coefficient chart $C$, the same actual
+good parameter $a$ makes the original selected local equation
+$\sum_i a_i c_i\in C$ regular.  No local flatness, desired regular equation
+or Cartier conclusion is supplied as a certificate.
+\end{lemma}
+\begin{proof}
+The proved original unit-pivot producer internally makes the same
+universal linear polynomial regular.  The actual original quotient chart
+and its whole original coefficient projection triangle identify its
+parameter map with the same original global incidence projection.
+Apply the actual good-parameter flat-localization producer and then the
+proved whole polynomial-fibre evaluation ring isomorphism.  Its exact
+same-equation formula transports the produced injective multiplication
+to multiplication by the same original selected sum in $C$.
+\end{proof}
+
+\begin{lemma}[The entire selected frame coefficient and ideal]
+\label{lem:kn-nadel-bertini-snc-flat-selected-frame}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatFrame.selected_frame_coefficient,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatFrame.selectedIdeal_ideal_of_frame}
+\leanok
+For the original line, original finite sections, same original tuple and
+actual frame on any original affine open $W$, the selected section's
+entire frame coefficient is $\sum_i a_i c_i$. Its entire original zero
+ideal on $W$ is the principal ideal generated by the original top
+restriction of this same coefficient.
+\end{lemma}
+\begin{proof}
+Actual pullback of the selected section retains each original scalar and
+section; the actual frame is linear, so it carries the entire original
+sum to the indicated sum of frame coefficients. The native frame
+calculation for the original section's whole zero ideal gives the second
+assertion, using the actual top restriction isomorphism. No assertion
+merely about support is used.
+\end{proof}
+
+\begin{theorem}[The actual selected hyperplane is Cartier]
+\label{thm:kn-nadel-bertini-snc-flat-selected-cartier}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatCartier.projective_selected_coefficient_regular,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatCartier.projective_selected_isInvertible}
+\leanok
+\uses{lem:kn-nadel-bertini-snc-flat-selected-coefficient,lem:kn-nadel-bertini-snc-flat-selected-frame,cor:kn-nadel-bertini-projective-polynomial-chart}
+For an original closed projective embedding $j:X\hookrightarrow\mathbf P^m_k$
+and a tuple $a$ whose actual original evaluation point belongs to the
+actual incidence good open, the same original selected hyperplane zero
+ideal is invertible. There is no input asserting that the selected
+hyperplane is Cartier, flat, regular or nonempty.
+\end{theorem}
+\begin{proof}
+Use the original coordinate affine cover. On the $i$th chart take the
+actual original coordinate frame and its actual coefficients $c_b$;
+the original $i$th coefficient is $1$. The proved actual quotient-chart
+constructor is an open immersion into the same original incidence, with
+the entire original parameter projection equal to the quotient of the
+original coefficient-polynomial map. Applying the good-parameter
+producer internally makes the same selected coefficient $\sum_b a_bc_b$
+a nonzerodivisor. The whole original selected-ideal frame formula gives
+its principal ideal on this chart. The actual top restriction ring
+isomorphism preserves this nonzerodivisor. The original coordinate opens
+cover $X$, so these exact witnesses give the native invertible-ideal
+predicate at every original point, including empty selected zero loci.
+\end{proof}
+
+\begin{theorem}[An internally chosen original hyperplane preserves the whole SNC family]
+\label{thm:kn-nadel-bertini-snc-flat-chosen-hyperplane}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncFlatBertini.exists_ambient_and_strata_good_parameter,
+EnvelopeProperty.Vanishing.NadelBertiniSncFlatBertini.exists_projective_snc_selected}
+\leanok
+\uses{thm:kn-nadel-bertini-snc-flat-selected-cartier,thm:kn-nadel-bertini-snc-all-strata-parameters,thm:kn-nadel-bertini-snc-criterion}
+Let $j:X\hookrightarrow\mathbf P^m_k$ be the original closed embedding,
+with $X$ smooth over the original characteristic-zero field and original
+SNC family $E$. There is an actual original tuple $a$, with $a_0\ne0$,
+such that the same original selected zero ideal $H_a$ is Cartier,
+its whole zero scheme is smooth, $(E\mathbin{\mathrm{append}}H_a)$ is
+SNC and $E$ has SNC with $H_a$.
+\end{theorem}
+\begin{proof}
+Take the finite family consisting of the actual incidence good open for
+$X$ and those for every original closed stratum. The original SNC
+coordinates internally give the smoothness of each original stratum;
+the original projective incidence constructor gives each same total
+space's smoothness. The proved characteristic-zero rational-parameter
+producer internally chooses one actual tuple in all these actual opens,
+with first coefficient nonzero. The selected Cartier producer applies
+to $X$ and separately to every original closed stratum. The actual
+selected-fibre theorem makes each entire selected zero scheme smooth.
+The proved whole selected-ideal pullback equality identifies these
+stratum selected ideals with the restrictions of the same ambient
+$H_a$. Apply the proved all-strata smooth-Cartier SNC criterion, whose
+regular-local-ring proof constructs one common regular parameter system
+for the old component equations and this same new equation. In
+particular, a zero-dimensional stratum has a unit selected equation and
+empty intersection; mere smoothness of an identically zero equation is
+never substituted for transversality.
+\end{proof}

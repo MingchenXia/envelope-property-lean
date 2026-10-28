@@ -1,0 +1,168 @@
+\subsection{Graded normalized projective spectra over arbitrary rings}
+\label{subsec:normalized-projective-spectra}
+
+This construction begins with the absolute real seminorm spectrum of a
+polynomial ring over an arbitrary commutative coefficient ring. Prescribing
+an arbitrary coefficient seminorm is then an actual subspace condition.
+The construction does not assume a field or a bounded coefficient seminorm.
+
+\begin{definition}[Actual graded normalized spectrum]
+\label{projective:general-normalized-spectrum}
+\lean{EnvelopeProperty.Berkovich.Spectrum.IsPolynomialGraded,
+  EnvelopeProperty.Berkovich.Spectrum.isPolynomialGraded_iff,
+  EnvelopeProperty.Berkovich.Spectrum.isClosed_setOf_isPolynomialGraded,
+  EnvelopeProperty.Berkovich.Spectrum.isPolynomialGraded_iff_isGraded,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.instTopologicalSpace,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.instT2Space,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_val,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isGraded,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.sup_val_X,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.val_X_le_one,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_iff,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.exists_val_X_eq_one,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartOpen,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isOpen_chartOpen,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.exists_mem_chartOpen,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.isClosed_carrier}
+\leanok
+\uses{spectrum:affine-seminorm,spectrum:topology,spectrum:graded-support}
+For $P=R[X_0,\ldots,X_n]$, a real seminorm is polynomial-graded when its
+value on every polynomial is the maximum of its values on all homogeneous
+components. The normalized projective spectrum consists of such points
+whose maximum coordinate value is one. Its topology is induced from the
+actual absolute spectrum. Each coordinate-nonvanishing subset is open and
+these opens cover, because the finite maximum is attained and equals one.
+\end{definition}
+\begin{proof}
+The defining identities on all polynomials are closed evaluation identities.
+Ultrametricity applied to the true homogeneous decomposition gives one
+inequality automatically, so polynomial-gradedness equivalently means
+that every component value is at most the original value. Normalization
+is a finite continuous maximum identity. Mathlib's actual total-degree
+decomposition identifies its abstract graded projection with the usual
+homogeneous-component operator, so this condition also agrees with the
+generic projection definition of gradedness. A coordinate value is nonzero on
+an open evaluation locus, and a coordinate attains the normalized maximum.
+\end{proof}
+
+\begin{theorem}[Genuine arbitrary-ring Gauss coordinate charts]
+\label{projective:general-normalized-charts}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_coordinateChartMap,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap_val_X,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartBound,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.one_le_chartBound,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartBound_pos,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartRadius,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartRadius_pos,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_chartBound,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_chartRadius,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_rawChartPoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_val_X,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_val_X_self,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartBound_eq_sup_dehom,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_normalized,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartHomogenize_support_subset,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_val_homogeneousComponent,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_isGraded,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartInversePoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartInv,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartInv_coe,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_coordinateChartInversePoint,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_coordinateChartInv,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap_val_dehomCoord,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartBound_coordinateChartMap,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.chartRadius_coordinateChartMap,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap_val_dehom_homogeneousComponent,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_coordinateChartMap_eq,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartInv_coordinateChartMap,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap_coordinateChartInv,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartHomeomorph,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartHomeomorph_apply,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartHomeomorph_symm_apply,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coordinateChartMap_val_C,
+  EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.rawChartPoint_val_C}
+\leanok
+\uses{projective:general-normalized-spectrum,spectrum:principal-open,spectrum:gauss-point,spectrum:gauss-joint-continuity,charts:homogeneous-substitution,charts:localized-homogeneous-substitution}
+Every coordinate-nonvanishing open of the actual normalized projective
+spectrum is homeomorphic to the absolute spectrum of
+$R[U_i:i\ne j]$. The forward map evaluates every polynomial after its real
+ratio substitution $U_i=X_i/X_j$ in the coordinate localization. The
+inverse is the genuine Gauss seminorm of radius
+$\max(1,\max_i|U_i|)^{-1}$ pulled back by $X_j=T$, $X_i=U_iT$.
+\end{theorem}
+\begin{proof}
+The actual principal localization extends the seminorm uniquely when its
+coordinate is nonzero. Pullback through the ratio homomorphism gives the
+forward seminorm, continuously, with the actual coordinate ratios.
+
+The Gauss construction works over any commutative ring. Its coefficient
+of $T^d$ after homogeneous substitution is the dehomogenization of the
+true degree-$d$ component. This proves polynomial-gradedness on every
+polynomial. The finite maximum of the substituted coordinate values is
+exactly the chosen bound, so multiplication by its positive inverse
+normalizes it. Joint Gauss continuity and continuity of that positive
+radius prove continuity of the inverse.
+
+Normalization recovers the radius from the forward ratios. The genuine
+homogeneous scaling identity in the coordinate localization then recovers
+every component, and gradedness recovers the entire original seminorm.
+For the other inverse, localize the substitution also at $T$. Its full
+composition with the ratio homomorphism is the coefficient inclusion
+on every affine polynomial; uniqueness of the actual seminorm extension
+and the Gauss coefficient formula recover that polynomial's original
+value. Thus both inverse identities are whole-point identities, with no
+field, domain or generator-value inference.
+\end{proof}
+
+\begin{theorem}[Arbitrary prescribed-base projective spectra]
+\label{projective:general-relative-normalized-charts}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.instTopologicalSpace,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.instT2Space,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isClosed_coefficientLocus,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isClosedEmbedding_val,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.chartOpen,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isOpen_chartOpen,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.exists_mem_chartOpen,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.chartSubtypeHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChartHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChartHomeomorph_val_apply,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChartHomeomorph_val_X,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChartHomeomorph_symm_coe,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coefficientHomeomorph,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isClosed_carrier,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isCompact_carrier,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.instCompactSpace,
+  EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.zeroCoordinates}
+\leanok
+\uses{projective:general-normalized-charts,spectrum:relative-generating-polydisc}
+Prescribing any real seminorm $v$ on $R$ gives a genuine closed coefficient
+subspace of the normalized projective spectrum. Its coordinate charts are
+homeomorphic to $\operatorname{RelativeSpectrum}_v R[U_i:i\ne j]$, preserving
+every coefficient and every affine polynomial. This prescribed-base
+normalized space is compact and Hausdorff, without a global bound on $v$.
+\end{theorem}
+\begin{proof}
+Every coefficient equality is a closed evaluation identity, so their
+intersection is the actual closed prescribed subspace. The whole ratio
+homomorphism and homogeneous Gauss substitution preserve all constant
+polynomials; the absolute coordinate homeomorphisms therefore restrict
+to the actual fixed-coefficient loci, giving the relative chart comparison.
+
+The coordinate bounds $|X_i|\le1$ define a genuine compact generating
+polydisc in the arbitrary prescribed-base finite-type spectrum. For each
+polynomial its true bound uses its finite coefficient seminorm maximum,
+so the values of $v$ need not all be at most one. Gradedness and the finite
+normalization identity are closed; hence their intersection with this
+polydisc is compact. Hausdorffness follows from the actual evaluation
+embedding of the seminorm spectrum. An actual coefficient-spectrum point is obtained by pulling the given
+base seminorm back through evaluation of all affine variables at zero.
+Apply the genuine inverse chart to obtain a normalized point; this supplies
+a real witness even when the coefficient seminorm is nontrivial. The empty
+affine family at projective dimension zero is handled by the same maximum
+bound of one. No native Proj or analytic sheaf identification is included
+in this compactness assertion.
+\end{proof}

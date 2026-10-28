@@ -1,0 +1,40 @@
+\section{The original homogeneous line coefficient has the original analytic value}
+
+\begin{lemma}[Whole coordinate-polynomial identification of original homogeneous line coefficients]
+\label{lem:fc-original-homogeneous-section-coordinate}
+\leanok
+\lean{EnvelopeProperty.ProjBerk.homogeneousSection_coefficient_eq_coordinate}
+\uses{lem:fc-original-homogeneous-form-coefficients}
+For every original homogeneous form $F$ of degree $d$ over an arbitrary
+coefficient ring, its whole original line-frame coefficient $F/X_j^d$ is
+exactly the actual original affine polynomial section associated to the
+original dehomogenization of $F$ at $X_j=1$.
+\end{lemma}
+\begin{proof}
+The actual homogeneous-chart dehomogenization sends the genuine homogeneous
+fraction to the original coordinate polynomial.  The two whole chart ring
+maps are genuine inverses.  Apply the actual homogeneous away-to-section
+map to this inverse identity.  The actual native coordinate-section
+isomorphism is its composite with exactly the same chart ring inverse,
+which gives the literal original whole section equality.
+\end{proof}
+
+\begin{lemma}[Every value-one chart preserves the original homogeneous form value]
+\label{lem:fc-original-homogeneous-section-value}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.nativeHomeomorph_eval_homogeneousSection_coefficient}
+\uses{lem:fc-original-homogeneous-section-coordinate}
+For an actual prescribed-base normalized projective seminorm and every
+coordinate $X_j$ of value one, evaluation of the actual original homogeneous
+line coefficient on its native valued scheme point is exactly the original
+full homogeneous seminorm value of $F$.  The coefficient ring and prescribed
+base seminorm are arbitrary; this equality does not require a bound on the
+coefficient ring.
+\end{lemma}
+\begin{proof}
+Replace the whole original coefficient by the actual coordinate-polynomial
+section using the preceding equality.  The true native projective chart
+comparison preserves every original affine polynomial value.  Original
+homogeneous recomposition gives $F=X_j^d F|_{X_j=1}$ in the actual localization;
+since $X_j$ has value one, the original two polynomial values coincide.
+\end{proof}

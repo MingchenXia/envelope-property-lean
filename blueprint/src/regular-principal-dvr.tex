@@ -1,0 +1,63 @@
+\section{Principal ideals in regular domains}
+
+\begin{lemma}[Principal associated maximal ideals]\label{lem:regular-principal-associated-dvr}
+\lean{EnvelopeProperty.isDiscreteValuationRing_of_regular_local_principal_associated}
+\leanok
+Let $(R,\mathfrak m)$ be a regular local domain. If $g\ne0$, $b\notin(g)$,
+and $\mathfrak m b\subseteq(g)$, then $R$ is a discrete valuation ring.
+\end{lemma}
+\begin{proof}
+Suppose $\dim R>1$. The finitely many primes minimal over $(g)$ have
+height at most one. None contains $\mathfrak m$, and
+$\mathfrak m\not\subseteq\mathfrak m^2$. Prime avoidance therefore gives
+$x\in\mathfrak m\setminus\mathfrak m^2$ lying in none of these minimal
+primes. The parameter quotient $R/(x)$ is regular local, hence a domain,
+so $(x)$ is prime. If $g\in(x)$, the principal ideal height bound makes
+$(x)$ minimal over $(g)$, contrary to the choice of $x$. Write
+$xb=gc$. Primality of $(x)$ and $g\notin(x)$ give $c=xd$.
+Cancellation of the nonzero $x$ gives $b=gd$, a contradiction. Thus the
+embedding dimension of $R$ is at most one. A minimal generating family
+of $\mathfrak m$ then has at most one member, so $\mathfrak m$ is
+principal. The ring is not a field since $g\ne0$ and $b\notin(g)$.
+A Noetherian local domain with nonzero principal maximal ideal is a DVR.
+\end{proof}
+
+\begin{lemma}[Associated primes of a principal quotient]\label{lem:regular-principal-associated-minimal}
+\lean{EnvelopeProperty.isDiscreteValuationRing_localization_of_isAssociatedPrime_of_isRegularRing,EnvelopeProperty.mem_minimalPrimes_of_isAssociatedPrime_of_isRegularRing,EnvelopeProperty.associatedPrimes_eq_minimalPrimes_of_isRegularRing}
+\leanok
+\uses{lem:regular-principal-associated-dvr}
+For a regular domain $E$ and $0\ne g\in E$, the associated primes of
+$E/(g)$ are precisely the primes minimal over $(g)$, and all their
+localizations are DVRs.
+\end{lemma}
+\begin{proof}
+At an associated prime $P$, choose $b$ with $(g):b=P$. Its image in
+$E_P$ is not in $(g)$: any contrary denominator clearing would give
+$s\notin P$ with $sb\in(g)$. Every element of the maximal ideal of
+$E_P$ times $b$ lies in $(g)$, so the preceding lemma makes $E_P$ a DVR.
+For any prime $(g)\subseteq Q\subseteq P$, its extension to $E_P$ is a
+nonzero prime, because localization of the domain is injective. It is
+therefore the maximal ideal of this DVR. Contracting gives $Q=P$.
+Thus each associated prime is minimal. Conversely, minimal primes over
+the annihilator of a finite module over a Noetherian ring are associated;
+the annihilator of $E/(g)$ is $(g)$.
+\end{proof}
+
+\begin{theorem}[DVR detection of principal ideals in regular domains]\label{thm:regular-principal-dvr-detection}
+\lean{EnvelopeProperty.isDiscreteValuationRing_localization_of_mem_minimalPrimes_of_isRegularRing,EnvelopeProperty.mem_span_singleton_iff_forall_minimalPrimes_of_isRegularRing,EnvelopeProperty.mem_span_singleton_iff_forall_minimalPrimes_dvd_of_isRegularRing}
+\leanok
+\uses{lem:regular-principal-associated-minimal}
+Let $E$ be a regular domain and $g\ne0$. For every prime $P$ minimal
+over $(g)$, $E_P$ is a DVR. An element $f\in E$ belongs to $(g)$ if
+and only if it belongs to $(g)E_P$ for every such $P$; equivalently,
+for each such $P$ there is $s\notin P$ with $sf\in(g)$.
+\end{theorem}
+\begin{proof}
+The DVR assertion follows from the associated-prime result. The forward
+membership implication is immediate. If the class of $f$ in $E/(g)$
+is nonzero, its annihilator is contained in an associated prime $P$.
+This prime is minimal over $(g)$. An equality $sf\in(g)$ forces
+$s$ into that annihilator and hence into $P$, contradicting $s\notin P$.
+Finally, membership in the extended principal ideal is equivalent to
+such a denominator-clearing equality by the definition of localization.
+\end{proof}

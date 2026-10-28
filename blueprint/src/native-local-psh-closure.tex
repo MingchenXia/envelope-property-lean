@@ -1,0 +1,87 @@
+\subsection{Genuine intrinsic decreasing limits, local closure and controlled gluing}
+
+\begin{theorem}[Actual antitone and intrinsic local closure, including real translates]
+\label{scheme:actual-native-local-psh-closure}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.isOpen,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.mono,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.congr,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.isDecrConvexPLLimitOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.isLocallyPSHOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.max,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.add,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.smul,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.add_const,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDecrConvexPLLimitOn_const,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDecrConvexPLLimitOn_finset_sum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDecrConvexPLLimitOn_finset_sup',
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.isOpen,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.mono,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.congr,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocallyPSHOn_of_local,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.max,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.add,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.smul,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.add_const,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocallyPSHOn_const,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocallyPSHOn_finset_sum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocallyPSHOn_finset_sup'}
+\uses{scheme:actual-native-convex-pl-closure,scheme:actual-native-unit-convex-pl-continuity,analysis:actual-ereal-antitone-infima,analysis:actual-rational-antitone-real-approximation}
+Actual decreasing convex PL limits, and intrinsic locally psh functions, are
+stable under finite maxima, finite sums, nonnegative rational multiples and
+all finite REAL translates. They restrict to true open subsets and preserve
+original domainwise equality; the intrinsic local class is genuinely local
+on its actual point space. Negative infinity remains allowed. No uniform
+convergence, common countable presentation neighborhood or classically
+subharmonicity assumption is introduced.
+\end{theorem}
+\begin{proof}
+For decreasing limits use the original termwise maximum or sum of the actual
+sequences and the preceding genuine convex PL closure. Their terms remain
+antitone. Pure extended-real antitone-infimum identities identify their
+ORIGINAL limits. For sums, each first convex PL value is finite, so neither
+original infimum is positive infinity; the actual mixed-infinity obstruction
+is excluded by the proved no-positive-infinity bounds. Strictly positive
+rational scaling commutes with actual infima; at factor zero use the genuine
+constant-zero sequence.
+
+For a real translate $c$, take the ACTUAL antitone rational sequence $q_j>c$
+with original infimum $c$. Add $q_j$ to the original $j$th convex PL term.
+Both original sequences are antitone and the terms are finite. The true
+extended-real sum identity gives precisely the ORIGINAL limit $u+c$,
+including where $u$ is negative infinity. Every local-presentation statement
+is obtained on actual finite intersections of the supplied open neighborhoods;
+the genuine sequences are restricted there. No countable intersection is
+used. Domainwise equality and locality follow directly from the actual local
+neighborhood and original infimum definitions.
+\end{proof}
+
+\begin{theorem}[Closure-controlled genuine piecewise maximum]
+\label{scheme:actual-native-local-psh-controlled-gluing}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.piecewise_max,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.piecewise_max}
+\uses{scheme:actual-native-convex-pl-closure,scheme:actual-native-local-psh-closure}
+Let $U'\subseteq U$ be actual open native subsets, with $u$ intrinsically locally
+psh on $U$ and $v$ intrinsically locally psh on $U'$. If
+\[
+ \overline{\{x\in U':u(x)<v(x)\}}\cap U\ \subseteq U',
+\]
+then the ORIGINAL function equal to $\max(u,v)$ on $U'$ and equal to $u$ outside
+$U'$ is intrinsically locally psh on $U$. The same conclusion holds for
+convex PL functions when both original functions are convex PL.
+There is no continuity or function-class assertion outside the stated domain.
+\end{theorem}
+\begin{proof}
+At a point of $U'$ use that actual open neighborhood and the genuine binary
+maximum theorem after restricting the original $u$. At a point of
+$U\setminus U'$, the closure condition puts the point outside the ACTUAL
+closure of the strict-inequality locus. Its genuine complement, intersected
+with the original open $U$, is a true neighborhood. At every point there that
+lies in $U'$, failure of the strict inequality gives $v\leq u$, so the ORIGINAL
+piecewise maximum equals $u$. Outside $U'$ the same equality is its definition.
+Thus the entire original function agrees with $u$ on this neighborhood.
+Domainwise congruence, genuine open restriction and actual locality prove the
+claim. No boundary value, outside continuity or analytic gluing certificate is
+supplied.
+\end{proof}

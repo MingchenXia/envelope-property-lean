@@ -1,0 +1,97 @@
+\section{Genuine generic power frames and true proper-model norm coherence}
+
+\begin{lemma}\label{lem:fc-generic-tensor-frame-unit-norm}
+\lean{EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.genericTensorFrame,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.genericTensorFrame_unitSection,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.modelLineNorm_genericTensorFrame_unitSection}
+\leanok
+\uses{lem:fc-actual-tensor-frame-unit-coefficient,thm:actual-model-line-tensor-norm,lem:bundle-tensor-power-pullback}
+For actual entire frames of the same original residue fibres of
+$M$ and $N$ at a native point $y$, the actual native pullback
+tensorator and explicit tensor comparison give an entire frame
+of the original explicit tensor fibre. Its inverse unit section
+is the actual generic tensor of the two original inverse unit
+sections. If the original structure map is proper over a valuation
+bounded by one and both original modules are invertible, the true
+model norm of this inverse unit section is the product of the
+two true original frame-unit model norms.
+\end{lemma}
+\begin{proof}
+Apply the actual inverse pullback tensorator to identify the
+original tensor fibre with the tensor of the same original fibres.
+Follow it by the actual tensor frame, preceding these maps by
+the original pulled explicit tensor comparison. The entire
+inverse-unit precomposition identity and actual tensor-frame
+unit-section formula identify its inverse unit section with the
+actual generic pure tensor through those same native comparisons.
+The genuine model-norm tensor theorem computes the norm of this
+actual generic tensor as the product of the true original norms.
+No coefficient, frame-preservation or norm comparison is assumed.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-generic-power-frame-true-norm}
+\lean{EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.genericPowerFrame,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.genericPowerFrame_unitSection_succ,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.transitionUnit_genericPowerFrame,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.transitionUnit_genericPowerFrame_value,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.modelLineNorm_genericPowerFrame_unitSection}
+\leanok
+\uses{lem:fc-generic-tensor-frame-unit-norm,thm:fc-actual-power-frame-transition-units,lem:scheme-line-actual-model-unit-norm}
+Any actual entire original residue frame $e$ of $M$ induces actual
+entire frames $e_n$ on the same original residue fibres of every
+explicit $M^{\otimes n}$. The zeroth frame is the actual native
+structure-unit pullback comparison; successors use the genuine
+generic tensor-frame construction. For two original frames,
+their genuinely derived transition units satisfy $u_n=u_1^n$,
+so every native residue valuation gives $c_n=c_1^n$. Under the
+proper bounded-base hypotheses and original invertibility,
+\[
+ \|e_n^{-1}(1)\|_{M^{\otimes n},y}
+   =\|e^{-1}(1)\|_{M,y}^{\,n}.
+\]
+All powers, including zero, use actual original fibres and true
+model norms; no power compatibility identity is an input.
+\end{theorem}
+\begin{proof}
+Construct the frames by the stated recursion on actual original
+module isomorphisms. The preceding inverse-unit formula gives
+the actual generic tensor at every successor. To compare two
+frames, common-precomposition invariance removes the same actual
+pulled tensor comparisons; the actual tensor-frame transition
+identity multiplies the preceding transition by the degree-one
+transition. Induction, beginning with identical degree-zero
+structure frames, proves the actual unit equality. Applying the
+valuation proves its exact value equality. For the true norm,
+the original structure-unit norm formula gives value one on the
+zeroth frame's inverse unit section. At a successor the preceding
+lemma gives multiplication by the degree-one frame-unit norm.
+The induction hypothesis and the power recurrence prove the
+asserted genuine norm equality.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-proper-center-power-frame-coherence}
+\lean{EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.centerPowerFrame,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.centerFrameGenericIso_centerPowerFrame,EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.modelLineNorm_centerPowerFrame_unitSection}
+\leanok
+\uses{thm:fc-generic-power-frame-true-norm,lem:actual-center-generic-tensor-frame,lem:scheme-line-actual-generic-frame-naturality,lem:scheme-line-actual-model-unit-norm}
+Every actual original valuative-center frame of $M$ induces actual
+entire center frames of all the same original explicit powers.
+Their entire generic frames equal exactly the preceding power
+frames formed from the original degree-one generic frame. Their
+true proper-model inverse-unit norms are all one. These are
+whole original frame identities derived from actual native tensor
+and pullback comparisons; no preservation or power-coherence
+certificate is supplied.
+\end{theorem}
+\begin{proof}
+At zero choose the true native unit pullback comparison on the
+actual proper valuation ring. At a successor use the genuine
+center tensor frame and the original pulled explicit tensor
+comparison. For the whole generic identity, induct on the power.
+At zero, genuine structure-unit compatibility with native pullback
+composition and the actual valuative triangle identifies its
+entire generic frame with the native residue unit comparison.
+At a successor, generic-frame naturality moves the actual
+explicit tensor comparison past the proper-center generic
+comparison. The genuine center tensor-frame theorem identifies
+the remaining entire generic tensor frame, and the induction
+hypothesis identifies its preceding factor with the actual
+previous generic power frame. This proves the whole equality.
+Finally any actual center frame computes the true model norm.
+Its entire generic inverse unit section has original coefficient
+one by the frame inverse identity, so its actual native residue
+valuation, and hence its true model norm, is one.
+\end{proof}

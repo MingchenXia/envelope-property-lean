@@ -1,0 +1,100 @@
+\subsection{Whole local norm polynomials and nilpotent lengths}
+\label{subsec:local-norm-polynomials}
+
+These are whole determinant polynomial identities, obtained from actual
+nilpotent elements of the polynomial tensor algebra. Equality of scalar
+polynomial values over a finite original field is not used.
+
+\begin{lemma}[Determinant norm of a nilpotent scalar perturbation]
+\label{spectrum:nilpotent-scalar-determinant}
+\lean{EnvelopeProperty.algebraNorm_eq_pow_of_isNilpotent_sub}
+\leanok
+Let $R$ be an integral domain and $E$ a finite free commutative $R$-algebra.
+If $b-\operatorname{map}(c)$ is nilpotent for $b\in E$ and $c\in R$, then
+\[
+ N_{E/R}(b)=c^{\operatorname{rank}_R E}.
+\]
+\end{lemma}
+\begin{proof}
+Multiplication by $b-\operatorname{map}(c)$ is nilpotent. Its
+characteristic polynomial is therefore $X^d$, where $d$ is the actual
+finite free rank. Multiplication by $b$ differs from this nilpotent
+operator by the scalar operator $c$. The characteristic polynomial
+shift formula identifies its polynomial with $(X-c)^d$. Its signed
+constant coefficient, which is its determinant, is $c^d$.
+This is an equality of actual algebra norms over the domain, not an
+estimate on values or a reducedness assumption.
+\end{proof}
+
+\begin{lemma}[Actual residual scalar of a local algebra]
+\label{spectrum:algclosed-local-residue-scalar}
+\lean{EnvelopeProperty.localResidueScalar,
+EnvelopeProperty.localResidueScalar_residue,
+EnvelopeProperty.isNilpotent_sub_localResidueScalar,
+EnvelopeProperty.finrank_eq_localLength}
+\leanok
+\uses{spectrum:local-algebra-norm-length}
+Let $K$ be algebraically closed and $E$ a finite local commutative
+$K$-algebra. The actual coefficient map $K\to\kappa(E)$ is an isomorphism;
+its inverse after the residue map defines $\rho:E\to K$. Every
+$b-\operatorname{map}(\rho(b))$ is nilpotent, and
+$\dim_K E=\ell_E(E)$.
+\end{lemma}
+\begin{proof}
+The actual residue field is finite, hence integral, over $K$.
+Algebraic closedness makes its coefficient map bijective. Compose the
+residue map with the genuine inverse algebra isomorphism to define
+$\rho$; the residue of its coefficient inclusion recovers the residue
+of $b$ on every element.
+
+An element with residue zero belongs to the maximal ideal. In an
+Artinian local ring that ideal is the Jacobson radical and also the
+nilradical, so the displayed difference is genuinely nilpotent.
+Finally, the residue isomorphism gives residue degree one. The
+already proved identity between dimension, local length and residue
+degree therefore identifies the dimension with the actual local length.
+\end{proof}
+
+\begin{theorem}[Whole local norm form with nilpotent multiplicity]
+\label{spectrum:algclosed-local-norm-form}
+\lean{EnvelopeProperty.normForm_eq_localResidueScalar_pow,
+EnvelopeProperty.wgaussValuation_normForm_of_local_algClosed}
+\leanok
+\uses{spectrum:nilpotent-scalar-determinant,
+spectrum:algclosed-local-residue-scalar,spectrum:whole-norm-form-base-change}
+For $E,K,\rho$ as above and a finite family $b_j\in E$, the actual
+norm polynomial satisfies
+\[
+ N_{E/K}\Bigl(\sum_j X_jb_j\Bigr)
+ =\Bigl(\sum_j\rho(b_j)X_j\Bigr)^{\ell_E(E)}.
+\]
+For any real ultrametric valuation $v$ on $K$ and any radii $r_j\ge0$,
+\[
+ \left\|N_{E/K}\Bigl(\sum_j X_jb_j\Bigr)\right\|_r
+ =\left(\max_jv(\rho(b_j))r_j\right)^{\ell_E(E)}.
+\]
+\end{theorem}
+\begin{proof}
+Put $P=K[X_j]$. In the actual tensor algebra $P\otimes_K E$, subtract
+the coefficient inclusion of the residual scalar polynomial from
+$z=\sum_jX_j\otimes b_j$. Tensor balancing and the actual coefficient
+map identify the difference with
+\[
+ \sum_j (X_j\otimes1)
+       \bigl(1\otimes(b_j-\operatorname{map}(\rho(b_j)))\bigr).
+\]
+Every parenthesized element is nilpotent by the preceding lemma and
+its image under the tensor inclusion remains nilpotent. The nilradical
+is an ideal, so this entire finite sum is genuinely nilpotent.
+
+The polynomial ring $P$ is an integral domain and the tensor algebra
+is finite free over it. Apply the exact scalar-perturbation determinant
+formula to $z$ and the residual scalar polynomial. Tensor base change
+preserves the finite free rank, which equals $\ell_E(E)$ by the preceding
+lemma. By definition this determinant is the original norm polynomial,
+proving equality of the entire polynomials. Weighted Gauss
+multiplicativity and the exact linear-form evaluation yield the
+second identity. This proof retains nilpotent layers through the
+local length and invokes no polynomial interpolation, separability,
+reducedness, or complete norm on $K$.
+\end{proof}

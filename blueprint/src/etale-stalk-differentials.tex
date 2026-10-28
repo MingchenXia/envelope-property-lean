@@ -1,0 +1,34 @@
+\section{Actual differential bases and prime boundary parameters in stalks}
+
+\begin{lemma}[The actual adapted chart produces the stalk differential basis]\label{lem:sc0-etale-stalk-differential-basis}
+\lean{EnvelopeProperty.Char0.schemeEtaleStalkDifferentialBasis,EnvelopeProperty.Char0.schemeEtaleStalkDifferentialBasis_apply}
+\leanok
+\uses{lem:sc0-etale-differential-basis,lem:sc0-relative-differential-det-unit}
+For an actual affine \'etale coordinate chart $v$ on $U$ and any point $x\in U$,
+the differentials of the actual germs $v_i$ form a basis of
+$\Omega_{\mathcal O_{Y,x}/k}$.
+\end{lemma}
+\begin{proof}
+The actual stalk is a localization of the chart ring. Transport the actual chart
+differential basis through the formally \'etale localization base-change
+isomorphism. Compatibility of the differential map identifies each basis vector
+with the differential of the original function's actual germ.
+\end{proof}
+
+\begin{lemma}[Adapted boundary germs are actual prime elements]\label{lem:sc0-snc-chart-prime-germs}
+\lean{EnvelopeProperty.Char0.prime_snc_affine_boundary_germ}
+\leanok
+\uses{lem:sc0-snc-etale-charts}
+Let $Y$ be smooth over a field, let $F$ be an actual SNC family, and let an
+actual affine neighbourhood $U$ of $x$ have functions $v_{c(i)}$ generating the
+component ideals of every $F_i$ through $x$. Then their germs in
+$\mathcal O_{Y,x}$ are prime elements.
+\end{lemma}
+\begin{proof}
+The actual SNC stalk data gives regular parameters $z$ generating the same
+component stalk ideals. Each such $z_j$ is prime in the regular local ring.
+The stalk ideal of a component is generated both by $z_j$ and by the actual
+germ of $v_{c(i)}$, because affine ideal sheaves pass to stalks by the germ map.
+Equal principal ideals in a domain have associated generators, and an associate
+of a prime element is prime.
+\end{proof}

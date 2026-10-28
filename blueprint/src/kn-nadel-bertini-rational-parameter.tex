@@ -1,0 +1,91 @@
+\section{Choosing actual rational coefficients in finitely many good opens}
+
+Let $k$ be an infinite field and let $P=k[(t_a)_{a\in A}]$ be the literal
+coefficient polynomial ring.  For an actual coefficient tuple $c:A\to k$,
+write $e_c:\operatorname{Spec}k\to\operatorname{Spec}P$ for the original
+scheme morphism induced by the actual native evaluation ring homomorphism.
+This section constructs the tuple internally from finitely many original
+opens containing the generic point; no desired parameter is supplied.
+
+\begin{lemma}[Actual nonvanishing evaluation and the original rational point]
+\label{lem:kn-nadel-bertini-rational-evaluation}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.parameterSpace,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.parameterMap,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.parameterPoint,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.parameterMap_structure,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_eval_ne_zero,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.parameterPoint_mem_basicOpen_iff}
+\leanok
+Every nonzero polynomial $F\in P$ has an actual tuple $c:A\to k$ with
+$F(c)\ne0$.  The original $e_c$ lies in $D(F)$ exactly when $F(c)\ne0$,
+and its original coefficient structure composite is the identity on
+$\operatorname{Spec}k$.
+\end{lemma}
+\begin{proof}
+If all evaluations vanished, native multivariable-polynomial function
+extensionality over the infinite field would give $F=0$.  Native spectrum
+pullback identifies membership of $e_c$ in the actual basic open with
+nonmembership of $F(c)$ in the actual zero ideal of $k$.  Evaluation is the
+identity on constants, so contravariance of the original spectrum functor
+gives the exact original structure triangle.
+\end{proof}
+
+\begin{lemma}[Actual rational coefficients in a finite intersection]
+\label{lem:kn-nadel-bertini-rational-finite-opens}
+\uses{lem:kn-nadel-bertini-rational-evaluation}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_nonzero_basicOpen_le,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_parameter_mem_open,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.genericPoint_mem_finite_intersection,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_parameter_mem_finite_opens,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_parameter_preimages_eq_top,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_parameter_mem_open_avoiding,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameter.exists_parameter_mem_finite_opens_avoiding}
+\leanok
+Let $(U_i)_{i\in I}$ be a finite family of original opens in
+$\operatorname{Spec}P$, each containing its actual generic point.  There is
+an internally chosen $c:A\to k$ whose whole original evaluation morphism
+$e_c$ has image in every $U_i$.  It can simultaneously avoid the zero loci
+of any finite family of specified nonzero polynomials.
+\end{lemma}
+\begin{proof}
+Their actual finite intersection is open and contains the same generic
+point.  The native principal-open basis supplies $D(G)$ inside this actual
+intersection and containing that point, so $G\ne0$.  Multiply $G$ by the
+finite product of the specified nonzero polynomials.  This remains nonzero
+in the literal domain $P$.  The preceding evaluation producer supplies an
+actual tuple where this whole product is nonzero.  Its original evaluation
+point therefore lies in $D(G)$ and every original $U_i$, and every specified
+polynomial evaluates nontrivially.  The original $\operatorname{Spec}k$
+has just one point, so this proves the image containment for the whole
+original scheme morphism, or equivalently that each original open preimage
+is the top open.
+\end{proof}
+
+\begin{lemma}[Actual projective-incidence good coefficients]
+\label{lem:kn-nadel-bertini-rational-projective-good}
+\uses{lem:kn-nadel-bertini-rational-finite-opens,lem:kn-nadel-bertini-projective-good-open}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniRationalParameterIncidence.exists_nonzero_parameter_mem_finite_opens,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameterIncidence.exists_projective_good_parameter,
+EnvelopeProperty.Vanishing.NadelBertiniRationalParameterIncidence.exists_simultaneous_projective_good_parameter}
+\leanok
+For the actual original projective-incidence good opens in characteristic
+zero, internally choose actual original $k$-rational coefficient tuples
+whose original evaluation morphisms land in all the selected good opens.
+The first coefficient can be required nonzero.
+\end{lemma}
+\begin{proof}
+Characteristic zero makes the original field infinite.  The preceding
+actual projective-incidence producer puts the actual generic point in
+its actual good open.  Apply the finite-open producer, and also avoid the
+actual nonzero first variable polynomial.  Its evaluation is exactly the
+first original coefficient.  No desired tuple, good section, or rational
+point is used as an input.
+\end{proof}
+
+
+The finite-family projective consumer retains each original closed embedding
+$j_i:X_i\hookrightarrow\mathbf P^m_k$ and its original incidence structure.
+Its one produced tuple works for every corresponding original good open.
+The original incidence total-space smoothness hypotheses are supplied by the
+separate coordinate-chart/gluing producer; neither its unfinished global
+gluing nor the final SNC auxiliary-divisor construction is asserted here.

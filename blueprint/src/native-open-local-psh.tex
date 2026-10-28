@@ -1,0 +1,75 @@
+\subsection{Actual open immersions and intrinsic regular-unit locality}
+\begin{lemma}[Genuine unit presentations descend through an actual open immersion]
+\label{scheme:native-unit-open-immersion-descent}
+\leanok
+\uses{scheme:native-regular-unit-local-psh,scheme:valued-open-immersion-image,scheme:relative-open-embedding}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.unitTropAffine_map_appIso_inv,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.of_comp_openImmersion}
+Let $j:X\to Y$ be an actual open immersion over the same prescribed coefficient
+ring and valuation. Let $U$ be any set of whole fixed-base native points of $Y$
+contained in the actual image of the original native map. If $u\circ j$ is
+intrinsically convex PL on the full inverse image of $U$, then $u$ is
+intrinsically convex PL on $U$.
+\end{lemma}
+\begin{proof}
+Lift the original whole point through the genuine open-immersion native image
+bijection. Its actual source presentation has an analytic open $W$, a genuine
+scheme open $V$ and actual units in $\Gamma(X,V)$. The actual open native map
+sends $W$ to an open neighborhood. Its image lies in $U$, and its whole support
+lies in the genuine open $j(V)$. The inverse of the actual open-immersion
+section isomorphism sends every original section unit, with its inverse, to a
+true unit of $\Gamma(Y,j(V))$. The genuine section/residue evaluation identity
+retains EVERY value of these inverse section images at every actual native
+image point. The same rational family and constants therefore give exactly
+the whole original function on the entire target neighborhood. Whole native
+point injectivity ensures that no choice of support preimage loses valuation
+data. No supplied section or point inverse certificate enters the argument.
+\end{proof}
+
+\begin{lemma}[Genuine sequences and local psh descend through the same actual open image]
+\label{scheme:native-local-psh-open-immersion-descent}
+\leanok
+\uses{scheme:native-unit-open-immersion-descent,scheme:native-regular-unit-local-psh}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.of_comp_openImmersion,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.of_comp_openImmersion}
+Under the same hypotheses, genuine decreasing-limit and intrinsic local-psh
+presentations descend on $U$ from their full original inverse images.
+\end{lemma}
+\begin{proof}
+For a genuine source sequence, define each target term on the actual native
+image by the value at its unique whole preimage, and set it to zero outside
+that actual image. This is a total function, without a continuity assertion
+outside the image. Whole point injectivity proves that its composite with the
+original map is EXACTLY the original source sequence. The preceding true unit
+presentation descent applies term by term. For each point of $U$, its true
+whole inverse preserves every sequence inequality and the actual infimum, so
+the resulting sequence is genuinely decreasing with the required original
+limit. For intrinsic local psh, push the actual source analytic neighborhood
+forward by the genuine open point map and apply this decreasing-limit result
+there. Each target neighborhood remains inside $U$. No common denominator or
+countable intersection is needed.
+\end{proof}
+
+\begin{theorem}[Locality on an actual scheme open cover]
+\label{scheme:native-local-psh-scheme-cover}
+\leanok
+\uses{scheme:native-local-psh-open-immersion-descent,scheme:relative-open-embedding}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.of_openCover}
+Let an actual scheme open cover of $Y$ be given, together with ACTUAL
+coefficient structure maps on its source schemes and the WHOLE commuting
+triangles with the original structure map of $Y$. If the pullback of $u$ to each
+of its genuine fixed-base native chart spaces is intrinsically locally psh on
+the whole inverse image of $U$, then $u$ is intrinsically locally psh on $U$.
+\end{theorem}
+\begin{proof}
+Choose an actual scheme chart containing the support of the original native
+point. The genuine residue-field inverse for that open immersion supplies a
+whole native preimage. The exact original coefficient triangle makes that
+preimage lie in the same prescribed-base locus. Its actual local-presentation
+neighborhood can be pushed forward by the preceding open-immersion result,
+using the true open native image and original unit section isomorphisms.
+This gives the required local presentation around the original WHOLE point,
+not just around its support. Every such image is open and the genuine scheme
+cover makes them cover all the native points. No analytic sheaf or potential
+property is claimed.
+\end{proof}

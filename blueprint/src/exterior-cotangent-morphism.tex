@@ -1,0 +1,33 @@
+\section{Exterior forms under actual scheme morphisms}
+
+Let $k$ be a field, $f:X\to\operatorname{Spec}k$ a structural morphism, and $g:Y\to X$ any morphism. The constructions apply in every exterior degree $n\geq0$.
+
+\begin{definition}\label{sc0-exterior-cotangent-morphism:coefficients}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentMorphismSemilinear, EnvelopeProperty.CanonicalGeometry.exteriorCotangentMorphismComponent, EnvelopeProperty.CanonicalGeometry.exteriorCotangentMorphismComponent_wedge}
+\leanok
+\uses{sc0-cotangent-morphism:raw}
+The actual raw cotangent morphism is semilinear over $g^\#_U$ on each open $U$. Its genuine exterior map carries $m_1\wedge\cdots\wedge m_n$ to the wedge of the actual cotangent images.
+\end{definition}
+\begin{proof}
+The cotangent morphism is a morphism of $\mathcal O_X$-module presheaves into the actual pushforward, whose scalar action is restriction along $g^\#_U$. This is precisely semilinearity over that ring map. Compose the alternating universal product over the target ring with this semilinear map in every argument. The alternating universal property over the source ring, with target scalars restricted along $g^\#_U$, gives the asserted exterior map and its pure-product formula.
+\end{proof}
+
+\begin{definition}\label{sc0-exterior-cotangent-morphism:raw}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentPresheafMorphism}
+\leanok
+\uses{sc0-exterior-cotangent-morphism:coefficients}
+The component maps define an actual morphism $\bigwedge^n\Omega^{\mathrm{pre}}_{X/k}\to g_*\bigwedge^n\Omega^{\mathrm{pre}}_{Y/k}$.
+\end{definition}
+\begin{proof}
+To prove naturality it suffices to check pure products, since they span the exterior power. Restriction and the component map both carry a pure product to the pure product of their respective cotangent images. Naturality of the original raw cotangent morphism identifies these images in every argument. The resulting equality on spanning products proves the full naturality identity.
+\end{proof}
+
+\begin{definition}\label{sc0-exterior-cotangent-morphism:sheaf}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafMorphism, EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafMorphism_unit, EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafMorphism_wedge, EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafPullbackMap}
+\leanok
+\uses{sc0-exterior-cotangent-morphism:raw}
+There is an actual sheaf map $\Omega^n_{X/k}\to g_*\Omega^n_{Y/k}$ whose adjoint is $g^*\Omega^n_{X/k}\to\Omega^n_{Y/k}$. On the sheafification image of a pure product, it is the sheafification image of the product of the actual cotangent images. In the common smooth relative dimension $n$, these are the actual canonical sheaves and their relative canonical differential morphism.
+\end{definition}
+\begin{proof}
+Postcompose the raw exterior morphism with the pushed sheafification unit of the target exterior presheaf. Apply the actual source sheafification adjunction. Its unit identity identifies the composite with the source unit with precisely this raw composite. Evaluating that identity on a pure product and using the component product formula proves the asserted actual section formula. The pullback--pushforward adjunction then gives the claimed adjoint. The canonical-sheaf identification follows from their definition as these very sheafified top exterior powers.
+\end{proof}

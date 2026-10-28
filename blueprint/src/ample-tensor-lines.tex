@@ -1,0 +1,73 @@
+\begin{lemma}[Geometric ampleness is preserved by whole original line isomorphisms]
+\label{lem:fc-original-ample-line-isomorphisms}
+\lean{EnvelopeProperty.AmpleTensorLines.ample_of_iso}
+\leanok
+\uses{def:fc-original-geometric-line-ampleness}
+An actual whole isomorphism of original lines transports original
+geometric ampleness.
+\end{lemma}
+\begin{proof}
+Transport original invertibility by the whole line isomorphism. Take
+its actual tensor power at the positive exponent in the original ample
+criterion. The resulting whole isomorphism transports the same actual
+very ample embedding line, giving the geometric ample criterion on the
+same original target line.
+\end{proof}
+
+\begin{theorem}[An original ample line times an original generated line is ample]
+\label{thm:fc-original-ample-tensor-generated}
+\lean{EnvelopeProperty.AmpleTensorLines.isAmple_tensor_of_generatingSections}
+\leanok
+\uses{thm:fc-original-very-ample-tensor-generated,lem:fc-original-generated-line-tensor-powers,lem:fc-original-bundle-tensor-power-tensor}
+On an original integral scheme over $R$, the actual tensor of a
+geometrically ample original line $A$ and an original finite globally
+generated invertible line $B$ is geometrically ample.
+\end{theorem}
+\begin{proof}
+Choose the actual positive very ample power $A^{\otimes r}$ in the
+original ample criterion. The actual original generated-line power
+theorem constructs finite global generators of $B^{\otimes r}$. The
+very-ample-times-generated theorem makes
+$A^{\otimes r}\otimes B^{\otimes r}$ very ample. The genuine original
+power/tensor isomorphism identifies this with $(A\otimes B)^{\otimes r}$.
+The original tensor line is invertible, so this positive very ample
+power proves the original geometric ample criterion.
+\end{proof}
+
+\begin{lemma}[Every sufficiently large original ample power is very ample]
+\label{lem:fc-original-ample-eventual-very-ample}
+\lean{EnvelopeProperty.AmpleTensorLines.exists_eventual_isVeryAmple}
+\leanok
+\uses{thm:fc-original-very-ample-tensor-generated,lem:scheme-ample-line-eventual-generation}
+Every geometrically ample original line on an original integral scheme
+has all sufficiently large actual tensor powers geometrically very
+ample over the original base.
+\end{lemma}
+\begin{proof}
+Choose a positive actual very ample power $A^{\otimes r}$. Eventual
+original finite generation gives a threshold $N$ for all actual powers
+$A^{\otimes d}$ with $d\geq N$. For $m\geq N+r$, write
+$m=r+(m-r)$ with $m-r\geq N$. The actual tensor of the original very
+ample $r$th power with this original generated $(m-r)$th power is very
+ample. Original whole tensor-power addition identifies that tensor
+with the actual $m$th power, proving the assertion for every such $m$.
+\end{proof}
+
+\begin{theorem}[Actual tensor products of original ample lines are ample]
+\label{thm:fc-original-ample-tensor-ample}
+\lean{EnvelopeProperty.AmpleTensorLines.isAmple_tensor}
+\leanok
+\uses{lem:fc-original-ample-eventual-very-ample,thm:fc-original-very-ample-tensor-generated,lem:fc-original-bundle-tensor-power-tensor}
+The actual original tensor of any two original geometrically ample
+lines on an original integral scheme is geometrically ample.
+\end{theorem}
+\begin{proof}
+Choose a positive integer beyond the original eventual very ampleness
+threshold for the first line and the original eventual finite generation
+threshold for the second. At this same positive exponent, the first
+actual line power is very ample and the second has genuine finite
+global generators. Their actual tensor is very ample by the established
+geometric theorem. Its whole original power/tensor comparison gives a
+positive very ample actual power of the original tensor line. That line
+is invertible, so it is geometrically ample.
+\end{proof}

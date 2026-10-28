@@ -1,0 +1,40 @@
+\section{The old global blowup lift on its actual native fraction chart}
+\begin{proposition}[The old global blowup lift on its actual native fraction chart]
+\label{prop:whole-original-global-blowup-fraction-basis}
+\uses{prop:whole-open-original-form-transfer,thm:resume-original-form-actual-fraction-basis}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.liftedFormSection_pullback_isIso_on_originalGlobalFractionChart}
+\leanok
+Let $j:X\to\mathbf P_R^n$, $J$, and $F\in J_d$ be the original data. Put
+$D=J\mathcal O_X$, let $G=\operatorname{Bl}_D X$ be the actual native glued
+global ideal blowup, and let $\mu:G\to X$ be its actual structure morphism.
+Let $U$ be an actual affine open with integral ring $A=\Gamma(U,\mathcal O_X)$,
+contained in the original $i$th coordinate open. Let $g\in D(U)$ be the
+original pulled coefficient of $F$, and suppose $g\ne0$. Write
+$B=\operatorname{Bl}_{D(U)}(\operatorname{Spec}A)$,
+$W=\operatorname{Spec}(A[D(U)/g])$, $c:W\to B$ for the actual native
+fraction inclusion and $k:B\to G$ for the native affine-blowup chart inclusion.
+Then the pullback $(ck)^*\beta_\mu(F)$ of the same original lift on the whole
+actual global blowup is an isomorphism from $\mathcal O_W$ to the entire
+actual pullback of $\mu^*j^*\mathcal O(d)\otimes(D\mathcal O_G)$.
+\end{proposition}
+\begin{proof}
+The original form's ideal membership implies that its original pulled
+coefficient $g$ belongs to $D(U)$, so its actual native fraction chart is
+well-defined. The fraction inclusion $c$ is open by the native Rees chart
+construction, and $k$ is open by the actual native global blowup cover.
+Consequently $v=ck$ is an actual open immersion, internally derived from
+these two canonical maps.
+Let $s:B\to\operatorname{Spec}A$ be the actual affine blowup structure and
+$a:\operatorname{Spec}A\to X$ the original affine-open map. The actual global
+gluing construction proves $k\mu=sa$. Associativity therefore gives
+$v\mu=(ck)\mu=(cs)a$ as entire original scheme morphisms.
+The already proved original native fraction basis theorem says that the same
+lift along $(cs)a$ is an isomorphism. Transport that same ideal-valued section
+and its whole target along the displayed equality to obtain that
+$\beta_{v\mu}(F)$ is an isomorphism. The proved original-form open transfer
+law then implies that $v^*\beta_\mu(F)$ is an isomorphism as claimed.
+Thus the global structure triangle, all coefficient membership, the actual
+open immersion and the composite section basis are derived. No open-map,
+section-matching, regularity, principal-ideal, whole-line or norm-matching
+certificate is supplied by the caller.
+\end{proof}

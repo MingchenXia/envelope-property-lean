@@ -1,0 +1,66 @@
+\subsection{Coordinate limits and integral proper maps}
+\label{subsec:spectrum-filters}
+
+\begin{lemma}[Ultrafilter limits in closed evaluation spaces]
+\label{spectrum:closed-coordinate-ultrafilter-limit}
+\lean{EnvelopeProperty.exists_ultrafilter_limit_of_bounded_coordinates,
+EnvelopeProperty.Berkovich.Spectrum.exists_ultrafilter_limit_of_bounded_evaluations,
+EnvelopeProperty.Berkovich.RelativeSpectrum.exists_ultrafilter_limit_of_bounded_evaluations}
+\leanok
+\uses{spectrum:topology,spectrum:closed-evaluation-embedding,spectrum:relative}
+Let $X$ be a topological space with a closed embedding into a product
+of copies of $\mathbb R_{\ge0}$. If an ultrafilter on $X$ is eventually
+bounded above in each coordinate, then it converges to a point of $X$.
+In particular this holds for absolute seminorm spectra and for spectra
+with any prescribed base seminorm. The coordinate bounds and their
+eventual sets need not be uniform across the coordinates.
+\end{lemma}
+\begin{proof}
+For each coordinate, its mapped ultrafilter contains a compact interval
+$[0,M]$, hence converges to some value in that interval. Choose these
+values coordinate by coordinate. Convergence in the product topology
+gives a limit of the whole evaluation-function ultrafilter. Closedness
+of the embedding's image places this limit in that image; choose its
+preimage. An embedding reflects convergence, so the original ultrafilter
+converges to that preimage. The absolute seminorm evaluation embedding
+is closed, and its composition with the closed prescribed-base inclusion
+gives the relative case.
+\end{proof}
+
+\begin{theorem}[Integral pullbacks are proper and closed]
+\label{spectrum:integral-proper-map}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isProperMap_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.isClosedMap_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isProperMap_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedMap_comap_of_isIntegral}
+\leanok
+\uses{spectrum:closed-coordinate-ultrafilter-limit,spectrum:integral-root-bound,
+spectrum:pullback,spectrum:relative}
+For an integral homomorphism $\varphi:A\to B$ of arbitrary commutative
+rings, pullback $\mathcal S(B)\to\mathcal S(A)$ is a proper continuous
+map, and in particular is closed. For an integral algebra homomorphism
+over an arbitrary ring with a prescribed real seminorm, the relative
+pullback map is proper and closed as well. These assertions require
+no finite-generation or local-compactness hypothesis.
+\end{theorem}
+\begin{proof}
+Suppose an ultrafilter in $\mathcal S(B)$ has convergent image in
+$\mathcal S(A)$. Every $A$-evaluation of that image is eventually bounded.
+For each $b\in B$, choose a monic integral equation. Finitely many
+coefficient evaluations admit simultaneous eventual bounds; their finite
+maximum, enlarged to at least one, bounds $|b|$ by the monic-root estimate.
+This gives an eventual bound for each $B$-evaluation, with no uniform
+bound over all $b$ required. The preceding lemma supplies a source limit.
+Continuity and the Hausdorff target identify its image with the prescribed
+target limit. This is the ultrafilter criterion for properness, which
+also implies closedness.
+For the relative map, compose the closed prescribed-base inclusion into
+$\mathcal S(B)$ with the absolute proper map. Closed embeddings are
+proper, so this composition is proper. It equals relative pullback
+followed by the injective prescribed-base inclusion into $\mathcal S(A)$.
+Properness of a composition with an injective continuous outer map
+implies properness of the inner map. Applying this cancellation gives
+relative properness and hence closedness.
+This argument proves genuine filter lifting rather than inferring
+properness from compact inverse images alone.
+\end{proof}

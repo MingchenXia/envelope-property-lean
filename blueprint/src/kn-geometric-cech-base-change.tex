@@ -1,0 +1,77 @@
+\section{Nonflat geometric base change of the ordered section complex}
+
+Let $R\to S$ be an arbitrary map of commutative rings, let
+$X$ be a separated scheme with $p:X\to\operatorname{Spec}R$, and let $M$ be a
+quasicoherent module on $X$.  Put
+$X_S=X\times_{\operatorname{Spec}R}\operatorname{Spec}S$, with
+projections $g:X_S\to X$ and $q:X_S\to\operatorname{Spec}S$.
+Fix a finite linearly ordered family of affine opens $U_i$ of $X$.
+Write $C_R^\bullet(M,U)$ for its original ordered section complex,
+whose degree-$a$ term is the product of the original sections on
+intersections indexed by strictly increasing $(a+1)$-tuples.  Its
+coefficient action is the literal $R$ action obtained from the
+canonical isomorphism $R\simeq\Gamma(\operatorname{Spec}R,\mathcal O)$.
+The analogous complex on $X_S$ has the literal original $S$ action.
+
+\begin{lemma}[The original affine section comparison]
+\label{lem:kn-geometric-cech-affine-section}
+\lean{EnvelopeProperty.SchemeModuleFlatBaseChangeAffineOpen.isIso_comparison,EnvelopeProperty.SchemeModuleFlatBaseChangeMap.comparison_tmul,EnvelopeProperty.SchemeModuleFlatBaseChangeMap.comparison}
+\leanok
+For every affine open $V\subseteq X$, the canonical map
+\[
+ S\otimes_R\Gamma(V,M)\longrightarrow
+ \Gamma(g^{-1}V,g^*M),\qquad s\otimes m\longmapsto s\,g^*m,
+\]
+is an isomorphism.  These canonical maps commute with all original
+open restrictions, without a flatness assumption on $R\to S$.
+\end{lemma}
+\begin{proof}
+Write $V=\operatorname{Spec}A$ and let $P=\Gamma(V,M)$.
+Quasicoherence identifies the restriction of $M$ with the associated
+sheaf of $P$.  Its actual inverse image is
+$\operatorname{Spec}(S\otimes_R A)$, and the pulled module is the
+associated sheaf of $(S\otimes_R A)\otimes_A P$.
+Tensor associativity gives the canonical isomorphism with
+$S\otimes_R P$, sending every $s\otimes m$ to the original scalar
+multiple of the original pullback-unit section.  The pullback
+adjunction unit is a natural sheaf morphism.  Its naturality and the
+tensor universal property prove restriction compatibility of these
+same canonical maps.  No assertion about tensoring kernels is used.
+\end{proof}
+
+\begin{theorem}[The whole original ordered complex commutes with base change]
+\label{thm:kn-geometric-cech-base-change}
+\lean{EnvelopeProperty.Vanishing.GeometricCechBaseChange.complexIso,EnvelopeProperty.Vanishing.GeometricCechBaseChange.termEquiv_tmul}
+\leanok
+\uses{lem:kn-geometric-cech-affine-section}
+There is a canonical isomorphism of actual cochain complexes of
+$S$-modules
+\[
+ S\otimes_R C_R^\bullet(M,U)\ \simeq\
+ C_S^\bullet(g^*M,(g^{-1}U_i)_i).
+\]
+For every ordered tuple, the degreewise map retains precisely the
+canonical scalar and pullback-unit formula of the preceding lemma.
+Neither $S$ nor $M$ is assumed flat over $R$.
+\end{theorem}
+\begin{proof}
+Separatedness makes every finite intersection of the original affine
+opens affine.  In each degree, the ordered index set is finite.
+Tensoring with $S$ commutes with its finite product, since a finite
+product of modules is also their finite direct sum.  Apply the
+canonical affine-section isomorphism to every factor.  Inverse image
+preserves these finite intersections, giving exactly the factors of
+the actual inverse-image ordered complex.
+
+For each deleted entry in an ordered tuple, the original coface is
+restriction to its larger intersection.  The canonical section maps
+commute with this restriction by the preceding lemma.  The finite
+product tensor isomorphism retains every component on a pure tensor,
+so the assembled degreewise isomorphisms commute with each original
+coface.  Add the finitely many cofaces with their original signs
+$(-1)^j$.  Linearity gives compatibility with the whole alternating
+differential.  Thus the degreewise isomorphisms form an isomorphism of
+the original cochain complexes.  All coefficient changes use the
+canonical $R$ and $S$ global-section isomorphisms, so the comparison
+retains the specified original ring actions.
+\end{proof}

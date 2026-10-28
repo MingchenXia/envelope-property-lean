@@ -1,0 +1,41 @@
+\section{The actual proper scheme over the original algebraically closed field}
+
+\begin{lemma}[The actual degree-zero coefficient inclusion is an isomorphism]
+\label{lem:fc-native-rank-one-degree-zero}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOneCoefficients_injective, EnvelopeProperty.MultiModel.nativeRankOneCoefficients_surjective, EnvelopeProperty.MultiModel.nativeRankOneCoefficientEquiv}
+\uses{lem:fc-native-rank-one-homogeneous-polynomial, cor:sg-smooth-model}
+Over the original algebraically closed coefficient field, the literal
+original coefficient map is an isomorphism onto the native degree-zero
+ring of an original rank-one model.
+\end{lemma}
+\begin{proof}
+Injectivity follows from the original field inclusion into the ambient
+polynomial ring. Every native degree-zero element is an actual original
+constant polynomial. Its coefficient belongs to the original degree-zero
+piece. The original integrality axiom, evaluated at all variables zero,
+makes this coefficient algebraic over the original field; algebraic
+closedness puts it in that SAME original field. Thus the actual
+coefficient map is surjective. The chosen ring isomorphism has this
+literal map as its forward map.
+\end{proof}
+
+\begin{theorem}[The original rank-one structure map is actually proper]
+\label{thm:fc-native-rank-one-proper}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOne_finiteType_zero, EnvelopeProperty.MultiModel.nativeRankOne_toSpecZero_isProper, EnvelopeProperty.MultiModel.nativeRankOneStructure_isProper}
+\uses{def:fc-native-rank-one-model, lem:fc-native-rank-one-degree-zero}
+The SAME original rank-one scheme, with its SAME original coefficient
+structure morphism, is proper over the original algebraically closed
+field.
+\end{theorem}
+\begin{proof}
+The original model algebra is finitely generated over the original
+coefficient field. Its literal coefficient inclusion factors through its
+actual degree-zero ring, so the same finite generators generate over
+that ring as well. Native Proj is proper over this actual degree-zero
+ring by the genuine finite-type Proj properness theorem. The actual
+degree-zero coefficient isomorphism makes its induced spectrum map an
+isomorphism. Composing these actual maps proves properness of the
+original structure morphism.
+\end{proof}

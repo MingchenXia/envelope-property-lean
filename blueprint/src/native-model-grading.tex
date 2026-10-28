@@ -1,0 +1,45 @@
+\section{The native grading of the original multicone algebra}
+
+\begin{lemma}[The original algebra has its literal total homogeneous grading]
+\label{lem:fc-native-model-total-grading}
+\leanok
+\lean{EnvelopeProperty.MultiModel.homogeneousComponent_mem_model, EnvelopeProperty.MultiModel.nativeTotalGrading, EnvelopeProperty.MultiModel.mem_nativeTotalGrading, EnvelopeProperty.MultiModel.nativeTotalGrading_gradedMonoid, EnvelopeProperty.MultiModel.nativeTotalGrading_isInternal, EnvelopeProperty.MultiModel.nativeTotalGradedAlgebra}
+\uses{def:gl-model}
+For every original integral multiprojective model, its SAME original
+subalgebra of $K[T_1,\ldots,T_r]$ has a native total-degree graded-algebra
+structure. Its degree-$d$ submodule consists precisely of the original
+polynomials homogeneous of total degree $d$.
+\end{lemma}
+\begin{proof}
+Every total homogeneous component is the finite sum of its original
+multihomogeneous monomials. The defining gradedness of the original model
+puts each such monomial, and therefore their sum, in the original algebra.
+Multiplication and the unit preserve the stated degrees in the ambient
+polynomial algebra. The independence of homogeneous pieces is inherited
+from the actual ambient direct-sum decomposition by the injective original
+subalgebra inclusion. Every original polynomial is the finite sum of its
+actual total homogeneous components, so the pieces span the whole
+original algebra. This internal direct sum gives its native graded-algebra
+structure.
+\end{proof}
+
+\begin{lemma}[The native inclusion and components retain the original polynomial]
+\label{lem:fc-native-model-total-components}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeTotalInclusion, EnvelopeProperty.MultiModel.nativeTotalGrading_decompose_val}
+\uses{lem:fc-native-model-total-grading}
+The original subalgebra inclusion is a native graded algebra morphism,
+and every degree component in the new native decomposition is the SAME
+original ambient homogeneous component.
+\end{lemma}
+\begin{proof}
+Membership in each piece is precisely ambient homogeneity, so the
+original inclusion preserves every degree. Naturality of native direct-sum
+decomposition under this graded inclusion identifies its degree-$d$
+component with the actual polynomial homogeneous component.
+\end{proof}
+
+For rank one this grading supplies the intended ordinary projective
+scheme. For higher rank, total-degree Proj is not identified with the
+original multiprojective model: the intended route first takes the
+original positive diagonal Veronese and then its rank-one grading.

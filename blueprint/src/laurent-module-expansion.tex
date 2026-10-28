@@ -1,0 +1,88 @@
+\section{Genuine finite Laurent coefficients of the entire scalar-extended module}
+
+\begin{theorem}\label{thm:laurent-module-actual-coefficients}
+\lean{EnvelopeProperty.LaurentModuleExpansion.coefficients, EnvelopeProperty.LaurentModuleExpansion.coefficients_tmul, EnvelopeProperty.LaurentModuleExpansion.coefficients_T_tmul, EnvelopeProperty.LaurentModuleExpansion.coefficients_symm, EnvelopeProperty.LaurentModuleExpansion.eq_sum_T_tmul}
+\leanok
+For every original commutative ring $R$ and original $R$-module $M$,
+there is a canonical $R$-linear equivalence
+\[
+ R[T,T^{-1}]\otimes_R M\simeq\bigoplus_{i\in\mathbf Z}M.
+\]
+The coefficient of $F\otimes m$ at $i$ is $F_i m$. Every original
+tensor is exactly the finite sum of $T^i\otimes m_i$ for its actual
+coefficients, and these coefficients determine it uniquely. No
+finiteness or freeness of $M$ is required.
+\uses{def:native-multiplicative-group}
+\end{theorem}
+\begin{proof}
+The original Laurent algebra has its genuine monomial basis indexed
+by all integers. Tensoring this actual basis gives the canonical
+finitely supported coefficient equivalence. Its pure-tensor formula
+is the actual basis-coordinate formula. The inverse equivalence is
+the finite sum of the original basis monomials tensored with their
+module coefficients, so its inverse identities give reconstruction
+and uniqueness, including the zero tensor.
+\end{proof}
+
+\begin{theorem}\label{thm:laurent-module-actual-evaluation}
+\lean{EnvelopeProperty.LaurentModuleExpansion.evaluate, EnvelopeProperty.LaurentModuleExpansion.evaluate_coeff, EnvelopeProperty.LaurentModuleExpansion.evaluate_T_tmul}
+\leanok
+Let $S$ be an original commutative ring with an $R$-module structure,
+and let $\phi:M\to S$ be an actual $R$-linear map. Applying $\phi$
+to the actual module coefficients constructs a canonical whole
+linear map into the original Laurent algebra $S[T,T^{-1}]$.
+Its $i$th coefficient is exactly $\phi(m_i)$, and it sends each
+$T^i\otimes m$ to $\phi(m)T^i$.
+\uses{thm:laurent-module-actual-coefficients}
+\end{theorem}
+\begin{proof}
+Apply the actual linear map coefficientwise on the finitely supported
+module and then the inverse genuine Laurent coefficient equivalence.
+The actual coefficient and monomial formulas follow from these two
+inverse identities and the original pure-tensor coefficient formula.
+Coefficients killed by $\phi$ are retained in the original expansion.
+\end{proof}
+
+\begin{theorem}\label{thm:laurent-module-actual-gauss-maximum}
+\lean{EnvelopeProperty.LaurentModuleExpansion.laurentGauss_evaluate}
+\leanok
+For any valuation $w$ of $S$ and any $r>0$, the actual Laurent Gauss
+value of the evaluated tensor is
+\[
+ \max_{i\in\operatorname{supp}(m_\bullet)}w(\phi(m_i))r^i.
+\]
+The support is that of the original module coefficients, so all
+original negative exponents and coefficients killed by $\phi$ are
+included. The empty maximum for the zero tensor is zero.
+\uses{thm:laurent-module-actual-evaluation,spectrum:actual-laurent-gauss-valuation}
+\end{theorem}
+\begin{proof}
+The genuine Laurent Gauss coefficient formula first gives the
+maximum over the support of the evaluated Laurent polynomial.
+The exact coefficient identity shows that this support lies in the
+original module support. Enlarging the finite maximum by the
+additional zero terms does not change it. Conversely every original
+coefficient term is bounded by the actual Gauss value, including
+terms whose image is zero. These two inequalities prove the formula.
+\end{proof}
+
+\begin{theorem}\label{thm:laurent-module-actual-finite-family}
+\lean{EnvelopeProperty.LaurentModuleExpansion.terms, EnvelopeProperty.LaurentModuleExpansion.laurentGauss_finite_family}
+\leanok
+Every finite original family of scalar-extended module elements
+produces one finite family of original pairs $(m_i,i)$, chosen before
+$\phi$, $w$ and $r$. At every actual such evaluation, the maximum of
+the original Laurent Gauss values is exactly the weighted maximum
+$\max w(\phi(m_i))r^i$ over this same finite pair family.
+\uses{thm:laurent-module-actual-gauss-maximum}
+\end{theorem}
+\begin{proof}
+Take the finite union of the actual coefficient pairs of each
+original tensor. The previous whole-tensor formula applies to each
+family member. A finite maximum over this finite union is exactly
+the iterated maximum over the original family and its original
+coefficient supports. Repeated pairs and zero evaluation values do
+not affect the maximum. This is an algebraic original-module
+producer; identification of a genuine geometric global-section
+space with this scalar extension remains the actual flat H0 step.
+\end{proof}

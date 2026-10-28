@@ -1,0 +1,71 @@
+\subsection{Polynomial dominance from a genuine central fibre}
+
+\begin{lemma}[The actual zero-section point]\label{scheme:polynomial-zero-section-point-ideal}
+\lean{EnvelopeProperty.PolynomialDominanceFromCentralFiber.zeroSectionPoint_asIdeal}
+\leanok
+Let \(k\) be a field. The image of the unique point of \(\operatorname{Spec}k\)
+under the morphism induced by evaluation \(k[t]\to k,\ t\mapsto0\), is the prime ideal
+\((t)\) of \(k[t]\).
+\end{lemma}
+\begin{proof}
+The unique prime of the field \(k\) is zero, and the underlying map of spectra is
+contraction. Its image ideal is therefore the kernel of evaluation at zero.
+Division by the monic polynomial \(t\) shows that this kernel is exactly \((t)\).
+These are the actual spectrum map and its actual prime ideal.
+\end{proof}
+
+\begin{theorem}[Dominance from a central point and a horizontal generic point]
+\label{scheme:polynomial-dominance-central-point}
+\lean{EnvelopeProperty.PolynomialDominanceFromCentralFiber.isDominant_of_zeroSectionPoint}
+\leanok
+\uses{scheme:polynomial-zero-section-point-ideal}
+Let \(D\) be an integral scheme over an arbitrary field \(k\), and let
+\(p:D\to\operatorname{Spec}k[t]\) be an actual scheme morphism. Suppose there is an
+actual point \(z_0\in D\) mapping to the zero-section point, and that
+\(t\notin p(\eta_D)\), where \(\eta_D\) is the generic point of \(D\).
+Then \(p\) is dominant.
+\end{theorem}
+\begin{proof}
+Set \(P=p(\eta_D)\), an actual prime ideal of \(k[t]\).
+Every point of \(D\), including \(z_0\), is a specialization of \(\eta_D\).
+Continuity of the actual morphism \(p\) therefore gives
+\(p(\eta_D)\leadsto p(z_0)\). The specialization order on an affine spectrum is
+inclusion of the corresponding prime ideals, so the preceding lemma gives
+\(P\subseteq(t)\).
+
+If \(P\ne0\), the principal ideal domain \(k[t]\) makes the nonzero prime \(P\)
+maximal. The proper prime ideal \((t)\) containing it must then equal \(P\).
+This would put \(t\) in \(P\), contradicting the given generic-point condition.
+Consequently \(P=0\). Thus the actual image of the original generic point is
+the generic point of \(\operatorname{Spec}k[t]\). The image of \(p\) contains
+this point, whose closure is the whole target, proving dominance.
+
+The central point is essential: the condition \(t\notin P\) alone does not
+force \(P=0\). No closedness, finite-type, normality, flatness, projectivity,
+or algebraic-closedness assumption is used.
+\end{proof}
+
+\begin{corollary}[Dominance from the whole original central-fibre triangle]
+\label{scheme:polynomial-dominance-central-fibre}
+\lean{EnvelopeProperty.PolynomialDominanceFromCentralFiber.isDominant_of_centralFiber}
+\leanok
+\uses{scheme:polynomial-dominance-central-point}
+Let \(D\) be integral and \(C\) a nonempty scheme, over an arbitrary field \(k\).
+Let actual scheme morphisms \(p:D\to\operatorname{Spec}k[t]\),
+\(g:C\to D\), and \(q:C\to\operatorname{Spec}k\) satisfy the whole morphism identity
+\[
+ p\circ g=\operatorname{Spec}(\operatorname{ev}_0)\circ q
+\]
+from \(C\) to \(\operatorname{Spec}k[t]\).
+If \(t\notin p(\eta_D)\), then \(p\) is dominant.
+\end{corollary}
+\begin{proof}
+Choose a point \(c\in C\), using precisely the asserted nonemptiness.
+Evaluate the given equality of the actual whole morphisms at \(c\).
+The point \(q(c)\) is the unique point of \(\operatorname{Spec}k\), so
+\(z_0=g(c)\) maps to the actual zero-section point. Apply the theorem to this
+point and the unchanged original generic-point hypothesis.
+No property of \(g\) such as closed immersion, and no irreducibility or
+reducedness of \(C\), is needed.
+\end{proof}
+

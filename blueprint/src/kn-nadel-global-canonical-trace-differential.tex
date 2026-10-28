@@ -1,0 +1,71 @@
+\section{The original canonical differential before trace normalization}
+
+\begin{lemma}[The same native map on every original raw form]
+\label{lem:kn-global-trace-native-branch-differential}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeCanonicalPullbackMap,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeCanonicalPullbackMap_apply,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeCanonicalPullbackMap_raw}
+\leanok
+Let $f:\operatorname{Spec}B\to\operatorname{Spec}k$ be smooth of pure
+relative dimension $n$, and let $\varphi:B\to C$ be any original ring map.
+Put $g=\operatorname{Spec}(\varphi)$.  There is a produced $B$-linear map
+\[
+ d_g:\Gamma(\omega_f)\longrightarrow
+      \operatorname{Res}_{\varphi}\Gamma(\omega_{g\circ f})
+\]
+whose value on every original section is the original adjoint canonical
+differential.  For each original raw presheaf top form $z$ on the whole
+source, with original sheafification unit $\eta$, it satisfies
+\[
+ d_g(\eta z)=\eta(d_g^{\mathrm{raw}}z).
+\]
+The target object, original ring actions, raw differential, and units in
+this formula are literal.  No etaleness or prescribed differential
+comparison is an input.
+\uses{lem:kn-global-trace-native-spectrum}
+\end{lemma}
+\begin{proof}
+Smoothness of the source makes $\omega_f$ quasicoherent.  Start with the
+actual scalar-extension adjunction unit on its native $B$-section module.
+The published original-ring affine pullback tensor comparison identifies
+the resulting $C$-tensor module with the sections of $g^*\omega_f$.
+Apply the section functor to the actual canonical differential
+$g^*\omega_f\to\omega_{g\circ f}$ and restrict through the original
+$\varphi$ action.  This defines the displayed map for an arbitrary
+original $g$; no differential isomorphism is asserted.
+
+On the original unit tensor, the published affine comparison is the
+same original pullback-pushforward unit.  The original adjunction triangle
+therefore identifies the value with the actual adjoint canonical
+differential on every source section.  The existing whole raw-unit
+identity for the canonical sheaf morphism then gives the displayed raw
+formula on every original $z$.  This is precisely the differential to
+be used in the mixed-counit normalization, including along its branch
+divisor; no substitute comparison map is introduced.
+\end{proof}
+
+
+\begin{lemma}[Original ordinary coordinate differentials in the native unit]
+\label{lem:kn-global-trace-native-ordinary-unit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineCotangentModuleIso_inv_D,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineOrdinaryCotangentToOpen_D}
+\leanok
+Let $A$ be an original algebra over the field $k$.  Under the actual
+categorical-to-ordinary coordinate cotangent comparison, the original
+$D_{A/k}(a)$ maps to the categorical differential of the same original
+$a$.  Consequently the actual ordinary coordinate map to any original
+open of $\operatorname{Spec}A$ sends it to the native presheaf differential
+of the same original coefficient section.
+\end{lemma}
+\begin{proof}
+The categorical coordinate module uses the algebra structure obtained
+from the original ring homomorphism $k\to A$.  The ordinary module uses
+the given original $k$-algebra structure.  The proved algebra-structure
+equality identifies these two, and this exact equality defines their
+coordinate module isomorphism.  The universal differential is a dependent
+function of the algebra structure.  Transport along an equality carries
+its value to the value for the transported structure: eliminate that
+equality, after which the statement is reflexivity.  Apply this to the
+original coordinate structure equality and its inverse.  The existing
+native categorical coordinate map sends every categorical $da$ to the
+native presheaf differential of its same original coefficient image.
+Composing gives the asserted ordinary-coordinate formula, with no
+replacement algebra map or desired-unit hypothesis.
+\end{proof}

@@ -1,0 +1,25 @@
+\section{The original regular trace with pulled canonical coefficients}
+
+\begin{definition}[The regular pulled-canonical trace]
+\label{def:nadel-regular-pulled-canonical-trace}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.regularPulledCanonicalTrace}
+\uses{thm:kn-structure-trace-global-regular-factor,thm:fc-original-scheme-line-projection-formula,def:kn-canonical-original-rational-trace}
+\leanok
+For the same original normalized adapted cover $\pi:Y\to X$, put
+$M=\omega_X$ and let $T:\pi_*\mathcal O_Y\to\mathcal O_X$ be its
+already constructed original regular structure trace.  Keep the original
+line projection formula and original structure-sheaf unit constraints.
+Define the actual module morphism
+\[
+ R:\pi_*\pi^*\omega_X
+  \xrightarrow{\pi_*(\widetilde\lambda^{-1})}
+    \pi_*(\mathcal O_Y\otimes\pi^*\omega_X)
+  \xrightarrow{P^{-1}}\pi_*\mathcal O_Y\otimes\omega_X
+  \xrightarrow{T\otimes\mathrm{id}}\mathcal O_X\otimes\omega_X
+  \xrightarrow{\widetilde\lambda}\omega_X.
+\]
+Its source is the actual pulled base canonical line.  No canonical
+differential inverse or regular trace from $\pi_*\omega_Y$ is part of
+this definition.  Rational-restriction compatibility is a separate
+statement.
+\end{definition}

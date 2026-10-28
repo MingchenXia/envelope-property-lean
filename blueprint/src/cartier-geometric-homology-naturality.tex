@@ -1,0 +1,83 @@
+\section{Canonicity and restriction of geometric affine homology}
+
+\begin{lemma}[The affine tilde-counit comparison is canonical]
+\label{lem:cartier-geometric-affine-counit-homology-canonical}
+\leanok
+\uses{lem:left-exact-original-homology-composition}
+\lean{EnvelopeProperty.Cartier.GeometricHomologyNaturality.affineCounitHomology_canonical}
+For an affine scheme $\operatorname{Spec}A$ and a complex $K$ of
+quasicoherent modules, the comparison obtained by applying sections
+to the original tilde-counit homology isomorphism, preceded by the
+original tilde unit, is exactly the original canonical comparison
+$H^q(\Gamma K)\to\Gamma(H^qK)$.
+\end{lemma}
+\begin{proof}
+Write $L$ for associated sheaf and $G$ for affine sections, and let
+$\nu_F$ denote the canonical homology comparison of a left exact
+functor. Its proved composition identity gives
+$\nu_{L\circ G}=\nu_L\,;\,L(\nu_G)$, where $a;b$ means first
+$a$ and then $b$. Naturality for the original counit
+$\epsilon:L\circ G\to\mathrm{Id}$ identifies this composite followed
+by $\epsilon$ with the homology map of the counit on the complex.
+The identity-functor comparison is the identity by uniqueness from
+the cycle projection. Since $L$ preserves homology, its canonical
+comparison is the original invertible homology-preservation map.
+Cancel this map to obtain
+\[
+ L(\nu_G)\,;\,\epsilon_{H K}
+ =\nu_L^{-1}\,;\,H(\epsilon_K).
+\]
+The right side is precisely the original tilde-counit homology
+isomorphism. Apply the original adjunction bijection; its inverse
+sends a map to its associated-sheaf image followed by the counit.
+The triangle identity therefore identifies $\nu_G$ with the unit
+followed by sections of that original isomorphism, as asserted.
+\end{proof}
+
+\begin{theorem}[The frozen geometric affine homology comparison is canonical]
+\label{thm:cartier-geometric-affine-homology-canonical}
+\leanok
+\uses{lem:cartier-geometric-affine-counit-homology-canonical,thm:cartier-geometric-affine-homology-sections,lem:left-exact-original-homology-composition}
+\lean{EnvelopeProperty.Cartier.GeometricHomologyNaturality.homologySectionsIso_hom_eq}
+For every original affine open $W$ and complex $K$ of quasicoherent
+modules, the entire forward map of the original geometric affine
+homology isomorphism is exactly the original canonical section
+homology comparison.
+\end{theorem}
+\begin{proof}
+Let $j:\operatorname{Spec}\Gamma(W)\to X$ be the original affine
+open chart. The original affine chart-section isomorphism is the
+restriction along the equality $j(\operatorname{Spec}\Gamma(W))=W$;
+both constructions have this same forward map on every section.
+Naturality of the tilde unit moves the homology of this chart-section
+isomorphism past that unit in the original geometric comparison.
+The preceding lemma identifies the intervening affine tilde-counit
+comparison with the canonical affine section comparison. Exactness
+of original open restriction identifies its homology isomorphism
+with its canonical comparison. The proved composition identity now
+identifies their composite with the canonical comparison for
+chart restriction followed by affine sections. Finally, canonical
+comparison naturality for the original chart-section natural
+isomorphism gives the canonical comparison for evaluation at $W$.
+Every map used is the original map; none is selected from a matching
+or naturality premise.
+\end{proof}
+
+\begin{theorem}[The entire geometric affine homology restriction square]
+\label{thm:cartier-geometric-affine-homology-restriction}
+\leanok
+\uses{thm:cartier-geometric-affine-homology-canonical,prop:scheme-original-native-section-homology-restriction}
+\lean{EnvelopeProperty.Cartier.GeometricHomologyNaturality.homologySectionsIso_restrict}
+For every inclusion $U\subset V$ of original affine opens, the
+original restriction on homology of section complexes followed by
+the smaller original affine homology isomorphism equals the larger
+original affine homology isomorphism followed by original restriction
+of the same global homology sheaf.
+\end{theorem}
+\begin{proof}
+Replace each entire forward isomorphism by its proved original
+canonical comparison. The existing native canonical comparison
+restriction theorem then gives exactly the asserted square,
+including the canonical homology isomorphism for restriction of
+scalars along the original section-ring restriction.
+\end{proof}

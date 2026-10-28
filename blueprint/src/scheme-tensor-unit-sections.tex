@@ -1,0 +1,38 @@
+\section{Actual unit tensors and global-section evaluation}
+
+\begin{lemma}[The original left tensor unit on every original open]
+\label{lem:actual-scheme-left-unit-tensor-section}
+For every original scheme module $M$, open $U$, regular function $a$
+and section $m$ on $U$, the actual canonical tensor-unit comparison
+$\mathcal O_X\otimes M\simeq M$ sends the original pure tensor
+$a\otimes m$ to $am$. This uses the localized native monoidal tensor.
+\lean{EnvelopeProperty.SchemeTensorUnitSections.leftUnitIso,EnvelopeProperty.SchemeTensorUnitSections.leftUnitIso_hom_tensorSection}
+\leanok
+\end{lemma}
+\begin{proof}
+Use the actual sheafification cotensorator and its left-unit law.
+The original unit and module sheafification counits cancel the actual
+unit comparison. Naturality of the sheafification unit, followed by
+the true adjunction triangle on $M$, identifies the resulting map on
+every original tensor with the original presheaf left unitor.
+Its actual module component is scalar multiplication. This proves the
+identity on every original open without an affine, frame or coherence
+certificate.
+\end{proof}
+
+\begin{proposition}[Whole original global-section evaluation]
+\label{prop:actual-line-global-section-evaluation}
+For an original global section $s$ of any original module $L$ and every
+original local dual section $d$ on $U$, the actual morphism $e_s$ used
+in its whole base ideal satisfies $e_s(d)=d(s|_U)$.
+\uses{lem:actual-scheme-left-unit-tensor-section}
+\lean{EnvelopeProperty.SchemeTensorUnitSections.sectionEvaluation_apply}
+\leanok
+\end{proposition}
+\begin{proof}
+The preceding unit-tensor identity identifies the actual inverse unit
+map on $d$ with $1\otimes d$. Actual tensor-section naturality sends
+this to $s|_U\otimes d$, and the original canonical dual pairing
+evaluates it to $d(s|_U)$. The section morphism on $U$ sends $1$ to
+$s|_U$, since its component is $a\mapsto as|_U$.
+\end{proof}

@@ -1,0 +1,55 @@
+\section{Every original pulled-line global section retains its true norm on the same model}
+\label{sec:native-pulled-projective-section-norms}
+
+\begin{theorem}[The whole original section equivalence retains zero and nonzero sections]
+\label{thm:native-pulled-projective-section-equivalence}
+\lean{EnvelopeProperty.NativePulledProjectiveSectionNorms.coefficient_zero,EnvelopeProperty.NativePulledProjectiveSectionNorms.coefficient_ne_zero_iff,EnvelopeProperty.NativePulledProjectiveSectionNorms.sectionEquiv,EnvelopeProperty.NativePulledProjectiveSectionNorms.sectionEquiv_apply}
+\leanok
+\uses{thm:native-pulled-projective-model-sections,sc0-line-section-ratios:every-original-section}
+\source{bj22-trivval:sec:tc}
+Assume throughout this statement that the original scheme $X$ is integral.
+For an actual original closed projective embedding, a nonempty original
+pivot and any nonnegative degree $d$, the actual generic coefficient map
+is an equivalence between the entire original global section set of
+$f^*O(d)$ and the whole genuine degree-$d$ model section set. It sends zero
+to zero and detects exactly the nonzero original global sections.
+\end{theorem}
+\begin{proof}
+The preceding genuine coefficient membership, injection and actual
+sheaf-gluing surjection give the equivalence, with its literal coefficient
+as forward map. The canonical native section ratio is semilinear and
+therefore sends zero to zero. Injectivity then identifies precisely the
+nonzero original global sections with the nonzero model coefficients.
+\end{proof}
+
+\begin{theorem}[Every original global section has its genuine model graded section norm]
+\label{thm:native-pulled-projective-section-norms}
+\lean{EnvelopeProperty.NativePulledProjectiveSectionNorms.sectionNorm,EnvelopeProperty.NativePulledProjectiveSectionNorms.sectionNorm_eq_chartValue,EnvelopeProperty.NativePulledProjectiveSectionNorms.sectionNorm_eq_secAbs}
+\leanok
+\uses{thm:native-pulled-projective-model-sections,thm:projective-native-model-global-section-values,thm:projective-native-model-value-one-center,thm:native-pulled-projective-line-frames,thm:fc-original-local-section-model-norm,lem:fc-original-local-section-scalar,lem:gl-sections}
+\source{fhx-envelope-20261028:eq:FS-function}
+Assume throughout this statement that the original scheme $X$ is integral.
+At every original native analytic point, the true proper-model norm of
+every actual original global section of the whole pulled $O(d)$ line equals
+the genuine model graded section norm of its actual native coefficient,
+under the same entire native analytic homeomorphism. No original ambient
+homogeneous representation, generic-support assumption, chosen chart or
+metric-comparison certificate is supplied.
+\end{theorem}
+\begin{proof}
+The genuine model normalization supplies an actual coordinate of value
+one. That coordinate is nonzero in the native function field, so its
+original chart is nonempty. The proved whole support comparison puts the
+original native support in that chart, while the genuine bounded-affine
+criterion puts the original proper center there. In its actual original
+pulled-line frame, the true original global-section model norm is evaluation
+of the actual regular coefficient. The whole original chart equivalence
+retains this coefficient's true value under the same global homeomorphism.
+The preceding whole-section theorem identifies the corresponding chart
+algebra element with the model fraction $g/D_j(d)$. The genuine model
+section chart formula computes its graded norm as that fraction's chart
+value times the original coordinate value to the degree $d$. The coordinate
+value is one, so these two true norms coincide. The reasoning applies to
+all original sections, including zero sections and native points with
+nongeneric support; proper center and native support remain distinct.
+\end{proof}

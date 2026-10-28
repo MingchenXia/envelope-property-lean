@@ -1,0 +1,28 @@
+\begin{definition}[Original whole global line]
+\label{def:whole-original-native-global-line-comparison}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalGlobalWholeLineIso}\leanok
+\uses{def:whole-original-global-fraction-line-comparison,prop:whole-original-global-fraction-line-sections,prop:whole-original-global-blowup-fraction-basis,def:whole-module-open-immersion-cover-gluing,def:whole-original-global-fraction-open-cover}
+For integral $X$, on the entire same native global blowup there is a whole original module isomorphism
+\[
+ q^*\mathcal O(1)\simeq\mu^*j^*\mathcal O(d)\otimes(D\mathcal O_Z).
+\]
+More precisely, these original data construct a pair consisting of an isomorphism
+$e:q^*\mathcal O(1)\simeq\mu^*j^*\mathcal O(d)\otimes(D\mathcal O_Z)$
+and all identities $q^*\sigma_k\mathbin{\gg}e=\beta_{F_k}$ for the same
+prescribed finite family. Choose an isomorphism from this nonempty family
+of pairs, retaining all these identities. No whole line comparison or
+overlap matching is an input.
+\end{definition}
+\begin{proof}
+Use the combined cover indexed by nonempty original subordinate affine opens and their actual nonzero prescribed-generator fraction charts. This covers $Z$: every point has an original subordinate affine blowup preimage, that affine open contains its image in $X$ and is therefore nonempty, and the true specified-generator fraction cover covers its original affine blowup. Compose the two original open immersions to obtain the actual covering maps to $Z$. On each actual fraction spectrum use the comparison constructed from the same original coordinate pivot and old global lifted pivot, retaining the canonical composition comparison. Every original section is preserved. The old global lifted pivot is a basis there by its actual original global fraction basis theorem. Apply open immersion section-preserving gluing; it internally derives equality of the whole overlap maps by cancellation of the actual original pivot. Its global section theorem gives all the original identities simultaneously for the constructed isomorphism. Thus the family of isomorphisms satisfying all these identities is nonempty; the chosen comparison and its complete section law are the two parts of this same existence result. Empty affine charts contribute no points, and a zero ideal gives the actual empty blowup, handled by the same empty-cover construction.
+\end{proof}
+
+\begin{proposition}[All original global sections]
+\label{prop:whole-original-native-global-line-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalGlobalWholeLineIso_section}\leanok
+\uses{def:whole-original-native-global-line-comparison,prop:whole-module-open-immersion-cover-sections}
+The whole native global comparison sends each original pulled coordinate section $q^*\sigma_k$ to the old global ideal-valued lift of the same prescribed original polynomial $F_k$ on all of $Z$.
+\end{proposition}
+\begin{proof}
+The whole comparison is chosen from the nonempty family of actual original whole isomorphisms satisfying all these identities. Its defining property therefore gives the identity on the entire actual original global blowup for every original row. This is the same simultaneous existence property supplied by the actual fraction comparisons and their section-preserving gluing.
+\end{proof}

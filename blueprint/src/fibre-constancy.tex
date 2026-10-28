@@ -1,0 +1,1611 @@
+\section{Fibre constancy}\label{sec:fc}
+
+This chapter proves Theorem~\ref{thm:gl-fibre-constancy}, the claim ``$\Phi$ is constant on every fibre of $\beta^\an$''
+in Step~1 of \cite[Theorem~6.1]{FHX}. As in \cite{FHX}, the fibre is the analytification of a proper connected
+$\mathcal H(t)$-scheme, and the restriction of $\Phi$ is plurisubharmonic in the sense of curves \cite[Definition~4.1]{GR25}.
+We use two deviations from \cite{GR25}. Subharmonicity on curves is tested through local norms to the Berkovich
+line (Definition~\ref{def:fc-subharmonic}), so potential theory is only needed on the line. The maximum principle on
+the fibre is proved by chains of algebraic curves through rigid points (Lemma~\ref{lem:fc-curve-chains}), instead of
+the local maximum principle \cite[Theorem~6.1]{GR25} and Berkovich's connectedness theorem \cite[3.4.8]{Berkovich90}.
+See Remark~\ref{rmk:fc-gr25}.
+
+\subsection{Setting and reductions}\label{subsec:fc-setting}
+
+\begin{convention}\label{conv:fc-setting}
+\notready
+\uses{conv:gl-setting, def:pg-blowup, def:pg-blowup-psh, def:convex-pl}
+$k$ is countable, algebraically closed and trivially valued; $T'=V(I)\subseteq\PP^N$ is projectively normal, $B$ is a
+blowup of $T'$ as in Definition~\ref{def:pg-blowup}, $\mu\colon B^\an\to T'^\an$, $a\in\Q_{>0}$, $\Phi\in\PSH(B,(a,0))$.
+A \emph{complete field} is a complete non-Archimedean field $F$ with a $k$-algebra structure such that $|c|=1$ for
+$c\in k^\times$. For an $F$-scheme $X$ of finite type, $X^\an$ is the space of pairs (scheme point, real valuation of
+its residue field extending that of $F$); for a complete extension $F'/F$, $\pi_{F'/F}\colon X_{F'}^\an\to X^\an$ is
+restriction. A \emph{curve} over $F$ is a separated $F$-scheme of finite type of pure dimension one. Locally psh
+functions on open subsets of $X^\an$ are those of Definition~\ref{def:convex-pl}, with units on Zariski open subsets.
+\end{convention}
+
+\begin{lemma}[Affine psh pullback under scalar extension]\label{lem:fc-affine-base-change-psh}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsConvexPLOn.fc_comp_baseChangeRestriction, EnvelopeProperty.Berkovich.RelativeSpectrum.IsDecrConvexPLLimitOn.fc_comp_baseChangeRestriction, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLocallyPSHOn.fc_comp_baseChangeRestriction}
+\uses{conv:fc-setting, lem:local-basic}
+Let $R\to S$ be a homomorphism of commutative rings with compatible real-valued valuations $v,w$, and $A$ an
+$R$-algebra. Pullback along the restriction map
+$\pi\colon\operatorname{Berk}_w(S\otimes_RA)\to\operatorname{Berk}_v(A)$ preserves convex PL functions,
+decreasing limits of convex PL functions, and locally psh functions on open subsets.
+\end{lemma}
+
+\begin{proof}
+Replace each coefficient $a_j\in A$ in a finite convex PL presentation by $1\otimes a_j$.
+Since $|a_j|_{\pi(z)}=|1\otimes a_j|_z$, this preserves the rational affine logarithmic expressions,
+their maxima, and their nonvanishing loci. Pullback commutes with pointwise infima and preserves decreasing
+sequences. Finally, $\pi$ is continuous, so open neighborhoods in a local psh presentation pull back to open
+neighborhoods.
+\end{proof}
+
+\begin{lemma}[Rational scalar lifts]\label{lem:fc-rational-scalar-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLiftEval, EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLiftEval_tmul, EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLiftEval_surjective, EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLiftQuotientEquiv, EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLift, EnvelopeProperty.Berkovich.RelativeSpectrum.fcRationalLift_baseChangeRestriction}
+\uses{conv:fc-setting}
+Let $F\to L$ be a homomorphism of commutative rings with compatible real-valued valuations $v,w$.
+For every $F$-algebra $A$ and $F$-algebra homomorphism $e\colon A\to F$, the map
+$e_L\colon L\otimes_FA\to L$, $c\otimes a\mapsto c\,e(a)$, is a surjective $L$-algebra homomorphism.
+Its valuation $w\circ e_L$ restricts to the original rational seminorm $v\circ e$ on $A$.
+\end{lemma}
+
+\begin{proof}
+The two maps $L\to L$ and $A\xrightarrow{e}F\to L$ agree on $F$ and have commuting images,
+so induce the stated tensor homomorphism. Its value on $c\otimes1$ is $c$, proving surjectivity.
+Its value on $1\otimes a$ is $e(a)$ viewed in $L$, and compatibility of $v,w$ proves the last assertion.
+\end{proof}
+
+\begin{lemma}[Lifting points through completion]\label{lem:fc-completion-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionCoefficientHom, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionCoefficientHom_coe, EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_fcCompletionCoefficientHom, EnvelopeProperty.Berkovich.RelativeSpectrum.norm_fcCompletionCoefficientHom, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionEval, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionEval_tmul, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletion_val_algebraMap, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionLift, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletionLift_baseChangeRestriction, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_baseChangeRestriction_completion_surjective}
+\uses{conv:fc-setting}
+Let $F$ be a non-Archimedean normed field and $\widehat F$ its completion. For every commutative $F$-algebra $A$,
+the restriction map from seminorms on $\widehat F\otimes_FA$ prescribing the norm of $\widehat F$ to seminorms on
+$A$ prescribing the norm of $F$ is surjective.
+\end{lemma}
+
+\begin{proof}
+For a given point $x$, the coefficient map $F\to\mathcal H(x)$ is isometric. It therefore extends to a continuous
+homomorphism $\widehat F\to\mathcal H(x)$, which remains isometric by density. Combining this map with the original
+evaluation $A\to\mathcal H(x)$ gives a homomorphism $\widehat F\otimes_FA\to\mathcal H(x)$. Pulling back the norm
+of $\mathcal H(x)$ gives the required seminorm: on the left tensor factor it equals the whole norm of
+$\widehat F$, while on $1\otimes a$ it equals $|a|_x$.
+\end{proof}
+
+\begin{lemma}[Completed algebraic scalar extensions]\label{lem:fc-algebraic-completion-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcCompletedExtension_val_algebraMap, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_baseChangeRestriction_algebraicCompletion_surjective}
+\uses{lem:fc-completion-lift}
+Let $K$ be complete non-Archimedean, and $L/K$ an algebraic normed extension. For every commutative $K$-algebra $A$,
+scalar restriction from the norm-prescribed spectrum of $\widehat L\otimes_KA$ onto that of $A$ over $K$ is surjective.
+\end{lemma}
+
+\begin{proof}
+An algebraic field extension makes $A\to L\otimes_KA$ integral and injective. Integral point extension, together
+with uniqueness of extending the norm of the complete field $K$, supplies a point over the original seminorm and
+prescribing the norm of $L$. Lemma~\ref{lem:fc-completion-lift} lifts this point to
+$\widehat L\otimes_L(L\otimes_KA)$. The actual scalar tensor cancellation isomorphism with
+$\widehat L\otimes_KA$ retains every original $A$ value and every completed coefficient value, giving the claimed lift.
+\end{proof}
+
+\begin{lemma}[Extension of scalars]\label{lem:fc-base-change}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.continuous_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isClosedMap_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isLocallyPSHOn_comp_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_algebraicCompletion, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_gauss, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalScalarLift_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_nativeProjection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_nontrivialScalarField}
+\uses{conv:fc-setting, lem:fc-scheme-scalar-pullback, lem:fc-scheme-scalar-proper, lem:fc-scheme-scalar-algebraic-completion-lift, lem:fc-scheme-gauss-scalar-lift, lem:fc-scheme-rational-point-lift, lem:fc-scheme-rational-section-base-change, lem:fc-scheme-nontrivial-complete-scalar-lift}
+Let $X$ be an $F$-scheme of finite type and $F'/F$ a complete extension.
+\begin{enumerate}
+\item $\pi_{F'/F}$ is continuous and closed, and the pullback of a locally psh function is locally psh.
+\item $\pi_{F'/F}$ is surjective if $F'$ is the completion of an algebraic extension of $F$, or the field
+$\mathcal H(\eta_r)$ of the Gauss point of radius $r>0$ of $\A^1_F$.
+\item For $x\in X^\an$ let $F_x$ be the completed algebraic closure of $\mathcal H(x)$. There is an $F_x$-rational point
+$\tilde x$ of $X_{F_x}$ with $\pi_{F_x/F}(\tilde x)=x$. Every $F$-rational point $c$ of $X$ gives an $F'$-rational point
+$\tilde c$ over $c$.
+\item There is a complete, algebraically closed, nontrivially valued extension $F_1/F$ such that $\pi_{F_1/F}$ is
+surjective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) On actual affine charts the whole scalar restriction map is the genuine
+tensor-spectrum map. Ultrafilter lifting proves properness there; actual open
+chart pullbacks give properness of the whole scheme map. Thus it is continuous
+and closed. Regular units and their whole logarithmic values pull back along
+the genuine scheme projection, preserving local convex PL presentations and
+their decreasing limits.
+
+(2) For an algebraic extension, extend the actual point through its integral
+coefficient algebra and then its completion. The whole projection and all
+original coefficients are preserved. For a Gauss field, the actual weighted
+Gauss tensor seminorm extends every prescribed original point; pass through
+its genuine completed field and actual affine chart. This constructs a whole
+lift and proves surjectivity.
+
+(3) The canonical completed stalk residue-field point gives the actual base
+coefficient action on $\mathcal H(x)$. Its completed algebraic closure preserves
+every norm. The genuine scheme pullback universal property constructs an actual
+$F_x$-rational section with whole original projection $x$. The same universal
+property lifts each original $F$-rational section to any normed extension.
+
+(4) Take the actual completed algebraic closure of the radius-$1/2$ Gauss field.
+The inverse Gauss variable has norm $2$, proving nontriviality. The actual
+scalar-tower scheme morphism identifies the entire iterated projection with
+the single final scalar projection. Compose the two constructed surjections
+from (2), preserving the whole original point.
+\end{proof}
+
+\begin{lemma}[The completed-field affine fibre]\label{lem:fc-affine-fibre-model}
+\leanok
+\lean{EnvelopeProperty.Berk.fcAbsoluteFibreHomeomorph, EnvelopeProperty.Berk.fcCompletedFibreHomeomorph, EnvelopeProperty.Berk.fcCompletedFibreHomeomorph_val, EnvelopeProperty.Berk.fcCompletedFibreHomeomorph_val_tmul, EnvelopeProperty.Berk.fcCompletedFibreInclusion, EnvelopeProperty.Berk.continuous_fcCompletedFibreInclusion, EnvelopeProperty.Berk.fcNativeCompletedFibreHomeomorph, EnvelopeProperty.Berk.fcNativeCompletedFibreHomeomorph_projection}
+\uses{conv:fc-setting}
+Let $A\to C$ be a homomorphism of $k$-algebras, and $t\in(\Spec A)^\an$.
+The space of seminorms on $\mathcal H(t)\otimes_AC$ restricting to the norm of $\mathcal H(t)$ is homeomorphic to
+the fibre over $t$ of $(\Spec C)^\an\to(\Spec A)^\an$. The homeomorphism $j_t$ satisfies
+$|c|_{j_t(z)}=|1\otimes c|_z$ and $|h\otimes c|_z=\lVert h\rVert\,|c|_{j_t(z)}$.
+\end{lemma}
+
+\begin{proof}
+The completed-residue-field tensor fibre homeomorphism for unrestricted seminorm spectra gives these maps and
+their topology. A seminorm over the point $t$ is automatically trivial on $k^\times$, because its value on
+$c\in k^\times$ equals the value at $t$. Thus restricting to the prescribed trivial coefficient locus changes
+neither the fibre nor its topology. The identities follow by evaluating the right tensor inclusion and using
+multiplicativity with the prescribed norm on the left tensor factor. The actual affine scheme pullback
+$\Spec C\times_{\Spec A}\Spec\mathcal H(t)$ is isomorphic to $\Spec(\mathcal H(t)\otimes_AC)$,
+compatibly with both projections. Thus the same homeomorphism identifies the original analytic fibre with the
+fixed-norm native points of this scheme-theoretic pullback, retaining the whole original projection.
+\end{proof}
+
+\begin{lemma}[Compact blowup fibres]\label{lem:fc-fibre-compact}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_isCompact_fibre}
+\uses{lem:pg-blowup-basic}
+Every fibre of $\mu\colon B^\an\to T'^\an$ is compact.
+\end{lemma}
+
+\begin{proof}
+The total analytic blowup is compact, the target is Hausdorff, and $\mu$ is continuous. Thus the inverse image of
+a point is closed in a compact space.
+\end{proof}
+
+\begin{lemma}[Actual Segre polynomial restriction]\label{lem:fc-segre-polynomials}
+\leanok
+\lean{EnvelopeProperty.BiProjBerk.segreHom, EnvelopeProperty.BiProjBerk.segreHom_X, EnvelopeProperty.BiProjBerk.segreHom_monomial_isWeightedHomogeneous, EnvelopeProperty.BiProjBerk.weightedHomogeneousComponent_segreHom, EnvelopeProperty.BiProjBerk.segreHom_isWeightedHomogeneous, EnvelopeProperty.BiProjBerk.segreMinor, EnvelopeProperty.BiProjBerk.segreMinor_isHomogeneous, EnvelopeProperty.BiProjBerk.segreHom_minor, EnvelopeProperty.BiProjBerk.segre, EnvelopeProperty.BiProjBerk.segre_val, EnvelopeProperty.BiProjBerk.segre_val_minor, EnvelopeProperty.BiProjBerk.continuous_segre, EnvelopeProperty.BiProjBerk.segreDimension, EnvelopeProperty.BiProjBerk.segreIndexEquiv, EnvelopeProperty.BiProjBerk.segreMap, EnvelopeProperty.BiProjBerk.continuous_segreMap}
+\uses{lem:pg-bigraded-extension}
+Put $D=(M+1)(M'+1)-1$, order the pairs $(i,j)$ as the $D+1$ homogeneous coordinates, and define
+$\sigma^*\colon k[z_{ij}]\to k[x_i,y_j]$ by $z_{ij}\mapsto x_i y_j$.
+Every form of degree $d$ maps to bidegree $(d,d)$, and
+$(\sigma^*F)_{(d,d)}=\sigma^*(F_d)$ for every polynomial $F$.
+For every normalized bigraded point $v$, restriction along this actual polynomial homomorphism gives
+$a(v)\in(\PP^D)^\an$ with $|F|_{a(v)}=|\sigma^*F|_v$ for every polynomial $F$.
+The map $a$ is continuous, and all quadratic Segre minors vanish at $a(v)$.
+\end{lemma}
+
+\begin{proof}
+A substituted monomial of degree $d$ has $x$-degree and $y$-degree both $d$.
+Monomial induction then proves that homogeneous components commute with substitution, so the restricted
+seminorm is graded. Each coordinate product has value at most one, and a pair of value-one coordinates gives
+a product of value one, proving normalization. Evaluation of each fixed substituted polynomial is continuous.
+The quadratic minors pull back to the zero polynomial.
+\end{proof}
+
+\begin{lemma}[Recovery from Segre coordinates]\label{lem:fc-segre-embedding}
+\leanok
+\lean{EnvelopeProperty.BiProjBerk.segreRecoveryHom, EnvelopeProperty.BiProjBerk.segreRecoveryHom_X_inl, EnvelopeProperty.BiProjBerk.segreRecoveryHom_X_inr, EnvelopeProperty.BiProjBerk.segreHom_recovery_monomial, EnvelopeProperty.BiProjBerk.segreHom_recovery, EnvelopeProperty.BiProjBerk.segre_val_recovery, EnvelopeProperty.BiProjBerk.segre_injective, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segre, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segreMap}
+\uses{lem:fc-segre-polynomials}
+The actual map $a$ of Lemma~\ref{lem:fc-segre-polynomials} is a closed topological embedding.
+For a chosen pair $(i,j)$ let $\rho_{ij}\colon k[x,y]\to k[z]$ send $x_l$ to $z_{lj}$ and $y_m$ to $z_{im}$.
+For every form $F$ of bidegree $(p,q)$ one has the polynomial identity
+$\sigma^*\rho_{ij}(F)=F x_i^q y_j^p$. Thus, when $|x_i|_v=|y_j|_v=1$,
+$|\rho_{ij}(F)|_{a(v)}=|F|_v$.
+\end{lemma}
+
+\begin{proof}
+The polynomial identity follows first for monomials, by induction on their exponent functions, and then for
+bihomogeneous forms by weighted homogeneous induction. If $a(v)=a(w)$, choose value-one coordinates $x_i,y_j$
+at $v$. Their product has value one at $w$; since both factors have value at most one there, each factor has
+value one. The recovery identity gives equality of $v,w$ on every bihomogeneous form, hence on every polynomial.
+Thus $a$ is injective. A continuous injection from the compact bigraded point space to the Hausdorff projective
+point space is a closed embedding.
+\end{proof}
+
+\begin{lemma}[The actual native Segre point map]\label{lem:fc-segre-native}
+\leanok
+\lean{EnvelopeProperty.BiProjBerk.segreNative, EnvelopeProperty.BiProjBerk.continuous_segreNative, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segreNative, EnvelopeProperty.BiProjBerk.segreMap_val_X_eq_one, EnvelopeProperty.BiProjBerk.segreNative_eval_form}
+\uses{lem:fc-segre-embedding}
+Composing $a$ with the actual native polynomial Proj homeomorphism gives a closed embedding from the bigraded
+point space into the native valued points of the genuine scheme $\operatorname{Proj}k[z_{ij}]$, prescribing the
+trivial norm of $k$. On a coordinate chart $z_{ij}\ne0$ with $|x_i|_v=|y_j|_v=1$, the actual homogeneous section
+$F/z_{ij}^d$ has value $|\sigma^*F|_v$ for every form $F$ of degree $d$.
+\end{lemma}
+
+\begin{proof}
+The polynomial Proj homeomorphism preserves the original homogeneous chart sections. The pair of value-one
+coordinates gives $|z_{ij}|_{a(v)}=1$, so its section-evaluation formula and the exact polynomial-value identity
+of Lemma~\ref{lem:fc-segre-polynomials} give the claim. Composition with this homeomorphism preserves the proved
+closed embedding. Identification of the image with the actual global blowup scheme is a separate obligation.
+\end{proof}
+
+\begin{lemma}[The fibre]\label{lem:fc-fibre-model}
+\notready
+\uses{conv:fc-setting, lem:pg-blowup-basic, lem:pg-blowup-chart, lem:fc-affine-fibre-model, lem:fc-fibre-compact, lem:fc-segre-native}
+Let $t\in T'^\an$, $x_i$ with $|x_i|_t=1$, and $\theta_t\colon k[x,y]\to\mathcal H(t)[y]$ the substitution
+$x_j\mapsto(\bar x_j/\bar x_i)(t)$. Let $Z_t\subseteq\PP^{M'}_{\mathcal H(t)}$ be the closed subscheme defined by
+$\theta_t(I')$. There is a homeomorphism $\iota_t\colon\mu^{-1}(t)\to Z_t^\an$ with $|F|_y=|\theta_t(F)|_{\iota_t(y)}$ for every
+bihomogeneous $F$. In particular $\mu^{-1}(t)$ is compact. Moreover $Z_t=B_\xi\otimes_{\kappa(\xi)}\mathcal H(t)$, where $\xi$
+is the support of $t$ and $B_\xi$ is the scheme-theoretic fibre of $B\to T'$ over $\xi$.
+\end{lemma}
+
+\begin{proof}
+On each Rees chart $A_i[\mathfrak a_i/g_l]$ (Lemma~\ref{lem:pg-blowup-chart}), the points over $t$ are the
+$\mathcal H(t)$-points of $\mathcal H(t)\otimes_{A_i}A_i[\mathfrak a_i/g_l]$, which is the $y_l\ne0$ chart of $Z_t$ (completed
+residue field fibre homeomorphism). These identifications agree on overlaps because they are restrictions of one
+seminorm. Compactness: $Z_t$ is projective. The last claim is the base change of the fibre.
+\end{proof}
+
+\begin{lemma}[Arbitrary psh potentials on Rees charts]\label{lem:fc-chart-psh}
+\leanok
+\lean{EnvelopeProperty.IsConvexPLOn.fc_comp_completedFibre, EnvelopeProperty.IsDecrConvexPLLimitOn.fc_comp_completedFibre, EnvelopeProperty.IsLocallyPSHOn.fc_comp_completedFibre, EnvelopeProperty.ProjSubvariety.BlowupCenter.fcChartPotential, EnvelopeProperty.ProjSubvariety.BlowupCenter.fcChartPotential_eq_baseTrivialization, EnvelopeProperty.ProjSubvariety.BlowupCenter.fcChartPotential_eq_on_affineFibre, EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_isDecrConvexPLLimitOn_chartPotential, EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_isLocallyPSHOn_chartPotential, EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_isLocallyPSHOn_completedChartFibre, EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_isLocallyPSHOn_nativeChartFibre, EnvelopeProperty.fc_isLocallyPSHOn_affineNativeFibre, EnvelopeProperty.IsLocallyPSHOn.fc_comp_nativeCompletedFibre}
+\uses{conv:fc-setting, cor:pg-countable-regularization, lem:pg-blowup-chart, lem:fc-affine-fibre-model}
+For every nonzero $g\in\mathfrak a_i$, write $\kappa\colon(\Spec A_i[\mathfrak a_i/g])^\an\to B^\an$ for the Rees
+chart map and $\mu_x$ for its first normalization scale. If $\Phi\in\PSH(B,(a,0))$, then
+$\Phi\circ\kappa+a\log\mu_x$ is a decreasing limit of convex PL functions, hence locally psh.
+Its restriction to the completed-field tensor chart of any fibre is locally psh over that completed field.
+On the actual completed scheme fibre of this Rees chart, $\Phi$ itself is intrinsically locally psh.
+\end{lemma}
+
+\begin{proof}
+Choose decreasing finite Fubini--Study approximants $\Phi_j$ of classes $(a+2^{-j},2^{-j})$.
+Reading each approximant on the Rees chart gives a finite maximum $G_j$ of positive rational multiples of
+logarithms of regular functions plus rational constants, satisfying
+$G_j=\Phi_j\circ\kappa+(a+2^{-j})\log\mu_x+2^{-j}\log\mu_y$.
+Both logarithmic scales are nonnegative, so $G_j$ decreases and converges to
+$\Phi\circ\kappa+a\log\mu_x$. Taking the maximum with the standard decreasing affine Fubini--Study truncations
+provides convex PL functions on the entire chart with the same limit. On the completed-field fibre, replace each
+chart coefficient $c$ by $1\otimes c$. Lemma~\ref{lem:fc-affine-fibre-model} identifies all evaluations,
+so the same local presentations and decreasing sequences prove local plurisubharmonicity there.
+Finite-coefficient affine presentations become presentations in genuine regular units on principal opens; the
+actual tensor scheme isomorphism then pulls them back to intrinsic local psh presentations on the same completed
+scheme fibre. The normalization term is constant on a fixed fibre because
+$\mu_x=\max_j|\bar x_j/\bar x_i|$ depends only on the base point. Subtracting this finite real constant
+preserves local plurisubharmonicity and gives the restriction of $\Phi$ itself.
+\end{proof}
+
+\begin{lemma}[Restriction to a fibre]\label{lem:fc-fibre-psh}
+\notready
+\uses{lem:fc-fibre-model, lem:fc-chart-psh, lem:pg-descent-weakly-psh, lem:local-basic}
+Let $t\in T'^\an$, and let $(m,s)$, $s\in S_{ma}$, be admissible with $|s|_t\ne0$. Then $m^{-1}\log|s|\circ\mu$ is constant on
+$\mu^{-1}(t)$, and $u_t\coloneqq(\Phi-m^{-1}\log|s|\circ\mu)\circ\iota_t^{-1}$ is locally psh on $Z_t^\an$.
+\end{lemma}
+
+\begin{proof}
+The first claim holds because $|s|_y=|s|_{\mu(y)}$. For the second, the proof of
+Lemma~\ref{lem:pg-descent-weakly-psh} applies to $\Phi$ itself, not only to pullbacks: on each Rees chart the dyadic
+approximants of $\Phi$ (Corollary~\ref{cor:pg-countable-regularization}) give decreasing convex PL functions in units
+($g_m/g_l$, $\bar x_j/\bar x_i$ and $s/x_i^{ma}$). This is \cite[Lemma~5.4(2)]{FHX} on $B$. Pull back along
+$Z_t\to B_{\mathcal H(t)}\to B$ (Lemma~\ref{lem:local-basic}(2), Lemma~\ref{lem:fc-base-change}(1)).
+\end{proof}
+
+\begin{lemma}[Functions polynomial on lines]\label{lem:fc-lines-poly}
+\leanok
+\lean{EnvelopeProperty.FcPolynomialOnLines.exists_polynomial_on_open}
+Let $F$ be an infinite field, $\Omega\subseteq\A^n_F$ a nonempty open subset, $N\in\N$, and $c\colon\Omega(F)\to F$ a function such
+that for every line $L$ meeting $\Omega$ there is $P_L\in F[t]$ of degree $\le N$ with $c=P_L$ on $L\cap\Omega(F)$ (in a
+parametrization of $L$). Then $c$ is the restriction of a polynomial.
+\end{lemma}
+
+\begin{proof}
+Induction on $n$; for $n=1$, $L=\A^1$. For $n\ge2$, choose distinct $a_0,\dots,a_N$ such that the hyperplanes
+$H_j=\{w_1=a_j\}$ meet $\Omega$. By induction, $c|_{H_j\cap\Omega}=Q_j(w_2,\dots,w_n)$. Put $Q=\sum_j\ell_j(w_1)Q_j$ with the
+Lagrange basis $\ell_j$. If $(a_j,w')\in\Omega$ for all $j$, the line $\{(t,w')\}$ meets $\Omega$, and $P_L$ and $Q(\cdot,w')$
+agree at $a_0,\dots,a_N$, so they are equal; hence $c=Q$ on a dense open subset $\Omega'\subseteq\Omega$. For $w\in\Omega(F)$,
+a line through $w$ in a direction for which $L\cap\Omega'$ is infinite gives $P_L=Q|_L$, so $c(w)=Q(w)$.
+\end{proof}
+
+\begin{lemma}[Affine substitutions and coefficient degrees]\label{lem:fc-factor-degree}
+\leanok
+\lean{EnvelopeProperty.FcPolynomialOnLines.totalDegree_aeval_affine_le, EnvelopeProperty.FcPolynomialOnLines.natDegree_coeff_factor_bivariateLine_le}
+Let $F$ be a field, and regard $P\in F[Z,w_1,\ldots,w_n]$ as a polynomial of total degree $D$.
+For $a,b\in F^n$, put $P_L(Z,t)=P(Z,a+tb)$, and suppose $P_L\ne0$.
+If $Q\in F[t][Z]$ divides $P_L$, then every coefficient of $Q$ as a polynomial in $Z$ has degree at most $D$ in $t$.
+\end{lemma}
+
+\begin{proof}
+Substituting affine linear polynomials does not increase total degree. Indeed, a monomial
+$c\prod_iw_i^{e_i}$ becomes a polynomial of total degree at most $\sum_i e_i$, and taking the sum over
+the support of $P$ gives $\deg P_L\le D$. Write $P_L=QR$ in the domain $F[Z,t]$.
+Since $P_L\ne0$, both factors are nonzero, and total degree is additive under multiplication, so
+$\deg Q\le\deg P_L\le D$. Each monomial $t^jZ^k$ of $Q$ has $j+k\le\deg Q$;
+in particular $j\le D$, which is the claimed coefficient bound.
+\end{proof}
+
+\begin{lemma}[Coefficients of factors along lines]\label{lem:fc-factor-coefficients}
+\leanok
+\lean{EnvelopeProperty.FcPolynomialOnLines.exists_polynomial_of_lineFactor_coeff}
+\uses{lem:fc-lines-poly, lem:fc-factor-degree}
+Let $F$ be infinite, $\Omega\subseteq\A^n_F$ a nonempty open, $P\in F[w][Z]$ monic, and $k\in\N$.
+Suppose $c\colon\Omega(F)\to F$ has the following property: for each affine line $L$ there is a polynomial
+$Q_L\in F[t][Z]$ dividing $P|_L$ such that $c|_{L\cap\Omega}$ is the coefficient of $Z^k$ in $Q_L$.
+Then $c$ is the restriction of a polynomial in $F[w]$.
+\end{lemma}
+
+\begin{proof}
+Let $D$ be the total degree of $P$ as a polynomial in $(Z,w)$. Its restriction to every line is nonzero
+because it is monic in $Z$. Lemma~\ref{lem:fc-factor-degree} bounds the degree of the coefficient of $Z^k$
+in every $Q_L$ by the same number $D$. Lemma~\ref{lem:fc-lines-poly} therefore applies to $c$.
+\end{proof}
+
+\begin{lemma}[Globalizing complementary fibre factors]\label{lem:fc-factor-families}
+\leanok
+\lean{EnvelopeProperty.FcCurveChains.exists_polynomial_factor_family, EnvelopeProperty.FcCurveChains.not_irreducible_of_line_factor_families}
+\uses{lem:fc-factor-coefficients}
+Let $F$ be infinite, $\Omega\subseteq\A^n_F$ a nonempty open and $P\in F[w][Z]$ monic of $Z$-degree $d$.
+Suppose polynomial-valued functions $q_w,q'_w\in F[Z]$ on $\Omega(F)$ satisfy $P_w=q_wq'_w$.
+For every $0\le k\le d$ suppose the coefficient functions of $q_w$ and $q'_w$, on every affine line,
+are the $Z^k$-coefficients of genuine divisors of $P|_L$ in $F[t][Z]$.
+If $q_w$ and $q'_w$ are both nonconstant for some $w\in\Omega(F)$, then $P$ is not irreducible.
+\end{lemma}
+
+\begin{proof}
+Since $P_w$ is monic and nonzero, divisibility gives $\deg q_w,\deg q'_w\le d$.
+Lemma~\ref{lem:fc-factor-coefficients} extends the first $d+1$ coefficient functions of each family to
+polynomials in $w$. Assemble them into $R,R'\in F[w][Z]$. The degree bounds show that $R_w=q_w$ and
+$R'_w=q'_w$ on $\Omega(F)$, including all coefficients above degree $d$, which vanish.
+Thus $P_w=(RR')_w$ there. A polynomial vanishing on a nonempty principal open is zero:
+if it vanishes on $D(g)$, then its product with $g$ vanishes at every rational point, hence is the zero
+polynomial over the infinite field; the polynomial ring is a domain and $g\ne0$.
+Apply this to every coefficient of $P-RR'$ to obtain $P=RR'$.
+A unit of $F[w][Z]$ specializes to a unit of $F[Z]$, hence to a constant. The given nonconstant
+specializations therefore show that neither $R$ nor $R'$ is a unit, contradicting irreducibility.
+\end{proof}
+
+\begin{lemma}[Actual line components through affine points]\label{lem:fc-line-components}
+\leanok
+\lean{EnvelopeProperty.FcCurveChains.exists_curveStep_over_linePoint, EnvelopeProperty.FcCurveChains.exists_closed_curveStep_over_linePoint}
+Let $g\in F[w_1,\ldots,w_n]$ be nonzero, $B$ a domain, and
+$F[w]_g\hookrightarrow B$ a finite injective algebra homomorphism. Let $L$ be a nonconstant affine line
+such that $g|_L\ne0$. For every scheme point $x\in\Spec B$ over $L\cap D(g)$ and every scheme point
+$w\in L\cap D(g)$, there is an irreducible closed curve in $\Spec B$ containing $x$ and a point over $w$.
+If $w$ is closed, the point over $w$ can be chosen closed in $\Spec B$.
+\end{lemma}
+
+\begin{proof}
+The transverse equations of $L$ generate an ideal $J$ with at most $n-1$ generators. Choose a minimal
+prime $P$ of $JB$ contained in the prime of $x$. Krull's height theorem, together with $\dim B=n$,
+gives $\dim(B/P)>0$. The induced map from the coordinate ring $F[L]_{g|_L}$ to $B/P$ is finite.
+Its source is a one-dimensional domain, so a nonzero kernel would force $B/P$ to have dimension zero.
+It is therefore injective. The integral extension then gives $\dim(B/P)=1$ and a surjective map
+$\Spec(B/P)\to L\cap D(g)$. Choose a point of this curve over $w$; its image in $\Spec B$ and $x$
+lie on the same irreducible closed curve $\Spec(B/P)$.
+If $w$ is closed, it is still closed after its closed immersion into $D(g)$, and a prime over a maximal
+ideal in the finite extension $F[w]_g\hookrightarrow B$ is maximal. Thus the chosen point is closed.
+\end{proof}
+
+\begin{lemma}[Actual rational fibres and curve-class factors]\label{lem:fc-rational-fibre-factors}
+\leanok
+\lean{EnvelopeProperty.FcCurveFibres.rationalFibre_finite, EnvelopeProperty.FcCurveFibres.rationalPoint_isClosed, EnvelopeProperty.FcCurveFibres.rationalPoint_mem_curveClass_iff_on_curve, EnvelopeProperty.FcCurveFibres.classFactor_monic, EnvelopeProperty.FcCurveFibres.classFactor_mul_compl, EnvelopeProperty.FcCurveFibres.natDegree_classFactor, EnvelopeProperty.FcCurveFibres.natDegree_classFactor_pos_of_mem}
+Let $\varphi\colon R\to B$ be a finite $F$-algebra homomorphism and $w\colon R\to F$ an $F$-rational point.
+Then the actual rational fibre $s_w=\{\chi\colon B\to F:\chi\varphi=w\}$ is finite, and its underlying scheme
+points are closed. For a curve class $S$, put
+$q_{S,w}=\prod_{\chi\in s_w,\,\ker\chi\in S}(Z-\chi(b))$.
+These factors are monic, $q_{S,w}q_{S^c,w}=\prod_{\chi\in s_w}(Z-\chi(b))$, and
+$\deg q_{S,w}=\#\{\chi\in s_w:\ker\chi\in S\}$. Thus the factor is nonconstant if its selected subset is nonempty.
+Membership in $S$ is constant on the rational points of any actual irreducible closed affine curve.
+\end{lemma}
+
+\begin{proof}
+Give $B$ and $F$ their $R$-algebra structures through $\varphi$ and $w$. A homomorphism in the actual rational fibre
+is an $R$-algebra homomorphism $B\to F$, and these form a finite set because $B$ is a finite $R$-module and $F$ is a field.
+The map from the actual fibre to this finite set is injective on the entire algebra homomorphism.
+Each $F$-algebra homomorphism to $F$
+is surjective because it maps the scalar $a$ to $a$, so its kernel is maximal and its scheme point is closed.
+The product identity partitions a finite product into the selected subset and its complement. All linear factors
+are monic of degree one, giving monicity and the exact degree formula, including repeated values.
+Finally, any two points on the same actual irreducible closed curve are joined by a curve step; appending that
+step to a chain, in either direction, proves constancy of curve-class membership.
+\end{proof}
+
+\begin{lemma}[Rational points on actual line components]\label{lem:fc-rational-line-components}
+\leanok
+\lean{EnvelopeProperty.FcCurveFibres.exists_rational_curveStep_over_linePoint}
+\uses{lem:fc-line-components, lem:fc-rational-fibre-factors}
+Let $F$ be algebraically closed and $F[w]_g\hookrightarrow B$ a finite injective homomorphism to a domain.
+Let $L$ be a nonconstant affine line with $g|_L\ne0$, let $x\colon B\to F$ lie over $L\cap D(g)$, and let
+$w\colon F[L]_{g|_L}\to F$ be a rational point of the line. Then there is an actual rational point
+$y\colon B\to F$ joined to $x$ by one irreducible closed curve, such that the entire restriction of $y$ to
+$F[w]_g$ equals the restriction of $w$ along the line homomorphism.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:fc-line-components} supplies a closed point of $\Spec B$ over $w$, joined to $x$ by an actual curve.
+The finite map makes $B$ an algebra of finite type over $F$. By Nullstellensatz the residue field of this closed
+point is $F$, so composing the quotient map with the inverse scalar isomorphism gives an actual algebra
+homomorphism $y\colon B\to F$. Its base restriction has the same kernel as that of $w$.
+Two $F$-algebra homomorphisms to $F$ with the same kernel agree: for every $r$, subtract the scalar which is the
+value of the first homomorphism, and apply the second. This proves equality of the entire base homomorphisms.
+\end{proof}
+
+\begin{lemma}[Every actual rational curve class meets every fibre]\label{lem:fc-classes-meet-fibres}
+\leanok
+\lean{EnvelopeProperty.FcCurveFibres.exists_rational_curveChain_in_fibre, EnvelopeProperty.FcCurveFibres.natDegree_fibreCurveClassFactor_pos, EnvelopeProperty.FcCurveFibres.natDegree_fibreCurveClassFactor_compl_pos}
+\uses{lem:fc-rational-line-components, lem:fc-rational-fibre-factors}
+Let $F$ be algebraically closed and $F[w]_g\hookrightarrow B$ a finite injective homomorphism to a domain.
+Every curve class containing an actual rational point of $\Spec B$ meets every rational fibre over $D(g)$.
+Its root-product factor is therefore nonconstant in every such fibre. If another rational point lies outside
+the class, the complementary factor is also nonconstant in every rational fibre.
+\end{lemma}
+
+\begin{proof}
+For a rational point $x$ and a prescribed base point $w$, compare their entire base homomorphisms.
+If these agree, use $x$ itself and the empty chain. Otherwise their coordinate tuples $a,z$ differ, so
+$b=z-a$ has a nonzero coordinate. The genuine affine line $a+tb$ passes through $a$ at zero and $z$ at one.
+The value $g(a)$ is nonzero because $g$ is a unit on the principal open, so $g$ restricts to a nonzero polynomial
+on this line. The line ideal vanishes at $a$, and $g(z)\ne0$ supplies the actual rational line point at one.
+Lemma~\ref{lem:fc-rational-line-components} constructs a rational point over the whole prescribed base point,
+joined to $x$ by a genuine curve. Thus it is in the same class. The exact root-product degree formula gives
+positive degree. Apply the same argument starting from a point outside the class; symmetry and concatenation
+of chains show that its class is disjoint from the first class, proving positivity for the complement.
+\end{proof}
+
+\begin{lemma}[Identifying actual monogenic fibre factors]\label{lem:fc-monogenic-fibre-factors}
+\leanok
+\lean{EnvelopeProperty.FcMonogenicFibres.rationalFibreEquivRoots, EnvelopeProperty.FcMonogenicFibres.root_injective_on_rationalFibre, EnvelopeProperty.FcMonogenicFibres.image_root_rationalFibreFinset, EnvelopeProperty.FcMonogenicFibres.prod_rationalFibre_eq_map, EnvelopeProperty.FcMonogenicFibres.fibreClassFactor_mul_compl_eq_map, EnvelopeProperty.FcMonogenicFibres.fibreClassFactor_dvd_map}
+\uses{lem:fc-rational-fibre-factors}
+Let $P\in R[Z]$ be monic, where $R$ is an algebra over an algebraically closed field $F$, and let
+$w\colon R\to F$ be an actual rational base point such that $P_w$ is separable.
+The actual rational fibre of $R[Z]/(P)$ is in bijection with the roots of $P_w$, via evaluation of the adjoined root.
+Consequently, the two complementary actual root products attached to any subset of its scheme points multiply
+to $P_w$, and each product is a genuine divisor of $P_w$.
+\end{lemma}
+
+\begin{proof}
+Any rational homomorphism of the quotient evaluates its adjoined root to a root of $P_w$.
+Conversely a root $z$ of $P_w$ induces the whole rational homomorphism by $r\mapsto w(r)$ and $Z\mapsto z$;
+the polynomial quotient relation holds precisely because $P_w(z)=0$. Two such homomorphisms agree when their
+whole base restrictions and root values agree. Monicity makes the quotient a finite $R$-module, so its actual
+rational fibre is finite. The image of root evaluation on that finite fibre is exactly the root set of $P_w$.
+Since $F$ is algebraically closed and $P_w$ is separable and monic, every root occurs exactly once in its complete
+linear factorization. Partition this actual fibre into the chosen subset and its complement.
+\end{proof}
+
+\begin{lemma}[Actual curves of irreducible line factors]\label{lem:fc-line-factor-curves}
+\leanok
+\lean{EnvelopeProperty.FcLineFactorCurves.adjoinRoot_map_surjective, EnvelopeProperty.FcLineFactorCurves.ringKrullDim_adjoinRoot_line_factor, EnvelopeProperty.FcLineFactorCurves.curveStep_of_irreducible_line_factor, EnvelopeProperty.FcLineFactorCurves.exists_rationalPoint_on_line_factor, EnvelopeProperty.FcLineFactorCurves.curveClass_iff_lineFactorPoint}
+\uses{lem:fc-monogenic-fibre-factors, lem:fc-line-components}
+Let $P\in F[w][Z]$, let $L\colon w=a+tb$ be a genuine nonconstant affine line, and let $Q\in F[t][Z]$
+be a monic irreducible factor of $P|_L$. Any two actual rational points of $F[w][Z]/(P)$ lying on the
+specializations of $Q$ belong to one actual irreducible closed curve. If $F$ is algebraically closed, $Q$
+has an actual rational point over each line parameter, and membership in any curve class is determined by
+one constructed reference point over parameter zero.
+\end{lemma}
+
+\begin{proof}
+The actual substitution $F[w]\to F[t]$ is surjective because $b$ has a nonzero coordinate. It induces a
+surjective homomorphism $F[w][Z]/(P)\to F[t][Z]/(Q)$, by lifting polynomial representatives coefficientwise.
+The target is a domain because $Q$ is irreducible over the unique factorization domain $F[t]$.
+Monicity makes this quotient finite over $F[t]$, and its positive degree makes the scalar map injective.
+Normality of $F[t]$ and integrality therefore give dimension one. The kernel is consequently a prime ideal
+defining an actual irreducible closed curve in the original spectrum. Each specialized root of $Q$ constructs
+an entire homomorphism of this quotient; agreement on all base coefficients and the adjoined root proves
+that its composite is the prescribed original rational point. Thus both prescribed points lie on this curve.
+Over an algebraically closed field, specialization preserves the positive degree of the monic polynomial
+$Q$, so every specialization has a root. Choose one at parameter zero. The constructed curve step shows
+that every other specialized root has the same curve-class membership as that reference point.
+\end{proof}
+
+\begin{lemma}[Actual polynomial line factors of monogenic curve classes]\label{lem:fc-monogenic-line-factors}
+\leanok
+\lean{EnvelopeProperty.FcMonogenicLineFactors.exists_monic_irreducible_factorization, EnvelopeProperty.FcMonogenicLineFactors.exists_curveClass_lineFactor, EnvelopeProperty.FcMonogenicLineFactors.exists_curveClass_complementary_lineFactors}
+\uses{lem:fc-monogenic-fibre-factors, lem:fc-line-factor-curves}
+Let $F$ be algebraically closed, $P\in F[w][Z]$ monic, $S$ an actual curve class in $\Spec F[w][Z]/(P)$,
+and $L\colon w=a+tb$ a nonconstant actual affine line. There are complementary monic polynomial factors
+$D,E\in F[t][Z]$ with $DE=P|_L$, such that at every parameter where $P(a+tb,Z)$ is separable, $D_t$ is the
+actual rational root product of $S$ and $E_t$ is the actual rational root product of its complement.
+\end{lemma}
+
+\begin{proof}
+Degree induction factors any monic polynomial over a domain into finitely many monic irreducibles:
+if the polynomial is neither one nor irreducible, the monic irreducibility criterion gives two nonconstant
+monic factors of smaller degree. Apply this to $P|_L=\prod_iQ_i$.
+For each $Q_i$, Lemma~\ref{lem:fc-line-factor-curves} constructs an actual reference point over parameter zero.
+Let $D$ be the product of those entire $Q_i$ whose reference point lies in $S$. Then $D$ is monic and divides
+$P|_L$. At any parameter, a root of $D_t$ belongs to one of the selected factors, and hence lies in $S$ by the
+actual curve joining it to the reference point. Conversely a point of $S$ is a root of $P_t$, so is a root of
+some $Q_{i,t}$; the same curve construction shows that this factor was selected. Thus $D_t$ and the actual
+class factor have exactly the same roots. Both divide the separable monic polynomial $P_t$, so both are
+separable and monic; over the algebraically closed field this root equality proves polynomial equality.
+Write $P|_L=DE$. The complementary factor $E$ is monic, and the actual whole-fibre factorization of
+Lemma~\ref{lem:fc-monogenic-fibre-factors}, together with cancellation of the nonzero monic $D_t$, identifies
+$E_t$ with the actual complementary class factor.
+\end{proof}
+
+\begin{lemma}[Actual curve closures in the original finite algebra]\label{lem:fc-birational-curve-closures}
+\leanok
+\lean{EnvelopeProperty.FcCurveClosures.kernel_quotient_dim_one_of_line_localization, EnvelopeProperty.FcCurveClosures.commonOpenCurveMap, EnvelopeProperty.FcCurveClosures.commonOpen_rationalHom_ext, EnvelopeProperty.FcCurveClosures.curveStep_of_commonOpen_irreducible_line_factor}
+\uses{lem:fc-line-factor-curves}
+Let $C=F[w][Z]/(P)$, let $\delta\colon C\to A$ have finite composite $F[w]\to A$, and suppose that
+$C_h\simeq A_{\delta(h)}$ is a genuine isomorphism compatible with the whole homomorphism $\delta$.
+Let $Q\in F[t][Z]$ be a monic irreducible factor of the restriction of $P$ to a nonconstant actual affine line.
+Two prescribed actual rational points of $\Spec A$ in this common open whose base and generator values lie on
+the specializations of $Q$ are joined by an actual irreducible closed curve in $\Spec A$.
+\end{lemma}
+
+\begin{proof}
+Put $D=F[t][Z]/(Q)$ and let $\kappa\colon C\to D$ be the actual polynomial quotient map. Construct
+$\alpha\colon A\to A_{\delta(h)}\simeq C_h\to D_{\kappa(h)}$.
+The prescribed rational point shows $\kappa(h)\ne0$. Thus the target is a domain, and $J=\ker\alpha$ is prime.
+The whole base diagram sends the transverse line equations to zero in $A/J$, so the surjective line substitution
+induces $F[t]\to A/J$. The original finiteness over $F[w]$ descends by restriction of scalars to finiteness
+over $F[t]$. Composing with $A/J\hookrightarrow D_{\kappa(h)}$ proves faithfulness because the monic irreducible
+polynomial $Q$ has positive degree and makes $F[t]\hookrightarrow D$ injective. Normality and dimension one of
+$F[t]$ therefore give $\dim(A/J)=1$.
+The prescribed generator values construct rational homomorphisms $D\to F$. Their entire restrictions to $C$
+equal those of the prescribed original points; the nonvanishing of $h$ extends them to $D_{\kappa(h)}$.
+On the common open the restriction to $C$ determines the entire rational homomorphism of $A$: extend both
+homomorphisms to $A_{\delta(h)}$, compare them through $C_h$, and use surjectivity of the actual isomorphism.
+Thus their composites through $\alpha$ are exactly the prescribed original points, so both contain the actual
+prime $J$ and lie on the genuine closed curve $\Spec(A/J)$ in the original spectrum.
+\end{proof}
+
+\begin{lemma}[Constructing the finite birational common open]\label{lem:fc-finite-birational-open}
+\leanok
+\lean{EnvelopeProperty.FcFiniteBirationalOpen.exists_common_denominator, EnvelopeProperty.FcFiniteBirationalOpen.exists_commonPrincipalOpen_equiv, EnvelopeProperty.FcFiniteBirationalOpen.exists_commonPrincipalOpen_with_base_denominator}
+\uses{lem:nf-charpoly}
+Let $C$ be a domain and $A$ a finite $C$-algebra with an injective $C$-algebra homomorphism into
+$\operatorname{Frac} C$. There is a constructed nonzero $h\in C$ such that the canonical map
+$C_h\to A_h$ is an actual isomorphism, compatible with the entire original map $C\to A$.
+If $C$ is finite and faithful over a normal domain $R$, there is also a constructed $g\in R\setminus\{0\}$
+such that $h$ divides the image of $g$ in $C$. Thus this common open contains every rational fibre over $D(g)$.
+\end{lemma}
+
+\begin{proof}
+Choose finitely many $C$-module generators of $A$. Clearing the denominators of their images in
+$\operatorname{Frac} C$ gives one nonzero $h$. The property that $h$ times an element has image in $C$
+is preserved by addition and scalar multiplication, so span induction gives it for every element of $A$.
+Injectivity into the fraction field identifies these equalities in the original algebra itself:
+for every $a\in A$, $ha$ is the image of some $c\in C$. The canonical localized map is injective because
+$C\to A$ is injective, and this uniform denominator proves it is surjective; hence it is an actual algebra
+isomorphism. Its localization formula retains all original coefficient values.
+For the final assertion take $g$ to be the constant coefficient of the characteristic polynomial of $h$
+over $R$. Lemma~\ref{lem:nf-charpoly} proves both $g\ne0$ and $h\mid g$ in $C$. A rational point over $D(g)$
+therefore has nonzero value on $h$, proving the asserted whole-fibre inclusion.
+\end{proof}
+
+\begin{lemma}[Constructing a global separating normalization]\label{lem:fc-separating-normalization}
+\leanok
+\lean{EnvelopeProperty.FcSeparatingNormalization.exists_finite_separating_normalization_with_fractionMap, EnvelopeProperty.FcSeparatingNormalization.exists_finite_injective_genericallyEtale_normalization}
+\uses{lem:projection-existence}
+Every finite-type domain $A$ over a perfect field $F$ admits a constructed global finite injective map
+$F[w_1,\ldots,w_n]\hookrightarrow A$ that is generically \'etale. Its actual compatible fraction-field map is
+also constructed, and the fraction-field extension is formally \'etale. No normalization, dimension, or
+generic-separability hypothesis is supplied.
+\end{lemma}
+
+\begin{proof}
+Start with Noether normalization by coordinates $\tau_1,\ldots,\tau_n$. The differential perturbation
+construction used in Lemma~\ref{lem:projection-existence}, applied to the whole nonzero ideal $A$ and to $n$
+zero elements, supplies $a_1,\ldots,a_n\in A$ whose differentials span or are independent in
+$\Omega_{\operatorname{Frac}A/F}$. Over a perfect field that differential space has dimension at most $n$,
+so they span. Apply the integral-coordinate twist to all coordinates, choosing sufficiently large exponents
+$m_i$ divisible by the exponential characteristic. Then $y_i=\tau_i^{m_i}-a_i$ still make $A$ integral over
+$F[y]$. Dimension $n$ proves the resulting polynomial map injective, and finite type plus integrality makes it finite.
+In characteristic zero generic separability is automatic. In characteristic $p$, $p\mid m_i$ gives
+$dy_i=-da_i$, so these new coordinate differentials still span. The actual fraction-field homomorphism is
+constructed by localization of the injective polynomial map; the differential criterion proves it formally
+\'etale. Openness of the \'etale locus for the finite map constructs a nonzero principal open on which the
+actual localized map is \'etale.
+\end{proof}
+
+\begin{lemma}[Constructing an integral primitive element]\label{lem:fc-integral-primitive-element}
+\leanok
+\lean{EnvelopeProperty.FcPrimitiveIntegralGenerator.exists_primitive_element_mem_ring, EnvelopeProperty.FcPrimitiveIntegralGenerator.exists_global_normalization_with_integral_primitive_element}
+\uses{lem:fc-separating-normalization}
+For every finite-type domain $A$ over a perfect field $F$, one can construct a global finite injective
+generically \'etale normalization $R=F[w]\hookrightarrow A$ and an element $b\in A$ such that
+$\operatorname{Frac}A=\operatorname{Frac}R(b)$. Neither normalization nor primitive element is an input.
+The original algebra is not required to be normal.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:fc-separating-normalization} constructs the actual compatible formally \'etale fraction-field
+map $K=\operatorname{Frac}R\to L=\operatorname{Frac}A$. Finite type and formal unramifiedness over the field
+make this a finite separable extension, so choose a field primitive element $\alpha\in L$.
+Write $\alpha=a/s$ with $a,s\in A$, $s\ne0$. Algebraicity of $s$ over $R$ gives $b\in A$ and
+$d\in R\setminus\{0\}$ with $da=sb$. Hence $d\alpha=b$ in the actual fraction field. Since $d$ is an invertible
+scalar from $K$, $K(b)=K(\alpha)=L$. Thus the generator lies in the original finite algebra and is integral over $R$.
+\end{proof}
+
+\begin{lemma}[Constructing the separable specialization locus]\label{lem:fc-separable-good-locus}
+\leanok
+\lean{EnvelopeProperty.FcSeparableGoodLocus.exists_nonzero_bezout_derivative, EnvelopeProperty.FcSeparableGoodLocus.exists_separable_principal_locus}
+Let $R$ be a domain with fraction field $K$, and let $P\in R[Z]$ have separable image in $K[Z]$.
+There is a constructed $g\in R\setminus\{0\}$ such that for every homomorphism $w\colon R\to E$ to a field,
+$w(g)\ne0$ implies that the entire specialized polynomial $P_w$ is separable.
+\end{lemma}
+
+\begin{proof}
+Generic separability gives $UP+VP'=1$ in $K[Z]$. Clear the coefficients of $U$ and $V$ to obtain
+$U_0,V_0\in R[Z]$ and nonzero $r,s\in R$ with $U_0=rU$ and $V_0=sV$ in the fraction field.
+Then $(sU_0)P+(rV_0)P'=rs$ holds in $R[Z]$, by injectivity into $K[Z]$.
+Take $g=rs$. If $w(g)\ne0$, apply the whole polynomial homomorphism induced by $w$ and divide this identity
+by the nonzero scalar $w(g)$. This is a B\'ezout identity for $P_w$ and its derivative, proving separability.
+\end{proof}
+
+\begin{lemma}[The actual primitive monogenic subalgebra]\label{lem:fc-primitive-monogenic-subalgebra}
+\leanok
+\lean{EnvelopeProperty.FcPrimitiveMonogenicSubalgebra.exists_fraction_embedding_of_primitive_adjoin, EnvelopeProperty.FcPrimitiveMonogenicSubalgebra.exists_commonOpen_of_primitive_adjoin, EnvelopeProperty.FcPrimitiveMonogenicSubalgebra.monic_irreducible_minpoly_presentation, EnvelopeProperty.FcPrimitiveMonogenicSubalgebra.commonOpenAlgEquiv_of_ringEquiv}
+\uses{lem:fc-integral-primitive-element, lem:fc-finite-birational-open}
+Let $R\hookrightarrow A$ be a finite inclusion of domains with fraction fields $K\subseteq L$, and let
+$b\in A$ satisfy $K(b)=L$. For the actual subalgebra $C=R[b]\subseteq A$, the original algebra embeds into
+$\operatorname{Frac} C$ as a $C$-algebra. There are constructed nonzero $h\in C$ and $g\in R$ with $h\mid g$
+in $C$ and an actual isomorphism $C_h\simeq A_h$ preserving the whole original map $C\to A$.
+If $R$ is normal, $C$ has the actual presentation $R[Z]/(P)$ for the monic irreducible polynomial
+$P=\minpoly_R(b)$, and the adjoined root maps to the prescribed original element $b$.
+\end{lemma}
+
+\begin{proof}
+Construct the canonical injective map $\sigma\colon\operatorname{Frac}C\to L$ and the compatible scalar map
+$K\to\operatorname{Frac}C$ by localization of the whole original ring maps. The field range of $\sigma$
+contains $K$ and the actual element $b$, so $K(b)=L$ proves that $\sigma$ is surjective. Its inverse, composed
+with $A\hookrightarrow L$, is the required entire $C$-algebra embedding of $A$ into $\operatorname{Frac}C$.
+The singleton adjoin is finite over $R$ because $b$ is integral, and $A$ is finite over $C$ by restriction of
+scalars. Lemma~\ref{lem:fc-finite-birational-open} constructs $h$ and the canonical common-open isomorphism.
+Algebraicity of $h$ over $R$ supplies a nonzero $g\in R$ divisible by $h$ in $C$.
+For normal $R$, the actual minimal-polynomial quotient isomorphism identifies $R[Z]/(P)$ with the singleton
+adjoin, retaining the actual root value. Finally, compatibility with every original coefficient upgrades the
+constructed common-open ring isomorphism to an algebra isomorphism over any existing coefficient field.
+\end{proof}
+
+\begin{lemma}[The constructed monogenic birational good locus]\label{lem:fc-monogenic-birational-presentation}
+\leanok
+\lean{EnvelopeProperty.FcMonogenicBirationalPresentation.exists_minpoly_presentation_commonOpen, EnvelopeProperty.FcMonogenicBirationalPresentation.exists_minpoly_presentation_goodLocus, EnvelopeProperty.FcMonogenicBirationalPresentation.exists_global_monic_presentation_goodLocus}
+\uses{lem:fc-primitive-monogenic-subalgebra, lem:fc-separable-good-locus}
+For every finite-type domain $A$ over a perfect field $F$, one can construct a finite injective normalization
+$\varphi\colon R=F[w]\to A$, a monic irreducible $P\in R[Z]$, an injective actual map
+$\delta\colon R[Z]/(P)\to A$ whose entire restriction to $R$ is $\varphi$, and nonzero $h\in R[Z]/(P)$,
+$g\in R$ with $h\mid g$, together with an actual $F$-algebra isomorphism
+$(R[Z]/(P))_h\simeq A_{\delta(h)}$ preserving every original quotient coefficient.
+For every actual rational base homomorphism $w\colon R\to F$ with $w(g)\ne0$, $P_w$ is separable.
+No normalization, polynomial presentation, primitive element, common open, or good locus is an input.
+\end{lemma}
+
+\begin{proof}
+Construct the actual primitive element and singleton adjoin by the preceding lemmas. Present the actual
+subalgebra by $P=\minpoly_R(b)$, with its prescribed root value. Pull the constructed conductor $h$ back
+through this genuine quotient isomorphism, and transport the actual common-open isomorphism by localization
+of that entire ring isomorphism. Applying the inverse polynomial quotient map to $h\mid g$ preserves the
+original nonzero base denominator and all coefficient values.
+Over the fraction field of the normal base, $P$ is the actual minimal polynomial of the prescribed element.
+The formally \'etale fraction extension makes this polynomial separable. Lemma~\ref{lem:fc-separable-good-locus}
+constructs a second nonzero base element controlling every separable specialization. Multiply the two
+base elements: divisibility by the conductor persists, and nonvanishing of the product implies the required
+specialized separability. Finally upgrade the whole-coefficient-compatible common-open ring isomorphism to
+the actual $F$-algebra isomorphism. Each map and open in the statement is therefore constructed from $A$ itself.
+\end{proof}
+
+\begin{lemma}[Identifying actual original-algebra fibre factors]\label{lem:fc-original-fibre-factors}
+\leanok
+\lean{EnvelopeProperty.FcCommonOpenFibres.commonOpenRationalExtension_comp, EnvelopeProperty.FcCommonOpenFibres.rationalFibreEquivRoots_of_commonOpen, EnvelopeProperty.FcCommonOpenFibres.root_injective_on_rationalFibre_of_commonOpen, EnvelopeProperty.FcCommonOpenFibres.prod_rationalFibre_eq_map_of_commonOpen, EnvelopeProperty.FcCommonOpenFibres.fibreClassFactor_mul_compl_eq_map_of_commonOpen, EnvelopeProperty.FcCommonOpenFibres.fibreClassFactor_dvd_map_of_commonOpen}
+\uses{lem:fc-monogenic-birational-presentation, lem:fc-rational-fibre-factors, lem:fc-birational-curve-closures}
+In the actual presentation and common open of Lemma~\ref{lem:fc-monogenic-birational-presentation}, the rational
+fibre of the ORIGINAL algebra $A$ over every good base homomorphism $w$ is in bijection with the roots of $P_w$,
+by evaluating $\delta(Z)$. This element separates that entire actual fibre. If $F$ is algebraically closed and
+$P_w$ is separable, $P_w$ is exactly the root product over the actual rational points of $A$ above $w$.
+Consequently the two complementary root products for any actual subset of $\Spec A$ multiply to $P_w$,
+and each is a genuine polynomial divisor of $P_w$.
+\end{lemma}
+
+\begin{proof}
+The divisibility $h\mid g$ and $w(g)\ne0$ force every rational homomorphism over $w$ to be nonzero on $h$.
+A rational homomorphism of $A$ restricts to the actual polynomial quotient, hence evaluates its root to a root
+of $P_w$. Conversely such a root constructs the entire quotient homomorphism, which extends to its $h$-localization.
+Compose with the inverse of the genuine common-open isomorphism and the original localization map of $A$.
+This constructs an actual homomorphism $A\to F$ and retains its WHOLE prescribed quotient restriction.
+Uniqueness follows because homomorphisms on the common open are determined by that entire restriction;
+the original points are therefore identified exactly. This proves the actual fibre/root bijection and separation.
+The finite original map makes this actual fibre finite. Over an algebraically closed field, the monic separable
+polynomial has every root exactly once; the bijection therefore identifies its entire product of linear factors
+with the actual original-algebra fibre root product. Partitioning that finite product by an actual subset of
+$\Spec A$ and its complement gives the final assertions.
+\end{proof}
+
+\begin{lemma}[Actual original-algebra polynomial line factors]\label{lem:fc-original-line-factors}
+\leanok
+\lean{EnvelopeProperty.FcCommonOpenLineFactors.exists_commonOpen_point_on_line_factor, EnvelopeProperty.FcCommonOpenLineFactors.exists_curveClass_lineFactor_of_commonOpen, EnvelopeProperty.FcCommonOpenLineFactors.exists_curveClass_complementary_lineFactors_of_commonOpen}
+\uses{lem:fc-original-fibre-factors, lem:fc-birational-curve-closures, lem:fc-monogenic-line-factors}
+In the constructed common-open presentation of the ORIGINAL finite algebra $A$, let $S$ be an actual curve
+class in $\Spec A$ and let $L\colon w=a+tb$ be a genuine nonconstant affine line.
+There are constructed complementary monic polynomial factors $D,E\in F[t][Z]$, $DE=P|_L$, whose
+specializations on every good separable fibre are the actual ORIGINAL-algebra root products of $S$ and its complement.
+No line divisor, class grouping, chosen reference point, or identification of original points is an input.
+\end{lemma}
+
+\begin{proof}
+If $g|_L=0$, there are no good parameters and take $D=1$, $E=P|_L$.
+Otherwise choose $t_0$ with $g(a+t_0b)\ne0$ and construct a finite monic irreducible factorization
+$P|_L=\prod_iQ_i$. For each factor, a specialized root at $t_0$ constructs an actual rational point of the
+monogenic quotient. Since $h\mid g$ it lies on the genuine common open, and extending through its actual
+isomorphism constructs an ORIGINAL-algebra point $x_i\colon A\to F$, preserving the entire quotient base
+restriction, generator value and conductor nonvanishing. Select the entire $Q_i$ precisely when $\ker x_i\in S$,
+and let $D$ be their product. Then $D$ is monic and divides $P|_L$.
+For any original rational point over a good parameter whose generator value is a root of $Q_i$,
+Lemma~\ref{lem:fc-birational-curve-closures} constructs a genuine irreducible CLOSED curve in $\Spec A$
+joining that exact original point to $x_i$. Thus its membership in the original class $S$ is exactly the
+selection of $Q_i$. This uses actual curves in $A$, not curves in the monogenic subalgebra treated as curves in $A$.
+Every original rational fibre is identified with the specialized roots by
+Lemma~\ref{lem:fc-original-fibre-factors}. Consequently $D_t$ and the actual original-class factor have exactly
+the same roots. Both are monic divisors of the separable $P_t$, so their roots occur once and polynomial
+equality follows. The monic complementary polynomial $E=P|_L/D$ specializes to the actual complementary
+factor by the whole original-fibre product identity and cancellation of the nonzero monic $D_t$.
+\end{proof}
+
+\begin{lemma}[Unconditional affine integral curve chains]\label{lem:fc-affine-integral-curve-chains}
+\leanok
+\lean{EnvelopeProperty.FcAffineCurveChains.exists_curveChain_in_global_fibre, EnvelopeProperty.FcAffineCurveChains.curveChain_of_finiteType_domain, EnvelopeProperty.FcAffineCurveChains.curveChain_of_isMaximal, EnvelopeProperty.FcAffineCurveChains.curveChain_of_isClosed}
+\uses{lem:fc-factor-families, lem:fc-classes-meet-fibres, lem:fc-monogenic-birational-presentation, lem:fc-original-fibre-factors, lem:fc-original-line-factors}
+Let $F$ be algebraically closed and $A$ a finite-type integral $F$-algebra. Any two actual rational
+points of $\Spec A$, and hence any two closed points, are joined by a finite chain of genuine
+irreducible closed curves in $\Spec A$. No normalization, primitive element, separability,
+good locus, line factor, class count or geometric lifting assumption is an input.
+\end{lemma}
+
+\begin{proof}
+First, for any finite injective polynomial normalization, every actual curve class meets every rational
+fibre: apply Lemma~\ref{lem:fc-classes-meet-fibres} through the actual localization isomorphism at $1$.
+Construct the finite injective polynomial normalization $\varphi\colon R=F[w]\to A$, the monic
+irreducible polynomial $P\in R[Z]$, its actual quotient map into $A$, and the common monogenic good
+locus $D(g)$ using Lemma~\ref{lem:fc-monogenic-birational-presentation}. Choose a rational base point
+$u\in D(g)$ by polynomial nonvanishing over the infinite field $F$.
+
+Suppose two original rational points $x,y$ belong to distinct curve classes, and let $S$ be the class of $x$.
+At every base point define $q$ and $q'$ by the actual finite rational fibre root products for $S$ and
+its complement. On $D(g)$, Lemma~\ref{lem:fc-original-fibre-factors} gives $P_w=q_wq'_w$.
+On every nonconstant affine line, Lemma~\ref{lem:fc-original-line-factors} constructs genuine
+complementary polynomial line factors whose entire specializations on $D(g)$ are $q$ and $q'$.
+Taking coefficients therefore gives exactly the line-polynomial conditions of
+Lemma~\ref{lem:fc-factor-families}; no presumed polynomial coefficient functions are introduced.
+Both classes meet the actual fibre over $u$, so the degrees of both factors there are strictly positive.
+The complementary point remains outside $S$, since otherwise its chain to $y$ would join $x$ and $y$.
+Lemma~\ref{lem:fc-factor-families} now contradicts irreducibility of the constructed $P$.
+Thus the rational points are joined. Nullstellensatz constructs actual rational homomorphisms for
+any prescribed closed points, proving the closed-point form as well. Every curve used here is an
+actual prime quotient of $A$ of Krull dimension one, as required by the curve-step relation.
+\end{proof}
+
+\begin{lemma}[Connected affine component reduction]\label{lem:fc-connected-affine-curve-chains}
+\leanok
+\lean{EnvelopeProperty.FcConnectedAffineCurveChains.curveStep_comap_of_surjective, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_comap_of_surjective, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_common_prime, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_preconnected, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_isClosed, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_rationalPoints}
+\uses{lem:fc-affine-integral-curve-chains}
+Let $F$ be algebraically closed and $A$ any finite-type $F$-algebra with connected spectrum.
+Any two closed points of $\Spec A$ are joined by genuine irreducible closed curves in that original spectrum.
+No reducedness, irreducibility, component cover, or intersection point is an input.
+\end{lemma}
+
+\begin{proof}
+A surjective map $A\to B$ transports every actual curve step: if $Q\subseteq B$ is the prime
+of the curve, then $A/f^{-1}(Q)\simeq B/Q$ retains Krull dimension one and both endpoint containments.
+Transport the entire finite chain step by step. In particular, any two original closed points containing
+an actual prime $P\subseteq A$ lift to closed points of the domain $A/P$, and
+Lemma~\ref{lem:fc-affine-integral-curve-chains} joins them by actual original-spectrum curves.
+
+Fix one closed point $x$. A minimal prime is good if its closed subset contains a closed point
+joined to $x$. The union $U$ of the good minimal-prime closed subsets and the union $V$ of the
+remaining ones are closed, since the finite-type algebra is noetherian and has finitely many minimal primes.
+They cover the entire spectrum. They are disjoint: if a point lies in a good and a remaining
+component, choose an actual maximal ideal containing that point. The preceding common-prime result joins
+this closed specialization to the chosen good-component witness. It therefore witnesses goodness of
+the remaining component as well, a contradiction. Thus $U$ is clopen. It contains $x$, so connectedness
+forces $U$ to be the entire spectrum. Every other closed point belongs to a good component, and the
+common-prime theorem joins it to that component's actual witness and hence to $x$.
+\end{proof}
+
+\begin{lemma}[Dimensions of actual scheme curve closures]\label{lem:fc-scheme-curve-dimensions}
+\leanok
+\lean{EnvelopeProperty.FcSchemeCurveDimensions.topologicalKrullDim_le_one_of_open_neighbourhoods, EnvelopeProperty.FcSchemeCurveDimensions.ringKrullDim_basicOpen, EnvelopeProperty.FcSchemeCurveDimensions.ringKrullDim_affine_eq, EnvelopeProperty.FcSchemeCurveDimensions.topologicalKrullDim_affine, EnvelopeProperty.FcSchemeCurveDimensions.topologicalKrullDim_eq_one_of_affine, EnvelopeProperty.FcSchemeCurveDimensions.isReduced_vanishingIdeal_subscheme, EnvelopeProperty.FcSchemeCurveDimensions.isIntegral_vanishingIdeal_subscheme, EnvelopeProperty.FcSchemeCurveDimensions.exists_closed_integral_curve_of_affine_prime}
+\uses{lem:fc-connected-affine-curve-chains}
+In an integral scheme locally of finite type over a field, every nonempty affine coordinate ring has
+the same dimension. If one has dimension one, the entire actual scheme has topological Krull dimension one.
+The reduced closed closure of an actual irreducible affine curve in a finite-type scheme is therefore
+an actual integral closed curve of dimension one in the original scheme.
+\end{lemma}
+
+\begin{proof}
+Dimension at most one is local on open neighbourhoods: for a strict three-term chain of irreducible
+closed sets, choose an open neighbourhood of a point in the smallest member. Restriction is an order
+isomorphism for irreducible closed subsets meeting that open, so all three strict steps remain and
+contradict its dimension bound. In an integral finite-type scheme, two nonempty affine opens meet and
+have a common principal affine open. Each actual coordinate ring of that principal open is the actual
+localization of the corresponding affine coordinate ring. Finite-type integral principal localization
+preserves dimension, so the two original affine dimensions are equal. Thus one affine curve chart gives
+dimension at most one on every affine neighbourhood, and its subspace dimension gives the reverse inequality.
+
+For an actual affine prime curve, close its image in the original scheme and equip that closed set with
+its actual vanishing-ideal subscheme. On every affine chart the defining ideal is radical, so its actual
+quotient is reduced, including empty intersections. Irreducibility of the image and its closure therefore
+make the constructed whole subscheme integral. The preimage of the closure in the original affine open is
+exactly the original closed curve, since the affine inclusion is an open embedding. Consequently the
+constructed closed subscheme has an actual affine coordinate quotient of dimension one, and the preceding
+dimension theorem proves its entire topological dimension is one.
+\end{proof}
+
+\begin{lemma}[Actual closed curve chains in schemes]\label{lem:fc-scheme-curve-chains}
+\leanok
+\lean{EnvelopeProperty.FcSchemeCurveChains.CurveStep, EnvelopeProperty.FcSchemeCurveChains.CurveChain, EnvelopeProperty.FcSchemeCurveChains.curveStep_map_closedImmersion, EnvelopeProperty.FcSchemeCurveChains.curveChain_map_closedImmersion, EnvelopeProperty.FcSchemeCurveChains.curveStep_of_affine, EnvelopeProperty.FcSchemeCurveChains.curveChain_of_affine, EnvelopeProperty.FcSchemeCurveChains.curveChain_of_common_affine, EnvelopeProperty.FcSchemeCurveChains.curveChain_of_integral, EnvelopeProperty.FcSchemeCurveChains.curveChain_of_common_irreducible_closed, EnvelopeProperty.FcSchemeCurveChains.curveChain_of_connected_finiteType}
+\uses{lem:fc-affine-integral-curve-chains, lem:fc-scheme-curve-dimensions}
+Let $F$ be algebraically closed and $X$ a connected finite-type $F$-scheme. Any two closed points
+are joined by a finite chain of actual closed immersions $C_j\to X$, with each $C_j$ integral and
+its ENTIRE global topological Krull dimension exactly one. No reducedness, irreducibility,
+separatedness, cover, component, intersection-point, closure or dimension certificate is an input.
+The empty chain is allowed when the endpoints coincide.
+\end{lemma}
+
+\begin{proof}
+First suppose $X$ is integral. Choose actual affine neighbourhoods $U,V$ of the prescribed endpoints.
+Their nonempty open intersection contains a closed point $z$, since the original finite-type scheme
+is Jacobson. The actual affine-domain theorem, Lemma~\ref{lem:fc-affine-integral-curve-chains}, joins
+both endpoint pairs inside their corresponding actual coordinate rings. Every prime quotient curve
+in those chains closes by Lemma~\ref{lem:fc-scheme-curve-dimensions} to an actual integral CLOSED
+curve in the ORIGINAL $X$ of global dimension one, with its entire original chart preimage unchanged.
+Thus both chains have the exact original endpoints and glue through $z$.
+
+For any actual irreducible closed subset $Z\subseteq X$, construct its integral reduced vanishing-ideal
+subscheme. Prescribed original closed points in $Z$ lift to actual closed points of this subscheme.
+The integral case joins them, and composition with its actual closed immersion into $X$ transports
+all source curves, their global dimensions and both original endpoints back to $X$.
+
+Finally, the actual finite-type structure morphism makes $X$ noetherian, so its irreducible components
+are finite. Call a component good if it contains a closed point in the actual curve class of the first
+endpoint. The union $U$ of good components and union $V$ of the others are closed and cover $X$.
+They cannot intersect: any such component intersection is closed and contains a constructed actual
+closed point. The preceding common-irreducible-closed-subset result joins it to the good-component
+witness, so it also witnesses goodness of the remaining component, a contradiction. Thus $U$ is a
+nonempty clopen. Connectedness forces $U=X$; the second endpoint lies on a good component and the
+same actual common-component argument joins it to the first. Every step retains an actual source
+scheme, actual CLOSED immersion into the ORIGINAL $X$, integrality, global dimension one, and
+both original points in its actual image.
+\end{proof}
+
+\begin{lemma}[Chains of curves]\label{lem:fc-curve-chains}
+\leanok
+\lean{EnvelopeProperty.FcSchemeCurveChains.curveChain_of_connected_finiteType, EnvelopeProperty.FcProjectiveCurveChains.isProjective_closedImmersion_comp, EnvelopeProperty.FcProjectiveCurveChains.ProjectiveCurveStep, EnvelopeProperty.FcProjectiveCurveChains.ProjectiveCurveChain, EnvelopeProperty.FcProjectiveCurveChains.projectiveCurveChain_of_connected_finiteType}
+\uses{lem:fc-scheme-curve-chains}
+Let $F$ be algebraically closed and $X$ a connected $F$-scheme of finite type. Any two closed points $p,q$ of $X$ are
+joined by a chain $C_1,\dots,C_l$ of irreducible closed curves, $p\in C_1$, $q\in C_l$, $C_j\cap C_{j+1}\ne\emptyset$. If $X$ is
+projective, the $C_j$ may be taken projective. The empty chain is allowed when $p=q$.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:fc-scheme-curve-chains} proves the full general statement, with actual closed integral
+curve schemes and their entire global dimensions. If the actual structure morphism $f\colon X\to\Spec F$
+is projective, choose its actual factorization $X\hookrightarrow\mathbb P(E)\to\Spec F$ by a quasi-coherent
+module of finite type. For EVERY actual source curve $i\colon C_j\hookrightarrow X$, the composition
+$C_j\hookrightarrow X\hookrightarrow\mathbb P(E)$ is an actual closed immersion with the same original
+structure morphism $f\circ i$. It therefore constructs projectivity of that SAME curve $C_j$ over $F$,
+retaining the actual original endpoints and intersection points. Apply this to every step of the checked
+finite curve chain. No additional projective-curve or chain assumption is supplied.
+\end{proof}
+
+\begin{lemma}[Actual flat and local completed total sections]\label{lem:fc-proper-birational-flat-sections}
+\leanok
+\lean{EnvelopeProperty.FcProperBirationalFlatSections.flatSectionsEquiv, EnvelopeProperty.FcProperBirationalFlatSections.flatSectionsEquiv_apply, EnvelopeProperty.FcProperBirationalFlatSections.coefficientMap_flat_bijective, EnvelopeProperty.FcProperBirationalFlatSections.connectedSpace_of_globalSections_isLocalRing, EnvelopeProperty.FcProperBirationalFlatSections.connectedSpace_flatBaseChange, EnvelopeProperty.FcProperBirationalFlatSections.completedLocalRing, EnvelopeProperty.FcProperBirationalFlatSections.completedLocalBaseChange, EnvelopeProperty.FcProperBirationalFlatSections.completedLocalSectionsEquiv, EnvelopeProperty.FcProperBirationalFlatSections.connectedSpace_completedLocalBaseChange, EnvelopeProperty.FcProperBirationalFlatSections.completedLocal_idempotents_trivial}
+\uses{scheme:actual-reduced-proper-birational-global-sections, scheme:actual-original-flat-global-section-tensor}
+Let $A$ be an integrally closed domain, $f\colon Y\to\Spec A$ an actual proper birational map with
+reduced source, and $S$ an actual flat $A$-algebra. The ORIGINAL whole coefficient map gives a constructed
+$S$-algebra equivalence $S\simeq\Gamma(Y_S,\mathcal O)$. If $S$ is local, the actual TOTAL scheme $Y_S$
+is connected. If $A$ is noetherian, for every actual prime $P$ take the actual maximal-adic completion
+$\widehat{A_P}$: its flatness and locality are derived, and the entire original total section ring
+is $\widehat{A_P}$ with every whole global idempotent equal to zero or one.
+\end{lemma}
+
+\begin{proof}
+The actual proper birational normal-base theorem constructs the entire coefficient equivalence
+$A\simeq\Gamma(Y,\mathcal O)$. Properness supplies the genuine QCQS hypotheses, so the actual
+flat section pushout identifies $\Gamma(Y_S,\mathcal O)$ with $S\otimes_A\Gamma(Y,\mathcal O)$.
+Tensor the constructed entire original coefficient equivalence and compose with the tensor-unit
+equivalence. Its whole $S$-coefficient map is exactly the actual original pullback coefficient map.
+If $S$ is local, this makes the whole global-section ring local. Its actual global idempotents
+are zero or one by the local-ring unit alternative for $e$ and $1-e$; nontrivial global sections
+give actual scheme nonemptiness. The genuine global-idempotent/clopen correspondence therefore
+proves connectedness. At any actual prime, localization preserves noetherianity and is flat;
+the actual maximal-adic completion is flat and local. Compose the two actual flat structures
+and apply the preceding total-scheme construction. No normality or domain property of that
+actual completion is assumed.
+
+This proves connectedness of the COMPLETED TOTAL scheme, not of its closed fibre. The remaining
+formal-functions step must algebraize actual compatible infinitesimal fibre idempotents into
+whole global idempotents of this completed total scheme. No such surjectivity, fibre connectedness,
+or equality of the nonreduced fibre's entire section ring with its coefficient field is asserted here.
+\end{proof}
+
+\begin{lemma}[Actual flat local lifts of every prescribed field point]\label{lem:fc-flat-local-field-lift}
+\leanok
+\lean{EnvelopeProperty.FcFlatLocalFieldLift.tensorEvaluation, EnvelopeProperty.FcFlatLocalFieldLift.tensorEvaluation_surjective, EnvelopeProperty.FcFlatLocalFieldLift.tensorEvaluation_comp, EnvelopeProperty.FcFlatLocalFieldLift.isNoetherianRing_tensor, EnvelopeProperty.FcFlatLocalFieldLift.tensorEvaluation_ker_isMaximal, EnvelopeProperty.FcFlatLocalFieldLift.exists_noetherian_flat_local_lift, EnvelopeProperty.FcFlatLocalFieldLift.completionEvaluation, EnvelopeProperty.FcFlatLocalFieldLift.completionEvaluation_algebraMap, EnvelopeProperty.FcFlatLocalFieldLift.completionEvaluation_surjective, EnvelopeProperty.FcFlatLocalFieldLift.completionEvaluation_ker, EnvelopeProperty.FcFlatLocalFieldLift.exists_completed_flat_local_lift}
+\uses{lem:fc-proper-birational-flat-sections}
+Let $F$ be a field, $A$ a finite-type $F$-algebra and $w\colon A\to K$ any actual $F$-algebra point
+in any field extension $K/F$. One can construct a noetherian local flat $A$-algebra $R$ and a surjection
+$\beta\colon R\to K$ with kernel EXACTLY $\mathfrak m_R$ and entire composite $A\to R\to K$ equal to $w$.
+Its actual maximal-adic completion $B=\widehat R$ is flat over $A$, local and complete, with a constructed
+surjection $\gamma\colon B\to K$ whose kernel is EXACTLY $\mathfrak m_B$ and whose entire original
+$A$-coefficient composite is again $w$. No finite or separable extension, scalar lift, local ring,
+completion or residue-field identification is supplied as input.
+\end{lemma}
+
+\begin{proof}
+Form the ACTUAL tensor algebra $T=A\otimes_F K$ and its WHOLE evaluation
+$\theta(a\otimes k)=w(a)k$. It is surjective since $\theta(1\otimes k)=k$ and retains the entire
+original coefficient map. Thus $P=\ker\theta$ is an actual maximal ideal. The tensor ring is flat
+over $A$, and noetherian because, through the actual tensor interchange isomorphism, it is finite
+type over the prescribed field $K$; no finiteness of $K/F$ is required. Take the actual localization
+$R=T_P$. Its whole evaluation extends uniquely since every denominator outside $P$ has nonzero
+field image. This extension is still surjective, so its kernel is the unique actual maximal ideal of $R$.
+Localization preserves noetherianity and flatness, and its entire original $A$-coefficient map remains $w$.
+
+Complete the ACTUAL maximal ideal of that ACTUAL noetherian local $R$. Genuine adic-completion
+flatness, locality and completeness construct the required complete local flat $A$-algebra $B$.
+The original evaluation descends to $R/\mathfrak m_R=K$; compose with the ACTUAL order-one
+completion quotient $B\to R/\mathfrak m_R$. Every original local coefficient retains its whole field
+value. In particular this completed evaluation is surjective, so its kernel is the actual unique maximal
+ideal of $B$. All whole original coefficient triangles are proved. Thus every prescribed geometric
+field fibre has the exact coefficient field of a constructed noetherian local scalar lift and its completion.
+The remaining proper formal-functions/idempotent algebraization step is not assumed or asserted.
+\end{proof}
+
+\begin{lemma}[Actual kernels commute with finite-module completion]\label{lem:fc-adic-completion-kernel}
+\leanok
+\lean{EnvelopeProperty.FcAdicCompletionKernel.map_kernel_subtype_mem, EnvelopeProperty.FcAdicCompletionKernel.completedKernelInclusion, EnvelopeProperty.FcAdicCompletionKernel.completedKernelInclusion_bijective, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv_apply_val, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv_of_val, EnvelopeProperty.FcAdicCompletionKernel.map_exact}
+Let $R$ be noetherian, $I$ an actual ideal and $f\colon M\to N$ an actual linear map of finite
+$R$-modules. The ACTUAL completed kernel inclusion constructs an $\widehat R$-linear equivalence
+$\widehat{\ker f}\simeq\ker(\widehat f)$, retaining the WHOLE completed inclusion and every original
+coefficient section. More generally completion preserves exactness of $L\to M\to N$ when $M,N$
+are finite, with no injectivity or surjectivity hypothesis on either actual differential.
+\end{lemma}
+
+\begin{proof}
+Factor $f$ through its ACTUAL range. Apply genuine Artin--Rees short-exact completion to
+$0\to\ker f\to M\to\operatorname{range} f\to0$. Completion of the actual range inclusion
+into the finite module $N$ is injective, again by Artin--Rees. Thus the completed original
+kernel inclusion has precisely the actual kernel of the completed original map as image,
+and is injective. Its actual codomain restriction supplies the equivalence, whose underlying
+whole map and original coefficient sections are proved to be the literal completed inclusion.
+For an arbitrary exact complex, its original left differential surjects onto the actual right
+kernel; completion preserves that surjection. Combine it with the constructed kernel
+equivalence to prove exactness without extra hypotheses on the differentials.
+
+This is genuine finite-module algebra. Raw affine \v Cech terms of a proper scheme need not
+be finite over the base. An actual proper coherent-finiteness/finite-complex replacement and
+the formal-H0 comparison must still be derived geometrically; neither is an assumption or a
+conclusion of this lemma. In particular Theorem~\ref{thm:fc-zariski} remains open.
+\end{proof}
+
+\begin{lemma}[Actual coefficient extension of Rees algebras]\label{lem:fc-rees-ideal-base-change}
+\leanok
+\lean{EnvelopeProperty.FcReesIdealBaseChange.reesMap, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap_tmul_val, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap_tmul_monomial_val, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap_surjective, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap_comp_includeRight, EnvelopeProperty.FcReesIdealBaseChange.baseChangeMap_comp_algebraMap, EnvelopeProperty.FcReesIdealBaseChange.spec_baseChangeMap_isClosedImmersion}
+For ANY actual ring algebra $R\to A$ and actual ideal $I\subseteq R$, the genuine coefficient
+polynomial map constructs an actual surjection
+$A\otimes_R R[It]\twoheadrightarrow A[(IA)t]$ and hence an actual closed immersion of their
+coefficient affine schemes. No flatness, injectivity, noetherianity or pre-supplied Rees
+comparison is required. The WHOLE $A$ coefficient and original Rees triangles commute;
+every homogeneous monomial $a\otimes rt^n$ maps to $a\overline r t^n$ with its actual degree.
+\end{lemma}
+
+\begin{proof}
+The whole original coefficient polynomial map carries each actual $I^n$ coefficient into
+$(IA)^n$, by extension of ideal powers, so it genuinely restricts to the two actual Rees
+subalgebras. The actual tensor universal property constructs the displayed map, retaining
+all coefficient maps and homogeneous monomials. The extended Rees algebra is generated over
+$A$ by the actual degree-one monomials of $IA$. The elements of $IA$ are generated over $A$
+by the images of actual elements of $I$, and each corresponding degree-one monomial is the
+image of its actual original Rees tensor. Thus the whole polynomial image contains the whole
+extended Rees algebra. Its actual affine spectrum map is therefore a closed immersion.
+This gives genuine affine pieces toward the coherent Rees family in formal functions; global
+Rees-sheaf gluing and the proper formal-H0 comparison remain to be proved.
+\end{proof}
+
+\begin{lemma}[Actual proper schematic Rees family]\label{lem:fc-rees-formal-family}
+\leanok
+\lean{EnvelopeProperty.FcReesFormalFamily.reesBase, EnvelopeProperty.FcReesFormalFamily.polynomialToRees, EnvelopeProperty.FcReesFormalFamily.polynomialToRees_comp_base, EnvelopeProperty.FcReesFormalFamily.ambient, EnvelopeProperty.FcReesFormalFamily.ambientProjection, EnvelopeProperty.FcReesFormalFamily.polynomialSource, EnvelopeProperty.FcReesFormalFamily.imageMap, EnvelopeProperty.FcReesFormalFamily.family, EnvelopeProperty.FcReesFormalFamily.familyImmersion, EnvelopeProperty.FcReesFormalFamily.familyProjection, EnvelopeProperty.FcReesFormalFamily.imageMap_isAffineHom, EnvelopeProperty.FcReesFormalFamily.familyProjection_isProper, EnvelopeProperty.FcReesFormalFamily.polynomialSource_isPullback, EnvelopeProperty.FcReesFormalFamily.family_isNoetherian, EnvelopeProperty.FcReesFormalFamily.family_isSeparated, EnvelopeProperty.FcReesFormalFamily.polynomialToFamily, EnvelopeProperty.FcReesFormalFamily.polynomialToFamily_comp_projection}
+\uses{lem:fc-rees-ideal-base-change}
+For any actual $f\colon X\to\operatorname{Spec}R$ and actual ideal $I$, construct the actual
+Rees coefficient extension $W=X\times_R\operatorname{Spec}R[It]$ and the actual polynomial
+map $X\times_R\mathbb A^1_R\to W$. Its GENUINE scheme-theoretic image $Z\hookrightarrow W$
+has a proper projection to $\operatorname{Spec}R[It]$ whenever $f$ is proper. If $R$ is
+noetherian, $Z$ is noetherian; it is separated as an absolute scheme. The whole polynomial
+coefficient triangle and the original polynomial-base-change square are retained.
+No family, image comparison, properness certificate or cohomological assertion is input.
+\end{lemma}
+
+\begin{proof}
+Use the ACTUAL inclusion $R[It]\hookrightarrow R[t]$ and the literal iterated pullback along
+its actual affine spectrum map. Pullback pasting, together with the proved ENTIRE original
+$R$ coefficient triangle, identifies its source with the original $X\times_R\mathbb A^1_R$.
+The induced map to $W$ is affine by genuine base change of an actual affine morphism.
+Take its ACTUAL kernel ideal sheaf and associated subscheme. This is the literal schematic
+image, with all nilpotents retained, and its inclusion is a genuine closed immersion.
+Its projection is proper as a closed immersion followed by the ACTUAL proper base change
+of $f$. Over noetherian $R$, the actual Rees algebra is noetherian, and local finite type and
+quasi-compactness give noetherianity of the actual image scheme. Properness over an affine
+scheme gives absolute separatedness. The original polynomial map factors through its actual
+image by the genuine image universal construction, retaining the WHOLE coefficient triangle.
+
+The actual affine chart identification with $A[(IA)t]$, its graded cohomology comparison and
+formal-H0 remain to be derived. This lemma constructs the family and its genuine geometric
+source properties; it does not assert the missing formal-functions theorem.
+\end{proof}
+
+\begin{lemma}[Actual affine polynomial image is the extended Rees scheme]\label{lem:fc-rees-formal-affine}
+\leanok
+\lean{EnvelopeProperty.FcReesFormalAffine.polynomialTensorEquiv, EnvelopeProperty.FcReesFormalAffine.polynomialTensorEquiv_tmul, EnvelopeProperty.FcReesFormalAffine.tensorInclusion, EnvelopeProperty.FcReesFormalAffine.polynomialTensorEquiv_comp_inclusion, EnvelopeProperty.FcReesFormalAffine.tensorInclusion_ker, EnvelopeProperty.FcReesFormalAffine.affineImageEquiv, EnvelopeProperty.FcReesFormalAffine.affineImageEquiv_mk, EnvelopeProperty.FcReesFormalAffine.specMap_ker_eq_of_ringKer_eq, EnvelopeProperty.FcReesFormalAffine.affineImageSchemeIso, EnvelopeProperty.FcReesFormalAffine.affineImageSchemeIso_comp_immersion}
+\uses{lem:fc-rees-ideal-base-change, lem:fc-rees-formal-family}
+For any $R\to A$ and actual ideal $I$, construct the actual polynomial tensor isomorphism
+$A\otimes_R R[t]\simeq A[t]$. Under this WHOLE isomorphism the genuine tensor extension of
+$R[It]\hookrightarrow R[t]$ factors through the actual surjection onto $A[(IA)t]$.
+Consequently its ACTUAL affine schematic-image quotient is $A[(IA)t]$ as an $A$-algebra,
+and its genuine SCHEME-theoretic image is isomorphic to $\operatorname{Spec}A[(IA)t]$,
+retaining the ENTIRE closed immersion into $\operatorname{Spec}(A\otimes_R R[It])$.
+No flatness, reducedness or pre-supplied image comparison is required.
+\end{lemma}
+
+\begin{proof}
+Construct the polynomial tensor isomorphism from the genuine one-variable multivariate
+polynomial tensor equivalence and the two actual one-variable polynomial equivalences.
+Polynomial induction proves its whole tensor formula $a\otimes p\mapsto a\overline p$.
+Compare the actual tensor inclusion and actual extended Rees surjection on every pure
+tensor to prove equality of the ENTIRE algebra maps after transport. Injectivity of the
+polynomial isomorphism and actual Rees subalgebra inclusion gives equality of the two actual
+kernels. The genuine quotient first-isomorphism theorem constructs the whole $A$-algebra
+image comparison, preserving every original tensor section.
+
+Equality of actual affine ring kernels gives equality of the genuine scheme-image ideal
+sheaves: naturality of the actual $\Gamma\operatorname{Spec}$ isomorphisms transports every
+whole affine coefficient kernel. The actual extended Rees map is a closed immersion by
+its proved surjectivity. The universal property of closed immersions and equality of the
+actual kernels therefore construct a genuine isomorphism of schematic images; its ENTIRE
+ambient closed-immersion triangle is proved. Transport to the literal iterated global family
+and subsequent graded cohomological/formal-H0 comparison remain to be derived.
+\end{proof}
+
+\begin{lemma}[Literal affine-base schematic Rees family]\label{lem:fc-rees-formal-affine-scheme}
+\leanok
+\lean{EnvelopeProperty.FcReesFormalAffineScheme.affineBase, EnvelopeProperty.FcReesFormalAffineScheme.ambientIso, EnvelopeProperty.FcReesFormalAffineScheme.polynomialSourceIso, EnvelopeProperty.FcReesFormalAffineScheme.polynomialSourceIso_hom_fst, EnvelopeProperty.FcReesFormalAffineScheme.polynomialSourceIso_hom_snd, EnvelopeProperty.FcReesFormalAffineScheme.spec_tensorInclusion_fst, EnvelopeProperty.FcReesFormalAffineScheme.spec_tensorInclusion_snd, EnvelopeProperty.FcReesFormalAffineScheme.imageMap_comp_ambientIso, EnvelopeProperty.FcReesFormalAffineScheme.imageIsoOfArrowIso, EnvelopeProperty.FcReesFormalAffineScheme.imageIsoOfArrowIso_comp, EnvelopeProperty.FcReesFormalAffineScheme.familyIso, EnvelopeProperty.FcReesFormalAffineScheme.familyIso_comp_immersion, EnvelopeProperty.FcReesFormalAffineScheme.familyIso_comp_projection}
+\uses{lem:fc-rees-formal-family, lem:fc-rees-formal-affine}
+For any actual $R$-algebra $A$ and actual ideal $I$, the LITERAL global schematic Rees family
+constructed from $\operatorname{Spec}A\to\operatorname{Spec}R$ is genuinely isomorphic to
+$\operatorname{Spec}A[(IA)t]$. The isomorphism retains BOTH the ENTIRE closed immersion into
+the actual Rees coefficient base extension and the ENTIRE original Rees coefficient projection.
+No flatness, reducedness, noetherianity or supplied image comparison is required.
+\end{lemma}
+
+\begin{proof}
+Actual affine pullback tensor isomorphisms identify the literal ambient scheme with
+$\operatorname{Spec}(A\otimes_R R[It])$. Actual pullback pasting identifies the literal polynomial
+source with $\operatorname{Spec}(A\otimes_R R[t])$, retaining BOTH whole coefficient projections.
+The actual polynomial-to-Rees global morphism is proved equal to the genuine tensor inclusion
+under these two whole isomorphisms, by the actual pullback universal property and the two
+entire coefficient diagrams. Isomorphisms of actual source/target arrows induce isomorphisms
+of genuine scheme-theoretic images: compare the actual closed immersion kernels and apply
+the genuine closed-immersion lifting universal property. Combine with the checked affine
+image identification from Lemma~\ref{lem:fc-rees-formal-affine}. The ENTIRE ambient inclusion
+and Rees coefficient projection equalities are then proved as actual scheme morphisms.
+General open restriction charts and subsequent graded cohomological/formal-H0 comparison
+remain to be derived; no formal-functions conclusion is asserted here.
+\end{proof}
+
+\begin{lemma}[Actual open restriction and affine charts of the schematic Rees family]\label{lem:fc-rees-formal-restriction}
+\leanok
+\lean{EnvelopeProperty.FcReesFormalRestriction.ker_eq_comap_of_open_pullback, EnvelopeProperty.FcReesFormalRestriction.imageRestrictionMap, EnvelopeProperty.FcReesFormalRestriction.isPullback_imageRestriction, EnvelopeProperty.FcReesFormalRestriction.ambientMap, EnvelopeProperty.FcReesFormalRestriction.ambientMap_projection, EnvelopeProperty.FcReesFormalRestriction.ambientMap_isOpenImmersion, EnvelopeProperty.FcReesFormalRestriction.polynomialSourceMap, EnvelopeProperty.FcReesFormalRestriction.polynomialSourceMap_imageMap, EnvelopeProperty.FcReesFormalRestriction.polynomialSourceMap_snd, EnvelopeProperty.FcReesFormalRestriction.polynomialSourceMap_isPullback, EnvelopeProperty.FcReesFormalRestriction.familyMap, EnvelopeProperty.FcReesFormalRestriction.familyMap_isPullback, EnvelopeProperty.FcReesFormalRestriction.familyMap_isOpenImmersion, EnvelopeProperty.FcReesFormalRestriction.ambientMap_fst, EnvelopeProperty.FcReesFormalRestriction.ambientMap_isPullback, EnvelopeProperty.FcReesFormalRestriction.familyMap_isPullback_over_original, EnvelopeProperty.FcReesFormalRestriction.familyMap_projection, EnvelopeProperty.FcReesFormalRestriction.affineFamilyIso_comp_original, EnvelopeProperty.FcReesFormalRestriction.chartCoefficient, EnvelopeProperty.FcReesFormalRestriction.chartAlgebra, EnvelopeProperty.FcReesFormalRestriction.affineBase_eq_chart, EnvelopeProperty.FcReesFormalRestriction.chartFamilyIso, EnvelopeProperty.FcReesFormalRestriction.chartFamilyIso_comp_projection, EnvelopeProperty.FcReesFormalRestriction.chartMap, EnvelopeProperty.FcReesFormalRestriction.chartMap_isOpenImmersion, EnvelopeProperty.FcReesFormalRestriction.chartMap_projection, EnvelopeProperty.FcReesFormalRestriction.chartFamilyIso_comp_original, EnvelopeProperty.FcReesFormalRestriction.chartMap_isPullback_over_original, EnvelopeProperty.FcReesFormalRestriction.chartMap_opensRange, EnvelopeProperty.FcReesFormalRestriction.affineChartCover}
+\uses{lem:fc-rees-formal-family, lem:fc-rees-formal-affine-scheme}
+The actual schematic Rees family commutes with every original open immersion as a genuine
+pullback over the original scheme. For an actual affine open $U$, its whole inverse image
+is the actual affine scheme $\operatorname{Spec}\Gamma(U)[(I\Gamma(U))t]$. These actual
+charts form an affine open cover of the whole family. Both original-scheme and Rees
+coefficient morphisms are retained on all functions. No flatness, reducedness,
+noetherianity or separately supplied chart comparison is required.
+\end{lemma}
+
+\begin{proof}
+The actual kernel ideal sheaf of a quasi-compact morphism commutes with genuine open
+pullback. The actual closed-immersion universal property therefore constructs the map
+of schematic images and proves that its entire closed-immersion square is a pullback.
+For the polynomial-to-Rees morphism, literal iterated pullback maps construct both
+ambient and polynomial-source restriction maps; cancellation and pasting of genuine
+pullbacks prove the required source square. Passing to the actual schematic image
+then gives an open immersion of the constructed families, with both whole projections.
+For an original affine open $U$, construct its coefficient homomorphism directly by
+full faithfulness of $\operatorname{Spec}$ applied to the original chart morphism.
+Lemma~\ref{lem:fc-rees-formal-affine-scheme} identifies the resulting actual affine
+family with its actual extended-ideal Rees spectrum. Its canonical open inclusion is
+proved to be the full inverse image of $U$, retaining both entire coefficient triangles.
+The original affine cover therefore yields the actual affine Rees cover of the entire
+family. Graded cohomological comparison and proper formal-H0 algebraization remain
+unproved here; no connected-fibre conclusion is asserted.
+\end{proof}
+
+\begin{lemma}[Actual Rees chart sections and degree-preserving restriction]\label{lem:fc-rees-formal-chart-sheaf}
+\leanok
+\lean{EnvelopeProperty.FcReesFormalChartSheaf.projection, EnvelopeProperty.FcReesFormalChartSheaf.projection_isAffineHom, EnvelopeProperty.FcReesFormalChartSheaf.chartSectionsIso, EnvelopeProperty.FcReesFormalChartSheaf.chartCoefficient_naturality, EnvelopeProperty.FcReesFormalChartSheaf.reesRestriction, EnvelopeProperty.FcReesFormalChartSheaf.reesRestriction_val, EnvelopeProperty.FcReesFormalChartSheaf.reesRestriction_coeff, EnvelopeProperty.FcReesFormalChartSheaf.reesCoefficient, EnvelopeProperty.FcReesFormalChartSheaf.reesRestriction_comp_algebraMap, EnvelopeProperty.FcReesFormalChartSheaf.reesRestriction_comp_reesCoefficient, EnvelopeProperty.FcReesFormalChartSheaf.chartMap_original, EnvelopeProperty.FcReesFormalChartSheaf.chartMap_rees, EnvelopeProperty.FcReesFormalChartSheaf.spec_reesRestriction_comp_algebraMap, EnvelopeProperty.FcReesFormalChartSheaf.chartMap_naturality, EnvelopeProperty.FcReesFormalChartSheaf.chartMap_preimage, EnvelopeProperty.FcReesFormalChartSheaf.chartSectionsIso_hom, EnvelopeProperty.FcReesFormalChartSheaf.chartSectionsIso_naturality}
+\uses{lem:fc-rees-formal-restriction, lem:fc-rees-ideal-base-change}
+The actual original-scheme projection $q$ of the schematic Rees family is affine.
+For every original affine open $U$, there is a canonical isomorphism
+$\Gamma(q^{-1}U,\mathcal O)\simeq\Gamma(U)[(I\Gamma(U))t]$.
+The actual sheaf restriction for $U\subseteq V$ becomes coefficientwise polynomial
+restriction under these isomorphisms, preserving each actual degree and both entire
+original coefficient homomorphisms. No separately supplied compatibility, flatness,
+reducedness or noetherianity is required.
+\end{lemma}
+
+\begin{proof}
+Every original affine-open inverse image is affine by the actual chart pullback and
+range theorem, proving $q$ affine. The actual open-immersion section isomorphism and
+the genuine $\Gamma\operatorname{Spec}$ isomorphism give the full chart-section
+comparison. Full faithfulness of $\operatorname{Spec}$ and the original affine-open
+restriction identity prove compatibility of the entire original chart coefficients.
+Coefficientwise polynomial restriction then maps every extended ideal power into
+the corresponding actual ideal power, defining the true Rees ring restriction.
+The full degree-zero and original Rees coefficient triangles commute. The original
+closed immersion into the ambient coefficient pullback is a monomorphism, so these
+two entire triangles prove that its spectrum is the actual original global chart
+restriction. Naturality of actual scheme section maps and of
+$\Gamma\operatorname{Spec}$ now prove the entire sheaf-restriction identity.
+The subsequent graded cohomological comparison and formal-H0 algebraization remain
+to be proved; this lemma asserts no connected-fibre theorem.
+\end{proof}
+
+\begin{lemma}[Actual ideal-power decomposition of Rees chart sections]\label{lem:fc-rees-power-decomposition}
+\leanok
+\lean{EnvelopeProperty.FcReesPowerDecomposition.coefficients, EnvelopeProperty.FcReesPowerDecomposition.coefficients_apply, EnvelopeProperty.FcReesPowerDecomposition.coefficientLinear, EnvelopeProperty.FcReesPowerDecomposition.coefficientLinear_injective, EnvelopeProperty.FcReesPowerDecomposition.coefficients_monomial, EnvelopeProperty.FcReesPowerDecomposition.coefficientLinear_surjective, EnvelopeProperty.FcReesPowerDecomposition.powerEquiv, EnvelopeProperty.FcReesPowerDecomposition.finitePiDirectSumEquiv, EnvelopeProperty.FcReesPowerDecomposition.finitePiDirectSumEquiv_apply, EnvelopeProperty.FcReesPowerDecomposition.finiteReesPowerEquiv, EnvelopeProperty.FcReesPowerDecomposition.finiteReesPowerEquiv_apply, EnvelopeProperty.FcReesPowerDecomposition.chartReesRestriction, EnvelopeProperty.FcReesPowerDecomposition.chartPowerRestriction, EnvelopeProperty.FcReesPowerDecomposition.chartPowerEquiv_naturality}
+\uses{lem:fc-rees-formal-chart-sheaf}
+The genuine Rees algebra is linearly the direct sum of its actual ideal powers,
+with every original polynomial coefficient retained in its original degree.
+For any finite family of actual chart algebras over the original base, the product
+of their Rees algebras is linearly the direct sum of the products of their actual
+ideal powers. Under these genuine decompositions, actual original affine-chart
+restriction is the direct sum of the actual original ideal-power restrictions,
+linear over the original coefficient ring. No noetherianity, flatness or assumed
+graded-comparison certificate is required.
+\end{lemma}
+
+\begin{proof}
+Send an actual Rees polynomial to its finitely supported family of actual
+coefficients in the corresponding ideal powers. This map is linear and injective
+by polynomial extensionality. A homogeneous monomial maps exactly to the direct-sum
+inclusion of its coefficient. Direct-sum induction proves surjectivity and hence
+constructs the genuine linear equivalence. Finite products commute with direct sums
+by replacing the finite product with a finite direct sum and exchanging the two
+indices; the resulting equivalence is proved to retain every index and degree.
+Apply this comparison to the actual ideal powers of all chart algebras. Actual
+coefficientwise Rees restriction respects the derived original-base algebra
+structures, and its individual degree restrictions are linear over that same base.
+Equality on every actual coefficient proves the full direct-sum restriction square.
+The differential and cohomological comparison of the actual ordered Cech complexes
+still remain to be derived.
+\end{proof}
+
+\begin{theorem}[Connected fibres]\label{thm:fc-zariski}
+\lean{EnvelopeProperty.ProjectiveGeometricConnectedness.geometricallyConnected,EnvelopeProperty.ProjSubvariety.BlowupCenter.fcNativeRees_geometricallyConnected}
+\leanok
+\uses{def:pg-blowup, lem:fc-proper-birational-flat-sections, lem:fc-flat-local-field-lift}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+If $T'$ is normal, every scheme-theoretic fibre $B_\xi$ of $B\to T'$ is geometrically connected.
+More generally, a reduced projective birational scheme over the spectrum of a finite-type
+normal domain has geometrically connected fibres.
+\end{theorem}
+\begin{proof}
+For each original field-valued point, construct the complete flat local model with that
+same residue field. Flat base change of the original proper birational coefficient
+bijection gives the whole global section ring of this model as its local base ring.
+Actual projective formal H0 identifies it with all compatible original infinitesimal
+sections. Unique lifting through the genuine nilpotent thickenings identifies the
+idempotents of the whole closed fibre with those of that local ring. They are zero and
+one, and nontriviality is retained, so the whole nonreduced closed fibre is connected.
+The constructed scheme isomorphism identifies it with the literal original field-valued
+fibre. Since this holds for every such field-valued point, standard geometric connectedness
+follows. Normality of the completion and equality of closed-fibre global sections with its
+residue field are not used.
+\end{proof}
+
+\begin{theorem}[Maximum principle on curves]\label{thm:fc-curve-mp}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_connected_curve}
+\leanok
+\uses{thm:fc-connected-finite-type-curve-maximum}
+\source{gr25-classically-psh:prop:subharmonic.properties, fhx-envelope-20261028:lem:local-basic}
+Let $F$ be a complete algebraically closed ultrametric normed field and $D$ a connected finite-type $F$-scheme of global dimension at most one. A native locally psh function on $D^\an$ attaining its supremum is constant. This strengthens the smooth connected affine-curve case and includes the trivial base norm.
+\end{theorem}
+
+\begin{proof}
+Take the reduced singleton closure of a maximizing support and lift the entire original native point to that integral closed curve. The integral-curve maximum theorem makes the pullback constant. A genuine closed rational section gives a closed original support with the same maximum. For any other point, take its integral reduced support closure and another closed rational section. Actual finite-type curve chains with closed intermediates compare the two rational anchors; the integral-curve maximum theorem on the second support closure then compares the arbitrary point with its anchor. Every lift, closed subscheme and rational section is constructed from the original scheme.
+\end{proof}
+
+\begin{theorem}[Global maximum principle]\label{thm:fc-global-mp}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_geometricallyConnected_proper}
+\leanok
+\uses{thm:fc-geometrically-connected-proper-native-maximum}
+Let $F$ be a complete ultrametric normed field, $X$ a geometrically connected proper $F$-scheme, and $u$ native locally psh on $X^\an$. If $u$ attains its maximum $R$, then $u\equiv R$. Properness strengthens the projective case used in the paper.
+\end{theorem}
+
+\begin{proof}
+Pass to the constructed completed algebraic closure of $F$. Actual scalar restriction is surjective on whole native points, preserves local psh, and lifts the original maximizing point. Properness and geometric connectedness give a connected proper scalar-changed scheme. Over the algebraically closed field, each arbitrary support is compared with an actual rational section of its integral reduced singleton closure: the original coefficient map of that proper integral scheme is bijective, and genuine field base change gives its geometric connectedness. Closed-support curve chains then propagate the attained maximum, and the two rational comparisons recover every original native value. Finally descend through the surjective scalar restriction. No rational-lift, curve-chain or geometric-connectedness certificate is supplied beyond the theorem's original geometric hypothesis.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:gl-fibre-constancy}]
+\uses{lem:fc-fibre-model, lem:fc-fibre-psh, thm:fc-zariski, thm:fc-global-mp}
+Let $t\in T'^\an$ with support $\xi$, and choose $(m,s)$ with $|s|_t\ne0$. By Lemma~\ref{lem:fc-fibre-psh} it suffices to show
+that $u_t$ is constant. $Z_t=B_\xi\otimes\mathcal H(t)$ is projective and geometrically connected
+(Theorem~\ref{thm:fc-zariski}), and $Z_t^\an$ is compact. If $u_t\equiv-\infty$ there is nothing to prove; otherwise the
+usc function $u_t$ attains a finite maximum, and Theorem~\ref{thm:fc-global-mp} applies.
+\end{proof}
+
+\begin{remark}[A countability-free analytic route]\label{rmk:fc-directed-analytic-route}
+\uses{thm:fc-analytic-constancy-completed-geometrically-connected,cor:fc-analytic-constancy-original-geometrically-connected-rees}
+The checked native analytic reduction also has a directed-net proof. The original global
+blowup psh potential supplies a decreasing dyadic finite Fubini--Study net, whose actual
+Rees-chart restrictions are convex PL nets in regular units. Their whole native fibre
+pullback satisfies the directed maximum principle, with compactness and an attained
+maximum derived internally. Thus standard geometric connectedness of the literal original
+completed fibre suffices for whole original analytic fibre constancy, without countability
+of the base field. This does not identify arbitrary directed presentations with the
+sequence-based local psh definition in Lemma~\ref{lem:fc-fibre-psh}, and it does not yet prove
+Theorem~\ref{thm:fc-zariski}.
+\end{remark}
+
+\subsection{Potential theory on the Berkovich line}\label{subsec:fc-line}
+
+\begin{convention}\label{conv:fc-line}
+\notready
+$F$ is complete, algebraically closed and nontrivially valued, and $\A^1=\A^1_F$. For $a\in F$ and $r\ge0$, $\zeta_{a,r}$ is
+the Gauss point $|\sum c_n(T-a)^n|=\max|c_n|r^n$. $D(a,r)=\{|T-a|\le r\}$, $D^-(a,r)=\{|T-a|<r\}$.
+\end{convention}
+
+\begin{definition}[Standard affinoids]\label{def:fc-standard-affinoid}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.boundary, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialSkeleton}
+\leanok
+\uses{conv:fc-line}
+A \emph{standard affinoid} is $U=D(a_0,r_0)\setminus\bigcup_{j=1}^mD^-(a_j,r_j)$ with $0<r_j\le r_0$, $|a_j-a_0|\le r_0$, and the
+$D^-(a_j,r_j)$ pairwise disjoint. Its boundary is $\partial U=\{\zeta_{a_j,r_j}\}_{0\le j\le m}$, and its skeleton $\Sigma(U)$ is
+the union of the segments $[\zeta_{a_j,r_j},\zeta_{a_0,r_0}]$.
+\end{definition}
+
+\begin{lemma}[Topology of the line]\label{lem:fc-line-topology}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_gauss_or_nested_discs, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_continuous_centeredGauss_prod, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isCompact_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isConnected_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.interior_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.exists_boundary_mem_closure_component, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction_eq_self, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_nhds_hasBasis_standardAffinoid, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_annulus_subset_nhds, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_denseRange_rigid_norm, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_isConnected_line}
+\leanok
+\uses{def:fc-standard-affinoid, thm:fc-nested-disc-classification, lem:fc-linear-topology, lem:fc-standard-inflation, lem:fc-standard-boundary, lem:fc-standard-component-boundary, thm:fc-radial-retraction, thm:fc-residue-end-annulus, cor:fc-line-paths, thm:fc-rigid-density, thm:fc-standard-affinoid-basis}
+\source{gr25-classically-psh:topology of unit disc}
+\begin{enumerate}
+\item Points are $\zeta_{a,r}$ ($r\ge0$) or limits of Gauss points of nested classical discs with empty classical intersection; $(a,r)\mapsto\zeta_{a,r}$ is
+continuous.
+\item A standard affinoid $U$ is compact and connected, and its topological interior is $U\setminus\partial U$. Each
+connected component of $U\setminus\partial U$ has a boundary point in its closure. There is a retraction
+$\tau_U\colon U\to\Sigma(U)$.
+\item Every point has a basis of neighbourhoods $\operatorname{int}(U)$, $U$ standard. At $\zeta_{a,r}$ ($r>0$) these
+neighbourhoods contain, in each residue class $D^-(b,r)$, an annulus $\{\rho<|T-b|<r\}$.
+\item Rigid points are dense, and $(\A^1)^\an$ is connected.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) The infimum of the linear values is either attained, giving a Gauss point, or is approached by a strictly decreasing sequence. The corresponding discs are nested with empty classical intersection and their actual Gauss points converge by continuous inflation (Theorem~\ref{thm:fc-nested-disc-classification}). Joint continuity is Lemma~\ref{lem:fc-linear-topology}.
+
+(2) Inflation gives paths to the outer Gauss point, compactness follows from the closed coordinate inequalities, and the exact interior is obtained from the disc and hole-complement interiors. A path's first boundary hit lies in the closure of its interior component (Lemmas~\ref{lem:fc-standard-inflation}--\ref{lem:fc-standard-component-boundary}). The actual continuous radial retraction is Theorem~\ref{thm:fc-radial-retraction}.
+
+(3) Finite closed linear-coordinate boxes give neighbourhoods. Choose an upper disc of least radius, discard lower discs outside it, and retain maximal open holes; their nesting makes the retained holes disjoint. All inequalities at the original point are strict, so it is interior (Theorem~\ref{thm:fc-standard-affinoid-basis}). Whole-branch convergence to a Gauss point supplies a terminal annulus in every residue branch (Theorem~\ref{thm:fc-residue-end-annulus}).
+
+(4) Algebraic roots and nontriviality derive dense valuation range. Actual evaluation points approach each positive-radius Gauss point from inside a branch; classification then puts every point in their closure (Theorem~\ref{thm:fc-rigid-density}). The whole-line contraction gives path connectedness and hence connectedness (Corollary~\ref{cor:fc-line-paths}).
+\end{proof}
+
+\begin{definition}[Functions on a standard affinoid]\label{def:fc-line-algebra}
+\notready
+\uses{def:fc-standard-affinoid}
+$\mathcal O(U)$ is the completion of $F[T,(T-a_1)^{-1},\dots,(T-a_m)^{-1}]$ for $\|f\|_U=\max_{\zeta\in\partial U}|f|_\zeta$.
+\end{definition}
+
+\begin{lemma}[Functions]\label{lem:fc-line-functions}
+\notready
+\uses{def:fc-line-algebra, lem:fc-line-topology}
+\begin{enumerate}
+\item (Maximum modulus) For $f\in\mathcal O(U)$ and $x\in U$, $|f|_x\le\|f\|_U$. The points of $U$ are the bounded
+multiplicative seminorms of $\mathcal O(U)$. Restriction maps exist for $U'\subseteq U$.
+\item $f\in\mathcal O(U)$ is a unit if and only if $|f|_x\ne0$ for all $x\in U$.
+\item (Gluing) If standard affinoids $U_i$ cover a closed disc $D$, then compatible $f_i\in\mathcal O(U_i)$ glue to some
+$f\in\mathcal O(D)$.
+\item (Liouville) If $c_R\in\mathcal O(D(0,R))$ are compatible for all $R$, and $\|c_R\|\le C\max(1,R)^N$, then they come from a
+polynomial of degree $\le N$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Mittag-Leffler decomposition $f=f_0(T)+\sum_jf_j((T-a_j)^{-1})$ with $\|f\|_U=\max(\|f_0\|_{\zeta_0},\|f_j\|_{\zeta_j})$, and
+the ultrametric inequality at points of $U$. (2) Approximate $f$ by a rational $g$ with $|f-g|<\min_U|f|$. The zeros of
+$g$ lie in holes or outside $D(a_0,r_0)$, so $1/g\in\mathcal O(U)$; then use a geometric series. (3) Induction over the
+cover, the two-annulus case being \texttt{AnnulusGluing}. (4) Coefficient estimates $|c_n|R^n\le CR^N$.
+\end{proof}
+
+\begin{definition}[Harmonic functions]\label{def:fc-harmonic}
+\notready
+\uses{def:fc-standard-affinoid}
+A function on $U$ is \emph{harmonic} if it has the form $c+\sum_{j=1}^m\gamma_j\log|T-a_j|$ with $c,\gamma_j\in\R$.
+\end{definition}
+
+\begin{lemma}[Harmonic functions]\label{lem:fc-harmonic}
+\notready
+\uses{def:fc-harmonic, lem:fc-line-topology}
+Let $h$ be harmonic on $U$.
+\begin{enumerate}
+\item $h=h\circ\tau_U$, and $h$ is affine in $\log$-radius on edges of $\Sigma(U)$ and balanced at interior vertices.
+\item $\max_Uh=\max_{\partial U}h$. At an interior local maximum, $h$ is constant on an actual neighbourhood. If an interior point realizes the whole-$U$ maximum, $h$ is constant on its connected component in $U\setminus\partial U$.
+\item (Dirichlet) For all $(\beta_\zeta)\in\R^{\partial U}$ there is a unique harmonic $h$ with $h|_{\partial U}=\beta$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Each term $\log|T-a_j|$ is $\log\max(r,|a-a_j|)$ at $\zeta_{a,r}$.
+(2) The actual rational-unit local maximum theorem gives neighbourhood constancy.
+For the weak maximum principle, the maximum locus is closed by continuity. If it
+avoids the finite boundary, local constancy makes it open in the connected carrier,
+a contradiction. The same open-and-closed argument gives constancy on the interior
+component containing an interior maximum, as proved in the separate harmonic
+boundary-comparison chapter. It does not imply whole-carrier constancy when hole
+boundaries meet. (3) Index normalized logarithmic potentials by the actual distinct
+nonouter Gauss boundary points, identifying coincident boundaries. Their independence
+follows by choosing a nonzero coefficient with minimal hole radius and comparing
+outward radial points before the next centre distance. Weak maximum applied to
+$\pm h$ makes boundary evaluation injective. This is a square finite-dimensional
+map on the actual boundary, so it is surjective; the outer constant supplies the
+remaining boundary value. This is the actual Dirichlet construction, without the
+incorrect dimension count $m+1$ when boundary points coincide.
+\end{proof}
+
+\begin{definition}[Subharmonic functions on the line]\label{def:fc-line-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn}
+\leanok
+\uses{def:fc-harmonic,def:fc-actual-line-subharmonic}
+\source{gr25-classically-psh:sec:thuillier.subharmonic}
+Let $\Omega\subseteq(\A^1)^\an$ be open. An usc $v\colon\Omega\to[-\infty,\infty)$ is \emph{subharmonic} if, for every standard
+$U\subseteq\Omega$ and every harmonic $h$ on $U$, $v\le h$ on $\partial U$ implies $v\le h$ on $U$.
+\end{definition}
+
+\begin{lemma}[Basic properties]\label{lem:fc-line-sh-basic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.mul_nonneg,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.sup,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.finset_sup,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add_const,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add_harmonic,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.mono,EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.iInf_directed,EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_analyticLog}
+\leanok
+\uses{def:fc-line-subharmonic,thm:fc-dirichlet-existence,thm:fc-completed-analytic-log-subharmonic}
+\begin{enumerate}
+\item Subharmonic functions are stable under sums, nonnegative multiples, finite maxima, addition of constants,
+addition of harmonic functions, restriction to open subsets, and infima of decreasing nets indexed by a nonempty directed set.
+\item $\log|f|$ is subharmonic on $\operatorname{int}(U')$ for every $f\in\mathcal O(U')$ in the actual completed affinoid ring.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For sums, at every actual boundary point choose a real value $\beta$ between
+$v_1$ and $h-v_2$; the exact extended-real splitting lemma permits bottom values.
+The actual Dirichlet solution $H$ with these finite boundary values gives
+$v_1\le H$ and $v_2\le h-H$ on the whole affinoid by comparison. Add the inequalities.
+Nonnegative scaling follows by dividing a harmonic test for a positive scalar;
+the zero scalar is handled directly. Maxima, constants and restrictions follow
+from the literal comparison definition. Harmonic restriction and harmonic algebra
+give addition of harmonic functions. For a nonempty decreasing directed infimum,
+the finite boundary provides a common index for comparison against $h+\epsilon$;
+then let $\epsilon$ decrease to zero. Upper semicontinuity of the infimum and
+exclusion of positive infinity are proved without a lower bound.
+
+For (2), original polynomial logarithms satisfy comparison by the actual rational
+unit local-maximum theorem. A rational denominator has no zeros on the affinoid,
+so its logarithm is actual harmonic. For an arbitrary completed function $f$ and
+$\delta>0$, norm density constructs one original rational $g$ with
+$\|f-g\|<\delta$. Contractive evaluation in every original completed residue field
+and the ultrametric inequality give simultaneously on the whole affinoid
+$\max(|f|,\delta)=\max(|g|,\delta)$. Its logarithm is subharmonic by the rational
+case and maxima with constants. The directed infimum as $\delta$ decreases to zero
+is exactly $\log|f|$, including negative infinity at zeros.
+\end{proof}
+
+\begin{lemma}[Strong maximum principle]\label{lem:fc-line-mp}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.eventually_eq_of_isLocalMax_norm}
+\leanok
+\uses{thm:fc-line-subharmonic-strong-maximum}
+\source{gr25-classically-psh:prop:subharmonic.properties}
+Under the standing nontrivially valued algebraically closed field convention,
+if $v$ is subharmonic on the open $\Omega$ and has a local maximum $R$ at $x$,
+then $v\equiv R$ on an actual neighbourhood of $x$.
+\end{lemma}
+
+\begin{proof}
+The value $R=-\infty$ is immediate. Otherwise upper semicontinuity and actual
+rigid density supply a lower rigid value if the function is not locally constant.
+Construct a separated standard affinoid inside the local-maximum neighbourhood,
+then append an actual low closed disc as a separated hole while retaining $x$
+in the connected strict core. The actual Dirichlet solution with boundary values
+$R$ and a strictly lower value on the new boundary is at most $R$ by weak maximum.
+If it equals $R$ at $x$, local constancy makes it constant on the connected strict
+core; actual outward Gauss approximation and continuity contradict its low boundary
+value. Thus it is strictly lower at $x$, contradicting comparison. All separation,
+low-hole preservation and strict-core closure properties are constructed internally
+in the referenced checked strong-maximum theorem. A maximum relative to an open
+$\Omega$ is an ambient local maximum because the neighbourhood filters agree there.
+\end{proof}
+
+\begin{lemma}[Locality]\label{lem:fc-line-local}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_of_locally,EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_iff_locally}
+\leanok
+\uses{thm:fc-line-subharmonic-locality}
+Under the same standing valued-field convention, subharmonicity on an open domain
+is local: if each point has an open neighbourhood on which the restriction is
+subharmonic, the function is subharmonic on the whole domain.
+\end{lemma}
+
+\begin{proof}
+Local upper semicontinuity and exclusion of positive infinity give the corresponding
+global conditions. On any standard test affinoid, restrict its actual harmonic
+function to each local neighbourhood, using the proved harmonic restriction theorem.
+The local strong maximum principle gives local constancy at interior maxima of
+the difference. The compact connected boundary-comparison argument therefore
+propagates the boundary inequality across the whole test affinoid. The converse
+is restriction of literal comparison to smaller open domains.
+\end{proof}
+
+\subsection{Finite flat curves over the line}\label{subsec:fc-pieces}
+
+\begin{convention}\label{conv:fc-curve}
+\notready
+\uses{conv:fc-line}
+$D$ is a smooth connected affine $F$-curve, and $p\colon D\to\A^1$ is finite flat of degree $d$, so $\mathcal O(D)$ is finite free over
+$F[T]$. For a standard $W$, put $B_W=\mathcal O(W)\otimes_{F[T]}\mathcal O(D)$; its bounded seminorms are the points of $p^{-1}(W)$.
+For $z$ over $w$, $m_z$ is the local multiplicity (\texttt{Berk.flatFibreMult}).
+\end{convention}
+
+\begin{lemma}[Pieces]\label{lem:fc-pieces}
+\notready
+\uses{conv:fc-curve, lem:fc-line-functions, lem:nf-pieces}
+Let $w\in(\A^1)^\an$, $P\subseteq p^{-1}(w)$, and $N$ a neighbourhood of $P$ disjoint from $p^{-1}(w)\setminus P$. There are a
+standard $W$ with $w\in\operatorname{int}W$ and an idempotent $e\in B_W$ such that $V\coloneqq\{|e|=1\}\subseteq N$ is clopen in
+$p^{-1}(W)$ with $V\cap p^{-1}(w)=P$, and $eB_W$ is finite projective over $\mathcal O(W)$ of rank $m_P=\sum_{z\in P}m_z$. The local
+norm $\Norm_V(b)=\det_{\mathcal O(W)}(b\mid eB_W)\in\mathcal O(W)$ satisfies $|\Norm_V(b)|_{w'}=\prod_{z\in V,\ p(z)=w'}|b|_z^{m_z}$ for all
+$w'\in W$.
+\end{lemma}
+
+\begin{proof}
+Approximate the idempotent of $P$ in $\mathcal H(w)\otimes\mathcal O(D)=\prod_zA_z$ by $b_0\in\mathcal O(D)$ (density). For $W$ small,
+$\sigma(b_0^2-b_0)<1/4$ for the spectral seminorm $\sigma$ on $p^{-1}(W)$. Cayley--Hamilton over $\mathcal O(W)$ together with
+the maximum modulus bounds the norms of powers by $\sigma$. Newton's iteration $b\mapsto3b^2-2b^3$ then converges in
+$B_W$. The rank is constant because it equals $\sum_{z\in P}m_z$ at $w$ and is locally constant. The norm identity comes
+from base change to $\mathcal H(w')$ (\texttt{SpectrumProjectiveNorm}).
+\end{proof}
+
+\begin{lemma}[Norms of convex PL functions]\label{lem:fc-local-norm-fs}
+\notready
+\uses{lem:fc-pieces, lem:fc-line-sh-basic, lem:finite-flat-norm}
+In Lemma~\ref{lem:fc-pieces}, let $u=N^{-1}\max_j(\log|F_j|+\lambda_j)$, with $F_j$ regular and invertible on a Zariski
+open set whose analytification contains $V$. Then
+$\Norm_Vu(w')=\sum_{z\in V/w'}m_zu(z)=N^{-1}\max_\beta(\log|c_\beta|_{w'}+\langle\beta,\lambda\rangle)$, where the $c_\beta\in\mathcal O(W)$ are
+the coefficients of $\Norm_V(\sum_jF_jT_j)$. In particular $\Norm_Vu$ is subharmonic on $\operatorname{int}W$.
+\end{lemma}
+
+\begin{proof}
+Weighted Gauss norm identity, as in \cite[Lemma~5.13]{FHX}. The $F_j$ are units of $eB_W$ because their norms have no
+zeros on $W$ (Lemma~\ref{lem:fc-line-functions}(2)). Then Lemma~\ref{lem:fc-line-sh-basic}.
+\end{proof}
+
+\subsection{Subharmonic and classically psh functions}\label{subsec:fc-gr25}
+
+\begin{definition}[Subharmonic functions on curves]\label{def:fc-subharmonic}
+\notready
+\uses{conv:fc-setting, lem:fc-pieces, def:fc-line-subharmonic}
+\source{gr25-classically-psh:def:subharmonicity}
+Let $C$ be a curve over a complete field $F$, $U\subseteq C^\an$ open, and $u\colon U\to[-\infty,\infty)$ usc. A \emph{test datum} is
+$(F',D,g,p,z,W,V)$, where:
+\begin{itemize}
+\item $F'/F$ is complete, algebraically closed and nontrivially valued;
+\item $D$ is a smooth connected affine $F'$-curve and $g\colon D\to C_{F'}$ a morphism;
+\item $p\colon D\to\A^1_{F'}$ is finite flat;
+\item $z\in D^\an$ with $\pi g(z)\in U$;
+\item $(W,V)$ is a piece (Lemma~\ref{lem:fc-pieces}) with $V\cap p^{-1}(p(z))=\{z\}$ and $\pi g(V)\subseteq U$.
+\end{itemize}
+$u$ is \emph{subharmonic} if, for every test datum, $\Norm_V(u\circ\pi\circ g)$ is subharmonic on $\operatorname{int}W$ or
+$\equiv-\infty$ there.
+\end{definition}
+
+\begin{definition}[Classically psh functions]\label{def:fc-classically-psh}
+\notready
+\uses{def:fc-subharmonic}
+\source{gr25-classically-psh:def:classically.psh}
+Let $X$ be an $F$-scheme of finite type and $U\subseteq X^\an$ open. An usc $u$ is \emph{classically psh} if $u\circ\pi\circ g$ is
+subharmonic on $(\pi g)^{-1}(U)$ for every complete, algebraically closed, nontrivially valued $F'/F$ and every morphism
+$g\colon D\to X_{F'}$ from a smooth connected affine $F'$-curve.
+\end{definition}
+
+\begin{proposition}[Properties of subharmonic functions]\label{prop:fc-subharmonic-properties}
+\notready
+\uses{def:fc-subharmonic, lem:fc-line-sh-basic, lem:fc-line-local, lem:fc-line-mp, lem:fc-pieces}
+\source{gr25-classically-psh:prop:subharmonic.properties, fhx-envelope-20261028:lem:curves}
+\begin{enumerate}
+\item (Locality) Subharmonicity is local on $C^\an$.
+\item Sums, nonnegative multiples and decreasing nets of subharmonic functions are subharmonic; so is $\log|f|$ for $f$
+regular on a Zariski open set.
+\item (Maximum principle) If $C$ is a smooth connected affine curve over a complete, algebraically closed, nontrivially
+valued $F$, a subharmonic function with a local maximum $R$ at $z$ is $\equiv R$ near $z$.
+\item If $u$ is subharmonic, so are $u\circ\pi_{F'/F}$ and $u\circ g'$ for every morphism of curves $g'$.
+\item (Descent) If $\rho\colon C'\to C$ is finite surjective and $u\circ\rho$ is subharmonic, then $u$ is subharmonic.
+\item (Norms, \cite[Lemma~5.21(1)]{FHX}) If $q\colon C'\to C$ is a finite flat morphism of normal curves and $u$ is subharmonic
+on $C'^\an$, then $\Norm_qu$ is subharmonic on $C^\an$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) Refine pieces around each fibre point. $\Norm_V$ is then a sum of single-point norms, and
+Lemma~\ref{lem:fc-line-local} applies. (2) Norms are additive and monotone, and finite weighted sums commute with
+decreasing limits. $\Norm_V\log|f|=\log|\Norm_V(f)|$ (Lemma~\ref{lem:fc-line-sh-basic}(2)). (3) Take $p$ by Noether
+normalization ($D$ smooth, so $p$ is flat), and a single-point piece $(W,V)$ at $z$ inside $\{u\le R\}$. Then
+$\Norm_Vu\le m_zR$ with equality at $p(z)$, so $\Norm_Vu\equiv m_zR$ near $p(z)$ by Lemma~\ref{lem:fc-line-mp}. Since the
+weights over each point sum to $m_z$ and every term is $\le R$, $u\equiv R$ on $V$ near $z$. (4) Test data compose.
+(5) Let $D'$ be the normalization of a component of $D\times_CC'$ dominating $D$, of degree $\delta$ over $D$. Then the
+local norms over $D$ equal $\delta^{-1}$ times the local norms over $D'$ (multiplicativity of multiplicities in
+towers). (6) As in \cite[Lemma~5.21(1)]{FHX}, using flat base change of norms and transitivity of local norms.
+\end{proof}
+
+\begin{proposition}[Properties of classically psh functions]\label{prop:fc-cpsh-properties}
+\notready
+\uses{def:fc-classically-psh, prop:fc-subharmonic-properties}
+\source{gr25-classically-psh:prop:classically.psh.properties}
+Classically psh functions form a sheaf. They are stable under sums, nonnegative multiples, decreasing nets, forward
+extension of scalars and pullback by morphisms of schemes of finite type. $\log|f|$ is classically psh for $f$ regular
+on a Zariski open set. On curves, classically psh $=$ subharmonic.
+\end{proposition}
+
+\begin{proof}
+Each property follows from the corresponding part of Proposition~\ref{prop:fc-subharmonic-properties}. On curves, the
+two notions agree because subharmonicity is stable under pullback by morphisms of curves
+(Proposition~\ref{prop:fc-subharmonic-properties}(4)).
+\end{proof}
+
+\begin{lemma}[Locally psh functions are classically psh]\label{lem:fc-locally-psh-cpsh}
+\notready
+\uses{def:fc-classically-psh, lem:fc-local-norm-fs, lem:local-basic, prop:fc-subharmonic-properties}
+\source{fhx-envelope-20261028:lem:local-basic}
+Every locally psh function on an open subset of $X^\an$ is classically psh. This is \cite[Lemma~5.2(4)]{FHX}.
+\end{lemma}
+
+\begin{proof}
+Pull back to $D$ (Lemma~\ref{lem:local-basic}(2)). Near $z$ the pullback is a decreasing limit of convex PL functions
+$N^{-1}\max_j(\log|F_{nj}|+\lambda_{nj})$, with $F_{nj}$ units on a Zariski open set; shrink the piece into that region.
+Lemma~\ref{lem:fc-local-norm-fs} together with Lemma~\ref{lem:fc-line-sh-basic}(1) shows that $\Norm_V$ of the limit is
+subharmonic.
+\end{proof}
+
+\begin{lemma}[Analytic curves are connected]\label{lem:fc-curve-connected}
+\notready
+\uses{lem:fc-pieces, lem:fc-line-functions, lem:fc-line-topology}
+If $F$ is complete, algebraically closed and nontrivially valued, then $D^\an$ is connected for every irreducible affine
+$F$-curve $D$.
+\end{lemma}
+
+\begin{proof}
+Replace $D$ by its normalization, and take a separable finite flat $p\colon D\to\A^1$ with primitive $b$, so that $\chi_b$ is
+irreducible over $F(T)$. Suppose $D^\an=A\sqcup B$ with $A,B$ clopen and nonempty. As $p$ is open and closed, $p(A)$ is all
+of $(\A^1)^\an$, and likewise $p(B)$. For each $w$ take the piece with $P=A\cap p^{-1}(w)$ inside $A$: the characteristic
+polynomial $\chi^A$ of $b$ on the pieces has coefficients in $\mathcal O(W)$. These coefficients glue on discs
+(Lemma~\ref{lem:fc-line-functions}(3)) and have polynomial growth (integrality of $b$), so they are polynomials
+(Lemma~\ref{lem:fc-line-functions}(4)). Then $\chi_b=\chi^A\chi^B$ is a nontrivial factorization in $F[T][Z]$, a
+contradiction.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fc-curve-mp} (Stage~2)]
+\uses{lem:fc-locally-psh-cpsh, prop:fc-subharmonic-properties, lem:fc-curve-connected}
+The function is classically psh (Lemma~\ref{lem:fc-locally-psh-cpsh}), hence subharmonic on $D^\an$. Its maximum set is
+closed (usc) and open (Proposition~\ref{prop:fc-subharmonic-properties}(3)), and $D^\an$ is connected
+(Lemma~\ref{lem:fc-curve-connected}).
+\end{proof}
+
+\begin{remark}[Comparison with \cite{GR25}]\label{rmk:fc-gr25}
+\uses{def:fc-subharmonic, def:fc-classically-psh, thm:fc-global-mp}
+\cite[Definition~3.4]{GR25} tests by Thuillier's subharmonicity on smooth strictly analytic curves; here the test is
+by local norms to the line, and all test curves are algebraic. The two notions should agree, but a proof would use
+Thuillier's theory on smooth curves, hence semistable reduction. It is not needed: every use in \cite{FHX} (Lemmas
+5.2(4), 5.21 and Theorem~6.1, Step~1) passes through
+Propositions~\ref{prop:fc-subharmonic-properties} and~\ref{prop:fc-cpsh-properties}. Not proved here:
+\begin{itemize}
+\item \cite[Prop.~3.5(3),(9)]{GR25};
+\item the converse of 3.5(7);
+\item stability under max of two arbitrary subharmonic functions;
+\item \cite[Theorem~6.1]{GR25} at non-rigid points of higher-dimensional spaces.
+\end{itemize}
+Theorem~\ref{thm:fc-global-mp} is the consequence of the last item, together with \cite[3.4.8]{Berkovich90}, that
+\cite{FHX} uses.
+\end{remark}

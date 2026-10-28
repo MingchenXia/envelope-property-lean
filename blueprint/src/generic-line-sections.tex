@@ -1,0 +1,147 @@
+\section{Actual line sections and the original generic module stalk}
+\label{sec:canonical-generic-line-sections}
+
+All schemes below are the ORIGINAL integral scheme. The function field
+is its actual generic structure-sheaf stalk. A line atlas means genuine
+local sheaf-module isomorphisms to the structure sheaf, rather than
+supplied generic linear algebra. The proof cone is ported read-only from
+BingWangEntropy/SchemeGenericSections, with exact upstream bytes and diff
+recorded; its increased heartbeat option is removed.
+
+\begin{theorem}[True local coefficients, restriction and generic opens]
+\label{sc0-generic-line:original-restriction}
+\lean{EnvelopeProperty.CanonicalGeometry.schemeBundleSectionsModule,EnvelopeProperty.CanonicalGeometry.integralSchemeTopNonempty,EnvelopeProperty.CanonicalGeometry.localFrameCoefficientsOn,EnvelopeProperty.CanonicalGeometry.localFrameCoefficientsOn_restrict,EnvelopeProperty.CanonicalGeometry.localFrameCoefficients,EnvelopeProperty.CanonicalGeometry.genericPoint_mem_nonempty_open,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.restriction_injective,EnvelopeProperty.CanonicalGeometry.germToFunctionField_restrict}
+\leanok
+The original section spaces have their SAME original section-ring module
+structure. The integral scheme's top open is nonempty and its generic
+point belongs to EVERY nonempty original open. Genuine original frame
+coefficients on smaller opens retain exact original restriction
+naturality. An actual original line atlas DERIVES injectivity of
+restriction to EVERY nonempty smaller original open; original scalar
+germs commute with these exact original restrictions.
+\end{theorem}
+\begin{proof}
+The module structure is the original native one. The original generic
+point witnesses nonempty top, and its specialization property places
+it in every nonempty open. Frame coefficients and their restriction
+identity are exactly the genuine original local frame isomorphism and
+its already proved sheaf naturality.
+
+For restriction injectivity, compare two original sections after
+restriction to a nonempty smaller open. Near every original point of
+the larger open choose its actual atlas frame and intersect its frame
+open with both original opens. Integral geometry makes this latter
+intersection nonempty, since both opens contain the actual generic
+point. Original regular-function restriction is injective on this
+intersection. Apply the genuine coefficient frame and its restriction
+naturality to the given equality; coefficient injectivity then gives
+local equality of the original module sections. Original sheaf
+extensionality gives their whole equality. Scalar generic-germ
+restriction is precisely native original germ-res naturality.
+\end{proof}
+
+\begin{theorem}[Faithful actual generic coefficients from genuine frames]
+\label{sc0-generic-line:faithful-frame}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.toFunctionField,EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.toFunctionField_injective,EnvelopeProperty.CanonicalGeometry.globalSectionToFunctionField,EnvelopeProperty.CanonicalGeometry.globalSectionToFunctionField_injective,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.exists_generic_frame}
+\leanok
+A genuine frame on a nonempty original open gives the actual linear
+coefficient map into the SAME original function field, and that map is
+injective. Restricting global sections to that frame gives an actual
+linear global coefficient map; genuine atlas geometry derives its
+injectivity. The actual atlas itself produces a frame open containing
+the actual generic point, without a supplied generic-frame premise.
+\end{theorem}
+\begin{proof}
+Compose the original frame linear equivalence with the genuine scalar
+germ into the original function field. Both original maps are injective.
+For global sections, use the actual original top-to-frame restriction;
+its scalar-linearity follows from original semilinear restriction,
+frame linearity and the scalar germ restriction identity. The preceding
+atlas-derived restriction injectivity makes this global coefficient
+map injective. Choosing an actual atlas member covering the original
+generic point supplies the required genuine generic frame.
+\uses{sc0-generic-line:original-restriction}
+\end{proof}
+
+\begin{theorem}[The SAME original generic module stalk is genuinely a line]
+\label{sc0-generic-line:original-stalk-line}
+\lean{EnvelopeProperty.CanonicalGeometry.genericBundleFiber,EnvelopeProperty.CanonicalGeometry.genericBundleFiberModule,EnvelopeProperty.CanonicalGeometry.bundleGenericGerm,EnvelopeProperty.CanonicalGeometry.genericFrameGenerator,EnvelopeProperty.CanonicalGeometry.genericFrameGenerator_ne_zero,EnvelopeProperty.CanonicalGeometry.genericBundleFiber_eq_smul_generator,EnvelopeProperty.CanonicalGeometry.genericBundleFiberFrame}
+\leanok
+The generic fiber is LITERALLY the original module-sheaf stalk at the
+original generic point, with its native action of the SAME original
+function field. The actual module germ is semilinear along the SAME
+original scalar germ. The genuine local section with frame coefficient
+one has a nonzero actual generic germ, and EVERY element of the SAME
+whole original stalk is its scalar multiple. These derived facts give
+an actual linear equivalence of the ENTIRE original stalk with the
+original function field. No rank-one, cyclicity, nonzero-generator or
+stalk-comparison certificate is supplied.
+\end{theorem}
+\begin{proof}
+Use the native original module stalk and native stalk scalar action.
+Its original germ preserves addition and satisfies the true native
+semilinear germ identity. For the frame-one section, if its generic
+germ were zero, the actual stalk equality theorem would give equality
+with zero on a smaller original open containing the generic point.
+Genuine coefficient restriction would make the original regular
+function one zero on that nonempty open, contradicting integrality.
+
+For EVERY original stalk element, take its actual local representative,
+intersect that representative's open with the original frame open,
+and apply the genuine restricted coefficient frame there. The original
+local section equals its actual coefficient times the restriction of
+the original frame-one section. Taking SAME original generic germs and
+using native semilinearity and original germ-res equalities expresses
+the original stalk element as the asserted scalar multiple. The actual
+scalar-multiple map is therefore surjective and injective by the
+proved nonzero generator over the SAME original field. Its genuine
+linear inverse is the asserted whole stalk frame.
+\uses{sc0-generic-line:original-restriction,sc0-generic-line:faithful-frame}
+\end{proof}
+
+\begin{theorem}[EVERY original generic germ retains its true frame coefficient]
+\label{sc0-generic-line:whole-germ-coefficient}
+\lean{EnvelopeProperty.CanonicalGeometry.bundleGenericGerm_eq_coefficient_smul_generator,EnvelopeProperty.CanonicalGeometry.genericBundleFiberFrame_symm_apply,EnvelopeProperty.CanonicalGeometry.genericBundleFiberFrame_germ,EnvelopeProperty.CanonicalGeometry.genericBundleFiberFrame_global_germ,EnvelopeProperty.CanonicalGeometry.bundleGenericGerm_global_injective}
+\leanok
+Every original section's actual generic germ equals its true original
+frame coefficient germ times the SAME original generic frame generator.
+The whole generic frame recovers exactly that coefficient. On global
+sections this is exactly the preceding original global coefficient map,
+and the genuine atlas therefore DERIVES injectivity of the actual
+original global module-germ map itself.
+\end{theorem}
+\begin{proof}
+In the genuine local frame, every original section equals its original
+coefficient times the original frame-one section. Apply the SAME actual
+semilinear module germ; this proves the full coefficient formula. The
+inverse whole generic frame is definitionally the original scalar
+multiple map. Its actual inverse identities recover every original
+coefficient, and original module germ-res naturality identifies the
+global formula with its SAME restricted local frame formula. Injectivity
+of the already proved global coefficient map, applied after this genuine
+whole generic frame, proves injectivity of the original global germ.
+\uses{sc0-generic-line:original-stalk-line,sc0-generic-line:faithful-frame}
+\end{proof}
+
+\begin{theorem}[Actual original generic finite free rank one]
+\label{sc0-generic-line:actual-rank-one}
+\lean{EnvelopeProperty.CanonicalGeometry.genericBundleFiberBasis,EnvelopeProperty.CanonicalGeometry.genericBundleFiber_finite_free_rank_one}
+\leanok
+A genuine frame produces an actual singleton basis of the SAME original
+generic module stalk. Consequently that actual stalk is finite and
+free of dimension one over the SAME original function field.
+\end{theorem}
+\begin{proof}
+Transport the actual original field's singleton basis through the inverse
+of the derived whole generic frame. Native basis theorems derive finite
+and free from that genuine basis, and the actual singleton cardinality
+gives dimension one. All generic linear algebra follows from the actual
+original scheme/module geometry, rather than being assumed.
+\uses{sc0-generic-line:original-stalk-line}
+\end{proof}
+
+This supplies the original rational canonical-section prerequisite.
+Nonvanishing of the SAME original BP differential at the generic point,
+its original rational coefficient, regularity of all pushed rounded
+canonical sections and the actual whole module pushforward comparison
+remain downstream, along with genuine vanishing and smooth envelopes.

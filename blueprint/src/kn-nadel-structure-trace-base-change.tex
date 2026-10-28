@@ -1,0 +1,30 @@
+\section{Native structure trace under actual affine base change}
+
+\begin{lemma}[The whole original free-chart trace follows its actual first projection]
+\label{lem:kn-structure-trace-affine-base-change}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affine_trace_baseChange}
+\leanok
+Let $p:Z\to\operatorname{Spec}R$ be an actual finite morphism with
+$Z$ affine. Equip $B=\Gamma(Z,\top)$ with the original coefficient
+map. Assume this particular section module is free. For every
+$R$-algebra $S$, form the actual base-changed scheme $Z_S$ and its
+original first projection $j:Z_S\to Z$. Then, for every $b\in B$,
+\[
+ \operatorname{Tr}_{\Gamma(Z_S)/S}(j^*b)
+   =\operatorname{image}_{R\to S}(\operatorname{Tr}_{B/R}(b)).
+\]
+This asserts freeness only on the displayed free chart, and retains
+the whole original source scheme and every original coefficient.
+\uses{scheme:actual-affine-infinitesimal-section-quotient,lem:kn-nadel-tensor-trace-normalization}
+\end{lemma}
+\begin{proof}
+Actual finiteness makes $B$ a finite $R$-module through the same
+original coefficient map. The actual affine section base-change
+isomorphism $S\otimes_RB\simeq\Gamma(Z_S,\top)$ carries $1\otimes b$
+to $j^*b$ and is an $S$-algebra isomorphism. Native algebra trace is
+invariant under this isomorphism. For the finite free module $B$,
+the trace of multiplication by $1\otimes b$ is the image in $S$ of
+the original trace: the matrix is the coefficient extension of the
+original multiplication matrix. Combining these two exact identities
+proves the formula on every original $b$.
+\end{proof}

@@ -1,0 +1,46 @@
+\section{Pulling actual monomial Jacobians onto refining charts}
+
+\begin{lemma}[A principal-local monomial ideal pulls back]\label{lem:sc0-principal-monomial-pullback}
+\lean{EnvelopeProperty.Char0.map_ideal_eq_span_monomial_of_away}
+\leanok
+An actual monomial ideal identity in $A_0[1/s]$ pulls back to any actual
+$A_0$-algebra $A$ in which the image of $s$ is a unit.
+\end{lemma}
+\begin{proof}
+The actual unit gives the unique localization map $A_0[1/s]\to A$. Map the
+ideal identity along this ring map. Composition agrees with the original
+$A_0$-algebra map, and mapping a principal monomial ideal maps each original
+factor and exponent.
+\end{proof}
+
+\begin{lemma}[The actual Jacobian image ideal pulls back]\label{lem:sc0-jacobian-monomial-pullback}
+\lean{EnvelopeProperty.Char0.affineRelativeJacobianIdeal_eq_monomial_of_away}
+\leanok
+\uses{lem:sc0-principal-monomial-pullback,lem:sc0-jacobian-image-ideal-basechange}
+For an actual formally \'etale extension $A_0\to A$, the actual monomial
+Jacobian image identity on a principal neighborhood in $A_0$ therefore holds
+for the genuine Jacobian image ideal in the transported differential basis
+on $A$ whenever the principal function becomes a unit in $A$.
+\end{lemma}
+\begin{proof}
+The checked base-change theorem identifies the genuine image ideal in the
+transported basis with the mapped original ideal. Apply the preceding
+localization-map lemma to the actual neighborhood identity.
+\end{proof}
+
+\begin{lemma}[The literal coordinate Jacobian is a unit times a boundary monomial]\label{lem:sc0-coordinate-jacobian-unit-monomial}
+\lean{EnvelopeProperty.Char0.exists_unit_etaleJacobian_eq_monomial_of_away}
+\leanok
+\uses{lem:sc0-jacobian-monomial-pullback}
+If $A$ is a domain and both source and target coordinates are actual \'etale
+coordinates, the literal Jacobian determinant of the pulled-back source
+coordinates is an actual unit times the same boundary monomial.
+\end{lemma}
+\begin{proof}
+The actual source coordinates identify the genuine image ideal with the
+principal ideal of the actual relative differential determinant. Transport
+of the actual coordinate basis is the basis of the actual image coordinates.
+Thus the determinant and boundary monomial generate the same principal
+ideal in a domain, so they differ by an actual unit. The checked matrix
+identity identifies this determinant with the literal coordinate Jacobian.
+\end{proof}

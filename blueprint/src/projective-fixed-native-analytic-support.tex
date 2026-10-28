@@ -1,0 +1,39 @@
+\section{The original native analytic chart maps preserve every original chart support}
+\label{sec:projective-fixed-native-analytic-support}
+
+\begin{theorem}[All original chart supports under the same native analytic comparison]
+\label{thm:projective-fixed-native-analytic-support}
+\lean{EnvelopeProperty.ProjectiveFixedNativeAnalyticSupport.nativeChartHomeomorph_mem_chartDomain_iff}
+\leanok
+\uses{thm:projective-fixed-native-analytic-values,thm:projective-fixed-native-analytic-charts,thm:projective-chart-generic-transitions}
+\source{bj22-trivval:sec:tc}
+Take an original native point in a nonempty original coordinate chart,
+and map it to the corresponding analytic chart of the same fixed
+reconstructed whole-field model. For every original coordinate index
+$\ell$, its image belongs to the model's $\ell$th analytic coordinate
+domain exactly when the original native scheme support belongs to the
+original inverse $\ell$th coordinate open. No nonemptiness or matching
+premise for this alternative chart is required.
+\end{theorem}
+\begin{proof}
+Let the original source chart be $j$. On it take the actual original
+regular section $X_\ell/X_j$. The proved native section equivalence
+identifies it with the fixed model chart element
+$c_{i,\ell}/c_{i,j}$, by the original generic transition identity.
+The actual analytic section-value comparison identifies its value at
+the native point with its value in the model affine chart. The genuine
+model chart formula computes this as the normalized model value of
+the $\ell$th homogeneous coordinate divided by the nonzero value of
+the $j$th homogeneous coordinate. Thus it is nonzero exactly when the
+model point lies in the alternative coordinate domain.
+
+On the native scheme, an actual section has nonzero residue valuation
+exactly at its genuine principal open. The actual pullback/basic-open
+identity identifies the principal open of $X_\ell/X_j$ with the
+intersection of the original $j$th and $\ell$th inverse coordinate
+opens. The original point already belongs to the former. Its section
+value is therefore nonzero exactly when its native support belongs to
+the latter. Combining these two exact nonvanishing criteria proves
+the claim for every original $\ell$, including those whose inverse
+open is empty. Every point, section and coordinate domain is original.
+\end{proof}

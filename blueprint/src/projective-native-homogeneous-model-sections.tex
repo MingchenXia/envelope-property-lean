@@ -1,0 +1,53 @@
+\section{Original homogeneous global sections are genuine fixed-model graded sections}
+\label{sec:projective-native-homogeneous-model-sections}
+
+\begin{theorem}[Original homogeneous coefficient and actual native generic germ]
+\label{thm:projective-native-homogeneous-coefficient}
+\lean{EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.germ_homogeneousCoefficient_eq_aeval}
+\leanok
+\uses{thm:projective-native-model-global-section-values,lem:fc-original-homogeneous-section-coordinate,lem:original-native-coordinate-coefficients}
+\source{bj22-trivval:sec:tc}
+For any original nonempty coordinate chart, the native generic germ of the
+whole original pulled homogeneous coefficient is the evaluation of its
+original polynomial at the actual original native generic coordinate ratios.
+\end{theorem}
+\begin{proof}
+The original whole projective chart section equivalence preserves the
+original coefficient structure map, so its composition with the actual
+native generic pullback is an original-field algebra map. Composing with
+actual coordinate dehomogenization sends every original variable to the
+actual original generic coordinate ratio. Polynomial algebra extensionality
+identifies this map with evaluation at those ratios. The genuine original
+homogeneous coefficient is exactly the dehomogenized polynomial section.
+\end{proof}
+
+\begin{theorem}[Original homogeneous forms give genuine whole model graded pieces]
+\label{thm:projective-native-homogeneous-image}
+\lean{EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.homogeneousImage, EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.homogeneousCoefficient, EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.homogeneousImage_eq_monomial, EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.homogeneousCoefficient_mem_piece, EnvelopeProperty.ProjectiveNativeHomogeneousModelSections.homogeneousCoefficient_chart_fraction}
+\leanok
+\uses{thm:projective-native-homogeneous-coefficient,lem:fc-native-rank-one-homogeneous-polynomial,lem:gl-sections}
+\source{bj22-trivval:sec:tc}
+Map every original variable to its literal original coordinate element in the
+one fixed reconstructed homogeneous algebra. An original form F of degree d
+maps to the actual monomial $g T^d$, where g is F evaluated at the original
+pivot ratios in the entire native function field. Thus g belongs to the
+actual fixed-model graded piece and hence its actual global section space.
+In every nonempty original chart, its fraction $g/D_j$ is exactly the whole
+original pulled homogeneous coefficient under the genuine chart equivalence.
+\end{theorem}
+\begin{proof}
+Polynomial substitution sends actual degree-one coordinates to actual
+degree-one monomials, so the image is homogeneous of degree d. On a rank-one
+polynomial ring, every homogeneous polynomial of degree d is its unique
+monomial of that degree. Evaluate the auxiliary variable at one: the original
+substitution becomes evaluation of F at the actual original generic ratios,
+which identifies its sole coefficient as g. Membership in the actual
+homogeneous subalgebra proves membership of g in its graded piece. Apply
+actual model dehomogenization. Its value on $g T^d$ is $g/D_j$, while its value on
+each original coordinate is the original coordinate ratio. Genuine original
+generic coordinate transition identities identify this with evaluation at
+the j-chart native ratios. The preceding theorem identifies it with the
+actual original coefficient germ, and the whole native chart equivalence
+retains that germ literally. No section-realization or coefficient-matching
+premise is supplied.
+\end{proof}

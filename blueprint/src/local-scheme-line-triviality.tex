@@ -1,0 +1,26 @@
+\section{Actual original line sheaves over local spectra}
+
+\begin{lemma}[Every actual line sheaf on a local spectrum is trivial]
+\label{lem:actual-local-spectrum-line-triviality}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.nonempty_iso_unit_on_localSpec}
+\leanok
+For an arbitrary original local ring $A$ and an actual invertible
+module sheaf $\mathcal L$ on $\operatorname{Spec}A$, there is an actual
+global module-sheaf isomorphism $\mathcal L\simeq\mathcal O$.
+\end{lemma}
+\begin{proof}
+The actual local trivializing cover of $\mathcal L$ covers the closed
+point corresponding to the maximal ideal of $A$. Choose a member
+containing this point. Every prime of a local ring specializes to its
+maximal ideal, so an open containing the closed point contains every
+prime; this member is the entire spectrum. Its genuine trivialization
+is therefore a trivialization of the pullback along the actual
+inclusion of the top open. Pull this actual isomorphism back by the
+inverse of the canonical top-open isomorphism. The actual pullback
+composition comparison, the native equality comparison for the
+identity composite and the native pullback identity comparison
+identify its source with the original $\mathcal L$. The actual
+structure-unit pullback comparison identifies its target with the
+original $\mathcal O$. Their composite is the required global
+isomorphism on the entire original scheme.
+\end{proof}

@@ -1,0 +1,59 @@
+\section{Actual ample representatives uniformly dominate finite original numerical line families}
+\label{sec:native-numerical-ample-domination}
+
+\begin{lemma}[Actual tensor powers in the original real numerical quotient]
+\label{lem:native-numerical-line-tensor-power}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.lineClass_tensorPower}
+\leanok
+\uses{thm:native-numerical-generated-line-sums}
+\source{bj22-trivval:sec:tc}
+For every original invertible line $L$ and natural $m$, the
+class of its actual sheafified tensor power is
+$[L^{\otimes m}]=m[L]$ in the genuine original real numerical
+quotient.
+\end{lemma}
+\begin{proof}
+The actual zeroth power is the original structure line,
+whose numerical class is zero. At a successor exponent,
+the actual power is canonically isomorphic to the tensor
+product of the previous actual power and $L$. Whole-line
+isomorphism invariance and actual numerical tensor
+additivity give the sum of the preceding class and $[L]$.
+Induction and real scalar distributivity give the formula.
+\end{proof}
+
+\begin{theorem}[One original ample threshold for actual positive and negative numerical twists]
+\label{thm:native-numerical-ample-domination}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_eventual_ample_numerical_lifts, EnvelopeProperty.NativeRealNumericalClasses.exists_eventual_nef_domination, EnvelopeProperty.NativeRealNumericalClasses.exists_eventual_strict_degree_domination}
+\leanok
+\uses{lem:native-numerical-line-tensor-power,thm:native-numerical-ample-classes,thm:fc-original-ample-line-twist-very-ample}
+\source{bj22-trivval:sec:tc}
+Fix an actual original geometric ample $A$ on integral
+native-projective $X$ and any finite family of actual
+original invertible lines $B_i$. There is one internally
+derived $N$ such that, for all $m\ge N$ and every $i$, both
+$m[A]+[B_i]$ and $m[A]-[B_i]$ are the exact numerical classes
+of actual original geometric ample lines. In particular
+both classes are genuinely nef and strictly positive on
+every original closed integral curve. No numerical
+domination or ample-openness premise is supplied.
+\end{theorem}
+\begin{proof}
+The actual ample twist-generation theorem supplies one
+uniform threshold making $A^{\otimes m}\otimes B_i$ and
+$A^{\otimes m}\otimes B_i^\vee$ genuinely very ample, for
+every original $i$ and every sufficiently large exponent.
+The actual first-power comparison turns each of these
+very ample lines into a geometric ample line.
+
+Numerical additivity, the preceding actual power formula,
+and numerical negation under the actual dual identify
+their classes exactly with $m[A]+[B_i]$ and
+$m[A]-[B_i]$. Actual ample-line positivity in the original
+numerical quotient gives genuine nef membership and
+strict positivity on every original closed curve for each
+of these same classes. The geometric threshold was already
+uniform in the entire finite original family, so all these
+conclusions use the same bound. No topology or global
+finite dimensionality is used here.
+\end{proof}

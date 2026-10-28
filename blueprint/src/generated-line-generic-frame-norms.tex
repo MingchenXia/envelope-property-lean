@@ -1,0 +1,41 @@
+\section{A generated model line in any original generic frame}
+
+\begin{proposition}[Whole model norm from original generating coefficients]
+\label{prop:generated-line-generic-frame-norms}
+Let $Y$ be a proper model over a ring with bounded base valuation, let
+$x$ be an original valued point, and let $M$ be an invertible sheaf on
+$Y$. For any actual trivialization $e:M_x\simeq\kappa(x)$, write
+$u=e^{-1}(1)$ and $c_e(s)=e(s)$, using the native global-section
+identification of the residue-field spectrum. Then every original
+generic section satisfies
+\[
+ s=c_e(s)u,\qquad \|s\|_M=|c_e(s)|\|u\|_M,
+ \qquad \|u\|_M>0.
+\]
+If $G$ is any actual global generating family, there is an original
+index $i$ such that
+\[
+ |c_e(G_j)|\leq |c_e(G_i)|\quad(\text{every }j),\qquad
+ \|u\|_M=|c_e(G_i)|^{-1}.
+\]
+Thus for a finite generating family this is the true finite maximum
+formula in every generic frame, derived without a norm-comparison
+certificate or a specially chosen generating section.
+\uses{thm:actual-model-line-generator-norm-one,cor:actual-model-line-generators-sup-norm-one}
+\lean{EnvelopeProperty.SchemeModuleFrameCoefficients.unitSection,EnvelopeProperty.SchemeModuleFrameCoefficients.coefficient,EnvelopeProperty.SchemeModuleFrameCoefficients.eq_coefficient_smul_unitSection,EnvelopeProperty.SchemeModuleFrameCoefficients.coefficient_unitSection,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericFrameCoefficient,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_eq_genericFrameCoefficient_mul,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericFrameUnit_ne_zero,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_genericFrameCoefficient_max_and_unitNorm,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_genericFrameCoefficient_max_and_modelNorm}
+\leanok
+\end{proposition}
+\begin{proof}
+Apply the inverse linear map of the given actual line isomorphism to
+$c_e(s)\cdot1$; the whole inverse identity gives the first equality.
+The actual model norm's scalar law gives the second. The coefficient
+of $u$ is one, so $u$ and its norm are nonzero. Actual global
+generation supplies an original $G_i$ with model norm one, while
+every $G_j$ has model norm at most one. Substitution in the second
+equality and cancellation of the positive norm of $u$ proves the
+coefficient bound. Its equality for $i$ gives the reciprocal formula.
+This remains an intrinsic residue-field coefficient formula: a
+Laurent/homogeneous expansion in original generic-fibre sections,
+the actual FS model realization, and the full test-configuration
+envelope formula remain separate unproved obligations.
+\end{proof}

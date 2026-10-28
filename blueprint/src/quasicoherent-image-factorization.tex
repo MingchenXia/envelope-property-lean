@@ -1,0 +1,30 @@
+\section{Whole image ideals and actual module factorizations}
+
+\begin{proposition}[The whole image ideal is the least factorization ideal]
+\label{prop:actual-quasicoherent-image-factorization}
+Let $M$ be a quasicoherent module on an arbitrary scheme $X$, let
+$\alpha:M\to\mathcal O_X$, and let $I$ be an ideal sheaf. Then
+$\operatorname{im}(\alpha)\subseteq I$ if and only if there is a whole
+module morphism $b:M\to I$ whose composite with the original inclusion
+$I\hookrightarrow\mathcal O_X$ is $\alpha$. Such a morphism is unique.
+The forward implication gives a canonical factor, retaining the value
+of every original section on every original open.
+\lean{EnvelopeProperty.QuasicoherentImageFactorization.factorOfImageLE, EnvelopeProperty.QuasicoherentImageFactorization.factorOfImageLE_inclusion, EnvelopeProperty.QuasicoherentImageFactorization.imageIdeal_le_iff_factor, EnvelopeProperty.QuasicoherentImageFactorization.existsUnique_factor}
+\uses{def:fc-quasicoherent-image-module-factor}
+\leanok
+\end{proposition}
+\begin{proof}
+Suppose the image ideal is contained in $I$. For a section $m$ on an
+arbitrary open $W$, restrict to any affine open $U\subseteq W$.
+Naturality identifies the restriction of $\alpha(m)$ with the image
+under $\alpha$ of the restriction of $m$ to $U$. This belongs to the
+image ideal on $U$, and hence to $I(U)$. Thus $\alpha(m)$ is a section
+of the whole original ideal module on $W$. Corestricting the original
+linear section maps gives $b$; their naturality follows from that of
+$\alpha$, and the composite is the original map on every open.
+Conversely, such a factorization sends every section on an affine open
+into the same original affine ideal. Every member of the image ideal
+has such a preimage, proving containment. The ideal inclusion is
+monomorphic, so cancellation proves uniqueness. No affine, finite
+generation, Noetherian, or nonempty hypothesis on $X$ is needed.
+\end{proof}

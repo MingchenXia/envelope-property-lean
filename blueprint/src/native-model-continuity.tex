@@ -1,0 +1,181 @@
+\subsection{Actual affine centers, continuous model ideals and anti-continuity}
+\label{subsec:native-model-continuity}
+
+Throughout the center and model statements, $f:X\to\operatorname{Spec}R$
+is an actual proper structure morphism and the prescribed real seminorm
+$v$ satisfies $v(r)\le1$ for every $r\in R$. The genuine native kernel
+support and the valuative model center retain their different definitions.
+
+\begin{theorem}[Whole affine residue and structure maps]
+\label{scheme:affine-native-residue-structure-maps}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecResidueField_eq_affine,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpec_appTop_eq,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpec_structureMap}
+\leanok
+\uses{scheme:actual-residue-section-pullback,scheme:relative-affine-open-homeomorphism}
+For an actual affine open $U$ and $x\in U$, its genuine section evaluation
+$\Gamma(X,U)\to\kappa(x)$ gives the entire original morphism
+$\operatorname{Spec}\kappa(x)\to X$ after the actual affine inclusion.
+The coefficient action derived from the structure morphism presents the
+entire affine structure map, not merely its numerical seminorm values.
+\end{theorem}
+\begin{proof}
+The actual affine germ morphism followed by the residue map is the
+section evaluation homomorphism. The genuine affine presentation of
+$\operatorname{Spec}\mathcal O_{X,x}\to X$ therefore gives the residue
+formula on whole scheme morphisms. Actual global-section pullback along
+the affine inclusion is ordinary restriction followed by the true
+$\Gamma\operatorname{Spec}$ isomorphism. Apply the contravariant
+composition formula and naturality of that isomorphism to the actual
+structure morphism. Its resulting ring homomorphism is exactly the
+previously derived section coefficient map, proving the whole structure
+formula by the true morphism-to-affine-spectrum equivalence.
+\end{proof}
+
+\begin{theorem}[Actual bounded affine criterion for proper centers]
+\label{scheme:proper-center-bounded-affine-criterion}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineSectionMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineSectionMap_base,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineLift,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineLift_generic,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineLift_base,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineLift_eq_centerLift,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_mem_of_bounded_affine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_mem_of_mem_boundedAffineImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mem_boundedAffineImage_iff_center_mem,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.boundedAffineImage_eq_center_preimage}
+\leanok
+\uses{scheme:affine-native-residue-structure-maps,scheme:proper-native-center,
+scheme:proper-center-local-bounds,scheme:compact-bounded-native-affine-images}
+A native point supported in an actual affine open $U$ has its true proper
+center in $U$ if and only if its evaluation on every actual section of
+$U$ is at most one. Consequently, the genuine bounded affine chart image
+is exactly $\operatorname{center}^{-1}(U)$.
+\end{theorem}
+\begin{proof}
+Bounded section values put the entire actual section-evaluation
+homomorphism into the original residue-field valuation ring.
+Genuine germ restriction proves equality with the original coefficient
+homomorphism inside this valuation ring; equality of norms alone is
+not used. Its spectrum morphism followed by the actual affine chart
+inclusion gives a genuine whole valuation-ring lift into $X$.
+The preceding affine residue and structure identities prove both actual
+valuative triangles. Proper separated uniqueness identifies this whole
+lift with the previously constructed model lift. Its closed-point image
+lies in $U$, proving the required center membership. The converse is
+the actual section bound already proved from model lift pullback.
+
+The genuine relative affine homeomorphism preserves every section value.
+Thus a bounded chart point supplies exactly the required bound, and an
+actual center neighborhood supplies a bounded chart representative.
+These two directions identify the entire bounded affine image with the
+true center inverse image. The argument assumes neither the center
+criterion nor an unrelated bounded affine coefficient action.
+\end{proof}
+
+\begin{theorem}[Closed affine pieces and their continuous model functions]
+\label{scheme:closed-bounded-affine-model-functions}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_boundedAffineImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_center_preimage_affine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuousOn_modelIdealNorm_boundedAffineImage,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuousOn_modelIdealLog_boundedAffineImage}
+\leanok
+\uses{scheme:separated-native-hausdorff,scheme:compact-bounded-native-affine-images,
+scheme:proper-center-bounded-affine-criterion,scheme:native-model-ideal-generators}
+The genuine bounded affine image is closed for every separated structure
+morphism to the affine base. On a proper model it is the true center
+inverse image. If an actual ideal-sheaf-data ideal $I(U)$ has specified
+finite generators, the intrinsic model norm and logarithm are continuous
+on this closed affine image.
+\end{theorem}
+\begin{proof}
+The independently proved native Hausdorff property makes each genuinely
+compact bounded affine image closed. The actual center criterion gives
+its center interpretation. Every point of this piece is an actual
+center-neighborhood point, so the previously proved intrinsic model norm
+formula equals the finite maximum of its generator section values.
+The genuine relative affine homeomorphism is continuous on the piece
+and preserves all sections. Continuous coordinate evaluation, finite
+maxima and the continuous inclusion into the extended nonnegative reals
+prove norm continuity on that piece. The actual continuous extended
+logarithm proves logarithmic continuity, including norm zero and
+negative infinity. No globally continuous center map is assumed.
+\end{proof}
+
+\begin{theorem}[Global continuous genuine model ideal functions]
+\label{scheme:continuous-native-model-ideals}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_modelIdealNorm_of_finite_affine_cover,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_modelIdealNorm_of_fg,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_modelIdealLog_of_fg}
+\leanok
+\uses{scheme:closed-bounded-affine-model-functions,scheme:proper-native-compactness}
+A genuine finite affine scheme cover on which the actual ideals have
+finite generators gives a globally continuous intrinsic model norm.
+In particular, if $I(U)$ is finitely generated for every actual affine
+open, its intrinsic model norm and logarithm are globally continuous.
+No noetherian hypothesis is needed when this finite generation is supplied.
+\end{theorem}
+\begin{proof}
+The actual scheme affine cover yields a cover of the whole native space
+by its genuine bounded affine images, because every true proper center
+lies in one member. The pieces are compact and closed, and the preceding
+result proves continuity of the same intrinsic function on each piece.
+A finite family is locally finite, so the genuine closed pasting theorem
+proves global continuity. The intrinsic stalk definition ensures the
+functions already agree on intersections, without chosen-generator
+compatibility assumptions.
+
+Proper quasi-compactness over the actual compact affine base supplies a
+real finite affine cover. Supplied finite generation chooses actual finite
+generators on those section rings. Apply the finite-cover theorem and
+then the continuous extended logarithm. No finite-type hypothesis on an
+arbitrary open section ring, analytic structure sheaf, or continuity
+certificate is introduced.
+\end{proof}
+
+\begin{theorem}[Actual center anti-continuity with explicit compact-open scope]
+\label{scheme:proper-center-anticontinuity}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_center_preimage_of_isCompact,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_center_preimage_of_noetherian,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpen_center_preimage_of_isClosed}
+\leanok
+\uses{scheme:closed-bounded-affine-model-functions}
+The true center inverse image of every quasi-compact actual scheme open
+is closed. If the underlying proper model is topologically noetherian,
+this holds for every scheme open; equivalently, every closed subset has
+an open center inverse image. No unrestricted anti-continuity assertion
+for arbitrary scheme opens is made.
+\end{theorem}
+\begin{proof}
+The genuine affine basis expresses each quasi-compact scheme open as a
+finite union of actual affine opens. Their center inverse images are
+closed by the preceding result. Preimages commute with the finite union,
+so the required inverse image is closed. On a topologically noetherian
+scheme every open is quasi-compact. Apply this statement to the open
+complement of a closed subset and take complements to obtain the genuine
+anti-continuity formulation. This uses topological noetherianity, not an
+unproved finite generator assertion for every section ring.
+\end{proof}
+
+\begin{theorem}[Open center inverse images of genuine finitely generated ideal supports]
+\label{scheme:fg-ideal-support-center-open}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_lt_one_iff_of_fg,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpen_center_preimage_idealSupport_of_fg}
+\leanok
+\uses{scheme:model-ideal-strict-center-criterion,scheme:continuous-native-model-ideals}
+If $I(U)$ is finitely generated on every actual affine open, then
+$\|I\|(y)<1$ holds exactly when the true model center of $y$ is in the
+actual ideal-sheaf-data support. This support has an open center inverse
+image even without a noetherian hypothesis on the model.
+\end{theorem}
+\begin{proof}
+Choose a real affine neighborhood of the true center and actual finite
+generators of its ideal. The independently proved finite-generator strict
+criterion identifies the intrinsic norm inequality with genuine ideal
+support membership. Global model norm continuity then makes its strict
+sublevel set below one open. The finite-generation hypothesis is essential
+for this converse: an infinite supremum of values strictly below one need
+not have a uniform strict gap. These statements concern the true model
+center, whereas vanishing of the model norm continues to detect the
+original native kernel support as proved earlier.
+\end{proof}

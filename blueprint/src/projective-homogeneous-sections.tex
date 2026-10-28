@@ -1,0 +1,69 @@
+\section{Original homogeneous forms as actual original projective line sections}
+
+\begin{lemma}[The whole original homogeneous fractions have the original scalar transitions]
+\label{lem:fc-original-homogeneous-form-coefficients}
+\leanok
+\lean{EnvelopeProperty.ProjectiveHomogeneousSections.fraction, EnvelopeProperty.ProjectiveHomogeneousSections.coefficient, EnvelopeProperty.ProjectiveHomogeneousSections.fraction_overlap, EnvelopeProperty.ProjectiveHomogeneousSections.coefficient_X, EnvelopeProperty.ProjectiveHomogeneousSections.coefficient_overlap}
+For every homogeneous polynomial $F$ of degree $d$ over an arbitrary coefficient
+ring, $F/X_i^d$ is an actual entire original coordinate-chart section.  On the
+entire original $i,k$ overlap these original sections satisfy
+$F/X_i^d=(X_k/X_i)^d(F/X_k^d)$, with the SAME original coordinate-transition unit.
+For a degree-one coordinate form the fraction is the literal original
+coordinate-hyperplane local equation, including the self-coordinate case.
+\end{lemma}
+\begin{proof}
+Construct the original fractions in the actual homogeneous localizations.
+The two genuine localization maps send $F/X_i^d$ and $F/X_k^d$ to fractions
+in the SAME localization of the product $X_iX_k$.  Equality after cross
+multiplication is the literal polynomial identity; the native localization
+equivalence proves equality even with zero divisors and nilpotents.
+The actual homogeneous away-to-section map gives the whole scheme section.
+Its native restriction naturality transports the preceding equality to the
+whole original overlap.  In degree one, the original hyperplane local-equation
+formula is exactly this same homogeneous fraction, so the unit in the overlap
+law is the actual original coordinate transition unit.
+\end{proof}
+
+\begin{theorem}[Every original homogeneous form constructs a global actual O(d) section]
+\label{thm:fc-original-homogeneous-form-section}
+\leanok
+\lean{EnvelopeProperty.ProjectiveHomogeneousSections.localSection, EnvelopeProperty.ProjectiveHomogeneousSections.localSection_overlap, EnvelopeProperty.ProjectiveHomogeneousSections.exists_section, EnvelopeProperty.ProjectiveHomogeneousSections.homogeneousSection, EnvelopeProperty.ProjectiveHomogeneousSections.section_restrict}
+\uses{lem:fc-original-homogeneous-form-coefficients}
+Every original homogeneous polynomial $F$ of degree $d\geq0$ constructs a
+genuine global section of the actual native coordinate-hyperplane twist
+$\mathcal O(d)$.  On EVERY whole original coordinate chart its restriction
+is precisely $F/X_i^d$ times the actual original coefficient-one line frame.
+No line-section certificate, finiteness of the coordinate index, or domain
+hypothesis is supplied.
+\end{theorem}
+\begin{proof}
+Multiply the preceding actual coefficient section by the actual original
+coefficient-one frame of the native positive twist on each original chart.
+The genuine original frame-transition theorem says that $(X_k/X_i)^d$
+times the restricted $i$-frame is the restricted $k$-frame.  Combining it
+with the preceding original scalar-transition law makes the whole local
+line sections equal on the whole original overlap.  The actual coordinate
+opens cover native projective space.  Genuine module-sheaf gluing therefore
+constructs a global actual section with exactly those original restrictions.
+The native gluing restriction identity gives the stated formula for every chart.
+\end{proof}
+
+\begin{lemma}[The original homogeneous section has its exact original line-frame coefficient]
+\label{lem:fc-original-homogeneous-form-frame-coefficient}
+\leanok
+\lean{EnvelopeProperty.ProjectiveHomogeneousSections.section_coefficient, EnvelopeProperty.ProjectiveHomogeneousSections.sectionHom}
+\uses{thm:fc-original-homogeneous-form-section}
+The actual original line-frame coefficient of this global section on the
+original $i$-chart is exactly the actual original scheme fraction $F/X_i^d$.
+The same global section defines a genuine whole morphism from the original
+structure line to the actual original $\mathcal O(d)$.
+\end{lemma}
+\begin{proof}
+Use the exact original restriction formula of the preceding theorem.
+The genuine inverse local frame sends $1$ to the coefficient-one frame;
+applying the actual frame to its scalar multiple returns the same original
+scalar by module linearity and the actual inverse identities.  Thus the
+coefficient is precisely $F/X_i^d$, without an identification assumption.
+The original module global-section/unit-Hom equivalence gives the genuine
+whole structure-line morphism attached to this same original global section.
+\end{proof}

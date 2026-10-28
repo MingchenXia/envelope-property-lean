@@ -1,0 +1,46 @@
+\section{Original frame comparisons with a common transition}
+
+\begin{lemma}[A common frame transition cancels]
+\label{lem:scheme-original-common-frame-transition}
+\uses{thm:scheme-original-module-isomorphism-gluing}
+\lean{EnvelopeProperty.SchemeModuleFrameGluing.frameComparison,EnvelopeProperty.SchemeModuleFrameGluing.frameComparison_eq_of_common_transition,EnvelopeProperty.SchemeModuleFrameGluing.frameComparison_restrict}
+\leanok
+If two pairs of original frames of two module sheaves differ by the same
+endomorphism of the original structure module, their coefficient-preserving
+comparison isomorphisms are equal. Restricting this comparison to a
+smaller open gives the comparison of the restricted original frames.
+\end{lemma}
+\begin{proof}
+Write the two frame pairs as $(e,g)$ and $(e',g')$ and the common
+transition as $c$, so $e=e'c$ and $g=g'c$. Postcompose the comparison
+$eg^{-1}$ and $e'(g')^{-1}$ with the monomorphism $g$. The first
+composite is $e$, and the second is $e'(g')^{-1}g=e'c=e$. Hence the
+comparisons agree. The equivalence between modules on the over-site
+of an open and modules on its original open subscheme transports this
+same equality. For restriction, the original over-site restriction
+functor preserves both compositions and inverses; the unit comparison
+inserted after the first restricted frame cancels its inverse before
+the second frame. The proved actual frame-restriction identity therefore
+gives exactly the comparison of the restricted original frames.
+\end{proof}
+
+\begin{theorem}[Matching original frame transitions construct a whole isomorphism]
+\label{thm:scheme-original-frame-gluing}
+\uses{lem:scheme-original-common-frame-transition,thm:scheme-original-module-isomorphism-gluing}
+\lean{EnvelopeProperty.SchemeModuleFrameGluing.glueOfFrames,EnvelopeProperty.SchemeModuleFrameGluing.glueOfFrames_restrict}
+\leanok
+Suppose two original module sheaves have actual frames on an actual open
+cover. If on every overlap both original frame systems have the same
+transition endomorphism, their coefficient-preserving local comparisons
+glue to an actual whole module isomorphism. Every restriction of this
+isomorphism is the original coefficient-preserving comparison.
+\end{theorem}
+\begin{proof}
+On each cover member compare the original frames by composing the first
+frame with the inverse of the second. On an overlap restriction is
+exactly the comparison of the original restricted frames. Their common
+transition cancels by the preceding lemma, so the two original local
+comparisons agree. The proved isomorphism gluing theorem constructs the
+whole original isomorphism and identifies its restriction with every
+prescribed original local comparison.
+\end{proof}

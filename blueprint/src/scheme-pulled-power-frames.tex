@@ -1,0 +1,104 @@
+\section{Whole original pullback-power frames and genuine factor triangles}
+
+\begin{lemma}\label{lem:fc-actual-power-frame-iso-naturality}
+\lean{EnvelopeProperty.SchemePulledPowerFrames.tensorFrame_naturality,EnvelopeProperty.SchemePulledPowerFrames.explicitTensorIso_naturality,EnvelopeProperty.SchemePulledPowerFrames.powerFrame_naturality}
+\leanok
+\uses{def:fc-actual-entire-power-frame,lem:fc-original-tensor-section-homs,lem:bundle-tensor-power-isomorphism,lem:cartier-actual-monoidal-explicit-tensor-naturality}
+For every actual original module isomorphism $a:P\simeq Q$ and
+actual whole frame $e:Q\simeq\mathcal O_X$, the actual explicit
+power isomorphism followed by $e^{[n]}$ equals the whole power
+frame of $ae$. The corresponding tensor-frame identity holds in
+both factors, including the genuine explicit tensor comparison.
+\end{lemma}
+\begin{proof}
+The tensor frame identity follows by composing the genuine tensor
+of the two preceding original isomorphisms with the tensor of the
+two frames: functoriality combines the two maps in each factor,
+while the final original structure-unit multiplication is the same.
+Naturality of the genuine explicit tensor comparison transports
+this whole identity to explicit original tensor sheaves. Induct
+on $n$. At zero both original maps are the identity structure
+frame. At a successor use the actual explicit tensor comparison,
+the preceding whole tensor identity, and the induction hypothesis
+in the first factor. This proves the actual entire power-frame
+identity without a supplied compatibility equation.
+\end{proof}
+
+\begin{definition}\label{def:fc-actual-pulled-power-frame}
+\lean{EnvelopeProperty.SchemePulledPowerFrames.pullbackPowerFrame,EnvelopeProperty.SchemePulledPowerFrames.pullbackPowerFrame_zero,EnvelopeProperty.SchemePulledPowerFrames.pullbackPowerFrame_succ}
+\leanok
+\uses{def:fc-actual-entire-power-frame,lem:bundle-tensor-power-pullback,lem:fc-actual-power-frame-iso-naturality}
+For any actual $f:Y\to X$ and actual entire frame $e:f^*M\simeq
+\mathcal O_Y$, the true native power pullback isomorphism followed
+by $e^{[n]}$ gives an entire frame of the same original $f^*(M^{\otimes n})$.
+At zero this is the actual native unit comparison. At each successor,
+it is the actual pulled explicit tensor comparison, followed by
+the inverse native tensorator and the genuine tensor frame of the
+preceding pulled power frame and $e$.
+\end{definition}
+\begin{proof}
+The stated composition consists of actual original module
+isomorphisms and therefore is an entire frame. Expand the native
+power pullback isomorphism at a successor. The true explicit tensor
+comparison on $f^*M$ cancels its inverse in the original power-frame
+recursion. Genuine tensor-frame naturality then combines the
+preceding pullback-power comparison with the previous original
+power frame in the first factor, giving exactly the asserted
+recursive whole frame. At zero the native pullback power
+comparison is the actual structure-unit comparison and the
+original zeroth power frame is the identity.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-actual-factor-frame-tensor-naturality}
+\lean{EnvelopeProperty.SchemePulledPowerFrames.frameViaFactor_naturality,EnvelopeProperty.SchemePulledPowerFrames.frameViaFactor_unit,EnvelopeProperty.SchemePulledPowerFrames.frameViaFactor_tensor,EnvelopeProperty.SchemePulledPowerFrames.frameViaFactor_explicitTensor}
+\leanok
+\uses{def:actual-line-frame-via-factor,lem:actual-line-frame-via-factor-composition,lem:fc-actual-power-frame-iso-naturality,lem:actual-center-generic-tensor-frame}
+For any actual factor triangle $ib=g$, transporting actual entire
+frames through $i$ commutes with any original module isomorphism,
+the native structure-unit frame and the genuine pulled tensor
+frame, including its original explicit tensor comparison.
+All native comparisons come from the actual triangle.
+\end{lemma}
+\begin{proof}
+The genuine factor comparison is the native pullback-composition
+isomorphism followed by the native comparison of equal scheme
+maps. Its naturality gives the whole module-isomorphism identity
+by canceling this comparison with its inverse. For the structure
+frame, genuine unit compatibility with composition and equal-map
+comparison gives the native unit frame on $g$. For the tensor
+frame, actual native pullback composition is monoidal, and the
+comparison of equal maps is monoidal by substitution. Their
+composite therefore preserves the genuine entire pulled tensor
+frame. The native monoidal comparison theorem gives the whole
+frame identity, with no frame-preservation hypothesis. Finally
+apply module-isomorphism naturality to the actual explicit tensor
+comparison and the preceding tensor identity. This proves the
+explicit-tensor statement.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-actual-pulled-power-frame-factor-coherence}
+\lean{EnvelopeProperty.SchemePulledPowerFrames.pullbackPowerFrame_factor,EnvelopeProperty.SchemePulledPowerFrames.pullbackPowerFrame_generic}
+\leanok
+\uses{def:fc-actual-pulled-power-frame,lem:fc-actual-factor-frame-tensor-naturality,thm:fc-generic-power-frame-true-norm}
+For every actual original triangle $ib=g$ and frame $e:b^*M\simeq
+\mathcal O$, transporting the genuine pulled power frame through
+$i$ equals the genuine pulled power frame through $g$ of the
+transported degree-one frame. These are equal entire original
+isomorphisms for all $n\geq0$. For the actual native residue map,
+the resulting whole pulled power frames are exactly the genuine
+native generic power frames. No factor, pullback, frame or power
+compatibility identity is an additional assumption.
+\end{theorem}
+\begin{proof}
+Induct on $n$. The structure-frame statement of the preceding
+lemma proves the zero case. At a successor, expand the actual
+pulled power-frame recursion. The preceding explicit-tensor
+factor identity moves the genuine factor transport past its
+native explicit comparison and tensor frame. The induction
+hypothesis identifies the previous original power frame; the
+other factor is the actual transported degree-one frame. This
+is exactly the successor recursion on $g$. For an actual residue
+map the same zero and successor recursions are precisely those
+of the native generic power frames. Induction therefore proves
+that entire frame identity as well.
+\end{proof}

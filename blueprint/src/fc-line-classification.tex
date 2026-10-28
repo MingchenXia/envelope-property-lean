@@ -1,0 +1,61 @@
+\subsection{Classification by nested discs}\label{subsec:fc-line-classification}
+
+\begin{definition}[The least linear value]\label{def:fc-least-linear-value}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcLeastLinearValue}
+\leanok
+\uses{conv:fc-line}
+For a point $x$ of the analytic affine line put
+$r(x)=\inf_{a\in F}|T-a|_x$. The set of linear values is nonempty and
+bounded below by zero, so this is a nonnegative real number.
+\end{definition}
+
+\begin{lemma}[An attained least value gives a Gauss point]\label{lem:fc-attained-linear-gauss}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_eq_gauss_of_least_linear_attained, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_least}
+\leanok
+\uses{def:fc-least-linear-value, lem:fc-linear-determination}
+If $|T-a|_x=r(x)$, then $x=\zeta_{a,r(x)}$. For every point $x$,
+inflation by radius $r(x)$ fixes $x$.
+\end{lemma}
+
+\begin{proof}
+For every $b$ one has $r(x)\le|T-b|_x$. The constant-distance inequality
+$|a-b|\le\max\{|T-a|_x,|T-b|_x\}$ therefore gives
+$|a-b|\le|T-b|_x$ if $|T-a|_x=r(x)$. The opposite ultrametric inequality
+gives $|T-b|_x\le\max\{r(x),|a-b|\}$; combining the two lower bounds
+proves equality with the linear value of $\zeta_{a,r(x)}$.
+Linear determination proves the first assertion. Inflation replaces each
+linear value by its maximum with $r(x)$, which leaves it unchanged, proving
+the second assertion by the same determination lemma.
+\end{proof}
+
+\begin{theorem}[Actual nested-disc classification]\label{thm:fc-nested-disc-classification}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_gauss_or_nested_discs}
+\leanok
+\uses{lem:fc-attained-linear-gauss, lem:fc-inflation-centre-independent}
+Every actual point $x$ is a Gauss point $\zeta_{a,r}$, or there exist
+$a_n\in F$ and strictly decreasing radii $r_n\to r(x)$ such that
+$|T-a_n|_x=r_n$, the analytic closed discs $D(a_n,r_n)$ are nested,
+the corresponding classical closed discs in $F$ have empty intersection,
+and $\zeta_{a_n,r_n}\to x$ in the analytic line.
+\end{theorem}
+
+\begin{proof}
+If the least linear value is attained, apply the preceding lemma. Otherwise
+the nonempty set of linear values has infimum $r(x)$ and does not contain
+its infimum. A subset of the nonnegative real line with this property has
+a strictly decreasing sequence of its elements converging to its infimum:
+choose successively an element smaller than the preceding one and than
+$r(x)+1/(n+1)$. Write these values as $r_n=|T-a_n|_x$.
+For $j\ge i$, the constant-distance inequality gives
+$|a_j-a_i|\le\max\{r_j,r_i\}=r_i$. Consequently, for any analytic point
+$y$ with $|T-a_j|_y\le r_j$, the ultrametric inequality gives
+$|T-a_i|_y\le\max\{r_j,|a_j-a_i|\}\le r_i$. This proves nesting;
+the identical inequality for field elements proves classical nesting.
+If $b$ belonged to all the classical discs, then
+$|T-b|_x\le\max\{|T-a_n|_x,|a_n-b|\}\le r_n$ for every $n$.
+Taking limits yields $|T-b|_x\le r(x)$, so $b$ attains the infimum,
+a contradiction. Thus their classical intersection is empty.
+Finally the inflation endpoint identity and centre independence give
+$H_0(x,r_n)=\zeta_{a_n,r_n}$. Continuity in the radius gives convergence
+to $H_0(x,r(x))=x$, as required.
+\end{proof}

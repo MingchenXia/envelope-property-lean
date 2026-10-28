@@ -1,0 +1,164 @@
+\section{The original native exterior differential after open restriction}
+
+For a morphism $f:X\to\operatorname{Spec}k$, write $\omega_f^{(n)}$
+for its $n$th exterior cotangent module. For $a:Z\to X$, write
+$d_a:a^*\omega_f^{(n)}\to\omega_{f\circ a}^{(n)}$ for the actual
+exterior pullback differential. No smoothness or invertibility of these
+modules is implicit. In the formulas below, $u;v$ means first $u$, then $v$.
+
+\begin{lemma}[The original inverse pullback differential square]
+\label{lem:kn-native-restricted-differential-inverse-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.fixed_pullback_differential_square}
+\uses{lem:kn-blowup-canonical-whole-forward-square}
+\leanok
+Let $k$ be a field and let
+$g:A\to X$, $\pi:Y\to X$, $p:B\to A$, and $v:B\to Y$
+be arbitrary scheme morphisms with an actual equality
+$w:g\circ p=\pi\circ v$. Fix $f:X\to\operatorname{Spec}k$ and $n\geq0$.
+The native pullback-composition and equality comparisons give
+\[
+ \chi:p^*g^*\omega_f^{(n)}\simeq v^*\pi^*\omega_f^{(n)}.
+\]
+Let $H:\omega_{f\circ\pi\circ v}^{(n)}\to
+\omega_{f\circ g\circ p}^{(n)}$ be transport along the original
+commuting square and associativity equalities. Then
+\[
+ v^*d_\pi;d_v;H=\chi^{-1};p^*d_g;d_p.
+\]
+Here $\chi^{-1}$ is the original composition comparison for $v,\pi$,
+the inverse comparison for $w$, and the inverse composition comparison
+for $p,g$, in that order.
+\end{lemma}
+\begin{proof}
+Apply the whole forward native differential square with its two sides
+exchanged and equality $w^{-1}$. Equality elimination identifies the
+pullback congruence for $w^{-1}$ with the inverse of the original
+congruence for $w$. Compose the resulting equality with the inverse of
+its final associativity transport. Adjacent equality transports cancel;
+the remaining transports compose to the original field-structure
+equality defining $H$. The other path is exactly the displayed inverse
+word. Thus every differential, comparison and structural equality is
+the original one. No differential is inverted in this argument.
+\end{proof}
+
+\begin{lemma}[Restriction naturality for an original comparison word]
+\label{lem:kn-native-restricted-differential-word-naturality}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.composeOriginalInverseWord,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.pushed_square_after_native_comparison_original_indices,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.restriction_square_original_word_indices}
+\leanok
+Let $R,F$ be functors between categories and let $e:R\simeq F$ be a
+natural isomorphism. Suppose $d:M\to N$, $V:F(N)\to T_0$,
+$H:T_0\to T$, and $P:L\to T$ are morphisms. Let
+$W:F(M)\to L$ be the specified well-typed word $s;r;z;a$.
+If the original square satisfies
+\[
+ F(d);V;H=W;P,
+\]
+then
+\[
+ R(d);e_N;V;H=e_M;W;P.
+\]
+In particular the maps $s,r,z,a$ can be the individual original
+pullback-composition, equality and differential maps, with their original
+intermediate objects retained.
+\end{lemma}
+\begin{proof}
+Naturality gives $R(d);e_N=e_M;F(d)$. Associate the remaining composite
+and substitute the supplied square equality. Associativity yields
+$e_M;W;P$. Forming $W$ from its original individual arrows does not
+change this proof. This is a conditional categorical naturality lemma;
+the actual geometric square in the theorem below is produced by the
+preceding lemma.
+\end{proof}
+
+\begin{definition}[The fixed native comparison data on a whole chart]
+\label{def:kn-native-restricted-differential-chart-data}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.cartesianComparison,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.pullbackComparison,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.restrictedPulledDifferential,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.restrictedSourceDifferential,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.restrictedPulledIso,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.restrictedSourceIso,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.fixed_inverse_iso_word}
+\uses{sc0-open-differential:pullback-isomorphism,lem:kn-structure-trace-chart-cartesian}
+\leanok
+On an actual Cartesian whole chart, take $g$ to be its base open
+immersion and $v$ its source open immersion. Use the actual Cartesian
+restriction--pushforward isomorphism, the pullback comparison $\chi$
+above, and the fixed restriction--pullback isomorphism
+$\rho_v:\operatorname{Res}_v\simeq v^*$.
+The specified pulled and source differential maps are respectively
+\[
+ \rho_{v,\pi^*\omega_f^{(n)}};\chi^{-1};p^*d_g,
+ \qquad
+ \rho_{v,\omega_{f\circ\pi}^{(n)}};d_v;H.
+\]
+The fixed pulled and source comparison isomorphisms are separately
+constructed from the same specified native comparison data, using the
+actual open differential isomorphisms. For arbitrary composable
+isomorphisms, their inverse composite has the usual reversed inverse
+word. This construction and abstract inverse-word identity do not assert
+a further chart-specific identification of the displayed maps with
+the comparison homomorphisms.
+\end{definition}
+\begin{proof}
+The original Cartesian square gives its whole-module base-change
+comparison. Compose the native pullback-composition and square-equality
+isomorphisms to obtain $\chi$. The open-immersion differential theorem
+makes $d_g$ and $d_v$ isomorphisms. Use their actual isomorphisms in the
+specified native comparison words; define the displayed morphisms by
+the separately specified native maps. In an abstract category, expansion
+of the inverse composite uses $(abc)^{-1}=c^{-1}b^{-1}a^{-1}$, giving the
+generic inverse-word identity. These constructions choose no compatible
+pair of maps. The chart-specific homomorphism identification and the
+pushed differential square are separate comparisons.
+\end{proof}
+
+\begin{lemma}[Functorial assembly from specified comparison isomorphisms]
+\label{lem:kn-native-restricted-differential-functorial-assembly}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.finish_fixed_native_iso_square}
+\leanok
+Let $F_1,F_2,G_1,G_2$ be composable functors and
+$e:F_1F_2\simeq G_1G_2$ a specified natural comparison, with the
+composition convention that $F_1F_2$ first applies $F_1$.
+Suppose $d:A\to B$ and a given square
+\[
+ G_1(d);b=a;d'
+\]
+are supplied. Let $e_A,e_B$ be specified isomorphisms with homomorphisms
+$a,b$. If the specified target comparisons $T,S$ are exactly
+$e_A$ and $e_B$ transported through $e$ and $G_2$, respectively, then
+\[
+ F_2(F_1(d));S=T;G_2(d').
+\]
+\end{lemma}
+\begin{proof}
+Apply $G_2$ to the supplied square, using preservation of composition.
+Naturality of $e$ transports that equality to $F_1F_2$. Substitute the
+given identities for $S,T$ and for the homomorphisms of $e_A,e_B$.
+The result is the asserted equality. Its hypotheses include the square
+and the identities of the specified comparisons; this lemma alone does
+not supply those data for a geometric chart.
+\end{proof}
+
+\begin{theorem}[The actual restricted native differential square]
+\label{thm:kn-native-restricted-differential-general-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.NativeDifferentialSquareData.general_restricted_differential_square}
+\uses{lem:kn-native-restricted-differential-inverse-square,lem:kn-native-restricted-differential-word-naturality}
+\leanok
+In the arbitrary scheme square of the first lemma, assume only that
+$v$ is an open immersion. For the original restriction functor and its
+fixed comparison $\rho_v$ with pullback, the entire native square is
+\[
+ \operatorname{Res}_v(d_\pi);
+ \rho_{v,\omega_{f\circ\pi}^{(n)}};d_v;H
+ =
+ \rho_{v,\pi^*\omega_f^{(n)}};\chi^{-1};p^*d_g;d_p.
+\]
+The field, schemes, maps, commuting-square equality, exterior degree and
+every comparison are the original ones. No Cartesian hypothesis,
+smoothness, finite map, invertible differential or trace is required.
+\end{theorem}
+\begin{proof}
+The first lemma produces the original pullback differential square from
+the actual geometric commuting-square equality. Apply the restriction
+naturality lemma with $R=\operatorname{Res}_v$, $F=v^*$,
+$e=\rho_v$, and the original inverse word for $\chi^{-1};p^*d_g$.
+Its supplied square is precisely the one already produced in the first
+lemma. Therefore the conclusion is the displayed equality. The only
+extra geometric requirement is that $v$ be an open immersion, so that
+this fixed restriction comparison exists.
+\end{proof}

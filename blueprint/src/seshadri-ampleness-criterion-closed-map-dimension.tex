@@ -1,0 +1,32 @@
+\section{Dimension of a proper closed source}
+
+\begin{theorem}[Dimension drop for the original closed map]
+\label{thm:seshadri-original-proper-closed-map-dimension-drop}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionClosedMapDimension.closedImmersion_dimension_drop}
+\leanok
+\uses{lem:seshadri-proper-closed-dimension-drop}
+Let $j:Y\to X$ be an actual closed immersion of original schemes, with
+$X$ irreducible and $j$ not surjective. For a nonnegative integer $d$,
+if the original topological Krull dimension of $X$ is at most $d+1$,
+then the original topological Krull dimension of $Y$ is at most $d$.
+In particular this applies to the integral schemes in the lower-dimensional
+Nakai induction. Integrality of $Y$, projectivity, a base field, and an
+incoming comparison of dimensions or point closures are not needed.
+\end{theorem}
+\begin{proof}
+The native closed-immersion theorem makes the underlying original map
+$j$ a closed embedding. Form the actual closed subset
+$Z=\operatorname{range}(j)$ of $X$, with its original subtype topology.
+If $Z=X$, every original point of $X$ would have a preimage under $j$,
+contrary to the assumed nonsurjectivity. Thus $Z$ is a proper closed subset.
+
+The native embedding of this same $j$ constructs its actual homeomorphism
+$Y\simeq Z$. The existing homeomorphism invariance of topological Krull
+dimension gives $\dim Y=\dim Z$. Apply the already proved proper-closed-set
+dimension-decrease theorem to this literal $Z\subsetneq X$ and the
+original bound $\dim X\leq d+1$. It yields $\dim Z\leq d$.
+Combining these two actual conclusions gives $\dim Y\leq d$.
+The strict-chain dimension argument and the topological homeomorphism
+criterion are reused without reproof. No new image scheme, chosen
+point-closure comparison, or target-dimension certificate is assumed.
+\end{proof}

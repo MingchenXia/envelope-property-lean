@@ -1,0 +1,91 @@
+\section{Decreasing limits under the envelope property}
+\label{sec:ep-decreasing-limits}
+
+This section supplies the arbitrary-class decreasing-limit step separately from
+the homogeneous decreasing-limit theorem. The envelope property is used only
+at the limiting class. On unibranch models it is supplied by the main theorem,
+with the same mathematical inputs as that theorem.
+
+\begin{lemma}[Convex rays of decreasing limits]\label{lem:ep-limit-convex-rays}
+\lean{EnvelopeProperty.MultiModel.iInf_psh_ne_top, EnvelopeProperty.MultiModel.iInf_psh_le_triv, EnvelopeProperty.MultiModel.iInf_psh_triv_ne_bot, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_convex, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_ne_bot, EnvelopeProperty.MultiModel.convexOn_rayFun_iInf_psh}
+\leanok
+\uses{lem:gl-action-convex, lem:gl-scaling, thm:gl-fs-system-theory}
+\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:lem:actionconvex}
+Let $u_i\in\PSH(\mathcal X,\theta_i)$ decrease to $u\not\equiv-\infty$.
+Then $u\le u(\star)\in\R$. For every $v$, the function
+$g_v(t)=t u(t^{-1}v)$ on $t>0$ satisfies the convexity inequality and
+$g_v(t)\le t u(\star)$. It is either identically $-\infty$ or finite everywhere.
+\end{lemma}
+
+\begin{proof}
+The inequalities $u_i(v)\le u_i(\star)$ pass to infima. A point where $u$ is
+finite gives a finite lower bound for $u(\star)$; any one $u_i(\star)$ is a
+finite upper bound. Scaling by a positive real commutes with arbitrary
+infima. Thus $g_v$ is the decreasing limit of the convex rays of $u_i$.
+The convexity inequality passes to this limit: both summands avoid $+\infty$,
+so addition is continuous at their limiting values. If $g_v(t_0)>-\infty$,
+write $t_0$ as a convex combination of $t$ and $t_0^2/t$, with coefficients
+$t_0/(t+t_0)$ and $t/(t+t_0)$. A value $g_v(t)=-\infty$ would force
+$g_v(t_0)=-\infty$. Hence all ray values are finite.
+\end{proof}
+
+\begin{lemma}[Reconstruction of a decreasing limit]\label{lem:ep-limit-reconstruction}
+\lean{EnvelopeProperty.MultiModel.iInf_psh_eq_iSup_legendreSlice}
+\leanok
+\uses{lem:ep-limit-convex-rays, lem:gl-scaling, thm:gl-homog-decomposition}
+\source{fhx-envelope-20261028:eq:Legendre-reconstruction, bj22-trivval:thm:homogpsh}
+For the limit $u$ above, writing $b=u(\star)$ and
+$\hat u_\lambda=\inf_{t>0}t(u(t^{-1}\cdot)-\lambda)$, one has
+$u=\sup_{\lambda<b}(\hat u_\lambda+\lambda)$ pointwise.
+\end{lemma}
+
+\begin{proof}
+Evaluation at $t=1$ gives the upper bound. Fix $v$ with $u(v)>-\infty$.
+The preceding lemma makes $g(t)=t u(t^{-1}v)$ a finite convex function.
+Choose a supporting slope $c$ at $1$, so
+$g(t)\ge g(1)+c(t-1)$. The upper bound $g(t)\le tb$ forces $c\le b$:
+if $c>b$, choosing $t>\max(1,(c-g(1))/(c-b))$ contradicts the two bounds.
+For every $\epsilon>0$, put $\lambda=c-\epsilon<b$. The supporting inequality
+gives $g(t)-t\lambda\ge g(1)-c$ for all $t>0$, whence
+$\hat u_\lambda(v)+\lambda\ge g(1)-\epsilon$. Letting $\epsilon$ decrease
+to zero proves the lower bound. If $u(v)=-\infty$, the upper bound alone
+gives equality.
+\end{proof}
+
+\begin{theorem}[Decreasing limits under the envelope property]\label{thm:ep-decreasing-limits}
+\lean{EnvelopeProperty.MultiModel.legendreSlice_iInf, EnvelopeProperty.MultiModel.isPSH_of_antitone_of_hasEnvelopeProperty}
+\leanok
+\uses{lem:ep-limit-reconstruction, thm:nn-psh2-hom, cor:gl-pshhom, def:gl-psh}
+\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:thm:psh12}
+Suppose $\mathrm{EP}_{\mathcal X}(\theta)$ holds. If
+$u_i\in\PSH(\mathcal X,\theta_i)$ decrease to $u\not\equiv-\infty$ and
+$\theta_i\to\theta$, then $u\in\PSH(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+For $\lambda<u(\star)$ every $(\hat u_i)_\lambda$ is homogeneous psh of
+class $\theta_i$. Homogenization commutes with arbitrary infima, including
+the real translate by $-\lambda$, so these functions decrease to
+$\hat u_\lambda$. Homogeneous decreasing limits give
+$\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
+The translated slices form a nonempty family of $\theta$-psh functions,
+bounded above by the real number $u(\star)$. Their supremum is $u$ by the
+reconstruction lemma. The function $u$ is upper semicontinuous as an infimum
+of upper semicontinuous functions. Applying the envelope property therefore
+gives $u=u^\star\in\PSH(\mathcal X,\theta)$.
+\end{proof}
+
+\begin{corollary}[Decreasing limits on unibranch models]\label{cor:ep-unibranch-decreasing-limits}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch}
+\leanok
+\uses{thm:ep-decreasing-limits, thm:nn-main}
+\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:cor:unibranch-decreasing-stability}
+Under the hypotheses of the main theorem, the preceding decreasing-limit
+property holds at every real class on every unibranch model. This is
+\cite[Corollary~8.4]{FHX} on models.
+\end{corollary}
+
+\begin{proof}
+The main theorem supplies the envelope property at the limiting class.
+Apply the preceding theorem.
+\end{proof}

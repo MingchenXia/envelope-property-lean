@@ -1,0 +1,48 @@
+\subsection{Original product generators and genuine single-factor chart ratios}
+
+\begin{lemma}[Every original single-factor ratio occurs in the actual product chart]
+\label{algebra:actual-product-rees-chart-ratios}
+\lean{EnvelopeProperty.ReesProductRatios.productFamily,
+EnvelopeProperty.ReesProductRatios.productFamily_update_mul,
+EnvelopeProperty.ReesProductRatios.productFamily_ne_zero,
+EnvelopeProperty.ReesProductRatios.factor_ne_zero_of_productFamily_ne_zero,
+EnvelopeProperty.ReesProductRatios.ratios_update,
+EnvelopeProperty.ReesProductRatios.singleRatio_mem_fractionAlgebra}
+\leanok
+\uses{algebra:actual-rees-degree-zero-chart-equivalence}
+Let $I$ be a finite index type and let $G_i:J_i\to A$ be arbitrary ORIGINAL
+families over a commutative ring $A$.  Define the literal original product
+family $P_J=\prod_iG_i(J_i)$.  For EVERY actual coordinate replacement,
+\[
+ P_{J[i:=k]}G_i(J_i)=G_i(k)P_J.
+\]
+This whole original numerator identity needs no domain or nonzero assumption.
+If $A$ is a DOMAIN, nonzero factors give a nonzero product and a nonzero
+product has every selected factor nonzero.  If $P_J\ne0$, then in the SAME
+original fraction field
+\[
+ P_{J[i:=k]}/P_J=G_i(k)/G_i(J_i).
+\]
+Consequently every original single-factor ratio belongs to the ACTUAL
+$J$-chart fraction subalgebra of the ORIGINAL product-family Rees scheme.
+The individual index types $J_i$ need not be finite or nonempty; whenever a
+selection $J$ is present, all statements retain its actual original elements.
+\end{lemma}
+\begin{proof}
+Separate the $i$th factor from the finite product.  The dependent coordinate
+replacement has the same original factors at every other index, so the two
+displayed whole numerators are respectively
+$G_i(k)(\prod_{l\ne i}G_l(J_l))G_i(J_i)$ and
+$G_i(k)G_i(J_i)(\prod_{l\ne i}G_l(J_l))$; commutativity gives their equality
+over any commutative ring, including rings with zero divisors.
+
+Over the original domain, the actual finite-product nonzero criterion gives
+both nonzero assertions.  Injectivity of the original coefficient map into
+the SAME fraction field preserves nonzeroness of $P_J$ and $G_i(J_i)$.
+The whole numerator identity can therefore be divided by the two actual
+nonzero denominators, giving the exact original fraction equality.  Its left
+side is an ORIGINAL coordinate ratio, hence a generator of the true product
+chart's fraction-adjoin subalgebra.  Transport that membership through the
+whole equality.  No principalization, center, chosen cover, radical or
+fraction-comparison certificate is supplied.
+\end{proof}

@@ -1,0 +1,83 @@
+\section{Exact local gluing of global PL expressions}
+
+\begin{lemma}[Exact cutoffs in a dense rational lattice]\label{lem:lp-rational-lattice-cutoff}
+\lean{EnvelopeProperty.RationalFunctionLattice.exists_cutoff}
+\leanok
+Let $X$ be compact Hausdorff and $L\subseteq C(X,\R)$ a rational vector space containing the
+rational constants, closed under finite maxima and minima, and uniformly dense. If $x\in U$,
+with $U$ open, there is $b\in L$ with $0\le b\le1$, vanishing outside $U$, and equal to $1$
+on an open neighbourhood of $x$.
+\end{lemma}
+\begin{proof}
+Urysohn's lemma gives a continuous $\chi\colon X\to[0,1]$ with $\chi(x)=1$ and $\chi=0$ outside
+$U$. Choose $\tau\in L$ with $|\chi-\tau|<1/8$ and set
+$b=\max(0,\min(1,2\tau-1/2))\in L$. This function takes values in $[0,1]$.
+Outside $U$ we have $\tau<1/8$, hence $b=0$. At $x$, $\tau(x)>7/8$, so the open set
+$\{\tau>3/4\}$ contains $x$ and $b=1$ on that set.
+\end{proof}
+
+\begin{lemma}[The local membership property]\label{lem:lp-rational-lattice-sheaf}
+\lean{EnvelopeProperty.RationalFunctionLattice.mem_of_locally_mem}
+\leanok
+\uses{lem:lp-rational-lattice-cutoff}
+Under the same hypotheses, if a real function $f$ agrees near every point with an element of
+$L$, then $f\in L$.
+\end{lemma}
+\begin{proof}
+Choose $g_x\in L$ agreeing with $f$ on an open neighbourhood $U_x$ of $x$, and choose a cutoff
+$b_x$ as in Lemma~\ref{lem:lp-rational-lattice-cutoff}. The open sets where $b_x=1$ contain
+neighbourhoods of the corresponding points. Compactness gives finitely many such cutoffs,
+indexed by a nonempty finite set $I$, whose $1$-sets cover $X$. The function $f$ is continuous
+because it is locally continuous. Choose a positive rational $M$ bounding $|f|$ and all
+$|g_i|$, and put
+\[
+ G=\min_{i\in I}\{g_i+4M(1-b_i)\}\in L.
+\]
+At any point $y$, one $b_i(y)=1$ and the corresponding term equals $f(y)$.
+For every $i$ with $b_i(y)>0$, we have $y\in U_i$, so $g_i(y)=f(y)$ and the term is at least
+$f(y)$. If $b_i(y)=0$, the term is at least $-M+4M\ge f(y)$. Thus $G=f$.
+For the empty space the conclusion follows from $f=0$.
+\end{proof}
+
+\begin{corollary}[Local membership in global PL functions]\label{lem:lp-pl-sheaf}
+\leanok
+\lean{EnvelopeProperty.FSSystem.exists_isPL_cutoff,EnvelopeProperty.FSSystem.isPL_of_locally_isPL}
+\uses{lem:lp-rational-lattice-cutoff,lem:lp-rational-lattice-sheaf,lem:sg-pl}
+For a Fubini--Study system on a compact space whose global PL functions separate points,
+every function locally equal to global PL functions is globally PL. Such global PL functions
+also provide the exact cutoffs of Lemma~\ref{lem:lp-rational-lattice-cutoff}.
+\end{corollary}
+\begin{proof}
+Global PL functions form a rational vector space containing the rational constants and closed
+under maxima and minima. They are continuous and uniformly dense by
+Lemma~\ref{lem:sg-pl}. The two rational-lattice lemmas therefore apply, with every hypothesis
+supplied by these properties of the original Fubini--Study system.
+\end{proof}
+
+\begin{lemma}[Homogeneous logarithms are locally global PL]\label{lem:lp-log-germ}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.exists_isPL_log_germ}
+\uses{lem:sg-pl,lem:bj-fs-basic,def:pg-subvariety-fs,lem:pg-subvariety-fs-system}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+If $s$ is homogeneous and $|s(x)|\ne0$, then $\log|s|$ agrees near $x$ with a global PL function.
+\end{lemma}
+\begin{proof}
+Choose $c\in\Q$ below $\log|s(x)|$. The truncation $\max(\log|s|,c)$ is a finite rational
+Fubini--Study function, hence its real-valued restriction is global PL. On the open set
+$\{\log|s|>c\}$ it agrees with $\log|s|$.
+\end{proof}
+
+\begin{lemma}[Affine chart logarithms are locally global PL]\label{lem:lp-chart-log-germ}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.exists_isPL_chart_log_germ}
+\uses{lem:lp-log-germ,lem:wu-proj-chart}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+Let $x\in U_\sigma$ and $f\in A_\sigma$ with $|f(\iota_\sigma(x))|\ne0$. Then
+$\log|f|\circ\iota_\sigma$ agrees near $x$ with a global PL function.
+\end{lemma}
+\begin{proof}
+Write $f=\overline\tau/\overline\sigma^N$ with $\tau$ homogeneous of degree $N\deg\sigma$.
+Both $\tau$ and $\sigma$ are nonzero at $x$. Apply the preceding lemma to both homogeneous
+logarithms and take the difference $g_\tau-Ng_\sigma$. The chart valuation identity identifies
+this expression with $\log|f|$ on their common open neighbourhood in $U_\sigma$.
+\end{proof}

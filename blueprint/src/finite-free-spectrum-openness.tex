@@ -1,0 +1,179 @@
+\subsection{Actual openness of finite free seminorm-spectrum maps}
+\label{subsec:finite-free-spectrum-openness}
+
+\begin{lemma}[Original fractions approximate completed tensors in finitely many evaluations]
+\label{spectrum:actual-completed-tensor-fraction-approximation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.residueToH_eq_original_fraction,
+EnvelopeProperty.Berkovich.Spectrum.fractionTensor,
+EnvelopeProperty.Berkovich.Spectrum.fractionTensor_zero,
+EnvelopeProperty.Berkovich.Spectrum.fractionTensor_coefficient,
+EnvelopeProperty.Berkovich.Spectrum.fractionTensor_add,
+EnvelopeProperty.Berkovich.Spectrum.tensorPoint_val_tmul,
+EnvelopeProperty.Berkovich.Spectrum.exists_fractionTensor_approx}
+\uses{spectrum:completed-residue-field,spectrum:fibre-tensor-evaluation}
+Let $A\to B$ be any map of commutative rings, $x$ an actual real-valued
+seminorm of $A$, and $E=\mathcal H(x)\otimes_A B$. For every original
+tensor $e\in E$, positive $\epsilon$, and finite family of actual
+seminorms of $E$ restricting to the prescribed norm on $\mathcal H(x)$,
+there are actual $b\in B$ and $d\in A$, $|d|_x\ne0$, such that
+\[
+  \left|e-(d^{-1}\otimes b)\right|_z<\epsilon
+\]
+for every member $z$ of that family. Here $d^{-1}$ denotes the inverse
+of the actual image of $d$ in $\mathcal H(x)$, not an inverse assumed
+to exist in $A$ or $B$.
+\leanok
+\end{lemma}
+\begin{proof}
+Use actual tensor induction. The zero tensor has numerator zero and
+denominator one. For a true pure tensor $h\otimes b$, let $M$ be the
+finite supremum of the actual values $|1\otimes b|_z$. Density of the
+actual residue-field map $\kappa(x)\to\mathcal H(x)$ gives a genuine
+$q\in\kappa(x)$ approximating $h$ within an error strictly less
+than $\epsilon/(1+M)$. The whole prescribed coefficient identities
+and multiplicativity bound the error at every family member by the
+coefficient error times $M$, hence strictly below $\epsilon$.
+
+The actual fraction-field presentation of $\kappa(x)$ writes $q$ as
+$a/d$ for actual classes in $A/\operatorname{supp}(x)$ with nonzero
+denominator. Lift both classes to original elements of $A$; the
+nonzero denominator means exactly $|d|_x\ne0$. The true tensor
+balancing law transfers the numerator to the original $B$ element
+$ab$. This gives an actual original fraction, retaining the whole
+coefficient element rather than just a matching value.
+
+For a sum, approximate both summands at the same positive tolerance.
+The actual common denominator is the product of their two original
+denominators. Its image is nonzero by multiplicativity. The genuine
+balancing identity expresses the sum with numerator
+$b_1d_2+b_2d_1$ in the original algebra. Nonarchimedean subadditivity
+bounds the sum error by the maximum of the two strict errors. This
+proves the statement on every tensor without a tensor-density or
+approximation certificate.
+\end{proof}
+
+\begin{lemma}[A genuine original element peaks at the chosen finite fibre point]
+\label{spectrum:actual-finite-fibre-peak}
+\lean{EnvelopeProperty.ArtinianFactors.localIdempotent_map,
+EnvelopeProperty.Berkovich.Spectrum.exists_finite_fibre_peak}
+\uses{spectrum:actual-completed-tensor-fraction-approximation,spectrum:integral-completed-fibres,algebra:artinian-local-power-decomposition}
+Suppose $B$ is genuinely finite over $A$. If $y$ is an actual point
+of the whole seminorm fibre over $x$, there are actual $b\in B$,
+$d\in A$, $|d|_x\ne0$, such that
+\[
+ |b|_y=|d|_x,
+ \qquad |b|_z<\tfrac12|d|_x
+ \quad\text{for every other actual }z\text{ over }x.
+\]
+This peak is constructed; no element separating the branches is
+supplied as an input.
+\leanok
+\end{lemma}
+\begin{proof}
+The genuine finite completed fibre algebra $E$ is Artinian. The
+proved whole-point fibre classification identifies its actual
+maximal ideals with the original seminorm fibre. The actual
+maximal-power Chinese remainder decomposition supplies a genuine
+idempotent which is one in the factor of $y$ and zero in all other
+factors. The full kernel identities of the actual tensor evaluation
+maps show that its image in $\mathcal H(y)$ is exactly one and in
+all other $\mathcal H(z)$ is exactly zero. In particular its actual
+seminorm values are one and zero respectively.
+
+Apply the preceding proved original-fraction approximation to the
+actual finite family of fibre seminorms, with tolerance $1/2$.
+At the selected point, nonarchimedeanness and an error less than one
+force the approximating fraction to have value exactly one; at all
+other points its value is strictly less than $1/2$. The actual
+nonzero common denominator has the same value $|d|_x$ throughout the
+whole fibre. Multiply these exact inequalities by that positive
+value to obtain the original-element peak. Nilpotents and inseparable
+residue extensions remain in the genuine Artinian construction.
+\end{proof}
+
+\begin{lemma}[Continuous norm detects a branch above the original threshold]
+\label{spectrum:finite-free-norm-branch-detection}
+\lean{EnvelopeProperty.Berkovich.Spectrum.continuous_wgaussValuation_prod,
+EnvelopeProperty.Berkovich.Spectrum.normDisc,
+EnvelopeProperty.Berkovich.Spectrum.normDisc_eq_prod,
+EnvelopeProperty.Berkovich.Spectrum.continuous_normDisc,
+EnvelopeProperty.Berkovich.Spectrum.normDisc_eq_pow_of_forall,
+EnvelopeProperty.Berkovich.Spectrum.pow_lt_normDisc_of_exists,
+EnvelopeProperty.Berkovich.Spectrum.exists_branch_of_pow_lt_normDisc}
+\uses{spectrum:actual-finite-fibre-peak,spectrum:finite-free-weighted-norm}
+Assume additionally that the actual $A$-module $B$ is free, of finite
+rank $n$. For the constructed original $b,d$ above, the condition
+that the whole weighted Gauss norm of the genuine norm form of
+$(b,1)$ at radii $(1,|d|_{x'}/2)$ exceeds $(|d|_{x'}/2)^n$
+defines an actual open neighborhood of $x$. At every $x'$ in this
+neighborhood there is an actual fibre point $z$ with
+$|b|_z>|d|_{x'}/2$.
+\leanok
+\end{lemma}
+\begin{proof}
+The genuine norm form is one fixed polynomial with original $A$
+coefficients. Its weighted Gauss norm is the finite supremum of
+continuous coefficient evaluations times continuous radius powers,
+so it is continuous jointly with the actual base-dependent radius.
+The actual finite-free weighted norm formula gives its value as
+\[
+ \prod_{z\mapsto x'}\max(|b|_z,|d|_{x'}/2)^{m_z},
+\]
+where the actual positive local-length/residue-degree multiplicities
+sum to the original free rank $n$. At $x$ the constructed selected
+branch has $|b|_y=|d|_x>|d|_x/2$, all other branches contribute the
+threshold, and the selected multiplicity is positive. Thus the
+strict product inequality holds and, by continuity, persists on an
+actual open neighborhood. If no branch exceeded the threshold there,
+every factor would equal it and the rank-sum identity would make the
+product exactly the stated power, contradicting the strict inequality.
+No branch-existence or rank certificate is supplied.
+\end{proof}
+
+\begin{theorem}[Actual finite free maps of seminorm spectra are open]
+\label{spectrum:actual-finite-free-open-map}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_of_finiteFree,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isOpenMap_comap_of_finiteFree}
+\uses{spectrum:finite-free-norm-branch-detection,spectrum:actual-finite-fibre-peak,spectrum:integral-proper-map}
+For arbitrary commutative rings $A,B$ and an actual finite free
+$A$-algebra $B$, the genuine restriction map of real-valued
+multiplicative seminorm spaces is open. For every commutative
+coefficient ring $R$, prescribed seminorm $v$ of $R$, and compatible
+actual $R$-algebra actions, the genuine map of prescribed-base
+relative spectra is open as well. No field, completeness, finite
+presentation, separability, reducedness or coefficient bound is
+assumed as additional input.
+\leanok
+\end{theorem}
+\begin{proof}
+Let $U$ be any actual open set in the original seminorm spectrum of
+$B$, and $y\in U$ over $x$. Construct the genuine original $b,d$
+peaking at this whole fibre point. The actual set
+\[
+ C=(\operatorname{Spectrum}B\setminus U)
+   \cap\{z:|b|_z\ge |d|_{f(z)}/2\}
+\]
+is closed: the second condition compares continuous evaluations of
+original elements $b$ and the original image of $d$. Module
+finiteness makes the actual ring map integral, so its already proved
+proper/closed seminorm map sends this actual closed set to a closed
+set. The peak shows that $x$ is outside that image: every other
+branch is strictly below the threshold, and the chosen branch lies
+in $U$.
+
+Intersect the true open complement of that closed image with the
+actual open neighborhood supplied by the preceding continuous norm
+inequality. At every resulting base point, the genuine norm formula
+provides a branch above threshold. It cannot lie outside $U$, by the
+closed-image exclusion. Thus the resulting actual neighborhood of
+$x$ is contained in the whole image of $U$, proving openness.
+
+For any prescribed base, the full original coefficient square makes
+the relative source exactly the inverse image of the fixed base
+locus under the absolute map. Restrict the proved open map to that
+actual inverse image. The elementary whole image identity for an
+inverse-image restriction gives openness in the subspace topology.
+No extension of a separately prescribed coefficient seminorm, fibre
+bijection, analytic structure sheaf or curve-potential comparison is
+inferred from this open-map theorem.
+\end{proof}

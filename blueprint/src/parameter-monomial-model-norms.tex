@@ -1,0 +1,67 @@
+\subsection{Full actual monomial-model norms beyond Gauss lifts}
+
+\begin{lemma}[Original parameter-monomial values at every actual relative point]
+\label{local:actual-relative-parameter-monomial-value}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.val_parameterMonomial}
+\leanok
+\uses{projective:actual-relative-polynomial-restriction}
+For arbitrary commutative $R$, real valuation $v$, radius $r\ge0$ and
+ANY actual relative normalized projective point $x$ over the prescribed
+coefficient valuation $v_r$ on $R[t]$, let $\bar x$ be its actual original
+coefficient restriction. Then for every original form $F$ and $e\ge0$,
+$|C_*F\,C(t^e)|_x=|F|_{\bar x}r^e$. The point $x$ need not be the Gauss
+extension of $\bar x$.
+\end{lemma}
+\begin{proof}
+Use multiplicativity of the original valuation, its genuine prescribed
+coefficient condition on the entire polynomial $t^e$, and the actual
+Gauss values $v_r(t^e)=r^e$. The base-form factor is precisely the whole
+original coefficient-restriction value by definition.
+\end{proof}
+
+\begin{theorem}[Actual proper-center finite monomial norm formula]
+\label{local:actual-all-relative-monomial-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.modelIdealNorm_parameterMonomial_span}
+\leanok
+\uses{local:actual-relative-parameter-monomial-value}
+Assume the actual model coefficient valuation $v_r$ is bounded by one
+on every original element of $R[t]$. Let $J$ be any actual homogeneous
+ideal whose WHOLE underlying ideal equals the span of the original
+parameter monomials indexed by a finite $S$. At EVERY actual relative
+normalized projective point $x$ over $v_r$, the TRUE proper-center model
+norm of the genuine quotient-kernel ideal sheaf is
+$\max_{(F,e)\in S}|F|_{\bar x}r^e$, with the empty maximum zero.
+All zero generators and radius zero are allowed. No field,
+Noetherianity, chosen-center, Gauss-extension or nonvanishing hypothesis
+is imposed.
+\end{theorem}
+\begin{proof}
+The already proved whole projective proper-center comparison identifies
+the TRUE intrinsic sheaf norm with the actual entire ideal norm at $x$.
+Bounded prescribed coefficients and actual normalized coordinates bound
+every original polynomial at this point. Consequently the whole ideal
+norm is the genuine finite maximum on any finite generating set.
+Use the actual finite image of $S$ as generators, pull its finite maximum
+back through the image, and apply the preceding original monomial value
+identity to every original member. Thus the equality concerns the actual
+center norm, not a separately defined surrogate function.
+\end{proof}
+
+\begin{corollary}[True whole norm and logarithm depend on original restriction]
+\label{local:actual-monomial-model-gauss-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.modelIdealNorm_parameterMonomial_eq_GaussRestriction, EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.modelIdealLog_parameterMonomial_eq_GaussRestriction}
+\leanok
+\uses{local:actual-all-relative-monomial-model-norm, projective:actual-relative-polynomial-restriction}
+Under the same hypotheses, the TRUE center norm and TRUE extended
+logarithm at ANY original $x$ equal their values at the actual Gauss
+extension of the SAME original restriction $\bar x$. The logarithmic
+identity includes negative infinity and assumes no finite logarithm.
+\end{corollary}
+\begin{proof}
+Apply the genuine finite-maximum norm formula to $x$ and to the actual
+Gauss extension of $\bar x$. The actual restriction of the latter is the
+SAME entire point $\bar x$, so the two finite maxima agree term by term.
+Apply the actual extended logarithm to this equality. The proof uses the
+original monomial generators; equality solely on Gauss lifts is not used
+to infer equality at arbitrary relative points.
+\end{proof}

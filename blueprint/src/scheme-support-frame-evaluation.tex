@@ -1,0 +1,122 @@
+\section{Native support-frame coefficients and actual local section values}
+
+\begin{lemma}\label{lem:fc-support-factor-scalar-residue}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.factorFrameCoefficient,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.supportFactor_appTop}
+\leanok
+\uses{def:scheme-support-line-frame,lem:fc-native-unit-section-morphism,lem:fc-original-line-section-frame-naturality,scheme:actual-residue-section-pullback}
+Let $y$ be any actual native valued point of a scheme $Y$, and
+let $V$ be an original open containing its support. For the actual
+residue factor $q:\operatorname{Spec}\kappa_Y(y)\to V$, applying
+$q$ to a whole scalar section of $V$ and then using the genuine
+affine section isomorphism gives exactly the original residue
+evaluation of the corresponding section on $V\subseteq Y$.
+Moreover, for any actual factor $q b=h$ and actual original frame
+on $b^*N$, its transported frame applied to the native pullback
+of every original whole section is exactly the actual scheme
+pullback of that original frame's whole scalar coefficient.
+\end{lemma}
+\begin{proof}
+For the first identity, the actual whole triangle $q\iota=h_Y$
+gives the composition identity for local section maps. The open
+inclusion map identifies sections on $V$ with whole sections of
+its open subscheme. Following the composition identity by the
+genuine affine section isomorphism is the actual original residue
+evaluation formula. For the second identity, express each native
+pullback-unit section as the value at one of the actual pulled
+section morphism. Applying the given frame produces the actual
+scalar endomorphism of its value on one. The native factor-frame
+naturality theorem pulls this entire endomorphism through $q$.
+Genuine scalar pullback sends it to multiplication by the actual
+scheme pullback of its original scalar. Evaluate at one to obtain
+the asserted whole section coefficient identity.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-native-support-frame-section-evaluation}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.localCoefficient,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.supportFrame_coefficient,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.supportFrame_value}
+\leanok
+\uses{lem:fc-support-factor-scalar-residue,def:scheme-support-line-frame}
+Let $N$ be any original module on $Y$ and let
+$e_V:N|_V\simeq\mathcal O_V$ be an actual entire original frame.
+For every original whole section $\sigma$ of $N$, restrict it by
+the actual native pullback unit to the open subscheme and apply
+$e_V$. Regard the resulting scalar as the actual original section
+$a_\sigma$ of $\mathcal O_Y$ on $V$. Its native residue evaluation
+at $y$ is exactly the coefficient of $\sigma$ in the genuine
+support-induced residue frame. Consequently the actual native
+valuation of that coefficient equals the actual native section
+value $|a_\sigma(y)|$.
+\end{theorem}
+\begin{proof}
+The support-induced residue frame is the actual factor frame
+through $q$. The preceding factor-frame formula identifies its
+coefficient before the affine section isomorphism with the true
+pullback through $q$ of the actual open coefficient. The preceding
+scalar residue formula identifies the resulting scalar with the
+actual residue evaluation of $a_\sigma$. Apply the actual native
+residue valuation at $y$. By definition this is native section
+evaluation on $V$. Every original section is included, also zero;
+no properness, bounded base, frame matching or norm input occurs.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-native-open-frame-lift-evaluation}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.eval_openTopIso,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.supportFrame_value_of_openLift}
+\leanok
+\uses{thm:fc-native-support-frame-section-evaluation,scheme:valued-open-immersion-image}
+Let $z$ be any actual native point of the open subscheme $V$.
+The native value at its image in $Y$ of an original scalar section
+on $V$ equals its whole-section value at $z$. In particular, the
+support-frame coefficient value of an original whole section
+$\sigma$ at this image equals the value at $z$ of its actual
+whole scalar coefficient in $e_V$.
+\end{lemma}
+\begin{proof}
+The actual inverse section isomorphism for the open immersion
+preserves native evaluation. On the whole open subscheme its
+image open is $V$ and that genuine inverse section map is exactly
+the original open whole-section identification. This proves the
+first identity. Apply the preceding support-frame theorem to the
+image point and the actual coefficient section. The open
+whole-section identification and its inverse cancel, leaving
+exactly the true whole scalar coefficient at $z$.
+\end{proof}
+
+\begin{corollary}\label{cor:fc-native-laurent-support-frame-values}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.laurentSupportFrame,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.laurentSupportFrame_value,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.exists_laurentSupportFrame_values,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.exists_laurentSupportFrame_values_of_isInvertible,EnvelopeProperty.Berkovich.SchemeSupportFrameEvaluation.laurentSupportFrame_finite_family}
+\leanok
+\uses{lem:fc-native-open-frame-lift-evaluation,thm:fc-point-laurent-local-coefficient-value}
+For an original invertible $M$ on a proper compact separated
+$X\to\operatorname{Spec}R$, an actual bounded-base relative point
+$x$, any actual frame on a neighborhood $U$ of its true proper
+center, and every positive radius $r$, the actual product Gauss
+point lies in the original product frame open. The actual product
+frame there induces an entire original residue frame $e_0$ such
+that for every original whole Laurent-product section $\sigma$,
+\[
+ |c_{e_0}(\sigma)|=\max_i\|m_i\|_{M,x}r^i.
+\]
+Here the $m_i$ are its actual original Laurent coefficients and
+the norms are the true original proper-model line norms of their
+native residue-unit sections. One such entire residue frame works
+for every original section. Original invertibility itself supplies
+such a frame, without an open or local trivialization as an input. For every finite original family the
+same original finite coefficient and integer-weight family,
+chosen before all points and radii, computes its maximum.
+\end{corollary}
+\begin{proof}
+The actual product-open lift of the source Gauss point maps as a
+whole native valued point to the original product Gauss point.
+In particular its support is in the product frame open. Apply
+the preceding lemma to this actual lift and the genuine product
+local frame. Its true whole scalar coefficient is exactly the
+original product local coefficient. The native Laurent local
+coefficient theorem computes its value by the stated original
+weighted maximum, with every negative exponent and zero included.
+The entire support-induced frame has no section input, so it
+works for all original sections. For the version with no chosen local
+frame, the genuine invertible open cover contains the true proper
+center in one member; its actual frame supplies the preceding
+construction. Taking finite maxima and using
+the original finite Laurent coefficient-family theorem gives the
+same coefficient and integer-weight family before all points and
+radii. No frame, evaluation, point or norm comparison is assumed.
+\end{proof}

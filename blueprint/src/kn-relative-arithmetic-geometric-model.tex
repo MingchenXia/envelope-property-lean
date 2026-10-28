@@ -1,0 +1,56 @@
+\section{The arithmetic model remains projective over the modeled affine algebra}
+
+\begin{lemma}[A relative projective smooth arithmetic family]
+\label{lem:kn-relative-arithmetic-original-geometric-model}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticGeometricModel.exists_original_geometric_model}
+\uses{lem:kn-relative-arithmetic-original-projective-stage,lem:kn-relative-arithmetic-ambient-base-change}
+\leanok
+In the situation of the original-projective-stage lemma, there are
+an integer subalgebra $C\subset k$ of finite type, a finitely
+presented $C$-algebra $D$ with $k\otimes_C D\simeq R$, and an
+actual cartesian original-field square $X=Y\times_C k$ such that
+$Y\to\operatorname{Spec}C$ is smooth of relative dimension $n$
+and separated.  The same $Y$ has a projective morphism
+$Y\to\operatorname{Spec}D$ whose composite to
+$\operatorname{Spec}C$ is its original coefficient structure.
+There is a very ample line $T$ for this relative morphism whose
+whole pullback to the original $X$ is
+$j^*\mathcal O_{\mathbb P_R^d}(1)$.
+\end{lemma}
+\begin{proof}
+First fix a smooth closed arithmetic stage; the preceding stage producer
+supplies this stage from the original data.  Use its smooth closed model
+$Y$ in a coefficient extension of $\mathbb P_B^d$, and let $C$ be its actual finite
+coefficient subalgebra.  Put $D=C\otimes_A B$.  Finite
+presentation is stable under this base change, and tensor
+associativity, followed by the original $k\otimes_A B\simeq R$,
+gives $k\otimes_C D\simeq R$.  The ambient base-change lemma
+gives a relative projective map from
+$\mathbb P_B^d\times_A C$ to $\operatorname{Spec}D$, with very
+ample pulled-back $\mathcal O(1)$.  Identify the actual ambient
+stage with this cartesian product by its two original projections.
+Compose the produced closed embedding of $Y$ with that
+identification.  Restriction of the very ample line is very ample
+on $Y$; in particular the resulting map to
+$\operatorname{Spec}D$ is projective.  Its coefficient triangle
+is the original coefficient triangle because each cartesian
+identification preserves both projections.
+
+The ambient map to $\operatorname{Spec}C$ is separated: it is
+the base change of the composite of projective space over $B$
+with the affine map $\operatorname{Spec}B\to\operatorname{Spec}A$.
+Its closed subscheme $Y$ is therefore separated over $C$.
+Finally, the original recovery equation for the closed embedding
+identifies the original pullback of $T$ with the pullback of
+$\mathcal O(1)$ along $j$ followed by the original coefficient map
+$\mathbb P_R^d\to\mathbb P_B^d$.  The whole projective twist
+base-change isomorphism identifies this with the stated original
+$j^*\mathcal O(1)$.
+
+The stage coefficient algebra is first regarded as an $A$-subalgebra
+of $k$.  Restricting its scalars to $\mathbb Z$ gives the stated
+integer subalgebra with the same underlying ring.  Finite type is
+transitive over $\mathbb Z\to A$, and this identification preserves
+the spectrum, the tensor algebra, all four maps of the original
+cartesian square, and the entire recovered line isomorphism.
+\end{proof}

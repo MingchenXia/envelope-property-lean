@@ -1,0 +1,101 @@
+\section{Ample pullback on the whole finite covering scheme}
+\label{sec:kn-nadel-finite-ample}
+
+The auxiliary covering scheme may have several connected components.  Every
+construction in this section retains that whole scheme.
+
+\begin{lemma}[Very ample times generated on an arbitrary original scheme]
+\label{lem:kn-nadel-very-ample-generated-arbitrary}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmpleTensor.isVeryAmple_tensor}
+\leanok
+Let $R$ be a domain, let $p:W\to\operatorname{Spec}R$ be any scheme over $R$,
+let $A$ be a very ample line bundle for $p$, and let $B$ be an invertible
+sheaf with a finite generating family.  Then $A\otimes B$ is very ample
+for the same original morphism $p$.  No integrality or connectedness of
+$W$ is required.
+\end{lemma}
+\begin{proof}
+Choose the closed embedding $i:W\hookrightarrow\mathbf P^a_R$ and the
+identification $i^*\mathcal O(1)\simeq A$ supplied by very ampleness.
+The given generators of $B$ define a morphism $j:W\to\mathbf P^b_R$:
+on the open set where a generator trivializes $B$, its coordinate
+functions are the ratios of all the generators to that generator.
+These opens cover $W$, and the ratio identities show that the affine
+maps and their identifications of $\mathcal O(1)$ glue.  Thus
+$j^*\mathcal O(1)\simeq B$, with both maps over the original base.
+The graph map $(i,j)$ into
+$\mathbf P^a_R\times_R\mathbf P^b_R$ is a closed immersion: the second
+factor is separated, and the graph over the closed image of $i$ is
+closed.  Compose it with the Segre closed immersion.  The Segre
+identification of the pulled-back hyperplane bundle with
+$\mathcal O(1)\boxtimes\mathcal O(1)$ identifies its pullback with
+$A\otimes B$ on the entire original $W$.
+\end{proof}
+
+\begin{lemma}[The whole finite pushforward preserves coherence]
+\label{lem:kn-nadel-finite-pushforward-coherent}
+\lean{EnvelopeProperty.Vanishing.NadelFinitePushforward.sections_finite,EnvelopeProperty.Vanishing.NadelFinitePushforward.isFiniteType}
+\leanok
+If $\pi:W\to X$ is finite and $M$ is a finite-type quasicoherent
+$\mathcal O_W$-module, then the actual module $\pi_*M$ is quasicoherent
+and of finite type on $X$.
+\end{lemma}
+\begin{proof}
+For an affine open $U=\operatorname{Spec}D$ in $X$, its whole inverse
+image is $\operatorname{Spec}C$ for a finite $D$-algebra $C$.
+The module $M(\pi^{-1}U)$ is finite over $C$, hence finite over $D$:
+the pairwise products of a finite $D$-generating family of $C$ and a
+finite $C$-generating family of that module generate over $D$.
+Quasicoherence of the affine pushforward identifies these actual
+sections, with their original $D$-action, with $(\pi_*M)(U)$.
+The local criterion for finite type on the affine open cover of $X$
+therefore proves the assertion for the entire pushforward.
+\end{proof}
+
+\begin{lemma}[The actual affine counit is surjective]
+\label{lem:kn-nadel-affine-counit-epi}
+\lean{EnvelopeProperty.Vanishing.NadelAffineCounitCore.sectionsMap_eq_of_top,EnvelopeProperty.Vanishing.NadelAffineCounitCore.hom_ext_of_generators,EnvelopeProperty.Vanishing.NadelAffineCounitCore.hom_ext_of_affine_top,EnvelopeProperty.Vanishing.NadelAffineCounitDetection.hom_ext,EnvelopeProperty.Vanishing.NadelAffineCounit.counit_epi}
+\leanok
+Let $\pi:W\to X$ be affine and let $M$ be a finite-type quasicoherent
+module on $W$.  The actual adjunction counit
+$\pi^*\pi_*M\to M$ is an epimorphism of whole original modules.
+\end{lemma}
+\begin{proof}
+On every affine inverse image $V=\pi^{-1}U$, $M|_V$ has a global
+generating family.  Consequently two maps from $M$ to any module are
+equal if their pushforwards are equal: equality on sections over each
+$V$ gives equality on every generating section, then on its entire
+free evaluation map, which is surjective.  Restrictions to these $V$
+cover $W$, so these equalities imply equality of the original maps.
+If two maps $a,b$ out of $M$ have equal composites with the counit,
+the adjunction hom-set bijection and its triangle identity give
+$\pi_*a=\pi_*b$.  The preceding detection proves $a=b$.
+This is precisely the right cancellation criterion for the counit
+to be an epimorphism.
+\end{proof}
+
+\begin{proposition}[Finite pullback of an ample line]
+\label{prop:kn-nadel-finite-ample-pullback}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmplePullback.isAmple_pullback}
+\leanok
+Let $k$ be a field, let $X$ be an integral projective $k$-scheme, and let
+$\pi:W\to X$ be finite, with $W$ projective over $k$.  If $L$ is ample
+on $X$, then the actual line $\pi^*L$ is ample on the whole $W$.
+\end{proposition}
+\begin{proof}
+Choose a very ample line $H$ on $W$.  The finite pushforward
+$\pi_*H^{-1}$ is coherent on $X$.  For all sufficiently large $m$,
+ample generation gives a finite generating family of
+$\pi_*H^{-1}\otimes L^m$.  Pulling that family back and using the
+projection formula gives generators of $H^{-1}\otimes\pi^*L^m$:
+the counit $\pi^*\pi_*H^{-1}\to H^{-1}$ is surjective.  To see the
+last assertion on each affine inverse image, it is the map
+$C\otimes_D M\to M$, $c\otimes v\mapsto cv$, whose image contains
+every $v$ as the image of $1\otimes v$.
+Apply Lemma~\ref{lem:kn-nadel-very-ample-generated-arbitrary} to $H$
+and $H^{-1}\otimes\pi^*L^m$.  The resulting very ample line is
+canonically $\pi^*L^m=(\pi^*L)^m$.  Taking $m$ positive proves the
+positive-power ampleness criterion.  Neither the generation argument
+nor the Segre embedding discards any component of $W$.
+\uses{lem:kn-nadel-very-ample-generated-arbitrary,lem:kn-nadel-finite-pushforward-coherent,lem:kn-nadel-affine-counit-epi}
+\end{proof}

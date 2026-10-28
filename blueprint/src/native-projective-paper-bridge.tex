@@ -1,0 +1,75 @@
+\subsection{The existing paper projective model and the actual native scheme}
+\label{subsec:native-projective-paper-bridge}
+
+\begin{theorem}[The paper model is the trivial-base normalized spectrum]
+\label{projective:paper-normalized-spectrum-bridge}
+\lean{EnvelopeProperty.ProjBerk.normalizedSpectrumHomeomorph,
+  EnvelopeProperty.ProjBerk.normalizedSpectrumHomeomorph_val,
+  EnvelopeProperty.ProjBerk.normalizedSpectrumHomeomorph_val_apply,
+  EnvelopeProperty.ProjBerk.normalizedSpectrumHomeomorph_mem_chartOpen,
+  EnvelopeProperty.ProjBerk.normalizedSpectrumChartHomeomorph,
+  EnvelopeProperty.ProjBerk.normalizedSpectrumHomeomorph_coordinateChartMap}
+\leanok
+\uses{spectrum:trivial-field-bridge,projective:general-relative-normalized-charts}
+For a trivially valued field $k$, the existing normalized graded model
+$\operatorname{ProjBerk}(k,n)$ is canonically homeomorphic to the general
+normalized projective spectrum above the trivial seminorm on $k$.
+Every polynomial value, every coordinate-open condition and the entire
+affine ratio-chart seminorm are preserved.
+\end{theorem}
+\begin{proof}
+The genuine affine homeomorphism between the existing affine
+analytification and the relative spectrum above the trivial field
+seminorm preserves the entire polynomial valuation. Restrict it to the
+actual gradedness and coordinate-normalization predicates, which depend
+on these same polynomial values. Reorder the fixed coefficient and
+normalization subtypes using the proved coefficient homeomorphism.
+Both maps retain the original valuation, so all polynomial evaluations
+and coordinate-open conditions agree. Restrict to each such open.
+The two whole ratio-chart maps are the pullbacks of the same genuine
+localized valuation under the same actual affine ratio homomorphism;
+localization extension and proof irrelevance identify them on every
+polynomial, proving the entire chart square.
+\end{proof}
+
+\begin{theorem}[The paper model has the genuine native projective interpretation]
+\label{projective:paper-native-projective-homeomorphism}
+\lean{EnvelopeProperty.ProjBerk.nativeHomeomorph,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_apply,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_support_toIdeal,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_point,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_chart,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_val_apply,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_eval_form_of_val_X_eq_one,
+  EnvelopeProperty.ProjBerk.nativeHomeomorph_log_form_of_val_X_eq_one}
+\leanok
+\uses{projective:paper-normalized-spectrum-bridge,projective:normalized-native-homeomorphism}
+The existing paper model is canonically homeomorphic to the actual native
+valued-point space of the genuine polynomial Proj scheme over the whole
+trivially valued base point. Its actual homogeneous prime support remains
+the full original polynomial seminorm kernel. Every actual coordinate
+polynomial section has the original affine chart value. For a homogeneous
+form $F$ of degree $d$, a coordinate of value one gives its native section
+$F/X_j^d$ the original normalized value of $F$. Its actual logarithm
+equals the existing paper function
+$\log|F|$, including zero and negative infinity.
+\end{theorem}
+\begin{proof}
+Compose the preceding genuine whole-valuation homeomorphism with the
+proved canonical native homeomorphism for the trivial coefficient
+seminorm. The canonical native point uses the actual degree-zero
+projective stalk and its actual residue field, so its support is the
+original homogeneous kernel. The full generic coordinate-chart square
+and the preceding whole affine specialization identify all actual
+polynomial section evaluations. Apply the genuine homogeneous-fraction
+value formula when the chosen coordinate has value one; its denominator
+has value one, giving the claimed form value. Applying the genuine
+extended logarithm proves equality with the existing logarithmic form
+function, including zero-valued forms.
+
+This proves the point-space and topology interpretation used by the
+existing paper projective interfaces. It preserves their field API. The
+actual projective residue field remains distinct from the generally
+larger affine-cone residue field. An analytic structure sheaf and the
+identification of coherent sheaf model ideals are separate constructions.
+\end{proof}

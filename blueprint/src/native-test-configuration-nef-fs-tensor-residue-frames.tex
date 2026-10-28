@@ -1,0 +1,51 @@
+\section{Actual tensor coherence of the induced residue frames}
+
+\begin{lemma}[The induced residue frame of the actual tensor]
+\label{lem:native-tc-nef-fs-induced-residue-tensor-frame}
+\leanok
+\uses{thm:actual-induced-residue-power-frame, lem:cartier-actual-pullback-inverse-tensorator-composition, lem:fc-actual-factor-frame-tensor-naturality}
+\lean{EnvelopeProperty.NativeTestConfigurationNefFSTensorResidueFrames.inducedResidueFrame_tensor}
+Let $g:Y\to Z$ be the original scheme map and $y$ an original valued
+point of $Y$.  Let $\alpha:g^*M\simeq N$ and $\gamma:g^*H\simeq K$
+be whole module isomorphisms.  Give the original residue fibres of $M,H$
+at $g(y)$ frames $e,d$, and frame the residue fibre of $M\otimes H$ by
+the actual inverse pullback tensorator followed by the tensor frame
+of $e,d$.  Then its frame induced through the actual tensor comparison
+$g^*(M\otimes H)\simeq N\otimes K$ is the inverse residue pullback
+tensorator followed by the tensor frame of the two individually induced
+original residue frames.
+\end{lemma}
+\begin{proof}
+The induced frame is the inverse pulled original isomorphism, the
+original residue pullback-composition comparison and the actual
+frame-via-factor construction through the residue field map.
+Frame-via-factor tensor coherence and monoidality of actual pullback
+composition identify the last two factors on the tensor with their
+individual tensor product.  The source inverse tensorator cancels
+the mapped source tensorator.  Naturality of the actual inverse
+residue pullback tensorator moves the two original isomorphisms to
+the individual tensor factors.  Naturality of the whole tensor
+frame then gives exactly the claimed induced frame.  Every map,
+residue field and isomorphism is the original one.
+\end{proof}
+
+\begin{lemma}[The original reference support frames commute with tensor]
+\label{lem:native-tc-nef-fs-reference-support-tensor-frame}
+\leanok
+\uses{lem:fc-actual-factor-frame-tensor-naturality, lem:fc-actual-power-frame-iso-naturality}
+\lean{EnvelopeProperty.NativeTestConfigurationNefFSTensorResidueFrames.supportGenericFrame_localPullbackTensor}
+For any original map $f:Y\to X$, original open $U\subset X$ with frames
+of $L,K$ and original support point $y\in f^{-1}U$, the reference support
+frame of the actual tensor frame on $L\otimes K$ equals the tensor of
+the two reference support frames.  The common preceding isomorphism is
+the pulled inverse tensorator of $f^*$ followed by the inverse residue
+pullback tensorator.
+\end{lemma}
+\begin{proof}
+Apply actual frame-via-factor tensor coherence first to the original
+local pullback frame and then to its original support-generic factor.
+Monoidality of the pullback-composition comparison supplies the
+intermediate inverse tensorator, and naturality of the whole frame
+construction moves the preceding module comparison through the support
+factor.  The two original reference frames are the remaining factors.
+\end{proof}

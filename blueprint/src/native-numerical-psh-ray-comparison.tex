@@ -1,0 +1,174 @@
+\section{Comparison of numerical and fixed-ray psh functions on an ample ray}
+\label{sec:native-numerical-psh-ray-comparison}
+
+Let $p:X\to\operatorname{Spec}k$ be projective with $X$ integral, let $L$ be
+an ample invertible sheaf and $a\ge0$.  A fixed-ray psh function of $(L,a)$ is
+an upper semicontinuous function, not identically $-\infty$, which is the
+pointwise limit of a decreasing net of functions in $\mathcal H(L,a_j)$ with
+$a_j\in\mathbb Q$ and $a_j\to a$.  By BJ22, Definition~4.1, a function of
+$\operatorname{PSH}(X,a[L])$ is instead a decreasing limit of varying-line
+Fubini--Study functions whose classes converge to $a[L]$ in $N^1(X)$.  This
+section proves that the two classes coincide.  The argument uses two standard
+results, recorded as hypotheses of the general statements; the second is
+proved below from the nef-plus-ample theorem:
+\begin{itemize}
+\item[(FD)] the real numerical space $N^1(X)$ is finite dimensional;
+\item[(K)] Kleiman's criterion: an invertible sheaf whose numerical class
+lies in the ample cone is ample.
+\end{itemize}
+
+\begin{lemma}[The ample cone is open]
+\label{lem:native-numerical-ample-cone-open-fd}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.isOpen_ampleCone_of_finiteDimensional}
+\leanok
+\uses{thm:native-numerical-line-family-maps,thm:native-numerical-curve-weak-vector-topology,thm:native-numerical-ample-family-openness}
+Assume (FD).  Then the ample cone is open in $N^1(X)$.
+\end{lemma}
+\begin{proof}
+Choose a basis $(e_i)$ of $N^1(X)$ and write each $e_i$ as a finite real
+combination of classes of invertible sheaves.  Collect all these sheaves into
+one finite family $(L_s)$, with coefficient map $F:\mathbb R^S\to N^1(X)$.
+Each $[L_s]$ lies in the range of $F$, hence so does each $e_i$, so $F$ is
+surjective.  The preimage under $F$ of the ample cone is open
+(the ample cone has a positive perturbation radius along every finite line
+family), and a surjective linear map onto a finite dimensional Hausdorff
+topological vector space is open.  Hence the ample cone, the image of its
+preimage, is open.
+\end{proof}
+
+\begin{definition}[Kleiman's criterion]
+\label{def:native-numerical-kleiman-criterion}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.NumericalAmplenessCriterion}
+\leanok
+\uses{def:native-numerical-ample-cone}
+We say that (K) holds for $p$ if every invertible sheaf on $X$ whose
+numerical class lies in the ample cone is ample.
+\end{definition}
+
+\begin{theorem}[Kleiman's criterion from nef plus ample]
+\label{thm:native-numerical-kleiman-from-nef-ample}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.numericalAmplenessCriterion}
+\leanok
+\uses{def:native-numerical-kleiman-criterion,thm:native-nef-plus-ample,thm:native-numerical-positive-ample-sums,thm:native-numerical-rational-ample-lines,thm:native-numerical-ample-classes,thm:fc-original-ample-line-positive-powers,thm:native-numerical-generated-line-sums,lem:native-numerical-line-tensor-power}
+If $X$ is integral, then (K) holds.
+\end{theorem}
+\begin{proof}
+Let $T$ be invertible with $[T]$ in the ample cone.  Write
+$[T]=\sum_ic_i[A_i]$ with finitely many ample $A_i$ and $c_i>0$, choose
+rationals $q_i$ with $c_i/2<q_i<c_i$, and choose an integer $d>0$ and an ample
+$B$ with $\sum_iq_i[A_i]=d^{-1}[B]$.  The sheaf $N=T^{\otimes d}\otimes B^\vee$
+has class $d[T]-[B]=\sum_id(c_i-q_i)[A_i]$, a positive combination of ample
+classes, hence nef.  By the nef-plus-ample theorem $N\otimes B$ is ample; it is
+isomorphic to $T^{\otimes d}$ by evaluation $B^\vee\otimes B\cong\mathcal O_X$.
+A line with an ample positive power is ample, so $T$ is ample.
+\end{proof}
+
+\begin{lemma}[Membership in a fixed ray from an ample difference class]
+\label{lem:native-numerical-ray-from-ample-class}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_mem_ampleCone}
+\leanok
+\uses{def:native-numerical-kleiman-criterion,cor:native-numerical-ray-realization-difference}
+\source{bj22-trivval:prop:FS}
+Assume (K).  Let $D=(M,m,\dots)$ be a nonzero varying-line datum and let
+$b\ge0$ be rational with $b[L]-[D]$ in the ample cone.  Then
+$\varphi_D\in\mathcal H(L,b)$.
+\end{lemma}
+\begin{proof}
+Write $b=u/v$ with $u\ge0$ and $v>0$ integers, and put $r=v$, $d=mu$.  The
+sheaf $A=L^{\otimes d}\otimes(M^{\otimes r})^\vee$ has class
+$mr(\frac{d}{mr}[L]-[D])=mv(b[L]-[D])$, a positive multiple of an ample class,
+so $A$ is ample by (K).  By
+Corollary~\ref{cor:native-numerical-ray-realization-difference},
+$\varphi_D\in\mathcal H(L,d/(mr))=\mathcal H(L,b)$.
+\end{proof}
+
+\begin{lemma}[A ray coefficient for every datum]
+\label{lem:native-numerical-ray-coefficient}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.exists_ray_coefficient}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,thm:native-numerical-ample-family-openness,lem:native-numerical-ample-cone-nef}
+Let $L$ be ample and $D=(M,m,\dots)$ a varying-line datum.  Then
+$t[L]-[D]$ is ample for some $t>0$.
+\end{lemma}
+\begin{proof}
+The ample class $[L]$ has a positive perturbation radius $\varepsilon$ along
+the one-line family $(M)$, so $[L]-\frac\varepsilon2[M]$ is ample.  With
+$t=(\frac\varepsilon2m)^{-1}$ we get
+$t[L]-[D]=t([L]-\frac\varepsilon2[M])$, a positive multiple of an ample class.
+\end{proof}
+
+\begin{theorem}[The net argument on an ample ray]
+\label{thm:native-numerical-psh-ray-net}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.isPSH_ray_of_antitone_net}
+\leanok
+\uses{lem:native-numerical-ray-coefficient,lem:native-numerical-ray-from-ample-class,def:native-line-whole-section-psh}
+\source{bj22-trivval:thm:pshample}
+Assume (K), let $L$ be ample and $a\ge0$.  Let $\varphi$ be upper
+semicontinuous, not identically $-\infty$, and the pointwise infimum of the
+decreasing functions of nonzero varying-line data $D_j$, $j\in J$ (a nonempty
+directed preorder), such that for every $\varepsilon>0$ the class
+$(a+\varepsilon)[L]-[D_j]$ is ample for all $j$ large enough.  Then $\varphi$
+is a fixed-ray psh function of $(L,a)$.
+\end{theorem}
+\begin{proof}
+Let $\ell=[L]$.  For each $j$ let $T_j$ be the set of real $t\ge a$ with
+$t\ell-[D_j]$ ample.  If $s\in T_j$ and $t>s$, then
+$t\ell-[D_j]=(s\ell-[D_j])+(t-s)\ell$ is ample, so $T_j$ is upward closed.  By
+Lemma~\ref{lem:native-numerical-ray-coefficient} and upward closedness, $T_j$
+is nonempty; it is bounded below by $a$.  Let $\sigma_j=\inf T_j$.  For
+$\varepsilon>0$ the hypothesis gives $a+\varepsilon\in T_j$, hence
+$\sigma_j\le a+\varepsilon$, for all $j$ large enough.
+
+Index a new net by $J\times\mathbf N$ with the product order, which is
+directed.  For $(j,n)$ choose a rational $b_{j,n}$ with
+$\sigma_j<b_{j,n}<\sigma_j+\frac1{n+1}$.  Some $t\in T_j$ satisfies
+$t<b_{j,n}$, so $b_{j,n}\in T_j$; in particular $b_{j,n}\ge a\ge0$ and
+$b_{j,n}\ell-[D_j]$ is ample, so $\varphi_{D_j}\in\mathcal H(L,b_{j,n})$ by
+Lemma~\ref{lem:native-numerical-ray-from-ample-class}.  The functions
+$\varphi_{D_j}$, indexed by $(j,n)$, decrease and have infimum $\varphi$.
+Finally $b_{j,n}\to a$: always $b_{j,n}\ge a$, and given $c>a$ put
+$\varepsilon=(c-a)/2$, choose $j_0$ with $\sigma_j\le a+\varepsilon$ for
+$j\ge j_0$ and $n_0$ with $\frac1{n_0+1}<\varepsilon$; for
+$(j,n)\ge(j_0,n_0)$ we get $b_{j,n}<a+\varepsilon+\frac1{n+1}<c$.
+\end{proof}
+
+\begin{theorem}[Comparison on an ample ray]
+\label{thm:native-numerical-psh-ray-comparison}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.isPSH_ray_of_isCurveWeakPSH,EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_iff_isPSH_ray}
+\leanok
+\uses{lem:native-numerical-ample-cone-open-fd,thm:native-numerical-psh-ray-net,def:native-numerical-curve-weak-psh,thm:native-numerical-curve-weak-psh-from-ray}
+\source{bj22-trivval:defi:psh,bj22-trivval:thm:pshample}
+Assume (FD) and (K), let $L$ be ample and $a\ge0$.  A function is curve-weak
+numerical psh of class $a[L]$ if and only if it is a fixed-ray psh function
+of $(L,a)$.
+\end{theorem}
+\begin{proof}
+A fixed-ray psh function is curve-weak numerical psh of class $a[L]$
+(Theorem~\ref{thm:native-numerical-curve-weak-psh-from-ray}).  Conversely, let
+$\varphi$ be the decreasing limit of the functions of nonzero data $D_j$
+with $[D_j]\to a[L]$.  For $\varepsilon>0$ the classes
+$(a+\varepsilon)[L]-[D_j]$ converge to the ample class $\varepsilon[L]$, and
+the ample cone is open (Lemma~\ref{lem:native-numerical-ample-cone-open-fd}),
+so they are eventually ample.  Apply
+Theorem~\ref{thm:native-numerical-psh-ray-net}.
+\end{proof}
+
+\begin{corollary}[Comparison on an ample ray, assuming only (FD)]
+\label{cor:native-numerical-psh-ray-comparison-fd}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_iff_isPSH_ray'}
+\leanok
+\uses{thm:native-numerical-psh-ray-comparison,thm:native-numerical-kleiman-from-nef-ample}
+Assume (FD), let $L$ be ample and $a\ge0$.  A function is curve-weak numerical
+psh of class $a[L]$ if and only if it is a fixed-ray psh function of $(L,a)$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:native-numerical-psh-ray-comparison}, with (K) supplied by
+Theorem~\ref{thm:native-numerical-kleiman-from-nef-ample}.
+\end{proof}
+
+\begin{remark}
+Combined with the comparison of fixed-ray and model psh functions for the
+model given by an embedding with $\mathcal O(1)|_X\cong L^{\otimes r}$, this
+identifies BJ22's $\operatorname{PSH}(X,a[L])$ with the model psh class of
+coefficient $a/r$, under (FD).
+\end{remark}

@@ -1,0 +1,50 @@
+\subsection{Whole coordinate sections of the original projective quotient}
+
+\begin{lemma}\label{lem:original-native-quotient-coordinate-sections}
+\uses{graded:native-polynomial-quotient-coordinate-ideal,graded:projective-homogeneous-quotient-ideal-sheaf,projective:native-scheme-coordinate-sections}
+\lean{EnvelopeProperty.ProjBerk.nativeQuotientCoordinateSectionsEquiv,EnvelopeProperty.ProjBerk.nativeQuotientCoordinateSectionsEquiv_pullback}
+\leanok
+Let $R$ be any commutative ring, let $J$ be any homogeneous ideal in
+$R[x_0,\ldots,x_n]$, and let $Z$ be the already defined kernel closed
+subscheme of the actual homogeneous-quotient projective morphism.
+For a coordinate $x_j$, let $U_j$ be its original standard affine open in
+$\mathbf P^n_R$, let $V_j$ be its inverse image under the actual inclusion
+$i:Z\to\mathbf P^n_R$, and put
+$B_j=R[u_i:i\ne j]$, with $D_j$ the image of the original $J$ under
+dehomogenization at $x_j=1$. There is an isomorphism of whole rings
+\[
+  \Phi_j:\Gamma(Z,V_j)\ \simeq\ B_j/D_j.
+\]
+For every original $p\in B_j$, if $e_j:B_j\simeq\Gamma(\mathbf P^n_R,U_j)$
+is the already constructed original coordinate-section isomorphism, then
+\[
+ \Phi_j\big(i^*(e_j(p))\big)=p\bmod D_j.
+\]
+In particular it preserves all original coefficient and coordinate classes.
+No primeness, relevance, reducedness, finite-generation or field assumption
+is imposed. Nilpotents of the original dehomogenized quotient are retained,
+and empty quotient charts are allowed.
+\end{lemma}
+\begin{proof}
+Write $K_j$ for the actual kernel sheaf ideal on $U_j$ and
+$C_j=\Gamma(\mathbf P^n_R,U_j)$. The existing whole-coordinate kernel
+comparison proves exactly $e_j^{-1}(K_j)=D_j$. Because $e_j$ is a ring
+isomorphism, it therefore induces the quotient isomorphism
+$\overline e_j:B_j/D_j\simeq C_j/K_j$, sending $[p]$ to $[e_j(p)]$.
+The existing subscheme-section theorem on the affine open $U_j$ gives the
+actual isomorphism
+$\alpha_j:\Gamma(Z,V_j)\simeq C_j/K_j$. Its actual original inclusion
+pullback is the quotient map followed by $\alpha_j^{-1}$, on every section
+of $C_j$. Define $\Phi_j=\overline e_j^{-1}\alpha_j$.
+For $p\in B_j$, first applying $\alpha_j$ to its original pullback yields
+$[e_j(p)]$, and then applying $\overline e_j^{-1}$ gives $[p]$.
+All maps are whole-ring maps; in particular no support-only or radical
+comparison occurs.
+\end{proof}
+
+\begin{remark}\label{rmk:original-native-quotient-sections-scope}
+This is a ring-section interface for the actual existing quotient kernel
+scheme. It is the input for identifying its chart fraction field and for
+transporting affine smoothness. Neither a function-field comparison nor an
+identification with all multiprojective alteration charts is asserted here.
+\end{remark}

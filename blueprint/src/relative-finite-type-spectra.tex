@@ -1,0 +1,123 @@
+\section{Finite type relative spectra and compact polydiscs}
+\label{sec:relative-finite-type-spectra}
+
+Let $R$ be any commutative ring, let $v:R\to\R_{\ge0}$ be a fixed
+multiplicative ultrametric seminorm, and let $A$ be a commutative $R$-algebra.
+The coefficient seminorm is fixed throughout; it need not be trivial or bounded
+by one on $R$.
+
+\begin{definition}[Coefficient bound]\label{spectrum:polynomial-coefficient-bound}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.coeffBound}
+\leanok
+For $p\in R[U_i:i\in I]$, set
+$C_v(p)=\max_{m\in\operatorname{supp}(p)}v(p_m)$,
+where the maximum of the empty support is zero.
+\end{definition}
+
+\begin{lemma}[Polynomial estimate with fixed coefficient seminorm]
+\label{spectrum:relative-polynomial-estimate}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.val_aeval_le_coeffBound_mul_pow,
+EnvelopeProperty.Berkovich.RelativeSpectrum.exists_abs_le_mul_pow_of_adjoin_eq_top}
+\leanok
+\uses{spectrum:polynomial-coefficient-bound,spectrum:relative}
+\source{fhx-envelope-20261028:lem:growth}
+Suppose $x\in\mathcal S_v(A)$, $M\ge1$, and $|z_i|_x\le M$ for every $i\in I$.
+Then for every $p\in R[U_i:i\in I]$,
+\[
+ |p(z)|_x\le C_v(p)M^{\deg p}.
+\]
+Consequently, if $S\subseteq A$ generates $A$ as an $R$-algebra, then
+for every $a\in A$ there are $C_a\in\R_{\ge0}$ and $d_a\in\mathbf N$
+such that $|a|_x\le C_aM^{d_a}$ for all $x\in\mathcal S_v(A)$ and $M\ge1$
+with $|s|_x\le M$ for all $s\in S$.
+\end{lemma}
+\begin{proof}
+For a monomial $p_mz^m$, the restriction to $R$ is $v$, so
+\[
+ |p_mz^m|_x=v(p_m)\prod_i|z_i|_x^{m_i}
+ \le C_v(p)M^{\sum_i m_i}\le C_v(p)M^{\deg p}.
+\]
+The last comparison uses $M\ge1$ and the total-degree bound for a monomial
+in the support. The ultrametric inequality bounds the finite sum by this
+same quantity. For the zero polynomial the sum and coefficient bound both
+vanish, so the estimate includes that case.
+For the consequence, express $a$ as a polynomial in the elements of $S$,
+which is possible by the generating assumption. Use that polynomial's
+coefficient bound and total degree for $C_a$ and $d_a$.
+\end{proof}
+
+\begin{theorem}[Compact generating polydiscs]
+\label{spectrum:relative-generating-polydisc}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isClosed_setOf_forall_abs_le,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isOpen_setOf_forall_abs_lt,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_setOf_forall_abs_le,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_setOf_forall_abs_le_finset}
+\leanok
+\uses{spectrum:relative-polynomial-estimate,spectrum:compact-relative-bounds,spectrum:relative}
+If $S\subseteq A$ generates $A$ as an $R$-algebra, then for every finite
+radius $r\in\R_{\ge0}$ the polydisc
+$D(S,r)=\{x\in\mathcal S_v(A):|s|_x\le r\text{ for every }s\in S\}$ is compact.
+The set $S$ may be infinite. For finite $S$, the corresponding strict
+inequality polydisc is open.
+\end{theorem}
+\begin{proof}
+For each $a\in A$, choose $C_a,d_a$ from the preceding estimate.
+On $D(S,r)$ this gives the finite coordinate bound
+$|a|_x\le C_a\max\{1,r\}^{d_a}$. The resulting all-coordinate bounded
+set is compact. The polydisc is closed because it is an intersection of
+closed evaluation inequalities, so it is a closed subset of that compact
+set. Strict inequalities give open sets; their finite intersection is open.
+\end{proof}
+
+\begin{theorem}[Local compactness and countable compact exhaustion]
+\label{spectrum:relative-finite-type-topology}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.exists_finset_adjoin_eq_top,
+EnvelopeProperty.Berkovich.RelativeSpectrum.instWeaklyLocallyCompactSpace,
+EnvelopeProperty.Berkovich.RelativeSpectrum.instLocallyCompactSpace,
+EnvelopeProperty.Berkovich.RelativeSpectrum.instSigmaCompactSpace}
+\leanok
+\uses{spectrum:relative-generating-polydisc}
+If $A$ is a finitely generated $R$-algebra, then $\mathcal S_v(A)$ is locally
+compact and $\sigma$-compact.
+\end{theorem}
+\begin{proof}
+Choose a finite generating set $S$. For a point $x$, choose
+$r=1+\max_{s\in S}|s|_x$. The strict polydisc of radius $r$ is an open
+neighbourhood of $x$, and its closure lies in the compact closed polydisc
+of that radius. This gives a compact neighbourhood at every point.
+The space is Hausdorff, so compact neighbourhoods give local compactness.
+The closed polydiscs $D(S,n)$ for $n\in\mathbf N$ are compact and cover
+the spectrum: the finitely many values $|s|_x$ have a finite maximum, which
+is bounded by some natural number. This is a countable compact exhaustion.
+For an empty generating set these arguments still apply, with finite
+maximum zero.
+\end{proof}
+
+\begin{corollary}[Proper and closed integral pullback]
+\label{spectrum:relative-integral-proper-map}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isProperMap_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedMap_comap_of_isIntegral}
+\leanok
+\uses{spectrum:integral-proper-map}
+Let $A,B$ be arbitrary commutative $R$-algebras and $\varphi:A\to B$ an
+integral $R$-algebra homomorphism. Then
+$\varphi^*:\mathcal S_v(B)\to\mathcal S_v(A)$ is proper and closed.
+Neither algebra needs to be finitely generated over $R$.
+\end{corollary}
+\begin{proof}
+Apply the general integral-pullback properness theorem, whose ultrafilter
+lifting proof requires no finite-generation or local-compactness assumption.
+Properness then implies closedness. The finite-type module imports these
+stronger producers, retaining the same public theorem names.
+\end{proof}
+
+\begin{remark}\label{spectrum:relative-finite-type-scope}
+\uses{spectrum:relative-polynomial-estimate,spectrum:relative-finite-type-topology,
+spectrum:relative-integral-proper-map}
+The coefficient factor $C_v(p)$ is essential for a nontrivial prescribed
+valuation. The finite-type statements construct the actual compactness and local
+compactness of relative spectra. The properness corollary uses the stronger
+general integral-map producer independently of those finite-type properties. They permit zero rings and empty relative spectra and require
+no field, triviality, or completeness assumptions. Countability of the
+coefficient ring is not needed for the countable compact exhaustion.
+\end{remark}

@@ -1,0 +1,108 @@
+\subsection{Actual harmonic expressions}\label{subsec:fc-line-harmonic}
+
+\begin{remark}[Touching holes and strong maxima]\label{rmk:fc-harmonic-touching}
+\uses{def:fc-standard-affinoid}
+\source{gr25-classically-psh:prop:harmonic.properties}
+The strong maximum principle is local, and extends to a connected component
+of the interior. It need not imply constancy on the whole closed affinoid
+when distinct open holes touch at a Gauss boundary point. Indeed, choose
+$0<r<|t|<s<R$ and set
+$U=D(0,R)\setminus(D^-(0,|t|)\cup D^-(t,r))$.
+The harmonic expression $\log|T-t|-\log|T|$ is at most zero on $U$ and
+equals zero at the nonboundary skeleton point $\zeta_{0,s}$, but is strictly
+negative at $\zeta_{t,r}$. The internal vertex $\zeta_{0,|t|}$ is a boundary
+point. Thus the whole-affinoid conclusion requires a different hypothesis;
+the local and interior-component formulations apply to the permitted data.
+\end{remark}
+
+\begin{definition}[Actual logarithmic harmonic functions]\label{def:fc-actual-harmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic}
+\leanok
+\uses{def:fc-standard-affinoid}
+For $c\in\R$ and $\gamma\in\R^m$, put
+$H_{c,\gamma}(x)=c+\sum_{j=1}^m\gamma_j\log|T-a_j|_x$.
+A real function on the actual subspace $U$ is harmonic if it equals the
+restriction of some $H_{c,\gamma}$. Coefficients are witnesses for the
+actual function; distinct witnesses may define the same function when
+boundary points coincide.
+\end{definition}
+
+\begin{lemma}[Continuity and skeleton invariance]\label{lem:fc-harmonic-retraction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.continuous_harmonicExpression, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.continuous, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_skeletonProjection, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.retraction_invariant, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_gauss}
+\leanok
+\uses{def:fc-actual-harmonic, thm:fc-radial-retraction}
+Every such function is continuous on $U$ and satisfies
+$H_{c,\gamma}(\tau_U(x))=H_{c,\gamma}(x)$.
+On a radius segment its exact profile is
+\[
+ H_{c,\gamma}(\zeta_{b,s})=
+ c+\sum_j\gamma_j\log\max\{|b-a_j|,s\}.
+\]
+\end{lemma}
+
+\begin{proof}
+On $U$, the $j$th linear value is at least the strictly positive hole radius
+$r_j$. Its logarithm is therefore continuous; finite real linear combinations
+remain continuous. The projection inflates by the capped minimum of the
+hole-coordinate values. This radius is at most every hole-coordinate value,
+so inflation leaves every such coordinate unchanged, and hence leaves the
+displayed function unchanged. The segment formula follows by evaluating each
+linear coordinate at the original Gauss point.
+\end{proof}
+
+\begin{lemma}[A constant piece away from finite Gauss centres]\label{lem:fc-harmonic-nongauss-constant}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eventually_eq_of_min_nongauss}
+\leanok
+\uses{def:fc-actual-harmonic, lem:fc-strict-residue-disc}
+At a point where all the finitely many hole coordinates are positive, choose
+one having the smallest value $s$. If the point is not the Gauss point with
+that hole centre and radius $s$, every harmonic expression is constant in
+an actual open neighbourhood of the point.
+\end{lemma}
+
+\begin{proof}
+Choose a strict residue disc $D^-(b,s)$ containing the point. Each original
+hole coordinate has value at least $s$, whereas $|T-b|<s$. Unequal-value
+ultrametric equality implies that each hole centre has distance from $b$
+equal to the corresponding coordinate value at the point. These distances
+are all at least $s$. At every point of $D^-(b,s)$, unequal-value equality
+therefore makes each hole coordinate equal to that same constant distance.
+All logarithms, and consequently their real linear combination, are constant
+throughout this open disc.
+\end{proof}
+
+\begin{lemma}[Local constancy at actual Gauss maxima]\label{lem:fc-harmonic-gauss-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eventually_eq_of_isLocalMax_gauss}
+\leanok
+\uses{def:fc-actual-harmonic, analytic:actual-original-unit-max-gauss-local-constancy}
+At a positive-radius actual Gauss point, a harmonic expression having a
+local maximum is constant in an actual open neighbourhood.
+\end{lemma}
+
+\begin{proof}
+Translate the Gauss centre to zero. Each logarithm becomes the real logarithm
+of the original rational unit $(T-(a_j-b))/1$ near the translated Gauss point;
+these units are nonzero there. Use the actual rational-unit finite-family
+collars and slopes. A local maximum makes every outward slope nonpositive.
+The slopes balance, so all are zero. The actual finite listed-branch collars
+and every unlisted residue branch then have the same function value. Their
+constructed open neighbourhood contains the Gauss point. Translating back
+gives the asserted open neighbourhood of the original point.
+\end{proof}
+
+\begin{theorem}[Local constancy at every actual maximum]\label{thm:fc-harmonic-local-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicExpression_eventually_eq_of_isLocalMax}
+\leanok
+\uses{lem:fc-harmonic-nongauss-constant, lem:fc-harmonic-gauss-maximum}
+At a point where every hole-coordinate value is positive, an actual harmonic
+expression having a local maximum is constant in an actual neighbourhood.
+\end{theorem}
+
+\begin{proof}
+If there are no holes, the expression is constant. Otherwise choose a
+smallest one of the finitely many positive coordinate values, say at site
+$a_j$ with value $s$. If the point is $\zeta_{a_j,s}$, apply the positive-radius
+Gauss maximum lemma. If it is different, the strict-residue constant-piece
+lemma applies. These two cases cover every original point, including
+radius-zero and nested-disc points.
+\end{proof}

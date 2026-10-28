@@ -1,0 +1,153 @@
+\subsection{Native scheme-valued points and genuine section evaluation}
+\label{subsec:native-scheme-valued-points}
+
+This point-space construction uses Mathlib schemes, their actual stalk residue
+fields, and genuine local sections. No analytic structure sheaf or universal
+analytification property is asserted.
+
+\begin{definition}[Native valued points]
+\label{scheme:valued-points}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_mul,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_eq_zero_iff,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_restrict}
+\leanok
+\uses{spectrum:valued-point-equivalence}
+For a scheme $X$, a valued point consists of $x\in X$ and a real multiplicative
+ultrametric valuation $\nu$ on the actual stalk residue field $\kappa_X(x)$.
+For $x\in U$ and a genuine section $s\in\mathcal O_X(U)$, its evaluation is
+$|s|=\nu(\operatorname{ev}_{U,x}(s))$.
+\end{definition}
+\begin{proof}
+Use the scheme's residue field and its germ-followed-by-residue evaluation ring
+map. Valuation multiplicativity and the ultrametric inequality apply to this
+actual ring map. Composing section restriction with a germ gives the same
+germ, so genuine section restriction preserves this evaluated value. Its value is zero precisely when the residue evaluation is
+zero, equivalently when $x$ is outside the section's scheme basic open.
+\end{proof}
+
+\begin{theorem}[Native pullback of valued points]
+\label{scheme:valued-point-pullback}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.map,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.map_point,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eval_map,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.evalTop_map,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.map_id,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.map_comp}
+\leanok
+\uses{scheme:valued-points}
+A scheme morphism $f:X\to Y$ maps the valued point $(x,\nu)$ to $f(x)$,
+with valuation pulled back along the actual residue-field map
+$\kappa_Y(f(x))\to\kappa_X(x)$. Evaluating a section of $Y$ at the image
+point equals evaluating its genuine section pullback at the original point.
+The construction obeys identity and composition on whole valued points.
+\end{theorem}
+\begin{proof}
+Pull back the valuation along the field map induced by the actual local stalk
+homomorphism. Naturality of the scheme evaluation map sends every local-section
+residue to the residue of its section pullback, so application of $\nu$ proves
+the evaluation identity. Actual residue-field identity and composition laws
+then prove equality of the whole valuations as well as their underlying points.
+\end{proof}
+
+\begin{theorem}[Actual affine residue-field comparison]
+\label{scheme:affine-valued-point-comparison}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.toValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.toValuedPoint_prime,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint_point,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.toValuedPoint_ofValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint_toValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.valuedPointEquiv,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.toValuedPoint_eval}
+\leanok
+\uses{scheme:valued-points,spectrum:valued-point-equivalence}
+For every commutative ring $A$, native valued points of the actual scheme
+$\operatorname{Spec}(A)$ correspond bijectively to $\operatorname{ValuedPoint}(A)$.
+The correspondence uses the actual scheme residue-field isomorphism with the
+prime's residue field, and preserves evaluation of all original-ring elements
+viewed as actual global sections under $\Gamma(\operatorname{Spec}A)\simeq A$.
+\end{theorem}
+\begin{proof}
+The actual scheme residue-field isomorphism identifies the field at a prime
+with the quotient fraction field. Pull a valuation back along the inverse
+isomorphism to obtain the algebraic valued point; pull it back along the forward
+isomorphism for the inverse construction. Inverse isomorphism identities prove
+both whole-point inverse laws. The algebra-map/residue-field-isomorphism
+compatibility identifies the original-ring element with the residue of its
+actual global section, proving the evaluation identity.
+\end{proof}
+
+\begin{theorem}[Global evaluation topology and continuous native maps]
+\label{scheme:valued-point-topology}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.sectionOpen,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.topologyGenerators,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpen_point_preimage,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpen_sectionOpen,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_point,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_eval,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_map,
+EnvelopeProperty.Berkovich.schemeValuedPointFunctor,
+EnvelopeProperty.Berkovich.schemeValuedPointProjection}
+\leanok
+\uses{scheme:valued-points,scheme:valued-point-pullback}
+Give native valued points the topology generated by inverse images of scheme
+opens under the point projection and by local-section evaluation inverse images
+of open subsets of $\mathbb R_{\ge0}$ within their domains. Projection to the
+scheme is continuous, evaluation on each open domain is continuous, and every
+scheme morphism induces a continuous map on native valued points. These
+actual maps define a functor from schemes to topological spaces, with point
+projection a natural continuous transformation to the underlying scheme space.
+\end{theorem}
+\begin{proof}
+The topology is generated by the displayed sets, so inverse images of support
+opens are open. A local evaluation inverse image on its domain is one of the
+generators; taking the subspace proves continuity of the local evaluation.
+For a scheme map, inverse images of support generators are generators from its
+actual open preimage. Evaluation naturality turns the inverse image of a local
+evaluation generator into the generator for the actual pulled-back section.
+Thus inverse images of every generator are open, proving continuity. The
+whole-point identity and composition laws define the actual topological functor;
+its point projection commutes with each underlying scheme map by construction.
+\end{proof}
+
+\begin{theorem}[Native affine evaluation homeomorphism]
+\label{scheme:affine-valued-point-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_toValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint_eval_algebraMap,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint_eval_const,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.ofValuedPoint_eval_of_const,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_ofValuedPoint,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.valuedPointHomeomorph,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.spectrumHomeomorph,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.toValuedPoint_map,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.spectrumHomeomorph_map}
+\leanok
+\uses{scheme:affine-valued-point-comparison,scheme:valued-point-topology,
+spectrum:valued-point-topology,scheme:valued-point-pullback}
+The actual affine valued-point equivalence is a homeomorphism between the
+native local-section topology and the original-ring evaluation topology.
+Composition gives an actual homeomorphism with the seminorm spectrum. Both
+comparisons commute with actual $\operatorname{Spec}(\varphi)$ for ring maps.
+\end{theorem}
+\begin{proof}
+Forward continuity follows because every original-ring value is the evaluation
+of its actual global section. For reverse continuity, the prime projection is
+already continuous. At any prime in a section's domain, the actual affine
+structure sheaf gives a basic neighborhood on which the section is a fixed
+fraction $a/f$, with $f$ outside every prime in that neighborhood. Restricting
+the original global sections commutes with their genuine residue evaluation.
+The equality $f(a/f)=a$ in that section ring thus gives the value of the section
+as $|a|/|f|$. This is a continuous function of original-ring evaluations on
+that nonzero-denominator neighborhood. At a point where the section value
+belongs to a specified open interval, this local ratio gives a neighborhood
+contained in the required evaluation inverse image. Hence all native topology
+generators have open inverse image. For an actual Spec map, scheme global
+evaluation naturality and the global-section identification send the section
+of $a$ to the section of $\varphi(a)$. Thus every original-ring evaluation
+agrees with ring-map pullback. The algebraic valued-point evaluation
+injectivity proves equality of whole points and the naturality of both
+comparisons. No equality of analytic structure sheaves
+or global gluing identification is used.
+\end{proof}

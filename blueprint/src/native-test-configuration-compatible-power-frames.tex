@@ -1,0 +1,83 @@
+\section{One original native frame transition controls every degree}
+
+\begin{definition}\label{def:native-tc-compatible-product-residue-frames}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productReferenceResidueFrame,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productModelResidueFrame,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productModelPowerResidueFrame,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productFrameTransitionUnit}
+\leanok
+\uses{def:scheme-support-line-frame,def:native-tc-product-original-line-iso,def:fc-induced-native-residue-frame,def:fc-original-frame-transition-unit}
+Fix an actual native point $y$ of the original product, an actual
+original open $U\subseteq X$ containing its projected support,
+an original frame $e_U$ of $L$ on $U$, and an actual residue frame
+$e_M$ of the original total line at the image of $y$. The
+reference residue frame $e_{\rm ref}$ is the actual support
+transport of the local product pullback of $e_U$. The model
+residue frame $e_{\rm mod}$ is the native induced frame through
+the original whole product line isomorphism. In degree $n$ use
+the original power frame of $e_M$ and the literal product power
+isomorphism to obtain $e_{{\rm mod},n}$. Define the single native
+unit $u$ to be the transition from $e_{\rm ref}$ to $e_{\rm mod}$.
+\end{definition}
+\begin{proof}
+The actual support point lies in the inverse-image open, so its
+native residue morphism factors through that open. The local
+product pullback of the actual original frame is a whole frame
+there; support transport therefore defines $e_{\rm ref}$. The
+original action and fibre-one data define the actual product
+line isomorphism, and native residue transport of $e_M$ through
+it defines $e_{\rm mod}$. Apply the same construction with the
+literal power isomorphism and the genuine pulled power frame of
+$e_M$ for each $n$. Two whole frames of the same native residue
+line differ by the actual unit obtained from their composite
+automorphism of the native structure sheaf. This is $u$, fixed
+before all degrees and all section evaluations.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-compatible-product-power-frames}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLinePowerIso_inducedResidueFrame,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productReferenceResidueFrame_power}
+\leanok
+\uses{def:native-tc-compatible-product-residue-frames,thm:native-tc-literal-product-power-coherence,cor:actual-induced-normalized-power-frame,thm:actual-support-local-pullback-power-frame}
+The reference frame in degree $n$, constructed from the same
+original $U,e_U$ by actual powers, and the actual model power
+frame each equal one common native residue pullback of the
+canonical product-projection power comparison, followed by the
+genuine pulled power frame of their corresponding original
+degree-one residue frame.
+\end{theorem}
+\begin{proof}
+The literal product power coherence identifies the original
+power isomorphism with the normalized canonical power of the
+original product line isomorphism. The actual induced normalized
+power theorem therefore identifies the model power frame with
+the stated common comparison followed by the pulled power of
+$e_{\rm mod}$. The support local pullback power theorem, applied
+to the actual product projection, identifies the reference power
+frame with exactly that same comparison followed by the pulled
+power of $e_{\rm ref}$. Both comparisons use the unchanged native
+residue morphism and the unchanged original product projection.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-frame-transition-unit-powers}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productPowerFrame_transitionUnit,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productFrameTransitionUnit_value_pos,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productPowerFrame_transitionUnit_value}
+\leanok
+\uses{thm:native-tc-compatible-product-power-frames,thm:fc-actual-power-frame-transition-units,lem:fc-original-frame-transition-positive-value}
+The actual native transition unit from the original reference
+power frame to the original model power frame is $u^n$ for all
+$n\geq0$. For every valuation $\nu$ of the actual product residue
+field, $c=\nu(u)>0$, and the value of this degree-$n$ transition
+unit is $c^n$. The unit and positive factor are fixed before
+every degree, original section and original finite family.
+\end{theorem}
+\begin{proof}
+Replace the two degree-$n$ frames using the preceding theorem.
+Transition units are unchanged when both frames are preceded
+by the same whole isomorphism, so cancel their common native
+product-projection power comparison. Expand their two pulled
+power frames and cancel the common native residue power pullback
+comparison as well. The remaining frames are the genuine entire
+power frames of $e_{\rm ref}$ and $e_{\rm mod}$. Their actual unit
+transition is the power of the original transition unit, hence
+$u^n$. A valuation is positive on a unit because a unit and its
+inverse multiply to one, and it carries powers to powers.
+Applying this to the actual unit equality proves the value
+identity, including degree zero. No global section in degree one
+is used to define the factor or establish its positivity.
+\end{proof}

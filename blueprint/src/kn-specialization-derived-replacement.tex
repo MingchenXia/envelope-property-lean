@@ -1,0 +1,101 @@
+\section{A finite-free replacement step in an original cochain complex}
+
+\begin{lemma}[Finite cokernel from finite homology and a finite next term]
+\label{lem:kn-derived-finite-cokernel}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReplacementStep.finite_cokernel}
+\leanok
+Let $A\xrightarrow f B\xrightarrow g C$ be an original complex over a
+Noetherian ring $R$.  If its actual middle homology and $C$ are finite
+$R$-modules, then $B/\operatorname{im}f$ is finite.
+\end{lemma}
+\begin{proof}
+The native homology is the kernel of the induced map
+$B/\operatorname{im}f\longrightarrow C$.  A submodule of the finite
+module $C$ is finite, and extensions of finite modules are finite.
+\end{proof}
+
+\begin{lemma}[An actual finite-free replacement step]
+\label{lem:kn-derived-free-replacement-step}
+\uses{lem:kn-derived-finite-cokernel}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReplacementStep.baseChangeHomologyIso}
+\leanok
+Assume in addition that $A$ and $B$ are flat.  There is a finite free
+module $E$, an actual map $e:E\to B$, and the actual pullback module
+\[
+ P=\{(a,x)\in A\oplus E\mid f(a)=e(x)\}.
+\]
+The module $P$ is flat, and the comparison
+\[
+ \bigl(P\longrightarrow E\xrightarrow{ge}C\bigr)
+   \longrightarrow
+ \bigl(A\xrightarrow f B\xrightarrow g C\bigr)
+\]
+given by the two projections, $e$, and the identity on $C$ induces an
+isomorphism on actual middle homology after every $R$-algebra base
+change.
+\end{lemma}
+\begin{proof}
+Choose a finite free cover of the now-proved finite module
+$B/\operatorname{im}f$ and lift it to $B$ by projectivity of $E$.
+The map $A\oplus E\to B$, $(a,x)\mapsto f(a)-e(x)$, is surjective.
+Its kernel is $P$.  Its flat target makes this sequence pure, so it
+remains short exact under every scalar extension; its flat source
+and target make $P$ flat.  The projection $P\to E$ consequently has
+the same actual cokernel as $f$ after every scalar extension.  The
+comparison fixes $C$ and commutes with the induced maps out of these
+cokernels, so it identifies their kernels, which are their native
+middle homology modules.
+\end{proof}
+
+\begin{lemma}[The preceding native homology is retained]
+\label{lem:kn-derived-free-replacement-lower}
+\uses{lem:kn-derived-free-replacement-step}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReplacementStep.baseChangeLowerHomologyIso}
+\leanok
+For an original incoming map $h:D\to A$ with $fh=0$, the actual
+map $D\to P$ is $d\mapsto(h(d),0)$.  The comparison
+$D\to P\to E\longrightarrow D\to A\to B$ induces an
+isomorphism on native middle homology after every algebra base change.
+Before base change it does so without a flatness assumption.
+\end{lemma}
+\begin{proof}
+The actual cycles in $P$ are precisely the pairs $(a,0)$ with $f(a)=0$.
+Purity identifies the scalar extension of $P$ with the kernel of the
+scalar-extended relation map.  Its two actual projections remain
+jointly injective and every original scalar-extended cycle has its
+constructed lift $(a,0)$.  Thus the native cycle comparison is an
+isomorphism.  The incoming comparison fixes $D$, so the native
+homology comparison is an isomorphism as well.
+\end{proof}
+
+\begin{lemma}[The following native homology is retained]
+\label{lem:kn-derived-free-replacement-upper}
+\uses{lem:kn-derived-free-replacement-step}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedReplacementStep.baseChangeUpperHomologyIso}
+\leanok
+For an original outgoing map $h:C\to D$ with $hg=0$, the comparison
+$E\to C\to D\longrightarrow B\to C\to D$ induces an isomorphism
+on native middle homology after every algebra base change.  This part
+does not require flatness of either original module.
+\end{lemma}
+\begin{proof}
+The jointly surjective map $A\oplus E\to B$ remains surjective
+under every scalar extension.  Applying $g$ kills its $f(A)$ part,
+so $ge$ and $g$ have exactly the same actual boundary image in $C$.
+The resulting native cokernel comparison is an isomorphism, and
+the comparison fixes the outgoing module $D$.  Their native kernel
+homology modules are therefore isomorphic.
+\end{proof}
+
+\begin{remark}[Use in the derived-section construction]
+\label{rmk:kn-derived-replacement-scope}
+These are constructed replacement steps at an arbitrary degree.
+Their finite iteration is supplied by
+Theorem~\ref{thm:kn-derived-finite-free-triples}.  The actual ordered
+coordinate section complex is produced in
+Lemma~\ref{lem:kn-derived-projective-coordinate-complex}; its
+geometric fibre cohomology interpretation is proved in
+Lemma~\ref{lem:kn-derived-geometric-fibre-cohomology}.  The arithmetic
+model application must still identify its original residue and
+generic canonical-twisted line modules.
+\end{remark}

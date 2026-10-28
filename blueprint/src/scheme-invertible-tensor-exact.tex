@@ -1,0 +1,38 @@
+\section{Exact tensoring by an actual invertible sheaf}
+
+\begin{lemma}[Tensoring by an inverse pair is an equivalence]
+\label{lem:scheme-invertible-tensor-equivalence}
+\lean{EnvelopeProperty.SchemeInvertibleTensorEquivalence.rightTensorEquivalence}
+\leanok
+In a braided monoidal category, suppose $L\otimes D\simeq\mathbf1$.
+Then tensoring on the right by $L$ is an equivalence, with inverse
+tensoring on the right by $D$.
+\end{lemma}
+\begin{proof}
+Associativity identifies the composite of the two functors with
+tensoring by $L\otimes D$. The given isomorphism and the right unitor
+identify this composite with the identity. Braiding gives the inverse
+pairing $D\otimes L\simeq\mathbf1$, so the reverse composite is also
+naturally isomorphic to the identity. These natural isomorphisms give
+the claimed equivalence.
+\end{proof}
+
+\begin{theorem}[An original line bundle gives exact tensoring]
+\label{thm:scheme-original-invertible-tensor-exact}
+\uses{lem:scheme-invertible-tensor-equivalence,lem:cartier-actual-canonical-dual-evaluation-isomorphism}
+\lean{EnvelopeProperty.SchemeInvertibleTensorEquivalence.invertibleTensorEquivalence,EnvelopeProperty.SchemeInvertibleTensorEquivalence.invertibleTensorEquivalence_functor,EnvelopeProperty.SchemeInvertibleTensorEquivalence.tensorRight_isEquivalence,EnvelopeProperty.SchemeInvertibleTensorEquivalence.tensorRight_shortExact}
+\leanok
+Let $X$ be a scheme and $L$ an invertible $\mathcal O_X$-module.
+Tensoring the original module sheaves with $L$ is an equivalence of
+the original module category. In particular, it takes every original
+short exact sequence to a short exact sequence.
+\end{theorem}
+\begin{proof}
+On each trivializing open of $L$, evaluation against its actual sheaf
+dual is multiplication of the structure sheaf, hence an isomorphism.
+Being an isomorphism is local, so the whole original evaluation
+$L\otimes L^\vee\simeq\mathcal O_X$ is an isomorphism. Apply the preceding
+lemma. An equivalence preserves kernels and cokernels, and preserves
+zero morphisms. Consequently it preserves the exactness and both
+endpoint mono- and epimorphisms of every original short exact sequence.
+\end{proof}

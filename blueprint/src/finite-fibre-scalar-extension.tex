@@ -1,0 +1,79 @@
+\subsection{Actual finite-fibre functions on scalar-extended morphisms}
+\label{subsec:finite-fibre-scalar-extension}
+
+\begin{theorem}[Genuine fibre multiplicities under algebra isomorphisms]
+\label{spectrum:finite-fibre-algebra-isomorphism}
+\lean{EnvelopeProperty.Berkovich.Spectrum.comap_algEquiv_base,
+EnvelopeProperty.Berkovich.Spectrum.completedMap_algEquiv_comm,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_algEquiv,
+EnvelopeProperty.Berkovich.Spectrum.localFinrank_congr,
+EnvelopeProperty.Berkovich.Spectrum.fibreNormMult_comap_algEquiv,
+EnvelopeProperty.Berkovich.Spectrum.pointFibreAlgEquiv,
+EnvelopeProperty.Berkovich.Spectrum.pointFibreAlgEquiv_apply_val,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedSum_algEquiv,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedProduct_algEquiv}
+\leanok
+\uses{spectrum:completed-fibre-base-change-support,
+algebra:maximal-localization-isomorphism,spectrum:completed-residue-field-pullback}
+An actual $A$-algebra isomorphism $B\simeq D$ preserves the whole base point,
+induces a genuine bijection of the analytic fibres, and preserves every
+finite-fibre local multiplicity. For module-finite $B/A$, arbitrary function
+weighted products and additive commutative-monoid weighted sums therefore
+agree after the actual pullback through the isomorphism.
+\end{theorem}
+\begin{proof}
+The actual coefficient identity proves base-point compatibility. Completed
+field functoriality proves that the composed field map agrees with the
+original $H(x)$-map. On every pure tensor, the tensor algebra isomorphism
+therefore takes the new completed fibre map to the old map followed by the
+genuine isometric completed field embedding; tensor induction proves this
+on the whole tensor algebra. Injectivity of that field embedding makes the
+old kernel exactly contraction of the new kernel through the tensor
+isomorphism. The actual maximal-localization algebra equivalence preserves
+local dimension, hence the true local-length times residue-degree weight.
+
+The genuine spectrum homeomorphism of the ring isomorphism restricts to
+an actual whole-point fibre bijection. Reindex the finite weighted sums by
+that bijection and use the just-proved weight equality. The additive type
+tag of an arbitrary commutative monoid turns this into the corresponding
+product identity. Finiteness of the target algebra is produced from the
+actual algebra isomorphism, rather than assumed as an extra certificate.
+\end{proof}
+
+\begin{theorem}[All function norms on the actual scalar-extended morphism]
+\label{spectrum:all-function-scalar-extension}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreWeightedSum_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedERealSum_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedProduct_scalarExtension}
+\leanok
+\uses{spectrum:finite-fibre-algebra-isomorphism,
+spectrum:all-function-finite-base-change,spectrum:scalar-extension-algebra-cancellation}
+Let $R,S,A,B$ be arbitrary commutative rings with the compatible coefficient
+and algebra maps, and assume only $B$ is finite over $A$. Give an actual
+point $x'$ of $S\otimes_RA$, with restriction $x$ to $A$. For every function
+$a$ on $\mathcal S(B)$ to a commutative monoid,
+\[
+ \prod_{y'\text{ over }x'}a(y'|_B)^{m_{y'}}
+ =\prod_{y\text{ over }x}a(y)^{m_y},
+\]
+where the new fibre is that of the \emph{actual} map
+$S\otimes_RA\to S\otimes_RB$. The analogous weighted sum holds for every
+additive commutative monoid, including every EReal function with its actual
+extended-real conventions. No flatness, freeness, projectivity, bijection
+between these scalar-extension fibres or extension-existence assumption is
+required.
+\end{theorem}
+\begin{proof}
+Set $C=S\otimes_RA$. The proved genuine tensor cancellation gives an
+actual $C$-algebra isomorphism
+$C\otimes_AB\simeq S\otimes_RB$, preserving every original element
+$1\otimes b$. The preceding theorem transports all weighted function sums
+through this actual isomorphism, using its own finite-fibre multiplicities.
+The whole original-element formula identifies the transported point
+restriction with the true right inclusion $B\to S\otimes_RB$.
+Apply the already proved arbitrary-function comparison for
+$C\otimes_AB/C$ and compose the two equalities. Multiplicative type tags
+prove the product case, while the unconditional EReal natural-scalar formula
+gives the stated extended-real sum. An actual $x'$ is provided throughout;
+this does not assert existence of such a point above every $x$.
+\end{proof}

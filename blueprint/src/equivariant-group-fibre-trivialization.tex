@@ -1,0 +1,51 @@
+\section{The entire equivariant unit-fibre trivialization}
+\label{sec:equivariant-group-fibre-trivialization}
+
+\begin{theorem}[An equivariant map to the regular group is a product]
+\label{thm:equivariant-group-fibre-trivialization}
+\lean{EnvelopeProperty.EquivariantGroupFibreTrivialization.normalize, EnvelopeProperty.EquivariantGroupFibreTrivialization.toFibre, EnvelopeProperty.EquivariantGroupFibreTrivialization.toFibre_inclusion, EnvelopeProperty.EquivariantGroupFibreTrivialization.fromProduct, EnvelopeProperty.EquivariantGroupFibreTrivialization.toProduct, EnvelopeProperty.EquivariantGroupFibreTrivialization.iso, EnvelopeProperty.EquivariantGroupFibreTrivialization.iso_hom_fst, EnvelopeProperty.EquivariantGroupFibreTrivialization.iso_inv_projection, EnvelopeProperty.EquivariantGroupFibreTrivialization.iso_hom_snd_inclusion}
+\leanok
+\source{bj22-trivval:sec:tc}
+In any Cartesian category, let a genuine group object $G$ act
+on $Z$, and let the original $p:Z\to G$ be equivariant for
+the regular multiplication action of $G$ on itself.
+Let $F\to Z$ be the \emph{specified original Cartesian fibre}
+of $p$ over the group unit. There is an internally constructed
+isomorphism of the entire original objects
+\[
+ Z\simeq G\times F,
+ \qquad z\longmapsto (p(z),p(z)^{-1}z),
+ \qquad (g,w)\longmapsto gw.
+\]
+Its first whole projection is exactly the original $p$;
+its second projection followed by the original fibre inclusion
+is exactly the inverse-parameter action on $Z$.
+No supplied trivialization, integrality or normality is assumed.
+\end{theorem}
+
+\begin{proof}
+All formulas below are morphisms in the original Cartesian
+category. They may be checked after composition with arbitrary
+original test objects, since their products and Cartesian
+fibres have their genuine universal properties.
+Define $n(z)=p(z)^{-1}z$ using the original action and group
+inverse. Equivariance gives
+$p(n(z))=p(z)^{-1}p(z)=1$ on the entire original object.
+The original Cartesian fibre universal property therefore
+gives a unique morphism $n_F:Z\to F$ whose composite with
+the original fibre inclusion is $n$. Define
+$a:Z\to G\times F$ by the two original components $p,n_F$,
+and define $b:G\times F\to Z$ by the original action.
+
+The original group action law gives
+$b(a(z))=p(z)(p(z)^{-1}z)=z$ on the entire original $Z$.
+For the other composite, equivariance gives $p(gw)=g$
+since $p(w)=1$ on the specified fibre. Also
+$p(gw)^{-1}(gw)=g^{-1}(gw)=w$. The first component and the
+original fibre inclusion therefore identify $a(b(g,w))$
+with $(g,w)$; the second fibre-base component is the unique
+morphism to the terminal object. Cartesian uniqueness gives
+the actual whole inverse equation. Thus $a,b$ are genuinely
+mutually inverse morphisms of the original objects, retaining
+both original projection equations as claimed.
+\end{proof}

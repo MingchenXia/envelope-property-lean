@@ -1,0 +1,213 @@
+\section{Original closed SNC strata and genuine transverse hypersurfaces}
+
+Let $E$ be the original finite SNC divisor family on the original smooth
+scheme $X/k$.  For each actual subset $s$ of its original component indices,
+form the actual closed stratum $X_s=V(\sum_{i\in s}I_{E_i})$.  The empty
+subset retains the whole original scheme.  These are scheme-theoretic
+intersections with their complete original ideal sheaves.
+
+\begin{lemma}[The actual original closed strata are smooth]
+\label{lem:kn-nadel-bertini-snc-strata}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncStrata.stratum,
+EnvelopeProperty.Vanishing.NadelBertiniSncStrata.mem_stratum_support_iff,
+EnvelopeProperty.Vanishing.NadelBertiniSncStrata.stratum_hasSncWith,
+EnvelopeProperty.Vanishing.NadelBertiniSncStrata.stratum_isRegular,
+EnvelopeProperty.Vanishing.NadelBertiniSncStrata.stratum_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniSncStrata.stratum_embedding_closed}
+\leanok
+Every actual closed stratum has simple normal crossings with the original
+family and is regular; over a perfect original field it is smooth.  Its
+composite with the original closed projective embedding is closed.
+\end{lemma}
+\begin{proof}
+At a point of the same actual stratum, every original selected component
+passes through that point.  The original SNC coordinates identify its
+whole original stalk ideal with the span of the image of those actual
+selected coordinate indices.  The actual ideal-sheaf supremum commutes
+with taking stalks.  This is the native SNC-with-stratum condition, proved
+from the original family's existing coordinates.  The native quotient by
+this subset of the regular parameters is regular, giving regularity of
+the actual whole stratum.  The native regular/smooth comparison over the
+original perfect field proves its actual structure map smooth.  Compose
+its actual closed zero-ideal inclusion with the original embedding.
+\end{proof}
+
+\begin{lemma}[A transverse original local equation retains all component parameters]
+\label{lem:kn-nadel-bertini-snc-transverse-local}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncLocal.cotangent_span_lift,
+EnvelopeProperty.Vanishing.NadelBertiniSncLocal.cotangent_notMem_span,
+EnvelopeProperty.Vanishing.NadelBertiniSncLocal.notMem_sq_sup_ker_of_image_notMem_sq,
+EnvelopeProperty.Vanishing.NadelBertiniSncLocal.exists_common_regularParameters}
+\leanok
+If $z_{c(i)}$ are the original component parameters through $x$ and an
+actual original hypersurface equation $h\in\mathfrak m_x$ has nonzero
+class modulo $\mathfrak m_x^2+(z_{c(i)})$, then those same original
+component parameters together with $h$ extend to one actual regular
+system of parameters of $\mathcal O_{X,x}$.
+\end{lemma}
+\begin{proof}
+The classes of the original component parameters in
+$\mathfrak m_x/\mathfrak m_x^2$ are linearly independent.  Membership of
+$[h]$ in their residue-field span would, by lifting every residue scalar
+and the native cotangent quotient, put $h$ in the displayed sum ideal.
+It therefore remains independent when adjoined.  Extend the resulting
+actual independent family to a cotangent basis and lift that basis by
+the native regular-local parameter-extension theorem, retaining every
+same original component generator and the original $h$.
+\end{proof}
+
+
+\begin{lemma}[Actual regular Cartier equations and zero-dimensional avoidance]
+\label{lem:kn-nadel-bertini-snc-regular-cartier}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncCartier.equation_notMem_sq_of_regular_quotient,
+EnvelopeProperty.Vanishing.NadelBertiniSncCartier.isSmoothDivisor_of_cartier_regular,
+EnvelopeProperty.Vanishing.NadelBertiniSncCartier.smoothDivisor_avoids_dimZero_point}
+\leanok
+In a regular local ring $R$, an actual nonzero principal equation $h$
+with regular actual quotient $R/(h)$ is outside $\mathfrak m^2$.
+Consequently an actual effective Cartier ideal $H$ on the original regular
+scheme, with regular actual zero scheme, is a genuine native smooth
+divisor.  Such a divisor avoids every original point with zero-dimensional
+regular local ring.
+\end{lemma}
+\begin{proof}
+The native regular-quotient parameter theorem writes $(h)$ as the span of
+an initial segment of an actual regular parameter system.  If
+$h\in\mathfrak m^2$, every parameter in that initial segment would be in
+$\mathfrak m^2$, which is impossible.  The segment is therefore empty,
+forcing $(h)=0$ and contradicting the same actual $h\ne0$.  For the
+original effective Cartier ideal, the native local equation is nonzero;
+the original closed-subscheme stalk quotient is its actual zero-scheme
+stalk and is regular.  Apply the proved local result.  At a regular
+zero-dimensional point the maximal ideal is zero, so there is no member
+of $\mathfrak m\setminus\mathfrak m^2$.  Thus that point cannot lie on a
+genuine smooth divisor.  This rejects a section identically zero on a
+zero-dimensional stratum, even though its zero subscheme is smooth.
+\end{proof}
+
+\begin{lemma}[The original deepest-stratum stalk detects actual transversality]
+\label{lem:kn-nadel-bertini-snc-stratum-transverse}
+\uses{lem:kn-nadel-bertini-snc-transverse-local,lem:kn-nadel-bertini-snc-strata}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncTransverse.equation_transverse_to_stratum,
+EnvelopeProperty.Vanishing.NadelBertiniSncTransverse.appendThrough,
+EnvelopeProperty.Vanishing.NadelBertiniSncTransverse.appendThrough_injective}
+\leanok
+If the actual restriction of the original hypersurface $H$ to an actual
+closed stratum is a genuine smooth divisor, its same original local
+equation $h$ has nonzero class modulo the maximal-square plus the actual
+stratum stalk ideal.  The canonical old-or-new label of a component of
+the actual appended family is injective.
+\end{lemma}
+\begin{proof}
+Take an actual point of the original stratum above the original point
+$x$.  Its original closed-immersion stalk map $\varphi$ has kernel the
+same original stratum ideal.  The actual restricted hypersurface stalk is
+$(\varphi h)$.  A smooth-divisor generator is outside the target maximal
+square, so $\varphi h$ is outside that square as well: otherwise its
+whole principal ideal, hence that generator, would lie in the square.
+The original local ring map carries the source maximal square into the
+target maximal square and kills its actual kernel.  Thus $h$ is outside
+their sum.  The canonical old-or-new label retains each actual old
+component index and gives the actual new component its separate label;
+injectivity follows from the original disjoint sum indices.
+\end{proof}
+
+\begin{theorem}[Genuine all-strata Cartier smoothness preserves the original SNC family]
+\label{thm:kn-nadel-bertini-snc-criterion}
+\uses{lem:kn-nadel-bertini-snc-stratum-transverse,lem:kn-nadel-bertini-snc-regular-cartier}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncCriterion.exists_transverse_coordinates,
+EnvelopeProperty.Vanishing.NadelBertiniSncCriterion.hasSncWith_of_strata_smoothDivisor,
+EnvelopeProperty.Vanishing.NadelBertiniSncCriterion.append_isSnc_of_strata_smoothDivisor,
+EnvelopeProperty.Vanishing.NadelBertiniSncCriterion.append_isSnc_of_strata_cartier_smooth}
+\leanok
+Let $H$ be the actual original effective Cartier hypersurface on the
+original $X/k$, with its actual zero scheme smooth over the original
+perfect field.  Suppose its actual restriction to every original closed
+SNC stratum is effective Cartier and its actual zero scheme is smooth.
+Then the same original appended family $E+H$ is SNC and the same original
+$H$ has simple normal crossings with $E$.
+\end{theorem}
+\begin{proof}
+Actual smoothness gives regularity of each original zero scheme, and the
+preceding actual Cartier producer makes every original cut a genuine
+smooth divisor.  At $x\in H$, choose the actual stratum of all original
+components through $x$.  Its actual whole stalk ideal is the span of
+those same old component parameters.  The preceding stratum comparison
+puts $h$ outside that ideal plus $\mathfrak m_x^2$.  The proved local
+extension therefore retains all old component parameters together with
+$h$ in one actual regular system.  In particular the new coordinate is
+distinct from every actual old component coordinate.  The injective
+old-or-new label supplies the coordinate assignment for the actual
+appended family.  Off $H$, only the original component labels occur and
+the original SNC coordinates apply.  Every actual component remains
+regular.  These are exactly the native SNC conditions for $E+H$.
+Taking the singleton of the new coordinate proves $E$ has SNC with the
+same original $H$.
+\end{proof}
+
+This is a genuine transversality criterion, not yet the final internally
+chosen auxiliary-divisor theorem.  The actual chosen parameter must
+still be connected to these same original hypersurface restrictions.
+The incidence-flat-fibre argument supplies the effective Cartier
+condition for the same original universal regular equation; smoothness
+of a zero scheme alone is never substituted for that condition.  The
+independent universal-incidence gluing, actual fibre/zero-ideal comparison
+and finite auxiliary-divisor induction remain separate producers.
+
+
+\begin{theorem}[Internally chosen same rational coefficients for every original closed stratum]
+\label{thm:kn-nadel-bertini-snc-all-strata-parameters}
+\uses{lem:kn-nadel-bertini-snc-strata,lem:kn-nadel-bertini-smooth-parameter-open,lem:kn-nadel-bertini-rational-projective-good}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncParameters.stratum_totalIncidence_smooth,
+EnvelopeProperty.Vanishing.NadelBertiniSncParameters.exists_good_parameter_for_all_strata}
+\leanok
+For the original closed embedding $j:X\hookrightarrow\mathbf P^m_k$ with
+$X/k$ smooth in characteristic zero and the original finite SNC family $E$,
+there exists an actual original coefficient tuple $a\in k^{m+1}$ with
+$a_0\ne0$ such that its same original spectrum evaluation morphism lands
+in the actual incidence good open for every actual original closed stratum
+$X_s$.  Its actual original coefficient structure composite is the identity.
+Neither stratum smoothness, total-incidence smoothness, a good open nor the
+desired tuple is supplied as an additional certificate.
+\end{theorem}
+\begin{proof}
+The first lemma of this section produces smoothness of each actual
+original closed stratum and its actual closed embedding in the same
+original projective space.  Apply the proved original global universal
+incidence smoothness producer to every same original stratum embedding.
+This internally supplies the actual total-incidence smoothness input for
+each original incidence parameter good-open producer.  The index type of
+all finite subsets of the original finite component type is finite.
+The actual simultaneous rational-parameter producer therefore applies to
+this very family, and also avoids its actual first coordinate polynomial.
+It internally constructs the same tuple with all the stated original map
+and image properties.  The same actual chosen hyperplane zero ideal must
+still be compared with these incidence fibres before applying the preceding
+Cartier/SNC criterion; that separate whole-ideal comparison is not replaced
+by a comparison of supports.
+\end{proof}
+
+
+\begin{lemma}[The actual universal linear equation is regular at an original unit pivot]
+\label{lem:kn-nadel-bertini-snc-universal-equation-regular}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniSncLinearRegular.pivotEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniSncLinearRegular.pivotEquiv_linearForm,
+EnvelopeProperty.Vanishing.NadelBertiniSncLinearRegular.linearForm_regular}
+\leanok
+Let $B$ be any original commutative chart ring, including a possibly zero
+ring.  If the original frame coefficients satisfy $c_j=1$, the original
+universal linear polynomial $h=\sum_i c_i t_i\in B[(t_i)]$ is a
+nonzerodivisor in its actual original polynomial ring.
+\end{lemma}
+\begin{proof}
+The actual variable equivalence which separates the same original pivot
+$j$ identifies the original polynomial ring with an ordinary polynomial
+ring over the remaining original variables.  Its whole polynomial image
+of $h$ is $T+\sum_{i\ne j}c_i t_i$, retaining every same original
+coefficient.  This is a monic polynomial, so native polynomial regularity
+proves multiplication by it injective.  The actual variable algebra
+isomorphism transports this injectivity back to multiplication by the
+same original $h$.  No domain or nontriviality premise is needed.  This
+supplies the universal equation input to the independent flat principal
+fibre Cartier producer.
+\end{proof}

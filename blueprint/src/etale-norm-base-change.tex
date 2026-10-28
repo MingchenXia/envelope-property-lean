@@ -1,0 +1,133 @@
+\subsection{Finite free etale norm products under base change}
+\label{subsec:etale-norm-base-change}
+
+The affine finite free etale case of FHX
+\texttt{lem:finite-flat-norm} is treated here. The source's general
+finite flat local-length multiplicities, global regularizable functions,
+and passage to decreasing limits remain outside this construction.
+
+\begin{theorem}[Actual scalar tensor cancellation and determinant coefficients]
+\label{spectrum:scalar-extension-algebra-cancellation}
+\lean{EnvelopeProperty.ScalarExtension.ringMap,
+EnvelopeProperty.ScalarExtension.algebra,
+EnvelopeProperty.ScalarExtension.leftMap,
+EnvelopeProperty.ScalarExtension.rightMap,
+EnvelopeProperty.ScalarExtension.forward,
+EnvelopeProperty.ScalarExtension.inverse,
+EnvelopeProperty.ScalarExtension.forward_tmul,
+EnvelopeProperty.ScalarExtension.inverse_tmul,
+EnvelopeProperty.ScalarExtension.inverse_forward,
+EnvelopeProperty.ScalarExtension.forward_inverse,
+EnvelopeProperty.ScalarExtension.forwardBase,
+EnvelopeProperty.ScalarExtension.equiv,
+EnvelopeProperty.ScalarExtension.equiv_tmul,
+EnvelopeProperty.ScalarExtension.equiv_one_tmul,
+EnvelopeProperty.ScalarExtension.equiv_symm_tmul,
+EnvelopeProperty.ScalarExtension.moduleFree,
+EnvelopeProperty.ScalarExtension.moduleFinite,
+EnvelopeProperty.ScalarExtension.etale,
+EnvelopeProperty.ScalarExtension.map_normForm,
+EnvelopeProperty.ScalarExtension.map_algebraNorm}
+\leanok
+\uses{spectrum:whole-norm-form-base-change,spectrum:algebra-norm-base-change}
+For a morphism $A\to B$ of commutative $R$-algebras and an arbitrary
+commutative $R$-algebra $S$, let $A'=S\otimes_R A$ and $B'=S\otimes_R B$.
+The actual structural map sends $s\otimes a$ to $s\otimes\varphi(a)$
+and defines the $A'$-algebra structure on $B'$. There is a genuine
+$A'$-algebra equivalence
+\[
+ A'\otimes_A B\simeq B',\qquad
+ (s\otimes a)\otimes b\longmapsto s\otimes\varphi(a)b.
+\]
+The inverse sends $s\otimes b$ to $(s\otimes1)\otimes b$.
+Finite freeness, module finiteness and etaleness of $A\to B$ each
+imply the corresponding property of $A'\to B'$. When $B$ is finite
+free over $A$, its entire determinant norm forms and scalar norms
+commute with this actual scalar extension.
+\end{theorem}
+\begin{proof}
+Use the tensor map of the scalar identity and $A\to B$ to construct
+the displayed structural ring homomorphism and its induced algebra action.
+The structural map and the original-element inclusion agree on the
+$A$ coefficients; their commuting images therefore give the forward
+balanced tensor homomorphism. The scalar and original-element inclusions
+give the inverse homomorphism. On nested pure tensors, its composition
+with the forward map sends $(s\otimes a)\otimes b$ to
+$(s\otimes1)\otimes\varphi(a)b=(s\otimes a)\otimes b$ by the balanced
+relation. The other composition sends $s\otimes b$ to itself.
+Tensor induction proves both inverse identities on all elements.
+The forward map preserves every $A'$ scalar, hence is an $A'$-algebra
+equivalence. Actual tensor base change and transport along this equivalence
+produce the three algebraic properties. Finally determinant polynomial
+base change followed by invariance under this genuine algebra equivalence
+proves the whole norm-form identity. The scalar determinant argument is
+identical, using the actual scalar norm base-change identity.
+\end{proof}
+
+\begin{theorem}[Weighted determinant norm products commute with base change]
+\label{spectrum:etale-norm-products-base-change}
+\lean{EnvelopeProperty.Berkovich.Spectrum.weightedFibreProduct_baseChange,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreProduct_baseChange}
+\leanok
+\uses{spectrum:whole-norm-form-base-change,spectrum:algebra-norm-base-change,
+spectrum:weighted-etale-norm-without-infinitude,spectrum:scalar-etale-norm}
+Let $A\to B$ be a finite free etale map of commutative rings, let $C$
+be any commutative $A$-algebra, and let $x'$ be a real seminorm point
+of $C$. Put $x=x'|_A$, and write $b'_j=1\otimes b_j$ in $C\otimes_A B$.
+For any finite family $b_j$ and nonnegative radii $r_j$,
+\[
+ \prod_{y'\text{ over }x'}
+ \left(\max_j |b'_j|_{y'}r_j\right)^{m_{y'}}
+ =
+ \prod_{y\text{ over }x}
+ \left(\max_j |b_j|_y r_j\right)^{m_y}.
+\]
+The same equality holds for the scalar products $\prod|b|^m$.
+No bijection between the two fibres is asserted or required.
+\end{theorem}
+\begin{proof}
+Finite freeness and etaleness persist under the actual tensor base
+change. Both products are the weighted coefficient norms of the actual
+determinant norm forms. The determinant identity gives the entire
+polynomial equality $P_{C\otimes_A B}=P_B\otimes_A C$, and pullback of
+the seminorm $x'$ agrees with $x$ on every coefficient. Thus the weighted
+coefficient norms coincide. For the scalar statement, the identical
+argument uses the genuine scalar determinant norm identity.
+\end{proof}
+
+\begin{theorem}[Scalar extension of the original affine morphism]
+\label{spectrum:etale-norm-products-scalar-extension}
+\lean{EnvelopeProperty.Berkovich.Spectrum.weightedFibreProduct_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreProduct_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.weightedFibreProduct_relativeScalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreProduct_relativeScalarExtension}
+\leanok
+\source{fhx-envelope-20261028:lem:finite-flat-norm}
+\uses{spectrum:etale-norm-products-base-change,spectrum:scalar-extension-algebra-cancellation,
+spectrum:base-change-restriction}
+Let $R\to S$ be any map of commutative coefficient rings and let
+$A\to B$ be a finite free etale morphism of $R$-algebras. Set
+$A'=S\otimes_R A$ and $B'=S\otimes_R B$. The same weighted product
+identity holds for the actual affine map $A'\to B'$ at every
+$x'\in\mathcal S(A')$, with $x$ its restriction to $A$ and $b'_j=1\otimes_R b_j$.
+It therefore holds on prescribed-base relative spaces whenever the
+new prescribed seminorm restricts to the original one.
+\end{theorem}
+\begin{proof}
+The tensor scalar extension map sends $s\otimes a$ to
+$s\otimes \varphi(a)$. The genuine cancellation equivalence
+$(S\otimes_R A)\otimes_A B\simeq S\otimes_R B$ sends
+$(s\otimes a)\otimes b$ to $s\otimes \varphi(a)b$ and its inverse
+sends $s\otimes b$ to $(s\otimes1)\otimes b$.
+The defining balanced tensor relations show these maps are well-defined;
+checking all pure tensors proves both inverse identities. They preserve
+the $A'$ action, so the determinant norm forms agree as entire
+polynomials over $A'$. The preceding base-change theorem and this
+algebra equivalence identify the two weighted coefficient norms.
+The actual point norm formula on $B'$ recovers its weighted fibre
+product with its own residue-degree multiplicities. There is no
+comparison by an assumed bijection of analytic fibres.
+Compatible prescribed coefficients make the actual restriction point
+lie in the original relative space, without changing the coefficient
+or fibre-product equality just proved.
+\end{proof}

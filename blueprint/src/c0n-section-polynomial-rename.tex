@@ -1,0 +1,58 @@
+\section{Laurent reconstruction retains the original coordinate indices}
+\label{sec:c0n-section-polynomial-rename}
+
+\begin{lemma}[Reconstruction through the actual universe-lifted coordinates]
+\label{lem:c0n-polynomial-original-index-reconstruction}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.originalPolynomialToLaurent_injective,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_original_polynomial_of_empty_laurent}
+Let $R$ be the original commutative ring, $\sigma$ the original finite
+linearly ordered coordinate index set, and $e\in\mathbb N$. An actual
+degree-$e$ Laurent element on the empty coordinate intersection, with
+coordinates indexed by the genuine universe lift $\operatorname{ULift}
+\sigma$, is the Laurent image of
+$\operatorname{rename}(\operatorname{up})(F)$ for an original homogeneous
+polynomial $F\in R[x_i\mid i\in\sigma]_e$. The entire original ring $R$,
+every coordinate, and every coefficient are retained. The map from these
+original polynomials to the lifted Laurent algebra is injective.
+\end{lemma}
+\begin{proof}
+Apply the already-proved arbitrary-commutative-ring empty-intersection
+Laurent reconstruction to obtain an actual homogeneous polynomial $G$
+indexed by $\operatorname{ULift}\sigma$ with the prescribed Laurent image.
+Define $F=\operatorname{rename}(\operatorname{down})(G)$. Actual polynomial
+renaming preserves homogeneous degree because every variable is still sent
+to a variable of weight one. Moreover
+$\operatorname{rename}(\operatorname{up})(F)=G$: the actual native
+rename-composition theorem reduces this to
+$\operatorname{up}\circ\operatorname{down}=\operatorname{id}$ on the
+entire lifted index set. Substitution gives exactly the prescribed Laurent
+image, with no representation or matching premise.
+
+The polynomial-to-Laurent map is genuinely injective over an arbitrary
+commutative ring. Renaming by $\operatorname{up}$ is injective since
+$\operatorname{up}$ itself is injective. Their composite is therefore
+injective, including the zero ring and a single original coordinate.
+\end{proof}
+
+\begin{lemma}[The actual original localized Laurent maps are faithful]
+\label{lem:c0n-polynomial-localization-laurent-faithful}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.originalLocalizationToLaurent_injective,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.originalAwayToLaurent_injective}
+Let $f\in R[x_i\mid i\in\sigma]$ have unit image in the SAME lifted
+Laurent algebra. The actual original localization map from $R[x]_f$ to
+that Laurent algebra is injective. Its restriction to the actual native
+homogeneous degree-zero localization is also injective.
+\end{lemma}
+\begin{proof}
+Use the native localization injectivity criterion: it suffices to detect
+equality on original polynomial numerators. Equal original localized
+numerators have equal Laurent images by applying the actual localization
+map. Conversely, equality of those Laurent images is equality of the
+original polynomials by the preceding genuine injectivity theorem, hence
+equality of their original localized images. This verifies BOTH directions
+of the native criterion without a domain or reducedness assumption.
+The actual homogeneous localization embeds injectively in the actual
+ordinary localization by its proved native fraction-value map. Compose
+that injection with the preceding genuine localization injection.
+\uses{lem:c0n-polynomial-original-index-reconstruction}
+\end{proof}

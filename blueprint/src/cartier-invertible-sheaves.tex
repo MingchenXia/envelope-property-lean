@@ -1,0 +1,25 @@
+\section{The actual Cartier modules in the genuine invertible-sheaf interface}
+
+\begin{lemma}[Actual Cartier ideal modules are invertible sheaves]
+\label{lem:cartier-actual-invertible-module-sheaf}
+\uses{lem:cartier-ideal-affine-module-trivializations}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.regularGeneratorPullbackModuleIso,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.isInvertibleModule_toModules}
+The existing module sheaf of an actual effective Cartier ideal is an
+invertible sheaf in the genuine open-cover/pullback interface.  The
+actual regular-generator chart supplies the true module pullback
+trivialization, without any comparison assumption.
+\end{lemma}
+\begin{proof}
+Start with the actual affine-spectrum module trivialization already
+constructed from multiplication by the original regular equation.
+Restrict it along the actual isomorphism from the original affine open
+to its affine spectrum.  The genuine restriction-composition and unit
+isomorphisms give the whole original open restriction trivialization.
+The genuine open-immersion restriction/pullback isomorphism turns this
+into the true module pullback isomorphism required by the invertible
+sheaf definition.  Choose the actual regular-generator affine open at
+every original point; these opens cover the entire original scheme.
+The resulting true pullback trivializations prove invertibility of the
+actual original ideal-module sheaf in that existing interface.
+\end{proof}

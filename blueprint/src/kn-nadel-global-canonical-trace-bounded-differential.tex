@@ -1,0 +1,32 @@
+\section{Original variable-unit branch factors in the canonical differential}
+
+\begin{lemma}[Root-order divisibility retains the original unit derivative]
+\label{lem:kn-global-trace-native-root-differential-factor}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitRootDifferential_factor,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedBranchDifferential_factor}
+\leanok
+Let $D:B\to M$ be an original derivation, $u\in B^\times$, $m>0$, and
+$t^m=ux$ in the original algebra.  Then, with $v=u^{-1}$,
+\[
+ D(x)=t^{m-1}\bigl(vm\,D(t)-v^2t\,D(u)\bigr).
+\]
+Consequently every actual active original row $i$ of the same whole mixed
+root algebra has its required factor $t_i^{N_i-1}$ in the pullback of
+its original branch-coordinate differential.  Every original factor and
+variable unit is retained.  No differential-factorization certificate,
+regularity condition, or source-component selection is assumed.
+\uses{lem:kn-global-trace-native-branch-differential}
+\end{lemma}
+\begin{proof}
+Differentiate the actual equation, obtaining
+$m t^{m-1}D(t)=uD(x)+xD(u)$.  Multiply the identity by the original
+inverse unit $v$ and solve in the original module:
+$D(x)=vm t^{m-1}D(t)-vxD(u)$.
+The same original root equation gives $x=vt^m$, and positivity of $m$
+gives $t^m=t^{m-1}t$.  Thus $vx=v^2t^{m-1}t$; factor the common
+$t^{m-1}$ in the original module.  In each actual active mixed row,
+the original quotient relation is precisely
+$t_i^{N_i}=u_i x_{\sigma(i)}$ with $u_i$ its original mapped unit.
+Substitute that relation and the native universal derivation in the
+identity just proved.  The second term retains $D(u_i)$; it is never
+set to zero.
+\end{proof}

@@ -1,0 +1,29 @@
+\section{Ampleness of the projective twists of a projective subvariety}
+
+Let $\iota:X\hookrightarrow\mathbf P^M_k$ be a projective subvariety and write
+$\mathcal O_X(n)=\iota^*\mathcal O_j(n)$ for the restriction of the $n$-th twist
+attached to the coordinate $x_j$. These lines are the fibre-one lines of the
+twisted ratio line and of the tautological twist on the normalized
+simultaneous PL model; their ampleness is the polarization input of the
+nef-to-FS approximation.
+
+\begin{theorem}[Positive twists of a projective subvariety are ample]
+\label{thm:pl-native-twist-line-ample}
+\lean{EnvelopeProperty.ProjSubvariety.nativeTwistLineSheaf_succ_isVeryAmple,EnvelopeProperty.ProjSubvariety.nativeTwistLineSheaf_isAmple,EnvelopeProperty.ProjSubvariety.nativeTwistLineSheaf_tensorPower_isAmple}
+\leanok
+\uses{thm:central-embedding-original-mixed-positive-twist-very-ample,lem:fc-original-ample-closed-restriction,lem:fc-original-very-ample-is-ample,thm:fc-original-ample-line-positive-powers,thm:pl-auxiliary-native-ampleness-base-change}
+For every coordinate $j$ and every $n>0$, the line $\mathcal O_X(n)$ is very
+ample over $k$, hence ample, and every positive tensor power
+$\mathcal O_X(n)^{\otimes b}$, $b>0$, is ample over $k$.
+\end{theorem}
+\begin{proof}
+\leanok
+On $\mathbf P^M_k$ the twist $\mathcal O_j(d+1)$ is very ample for every
+$d\geq0$: its global sections of degree $d+1$ define a closed immersion into a
+projective space whose $\mathcal O(1)$ pulls back to $\mathcal O_j(d+1)$ (the
+Veronese embedding). Very ampleness is preserved
+by pullback along the closed immersion $\iota$, the structure morphism of
+$\mathbf P^M_k$ being the native one, so $\mathcal O_X(d+1)$ is very ample over
+$k$. A very ample line is ample. Finally $X$ is integral, and positive tensor
+powers of an ample line on an integral scheme are ample.
+\end{proof}

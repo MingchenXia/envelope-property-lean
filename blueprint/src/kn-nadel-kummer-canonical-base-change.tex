@@ -1,0 +1,181 @@
+\section{Actual tensor base change of the finite canonical chart duality}
+\label{sec:kn-nadel-kummer-canonical-base-change}
+
+\begin{lemma}[Multiplication and native counits under actual finite-free dual base change]
+\label{lem:kn-nadel-finite-dual-base-change-diagram}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.algebraRestrictionEquiv,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.nativeFunctionalEquiv,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.nativeFunctionalEquiv_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.coefficientPairing,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.dualBaseChangeEquiv,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.dualBaseChangeEquiv_tmul,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.coefficientPairing_baseChange,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseChangedFrame,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseChangedFrame_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseChangedFrame_counit_tmul}
+\leanok
+Let $A\to B$ be a finite free commutative algebra and $A\to S$ any
+ring map.  Set $C=S\otimes_A B$.  The native finite-free dual
+base-change equivalence satisfies
+\[
+ (s\otimes\phi)(t\otimes b)=st\,\phi(b)_S.
+\]
+For every original coefficient functional $\ell:B\to A$, it
+identifies the base change of the original multiplication pairing
+with multiplication against the actual extended functional
+$\ell_C(s\otimes b)=s\ell(b)_S$ on $C$.  The native
+$C$-linear coextension frame from $\ell_C$ has counit $\ell_C$.
+\end{lemma}
+\begin{proof}
+Reuse the native finite-free dual base-change equivalence.  Its
+evaluation on $1\otimes b$ is its existing defining evaluation
+formula; linearity gives the displayed formula on $t\otimes b$.
+For the multiplication diagram evaluate both sides on two pure
+tensors, use $(s\otimes b)(t\otimes c)=st\otimes bc$, and the
+displayed dual formula.  The two resulting scalars agree in $S$.
+Tensor generation proves equality of the whole maps.  The native
+restriction/coextension adjunction applied to the actual $\ell_C$
+gives the $C$-linear frame, whose value at $y$ is $\ell_C(yx)$.
+Its native counit evaluates at one, so it is exactly $\ell_C$.
+If the original multiplication pairing is perfect, base change
+of its actual linear equivalence and the native dual base-change
+equivalence show that the new pairing is perfect as well.  The
+result makes no flatness assumption on $S$.
+\end{proof}
+
+\begin{theorem}[The original polynomial Kummer dual frame after arbitrary actual base change]
+\label{thm:kn-nadel-power-dual-arbitrary-base-change}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.polynomialCoefficient,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeRing,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeLeft,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeRight,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChange_square,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeCoefficient,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeTensor,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeCoefficient_tensor,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeRight_tensor,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeCoefficient_right,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeIso,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeIso_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeIso_counit,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeIso_counit_tensor}
+\leanok
+For the original power map $f:A=R[x_j]\to B=R[t_j]$ and any actual
+$a:A\to S$, construct the literal commutative tensor algebra
+$C=S\otimes_{A,f}B$, its two original inclusion maps, and their
+whole coefficient triangle.  Internally produce
+\[
+ C\simeq\operatorname{Coext}_{S\to C}(S)
+\]
+as a $C$-linear equivalence.  Its whole functional is
+$x\mapsto[y\mapsto\Lambda_C(yx)]$, where
+$\Lambda_C(s\otimes b)=s\,a(\Lambda_B(b))$, and its native counit
+is that same actual extended coefficient.  No perfect-pairing or
+base-change comparison certificate is an input.
+\end{theorem}
+\begin{proof}
+Construct the tensor algebra with the literal original power-map
+scalar action, and both inclusions by the native algebra tensor
+construction.  The balancing relation gives their coefficient
+triangle.  The existing original power-map basis internally proves
+finite freeness of $B$ over $A$.  Its original dual frame already
+proves perfectness of the actual multiplication coefficient
+$\Lambda_B$.  Apply the preceding whole multiplication diagram
+and finite-free dual base-change equivalence to obtain perfectness
+over the constructed $C$.  The actual native coextension frame is
+$C$-linear and therefore a $C$-linear equivalence.  Evaluation at
+the original unit gives the claimed counit, and evaluation on pure
+tensors gives its stated original coefficient formula.
+\uses{lem:kn-nadel-finite-dual-base-change-diagram,lem:kn-nadel-kummer-polynomial-dual,lem:kn-nadel-kummer-power-map-basis}
+\end{proof}
+
+\begin{theorem}[Compatibility with genuine etale K\"ahler top frames]
+\label{thm:kn-nadel-etale-top-frame-base-change}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.powerBaseChangeRight_formallyEtale,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseRAlgebra,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetRAlgebra,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.smallCoefficient_square,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalModule,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetCanonicalModule,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseDifferentialBasis,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetDifferentialBasis,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseDifferentialBasis_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetDifferentialBasis_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalGenerator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetCanonicalGenerator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalGenerator_eq_wedge,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetCanonicalGenerator_eq_wedge,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalTrivialization,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetCanonicalTrivialization,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalTrivialization_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetCanonicalTrivialization_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseCanonicalTrivialization_symm,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalIso,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalIso_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit_tensor,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit_right}
+\leanok
+If the same actual $a:A\to S$ is formally etale, the right-hand
+map $B\to C$ is formally etale as well.  Produce their native
+relative K\"ahler bases over $R$ and actual ordered top wedges
+$dx_S$ and $dt_C$.  With these genuine differential modules the
+preceding actual duality gives
+\[
+ \omega_{C/R}\simeq\operatorname{Coext}_{S\to C}(\omega_{S/R}),
+ \qquad
+ g\,dt_C\longmapsto[y\mapsto\Lambda_C(yg)\,dx_S].
+\]
+Its native counit sends $(s\otimes b)dt_C$ to
+$s\,a(\Lambda_B(b))dx_S$.  This is the actual original canonical
+coefficient formula after base change, with no coordinate-change
+or vanishing compatibility assumption.
+\end{theorem}
+\begin{proof}
+Formal etaleness is preserved under the actual tensor base-change
+square.  Use the native formally etale K\"ahler base-change
+isomorphism to transport the original polynomial differential
+bases; each transported basis vector is the actual differential
+of the corresponding original coordinate image.  Take their
+native top exterior bases to obtain the stated ordered wedges
+and coefficient trivializations.  Compose these genuine
+trivializations with the actual tensor-algebra coextension frame
+and coextension of the base inverse trivialization.  Evaluation
+at every original $y\in C$ proves the whole formula.  The native
+counit evaluates at $1_C$; the preceding actual pure-tensor
+coefficient formula proves the asserted base-change identity.
+This uses formal etaleness of the original map, not an externally
+supplied differential/canonical isomorphism.
+\uses{thm:kn-nadel-power-dual-arbitrary-base-change,thm:kn-nadel-kummer-canonical-module,sc0-canonical-port:geom:etale-differential-basis,sc0-canonical-port:geom:etale-polynomial-canonical-frame}
+\end{proof}
+
+The separately proved polynomial trace/Jacobian normalization can
+be combined with these actual maps.  Arbitrary changes between
+different etale coordinate systems and global sheaf gluing remain
+separate obligations; the statements above concern the same actual
+coordinate chart and its actual coefficient base change.
+
+\begin{theorem}[The whole actual top-frame counit square]
+\label{thm:kn-nadel-etale-top-frame-counit-square}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseTopFrameMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetTopFrameMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseTopFrameMap_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetTopFrameMap_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit_frame_naturality}
+\leanok
+For the same original formally etale map, construct the semilinear
+maps from the two old polynomial top modules by carrying their
+original ordered wedges to the actual wedges of the images of their
+native K\"ahler differentials.  The coefficient maps are the same
+original $a:A\to S$ and $B\to C$.  If these maps are denoted by
+$u_A$ and $u_B$, the whole actual counit diagram commutes:
+\[
+ \operatorname{counit}_C(u_B(w))
+   =u_A(\operatorname{counit}_B(w))
+ \qquad\text{for every original }w\in\omega_{B/R}.
+\]
+\end{theorem}
+\begin{proof}
+The actual coefficient square also agrees on the original small
+ring $R$, since the original power map fixes all its coefficients.
+The native formally etale differential bases have already been
+proved termwise to be the actual differentials of the images of
+the original coordinates.  Their ordered exterior generators are
+therefore the stated actual top wedges.  Define each semilinear
+map using its original coefficient homomorphism on the unique
+coefficient of the old original top wedge.  Additivity and
+semilinearity follow from the original ring homomorphism laws.
+
+Write the arbitrary old top form as $w=g\,dt$.  The already proved
+new counit coefficient on its right image is
+$a(\Lambda_B(g))\,dx_S$.  The original counit gives
+$\Lambda_B(g)\,dx$, whose actual base frame map has exactly that
+same value.  This proves the whole map equality for all $w$;
+no naturality diagram is assumed as input.  These are maps on
+the same fixed coordinate chart.  Arbitrary changes to different
+coordinate systems and intrinsic global gluing are not inferred
+from this fixed-frame square alone.
+\uses{thm:kn-nadel-etale-top-frame-base-change,cor:kn-nadel-kummer-canonical-counit}
+\end{proof}
+
+\begin{theorem}[The whole counit square for the genuine exterior K\"ahler maps]
+\label{thm:kn-nadel-etale-exterior-counit-square}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.kaehlerSemilinear,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.kaehlerSemilinear_D,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseDifferentialMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetDifferentialMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseExteriorMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetExteriorMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseExteriorMap_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetExteriorMap_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.baseExteriorMap_eq_frame,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.targetExteriorMap_eq_frame,EnvelopeProperty.Vanishing.NadelKummerCanonicalBaseChange.etaleCanonicalCounit_exterior_naturality}
+\leanok
+The two top-frame maps in the preceding theorem are exactly the
+actual exterior maps of the original native K\"ahler morphisms.
+Consequently the whole canonical counit square commutes for these
+genuine differential pullback maps on every original top form.
+No differential-map or naturality comparison is an input.
+\end{theorem}
+\begin{proof}
+Regard the native K\"ahler map as a semilinear map through the actual
+original coefficient homomorphism; its scalar law follows from
+the original algebra scalar-tower law.  The native universal
+exterior map then sends each pure wedge to the wedge of its
+actual K\"ahler images.  In particular the original ordered top
+wedge maps to the native differential wedge of the same coordinate
+images, by the actual $D$-map formula.  This is exactly the genuine
+formally etale canonical generator already constructed above.
+
+The original top exterior module has its actual one-element
+polynomial differential basis, including in degree zero.  Thus
+equality on that original generator proves equality of the whole
+semilinear exterior map with the constructed top-frame map, on
+both sides of the original base-change square.  Substitute these
+proved equalities into the preceding whole counit diagram.  This
+establishes the desired whole diagram for the genuine native
+exterior K\"ahler maps, retaining every original coefficient map.
+\uses{thm:kn-nadel-etale-top-frame-counit-square,sc0-canonical-port:ext:semilinear-exterior-map,sc0-canonical-port:geom:polynomial-canonical-frame}
+\end{proof}

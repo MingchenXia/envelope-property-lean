@@ -1,0 +1,63 @@
+\section{Actual original tensor sections preserve true norms and nonzero sections}
+\label{sec:scheme-global-section-tensor-product-norms}
+
+\begin{theorem}[Every true original global-section tensor norm multiplies]
+\label{thm:scheme-global-section-tensor-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorProductNorms.globalSectionNorm_tensorSection}
+\leanok
+\uses{thm:scheme-global-section-tensor-power-norm}
+Let the actual original scheme be proper over the actual bounded valuation
+base. For any two original invertible modules and any two actual entire global
+sections, the true original proper-model norm of their actual tensor section
+is the product of their true original norms, at every original native point.
+Zero sections and zero norms are included.
+\end{theorem}
+\begin{proof}
+The actual original tensor-section morphism is the tensor of the two original
+structure-to-line morphisms after the inverse structure-unit multiplication.
+The genuine original proper-model morphism norm multiplies on this tensor and
+the structure-unit isomorphism has norm one. The actual whole-section tensor
+identity identifies precisely the canonical original tensor global section.
+\end{proof}
+
+\begin{theorem}[Actual tensor-power sections retain both whole original factors]
+\label{thm:scheme-global-section-power-tensor-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorProductNorms.powerTensorSection,EnvelopeProperty.SchemeGlobalSectionTensorProductNorms.globalSectionNorm_powerTensorSection}
+\leanok
+\uses{thm:scheme-global-section-tensor-norm,thm:scheme-global-section-model-norm-isometry,lem:fc-original-bundle-tensor-power-tensor}
+For every original nonnegative integer $d$, two actual whole original sections
+of $M^{\otimes d}$ and $N^{\otimes d}$ give an actual whole section of
+$(M\otimes N)^{\otimes d}$. Its true norm at every original native point is
+exactly the product of the original factor-section norms.
+\end{theorem}
+\begin{proof}
+Take the actual original tensor section and carry it through the inverse
+actual whole power-tensor isomorphism. This isomorphism is constructed from
+true tensor associativity, symmetry and unit maps. The actual whole-section
+isomorphism preserves the true proper-model norm. Apply the preceding
+whole-section tensor norm identity.
+\end{proof}
+
+\begin{theorem}[Original nonzero tensor sections are derived intrinsically]
+\label{thm:scheme-global-section-tensor-nonzero}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorProductNorms.tensorSection_eq_zero_iff,EnvelopeProperty.SchemeGlobalSectionTensorProductNorms.powerTensorSection_eq_zero_iff}
+\leanok
+\uses{thm:scheme-global-section-tensor-norm,thm:scheme-global-section-power-tensor-norm,thm:scheme-original-global-section-norm-detection}
+Assume that the actual original scheme $X$ is integral and proper over the
+original field. The actual tensor section is zero if and only if one original
+factor section is zero. The same exact criterion holds for the preceding
+actual tensor-power section product. No nonzero-product or analytic
+faithfulness certificate is assumed.
+\end{theorem}
+\begin{proof}
+Both original nonzero sections have actual norm one at the same genuine
+native point supported at the original generic point with trivial residue
+valuation. The product norm is therefore one there, so the actual tensor
+section cannot be zero. If a factor is zero, its actual norm vanishes at
+every original native point; the product norm vanishes everywhere, and true
+original norm detection forces the tensor section to be zero. The actual
+power-tensor section norm identity gives the identical argument for powers.
+These statements supply genuine original finite-family tensor calculus;
+they do not assert independence of arbitrary numerical representatives or
+finite dimensionality of the whole intrinsic numerical space.
+\end{proof}

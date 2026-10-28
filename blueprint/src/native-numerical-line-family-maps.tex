@@ -1,0 +1,66 @@
+\section{Actual finite line-family maps into the original numerical quotient}
+\label{sec:native-numerical-line-family-maps}
+
+\begin{theorem}[Whole coefficient spaces of actual original line families]
+\label{thm:native-numerical-line-family-maps}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.lineFamilyMap, EnvelopeProperty.NativeRealNumericalClasses.lineFamilyMap_apply, EnvelopeProperty.NativeRealNumericalClasses.curveDegree_lineFamilyMap, EnvelopeProperty.NativeRealNumericalClasses.curveDegree_lineFamilyMap_euler, EnvelopeProperty.NativeRealNumericalClasses.lineFamilyMap_eq_iff, EnvelopeProperty.NativeRealNumericalClasses.exists_finite_line_family, EnvelopeProperty.NativeRealNumericalClasses.exists_generated_line_family_map}
+\leanok
+\uses{thm:native-real-numerical-classes, thm:native-numerical-generated-line-sums, thm:fc-original-projective-generated-line-quotients}
+\source{bj22-trivval:sec:tc}
+Every finite family $(L_i)$ of actual original invertible lines on a
+native-projective original $X$ defines a genuine real-linear map
+\[
+ A_L:\mathbf R^I\longrightarrow N(X),\qquad
+ (a_i)\longmapsto\sum_i a_i[L_i].
+\]
+For every actual original closed integral curve $C$, its degree on
+this whole coefficient space is exactly
+$\sum_i a_i\deg_C(L_i|_C)$, using the true full original Euler degree.
+Two coefficients give the same numerical class exactly when all
+these true curve-degree sums agree. Every original numerical class
+is the image of an actual finite family indexed by some $\operatorname{Fin}(n)$.
+For every such family, a single actual original invertible line $T$
+with genuine finite global generators can be produced internally,
+all the actual original numerators $L_i\otimes T$ also have finite
+global generators, and the equality
+\[
+ A_L(a)=\sum_i a_i\bigl([L_i\otimes T]-[T]\bigr)
+\]
+holds for every original coefficient vector $a$ at once.
+\end{theorem}
+
+\begin{proof}
+Define the map by the finite sum of scalar multiples of the same
+actual numerical classes. Distributivity of scalar multiplication
+and of finite sums proves additivity and real homogeneity. Apply
+each actual descended closed-curve functional to this finite sum.
+It commutes with sums and real scalars, and its evaluation on each
+original line is already the true Euler degree of the whole
+original pullback. The actual closed-curve functionals jointly
+detect equality in the original numerical quotient, giving the
+stated exact equality criterion for the whole coefficient map.
+
+Take the internally produced finite set of original invertible
+lines expressing any given class. Regard that finite set as its
+actual finite subtype and use its genuine equivalence with
+$\operatorname{Fin}(n)$; finite-sum reindexing retains the same
+original lines, coefficients and numerical class. This constructs
+the finite family and its coefficient vector, rather than
+assuming a finite-family realization certificate.
+
+For an arbitrary original finite family, apply actual projective
+simultaneous global generation to those same original lines. It
+produces one original invertible $T$, finite generators of $T$,
+finite generators of every $L_i\otimes T$, and each whole original
+quotient isomorphism
+$L_i\simeq(L_i\otimes T)\otimes T^\vee$.
+The already proved actual numerical tensor/dual identities give
+the asserted difference formula for every individual original
+line. Substitute those identities term by term in the defining
+finite sum; since neither $T$ nor the numerator generators depend
+on the coefficient vector, the conclusion holds simultaneously
+on the entire original real coefficient space. This theorem does
+not assert finite dimensionality of all of $N(X)$, ample-cone
+comparison, arbitrary-curve-map detection, or numerical invariance
+of model psh functions.
+\end{proof}

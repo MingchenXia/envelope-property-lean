@@ -1,0 +1,42 @@
+\section{The full degree on the actual local structure trace}
+
+\begin{lemma}[A finite basis gives the native sheaf trace degree]
+\label{lem:kn-structure-trace-affine-basis-unit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.unit_comp_affineStructureTrace_of_basis}
+\leanok
+Let $A\to B$ be a finite free algebra with a finite basis indexed by $I$.
+The actual structural unit followed by the actual affine sheaf trace is
+$|I|$ times the identity of $\mathcal O_{\operatorname{Spec}A}$.
+The base ring need not be nonzero.
+\uses{lem:kn-structure-trace-affine-sheaf,lem:kn-structure-trace-affine-every-coefficient}
+\end{lemma}
+\begin{proof}
+The affine quasicoherent equivalence detects equality of these two sheaf
+morphisms on whole sections. Under the actual spectrum--sections
+comparisons, the structural unit sends $r$ to its image in $B$, and the
+actual trace sends this image to its algebra trace. Multiplication by
+$r$ on $B$ has diagonal entries $r$ in the given basis, so its trace is
+$|I|r$. Thus the two maps agree on every whole section, proving equality
+of the actual sheaf morphisms.
+\end{proof}
+
+\begin{lemma}[The original chart trace has the whole original degree]
+\label{lem:kn-structure-trace-local-spec-unit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.unit_comp_traceOnSpec}
+\leanok
+For every whole free chart of degree $D$, the restriction of the
+\emph{original} structural unit followed by its constructed actual
+trace on the base coefficient spectrum is $D$ times the identity.
+No normalization identity is assumed.
+\uses{lem:kn-structure-trace-original-local-map,lem:kn-structure-trace-affine-basis-unit}
+\end{lemma}
+\begin{proof}
+The actual cartesian unit comparison sends the restriction of the
+original structural unit to the structural unit of the whole affine
+chart, conjugated by the actual structure-module restriction
+isomorphism. The chart's supplied genuine basis has index set
+$\{0,\ldots,D-1\}$, so the preceding lemma identifies its composite with
+the affine trace as $D$ times the identity. Conjugating this identity by
+the actual unit restriction isomorphism gives the asserted identity on
+the restriction of the original structure module.
+\end{proof}

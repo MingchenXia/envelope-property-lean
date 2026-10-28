@@ -1,0 +1,68 @@
+\subsection{Original translations and actual centred strict fibre discs}
+\begin{lemma}[Whole polynomial translations are actual homeomorphisms]
+\label{analytic:actual-polynomial-translation-homeomorphisms}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation_symm_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.proj_polynomialTranslation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation_val_X_sub_C}
+\leanok
+\uses{spectrum:topology,spectrum:centered-gauss-whole-ray,spectrum:pullback,spectrum:relative}
+For arbitrary original commutative rings $R,A$, their actual algebra map and
+prescribed valuation $v$ on $R$, every original $a\in A$ gives a genuine
+homeomorphism $\tau_a$ of $\operatorname{Sp}_v(A[T])$. It evaluates EVERY
+original polynomial by
+\[
+ |p(\tau_a(x))|=|p(T+a)(x)|.
+\]
+Its actual inverse is $\tau_{-a}$, it retains the WHOLE coefficient point,
+and $|T-a|_{\tau_a(x)}=|T|_x$ on every original point. No field, reducedness,
+faithfulness, completeness or radius bound is assumed.
+\end{lemma}
+\begin{proof}
+Use the actual polynomial algebra automorphism $p(T)\mapsto p(T+a)$ and its
+inverse $p(T)\mapsto p(T-a)$, restricted along the original $R$ coefficient
+action. Restriction of whole valuations gives the two actual point maps.
+The algebra automorphisms are inverse on EVERY polynomial, so whole-point
+extensionality gives both inverse identities. Each original polynomial
+evaluation after restriction is evaluation of the single fixed original
+translated polynomial; the original evaluation topology therefore makes
+both maps continuous. The automorphisms fix every constant in $A$, which
+proves the whole coefficient identity, not only the $R$ restriction.
+Finally the forward automorphism sends $T-a$ to $T$ exactly, proving the
+coordinate formula. This constructs the homeomorphism on the original
+polynomial spectrum itself.
+\end{proof}
+
+\begin{theorem}[Actual centred strict discs retain the original contraction]
+\label{analytic:actual-centred-strict-fibre-discs}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.CenteredFibreOpenDisc,
+EnvelopeProperty.Berkovich.RelativeSpectrum.FibreOpenDisc.centeredHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.CenteredFibreOpenDisc.contractibleSpace}
+\leanok
+\uses{analytic:actual-polynomial-translation-homeomorphisms,analytic:actual-strict-fibre-disc-contraction}
+For an actual whole coefficient point $y$, original $a\in A$ and radius $r$,
+translation constructs a genuine homeomorphism
+\[
+ \mathcal D_y(r)\ \simeq\
+ \mathcal D_y(a,r):=\{x\in\operatorname{Sp}_v(A[T]):
+       p(x)=y,\ |T-a|_x<r\}.
+\]
+For $r>0$ the ORIGINAL centred strict disc is contractible. No condition
+on $|a(y)|$ and no ambient closed-disc constraint is imposed.
+\end{theorem}
+\begin{proof}
+The forward map is the restriction of $\tau_a$ to the actual strict fibre
+disc. Its whole coefficient identity retains $y$ and its exact coordinate
+formula turns the original bound $|T|<r$ into $|T-a|<r$. The inverse is the
+restriction of $\tau_{-a}$: its original coordinate value is exactly
+$|T-a|$, and its whole coefficient point is again unchanged. The inverse
+identities and continuity restrict to the actual original subspace topologies.
+For $r>0$, transport the previously CONSTRUCTED strict-disc contraction
+through this actual homeomorphism. Its terminal point is the image of
+$\eta_0(y)$, namely the whole original centred Gauss point
+$\eta_{a,0}(y)$. The transported identity-nullhomotopy proves actual
+contractibility. All original polynomial values and coefficient actions
+remain those of the displayed original maps, with no chosen chart or
+contractibility certificate.
+\end{proof}

@@ -1,0 +1,29 @@
+\section{Actual rational sections and true support-open regauging}
+
+\begin{lemma}[The original Cartier generic unit is one actual local section]
+\label{lem:intrinsic-numerical-cartier-generic-unit-support-section}
+\leanok
+\lean{EnvelopeProperty.NumericalSectionRegauging.supportResidueFactor,
+EnvelopeProperty.NumericalSectionRegauging.supportResidueFactor_comp,
+EnvelopeProperty.NumericalSectionRegauging.genericIdealUnitSection_eq_supportFrame}
+\uses{lem:actual-ideal-module-pullback-map,scheme:native-model-ideal-zero-locus,lem:actual-local-spectrum-affine-factor,def:actual-line-frame-via-factor,lem:actual-ideal-module-off-support,def:actual-cartier-generic-inclusion-frame,lem:actual-cartier-generic-unit-section-model-norm,lem:fc-original-line-section-frame-naturality,lem:fc-original-line-section-fibre}
+Let $A$ be an actual invertible Cartier ideal on a proper model over a bounded
+valued coefficient ring. On every genuine open $V$ disjoint from its actual
+support, the original canonical generic ideal unit section at EVERY native
+point whose support lies in $V$ is the actual residue pullback of the inverse
+of the original inclusion-induced frame on $V$. The residue morphism factors
+through the actual open with its literal scheme triangle. No valuative-center
+membership, section-matching equation or norm certificate is assumed.
+\end{lemma}
+\begin{proof}
+Factor the actual residue-field spectrum morphism through its genuine support
+neighborhood, using the original open immersion. The actual off-support
+inclusion is an isomorphism of whole modules. Naturality of the native
+restriction/pullback comparison identifies its whole frame with the original
+pulled inclusion followed by the genuine unit comparison. The actual
+pullback-composition and unit comparisons identify the transported frame with
+the original pointwise generic inclusion frame. Invert that whole equality
+and apply it to the original unit section. This proves the assertion for
+EVERY support point, without moving the valuative center off the divisor.
+\end{proof}
+

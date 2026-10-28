@@ -1,0 +1,127 @@
+\section{The intersection polynomial of a line pencil}
+
+Let $p:X\to\operatorname{Spec}k$ be projective, with $\dim X\leq D$, and let $N,A$ be
+invertible modules on $X$. For a list $\lambda$ of invertible modules and a coherent module
+$F$, write $I(\lambda;F)$ for the mixed Euler difference
+(Definition~\ref{def:seshadri-mixed-euler-difference}).
+
+\begin{definition}[Pencil polynomials]
+\label{def:nef-ample-original-pencil-polynomial}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial}
+\leanok
+\uses{def:seshadri-mixed-euler-difference}
+Define real polynomials $P_n(\lambda;F)\in\mathbb R[t]$ recursively by
+\[
+ P_0(\lambda;F)=I(\lambda;F),\qquad
+ P_{n+1}(\lambda;F)=P_n(N,\lambda;F)+tP_n(A,\lambda;F).
+\]
+Thus $P_n(\lambda;F)$ is the full multilinear expansion of the intersection of $n$ copies of
+the formal pencil $N+tA$ with the fixed list $\lambda$ and the coefficient $F$.
+\end{definition}
+
+\begin{lemma}[Permutation invariance of the fixed slots]
+\label{lem:nef-ample-original-pencil-permutation}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_perm}
+\leanok
+\uses{def:nef-ample-original-pencil-polynomial,lem:intersection-permutation}
+Permuting the fixed list $\lambda$ preserves $P_n(\lambda;F)$.
+\end{lemma}
+\begin{proof}
+For $n=0$ this is the symmetry of mixed Euler differences
+(Lemma~\ref{lem:intersection-permutation}). For the successor, a permutation of $\lambda$
+induces permutations of $(N,\lambda)$ and $(A,\lambda)$ fixing the first entry; apply the
+induction hypothesis to both summands of the recurrence.
+\end{proof}
+
+\begin{lemma}[The top possible coefficient]
+\label{lem:nef-ample-original-pencil-top-coefficient}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_natDegree_le,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_coeff_top}
+\leanok
+\uses{lem:nef-ample-original-pencil-permutation}
+The polynomial $P_n(\lambda;F)$ has degree at most $n$, and its coefficient of $t^n$ is
+$I(\underbrace{A,\ldots,A}_{n},\lambda;F)$.
+\end{lemma}
+\begin{proof}
+Both statements follow by induction on $n$, simultaneously for all $\lambda$. The initial
+polynomial is constant with the asserted coefficient. In the successor recurrence the first
+summand has degree at most $n$ and the second at most $n+1$. Thus the coefficient of
+$t^{n+1}$ comes only from $tP_n(A,\lambda;F)$ and equals the coefficient of $t^n$ in
+$P_n(A,\lambda;F)$, which is $I(A^n,A,\lambda;F)=I(A^{n+1},\lambda;F)$ by induction and
+permutation invariance.
+\end{proof}
+
+\begin{lemma}[Formal differentiation inserts the direction $A$]
+\label{lem:nef-ample-original-pencil-derivative}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_derivative_succ}
+\leanok
+\uses{lem:nef-ample-original-pencil-permutation}
+For every fixed list $\lambda$,
+\[
+ \frac{d}{dt}P_{n+1}(\lambda;F)=(n+1)P_n(A,\lambda;F).
+\]
+\end{lemma}
+\begin{proof}
+For $n=0$ differentiate the linear polynomial $I(N,\lambda;F)+tI(A,\lambda;F)$. For the
+successor, differentiate the recurrence; the induction hypothesis and the product rule give
+\[
+ (n+1)P_n(A,N,\lambda;F)+P_{n+1}(A,\lambda;F)+t(n+1)P_n(A,A,\lambda;F).
+\]
+Permutation invariance exchanges $A,N$ in the first term. The first and third terms then sum
+to $(n+1)P_{n+1}(A,\lambda;F)$ by the recurrence, and the total is
+$(n+2)P_{n+1}(A,\lambda;F)$.
+\end{proof}
+
+\begin{lemma}[Sign of the derivative]
+\label{lem:nef-ample-original-pencil-derivative-nonneg}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_derivative_eval_nonneg}
+\leanok
+\uses{lem:nef-ample-original-pencil-derivative}
+Let $t\in\mathbb R$. If $n=0$, or if $n=m+1$ and $P_m(A,\lambda;F)(t)\geq0$, then
+$\frac{d}{dt}P_n(\lambda;F)(t)\geq0$.
+\end{lemma}
+\begin{proof}
+For $n=0$ the polynomial is constant. Otherwise the derivative is
+$(m+1)P_m(A,\lambda;F)$ by Lemma~\ref{lem:nef-ample-original-pencil-derivative}.
+\end{proof}
+
+\begin{lemma}[Exact scaling for rational tensor pencils]
+\label{lem:nef-ample-original-pencil-rational-scaling}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_eval_scale}
+\leanok
+\uses{thm:seshadri-mixed-euler-product-additivity,lem:intersection-power-entry,lem:intersection-permutation}
+Suppose $\dim X\le D$, $n+|\lambda|=D$, $a,b\in\mathbb N$ and $b>0$. For the line
+$B=N^{\otimes b}\otimes A^{\otimes a}$,
+\[
+ b^n P_n(\lambda;F)(a/b)=I(\underbrace{B,\ldots,B}_{n},\lambda;F).
+\]
+\end{lemma}
+\begin{proof}
+For $n=0$ the assertion is the definition. Suppose it holds for $n$ and all lists of length
+$D-n$. In top degree, multilinearity
+(Theorem~\ref{thm:seshadri-mixed-euler-product-additivity}) and the power identity
+(Lemma~\ref{lem:intersection-power-entry}) give
+\[
+ I(B,\mu;F)=b\,I(N,\mu;F)+a\,I(A,\mu;F)
+\]
+whenever $|\mu|+1=D$. Apply this with $\mu$ consisting of $n$ copies of $B$ followed by
+$\lambda$. Permutation invariance moves the first $N$, respectively $A$, behind the copies of
+$B$, and the two induction hypotheses identify the resulting terms with
+$b^n P_n(N,\lambda;F)(a/b)$ and $b^n P_n(A,\lambda;F)(a/b)$. Since $b\cdot(a/b)=a$, the
+displayed identity is exactly $b^{n+1}$ times the recurrence for $P_{n+1}(\lambda;F)(a/b)$.
+\end{proof}
+
+\begin{lemma}[The threshold decomposition]
+\label{lem:nef-ample-original-pencil-threshold-identity}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_zero,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.mixedPencilPolynomial_succ}
+\leanok
+\uses{def:nef-ample-original-pencil-polynomial}
+For every fixed list $\lambda$, $P_0(\lambda;F)=I(\lambda;F)$ and
+$P_{n+1}(\lambda;F)=P_n(N,\lambda;F)+tP_n(A,\lambda;F)$. In particular the top polynomial
+$f=P_{d+1}(\varnothing;\mathcal O_X)$ decomposes as $f=h+tg$, with
+$h=P_d(N;\mathcal O_X)$ and $g=P_d(A;\mathcal O_X)$.
+\end{lemma}
+\begin{proof}
+This is the recursive definition.
+\end{proof}

@@ -1,0 +1,61 @@
+\section{Coherence of the genuine original frame transition units}
+
+\begin{lemma}\label{lem:fc-original-frame-transition-unit-value}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameTransition.transitionUnit_val}
+\leanok
+\uses{lem:fc-original-frame-transition-coefficient,prop:generated-line-generic-frame-norms}
+For any commutative ring $A$, original module $P$ on
+$\operatorname{Spec}A$ and two actual entire frames $e_0,e_1$, the
+value of the genuine transition unit $u(e_0,e_1)$ is the actual
+$e_1$-coefficient of the original section $e_0^{-1}(1)$.
+Thus the original unit is determined by the actual original frames.
+\end{lemma}
+\begin{proof}
+The original section $e_0^{-1}(1)$ has $e_0$-coefficient one,
+by the whole frame inverse identity. Apply the genuine coefficient
+comparison to this section. The actual affine section isomorphism
+sends one to one, so the resulting identity is
+$c_1(e_0^{-1}(1))=u(e_0,e_1)\cdot1$. This proves the assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-original-frame-transition-unit-self}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameTransition.transitionUnit_self}
+\leanok
+\uses{lem:fc-original-frame-transition-unit-value}
+For every actual entire original frame $e$, one has $u(e,e)=1$.
+\end{lemma}
+\begin{proof}
+The preceding formula expresses the value of this unit as the
+coefficient of $e^{-1}(1)$ in $e$, which is one by the actual
+whole inverse identity. Equality of values gives equality of units.
+\end{proof}
+
+\begin{lemma}\label{lem:fc-original-frame-transition-unit-composition}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameTransition.transitionUnit_trans}
+\leanok
+\uses{lem:fc-original-frame-transition-unit-value,lem:fc-original-frame-transition-coefficient}
+For any three actual entire original frames of the same original
+module one has
+$u(e_0,e_2)=u(e_0,e_1)u(e_1,e_2)$.
+\end{lemma}
+\begin{proof}
+Evaluate the original section $e_0^{-1}(1)$ in $e_2$. The first
+lemma identifies this coefficient with $u(e_0,e_2)$. The genuine
+coefficient comparison from $e_1$ to $e_2$ gives instead
+$u(e_1,e_2)c_1(e_0^{-1}(1))$. The first lemma identifies its remaining
+coefficient with $u(e_0,e_1)$. Commutativity of $A$ gives the stated
+product in $A$, and equality of values gives equality of units.
+\end{proof}
+
+\begin{corollary}\label{cor:fc-original-frame-transition-unit-inverse}
+\lean{EnvelopeProperty.Berkovich.SchemeResidueFrameTransition.transitionUnit_symm}
+\leanok
+\uses{lem:fc-original-frame-transition-unit-self,lem:fc-original-frame-transition-unit-composition}
+The reverse actual original frame transition is the inverse unit:
+$u(e_1,e_0)=u(e_0,e_1)^{-1}$.
+\end{corollary}
+\begin{proof}
+The composition identity for $e_0,e_1,e_0$ says that the two
+transition units multiply to $u(e_0,e_0)=1$. Multiplying by the
+inverse of the first unit gives exactly the asserted equality.
+\end{proof}

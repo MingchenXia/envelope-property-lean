@@ -1,0 +1,118 @@
+\subsection{Actual rationality and rational lifts under integral maps}
+\label{subsec:integral-rational-points}
+
+\begin{theorem}[Whole coefficient evaluator factorization in the true support quotient]
+\label{spectrum:rational-support-coefficient-factor}
+\lean{EnvelopeProperty.Berkovich.Spectrum.rationalQuotient_base,
+EnvelopeProperty.Berkovich.Spectrum.rationalFibre_val_algebraMap}
+\leanok
+\uses{spectrum:affine-seminorm,spectrum:pullback}
+Let $R,A,B$ be arbitrary commutative rings with actual compatible algebra
+maps, let $v$ be a prescribed real seminorm on $R$, and let
+$e:A\to R$ be an actual $R$-algebra homomorphism. If a whole point $y$ of
+$B$ restricts to $v\circ e$ on $A$, then in its true support quotient
+\[
+ \overline{a}=\overline{e(a)}\quad(a\in A),
+ \qquad |r(y)|=v(r)\quad(r\in R).
+\]
+No field, integrality, finiteness or completeness assumption is needed.
+\end{theorem}
+\begin{proof}
+Evaluate the actual original element $a-e(a)$ of $A$ using the whole
+point-restriction equality. Its image under $e$ is zero because $e$
+preserves every coefficient. Thus its genuine image in $B$ has value
+zero and belongs to the true prime support of $y$. The quotient equality
+follows from this actual difference, together with the real coefficient
+scalar-tower equality. Apply the same whole restriction identity to each
+original coefficient of $R$ to obtain its value. This identifies actual
+quotient elements, not only the norms of chosen generators.
+\end{proof}
+
+\begin{theorem}[All points above a rational point of an integral map are genuinely rational]
+\label{spectrum:integral-rational-fibre}
+\lean{EnvelopeProperty.Berkovich.Spectrum.integralRationalQuotientEquiv,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalQuotientEquiv_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalQuotientEquiv_val,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalEval,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalEval_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalEval_val,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalEval_surjective,
+EnvelopeProperty.Berkovich.Spectrum.integralRationalEval_kernel,
+EnvelopeProperty.Berkovich.Spectrum.rationalFibre_support_isMaximal}
+\leanok
+\uses{spectrum:rational-support-coefficient-factor}
+Now let $F$ be an algebraically closed field with any actual real
+valuation $v$, and let $A\to B$ be integral as a map of $F$-algebras.
+For an actual evaluator $e:A\to F$, every whole point $y$ of $B$
+restricting to $v\circ e$ has a genuine $F$-algebra equivalence
+\[
+ B/\operatorname{supp}(y)\simeq_F F.
+\]
+It constructs an actual evaluator $d:B\to F$ extending $e$ on every
+element of $A$, with $v(d(b))=|b(y)|$ for every $b\in B$.
+This evaluator is surjective and has kernel exactly the original
+support, which is therefore maximal. No finite-module, normed-field,
+completeness, separability or characteristic hypothesis is required.
+\end{theorem}
+\begin{proof}
+Write $Q=B/\operatorname{supp}(y)$. Its genuine prime support makes
+$Q$ a domain. The preceding whole quotient equality constructs the
+actual scalar tower $A\to F\to Q$, using the given evaluator for the
+first map and the original coefficient action for the second. The
+integral $A\to B$ map and the actual quotient map make every element
+of $Q$ integral over $A$. Sending the actual monic coefficients through
+$A\to F$ then makes every such element integral over $F$.
+
+Mathlib's genuine algebraically closed-field integral-domain theorem
+makes the actual coefficient map $F\to Q$ bijective. Its inverse is the
+displayed whole $F$-algebra equivalence, which retains the original
+$A$ evaluator by the proved scalar tower.
+
+Descend the original valuation of $B$ through its true support. Every
+element of $Q$ is its actual corresponding scalar from $F$, and the
+preceding coefficient-value equality identifies its descended value
+with $v$. Compose the actual quotient map with the equivalence to obtain
+$d$ and the claimed equality on all of $B$. Its coefficient action
+makes it surjective. A field valuation vanishes precisely at zero, so
+the actual evaluator kernel equals the true original support. The
+surjective map to the genuine field makes that support maximal.
+No residue-field, embedding, rationality or target-point certificate
+is assumed.
+\end{proof}
+
+\begin{theorem}[Actual rational evaluators extend across unobstructed integral maps]
+\label{spectrum:integral-rational-evaluator-existence}
+\lean{EnvelopeProperty.Berkovich.Spectrum.exists_rationalEval_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.exists_rationalEval_iff_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.exists_rationalEval_of_injective_isIntegral}
+\leanok
+\uses{spectrum:integral-rational-fibre,spectrum:integral-image}
+For an integral map $A\to B$ of algebras over any algebraically closed
+field $F$, an actual evaluator $e:A\to F$ extends to an actual
+$F$-algebra evaluator $d:B\to F$ if and only if
+\[
+ \ker(A\to B)\subseteq\ker(e).
+\]
+In particular every evaluator extends across an injective integral map.
+No valuation, norm, completeness, finiteness or noetherian hypothesis
+appears in this purely algebraic existence statement.
+\end{theorem}
+\begin{proof}
+Temporarily equip the actual field $F$ with its genuine trivial real
+seminorm. The displayed kernel containment makes the original point
+defined by $e$ satisfy the exact kernel obstruction of the independently
+constructed integral-spectrum image theorem. That producer supplies an
+actual whole point $y$ of $B$ above it. The preceding integral rationality
+construction then gives an actual evaluator $d$ and proves its equality
+with $e$ on every original base element. This is a constructed field
+homomorphism, not an assumed extension certificate.
+
+Conversely, an actual extending evaluator sends every element killed
+by $A\to B$ to zero, proving necessity. Injectivity makes the obstruction
+ideal zero and hence satisfies the criterion.
+
+These producers can preserve rational points in the later reduced and
+normalized-curve passage of Fang--Han--Xia Proposition~5.22 once its actual
+integral morphism has been constructed. They do not construct that
+curve or its normalization and assert no analytic potential theorem.
+\end{proof}

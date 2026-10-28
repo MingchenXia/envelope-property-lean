@@ -1,0 +1,147 @@
+\section{Specializing exactness of a finite free complex}
+
+\begin{lemma}[A contracting identity for an exact vector-space complex]
+\label{lem:kn-specialization-contracting-identity}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exists_contraction}
+\leanok
+Let $A\xrightarrow{f}B\xrightarrow{g}C$ be exact vector spaces over a
+field.  There are linear maps $a:B\to A$ and $b:C\to B$ such that
+$fa+bg=1_B$.
+\end{lemma}
+\begin{proof}
+Choose a right inverse $s:\operatorname{im}(g)\to B$ of the
+surjection induced by $g$, and a retraction
+$\pi:C\to\operatorname{im}(g)$ of the inclusion.  Put $b=s\pi$.
+Then $gbg=g$, so $u=1-bg$ has image in $\ker(g)=\operatorname{im}(f)$.
+Choose a right inverse of $A\to\operatorname{im}(f)$ and compose it
+with $u$ viewed as taking values in $\operatorname{im}(f)$ to define
+$a$.  It satisfies $fa=u$, giving $fa+bg=1$.
+\end{proof}
+
+\begin{lemma}[A surjective contracting endomorphism detects exactness]
+\label{lem:kn-specialization-surjective-contraction}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exact_of_surjective_contraction}
+\leanok
+Let $A\xrightarrow{f}B\xrightarrow{g}C$ be vector spaces with
+$gf=0$ and $B$ finite dimensional.  If $fa+bg$ is surjective for some
+linear maps $a:B\to A$ and $b:C\to B$, then the complex is exact
+at $B$.
+\end{lemma}
+\begin{proof}
+Write $h=fa+bg$ and $Q=B/\operatorname{im}(f)$.  Since $gf=0$,
+$h$ preserves $\operatorname{im}(f)$ and induces an endomorphism
+$\bar h$ of $Q$.  Surjectivity of $h$ implies surjectivity of
+$\bar h$.  As $Q$ is finite dimensional, $\bar h$ is injective.
+If $gx=0$, then $hx=fax$, so $\bar h([x])=0$ and $[x]=0$.
+Thus $x\in\operatorname{im}(f)$.  The reverse inclusion is $gf=0$.
+\end{proof}
+
+\begin{theorem}[A principal neighborhood of exact finite free fibres]
+\label{thm:kn-specialization-finite-free-exactness}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exists_field_exactness_neighborhood}
+\leanok
+Let $R$ be a commutative ring and let
+$R^a\xrightarrow{F}R^b\xrightarrow{G}R^c$ be a complex of finite
+free modules.  Suppose $R\to k$ is a surjective map to a field and
+the induced complex over $k$ is exact at its middle term.  There is
+$r\in R$ whose image in $k$ is nonzero such that, for every map
+$R\to K$ to a field with $r\ne0$ in $K$, the induced original
+matrix complex over $K$ is exact at its middle term.
+\uses{lem:kn-specialization-contracting-identity,lem:kn-specialization-surjective-contraction}
+\end{theorem}
+\begin{proof}
+Choose contraction matrices over $k$ by the first lemma, and lift
+their entries to matrices $A,B$ over $R$ using surjectivity of
+$R\to k$.  Put $H=FA+BG$ and $r=\det(H)$.  The reduction of $H$
+is the identity, so $r$ reduces to $1$.  Over any field where $r$
+is nonzero, the image of $H$ is invertible and hence surjective.
+The original identity $GF=0$ is retained by the coefficient map.
+The second lemma now gives the exactness of the induced complex.
+\end{proof}
+
+\begin{corollary}[One neighborhood for finitely many complex degrees]
+\label{cor:kn-specialization-uniform-finite-free-exactness}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exists_uniform_field_exactness_neighborhood}
+\leanok
+\uses{thm:kn-specialization-finite-free-exactness}
+For a finite family of original three-term finite free complexes whose
+residue fibres are exact over the same field-valued point, one scalar
+with residue $1$ defines a principal open on which every field fibre
+of every complex is exact.
+\end{corollary}
+\begin{proof}
+Take the product of the finitely many scalars supplied by the theorem.
+Its residue is the product of finitely many ones.  If its image in a
+field is nonzero, the image of each factor is nonzero.  Hence the
+theorem applies to each complex separately.  For an empty family the
+product is $1$ and the assertion is vacuous.
+\end{proof}
+
+\begin{corollary}[Generic exactness from residue exactness]
+\label{cor:kn-specialization-finite-free-generic-exactness}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.generic_exact_of_residue_exact}
+\leanok
+\uses{thm:kn-specialization-finite-free-exactness}
+If $R$ is a domain with fraction field $K$, then the original matrix
+complex is exact over $K$ whenever its fibre over a surjective
+field-valued point is exact.
+\end{corollary}
+\begin{proof}
+The scalar constructed by the theorem has residue $1$, so it is
+nonzero in $R$.  The canonical coefficient map to the fraction field
+is injective, so that scalar remains nonzero in $K$.  Apply the
+theorem with this canonical map.
+\end{proof}
+
+\begin{remark}[The proper derived-section model remains a producer]
+\label{rmk:kn-specialization-perfect-complex-frontier}
+These are exactness theorems for the actual finite free matrix complex
+and its actual coefficient maps.  To specialize the cohomology of a
+proper family, one must construct an appropriate finite free complex
+for its derived sections and verify the fibre comparison.  No such
+model or comparison is an input masquerading as a theorem here.
+\end{remark}
+
+\begin{corollary}[Native homology vanishes on the same principal neighborhood]
+\label{cor:kn-specialization-native-homology}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exists_homology_zero_neighborhood,EnvelopeProperty.Vanishing.SpecializationFiniteComplex.generic_homology_isZero_of_residue_homology_isZero}
+\leanok
+\uses{thm:kn-specialization-finite-free-exactness,cor:kn-specialization-finite-free-generic-exactness}
+Form the actual three-term complex of modules from the original two
+matrices and its canonical coefficient maps.  If its native homology
+vanishes over the original closed field-valued point, then its native
+homology vanishes at every field point in one principal neighborhood.
+Over a domain it also vanishes after the canonical map to the fraction
+field.
+\end{corollary}
+\begin{proof}
+In the category of modules, a three-term complex has zero native
+homology if and only if the range of its first map is the kernel of
+its second.  This is precisely exactness of the original pair of
+linear maps.  Apply the exactness theorem on the principal
+neighborhood, or its fraction-field corollary, and use the reverse
+implication of the same homology criterion.
+\end{proof}
+
+\begin{corollary}[The original closed point and the original generic point]
+\label{cor:kn-specialization-original-closed-native-homology}
+\lean{EnvelopeProperty.Vanishing.SpecializationFiniteComplex.exists_closed_fibre_homology_zero_neighborhood,EnvelopeProperty.Vanishing.SpecializationFiniteComplex.generic_homology_isZero_of_closed_fibre_homology_isZero}
+\leanok
+\uses{cor:kn-specialization-native-homology}
+Let $\mathfrak p$ be an original maximal ideal of $R$.  If the
+native homology of the original matrix complex vanishes after the
+canonical coefficient map $R\to\kappa(\mathfrak p)$, it vanishes
+on every original residue fibre in a principal open containing
+$\mathfrak p$.  If $R$ is a domain, it also vanishes after the
+canonical coefficient map to any fraction field of $R$.
+\end{corollary}
+\begin{proof}
+For a maximal ideal, the canonical map to its residue field is
+surjective.  Apply the preceding corollary with that exact map.
+Its scalar has image $1$ in $\kappa(\mathfrak p)$, so it is
+outside $\mathfrak p$.  For any other prime $\mathfrak q$ in
+the resulting principal open, the image of the scalar in
+$\kappa(\mathfrak q)$ is nonzero.  This gives the original
+residue-fibre assertion; the generic assertion uses the canonical
+map to the fraction field as in the preceding corollary.
+\end{proof}

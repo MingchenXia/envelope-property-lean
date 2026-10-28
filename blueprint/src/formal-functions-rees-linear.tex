@@ -1,0 +1,44 @@
+\section{Finite images of the actual Rees action}
+
+\begin{lemma}[Linearity from genuine homogeneous monomials]
+\label{lem:fc-formal-functions-rees-linear}
+\leanok
+\lean{EnvelopeProperty.FormalFunctionsReesLinear.rees_induction_on, EnvelopeProperty.FormalFunctionsReesLinear.linearMapOfMonomialSmul}
+\uses{lem:fc-formal-functions-rees-multiplication}
+Let $M=\bigoplus_d M_d$ be an $R$-module with a compatible action of the
+actual Rees algebra $\mathcal R(I)$, and let $N$ be an
+$\mathcal R(I)$-module.  An $R$-linear map $L:M\to N$ is
+$\mathcal R(I)$-linear if it commutes with multiplication by each
+genuine homogeneous monomial $at^e$, for $a\in I^e$, on every original
+summand $M_d$.
+\end{lemma}
+\begin{proof}
+Every polynomial in the Rees algebra is the finite sum of the
+monomials formed from its original coefficients, which belong to the
+corresponding powers of $I$.  The equality for the zero polynomial is
+immediate.  The asserted scalar equality is preserved under addition
+of scalars, since scalar multiplication and $L$ are additive.  For a
+homogeneous scalar it holds on each summand by hypothesis, on zero by
+additivity, and on a sum whenever it holds on both summands.  Every
+element of the direct sum is a finite sum of summand inclusions.
+These two finite-sum inductions prove the scalar equality for all
+scalars and all elements, which is the required linearity.
+\end{proof}
+
+\begin{lemma}[Finite associated image modules give stable filtrations]
+\label{lem:fc-formal-functions-rees-finite-image}
+\leanok
+\lean{EnvelopeProperty.FormalFunctionsReesLinear.filtration_stable_of_surjective}
+\uses{lem:fc-formal-functions-rees-linear}
+Let $R$ be Noetherian, let $N$ be a finite $R$-module, and let $F$ be an
+$I$-filtration of $N$.  If a finite $\mathcal R(I)$-module surjects
+$\mathcal R(I)$-linearly onto the associated submodule
+$\bigoplus_d F_d\subseteq N[t]$, then $F$ is stable.
+\end{lemma}
+\begin{proof}
+The surjection makes the associated submodule a finite Rees module.
+Every $F_d$ is a submodule of the finite module $N$ over the Noetherian
+ring $R$, hence is finitely generated.  The finite-generation criterion
+for the Rees module of a filtration now gives an integer $c$ such that
+$IF_d=F_{d+1}$ for all $d\geq c$, which is exactly stability.
+\end{proof}

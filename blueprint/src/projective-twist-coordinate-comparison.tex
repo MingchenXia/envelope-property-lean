@@ -1,0 +1,21 @@
+\section{The original projective twist is independent of the coordinate hyperplane}
+
+\begin{lemma}[Original projective twists are independent of the coordinate hyperplane]
+\label{lem:coherent-projective-coordinate-twist-independence}
+\uses{thm:scheme-original-frame-gluing}
+\lean{EnvelopeProperty.ProjectiveTwistCoordinateComparison.coordinateIso,EnvelopeProperty.ProjectiveTwistCoordinateComparison.coordinateIso_restrict}
+\leanok
+For every integer $d$ and any coordinate indices $j,k$, the genuine
+original twists $\mathcal O_j(d)$ and $\mathcal O_k(d)$ on polynomial
+projective space are isomorphic, over the identity of that same space.
+\end{lemma}
+\begin{proof}
+Take the actual standard coordinate cover and the original
+coefficient-one frames of each twist. On an overlap their actual
+transition is the same integer power of the same coordinate ratio,
+independent of the hyperplane index. Thus both frame systems satisfy
+the common-transition hypothesis of the proved frame gluing theorem.
+That theorem constructs a whole original module isomorphism whose
+restriction to each standard open is precisely the original
+coefficient-preserving frame comparison.
+\end{proof}

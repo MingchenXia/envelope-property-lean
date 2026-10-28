@@ -1,0 +1,122 @@
+\subsection{Genuine Hausdorff topology for separated native schemes}
+\label{subsec:native-separated-topology}
+
+\begin{theorem}[Actual separated section tensor comparison]
+\label{scheme:separated-section-tensor}
+\lean{EnvelopeProperty.liftedIntegerAlgebra,
+EnvelopeProperty.SchemeSeparatedSections.intersectionPullbackIso,
+EnvelopeProperty.SchemeSeparatedSections.affineProductSpecIso,
+EnvelopeProperty.SchemeSeparatedSections.intersectionToTensorSpec,
+EnvelopeProperty.SchemeSeparatedSections.isClosedImmersion_intersectionToTensorSpec,
+EnvelopeProperty.SchemeSeparatedSections.intersectionToTensorSpec_fst,
+EnvelopeProperty.SchemeSeparatedSections.intersectionToTensorSpec_snd,
+EnvelopeProperty.SchemeSeparatedSections.tensorSectionMap,
+EnvelopeProperty.SchemeSeparatedSections.topIso_naturality,
+EnvelopeProperty.SchemeSeparatedSections.tensorSectionMap_comp_includeLeft,
+EnvelopeProperty.SchemeSeparatedSections.tensorSectionMap_comp_includeRight,
+EnvelopeProperty.SchemeSeparatedSections.tensorSectionMap_tmul,
+EnvelopeProperty.SchemeSeparatedSections.tensorSectionMap_surjective}
+\leanok
+Let $X$ be an actual separated scheme and $U,V$ actual affine opens.
+Their actual intersection is affine, and the genuine restriction maps induce
+an actual surjection
+\[
+ \Gamma(X,U)\otimes_{\mathbb Z}\Gamma(X,V)
+ \longrightarrow \Gamma(X,U\cap V),
+ \qquad a\otimes b\longmapsto a|_{U\cap V}\,b|_{U\cap V}.
+\]
+The formal construction uses the canonically lifted integer ring to preserve
+scheme universes; its coefficient action is derived from integer casts.
+No tensor presentation of the intersection is assumed.
+\end{theorem}
+\begin{proof}
+The genuine open inclusions identify the intersection scheme with their
+actual fiber product over $X$. Map this fiber product into the product of
+the two affine schemes over the actual terminal integer scheme. This map
+is the base change of the actual diagonal of $X$, hence is a closed
+immersion by separatedness. The true affine chart isomorphisms and the
+actual tensor-product presentation of an affine scheme fiber product give
+its target as the spectrum of the tensor section ring.
+
+Compose the genuine global-section homomorphism with the actual
+$\Gamma\operatorname{Spec}$ and open-restriction global-section isomorphisms.
+The two scheme projection formulas and naturality of these section
+isomorphisms identify its two tensor inclusions with the original
+restriction maps. Multiplicativity gives the displayed formula on every
+pure tensor. Global sections of a closed immersion into an affine scheme
+are a quotient ring; the surrounding section isomorphisms are bijective,
+so the constructed homomorphism is genuinely surjective. All of these
+are actual scheme and section maps, independent of analytic point spaces.
+\end{proof}
+
+\begin{theorem}[Tensor bounds give an actual seminorm ultrafilter limit]
+\label{spectrum:tensor-coordinate-ultrafilter-limit}
+\lean{EnvelopeProperty.Berkovich.Spectrum.eventual_tensor_bound,
+EnvelopeProperty.Berkovich.Spectrum.exists_ultrafilter_limit_of_tensor_bounds}
+\leanok
+\uses{spectrum:closed-coordinate-ultrafilter-limit}
+For arbitrary commutative rings and an actual surjection
+$\phi:A\otimes_R B\to C$, an ultrafilter of real seminorms on $C$ has a
+limit if every coordinate $\phi(a\otimes1)$ and every coordinate
+$\phi(1\otimes b)$ is individually eventually bounded.
+No single simultaneous bound on all coordinates is required.
+\end{theorem}
+\begin{proof}
+For a pure tensor, its image is the product of the two inclusion images.
+Intersect the two eventual bounding events and multiply their bounds.
+For a sum of tensors, intersect the two eventual events and take the
+maximum bound, using the ultrametric triangle inequality. Actual tensor
+induction proves an individual eventual bound for every tensor. The true
+surjection transfers this to every element of $C$. The independently
+proved closed evaluation embedding and coordinate-bounded ultrafilter
+limit theorem then produce an actual multiplicative seminorm limit.
+\end{proof}
+
+\begin{theorem}[Separated native valued-point spaces are Hausdorff]
+\label{scheme:separated-native-hausdorff}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.supportInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_supportInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_restrict,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.eq_of_ultrafilter_le_nhds,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.t2Space_of_isSeparated,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.t2Space_of_isSeparated}
+\leanok
+\uses{scheme:separated-section-tensor,spectrum:tensor-coordinate-ultrafilter-limit,
+scheme:native-affine-atlas,scheme:affine-chart-section-values}
+The independently defined native valued-point space of every actual
+separated scheme is Hausdorff. In particular, for arbitrary $R$, any real
+seminorm $v$ on $R$, and any actual separated structure morphism
+$f:X\to\operatorname{Spec}R$, the exact prescribed-base native point
+space is Hausdorff. No coefficient boundedness, finite type, field,
+completeness or noetherian hypothesis is needed.
+\end{theorem}
+\begin{proof}
+Let one ultrafilter have two proposed limits $y_1,y_2$. Choose actual affine
+neighborhoods $U,V$ of their respective native supports. Their native
+support opens are neighborhoods of the two proposed limits, so both
+are large for this ultrafilter, and their intersection is large. Pull
+back the ultrafilter to the actual support-open subtype over
+$W=U\cap V$. Separatedness makes $W$ genuinely affine, and its actual
+section-ring homeomorphism gives an ultrafilter of seminorms on
+$\Gamma(X,W)$.
+
+The actual inclusion into the $U$-chart converges to $y_1$ in that chart,
+and the inclusion into the $V$-chart converges to $y_2$ in that chart.
+Continuous evaluation therefore gives individual eventual bounds for
+every original $U$-section and $V$-section. The exact tensor inclusion
+formulas and genuine section-restriction value identities turn these
+into the two families of bounds required by the preceding theorem.
+It supplies an actual limit in the intersection's affine spectrum.
+Its two genuine chart restrictions are also limits of the two original
+chart ultrafilters. Each affine seminorm spectrum is already Hausdorff,
+so uniqueness there identifies both proposed limits with the same whole
+native point arising from the intersection. The ultrafilter separation
+criterion proves Hausdorffness of the original native topology.
+
+For a separated structure morphism to an affine base, composition with
+the separated affine base's terminal morphism makes the total scheme
+separated. The exact fixed-base space is a genuine subtype and inherits
+Hausdorffness. This argument supplies no Hausdorff assertion for arbitrary
+nonseparated schemes, no valuation amalgamation theorem, and no analytic
+structure sheaf or coherent-sheaf gluing construction.
+\end{proof}

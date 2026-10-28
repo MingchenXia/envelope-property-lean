@@ -1,0 +1,42 @@
+\subsection{Actual polynomial logarithms are subharmonic}\label{subsec:fc-line-polynomial-subharmonic}
+
+\begin{lemma}[Polynomial logarithm minus an actual harmonic function]\label{lem:fc-polynomial-log-local-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.logPolynomial_sub_harmonic_eventually_eq_of_isLocalMax}
+\leanok
+\uses{analytic:actual-original-unit-max-all-point-local-constancy, def:fc-actual-harmonic}
+For a nonzero polynomial $P$ and an actual harmonic expression
+$H=c+\sum_j\gamma_j\log|T-a_j|$, every local maximum of
+$\log|P|-H$ on the common nonvanishing locus of $P$ and the $T-a_j$
+has an actual open neighbourhood on which this same function is constant.
+\end{lemma}
+
+\begin{proof}
+Use the original finite rational-unit family consisting of $P$ and the
+$T-a_j$, with denominator $1$ for every member, coefficients $1$ and
+$-\gamma_j$, and constant $-c$. On the common unit locus its actual affine
+value is exactly $\log|P|-H$. Apply the all-point original rational-unit
+local maximum theorem to the singleton maximum of this family.
+\end{proof}
+
+\begin{theorem}[Actual polynomial logarithms are subharmonic]\label{thm:fc-polynomial-log-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isLineSubharmonicOn_logAbs_polynomial}
+\leanok
+\uses{def:fc-actual-line-subharmonic, lem:fc-line-boundary-comparison,
+  lem:fc-polynomial-log-local-maximum}
+For every polynomial $P$, the actual function $x\mapsto\log|P(x)|$, with
+$\log0=-\infty$, is subharmonic on every domain in the analytic line.
+\end{theorem}
+
+\begin{proof}
+The actual extended logarithmic seminorm evaluation is continuous and
+never $+\infty$. The zero polynomial gives the constant $-\infty$ function.
+For $P\ne0$, compare with an actual harmonic $h$ on an actual standard
+affinoid $U$. The difference $F=\log|P|-h$ is continuous as an extended-real
+function on $U$, and is nonpositive on its actual boundary by hypothesis.
+At a positive interior local maximum, $P$ cannot vanish; the hole
+coordinates are positive everywhere on $U$. The preceding actual unit
+calculation therefore supplies the required local plateau for $F$.
+Compact connected boundary comparison gives $F\le0$ on $U$, which is the
+literal harmonic comparison inequality. No analytic maximum-principle
+certificate is assumed.
+\end{proof}

@@ -1,0 +1,35 @@
+\section{Original global sections as actual local frames}
+
+\begin{lemma}[Original section morphisms retain restriction and composition]
+\label{lem:scheme-original-global-section-hom}
+\lean{EnvelopeProperty.SchemeModuleGlobalSections.sectionHom,EnvelopeProperty.SchemeModuleGlobalSections.sectionHom_restrict,EnvelopeProperty.SchemeModuleGlobalSections.sectionHom_comp}
+\leanok
+An original global section of an original scheme module defines its actual
+structure-sheaf morphism. Composition sends it to the original image section.
+On an original affine open, restriction is the section morphism of the same
+restricted section, with the canonical restricted structure-sheaf comparison.
+\end{lemma}
+\begin{proof}
+Use the genuine structure-sheaf Hom equivalence. Its actual component maps
+multiply the restriction of the original section by the original coefficient.
+Naturality gives the restriction formula, including the original image-of-top
+open and restricted-unit comparison. Evaluating at the coefficient one on top
+determines the morphism, so the actual image-section formula gives composition.
+\end{proof}
+
+\begin{lemma}[An original section with coefficient one is a local frame]
+\label{lem:scheme-original-coefficient-one-section-frame}
+\uses{lem:scheme-original-global-section-hom}
+\lean{EnvelopeProperty.SchemeModuleGlobalSections.isIso_restrict_sectionHom_of_coefficient_one}
+\leanok
+If an original global section has coefficient one in a genuine module frame
+on an original affine open, its actual structure-sheaf morphism restricts to
+an isomorphism on that same original open.
+\end{lemma}
+\begin{proof}
+After composing the restricted section morphism with the actual frame, the
+previous identities identify it with the structure-sheaf morphism of one,
+which is the identity. Cancel the original frame and the actual restricted-unit
+comparison to write the restricted section map as a composite of their
+isomorphisms.
+\end{proof}

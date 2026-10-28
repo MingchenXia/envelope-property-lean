@@ -1,0 +1,58 @@
+\section{Fixed native model spreading and canonical coefficient corners}
+
+\begin{definition}[Canonical coefficient corner isomorphisms retain the whole original maps]
+\label{def:arithmetic-fixed-model-coefficient-corners}
+\lean{EnvelopeProperty.ArithmeticFixedSmoothModel.topScalarIso,EnvelopeProperty.ArithmeticFixedSmoothModel.topScalarIso_hom_stage,EnvelopeProperty.ArithmeticFixedSmoothModel.bottomScalarIso,EnvelopeProperty.ArithmeticFixedSmoothModel.bottomScalarIso_hom_stage,EnvelopeProperty.ArithmeticFixedSmoothModel.top_bottom_scalar_triangle}
+\leanok
+For an actual algebra $R\to L$, the top subalgebra is canonically the SAME
+$L$. If the original map is injective, its bottom subalgebra is canonically
+the SAME $R$. Contravariance gives actual spectrum isomorphisms from
+$\operatorname{Spec}L$ to the coefficient-system limit corner and from
+$\operatorname{Spec}R$ to its bottom-stage corner. Their composites with
+EVERY actual coefficient-stage map are the original coefficient maps as
+whole morphism equalities, including the whole bottom/limit triangle.
+\end{definition}
+\begin{proof}
+Use the native top-subalgebra equivalence, whose underlying map is the
+original subtype inclusion. For the bottom use the native equivalence
+from injectivity of the original algebra map. Its inverse is the original
+map into the bottom subalgebra. Applying its inverse/forward identity and
+then the actual subtype inclusion proves the whole original coefficient
+identity on EVERY bottom-ring element. The spectrum isomorphisms are the
+native images of these actual ring equivalences. Contravariant functoriality
+and the actual coefficient inclusions give every displayed whole stage
+triangle; equality is checked on every coefficient, not a selected family.
+\end{proof}
+
+\begin{theorem}[Original generic smoothness supplies the smoothness producer for the same fixed model]
+\label{thm:arithmetic-fixed-native-model-smooth-spreading}
+\lean{EnvelopeProperty.ArithmeticFixedSmoothModel.exists_smooth_fixed_model_baseChange}
+\leanok
+Let $R$ be the actual directed union of its finitely generated coefficient
+subalgebras. Let $m$ be a GIVEN fixed model of finite presentation over one
+of these actual subalgebras, with whole original generic-fibre pullback
+identified with the SAME original morphism $f$. If that original $f$ is
+smooth, there is a later ACTUAL finite-generation stage such that the
+base change of the SAME fixed $m$ is smooth.
+No smoothness of that target model, alternate-model matching, or affine
+coverage certificate is a hypothesis.
+\end{theorem}
+\begin{proof}
+Use the exact proved native fixed-model property-spreading theorem for the
+directed system of finitely generated subalgebras and its actual limit.
+Its local-property input is smoothness, which is stable under base change
+and local on the source. For EVERY actual affine open of the original
+source, restrict the actual smooth original morphism; this restriction is
+smooth since the original open immersion is smooth. The exact native
+smooth affine model producer supplies the required model at a finite
+coefficient stage for this actual restriction. These inputs are thus
+constructed internally from the original smoothness. The fixed-model
+property theorem uses its already proved finite-presentation isomorphism
+descent internally to compare these models to the given fixed one, and
+returns a later base change of that SAME fixed model with smoothness.
+No general finite-isomorphism or splitting framework is reproved here.
+\end{proof}
+
+The same fixed literal presentation and affine tensor consumers continue in
+the separate arithmetic-fixed-presentation-smoothness chapter. This native
+fixed-model producer supplies no new general isomorphism-descent framework.

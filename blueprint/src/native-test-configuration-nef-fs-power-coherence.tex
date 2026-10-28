@@ -1,0 +1,58 @@
+\section{Actual original power comparisons on the unit open}
+
+Fix the original test configuration, an original line $M$ on its total
+space, a line $L$ on the original fibre, and the given whole action and
+fibre-one comparisons $\alpha,e_1$.  All pullbacks below use these same
+original maps.  Write $\beta(M,L;\alpha,e_1)$ for the resulting whole
+unit-open line isomorphism.
+
+\begin{lemma}[The constructed original power data give the actual power isomorphism]
+\label{lem:native-tc-nef-fs-unit-open-power-coherence}
+\leanok
+\uses{lem:native-tc-nef-fs-whole-tensor-comparisons, thm:native-test-configuration-line-trivialization, prop:native-test-configuration-line-powers, thm:actual-power-pullback-composition, lem:actual-power-pullback-naturality}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitOpenLineIso_power_comparisons}
+For every natural $n$, the whole unit-open line isomorphism constructed
+from the original power line $M^{\otimes n}$, the original generic power
+$L^{\otimes n}$ and the internally constructed power comparisons
+$\alpha_n,e_{1,n}$ equals the canonical power of
+$\beta(M,L;\alpha,e_1)$, with the actual pullback-power comparisons on
+its source and target.
+\end{lemma}
+\begin{proof}
+Expand the whole unit-open isomorphism into its original nine factors:
+action-map congruence, inverse action pullback composition, pulled action
+comparison, projection pullback composition, projection-map congruence,
+inverse fibre pullback composition, pulled fibre-one comparison, original
+fibre-map pullback composition and original-projection congruence.
+Actual pullback-power coherence gives a commuting square for each map
+congruence and each pullback-composition factor.  Pullback-power
+naturality gives the square for each pulled original comparison; the
+constructed power comparisons are exactly the required conjugates.
+Compose these nine commuting squares.  Functoriality of actual tensor
+powers identifies their lower composite with the power of the original
+whole unit-open isomorphism.  Cancel the target pullback-power
+isomorphism to obtain the claimed whole isomorphism identity.
+No equality of potentials or of section norms is used.
+\end{proof}
+
+\begin{lemma}[The constructed power data on the original product]
+\label{lem:native-tc-nef-fs-product-power-coherence}
+\leanok
+\uses{lem:native-tc-nef-fs-unit-open-power-coherence, def:native-tc-product-original-line-iso}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLineIso_power_comparisons}
+The whole product line isomorphism constructed from the same power data
+equals the original canonical product power line isomorphism.
+\end{lemma}
+\begin{proof}
+Insert the preceding whole unit-open identity into the definition of
+the original product line isomorphism.  The remaining pullback-composition
+and original-projection congruence factors are literally the factors
+defining the original canonical product power line isomorphism.
+\end{proof}
+
+\begin{remark}
+These identities retain the original action, fibre-one isomorphism and
+all constants carried by them.  They are structural input to the actual
+norm-factor power law; they do not assert that law or any numerical-class
+comparison on their own.
+\end{remark}

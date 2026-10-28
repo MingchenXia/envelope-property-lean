@@ -1,0 +1,111 @@
+\section{Positive Hodge vanishing from the actual derived decomposition}
+
+\begin{theorem}[Positive Hodge vanishing with an explicit decomposition input]
+\label{thm:kn-positive-hodge-from-di}
+\lean{EnvelopeProperty.Vanishing.PositiveHodgeVanishing.upper_diagonal}
+\uses{cor:kn-hodge-serre,lem:kn-frobenius-diagonal-iteration,thm:kn-frobenius-line-power,thm:kn-relative-frobenius-pushforward-cohomology,thm:kn-frobenius-twist-hodge-cohomology,thm:kn-hypercohomology-zero-diagonal,lem:kn-di-underlying-abelian,lem:kn-di-exterior-summand-extraction}
+\leanok
+Let $X$ be smooth of dimension $n$ over a perfect field of prime
+characteristic $p$, and let $L$ be a geometrically ample line bundle.
+Suppose the actual relative-Frobenius-pushed de Rham complex admits the
+derived decomposition
+\[
+ F_*\Omega_X^\bullet\simeq
+ \bigoplus_{i=0}^n\Omega_{X^{(p)}}^i[-i].
+\]
+Then, for every $m>0$, every $0\leq i\leq n$, and every $t>n$,
+\[
+ H^{t-i}(X,L^{\otimes m}\otimes\Omega_X^i)=0.
+\]
+\end{theorem}
+\begin{proof}
+Fix $t>n$ and write $P(m)$ for the simultaneous vanishing of these
+groups in all exterior degrees $0\leq i\leq n$.  The actual finite
+Hodge-family Serre theorem gives $P(m)$ for all sufficiently large
+$m$.  We prove that $P(pm)$ implies $P(m)$ for every $m>0$.
+
+Let $L'$ be the pullback of $L$ by the first projection
+$X^{(p)}\to X$.  The Frobenius line comparison gives
+$F^*((L')^{\otimes m})\simeq L^{\otimes pm}$.  Tensor the actual
+$\mathcal O_{X^{(p)}}$-linear pushed de Rham complex by
+$(L')^{\otimes m}$.  The projection formula identifies its degree
+$i$ term with $F_*(L^{\otimes pm}\otimes\Omega_X^i)$.
+This is a tensor operation on the relative-Frobenius target;
+transport of that differential defines the connection on the
+identified terms.
+
+The relative Frobenius is affine.  A finite affine cover from the
+original projective embedding and its inverse image compute actual
+sheaf cohomology by the same section complexes.  Thus $P(pm)$ implies
+zero cohomology on the whole total-degree-$t$ diagonal of this
+connection complex.  Its terms below degree zero are zero by extension
+by zero.  Its terms above degree $n$ are zero because the exterior
+powers above rank $n$ vanish.  Finite brutal-tail triangles now show
+that its degree-$t$ hypercohomology is zero: at every tail step the
+single-term group on the diagonal is zero, and exactness of derived
+Hom propagates zero from the tail beyond $n$ back to the whole complex.
+
+Tensor the supplied actual decomposition by $(L')^{\otimes m}$ and
+apply the exact forgetful functor to abelian sheaves.  It identifies
+this zero hypercohomology group with that of the finite sum of shifted
+sheaves $(\Omega_{X^{(p)}}^i\otimes(L')^{\otimes m})[-i]$.
+The actual inclusion and projection of each summand are a retraction;
+applying derived Hom shows that every summand group is zero.  The
+single-complex/Ext identification identifies that group with its
+native sheaf cohomology in degree $t-i$.
+
+Finally, the first projection $X^{(p)}\to X$ is an isomorphism because
+the field is perfect.  The relative cotangent comparison retains the
+field Frobenius automorphism: forms on the twist are taken relative
+to the second projection.  Combined with the line-power pullback
+comparison, it transports precisely these zero groups to the
+original groups defining $P(m)$.  This proves the one-step implication.
+Since $p\geq2$, amplification descent applied to the independently
+proved eventual $P(m)$ gives $P(m)$ for every $m>0$.
+\end{proof}
+
+\begin{corollary}[Kodaira vanishing with an explicit decomposition input]
+\label{cor:kn-kodaira-from-di}
+\lean{EnvelopeProperty.Vanishing.PositiveHodgeVanishing.kodaira_of_decomposition}
+\uses{thm:kn-positive-hodge-from-di}
+\leanok
+Under the hypotheses of the preceding theorem,
+$H^q(X,\Omega_X^n\otimes L)=0$ for every $q>0$.
+\end{corollary}
+\begin{proof}
+Take $m=1$ and $t=n+q$.  The exterior-degree-$n$ term of the
+theorem is in cohomology degree $(n+q)-n=q$.  The canonical unit
+comparison identifies the first tensor power with $L$, and tensor
+symmetry identifies $L\otimes\Omega_X^n$ with
+$\Omega_X^n\otimes L$.
+\end{proof}
+
+\begin{corollary}[Kodaira vanishing on an actual Witt special fibre]
+\label{cor:kn-kodaira-witt-lift}
+\lean{EnvelopeProperty.Vanishing.PositiveHodgeVanishing.kodaira_of_wittLift}
+\uses{cor:kn-kodaira-from-di,def:kn-geometric-di-input,lem:kn-witt-special-fibre-dimension}
+\leanok
+Let $\widetilde X$ be a separated smooth relative-dimension-$n$ scheme
+over $W_2(k)$, where $k$ is perfect of prime characteristic $p$ and $n<p$.
+Assume the explicit global Deligne--Illusie input for such Witt models.
+On its actual categorical special fibre $X$, every geometrically ample
+line $L$ satisfies $H^q(X,\Omega^n_{X/k}\otimes L)=0$ for $q>0$.
+\end{corollary}
+\begin{proof}
+The actual special-fibre pullback retains relative dimension $n$.
+Apply the supplied global input to this same Witt model and the bound
+$n<p$.  It gives precisely the actual derived decomposition required by
+the preceding corollary, which applies to the same original line $L$.
+\end{proof}
+
+\begin{remark}[The Witt-lift boundary]
+\label{rmk:kn-positive-hodge-witt-boundary}
+For an actual smooth length-two Witt lift of dimension $n<p$, the
+decomposition in this theorem is precisely the temporarily imported
+Deligne--Illusie result.  The line comparison, coefficient comparison,
+bounded hypercohomology argument and eventual Serre theorem are
+separate proved obligations of the deduction.  The conclusion here is
+a characteristic-$p$ statement.  Characteristic-zero specialization
+and multiplier-ideal Nadel vanishing require their own further
+geometric arguments.
+\end{remark}

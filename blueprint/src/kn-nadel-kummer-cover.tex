@@ -1,0 +1,327 @@
+\section{Actual smooth local Kummer pullbacks}
+
+Write $P_R^n=\operatorname{Spec}R[t_0,\ldots,t_{n-1}]$ with its
+actual coefficient projection to $\operatorname{Spec}R$.
+For positive integers $m_j$, let $q_m:P_R^n\to P_R^n$ be the actual
+morphism induced by $t_j\mapsto t_j^{m_j}$ and the identity on $R$.
+
+\begin{lemma}[The same polynomial space is smooth of its original dimension]
+\label{lem:kn-nadel-kummer-polynomial-smooth}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.polynomialAlgebra_standardSmooth,EnvelopeProperty.Vanishing.NadelKummerCover.polynomialProjection_smooth}
+The actual projection $P_R^n\to\operatorname{Spec}R$ is smooth of
+relative dimension $n$.
+\end{lemma}
+\begin{proof}
+Use the genuine polynomial presentation with its $n$ original variables
+and no relations.  Its relation Jacobian is the empty matrix, whose
+determinant is $1$, so this presentation is standard smooth of
+dimension $n-0=n$.  The actual coefficient homomorphism is therefore
+locally standard smooth of dimension $n$.  The native affine scheme
+criterion proves the assertion for this precise spectrum and projection.
+\end{proof}
+
+\begin{definition}[The literal independent-coordinate pullback]
+\label{def:kn-nadel-kummer-local-pullback}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap,EnvelopeProperty.Vanishing.NadelKummerCover.pullbackScheme,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection,EnvelopeProperty.Vanishing.NadelKummerCover.affineProjection,EnvelopeProperty.Vanishing.NadelKummerCover.structureMap}
+For an actual etale chart $g:U\to P_R^n$, define
+\[
+ C(g,m)=U\times_{P_R^n,q_m}P_R^n.
+\]
+Its actual projections are $a:C(g,m)\to U$ and
+$b:C(g,m)\to P_R^n$, with $g\circ a=q_m\circ b$.
+Its coefficient structure is the actual composite of $b$ with the
+original polynomial-space projection.
+\end{definition}
+
+\begin{lemma}[The literal pullback has a smooth source of the same dimension]
+\label{lem:kn-nadel-kummer-pullback-smooth}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.affineProjection_etale,EnvelopeProperty.Vanishing.NadelKummerCover.structureMap_smooth}
+\uses{def:kn-nadel-kummer-local-pullback,lem:kn-nadel-kummer-polynomial-smooth}
+The actual map $b$ is etale and the actual source $C(g,m)$ is smooth
+of relative dimension $n$ over $R$.
+\end{lemma}
+\begin{proof}
+The projection $b$ is the literal base change of the given original
+etale chart $g$ along $q_m$, so it is etale.  In particular it is smooth
+of relative dimension zero.  Compose it with the preceding polynomial
+projection, which is smooth of relative dimension $n$.  The native
+composition theorem gives relative dimension $0+n=n$ for precisely
+the displayed structure map.  The other projection $a$ is the branched
+map to the original chart; its etaleness is not used in this argument.
+\end{proof}
+
+The actual SNC chart producer supplies such $g$ by using the original
+regular parameters as etale coordinates.  Distinct components through
+the chosen closed point are distinct coordinate hyperplanes, and every
+other original component is absent on that whole chart.  The
+construction above therefore adjoins roots of those original coordinate
+equations individually.  It changes the local covering construction
+from a single monomial root to independent coordinate roots.
+
+\begin{lemma}[Actual roots of the original coordinate equations]
+\label{lem:kn-nadel-kummer-original-roots}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.chart_coordinateRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.originalProjection_over}
+\uses{def:kn-nadel-kummer-local-pullback}
+Let $y_j=b^*t_j$ be the actual coordinate section on $C(g,m)$.
+Then $y_j^{m_j}=a^*g^*t_j$.  For the original chart coordinates $v_j$,
+this is $y_j^{m_j}=a^*v_j$ under the original open-subscheme section
+comparison.  The new coefficient structure is the original composite
+$C(g,m)\to U\to X\to\operatorname{Spec}k$.
+\end{lemma}
+\begin{proof}
+Apply the actual top-section contravariant functor to the native
+pullback square $a\,g=b\,q_m$.  The true comorphism of $q_m$ takes
+the original section $t_j$ to $t_j^{m_j}$ and fixes every coefficient.
+The native coordinate-chart identity identifies $g^*t_j$ with the
+original open-subscheme section $v_j$.  Composing the same square
+with the original coefficient projection proves the structure identity.
+\end{proof}
+
+\begin{lemma}[The genuine finite surjective local covering projection]
+\label{lem:kn-nadel-kummer-finite-surjective}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_integral,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_finiteType,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_finite,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_injective,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_finite,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_surjective}
+\uses{def:kn-nadel-kummer-local-pullback}
+If every $m_j>0$, the original coordinate-power morphism $q_m$ and
+the actual first pullback projection $a:C(g,m)\to U$ are finite and
+surjective.
+\end{lemma}
+\begin{proof}
+Use on the target polynomial ring the algebra structure induced by
+the actual power homomorphism, rather than its identity algebra
+structure.  Each target coordinate is integral, since its positive
+$m_j$-th power is the image of the corresponding original source
+coordinate.  Constants are images too; polynomial induction using
+addition and multiplication by coordinates proves integrality of
+every element.  The homomorphism is of finite type: its composite
+with the original coefficient map is the original finite-type
+polynomial coefficient homomorphism.  Integral and finite type gives
+module finiteness for precisely this power-map algebra structure.
+
+For injectivity put $N=\prod_jm_j>0$ and $c_j=N/m_j$.
+The composite power homomorphism with exponents $c_j$ after the
+original one is the uniform expansion $t_j\mapsto t_j^N$, which is
+injective by the actual polynomial coefficient calculation.  Thus
+the original power homomorphism is injective.  Integral lying over
+now proves surjectivity on the entire original prime spectrum.
+The native affine finite criterion and native base-change theorems
+give the assertions for $q_m$ and its literal pullback projection.
+\end{proof}
+
+These results supply a genuine smooth finite local covering source.
+The finite free basis is constructed below from the actual
+independent-root tower.  Extension to the normalized single cyclic
+covering and the global auxiliary-divisor construction and its
+gluing remain separate producers.  None is an assumption of the
+local results above.
+
+\begin{lemma}[Actual SNC geometry produces the local smooth finite cover]
+\label{lem:kn-nadel-kummer-snc-cover}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.chartPullback_isAffine,EnvelopeProperty.Vanishing.NadelKummerCover.originalProjection_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.exists_smooth_snc_pullback_at_closed,EnvelopeProperty.Vanishing.NadelKummerCover.exists_smooth_snc_cover_at_closed}
+\uses{lem:kn-nadel-kummer-pullback-smooth,lem:kn-nadel-kummer-finite-surjective,lem:kn-nadel-kummer-original-roots}
+For the original smooth $d$-dimensional scheme and original SNC family,
+at each original closed point the native SNC chart gives an actual
+affine neighborhood with a finite surjective literal independent-root
+cover whose source is smooth of relative dimension $d$ over the
+original field.  Every original component through the point remains
+the span of its specified distinct original coordinate, and every
+other original component is absent on the whole neighborhood.
+\end{lemma}
+\begin{proof}
+Take the actual affine etale coordinate chart from the original SNC
+chart theorem, retaining its injective component-to-coordinate map,
+all component ideal equalities, and all absence equalities.  Apply
+the preceding literal pullback construction to these original
+coordinates.  Its second projection is etale, its structural map
+is the actual composite to the original scheme and field, and its
+first projection is finite and surjective.  The root equations hold
+for these same original component coordinates.  The actual affine
+pullback is affine since both polynomial spaces and the chart are
+affine.  No replacement divisor family or covering-existence input
+is used.
+\end{proof}
+
+\begin{lemma}[The existing actual tame unit-root cover retains smoothness]
+\label{lem:kn-nadel-kummer-unit-root-layer}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.unitRoot_degree_isUnit,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootProjection_etale,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootStructureMap_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootChartProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootChartProjection_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootSection_pow,EnvelopeProperty.Vanishing.NadelKummerCover.unitRoot_coordinateRoot_pow}
+\uses{lem:kn-nadel-kummer-pullback-smooth,lem:kn-nadel-kummer-finite-surjective,lem:kn-nadel-kummer-original-roots}
+On $C(g,m)$ let $u$ be an actual global unit and let $N>0$ be
+invertible in the original coefficient ring.  The original native
+unit-root cover $h:T\to C(g,m)$ is finite, surjective and etale.
+The actual source $T$ stays smooth of relative dimension $n$ over
+the same coefficient ring, its composite to $U$ is finite and
+surjective, and it carries an actual unit $\alpha$ with
+$\alpha^N=h^*u$.  The original coordinate roots on $C(g,m)$ retain
+their original power equations after pullback by $h$.
+\end{lemma}
+\begin{proof}
+The true coefficient map on global sections carries the unit $N$
+to the same natural number in $\Gamma(C(g,m),\mathcal O)$.
+Reuse the original root quotient and its actual pullback cover.
+Its internally computed root-polynomial derivative is a unit, so
+the original native theorem makes $h$ etale.  Compose this smooth
+relative-dimension-zero map with the already proved smooth
+relative-dimension-$n$ structure of $C(g,m)$.  Native composition
+gives the stated dimension $0+n=n$.  The existing whole unit-root
+projection is finite and surjective; compose with the preceding
+finite surjective coordinate projection.  The original native
+global root section has exactly the displayed $N$-th power.
+Finally apply the actual top-section homomorphism of $h$ to each
+already proved original coordinate-root equation.
+\end{proof}
+
+\begin{lemma}[An actual map into the original raw cyclic equation]
+\label{lem:kn-nadel-kummer-original-cyclic-map}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicCoefficient,EnvelopeProperty.Vanishing.NadelKummerCover.originalUnitPullback,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedStructure_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedProjection_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRoot,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom_root,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom_comp,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootSpecMap,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootSpecMap_over,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMap,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMap_projection,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMapOfCoefficient,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMapOfCoefficient_projection}
+\uses{lem:kn-nadel-kummer-original-roots,lem:kn-nadel-kummer-unit-root-layer}
+Use the common positive exponent $N$ on each original coordinate.
+For the original unit $u$ and original multiplicities $a_j$, set
+$s=u\prod_jx_j^{a_j}$ in the original chart.  On the actual source
+$T$ that independently extracts the $N$-th roots $y_j$ of $x_j$
+and an $N$-th root $\alpha$ of $u$, the actual section
+$r=\alpha\prod_jy_j^{a_j}$ satisfies $r^N=s|_T$.
+It constructs a genuine morphism over the same original chart
+from $T$ to the existing original raw cyclic equation $z^N=s$.
+\end{lemma}
+\begin{proof}
+The coordinate and unit power identities already proved give
+\[
+ r^N=\alpha^N\prod_j(y_j^N)^{a_j}
+     =u|_T\prod_j(x_j|_T)^{a_j}=s|_T.
+\]
+Apply the actual quotient universal property of
+$\operatorname{AdjoinRoot}(z^N-s)$ to the original coefficient
+homomorphism and this constructed section $r$.  Its whole
+coefficient composite equals the original section pullback, and
+its original root coordinate maps to $r$.  Apply the original
+affinization morphism and spectrum functor to obtain the actual
+map into that root spectrum.  The coefficient-composite identity
+is exactly its structure triangle over the original chart's
+affinization.  The existing native raw cyclic equation is the
+literal pullback over that affinization, so its native pullback
+universal property supplies the displayed morphism.  Its composite
+with the original cyclic projection is exactly the constructed
+original adapted-cover projection.  A proved actual factorization of
+any original framed section coefficient transports this same map to
+the cyclic equation of that same specified coefficient, retaining
+the full original projection triangle.
+\end{proof}
+
+The last target is the original \emph{raw} cyclic equation.
+Extension through the original normalized rounded chart remains a
+separate producer.  The independent-root algebra comparison and
+its genuine finite free monomial basis are constructed next.  Smoothness
+of this adapted source does not assert smoothness of the original
+normalized single-cyclic covering.
+
+\begin{lemma}[Actual finite-root tower universal maps]
+\label{lem:kn-nadel-kummer-tower-universal}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.Tower.transition,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.transition_structure,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation_structure,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation_step,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation_root,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation_transition,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.rootInStage,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.rootInStage_pow,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.evaluation_rootInStage}
+Let $B_0=A$ and $B_{i+1}=B_i[z_i]/(z_i^{d_i+1}-c_i)$ be the
+existing original independent-root tower, using the actual image
+of $c_i\in A$ at each stage.  Its actual successive coefficient
+maps compose to transition homomorphisms $B_i\to B_j$.  Given an
+actual homomorphism $f:A\to S$ and actual sections $r_i\in S$
+satisfying $r_i^{d_i+1}=f(c_i)$, the quotient universal properties
+construct compatible homomorphisms $B_j\to S$.  They retain the
+whole original coefficient map and carry each original adjoined
+root, at every later stage, to the same specified $r_i$.
+\end{lemma}
+\begin{proof}
+Compose the actual successive coefficient maps to obtain the
+transitions; induction proves their original coefficient triangle.
+Start the evaluation at $f$ on $B_0$.  At step $i$, the previously
+constructed coefficient triangle identifies the image of the new
+polynomial coefficient with $f(c_i)$.  Thus the displayed actual
+power equality makes $r_i$ a root of that exact polynomial.
+The actual AdjoinRoot universal property constructs the next whole
+ring homomorphism.  Its original coefficient composite is the
+previous evaluation and its actual original root coordinate goes
+to $r_i$.  Induction gives compatibility with every transition.
+Applying a transition to the original root equation proves the
+power relation in any later stage; applying evaluation-transition
+compatibility proves the asserted root value there.
+\end{proof}
+
+\begin{lemma}[The actual tower is the original coordinate-power algebra]
+\label{lem:kn-nadel-kummer-tower-polynomial-iso}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerDegree,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerCoefficient,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerRoot,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerToPolynomial,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerToPolynomial_structure,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerToPolynomial_root,EnvelopeProperty.Vanishing.NadelKummerCover.polynomialToCoordinateTower,EnvelopeProperty.Vanishing.NadelKummerCover.polynomialToCoordinateTower_structure,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerToPolynomial_comp,EnvelopeProperty.Vanishing.NadelKummerCover.polynomialToCoordinateTower_evaluation,EnvelopeProperty.Vanishing.NadelKummerCover.polynomialToCoordinateTower_comp,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerEquiv,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateTowerAlgEquiv}
+\uses{lem:kn-nadel-kummer-tower-universal}
+Let $A$ be the original polynomial ring in $x_0,\ldots,x_{n-1}$
+over $R$.  Take $c_i=x_i$ and the positive powers $m_i=d_i+1$.
+The original finite root tower has an actual $A$-algebra isomorphism
+\[
+ B_n\simeq R[t_0,\ldots,t_{n-1}],\qquad x_i\longmapsto t_i^{m_i}.
+\]
+Every original adjoined root maps to the same original $t_i$.
+The whole original coefficient triangle is retained.
+\end{lemma}
+\begin{proof}
+Extend the finite coordinate labels by zero after $n$ to use the
+existing original natural-number-indexed tower; these later values
+are never adjoined.  Its universal evaluation to the actual target
+polynomial ring sends the original $x_i$ to $t_i^{m_i}$ and each
+new root to $t_i$.  The reverse polynomial homomorphism sends
+$t_i$ to the corresponding actual root carried to $B_n$.
+The original root power relations identify its whole composite
+on $A$ with the actual original coefficient inclusion.
+The forward-after-reverse composite fixes coefficients and every
+original polynomial coordinate, so polynomial-generator
+extensionality makes it the identity.  For the other composite,
+prove on each earlier tower stage that it is the actual transition
+to $B_n$.  The base stage is the proved coefficient triangle.
+At a new stage, compatibility with its coefficient inclusion
+follows from the previous stage and actual transition composition.
+Its original root coordinate goes to exactly that root carried to
+$B_n$.  The native quotient-generator extensionality gives the
+whole stage identity.  At stage $n$ the transition is the identity.
+These actual two inverse homomorphisms give the ring isomorphism;
+the proved whole coefficient triangle makes it an $A$-algebra
+isomorphism for precisely the displayed original power-map action.
+\end{proof}
+
+\begin{lemma}[The actual finite free power-map basis and flat local projection]
+\label{lem:kn-nadel-kummer-power-map-basis}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.Tower.basisIndex,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.basisIndex_finite,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.basis,EnvelopeProperty.Vanishing.NadelKummerCover.Tower.basisIndex_card,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerBasis,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerBasis_apply,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerBasis_card,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_free,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_finite_of_basis,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_flat,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_flat_of_pos,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_flat,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_flat_of_pos}
+\uses{lem:kn-nadel-kummer-tower-polynomial-iso,lem:kn-nadel-kummer-finite-surjective}
+Assume the original coefficient ring $R$ is nontrivial.  The actual
+target polynomial algebra has a genuine finite basis over its
+original coefficient polynomial algebra acting by the power map.
+Its basis index has exactly $\prod_i m_i$ elements.  The original
+power morphism and its literal branched pullback projection are
+flat for every original positive exponent vector.
+\end{lemma}
+\begin{proof}
+At stage zero use the original singleton basis of $A$ over itself.
+At each new stage use the native monic basis
+$1,z_i,\ldots,z_i^{m_i-1}$ of that actual root quotient over the
+preceding ring.  The actual coefficient composites give the scalar
+tower, so the native product-of-bases construction gives a basis
+over the same original $A$.  Its actual index is recursively the
+previous index times $\{0,\ldots,m_i-1\}$.  Induction gives its
+finiteness and cardinality $\prod_i m_i$.
+Transport this constructed basis along the preceding proved actual
+$A$-algebra isomorphism.  Every transported basis vector is the
+image of its same original successive root-basis vector; in
+particular these are actual coordinate monomials with each
+original root exponent in its prescribed range.  In all module
+statements explicitly use the module structure from the original
+power-map algebra, since source and target have the same underlying
+polynomial type.  The identity self-module action is not used.
+The constructed finite basis proves finite freeness and hence
+flatness of the actual ring homomorphism.  The native affine flat
+criterion proves flatness of the same original power morphism;
+actual scheme base change proves flatness of its literal first
+pullback projection.  Writing any positive $m_i$ as $(m_i-1)+1$
+gives the assertion for every original positive exponent vector.
+\end{proof}

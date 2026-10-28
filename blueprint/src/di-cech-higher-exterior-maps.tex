@@ -1,0 +1,187 @@
+\section{Normalized higher maps into the original Cech total}
+
+Let $k$ be a field of prime characteristic $p$, let $f:X\to\operatorname{Spec}k$
+be smooth of relative dimension $n$, and write $Y=X^{(p)}$ with its original
+structural morphism $g:Y\to\operatorname{Spec}k$. Put
+$P=\Omega^{1,\mathrm{pre}}_{Y/k}$ and
+$\Omega_Y^q=(\bigwedge^q P)^{\mathrm{sh}}$. Let $U$ be a family of original
+opens of $Y$, let $K=F_*\Omega^\bullet_{X/k}$ with the original differential,
+and let $T=\operatorname{Tot}\check C(U,K)$ be the published sheaf total.
+The construction below uses the original all-tuple product and its proved
+total derivation identity. No arbitrary multiplication on $T$ is supplied.
+
+\begin{definition}[The raw degree-one map]
+\label{def:di-higher-exterior-raw-one}
+\lean{EnvelopeProperty.DI.CechHigherExteriorMaps.rawOneUnit, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOneUnit_apply, EnvelopeProperty.DI.CechHigherExteriorMaps.oneComponent, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOne, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOne_apply, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOneUnit_restrict, EnvelopeProperty.DI.CechHigherExteriorMaps.oneComponent_closed, EnvelopeProperty.DI.CechHigherExteriorMaps.oneComponent_f_one, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOne_restrict, EnvelopeProperty.DI.CechHigherExteriorMaps.rawOne_closed}
+\leanok
+\uses{thm:di-cech-degree-one-descent-map,def:di-cech-original-local-cochains}
+Let $D$ be actual local degree-one descent data with source $\Omega_Y^1$,
+and let $\tau:\Omega_Y^1[-1]\to T$ be the associated original map.
+For an original open $W$, define
+\[
+ t_W:P(W)\longrightarrow T^1(W),\qquad
+ t_W(m)=\tau^1_W(\eta_{1,W}(m)).
+\]
+Here $\eta_{1,W}$ is the original one-fold exterior sheafification unit.
+This is linear over $\mathcal O_Y(W)$, commutes with every original
+restriction, and has values in the kernel of $d_T^1$.
+\end{definition}
+\begin{proof}
+\leanok
+The one-fold exterior unit is the alternating one-variable map obtained
+from the original exterior-presheaf unit. Composing it with the actual
+degree-one component of $\tau$ gives the stated linear map. The exterior
+unit and $\tau^1$ commute with restrictions, so their composite does too.
+The source of $\tau$ is concentrated in degree one. Its chain-map equation
+therefore gives $\tau^1d_T^1=0$, and evaluation on the original unit proves
+closedness on every open. The construction uses the actual $\xi,h$ maps
+and their proved local equations through $D$, not a supplied higher map.
+\end{proof}
+
+\begin{definition}[Ordered positive cup powers]
+\label{def:di-higher-exterior-ordered-powers}
+\lean{EnvelopeProperty.DI.CechHigherExteriorMaps.orderedPower, EnvelopeProperty.DI.CechHigherExteriorMaps.orderedPower_zero, EnvelopeProperty.DI.CechHigherExteriorMaps.orderedPower_succ, EnvelopeProperty.DI.CechHigherExteriorMaps.orderedPower_restrict, EnvelopeProperty.DI.CechHigherExteriorMaps.orderedPower_closed}
+\leanok
+\uses{def:di-higher-exterior-raw-one,def:di-cech-total-cup,lem:di-cech-total-cup-leibniz}
+For $q>0$, define a multilinear map
+\[
+ \mu_{q,W}:P(W)^q\longrightarrow T^q(W)
+\]
+by $\mu_{1,W}=t_W$ and the fixed left-parenthesized recursion
+\[
+ \mu_{q+1,W}(m_0,\ldots,m_q)
+ =\mu_{q,W}(m_0,\ldots,m_{q-1})\smile t_W(m_q).
+\]
+Every $\mu_q$ commutes with restriction and has closed values.
+\end{definition}
+\begin{proof}
+\leanok
+The original total product is bilinear on sections of each original open.
+Compose its left input with the already constructed multilinear map,
+its right input with $t_W$, and use the finite-variable currying
+equivalence. This constructs the stated multilinear map without assuming
+multilinearity of the desired formula. The defining currying evaluation
+formula gives the displayed recursion. Induction on $q$ proves restriction
+compatibility by the whole restriction identity for the original total
+product and the preceding restriction identity for $t$. The same induction
+proves closedness: both factors are closed, and the original total
+derivation identity makes their product closed. No associativity or
+commutativity of the chain-level cup product is needed.
+\end{proof}
+
+\begin{definition}[Normalized alternating families]
+\label{def:di-higher-exterior-normalized-family}
+\lean{EnvelopeProperty.DI.CechHigherExteriorMaps.constantMap, EnvelopeProperty.DI.CechHigherExteriorMaps.constantMap_restrict, EnvelopeProperty.DI.CechHigherExteriorMaps.higherMap_zero}
+\leanok
+\uses{def:di-higher-exterior-ordered-powers,lem:di-reused-native-normalization}
+For $0<q<p$, let $\beta_W:k\to\mathcal O_Y(W)$ be the actual structural
+map on sections, and set
+\[
+ A_{q,W}=\beta_W((q!)^{-1})\operatorname{Alt}(\mu_{q,W}).
+\]
+These are actual alternating maps over the original rings of sections,
+including empty opens, and form a restriction-compatible family.
+\end{definition}
+\begin{proof}
+\leanok
+Use the existing normalized alternatization of the genuine multilinear
+map $\mu_{q,W}$. That construction is alternating also in characteristic
+two. The original structural maps satisfy
+$\rho_{WV}\beta_W=\beta_V$. The proved restriction identity for $\mu_q$
+therefore satisfies exactly the hypotheses of normalized-alternatization
+naturality, giving the entire restriction identity for $A_q$.
+Since $q<p$, primality implies $p\nmid q!$, so $q!$ is nonzero in $k$.
+Its inverse exists in $k$, and the existing normalization identity gives
+$\beta_W((q!)^{-1})(q!)=1$ in every original section ring. This argument
+uses no nontriviality or characteristic assumption on section rings;
+it also applies to the zero ring on the empty open.
+For $q=1$, the one-variable ordered map is the original $t_W$ and the
+permutation group has one element. Since $1!=1$, normalization gives
+exactly the alternating family corresponding to $\tau^1$. Injectivity
+of the original exterior-sheaf universal property therefore retains
+the whole original degree-one sheaf morphism.
+\end{proof}
+
+\begin{theorem}[The actual higher exterior morphism]
+\label{thm:di-higher-exterior-sheaf-map}
+\lean{EnvelopeProperty.DI.CechHigherExteriorMaps.higherMap, EnvelopeProperty.DI.CechHigherExteriorMaps.higherMap_unit, EnvelopeProperty.DI.CechHigherExteriorMaps.higherMap_closed}
+\leanok
+\uses{def:di-higher-exterior-normalized-family}
+For $0<q<p$, the preceding original family induces a genuine sheaf map
+$\phi_q:\Omega_Y^q\to T^q$. On every original raw wedge unit it is exactly
+\[
+ (\phi_q)_W(\eta_{q,W}(m))=A_{q,W}(m).
+\]
+The whole original morphism satisfies $\phi_qd_T^q=0$.
+\end{theorem}
+\begin{proof}
+\leanok
+Apply the existing exterior-sheaf universal property to the actual
+restriction-compatible alternating family $A_q$. Its inverse constructs
+$\phi_q$ through the exterior presheaf and original sheafification
+adjunction. The inverse-equivalence identity evaluated on each tuple is
+the displayed formula. To prove whole-map closedness, use injectivity of
+the same universal property with target $T^{q+1}$. The corresponding
+alternating family is obtained by composing $A_q$ with $d_T^q$.
+Closedness of $\mu_q$ says that this differential composed with the whole
+multilinear map is zero. The existing normalized-alternatization
+closedness theorem makes the corresponding alternating family zero.
+Injectivity therefore gives $\phi_qd_T^q=0$. Thus equality on raw units
+has been promoted to equality of the whole sheaf morphism through the
+actual universal property, without assuming global generation of all
+sections by such units.
+\end{proof}
+
+\begin{theorem}[The genuine positive-degree complex maps]
+\label{thm:di-higher-exterior-single-map}
+\lean{EnvelopeProperty.DI.CechHigherExteriorMaps.higherCochainMap, EnvelopeProperty.DI.CechHigherExteriorMaps.higherCochainMap_f_self, EnvelopeProperty.DI.CechHigherExteriorMaps.higherCochainMap_zero}
+\leanok
+\uses{thm:di-higher-exterior-sheaf-map}
+For every $0<q<p$, the same closed morphism gives an actual complex map
+$\Phi_q:\Omega_Y^q[-q]\to T$. Its degree-$q$ component is the original
+single-object identification followed by $\phi_q$, and hence retains
+the preceding every-open raw-unit formula.
+\end{theorem}
+\begin{proof}
+\leanok
+Use the native map-from-single construction with the original morphism
+$\phi_q$. The only possible outgoing differential from the nonzero
+source degree is $d_T^q$, whose composite is zero by the preceding
+theorem. All other components have zero source. The native construction's
+degree-$q$ evaluation identity gives the stated component exactly.
+Degree zero is the already constructed original coefficient complex map
+followed by the original Cech augmentation; it is not reconstructed here.
+\end{proof}
+
+\begin{theorem}[Higher maps from the original Witt geometry]
+\label{thm:di-higher-exterior-witt-maps}
+\lean{EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherMap, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherMap_unit, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherMap_zero, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherMap_zero_localEvaluation, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherMap_closed, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherCochainMap, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherCochainMap_f_self, EnvelopeProperty.DI.ActualWittHigherExteriorMaps.higherCochainMap_zero}
+\leanok
+\uses{thm:di-higher-exterior-single-map,thm:di-actual-witt-cech-one-map}
+Let $k$ be perfect, and let
+$\widetilde f:\widetilde X\to\operatorname{Spec}W_2(k)$ be separated
+and smooth of relative dimension $n$, with the actual original special
+fibre $f$ and its actual true Frobenius twist $Y$. On the canonical Witt
+affine cover, the internally constructed geometric $\xi,H$ maps and
+$h=-H$ determine the preceding $\Phi_q$ for every $0<q<p$.
+The producer takes the original geometry and the degree bound only;
+no higher map, quasi-isomorphism, or desired homology identification is
+an input.
+\end{theorem}
+\begin{proof}
+\leanok
+The canonical Witt-cover construction selects the actual local and
+overlap Frobenius lifts. The original geometric maps satisfy closedness,
+the pair equation with $h=-H$, and the triple equation, including actual
+further restrictions. Their internally constructed local data therefore
+give the original degree-one map used in the first definition.
+Substitute exactly those local data into the preceding constructions.
+Every subsequent operation is the actual cup recursion, existing
+normalized alternatization, original exterior universal property, and
+native single-degree construction. Consequently the result has the
+stated original source and total target and requires no desired
+higher-map certificate. Identification of its leading local homology
+map with Cartier and the final global quasi-isomorphism are separate
+computations, not hypotheses or conclusions of this theorem.
+\end{proof}
+

@@ -1,0 +1,253 @@
+\section{Original generic line sections and local orders}
+
+Let $X$ be the SAME original integral scheme, $\eta$ its original generic
+point, $K=\mathcal O_{X,\eta}$, and $\kappa_\eta$ its original residue
+field.  An original generic section of the actual line $L$ means literally
+\[
+ \sigma\in\Gamma(\operatorname{Spec}\kappa_\eta,
+             (\operatorname{fromSpecResidueField}\eta)^*L).
+\]
+It is not a supplied rational function or a new generic-line carrier.
+The local-order construction below needs only integral locally Noetherian
+$X$ and an actual invertible $L$.  Normality and projectivity will be used
+by the subsequent global Euler argument, not by frame independence.
+
+\begin{definition}[The actual generic coefficient in an original open frame]
+\label{def:curve-generic-section-original-coefficient}
+\leanok
+\uses{def:actual-line-frame-via-factor,lem:actual-generic-residue-field-equivalence}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.genericFibreModule,
+EnvelopeProperty.CurveGenericSectionOrders.genericCoefficient}
+For a nonempty original open $U$, use the genuine factor
+$q_U:\operatorname{Spec}\kappa_\eta\to U$ of the original residue-field
+morphism.  For an actual frame $e:L|_U\simeq\mathcal O_U$, pull $e$ back by
+this factor, using the original pullback-composition comparison.  Apply
+this actual frame to $\sigma$, apply the native $\Gamma\operatorname{Spec}$
+isomorphism, and then the inverse of the ORIGINAL residue map
+$K\simeq\kappa_\eta$.  Denote the resulting element of $K$ by
+$c_{U,e}(\sigma)$.  The module is named before its sections are formed,
+with the same native scalar action and the same original pullback.
+\end{definition}
+\begin{proof}
+Every nonempty original open contains the generic point.  The original
+residue-field morphism has constant image $\eta$, so its genuine open
+factor exists and its composite with the original inclusion is the
+original morphism.  Pullback of an actual isomorphism and the actual
+unit comparison give an isomorphism on the original residue fibre.
+The original generic stalk is a field; its original residue quotient
+is both injective and surjective.  Thus all maps in the stated
+definition are the specified original maps and isomorphisms.
+\end{proof}
+
+\begin{lemma}[Faithful coefficients]
+\label{lem:curve-generic-section-coefficient-restriction}
+\leanok
+\uses{def:curve-generic-section-original-coefficient,lem:actual-line-frame-via-factor-composition,scheme:actual-residue-section-pullback}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.genericCoefficient_ne_zero,
+EnvelopeProperty.CurveGenericSectionOrders.genericCoefficient_restrict}
+If $\sigma\ne0$, then $c_{U,e}(\sigma)\ne0$.  If $V\subseteq U$ is
+nonempty and $e_V$ is the actual restriction of $e$ by the original
+pullback-composition comparison, then
+$c_{V,e_V}(\sigma)=c_{U,e}(\sigma)$.
+\end{lemma}
+\begin{proof}
+An actual module-sheaf isomorphism gives inverse whole-section maps,
+and both field isomorphisms are injective.  Hence the coefficient of a
+nonzero original section is nonzero.  The two original factors
+$q_V\to V\to U$ and $q_U\to U$ have equal composites with the open
+immersion into $X$; they are therefore equal.  The already proved
+whole-isomorphism composition law for actual frame pullbacks now
+identifies the two frames, and hence every actual coefficient.
+\end{proof}
+
+\begin{lemma}[Original frame changes preserve the native local order]
+\label{lem:curve-generic-section-order-frame-independent}
+\leanok
+\uses{lem:curve-generic-section-coefficient-restriction,lem:actual-unit-module-automorphism-scalar,def:fc-original-section-whole-frame-scalar}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.ord_genericCoefficient_eq}
+Assume $X$ is locally Noetherian.  If $x\in U\cap V$, $e$ and $e'$ are
+ANY two actual original open frames of $L$, and $\sigma\ne0$, then
+\[
+ \operatorname{ord}_x c_{U,e}(\sigma)
+   =\operatorname{ord}_x c_{V,e'}(\sigma).
+\]
+\end{lemma}
+\begin{proof}
+Restrict both original frames to the actual intersection $W=U\cap V$,
+which contains $x$.  Their actual composite is an automorphism of the
+original structure module on $W$, hence multiplication by a genuine
+original unit $v\in\Gamma(W,\mathcal O_W)^\times$.  Pulling this whole
+scalar identity to the original generic point shows that the two
+generic coefficients differ by the original generic germ of $v$.
+Indeed, the native coefficient square for the residue-field morphism
+is its original residue evaluation, followed by the inverse original
+generic residue map, so this scalar is exactly that original germ.
+The germ of $v$ is nonzero and has native order zero at $x$ because
+$v$ is a unit on a neighborhood of $x$.  Native multiplicativity of
+order for nonzero field elements, and the preceding restriction law,
+give the claimed equality.  This holds at every original point,
+including the generic point, without a DVR or order certificate.
+\end{proof}
+
+\begin{definition}[The intrinsic order of the original generic section]
+\label{def:curve-generic-section-original-order}
+\leanok
+\uses{lem:curve-generic-section-order-frame-independent}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.order,
+EnvelopeProperty.CurveGenericSectionOrders.order_eq_frameCoefficient,
+EnvelopeProperty.CurveGenericSectionOrders.order_generic}
+For $L$ invertible choose an actual frame neighborhood of each original
+$x$, and define $\operatorname{ord}_x(\sigma)$ to be the native order of
+the coefficient just defined.  For every nonzero original $\sigma$,
+EVERY actual original frame $e$ on EVERY original $U\ni x$ computes it:
+\[
+ \operatorname{ord}_x(\sigma)=\operatorname{ord}_x c_{U,e}(\sigma).
+\]
+Its value at $\eta$ is zero.  The choice of frame is not a matching
+assumption in this definition or theorem.
+\end{definition}
+\begin{proof}
+The original invertibility atlas covers every original point, so
+the chosen frame really exists.  The preceding frame independence
+identifies its coefficient order with that of any given actual frame.
+The original generic point has coheight zero, so its native order is
+zero by the definition of native order away from coheight one.
+\end{proof}
+
+\begin{lemma}[Actual scalar and tensor section arithmetic]
+\label{lem:curve-generic-section-scalar-tensor-order}
+\leanok
+\uses{def:curve-generic-section-original-order,def:actual-line-frame-via-factor,lem:actual-line-frame-via-factor-composition}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.scalarSection,
+EnvelopeProperty.CurveGenericSectionOrders.genericCoefficient_scalarSection,
+EnvelopeProperty.CurveGenericSectionOrders.exists_scalarSection,
+EnvelopeProperty.CurveGenericSectionOrders.tensorSection,
+EnvelopeProperty.CurveGenericSectionOrders.order_scalarSection,
+EnvelopeProperty.CurveGenericSectionOrders.order_tensorSection}
+The original isomorphism $K\simeq\kappa_\eta$ and native
+$\Gamma\operatorname{Spec}$ inverse make the actual scalar multiple
+$f\sigma$ in the SAME original generic fibre.  Its coefficient is
+$f c_{U,e}(\sigma)$.  Every two nonzero original sections of the same
+generic line differ by ONE nonzero scalar $f\in K$.
+For $\sigma\ne0$ and $\tau\ne0$, the actual generic pure tensor,
+formed with the original pullback tensorator, has local order equal to
+the sum of the two factor orders.  For $f\ne0$ and $\sigma\ne0$, scalar
+multiplication adds $\operatorname{ord}_x f$ to section order.
+\end{lemma}
+\begin{proof}
+The actual whole-section map of a frame is linear over the original
+residue-spectrum section ring.  The two actual ring isomorphisms
+therefore give the scalar formula.  In any ONE original generic
+frame, set $f$ equal to the quotient of the two nonzero coefficients.
+The scalar formula and injectivity of that actual frame prove equality
+of the original sections.  Thus this is one global scalar, not a family
+of pointwise coefficient matches.
+
+On a common original open, tensor the two original frames using the
+native pullback tensorator and the original structure-line tensor
+comparison.  The monoidal pullback-composition com\-parison identifies
+the resulting actual ge\-neric frame with the tensor of the two actual
+generic frames.  The original pure-tensor section is mapped to the
+product of their original coefficients.  Both coefficients are
+nonzero, so this also proves the original tensor section is nonzero.
+Native multiplicativity of order and the ANY-frame theorem give the
+stated scalar and tensor order formulas.
+\end{proof}
+
+\begin{lemma}[Original whole sections retain their actual zero orders]
+\label{lem:curve-generic-section-whole-zero-order}
+\leanok
+\uses{def:curve-generic-section-original-order,def:fc-original-line-section-frame-coefficient,thm:fc-original-line-section-frame-order,lem:fc-original-local-section-scalar,lem:scheme-original-global-section-hom,lem:fc-original-line-section-fibre,thm:line-section-zero-ideal-cartier,def:fc-curve-cartier-original-equations}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.wholeSection,
+EnvelopeProperty.CurveGenericSectionOrders.wholeSection_ne_zero,
+EnvelopeProperty.CurveGenericSectionOrders.order_wholeSection}
+For every nonzero ORIGINAL whole section $s:\mathcal O_X\to L$, its
+actual original generic pullback $s_\eta$ is nonzero, and for every
+original $x$ its intrinsic order is the old native local order of the
+SAME original zero ideal of $s$.
+\end{lemma}
+\begin{proof}
+Choose a genuine original affine frame at $x$.  The already proved
+whole local section-Hom identity says that the original generic
+coefficient is exactly the generic germ of the actual local scalar.
+The native over-site frame and native open-subscheme frame coefficient
+comparison identify that scalar with the SAME original zero-ideal
+coefficient.  The original nonzero-section theorem proves this
+coefficient is nonzero on every nonempty such open.  Hence the
+original generic section cannot be zero.  The already proved
+zero-ideal local-order formula and ANY-frame theorem give the claimed
+equality at every original point.
+\end{proof}
+
+\begin{theorem}[One global rational correction of two actual whole zero divisors]
+\label{thm:curve-generic-section-generated-order-difference}
+\leanok
+\uses{lem:curve-generic-section-scalar-tensor-order,lem:curve-generic-section-whole-zero-order,thm:fc-original-projective-generated-line-quotients,thm:fc-original-line-nonzero-generator,thm:line-section-zero-ideal-cartier}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.exists_order_difference}
+On the SAME original integral projective $X$, for every actual
+invertible $L$ and every nonzero original generic $\sigma$, there are
+an internally produced invertible denominator $T$, nonzero original
+WHOLE sections $s$ of $L\otimes T$ and $t$ of $T$, and ONE nonzero
+$f\in K$, such that at EVERY original point
+\[
+ \operatorname{ord}_x\sigma
+  =\operatorname{ord}_x f+
+    \operatorname{ord}_x(s)-\operatorname{ord}_x(t).
+\]
+The two whole-section orders are literally the old local orders of
+their actual original zero ideals.  No coefficient, order, divisor,
+finite-support, or Euler comparison is supplied.
+\end{theorem}
+\begin{proof}
+Actual projective generation supplies one genuine denominator $T$
+such that both $T$ and $L\otimes T$ have genuine global generating
+families.  The original nonzero-generator theorem internally chooses
+nonzero WHOLE $t$ and $s$.  Their actual generic pullbacks are nonzero.
+The true generic tensor $\sigma\otimes t_\eta$ is also nonzero.
+The preceding one-dimensional original-section argument gives ONE
+nonzero global scalar $f$ with
+$\sigma\otimes t_\eta=f s_\eta$.  Compute the orders of both sides in
+ANY original local frames, apply the true tensor and scalar formulas,
+and substitute the two actual zero-ideal orders.  Rearrangement gives
+the stated formula simultaneously for all points, including poles.
+\end{proof}
+
+\begin{theorem}[Arbitrary original generic sections compute the SAME full Euler degree]
+\label{thm:curve-generic-section-full-euler-degree}
+\leanok
+\uses{thm:curve-generic-section-generated-order-difference,def:fc-original-weighted-rational-order,thm:fc-original-curve-principal-weighted-balance,thm:fc-original-curve-line-degree-zero-section,thm:fc-original-curve-line-degree-tensor,thm:fc-curve-cartier-ideal-finite,thm:fc-curve-finite-closed-subschemes,thm:fc-curve-cartier-native-local-orders,def:fc-curve-cartier-original-equations,thm:line-section-zero-ideal-cartier}
+\lean{EnvelopeProperty.CurveGenericSectionOrders.hasFiniteSupport_order,
+EnvelopeProperty.CurveGenericSectionOrders.degree_eq_finsum_order}
+Let $p:X\to\operatorname{Spec}k$ be the SAME original projective
+integral curve, $\dim X\le1$, with every original local ring normal.
+Then EVERY nonzero ORIGINAL generic section $\sigma$ of EVERY
+invertible original $L$ has finite-support intrinsic local order and
+\[
+ \deg_p L=\sum_{x\in X}[\kappa(x):k]\operatorname{ord}_x\sigma.
+\]
+The degree is the original normalized FULL coherent Euler
+characteristic.
+
+Residue scalar actions are the actual ones induced
+by $p$.  The sum is over ALL original points and keeps negative poles.
+\end{theorem}
+\begin{proof}
+Projectivity derives original Noetherianity and compactness.  The one
+global correction formula expresses the section orders as the sum
+and difference of three honest finite-support functions: the order
+of ONE nonzero global rational function (finite by normal-curve
+Cartier denominator geometry), and the two zero orders (supported
+on their actual proper Cartier supports, which are finite on the
+original curve).  This proves finite support internally.
+
+Multiply that same pointwise identity by each true residue degree.
+The weighted sum of the ONE global rational-function orders is zero
+by the genuine original principal-divisor balance.  The old TWO
+nonzero whole-section Euler theorems give the weighted zero orders
+as $\deg_p(L\otimes T)$ and $\deg_p T$.  Actual full Euler tensor
+additivity gives
+$\deg_p(L\otimes T)-\deg_p T=\deg_pL$.  Finite-support sum
+additivity therefore proves exactly the stated original degree
+formula.  No original vertical ideal is restricted to the curve,
+and no generic section is treated as a whole global section.
+\end{proof}

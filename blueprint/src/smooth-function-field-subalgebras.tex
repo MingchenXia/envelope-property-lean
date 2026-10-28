@@ -1,0 +1,31 @@
+\section{Original scheme smoothness for the actual field subalgebras}
+
+\begin{theorem}[The whole original affine section ring is smooth]\label{thm:sc0-smooth-original-affine-sections}
+\lean{AlgebraicGeometry.Scheme.Hom.smooth_sectionsAlgebra}
+\leanok
+For an original smooth structure morphism $f:X\to\operatorname{Spec} k$
+and an original affine open $U$, the original algebra
+$\Gamma(X,U)$, with the algebra structure induced by $f$, is smooth over $k$.
+\end{theorem}
+\begin{proof}
+The actual section map from the whole affine base to $U$ is smooth
+because $f$ is smooth. The original $k$-algebra structure is that
+map composed with the actual inverse of the base-field global-section
+isomorphism. Ring isomorphisms are smooth and smooth maps compose,
+so this precise original algebra map is smooth.
+\end{proof}
+
+\begin{theorem}[The literal section subalgebra is an actual smooth source]\label{thm:sc0-smooth-original-field-subalgebra}
+\lean{AlgebraicGeometry.Scheme.Hom.smooth_sectionsFunctionFieldSubalgebra}
+\leanok
+\uses{thm:sc0-smooth-original-affine-sections,thm:sc0-scheme-sections-function-field-equiv}
+For a nonempty original affine $U$ in the original integral smooth
+scheme, the literal section image $C_U\subset K(X)$ has smooth
+original structure morphism $\operatorname{Spec} C_U\to\operatorname{Spec} k$.
+\end{theorem}
+\begin{proof}
+Transport the preceding actual algebra smoothness along the actual
+generic-germ algebra equivalence $\Gamma(X,U)\simeq C_U$. The
+affine ring-map characterization of scheme smoothness gives the
+assertion for its actual spectrum structure morphism.
+\end{proof}

@@ -1,0 +1,28 @@
+\section{Actual tensor total maps are detected on original bidegrees}
+
+\begin{theorem}[Native pure-tensor bidegree detection]
+\label{thm:di-cech-total-tensor-ext}
+\uses{def:di-cech-total-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalTensorExt.totalTensor_hom_ext}
+Let $T$ be the same original first-quadrant Cech total complex and
+let $D$ be any actual module sheaf on its original scheme. Two actual
+morphisms $T^a\otimes T^b\to D$ agree if their composites with the
+tensor maps of every pair of original bidegree inclusions agree.
+The bidegrees range over $q+j=a$ and $r+j'=b$. This is a native
+morphism detection statement, requiring no cohomology, exactness of
+sections, covering condition, or differential hypothesis.
+\end{theorem}
+\begin{proof}
+In a fixed total degree, the original identity is the finite sum of
+its native bidegree projections followed by native inclusions.
+Use these two original identity decompositions in the two inputs
+of the actual tensor functor. Additivity of the original tensor
+morphism map in each input expands the tensor identity as a finite
+sum. Functoriality identifies each summand with the tensor of the
+two projections followed by the tensor of the two inclusions.
+Composing this actual identity decomposition with either morphism
+expresses that morphism as the corresponding finite sum of its
+bidegree composites. The assumed equalities identify every pair of
+summands, so the two entire sheaf morphisms agree.
+\end{proof}

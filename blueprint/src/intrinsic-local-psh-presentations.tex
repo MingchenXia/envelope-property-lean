@@ -1,0 +1,151 @@
+\subsection{Actual regular-unit presentations on prescribed native point spaces}
+The source is Fang--Han--Xia, revision d64981e,
+Definition~\texttt{def:local-psh}. Its functions are actual invertible algebraic
+regular sections on genuine Zariski opens. These presentation classes do not
+require an analytic structure sheaf to be defined. No harmonicity,
+subharmonicity or arbitrary proper-birational witness equivalence is asserted.
+
+\begin{definition}[Independent finite-coefficient presentations]
+\label{scheme:finite-coefficient-local-psh}
+\uses{spectrum:relative,spectrum:topology,spectrum:pullback}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.tropAffine,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsConvexPLOn,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsDecrConvexPLLimitOn,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsLocallyPSHOn,
+EnvelopeProperty.Berkovich.RelativeSpectrum.tropAffine_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsConvexPLOn.comp_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsDecrConvexPLLimitOn.comp_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.IsLocallyPSHOn.comp_comap}
+\leanok
+Let $R,A$ be arbitrary commutative rings with an actual $R$-algebra action and
+$v:R\to\mathbb R_{\ge0}$ a prescribed valuation. Independently define convex
+PL presentations on the actual relative spectrum by finite rational maxima of
+$\sum_i q_i\log|a_i|+b$, with ORIGINAL $a_i\in A$ nonvanishing at every point
+of the actual analytic neighborhood. Define decreasing limits by genuine
+antitone sequences and their actual pointwise infima, and define local psh by
+these limits on actual open neighborhoods. Genuine $R$-algebra homomorphisms
+pull back all three presentation classes.
+\end{definition}
+\begin{proof}
+The definitions impose the stated actual formulas. For pullback, take the
+inverse image of each original analytic open and replace each $a_i$ by its
+actual algebra-homomorphism image. The whole evaluation identity preserves
+nonvanishing and every rational maximum. Compose every term of each sequence
+with the same actual point map; all pointwise inequalities and infima remain
+equal. Continuity of that real map preserves the local neighborhoods.
+\end{proof}
+
+\begin{definition}[Intrinsic actual regular-unit presentations]
+\label{scheme:native-regular-unit-local-psh}
+\uses{scheme:valued-points,scheme:valued-point-pullback,scheme:valued-point-topology,scheme:native-coefficient-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.eval_unit_ne_zero,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.unitTropAffine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.unitTropAffine_mapOverBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.comp_mapOverBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.comp_mapOverBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.comp_mapOverBase}
+\leanok
+For an ACTUAL scheme map $f:X\to\operatorname{Spec}R$, use the actual fixed-$v$
+native point space. Near each point choose an actual analytic open $W$, a genuine
+Zariski open $V$ containing the support of EVERY point of $W$, and actual units
+$a_i\in\Gamma(X,V)^\times$. The finite rational maximum formula using their
+ORIGINAL residue-field evaluations defines intrinsic convex PL presentations.
+Genuine decreasing sequences and local neighborhoods define intrinsic local psh.
+
+For any actual compatible coefficient map $\phi:R\to S$, valuations
+$w\circ\phi=v$, and WHOLE structure triangle
+$g\gg f_Y=f_X\gg\operatorname{Spec}\phi$, the actual native point map pulls
+back each presentation class.
+\end{definition}
+\begin{proof}
+The original evaluation of a true unit cannot vanish: its genuine basic open
+is all of $V$. Under the real section map $\Gamma(Y,V)\to\Gamma(X,g^{-1}V)$,
+units and their inverses map to actual units. Whole residue evaluation naturality
+identifies EVERY logarithmic term and finite maximum. Pull back the actual
+analytic neighborhood by the genuine continuous fixed-base point map. Compose
+the actual sequence with that same map; antitonicity and the whole pointwise
+infimum are preserved. The entire coefficient triangle is used to ensure that
+the resulting points lie in the exact prescribed-base locus.
+\end{proof}
+
+\begin{lemma}[Actual original affine fractions and coefficient units]
+\label{scheme:actual-affine-unit-fractions}
+\uses{scheme:affine-valued-point-comparison,scheme:affine-valued-point-homeomorphism,scheme:relative-affine-valued-point-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.exists_section_fraction_near,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.exists_unit_fraction_near,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_val,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_symm_val,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affine_eval_algebraMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isUnit_affine_coefficient}
+\leanok
+On the SAME original $\operatorname{Spec}A$, every actual section near a given
+native point has a genuine principal neighborhood $D(h)\subseteq V$ and an
+ORIGINAL numerator $b\in A$ whose whole section evaluation is $|b|/|h|$ on
+EVERY native point of $D(h)$. If the section is a genuine unit, both original
+numerator and denominator have nonzero value everywhere on that neighborhood.
+Conversely, the original coefficient section $a$ is a true unit on every actual
+open $V\subseteq D(a)$. The actual affine point homeomorphism and its inverse
+retain every original coefficient value.
+\end{lemma}
+\begin{proof}
+The genuine structure-sheaf local fraction theorem produces original $b,h$ and
+an actual section identity after restriction to $D(h)$. Actual section/residue
+naturality and the proved evaluation of constant fractions give the ratio
+formula on every whole native point. A unit evaluates nonzero, so the ratio
+formula forces BOTH numerator and denominator values nonzero. Conversely the
+true section $1/a$ on $V\subseteq D(a)$ multiplies the original coefficient
+section to one. The genuine affine residue-field isomorphisms and whole point
+inverse laws give the stated exact original coefficient evaluations.
+\end{proof}
+
+\begin{theorem}[Whole intrinsic and affine presentation equivalence]
+\label{scheme:actual-affine-local-psh-comparison}
+\uses{scheme:finite-coefficient-local-psh,scheme:native-regular-unit-local-psh,scheme:actual-affine-unit-fractions}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.unitTropAffine_eq_fractionTrop,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.to_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.of_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.to_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.of_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.to_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.of_affineSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isConvexPLOn_affine_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDecrConvexPLLimitOn_affine_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocallyPSHOn_affine_iff}
+\leanok
+For ANY actual $R$-algebra $A$ and prescribed valuation $v$, the actual native
+fixed-base affine homeomorphism identifies intrinsic regular-unit convex PL,
+decreasing-limit and local-psh presentations with the INDEPENDENTLY defined
+finite-$A$ classes on the genuine relative spectrum. No domain, finite type,
+Noetherian, field, coefficient bound or completeness is required.
+\end{theorem}
+\begin{proof}
+For a finite-$A$ presentation, use the actual principal open
+$D(\prod_i a_i)$. Every original $a_i$ divides that product, so this open lies
+in $D(a_i)$ and every original coefficient section is a true unit there.
+Original nonvanishing on the analytic neighborhood puts all its actual native
+supports in this principal open. Exact original coefficient evaluation gives
+the identical finite rational maximum. The empty tuple uses $D(1)$.
+
+Conversely, at the chosen point apply the genuine local fraction result to
+EACH of the finitely many actual units. Intersect the original analytic open
+with all the actual support opens $D(h_i)$; finiteness makes this a true open
+neighborhood. EVERY original numerator $b_i$ and denominator $h_i$ remains
+nonvanishing there. The whole section identities give
+$\log|a_i|=\log|b_i|-\log|h_i|$ on this ENTIRE neighborhood. Replace the
+finite tuple by $(b_i,h_i)$ and each rational coefficient vector by
+$(q_i,-q_i)$, retaining its original rational constant. The actual finite image
+of the original nonempty rational family gives the same maximum, even if some
+vectors coincide. These are whole evaluations and real logarithm identities,
+not an inference from selected generator norms.
+
+Pull back the genuine open neighborhoods through the actual affine
+homeomorphism and inverse. Apply the proved convex-PL comparison to EACH
+sequence term on the same original neighborhood. Pointwise inequalities and
+actual infima are preserved by the whole point bijection. Each term's
+convex-PL property is already local, so no single denominator or common
+countable intersection is required for the whole decreasing sequence. This
+gives both directions and all three equivalences for the SAME original scheme.
+\end{proof}

@@ -1,0 +1,66 @@
+\section{Actual eventual generation from a positive-power closed embedding}
+
+\begin{lemma}[Original projective twists are the actual powers of the original first twist]
+\label{lem:positive-power-projective-twist}
+\leanok
+\lean{EnvelopeProperty.PositivePowerProjectiveGeneration.twistOneIso,EnvelopeProperty.PositivePowerProjectiveGeneration.twistPowerIso}
+On the original finite polynomial projective space, the actual
+sheafified $d$th power of the original coordinate-hyperplane
+$\mathcal O(1)$ is isomorphic to the SAME original $\mathcal O(d)$
+for every $d\geq0$.
+\end{lemma}
+\begin{proof}
+The first original twist is the monoidal unit tensored with the
+actual original hyperplane pole sheaf, so its left unitor gives
+the true whole comparison. At degree zero compare the explicit
+structure sheaf with the native monoidal unit. Inductively use
+the actual explicit tensor comparison and tensor the induction
+isomorphism with that original first-twist unitor. The result is
+exactly the recursive original hyperplane pole-sheaf power.
+\end{proof}
+
+\begin{lemma}[Original exponent blocks are the original pulled twists]
+\label{lem:positive-power-projective-block}
+\leanok
+\lean{EnvelopeProperty.PositivePowerProjectiveGeneration.blockTwistIso}
+If $i:X\hookrightarrow\mathbb P^N_R$ is an original closed embedding
+and the original whole module $L^{\otimes r}$ is isomorphic to
+the actual $i^*\mathcal O(1)$, then $L^{\otimes rd}$ is isomorphic
+to the SAME actual $i^*\mathcal O(d)$ for every $d\geq0$.
+\uses{lem:positive-power-projective-twist,lem:bundle-tensor-power-isomorphism,lem:bundle-tensor-power-multiplication,lem:bundle-tensor-power-pullback}
+\end{lemma}
+\begin{proof}
+Use the true iterated-power comparison, take the actual power
+of the original whole first-twist isomorphism, commute the
+actual whole pullback with that power, and apply the preceding
+original projective twist comparison. No block matching input
+is supplied.
+\end{proof}
+
+\begin{theorem}[Actual positive-power projective data imply eventual generation]
+\label{thm:positive-power-projective-eventual-generation}
+\leanok
+\lean{EnvelopeProperty.PositivePowerProjectiveGeneration.exists_eventual_generatingSections}
+Let $L$ be an original invertible module. Suppose some positive
+original power $L^{\otimes r}$ is isomorphic to $i^*\mathcal O(1)$
+for an actual original closed projective embedding $i$.
+Then ALL sufficiently large original powers $L^{\otimes m}$
+have genuine finite global generating sections. No desired
+generation family, exponent-block comparison, denominator or
+Serre bound is an input.
+\uses{lem:positive-power-projective-block}
+\end{theorem}
+\begin{proof}
+For each of the finitely many original residue powers
+$L^{\otimes j}$, $0\leq j<r$, invertibility internally gives
+quasicoherence and finite type. Genuine closed-projective Serre
+generation gives a bound for
+$L^{\otimes j}\otimes i^*\mathcal O(d)$. Take the maximum of
+these actual finite residue bounds. If $m$ is at least $r$
+times this maximum, write $m=j+rd$ with $j=m\bmod r$ and
+$d=\lfloor m/r\rfloor$. The quotient is at least the chosen
+maximum. Its actual finite generating sections transport
+through the original block-twist and original power-addition
+isomorphisms to the SAME actual original $L^{\otimes m}$.
+This gives one bound valid for every integer exponent beyond it.
+\end{proof}

@@ -1,0 +1,157 @@
+\section{The specified original fraction charts and their actual form bases}
+
+\begin{lemma}[The specified generators cover their original Rees spectrum]
+\label{lem:resume-specified-generator-basic-cover}
+\uses{thm:rees-polynomial-surjective}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.iSup_specifiedGeneratorChartOpen}
+\leanok
+Let $A$ be a commutative ring and let $g_0,\ldots,g_m$ generate an ideal $I$.
+The actual basic opens $D_+(g_aT)$ cover $\operatorname{Proj}\mathcal R(I)$,
+where $\mathcal R(I)\subset A[T]$ is the original Rees algebra.
+\end{lemma}
+\begin{proof}
+The original graded polynomial map sending the $a$th variable to $g_aT$
+is surjective because the given elements generate $I$. Hence these same
+degree-one elements generate the whole Rees algebra over $A$.
+They also generate it over its actual degree-zero subring: the subalgebra
+over that subring contains every original coefficient through its degree-zero
+Rees constant, and contains all the specified degree-one generators.
+Induction on the original algebra generation therefore puts every Rees element
+in this subalgebra. Basic opens of homogeneous positive-degree algebra generators
+over degree zero cover the native projective spectrum. Indeed, a homogeneous
+prime containing every such generator would contain the irrelevant ideal,
+contrary to being a point of that projective spectrum.
+\end{proof}
+
+\begin{lemma}[The nonzero specified generators still cover]
+\label{lem:resume-specified-nonzero-generator-basic-cover}
+\uses{lem:resume-specified-generator-basic-cover}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.iSup_specifiedNonzeroGeneratorChartOpen}
+\leanok
+In the preceding situation, the subfamily $D_+(g_aT)$ with $g_a\ne0$ still
+covers the same actual Rees projective spectrum.
+\end{lemma}
+\begin{proof}
+For a point of the projective spectrum, choose a specified generator whose
+basic open contains it using the preceding lemma. If this generator were zero,
+its degree-one Rees element would also be zero, and the corresponding basic open
+would be empty. Thus the chosen generator is nonzero. This proves coverage by
+the indicated subfamily. In particular, for the zero ideal all generators are
+zero and this argument proves that the projective spectrum is empty.
+\end{proof}
+
+\begin{theorem}[The actual specified-generator fraction open cover]
+\label{thm:resume-specified-generator-fraction-cover}
+\uses{lem:resume-specified-nonzero-generator-basic-cover,lem:affine-blowup-fraction-chart-range}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.specifiedGeneratorFractionOpenCover}
+\leanok
+Assume additionally that $A$ is a domain. The actual native morphisms
+\[
+ v_a:\operatorname{Spec}A[I/g_a]\longrightarrow
+          \operatorname{Bl}_I(\operatorname{Spec}A),\qquad g_a\ne0,
+\]
+form a scheme open cover, with exactly these original finite-family indices
+and actual fraction-chart morphisms.
+\end{theorem}
+\begin{proof}
+Each displayed map is the native fraction-chart open immersion. Its open range
+is exactly $D_+(g_aT)$, by the actual homogeneous-chart ring isomorphism and
+native basic-open immersion. The preceding lemma shows that these ranges cover
+the whole blowup. The schemes and maps therefore form the asserted scheme open
+cover. If all the generators are zero, its index set and the native blowup are
+both empty, and the same construction gives the empty open cover.
+\end{proof}
+
+\begin{lemma}[The whole original ideal on an actual fraction chart]
+\label{lem:resume-original-fraction-chart-comap}
+\uses{lem:blowup-exceptional-ideal-chart}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalFractionChart_comap}
+\leanok
+Let $D$ be an ideal sheaf on a scheme $X$, let $U\subset X$ be affine with
+coordinate domain $A$, and choose $0\ne g\in I=D(U)$.
+Put $S=A[I/g]$, and let
+\[
+ f:\operatorname{Spec}S\xrightarrow{v}
+      \operatorname{Bl}_I(\operatorname{Spec}A)
+      \longrightarrow\operatorname{Spec}A\longrightarrow X
+\]
+be the composite of the actual native fraction chart, actual blowup projection,
+and original affine spectrum map. Then the entire original ideal $D$ pulled
+back by this composite is the ideal sheaf of the principal ideal $(\bar g)$
+in $S$, where $\bar g$ is the image of the same original $g$.
+\end{lemma}
+\begin{proof}
+The original affine spectrum comparison carries the whole ideal $D$ to the
+ideal sheaf associated with $I=D(U)$. Ideal-sheaf pullback composes, so its
+further pullback to the native blowup is the actual exceptional ideal, and its
+pullback by $v$ is the actual exceptional ideal on that fraction chart.
+The genuine chart structure triangle identifies this ideal with the extension
+$IS$. Each $a\in I$ satisfies $\bar a=\bar g(a/g)$ in the actual subalgebra
+$S\subset\operatorname{Frac}A$, so $IS\subset(\bar g)$. Conversely $g\in I$
+gives $(\bar g)\subset IS$. This proves equality of the entire ideals and hence
+of their associated ideal sheaves; no radical or support replacement occurs.
+\end{proof}
+
+\begin{theorem}[The original lifted form is a basis on its actual fraction chart]
+\label{thm:resume-original-form-actual-fraction-basis}
+\uses{lem:resume-original-fraction-chart-comap,lem:blowup-chart-equation-regular,thm:resume-original-lifted-form-regular-chart-basis}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.liftedFormSection_isIso_on_originalFractionChart}
+\leanok
+Fix a commutative ring $R$, an original morphism $j:X\to\mathbf P_R^n$,
+a homogeneous ideal $J$, and an original homogeneous $F\in J$ of degree
+$d\in\mathbb N$. Let $U\subset j^{-1}D_+(X_i)$ be an affine open whose
+coordinate ring $A$ is a domain. Write
+\[
+ D=j^{-1}\widetilde J,\qquad I=D(U),\qquad
+ g=j^*(F/X_i^d)\in A,
+\]
+and assume $g\ne0$. Let $S=A[I/g]$, and let $f:\operatorname{Spec}S\to X$
+be the actual composite from the preceding lemma. The actual original lift
+\[
+ \beta_{F,f}:\mathcal O_{\operatorname{Spec}S}\longrightarrow
+          f^*j^*\mathcal O(d)\otimes D\mathcal O_{\operatorname{Spec}S}
+\]
+constructed from that same original $F$ and that same original $f$ is an
+isomorphism. No regularity, principal-equation, section-matching, or
+local-basis certificate is supplied.
+\end{theorem}
+\begin{proof}
+Membership $F\in J$ implies $g\in I$: all original dehomogenized members of
+$J$ generate the entire original coordinate ideal, and extension along the
+original $j$ gives the whole ideal $D(U)$. Thus the specified native fraction
+chart is defined from these original objects.
+
+The fraction-chart structure triangle identifies $f$ with the original affine
+spectrum map preceded by $\operatorname{Spec}(A\to S)$. Functoriality of the
+actual section-ring morphisms therefore computes the original coefficient of
+$F$ after pullback by $f$ as the image of the same $g$ under
+\[
+ A\longrightarrow S\longrightarrow\Gamma(\operatorname{Spec}S,\mathcal O).
+\]
+The final arrow is the canonical spectrum section-ring isomorphism, whose
+naturality gives equality of entire coefficients. The original coordinate
+containment follows by pulling back the given containment of $U$.
+
+The preceding lemma identifies the entire original ideal $D\mathcal O_S$
+with $(\bar g)$. The element $\bar g$ is nonzero in the actual subring
+$S\subset\operatorname{Frac}A$, so it is a non-zero-divisor. Transport through
+the canonical section-ring isomorphism supplies the actual principal regular
+ideal equation on the whole affine spectrum. Apply the original regular-chart
+basis theorem to these internally derived data and the same original lifted
+form, using the whole affine spectrum as its affine open. It proves that the
+original lift becomes an isomorphism after the canonical affine spectrum
+comparison of this affine scheme. That comparison is itself an isomorphism,
+so its module pullback reflects isomorphisms. The original lift is therefore
+an isomorphism on the actual fraction chart itself.
+\end{proof}
+
+\paragraph{The remaining whole-line comparison.}
+The intended consumer is the comparison between the original projective
+blowup map's pulled $\mathcal O(1)$ and the original
+$\mu^*\mathcal O(d)\otimes D\mathcal O_{\operatorname{Bl}_D X}$.
+Its remaining construction must retain the canonical open-comap comparison of
+the original lifts, the original projective coordinate ratios on the specified
+fraction cover, and every original section when gluing. Passing to the actual
+normalized simultaneous blowup, constructing a fixed coupled ample line, and
+retaining its $\mathbf G_m$ action are further consumers. The preceding fraction
+chart results are the stated local producers for this route.

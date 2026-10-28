@@ -1,0 +1,43 @@
+\section{The positive-parameter threshold argument}
+
+The following analytic argument supplies the threshold step for intersection
+polynomials. The geometric construction of those polynomials and of their
+mixed-intersection inequalities is a separate requirement.
+
+\begin{lemma}[Rational tests extend over an open positivity set]
+\label{lem:nef-ample-rational-threshold-tests}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.nonneg_of_rational_positive_tests}
+\leanok
+Let $f,h:(0,\infty)\to\mathbb R$ be continuous. Suppose that
+$h(q)\geq0$ for every positive rational $q$ such that $f(q)>0$.
+Then $h(t)\geq0$ whenever $t>0$ and $f(t)>0$.
+\end{lemma}
+\begin{proof}
+Suppose $h(t)<0$ while $t>0$ and $f(t)>0$. Continuity makes the
+simultaneous conditions $x>0$, $f(x)>0$, and $h(x)<0$ hold on an open
+neighborhood of $t$. Density of the rational numbers supplies a rational
+$q$ in that neighborhood. Its positivity and $f(q)>0$ imply $h(q)\geq0$,
+contradicting $h(q)<0$.
+\end{proof}
+
+\begin{theorem}[No positive threshold]
+\label{thm:nef-ample-no-positive-threshold}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.positive_of_eventually_positive_and_rational_mixed_nonneg}
+\leanok
+\uses{lem:nef-ample-rational-threshold-tests}
+Let $f,h:(0,\infty)\to\mathbb R$ be continuous and let
+$g:(0,\infty)\to\mathbb R$ satisfy $g(t)>0$ for every $t>0$.
+Assume that $f(t)=h(t)+t g(t)$ for $t>0$, that $f(t)>0$ for all
+sufficiently large $t$, and that $h(q)\geq0$ whenever $q>0$ is rational
+and $f(q)>0$. Then $f(t)>0$ for every $t>0$.
+\end{theorem}
+\begin{proof}
+By the preceding lemma, $f(t)>0$ implies $h(t)\geq0$ for all real
+$t>0$. Conversely, $h(t)\geq0$ implies
+$f(t)=h(t)+t g(t)>0$. Consequently the subset of $(0,\infty)$ where
+$f$ is positive equals the subset where $h$ is nonnegative. The former
+description makes this subset open, and the latter makes it closed.
+Eventual positivity makes it nonempty. The interval $(0,\infty)$ is
+connected, so a nonempty subset that is both open and closed is the whole
+interval. Continuity of $g$ is unnecessary.
+\end{proof}

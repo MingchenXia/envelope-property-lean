@@ -1,0 +1,76 @@
+\subsection{The genuine finite-boundary norm completion}\label{subsec:fc-line-affinoid-algebra}
+
+\begin{definition}[The actual completed function ring]\label{def:fc-line-affinoid-algebra}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalBoundaryFintype, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.NormedRationalFunctions, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalFunctionsCommRing, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalEquiv, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalCoefficients, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalFunctionsAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalBoundaryEvaluation, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalFunctionsSeminormedCommRing, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalFunctionsNormOneClass, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalFunctionsIsUltrametricDist, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_normedRationalFunctions, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_rationalCoefficients, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.AnalyticFunctions, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticFunctionsNormOneClass, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticCoefficients, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticFunctionsAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_algebraMap_analyticFunctions, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalMap, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.denseRange_rationalMap, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_rationalMap}
+\leanok
+\uses{def:fc-line-rational-functions, thm:fc-rational-boundary-maximum}
+Give the actual rational algebra $R_U$ the boundary seminorm
+\[
+ \|f\|_U=\max_{z\in\partial U}|f|_z.
+\]
+Its separated norm completion is the actual function ring $\mathcal O(U)$.
+There is a dense original rational-function ring map $R_U\to\mathcal O(U)$,
+and its norm is exactly the displayed boundary seminorm.
+Its coefficient map is the original $F$-algebra coefficient map followed by
+completion, and the norm of the image of $a\in F$ is exactly $|a|$.
+\end{definition}
+\begin{proof}
+Evaluate $R_U$ in the finite product $\prod_{z\in\partial U}\mathcal H(z)$
+of the original completed residue fields. Pull back its maximum norm along
+this actual ring homomorphism. This gives a submultiplicative ultrametric
+ring seminorm, with exactly the displayed value. The genuine separated
+completion of this seminormed ring is a complete normed commutative ring;
+the original rational map has dense range by the defining property of
+completion and preserves its seminorm. Every original boundary point has its
+prescribed value $|a|$ on the same coefficient $a$, so the finite-product norm
+of that coefficient is $|a|$; completion retains that norm. The pulled-back
+norm is ultrametric because the original completed residue fields are
+ultrametric. This construction also covers the
+zero-radius case: its rational seminorm can have a kernel, and the separated
+completion identifies precisely elements at seminorm distance zero.
+No faithfulness of that seminorm is assumed.
+\end{proof}
+
+\begin{lemma}[Actual completed evaluation]\label{lem:fc-line-completed-evaluation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_rationalEvaluation_le, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.normedRationalEvaluation, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.lipschitz_normedRationalEvaluation, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.evaluationToH, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.evaluationToH_coe, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.evaluationToH_rationalMap, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.continuous_evaluationToH, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.evaluationToH_unique, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_evaluationToH_le, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticValue, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticValue_rationalMap, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticValue_le_nnnorm}
+\leanok
+\uses{def:fc-line-affinoid-algebra, thm:fc-rational-boundary-maximum}
+For every original point $x\in U$, the original rational evaluation extends
+uniquely to a continuous ring homomorphism
+$\mathcal O(U)\to\mathcal H(x)$. It retains every original polynomial and
+rational value and satisfies $|f|_x\le\|f\|_U$ for every completed function.
+\end{lemma}
+\begin{proof}
+The actual rational boundary maximum theorem gives
+$|f|_x\le\max_{z\in\partial U}|f|_z=\|f\|_U$ for every original rational
+function. Apply this to differences to make the original completed-residue
+field evaluator contractive. Its target is complete, so completion gives a
+continuous ring extension with the original values. Density gives uniqueness.
+The same bound on every completed element follows by continuity and density.
+\end{proof}
+
+\begin{theorem}[Exact finite-boundary norm and completed maximum modulus]\label{thm:fc-completed-boundary-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_eq_boundary_nnnorm, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_eq_boundary_max, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticValue_exists_boundary_norm, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.analyticValue_exists_boundary_max, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_pow_analyticFunctions}
+\leanok
+\uses{def:fc-line-affinoid-algebra, lem:fc-line-completed-evaluation}
+For every $f\in\mathcal O(U)$,
+\[
+ \|f\|_U=\max_{z\in\partial U}|f|_z.
+\]
+In particular, an actual Gauss boundary point realizes the norm, and every
+original point of $U$ has value at most that same maximum.
+Moreover $\|f^n\|_U=\|f\|_U^n$ for every nonnegative integer $n$.
+\end{theorem}
+\begin{proof}
+For rational functions the equality is the definition of the pulled-back
+finite-product norm. Both the completion norm and the norm of the finite
+tuple of completed boundary evaluations are continuous functions on
+$\mathcal O(U)$. They agree on the dense original rational functions, hence
+everywhere. The boundary is a nonempty finite set, containing the original
+outer Gauss point, so one original boundary point realizes this finite
+maximum. Combine the equality with the preceding evaluation bound.
+For power multiplicativity, submultiplicativity gives the upper bound.
+Choose an original boundary point realizing $\|f\|_U$; evaluation there is
+a ring homomorphism into a normed field, so it takes $f^n$ to a value of
+norm $\|f\|_U^n$. The completed evaluation bound gives the reverse inequality.
+\end{proof}

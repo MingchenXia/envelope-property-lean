@@ -1,0 +1,312 @@
+\section{Cohomology of the same actual Cartier cuts}
+This slice uses the original base-field-linear Cech complexes and their
+actual long exact sequence. It does not redefine Euler characteristic,
+cohomology finiteness, or the projective Serre theorem. Every zero scheme
+below is the actual zero ideal of the displayed original section.
+No cut is assumed reduced or integral.
+
+\begin{definition}[The original section-cut complex]
+\label{def:seshadri-original-section-cut-complex}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.sectionCutSequence}
+\leanok
+For integral $X$, invertible $A,M$, and $s:\mathcal O_X\to A$ nonzero,
+let $I=I(s)$ and $i:I.\mathrm{subscheme}\hookrightarrow X$ be the literal
+original zero ideal and inclusion. Define the short complex with terms
+$M$, $A\otimes M$, and $i_*i^*(A\otimes M)$ by transporting the actual
+closed-ideal sequence tensored with $A\otimes M$. The three whole
+comparisons are, in order, the original ideal-to-dual isomorphism followed
+by dual evaluation, the actual left unitor, and the existing invertible
+projection formula followed by the original unitor on the closed subscheme.
+The arrows are the conjugates of the original inclusion and quotient.
+\end{definition}
+\begin{proof}
+The composite of the two conjugated arrows is zero by cancellation of
+the middle whole isomorphism and the original inclusion--quotient identity.
+All comparisons are constructed from the same original section. This defines
+an actual short complex without an incoming exactness or matching certificate.
+The final comparison of the right arrow with the standard adjunction-unit
+restriction is reserved for the later first-cohomology restriction theorem;
+that identity is not an assumption of the higher comparison producer.
+\end{proof}
+
+\begin{lemma}[The actual Cartier short exact sequence]
+\label{lem:seshadri-actual-cartier-short-exact}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.sectionCutSequence_shortExact}
+\leanok
+Let $X$ be integral, let $A,M$ be invertible sheaves, and let
+$s:\mathcal O_X\to A$ be nonzero. Set $I=I(s)$, $i:D\hookrightarrow X$.
+The original closed-ideal sequence, tensored with $A\otimes M$, and the
+canonical evaluation and unit comparisons give an actual short exact sequence
+\[
+0\longrightarrow M\xrightarrow{\mu_{s,M}} A\otimes M
+\xrightarrow{\rho_{s,M}}i_*i^*(A\otimes M)\longrightarrow0.
+\]
+Here the two arrows are defined by conjugating the actual original
+closed-ideal arrows; they are not supplied as certificates.
+\uses{def:seshadri-original-section-cut-complex,lem:seshadri-section-cut-euler}
+\end{lemma}
+\begin{proof}
+Use the genuine kernel sequence of
+$\mathcal O_X\to i_*\mathcal O_D$. Tensoring with the invertible
+$A\otimes M$ is exact. The actual ideal comparison identifies its first
+term with $A^{-1}\otimes(A\otimes M)$, and evaluation identifies this
+with $M$. The unit identifies the middle term with $A\otimes M$.
+The existing invertible projection formula and the actual unit on $D$
+identify the quotient with $i_*i^*(A\otimes M)$. Transport the short
+complex along these three whole sheaf isomorphisms. The inverse ideal
+comparison followed by the original inclusion is evaluation against the
+same $s$, so this is the displayed actual multiplication sequence.
+\end{proof}
+
+\begin{lemma}[The actual positive cohomology epimorphism]
+\label{lem:seshadri-one-cut-cohomology-epi}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.epi_sectionCut_homologyMap_of_vanishing}
+\leanok
+\uses{lem:seshadri-actual-cartier-short-exact}
+Let $X$ be integral and separated over a field, fix a finite affine open
+cover, and use the actual Cartier complex above. If $q\geq1$ and
+$H^q(D,i^*(A\otimes M))=0$, its actual left arrow induces an epimorphism
+on degree $q$ of the original field-linear Cech cohomology.
+\end{lemma}
+\begin{proof}
+The preimages of the same cover form an affine open cover of $D$, since
+the actual closed immersion is affine. Native sheaf-cohomology vanishing
+implies exactness of the original Cech complex by the existing affine
+comparison. The genuine base-linear comparison and restriction of scalars
+preserve its zero homology, and the actual pushforward Cech isomorphism
+transports this to the ambient quotient complex. Applying the original
+field-complex functor to the quasicoherent Cartier short exact sequence
+is short exact. Exactness at its middle degree $q$ group, followed by
+the zero quotient group, makes the actual left homology map epic.
+\end{proof}
+
+\begin{lemma}[The actual higher cohomology comparison for one cut]
+\label{lem:seshadri-one-cut-cohomology-iso}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.isIso_sectionCut_homologyMap_of_vanishing}
+\leanok
+Under the Cartier short exact sequence above, suppose $q\geq2$ and
+$H^{q-1}(D,i^*(A\otimes M))=H^q(D,i^*(A\otimes M))=0$.
+Then the map on degree $q$ original field-linear Cech homology induced
+by $\mu_{s,M}$ is an isomorphism.
+If only the second vanishing holds, the same map is an epimorphism.
+\uses{lem:seshadri-actual-cartier-short-exact,lem:seshadri-one-cut-cohomology-epi}
+\end{lemma}
+\begin{proof}
+The original quasicoherent short exact sequence gives a short exact
+sequence of original field-linear Cech complexes on the affine cover.
+In its actual long exact sequence, the connecting source in degree
+$q-1$ is zero, so the degree $q$ map of the left arrow is monic.
+The following group in degree $q$ is zero, so the same map is epic.
+The category of modules is balanced. The epimorphism conclusion only
+uses exactness at the middle degree $q$ term and its zero following term.
+For our use $q\geq2$, both cut vanishings are positive cohomology.
+\end{proof}
+
+\begin{lemma}[Two actual Cartier cuts give an arbitrary line difference]
+\label{lem:seshadri-two-cut-euler-difference}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.eulerCharacteristic_cartierDifference}
+\uses{lem:seshadri-section-first-difference}
+\leanok
+Let $X$ be an integral projective scheme over a field, and let $L,B,M$
+be invertible sheaves. Suppose $a\ne0$ is an actual section of $L\otimes B$
+and $b\ne0$ is an actual section of $B$, with their actual zero schemes
+$D_a,D_b$. Then
+\[
+ \chi(X,L\otimes M)-\chi(X,M)
+ =\chi(D_a,(L\otimes M)|_{D_a})-\chi(D_b,M|_{D_b}).
+\]
+\end{lemma}
+\begin{proof}
+Set $F=B^{-1}\otimes M$. The actual section exact sequences for $a$
+and $b$, tensored with this same $F$, respectively give
+\[
+ \chi(X,(L\otimes B)\otimes F)-\chi(X,F)
+ =\chi(D_a,((L\otimes B)\otimes F)|_{D_a})
+\]
+and
+\[
+ \chi(X,B\otimes F)-\chi(X,F)
+ =\chi(D_b,(B\otimes F)|_{D_b}).
+\]
+The actual evaluation of $B$ and associativity identify the two positive
+middle terms with $L\otimes M$ and $M$, respectively. Their pullbacks
+provide the same identifications on the original closed schemes.
+Subtracting the second equality from the first proves the assertion.
+\end{proof}
+
+\begin{lemma}[The original arbitrary line powers have actual cut differences]
+\label{lem:seshadri-arbitrary-power-cut-difference}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.exists_eulerCharacteristic_powerCartierDifference}
+\uses{lem:seshadri-two-cut-euler-difference}
+\leanok
+Let $X$ be an integral projective scheme over a field, and let $L$ be any
+original invertible sheaf. There exist an actual invertible $B$, a nonzero
+section $a$ of $L\otimes B$, and a nonzero section $b$ of $B$, such that,
+for every $n\geq0$, with the same actual zero schemes $D_a,D_b$,
+\[
+ \chi(X,L^{n+1})-\chi(X,L^n)
+ =\chi(D_a,L^{n+1}|_{D_a})-\chi(D_b,L^n|_{D_b}).
+\]
+\end{lemma}
+\begin{proof}
+Use an actual projective closed embedding. Ordinary coherent global
+generation supplies a sufficiently large nonnegative projective twist
+$B$ for which the original $L\otimes B$ is globally generated. The
+original coordinate monomials generate this same $B$. On a nonempty
+scheme a generated invertible sheaf has a nonzero member of its actual
+generating family, since otherwise its epimorphic evaluation and hence
+its identity would vanish. Choose such members $a,b$. These constructions
+are the existing original nonzero-generator producers, not additional
+assumptions. Apply the preceding equality to $M=L^n$ for each $n$ and use
+the original tensor-power successor isomorphism, also on its actual
+pullback to $D_a$. Integrality makes both zero ideals effective Cartier;
+neither zero scheme is assumed integral or reduced.
+\end{proof}
+
+\begin{lemma}[Two actual cuts compare the same original line twists]
+\label{lem:seshadri-two-cut-cohomology-iso}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.twoCutCohomologyIso}
+\leanok
+Let $L,B,M$ be invertible on an integral separated scheme over $k$,
+$a:\mathcal O_X\to L\otimes B$ and $b:\mathcal O_X\to B$ nonzero.
+Write $i:D_a\hookrightarrow X$ and $j:D_b\hookrightarrow X$ for their
+actual zero subschemes. Suppose $q\geq2$ and the four original groups
+\[
+\begin{gathered}
+H^{q-1}(D_a,i^*(L\otimes M)),\quad H^q(D_a,i^*(L\otimes M)),\\
+H^{q-1}(D_b,j^*M),\quad H^q(D_b,j^*M)
+\end{gathered}
+\]
+vanish. Then the original degree $q$ field-linear cohomology of
+$L\otimes M$ and $M$ are isomorphic. The isomorphism is the actual span
+through $F=B^{-1}\otimes M$, formed from the maps of the same two cuts.
+\uses{lem:seshadri-one-cut-cohomology-iso,lem:seshadri-two-cut-euler-difference}
+\end{lemma}
+\begin{proof}
+Use the two actual Cartier sequences with the same $F$.
+Associativity and evaluation of $B$ give the canonical whole comparisons
+$(L\otimes B)\otimes F\cong L\otimes M$ and $B\otimes F\cong M$,
+and their pullbacks give the corresponding actual cut comparisons.
+Both left arrows induce isomorphisms in degree $q$ by the preceding lemma.
+Compose the inverse of the first with the second and these whole
+comparisons. This construction does not assert an $H^1$ comparison:
+two surjections with a common source do not yield a map between their targets.
+\end{proof}
+
+\begin{lemma}[Eventual higher comparisons from genuine cut ampleness]
+\label{lem:seshadri-eventual-two-cut-cohomology-iso}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.exists_twoCut_powerCohomologyIso_of_ample}
+\leanok
+In the preceding setting suppose the actual restrictions $i^*L$ and
+$j^*L$ are ample in the native positive-power-embedding sense. There is
+one integer $N$ such that, for every $n\geq N$ and every $q\geq2$,
+the degree $q$ original field-linear groups of $L^{n+1}$ and $L^n$
+are isomorphic by the preceding actual two-cut span. The sections
+$B,a,b$ and their cuts remain fixed before all $n,q$.
+\uses{lem:seshadri-two-cut-cohomology-iso}
+\end{lemma}
+\begin{proof}
+Unpack the native ample datum on each actual cut into its positive
+power, original closed projective embedding, and whole original
+$\mathcal O(1)$ comparison. In the existing namespace
+\texttt{OriginalAmpleSerreVanishing}, apply its theorem
+\texttt{exists\_sheafCohomology\_bound} with the actual unit sheaf. This theorem already handles the finitely
+many power residues internally and gives one bound for every positive
+cohomology degree. Remove the unit by its actual unitor and transport
+along the existing canonical pullback-of-original-powers isomorphism.
+Taking the maximum of the two bounds makes the four positive groups
+in the preceding lemma vanish, including the $n+1$ restriction on $D_a$.
+The actual original power-successor isomorphism completes the claim.
+Ampleness of $L$ on $X$ is not an assumption.
+\end{proof}
+
+\begin{definition}[The same section's original power complex]
+\label{def:seshadri-same-section-original-power-complex}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.powerSectionSequence}
+\leanok
+Given an invertible $L$, a nonnegative integer $r$, and the same nonzero
+section $s:\mathcal O_X\to L^r$, define the $n$-th power complex to have
+terms $L^n$, $L^{n+r}$, and $i_*i^*L^{n+r}$, where $i$ is its original
+zero-subscheme inclusion. Transport the original section-cut complex
+for $A=L^r$ and $M=L^n$ by the identity on its first term, the canonical
+symmetry and tensor-power addition isomorphism on its second, and the
+pushforward of the pullback of that same whole comparison on its third.
+\end{definition}
+\begin{proof}
+The existing tensor-power addition isomorphism uses the recursively formed
+original powers. The functorial pullback and pushforward therefore preserve
+both the actual power sheaf and the literal same zero subscheme. Transport
+of the original short-complex zero relation defines the two displayed arrows.
+\end{proof}
+
+\begin{lemma}[Exactness of the same original power complex]
+\label{lem:seshadri-same-section-original-power-short-exact}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.powerSectionSequence_shortExact}
+\leanok
+\uses{def:seshadri-same-section-original-power-complex,lem:seshadri-actual-cartier-short-exact}
+Every original power complex just defined is short exact.
+\end{lemma}
+\begin{proof}
+Both original powers are invertible. The actual Cartier section sequence
+is short exact, and the three internally constructed whole comparisons
+define an isomorphism of short complexes. Transport its short exactness.
+\end{proof}
+
+\begin{lemma}[The genuine single-cut eventual first cohomology epimorphisms]
+\label{lem:seshadri-single-cut-eventual-hone-epi}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionCutCohomology.exists_singleCut_powerHOne_epi_of_ample}
+\leanok
+Let $L$ be invertible, let $r$ be nonnegative, and let $s:\mathcal O_X\to L^r$ be a
+nonzero original section. For its same actual zero subscheme
+$i:D\hookrightarrow X$, suppose $i^*L$ is natively ample. There is
+$N$ such that, for every $n\geq N$, the actual multiplication map of
+this one section induces an epimorphism
+\[
+H^1(X,L^n)\longrightarrow H^1(X,L^{n+r})
+\]
+on the original field-linear cohomology.
+\uses{lem:seshadri-one-cut-cohomology-iso}
+\end{lemma}
+\begin{proof}
+Apply the actual Cartier sequence with $A=L^r$ and $M=L^n$.
+The canonical power-addition isomorphism identifies its middle term
+with $L^{r+n}=L^{n+r}$. The same native ample Serre producer on $D$
+makes $H^1(D,i^*L^{n+r})$ zero uniformly for sufficiently large $n$.
+The epimorphism part of the one-cut lemma applies. No two-cut $H^1$
+comparison is used, and the existence of $s$ is left to the later
+Euler-growth argument that actually constructs it.
+\end{proof}
+
+\begin{lemma}[Finite residue stabilization and eventual restriction surjectivity]
+\label{lem:seshadri-single-cut-hone-stable-restriction-surjective}
+In the preceding setting suppose $r>0$ and $X$ is projective over $k$. There is
+$N'$ such that, for every $n\geq N'$, the same $H^1$ multiplication map
+is an isomorphism, and the actual restriction map
+\[
+H^0(X,L^{n+r})\longrightarrow H^0(D,i^*L^{n+r})
+\]
+is surjective.
+\uses{lem:seshadri-single-cut-eventual-hone-epi}
+\end{lemma}
+\begin{proof}
+The original global sections identify naturally with the kernel of the first
+Cech differential by sheaf gluing. The incoming differential in degree zero
+is zero, so the canonical cycles-to-homology isomorphism identifies this
+same kernel with original $H^0$. Naturality follows by composing the actual
+augmentation with each product projection: both composites are the same
+restriction of the original section map. On an invertible affine frame,
+the transported quotient and the standard pullback--pushforward adjunction
+unit both take a coefficient to its residue modulo the same zero ideal.
+These actual local equalities glue, providing the standard restriction
+comparison internally. No comparison certificate is supplied.
+Genuine projective coherent cohomology finiteness gives finite-dimensional
+original field-linear $H^1$ groups. On each of the finitely many residue
+classes modulo $r$, the dimensions are eventually nonincreasing natural
+numbers, by the actual eventual epimorphisms. Their attained least value
+makes each sequence eventually constant. Take one bound for all residues.
+A surjective map of equal finite dimensions is injective, hence each
+same actual $H^1$ map is now an isomorphism. In the actual long exact
+sequence its preceding connecting map from $H^0(D,i^*L^{n+r})$ is zero,
+since its composite with this monomorphism is zero. Exactness makes
+the original $H^0$ restriction epimorphic, hence surjective on sections.
+\end{proof}

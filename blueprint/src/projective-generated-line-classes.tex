@@ -1,0 +1,71 @@
+\section{Original line classes from actual finite global generators}
+
+\begin{lemma}[The native tensor, dual, and original line class]
+\label{lem:fc-original-line-picard-tensor-dual}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGeneratedLineClasses.lineClass_eq_of_iso, EnvelopeProperty.ProjectiveGeneratedLineClasses.lineClass_tensor, EnvelopeProperty.ProjectiveGeneratedLineClasses.lineClass_unit, EnvelopeProperty.ProjectiveGeneratedLineClasses.lineClass_dual, EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_line_representative}
+\uses{def:fc-original-curve-picard-degree}
+Whole isomorphisms identify the same native original line classes.
+The class of the original tensor is the product of the original line
+classes, the original structure line has class one, and the class of
+the original dual of an invertible line is the inverse class.
+Every native original Picard class is the class of an actual original
+invertible line, rather than an added numerical representative.
+\end{lemma}
+\begin{proof}
+Pass the original whole tensor and unit comparisons through the actual
+native isomorphism quotient. The original evaluation isomorphism
+identifies a line tensored with its actual dual with the original
+unit, giving the inverse relation. The native representative of a unit
+isomorphism class is invertible by the genuine native Picard/local
+frame comparison, and its quotient class is the starting class.
+\end{proof}
+
+\begin{theorem}[One genuine twist generates a finite original family]
+\label{thm:fc-original-finite-line-family-generated-twist}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_simultaneous_generating_twist, EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_twist_finite_generatingSections}
+\uses{thm:actual-closed-projective-global-generation}
+For any original closed immersion $i:X\to\mathbb P_R$ into a finite
+polynomial projective space, any chosen original coordinate $j$, and
+any finite family of original invertible lines $L_a$, there is a single
+nonnegative integer $d$ such that every same original
+$L_a\otimes i^*O(d)$ has genuine finite global generating sections.
+The same actual $i^*O(d)$ also has genuine finite global generators.
+No generating family, twist bound, or comparison is supplied.
+\end{theorem}
+\begin{proof}
+Each original invertible line is finite type and quasicoherent.
+Genuine original Serre generation supplies a bound for each member of
+the original finite family. The maximum of these finitely many bounds
+works simultaneously. Original coordinate-power sections genuinely
+generate the same original nonnegative $O(d)$, and true whole
+pullback retains their finite generating family.
+\end{proof}
+
+\begin{theorem}[Actual original line classes are quotients of generated lines]
+\label{thm:fc-original-projective-generated-line-quotients}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGeneratedLineClasses.generatedTwistQuotientIso, EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_simultaneous_generated_quotients, EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_generated_quotient, EnvelopeProperty.ProjectiveGeneratedLineClasses.exists_generated_class_quotient}
+\uses{lem:fc-original-line-picard-tensor-dual, thm:fc-original-finite-line-family-generated-twist}
+For every original projective morphism $X\to\operatorname{Spec}R$,
+every original invertible line is a whole tensor quotient of two
+actual original invertible lines with internally produced genuine
+finite global generators. For a finite family, a single actual
+original denominator line can be used for all members.
+Consequently every actual native Picard class is the quotient of the
+classes of two such original finitely generated lines.
+This construction uses neither integrality nor normality of $X$.
+\end{theorem}
+\begin{proof}
+Take the actual finite polynomial closed immersion supplied by the
+original projective morphism. Apply the preceding simultaneous
+producer and set $T=i^*O(d)$ and $M_a=L_a\otimes T$. Both $T$ and all
+$M_a$ have actual finite generating families. The genuine original
+evaluation $T\otimes T^\vee\simeq O_X$ and tensor associativity give
+the whole original isomorphism $L_a\simeq M_a\otimes T^\vee$.
+For an arbitrary native Picard class, use its actual invertible
+representative and the genuine original tensor and dual class
+identities. Thus all generating lines and the whole original class
+relation are produced internally.
+\end{proof}

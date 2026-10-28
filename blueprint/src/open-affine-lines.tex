@@ -1,0 +1,210 @@
+\subsection{Genuine smooth principal-open affine lines}
+\label{subsec:smooth-principal-open-lines}
+
+\begin{theorem}[Actual polynomial-line smooth presentation]
+\label{algebra:polynomial-line-standard-smooth}
+\lean{EnvelopeProperty.polynomial_standardSmooth_one}
+\leanok
+For every commutative ring $R$, the actual polynomial algebra $R[T]$
+is standard smooth of relative dimension one over $R$.
+\end{theorem}
+\begin{proof}
+Present the one-variable polynomial algebra first as the multivariable
+polynomial algebra on the actual one-element index set. Its true
+polynomial generators have zero kernel, so the empty list of relations
+spans that kernel. The empty differential is the actual identity on its
+zero-dimensional module; its determinant and its image in the algebra
+are one. Thus this is a genuine submersive presentation, with one
+generator and no relations. Its true dimension is one. Transport the
+presentation through the actual one-variable polynomial algebra
+isomorphism. No assumed smooth-presentation or dimension certificate is used.
+\end{proof}
+
+\begin{theorem}[Nonzero domain elements have genuinely dense principal opens]
+\label{algebra:domain-dense-principal-open}
+\lean{EnvelopeProperty.dense_basicOpen_of_ne_zero}
+\leanok
+For every commutative domain $R$ and $0\ne r\in R$, the actual principal
+open $D(r)\subseteq\operatorname{Spec}R$ is dense.
+\end{theorem}
+\begin{proof}
+Every power of the nonzero element is a non-zero-divisor. The actual
+localization map $R\to R[1/r]$ is consequently injective and has zero
+kernel. Its kernel is therefore contained in the actual nilradical,
+which is the genuine criterion for the induced spectrum map to have
+dense range. The true spectrum image of this localization is exactly
+$D(r)$. This proves density of the original principal open.
+\end{proof}
+
+\begin{theorem}[Actual principal-open line algebra]
+\label{algebra:principal-open-line-ring}
+\lean{EnvelopeProperty.AffineLine.OpenLineRing,
+EnvelopeProperty.AffineLine.openLineEval,
+EnvelopeProperty.AffineLine.openLineEval_algebraMap,
+EnvelopeProperty.AffineLine.openLineRing_isDomain,
+EnvelopeProperty.AffineLine.openLineRing_finitePresentation,
+EnvelopeProperty.AffineLine.openLineRing_finiteType,
+EnvelopeProperty.AffineLine.openLineRing_smooth,
+EnvelopeProperty.AffineLine.openLineRing_isNoetherian,
+EnvelopeProperty.AffineLine.openLineRing_standardSmooth_one,
+EnvelopeProperty.AffineLine.openLineRing_isIntegrallyClosed,
+EnvelopeProperty.AffineLine.openLineRing_isDedekindDomain}
+\leanok
+\uses{algebra:polynomial-line-standard-smooth}
+Let $F$ be any field and $p\in F[T]$. The coordinate ring is the actual
+localization $F[T,1/p]$. It is finitely presented and smooth over $F$,
+and standard smooth of relative dimension one. It is noetherian.
+If $p\ne0$, it is a domain, integrally closed and Dedekind.
+Every parameter $t\in F$ with $p(t)\ne0$ gives an actual $F$-algebra
+evaluator on this localization, agreeing with $f\mapsto f(t)$ on every
+original polynomial.
+\end{theorem}
+\begin{proof}
+The actual evaluation map sends $p$ to a unit of $F$, so the localization
+universal property constructs the entire evaluator and proves its
+restriction formula. Localization away from one element is finitely
+presented, and the polynomial algebra is finitely presented over $F$;
+composition gives finite presentation and finite type over $F$.
+Finite type over a field gives noetherianity.
+
+The preceding actual polynomial presentation has relative dimension
+one; the actual principal localization is standard smooth of relative
+dimension zero over the polynomial algebra. Composition of these genuine
+presentations has relative dimension $1+0=1$, and also supplies smoothness.
+For $p\ne0$, all its powers are non-zero-divisors, so genuine localization
+domain inheritance applies. The polynomial ring over a field is integrally
+closed and Dedekind; their actual localization theorems retain both
+properties. No valuation, completeness, algebraic closure, characteristic
+restriction or assumed curve witness is involved. The zero-polynomial
+localization is allowed in the unconditional smoothness statements;
+integrality and the normal-domain assertions explicitly require $p\ne0$.
+\end{proof}
+
+\begin{theorem}[Whole principal-open line and rational-point scheme maps]
+\label{scheme:principal-open-line-map}
+\lean{EnvelopeProperty.AffineLine.principalLineHom,
+EnvelopeProperty.AffineLine.principalLineHom_algebraMap,
+EnvelopeProperty.AffineLine.principalLineHom_surjective,
+EnvelopeProperty.AffineLine.openLineEval_comp_principalLine,
+EnvelopeProperty.AffineLine.openLineScheme,
+EnvelopeProperty.AffineLine.openLineInclusion,
+EnvelopeProperty.AffineLine.openLineInclusion_isOpenImmersion,
+EnvelopeProperty.AffineLine.openLineInclusion_range,
+EnvelopeProperty.AffineLine.openLineStructure,
+EnvelopeProperty.AffineLine.openLineStructure_smooth_one,
+EnvelopeProperty.AffineLine.openLineSchemePoint,
+EnvelopeProperty.AffineLine.openLineSchemePoint_inclusion,
+EnvelopeProperty.AffineLine.principalLineSchemeMap,
+EnvelopeProperty.AffineLine.principalLineSchemeMap_isClosedImmersion,
+EnvelopeProperty.AffineLine.principalLineSchemeMap_square,
+EnvelopeProperty.AffineLine.principalLineSchemeMap_preimage_basicOpen,
+EnvelopeProperty.AffineLine.openLineScheme_isIntegral,
+EnvelopeProperty.AffineLine.ambientPrincipalPoint,
+EnvelopeProperty.AffineLine.openLineSchemePoint_principalLine,
+EnvelopeProperty.AffineLine.principalLineSchemeMap_zero}
+\leanok
+\uses{algebra:principal-open-line-ring,algebra:affine-line-substitution,scheme:affine-line-closed-immersion}
+For any coordinate set, rational point $a$, direction $b$ and ambient
+polynomial $g$, let $\alpha_b$ be the actual substitution
+$X_i\mapsto a_i+b_iT$ and put $p=\alpha_b(g)$.
+There is a genuine localized $F$-algebra map and its scheme map
+\[
+ F[X_i,1/g]\longrightarrow F[T,1/p],\qquad
+ C_b=\operatorname{Spec}F[T,1/p]\longrightarrow D(g).
+\]
+For $b\ne0$ the whole map of coordinate rings is surjective, so this is
+an actual closed immersion. The true structure morphism $C_b\to\operatorname{Spec}F$
+is smooth of relative dimension one. If $p\ne0$, $C_b$ is an integral
+scheme. Its actual open inclusion into the affine line has range $D(p)$.
+Every principal-open preimage and every rational-point incidence is
+computed on the entire original coordinate algebra. In particular,
+$g(a)\ne0$ gives the whole original $D(g)$ rational point at parameter zero.
+\end{theorem}
+\begin{proof}
+Localize the genuine whole substitution at $g$ and its actual image $p$.
+The true localization map formula gives compatibility on every original
+polynomial, and localized surjectivity follows from actual surjectivity
+of the original nonconstant line substitution. Taking actual affine
+spectra therefore gives the closed immersion and the whole commuting
+square with the original affine-line immersion and both principal-open
+inclusions. The localization spectrum theorem gives the actual open
+immersion and its range $D(p)$.
+
+The previous genuine ring smoothness statement is standard smooth of
+relative dimension one. Passing through the true locally-standard-smooth
+ring-hom property and its affine spectrum criterion gives the original
+scheme structure morphism that same relative dimension. The actual
+nonzero-localization domain makes its affine spectrum integral.
+
+Given a parameter with $g(a+tb)\ne0$, both compositions of the actual
+localized evaluators agree on every original polynomial by the full
+line evaluation identity. The localization homomorphism uniqueness
+theorem identifies the entire homomorphisms, so their genuine spectrum
+maps commute on the entire rational point. At zero, $a+0b=a$ identifies
+that point with the original one. Likewise, for any ambient polynomial
+$h$, a prime in $C_b$ avoids the pullback of the actual element $h$ in
+$F[X_i,1/g]$ exactly when it avoids the actual image of $\alpha_b(h)$.
+This proves the whole good-principal-open preimage formula. No
+coordinate-norm-only equality or assumed scheme incidence is used.
+\end{proof}
+
+\begin{theorem}[A genuine smooth open line with nonempty dense good restriction]
+\label{scheme:smooth-principal-open-line-avoiding-function}
+\lean{EnvelopeProperty.AffineLine.exists_parameter_avoiding,
+EnvelopeProperty.AffineLine.exists_principal_open_line,
+EnvelopeProperty.AffineLine.exists_principal_open_line_localized,
+EnvelopeProperty.AffineLine.dense_openLine_basicOpen,
+EnvelopeProperty.AffineLine.nonempty_openLine_basicOpen,
+EnvelopeProperty.AffineLine.exists_smooth_principal_open_line,
+EnvelopeProperty.AffineLine.exists_smooth_principal_open_line_localized}
+\leanok
+\uses{algebra:affine-line-avoids-polynomial,algebra:domain-dense-principal-open,scheme:principal-open-line-map}
+Let $F$ be an infinite field, with a nonempty coordinate set, and let
+$a\in D(g)(F)$ be an actual rational point. For every actual nonzero
+function $f\in F[X_i,1/g]$, there is a genuine nonzero direction $b$
+such that the preceding $C_b$ is an integral smooth affine scheme of
+relative dimension one, closed in $D(g)$, containing the entire original
+point $a$. The actual scheme preimage of $D(f)$ in $C_b$ is nonempty and
+dense. The polynomial-function specialization also provides an actual
+rational parameter outside the zeros of both restricted polynomials.
+\end{theorem}
+\begin{proof}
+First let the good function be a nonzero ambient polynomial $h$.
+The actual line-avoidance construction supplies a nonzero direction
+$b$ with $\alpha_b(h)\ne0$. Since $g(a)\ne0$ and evaluation at zero
+is the entire original evaluation, $\alpha_b(g)\ne0$ as well.
+Their product is a nonzero polynomial. Over the infinite field it cannot
+vanish at every parameter, yielding a genuine rational parameter where
+both restrictions are nonzero. Its actual localized evaluator gives a
+prime in the good open, proving its nonemptiness. Injectivity of the
+nonzero principal localization preserves the nonzero good numerator,
+so the domain density theorem also makes this good open dense.
+
+For the actual localized function $f$, choose its genuine localization
+representation
+\[
+ f\,g^n=q\quad\text{in }F[X_i,1/g].
+\]
+The actual image of $g^n$ is a unit, so $f\ne0$ forces the original
+numerator $q\ne0$. Apply the polynomial construction to $q$, retaining
+$\alpha_b(g)\ne0$ and $\alpha_b(q)\ne0$. Apply the whole localized
+line homomorphism to the preceding equality. If its image of $f$ were
+zero, its image of $q$ would be zero; injectivity of the actual domain
+localization would then force $\alpha_b(q)=0$, a contradiction.
+Thus the genuine localized line restriction of $f$ is nonzero.
+Its principal open is dense by the actual domain theorem, and a dense
+subset of the nonempty integral affine spectrum is nonempty.
+The true scheme pullback on prime supports identifies this principal
+open with the whole preimage of $D(f)$.
+
+Finally use the actual closed immersion, smooth relative-dimension-one
+structure morphism, integral-spectrum theorem and full zero-parameter
+incidence proved above. These give the stated construction directly,
+without an assumed line, curve, smoothness or nonempty-open certificate.
+For FHX Proposition~5.22 this supplies the open-line construction after
+the genuinely constructed complete algebraically closed field and its
+rigid point are available. It does not yet supply normalization or
+reduction of a finite preimage, dominance of every irreducible component,
+finite flatness of the resulting normalized map, finite bad scheme-point
+sets, or subharmonic curve potential theory. Those are distinct producers.
+\end{proof}

@@ -1,0 +1,44 @@
+\section{The original relative de Rham product on every open}
+
+\begin{lemma}[The original wedge rule on the whole twist]
+\label{lem:native-di-all-open-wedge-leibniz}
+\leanok
+\lean{EnvelopeProperty.DI.CechWholeSectionLeibniz.formWedge_differential_onBasis, EnvelopeProperty.DI.CechWholeSectionLeibniz.formWedge_differential}
+Let $k$ have prime characteristic $p$, let $X$ be smooth of relative
+ dimension $n$ over $k$, and let $F:X\to X^{(p)}$ be its actual
+relative Frobenius. Put $E^i=F_*\Omega^i_{X/k}$, with its original
+coefficient action through $F^\#$. On every open $W\subset X^{(p)}$
+and for every pair of whole sections $a\in E^q(W)$ and $b\in E^r(W)$,
+the original global differential and exterior product satisfy
+\[
+ d(a\wedge b)=da\wedge b+(-1)^q a\wedge db.
+\]
+All degree transports retain the same original form; all terms
+restrict by the original sheaf restriction maps.
+\end{lemma}
+\begin{proof}
+On each member of the original twisted affine basis, the inverse
+image has the original etale coordinate tuple. The global differential
+restricts there to the intrinsic affine differential. The original
+sheafification unit identifies every affine exterior section with
+its original exterior Kahler section and retains both its differential
+and its product. To compute the rule on those sections, expand each
+as a finite sum of scalar multiples of ordered coordinate wedges.
+For two such terms $a_0\omega$ and $b_0\eta$, where $\omega$ has
+degree $q$, the coordinate wedges are closed. Applying
+$d(a_0b_0)=b_0\,da_0+a_0\,db_0$ and moving $db_0$ past the $q$
+one-forms of $\omega$ gives the displayed identity. Bilinearity
+and additivity give it for every pair of sections on the basis open.
+The explicit additive identification of original and pushed sections
+preserves the calculation; the scalar actions continue to be the
+actual ones through $F^\#$.
+
+For any open $W$ and any point of $W$, choose a member of this same
+basis contained in $W$. Naturality of the global differential and of
+the entire original exterior product identifies the restrictions of
+the two sides with the basis calculation just proved. Restriction
+also preserves addition and the integer sign. Thus the two original
+sections agree near every point. Separatedness of the original target
+sheaf gives equality on $W$. For empty $W$ the same separation
+argument applies with no point witnesses.
+\end{proof}

@@ -1,0 +1,134 @@
+\subsection{Genuine native evaluation points are nonisolated on etale curve charts}
+\label{subsec:etale-curve-nonisolation}
+
+\begin{lemma}[Nonisolation through actual continuous injections and open maps]
+\label{topology:actual-open-map-nonisolation}
+\lean{EnvelopeProperty.not_isOpen_singleton_of_continuous_injective,
+EnvelopeProperty.not_isOpen_singleton_of_isOpenMap}
+For arbitrary topological spaces, a continuous injection sends a
+nonisolated point to a nonisolated point, and a point over a
+nonisolated image under an open map is nonisolated. No separation
+condition is needed.
+\leanok
+\end{lemma}
+\begin{proof}
+For a continuous injection, the preimage of the image singleton is
+exactly the original singleton; openness of the former singleton
+would therefore imply openness of the latter. For an open map,
+the image of the source singleton is exactly the image singleton,
+so openness of the source singleton would contradict nonisolation
+of its image. These are ordinary topological lemmas; in the native
+applications the continuity, injectivity and openness are proved
+from the genuine morphisms and Gauss family, not supplied as native
+geometry certificates.
+\end{proof}
+
+\begin{definition}[Actual native points of original rational evaluators]
+\label{scheme:actual-native-rational-evaluation}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.evaluationPoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_evaluationPoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.eval_evaluationPoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_evaluationPoint}
+\leanok
+\uses{scheme:relative-valued-point-functor,scheme:relative-affine-valued-point-homeomorphism}
+For an arbitrary commutative ring $R$, prescribed seminorm $v$,
+actual $R$-algebra $A$ and genuine evaluator $e:A\to_R R$, the
+native evaluation point on $\operatorname{Spec}A$ is the actual
+affine comparison inverse of the seminorm $a\mapsto v(e(a))$.
+Every original section has precisely this value, and actual affine
+scheme morphisms transport these points by whole evaluator
+composition.
+\end{definition}
+\begin{proof}
+Pull back the actual relative point $v$ of $R$ along the entire
+original algebra map $e$. Its coefficient law makes this a true
+fixed-base seminorm of $A$. Apply the genuine affine native
+homeomorphism inverse; no topology is declared through this point.
+The inverse law identifies its full seminorm with $v\circ e$.
+The proved original-ring/global-section value formula then gives
+$v(e(a))$ for every whole original $a$, including all coefficients.
+For a genuine algebra homomorphism $A\to_R B$, actual affine
+native naturality identifies its whole image seminorm with the
+pullback of $v\circ e$ and hence with $v\circ e\circ\varphi$.
+Affine-homeomorphism injectivity proves equality of ENTIRE native
+points, not just support equality.
+\end{proof}
+
+\begin{theorem}[Actual line evaluation points have no open singleton]
+\label{scheme:actual-native-line-evaluation-nonisolation}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_line_evaluation,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.neBot_nhdsNE_line_evaluation}
+\leanok
+\uses{topology:actual-open-map-nonisolation,scheme:actual-native-rational-evaluation,spectrum:centered-gauss-whole-ray}
+For every actual $a\in R$, evaluation at $a$ in the true native
+fixed-$v$ space of $\mathbb A^1_R$ is nonisolated: its singleton
+is not open and its punctured neighborhood filter is nontrivial.
+The coefficient ring and seminorm are arbitrary, including finite
+fields and trivial valuations.
+\end{theorem}
+\begin{proof}
+Use the already constructed genuine translated Gauss family over
+the actual coefficient point $v$. Its whole value on $T-a$ is
+exactly its nonnegative real radius, so it is injective. The
+original Gauss-coordinate formulas prove continuity at EVERY
+radius, including zero. At zero its entire seminorm equals
+$v\circ\operatorname{eval}_a$, by the actual polynomial
+translation and original zero coefficient evaluation identity.
+
+Zero is nonisolated in the nonnegative real radius space: every
+neighborhood contains a strictly positive radius, since zero lies
+in the closure of the positive radii. Continuous injectivity
+therefore implies nonisolation of the entire radius-zero seminorm.
+The genuine affine native homeomorphism carries this whole point
+to the actual line evaluation point, preserving nonisolation.
+Finally the standard singleton/punctured-neighborhood identity
+converts the proved absence of an open singleton into nontriviality
+of the punctured neighborhood filter. No nontrivial absolute value,
+infinitude, algebraic closure, completeness or coefficient bound
+is required.
+\end{proof}
+
+\begin{theorem}[Genuine etale curve charts give nonisolated rational native points]
+\label{scheme:actual-etale-curve-rational-nonisolation}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_line_chart,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_evaluation_of_etale,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_open_line_chart}
+\leanok
+\uses{topology:actual-open-map-nonisolation,scheme:actual-native-line-evaluation-nonisolation,scheme:actual-general-etale-native-open-map,scheme:relative-open-embedding}
+A genuine etale morphism to $\mathbb A^1_R$ makes every native
+point mapping to an actual line evaluation point nonisolated in
+its fixed-$v$ native source. In particular, for an actual etale
+$R[T]\to_R A$, EVERY genuine rational evaluator $A\to_R R$
+gives such a nonisolated original native point. The same conclusion
+holds for an original point admitting such an actual etale chart
+on a genuine scheme open neighborhood. These are actual etale
+charts, not assumed open native maps or supplied comparison
+certificates.
+\end{theorem}
+\begin{proof}
+The proved general etale native theorem derives openness of the
+actual morphism on the ENTIRE fixed-base spaces from its genuine
+algebraic etaleness. If the source singleton were open, its actual
+image singleton would be open. The given whole point image is the
+line evaluation point, contradicting its proved nonisolation.
+
+For an actual affine rational evaluator $e:A\to_R R$ and original
+etale algebra map $\varphi:R[T]\to_R A$, evaluator composition
+is the actual polynomial evaluation at the original scalar
+$e(\varphi(T))$. Its coefficient equality is the genuine algebra
+law; equality on $T$ and all original coefficients determines the
+ENTIRE polynomial homomorphism. The preceding whole evaluator
+naturality therefore derives the required native image identity,
+rather than assuming a native comparison or openness certificate.
+
+If the etale chart is defined on an actual scheme open containing
+the original support, the genuine relative restriction
+homeomorphism gives its exact whole native preimage. Apply the
+preceding chart result there. Its original inclusion into the
+whole native space is a continuous injection, so the first
+nonisolation lemma preserves nonisolation of the original point.
+This establishes the local topological nonisolation input relevant
+to the curve step, without constructing a curve potential,
+asserting a local homeomorphism of etale native maps, or inferring
+native density merely from scheme-support density.
+\end{proof}

@@ -1,0 +1,40 @@
+\subsection{Actual harmonic comparison on the line}\label{subsec:fc-line-subharmonic}
+
+\begin{definition}[Actual subharmonic comparison]\label{def:fc-actual-line-subharmonic}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn}
+\leanok
+\uses{def:fc-actual-harmonic}
+Let $\Omega$ be an open subset of the actual analytic affine line. A function
+$u$ with values in $[-\infty,\infty)$ is subharmonic on $\Omega$ if it is
+upper semicontinuous there and, for every actual standard affinoid
+$U\subseteq\Omega$ and every actual harmonic function $h$ on $U$,
+the inequalities $u\le h$ on the actual finite Gauss boundary imply
+$u\le h$ throughout $U$.
+The comparison predicate and its elementary closure statements also make
+sense on an arbitrary subset using relative upper semicontinuity.
+\end{definition}
+
+\begin{lemma}[Restriction, constants and finite maxima]\label{lem:fc-line-subharmonic-elementary}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.mono, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.bot, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.const, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.sup}
+\leanok
+\uses{def:fc-actual-line-subharmonic, thm:fc-harmonic-weak-maximum,
+  lem:fc-harmonic-vector-space}
+Actual subharmonic functions restrict to smaller subsets. Every finite real
+constant and the function identically $-\infty$ are subharmonic.
+The pointwise maximum of two subharmonic functions is subharmonic.
+\end{lemma}
+
+\begin{proof}
+Upper semicontinuity and exclusion of $+\infty$ restrict to subsets, and
+every standard affinoid in a smaller subset is also in the larger one.
+For the constant $b$, write a test harmonic function as $H_{c,\gamma}$.
+The harmonic expression $b-H_{c,\gamma}$ is at most zero on the boundary;
+its weak boundary maximum is therefore at most zero throughout the carrier.
+This is precisely constant comparison. For $-\infty$, comparison is
+immediate. Constant functions are upper semicontinuous and exclude
+$+\infty$.
+The maximum of two upper semicontinuous functions is upper semicontinuous
+and still excludes $+\infty$. If their maximum is at most a test harmonic
+function on the boundary, each function is at most that test function there.
+Apply comparison to each throughout the carrier and then take their maximum.
+\end{proof}

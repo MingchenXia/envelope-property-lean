@@ -1,0 +1,24 @@
+\section{The genuine ratio line sheaf of actual Cartier ideals}
+
+\begin{lemma}[Actual tensor-dual ratio of effective Cartier ideals]
+\label{lem:actual-cartier-ratio-line-sheaf}
+\uses{lem:cartier-actual-invertible-module-sheaf}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.ratioModule,AlgebraicGeometry.Scheme.IdealSheafData.IsInvertible.isInvertible_ratioModule}
+\leanok
+For two actual effective Cartier ideals $I,J$ on any scheme, the genuine
+sheaf $I\otimes_{\mathcal O}\operatorname{Hom}_{\mathcal O}(J,\mathcal O)$
+is invertible in the existing rank-one sheaf interface.
+\end{lemma}
+\begin{proof}
+Use the actual module sheaves of the original actual ideals. The preceding
+regular-equation proof gives actual open-cover/pullback rank-one
+trivializations. The genuine sheaf dual is the sheaf of original
+$\mathcal O$-linear morphisms, not an assigned formal inverse. Its
+actual local trivializations prove invertibility of the dual.
+The true sheafified tensor product of these two actual sheaves is
+invertible: on the actual common refinement of both original trivializing
+covers, the genuine open pullback-tensor isomorphism reduces it to
+$\mathcal O\otimes\mathcal O\simeq\mathcal O$. This constructs the
+original ratio line sheaf. It does not yet identify a metric on it,
+add the polarization $\mathcal O(r)$, normalize the model or prove nefness.
+\end{proof}

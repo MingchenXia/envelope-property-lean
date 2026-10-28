@@ -1,0 +1,53 @@
+\section{Actual valuative multiplier-ideal contributions}
+
+\begin{definition}[The actual contribution of a divisorial DVR]\label{def:sc0-dvr-multiplier-contribution}
+\lean{EnvelopeProperty.Char0.dvrMultiplierContribution}
+\leanok
+\uses{def:sc0-original-source-dvr-jacobian-ideal,cor:sc0-original-source-dvr-jacobian-finite-order}
+Let $C\subseteq V\subseteq K$ be an actual divisorial DVR over its actual
+source function field and $\mathfrak a\subset C$ a nonzero actual ideal.
+For a rational exponent $q$, put $i=\operatorname{ord}_V(\mathfrak a V)$ and
+$j=\operatorname{ord}_V\operatorname{Jac}_V(C)$. Both are finite integers.
+Its actual valuative contribution is the inverse image in $C$ of
+\[
+ \mathfrak m_V^{\max\{0,\lfloor qi\rfloor-j\}}.
+\]
+This is an actual ideal, with log discrepancy $A_C(V)=1+j$.
+\end{definition}
+
+\begin{lemma}[The contribution is exactly the strict discrepancy condition]\label{lem:sc0-dvr-multiplier-contribution-membership}
+\lean{EnvelopeProperty.Char0.mem_dvrMultiplierContribution_iff_strict}
+\leanok
+\uses{def:sc0-dvr-multiplier-contribution,lem:sc0-dvr-ideal-order-principal-product}
+An original source element $f$ belongs to that actual contribution exactly
+when $f=0$ or
+\[
+ q\operatorname{ord}_V(\mathfrak a)
+ <\operatorname{ord}_V(f)+1+\operatorname{ord}_V\operatorname{Jac}_V(C).
+\]
+\end{lemma}
+\begin{proof}
+In an actual DVR, membership in $\mathfrak m^N$ is equivalent to normalized
+order at least $N$, by expressing $\mathfrak m=(\pi)$ and using the actual
+uniformizer divisibility criterion. Zero belongs to every power. For nonzero
+$f$, all three orders are finite integers. The exponent condition is
+$\max\{0,\lfloor qi\rfloor-j\}\le\operatorname{ord}_V(f)$, equivalently
+$\lfloor qi\rfloor\le\operatorname{ord}_V(f)+j$. An integer $r$ satisfies
+$\lfloor qi\rfloor\le r$ exactly when $qi<r+1$. This is the displayed
+strict discrepancy inequality. For negative rational exponents the
+contribution is the unit ideal; the stated criterion remains valid.
+\end{proof}
+
+\begin{lemma}[The original ideal lies in its exponent-one contribution]\label{lem:sc0-original-ideal-multiplier-contribution}
+\lean{EnvelopeProperty.Char0.le_dvrMultiplierContribution_one}
+\leanok
+\uses{def:sc0-dvr-multiplier-contribution}
+Every original element of $\mathfrak a$ belongs to its actual exponent-one
+valuative contribution.
+\end{lemma}
+\begin{proof}
+Its actual image lies in $\mathfrak a V$, so its order is at least the
+actual ideal order $i$. The cutoff exponent at one is
+$\max\{0,i-j\}\le i$. Thus its image lies in that actual DVR ideal power,
+which is the asserted inverse-image membership.
+\end{proof}

@@ -1,0 +1,43 @@
+\section{The same original projective twists add under tensor product}
+
+\begin{lemma}[The same original projective twists add]
+\label{lem:coherent-projective-original-twist-addition}
+\uses{thm:scheme-original-frame-gluing,lem:scheme-original-tensor-frame-transitions}
+\lean{EnvelopeProperty.ProjectiveTwistTensorAddition.tensorIso}
+\leanok
+For the genuine coordinate-hyperplane presentations of the usual twists
+on polynomial projective space, $\mathcal O_j(a)\otimes\mathcal O_k(b)$
+is isomorphic to $\mathcal O_\ell(a+b)$ for every choice of coordinate
+indices $j,k,\ell$ and integer degrees $a,b$.
+\end{lemma}
+\begin{proof}
+On each original standard coordinate open, use the original coefficient-one
+frames. On an overlap the degree-$a$ and degree-$b$ frames have transition
+factors $\tau^a$ and $\tau^b$, independent of the chosen hyperplane index.
+The tensor frame therefore has transition $\tau^{a+b}$, exactly that of
+the original target frame. The framewise coefficient-preserving maps
+thus agree on overlaps, and the actual module-Hom sheaf glues them to
+an original whole morphism. The framewise inverse maps glue in the same
+way. Each composite is the identity on every member of the standard
+cover, hence is the identity globally by separatedness of the same
+module-Hom sheaf. These two original morphisms give the isomorphism.
+\end{proof}
+
+\begin{lemma}[Tensor addition preserves the standard frames]
+\label{lem:projective-twist-tensor-addition-frame}
+\uses{lem:coherent-projective-original-twist-addition,thm:scheme-original-frame-gluing,lem:scheme-original-tensor-frame-transitions}
+\lean{EnvelopeProperty.ProjectiveTwistTensorAddition.tensorIso_restrict}
+\leanok
+The tensor-addition isomorphism may be chosen so that, on each standard
+coordinate open, it is exactly the comparison from the tensor of the
+degree-$a$ and degree-$b$ coefficient-one frames to the degree-$(a+b)$
+coefficient-one frame. These choices are made simultaneously for every
+choice of coordinate presentations and integer degrees.
+\end{lemma}
+\begin{proof}
+Use the isomorphism obtained by gluing the specified frame comparisons
+in the preceding proof. The restriction identity for gluing identifies
+its restriction to each member of the cover with the prescribed local
+comparison. Thus the tensor frame and the target frame have identical
+coefficients under this restriction, for all the indicated parameters.
+\end{proof}

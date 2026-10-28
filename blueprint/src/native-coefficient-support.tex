@@ -1,0 +1,40 @@
+\section{Actual coefficient opens and central support}
+
+\begin{lemma}[Coefficient opens of native polynomial projective space]
+\label{projective:native-coefficient-basic-opens}
+\uses{projective:actual-product-model-ideal-functions}
+\lean{EnvelopeProperty.ProjBerk.nativeStructureMap_mem_coefficient_iff,EnvelopeProperty.ProjBerk.nativeStructureMap_preimage_coefficient_basicOpen}
+\leanok
+For every coefficient ring $R$, the actual structure morphism
+$\mathbf P^M_R\to\operatorname{Spec}R$ sends a homogeneous prime $P$
+to its inverse image under $R\to R[x_0,\ldots,x_M]$.  In particular the
+inverse image of $D(r)$ is $D_+(r)$ for every $r\in R$.
+\end{lemma}
+\begin{proof}
+The native structure morphism first maps to the spectrum of the degree-zero
+part and then uses the actual coefficient isomorphism with that part.
+The first morphism is computed on the global homogeneous open $D_+(1)$:
+the coefficient $r$ is the degree-zero fraction $r/1$, which belongs to
+the image prime exactly when its numerator belongs to $P$.  This gives
+$r\in f(P)$ if and only if the constant polynomial $r$ belongs to $P$.
+Negating membership gives the asserted inverse-image equality of opens.
+\end{proof}
+
+\begin{lemma}[An actual coefficient power confines the whole ideal support]
+\label{projective:coefficient-power-central-support}
+\uses{projective:native-coefficient-basic-opens}
+\lean{EnvelopeProperty.ProjBerk.coefficientOpen_le_compl_support_of_power_mem}
+\leanok
+Let $J$ be a homogeneous ideal in $R[x_0,\ldots,x_M]$ and suppose the
+actual constant polynomial $r^A$ belongs to $J$ for an integer $A\ge0$.
+Then the genuine quotient-kernel ideal sheaf of $J$ is the unit ideal
+off the coefficient zero locus $V(r)$: its closed support is disjoint
+from the inverse image of $D(r)$.
+\end{lemma}
+\begin{proof}
+A point of that closed support is a homogeneous prime $P$ containing the
+entire original ideal $J$.  Hence it contains $r^A$, so primality implies
+$r\in P$.  The preceding lemma puts its image in $V(r)$.  Thus no point
+over $D(r)$ belongs to the ideal sheaf's support.  This argument retains
+the whole original ideal and uses no radical replacement.
+\end{proof}

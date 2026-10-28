@@ -1,0 +1,49 @@
+\section{Monomial sections satisfy the actual divisorial multiplier condition}
+
+\begin{lemma}[The weighted strict cutoff inequality]\label{lem:sc0-weighted-strict-multiplier-cutoff}
+\lean{EnvelopeProperty.Char0.weighted_multiplier_cutoff_strict}
+\leanok
+\uses{lem:sc0-dvr-multiplier-contribution-membership}
+Let $r_l,d_l,a_l,b_l,F,j$ be nonnegative integers with a finite index set.
+Suppose $\max\{0,\lfloor qd_l\rfloor-a_l\}\le b_l$ for every $l$,
+$\sum_l b_lr_l\le F$, and
+$\sum_l(1+a_l)r_l\le1+j$. Then
+\[
+ q\sum_l d_lr_l<F+1+j.
+\]
+\end{lemma}
+\begin{proof}
+Each cutoff inequality gives $qd_l<b_l+a_l+1$. If every $r_l$ is zero,
+the desired inequality is $0<F+1+j$. Otherwise multiply the individual
+strict inequalities by $r_l$ and sum. The terms with $r_l=0$ are equal,
+and at least one term is strictly smaller, so
+$q\sum_l d_lr_l<\sum_l b_lr_l+\sum_l(1+a_l)r_l\le F+1+j$.
+\end{proof}
+
+\begin{theorem}[Actual monomial leaf divisibility implies multiplier membership]\label{thm:sc0-leaf-monomial-multiplier-membership}
+\lean{EnvelopeProperty.Char0.mem_dvrMultiplierContribution_of_leaf_monomial}
+\leanok
+\uses{lem:sc0-weighted-strict-multiplier-cutoff,thm:sc0-dvr-original-source-leaf-logarithmic-bound,lem:sc0-dvr-multiplier-contribution-membership}
+Let an actual smooth leaf $C\subseteq E\subseteq V\subseteq K$ have
+\'etale coordinates $v_i$, distinct boundary coordinates $v_{c(l)}$, actual
+extended ideal $\mathfrak a E=(\prod_l v_{c(l)}^{d_l})$, and genuine
+original-source leaf Jacobian ideal $(\prod_l v_{c(l)}^{a_l})$.
+If the actual original element $f\in C$ becomes divisible in $E$ by
+$\prod_l v_{c(l)}^{b_l}$, where
+$b_l\ge\max\{0,\lfloor qd_l\rfloor-a_l\}$, then $f$ belongs to the
+actual contribution of $V$ to $\mathcal J_C(\mathfrak a^q)$.
+\end{theorem}
+\begin{proof}
+The zero element belongs to every ideal. For nonzero $f$, set
+$r_l=\operatorname{ord}_V(v_{c(l)})$ and $F=\operatorname{ord}_V(f)$.
+The genuine original-source Jacobian ideal has finite order $j$.
+The logarithmic leaf bound, including all coordinate orders and the
+Jacobian monomial, implies that all coordinate orders are finite and
+$\sum_l(1+a_l)r_l\le1+j$; distinctness of the boundary coordinates
+bounds their order sum by the sum over all coordinates. Actual
+monomial divisibility gives $\sum_l b_lr_l\le F$, by the DVR
+order criterion. Extending the actual ideal identity further to $V$
+gives $\operatorname{ord}_V(\mathfrak aV)=\sum_l d_lr_l$.
+The weighted cutoff inequality now gives the exact strict discrepancy
+condition, which is equivalent to membership in the actual contribution.
+\end{proof}

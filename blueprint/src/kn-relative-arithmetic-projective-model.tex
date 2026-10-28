@@ -1,0 +1,34 @@
+\section{The original closed embedding and the smooth total-space model}
+
+\begin{lemma}[A smooth model inside the prescribed ambient model]
+\label{lem:kn-relative-arithmetic-smooth-closed-model}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticProjectiveModel.exists_smooth_closed_model}
+\uses{thm:kn-arithmetic-original-dimension-spread}
+\leanok
+Let $k$ be a directed union of finitely generated coefficient
+subalgebras, let $P_k$ have a prescribed finite-presentation model
+$P_A$, and let $j:X\hookrightarrow P_k$ be a closed immersion.
+Suppose that $X$ is of finite presentation over $k$ and smooth of
+relative dimension $n$.  After a finite coefficient enlargement
+$A\subset C$, there is a smooth relative-dimension-$n$ model $X_C$
+and a closed immersion $j_C:X_C\hookrightarrow P_A\times_A C$
+whose whole original pullback is exactly $j$.  Both coefficient
+triangles and the whole original cartesian square are preserved.
+\end{lemma}
+\begin{proof}
+Finite-presentation approximation of the closed subscheme gives a
+finite stage $B\supset A$, a finite-presentation model $X_B$, and a
+closed immersion $j_B:X_B\hookrightarrow P_A\times_A B$ recovering
+the entire original closed immersion.  Spread the original
+standard-smooth charts of dimension $n$ on this fixed model, and
+choose one finite later stage $C\supset B$ where they cover the
+whole model.  This gives $X_C=X_B\times_B C$ smooth of the same
+relative dimension.  Base change of the closed immersion $j_B$ is
+closed.  The canonical associativity isomorphism
+$(P_A\times_A B)\times_B C\simeq P_A\times_A C$ carries it to
+$j_C$.  The two projections of this associativity isomorphism are
+the original projections, so the structural triangle and the
+original identity $j_C|_k=j$ follow from those of $j_B$.  The model
+square remains cartesian because every change made was a scalar
+base change.
+\end{proof}

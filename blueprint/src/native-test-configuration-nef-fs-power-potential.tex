@@ -1,0 +1,43 @@
+\section{The native potential of the same original tensor power}
+
+\begin{theorem}[Actual native norm factor of the original power data]
+\label{thm:native-tc-nef-fs-power-factor}
+\leanok
+\uses{lem:native-tc-nef-fs-native-factor-arbitrary-center, lem:native-tc-nef-fs-product-power-coherence}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeNormFactor_power_comparisons}
+Fix the same original test configuration, line $M$, generic line $L$,
+whole action comparison $\alpha$ and fibre-one comparison $e_1$.
+If $L^{\otimes n}$ is actually ample on the original $X$, then the native
+norm factor for the internally constructed original power data equals
+the $n$th power of the original native norm factor, at every original
+native point and radius.
+\end{theorem}
+\begin{proof}
+Use the same original proper-centre open and frame for $L$ and their
+actual $n$th power for $L^{\otimes n}$.  At the original total-model
+valuation centre use the $n$th centre power frame of the original
+chosen centre frame.  The arbitrary-centre-frame factor theorem
+identifies the native factor of the powered data with this factor;
+its ampleness hypothesis is exactly the stated actual ampleness of
+$L^{\otimes n}$.  Whole power-action and fibre-one coherence identify
+the induced original product model frame with the original canonical
+product power frame.  The original power-frame transition theorem then
+identifies the actual transition unit with the $n$th power of the
+original transition unit.  The actual residue valuation preserves
+powers.  The degree-one transition factor is literally the defined
+original native factor, with its original chosen open frame.
+\end{proof}
+
+\begin{theorem}[Actual original native potential power law]
+\label{thm:native-tc-nef-fs-power-potential}
+\leanok
+\uses{thm:native-tc-nef-fs-power-factor, def:native-tc-original-model-potential}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeModelPotential_power_comparisons}
+Under the same hypotheses, the native model potential of the actual
+power data is $n$ times the original native model potential.
+\end{theorem}
+\begin{proof}
+The native potential is minus the real logarithm of the positive native
+factor.  Apply the preceding exact factor power law and the real
+logarithm power identity.
+\end{proof}

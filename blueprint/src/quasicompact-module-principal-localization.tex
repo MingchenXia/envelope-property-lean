@@ -1,0 +1,63 @@
+\section{Whole module sections and principal-open localization}
+
+\begin{lemma}[The actual kernel of a commuting localization square]
+\label{lem:localized-module-kernel-square}
+Let $a:M\to M_T$ and $b:N\to N_T$ be actual localizations of
+modules at a multiplicative subset $T$ of a commutative ring.
+Let $d:M\to N$ and $d_T:M_T\to N_T$ be the actual linear maps
+in a commuting square $d_Ta=bd$. Then the actual restriction of
+$a$ to $\ker d\to\ker d_T$ is a localization. This is the same
+kernel map of the square, rather than an abstractly chosen
+isomorphism of the resulting kernels.
+\lean{EnvelopeProperty.LocalizedKernelSquares.kernelMap,EnvelopeProperty.LocalizedKernelSquares.kernelMap_apply,EnvelopeProperty.LocalizedKernelSquares.differential_eq_localizedMap,EnvelopeProperty.LocalizedKernelSquares.kernelMap_isLocalizedModule}
+\leanok
+\end{lemma}
+\begin{proof}
+The universal property of $a$ and localization of $b$ identify the
+whole actual map $d_T$ with the canonical localized map of $d$.
+Native localization commutes with kernels for that canonical map.
+After this whole map equality, the actual kernel restriction is
+literally the native kernel localization map; proof irrelevance
+identifies the witnesses that its values lie in the kernel.
+\end{proof}
+
+\begin{proposition}[Whole sections on the actual principal open]
+\label{prop:quasicompact-module-principal-localization}
+Let $Y$ be a quasicompact separated scheme, $M$ an actual
+quasicoherent module, and $t\in\Gamma(Y,\mathcal O_Y)$. The
+actual whole restriction
+\[
+ \Gamma(Y,M)\longrightarrow\Gamma(D(t),M)
+\]
+is localization at the powers of $t$.
+\uses{lem:localized-module-kernel-square,lem:finite-product-module-localization,prop:scheme-module-open-sections-kernel,prop:scheme-module-cech-localization-criterion}
+\notready
+\end{proposition}
+\begin{proof}
+Choose an actual finite affine open cover of $Y$. Separatedness
+makes its pairwise intersections affine. The native affine
+quasicoherent-section theorem identifies the restriction to the
+intersection with the SAME principal open $D(t)$ as localization
+on every cover term and every overlap term. Restrict scalars
+through the actual coefficient maps and take finite products.
+The actual Cech differential restriction square commutes by
+presheaf functoriality. Apply the preceding kernel result to
+these SAME two original differentials. The actual sheaf
+global-section kernel isomorphisms, with their augmentation
+identities, identify the resulting map with the original whole
+restriction, proving the proposition.
+
+The actual kernel-square, common-denominator finite-product localization,
+and ANY-open original module-section Cech kernel with its WHOLE actual
+augmentation have now been proved. The SAME actual section restriction
+is identified with the actual kernel restriction; the whole section
+localization follows from the SAME two original term localizations.
+The geometric finite affine cover,
+actual localizations of every affine cover and overlap term with
+the SAME coefficient action, and the true Cech restriction square
+still have to be joined. They are not supplied as a replacement
+certificate for the proposition. The test-configuration consumer still needs its
+actual generic-fibre line isomorphism and finite Laurent
+expansion. Neither whole localization nor the literal envelope
+formula is claimed proved here.
+\end{proof}

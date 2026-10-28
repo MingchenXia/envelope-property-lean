@@ -1,0 +1,91 @@
+\section{Kodaira vanishing on the original characteristic-zero scheme}
+
+\begin{definition}\label{def:kn-global-witt-di-input}
+\lean{EnvelopeProperty.Vanishing.KodairaCharacteristicZero.GlobalWittDecompositionInput}
+\leanok
+The global Witt decomposition interface asserts, for every prime $p$ and every
+field $K$ of characteristic $p$, the actual global derived decomposition
+when $K$ is perfect, on the literal special fibre of every separated smooth $W_2(K)$ model of
+relative dimension $n<p$.  Its derived category is the standard one in
+universe $u+1$.  It contains
+no projection formula, connection, canonical comparison, specialization,
+or cohomological vanishing conclusion.
+\end{definition}
+
+\begin{lemma}[The actual Witt decomposition supplies the global interface]
+\label{lem:kn-proved-global-witt-di}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.provedWittDecompositionInput,EnvelopeProperty.Vanishing.KodairaCharacteristicZero.globalWittDecomposition}
+\uses{cor:di-actual-witt-full-decomposition,def:kn-global-witt-di-input}
+\leanok
+The global Witt decomposition interface holds. Its source consists of the
+original exterior cotangent sheaves on the actual relative Frobenius twist,
+and its target is the original relative de Rham complex extended by zero
+to integer degrees.
+\end{lemma}
+\begin{proof}
+Fix a prime, a perfect field of that characteristic, and an actual smooth
+separated Witt-two model of relative dimension $n<p$. The proved full
+Deligne--Illusie decomposition applies to precisely that model. Its source
+is the finite coproduct of the original exterior sheaves in degrees zero
+through $n$, extended to integer degrees. These are exactly the summands
+of the stated interface. The target is the same original relative de
+Rham complex on the same special fibre and Frobenius twist. Thus the
+proved isomorphism inhabits the interface for this model. Quantifying
+over all such models, fields and primes proves the assertion; choosing
+the standard derived category gives the indicated universe.
+\end{proof}
+
+\begin{theorem}[Kodaira vanishing from the proved global decomposition]
+\label{thm:kn-original-characteristic-zero-kodaira}
+\lean{EnvelopeProperty.Vanishing.KodairaCharacteristicZero.kodaira_tensorObj,EnvelopeProperty.Vanishing.KodairaCharacteristicZero.kodaira}
+\leanok
+\uses{lem:kn-proved-global-witt-di,thm:kn-arithmetic-original-ample-model,thm:kn-arithmetic-original-dimension-witt,thm:kn-ample-scalar-extension,cor:kn-actual-witt-stage-kodaira,thm:kn-arithmetic-canonical-specialization}
+Let $k$ be a characteristic-zero field, $f:X\to\operatorname{Spec}k$ a
+smooth scheme of relative dimension $n$, and $L$ an ample line in the
+original positive-power projective embedding sense. Then
+\[
+ H^{q+1}(X,\omega_{X/k}\otimes L)=0\qquad(q\geq0).
+\]
+No arithmetic model, canonical fibre comparison, vanishing certificate,
+or separate projectivity premise is an input.
+\end{theorem}
+\begin{proof}
+Choose the positive-power embedding contained in the original ample datum.
+The original ample model theorem constructs a finitely generated integer
+subalgebra $S\subset k$, the actual canonical coefficient family of that
+same embedding, and an ample model $M$ of the original $L$, smooth of
+relative dimension $n$.  The model includes the actual whole pullback
+isomorphism to $L$; it is constructed from descended sections and actual
+descended inverse maps, rather than assumed.
+
+Apply the dimension-preserving Witt stage producer with bound $n$ after
+all these line coefficients have been chosen.  It internally localizes
+the integer base to make it smooth and produces a closed point and its
+actual $W_2$ lift at a prime $p>n$.  Its further coefficient ring $R$ still
+contains $S$.  Pull back $M$ along the actual coefficient transition.
+The proved arbitrary scalar extension theorem preserves ampleness, and
+pullback composition preserves its whole original comparison to $L$.
+The resulting base is Noetherian because it is isomorphic to a principal
+localization of a finite-type integer ring.
+
+On the actual residue family, scalar extension again gives the actual
+ample residue line.  Apply Witt Kodaira vanishing to the produced smooth
+Witt model and its original dimension bound. The preceding lemma supplies
+the global decomposition at its actual finite residue field. The proved comparison with the literal DI
+special fibre retains its original structural morphism and original line.
+Choose standard derived categories internally.
+
+The arithmetic canonical object tensored with the actual model line is
+invertible and has its proved whole canonical tensor comparison on every
+field fibre.  The literal quotient residue field of the Witt stage and
+the localization residue field used in specialization are identified by
+the actual bijective quotient-to-residue algebra map, not by definitional
+equality.  Actual fibre isomorphism and functorial cohomology transport
+provide the required closed-fibre vanishing.  The proved geometric
+specialization theorem now gives vanishing on the original Cartesian
+$k$-fibre: the map $R\hookrightarrow k$ is injective, and the actual model
+has its constructed projective factorization and flatness from smoothness.
+Its original Cartesian square and the actual line comparison identify the
+answer with the stated original $X,f,L$.  Transport along the whole line
+isomorphism and the native tensor comparison gives the displayed claim.
+\end{proof}

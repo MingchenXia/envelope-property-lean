@@ -1,0 +1,102 @@
+\section{Varying original-line psh nets on the actual curve-weak numerical space}
+\label{sec:native-numerical-curve-weak-psh}
+
+\begin{theorem}[Actual numerical FS functions never take positive infinity]
+\label{thm:native-numerical-fs-ne-top}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.eval_ne_top}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data}
+Every whole original numerical FS datum has values in
+$\mathbf R\cup\{-\infty\}$ at every same original native point.
+\end{theorem}
+\begin{proof}
+Each true section norm is a finite nonnegative real number. Its extended
+logarithm is therefore never positive infinity; adding a finite real
+weight retains this property. A finite supremum of such terms is still
+strictly below positive infinity. Multiplication by the strictly positive
+finite reciprocal denominator also retains it, including at negative
+infinity.
+\end{proof}
+
+\begin{definition}[Curve-weak numerical psh with genuinely varying original lines]
+\label{def:native-numerical-curve-weak-psh}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsCurveWeakPSH}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,thm:native-numerical-fs-nonvanishing,def:native-numerical-curve-weak-topology}
+\source{bj22-trivval:defi:psh,fhx-envelope-20261028:subsec:prelim-psh}
+Let the actual original scheme be integral and projective over its original
+field. A function is curve-weak numerical psh of class $\theta$ if it is
+upper semicontinuous, not identically $-\infty$, and is the pointwise
+infimum of a decreasing net of evaluations of actual nonzero whole
+original rational-line FS data, on a nonempty directed preorder. The
+actual classes $m_j^{-1}[M_j]$ must converge to $\theta$ in the actual
+curve-weak numerical quotient. The actual original lines $M_j$, positive
+denominators, whole sections and real weights may all vary.
+
+This has BJ's decreasing varying-rational-line form, using the explicit
+curve-weak topology. Agreement with the paper's finite-dimensional real
+vector-space topology, and the resulting full general numerical psh
+comparison, remain mathematical obligations. No fixed-ray restriction,
+ample-approximation theorem or supplied model-comparison certificate is
+part of this definition.
+\end{definition}
+
+\begin{theorem}[The actual numerical psh range and defining convergence]
+\label{thm:native-numerical-curve-weak-psh-properties}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsCurveWeakPSH.exists_ne_bot,EnvelopeProperty.NativeNumericalFubiniStudy.IsCurveWeakPSH.upperSemicontinuous,EnvelopeProperty.NativeNumericalFubiniStudy.IsCurveWeakPSH.ne_top,EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_iff_degreewise}
+\leanok
+\uses{def:native-numerical-curve-weak-psh,thm:native-numerical-fs-ne-top,thm:native-numerical-curve-weak-convergence}
+A curve-weak numerical psh function is upper semicontinuous, not identically
+$-\infty$, and nowhere positive infinity. Its actual class convergence
+condition can equivalently be tested by convergence of every true full
+Euler degree on every actual original closed integral curve.
+\end{theorem}
+\begin{proof}
+Upper semicontinuity and nontriviality are explicit defining conditions.
+At every original native point, the infimum is bounded above by the
+value of any member of the nonempty approximating net. The preceding
+true FS bound makes this value strictly less than positive infinity.
+For the last assertion, apply the exact degreewise convergence theorem
+to the net of the same actual classes of these same original data;
+all sections, functions, decreasing order and pointwise infimum remain
+unchanged.
+\end{proof}
+
+\begin{theorem}[Every actual fixed-ray psh net lies in its genuine numerical psh class]
+\label{thm:native-numerical-curve-weak-psh-from-ray}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_of_ray}
+\leanok
+\uses{def:native-numerical-curve-weak-psh,thm:native-numerical-fs-from-ray,thm:native-numerical-curve-weak-vector-topology,def:native-line-whole-section-psh}
+If the existing actual original fixed-$L$-ray predicate holds at real
+coefficient $a$, then the same entire original function is curve-weak
+numerical psh of its genuine class $a[L]$. No ample hypothesis is required.
+\end{theorem}
+\begin{proof}
+For each member of the actual fixed-ray FS net, choose its original whole
+finite datum. Regard its same original power line and sections as a varying
+rational-line datum, retaining its denominator and weights. Its evaluation
+is literally unchanged and its true class is $a_j[L]$. The given scalar
+convergence $a_j\to a$ implies convergence $a_j[L]\to a[L]$ by the proved
+joint continuity of real scalar multiplication on the actual curve-weak
+quotient. Nonzero families, original decreasing order and exact pointwise
+infimum are retained. The original limit already has its required genuine
+nontriviality and upper semicontinuity, proving the claim.
+\end{proof}
+
+\begin{theorem}[All genuine original curve degrees determine the target class]
+\label{thm:native-numerical-curve-weak-psh-intrinsic}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_iff_of_curveDegrees_eq}
+\leanok
+\uses{def:native-numerical-curve-weak-psh,thm:native-real-numerical-classes}
+If two actual original numerical classes have the same true degrees on
+all actual original closed integral curves, their curve-weak numerical
+psh predicates agree on the same entire original native space.
+\end{theorem}
+\begin{proof}
+The true original curve degrees jointly separate the genuine numerical
+quotient, so the two whole target classes are equal. Substitute this exact
+equality in the definition. The permitted varying original-line data and
+the entire original limit function remain identical. This does not assert
+arbitrary numerical invariance of the distinct older fixed-line FS or
+fixed-ray psh predicates.
+\end{proof}

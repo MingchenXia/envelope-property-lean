@@ -1,0 +1,77 @@
+\section{Actual original homogeneous forms have whole ideal-tensor lifts}
+
+Write $P=\mathbf P_R^n$, $D=(\widetilde J).\operatorname{comap}j$,
+and $L=j^*\mathcal O(d)$, always using the existing original positive-power
+line with pivot $0$, original tensor module and actual ideal module.
+The general tensor module $L\otimes D.\operatorname{toModules}$ need not
+be invertible.  The following two complete nodes have frozen native verification.
+
+\begin{lemma}[The two existing original homogeneous coefficients agree]
+\label{lem:resume-native-form-original-homogeneous-coefficient}
+\uses{lem:fc-original-homogeneous-form-coefficients}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.nativeFormSection_eq_homogeneousCoefficient}
+\leanok
+For every homogeneous form $F$ of degree $d\in\mathbb N$ and every
+original coordinate open $D_+(X_i)$, the existing whole section
+$\operatorname{nativeFormSection}_i(F)$ is exactly the existing original
+homogeneous coefficient $F/X_i^d$.  This includes $F=0$ and $d=0$.
+\end{lemma}
+\begin{proof}
+The first section is the image of the original polynomial
+de-homogenization under the native coordinate-to-section ring
+isomorphism.  The inverse whole coordinate-ring isomorphism takes that
+de-homogenization to the actual homogeneous fraction $F/X_i^d$.
+The existing native homogeneous-chart section isomorphism is exactly
+the original fraction-to-section map.  Apply these two whole-map
+identities to $F$.  All coefficient structures, fractions and section
+maps are the original ones.  Homogeneity alone is used; no nonzero
+condition or replacement of the degree by a total degree is needed.
+\end{proof}
+
+\begin{theorem}[A genuine whole lift into the original ideal tensor module]
+\label{thm:resume-original-form-whole-ideal-tensor-lift}
+\uses{lem:resume-native-form-original-homogeneous-coefficient,lem:resume-original-homogeneous-whole-scalar,lem:blowup-projective-pulled-forms,lem:blowup-projective-subordinate-cover,thm:blowup-projective-global-map,thm:fc-original-homogeneous-form-section,lem:fc-original-homogeneous-form-frame-coefficient,def:actual-line-frame-via-factor,lem:fc-original-line-section-frame-naturality,lem:fc-original-line-section-fibre,lem:fc-original-local-section-scalar,lem:fc-original-section-pullback-frame,lem:actual-ideal-module-whole-kernel,lem:actual-ideal-module-pullback-map,sc0-tensor-obj-morphisms:mono,sc0-tensor-ideal-shuffle:inclusion}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.exists_originalFormIdealSection}
+\leanok
+Let $R$ be any commutative ring, $j:X\to P$ any original morphism,
+$J$ an original homogeneous ideal, and $F\in J$ homogeneous of its
+original degree $d\in\mathbb N$.  Put $s_F$ equal to the value at one
+of the existing original whole homogeneous section morphism of $F$
+pulled along $j$.  There exists an actual whole original section
+\[
+ b_F\in\Gamma(X,L\otimes D.\operatorname{toModules})
+\]
+whose image under the literal original tensor-ideal inclusion is exactly
+$s_F$.  All coefficients, frames and scalar actions are the original ones.
+No matching of local lifts or existence of a whole lift is an input.
+The result includes degree zero, zero forms, empty opens and arbitrary
+commutative coefficient rings, without flatness or a Cartier hypothesis.
+\end{theorem}
+\begin{proof}
+Cover $X$ by all original affine opens subordinate to some
+$j^{-1}D_+(X_i)$.  On such an open $U$, let $e_i$ denote the actual pulled
+$X_i^d$ frame of $L$.  Transport the actual original $X_i^d$ frame through the genuine
+restricted-scheme factorization $U\to D_+(X_i)\to P$, using the native
+pullback-composition and structure-unit isomorphisms.  The preceding
+coefficient identification, the original homogeneous-section frame
+theorem, and whole factor-frame scalar naturality show that the original
+section has coefficient $g_F=j^*(F/X_i^d)$.  The native restriction
+section-ring square and its actual top-section isomorphisms identify
+this coefficient with the original entire function on $U$.  Since $F\in J$, the exact
+original quotient-ideal chart formula puts $g_F$ in the entire ideal
+$D(U)$.  The original ideal-to-module construction therefore gives an
+actual ideal-module section with included function $g_F$.
+
+Take its pure tensor with $e_i$ using the original native tensor and
+its canonical explicit sheaf-tensor comparison.  Under the literal
+original tensor-ideal inclusion the result is $g_Fe_i$, exactly the
+restriction of the same global pulled homogeneous section.  Tensoring
+the actual ideal inclusion by the original invertible $L$ is monic;
+the true right-unit isomorphism preserves this monicity.  Consequently
+the two local tensor sections agree on every overlap, because their
+images are restrictions of that same global section.  Ordinary sheaf
+gluing supplies the actual whole section.  Sheaf extensionality gives
+its asserted entire inclusion identity.   Empty opens, zero forms and degree zero satisfy these
+same identities without additional hypotheses.
+\end{proof}
+

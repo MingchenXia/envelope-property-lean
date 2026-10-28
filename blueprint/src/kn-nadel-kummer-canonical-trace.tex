@@ -1,0 +1,113 @@
+\section{Actual canonical modules and counits on the polynomial Kummer chart}
+\label{sec:kn-nadel-kummer-canonical-trace}
+
+Let $R$ be a nontrivial commutative ring and let
+$A=R[x_0,\ldots,x_{n-1}]$, $B=R[t_0,\ldots,t_{n-1}]$.
+The actual map is $f:A\to B$, $x_j\mapsto t_j^{d_j+1}$.
+These two rings have the same underlying polynomial type in Lean,
+so all coefficient restriction and coextension objects below use
+the literal homomorphism $f$, rather than the identity scalar action.
+Let $C$ be the internally constructed coordinate root tower and
+$e:C\simeq_A B$ the already proved original coordinate algebra
+isomorphism.  Put
+$\Lambda(b)=\Lambda_C(e^{-1}(b))$, with $\Lambda_C$ the actual
+composite of the original monic top-coefficient functionals.
+
+\begin{lemma}[Transport the actual whole dual frame to the power-map algebra]
+\label{lem:kn-nadel-kummer-polynomial-dual}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.coextensionFrame,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.coextensionFrame_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.PolynomialRing,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.towerRestrictionEquiv,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingModule,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.coefficientMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.coefficientMap_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingMap_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.functionalTransport,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.functionalTransport_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.functionalTransport_powerDualizingMap,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingMap_bijective,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingEquiv,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.powerDualizingIso}
+\leanok
+Construct a $B$-linear equivalence
+\[
+ B\simeq\operatorname{Coext}_f(A),\qquad
+ g\longmapsto[b\mapsto\Lambda(bg)].
+\]
+The map $e$ preserves the original coefficient homomorphisms on the
+whole original algebra.  No comparison, perfect pairing, or desired
+duality isomorphism is an input to this construction.
+\end{lemma}
+\begin{proof}
+Use the actual coefficient triangle of $e$ to produce an $A$-linear
+equivalence between the two native restricted regular modules.
+Precomposition with this equivalence identifies their entire
+native coextension carriers.  Compose the original tower's actual
+coefficient counit with this restriction equivalence to obtain
+$\Lambda$ as an actual $A$-linear map on the restricted $B$.
+The existing native restriction/coextension adjunction sends this
+functional to the displayed $B$-linear map.  Under precomposition
+with $e$, this is exactly the already proved tower frame evaluated
+at $e^{-1}(g)$, by the actual multiplication and inverse identities.
+Since both $e$ and the whole tower frame are bijective, the native
+map is bijective as well.  Thus it is the asserted $B$-linear
+equivalence on the actual power-map algebra.
+\uses{thm:kn-nadel-finite-root-tower-duality,lem:kn-nadel-kummer-tower-polynomial-iso}
+\end{proof}
+
+\begin{theorem}[The actual top-differential finite-duality map]
+\label{thm:kn-nadel-kummer-canonical-module}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalModule,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalGenerator,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalTrivialization,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalGenerator_eq_wedge,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalTrivialization_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalTrivialization_symm,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalIso,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalIso_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalIso_generator}
+\leanok
+Use the genuine K\"ahler modules and top exterior powers
+\[
+ \omega_A=\bigwedge_A^n\Omega^1_{A/R},\qquad
+ \omega_B=\bigwedge_B^n\Omega^1_{B/R}.
+\]
+Construct on this actual polynomial chart a $B$-linear equivalence
+\[
+ \omega_B\simeq\operatorname{Coext}_f(\omega_A),\qquad
+ g\,dt_0\wedge\cdots\wedge dt_{n-1}
+ \longmapsto
+ [b\mapsto\Lambda(bg)\,dx_0\wedge\cdots\wedge dx_{n-1}].
+ \tag{K1}
+\]
+Both exterior modules and both displayed generators are the native
+original differential objects.  The assertion also includes $n=0$.
+\end{theorem}
+\begin{proof}
+The native polynomial K\"ahler basis is exactly the family of the
+original $dX_j$.  Its actual top exterior basis is indexed by the
+unique full subset of $\mathrm{Fin}(n)$, giving the displayed
+ordered wedge and a coefficient-linear trivialization of each
+original $\omega$.  Compose the trivialization of $\omega_B$,
+the preceding actual power-map dual frame, and coextension of the
+inverse trivialization of $\omega_A$.  Every map has the actual
+$B$-action and coefficient homomorphism, hence their composite is
+$B$-linear.  Evaluating at every original $b\in B$ gives (K1).
+The exterior-basis construction in degree zero is the native
+degree-zero exterior module, so the same proof covers that endpoint.
+This constructs the map between the genuine differential modules;
+it does not rename an abstract dual module as a canonical module.
+\uses{lem:kn-nadel-kummer-polynomial-dual,sc0-canonical-port:geom:polynomial-canonical-frame,sc0-canonical-port:geom:canonical-frame-from-differential-basis}
+\end{proof}
+
+\begin{corollary}[The original native canonical counit and coefficient formula]
+\label{cor:kn-nadel-kummer-canonical-counit}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalCounit,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalCounit_apply,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalCounit_generator,EnvelopeProperty.Vanishing.NadelKummerCanonicalTrace.canonicalCounit_composite_topCoefficient}
+\leanok
+Compose (K1) with the actual native restriction/coextension counit
+on $\omega_A$.  The resulting $A$-linear map from the actual
+restricted $\omega_B$ to $\omega_A$ sends
+\[
+ g\,dt_0\wedge\cdots\wedge dt_{n-1}
+ \longmapsto\Lambda(g)\,dx_0\wedge\cdots\wedge dx_{n-1}.
+ \tag{K2}
+\]
+\end{corollary}
+\begin{proof}
+The original native counit evaluates a coextended functional at
+$1_B$.  Substitute $b=1$ into (K1) and use multiplication by one.
+This proves the entire map formula on every original top form,
+because the native top wedge is a basis.
+\uses{thm:kn-nadel-kummer-canonical-module}
+\end{proof}
+
+The coordinate-normalized construction above is meaningful even
+for noninvertible degrees; no field-trace division or etale-locus
+argument is used in its construction.  To identify it intrinsically
+under arbitrary coordinate changes, further proofs must compare
+it with the algebra trace and the actual Jacobian on the etale
+locus when the relevant degrees are units, then extend by genuine
+regular localization detection.  Etale coefficient base change and
+global gluing remain additional producer obligations.  Neither an
+ordinary canonical line on a singular normalized cover nor a global
+canonical trace or vanishing theorem is asserted here.

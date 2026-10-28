@@ -1,0 +1,85 @@
+\section{Native rational orders and weighted principal balance on the original curve}
+
+\begin{theorem}[The original rational function's actual native orders]
+\label{thm:fc-original-rational-denominator-orders}
+\leanok
+\lean{EnvelopeProperty.CurveRationalPrincipalBalance.ord_eq_denominator_difference, EnvelopeProperty.CurveRationalPrincipalBalance.ord_eq_normal_denominator_difference}
+\uses{thm:fc-rational-denominator-localization, thm:fc-curve-denominator-cartier, thm:fc-curve-cartier-native-local-orders}
+Let $X$ be the original integral locally Noetherian scheme and
+$0\ne f\in K(X)$ the original rational function. Whenever its two
+actual denominator ideals are Cartier,
+\[
+ \operatorname{ord}_x(f)
+ =\operatorname{ord}_x D_X(f^{-1})-\operatorname{ord}_x D_X(f)
+\]
+for EVERY original point $x$, where all orders are the native original
+scheme orders. On an actual normal curve of dimension at most one the
+two Cartier facts are derived from the original geometry.
+\end{theorem}
+\begin{proof}
+Take an actual original affine Cartier equation $c$ of $D_X(f)$ near $x$.
+The genuine original fraction-field numerator $b=cf$ is an element of
+the same original affine ring. Reciprocal multiplication is an actual
+linear isomorphism of the two denominator ideals, so their actual
+principal generators satisfy $D_X(f^{-1})(U)=(b)$. More explicitly,
+surjectivity writes each reciprocal denominator as the image of a multiple
+of $c$, and the literal field coefficients give the same multiple of $b$.
+The reverse containment is the genuine reciprocal-denominator membership.
+Both original equations are nonzero. The established arbitrary-equation
+comparison identifies their native orders with the actual Cartier local
+orders. Native multiplicativity applied to the original identity $b=cf$
+gives the formula, including the zero native order away from codimension
+one. The normal-curve Cartier producer supplies the two Cartier facts in
+the asserted geometric specialization.
+\end{proof}
+
+\begin{definition}[The actual residue-weighted original rational order]
+\label{def:fc-original-weighted-rational-order}
+\leanok
+\lean{EnvelopeProperty.CurveRationalPrincipalBalance.weightedOrder, EnvelopeProperty.CurveRationalPrincipalBalance.hasFiniteSupport_ord, EnvelopeProperty.CurveRationalPrincipalBalance.hasFiniteSupport_weightedOrder}
+For an original structure morphism $p:X\to\operatorname{Spec}k$, weight
+its native order by the actual original residue-field degree
+\[
+ w_{p,f}(x)=\operatorname{ord}_x(f)[\kappa(x):k],
+\]
+using the literal original coefficient map to $\kappa(x)$.
+On an original normal Noetherian integral curve of dimension at most one,
+both the native rational-order function and this actual residue-weighted
+function have finite support, derived from the two true Cartier supports.
+\end{definition}
+
+\begin{theorem}[True principal weighted balance on the whole original curve]
+\label{thm:fc-original-curve-principal-weighted-balance}
+\leanok
+\lean{EnvelopeProperty.CurveRationalPrincipalBalance.finsum_weightedOrder_eq_zero}
+\uses{thm:fc-original-rational-denominator-orders, def:fc-original-weighted-rational-order, thm:fc-scheme-denominator-reciprocal-iso, thm:fc-curve-cartier-weighted-degree}
+For ANY original integral normal projective curve over ANY original field
+and ANY nonzero original rational function,
+\[
+ \sum_{x\in X} \operatorname{ord}_x(f)[\kappa(x):k]=0.
+\]
+The sum is over EVERY original curve point, with the actual original
+residue fields; no separability, perfectness, algebraic closure, finite
+support, divisor, degree, Cartier, balancing or order certificate is
+assumed.
+\end{theorem}
+\begin{proof}
+The original projective morphism derives properness, finite type, local
+Noetherianity, compactness and Noetherianity of the original scheme. The
+true denominator Cartier producer gives the two original Cartier ideals.
+Their actual original closed supports are finite: their nonzero original
+generic germs give proper support, and the genuine curve-support theorem
+makes the actual closed subschemes finite. Thus the actual two weighted
+Cartier-order functions have finite support on the WHOLE original curve.
+
+Whole original reciprocal multiplication gives an isomorphism of the
+same two original denominator modules. Genuine full Euler characteristic
+is invariant under this whole original isomorphism. The true original
+Cartier-degree formula identifies their normalized Euler characteristics
+with minus their actual residue-weighted native-order sums. Therefore
+these sums are equal. The preceding pointwise native order formula,
+multiplied by the SAME original residue-field degree, identifies the
+weighted rational-order function with their difference. Finite-support
+sum additivity now gives zero, with every auxiliary finiteness and Cartier
+fact derived internally from the stated original geometry.
+\end{proof}

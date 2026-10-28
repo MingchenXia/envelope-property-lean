@@ -1,0 +1,50 @@
+\subsection{Actual centered DVR morphisms on the original integral schemes}
+
+\begin{lemma}[Actual stalks retain the original essentially finite type structure]
+\label{alggeom:original-stalk-essentially-finite-type}
+\lean{EnvelopeProperty.SchemeStalkCenteredDVR.essFiniteType_stalkAlgebra}
+\leanok
+For a scheme locally of finite type over any actual field, every SAME original
+stalk is essentially finite type for the algebra structure induced by the
+original structure morphism.
+\end{lemma}
+\begin{proof}
+Choose an original affine neighborhood of the original point. Its actual
+section ring is finite type over the original field through the given
+structure map. The actual germ identifies the original stalk as the native
+prime localization of that actual section ring. The original field-to-stalk
+algebra structure is exactly the composite field-to-sections-to-germ map.
+The genuine localization and scalar-tower composition therefore prove the
+asserted essentially finite type structure on the SAME stalk.
+\end{proof}
+
+\begin{theorem}[An actual DVR morphism has the prescribed original center and generic map]
+\label{alggeom:original-stalk-centered-dvr-morphism}
+\lean{EnvelopeProperty.SchemeStalkCenteredDVR.exists_centeredDVR_morphism}
+\leanok
+\uses{alggeom:original-stalk-essentially-finite-type,algebra:actual-essentially-finite-type-centered-dvr-exists}
+Let $X$ be an actual integral scheme locally of finite type over any field,
+and let $x$ be an original point whose actual stalk is not a field.
+There exists an actual DVR $V$ in the ORIGINAL function field $K(X)$,
+containing the ORIGINAL stalk $\mathcal O_{X,x}$, and a genuine whole morphism
+$q:\operatorname{Spec}V\to X$ whose closed point maps EXACTLY to $x$.
+Its generic restriction is the SAME original generic-stalk morphism
+$\operatorname{Spec}K(X)\to X$. No DVR, center, generic-map comparison,
+normality, properness or alteration is supplied.
+\end{theorem}
+\begin{proof}
+The original integral-scheme function-field theorem identifies $K(X)$ as the
+actual fraction field of the SAME original stalk. The preceding lemma supplies
+its actual essentially finite type structure. Apply the genuine centered DVR
+existence theorem to that original stalk and that SAME original function field.
+Compose the actual map $\operatorname{Spec}V\to\operatorname{Spec}\mathcal O_{X,x}$
+with the original native stalk morphism into $X$. The exact maximal-ideal
+contraction gives equality of the actual original closed points in the stalk
+spectrum, so its closed point maps to exactly $x$.
+
+The original stalk-to-function-field algebra map factors through the literal
+inclusion of $V$ into that SAME field. Contravariance of the original Spec
+functor gives the whole generic triangle. The actual generic specialization
+map on original stalks identifies its composite with the SAME original
+$\operatorname{Spec}K(X)\to X$, proving the asserted whole morphism equality.
+\end{proof}

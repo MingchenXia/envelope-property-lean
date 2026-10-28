@@ -1,0 +1,104 @@
+\section{Actual exceptional-power transport and global canonical descent}
+
+\begin{lemma}[The whole exceptional power on the original coordinate chart]
+\label{lem:kn-blowup-canonical-exceptional-power-chart}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingIdeals.exceptionalPowerChart_eq,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingIdeals.exceptionalJacobianChart_eq,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingIdeals.exceptionalTensorChartIso,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingIdeals.exceptionalTensorChartIso_inclusion}
+\leanok
+\uses{thm:kn-blowup-canonical-affine-ideal-iso}
+On the literal native coordinate blowup, the actual exceptional ideal to
+any nonnegative power restricts under the actual original model chart to
+the ideal of the same coordinate power. In particular its $(r-1)$-st
+power is the actual Jacobian image ideal. The genuine tensor pullback
+comparison retains the entire original tensor-ideal inclusion.
+\end{lemma}
+\begin{proof}
+Use actual geometric ideal comap multiplicativity and the native
+exceptional-ideal calculation on that same chart. On the actual affine
+spectrum, ideal powers of a principal ideal are the ideal of the same
+power, and the genuine spectrum/global-section ring isomorphism preserves
+powers. The whole native tensor-ideal open pullback formula followed by
+this same ideal equality gives the full inclusion equation.
+\end{proof}
+
+\begin{lemma}[Whole native isomorphism factors from actual open charts]
+\label{lem:kn-blowup-canonical-open-descent}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingDescent.tensorIdealMap_mono,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingDescent.pullback_open_mono,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingDescent.isIso_of_open_cover,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingDescent.exists_iso_of_local_factors}
+\leanok
+A whole original module map factors isomorphically through an original
+monomorphism whenever its actual pullbacks to an actual open point-cover
+have such isomorphism factors. No matching or exactness certificate is
+needed.
+\end{lemma}
+\begin{proof}
+Tensoring an ideal inclusion by an actual line is monic by genuine
+invertible-tensor equivalence, and genuine open pullback retains monos.
+The original map composed with the original cokernel of the inclusion
+vanishes on the actual point-cover, hence vanishes on the whole scheme.
+The original short exact cokernel sequence therefore produces the whole
+factor. Each actual pullback of that factor equals its given local factor
+by monicity. Whole monos and epis are detected on the same actual
+point-cover, so this factor is an isomorphism. This derives all matching.
+\end{proof}
+
+\begin{lemma}[The native model chart retains the whole canonical factor]
+\label{lem:kn-blowup-canonical-model-chart-factor}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingChart.exists_modelChart_factor_iso}
+\leanok
+\uses{thm:kn-blowup-canonical-affine-ideal-iso,lem:kn-blowup-canonical-exceptional-power-chart}
+On each original native model chart, the pullback of the whole native
+canonical differential has an isomorphism factor through the pullback of
+the actual target canonical sheaf tensored with the actual exceptional
+ideal to power $r-1$.
+\end{lemma}
+\begin{proof}
+The genuine original model-chart triangle identifies its composite with
+the blowup projection with the original chart substitution. The previous
+affine producer therefore supplies its actual entire differential factor.
+The actual open-immersion exterior differential identifies the pulled
+target canonical sheaf with the chart canonical sheaf. The full exterior
+differential composition law and actual pullback-composition isomorphism
+retain the same original whole map. Tensor-ideal naturality and the
+preceding actual exceptional-power chart comparison finish the factor.
+\end{proof}
+
+\begin{theorem}[The whole coordinate-blowup canonical Cartier comparison]
+\label{thm:kn-blowup-canonical-whole-coordinate-iso}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingWhole.modelChart_point_cover,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingWhole.exists_coordinate_blowup_canonical_ideal_iso,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalGluingWhole.coordinateBlowupCanonicalDivisorIso}
+\leanok
+\uses{lem:kn-blowup-canonical-model-chart-factor,lem:kn-blowup-canonical-open-descent}
+For the native blowup of the original affine $n$-space over the original
+field along its actual coordinate centre of codimension $m+1\leq n$,
+the actual whole pulled source canonical sheaf is isomorphic to the
+actual whole target canonical sheaf tensored with the actual exceptional
+ideal to power $m$. Its whole inclusion composite is the original native
+canonical differential. Equivalently, the actual target canonical sheaf
+is the actual pulled source canonical sheaf tensored with the actual dual
+of that same exceptional-power ideal, namely $\mathcal O(mE)$.
+\end{theorem}
+\begin{proof}
+The actual original model charts cover all original blowup points. The
+native smoothness theorem gives the actual target canonical line, so its
+tensor with the original exceptional-power ideal includes monically.
+Apply the preceding whole descent to the internally constructed original
+model-chart factors. There is no local factorization, frame, cover,
+matching or canonical comparison input in this original-parameter theorem.
+The genuine exceptional-power Cartier module has its actual dual evaluation
+isomorphism. Actual tensor associativity and this evaluation then construct
+the equivalent positive-divisor formula, with the same original tensor order.
+\end{proof}
+
+\begin{remark}[Remaining boundaries]
+The codimension is positive, including the genuine Cartier-centre case
+$m=0$. This theorem does not assert derived direct-image acyclicity.
+Transport under adapted etale charts to general smooth centres and actual
+relative structure-sheaf acyclicity remain separate producers; no global
+Nadel theorem or local-vanishing result is assumed here.
+\end{remark}

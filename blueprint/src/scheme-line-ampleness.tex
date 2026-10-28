@@ -1,0 +1,33 @@
+\begin{definition}[Actual geometric very ampleness and ampleness]
+\label{def:fc-original-geometric-line-ampleness}
+\leanok
+\lean{EnvelopeProperty.SchemeLineAmpleness.IsVeryAmple, EnvelopeProperty.SchemeLineAmpleness.IsAmple}
+Let $p:X\to\operatorname{Spec}R$ be the original structure morphism.
+An original line $L$ is very ample if there are an integer $n\geq0$, an
+actual closed immersion $i:X\to\mathbf P_R^n$ over $p$, and an isomorphism
+$i^*\mathcal O(1)\simeq L$ of the whole original module sheaves.
+It is ample in the positive-power geometric criterion if it is invertible
+and $L^{\otimes r}$ is very ample for some $r>0$.
+The tensor power starts with $\mathcal O_X$ and uses the actual sheaf tensor
+product; $\mathcal O(1)$ is the coordinate-hyperplane twist on the actual
+polynomial Proj.  The condition supplies neither generators, a numerical
+class comparison, nor any degree inequality.
+\end{definition}
+
+\begin{lemma}[Actual geometric ample data derive projectivity]
+\label{lem:fc-geometric-ampleness-projectivity}
+\leanok
+\lean{EnvelopeProperty.SchemeLineAmpleness.IsVeryAmple.isInvertible, EnvelopeProperty.SchemeLineAmpleness.IsAmple.isInvertible, EnvelopeProperty.SchemeLineAmpleness.IsVeryAmple.isProjectiveFactorization, EnvelopeProperty.SchemeLineAmpleness.IsAmple.isProjectiveFactorization}
+\uses{def:fc-original-geometric-line-ampleness}
+Very ampleness derives invertibility of the original line.  Both very
+ampleness and the positive-power ample criterion derive an actual projective
+factorization of the original $p$.
+\end{lemma}
+\begin{proof}
+The ordinary coordinate-hyperplane $\mathcal O(1)$ is invertible; actual
+pullback and the supplied whole line isomorphism preserve this property.
+For projectivity retain exactly the closed immersion in the definition and
+its given coefficient square.  In the ample case apply this argument to
+the positive tensor power; the embedding still has source $X$ and
+structure morphism $p$.
+\end{proof}

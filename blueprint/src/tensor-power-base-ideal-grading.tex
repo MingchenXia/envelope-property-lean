@@ -1,0 +1,22 @@
+\section{Grading of the actual tensor-power base ideals}
+
+\begin{proposition}[The actual tensor-power base ideals form a graded sequence]
+\label{prop:actual-line-power-base-ideal-grading}
+Let $L$ be any original invertible sheaf. For its actual recursively
+formed tensor powers, put $\mathfrak a_m=\mathfrak b(L^{\otimes m})$.
+For every $m,n\geq0$, $\mathfrak a_m\mathfrak a_n\subseteq
+\mathfrak a_{m+n}$.
+\uses{lem:actual-base-ideal-iso-transport,prop:actual-invertible-base-ideal-multiplication}
+\lean{EnvelopeProperty.TensorPowerBaseIdealGrading.tensorPower_isInvertible,EnvelopeProperty.TensorPowerBaseIdealGrading.tensorPowerAddIso,EnvelopeProperty.TensorPowerBaseIdealGrading.powerBaseIdeal,EnvelopeProperty.TensorPowerBaseIdealGrading.powerBaseIdeal_mul_le}
+\leanok
+\end{proposition}
+\begin{proof}
+The canonical associators and structure-sheaf unitors construct the
+isomorphism $L^{\otimes m}\otimes L^{\otimes n}\simeq
+L^{\otimes(m+n)}$ by induction on $n$. Apply whole base-ideal
+multiplication and the preceding isomorphism invariance. No finite family,
+local frame, or supplied graded-sequence certificate is needed. This is
+the actual algebraic grading input to the paper's test-configuration
+formula; the analytic norm identity and full envelope formula remain
+separate obligations.
+\end{proof}

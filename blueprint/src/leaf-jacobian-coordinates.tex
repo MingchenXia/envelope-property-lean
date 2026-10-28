@@ -1,0 +1,61 @@
+\section{Literal leaf coordinates and their monomial Jacobian}
+
+\begin{lemma}[Actual native ideals on literal leaf rings]\label{lem:sc0-leaf-chart-ideal-transport}
+\lean{EnvelopeProperty.Char0.idealOfSpecSheaf_comap_affineOpenChart}
+\leanok
+\uses{lem:sc0-affine-open-chart-ring-map-etale}
+For an actual affine factor ring map of a literal leaf spectrum into $U$, the
+actual ideal pulled back to the leaf ring is exactly the image of the native
+ideal on $U$.
+\end{lemma}
+\begin{proof}
+Use the actual spectrum factor triangle. Pullback along the original affine
+chart is the ideal sheaf of the native ideal on $U$, and pullback along the
+actual ring spectrum map extends that native ideal. Normalizing the resulting
+ideal sheaf returns the extended ring ideal.
+\end{proof}
+
+\begin{lemma}[The actual affine factor preserves both base structures]\label{lem:sc0-leaf-chart-scalar-towers}
+\lean{EnvelopeProperty.Char0.isScalarTower_field_affineOpenChartRingHom}
+\leanok
+\uses{lem:sc0-affine-open-chart-base-compatibility}
+An actual leaf map over $\operatorname{Spec}R$ makes its constructed affine
+factor ring map compatible with both $R$ and the original field $k$. Thus the
+original section-algebra structures and the actual leaf-algebra structures
+form the required scalar towers.
+\end{lemma}
+\begin{proof}
+Compatibility with $R$ is the checked original spectrum triangle. Compose
+that ring-map identity with the actual $k\to R$ map and use the checked
+composition formula for canonical section maps. Both scalar towers are then
+constructed directly from these exact algebra-map equalities.
+\end{proof}
+
+\begin{theorem}[An actual contained leaf has an actual monomial coordinate Jacobian]\label{thm:sc0-leaf-jacobian-unit-monomial}
+\lean{EnvelopeProperty.Char0.exists_leaf_coordinates_jacobian_monomial}
+\leanok
+\uses{lem:sc0-leaf-chart-scalar-towers,lem:sc0-leaf-chart-ideal-transport,def:sc0-snc-jacobian-neighbourhood,lem:sc0-affine-open-chart-ring-map-etale,lem:sc0-affine-open-chart-principal-unit,lem:sc0-coordinate-jacobian-unit-monomial}
+Let the literal affine leaf spectrum $\operatorname{Spec}A$ map by an actual
+open immersion over $\operatorname{Spec}R$ into an actual adapted monomial
+Jacobian neighborhood. Assume $A$ is a domain and the original source
+coordinates are actual \'etale coordinates. Then $A$ has actual \'etale image
+coordinates and the literal Jacobian determinant of the actual pulled-back
+source coordinates is an actual unit times a monomial in the adapted image
+boundary coordinates.
+Those same image coordinates cut out the actual pulled-back boundary
+components, and the actual original ideal transform is their indicated
+monomial ideal in the literal leaf ring.
+\end{theorem}
+\begin{proof}
+Extract the original chart, boundary coordinates, principal function and
+genuine localized Jacobian identity from the actual neighborhood data.
+The actual leaf image lies in that principal open and therefore in the
+original affine chart. Construct its actual affine factor ring map, its
+actual \'etaleness, the actual unit image of the principal function and both
+scalar towers. The original chart coordinates are actual \'etale coordinates
+by the scheme-to-ring criterion, and their image coordinates are actual
+\'etale coordinates by composition. Specialize the actual neighborhood's
+universal localization identity to the literal principal localization and
+apply the checked Jacobian monomial pullback theorem. This produces the
+actual unit and literal determinant formula internally.
+\end{proof}

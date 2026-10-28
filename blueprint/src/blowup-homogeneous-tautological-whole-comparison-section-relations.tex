@@ -1,0 +1,21 @@
+\begin{proposition}[Canonical transport of the original scalar relation]
+\label{prop:whole-original-form-scalar-transport}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.liftedFormSection_open_scalarRelation}
+\leanok
+\uses{prop:whole-open-original-form-transfer}
+Let $\mu:Z\to X$ and let $c:W\to Z$ be an open immersion. For two original homogeneous forms $F,G$ of the same degree in the original homogeneous ideal, suppose their original lifted sections at $c\mu$ satisfy $\beta_F=r\beta_G$, with $r\in\Gamma(W,\mathcal O_W)$. Then the pullbacks of their original lifted sections at $\mu$ satisfy $c^*\beta_F=r c^*\beta_G$ on the entire pulled-back ideal-tensor module.
+\end{proposition}
+\begin{proof}
+The canonical open ideal-tensor comparison sends each pulled-back original section to its original composite lifted section. Postcompose the proposed equality by this same comparison. Naturality identifies the two resulting sides with $\beta_F$ and $r\beta_G$. These agree by hypothesis. The comparison is an isomorphism, so cancellation proves the original equality.
+\end{proof}
+
+\begin{proposition}[Original form ratios on the native fraction chart]
+\label{prop:whole-original-form-fraction-ratios}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.liftedFormSection_pullback_ratio_on_originalFractionChart}
+\leanok
+\uses{prop:whole-original-form-scalar-transport,thm:resume-original-form-actual-fraction-basis}
+Let $F,G$ be original homogeneous forms of the same degree in the original homogeneous ideal. On a subordinate affine open $U$ with domain coordinate ring $A$, put $f=F|_U$ and $g=G|_U$, and assume $g\ne0$. On the actual native spectrum $\operatorname{Spec} A[I/g]$ inside the original affine blowup, the pullbacks of the original lifted sections satisfy $c^*\beta_F=(f/g)c^*\beta_G$, with the actual native ratio and the native spectrum-section identification. All ideal membership, maps and comparisons are internally derived from these original data.
+\end{proposition}
+\begin{proof}
+Membership of both coefficients in $I$ follows from the original ideal's affine generator formula. Write $S=A[I/g]$ and $p:\operatorname{Spec}S\to\operatorname{Spec}A$ for the actual algebra-map spectrum morphism. The native blowup structure identity says that the composite map to $X$ is $p$ followed by the original affine spectrum map. Pull the same original homogeneous line frame from $\operatorname{Spec}A$ through this factorization. In this one frame, the included images of the original sections have coefficients $\varphi(f)$ and $\varphi(g)$, transported by the native spectrum-section isomorphism. The defining native fraction identity gives $\varphi(f)=(f/g)\varphi(g)$. Composition of structure-line scalar endomorphisms is multiplication, so cancellation of the common frame proves this same relation between the included sections. Tensoring an ideal inclusion with an invertible line is monic, hence the relation holds for the original ideal-valued composite lifts. Apply canonical open transport to obtain the asserted equality for the pullbacks of the original blowup lifts.
+\end{proof}

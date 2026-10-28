@@ -1,0 +1,77 @@
+\section{The original local regular factors of the rational trace}
+
+\begin{lemma}[The original structural unit has the original germ coefficients]
+\label{lem:kn-structure-trace-generic-unit-local-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericTargetRead_unit}
+\leanok
+On the coefficient spectrum of any nonempty whole chart, applying the
+actual original structural unit into the generic-field pushforward and
+reading its actual target coefficient sends every regular local section
+to the image of its actual chart coefficient under the original germ
+map $\mathcal O_X(U)\to K$.
+\uses{lem:kn-structure-trace-generic-target-coefficients,lem:kn-structure-trace-chart-generic-base}
+\end{lemma}
+\begin{proof}
+The actual structural unit is the original pullback on functions. The
+actual whole-field restriction used to read its coefficient turns this
+pullback into the pullback to the whole field spectrum. The original
+generic-point triangle writes this scheme map as the original field
+coefficient spectrum map followed by the original chart map. The
+composition identity for pullback on functions writes its value as the
+pullback of the actual chart coefficient to the field. Naturality of
+the original spectrum--sections isomorphism identifies this last value
+with the original germ map of that coefficient.
+\end{proof}
+
+\begin{lemma}[The original local trace has the same whole original generic trace]
+\label{lem:kn-structure-trace-local-common-generic-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnSpec_commonField_top}
+\leanok
+The germ of the actual coefficient of the local trace on every actual
+original restricted section equals the native trace of its actual
+original first-projection section on the entire original generic fiber.
+No extension of the section globally and no trace agreement are assumed.
+\uses{lem:kn-structure-trace-original-local-field-value,lem:kn-structure-trace-field-iso,lem:kn-structure-trace-original-generic-section}
+\end{lemma}
+\begin{proof}
+Specialize the actual whole free chart algebra along the original germ
+map to $K$. The proved local field-value formula identifies the image
+of the local trace coefficient with the actual trace on this entire
+base change. The actual whole generic-fiber isomorphism preserves its
+original field projection, so invariance of the actual finite-field
+trace transfers that value to the same entire original generic fiber.
+The proved original-section transport identifies the transferred whole
+section with its actual original first-projection section. The actual
+finite-field whole-section formula then gives precisely the claimed
+native trace.
+\end{proof}
+
+\begin{lemma}[The actual local trace is a regular factor of the original rational trace]
+\label{lem:kn-structure-trace-local-regular-factor}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnSpec_regularFactor}
+\leanok
+For every nonempty actual whole free chart, the restriction of the
+original rational structure trace is the constructed original local
+trace followed by the restriction of the original structural unit
+$\mathcal O_X\to\gamma_*\mathcal O_{\operatorname{Spec}K}$. This is
+equality of the actual whole module morphisms, with no factor or
+overlap certificate assumed.
+\uses{lem:kn-structure-trace-generic-unit-local-value,lem:kn-structure-trace-local-common-generic-value,lem:kn-structure-trace-rational-original-local-value}
+\end{lemma}
+\begin{proof}
+The original finite pushforward is quasicoherent. The generic-field
+pushforward is also quasicoherent: every open of a field spectrum is
+empty or whole, hence affine, so the original generic-point map is
+affine. Therefore both actual restricted source and target are
+quasicoherent on the chart's coefficient spectrum, and equality of the
+whole module morphisms is detected on whole sections.
+
+Fix any such actual source section. The rational trace has target
+coefficient equal to the native trace of its same original generic
+section. The local trace followed by the original structural unit has
+target coefficient equal to the germ of the local trace coefficient.
+The preceding common-generic-value lemma identifies these coefficients.
+Their actual target coefficient readout is injective, so the original
+two image sections agree. Equality on every whole source section proves
+equality of the actual whole module morphisms.
+\end{proof}

@@ -1,0 +1,91 @@
+\section{Actual entire tensor-power frames and their genuine transition units}
+
+\begin{lemma}\label{lem:fc-actual-tensor-frame-unit-coefficient}
+\lean{EnvelopeProperty.SchemeTensorPowerFrames.tensorFrame,EnvelopeProperty.SchemeTensorPowerFrames.unitSection_precompIso,EnvelopeProperty.SchemeTensorPowerFrames.tensorFrame_coefficient,EnvelopeProperty.SchemeTensorPowerFrames.tensorFrame_unitSection}
+\leanok
+\uses{lem:fc-original-tensor-section-homs,prop:generated-line-generic-frame-norms}
+For actual entire original frames $e:P\simeq\mathcal O_X$ and
+$d:Q\simeq\mathcal O_X$ on any original scheme, their actual
+tensor frame is $e\otimes d$ followed by the true structure-unit
+multiplication. Its coefficient on every genuine pure tensor
+section is the product of the two original coefficients. Its
+inverse image of one is exactly the genuine pure tensor of the
+two original inverse-frame unit sections. Precomposing an actual
+frame by an original module isomorphism transports its inverse
+unit section by the actual inverse isomorphism.
+\end{lemma}
+\begin{proof}
+Naturality of the actual original pure tensor section moves
+$e\otimes d$ through that section, and genuine structure-unit
+multiplication sends the resulting tensor to the product of
+its original coefficients. Apply this to the two actual inverse
+unit sections: both original coefficients equal one by the entire
+frame inverse identities. Thus their pure tensor has coefficient
+one in the actual tensor frame. Applying the inverse of that
+whole frame identifies it with the inverse unit section. For
+precomposition, invert the entire composite isomorphism; its
+inverse is the original frame inverse followed by the inverse
+of the preceding original isomorphism. Applying to one proves
+the final assertion.
+\end{proof}
+
+\begin{definition}\label{def:fc-actual-entire-power-frame}
+\lean{EnvelopeProperty.SchemeTensorPowerFrames.powerFrame,EnvelopeProperty.SchemeTensorPowerFrames.powerFrame_unitSection_succ}
+\leanok
+\uses{lem:fc-actual-tensor-frame-unit-coefficient,lem:bundle-tensor-power-isomorphism}
+Every actual entire original frame $e:P\simeq\mathcal O_X$
+induces an actual entire frame $e^{[n]}$ of the same explicit
+original tensor power $P^{\otimes n}$ for every $n\geq0$.
+The zeroth frame is the identity structure frame. Recursively,
+the next frame uses the genuine explicit-to-monoidal tensor
+comparison followed by the actual tensor frame of $e^{[n]}$
+and $e$. Its inverse unit section is exactly the actual explicit
+pure tensor of the preceding inverse unit section and that of $e$.
+\end{definition}
+\begin{proof}
+The zeroth explicit tensor power is the actual structure module.
+For a successor, the actual explicit tensor comparison identifies
+the original power with the native tensor of the preceding power
+and $P$. The preceding lemma constructs an entire original frame
+of this native tensor. Composing these genuine isomorphisms gives
+the asserted original power frame. The precomposition unit-section
+identity and the genuine tensor-frame inverse-unit formula give
+exactly the stated recursive original pure tensor section.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-actual-power-frame-transition-units}
+\lean{EnvelopeProperty.SchemeTensorPowerFrames.transitionUnit_precompIso,EnvelopeProperty.SchemeTensorPowerFrames.transitionUnit_tensorFrame,EnvelopeProperty.SchemeTensorPowerFrames.transitionUnit_powerFrame,EnvelopeProperty.SchemeTensorPowerFrames.transitionUnit_powerFrame_value}
+\leanok
+\uses{def:fc-actual-entire-power-frame,lem:fc-original-frame-transition-unit-value,lem:fc-original-frame-transition-unit-self}
+On $\operatorname{Spec}A$ for any commutative ring $A$, precomposing
+two actual entire frames by the same original module isomorphism
+preserves their genuine transition unit. The transition between
+two genuine tensor frames is the product of the transition units
+of their two factors. Consequently, for any two actual original
+frames $e_0,e_1$ of the same original module and every $n\geq0$,
+\[
+ u(e_0^{[n]},e_1^{[n]})=u(e_0,e_1)^n.
+\]
+Every actual valuation therefore gives
+$\nu(u(e_0^{[n]},e_1^{[n]}))=\nu(u(e_0,e_1))^n$.
+All frames and units are genuinely constructed; no power or
+transition compatibility identity is supplied.
+\end{theorem}
+\begin{proof}
+The transition unit is the second-frame coefficient of the first
+frame's inverse unit section. For common precomposition, the
+preceding original isomorphism and its inverse cancel on that
+section, proving invariance of the actual unit. For tensor frames,
+the preceding tensor inverse-unit and coefficient formulas express
+this same actual coefficient as the product of the two transition
+coefficients. The genuine affine section isomorphism preserves
+multiplication; equality of values gives equality of the actual
+units. Induct on $n$. At zero the two actual frames are identical,
+so the transition is one. At a successor, common-precomposition
+invariance removes the true explicit tensor comparison, and the
+tensor-frame transition identity multiplies the preceding unit by
+the degree-one unit. The induction hypothesis and the power
+recurrence prove the asserted equality on genuine units. Apply
+the actual multiplicative valuation and its preservation of powers
+to obtain the final exact valuation formula.
+\end{proof}

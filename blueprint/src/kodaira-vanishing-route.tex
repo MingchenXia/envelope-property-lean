@@ -1,0 +1,266 @@
+\section{From actual geometric ampleness to original Kodaira vanishing}
+
+The positivity target in this chapter is the original Kodaira theorem:
+for a smooth projective $n$-fold over a characteristic-zero field and an
+actual ample line bundle $L$, the whole original
+$H^q(Y,\omega_Y\otimes L)$ vanishes for $q>0$. Ampleness is geometric:
+a positive power is the pullback of the actual $\mathcal O(1)$ under an
+actual closed projective embedding. Following \cite{DI87}, Theorem~1.2, Theorem~2.1, Corollary~2.8,
+Lemma~2.9 and Corollary~2.11, the route uses algebraic de Rham
+complexes, the characteristic-$p$ Cartier isomorphism, a derived splitting
+from a genuine lift modulo $p^2$, and spreading out. The ordinary Serre
+and rounded-canonical objects are preceding prerequisites. Logarithmic
+and relative Kawamata--Viehweg vanishing, needed for local and Nadel
+vanishing, require a further logarithmic/cyclic-cover argument beyond
+this Kodaira target.
+
+\begin{lemma}[Actual top Cartier exactness on a finite $p$-basis]
+\label{lem:vanishing-cartier-top-exactness}
+\lean{EnvelopeProperty.Cartier.IsPBasis.exists_antiderivative_monomial,EnvelopeProperty.Cartier.IsPBasis.exists_divergence_decomposition,EnvelopeProperty.Cartier.IsPBasis.trace_eq_zero_iff_exists_divergence,EnvelopeProperty.Cartier.IsPBasis.trace_surjective,EnvelopeProperty.Cartier.pderiv_X_eq_standard,EnvelopeProperty.Cartier.polyTrace_eq_zero_iff_exists_divergence}
+\leanok
+Let $A$ be an actual commutative ring of prime characteristic $p$ with an
+actual finite $p$-basis $y_i$. Write $\partial_i$ for its actual coordinate
+derivations and $C$ for its actual top Cartier coefficient operator. Then
+\[
+ C(f)=0\quad\Longleftrightarrow\quad
+ f=\sum_i\partial_i(g_i)\ \text{for some actual }g_i\in A.
+\]
+For the actual polynomial ring over a perfect field this applies to its
+original polynomial Cartier trace and its original standard partial
+derivatives, with the coordinate $p$-basis derived internally.
+Moreover $C$ is surjective, and every original $f$ decomposes as
+\[
+ f=C(f)^p\prod_i y_i^{p-1}+\sum_i\partial_i(g_i).
+\]
+\end{lemma}
+\begin{proof}
+Expand the original $f$ in its unique finite $p$-basis expansion
+$f=\sum_a c_a^py^a$, with $0\le a_i<p$. The coefficient $c_{(p-1,\ldots,p-1)}$
+is exactly $C(f)$. For every other $a$, choose an $i$ with $a_i<p-1$.
+The integer $a_i+1$ is a unit in $A$, since it is prime to $p$. Its inverse
+has zero derivative: differentiate its product with $a_i+1$, use that
+integer derivatives vanish, and cancel this unit. Thus
+\[
+ \partial_i\bigl((a_i+1)^{-1}c_a^py^{a+e_i}\bigr)=c_a^py^a.
+\]
+Add these finitely many antiderivatives coordinatewise to obtain the
+stated whole decomposition. Every coordinate derivative has top Cartier
+coefficient zero, because differentiation cannot produce a digit $p-1$
+in that coordinate. Hence the decomposition gives both directions of
+the kernel equality. Finally
+$C(g^p\prod_i y_i^{p-1})=g$ for every actual $g$, proving surjectivity.
+The argument includes an empty coordinate family. On the actual
+polynomial ring its original variables form a derived $p$-basis. The
+standard partial derivative and its $p$-basis coordinate derivative agree
+on every variable; the uniqueness of derivations on a $p$-basis proves
+equality of the whole actual derivatives. This gives the asserted
+standard-polynomial specialization.
+\end{proof}
+
+\begin{lemma}[The whole algebraic Cartier complex on actual smooth charts]
+\label{lem:vanishing-cartier-smooth-complex}
+\uses{lem:vanishing-cartier-top-exactness}
+\notready
+For a smooth scheme over a perfect field of characteristic $p$, the actual
+cohomology sheaves of its original Frobenius-pushed de Rham complex are
+canonically its original exterior cotangent sheaves on the relative
+Frobenius twist.
+\end{lemma}
+\begin{proof}
+On polynomial coordinates the actual de Rham complex decomposes by
+exponents modulo $p$. In one coordinate its differential sends
+$c^py^a$ to $a c^py^{a-1}dy$. For $1\le a<p$ this is an isomorphism of the
+two indicated Frobenius coefficient summands, with inverse multiplication
+by $a^{-1}y$ on their monomials. The remaining degree-zero summand is
+$A^p$ and the remaining degree-one summand is
+$A^p y^{p-1}dy$. Tensor the coordinate complexes. Every tensor summand
+containing one of those two-term isomorphisms has the explicit contraction
+obtained by applying its inverse in the first such coordinate, with the
+usual exterior sign. The surviving summands are indexed by subsets of
+the coordinates and are exactly the original exterior cotangent basis
+classes. This proves the entire local Cartier isomorphism in all degrees,
+including the top-degree equality of the preceding lemma.
+
+The maps are intrinsic: inverse Cartier sends $df$ to the cohomology class
+of $f^{p-1}df$, and sends exterior products to their products. The product
+rule and characteristic-$p$ binomial formula show the required additive
+and Leibniz relations modulo exact forms. Thus the polynomial-coordinate
+maps agree on overlaps. Smooth actual schemes have etale coordinate
+neighbourhoods, and etale base change preserves the original cotangent
+modules and these Frobenius complexes. The local maps therefore glue to
+the stated actual cohomology-sheaf isomorphisms.
+\end{proof}
+
+\begin{lemma}[Derived splitting from an actual lift modulo $p^2$]
+\label{lem:vanishing-deligne-illusie-splitting}
+\uses{lem:vanishing-cartier-smooth-complex}
+\notready
+Let $Y$ be smooth over a perfect field of characteristic $p$, of dimension
+$n<p$, and suppose its actual smooth scheme lifts over the length-two
+Witt ring. Then its whole original Frobenius-pushed de Rham complex is
+isomorphic in the derived category to
+$\bigoplus_{i=0}^n\Omega^i_{Y^{(p)}}[-i]$.
+\end{lemma}
+\begin{proof}
+Choose an actual affine cover of the lift on which the relative Frobenius
+has lifts. On such an open, its differential is divisible by $p$.
+Division by $p$ followed by reduction modulo $p$ gives a map of original
+one-forms to closed one-forms inducing the inverse Cartier map. Two
+Frobenius lifts differ by $p$ times a derivation; their divided
+differentials differ by the differential of this derivation. These
+actual homotopies satisfy the Cech cocycle relation on triple overlaps,
+since differences of the original lifts add. Consequently the local
+maps and their homotopies define a morphism
+$\Omega^1[-1]\to F_*\Omega^\bullet$ in the original derived category.
+Take its exterior powers and divide by $i!$ to antisymmetrize. These
+integers are invertible because $i\le n<p$. Together with the actual
+Frobenius map in degree zero, their sum gives the stated morphism from
+the direct sum. On every actual affine chart its cohomology maps are
+exactly the Cartier maps proved above. It is therefore a quasi-isomorphism
+of the whole original complexes, which gives the required derived
+isomorphism.
+\end{proof}
+
+\begin{lemma}[Original Serre vanishing for a geometrically ample line]
+\label{lem:vanishing-original-ample-serre}
+\lean{EnvelopeProperty.SchemeAmpleCoherentSerreVanishing.exists_sheafCohomology_bound}
+\leanok
+\uses{thm:coherent-projective-serre-vanishing}
+For an actual projective scheme over a field, an original coherent
+module $E$ and an actual geometrically ample line $L$, there is $N$ such
+that the WHOLE original $H^q(Y,E\otimes L^m)$ is zero for all $m\ge N$
+and all $q>0$.
+\end{lemma}
+\begin{proof}
+Choose an actual closed projective embedding $i:Y\hookrightarrow
+\mathbb P^s$ and a positive integer $r$ with the actual isomorphism
+$L^r\simeq i^*\mathcal O(1)$. For each of the finitely many residues
+$0\le a<r$, the SAME original $E\otimes L^a$ has coherent closed
+pushforward. The actual projection formula for the original invertible
+$\mathcal O(d)$ follows on every standard affine chart from its genuine
+local frame; the actual section maps and frame transitions glue the
+formula. It identifies the pushforward of
+$E\otimes L^{a+rd}$ with that coherent pushforward tensored by the
+original $\mathcal O(d)$. Closed pushforward retains the WHOLE original
+cohomology: use the original standard affine cover and its inverse
+images, the actual section equality for pushforward, and genuine
+quasicoherent affine-intersection acyclicity. Thus the actual Cech
+complexes compute the SAME original sheaf cohomology on both schemes.
+Apply the proved original polynomial-projective Serre theorem to each
+of these finitely many coherent pushforwards. Taking their maximum
+bound and using Euclidean division $m=a+rd$ proves the assertion for
+EVERY sufficiently large actual power of the original $L$. The
+embedding, projection formula, pushforward/cohomology comparison and
+ordinary ampleness transport are all derived from the original
+geometric data in this Serre argument.
+\end{proof}
+
+\begin{lemma}[Positive twisted Cartier comparison by zero-group induction]
+\label{lem:vanishing-charp-positive-ample}
+\uses{lem:vanishing-deligne-illusie-splitting,lem:vanishing-original-ample-serre}
+\notready
+Under the actual lift and dimension hypotheses above, every original
+actual ample line $L$ satisfies
+$H^j(Y,\Omega_Y^i\otimes L)=0$ for $0\le i\le n$ and $i+j>n$.
+No Serre duality or cohomology-dimension finiteness is a premise.
+\end{lemma}
+\begin{proof}
+Write $F:Y\to Y^{(p)}$ for the ACTUAL relative Frobenius, and $L'$ for
+the actual base change of the SAME original line to its field Frobenius
+twist. Derive the actual isomorphism $F^*L'\simeq L^p$ from the original
+line transition functions. The actual projection formula identifies
+$F_*\Omega_Y^\bullet\otimes L'$ with the Frobenius pushforward of the
+original de Rham complex twisted by $F^*L'$. This latter complex uses
+its genuine Cartier connection: the actual local frames pulled back by
+Frobenius are horizontal, since their transition functions are original
+$p$th powers with zero derivative. It is NOT an arbitrary tensoring of
+an $\mathcal O_Y$-linear de Rham differential. Its actual terms are
+precisely the original $\Omega_Y^i\otimes L^p$.
+
+Fix $t>n$. By original ample Serre vanishing, there is an exponent $e$
+such that EVERY group
+$H^{t-i}(Y,\Omega_Y^i\otimes L^{p^e})$, $0\le i\le n$, is zero.
+Only finitely many actual coherent exterior modules occur, all the
+indices $t-i$ are positive, and $p^e$ tends to infinity. Suppose these
+zero-group assertions hold at exponent $a+1$. The bounded original
+hypercohomology spectral sequence for the ACTUAL connection complex
+with terms $\Omega_Y^i\otimes L^{p^{a+1}}$ has zero entries on the
+ENTIRE total-degree-$t$ diagonal. Every later entry on that diagonal
+is a subquotient of zero. Its actual finite filtration therefore gives
+zero total-degree-$t$ hypercohomology.
+
+Tensor the ACTUAL full Deligne--Illusie splitting by $(L')^{p^a}$ and
+use that genuine projection/connection comparison. It identifies this
+zero group with the finite direct sum
+\[
+ \bigoplus_{i=0}^n
+ H^{t-i}(Y^{(p)},\Omega_{Y^{(p)}}^i\otimes (L')^{p^a}).
+\]
+Each summand is zero. Base change by the ACTUAL perfect-field
+Frobenius automorphism identifies its underlying group with the
+corresponding original group on $Y$, with the original field action
+semilinearly changed. This is a derived comparison to construct, not
+a replacement of the original $Y$ or $L$. Faithfulness of this field
+base change gives the zero-group assertion at exponent $a$. Descend
+the finitely many exponents from $e$ to zero. For $t=i+j>n$ this is
+exactly the asserted WHOLE original sheaf-cohomology vanishing.
+No dimension inequality, finite-dimensionality, negative ample power
+or Serre duality is used. Full Cartier/DI, the actual Frobenius twist,
+connection and projection comparisons, bounded hypercohomology and
+original ample Serre transport all remain genuine mathematical
+obligations before this node can become ready.
+\end{proof}
+
+\begin{lemma}[Spreading the actual smooth projective variety and ample line]
+\label{lem:vanishing-original-spreading}
+\notready
+A smooth projective variety and an actual ample line bundle over a
+characteristic-zero field descend to a smooth projective family over a
+nonempty smooth integral scheme of finite type over $\mathbb Z$. After
+shrinking, the actual canonical and exterior cotangent sheaves and their
+cohomology have the original fibre identifications. There is a closed
+fibre of characteristic $p>n$ admitting an actual smooth lift modulo
+$p^2$.
+\end{lemma}
+\begin{proof}
+Choose the finitely many coefficients in a projective presentation of the
+original variety, its actual smooth affine charts, the transition maps
+of $L$ and its inverse, and an actual embedding identifying $L^r$ with
+$\mathcal O(1)$. The finitely many polynomial identities among these data
+hold over a finitely generated integral $\mathbb Z$-subalgebra after
+inverting finitely many coefficients. Smoothness is open, so shrink to a
+smooth base where the same charts and embeddings give the asserted
+family and actual relatively ample line. The finite projective Cech
+complexes give coherent cohomology semicontinuity and base change on a
+further open. Infinitely many rational primes occur on this nonempty
+finite-type integral characteristic-zero base; remove the finitely many
+primes $p\le n$ and take a closed point. Its finite residue field is
+perfect. Smoothness of the base over $\mathbb Z$ lifts its residue-field
+point over the length-two Witt ring by the infinitesimal lifting property.
+Pull back the original smooth projective family along this lift. This is
+the required actual lift of the chosen original closed fibre.
+\end{proof}
+
+The global Witt decomposition is supplied by
+Corollary~\ref{cor:di-actual-witt-full-decomposition}. The original arithmetic
+model, canonical comparison and specialization in
+Theorem~\ref{thm:kn-original-characteristic-zero-kodaira} therefore give
+the original characteristic-zero vanishing without a decomposition premise.
+
+\begin{theorem}[Original Kodaira vanishing from geometric positivity]
+\label{thm:vanishing-original-kodaira}
+\lean{EnvelopeProperty.Vanishing.KodairaCharacteristicZero.kodaira}
+\uses{thm:kn-original-characteristic-zero-kodaira}
+\leanok
+For an actual smooth projective $n$-fold over a characteristic-zero field
+and an actual ample line bundle $L$, the whole original
+$H^q(Y,\omega_Y\otimes L)$ is zero for every $q>0$.
+\end{theorem}
+\begin{proof}
+Choose the actual positive-power projective embedding expressing
+ampleness of $L$. Apply the original characteristic-zero Kodaira theorem
+to this same scheme, structural morphism, smooth dimension and line.
+Its canonical module is the original top exterior cotangent sheaf.
+For $q>0$, write $q=r+1$ and apply that theorem at $r$. The resulting
+whole native sheaf cohomology group is the group displayed here.
+\end{proof}

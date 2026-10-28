@@ -1,0 +1,39 @@
+\section{The original Euler characteristic under actual affine pushforward}
+
+\begin{definition}[The actual field-cohomology pushforward comparison]
+\label{def:fc-scheme-coherent-euler-pushforward-comparison}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerAffine.fieldCechPushforwardIso}
+The whole original field-linear Cech cohomology on the inverse-image
+cover is identified with that of the actual original pushforward by
+the genuine native-to-ordered comparison, the actual whole ordered-Cech
+pushforward isomorphism, and the inverse native-to-ordered comparison.
+The literal original composite structure morphism supplies its field action.
+\end{definition}
+
+\begin{theorem}[Actual affine cohomology and pushforward]
+\label{thm:fc-scheme-coherent-euler-affine}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerAffine.eulerCharacteristic_eq_finrank_sections, EnvelopeProperty.SchemeCoherentEulerAffine.eulerCharacteristic_pushforward}
+\uses{def:fc-scheme-coherent-euler-pushforward-comparison, thm:fc-scheme-coherent-euler-bounded}
+On an actual affine scheme the original coherent Euler characteristic
+is the dimension over the original field of its actual global sections.
+For an actual affine morphism $g:D\to C$ between quasi-compact separated
+schemes, an original quasicoherent module $M$ has
+$\chi(D,M)=\chi(C,g_*M)$, retaining the literal original composite
+structure morphism to the original field.
+\end{theorem}
+\begin{proof}
+For the affine assertion use the actual singleton cover by the whole
+scheme. Positive cohomology vanishes by its actual one-element index
+bound, and actual degree-zero cohomology is actual global sections.
+For pushforward, pull back an actual finite affine cover of $C$ to $D$.
+It remains a finite affine cover because the original morphism is affine.
+The genuine ordered-Cech pushforward isomorphism identifies the entire
+original complexes on these two covers, with the literal composite
+coefficient map. Native-to-ordered Cech homotopy equivalences and the
+original scalar restriction identify every whole field cohomology group.
+The two covers have the same index bound, so their finite Euler sums
+agree. Cover independence identifies them with the original intrinsic
+Euler characteristics.
+\end{proof}

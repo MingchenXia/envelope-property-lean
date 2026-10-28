@@ -1,0 +1,53 @@
+\section{Original relative projective sections lift to original polynomials}
+\label{sec:c0n-section-polynomial-lift}
+
+\begin{lemma}[One fixed bound gives all original homogeneous polynomial lifts]
+\label{lem:c0n-relative-homogeneous-polynomial-lift}
+\leanok
+\lean{EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_polynomial_lift_bound,EnvelopeProperty.Char0.RelativeHomogeneousSectionLift.exists_power_polynomial_lift_bound}
+Let $R$ be the original Noetherian commutative coefficient ring and
+$i:Y\hookrightarrow\mathbb P_R^N$ the original closed immersion. Write
+$H=i^*\mathcal O(1)$ for the SAME native coordinate-zero hyperplane line.
+There is one $c_{\rm lift}\in\mathbb N$, depending only on this fixed
+immersion, with the following property. For every $e\ge c_{\rm lift}$ and
+every original whole section $s\in\Gamma(Y,H^{\otimes e})$, there is an
+original homogeneous polynomial
+\[
+ F\in R[x_0,\ldots,x_N]_e
+\]
+whose original native $\mathcal O(e)$ section, pulled back by the original
+$i$ and transported by the genuine native hyperplane-power comparison, is
+exactly $s$. In particular this applies to the original ring $R=k[t]$,
+and includes $N=0$ and zero or disconnected closed schemes. No polynomial
+lifting, projective normality, expected section comparison, or desired
+vanishing is an additional premise.
+\end{lemma}
+\begin{proof}
+Take the fixed bound already produced from the ENTIRE original defining
+kernel and native Serre vanishing in
+Lemma~\ref{lem:c0n-eventual-relative-section-restriction}. Apply that theorem
+to the original section $s$, using its proved hyperplane-power comparison.
+It produces an actual ambient section
+$t\in\Gamma(\mathbb P_R^N,\mathcal O(e))$ whose actual original native
+pullback is $s$ after that comparison.
+
+The separate ambient whole-section polynomial theorem
+(Theorem~\ref{thm:c0n-ambient-section-homogeneous-lift}), over the SAME
+original commutative ring $R$, produces $F$ of degree exactly $e$ with
+original native homogeneous section equal to $t$. This theorem uses the
+actual native coordinate fractions and their whole overlap identities;
+the Laurent support intersection and actual empty-intersection
+reconstruction recover the original nonnegative homogeneous polynomial
+from all chart coefficients. It does not replace
+$R$ by a field or discard coordinate factors. Substitute its proved section
+equality into the preceding actual pullback equality. This gives precisely
+the asserted equality for $s$ and the SAME $F$.
+
+Every quantifier is over the original objects. The bound is independent
+of $e$, multiplier-ideal indices, and finite generating families. Choosing
+the resulting polynomial for each member of any finite family therefore
+gives a finite family of actual original homogeneous polynomials, all with
+the SAME prescribed degree. No additional surjectivity premise is needed
+for this last choice.
+\uses{lem:c0n-eventual-relative-section-restriction,thm:c0n-ambient-section-homogeneous-lift}
+\end{proof}

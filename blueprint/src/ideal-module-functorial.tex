@@ -1,0 +1,53 @@
+\section{Actual ideal-module functoriality}
+
+\begin{lemma}[Whole sections of the actual ideal are the true closed-subscheme kernel]
+\label{lem:actual-ideal-module-whole-kernel}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.ker_isLocallyMem_app_eq_zero,AlgebraicGeometry.Scheme.IdealSheafData.isLocallyMem_iff_subscheme_app_eq_zero,AlgebraicGeometry.Scheme.IdealSheafData.isLocallyMem_comap_app}
+\leanok
+On every original open, the actual ideal-module sections are exactly
+the original functions vanishing under the true closed-subscheme map.
+For every genuine scheme morphism, the actual image of such a section
+lies in the actual pulled-back ideal module on the whole preimage open.
+\end{lemma}
+\begin{proof}
+For the kernel identity, restrict to actual affine opens inside the
+original open.  The original closed immersion is quasi-compact, so
+its true affine kernel is exactly the original ideal.  Naturality of
+the original closed-immersion section maps and sheaf locality prove
+both implications on the whole original open.  For functoriality,
+use the genuine comap/map adjunction of original closed ideals.  It
+places the original ideal in the kernel ideal of the pulled-back closed
+immersion composed with the original morphism.  The same whole-kernel
+vanishing result and the actual composite section formula therefore
+give true ideal membership by the closed-immersion kernel identity.
+No flatness, reduction or ideal comparison is an input.
+\end{proof}
+
+\begin{lemma}[Canonical true module maps for the actual geometric ideal comap]
+\label{lem:actual-ideal-module-pullback-map}
+\uses{lem:actual-ideal-module-whole-kernel}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesInclusion,AlgebraicGeometry.Scheme.IdealSheafData.toModulesInclusion_mono,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPushforwardMap,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPushforwardMap_app,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPushforwardMap_inclusion,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_inclusion}
+\leanok
+The actual geometric ideal comap has its canonical genuine module
+comparison map.  The adjoint pushforward map sends every actual
+ideal section to its image under the original whole scheme section
+map.  The true module pullback/pushforward adjunction gives the
+canonical actual pullback comparison.
+Both maps commute with the entire actual ideal inclusions and the
+canonical structure-module pushforward or pullback map, respectively.
+\end{lemma}
+\begin{proof}
+Include the actual ideal module in the original structure module.
+On every original open, the preceding membership theorem restricts
+the actual scheme section map to the actual pulled-back ideal.
+Additivity, scalar compatibility and naturality are inherited from
+the original scheme morphism, and equality is checked on the actual
+included functions.  This constructs the genuine module morphism
+into the actual pushforward.  Apply the existing true module
+pullback/pushforward adjunction.  This constructs the comparison map;
+the section formula proves its pushforward inclusion triangle directly,
+and naturality of the actual adjunction transports that equality to
+the full pullback inclusion triangle.
+its being an isomorphism, and the resulting group linearization,
+remain subsequent theorems.
+\end{proof}

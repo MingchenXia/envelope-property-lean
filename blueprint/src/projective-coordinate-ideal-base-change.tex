@@ -1,0 +1,89 @@
+\subsection{Actual coordinate-hyperplane ideals under arbitrary coefficient change}
+
+\begin{lemma}[The actual original hyperplane kernel is its homogeneous quotient ideal]
+\label{projective:actual-coordinate-hyperplane-geometric-kernel}
+\lean{EnvelopeProperty.ProjectiveCoordinateIdealBaseChange.coordinateHyperplane_ker_eq_quotientIdealSheaf}
+\leanok
+Over ANY commutative ring, the entire geometric kernel ideal of the original
+coordinate hyperplane immersion is the actual homogeneous quotient ideal sheaf
+of the SAME original coordinate ideal $(X_j)$.
+\end{lemma}
+\begin{proof}
+Compare the genuine geometric ideals on the original finite coordinate affine
+cover. The original hyperplane ideal is generated there by its actual original
+local equation, $1$ on the $j$-chart and $X_j/X_i$ on the $i$-chart otherwise.
+The established whole homogeneous quotient ideal formula identifies its actual
+section ideal with dehomogenization of $(X_j)$ under the genuine coordinate
+section-ring isomorphism. That is precisely the same local generator.
+The equality of that generator with the genuine coordinate section follows
+from the actual homogeneous-fraction section map, not a chosen seminorm value.
+Bijectivity of the whole coordinate ring isomorphism identifies the two section
+ideals, and geometric ideal extensionality on the actual cover proves the result.
+\end{proof}
+
+\begin{lemma}[The original coordinate ideal retains its generator under coefficient change]
+\label{projective:actual-coordinate-hyperplane-ideal-coefficient-map}
+\lean{EnvelopeProperty.ProjectiveCoordinateIdealBaseChange.coordinateHyperplaneIdeal_map}
+\leanok
+For ANY commutative coefficient-ring map $R\to S$, the entire original
+homogeneous ideal $(X_j)$ maps to precisely $(X_j)$ over $S$.
+\end{lemma}
+\begin{proof}
+Forget only the homogeneity proof. The actual polynomial coefficient map sends
+the original $X_j$ to the same original $X_j$. The ideal-image formula for a
+span then gives equality of the whole original ideals, including nilpotents.
+\end{proof}
+
+\begin{lemma}[The original geometric hyperplane ideal is genuinely Cartier]
+\label{projective:actual-coordinate-hyperplane-geometric-cartier}
+\lean{EnvelopeProperty.ProjectiveCoordinateIdealBaseChange.coordinateHyperplane_ker_isInvertible}
+\leanok
+Over every commutative coefficient ring, the genuine geometric coordinate
+hyperplane ideal is an effective Cartier ideal, including over nonreduced rings.
+\end{lemma}
+\begin{proof}
+The original coordinate opens cover the actual projective scheme. On each,
+the original local equation generates the whole geometric kernel ideal and
+is a nonzerodivisor. On the hyperplane's own coordinate chart it is $1$;
+on any other chart it is an actual polynomial coordinate under a ring
+isomorphism, hence a nonzerodivisor over every coefficient ring. These
+original affine regular principal presentations give the actual Cartier property.
+\end{proof}
+
+\begin{lemma}[The whole geometric hyperplane ideal commutes with coefficient change]
+\label{projective:actual-coordinate-hyperplane-whole-comap}
+\lean{EnvelopeProperty.ProjectiveCoordinateIdealBaseChange.coordinateHyperplane_ker_comap}
+\leanok
+\uses{projective:actual-coordinate-hyperplane-geometric-kernel,projective:actual-coordinate-hyperplane-ideal-coefficient-map}
+For ANY $R\to S$, the geometric comap of the original coordinate hyperplane
+kernel ideal along the actual polynomial projective coefficient map is exactly
+the entire original coordinate hyperplane kernel over $S$. No flatness or
+injectivity hypothesis is needed.
+\end{lemma}
+\begin{proof}
+Replace the whole kernel by its actual homogeneous quotient ideal using the
+first lemma. The established genuine homogeneous ideal-sheaf coefficient
+base-change theorem computes its whole geometric comap by the image original
+homogeneous ideal. The preceding coordinate-ideal map formula identifies that
+ideal with $(X_j)$ over $S$. Apply the first lemma over $S$ in reverse.
+\end{proof}
+
+\begin{theorem}[The actual whole coordinate ideal module commutes with coefficient change]
+\label{projective:actual-coordinate-hyperplane-native-module-pullback}
+\lean{EnvelopeProperty.ProjectiveCoordinateIdealBaseChange.coordinateIdealPullbackIso}
+\leanok
+\uses{projective:actual-coordinate-hyperplane-geometric-cartier,projective:actual-coordinate-hyperplane-whole-comap,alggeom:actual-morphism-geometric-native-kernel-iso}
+The actual module pullback of the original native coordinate-hyperplane ideal
+module is isomorphic to the SAME original native coordinate ideal module over
+$S$, for every coefficient-ring map. The entire isomorphism is constructed.
+\end{theorem}
+\begin{proof}
+Identify the original native kernel module with its actual geometric kernel
+ideal module using the whole morphism-kernel comparison. Both the original
+geometric ideal and its actual comap are Cartier by the preceding lemmas.
+The genuine canonical geometric ideal-module pullback comparison is therefore
+an isomorphism, without requiring flatness of the coefficient map. Identify
+the actual comap with the same original geometric kernel over $S$, then use
+the whole native-kernel comparison over $S$. Compose these actual whole
+isomorphisms. No frame comparison or line base-change certificate is data.
+\end{proof}

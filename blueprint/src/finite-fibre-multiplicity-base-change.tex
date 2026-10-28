@@ -1,0 +1,256 @@
+\subsection{Actual finite-fibre multiplicity conservation under base change}
+\label{subsec:finite-fibre-multiplicity-base-change}
+
+All pointwise results below need only module finiteness of the original
+commutative-ring algebra. A base-changed point is given; existence of points
+above every base point is not asserted. Every fibre uses its own genuine
+local length times residue degree. Those weights are conserved by sums over
+restriction fibres, rather than by a bijection of the individual points.
+
+\begin{lemma}[Actual local-factor idempotents and their entire norm forms]
+\label{algebra:finite-factor-idempotent-norm}
+\lean{EnvelopeProperty.normForm_algebraMap,
+EnvelopeProperty.finiteAlgebraIdempotent,
+EnvelopeProperty.finiteAlgebraIdempotent_algebraMap,
+EnvelopeProperty.finiteAlgebraIdempotent_isIdempotent,
+EnvelopeProperty.finiteAlgebraIdempotent_mem_iff,
+EnvelopeProperty.localization_idempotent_algebraMap,
+EnvelopeProperty.normForm_idempotent}
+\leanok
+\uses{algebra:finite-artinian-local-factors,spectrum:whole-norm-form-base-change}
+Let $E$ be a finite commutative algebra over any field $H$. The actual
+localization product constructs an idempotent $e_m$ equal to one on $E_m$
+and zero on every other local factor. It belongs to a maximal ideal $p$
+exactly when $p\ne m$. For any idempotent $e\in E$,
+\[
+ N_{E/H}(Te+U(1-e))=
+ \prod_{p\in\operatorname{Max}(E)}
+ \begin{cases}T^{\dim_HE_p},&e\notin p,\\
+ U^{\dim_HE_p},&e\in p.
+ \end{cases}
+\]
+These are equalities of the whole determinant polynomials.
+\end{lemma}
+\begin{proof}
+Invert the genuine Artinian localization product on the coordinate vector
+with value one at $m$ and zero elsewhere. Its coordinate formula proves
+idempotence. Localization membership in its maximal ideal detects original
+membership, yielding the stated criterion. In an arbitrary local ring an
+idempotent is zero or one: either it or its complement is a unit, and
+unit cancellation in $e(1-e)=0$ gives the result.
+
+The real product isomorphism factors the whole norm form. In a local factor
+$e$ is the scalar zero or one, so its linear form is $U$ or $T$.
+For a scalar family, the balancing identity in the actual polynomial tensor
+algebra makes the linear form a scalar coefficient-ring element; its scalar
+norm is that polynomial raised to the actual free rank. Applying this to all
+local factors gives the formula. No field-point interpolation or reduction
+of nilpotent coefficients occurs.
+\end{proof}
+
+\begin{theorem}[Genuine local dimension conservation for every field extension]
+\label{algebra:local-dimension-base-change}
+\lean{EnvelopeProperty.degreeOf_map_normForm_idempotent,
+EnvelopeProperty.degreeOf_normForm_idempotent,
+EnvelopeProperty.finiteAlgebraMaximalComap,
+EnvelopeProperty.finiteAlgebraIdempotent_baseChange_not_mem_iff,
+EnvelopeProperty.sum_localFinrank_baseChange}
+\leanok
+\uses{algebra:finite-factor-idempotent-norm,spectrum:whole-norm-form-base-change}
+For any field extension $K/H$, set $F=K\otimes_HE$. Contraction along the
+actual right inclusion maps each maximal ideal $p$ of $F$ to a maximal
+ideal of $E$. For every maximal ideal $m$ of $E$,
+\[
+ \sum_{p\cap E=m}\dim_KF_p=\dim_HE_m.
+\]
+No valuation, completeness, separability or reducedness is required.
+\end{theorem}
+\begin{proof}
+Contraction is prime, and $E$ is Artinian, so it is genuinely maximal.
+Apply whole norm-polynomial coefficient base change to
+$Te_m+U(1-e_m)$. Compute degree in $T$ using the preceding factorization,
+where degrees of nonzero polynomial products and powers add over a field.
+Before extension, only the factor $m$ contributes, with degree $\dim_HE_m$.
+After extension, a maximal factor contributes its whole dimension precisely
+when $1\otimes e_m$ is outside its maximal ideal. The original idempotent
+membership criterion identifies this condition with contraction equal to
+$m$. Equality of the actual polynomials gives the dimension identity.
+The complete local dimensions, including all nilpotent and inseparable
+thickness, remain in the degree calculation.
+\end{proof}
+
+\begin{theorem}[Arbitrary function products on maximal factors]
+\label{algebra:finite-factor-weighted-products}
+\lean{EnvelopeProperty.finiteAlgebraWeightedProduct_baseChange}
+\leanok
+\uses{algebra:local-dimension-base-change}
+For every commutative monoid $M$ and every function
+$a:\operatorname{Max}(E)\to M$,
+\[
+ \prod_{p\in\operatorname{Max}(F)}a(p\cap E)^{\dim_KF_p}
+ =\prod_{m\in\operatorname{Max}(E)}a(m)^{\dim_HE_m}.
+\]
+\end{theorem}
+\begin{proof}
+Regroup the finite product by the actual contraction map. Within each
+contraction fibre the base element $a(m)$ is fixed, so its powers multiply
+by adding their exponents. The preceding genuine dimension conservation
+replaces that sum by $\dim_HE_m$. Empty spectra give the empty product.
+Neither injectivity nor a bijection of contraction fibres is assumed.
+\end{proof}
+
+\begin{lemma}[Actual maximal localization comparison under an algebra isomorphism]
+\label{algebra:maximal-localization-isomorphism}
+\lean{EnvelopeProperty.maximalSpectrumAlgEquiv,
+EnvelopeProperty.maximalLocalizationAlgEquiv,
+EnvelopeProperty.finrank_maximalLocalizationAlgEquiv}
+\leanok
+An actual coefficient-algebra isomorphism $E\simeq F$ induces a bijection
+of maximal ideals and actual coefficient-algebra isomorphisms
+$E_{p\cap E}\simeq F_p$. Over a field these preserve local dimensions.
+\end{lemma}
+\begin{proof}
+Pull ideals back through the ring isomorphism and its inverse. Both
+compositions are identity on every ideal, and maximality is preserved.
+The isomorphism maps the actual complements of these primes onto each
+other. The genuine localization equivalence for this mapped submonoid is
+therefore a coefficient-algebra isomorphism. Its underlying linear
+equivalence preserves dimension. This construction works over arbitrary
+commutative coefficient rings, before the field dimension specialization.
+\end{proof}
+
+\begin{definition}[Genuine completed fibre tensor base change]
+\label{spectrum:completed-fibre-base-change-tensor}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreBaseChangeEquiv,
+EnvelopeProperty.Berkovich.Spectrum.fibreBaseChangeEquiv_one_tmul,
+EnvelopeProperty.Berkovich.Spectrum.baseChangeFibreRestrict,
+EnvelopeProperty.Berkovich.Spectrum.fibreBaseChangeEquiv_symm_tmul}
+\leanok
+\uses{spectrum:fibre-tensor-evaluation,spectrum:completed-residue-field-pullback}
+Let $A\to B$ and $A\to C$ be arbitrary commutative-ring algebra maps,
+let $x'\in\mathcal S(C)$, and let $x$ be its restriction to $A$. Actual
+completed-field maps give the scalar action $H(x)\to H(x')$ and the genuine
+$H(x')$-algebra isomorphism
+\[
+ H(x')\otimes_C(C\otimes_AB)
+ \simeq H(x')\otimes_{H(x)}(H(x)\otimes_AB).
+\]
+It preserves every original algebra element. Restriction along $B\to
+C\otimes_AB$ maps the actual fibre over $x'$ into the actual fibre over $x$.
+\end{definition}
+\begin{proof}
+The real isometric completed-field map and its all-coefficient commuting
+square define the required scalar actions and towers. Two actual tensor
+cancellation isomorphisms identify both displayed algebras with
+$H(x')\otimes_AB$. Their composite proves the asserted isomorphism and
+its pure-tensor formulas. Balancing the original coefficient $a\in A$
+inside $C\otimes_AB$ shows that every restricted point has base value
+$x(a)$, proving the genuine fibre restriction.
+\end{proof}
+
+\begin{theorem}[Whole fibre tensor maps commute with restriction]
+\label{spectrum:completed-fibre-base-change-naturality}
+\lean{EnvelopeProperty.Berkovich.Spectrum.completedMap_baseChange_comm,
+EnvelopeProperty.Berkovich.Spectrum.fibreHom_baseChange_old}
+\leanok
+\uses{spectrum:completed-fibre-base-change-tensor,spectrum:completed-residue-field-pullback}
+For a point $y'$ over $x'$ restricting to $y$ over $x$, the new completed
+tensor map restricted through the displayed tensor comparison and right
+inclusion agrees on every tensor with the old completed tensor map followed
+by the genuine isometric map $H(y)\to H(y')$.
+\end{theorem}
+\begin{proof}
+Actual completed-field composition and the balanced coefficient square
+prove equality of the two maps $H(x)\to H(y')$. The tensor comparison
+formula then proves the asserted equality on each pure tensor: both maps
+are the same completed scalar value times the same original algebra
+value in $H(y')$. Tensor induction on zero, pure tensors and sums proves
+it on the whole algebra. This uses genuine completion-map functoriality,
+not equality of numerical values on a finite generator family.
+\end{proof}
+
+\begin{theorem}[Actual restricted maximal kernels and local multiplicities]
+\label{spectrum:completed-fibre-base-change-support}
+\lean{EnvelopeProperty.Berkovich.Spectrum.baseChangeFibreMaximal,
+EnvelopeProperty.Berkovich.Spectrum.baseChangeFibreMaximal_comap,
+EnvelopeProperty.Berkovich.Spectrum.fibreNormMult_eq_localFinrank_of_comap,
+EnvelopeProperty.Berkovich.Spectrum.fibreNormMult_baseChange_eq_dim}
+\leanok
+\uses{spectrum:completed-fibre-base-change-naturality,
+algebra:maximal-localization-isomorphism,spectrum:finite-completed-fibres,
+spectrum:nonetale-fibre-multiplicities}
+Assume only that $B$ is finite as an $A$-module. The actual maximal
+completed tensor kernel of $y'$ transports through the tensor isomorphism
+to a maximal ideal whose contraction is exactly the actual kernel of $y$.
+Its local $H(x')$-dimension is precisely the genuine norm multiplicity of
+$y'$. The old local $H(x)$-dimension is the genuine norm multiplicity of $y$.
+\end{theorem}
+\begin{proof}
+Finiteness makes both completed tensor supports maximal by the genuine
+integral fibre classification. Transport the new ideal through the actual
+algebra isomorphism. The preceding whole-tensor map equality identifies its
+contraction with the kernel of the old map followed by $H(y)\to H(y')$.
+That field map is genuinely injective, so the kernel is exactly the old
+one. The finite local-factor dimension identity is the genuine local
+length times residue degree. Actual localization equivalence under the
+tensor isomorphism preserves the new local dimension, giving the claimed
+multiplicities at named base points.
+\end{proof}
+
+\begin{theorem}[All function products and sums under finite base change]
+\label{spectrum:all-function-finite-base-change}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreWeightedProduct_baseChange,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedSum_baseChange,
+EnvelopeProperty.Berkovich.Spectrum.fibreWeightedERealSum_baseChange}
+\leanok
+\uses{algebra:finite-factor-weighted-products,
+spectrum:completed-fibre-base-change-support}
+For $B/A$ finite, the given $x'$ and any function $a:\mathcal S(B)\to M$
+to a commutative monoid,
+\[
+ \prod_{y'\text{ over }x'}a(y'|_B)^{m_{y'}}
+ =\prod_{y\text{ over }x}a(y)^{m_y}.
+\]
+For every function to an additive commutative monoid the analogous weighted
+sum identity holds. In particular, for every
+$u:\mathcal S(B)\to\overline{\mathbb R}$,
+\[
+ \sum_{y'\text{ over }x'}m_{y'}u(y'|_B)
+ =\sum_{y\text{ over }x}m_yu(y).
+\]
+No freeness, projectivity, flatness, regularizability or upper-finiteness
+of $u$ is needed.
+\end{theorem}
+\begin{proof}
+The genuine maximal-kernel fibre equivalences reindex the new and old
+finite point products by the maximal ideals of their actual completed
+tensor algebras. The whole support comparison identifies restriction with
+contraction after the tensor isomorphism, and the local dimension comparison
+identifies every exponent. Apply the arbitrary-function algebraic product
+identity and reindex back through the genuine old fibre equivalence.
+
+Apply this product equality to the multiplicative type tag of an arbitrary
+additive commutative monoid, then unwrap the tag. This gives the sum identity
+with natural scalar multiples. Mathlib's EReal is an additive commutative
+monoid, and its unconditional identity $n\mathbin{\bullet}t=(n:t)t$ turns
+that sum into the displayed EReal multiplication formula. It uses Mathlib's
+actual extended-real addition and zero-times-infinity conventions, including
+mixed infinities. No additional finite-value restriction is introduced.
+\end{proof}
+
+\begin{corollary}[Multiplicity mass over each restricted point]
+\label{spectrum:finite-base-change-multiplicity-mass}
+\lean{EnvelopeProperty.Berkovich.Spectrum.sum_fibreNormMult_baseChange}
+\leanok
+\uses{spectrum:all-function-finite-base-change}
+For every old point $y$ over $x$,
+\[
+ \sum_{\substack{y'\text{ over }x'\\y'|_B=y}}m_{y'}=m_y.
+\]
+\end{corollary}
+\begin{proof}
+Apply the additive function identity to the natural-valued indicator of
+$y$. Its old weighted sum has a single nonzero term because $y$ belongs to
+the old fibre. The new weighted sum selects exactly the points restricting
+to $y$, giving the conservation law with all genuine local multiplicities.
+\end{proof}

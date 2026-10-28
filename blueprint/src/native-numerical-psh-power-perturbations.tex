@@ -1,0 +1,84 @@
+\section{The same Fubini--Study function in arbitrarily small perturbations of its class}
+\label{sec:native-numerical-psh-power-perturbations}
+
+We keep the notation of Section~\ref{sec:native-numerical-psh-generated-twists}.
+
+\begin{lemma}[Powering a varying-line datum]
+\label{lem:native-numerical-fs-power-datum}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.powerDatum,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.powerDatum_eval,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.powerDatum_numericalClass,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.IsRational.powerDatum,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.Nonzero.powerDatum}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,def:scheme-global-section-tensor-power,thm:scheme-global-section-tensor-power-norm,lem:native-numerical-line-tensor-power,thm:native-numerical-fs-nonvanishing}
+\source{bj22-trivval:equ:FSpower}
+Let $D=(M,m,(s_j,w_j)_j)$ be a varying-line Fubini--Study datum and $r>0$ an
+integer.  The datum $D^{(r)}=(M^{\otimes r},mr,(s_j^{\otimes r},rw_j)_j)$ has
+the same function and the same class as $D$.  It has rational weights if $D$
+does, and, if $X$ is integral, it is nonzero if $D$ is.
+\end{lemma}
+\begin{proof}
+The norm of $s_j^{\otimes r}$ at a point is the $r$-th power of the norm of
+$s_j$, so $\log\lVert s_j^{\otimes r}\rVert+rw_j=r(\log\lVert s_j\rVert+w_j)$,
+also when $s_j$ vanishes at the point.  Multiplication by $r>0$ commutes
+with finite maxima in $[-\infty,+\infty)$, and $(mr)^{-1}r=m^{-1}$; hence
+the functions agree.  The class of $M^{\otimes r}$ is $r[M]$, so
+$[D^{(r)}]=(mr)^{-1}r[M]=[D]$.  The weights $rw_j$ are rational when the
+$w_j$ are.  Nonzeroness follows from the equality of functions on an
+integral scheme (Theorem~\ref{thm:native-numerical-fs-nonvanishing}).
+\end{proof}
+
+\begin{theorem}[The same function in arbitrarily small generated perturbations]
+\label{thm:native-numerical-fs-small-generated-perturbations}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.exists_small_generatedPerturbations}
+\leanok
+\uses{lem:native-numerical-fs-power-datum,thm:native-numerical-generated-twist-exact,thm:native-numerical-curve-weak-vector-topology}
+Let $X$ be integral and projective, let $D$ be a nonzero varying-line
+Fubini--Study datum with denominator $m$, and let $T$ be an invertible sheaf
+with a finite family of global generators.  There are nonzero data $E_j$,
+$j\in\mathbf N$, such that at every point $y$
+\[
+ \varphi_{E_j}(y)=\varphi_D(y),\qquad
+ [E_j]=[D]+\frac{1}{m(j+1)}[T],\qquad
+ [E_j]\longrightarrow[D].
+\]
+\end{theorem}
+\begin{proof}
+Let $E_j$ be the generated twist by $T$
+(Theorem~\ref{thm:native-numerical-generated-twist-exact}) of the power
+$D^{(j+1)}$ (Lemma~\ref{lem:native-numerical-fs-power-datum}).  Both
+operations preserve the function and nonzeroness; the power keeps the class
+and has denominator $m(j+1)$, and the twist adds $(m(j+1))^{-1}[T]$.  Since
+$(m(j+1))^{-1}\to0$ and addition and scalar multiplication are continuous
+for the curve-degree topology, $[E_j]\to[D]$.
+\end{proof}
+
+\begin{corollary}[Perturbations in an ample direction]
+\label{cor:native-numerical-fs-small-ample-direction}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.exists_small_ampleDirectionPerturbations}
+\leanok
+\uses{thm:native-numerical-fs-small-generated-perturbations,lem:scheme-ample-line-eventual-generation,lem:native-numerical-line-tensor-power}
+\source{bj22-trivval:lem:twopsh,bj22-trivval:thm:pshample}
+Let $X$, $D$ and $m$ be as in
+Theorem~\ref{thm:native-numerical-fs-small-generated-perturbations} and let
+$A$ be an ample invertible sheaf.  There are an integer $q>0$ and nonzero
+data $E_j$, $j\in\mathbf N$, such that at every point $y$
+\[
+ \varphi_{E_j}(y)=\varphi_D(y),\qquad
+ [E_j]=[D]+\frac{q}{m(j+1)}[A],\qquad
+ [E_j]\longrightarrow[D].
+\]
+\end{corollary}
+\begin{proof}
+Some positive power $A^{\otimes q}$ has a finite family of global generators
+(Lemma~\ref{lem:scheme-ample-line-eventual-generation}).  Apply
+Theorem~\ref{thm:native-numerical-fs-small-generated-perturbations} to
+$T=A^{\otimes q}$ and use $[A^{\otimes q}]=q[A]$.
+\end{proof}
+
+\begin{remark}
+The line of $E_j$ is $M^{\otimes(j+1)}\otimes A^{\otimes q}$.  No ampleness of
+this line is asserted.  In BJ22 these perturbations are combined with the
+openness of the ample cone of the finite dimensional space $N^1(X)$, with
+Kleiman's criterion (ampleness depends only on the numerical class), and
+with Proposition~2.19(iii) for an ample difference line, in order to place
+$\varphi_D$ in $\mathcal H(L)$ for a $\mathbb Q$-line bundle $L$ of a
+prescribed class.
+\end{remark}

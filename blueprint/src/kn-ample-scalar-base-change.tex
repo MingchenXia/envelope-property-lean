@@ -1,0 +1,45 @@
+\section{Original geometric ampleness under actual scalar extension}
+
+\begin{lemma}[The actual scalar extension of a projective embedding]
+\label{lem:kn-projective-embedding-scalar-extension}
+\lean{EnvelopeProperty.Vanishing.AmpleScalarBaseChange.embedding,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.embedding_isClosedImmersion,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.embedding_projection,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.embedding_ambient,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.embedding_twistIso}
+\leanok
+Let $j:X\hookrightarrow\mathbf P_R^N$ be a closed embedding over
+$\operatorname{Spec}R$, and let $R\to S$ be any ring homomorphism.
+The actual Cartesian scalar extension has a closed embedding
+$j_S:X_S\hookrightarrow\mathbf P_S^N$ over $\operatorname{Spec}S$,
+and $j_S^*\mathcal O(d)\simeq\pi^*j^*\mathcal O(d)$ for every $d\geq0$.
+\end{lemma}
+\begin{proof}
+Base change $j$ along $\mathbf P_R^N\times_R\operatorname{Spec}S$.
+The actual projective coefficient isomorphism identifies this ambient
+scheme with $\mathbf P_S^N$.  Closed immersions are stable under base
+change and composition with this isomorphism.  Its two projection
+equations retain the original structural morphism.  The original
+coordinate Cartier hyperplane, its dual and every tensor power commute
+with coefficient extension.  Compose this comparison with the actual
+pullback composition isomorphisms to obtain the asserted whole-line
+comparison.
+\end{proof}
+
+\begin{theorem}[Actual very ampleness and ampleness commute with scalar extension]
+\label{thm:kn-ample-scalar-extension}
+\lean{EnvelopeProperty.Vanishing.AmpleScalarBaseChange.isVeryAmple,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.isAmple,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.isVeryAmple_of_isPullback,EnvelopeProperty.Vanishing.AmpleScalarBaseChange.isAmple_of_isPullback}
+\leanok
+\uses{lem:kn-projective-embedding-scalar-extension}
+Let $L$ be an actual geometrically ample line on $X/R$.  Its actual
+pullback to $X_S/S$ is geometrically ample for every $R\to S$.
+The same assertion holds for very ample lines.  No flatness or
+injectivity assumption on the coefficient map is needed.
+\end{theorem}
+\begin{proof}
+For a very ample line, apply the preceding lemma to its original
+embedding and degree one.  In general retain the original positive
+integer $r$ and the actual very-ample comparison for $L^{\otimes r}$.
+Pullback preserves invertibility and commutes with this same tensor
+power.  Thus the original positive-power embedding criterion applies
+to the actual pulled-back $L$, with exponent $r$ and its constructed
+embedding.  For any other actual Cartesian square, its canonical
+isomorphism with this pullback transports the embedding, the original
+line and the structural triangle together.
+\end{proof}

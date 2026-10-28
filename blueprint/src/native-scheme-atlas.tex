@@ -1,0 +1,94 @@
+\subsection{Genuine native affine point-space gluing}
+\label{subsec:native-scheme-atlas}
+
+The gluing here is a topological point-space comparison for actual Mathlib
+schemes. The pieces and their section rings are genuine scheme affine opens.
+No analytic structure sheaf, coherent-sheaf gluing or Hausdorff assertion for
+arbitrary schemes is supplied by this construction.
+
+\begin{theorem}[Actual scheme-open cover gluing]
+\label{scheme:native-open-cover-gluing}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.supportOpens,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.openCoverGlueData,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.OpenCoverGlued,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.iUnion_supportOpens,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.openCoverGlueHomeomorph}
+\leanok
+\uses{scheme:valued-open-embedding,scheme:valued-point-topology}
+For any family of scheme opens $U_i$ covering $X$, their actual native
+support-open inverse images cover the native valued-point space of $X$.
+The genuine TopCat gluing of these open subspaces is homeomorphic to that
+native space. This statement imposes no finiteness or affineness condition
+on the open cover.
+\end{theorem}
+\begin{proof}
+Point projection is continuous, so each scheme open gives an actual native
+open. Every underlying scheme support belongs to a member of the given
+cover, hence every native valued point belongs to the corresponding native
+open. Apply the actual topological open-cover gluing construction to these
+opens. Its overlap equivalence identifies the same native point in two
+pieces, and its proved open-cover homeomorphism recovers the native space.
+The scheme-open restriction homeomorphism identifies each piece with the
+actual native valued-point space of that open subscheme.
+\end{proof}
+
+\begin{theorem}[Genuine affine section-ring chart parametrization]
+\label{scheme:native-affine-atlas}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_symm_coe,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineChartInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.continuous_affineChartInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.openCoverGlueHomeomorph_affineChartInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpenEmbedding_affineChartInclusion,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineChartInclusion_eq_iff,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.affineChartInclusion_jointly_surjective}
+\leanok
+\uses{scheme:native-open-cover-gluing,scheme:affine-valued-point-homeomorphism,
+scheme:valued-open-embedding}
+If each $U_i$ is an actual affine open, its support-open native subspace
+is canonically homeomorphic to the genuine seminorm spectrum of
+$\Gamma(X,U_i)$. These affine spectra give open embeddings into the glued
+space and jointly cover it. Their two representatives are identified
+exactly when their resulting whole native valued points of $X$ agree.
+\end{theorem}
+\begin{proof}
+Use the actual scheme-open restriction homeomorphism, then the native
+homeomorphism induced by the affine scheme isomorphism
+$U_i\simeq\operatorname{Spec}\Gamma(X,U_i)$, then the proved native affine
+seminorm homeomorphism. This gives the displayed chart homeomorphism. Its
+inverse, followed by the actual gluing-piece inclusion, parametrizes each
+piece by the spectrum of its genuine section ring. Both inverse maps in
+this composition are actual point maps through residue-field isomorphisms;
+the ambient representative is the genuine open-inclusion image of that
+native point of $U_i$.
+
+Homeomorphisms followed by actual gluing-piece open embeddings are open
+embeddings, hence continuous. Joint surjectivity of the genuine gluing
+inclusions and surjectivity of the chart homeomorphisms prove coverage.
+The actual open-cover gluing homeomorphism sends a chart representative
+to precisely its ambient native point. Its injectivity proves both directions
+of the representative equality criterion. This does not identify an analytic
+structure sheaf or assert a scheme/sheaf gluing theorem.
+\end{proof}
+
+\begin{theorem}[Canonical atlas of every actual scheme]
+\label{scheme:canonical-native-affine-atlas}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.AffineAtlasIndex,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.canonicalAffineOpens,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isAffineOpen_canonicalAffineOpens,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.iUnion_canonicalAffineOpens,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.canonicalAffineGlueHomeomorph}
+\leanok
+\uses{scheme:native-affine-atlas,scheme:native-open-cover-gluing}
+Index by all actual affine opens of $X$. This is a genuine covering family,
+so its native affine section-ring point-space gluing recovers the valued-point
+space of every scheme $X$.
+\end{theorem}
+\begin{proof}
+Every actual scheme point has an affine open neighborhood by the scheme's
+proved affine basis. Such an open, with its actual affineness proof, is one of
+the indexing objects; hence the union of the indexed opens is all of $X$.
+Apply the arbitrary-cover native gluing homeomorphism and the affine chart
+parametrizations to this concrete family. This provides an actual canonical
+atlas without assuming that a requested cover exists or is finite.
+\end{proof}

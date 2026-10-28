@@ -1,0 +1,234 @@
+\section{Algebraic principalization and finite logarithmic charts}
+
+\begin{lemma}[The affine blowup chart inside the fraction field]\label{lem:sc0-hironaka-affine-chart}
+\lean{EnvelopeProperty.Char0.affineBlowUpReesChartEquiv,EnvelopeProperty.Char0.affineBlowUpReesChartEquiv_algebraMap}
+\leanok
+\uses{def:sc0-rees-chart-tree}
+Let $C\subseteq K$ be a subalgebra of a field, let $g_1,\ldots,g_n\in C$, put
+$I=(g_1,\ldots,g_n)$, and suppose $g_i\ne0$. The localization map $C[1/g_i]\to K$
+induces an isomorphism
+\[
+ C[I/g_i]\simeq C[g_1/g_i,\ldots,g_n/g_i]\subseteq K
+\]
+which identifies the two maps from $C$.
+\end{lemma}
+\begin{proof}
+The localization map sends $c/g_i^m$ to the same fraction in $K$ and is injective: if the
+image is zero, multiplying by the nonzero denominator gives $c=0$. Its restriction to
+$C[I/g_i]$ sends the generator $h/g_i$, with $h\in I$, into the right-hand algebra.
+Indeed, write $h=\sum_j c_jg_j$ and divide this equality by $g_i$. Conversely each $g_j/g_i$
+is the image of the corresponding generator of $C[I/g_i]$, and the image contains $C$.
+Closure under sums and products proves equality of the image with the indicated algebra.
+The identification of the maps from $C$ follows from the localization formula with exponent zero.
+\end{proof}
+
+\begin{lemma}[Principal covers as chart nodes]\label{lem:sc0-principal-cover-chart}
+\lean{EnvelopeProperty.Char0.reesTreeChart_eq_adjoin_inv_of_span_eq_top,EnvelopeProperty.Char0.principalCoverLocalizationEquiv,EnvelopeProperty.Char0.principalCoverLocalizationEquiv_algebraMap}
+\leanok
+\uses{def:sc0-rees-chart-tree}
+If $(h_1,\ldots,h_s)=C$, then for every nonzero $h_i$ one has
+$C[h_1/h_i,\ldots,h_s/h_i]=C[1/h_i]$ inside $K$.
+\end{lemma}
+\begin{proof}
+The ratios belong to $C[1/h_i]$. Choose $c_j\in C$ with $\sum_jc_jh_j=1$.
+Then $1/h_i=\sum_jc_j(h_j/h_i)$ lies in the ratio algebra, proving the reverse inclusion.
+Thus the chart node of this family is exactly the finite principal-open cover $D(h_i)$.
+\end{proof}
+
+\begin{theorem}[Principalization with empty boundary]\label{thm:sc0-algebraic-principalization}
+\lean{Hironaka.Sequence.BP_isIdealOfSncDivisor,Hironaka.Sequence.BP_center_smooth_hasSncWith,Hironaka.Sequence.BP_isIso_restrict}
+\leanok
+Let $k$ have characteristic zero, let $X$ be smooth, equidimensional, separated and of finite
+type over $k$, and let $I$ be a coherent ideal nonzero at every stalk. There is a finite sequence
+of blowups $\pi\colon Y\to X$ with smooth centres having simple normal crossings with the
+successive exceptional boundaries, such that $I\mathcal O_Y$ is the ideal of an effective divisor
+supported on a simple normal crossing family, and $\pi$ is an isomorphism over $X\setminus V(I)$.
+\end{theorem}
+\begin{proof}
+Apply the principalization construction of Koll\'ar, Theorem~35 of \cite{Kollar07}, to the triple
+$(X,I,\varnothing)$. Its order-reduction construction gives the finite sequence and the smooth
+normal-crossing centres. At mark one the last marked transform is the unit ideal; the total
+transform is therefore the product of the transformed exceptional ideals, which is an effective
+simple normal crossing divisor. The isomorphism locus in the general ordered-boundary statement
+is $X\setminus(V(I)\cup\operatorname{Sing}E)$. Since the boundary is empty here, this is exactly
+$X\setminus V(I)$.
+\end{proof}
+
+\begin{lemma}[A finite tree of principalization charts]\label{lem:sc0-bp-chart-tree}
+\notready
+\uses{thm:sc0-algebraic-principalization,lem:sc0-hironaka-affine-chart,lem:sc0-principal-cover-chart}
+For a smooth finite-type domain $B$ over a characteristic-zero field and a nonzero ideal
+$I\subseteq B$, the principalization above admits a finite Rees chart tree rooted at $B$ whose
+leaves are affine open subschemes of $Y$, with their coordinate rings embedded in $\operatorname{Frac}B$.
+\end{lemma}
+\begin{proof}
+The isomorphism over the nonempty dense set $D(I)$ identifies the function fields. At the first
+stage restrict the centre to $\operatorname{Spec}B$ and choose a finite set of generators of its
+ideal, which exists because $B$ is Noetherian. This ideal is nonzero: blowing up the zero ideal
+would give the empty scheme, contradicting the isomorphism over $D(I)$. The affine charts of this
+blowup are exactly the charts in Lemma~\ref{lem:sc0-hironaka-affine-chart}. For every nonzero
+denominator, restrict the remaining sequence to that chart and repeat. Restriction preserves its
+isomorphism over the generic point, so the centre at each nonempty chart is again nonzero.
+Induction on the number of remaining blowups constructs finite subtrees. Each finite generator
+family gives finitely many children, so the resulting tree is finite. Any additional finite
+principal-open refinements are attached using Lemma~\ref{lem:sc0-principal-cover-chart}.
+\end{proof}
+
+\begin{lemma}[Divisors of a product of prime elements]\label{lem:sc0-prime-monomial-factor}
+\lean{EnvelopeProperty.Char0.exists_exponents_associated_of_dvd_monomial}
+\leanok
+Let $R$ be a domain, let $p_1,\ldots,p_s$ be prime elements, and let $e_i\in\mathbf N$.
+If $f\mid\prod_i p_i^{e_i}$, then $f$ is associated to $\prod_i p_i^{a_i}$ for suitable
+$0\le a_i\le e_i$.
+\end{lemma}
+\begin{proof}
+Induct on $N=\sum_i e_i$. If $N=0$, then $f\mid1$, so $f$ is a unit and all $a_i=0$ work.
+Otherwise choose $j$ with $e_j>0$ and write the product as $p_jM$. Choose $q$ with $fq=p_jM$.
+Primality gives $p_j\mid f$ or $p_j\mid q$. In the first case write $f=p_jf'$ and cancel the
+nonzero $p_j$ to obtain $f'q=M$; apply induction to $f'$ and increase its $j$-th exponent by one.
+In the second case write $q=p_jq'$ and cancel to obtain $fq'=M$; apply induction to $f$ and leave
+its exponents unchanged. In both cases the resulting exponents satisfy the required bounds.
+\end{proof}
+
+\begin{lemma}[Units away from a prime boundary]\label{lem:sc0-unit-away-monomial}
+\lean{EnvelopeProperty.Char0.exists_exponents_associated_of_isUnit_away_product,EnvelopeProperty.Char0.exists_unit_mul_monomial_of_isUnit_away_product}
+\leanok
+\uses{lem:sc0-prime-monomial-factor}
+Let $R$ be a domain and let $p_1,\ldots,p_s$ be prime elements. If the image of $f\in R$
+is a unit in $R[1/(\prod_i p_i)]$, then $f=u\prod_i p_i^{a_i}$ for some unit $u\in R^\times$
+and nonnegative integers $a_i$.
+\end{lemma}
+\begin{proof}
+The localization criterion for units gives $f\mid(\prod_i p_i)^N$ for some $N$.
+Distribute the power over the product and apply Lemma~\ref{lem:sc0-prime-monomial-factor}
+with all exponents equal to $N$. Associated elements differ by a unit, giving the stated form.
+For an empty boundary the product is one, and the same argument says that $f$ is a unit.
+\end{proof}
+
+\begin{lemma}[Adapted affine \'etale coordinates]\label{lem:sc0-snc-etale-charts}
+\lean{EnvelopeProperty.Char0.exists_snc_etale_chart_at_closed,EnvelopeProperty.Char0.exists_finite_snc_etale_cover}
+\leanok
+Let $Y$ be smooth of dimension $d$ over a characteristic-zero field and let $D$ be a finite
+simple normal crossing divisor family. There is a cover of $Y$ by affine neighbourhoods with
+\'etale coordinates $u_1,\ldots,u_d$ on which each member of $D$ is either absent or has ideal
+$(u_i)$, with distinct components assigned distinct indices. A quasi-compact $Y$ admits a finite
+such cover.
+\end{lemma}
+\begin{proof}
+At a closed point the ideals of the boundary components are generated by distinct members
+of a regular system of $d$ parameters. Their classes form a basis of the cotangent space.
+The residue field is finite and separable over the characteristic-zero base, so the conormal
+sequence identifies this cotangent space with the fibre of $\Omega_{Y/k}$. Represent the
+finitely many parameter germs on a common affine neighbourhood. The resulting map to
+$\mathbf A_k^d$ is \'etale where the differential determinant is invertible, an open neighbourhood
+of the closed point.
+Equality of the finitely generated component ideals with the corresponding principal ideals
+also holds on a neighbourhood; remove every component not passing through the point and intersect
+these finitely many neighbourhoods. Refine the resulting open set by a principal affine open.
+The scheme is Jacobson because it is locally of finite type over a field. Every point specializes
+to a closed point, and an open neighbourhood of that closed point contains its generalizations.
+Consequently these neighbourhoods cover $Y$.
+Quasi-compactness selects finitely many members of this cover.
+\end{proof}
+
+\begin{lemma}[Stalks of factors of an SNC product]\label{lem:sc0-snc-factor-stalks}
+\lean{EnvelopeProperty.Char0.prod_pow_stalkIdeal_eq_span,EnvelopeProperty.Char0.exists_stalk_monomial_factor}
+\leanok
+\uses{lem:sc0-prime-monomial-factor}
+Let $A,B$ be ideal sheaves on a scheme smooth over a field, and suppose
+$AB=\prod_i F_i^{e_i}$ for a simple normal crossing family $F$. At every point $x$, choose
+regular parameters $z$ cutting out the members of $F$ through $x$. Then $A_x$ is generated
+by $\prod_{i:x\in F_i} z_{c(i)}^{a_i}$ with $0\le a_i\le e_i$.
+\end{lemma}
+\begin{proof}
+The SNC product is invertible, so both factors are invertible. Hence $A_x=(g)$ for a nonzero
+generator $g$. The members of $F$ not through $x$ have unit stalk ideal; the remaining members
+have ideals $(z_{c(i)})$. Consequently $(AB)_x$ is generated by
+$m=\prod_{i:x\in F_i}z_{c(i)}^{e_i}$. Since $(AB)_x\subseteq A_x$, the generator $g$ divides $m$.
+The stalk is a regular local domain, and each boundary parameter is prime. Apply
+Lemma~\ref{lem:sc0-prime-monomial-factor}. Associated generators have the same principal ideal.
+\end{proof}
+
+\begin{lemma}[Monomial ideals from factors of the total transform]\label{lem:sc0-snc-factors}
+\notready
+\uses{lem:sc0-snc-factor-stalks,lem:sc0-snc-etale-charts}
+If a product of finitely many nonzero ideal sheaves on a smooth integral scheme is the ideal of
+an effective simple normal crossing divisor, then each factor is, on a sufficiently small adapted
+affine neighbourhood, generated by a monomial in the same boundary coordinates.
+\end{lemma}
+\begin{proof}
+For one factor let $B$ be the product of the others. Apply
+Lemma~\ref{lem:sc0-snc-factor-stalks} to obtain its monomial stalk ideal in the same boundary
+parameters. Repeat for the finitely many factors. Choose adapted \'etale coordinates as in
+Lemma~\ref{lem:sc0-snc-etale-charts}. Their assigned boundary functions generate the same
+component stalk ideals, so replacing the original parameters preserves each monomial ideal.
+Equalities of finitely
+generated ideals and invertibility of the finitely many units spread to one affine principal
+neighbourhood. Multiplying by a unit does not change a principal ideal.
+\end{proof}
+
+\begin{lemma}[The relative Jacobian ideal is an invertible image ideal]\label{lem:sc0-jacobian-line}
+\notready
+Let $\pi\colon Y\to X$ be a dominant generically isomorphic morphism of smooth integral
+$d$-dimensional varieties. In \'etale coordinates $u$ on $Y$, the ideal generated by
+$\det(\partial(\pi^*w_a)/\partial u_b)$ for regular functions $w_1,\ldots,w_d$ on $X$ is
+locally a nonzero principal ideal. It is the unit ideal over the isomorphism locus of $\pi$.
+\end{lemma}
+\begin{proof}
+Refine the image neighbourhood in $X$ by \'etale coordinates $z$. The differential of $\pi$
+between the free differential modules has a square matrix $A$ in the $dz$ and $du$ bases.
+The determinant for a family $w$ is $\det(B_wA)=\det(B_w)\det A$, so every generator lies in
+$(\det A)$. Conversely the $dz_i$ are linear combinations of the differentials of functions
+from the original affine ring, after multiplying denominators which are units on this
+neighbourhood. Multilinearity of the determinant expresses $\det A$ as a linear combination
+of the displayed generators. Thus the ideal is $(\det A)$. Dominance and the generic isomorphism
+make $A$ invertible at the function field, so $\det A\ne0$. If $\pi$ is an isomorphism, its inverse
+differential makes $A$ invertible already in the coordinate ring, so the determinant ideal is the
+unit ideal. This description is independent of the chosen bases because a change of basis has
+unit determinant.
+\end{proof}
+
+\begin{lemma}[The relative Jacobian is a boundary monomial]\label{lem:sc0-jacobian-snc}
+\notready
+\uses{lem:sc0-jacobian-line,lem:sc0-unit-away-monomial,lem:sc0-snc-etale-charts}
+If $\pi$ in the preceding lemma is an isomorphism away from a simple normal crossing divisor
+$D$ on $Y$, then on a sufficiently small adapted affine neighbourhood its relative Jacobian
+ideal is generated by a monomial in the boundary coordinates.
+\end{lemma}
+\begin{proof}
+At a stalk choose adapted boundary parameters $u_1,\ldots,u_s$ and a nonzero generator $J$ of
+the relative Jacobian ideal. Let $q=\prod_i u_i$. The generator is a unit in $R[1/q]$, because
+this open set avoids the boundary and $\pi$ is an isomorphism there. Each $u_i$ is prime, so
+Lemma~\ref{lem:sc0-unit-away-monomial} identifies $J$ with a
+boundary monomial up to a unit. Spread this finite equality and the inverse of its unit to a
+principal affine neighbourhood. The empty-boundary case has $q=1$ and gives the unit ideal.
+\end{proof}
+
+\begin{theorem}[Finite log-chart trees in characteristic zero]\label{thm:sc0-hironaka-log-tree}
+\lean{EnvelopeProperty.Char0.exists_smooth_family_rees_tree}
+\leanok
+\uses{thm:sc0-smooth-family-rees-tree}
+For a smooth finite-type domain $B$ over a characteristic-zero field and a finite family of
+nonzero ideals $\mathfrak a_j$, there is a finite Rees chart tree over $B$ whose leaves have
+\'etale coordinates in which each $\mathfrak a_j$ and the relative Jacobian ideal are monomial.
+\end{theorem}
+\begin{proof}
+Regard $B$ as a subalgebra of its fraction field. Choose finitely many principal
+source opens, generating the unit ideal, on which the smooth source has
+\'etale coordinates. These opens form the first, unit-ideal Rees node. Each
+localized family factor is nonzero, since the localization maps embed in the
+same fraction field. On each source chart principalize the product of all
+family factors by the actual characteristic-zero blowup sequence. Its final
+scheme is smooth, the total transform is a simple normal crossing divisor,
+and the morphism is an isomorphism off the original product support.
+
+The adapted simultaneous factor and Jacobian neighbourhoods cover this final
+scheme. Refine its finite Rees chart tree subordinate to those neighbourhoods.
+On every resulting literal leaf, transport the boundary-ideal identities to
+the leaf coordinates. Every family factor is then a monomial in these
+coordinates, and the determinant formula identifies the genuine relative
+Jacobian ideal generated by all source functions with a boundary monomial.
+Attach these child trees to the initial source-cover node. Localization of
+the source preserves both ideal extension and the genuine relative Jacobian
+ideal, so these formulas refer to the original $B$ and its original family.
+\end{proof}

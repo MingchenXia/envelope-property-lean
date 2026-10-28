@@ -1,0 +1,46 @@
+\section{Transporting actual chart traces to the original pushforward}
+
+\begin{lemma}[The whole free chart is the original cartesian square]
+\label{lem:kn-structure-trace-chart-cartesian}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.scalarMap,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.sourceMap,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.sourceMap_isOpenImmersion,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.isPullback}
+\leanok
+A whole free chart gives actual open maps from its coefficient spectrum
+into the original source and from its base coefficient spectrum into the
+original base. Together with its actual algebra spectrum map and the
+original projection these form a cartesian square.
+\uses{def:kn-structure-trace-whole-free-chart}
+\end{lemma}
+\begin{proof}
+The source map is the given whole inverse-image isomorphism followed by
+the original open inclusion, so is an open immersion. The given original
+projection triangle, cancelled along the base open inclusion, gives a
+commutative square with the two original affine-spectrum isomorphisms as
+horizontal maps. This square is cartesian. Paste it with the actual
+restriction pullback square of the original projection along the base
+open. The resulting cartesian square has exactly the asserted maps.
+\end{proof}
+
+\begin{lemma}[The actual local trace belongs to the original pushforward]
+\label{lem:kn-structure-trace-original-local-map}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.pushforwardIso,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnSpec,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.traceOnOpen}
+\leanok
+Every internally produced whole free chart supplies an actual local map
+from the restriction of the same original $\pi_*\mathcal O_Y$ to the
+restriction of the same original $\mathcal O_X$. Its construction uses
+the original native algebra trace of that chart, with no local trace or
+matching certificate supplied by a caller.
+\uses{lem:kn-structure-trace-chart-cartesian,lem:kn-structure-trace-affine-sheaf,thm:kn-structure-trace-produced-whole-free-chart}
+\end{lemma}
+\begin{proof}
+The actual cartesian unit comparison identifies the restriction of the
+original pushforward on the base coefficient spectrum with the actual
+chart pushforward. The chart's genuine finite basis provides its finite
+free module structures. Compose this comparison, the constructed affine
+sheaf trace, and the inverse actual unit restriction isomorphism. This
+is a map between the genuine restrictions of the two original modules.
+Finally restrict along the original affine-spectrum isomorphism of the
+base open. This restriction functor is an equivalence, hence fully
+faithful. Its preimage gives the asserted map on the actual original
+base open. The source, target and original projection remain the same
+through every comparison.
+\end{proof}

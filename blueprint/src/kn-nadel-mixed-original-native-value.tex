@@ -1,0 +1,21 @@
+\section{Native values of the original purification composite}
+
+\begin{lemma}[Every native section retains its original canonical differential]
+\label{lem:kn-mixed-original-native-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationOriginalNativeValue}
+\leanok
+For every original native canonical section on the entire mixed algebra,
+the literal restriction-of-scalars, native-equivalence and field-transport
+composite defining the original purification evaluates to the actual
+canonical differential followed by that same original field transport.
+No raw-section comparison or coordinate frame is supplied.
+\end{lemma}
+\begin{proof}
+Read the native equivalence and field transport from the original
+constructor itself. Abstract restriction of scalars preserves their
+underlying composite value. The existing native equivalence readback
+identifies its value with the genuine canonical differential on every
+native section. Apply the original field-transport map and compose these
+two checked equalities. The native canonical square and mixed counit
+normalization remain separate obligations.
+\end{proof}

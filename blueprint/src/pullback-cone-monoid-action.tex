@@ -1,0 +1,46 @@
+\section{A genuine action on the specified original Cartesian square}
+\label{sec:pullback-cone-monoid-action}
+
+\begin{theorem}[The actual Cartesian cone acquires the action]
+\label{thm:pullback-cone-monoid-action}
+\lean{EnvelopeProperty.PullbackConeMonoidAction.action, EnvelopeProperty.PullbackConeMonoidAction.action_fst, EnvelopeProperty.PullbackConeMonoidAction.action_snd, EnvelopeProperty.PullbackConeMonoidAction.modObj, EnvelopeProperty.PullbackConeMonoidAction.fst_isModHom, EnvelopeProperty.PullbackConeMonoidAction.snd_isModHom, EnvelopeProperty.PullbackConeMonoidAction.isModHom_of_comp, EnvelopeProperty.PullbackConeMonoidAction.lift_isModHom}
+\leanok
+\source{bj22-trivval:sec:tc}
+Let $G$ be a monoid object in a Cartesian monoidal category.
+Suppose the original diagram $X\xrightarrow f S\xleftarrow gY$
+has genuine $G$-actions and equivariant maps.
+Let $P\xrightarrow pX$, $P\xrightarrow qY$ be any specified
+original Cartesian cone for this diagram. Then the \emph{same}
+$P$ has an internally derived genuine $G$-action and both
+original projections $p,q$ are equivariant. Equivariance of a
+map into $P$ is detected by these two projections; in particular,
+the original universal lift of two equivariant maps is equivariant.
+\end{theorem}
+
+\begin{proof}
+Use the original Cartesian universal property to define
+$\gamma_P:G\times P\to P$ by its two whole components
+\[
+ \gamma_Pp=(1_G\times p)\gamma_X,
+ \qquad
+ \gamma_Pq=(1_G\times q)\gamma_Y.
+\]
+Compatibility follows from equivariance of the original $f,g$,
+functoriality of the product, and the original equality $pf=qg$.
+To prove the unit law, postcompose both candidate maps with $p$
+and $q$. The two component equations, naturality of the product
+unit, and the original unit laws on $X,Y$ identify the resulting
+maps. The original Cartesian uniqueness gives the whole unit law.
+For the multiplication law use the same two projections,
+naturality of the product associator, functoriality of products,
+and the original multiplication laws on $X,Y$. This proves the
+whole multiplication equation on $P$.
+
+The defining component equations give equivariance of $p,q$.
+For any original $a:T\to P$, if $ap$ and $aq$ are equivariant,
+postcomposing the proposed equivariance equation for $a$ with
+each original projection reduces it to those two equations.
+Cartesian uniqueness then proves the entire equivariance equation.
+The universal lift of two equivariant maps has exactly these
+original two components, so the last assertion follows as well.
+\end{proof}

@@ -1,0 +1,152 @@
+\section{Completed residue fields of arbitrary seminorm points}
+\label{sec:general-residue-fields}
+
+Let $A$ be an arbitrary commutative ring and let $x\in\mathcal S(A)$.
+Write $\mathfrak p_x=\{a:|a|_x=0\}$. This is a prime ideal. The
+constructions below use this actual support, with no field structure or
+trivial valuation assumed on the coefficient ring.
+
+\begin{definition}[Residue field and induced seminorm]
+\label{spectrum:residue-field}
+\lean{EnvelopeProperty.Berkovich.Spectrum.ResidueField,
+EnvelopeProperty.Berkovich.Spectrum.residueValuation,
+EnvelopeProperty.Berkovich.Spectrum.residueValuation_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.residueAbs,
+EnvelopeProperty.Berkovich.Spectrum.isNonarchimedean_residueAbs}
+\leanok
+\uses{spectrum:support}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+Set $\kappa(x)=\operatorname{Frac}(A/\mathfrak p_x)$.
+There is a multiplicative ultrametric absolute value on $\kappa(x)$
+extending $|\cdot|_x$ on $A$.
+\end{definition}
+\begin{proof}
+The seminorm descends to $A/\mathfrak p_x$ because it vanishes on
+$\mathfrak p_x$. Its support there is zero. Every nonzero denominator
+therefore has positive seminorm, so the valuation extends to the fraction
+field by $|a/b|=|a|/|b|$. This is a valuation on a field, hence vanishes
+only at zero. Regard its nonnegative real values as a real absolute value;
+the ultrametric inequality implies the usual triangle inequality and also
+retains the stronger ultrametric inequality. The quotient and localization
+maps preserve the seminorm of every original element of $A$.
+\end{proof}
+
+\begin{definition}[Completed residue field]
+\label{spectrum:completed-residue-field}
+\lean{EnvelopeProperty.Berkovich.Spectrum.H,
+EnvelopeProperty.Berkovich.Spectrum.residueToH,
+EnvelopeProperty.Berkovich.Spectrum.norm_residueToH,
+EnvelopeProperty.Berkovich.Spectrum.denseRange_residueToH,
+EnvelopeProperty.Berkovich.Spectrum.toH,
+EnvelopeProperty.Berkovich.Spectrum.norm_toH,
+EnvelopeProperty.Berkovich.Spectrum.ker_toH}
+\leanok
+\uses{spectrum:residue-field}
+\source{fhx-envelope-20261028:lem:finite-flat-norm}
+The completed residue field $\mathcal H(x)$ is the completion of
+$\kappa(x)$ in the induced absolute value. It is a complete nonarchimedean
+normed field. The canonical ring homomorphism $\iota_x:A\to\mathcal H(x)$
+satisfies $\|\iota_x(a)\|=|a|_x$ and has kernel $\mathfrak p_x$.
+The canonical embedding $\kappa(x)\to\mathcal H(x)$ preserves absolute
+values and has dense image.
+\end{definition}
+\begin{proof}
+Realize $\kappa(x)$ as a normed field using its absolute value and take
+its uniform completion. The completion of a normed field is a complete
+normed field. To retain the ultrametric inequality, observe that the
+condition $\|u+v\|\le\max\{\|u\|,\|v\|\}$ is closed in the pair $(u,v)$;
+it holds on the dense image of $\kappa(x)^2$, so holds on the completion.
+The canonical completion map preserves the norm and has dense image.
+Composing it with $A\to\kappa(x)$ gives $\iota_x$ and its norm identity.
+An element maps to zero exactly when its seminorm is zero, yielding the
+kernel assertion.
+\end{proof}
+
+\begin{theorem}[Residue fields under arbitrary ring pullback]
+\label{spectrum:residue-field-pullback}
+\lean{EnvelopeProperty.Berkovich.Spectrum.ResidueField.map,
+EnvelopeProperty.Berkovich.Spectrum.ResidueField.map_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.residueValuation_map,
+EnvelopeProperty.Berkovich.Spectrum.ResidueField.map_id,
+EnvelopeProperty.Berkovich.Spectrum.ResidueField.map_comp}
+\leanok
+\uses{spectrum:residue-field,spectrum:pullback}
+Let $\varphi:A\to B$ be any unital ring homomorphism, $y\in\mathcal S(B)$,
+and $x=\varphi^*y$. There is a canonical field embedding
+$\kappa(x)\to\kappa(y)$ that preserves the induced absolute values and
+commutes with the maps from $A$ and $B$. These embeddings respect identity
+and composition of ring homomorphisms.
+\end{theorem}
+\begin{proof}
+The support satisfies $\mathfrak p_x=\varphi^{-1}(\mathfrak p_y)$.
+Thus $\varphi$ induces an injective homomorphism of the quotient domains
+and hence a homomorphism of their fraction fields. The induced valuation
+on $\kappa(x)$ obtained by pulling back that of $\kappa(y)$ agrees with
+the valuation of $x$ on $A$. Valuations on a fraction field are determined
+by their values on the quotient domain, so the two valuations coincide.
+For identity and composition, the proposed field maps agree on the images
+of all elements of $A$. The universal property of quotient and fraction
+fields gives equality of the entire maps.
+\end{proof}
+
+\begin{theorem}[Completed residue field functoriality]
+\label{spectrum:completed-residue-field-pullback}
+\lean{EnvelopeProperty.Berkovich.Spectrum.H.map,
+EnvelopeProperty.Berkovich.Spectrum.H.norm_map,
+EnvelopeProperty.Berkovich.Spectrum.H.isometry_map,
+EnvelopeProperty.Berkovich.Spectrum.H.map_toH,
+EnvelopeProperty.Berkovich.Spectrum.H.map_id,
+EnvelopeProperty.Berkovich.Spectrum.H.map_comp}
+\leanok
+\uses{spectrum:completed-residue-field,spectrum:residue-field-pullback}
+The residue-field embedding extends canonically to an isometric ring
+embedding $\mathcal H(x)\to\mathcal H(y)$, commuting with $\iota_x$,
+$\iota_y$, and $\varphi$. The completed embeddings respect identity and
+composition.
+\end{theorem}
+\begin{proof}
+The residue-field map preserves norms, so it is an isometry and hence
+uniformly continuous. Its completion is a ring homomorphism extending
+the residue-field map. Norm preservation passes from the dense residue
+field to the completion because norm is continuous. Consequently the
+completed map is an isometry and is injective.
+The commuting square follows first for residue-field elements, and thus
+in particular for the original elements of $A$.
+The identity and composition laws hold on the dense residue-field image
+by the preceding theorem. Continuous maps into the Hausdorff completed
+field that agree on a dense set agree everywhere, proving these laws.
+\end{proof}
+
+\begin{corollary}[Compatibility with a prescribed base seminorm]
+\label{spectrum:relative-completed-residue-field}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.H,
+EnvelopeProperty.Berkovich.RelativeSpectrum.norm_algebraMap_H,
+EnvelopeProperty.Berkovich.RelativeSpectrum.H.map}
+\leanok
+\uses{spectrum:completed-residue-field-pullback,spectrum:relative}
+Let $R$ be any commutative ring with a prescribed seminorm $v$, and let
+$A,B$ be commutative $R$-algebras. For $x\in\mathcal S_v(A)$, the field
+$\mathcal H(x)$ is an $R$-algebra with
+$\|r\|_{\mathcal H(x)}=v(r)$ for every $r\in R$.
+If $\varphi:A\to B$ is an $R$-algebra homomorphism and $x=\varphi^*y$,
+the completed residue-field embedding is an $R$-algebra homomorphism.
+\end{corollary}
+\begin{proof}
+Compose $R\to A$ with $\iota_x$ to obtain the $R$-algebra structure.
+The norm identity for $\iota_x$ and the defining restriction of a relative
+point give the displayed base norm. The commuting square of completed
+residue fields, applied to the image of $r\in R$, shows that pullback
+embeddings commute with this base action, since $\varphi$ is an
+$R$-algebra homomorphism.
+\end{proof}
+
+\begin{remark}\label{spectrum:completed-residue-field-scope}
+\uses{spectrum:completed-residue-field,spectrum:relative-completed-residue-field}
+No boundedness, finite-generation, field, or completeness assumption is
+made on $A$ or the prescribed coefficient ring. The base map may have
+kernel $\operatorname{supp}(v)$, so it is norm preserving in the displayed
+sense without being asserted injective. The field maps under ring pullback
+are isometric embeddings. These constructions do not assert an extension
+theorem for valuations or a description of finite analytic fibres by
+Artinian tensor factors; those are separate results.
+\end{remark}

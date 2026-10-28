@@ -1,0 +1,58 @@
+\section{The intrinsic full coherent Euler characteristic}
+
+\begin{definition}[The full actual coherent Euler characteristic]
+\label{def:fc-scheme-coherent-euler-characteristic}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerCharacteristic.coverEuler, EnvelopeProperty.SchemeCoherentEulerCharacteristic.eulerCharacteristic, EnvelopeProperty.SchemeCoherentEulerCharacteristic.normalizedEulerCharacteristic}
+Take the actual finite affine cover of the original quasi-compact
+separated scheme. Define $\chi(M)$ to be the alternating sum of its
+actual field-linear Cech cohomology dimensions in degrees less than
+one plus the number of cover members. Define the normalized Euler
+characteristic of the original line $L$ as $\chi(L)-\chi(\mathcal O)$.
+\end{definition}
+
+\begin{theorem}[Derived boundedness and independence]
+\label{thm:fc-scheme-coherent-euler-bounded}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerCharacteristic.fieldCech_isZero_of_card_le, EnvelopeProperty.SchemeCoherentEulerCharacteristic.fieldCech_finite, EnvelopeProperty.SchemeCoherentEulerCharacteristic.coverEuler_eq_of_card_le, EnvelopeProperty.SchemeCoherentEulerCharacteristic.fieldCech_finrank_eq_of_affine_openCovers, EnvelopeProperty.SchemeCoherentEulerCharacteristic.eulerCharacteristic_eq_on_cover, EnvelopeProperty.SchemeCoherentEulerCharacteristic.eulerCharacteristic_eq_of_iso, EnvelopeProperty.SchemeCoherentEulerCharacteristic.normalizedEulerCharacteristic_eq_of_iso, EnvelopeProperty.SchemeCoherentEulerCharacteristic.normalizedEulerCharacteristic_unit, EnvelopeProperty.SchemeCoherentEulerCharacteristic.coverEuler_eq_partialEuler}
+\uses{def:fc-scheme-coherent-euler-characteristic, thm:fc-scheme-coherent-euler-index}
+The actual field Cech cohomology vanishes in every degree at least the
+cardinality of any finite affine cover. For projective coherent original
+modules every group is finite dimensional. Every sufficiently long
+finite alternating sum on any other finite affine cover is the same
+$\chi(M)$, and original module isomorphisms preserve $\chi$.
+\end{theorem}
+\begin{proof}
+Give the finite index type any linear order. In degrees at least its
+cardinality there is no strictly increasing tuple, so every actual
+ordered Cech term vanishes. The genuine native-to-ordered Cech homotopy
+equivalence makes the original native Cech homology vanish in those
+degrees. The original scalar restriction is exact and preserves zero.
+Projective coherent finiteness applies in every positive degree, while
+actual degree-zero Cech cohomology is actual global sections. To compare
+two covers, extend both finite sums to the larger bound; the added
+terms are zero. The actual degree-zero section isomorphism and genuine
+two-cover positive-degree cohomology isomorphisms then identify every
+term. An original module isomorphism likewise induces linear
+isomorphisms on every actual cohomology group.
+\end{proof}
+
+\begin{theorem}[Unconditional coherent Euler additivity]
+\label{thm:fc-scheme-coherent-euler-characteristic-exact}
+\leanok
+\lean{EnvelopeProperty.SchemeCoherentEulerCharacteristic.eulerCharacteristic_add}
+\uses{thm:fc-scheme-coherent-euler-bounded, thm:fc-cohomology-finite-euler, thm:fc-scheme-coherent-euler-zero}
+For every actual short exact sequence of original finite-type
+quasicoherent modules on an actual projectively factored scheme over
+the original field, $\chi(B)=\chi(A)+\chi(C)$. No vanishing or numerical
+certificate is required.
+\end{theorem}
+\begin{proof}
+The actual finite affine cover sends the original module short exact
+sequence to a true short exact sequence of the original base-linear
+Cech complexes. Restriction to the original field remains exact. All
+actual cohomology dimensions are finite and vanishing at the cover
+bound is derived by the preceding theorem. The genuine finite Euler
+relation of the actual long exact cohomology sequence therefore gives
+the result directly.
+\end{proof}

@@ -1,0 +1,34 @@
+\section{The canonical comparison on each original affine open}
+
+\begin{lemma}\label{lem:fc-module-flat-base-change-affine-open}
+\lean{EnvelopeProperty.SchemeModuleFlatBaseChangeAffineOpen.isIso_comparison}
+\leanok
+\uses{scheme:existing-affine-module-pullback-sections,lem:fc-affine-cartesian-module-base-change,lem:fc-scalar-module-open-restriction,lem:fc-module-pullback-open-restriction,lem:fc-scheme-module-flat-base-change-map}
+On the actual scalar base change of $p:X\to\operatorname{Spec}R$,
+for any original quasicoherent $M$ and any original affine open $U$,
+the canonical whole section comparison
+$S\otimes_R\Gamma(U,M)\to\Gamma(g^{-1}U,g^*M)$ is an isomorphism.
+\end{lemma}
+\begin{proof}
+The square obtained by restricting the original projection to $U$ and
+$g^{-1}U$ is cartesian. Paste it with the actual original scalar base
+change square. Its upper source and target are affine: the target is
+$U$ and the source is its base change along the affine spectrum map.
+The original quasicoherent module restricts to a quasicoherent module
+on $U$. Apply the affine cartesian module comparison to this square.
+
+Identify the original open-section modules with the entire global
+section modules of the two original restrictions, retaining their
+literal scalar actions. Original module pullback commutes with original
+open restriction by uniqueness of the actual composite adjunctions.
+The equality of the two composite adjunction units identifies the
+affine comparison with the original canonical comparison on $U$:
+apply the equality on $U$, transport the actual open-restriction unit
+sections to the top opens, and use native presheaf naturality. On each
+pure tensor both sides are the actual coefficient times the same
+original pullback-unit section. Tensor extensionality gives equality
+of the entire maps. The affine equivalence and the derived original
+restriction isomorphisms therefore prove that the original canonical
+component is an isomorphism. No compatibility square or section
+comparison is supplied as an additional hypothesis.
+\end{proof}

@@ -1,0 +1,44 @@
+\section{The normalized action fixes the original variety projection}
+
+\begin{lemma}[The entire original parameter family fixes the original variety]
+\label{lem:pl-original-parameter-family-forgets-scaling}
+\lean{EnvelopeProperty.ProjBerk.parameterFamily_forgets_scaling,EnvelopeProperty.ProjBerk.closedParameterFamily_forgets_scaling}
+\leanok
+For any original coefficient extension and any original parameter unit,
+the two whole parameter-family maps followed by the projection forgetting
+the parameter agree. The same holds for the actual original lifted blowup
+action and its original whole product projection.
+\end{lemma}
+\begin{proof}
+On the original coefficient polynomial ring the scaled and unscaled maps
+both send every original coefficient $c$ to its prescribed coefficient image.
+Their composites with the inclusion of coefficients are therefore equal.
+Functoriality of the entire native projective coefficient morphisms gives
+the first equality. The original closed-family ambient-inclusion triangle
+gives the same equality on the original closed family. Compose the original
+blowup-family projection identity with the original closed inclusion and
+then this coefficient projection. Replace the scaled closed-family map by
+the unscaled one. The defining Cartesian square of the original blowup
+family then gives its original product projection.
+\end{proof}
+
+\begin{theorem}[The same original normalized projection is action invariant]
+\label{thm:pl-original-normalized-projection-action-invariant}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.invariantMorphism_comp,EnvelopeProperty.ProjSubvariety.simultaneousNativeOriginalProjection_invariant,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeOriginalProjection_invariant}
+\leanok
+\uses{lem:pl-original-parameter-family-forgets-scaling,thm:pl-original-normalized-simultaneous-gm-action}
+The actual constructed action on the same original normalized simultaneous
+PL model fixes its original projection to $X$, as an equality of entire
+original scheme morphisms on the original whole group product.
+\end{theorem}
+\begin{proof}
+The preceding lemma and the exact original coordinate-isomorphism projection
+triangle give invariance of the original coordinate-model projection to $X$;
+the original closed immersion of $X$ detects this equality. Transport through
+the original equivariant coordinate isomorphism yields invariance on the same
+actual simultaneous blowup. The actual normalization projection is
+equivariant. Composing its whole equivariance identity with the original
+blowup-to-$X$ projection and using the whole product-projection square gives
+invariance on the original normalized model. All projection morphisms are
+the original ones.
+\end{proof}

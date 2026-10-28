@@ -1,0 +1,61 @@
+\section{The entire original global evaluation generates on a principal open}
+
+\begin{definition}[The whole original global evaluation]
+\label{def:scheme-module-all-global-evaluation}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalEvaluation.evaluation,EnvelopeProperty.SchemeModulePrincipalEvaluation.sectionHom_evaluation}
+For a module $M$ on a scheme $X$, let
+$E_M:\bigoplus_{s\in\Gamma(X,M)}\mathcal O_X\to M$
+be the evaluation of every original global section. The original
+section morphism of $s$ is exactly its free basis inclusion
+followed by $E_M$.
+\uses{lem:generated-line-top-sections}
+\end{definition}
+\begin{proof}
+Use the genuine free-sheaf universal property and the compatible
+section recovered from each original top value. The inverse
+identities for that universal property and for the unit-section
+equivalence give the stated exact original basis formula.
+\end{proof}
+
+\begin{lemma}[The original evaluation cokernel kills all global sections]
+\label{lem:scheme-module-evaluation-cokernel-top}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalEvaluation.cokernelProjection_top_eq_zero}
+The actual projection $M\to\operatorname{coker}(E_M)$ is zero
+on the entire original global section module.
+\uses{def:scheme-module-all-global-evaluation}
+\end{lemma}
+\begin{proof}
+For every original $s$, the basis formula and the actual cokernel
+equation make its section morphism followed by the cokernel
+projection zero. Evaluating on the original unit section at the
+top open shows that the image of $s$ itself is zero. Extensionality
+gives the whole global-section assertion.
+\end{proof}
+
+\begin{proposition}[Original global evaluation generates on a generated principal open]
+\label{prop:scheme-module-original-evaluation-principal-epi}
+\leanok
+\lean{EnvelopeProperty.SchemeModulePrincipalEvaluation.restrict_evaluation_epi}
+Let $X$ be quasicompact and separated, $\pi:X\to B$ any morphism,
+$M$ quasicoherent and $P=\pi^{-1}D(r)$. If the actual module
+$M|_P$ is globally generated, the restriction of the entire
+original evaluation $E_M$ to $P$ is an epimorphism.
+No denominator bound or chosen matching family is an input.
+\uses{def:scheme-module-all-global-evaluation,lem:scheme-module-evaluation-cokernel-top,prop:scheme-module-principal-restriction-zero}
+\end{proposition}
+\begin{proof}
+The actual free source is quasicoherent, so the actual evaluation
+cokernel is quasicoherent. Its projection kills all original
+global sections by the preceding lemma. Genuine whole-section
+principal-open localization and actual generation of $M|_P$
+therefore make the restricted cokernel projection zero.
+Native open restriction is a left adjoint, so it preserves
+this same cokernel. Its actual cokernel comparison identifies
+the cokernel projection of $E_M|_P$ with zero. The abelian
+cokernel criterion proves that $E_M|_P$ is epi, including empty
+schemes and empty principal opens. The later source test-configuration
+application still derives generation from its original ample
+line bundle and source linearization.
+\end{proof}

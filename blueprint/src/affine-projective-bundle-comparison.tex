@@ -1,0 +1,68 @@
+\section{Whole projective bundles over an affine base}
+
+\begin{lemma}[The whole affine projective bundle comparison]
+\label{lem:fc-whole-affine-projective-bundle}
+\leanok
+\lean{EnvelopeProperty.AffineProjectiveBundleComparison.wholeIso, EnvelopeProperty.AffineProjectiveBundleComparison.wholeIso_structure, EnvelopeProperty.AffineProjectiveBundleComparison.wholeIso_inv_structure}
+For a quasi-coherent module $E$ on an affine scheme $X$, there is an
+isomorphism from $\operatorname{Proj}(\operatorname{Sym}_{\Gamma(X,\mathcal O_X)}
+\Gamma(X,E))$ to the entire original projective bundle $\mathbb P_X(E)$.
+Under this isomorphism, its original coefficient projection becomes
+the original bundle projection followed by the canonical affine
+isomorphism $X\simeq\operatorname{Spec}\Gamma(X,\mathcal O_X)$.
+\end{lemma}
+\begin{proof}
+The original projective bundle is the colimit of the projective
+bundles of $\Gamma(U,E)$ over the directed system of affine opens
+$U\subseteq X$.  Since $X$ is affine, the entire open $X$ is a terminal
+object of that index category.  The canonical map from the component
+indexed by $X$ to the colimit is therefore an isomorphism: its inverse
+is induced by the compatible maps from each component to the terminal
+component, and the colimit identities give both inverse identities.
+The structure map on the terminal component is, by the original
+gluing square, its symmetric-projective coefficient map followed by
+$\operatorname{Spec}\Gamma(X,\mathcal O_X)\simeq X$.  This proves the
+claimed equality of entire structure morphisms.
+\end{proof}
+
+\begin{theorem}[A polynomial embedding of the entire affine projective bundle]
+\label{thm:fc-whole-affine-bundle-polynomial-embedding}
+\leanok
+\lean{EnvelopeProperty.AffineProjectiveBundleComparison.wholeBundle_isProjectiveFactorization}
+\uses{lem:fc-whole-affine-projective-bundle,thm:fc-symmetric-projective-embedding}
+If $E$ is also of finite type, its entire original projective bundle
+admits a closed immersion into a finite polynomial projective space
+over $\Gamma(X,\mathcal O_X)$.  The composite of this immersion with
+the original coefficient projection is the original bundle
+projection followed by the canonical affine isomorphism of $X$.
+\end{theorem}
+\begin{proof}
+Quasi-coherence and finite type on the affine scheme imply that
+$\Gamma(X,E)$ is a finite $\Gamma(X,\mathcal O_X)$-module.  Apply the
+finite symmetric-projective embedding theorem to this actual module
+and precompose its embedding with the inverse of the preceding
+whole-bundle isomorphism.  An isomorphism followed by a closed
+immersion is a closed immersion.  The preceding structure equality
+and the coefficient equality of the symmetric-projective embedding
+give the stated equality of composites.
+\end{proof}
+
+\begin{corollary}[Projective-bundle factorizations over affine schemes]
+\label{cor:fc-projective-bundle-to-polynomial-factorization}
+\leanok
+\lean{EnvelopeProperty.AffineProjectiveBundleComparison.isProjectiveFactorization_of_isProjective}
+\uses{thm:fc-whole-affine-bundle-polynomial-embedding}
+Let $f:Y\to X$ be projective in the finite quasi-coherent
+projective-bundle sense, with $X$ affine.  Then
+$Y\xrightarrow f X\simeq\operatorname{Spec}\Gamma(X,\mathcal O_X)$
+admits an actual closed factorization through a finite polynomial
+projective space over the original global coefficient ring.
+\end{corollary}
+\begin{proof}
+Take the original finite quasi-coherent module $E$ and original closed
+immersion $Y\hookrightarrow\mathbb P_X(E)$ from projectivity of $f$.
+Compose this immersion with the preceding constructed polynomial
+embedding of the entire bundle.  The composite is closed, and its
+structure equality follows by composition of the two original
+structure equalities.
+\end{proof}

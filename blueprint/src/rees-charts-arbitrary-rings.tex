@@ -1,0 +1,159 @@
+\subsection{Actual Rees charts and principal centers over arbitrary rings}
+
+Let $A$ be ANY original commutative ring and $g:\iota\to A$ any family.
+Retain the SAME original homogeneous kernel quotient $Q$ and its actual
+chart $C_j=(Q[1/Y_j])_0$. Let $S_j=A[1/g_j]$ be its genuine original
+principal localization. No coefficient is assumed nonzero or regular;
+$S_j$ and the chart may be the zero ring.
+
+\begin{theorem}[The actual chart map into the original coefficient localization]
+\label{algebra:actual-rees-chart-away-map}
+\uses{algebra:actual-rees-quotient-evaluation}
+\lean{EnvelopeProperty.ReesChart.localizationToAway,
+EnvelopeProperty.ReesChart.localizationToAway_algebraMap,
+EnvelopeProperty.ReesChart.toAway,
+EnvelopeProperty.ReesChart.toAway_mk}
+\leanok
+There is a genuinely constructed $A$-algebra homomorphism
+$C_j\to S_j$ preserving EVERY original coefficient. Every actual
+homogeneous fraction with numerator $a$ of degree $d$ maps to the
+ORIGINAL fraction $e(a)/g_j^d$ in $S_j$, where $e:Q\to A$ is the
+actual quotient evaluation at the SAME original family.
+\end{theorem}
+\begin{proof}
+Compose the ACTUAL quotient evaluation $Q\to A$ with the original
+$A\to S_j$. The image of $Y_j$ is the genuine unit $g_j$ in this
+actual localization, including the zero-ring case. The true ungraded
+localization universal property therefore extends the whole map through
+$Q[1/Y_j]$. Restrict it along the actual degree-zero inclusion.
+Every original coefficient follows the genuine coefficient tower.
+Applying the whole localization map to the actual numerator-denominator
+identity gives the stated fraction formula by the localization unit law.
+No domain or fraction field is used or selected.
+\end{proof}
+
+\begin{theorem}[Whole chart injection through actual torsion annihilation]
+\label{algebra:actual-rees-chart-away-injective}
+\uses{algebra:actual-rees-chart-away-map,algebra:actual-rees-presentation}
+\lean{EnvelopeProperty.ReesChart.toAway_injective}
+\leanok
+The constructed $C_j\to S_j$ is injective on ENTIRE chart elements
+for EVERY commutative $A$ and original family, even when $g_j$ is
+zero, nilpotent or a zero divisor.
+\end{theorem}
+\begin{proof}
+Represent any chart element in the kernel by an ACTUAL homogeneous
+fraction and lift its numerator to an ORIGINAL same-degree homogeneous
+polynomial $F_d$. Since the image fraction vanishes, its actual unit
+denominator gives $F_d(g)=0$ in $A[1/g_j]$. The TRUE localization
+kernel criterion supplies an original integer $m$ with
+$g_j^mF_d(g)=0$ in the ORIGINAL $A$.
+
+The polynomial $Y_j^mF_d$ is genuinely homogeneous of degree $m+d$.
+Its ORIGINAL presentation is $g_j^mF_d(g)T^{m+d}=0$, so it lies in the
+SAME original presentation kernel. Thus the whole original quotient
+numerator $a$ satisfies $Y_j^m a=0$ in $Q$. This actual annihilator is
+an allowed denominator in $Q[1/Y_j]$, so the original homogeneous
+fraction is zero there. The genuine degree-zero inclusion is injective,
+so the original chart element is zero. Subtraction now proves whole
+map injectivity. This uses real localization torsion, not cancellation
+of an originally regular coefficient or an assumed chart embedding.
+\end{proof}
+
+\begin{theorem}[The original whole chart is its actual localization-adjoin image]
+\label{algebra:actual-rees-chart-away-equivalence}
+\uses{algebra:actual-rees-chart-away-injective}
+\lean{EnvelopeProperty.ReesChart.toAway_isLocalization,
+EnvelopeProperty.ReesChart.awayRatios,
+EnvelopeProperty.ReesChart.away_mk_pow,
+EnvelopeProperty.ReesChart.toAway_coordinateRatio,
+EnvelopeProperty.ReesChart.coordinateRatio_self,
+EnvelopeProperty.ReesChart.aeval_awayRatios,
+EnvelopeProperty.ReesChart.awayAlgebra,
+EnvelopeProperty.ReesChart.range_toAway,
+EnvelopeProperty.ReesChart.awayEquiv,
+EnvelopeProperty.ReesChart.awayEquiv_coe,
+EnvelopeProperty.ReesChart.awayEquiv_algebraMap}
+\leanok
+The WHOLE image is the actual original $A$-subalgebra
+\[
+ A[g_i/g_j:i\in\iota]\subseteq A[1/g_j],
+\]
+where each ratio is its true numerator times the genuine inverse of
+$g_j$ in this SAME localization. Hence $C_j$ is genuinely equivalent
+to that entire algebra, preserving all original coefficients and all
+actual homogeneous fractions. The selected coordinate fraction is genuinely one, including the zero chart.
+Moreover the SAME $S_j$, with its coefficient action supplied by this
+actual chart map, is genuinely the localization of $C_j$ at its ORIGINAL
+coefficient $g_j$. No scalar-tower compatibility is assumed as a certificate.
+No finite-family hypothesis is needed.
+\end{theorem}
+\begin{proof}
+Every original ratio is the image of its genuine degree-zero variable
+fraction. Thus the entire adjoin is contained in the true image.
+For the reverse inclusion, use an actual homogeneous fraction and its
+original same-degree lift $F_d$. The full original homogeneous Rees
+identity, evaluated at the TRUE inverse of $g_j$ in $A[1/g_j]$, gives
+\[
+ F_d(g)/g_j^d=F_d((g_i/g_j)_i).
+\]
+This is equality of whole polynomial ring evaluations in the actual
+coefficient localization, proved from the entire homomorphism and
+unit identities. The right side belongs to the actual adjoin.
+Therefore EVERY original chart value lies in that adjoin. The proved
+whole injection and actual image equality give a genuine algebra
+equivalence. No choice of a fraction field, domain or target chart
+isomorphism is an input, and zero/empty chart cases remain included.
+
+For the localization assertion, install EXACTLY the chart-algebra action
+defined by the constructed whole map $C_j\to S_j$. Its selected coefficient
+is a genuine unit, so every power is a unit. Every element of $S_j$ has an
+ORIGINAL $A$-numerator and power-of-$g_j$ denominator; mapping those original
+coefficients through $A\to C_j$ proves actual chart fraction surjectivity.
+Finally, equality of two chart elements after mapping into $S_j$ already
+implies their original equality by the proved whole injection, so the
+localization kernel axiom holds with annihilator one. These verify all
+three localization axioms directly, with the exact original coefficient
+action and without an additional scalar tower.
+\end{proof}
+
+\begin{theorem}[The original center becomes a genuine principal regular ideal]
+\label{algebra:actual-rees-center-principalization}
+\uses{algebra:actual-rees-chart-away-equivalence}
+\lean{EnvelopeProperty.ReesChart.coefficient_mul_coordinateRatio,
+EnvelopeProperty.ReesChart.centerIdeal,
+EnvelopeProperty.ReesChart.centerIdeal_eq_span,
+EnvelopeProperty.ReesChart.coefficient_mem_nonZeroDivisors,
+EnvelopeProperty.ReesChart.centerMultiplication,
+EnvelopeProperty.ReesChart.centerLinearEquiv,
+EnvelopeProperty.ReesChart.centerLinearEquiv_coe}
+\leanok
+For the ORIGINAL center $I=(g_i)$, its actual ideal extension in
+$C_j$ is exactly the principal ideal generated by the original
+coefficient $g_j$. That genuine generator is a non-zero-divisor
+in $C_j$. Multiplication by it gives an actual linear equivalence
+from $C_j$ onto the extended original center ideal, preserving its
+entire original multiplication formula. No numerical rank-one or
+nontriviality assertion is made for a zero chart.
+\end{theorem}
+\begin{proof}
+After the proved WHOLE chart injection into $A[1/g_j]$, each relation
+$g_i=g_j(Y_i/Y_j)$ is the actual numerator-inverse identity. Injection
+therefore proves this ENTIRE ring relation already in $C_j$.
+Every original center generator lies in the true principal ideal
+$(g_j)$, while the original selected $g_j$ is one of those center
+generators. Actual ideal map/span identities give both inclusions,
+without a radical or support replacement.
+
+The image of $g_j$ under the actual injective chart map is a genuine
+unit, hence a non-zero-divisor. Injectivity reflects that actual
+regularity to the original chart, including zero rings. Multiplication
+by this SAME original generator is consequently injective. Its image
+is the proved principal center ideal by the actual principal ideal
+membership criterion; the whole multiplication map is linear.
+These real injection and surjection laws construct the stated
+linear equivalence, rather than assuming invertibility or a Cartier
+principalization certificate. Global blowup universal properties and
+birational scheme assembly remain separate consumers of these exact
+original chart maps.
+\end{proof}

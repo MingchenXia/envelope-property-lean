@@ -1,0 +1,38 @@
+\section{The original de Rham rule on a \v Cech factor}
+\label{sec:di-cech-factor-derham-leibniz}
+
+\begin{lemma}[Whole-map de Rham Leibniz on the original factor]
+\label{lem:di-cech-factor-derham-leibniz}
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.factorWedgeAlong_differential}
+\leanok
+\uses{lem:native-di-all-open-wedge-leibniz,def:native-cech-ordered-cup}
+Let $f:X\to\operatorname{Spec}k$ be smooth of pure relative dimension
+$n$ in characteristic $p$, $Y=X^{(p)}$, and $E^q=F_*\Omega^q_{X/k}$.
+For an original open immersion $j:V\hookrightarrow Y$, write
+$\mathcal F_V(M)=j_*j^*M$. Given original module-sheaf maps
+$a:A\to\mathcal F_V(E^q)$ and $b:B\to\mathcal F_V(E^r)$, let
+$\mu_V(a,b):A\otimes B\to\mathcal F_V(E^{r+q})$ be the actual
+factor wedge. The entire original sheaf maps satisfy
+\[
+ \mu_V(a,b)\mathcal F_V(d_{r+q})
+ =\mu_V(a\mathcal F_V(d_q),b)
+    +(-1)^q\mu_V(a,b\mathcal F_V(d_r)),
+\]
+where the second term is transported by the original degree equality
+$(r+1)+q=r+q+1$. Neither a Leibniz identity nor any quasi-isomorphism
+is an input.
+\end{lemma}
+\begin{proof}
+The original sheafification adjunction for $A\otimes B$ detects equality
+of these maps on original pure tensor sections on every open $W$.
+For each such tensor, the actual factor wedge is the original wedge
+of the images under $a$ and $b$ on the cut
+$V\cap W=j(j^{-1}W)$. The actual factor functor sends each differential
+to that same differential evaluated on the cut. Transport by the degree
+equality gives exactly the already defined section degree transport on
+this cut, as follows by eliminating the equality. The assertion is thus
+the proved whole-open de Rham Leibniz identity on $V\cap W$.
+Tensor-section detection proves the equality of the entire original
+sheaf maps. No global quasi-coherence of the factor sheaves or exactness
+of $j_*$ is needed.
+\end{proof}

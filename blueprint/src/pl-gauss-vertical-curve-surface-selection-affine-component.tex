@@ -1,0 +1,78 @@
+\section{Original affine ideals of actual scheme components}
+These comparisons retain the actual coordinate rings, whole ideal sheaves
+and original closed-immersion section maps. The only component hypothesis
+is membership of an actual closed set in the actual irreducible-component
+set. No prime, height, dimension or ideal-matching certificate is supplied.
+
+\begin{lemma}[The original affine ideal of a whole component is minimal]
+\label{lem:pl-gauss-original-component-affine-minimal-prime}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionAffineComponent.component_affineIdeal_mem_minimalPrimes}
+\leanok
+Let $Z$ be an actual irreducible component of a scheme $X$, and let $U$
+be an actual affine open meeting $Z$. The literal ideal of the existing
+whole vanishing-ideal sheaf on this original affine open,
+\[
+ (\mathcal I_Z).\mathrm{ideal}(U)\subseteq\Gamma(X,U),
+\]
+is an actual minimal prime of the original section ring.
+\end{lemma}
+\begin{proof}
+The original affine chart map $\operatorname{Spec}\Gamma(X,U)\to X$
+is an open embedding with actual image $U$. The component meets this
+image by hypothesis. The genuine open-preimage component theorem
+therefore makes the exact preimage of $Z$ an irreducible component of
+the original affine prime spectrum. It is closed because $Z$ is closed.
+The existing prime-spectrum vanishing-ideal/minimal-prime theorem makes
+its actual vanishing ideal minimal over zero. By the original definition
+of the whole sheaf $\mathcal I_Z$, this is exactly its original affine
+ideal, proving the assertion without changing the ring or component.
+\end{proof}
+
+\begin{theorem}[The original cut component has its actual minimal prime over the cut ideal]
+\label{thm:pl-gauss-original-cut-component-affine-minimal-prime}
+\uses{lem:pl-gauss-original-component-affine-minimal-prime}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionAffineComponent.cut_component_affineIdeal_mem_minimalPrimes}
+\leanok
+Let $I$ be ANY actual ideal-sheaf data on the original scheme $Y$, and
+let $Z$ be an actual irreducible component of the SAME original closed
+subscheme $K=I.\mathrm{subscheme}$. Let $D$ be the actual reduced closed
+subscheme of this $Z$ in $K$, with the original map
+\[
+ j:D\hookrightarrow K\hookrightarrow Y.
+\]
+For every original affine open $U\subseteq Y$ whose inverse image in
+$K$ meets $Z$, the literal original ideal
+\[
+ j.\ker.\mathrm{ideal}(U)
+ \quad\hbox{belongs to}\quad
+ \bigl(I.\mathrm{ideal}(U)\bigr).\mathrm{minimalPrimes}.
+\]
+There is no reducedness, Noetherianity, normality or dimension assumption
+on $Y$ or on the whole cut $K$.
+\end{theorem}
+\begin{proof}
+The genuine original closed immersion $a:K\hookrightarrow Y$ makes
+$V=a^{-1}(U)$ affine. Apply the preceding lemma on this exact $V$ to
+the actual component $Z$. It gives the literal ideal
+$Q=\mathcal I_Z.\mathrm{ideal}(V)$ as a minimal prime over zero in the
+SAME original ring $\Gamma(K,V)$.
+
+The actual section map $\pi=a^\#: \Gamma(Y,U)\to\Gamma(K,V)$ is
+surjective, and its actual kernel is the original $I.\mathrm{ideal}(U)$,
+by the existing whole original kernel-subscheme construction. The
+genuine surjective-contraction theorem sends $Q$ to a minimal prime
+over that kernel. The existing original ideal-sheaf pushforward formula
+on the actual affine open identifies this entire contraction with
+$(\mathcal I_Z.\mathrm{map}(a)).\mathrm{ideal}(U)$. By definition of
+the SAME actual component inclusion, this pushforward is precisely the
+whole original $j.\ker$. Substitution gives the asserted membership in
+the actual minimal-prime set of the original cut ideal.
+\end{proof}
+
+For the already constructed original polynomial cut, this supplies the
+literal affine prime to which the proved principal-component dimension
+and central-parameter avoidance theorems apply. Identifying that cut's
+actual affine ideal with its actual principal equation, transferring the
+whole component dimension, constructing the central-generic avoidance
+family and normalizing at every induction stage remain subsequent
+geometric work. No completed horizontal surface selection is claimed.

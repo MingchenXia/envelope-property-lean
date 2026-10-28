@@ -1,0 +1,100 @@
+\section{The geometric relative de Rham complex on its original charts}
+
+\begin{definition}[Actual chart sections of the global relative complex]
+\label{def:cartier-geometric-chart-section-complex}
+\lean{EnvelopeProperty.Cartier.GeometricComplexExchange.sectionComplex,EnvelopeProperty.Cartier.GeometricComplexExchange.nativeSectionComplex}
+\leanok
+\uses{thm:cartier-original-entire-scheme-relative-frobenius}
+Let $k$ be a field of characteristic $p>0$, let $f:X\to\operatorname{Spec}k$
+be smooth of relative dimension $n$, and retain the actual geometric
+twist $Y=X^{(p)}$ and actual relative Frobenius $F:X\to Y$.
+For an original affine open $U\subset X$, put $W=U^{(p)}\subset Y$,
+$B=\Gamma(X,U)$ and $T=k\otimes_{F_k,k}B$, with their original maps.
+Let $K=F_*\Omega^\bullet_{X/k}$ be the already constructed global
+complex on $Y$. Define $K_W$ by native evaluation of this same $K$ on
+$W$. The original twist chart gives the proved ring isomorphism
+$\sigma:\Gamma(Y,W)\simeq T$. For an original etale tuple
+$v=(v_1,\ldots,v_n)$ in $B$, define $K_{v,W}$ by restricting scalars
+of the original geometric-beta affine complex along $\sigma$.
+Both objects are actual cochain complexes over $\Gamma(Y,W)$.
+\end{definition}
+
+\begin{lemma}[Original chart components and native differential compatibility]
+\label{lem:cartier-geometric-chart-form-exchange}
+\lean{EnvelopeProperty.Cartier.GeometricComplexExchange.formIso,EnvelopeProperty.Cartier.GeometricComplexExchange.formIso_apply,EnvelopeProperty.Cartier.GeometricComplexExchange.differential_formIso}
+\leanok
+\uses{def:cartier-geometric-chart-section-complex,lem:cartier-original-affine-section-unit,thm:cartier-original-affine-section-differential}
+For each $q\ge0$, the original sheafification unit on exterior
+cotangent forms, followed by the original identification
+$F^{-1}W=U$, gives an actual $\Gamma(Y,W)$-linear isomorphism
+$\Phi_v^q:K_{v,W}^q\simeq K_W^q$. It preserves every original exterior
+form as that exact original unit section. The entire original
+consecutive differentials satisfy
+\[
+ d_{v,W}^q\Phi_v^{q+1}=\Phi_v^q d_W^q.
+\]
+No differential compatibility or Cartier isomorphism is an input.
+\end{lemma}
+\begin{proof}
+The affine exterior sheafification unit is an isomorphism for the
+original etale tuple. Its $B$-linearity restricts along the actual
+relative coefficient map. The already proved whole section-ring
+triangle identifies this action with $\beta\circ\sigma$, where
+$\beta:T\to B$ is the genuine geometric relative-Frobenius map.
+Transport along the actual equality $F^{-1}W=U$ gives the target
+sections with precisely their original pushforward scalar action.
+The existing global differential theorem on the original twisted
+open identifies $d_W$ with the intrinsic affine differential.
+The intrinsic differential commutes with the original sheafification
+unit. These two established identities yield the stated whole native
+module square on every original form.
+\end{proof}
+
+\begin{theorem}[Whole genuine geometric chart complex exchange]
+\label{thm:cartier-geometric-chart-complex-exchange}
+\lean{EnvelopeProperty.Cartier.GeometricComplexExchange.complexIso,EnvelopeProperty.Cartier.GeometricComplexExchange.complexIso_hom_f_apply}
+\leanok
+\uses{lem:cartier-geometric-chart-form-exchange}
+The preceding original components give an isomorphism of the whole
+actual cochain complexes $K_{v,W}\simeq K_W$. Every degree component
+is exactly the original unit-and-open-identification map just stated.
+The empty open and its zero section ring are retained; no characteristic
+instance on $B$, nonemptiness, perfection, or incoming comparison
+certificate is required.
+\end{theorem}
+\begin{proof}
+Apply the native isomorphism-of-components construction for homological
+complexes to the preceding genuine module isomorphisms. The sole
+cochain condition is exactly the proved differential square.
+The native construction preserves the stated components definitionally.
+\end{proof}
+
+\begin{theorem}[The entire original chart-change square]
+\label{thm:cartier-geometric-chart-complex-transition}
+\lean{EnvelopeProperty.Cartier.GeometricComplexExchange.chartChange_square,EnvelopeProperty.Cartier.GeometricComplexExchange.homologyIso,EnvelopeProperty.Cartier.GeometricComplexExchange.homology_chartChange_square}
+\leanok
+\uses{thm:cartier-geometric-chart-complex-exchange}
+For two original honest etale tuples $v,w$ of length $n$ on the same
+original $U$, let $c_{v,w}$ be the already proved native
+identity-component comparison of their geometric-beta complexes.
+After the same actual scalar restriction along $\sigma$, the whole
+complex square satisfies
+\[
+ c_{v,w}\,\Phi_w=\Phi_v.
+\]
+Applying actual native homology gives the same square in every degree.
+\end{theorem}
+\begin{proof}
+The old honest-tuple chart comparison has original identity components.
+The underlying original sheafification unit and the original open
+identification in $\Phi_v$ and $\Phi_w$ are the same maps.
+Equality therefore holds on every degree and every original form,
+and native complex extensionality gives the whole square. Functoriality
+of native homology gives its whole homology square.
+\end{proof}
+
+This is the actual complex exchange on each original geometric chart.
+It does not construct a global Cartier isomorphism, glue a DI morphism,
+or assert compatibility between different opens. The chart-change statement compares coordinates on one fixed open;
+restriction compatibility between distinct opens requires the corresponding
+localization and descent comparisons.

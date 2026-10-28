@@ -1,0 +1,69 @@
+\section{Entire sections on the original noncentral open}
+
+\begin{lemma}\label{lem:native-test-configuration-inverse-projection}
+\uses{thm:native-test-configuration-unit-fibre,thm:native-test-configuration-action-fibre-diagrams}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitOpenIso_inv_originalProjection}
+\leanok
+Let $C$ be an original test configuration of $X$ over a field $k$, let
+$U=C\setminus C_0$, and let $e:U\simeq X\times_k\mathbb G_m$ be the
+isomorphism constructed from the original action and fibre at one. Write
+$p:U\to X$ for the original projection defined by $p=\operatorname{pr}_X e$.
+Then $p e^{-1}=\operatorname{pr}_X$ as morphisms of schemes over $k$.
+\end{lemma}
+\begin{proof}
+Substitute the definition of $p$. Associativity and $e e^{-1}=1$ identify
+$p e^{-1}$ with $\operatorname{pr}_X e e^{-1}=\operatorname{pr}_X$.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-product-power-line}
+\uses{lem:native-test-configuration-inverse-projection,prop:native-test-configuration-line-powers}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitProductLinePowerIso}
+\leanok
+Let $M$ be a module sheaf on the original total space and $L$ a module
+sheaf on $X$. Give the original isomorphism between the action and projection
+pullbacks of $M$, and the original comparison of $M$ at the fibre at one
+with $L$. For every integer $n\geq0$, these data construct an isomorphism
+\[
+(e^{-1})^*((M^{\otimes n})|_U)
+  \simeq \operatorname{pr}_X^*(L^{\otimes n})
+\]
+on the entire original product $X\times_k\mathbb G_m$.
+Neither invertibility nor generation of the modules is required here.
+\end{theorem}
+\begin{proof}
+The original power comparison gives
+$(M^{\otimes n})|_U\simeq p^*(L^{\otimes n})$ on the entire $U$.
+Pull this isomorphism back by $e^{-1}$. The natural composition
+isomorphism for pullback identifies the resulting right hand side with
+$(p e^{-1})^*(L^{\otimes n})$. Apply
+Lemma~\ref{lem:native-test-configuration-inverse-projection} and transport
+along that equality of the actual original morphisms. The composition of
+these three module isomorphisms is the required isomorphism.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-whole-open-sections}
+\uses{thm:native-test-configuration-product-power-line,thm:actual-scheme-module-iso-global-sections}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitProductPowerSectionsEquiv,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitProductPowerSectionsEquiv_apply}
+\leanok
+Under the preceding hypotheses, for every $n\geq0$ there is a bijection
+\[
+\Gamma(U,(M^{\otimes n})|_U)
+ \simeq \Gamma(X\times_k\mathbb G_m,
+                  \operatorname{pr}_X^*(L^{\otimes n})).
+\]
+For every original section $s$, its image is obtained by the actual
+pullback unit for $e^{-1}$ followed by the module isomorphism of
+Theorem~\ref{thm:native-test-configuration-product-power-line} on global
+sections. This statement concerns all global sections and needs no affine,
+quasicoherent, finiteness, or supplied section correspondence hypothesis.
+\end{theorem}
+\begin{proof}
+Pullback by the actual scheme isomorphism $e^{-1}$ is an equivalence on
+module sheaves. Its adjunction unit therefore induces a bijection on the
+entire module of global sections. The actual module isomorphism of the
+preceding theorem also induces a bijection on entire global sections.
+Compose them. The formula is the definition of this composition, so it
+holds for every original section without choosing generators. This is a
+bijection of underlying sets; scalar linearity for scheme pullback is not
+asserted in this statement.
+\end{proof}

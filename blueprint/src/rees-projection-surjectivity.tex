@@ -1,0 +1,36 @@
+\subsection{Surjectivity of the actual Rees projection}
+
+\begin{theorem}[The original nonzero-domain Rees projection is surjective]
+\label{scheme:actual-rees-projection-surjective}
+\lean{EnvelopeProperty.ReesPresentation.chartImmersion,
+EnvelopeProperty.ReesPresentation.chartImmersion_comp_projection,
+EnvelopeProperty.ReesPresentation.genericLift,
+EnvelopeProperty.ReesPresentation.genericLift_comp_projection,
+EnvelopeProperty.ReesPresentation.projection_surjective}
+\leanok
+\uses{scheme:actual-rees-presentation-proper,algebra:actual-rees-chart-fraction-embedding}
+Let $A$ be any domain and $(g_i)_{i\in I}$ a finite original family with
+$g_j\ne0$ for some actual index $j$. The SAME original Rees quotient scheme
+projection is proper and surjective over $\operatorname{Spec}A$.
+\end{theorem}
+\begin{proof}
+Use the actual homogeneous degree-zero localization at the ORIGINAL class
+of $Y_j$. Its genuine ring map into $\operatorname{Frac}A$ sends every
+homogeneous original numerator of degree $d$ to its original evaluated
+numerator divided by $g_j^d$. Its original coefficient restriction is the
+canonical injective map $A\to\operatorname{Frac}A$. Apply Spec to the whole
+ring map and compose with the actual Proj chart immersion. The true chart
+pullback square for the homogeneous quotient, followed by the polynomial
+Proj structure-map chart formula, identifies the WHOLE composite with
+$\operatorname{Spec}(A\to\operatorname{Frac}A)$, since every original
+coefficient is preserved. This gives an actual source point above the
+original zero prime of $A$, rather than a valuation or support substitute.
+
+The original projection is proper, hence its image is closed. The closure
+of the original zero prime in $\operatorname{Spec}A$ is all of that space:
+the closure is its original ideal zero locus, and the ideal is zero.
+The image therefore contains the whole coefficient scheme. This proves
+surjectivity of the SAME actual projection. It needs no Noetherianity or
+algebraically closed field, and adds neither a comparison certificate nor
+a proper-surjective witness as a hypothesis.
+\end{proof}

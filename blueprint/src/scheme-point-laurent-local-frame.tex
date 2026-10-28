@@ -1,0 +1,100 @@
+\section{The actual product local frame and the original Gauss source frame}
+
+\begin{definition}\label{def:fc-point-laurent-local-open-factor}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.completedOpenFactor,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.completedOpenFactor_comp,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.productOpenFactor,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.productOpenFactor_comp,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.productOpenFactor_restrict}
+\leanok
+\uses{def:fc-point-completed-line-frame,cor:actual-line-model-norm-local-frame,def:native-point-laurent-gauss-family}
+Let $p:X\to\operatorname{Spec}R$ be proper over a bounded valued ring,
+let $x$ be an original relative valued point, and let $U$ be an
+original open neighborhood of its true proper center. The actual
+completed point factors through $U$ by composing the original
+residue embedding with the original proper-center generic factor.
+Let $g:X_S\to X$ and $b:\operatorname{Spec}H(x)[T,T^{-1}]\to X_S$
+be the actual original Laurent projection and Gauss product map.
+Then $b$ factors through the actual original open $g^{-1}U$, and
+its restricted projection to $U$ is the constant-field projection
+followed by the completed-point factor just constructed.
+\end{definition}
+\begin{proof}
+The original residue generic triangle gives the completed-point
+triangle after composition with the residue embedding. The actual
+product first-projection triangle then shows that every original
+source point maps into $g^{-1}U$. The open-immersion lifting property
+constructs the whole factor of $b$ into this original open. Its
+composite with the original open inclusion is exactly $b$. To
+compare the two maps to $U$, compose them with the original open
+inclusion $U\to X$. The product first-projection triangle and the
+completed-point triangle make these composites equal. The open
+inclusion is a monomorphism, proving the asserted whole restricted
+projection identity.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-point-laurent-native-local-frame}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.completedFrame_eq,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.sourceFrame_eq_localPullbackFrame}
+\leanok
+\uses{def:fc-point-laurent-local-open-factor,def:fc-point-completed-line-frame,def:fc-point-laurent-line-evaluation,lem:actual-line-frame-via-factor-composition,lem:fc-original-section-pullback-frame,alggeom:actual-original-frame-pullback-composition}
+An actual original frame of $L$ on $U$ pulls back to its actual
+original product frame on $g^{-1}U$. Pull this product frame through
+the whole source factor just constructed. The resulting entire
+original source frame is exactly the source frame constructed from
+the same proper-center completed-point frame in the actual
+Laurent section-evaluation theorem. No frame-preservation or
+coefficient-matching identity is supplied.
+\end{theorem}
+\begin{proof}
+The native frame-composition identity first identifies the completed
+point frame with direct transport of the original $U$ frame through
+the completed-point factor. Applying the same composition identity
+through the constant-field projection identifies its source frame
+with direct transport through the composite source-to-$U$ map,
+preceded by the native product pullback-composition comparison.
+For the other frame, native compatibility of frame transport with
+pullback composition moves the product comparison past the source
+open factor. The frame-composition identity then transports its
+original $U$ frame through the restricted source-to-$U$ composite.
+The preceding whole restricted projection equality identifies these
+two actual composites. Thus the whole original frame isomorphisms
+are equal, including all native composition and unit comparisons.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-point-laurent-local-coefficient-value}
+\lean{EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.localCoefficient,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.sourceFrameSection_eq_localCoefficient,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.openPoint,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.openPoint_comp,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.localCoefficient_value,EnvelopeProperty.Berkovich.SchemePointLaurentLocalFrame.localCoefficient_finite_family}
+\leanok
+\uses{thm:fc-point-laurent-native-local-frame,thm:fc-point-laurent-line-gauss,thm:fc-point-completed-frame-model-norm,cor:fc-point-exists-completed-frame-model-norm,scheme:valued-points,lem:fc-original-line-section-fibre}
+Let $L$ be an original invertible line and fix its actual original
+proper-center frame on $U$. The actual native product Gauss point
+has a genuine native lift to $g^{-1}U$. For every original whole
+section $\sigma$ of $g^*L$, pull it back to this original open and
+apply the actual original product frame there. Evaluate this true
+local coefficient at that native lift. Its value is exactly
+\[
+ \max_i \|m_i\|_{L,x}r^i,
+\]
+where $m_i$ are the unique actual original Laurent coefficients
+and $\|\cdot\|_{L,x}$ is the true original model line norm of the
+original native residue pullback-unit section. For every finite
+original section family, the same actual original finite coefficient
+and integer-weight family gives its maximum before all points,
+frames and positive radii. All negative exponents and zero values
+are included.
+\end{theorem}
+\begin{proof}
+Map the actual source Gauss point through the constructed open
+factor. Its composite through the original product-open inclusion
+is the original product Gauss point, by the whole factor triangle
+and genuine native valued-point functoriality. The native
+pullback-unit section is the value at one of its genuine pulled
+section morphism. Applying an actual frame to this whole morphism
+gives its actual scalar endomorphism. Pulling this scalar through
+the open factor, native section naturality and the preceding whole
+frame identity show that the true product local coefficient pulls
+back to exactly the actual source-frame section. Native valued-point
+evaluation naturality identifies their actual values. The original
+source Gauss formula computes this value as the finite weighted
+maximum of the completed-frame functional values. Their absolute
+values equal the true original model line norms by the proper-center
+completed-frame theorem. Substitution gives the asserted formula.
+The finite-family source formula and the same substitution give
+the common original pair family, whose construction has no point,
+frame, valuation or radius input.
+\end{proof}

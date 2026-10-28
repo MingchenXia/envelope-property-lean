@@ -1,0 +1,57 @@
+\section{Full multiplier ideals commute with principal localization}
+
+\begin{lemma}[An actual nonunit denominator clears a DVR contribution]\label{lem:sc0-multiplier-nonunit-clearing}
+\lean{EnvelopeProperty.Char0.pow_mul_mem_intrinsicDVRContribution_of_nonunit}
+\leanok
+Let $C\subset V\subset K$ be an actual source and an actual essentially
+finite-type divisorial DVR. Let $I\ne0$, $q\in\mathbb Q$, and $s,c\in C$.
+If the actual image of $s$ is a nonunit of $V$, and
+$N\ge\lfloor q\operatorname{ord}_V(I)\rfloor_+$, then $s^Nc$ belongs
+to the intrinsic actual DVR contribution defining $\mathcal J_C(I^q)$.
+\end{lemma}
+\begin{proof}
+The image of a nonunit belongs to the maximal ideal $\mathfrak m_V$,
+so the image of $s^N$ belongs to $\mathfrak m_V^N$. The actual
+contribution cutoff is
+$\lfloor q\operatorname{ord}_V(I)\rfloor_+-\operatorname{ord}_V(J_{V/C})$,
+with natural subtraction. This is at most $N$. Descending powers of
+the maximal ideal therefore put the image of $s^N$ into the required
+power; multiplication by the image of $c$ preserves that ideal.
+\end{proof}
+
+\begin{theorem}[Full original multiplier ideals localize]\label{thm:sc0-full-multiplier-away-localization}
+\lean{EnvelopeProperty.Char0.map_valuativeMultiplierIdeal_source_away}
+\leanok
+\uses{lem:sc0-multiplier-nonunit-clearing,thm:sc0-multiplier-localization-forward,cor:sc0-intrinsic-multiplier-source-localization,thm:sc0-finite-divisorial-multiplier-all-exponents}
+Let $C\subset K$ be an arbitrary original smooth characteristic-zero
+source with fraction field $K$, let $E\subset K$ be its actual
+principal localization at $s\in C$, and let $I\ne0$. For every rational $q$,
+the full all-divisorial-DVR multiplier ideals satisfy
+$\mathcal J_C(I^q)E=\mathcal J_E((IE)^q)$.
+\end{theorem}
+\begin{proof}
+The forward inclusion follows from actual source-localization
+compatibility of every intrinsic DVR contribution. For the reverse,
+write an arbitrary element of the right side as an actual fraction
+$c/t$, where $t$ is a power of $s$. Its numerator image belongs to
+the right-side ideal by multiplication by $t$.
+
+Apply the already proved finite actual DVR testing theorem to the
+original source and original ideal. It produces internally a finite
+set $S$ of actual divisorial DVRs that tests every exponent and every
+original element. Choose $N$ to be the maximum over $V\in S$ of
+$\lfloor q\operatorname{ord}_V(I)\rfloor_+$. Fix $V\in S$. If the
+image of $s$ is a unit, every inverted element is a unit, so the actual
+universal property of localization gives the literal containment
+$E\subset V$ in $K$. The numerator's membership over $E$ then gives
+its contribution over $C$, by the exact intrinsic source-localization
+comparison; multiplication by $s^N$ preserves this contribution.
+If the image of $s$ is a nonunit, the preceding lemma gives the same
+conclusion directly from the chosen bound on $N$.
+
+Thus $s^Nc$ passes every actual test in $S$ and belongs to the full
+original ideal. The actual membership criterion for extension to a
+localization now puts $c/t$ in $\mathcal J_C(I^q)E$. All valuations,
+the finite family, the exponent bound, and source-localization
+compatibility were derived, rather than assumed.
+\end{proof}

@@ -1,0 +1,81 @@
+\begin{definition}[The original product graph on the original all-affine blowup]
+\label{def:whole-original-native-product-line-comparison}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalNativeProductWholeLineIso}
+\leanok
+\uses{def:whole-original-native-global-line-comparison,prop:whole-original-native-global-line-sections}
+Fix the same $p,j,J,d,F_k$ and set $D=j^{-1}J$ and
+$M=j^*\mathcal O(d)$. Write $Z$ for the original small-site Rees blowup,
+$B=D.\mathrm{blowUp}$ for the original all-affine Rees blowup, and
+$\epsilon:Z\simeq B$ for the genuine original identity-of-Rees comparison.
+Let $q:Z\to\mathbf P^m_R$ be the original homogeneous-form map, and let
+$a:Z\to X\times_R\mathbf P^m_R$ be its original product graph. Put
+$b=\epsilon^{-1}\mathbin{\gg}a$ and $\pi:B\to X$.
+There is an actual whole isomorphism
+\[
+ b^*\operatorname{pr}_2^*\mathcal O(1)
+ \simeq \pi^*M\otimes(D\mathcal O_B).
+\]
+Here $b\mathbin{\gg}\operatorname{pr}_1=\pi$ and
+$b\mathbin{\gg}\operatorname{pr}_2=\epsilon^{-1}\mathbin{\gg}q$ are exact
+identities of the original morphisms. This concerns the original product graph
+under the genuine Rees comparison. It does not identify it with a different
+projective-bundle morphism.
+\end{definition}
+\begin{proof}
+The two original product-graph projection identities give the second equality
+and identify its first projection with the original small-site blowup map.
+The projection triangle for $\epsilon$ then gives the first equality.
+Pull the whole original comparison and all of its section identities back by
+$\epsilon^{-1}$. The latter is an isomorphism, hence an open immersion.
+The canonical open tensor and ideal-comap comparison identifies the target
+with $\pi^*M\otimes(D\mathcal O_B)$; the original homogeneous lifted-section
+naturality theorem preserves each same old lift under this comparison.
+The native composition comparison for $b$ and $\operatorname{pr}_2$ identifies
+the source with the pullback along $\epsilon^{-1}\mathbin{\gg}q$.
+Thus the actual isomorphism and all prescribed section identities exist
+simultaneously. Choose one with these identities. All projection equalities,
+ideal comparisons and section relations used here have just been derived;
+none is an input certificate.
+\end{proof}
+
+\begin{proposition}[All prescribed sections on the original all-affine blowup]
+\label{prop:whole-original-native-product-line-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalNativeProductWholeLineIso_section}
+\leanok
+\uses{def:whole-original-native-product-line-comparison}
+The whole comparison sends $b^*\operatorname{pr}_2^*\sigma_k$ to the original
+ideal-valued lift $\beta_{F_k}$ formed using the actual original projection
+$\pi$ for every prescribed row $k$.
+\end{proposition}
+\begin{proof}
+The chosen isomorphism comes with all these identities in the same existence
+statement. Its defining property gives each original row. In particular the
+section family is the original family on the actual all-affine blowup, not a
+replacement selected after transport.
+\end{proof}
+
+\begin{proposition}[The original finite-form closed-product witness retains the whole line]
+\label{prop:whole-original-native-product-witness-line-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.exists_originalNativeProductWholeLine}
+\leanok
+\uses{def:whole-original-native-product-line-comparison,prop:whole-original-native-product-line-sections}
+Let $R$ be Noetherian, let $j:X\hookrightarrow\mathbf P^n_R$ be the original
+closed embedding of integral $X$, and let $D_0$ be the original ideal sheaf.
+The original finite same-degree representation of $D_0$ supplies actual
+$m,d,J,F_k$ with $j^{-1}J=D_0$. Its original closed product embedding, carried
+to the all-affine blowup by the identity of Rees algebras, retains the whole
+line comparison above and all the same prescribed sections. Its first
+projection is the actual original blowup projection and its second projection
+is the same original form map under the same Rees identity.
+\end{proposition}
+\begin{proof}
+Use the existing finite same-degree representation of the original ideal
+through the given closed embedding. It supplies $J,d,F_k$, homogeneity,
+generation of $J$ and the exact whole equality $j^{-1}J=D_0$ internally.
+For this same family the original forms product map is a closed immersion;
+precomposition by the genuine whole Rees isomorphism preserves closedness.
+Its two projection identities were proved above. Apply the preceding whole
+comparison and its complete section law to these same witnesses. This
+strengthens the existing original closed-product construction while retaining
+its literal ideal and its original homogeneous-form coordinates.
+\end{proof}

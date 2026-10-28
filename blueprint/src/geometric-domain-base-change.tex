@@ -1,0 +1,94 @@
+\subsection{Genuine geometric integrality over an algebraically closed field}
+\label{subsec:geometric-domain-base-change}
+
+\begin{theorem}[Actual rational specialization avoiding a prescribed element]
+\label{algebra:rational-specialization-nonzero}
+\lean{EnvelopeProperty.exists_algHom_to_algClosed,
+EnvelopeProperty.exists_algHom_to_algClosed_nonzero}
+\leanok
+Let $k$ be an algebraically closed field. Every nontrivial finite-type
+commutative $k$-algebra has an actual $k$-algebra homomorphism to $k$.
+If the algebra is a domain and $a\ne0$, one can choose this actual
+homomorphism so that the entire original element $a$ remains nonzero.
+\end{theorem}
+\begin{proof}
+Choose an actual maximal ideal. Its whole quotient field is a finite
+$k$-module by the Jacobson finite-type field theorem, hence algebraic.
+The genuine algebraic embedding into the algebraically closed field $k$,
+composed with the whole quotient map, is the required rational evaluator.
+For a domain and $a\ne0$, first form the true localization at $a$.
+It is a nontrivial finite-type $k$-algebra. Apply the preceding evaluator
+and restrict along the actual localization homomorphism. The image of
+$a$ is a unit, so its evaluated image is nonzero. No rational-point
+existence certificate is a hypothesis of this construction.
+\end{proof}
+
+\begin{theorem}[Whole tensor specialization and simultaneous finite descent]
+\label{algebra:whole-tensor-rational-specialization}
+\lean{EnvelopeProperty.basis_baseChange_repr_tensorMap,
+EnvelopeProperty.exists_tensorSpecialization_nonzero,
+EnvelopeProperty.tensorMap_left_injective,
+EnvelopeProperty.exists_fgSubalgebra_tensor_pair}
+\leanok
+\uses{algebra:rational-specialization-nonzero}
+Let $k$ be a field. Every whole basis coefficient of an algebraic tensor
+commutes with an actual coefficient-algebra homomorphism; an injective
+coefficient homomorphism induces an injective whole tensor map.
+Two elements of $F\otimes_k A$, for arbitrary commutative $k$-algebras
+$F,A$, descend together to $B\otimes_k A$ for one actual finitely
+generated coefficient subalgebra $B\subseteq F$.
+If $k$ is algebraically closed, $B$ is a finite-type domain and both
+elements of $B\otimes_k A$ are nonzero, one actual rational evaluator
+$B\to k$ retains both whole tensor elements as nonzero.
+\end{theorem}
+\begin{proof}
+Choose a genuine $k$-basis of $A$ and its true basis after coefficient
+extension. Tensor induction proves that every basis coefficient of the
+whole mapped element is the actual coefficient homomorphism applied
+to its original coefficient. Injectivity follows coefficient by
+coefficient and then by the actual basis representation inverse law.
+
+Each original tensor element descends to an actual finitely generated
+coefficient subalgebra by the tensor finite-descent theorem. The true
+supremum of these two subalgebras is finitely generated. Map both original
+representatives into it via their actual inclusions. Whole tensor-map
+composition identifies their images with the two original elements.
+
+For two nonzero elements, the faithful basis representation gives one
+nonzero coefficient in each. Their product is nonzero in the domain $B$.
+Apply the preceding rational evaluator avoiding this actual product.
+Both chosen coefficients retain nonzero images. The proved whole
+coefficient formula then makes both entire specialized tensors nonzero;
+no support comparison is used as a substitute for pointwise equality.
+\end{proof}
+
+\begin{theorem}[Domain preservation under arbitrary domain coefficient extension]
+\label{algebra:geometric-domain-base-change}
+\lean{EnvelopeProperty.tensorProduct_isDomain_of_algClosed}
+\leanok
+\uses{algebra:whole-tensor-rational-specialization}
+Let $k$ be an algebraically closed field and let $F,A$ be arbitrary
+commutative domain $k$-algebras. Then the actual algebraic tensor ring
+$F\otimes_k A$ is a domain. In particular, every domain $k$-algebra
+remains a domain after every genuine field extension $F/k$.
+There is no finite-type, completeness, separability or characteristic
+restriction on either original domain.
+\end{theorem}
+\begin{proof}
+The actual inclusion of $A$ into the tensor ring is injective over the
+field $k$, so the tensor ring is nontrivial. Suppose two nonzero entire
+elements have product zero. Descend both to the preceding actual finite
+coefficient subalgebra $B\subseteq F$, with whole tensor representatives.
+It is a domain because $F$ is. The actual inclusion tensor map is injective
+by the whole basis coefficient theorem; hence the product of the two
+representatives is zero in $B\otimes_k A$, while each remains nonzero.
+
+Choose the preceding one actual rational evaluator that retains both
+whole representatives. Their images still have zero product. The genuine
+canonical tensor isomorphism $k\otimes_k A\simeq A$ preserves their
+nonzero values and product. This contradicts the domain property of $A$.
+Thus the actual tensor ring has no zero divisors, and its already proved
+nontriviality makes it a domain. This is a derived algebraic producer;
+geometric integrality is not an input certificate. Normality and
+smoothness after coefficient extension remain separate properties.
+\end{proof}

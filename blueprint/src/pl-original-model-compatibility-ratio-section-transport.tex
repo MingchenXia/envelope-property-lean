@@ -1,0 +1,83 @@
+\section{Canonical ratio sections and the original group comparison}
+
+For a scheme $N$, retain actual invertible ideal modules $I,J$ and their
+original inclusions into $\mathcal O_N$. A canonical ratio section is
+the inverse numerator inclusion tensored with the evaluation transpose
+of the denominator inclusion. It is defined wherever the numerator
+inclusion is invertible. This construction concerns actual module
+sections before taking any valuation or norm.
+
+\begin{lemma}[Pulled evaluation transposes preserve the actual functional]
+\label{lem:original-pl-ratio-pulled-functional-transport}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.pulledDualTranspose_pairing, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.evaluationDualTransport_dualTranspose}
+\leanok
+Let $f,g:T\to N$ and let $e:f^*J\simeq g^*J$ preserve the original
+pulled inclusions into $\mathcal O_T$. The canonical evaluation-preserving
+transport $f^*(J^\vee)\simeq g^*(J^\vee)$ sends the pulled transpose
+of the same original denominator inclusion to its other pullback.
+\end{lemma}
+\begin{proof}
+The defining evaluation identity for the original transpose remains an
+identity after pullback. The strong monoidal tensorator is natural,
+and its unit comparison is the canonical pullback of the structure
+sheaf. The monoidal right-unit identity therefore identifies this
+pulled identity with the evaluation identity of the pulled functional.
+
+Tensor the proposed transported section by the invertible module
+$g^*J$ and evaluate. The defining identity for evaluation-preserving
+dual transport changes this into evaluation against $f^*J$, preceded
+by $e^{-1}$. The original transpose identity makes it the functional
+$e^{-1}\circ f^*\iota_J$. Preservation of the original inclusion makes
+this exactly $g^*\iota_J$. The other pulled transpose has the same
+evaluation. Evaluation is an isomorphism, and tensoring by an invertible
+module is faithful. Cancellation proves equality of the actual sections.
+\end{proof}
+
+\begin{theorem}[Actual canonical ratio sections are preserved]
+\label{thm:original-pl-canonical-ratio-section-transport}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.inverseInclusion_transport, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.canonicalPulledRatioSection, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.evaluationRatioComparison_canonicalSection}
+\leanok
+\uses{lem:original-pl-ratio-pulled-functional-transport}
+Let $f,g:T\to N$ have invertible pulled numerator inclusions, and
+let $e_I:f^*I\simeq g^*I$, $e_J:f^*J\simeq g^*J$ preserve the two
+original pulled inclusions. The canonical tensor-dual ratio comparison
+constructed from $e_I,e_J$ sends the actual canonical ratio section
+for $f$ to the actual canonical ratio section for $g$.
+\end{theorem}
+\begin{proof}
+Compose the transported inverse numerator inclusion with the original
+inclusion of $g^*I$. Inclusion preservation makes this composite the
+identity, so cancellation by that invertible inclusion identifies it
+with the inverse inclusion of $g^*I$. The preceding lemma identifies
+the transported denominator transpose. Tensor these two section
+identities using the original structure-sheaf multiplication. Naturality
+of the canonical coherent-to-explicit tensor comparison identifies
+this tensor transport with the defining whole ratio comparison. This
+proves equality of the sections of the unchanged pulled ratio module.
+\end{proof}
+
+\begin{corollary}[The canonical group ratio comparison preserves its section]
+\label{cor:original-pl-group-canonical-ratio-section}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.pullbackIsoAlong_inclusion, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.cartierRatioGroupLinearization_canonicalSection, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.offSupportInclusion_isIso, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.canonicalPulledRatioSection_eq_localSection, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.offSupportFactorInclusion_isIso, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.canonicalPulledRatioSection_eq_sectionViaFactor_localSection, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.cartierRatioGroupLinearization_localSection}
+\leanok
+\uses{thm:original-pl-canonical-ratio-section-transport}
+For the actual action and projection of a group acting over a field,
+retain the same invariant Cartier ideals and their canonical
+inclusion-preserving group comparisons. After any further base change
+on which the pulled numerator inclusions are invertible, the canonical
+ratio group comparison preserves the actual canonical ratio section.
+No section-matching or norm-matching identity is an input.
+\end{corollary}
+\begin{proof}
+The original canonical factor comparisons preserve both entire ideal
+inclusions. Pulling back these identities and using the canonical
+composition comparison for the structure sheaf proves the same
+inclusion identities after the further base change. Canonical ratio
+comparisons commute with this arbitrary base change. Apply the preceding
+theorem to these pulled comparisons. On an original off-support open
+the inverse pulled inclusion is its original canonical inclusion frame,
+so these sections are exactly the original local Cartier ratio sections.
+The existing residue-fibre identification and model-weight identities
+therefore apply to these same sections, without replacing them by
+sections with merely equal norms.
+\end{proof}

@@ -1,0 +1,149 @@
+\subsection{Ideal calculus over arbitrary affine spectra}
+\label{subsec:general-ideal-functions}
+
+Let $A$ be any commutative ring and let $x$ be a real multiplicative
+ultrametric seminorm on $A$. These statements require neither a base field
+nor a prescribed absolute value. They specialize to relative analytifications
+over arbitrary valued fields by restriction to their relative spectra. The
+finite generator formulas impose boundedness on the coefficient ring; for
+nontrivially valued bases this ring is typically a ring of integral elements,
+and boundedness is not asserted for the entire base field.
+
+\begin{definition}[Bounded spectra and intrinsic ideal functions]
+\label{def:general-ideal-norm}
+\lean{EnvelopeProperty.Berkovich.Spectrum.IsBounded,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm,
+EnvelopeProperty.Berkovich.Spectrum.idealLog,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_le_one,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_le_zero}
+\leanok
+\uses{spectrum:affine-seminorm,spectrum:topology}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+The point $x$ is bounded if $|a|_x\le1$ for all $a\in A$. For an ideal
+$I\subseteq A$, define
+\[
+ |I|_x=\sup_{a\in I}|a|_x,\qquad \log|I|(x)=\log|I|_x.
+\]
+The ideal norm has values in $[0,+\infty]$ and its logarithm in the
+extended real line. These are intrinsic functions; the centered local ideal
+functions of \cite[\S2.1]{FHX} are obtained on bounded coefficient rings.
+We use $0\cdot(+\infty)=0$ for nonnegative extended numbers and
+$(-\infty)+(+\infty)=-\infty$ for the mixed infinite sum, so the
+extended logarithm transforms every product into a sum. On bounded
+points ideal norms never equal $+\infty$, so the mixed infinite case
+does not occur for centered ideal functions.
+\end{definition}
+
+\begin{lemma}[Bounded generators and vanishing]
+\label{lem:general-ideal-norm-generators}
+\lean{EnvelopeProperty.Berkovich.Spectrum.idealNorm_span,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_span_finset,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_span_finset_eq_of_span_eq,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_eq_zero_iff,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_eq_bot_iff}
+\leanok
+\uses{def:general-ideal-norm}
+For a bounded point $x$ and $S\subseteq A$,
+$|(S)|_x=\sup_{a\in S}|a|_x$. For finite $S$ the supremum is the maximum,
+independent of the generating family; the empty maximum is zero.
+At every point, bounded or not, $|I|_x=0$ if and only if
+$I\subseteq\operatorname{supp}(x)$, equivalently $\log|I|(x)=-\infty$.
+\end{lemma}
+\begin{proof}
+Set $M=\sup_{a\in S}|a|_x$. The elements with seminorm at most $M$
+form an ideal: zero has seminorm zero, sums preserve the bound by the
+ultrametric inequality, and multiplication by any coefficient preserves the
+bound because $x$ is bounded. This ideal contains $S$ and hence $(S)$.
+The reverse inequality follows from $S\subseteq(S)$. For a finite family
+the supremum is its maximum. The supremum over an ideal is zero precisely
+when every ideal element has seminorm zero, which is the asserted support
+criterion. The extended logarithm equals $-\infty$ precisely at zero.
+\end{proof}
+
+\begin{lemma}[Intrinsic ideal arithmetic]
+\label{lem:general-ideal-norm-arithmetic}
+\lean{EnvelopeProperty.Berkovich.Spectrum.idealNorm_sup,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_mul,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_pow_succ,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_pow}
+\leanok
+\uses{def:general-ideal-norm}
+At every point $x$, without a boundedness assumption,
+\[
+ |I+J|_x=\max\{|I|_x,|J|_x\},\qquad |IJ|_x=|I|_x|J|_x.
+\]
+For $n\ge1$, $|I^n|_x=|I|_x^n$. If $x$ is bounded, the unit ideal
+has norm one and this power identity holds also for $n=0$.
+\end{lemma}
+\begin{proof}
+Every element of $I+J$ is $a+b$ with $a\in I$, $b\in J$; the
+ultrametric inequality gives the upper bound, while the inclusions of
+$I$ and $J$ give the lower bound. To prove the product upper bound set
+$M=|I|_x|J|_x$ and
+$K=\{c\in A: |rc|_x\le M\text{ for every }r\in A\}$.
+The ultrametric inequality makes $K$ closed under addition, it contains
+zero, and replacing $r$ by $rs$ proves closure under multiplication by
+$s\in A$. Thus $K$ is an ideal. For $a\in I$, $b\in J$, and any $r$,
+$ra\in I$ and
+$|r(ab)|_x=|ra|_x|b|_x\le |I|_x|J|_x$, so $ab\in K$.
+Hence $IJ\subseteq K$. Taking $r=1$ bounds every element of $IJ$ by
+$M$. Conversely, every product $ab$ belongs to $IJ$; taking suprema
+and using preservation of suprema by multiplication in $[0,+\infty]$
+gives the opposite inequality. Induction starting at $n=1$ proves the
+positive power formula. For a bounded point the norm of the unit ideal
+is at most one, and its element $1$ gives the reverse bound; this adds
+the case $n=0$.
+\end{proof}
+
+\begin{lemma}[Generic logarithmic ideal functions]
+\label{lem:general-ideal-log}
+\lean{EnvelopeProperty.Berkovich.Spectrum.idealLog_sup,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_mul,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_pow_succ,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_pow,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_span_finset,
+EnvelopeProperty.Berkovich.Spectrum.continuousOn_idealLog_of_span_eq}
+\leanok
+\uses{lem:general-ideal-norm-generators,lem:general-ideal-norm-arithmetic,
+spectrum:logarithmic-evaluation}
+At every point, $\log|I+J|$ is the maximum of $\log|I|$ and
+$\log|J|$, and $\log|IJ|=\log|I|+\log|J|$. The positive power
+formulas also hold without boundedness. At bounded points the power
+formula includes exponent zero, and a finitely generated ideal has
+logarithmic value equal to the finite maximum of the logarithms of its
+generators, with the empty maximum equal to $-\infty$. Its logarithmic
+function is continuous on the bounded locus.
+\end{lemma}
+\begin{proof}
+The extended logarithm preserves maxima and transforms multiplication
+into addition, including the zero and infinite values. Applying it to
+the norm identities proves the arithmetic formulas. On bounded points
+it transforms the finite generator maximum into the maximum of the
+logarithms. Evaluation on a fixed ring element is continuous in the
+spectrum topology, as is the extended logarithm, so this finite maximum
+is continuous. For no generators the function is the continuous constant
+$-\infty$.
+\end{proof}
+
+\begin{lemma}[Generic affine pullbacks]
+\label{lem:general-ideal-pullback}
+\lean{EnvelopeProperty.Berkovich.Spectrum.IsBounded.comap,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_le_map,
+EnvelopeProperty.Berkovich.Spectrum.idealNorm_map,
+EnvelopeProperty.Berkovich.Spectrum.idealLog_map}
+\leanok
+\uses{lem:general-ideal-norm-generators,spectrum:pullback}
+Let $\varphi\colon A\to B$ be any homomorphism of commutative rings,
+$y\in\operatorname{Spectrum}(B)$ and $x=\varphi^*(y)$. Then
+$|I|_x\le|IB|_y$. If $y$ is bounded, so is $x$, and equality holds;
+in that case $\log|IB|(y)=\log|I|(x)$.
+\end{lemma}
+\begin{proof}
+For $a\in I$, $\varphi(a)\in IB$ and
+$|a|_x=|\varphi(a)|_y$, giving the inequality. If $y$ is bounded then
+$|\varphi(a)|_y\le1$ for all $a\in A$, proving boundedness of $x$.
+The extended ideal $IB$ is generated by the images of $I$. The generator
+identity at $y$ therefore identifies its norm with
+$\sup_{a\in I}|\varphi(a)|_y=|I|_x$. Taking logarithms gives the
+last assertion.
+\end{proof}

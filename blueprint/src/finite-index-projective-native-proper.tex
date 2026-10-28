@@ -1,0 +1,109 @@
+\subsection{Actual finite-coordinate reindexing and original Rees native properness}
+
+\begin{lemma}[Original variable equivalences give actual whole polynomial Proj isomorphisms]
+\label{scheme:actual-polynomial-proj-reindexing}
+\lean{EnvelopeProperty.PolynomialProj.renameGraded,
+EnvelopeProperty.PolynomialProj.renameGraded_irrelevant_le,
+EnvelopeProperty.PolynomialProj.standardSchemeIso,
+EnvelopeProperty.PolynomialProj.standardSchemeIso_hom_comp_projection}
+\leanok
+\uses{scheme:actual-polynomial-proj-proper,projective:support,projective:native-homogeneous-chart-isomorphism,projective:native-structure-morphism}
+For ANY commutative coefficient ring $A$ and a genuine variable equivalence
+$e:\iota\simeq\operatorname{Fin}(n+1)$, the whole original polynomial rename maps
+give an actual scheme isomorphism from the standard polynomial $\mathbf P^n_A$
+to the ORIGINAL $\operatorname{Proj}A[(X_i)_{i\in\iota}]$. Its ENTIRE original
+coefficient structure triangle commutes. The lower graded rename and irrelevant
+image producers allow arbitrary variable equivalences. No domain, nonzero
+coefficient or comparison certificate is supplied.
+\end{lemma}
+\begin{proof}
+The genuine original polynomial rename homomorphisms associated to $e$ and
+$e^{-1}$ preserve every homogeneous degree. Their actual variable images and
+the proved ORIGINAL irrelevant variable-span identity show that the target
+irrelevant ideal is contained in the actual image of the source irrelevant
+ideal in BOTH directions. Thus both actual graded Proj maps exist.
+The ENTIRE original polynomial inverse identities identify their graded
+composites with the genuine identity graded homomorphisms. Mathlib's actual
+Proj map-composition and map-identity laws then prove BOTH whole scheme
+inverse identities, constructing a genuine scheme isomorphism.
+
+Every actual homogeneous localization chart square commutes by the true
+Proj graded-map chart formula. The genuine degree-zero coefficient structure
+map on each original chart is the ORIGINAL coefficient inclusion. Whole
+coefficient preservation of rename therefore makes both composites to the
+original coefficient scheme equal on EVERY affine chart, not merely on
+scheme supports. The actual chart cover gives equality of ENTIRE structure
+morphisms, including all section maps.
+\end{proof}
+
+\begin{lemma}[The empty-variable polynomial Proj is actually empty]
+\label{scheme:actual-polynomial-proj-empty-index}
+\lean{EnvelopeProperty.PolynomialProj.scheme_isEmpty}
+\leanok
+\uses{projective:support}
+For an ACTUALLY empty variable type, the actual original polynomial Proj scheme
+is empty, over every commutative coefficient ring, without nontriviality or
+reducedness assumptions.
+\end{lemma}
+\begin{proof}
+The ORIGINAL variable span is the span of the empty set, hence the zero ideal.
+It is the genuine irrelevant ideal by the checked original equality. Every
+prime contains zero, so no actual homogeneous prime can satisfy the defining
+relevance condition. This proves genuine emptiness of the underlying Proj,
+not a supplied empty-space certificate.
+\end{proof}
+
+\begin{theorem}[Arbitrary finite-variable original projective projections are native-proper]
+\label{scheme:finite-polynomial-proj-native-proper}
+\lean{EnvelopeProperty.PolynomialProj.isProperMap_map_projection,
+EnvelopeProperty.PolynomialProj.isClosedMap_map_projection}
+\leanok
+\uses{scheme:actual-polynomial-proj-reindexing,scheme:actual-polynomial-proj-empty-index,scheme:native-polynomial-projective-proper,scheme:valued-open-embedding}
+For ANY finite variable type, the SAME original polynomial Proj projection
+induces a proper native map over its original coefficient ring. There is no
+bound on any coefficient valuation and no native comparison certificate.
+\end{theorem}
+\begin{proof}
+For a genuinely nonempty finite variable type, its actual cardinality is positive.
+The true finite-type enumeration and cardinal arithmetic produce a genuine
+equivalence with $\operatorname{Fin}(n+1)$ for an actual $n$. The first lemma
+therefore supplies the REAL scheme isomorphism to the established native
+polynomial $\mathbf P^n_A$, retaining the ENTIRE original coefficient structure
+map. The already proved absolute native projective properness transfers through
+this actual scheme isomorphism/native homeomorphism. For an empty variable type,
+the preceding actual Proj emptiness gives an empty native source, whose genuine
+continuous map is proper. These are derived finite/empty cases, not a supplied
+normalization, enumeration or proper-map certificate.
+\end{proof}
+
+\begin{theorem}[The original finite-family Rees native projection is proper]
+\label{scheme:original-finite-rees-native-proper}
+\lean{EnvelopeProperty.ReesPresentation.isProperMap_map_projection,
+EnvelopeProperty.ReesPresentation.isClosedMap_map_projection,
+EnvelopeProperty.ReesPresentation.isProperMap_relativeMap_projection,
+EnvelopeProperty.ReesPresentation.isClosedMap_relativeMap_projection}
+\leanok
+\uses{scheme:finite-polynomial-proj-native-proper,scheme:actual-rees-presentation-proper,scheme:native-closed-immersion,scheme:relative-valued-points}
+For ANY commutative ring $A$ and ANY actual finite original family $g_i$, the
+ORIGINAL Rees scheme projection induces a proper, hence closed native map.
+Its exact common prescribed-base restrictions are proper for ANY further
+actual coefficient structure map and ANY prescribed seminorm. No domain,
+nonzero coefficient, Noetherianity, bounded coefficient valuation or native
+properness/embedding certificate is assumed; empty or nilpotent centers remain.
+\end{theorem}
+\begin{proof}
+The true homogeneous quotient of the SAME original Rees presentation has the
+genuine closed immersion into the SAME original polynomial Proj. Its actual
+whole coefficient projection triangle is the established original one, with
+no radical replacement. The checked native closed-immersion theorem makes
+its native map a real closed embedding, hence proper. Compose with the preceding
+actual finite-index polynomial-Proj proper map and use WHOLE native functoriality.
+This is exactly the ORIGINAL Rees projection. Actual properness gives closedness.
+
+For a common prescribed base, the original source fixed-base inclusion is closed
+using only actual native affine-base separation. Its proper composite with
+the absolute native map factors through the continuous injective target locus
+inclusion. Genuine proper-map cancellation proves properness of the SAME
+relative map. Whole actual scheme/basepoint composition gives membership; no
+independent source scalar extension or point-lift certificate is introduced.
+\end{proof}

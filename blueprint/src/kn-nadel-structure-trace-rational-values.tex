@@ -1,0 +1,47 @@
+\section{The original rational trace on every original local section}
+
+\begin{lemma}[Actual local generic coefficients detect the entire section]
+\label{lem:kn-structure-trace-generic-target-coefficients}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericTargetRead,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericTargetRead_injective}
+\leanok
+On the coefficient spectrum of any nonempty original whole chart, the
+whole sections of the restriction of $\gamma_*\mathcal O_{\operatorname{Spec}K}$
+identify injectively with $K$ by the actual whole-field restriction and
+the original spectrum--sections isomorphism. These are the actual
+target coefficients of the original rational trace.
+\uses{lem:kn-structure-trace-chart-generic-base}
+\end{lemma}
+\begin{proof}
+The original generic morphism factors through the chart coefficient
+spectrum. Its inverse image of that chart's whole image is therefore
+the whole field spectrum. Restriction along this proved equality of
+opens is an isomorphism on the actual structure-ring sections. Compose
+it with the actual spectrum--sections isomorphism for $K$. Both maps
+are injective, proving the assertion for the whole original target.
+\end{proof}
+
+\begin{lemma}[The rational trace evaluates every original local function on the same whole generic fiber]
+\label{lem:kn-structure-trace-rational-original-local-value}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericRationalStructureTrace_chart_top}
+\leanok
+For every actual section of the original restricted $\pi_*\mathcal O_Y$
+on a nonempty whole chart, the actual original rational trace has
+coefficient equal to the native trace of its actual original
+first-projection section on the same entire original generic fiber.
+No extension of the local function to all of $Y$ or value-matching
+identity is assumed.
+\uses{def:kn-structure-trace-rational,lem:kn-structure-trace-generic-target-coefficients,lem:kn-structure-trace-original-generic-section}
+\end{lemma}
+\begin{proof}
+By construction, on the original base open the rational trace first
+uses the actual square map to pull the function to the corresponding
+open of the entire generic fiber, and then applies its actual
+finite-field sheaf trace. Restrict the target to the whole field
+spectrum using the proved equality of its inverse-image open with the
+whole spectrum. Naturality of the actual finite-field sheaf trace
+moves this restriction before that trace. The actual square-map
+section formula and the composition law for restriction of functions
+identify the resulting source section with the original generic
+first-projection section. Finally, the actual finite-field trace
+formula on every whole section gives precisely its native trace.
+\end{proof}

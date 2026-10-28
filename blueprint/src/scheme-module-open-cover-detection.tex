@@ -1,0 +1,41 @@
+\section{The same entire module morphism detected by an actual open cover}
+\label{sec:scheme-module-open-cover-detection}
+
+\begin{theorem}[Whole original map equality on original open-cover pullbacks]
+\label{sc0-scheme-module-open-cover-detection:whole-map}
+\lean{EnvelopeProperty.SchemeModuleOpenCoverDetection.hom_ext}
+\leanok
+Let $j_i:Y_i\to X$ be actual original open immersions such that EVERY actual
+original point of $X$ is an image of one of these original maps. Two morphisms
+between ANY original module sheaves on $X$ agree if their actual native
+pullbacks under EVERY $j_i$ agree. No affine, coherent, quasicoherent,
+Noetherian, compactness or finite-cover assumption is needed.
+\end{theorem}
+\begin{proof}
+The native restriction/pullback comparison is a genuine natural isomorphism;
+its whole naturality square and invertibility turn each given pullback
+map equality into equality of the original restricted maps. At an arbitrary
+original point $x$, choose an actual original covering preimage $y\in Y_i$.
+Apply the true original restriction-stalk natural isomorphism at $y$.
+Its naturality and genuine invertibility imply equality of the original
+maps on the SAME stalk at $x$. For EVERY original open and EVERY original
+section, native stalk-map/germ naturality therefore identifies the germs
+of its two original images at EVERY point. The actual target sheaf's
+section extensionality proves equality of these original sections, and
+whole module-morphism extensionality proves the original maps equal.
+This is the native AINT185 stalk argument generalized from inclusions of
+chosen opens to the actual original covering open morphisms.
+\end{proof}
+
+\begin{corollary}[The original zero map on an original open cover]
+\label{sc0-scheme-module-open-cover-detection:zero}
+\lean{EnvelopeProperty.SchemeModuleOpenCoverDetection.eq_zero_iff}
+\leanok
+A SAME entire original module morphism vanishes if and only if all of its
+actual original covering pullbacks vanish.
+\end{corollary}
+\begin{proof}
+Apply the preceding original-map equality theorem to the given original
+map and the actual zero map. The actual pullback functor preserves zero
+maps, giving both directions.
+\end{proof}

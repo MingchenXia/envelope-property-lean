@@ -1,0 +1,109 @@
+\section{The full original Cartier fibre projection}
+
+\begin{theorem}[An actual principal Cartier chart projects its whole original fibre]
+\label{thm:intrinsic-numerical-cartier-principal-full-fibre}
+\uses{scheme:actual-original-flat-global-section-tensor,def:intrinsic-numerical-canonical-function-field-degree,def:fc-curve-cartier-original-equations,def:fc-native-weighted-regular-section-order,def:fc-finite-fibre-original-coefficient-square,scheme:actual-proper-global-section-valuation-membership,scheme:genuine-ideal-pullback-stalk,lem:cartier-principal-equation-regular,lem:nonflat-dominant-cartier-comap,lem:actual-integral-projection-dimension-bound,thm:fc-curve-cartier-native-local-orders,thm:fc-finite-fibre-all-native-principal-orders,thm:intrinsic-numerical-spec-principal-cartier-weight,thm:intrinsic-numerical-cartier-affine-coefficient-rank}
+\lean{EnvelopeProperty.NumericalCartierCurveOrders.finsum_fibre_weightedLocalOrder_principal_spec}
+\leanok
+Let $A$ be an original Noetherian domain of dimension at most one over
+$k$, let $f:Y\to\operatorname{Spec}A$ be an actual finite dominant map
+with $Y$ integral, and let $x\ne0$ be an original prime whose actual
+localization residue field is finite over $k$. Let $I$ be an actual
+Cartier ideal generated globally by the section corresponding to an
+original nonzero $a\in A$. Then
+\[
+ \sum_{y\in f^{-1}(x)}\operatorname{ord}_y(f^{-1}I)
+       \operatorname{rk}_k\kappa(y)
+ =N(f)\operatorname{ord}_x(I)\operatorname{rk}_k\kappa(x).
+\]
+All coefficients, ideals, points and the function-field degree are
+original. There is no flatness, normal-target or order/residue matching
+input. The actual residue-finiteness hypothesis is local geometry;
+the later projective-curve consumer must derive it internally from the
+original Cartier support.
+\end{theorem}
+\begin{proof}
+The actual finite map makes $Y$ affine and locally Noetherian and,
+by the existing integral-morphism dimension bound, gives $\dim Y\leq1$.
+Actual dominance from the integral source makes the original comap
+Cartier. The native affine ideal-comap formula identifies its whole
+global generator with the actual section
+$\operatorname{coefficientMap}(f)(a)$. Genuine Cartier regularity
+makes this same section nonzero. The original local-equation theorem
+therefore identifies every term of its native Cartier order with
+the native weighted regular-section order of this same section, for
+the same original structural map.
+
+Apply the already proved entire finite-fibre principal-order formula.
+Its actual whole coefficient-algebra rank is the same canonical
+$N(f)$ by the frozen affine-rank theorem. The frozen native spectrum
+principal-Cartier-weight theorem identifies its actual base local order
+and residue rank with the original weighted Cartier order. Substitution
+proves the whole-fibre identity without a supplied matching equality.
+Only the unconditional original coefficient-algebra action from
+$\operatorname{sectionsAlgebra}$ is used; no flat base-change theorem
+or flatness premise is invoked.
+\end{proof}
+
+\begin{theorem}[The whole original fibre projects the actual Cartier order]
+\label{thm:intrinsic-numerical-cartier-order-full-fibre}
+\uses{def:fc-finite-closed-structure-sections,scheme:actual-original-flat-global-section-tensor,def:intrinsic-numerical-canonical-function-field-degree,def:intrinsic-numerical-spec-native-residue-algebra,thm:fc-scheme-finite-principal-generic-rank,def:fc-curve-cartier-original-equations,def:fc-affine-scheme-local-coefficients,thm:fc-curve-proper-support-points,scheme:genuine-ideal-pullback-stalk,thm:fc-stalk-map-original-order-residue,thm:intrinsic-numerical-cartier-principal-full-fibre,thm:intrinsic-numerical-cartier-order-open-pullback,thm:intrinsic-numerical-cartier-affine-coefficient-rank,thm:intrinsic-numerical-cartier-support-residue-finite,thm:intrinsic-numerical-function-field-degree-affine-rank,thm:fc-curve-cartier-native-local-orders,thm:fc-curve-cartier-ideal-finite,lem:nonflat-dominant-cartier-comap,scheme:actual-proper-global-section-valuation-membership}
+\lean{EnvelopeProperty.NumericalCartierCurveOrders.finsum_fibre_weightedLocalOrder}
+\leanok
+Let $C$ be an original integral projective scheme of dimension at most
+one over $k$, and let $g:D\to C$ be an actual finite dominant morphism with
+$D$ integral. For every original effective Cartier ideal $I$ and every
+original $x\in C$,
+\[
+ \sum_{y\in g^{-1}(x)}
+   \operatorname{ord}_y(g^{-1}I)[\kappa(y):k]
+ =N(g)\operatorname{ord}_x(I)[\kappa(x):k].
+\]
+Here every weight uses the same original structural map, and $N(g)$ is
+the actual canonical function-field degree. There is no flatness,
+normal-target or matching-order hypothesis.
+\end{theorem}
+\begin{proof}
+Actual dominance from the integral source preserves the Cartier
+property of the comap. The original integral dimension bound gives dimension at most one
+on each actual full inverse affine chart. Finiteness also makes the
+original source locally Noetherian. If $x$ lies outside the actual
+support of $I$, its native Cartier order is zero. The actual support
+comap formula puts every point above $x$ outside the comap support too.
+All terms in the same entire fibre, as well as the original term, vanish.
+
+For $x$ on the support, choose an original Cartier affine chart with
+regular equation $c$, and take its actual full inverse affine chart.
+Restriction gives a bijection between the same entire original fibre
+and the fibre of this actual restricted map: the open projection is
+injective, and every original point above $x$ lies in that inverse
+chart. The preceding open-order theorem preserves both the original
+Cartier orders and their original residue coefficients.
+
+The actual Cartier closed subscheme is finite over $k$. Its actual
+global section algebra is finite over $k$, hence Artinian; localization
+and passage to its residue quotient remain finite over $k$. The actual
+closed-immersion and open-stalk residue algebra isomorphisms therefore
+prove finiteness of the original local residue extension needed by the
+finite-fibre principal-order theorem. They also identify its local
+residue degree with the same $[\kappa(x):k]$.
+
+The original affine principal-order theorem now applies to the actual
+restricted map and $c$. Its entire fibre sum uses the actual pulled
+section. The original ideal comap and germ identities identify that
+section with a generator of the same restricted comap Cartier ideal;
+the local-equation theorem identifies its native order with that
+Cartier order. Canonical affine global-section isomorphisms preserve
+the original coefficient maps and their module ranks. The established
+original affine-rank comparison thus changes the multiplier into the
+same $N(g)$, while the original stalk-localization isomorphism changes
+the local base principal order into $\operatorname{ord}_x(I)$.
+Every point, local equation and residue-field comparison in this
+calculation is derived from the same original maps. Substituting these
+identities in the principal fibre sum proves the formula.
+\end{proof}
+
+The global whole-line degree formula and proper-surjective full real nef
+reflection and injectivity require subsequent finite-support and
+Cartier-ratio assembly. No numerical metric or norm assertion is made
+here.

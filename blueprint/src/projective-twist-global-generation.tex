@@ -1,0 +1,41 @@
+\section{The actual coordinate powers generate the original positive twists}
+
+\begin{lemma}[Actual coordinate sections give the original local frames]
+\label{lem:coherent-projective-coordinate-power-frames}
+\uses{lem:coherent-projective-coordinate-twist-independence,lem:scheme-original-coefficient-one-section-frame}
+\lean{EnvelopeProperty.ProjectiveTwistGlobalGeneration.coordinateSectionHom,EnvelopeProperty.ProjectiveTwistGlobalGeneration.coordinateSectionHom_isIso_on_own_chart}
+\leanok
+On polynomial projective space over any commutative ring, transport the
+original $i$th coordinate-power section of $\mathcal O_i(n)$ to the same
+original fixed twist $\mathcal O_j(n)$. For every nonnegative $n$, its
+actual structure-sheaf morphism is an isomorphism on the original standard
+open $U_i$.
+\end{lemma}
+\begin{proof}
+The genuine native local coefficient formula says that the original
+$i$th coordinate section has coefficient $(X_i/X_i)^n=1$ on $U_i$.
+Its actual section morphism is therefore an isomorphism there. Compose
+with the derived whole coordinate-hyperplane comparison, whose restriction
+is still an isomorphism. This retains the actual original module sheaf.
+\end{proof}
+
+\begin{theorem}[The original nonnegative projective twists are globally generated]
+\label{thm:coherent-projective-nonnegative-twist-global-generation}
+\uses{lem:coherent-projective-coordinate-power-frames}
+\lean{EnvelopeProperty.ProjectiveTwistGlobalGeneration.generatingMap,EnvelopeProperty.ProjectiveTwistGlobalGeneration.generatingMap_ι,EnvelopeProperty.ProjectiveTwistGlobalGeneration.generatingMap_epi,EnvelopeProperty.ProjectiveTwistGlobalGeneration.generatingSections,EnvelopeProperty.ProjectiveTwistGlobalGeneration.generatingSections_isFiniteType}
+\leanok
+The original coordinate-power sections define an epimorphism from the
+original free structure sheaf onto $\mathcal O_j(n)$ for every nonnegative
+$n$. When the projective coordinate index is finite, this is an actual
+finite free structure-sheaf epimorphism, hence a finite genuine family
+of original global generating sections.
+\end{theorem}
+\begin{proof}
+Use the original free-Hom equivalence on the family of actual original
+coordinate-section morphisms. Each free basis summand maps to exactly its
+original coordinate section. On $U_i$ this summand already maps
+isomorphically onto the original target, so the entire evaluation map is
+an epimorphism there. The standard opens cover the actual original
+projective scheme; epimorphism locality gives the global result. A universe
+lift changes only the coordinate index type and preserves its finiteness.
+\end{proof}

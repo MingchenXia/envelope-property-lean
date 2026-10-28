@@ -1,0 +1,67 @@
+\section{The actual image of a whole original section family}
+
+\begin{proposition}[Evaluation of an original family]
+\label{prop:actual-invertible-section-family-image}
+Let $L$ be an invertible module on an arbitrary scheme $X$, and let
+$(s_i)_{i\in A}$ be any original global sections of $L$.
+Tensoring the actual free module $\mathcal O_X^{(A)}$ by $L^\vee$
+gives a quasicoherent module canonically isomorphic to
+$\bigoplus_{i\in A}L^\vee$. Transport the coproduct of the actual
+evaluations against $s_i$ across this isomorphism. The resulting map
+$\alpha:\mathcal O_X^{(A)}\otimes L^\vee\to\mathcal O_X$ has
+whole image ideal
+\[
+ \operatorname{im}(\alpha)=\sum_{i\in A}\operatorname{im}(s_i).
+\]
+Neither a finite-family nor a Noetherian hypothesis is needed. In
+particular the empty family has zero image, and using all original
+global sections gives the entire original base ideal.
+\lean{EnvelopeProperty.InvertibleSectionFamilyImage.unitTensorDualIso, EnvelopeProperty.InvertibleSectionFamilyImage.freeTensorDualIso, EnvelopeProperty.InvertibleSectionFamilyImage.freeTensorDual_isQuasicoherent, EnvelopeProperty.InvertibleSectionFamilyImage.familyEvaluation, EnvelopeProperty.InvertibleSectionFamilyImage.familyEvaluation_imageIdeal, EnvelopeProperty.InvertibleSectionFamilyImage.allSections_imageIdeal}
+\uses{prop:actual-quasicoherent-image-factorization}
+\leanok
+\end{proposition}
+\begin{proof}
+The actual free sheaf is locally free and hence quasicoherent.
+Tensoring by $L^\vee$ preserves quasicoherence. Since this tensor
+functor is an equivalence with inverse tensoring by $L$, it preserves
+coproducts. Its canonical coproduct comparison, followed by the
+original unit isomorphism on each summand, gives the asserted
+isomorphism and the indicated evaluation map.
+
+Write $J$ for the sum of the original individual evaluation ideals.
+Each individual evaluation factors through $J$ by its actual image
+containment. The coproduct universal property combines these whole
+factors, and transporting along the same isomorphism gives a whole
+factorization of $\alpha$ through $J$. The image-factorization
+criterion proves $\operatorname{im}(\alpha)\subseteq J$.
+Conversely, precompose the actual source-to-image factor of $\alpha$
+with each original coproduct inclusion transported by the inverse
+isomorphism. Its composite with the image inclusion is precisely the
+original evaluation against $s_i$. Applying the same criterion shows
+that every individual image is contained in
+$\operatorname{im}(\alpha)$, and taking their sum proves equality.
+These coproduct arguments include an empty index type. The final
+assertion is the definition of the base ideal using all global
+sections.
+\end{proof}
+
+\begin{corollary}[One actual projective finite evaluation family]
+\label{cor:actual-projective-section-family-image}
+Let $X$ admit a projective factorization over a Noetherian affine base,
+and let $L$ be any original invertible module on $X$. There exists a
+finite subset $G\subseteq\Gamma(X,L)$ such that the actual evaluation
+map constructed above for the original sections in $G$ has image equal
+to the entire original all-global-section base ideal of $L$.
+\lean{EnvelopeProperty.InvertibleSectionFamilyImage.exists_projective_finite_imageIdeal}
+\uses{prop:actual-invertible-section-family-image, prop:projective-line-base-ideal-finite-global-generators}
+\leanok
+\end{corollary}
+\begin{proof}
+The original projective geometry and Noetherian base give one finite
+family $G$ whose individual section ideals sum to the whole original
+base ideal. Apply the preceding proposition to the actual subtype of
+sections belonging to $G$. Its image is the sum over that subtype,
+which is exactly the sum of the individual ideals over $s\in G$, and
+hence the whole original base ideal. This uses the internally derived
+finite family, without any supplied generation or image certificate.
+\end{proof}

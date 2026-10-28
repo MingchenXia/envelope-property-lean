@@ -1,0 +1,201 @@
+\subsection{Actual finite curve normalization and original ideal pullback}
+\label{subsec:finite-curve-normalization}
+
+\begin{definition}[Actual normalization ring in the original fraction field]
+\label{algebra:actual-curve-normalization-ring}
+\lean{EnvelopeProperty.CurveNormalization.Ring,
+EnvelopeProperty.CurveNormalization.inclusion,
+EnvelopeProperty.CurveNormalization.inclusion_coe,
+EnvelopeProperty.CurveNormalization.inclusion_injective,
+EnvelopeProperty.CurveNormalization.isFractionRing_ring,
+EnvelopeProperty.CurveNormalization.isIntegrallyClosed_ring}
+\leanok
+Let $B$ be an actual commutative domain. Its normalization ring is the
+actual integral closure $C$ of $B$ in its original fraction field
+$L=\operatorname{Frac}B$. The original inclusion $B\to C$ retains every
+original fraction-field element and is injective. The entire fraction
+field of $C$ is this same $L$, and $C$ is integrally closed.
+The underlying integral-closure construction also exists in the fraction
+ring of an arbitrary commutative ring; the domain normality and
+fraction-field assertions here retain their explicit domain hypothesis.
+\end{definition}
+\begin{proof}
+Take the actual subtype of integral elements in the original fraction
+ring and its literal original algebra map. The entire field image of
+each included element is the original map $B\to L$. This map is
+injective, so subtype equality proves actual inclusion injectivity.
+The genuine integral-closure localization theorem identifies the
+original field $L$ as the fraction field of $C$, taking the finite
+self-extension $L/L$. Integral closure in a field is integrally closed,
+by the actual idempotence and integral transitivity theorem. No
+separability or finite-generation hypothesis is needed for these
+whole-ring assertions.
+\end{proof}
+
+\begin{theorem}[Actual finite, Dedekind and free curve normalization]
+\label{algebra:finite-free-curve-normalization}
+\lean{EnvelopeProperty.CurveNormalization.coefficientMap,
+EnvelopeProperty.CurveNormalization.coefficientMap_injective,
+EnvelopeProperty.CurveNormalization.finite_inclusion,
+EnvelopeProperty.CurveNormalization.isNoetherian_ring,
+EnvelopeProperty.CurveNormalization.finite_coefficientMap,
+EnvelopeProperty.CurveNormalization.isDedekindDomain_ring,
+EnvelopeProperty.CurveNormalization.free_coefficientMap,
+EnvelopeProperty.CurveNormalization.flat_coefficientMap}
+\leanok
+\uses{algebra:actual-curve-normalization-ring,thm:bj-normalization-finite}
+Suppose $B$ is a finite-type domain over a perfect field $F$. Its
+actual normalization inclusion is finite and $C$ is Noetherian.
+If an actual $A$-algebra structure makes $B$ finite over $A$, the literal
+composite $A\to B\to C$ is finite. If $A$ has dimension at most one,
+$C$ is a genuine Dedekind domain. If $A$ is a principal ideal domain
+and the actual original $A\to B$ is injective, $C$ is a free $A$-module
+for that precise composite map, and the map is flat. Arbitrary
+characteristic is retained; no separability hypothesis is imposed.
+\end{theorem}
+\begin{proof}
+Apply the checked perfect-field finite-normalization theorem to the
+literal integral closure of $B$ in its fraction field. This theorem's
+actual Frobenius finite-module descent covers inseparable cases as
+well as the separable trace-form case. Thus $B\to C$ is finite and
+$C$ is Noetherian. Composing with the original finite $A\to B$ proves
+finiteness of the whole original composite, rather than choosing a
+new coefficient action.
+
+This actual finite composite is integral. The integral dimension
+comparison gives dimension at most one for $C$ when the same holds
+for $A$. Together with actual Noetherianity, domain structure and the
+proved integrally closedness, this is precisely the genuine Dedekind
+property. If $A\to B$ is injective, compose with the proved normalization
+inclusion to get injectivity of the entire map $A\to C$. Since both
+rings are domains, the actual resulting coefficient module is
+torsion-free. A genuine finite torsion-free module over a principal
+ideal domain is free, and a true free module is flat. The exported
+free-module assertion explicitly uses the algebra action of this
+literal composite homomorphism. The original base-map injectivity
+is a primitive algebraic hypothesis, supplied independently by the
+actual line-component dimension and domination producers.
+\end{proof}
+
+\begin{theorem}[Actual finite normalization and coefficient-curve scheme maps]
+\label{scheme:actual-finite-flat-curve-normalization}
+\lean{EnvelopeProperty.CurveNormalization.scheme,
+EnvelopeProperty.CurveNormalization.projection,
+EnvelopeProperty.CurveNormalization.curveProjection,
+EnvelopeProperty.CurveNormalization.projection_coefficientMap,
+EnvelopeProperty.CurveNormalization.projection_isFinite,
+EnvelopeProperty.CurveNormalization.curveProjection_isFinite,
+EnvelopeProperty.CurveNormalization.curveProjection_flat,
+EnvelopeProperty.CurveNormalization.projection_surjective}
+\leanok
+\uses{algebra:finite-free-curve-normalization,algebra:actual-curve-normalization-ring,
+scheme:integral-native-proper-map,scheme:integral-native-image}
+The actual affine normalization scheme is $N=\operatorname{Spec}C$
+with its literal original projection $N\to\operatorname{Spec}B$.
+It is finite under the preceding perfect-field finite-type hypotheses
+and is surjective on actual scheme points. Its entire composite to
+$\operatorname{Spec}A$ is the actual composite coefficient scheme map,
+finite whenever $B$ is finite over $A$ and flat under the preceding
+actual principal-domain and injectivity hypotheses.
+\end{theorem}
+\begin{proof}
+Apply the genuine spectrum functor to the literal original ring maps.
+Its contravariant composition law gives the whole original coefficient
+triangle. The actual affine finiteness criterion transfers each proved
+finite ring map to the corresponding true scheme morphism; the affine
+flatness criterion transfers the genuine flat ring map likewise.
+The normalization inclusion is integral by the actual defining integral
+elements, and it is injective by the preceding original fraction-field
+identity. True integral lying-over therefore proves surjectivity on
+the entire prime spectrum, which is the actual underlying scheme map.
+
+The independently proved general native integral-map producers apply
+to this real integral projection: its native map is proper, and the
+actual scheme surjectivity yields whole native surjectivity, also on
+an exact common prescribed-base locus. Thus these existing producers
+supply genuine native lifts without a bound on a prescribed field
+valuation. No particular normalization branch over a given point,
+universal injectivity or homeomorphism of a general normalization
+projection is asserted. Smoothness of the normalized curve is not
+inferred from the Dedekind assertion without a genuine regular-to-smooth
+producer.
+\end{proof}
+
+\begin{theorem}[Original affine and stalk ideal pullback through normalization]
+\label{scheme:normalization-original-ideal-pullback}
+\lean{EnvelopeProperty.CurveNormalization.idealSheaf,
+EnvelopeProperty.CurveNormalization.idealSheaf_projection_comap,
+EnvelopeProperty.CurveNormalization.stalkIdeal_projection_comap}
+\leanok
+\uses{scheme:actual-finite-flat-curve-normalization,scheme:genuine-ideal-pullback-stalk}
+For every original ideal $J\subseteq B$, its actual affine ideal-sheaf
+datum pulls back through the literal normalization projection to the
+actual ideal datum of the entire image $JC\subseteq C$. For every
+actual ideal-sheaf datum $I$ on $\operatorname{Spec}B$ and every actual
+normalization point, the intrinsic stalk ideal of its geometric
+pullback is the image of the original whole stalk ideal under the
+true normalization stalk map. No radical replacement is made.
+\end{theorem}
+\begin{proof}
+Construct the original affine ideal datum by mapping $J$ through the
+actual global-section isomorphism of its spectrum and applying the
+genuine affine ideal-sheaf construction. The independently proved
+geometric pullback theorem makes the actual affine section ideal of
+its pullback the image of this whole original section ideal. Genuine
+naturality of the spectrum/global-section isomorphism identifies the
+entire section map with the literal original inclusion $B\to C$.
+Ideal-image composition therefore identifies this whole ideal with
+the original image $JC$ under the true source global-section
+isomorphism. The genuine affine ideal-sheaf equivalence identifies
+these entire geometric ideal data. In particular original powers and
+nonradical ideals are retained.
+
+For stalks, apply the actual all-scheme geometric stalk-image theorem
+to this literal normalization morphism. It is proved from true affine
+refinement, the geometric ideal pullback and whole germ/stalk
+naturality; no finite generation, properness or stalk-image certificate
+is needed. These statements concern actual algebraic sheaf and stalk
+pullback, not a whole-field ideal supremum substituted for a model norm.
+\end{proof}
+
+\begin{theorem}[Separate given bounded-model norm consistency]
+\label{scheme:normalization-given-bounded-model-functions}
+\lean{EnvelopeProperty.CurveNormalization.modelIdealNorm_projection_comap,
+EnvelopeProperty.CurveNormalization.modelIdealLog_projection_comap}
+\leanok
+\uses{scheme:actual-finite-flat-curve-normalization,
+scheme:normalization-original-ideal-pullback,scheme:proper-model-ideal-pullback}
+Separately, suppose an actual given model structure
+$f:\operatorname{Spec}B\to\operatorname{Spec}R$ is proper, and a
+prescribed real seminorm $v$ on $R$ satisfies $v(r)\le1$ for every
+model coefficient. For every original ideal-sheaf datum $I$ and every
+native normalization-model point above this exact $v$, its actual
+geometric pullback has intrinsic model norm and logarithm equal to
+those of $I$ at the whole original native image point.
+\end{theorem}
+\begin{proof}
+The actual finite normalization projection is proper. Compose it
+with the given proper model structure to derive properness of the
+source model over the same actual coefficient ring $R$. No properness
+of this normalized model is introduced as an independent certificate.
+The explicit bound on $v$ supplies genuine proper centers on both
+models. Apply the proved whole geometric ideal-pullback model-norm
+identity to the literal normalization projection and its whole
+coefficient triangle. Its actual center-map comparison and bounded
+center-stalk values compute the original intrinsic ideals, proving
+the entire norm identity. Taking the genuine extended logarithm gives
+the second identity, including zero and negative infinity.
+
+This is a corollary for a given bounded proper affine model; it is
+not the paper's field-curve model construction. For a nontrivially
+valued $F$, such an affine proper bounded model with $B$ containing
+$F$ does not generally supply native points with that prescribed
+field valuation. These statements neither construct those models
+or points nor replace their model ideal functions by intrinsic
+\texttt{idealNorm} over all coefficients of the valued field, where
+extension can make a nonzero ideal a unit or an unbounded whole ideal.
+The field-curve scope above is the actual finite normalization map
+and original geometric section/stalk pullback. Actual proper-model
+existence for that curve, smoothness, analytic subharmonic comparison
+and continuation remain separate producers.
+\end{proof}

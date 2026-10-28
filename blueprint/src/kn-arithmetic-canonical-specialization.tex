@@ -1,0 +1,155 @@
+\section{The actual canonical coefficient in geometric specialization}
+
+\begin{lemma}[The original canonical-twisted arithmetic model]
+\label{lem:kn-arithmetic-canonical-specialization-model}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.canonicalModel,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.canonicalModel_isInvertible}
+\leanok
+\uses{thm:kn-arithmetic-global-canonical-fibre}
+Let $p:\mathcal Y\to\operatorname{Spec}R$ be the original arithmetic family,
+smooth of relative dimension $n$, and let $L$ be an original invertible
+module on $\mathcal Y$.  The actual module
+$M=\omega_{\mathcal Y/R}\otimes L$ is constructed on this same whole family
+and is invertible.
+\end{lemma}
+\begin{proof}
+Use the constructed whole relative top exterior sheaf and its actual
+standard-smooth canonical atlas.  Tensor this original invertible module
+with the same original $L$ using the native sheafified tensor product.
+Native stability of invertibility under this tensor proves the claim.
+\end{proof}
+
+\begin{theorem}[The canonical coefficient on a prescribed Cartesian field square]
+\label{thm:kn-arithmetic-canonical-prescribed-field-square}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.squareIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.squareIso_fst,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.squareIso_snd,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.nativeFieldCanonicalTensorIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.squareCanonicalTensorIso}
+\leanok
+\uses{lem:kn-arithmetic-canonical-specialization-model}
+For an actual field map $\varphi:R\to k$ and an actual Cartesian square
+with original maps $g:X\to\mathcal Y$ and $q:X\to\operatorname{Spec}k$ over
+$p$ and $\operatorname{Spec}\varphi$, there is a constructed whole-sheaf
+isomorphism
+\[
+  g^*M\ \simeq\ \omega_{X/k}\otimes g^*L.
+\]
+The canonical object is the existing native object for the original $q$,
+and the second tensor factor is the pullback by the original $g$.
+\end{theorem}
+\begin{proof}
+The actual Cartesian square supplies its own isomorphism from the original
+$X$ to the native categorical pullback.  Its two original projection
+equations identify the first projection with $g$ and the second structural
+projection with $q$.  The coefficient map $\varphi$ supplies its literal
+$R$-algebra structure on $k$, so the proved whole canonical model comparison
+applies to this native field fibre.  Pull it back through the constructed
+scheme isomorphism.  Native pullback composition identifies the original
+model pullback, and the field-relative canonical transport retains the
+actual second-projection triangle.  The final tensor comparison retains
+the same original $g$ and $L$.  Every scheme and module comparison is
+derived from the actual Cartesian square.
+\end{proof}
+
+\begin{lemma}[Actual canonical positive cohomology on the prescribed square]
+\label{lem:kn-arithmetic-canonical-square-cohomology}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationGeometry.nativeField_isProjectiveFactorization,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationCohomology.squareCanonicalTensor_subsingleton_H_iff}
+\leanok
+\uses{thm:kn-arithmetic-canonical-prescribed-field-square}
+If the original $p$ has a genuine finite projective factorization, positive
+cohomology of $\omega_{X/k}\otimes g^*L$ vanishes exactly when positive
+cohomology of the same original $M$ pulled to the native categorical field
+fibre vanishes.
+\end{lemma}
+\begin{proof}
+The existing projective base-change construction supplies a projective
+factorization for the actual native field fibre.  Invertibility of the
+internally constructed $M$ supplies quasicoherence of its actual pullback.
+The native positive cohomology comparison for a genuine scheme isomorphism
+therefore applies to the actual Cartesian-square isomorphism.  Compare its
+pulled coefficient with the prescribed native canonical tensor using the
+preceding whole module isomorphism and the actual categorical sheaf
+cohomology functor.  No cohomology comparison certificate is an input.
+\end{proof}
+
+\begin{theorem}[Canonical closed-fibre vanishing reaches the original ambient field]
+\label{thm:kn-arithmetic-canonical-specialization}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationCohomology.nativeCanonicalTensor_subsingleton_of_closed_of_injective,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationCohomology.squareCanonicalTensor_subsingleton_of_closed_of_injective}
+\leanok
+\uses{lem:kn-arithmetic-canonical-square-cohomology}
+Assume $R$ is Noetherian and the original $p$ is smooth of relative dimension
+$n$ with a genuine finite projective factorization.  Fix an actual maximal
+ideal $P\subset R$, an original invertible $L$, and $j\geq0$.  If the actual
+native closed fibre satisfies
+\[
+ H^{j+1}(\mathcal Y_{\kappa(P)},
+   \omega_{\mathcal Y_{\kappa(P)}/\kappa(P)}\otimes L_{\kappa(P)})=0,
+\]
+then every prescribed injective map $\varphi:R\hookrightarrow F$ into an
+ambient field, with its actual Cartesian square $(g,q)$ as above, satisfies
+\[
+  H^{j+1}(X,\omega_{X/F}\otimes g^*L)=0.
+\]
+\end{theorem}
+\begin{proof}
+Construct the same whole model $M$ internally and derive its invertibility
+from the first lemma.  Original relative smoothness supplies flatness of
+$p$.  The whole canonical field-fibre comparison converts the displayed
+native closed canonical-twisted group to the actual closed pullback of $M$.
+Apply the proved geometric cohomology specialization theorem for the same
+original Noetherian flat projective family and invertible model.  Its
+bounded flat ordered section complex and finite native homology produce an
+original principal neighbourhood; injectivity of the prescribed field map
+keeps its original defining coefficient nonzero in $F$.  Thus the actual
+native ambient pullback of the same $M$ has zero positive cohomology.
+The preceding Cartesian-square cohomology comparison gives the conclusion
+on the original $X$, with its original $g$ and $q$.
+\end{proof}
+
+The closed-fibre premise here is the intermediate output of the actual
+Deligne--Illusie and Witt-lift vanishing producer.  The characteristic-zero
+entry composes that producer with this specialization theorem after
+constructing the actual arithmetic model, thereby eliminating the
+closed-fibre premise from the final Kodaira statement.
+
+\begin{lemma}[The actual quotient and localization residue coefficients]
+\label{lem:kn-arithmetic-canonical-quotient-residue}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotientGeometry.quotientResidueEquiv,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotientGeometry.quotientResidueEquiv_mk,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotientGeometry.residueFibreIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotientGeometry.residueFibreIso_fst}
+\leanok
+For the actual maximal ideal $P$, the quotient field $R/P$ and the native
+localization residue field $\kappa(P)$ have a constructed coefficient
+isomorphism.  It takes every original residue class of $r\in R$ to the
+actual image of $r$ in $\kappa(P)$.  Their actual categorical fibres have a
+derived scheme isomorphism retaining the same original-family projection.
+\end{lemma}
+\begin{proof}
+The actual algebra map $R/P\to\kappa(P)$ is bijective for a maximal ideal.
+Its native ring equivalence gives a spectrum isomorphism in the opposite
+direction.  The coefficient formula on all original residue classes proves
+its actual structural triangle over $R$.  Native pullback lifts construct
+the fibre map and its inverse; the actual two projection equations prove
+their inverse identities.  The original-family projection is the same
+first projection on both sides.
+\end{proof}
+
+\begin{theorem}[The literal quotient closed fibre supplies canonical specialization]
+\label{thm:kn-arithmetic-canonical-quotient-specialization}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotient.nativeResidueCanonicalTensor_subsingleton_of_quotient,EnvelopeProperty.Vanishing.ArithmeticCanonicalSpecializationQuotient.squareCanonicalTensor_subsingleton_of_quotient_of_injective}
+\leanok
+\uses{lem:kn-arithmetic-canonical-quotient-residue,thm:kn-arithmetic-canonical-specialization}
+In the preceding specialization theorem, the intermediate closed-fibre
+vanishing may be supplied on the literal quotient fibre
+$\mathcal Y\times_R\operatorname{Spec}(R/P)$ along the actual quotient map.
+This is the actual finite field used by the produced Witt stage.  The same
+conclusion holds on the prescribed original injective ambient field square.
+\end{theorem}
+\begin{proof}
+The proved canonical comparison on the quotient field first converts its
+native canonical-twisted group into the actual pullback of the same original
+global model $M$.  Pullback along the derived fibre scheme isomorphism
+preserves positive cohomology, using the actual projective factorization
+over the quotient field and the internally derived quasicoherence of $M$.
+Its original-family projection equation identifies the resulting coefficient
+with the actual localization-residue pullback of that same $M$.
+The proved canonical comparison within $\kappa(P)$ then supplies the native
+closed-fibre hypothesis of the preceding theorem.  Apply that specialization
+theorem to obtain the conclusion on the original ambient square.  Thus the
+quotient and localization residue field are connected by actual ring,
+scheme and model-pullback comparisons throughout.
+\end{proof}

@@ -1,0 +1,113 @@
+\section{Supports and invariance under reduction}\label{sec:berkovich-reduction}
+
+Let $k$ be a trivially valued field and let $A$ be a commutative $k$-algebra.
+No finite generation, reducedness, or algebraic closedness assumption is needed in this section.
+These affine foundations make explicit the support convention in \cite[\S2.1]{FHX} and the
+convention in \S5 that closed subsets carry their reduced induced structure.
+
+\begin{definition}[Support map]\label{berk:support}
+\lean{EnvelopeProperty.Berk.support, EnvelopeProperty.Berk.preimage_support_zeroLocus,
+EnvelopeProperty.Berk.continuous_support, EnvelopeProperty.Berk.support_comap}
+\leanok
+\uses{def:berk, def:analytic-zero-locus, lem:analytic-zero-locus-closed,
+spectrum:support, spectrum:trivial-field-bridge}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+The support of $x\in(\Spec A)^\an$ is the prime ideal
+$\mathfrak p_x=\{a\in A:|a|_x=0\}$. The resulting map
+$\operatorname{supp}\colon(\Spec A)^\an\to\Spec A$ is continuous and satisfies
+$\operatorname{supp}(\phi^\an(y))=\phi^{-1}(\operatorname{supp}(y))$ for every
+$k$-algebra homomorphism $\phi\colon A\to B$. For any ideal $I$ of $A$,
+$\operatorname{supp}^{-1}(V(I))=V(I)^\an$.
+\end{definition}
+\begin{proof}
+The seminorm axioms imply that $\mathfrak p_x$ is an ideal and that
+$ab\in\mathfrak p_x$ implies $a\in\mathfrak p_x$ or $b\in\mathfrak p_x$;
+it is proper because $|1|_x=1$. A point lies over $V(I)$ exactly when every
+element of $I$ has seminorm zero, proving the asserted inverse-image formula.
+Each such zero locus is an intersection of the closed sets $\{|a|=0\}$.
+As every Zariski closed set has the form $V(I)$, the support map is continuous.
+Finally $|a|_{\phi^\an(y)}=|\phi(a)|_y$ proves the functoriality formula.
+\end{proof}
+
+\begin{lemma}[Every prime occurs as a support]\label{berk:support-surjective}
+\lean{EnvelopeProperty.Berk.primePoint, EnvelopeProperty.Berk.support_primePoint,
+EnvelopeProperty.Berk.support_surjective}
+\leanok
+\uses{berk:support, def:triv-scaling, lem:analytic-affine-quotient}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For each prime ideal $\mathfrak p$ of $A$, the trivial seminorm of the domain
+$A/\mathfrak p$ pulls back to an analytic point $x_{\mathfrak p}$ whose support
+is $\mathfrak p$. Thus the support map is surjective.
+\end{lemma}
+\begin{proof}
+The quotient is a domain, so its trivial seminorm is multiplicative and ultrametric.
+Its restriction to the nonzero constants is one because the field $k$ embeds in
+$A/\mathfrak p$. The pullback has $|a|_{x_{\mathfrak p}}=0$ exactly when
+the image of $a$ in $A/\mathfrak p$ is zero, which is equivalent to $a\in\mathfrak p$.
+\end{proof}
+
+\begin{lemma}[Analytic vanishing and radicals]\label{berk:zero-locus-radical}
+\lean{EnvelopeProperty.Berk.zeroLocus_radical,
+EnvelopeProperty.Berk.zeroLocus_subset_zeroLocus_iff,
+EnvelopeProperty.Berk.zeroLocus_eq_zeroLocus_iff}
+\leanok
+\uses{berk:support, berk:support-surjective}
+For ideals $I,J$ of $A$, the analytic zero locus of $I$ equals that of its radical,
+and $V(I)^\an\subseteq V(J)^\an$ if and only if $J\subseteq\sqrt I$.
+Consequently $V(I)^\an=V(J)^\an$ if and only if $\sqrt I=\sqrt J$.
+\end{lemma}
+\begin{proof}
+Because $\mathfrak p_x$ is prime, $I\subseteq\mathfrak p_x$ holds exactly when
+$\sqrt I\subseteq\mathfrak p_x$, proving the first assertion.
+The inverse-image formula for support and its surjectivity show that inclusion
+of analytic zero loci is equivalent to inclusion of the corresponding Zariski zero loci.
+The latter inclusion holds exactly when every prime containing $I$ contains $J$.
+The intersection of all primes containing $I$ is $\sqrt I$, giving the inclusion criterion.
+Applying that criterion in both directions gives equality of the two radicals.
+\end{proof}
+
+\begin{lemma}[Nilpotents are invisible to analytic points]\label{berk:nilpotents}
+\lean{EnvelopeProperty.Berk.nilradical_le_supp,
+EnvelopeProperty.Berk.val_eq_zero_of_isNilpotent,
+EnvelopeProperty.Berk.val_eq_of_sub_isNilpotent,
+EnvelopeProperty.Berk.logAbs_eq_of_sub_isNilpotent,
+EnvelopeProperty.Berk.val_eq_zero_forall_iff_isNilpotent,
+EnvelopeProperty.Berk.zeroLocus_nilradical}
+\leanok
+\uses{berk:support, berk:support-surjective, spectrum:radical-vanishing,
+spectrum:reduction-homeomorphism}
+The nilradical of $A$ is contained in the support of every analytic point.
+In particular every nilpotent has seminorm zero at every point, and conversely
+an element that has seminorm zero at every analytic point is nilpotent.
+Functions differing by a nilpotent have equal seminorms and equal logarithmic evaluations.
+The analytic zero locus of the nilradical is the whole analytification.
+\end{lemma}
+\begin{proof}
+Every prime contains the nilradical, so every support contains it.
+If $a$ has seminorm zero at every point, surjectivity of support implies that
+$a$ belongs to every prime ideal. It therefore lies in their intersection,
+the nilradical, whose elements are precisely the nilpotents.
+If $a-b$ is nilpotent, then $|a-b|_x=0$. The ultrametric inequality applied to
+$a=b+(a-b)$ gives $|a|_x\le|b|_x$, and applied to $b=a-(a-b)$ gives the reverse
+inequality. Thus their seminorms and logarithms agree.
+The final assertion follows immediately from the containment already proved.
+\end{proof}
+
+\begin{theorem}[Invariance under reduction]\label{berk:reduction-homeomorphism}
+\lean{EnvelopeProperty.Berk.reductionHomeomorph,
+EnvelopeProperty.Berk.reductionHomeomorph_val_apply,
+EnvelopeProperty.Berk.reductionHomeomorph_symm_val_mk}
+\leanok
+\uses{berk:nilpotents, lem:analytic-affine-quotient}
+\source{fhx-envelope-20261028:sec:normal-local-regularization}
+For $A_{\mathrm{red}}=A/\sqrt{(0)}$, restriction induces a homeomorphism
+$(\Spec A_{\mathrm{red}})^\an\simeq(\Spec A)^\an$.
+This homeomorphism preserves the seminorm of every $a\in A$ and the inverse
+preserves the seminorm of its quotient class.
+\end{theorem}
+\begin{proof}
+The quotient homeomorphism identifies $(\Spec A_{\mathrm{red}})^\an$ with the
+subspace of points whose supports contain $\sqrt{(0)}$. By the preceding lemma,
+this subspace is the whole analytification. The evaluation formulas for the
+quotient homeomorphism give the asserted compatibility of seminorms.
+\end{proof}

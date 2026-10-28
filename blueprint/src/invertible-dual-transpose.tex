@@ -1,0 +1,40 @@
+\section{True original dual transposes from actual canonical evaluation}
+
+\begin{definition}[Actual transpose to the original sheaf dual]
+\label{def:actual-invertible-dual-transpose}
+\lean{AlgebraicGeometry.Scheme.Modules.originalRightUnitIso}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.dualTranspose}
+\leanok
+\uses{lem:cartier-actual-canonical-dual-evaluation-isomorphism,lem:cartier-actual-line-tensor-fully-faithful}
+For an actual original invertible module $M$ and an actual whole
+original morphism $\alpha:M\to\mathcal O_X$, define its transpose
+$\sigma_\alpha:\mathcal O_X\to M^\vee$ by the actual full
+faithfulness of tensoring with $M$. Its tensor image is the
+actual original right unit isomorphism followed by $\alpha$ and
+the inverse actual canonical dual evaluation. Thus the source,
+target, and pairing are the original modules and original
+canonical sheaf evaluation, with no abstract duality input.
+\end{definition}
+
+\begin{lemma}[Actual whole transpose pairing identity and uniqueness]
+\label{lem:actual-invertible-dual-transpose-pairing}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.dualTranspose_pairing}
+\lean{AlgebraicGeometry.Scheme.Modules.IsInvertible.dualTranspose_unique}
+\leanok
+\uses{def:actual-invertible-dual-transpose}
+Tensoring the actual transpose with the original identity of $M$
+and following the original canonical evaluation gives exactly
+$\alpha$ after the true original right-unit comparison. This
+whole identity uniquely determines the original transpose among
+all original module morphisms.
+\end{lemma}
+\begin{proof}
+Actual tensor full faithfulness sends the constructed preimage to
+its stated whole tensor image. Postcompose by actual evaluation;
+its genuine inverse-hom identity cancels the inverse evaluation
+factor and gives the asserted whole original pairing equality.
+For any other original morphism satisfying it, cancel the genuine
+original evaluation isomorphism and then apply injectivity of the
+same actual tensor functor on original hom-sets. The two entire
+original morphisms are equal.
+\end{proof}

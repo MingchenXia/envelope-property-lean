@@ -1,0 +1,116 @@
+\subsection{Actual native lifts under locally finite type surjective maps}
+
+The source is Mathlib's actual finite-type fibre construction and the checked
+finite-field-point producer, together with genuine complete-field norm extension.
+The conclusion concerns the independently defined native real-valued point space.
+No native lift, fibre bijection or prescribed valuation extension is an input.
+
+\begin{lemma}[The original completed residue norm recovers the whole affine point]
+\label{scheme:native-completed-residue-point-affine}
+\uses{scheme:affine-valued-point-homeomorphism,scheme:native-coefficient-restriction,spectrum:completed-residue-field}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.map_norm_basePoint_toH}
+For ANY original commutative ring $A$ and its genuine seminorm point $a$,
+the ACTUAL coefficient map $A\to H(a)$ sends the native norm point of the
+literal completed residue field to the ENTIRE original native affine point.
+Every original coefficient and the full residue valuation are retained.
+\leanok
+\end{lemma}
+\begin{proof}
+Use the already constructed native basepoint of a valuation, with the norm
+valuation on the ACTUAL $H(a)$. Its original affine homeomorphism recovers
+that entire norm valuation. Apply true native Spec naturality for the WHOLE
+original coefficient map. The proved original norm identity holds on EVERY
+$a_0\in A$, so the resulting entire seminorm is exactly $a$. Injectivity
+of the genuine affine homeomorphism gives equality of WHOLE native points.
+In general, the existing whole coefficient-basepoint theorem likewise handles
+any actual field map whose valuations agree on EVERY coefficient. Neither
+step reconstructs a seminorm from the value of a selected generator.
+\end{proof}
+
+\begin{lemma}[An original native point has a genuine completed residue field point]
+\label{scheme:native-completed-residue-field-point}
+\uses{scheme:native-completed-residue-point-affine,scheme:native-affine-atlas,spectrum:completed-residue-field}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.exists_complete_field_point}
+For EVERY actual native point $x$ of ANY scheme $X$, one can construct an actual
+complete ultrametric field $K$ and a genuine $q:\operatorname{Spec}K\to X$ such
+that the WHOLE native image of the norm point is EXACTLY $x$. The field is the
+literal completed residue field of the original affine seminorm supplied by an
+actual affine neighborhood of $x$; no field or point comparison is assumed.
+\leanok
+\end{lemma}
+\begin{proof}
+Choose a genuine affine neighborhood $U$ containing the original support. The
+actual affine-open native homeomorphism gives its ENTIRE original section-ring
+seminorm $a$ on $A=\Gamma(X,U)$. It uses the genuine residue-field isomorphism,
+so its literal $H(a)$ is the completed original residue valuation under that
+actual chart comparison, not an unrelated chosen extension. Set $K=H(a)$.
+The proved construction supplies its true complete normed field and ultrametric
+distance and the actual original coefficient RingHom $A\to H(a)$. Compose its
+Spec map with the TRUE affine chart $\operatorname{Spec}A\to X$.
+
+The actual norm identity holds on EVERY original $A$ element. Whole native
+Spec naturality and injectivity of the genuine affine homeomorphism therefore
+identify the intermediate native point with the SAME original affine point.
+The real affine-open homeomorphism recovers the ENTIRE $x$ and its full residue
+valuation in $X$. Thus the displayed field-valued map is actually constructed,
+not supplied as a native-fibre or completed-field identification certificate.
+No coefficient bound, separation, finite type or completeness hypothesis on $X$
+is needed.
+\end{proof}
+
+\begin{theorem}[Actual locally finite type scheme-surjections are native-surjective]
+\label{scheme:native-locally-finite-type-surjective}
+\uses{scheme:native-completed-residue-field-point,scheme:actual-finite-field-fibre-lift,spectrum:complete-norm-extension,scheme:native-coefficient-restriction}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.map_surjective_of_locallyOfFiniteType}
+Let $f:Y\to X$ be any ACTUAL scheme-surjective morphism locally of finite type.
+Then its independently defined native map is surjective on ENTIRE native points.
+No quasi-compactness, separatedness, Noetherianity, field-base, properness,
+coefficient bound or global finite type hypothesis is required.
+\leanok
+\end{theorem}
+\begin{proof}
+For an ORIGINAL native $x$, use its actually constructed completed residue field
+map $q:\operatorname{Spec}K\to X$ in the preceding lemma. Scheme-surjectivity
+is preserved by actual base change, so the true fibre $Y\times_X\operatorname{Spec}K$
+is nonempty. Its actual structure morphism is locally of finite type. A genuine
+affine maximal quotient, via Zariski's lemma, supplies a field $L$ ACTUALLY finite
+over $K$ and a WHOLE scheme map $p:\operatorname{Spec}L\to Y$ such that
+\[
+ p\mathbin{\gg} f=\operatorname{Spec}(K\to L)\mathbin{\gg}q.
+\]
+These are the actual field actions and entire scheme morphisms from the checked
+finite-field-point factory, not a chosen support or native lift.
+
+Because the ORIGINAL $K=H(a)$ is complete and ultrametric, the genuine norm-extension
+theorem gives a real-valued multiplicative ultrametric valuation on $L$ extending
+its norm on EVERY $K$ element. The theorem includes trivial valuations and arbitrary
+inseparability. Map the whole native $L$ valuation point through $p$. Actual native
+functoriality, the ENTIRE displayed scheme triangle and the first lemma give
+\[
+ f^{\mathrm{val}}(p^{\mathrm{val}}(w))=q^{\mathrm{val}}(\|\cdot\|_K)=x.
+\]
+This equality recovers the whole original point, not just its support. Thus the
+native map is genuinely surjective, with no native extension or fibre certificate.
+\end{proof}
+
+\begin{theorem}[Every exact common prescribed-base native point is lifted]
+\label{scheme:relative-native-locally-finite-type-surjective}
+\uses{scheme:native-locally-finite-type-surjective,scheme:native-coefficient-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_surjective_of_locallyOfFiniteType}
+For ANY prescribed real-valued coefficient valuation and ANY commuting scheme
+morphism over the SAME base scheme $\operatorname{Spec}R$, an actual locally finite
+type scheme-surjection induces a surjection of the exact common prescribed native
+loci. No bound on that valuation is required. No assertion for a separately
+prescribed different source coefficient point is made.
+\leanok
+\end{theorem}
+\begin{proof}
+Construct the actual absolute whole-point lift just proved. Its ENTIRE image is
+the original target native point. Compose the real scheme-map triangle and apply
+native functoriality. The whole source basepoint is therefore the SAME prescribed
+whole coefficient point, since this is true of the target. Equivalently, use the
+proved exact preimage identity for the whole relative locus. This puts the
+constructed absolute point into the actual source subtype, and subtype equality
+retains the original whole target point. No separate source scalar-valuation
+extension or arbitrary scalar-base-change surjectivity is inferred.
+\end{proof}

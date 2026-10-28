@@ -1,0 +1,78 @@
+\subsection{Actual canonical ratio metrics on the whole original normal model}
+
+\begin{definition}[Original product and analytic restriction at every model point]
+\label{local:actual-normalized-full-point-restriction}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousProductPointAt, EnvelopeProperty.ProjSubvariety.normalizedSimultaneousBaseRestrictionAt}
+\leanok
+\uses{local:actual-product-original-analytic-restriction}
+Fix actual original ideals $I,J$ on the original product and their finite
+original Gauss logarithms. Over any field, the SAME actual normalized
+simultaneous blowup is normal and proper by the existing construction.
+Every genuine relative valued point $y$ of this model maps through the
+literal normalization and blowup projections to its ENTIRE original
+product point, and then to its SAME original analytic variety restriction.
+No choice of a Gauss lift of $y$ is involved.
+\end{definition}
+\begin{proof}
+Compose the two actual scheme-valued point maps over the literal unchanged
+polynomial base. Apply the whole original variety restriction already
+constructed on all product points. The whole defining-ideal support
+argument there ensures original variety membership.
+\end{proof}
+
+\begin{lemma}[True original pulled ideal logarithms at every model point]
+\label{local:actual-normalized-full-point-ideal-log}
+\lean{EnvelopeProperty.ProjSubvariety.modelIdealLog_normalizedSimultaneous_comap}
+\leanok
+\uses{local:actual-normalized-full-point-restriction}
+For every actual original ideal $K$ on the original product, its double
+geometric pullback through the SAME original blowup and normalization
+has at $y$ the TRUE intrinsic logarithm of $K$ at the ENTIRE projected
+original product point. Infinite logarithms are included.
+\end{lemma}
+\begin{proof}
+Apply the genuine proper-center ideal pullback formula first to the
+normalization, then to the blowup. Actual properness of the model,
+blowup and original product is already derived, so the true centers and
+residue-field evaluations commute with these literal maps.
+\end{proof}
+
+\begin{definition}[Same actual canonical generic ratio section and weight]
+\label{local:actual-normalized-full-point-ratio-section}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioSectionAt, EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioWeightAt}
+\leanok
+\uses{local:actual-normalized-full-point-ideal-log}
+At any original model point $y$ for which the actual first product ideal
+has finite logarithm, construct the actual canonical generic section of
+the SAME original Cartier ratio line and define its weight by its TRUE
+negative-log model norm. No rational trivialization or metric equality is
+supplied. This is the actual ratio line used for the original Gauss metric.
+\end{definition}
+\begin{proof}
+The original finite-logarithm data give integrality of the original
+simultaneous blowup. Both ideal factors are genuinely Cartier there and
+remain Cartier under the actual dominant normalization. The preceding
+true ideal-log pullback formula and the first product ideal's nonzero
+value imply that its actual normalized pullback norm is nonzero.
+Apply the canonical actual Cartier ratio-section construction: tensor
+the first ideal's generic inverse-unit section with the actual dual
+transpose of the second ideal inclusion. Use the already derived
+invertibility of the SAME original ratio line and its genuine model norm.
+\end{proof}
+
+\begin{theorem}[True actual canonical weight equals original ideal-log difference]
+\label{local:actual-normalized-full-point-ratio-weight}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioWeightAt_eq}
+\leanok
+\uses{local:actual-normalized-full-point-ratio-section}
+At every such actual original normal-model point, the TRUE weight of
+this SAME canonical ratio section is exactly the first original product
+ideal logarithm minus the second at the ENTIRE projected point.
+\end{theorem}
+\begin{proof}
+The actual canonical Cartier ratio metric theorem gives the difference
+of the two genuine normalized pullback ideal logarithms. Apply the true
+whole ideal-log pullback equality separately to the two original ideals.
+All Cartier properties and first-factor nonvanishing used in this
+calculation were derived in the preceding construction.
+\end{proof}

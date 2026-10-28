@@ -1,0 +1,69 @@
+\section{Intrinsic pure-counit normalization on actual canonical sections}
+
+\begin{lemma}[The native pure differential in the original affine comparison]
+\label{lem:kn-global-trace-native-pure-topforms}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureNativeCanonicalPullback,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureNativeCanonicalPullback_generator,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureNativeCanonicalPullback_topform}
+\leanok
+Let $a:k[x_1,\ldots,x_n]\to A$ be the original etale coordinate map,
+let the original root degrees be positive and invertible in $A$, and
+let $P$ be the original entire pure root algebra, retaining every factor.
+The native canonical differential $d_{P/A}$, using the original field
+structures, satisfies
+\[
+ d_{P/A}(\beta_A^{-1}w)=\beta_P^{-1}(d_{P/A}^{\mathrm{ord}}w)
+\]
+for every original ordinary top form $w\in\bigwedge^n\Omega_{A/k}$.
+Here both $\beta$ are the genuine original affine sheaf-section
+comparisons and $d^{\mathrm{ord}}$ is the original ordinary exterior map.
+No desired map comparison is assumed.
+\uses{lem:kn-global-trace-native-coordinate-wedge}
+\end{lemma}
+\begin{proof}
+The original coordinates produce smoothness of the original base by the
+proved polynomial-space structural triangle.  The native canonical
+map is the actual affine algebra-map differential with its produced field
+structure square.  The original etale coordinate basis has generator
+$dx_1\wedge\cdots\wedge dx_n$.  The true affine comparisons identify its
+inverse with its original sheafification unit.  The proved original
+coordinate-wedge readback identifies the native differential of this
+unit with the unit of the ordinary pulled generator.  This gives the
+formula on that generator.  Every original top form is its unique
+coefficient multiple through the actual coordinate trivialization.
+The native canonical map is linear over the original base coefficients,
+the ordinary exterior map is semilinear through the original inclusion,
+and the source and target affine comparisons are linear over their
+original rings.  Applying those three linearity identities proves the
+formula for every original top form.
+\end{proof}
+
+\begin{theorem}[Actual native normalization of the entire pure canonical counit]
+\label{thm:kn-global-trace-native-pure-counit-normalization}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsCounit_native}
+\leanok
+For every $c\in P$ and every original canonical section $w$ on
+$\operatorname{Spec}A$, the same originally produced pure counit satisfies
+\[
+ \operatorname{Tr}^{\omega}_{P/A}\bigl(c\,d_{P/A}w\bigr)
+       =\operatorname{Tr}_{P/A}(c)w.
+\]
+The differential is the actual sheaf canonical differential of the
+same original structural map, and the coefficient trace is the native
+trace of the entire original pure algebra.  This is a proved
+normalization assertion, with no normalization certificate as a premise.
+\uses{lem:kn-global-trace-native-pure-topforms}
+\end{theorem}
+\begin{proof}
+Apply the genuine original base affine comparison to $w$, obtaining
+its original ordinary top form $z$.  Its inverse recovers $w$ by the
+isomorphism identity.  The preceding lemma identifies the same native
+canonical pullback with the inverse pure affine comparison of the
+ordinary pulled form $d^{\mathrm{ord}}z$.  Multiply this equality by the
+original arbitrary $c$ and apply the same produced pure counit.
+The inverse pure affine comparison is $P$-linear, so its value on
+$c\,d^{\mathrm{ord}}z$ is $c$ times its value on $d^{\mathrm{ord}}z$.
+This explicit scalar identity identifies the input of the existing
+original pure all-top-form normalization, which evaluates the result
+as $\beta_A^{-1}(\operatorname{Tr}_{P/A}(c)z)$.  Linearity of the same
+base affine comparison and its inverse identity give exactly the stated
+native formula, on every original canonical section.
+\end{proof}

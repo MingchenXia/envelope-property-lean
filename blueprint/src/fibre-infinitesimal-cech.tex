@@ -1,0 +1,96 @@
+\section{The original infinitesimal ordered Cech exact sequence}
+
+\begin{theorem}[The genuine infinitesimal sequence on an original affine family]
+\label{thm:fibre-infinitesimal-ordered-cech-short-exact}
+\uses{cor:fibre-infinitesimal-affine-module-short-exact}
+\lean{EnvelopeProperty.FibreInfinitesimalCech.complexSequence,EnvelopeProperty.FibreInfinitesimalCech.complexSequence_shortExact}
+\leanok
+Let $X$ be a separated scheme over $\operatorname{Spec}R$ and let
+$(U_i)_{i\in A}$ be any linearly ordered family of affine opens. For
+every $n\ge0$, applying the ordered Cech complex on this same family to
+\[
+ (I\mathcal O_X)^n\longrightarrow\mathcal O_X
+ \longrightarrow q_{n*}\mathcal O_{X_n}
+\]
+gives a short exact sequence of complexes of
+$\Gamma(\operatorname{Spec}R,\mathcal O)$-modules, using all the original
+section maps and original coefficient actions. Neither finiteness nor
+covering of the family is required for this assertion.
+\end{theorem}
+\begin{proof}
+Fix a cochain degree $p$. Each ordered Cech factor is evaluation on an
+intersection of $p+1$ original affine opens. Such an intersection is
+affine because $X$ is separated. The preceding section theorem makes
+each corresponding factor sequence short exact. Restricting scalars
+along the actual original coefficient map changes neither its
+functions nor injectivity, surjectivity or its middle kernel.
+
+The ordered degree-$p$ term is the product of these same factors.
+A product of their inclusions is injective, since equality is detected
+in every coordinate. Given an element of the third product, choose a
+preimage of each coordinate under its surjective second map; this
+family is an element of the middle product mapping to the prescribed
+one. If an element of the middle product maps to zero, every coordinate
+lies in the image of its first map; choosing those preimages gives an
+element of the first product with precisely the original middle
+coordinates. Thus the product sequence is short exact. The canonical
+product descriptions intertwine the actual Cech maps with these
+coordinate maps. The original maps are morphisms of module sheaves,
+so their Cech maps commute with all restriction maps, cofaces and
+alternating differentials. Degreewise short exactness consequently
+gives the asserted short exact sequence of complexes.
+\end{proof}
+
+\begin{corollary}[The original infinitesimal long Cech cohomology sequence]
+\label{cor:fibre-infinitesimal-ordered-cech-long-exact}
+\uses{thm:fibre-infinitesimal-ordered-cech-short-exact}
+\lean{EnvelopeProperty.FibreInfinitesimalCech.connecting,EnvelopeProperty.FibreInfinitesimalCech.homology_exact_left,EnvelopeProperty.FibreInfinitesimalCech.homology_exact_middle,EnvelopeProperty.FibreInfinitesimalCech.homology_exact_right}
+\leanok
+There are genuine connecting maps from the degree-$p$ cohomology of
+the original infinitesimal pushforward Cech complex to the degree-$(p+1)$
+cohomology of the original ideal-power Cech complex. Together with the
+cohomology maps of the original inclusion and projection they form a
+long exact sequence, exact at all three types of term.
+\end{corollary}
+\begin{proof}
+Apply the snake lemma to the consecutive-degree cycles and boundaries
+of the established short exact sequence of complexes. The connecting
+map lifts a quotient cocycle to the middle complex, takes its
+differential, lifts this uniquely through the injective first map,
+and takes its cohomology class. Changing the first lift alters this
+cocycle by a boundary. A cocycle has zero connecting class exactly when
+its lift can be corrected by an element of the first complex to become
+a cocycle, proving exactness at the third cohomology term. A first-term
+cocycle maps to a middle boundary exactly when the same middle
+primitive projects to a quotient cocycle whose connecting class is
+the original first class, proving exactness at the first term. Finally,
+a middle cocycle projects to a boundary exactly when subtracting a lift
+of that boundary leaves a cocycle in the first complex, proving
+exactness at the middle term. These are the original induced maps of
+the established complexes.
+\end{proof}
+
+
+\begin{lemma}[The whole original infinitesimal model complex]
+\label{lem:fibre-infinitesimal-original-model-complex}
+\uses{thm:fibre-infinitesimal-ordered-cech-short-exact}
+\lean{EnvelopeProperty.FibreInfinitesimalCech.modelComplexIso,EnvelopeProperty.FibreInfinitesimalCech.modelHomologyIso}
+\leanok
+The third complex in this exact sequence is canonically isomorphic to
+the ordered Cech complex of the original structure module on the literal
+infinitesimal model $X_n$, on the actual inverse-image family
+$(q_n^{-1}U_i)$. The isomorphism retains the original coefficient
+structure through $q_n$ and gives isomorphisms on cohomology in every
+degree.
+\end{lemma}
+\begin{proof}
+For each ordered tuple, inverse image preserves its finite intersection.
+Sections of the pushforward module on that intersection are therefore
+exactly sections of the original model structure module on its original
+inverse image. The coefficient actions agree by the composition rule
+for the two original scheme section maps. These identifications commute
+with every restriction, hence with each ordered coface and its
+alternating sum. They are invertible on every whole factor and product,
+so give an isomorphism of the entire complexes. Applying cohomology
+gives the asserted isomorphism in every degree.
+\end{proof}

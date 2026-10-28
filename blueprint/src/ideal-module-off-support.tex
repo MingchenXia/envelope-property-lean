@@ -1,0 +1,31 @@
+\section{Genuine ideal-module trivialization away from the actual support}
+
+\begin{lemma}[Actual ideal modules are canonically trivial off their support]
+\label{lem:actual-ideal-module-off-support}
+\uses{lem:actual-ideal-module-pullback-map}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.comap_open_eq_top_of_le_compl_support,AlgebraicGeometry.Scheme.IdealSheafData.ideal_eq_top_of_le_compl_support,AlgebraicGeometry.Scheme.IdealSheafData.isLocallyMem_of_le_compl_support,AlgebraicGeometry.Scheme.IdealSheafData.toModulesInclusion_isIso_restrict_of_le_compl_support,AlgebraicGeometry.Scheme.IdealSheafData.restrictModuleIsoOfLeComplSupport,AlgebraicGeometry.Scheme.IdealSheafData.pullbackModuleIsoOfLeComplSupport}
+\leanok
+For any actual ideal sheaf and any actual open contained in the complement
+of its true support, the original geometric ideal comap is the unit ideal,
+and its actual original module sheaf restricts and pulls back to the genuine
+structure module on the entire original open. The restriction isomorphism
+is the actual original inclusion of the true ideal module.
+\end{lemma}
+\begin{proof}
+The actual geometric ideal comap has support the true preimage of the
+original support. This is empty on the given open, and the original
+support-empty criterion forces the entire comap ideal, not merely its
+radical, to equal the unit ideal. On affine opens, transport that
+identity through the true open-comap affine section comparison to get
+the original affine ideal equal to the unit ideal. Therefore every actual
+section on every original open contained in the support complement lies
+in the actual ideal module: check the true affine membership definition.
+The actual restricted ideal-module inclusion is now bijective on every
+whole original open, because its underlying function is the original
+subtype inclusion and every original function belongs. Hence it is an
+isomorphism of the actual sheaves. Compose with the genuine native
+restriction-unit isomorphism and then the actual open-immersion
+restriction/pullback comparison to obtain the stated entire pullback
+trivialization. No affineness, flatness, Cartier, finiteness, reducedness
+or model-trivialization assumption is imposed on the original scheme.
+\end{proof}

@@ -1,0 +1,61 @@
+\section{Actual functoriality of canonical ideal-module pullback}
+\begin{lemma}[Whole ideal equality and its genuine module isomorphism]
+\label{lem:actual-ideal-module-equality-iso}
+\uses{lem:actual-ideal-module-pullback-map}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesEqualityIso,AlgebraicGeometry.Scheme.IdealSheafData.toModulesEqualityIso_hom_app_inclusion,AlgebraicGeometry.Scheme.IdealSheafData.toModulesEqualityIso_hom_inclusion}
+An equality of entire original geometric ideals gives an actual module
+isomorphism preserving each included section and the whole structure-module
+inclusion.
+\end{lemma}
+\begin{proof}
+Transport the original module along the given literal ideal equality.
+After equality induction the isomorphism and all its section and inclusion
+maps are identities, proving both whole formulas.
+\end{proof}
+
+\begin{lemma}[Canonical ideal-module pullback respects whole composition]
+\label{lem:actual-ideal-module-canonical-pullback-comp}
+\uses{lem:actual-ideal-module-equality-iso,lem:actual-ideal-module-pullback-map}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_comp}
+For any two actual composable scheme morphisms and any original ideal,
+the canonical comparison for their composite equals the composite of the
+two actual canonical pullback comparisons, using the genuine native
+pullback-composition isomorphism and the true geometric comap equality.
+\end{lemma}
+\begin{proof}
+Postcompose with the actual monomorphism from the final geometric ideal
+module to the original structure module. The true canonical inclusion
+triangles rewrite each comparison as the pullback of its original ideal
+inclusion followed by the actual structure-module pullback map. The
+literal comap-composition equality preserves the entire included section.
+Naturality of the true pullback-composition isomorphism moves the original
+ideal inclusion past that isomorphism. The existing structure-module
+unit coherence identifies its composition comparison with the two true
+successive structure-module maps. Functoriality of actual pullback and
+associativity now give the same entire structure-module morphism on both
+sides. Cancel the genuine final ideal inclusion. This proves whole
+sheaf functoriality without flatness, Cartier or comparison premises.
+\end{proof}
+
+
+\begin{lemma}[True composition and local cancellation for isomorphisms]
+\label{lem:actual-ideal-module-canonical-pullback-comp-iso}
+\uses{lem:actual-ideal-module-canonical-pullback-comp}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_isIso_comp,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_isIso_pullback_of_comp}
+If both successive canonical ideal-module comparisons are isomorphisms,
+the canonical comparison for their composite is an isomorphism. If the
+composite comparison and the second comparison are isomorphisms, the
+actual pullback of the first comparison is an isomorphism.
+\end{lemma}
+\begin{proof}
+Use the preceding equality of genuine entire canonical maps. In the
+first case its successive-comparison side is an isomorphism by actual
+functoriality. Cancel the true native pullback-composition isomorphism
+and the actual comap-equality isomorphism. In the second case the
+composite-comparison side is an isomorphism for the same reason. Cancel
+the actual second canonical isomorphism. All maps in these cancellations
+are precisely those in the proved whole composition equality.
+\end{proof}

@@ -1,0 +1,108 @@
+\section{Quotients of seminorm spectra}\label{sec:general-spectrum-quotients}
+
+Let $A$ be a commutative ring and let $\mathcal S(A)$ denote its space of
+real-valued multiplicative ultrametric seminorms, with the evaluation topology.
+For the relative statements, let $R$ be a commutative ring equipped with a fixed
+seminorm $v$, let $A$ be a commutative $R$-algebra, and let $\mathcal S_v(A)$
+be the subspace of seminorms restricting to $v$ on $R$.
+No field, trivial valuation, finite generation, or reducedness assumption is imposed.
+
+\begin{definition}[Zero locus in a seminorm spectrum]\label{spectrum:quotient-zero-locus}
+\lean{EnvelopeProperty.Berkovich.Spectrum.zeroLocus,
+EnvelopeProperty.Berkovich.RelativeSpectrum.zeroLocus}
+\leanok
+\uses{spectrum:affine-seminorm,spectrum:relative}
+For an ideal $I\subseteq A$, set
+$V_{\mathcal S}(I)=\{x\in\mathcal S(A):I\subseteq\operatorname{supp}(x)\}$.
+In a relative spectrum, use the same condition to define $V_{\mathcal S_v}(I)$.
+Equivalently, the seminorm must vanish on every element of $I$.
+\end{definition}
+
+\begin{lemma}[Closed zero loci]\label{spectrum:quotient-zero-locus-closed}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isClosed_zeroLocus,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosed_zeroLocus}
+\leanok
+\uses{spectrum:quotient-zero-locus,spectrum:topology}
+Both $V_{\mathcal S}(I)$ and $V_{\mathcal S_v}(I)$ are closed in their respective spectra.
+\end{lemma}
+\begin{proof}
+For each $a\in I$, the condition $|a|_x=0$ is closed because evaluation at $a$
+is continuous and $\{0\}$ is closed in $\R_{\ge0}$. The asserted zero locus is
+the intersection of these conditions. In the relative spectrum the same argument
+uses the restriction of each evaluation map to the prescribed-base subspace.
+\end{proof}
+
+\begin{theorem}[Quotient spectrum]\label{spectrum:quotient-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.Spectrum.quotientHomeomorph,
+EnvelopeProperty.Berkovich.Spectrum.isClosedEmbedding_quotientComap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.quotientHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedEmbedding_quotientComap}
+\leanok
+\uses{spectrum:quotient-zero-locus-closed,spectrum:pullback,spectrum:relative}
+Restriction along $A\to A/I$ identifies $\mathcal S(A/I)$ homeomorphically
+with $V_{\mathcal S}(I)$ and identifies $\mathcal S_v(A/I)$ homeomorphically
+with $V_{\mathcal S_v}(I)$. The restriction maps are closed embeddings.
+For the inverse, $|a+I|=|a|_x$.
+\end{theorem}
+\begin{proof}
+A seminorm pulled back from $A/I$ vanishes on $I$. Conversely, suppose $x$ vanishes
+on $I$. If $a-b\in I$, then the ultrametric inequality gives
+$|a|_x\le\max\{|b|_x,|a-b|_x\}=|b|_x$ and, by interchanging $a$ and $b$,
+$|b|_x\le|a|_x$. Thus $|a+I|=|a|_x$ is well defined.
+The multiplicative and ultrametric identities descend along the quotient map,
+as do the values at zero and one. The two constructions are inverse because
+every quotient class has a representative. They preserve a prescribed seminorm
+on $R$, since the image of $r\in R$ in $A/I$ is the quotient class of its image
+in $A$. Restriction is continuous by the evaluation definition of the topology.
+Every evaluation on the inverse, at a quotient class represented by $a$, is
+the restriction of evaluation at $a$ on $\mathcal S(A)$, and hence is continuous.
+The same proof applies on the relative subspaces. The images are closed by
+the preceding lemma, so both restriction maps are closed embeddings.
+\end{proof}
+
+\begin{theorem}[Surjective morphisms of rings and algebras]\label{spectrum:surjective-closed-embedding}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isClosedEmbedding_comap_of_surjective,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedEmbedding_comap_of_surjective}
+\leanok
+\uses{spectrum:quotient-homeomorphism,spectrum:pullback}
+A surjective ring homomorphism $A\to B$ induces a closed embedding
+$\mathcal S(B)\to\mathcal S(A)$. A surjective $R$-algebra homomorphism
+induces a closed embedding $\mathcal S_v(B)\to\mathcal S_v(A)$.
+\end{theorem}
+\begin{proof}
+The first isomorphism theorem identifies $B$ with the quotient of $A$ by the
+kernel of the homomorphism; for an $R$-algebra homomorphism this identification
+is an $R$-algebra isomorphism. An isomorphism induces mutually inverse
+continuous pullback maps on seminorm spectra, since every evaluation pulls back
+to evaluation on the image of the element. The same is true on the relative
+subspaces for an $R$-algebra isomorphism. The desired maps consequently factor
+as one of these homeomorphisms followed by the closed quotient embedding.
+\end{proof}
+
+\begin{theorem}[Invariance under reduction]\label{spectrum:reduction-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.Spectrum.reductionHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.reductionHomeomorph}
+\leanok
+\uses{spectrum:quotient-homeomorphism}
+If $A_{\mathrm{red}}=A/\sqrt{(0)}$, restriction gives homeomorphisms
+$\mathcal S(A_{\mathrm{red}})\simeq\mathcal S(A)$ and
+$\mathcal S_v(A_{\mathrm{red}})\simeq\mathcal S_v(A)$.
+They preserve the value of every regular function and its quotient class.
+\end{theorem}
+\begin{proof}
+The support of any multiplicative seminorm is prime: it is an ideal by the
+ultrametric inequality and multiplicativity, is proper since $|1|=1$, and
+$|ab|=0$ implies $|a|=0$ or $|b|=0$. Every prime ideal contains the nilradical,
+so every seminorm vanishes on $\sqrt{(0)}$. The zero loci in the quotient
+homeomorphism theorem are therefore the entire respective spectra, and the
+inverse evaluation formula proves compatibility with all regular functions.
+\end{proof}
+
+\begin{remark}\label{spectrum:quotient-specialization}
+\uses{spectrum:quotient-homeomorphism,spectrum:surjective-closed-embedding,spectrum:reduction-homeomorphism}
+The affine closed-immersion and reduction statements for a trivially valued field
+are the special cases in which $R$ is that field and the prescribed base seminorm
+is trivial. These general results concern the evaluation topology on real-valued
+seminorms of arbitrary rings. They impose no boundedness or completeness condition
+and do not assert the construction of the analytic spectrum of a Banach ring.
+\end{remark}

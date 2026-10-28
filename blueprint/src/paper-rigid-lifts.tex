@@ -1,0 +1,64 @@
+\subsection{The paper's actual complete algebraic closure and rational lift}
+\label{subsec:paper-rigid-lifts}
+
+\begin{theorem}[The actual constructed rigid point in the paper interface]
+\label{spectrum:paper-rigid-complete-extension}
+\lean{EnvelopeProperty.Berk.RigidField,
+EnvelopeProperty.Berk.rigidLift,
+EnvelopeProperty.Berk.rigidLiftToBerk,
+EnvelopeProperty.Berk.rigidLiftToBerk_toSpectrum,
+EnvelopeProperty.Berk.rigidLiftToBerk_comap,
+EnvelopeProperty.Berk.rigidLiftToBerk_val_algebraMap,
+EnvelopeProperty.Berk.rigidLiftToBerk_support_isMaximal}
+\leanok
+\uses{spectrum:rigid-complete-algebraic-closure-lift,spectrum:trivial-field-bridge,
+spectrum:scalar-restriction}
+For every actual paper point $x$ of $\operatorname{Berk}_k(A)$, the
+genuine field factory constructs $F=\widehat{\overline{H(x)}}$ with its
+complete algebraically closed ultrametric norm. Its genuine $F$-rational
+lift of $x$ gives an actual point of the paper space
+$\operatorname{Berk}_k(F\otimes_kA)$ that restricts to the whole original
+point. Every $F$-scalar retains its actual norm value, which may be
+nontrivial, and the support is genuinely maximal.
+\end{theorem}
+\begin{proof}
+Use the actual old-space/relative-spectrum homeomorphism to express the
+whole original point as a point with the trivial $k$ valuation prescribed.
+Apply the already constructed generic rigid lift, with its genuine
+completed algebraic closure field and full surjective tensor evaluation.
+The proved coefficient valuation equality permits actual scalar restriction
+from the entire norm of $F$ to the original trivial $k$ valuation. The
+inverse old-space homeomorphism therefore gives a genuine paper point.
+These homeomorphisms preserve the entire valuation, so the existing
+whole right-inclusion restriction, all $F$-coefficient values and actual
+maximal support transfer directly. No complete algebraically closed
+extension or rigid-lift witness is assumed as an input certificate.
+\end{proof}
+
+\begin{theorem}[Actual function norm at the constructed rational lift]
+\label{spectrum:paper-flat-norm-rigid-lift}
+\lean{EnvelopeProperty.Berk.flatNormFun_rigidLift}
+\leanok
+\uses{spectrum:paper-rigid-complete-extension,spectrum:paper-flat-norm-base-change}
+For every finite algebra map $A\to B$, every EReal function $u$ on the
+original paper points of $B$, and the genuinely constructed rational
+lift $x_F$ above, the existing function norm on the literal map
+$F\otimes_k A\to F\otimes_k B$ evaluated at $x_F$ equals
+$\mathrm{flatNormFun}(u)(x)$, after actual restriction of $u$ through the
+right tensor inclusion.
+\end{theorem}
+\begin{proof}
+Give the literal scalar-extended map its proved actual coefficient algebra
+and module-finite structure. Apply the already proved all-function
+scalar-extension comparison at the constructed point. Its whole old-space
+restriction is precisely $x$, so the right side becomes the original
+function norm value. The actual finite local dimensions retain nilpotent
+and inseparable contributions. This is a pointwise comparison for every
+EReal function with the actual conventions; no regularizability, freeness,
+flatness, reducedness or curve hypothesis is required.
+
+This makes the field and rigid-point choice used in Fang--Han--Xia
+Proposition~5.22 concrete in the paper's current point-space interface.
+Lines and the later analytic-curve and normalization arguments remain
+separate constructions.
+\end{proof}

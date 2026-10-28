@@ -1,0 +1,135 @@
+\section{Finite-index discrepancy estimates from the actual asymptotic order}
+
+\begin{lemma}[An original member attains the actual mapped DVR ideal order]
+\label{lem:c0n-original-member-attains-mapped-dvr-order}
+\lean{EnvelopeProperty.Char0.exists_mem_eq_dvrIdealOrder_map}
+\leanok
+Let $R$ be an original commutative ring, $V$ a discrete valuation ring,
+and $g:R\to V$ the original ring homomorphism.  If the actual extension
+$g_*I$ of an original ideal $I\subset R$ is nonzero, then an original
+$x\in I$ satisfies $x\ne0$ and
+$\operatorname{ord}_V(g(x))=\operatorname{ord}_V(g_*I)$.
+No injectivity of $g$ is assumed.
+\end{lemma}
+\begin{proof}
+This reuses the proved native original-member theorem.  Write
+$r=\operatorname{ord}_V(g_*I)$, which is a finite natural number.
+If every original member had image of order greater than $r$, all those
+images would lie in the $(r+1)$st maximal-ideal power.  Their whole
+extended ideal would lie there too.  The actual DVR order reverses ideal
+containment, and that power has order $r+1$, giving $r+1\le r$.
+Some original member therefore has image of order at most $r$.
+Membership in the same extended ideal gives the opposite inequality,
+so its order is exactly $r$.  Finite image order makes its image nonzero,
+and consequently the original member itself is nonzero.
+\end{proof}
+
+\begin{lemma}[A finite index approximates the normalized-order infimum]
+\label{lem:c0n-finite-index-infimum}
+\uses{def:sc0-original-asymptotic-divisorial-order}
+\lean{EnvelopeProperty.Char0.exists_positive_index_normalized_order_lt}
+\leanok
+For any nonnegative real sequence $N_q$ and any $m\in\mathbf N$, put
+$\alpha=\inf_{q>0}N_q/q$.  There is $q>0$ with
+\[
+ (m/q)N_q<m\alpha+1.
+\]
+\end{lemma}
+\begin{proof}
+For $m=0$ take $q=1$.  For $m>0$, the definition of infimum provides
+$q>0$ with $N_q/q<\alpha+1/m$.  Multiplication by $m$ gives the assertion.
+\end{proof}
+
+\begin{theorem}[Actual finite-index element discrepancy bound]
+\label{thm:c0n-actual-finite-index-discrepancy}
+\uses{lem:c0n-finite-index-infimum,thm:sc0-original-asymptotic-multiplier-divisorial-bound}
+\lean{EnvelopeProperty.Char0.exists_asymptoticMultiplierIdeal_element_order_bound}
+\leanok
+Let $k$ be a field of characteristic zero, let $K/k$ be a field extension,
+and let $C,V\subset K$ be $k$-subalgebras with fraction field $K$.
+Assume that $C$ is Noetherian, that $V$ is an essentially finite type
+discrete valuation ring over $k$, and that $C\subset V$.
+Let $J_\bullet$ be a graded sequence in $C$ with $J_q\ne0$ for $q>0$.
+Write $B_m=\mathcal J(J_\bullet^m)$ for the full asymptotic multiplier ideal,
+$N_q=\operatorname{ord}_V(J_q\mathcal O_V)$, and
+$j=\operatorname{ord}_V(\operatorname{Jac}_{C,V})$ for the intrinsic
+original-source Jacobian order.  For every $m\in\mathbf N$ there is $q>0$
+such that every $f\in B_m$ of finite order $\nu$ satisfies
+\[
+ (m/q)N_q-(2+j)\le\nu.
+\]
+The index $q$ is independent of the chosen element $f$.
+\end{theorem}
+\begin{proof}
+Choose $q$ from the preceding lemma for the actual normalized-order
+infimum.  The original asymptotic multiplier discrepancy estimate gives
+$m\alpha<\nu+1+j$ for every nonzero $f\in B_m$.  An element of finite
+order is nonzero.  Combining the two strict inequalities gives
+$(m/q)N_q<\nu+2+j$, and hence the displayed weak inequality.
+This argument also applies when $m=0$.
+\end{proof}
+
+\begin{corollary}[All lower orders of the original sequence ideal]
+\label{cor:c0n-actual-lower-orders}
+\uses{thm:c0n-actual-finite-index-discrepancy,lem:c0n-original-member-attains-mapped-dvr-order}
+\lean{EnvelopeProperty.Char0.exists_asymptoticMultiplierIdeal_lower_order_bound}
+\leanok
+For the same $q$, every $o\in\mathbf N$ with
+$o\le\operatorname{ord}_V(g)$ for all $g\in J_q$ satisfies
+$(m/q)o-(2+j)\le\operatorname{ord}_V(f)$ for every finite-order
+$f\in B_m$.
+\end{corollary}
+\begin{proof}
+The finite order $N_q$ of the extended nonzero ideal is attained by the
+image of an original element of $J_q$.  Thus $o\le N_q$.
+Since $m/q\ge0$, the asserted bound follows from the preceding theorem.
+\end{proof}
+
+\begin{corollary}[Extended-real logarithmic bound, including zero]
+\label{cor:c0n-actual-ereal-log-bound}
+\uses{thm:c0n-actual-finite-index-discrepancy}
+\lean{EnvelopeProperty.Char0.exists_asymptoticMultiplierIdeal_ereal_order_bound}
+\leanok
+Fix a real number $a>0$.  For every $m\in\mathbf N$ there is $q>0$ such
+that all $f\in B_m$, including $f=0$, satisfy
+\[
+ -a\operatorname{ord}_V(f)\le
+ (m/q)(-aN_q)+a(2+j)
+\]
+in the extended real numbers.
+\end{corollary}
+\begin{proof}
+Use the index of the finite-order theorem.  For $f\ne0$, multiply its
+finite-order estimate by the negative number $-a$ and rearrange.
+For $f=0$, the left side is $-\infty$, so the inequality holds.
+The finite order $N_q$ is legitimate because the original ideal $J_q$
+is nonzero and its inclusion into the divisorial ring is injective.
+\end{proof}
+
+\begin{corollary}[The same estimate for original affine sections]
+\label{cor:c0n-original-scheme-ereal-log-bound}
+\uses{cor:c0n-actual-ereal-log-bound,thm:sc0-original-global-asymptotic-affine-values}
+\lean{EnvelopeProperty.Char0.exists_schemeAsymptoticMultiplierIdealSheaf_ereal_order_bound}
+\leanok
+Let $Y$ be a smooth integral scheme over $k$, let $J_\bullet$ be a graded
+ideal-sheaf sequence whose positive-index generic stalks are nonzero,
+and let $U\subset Y$ be an original nonempty affine open.  For every
+divisorial discrete valuation ring $V$ of the actual function field of $Y$
+containing the image of $\Gamma(U,\mathcal O_Y)$, the preceding
+extended-real estimate holds for every $m\in\mathbf N$ and $a>0$ and all
+sections of the full original
+asymptotic multiplier ideal on $U$.  The order of $J_q$ is computed using
+the actual composite from original affine sections into $V$.
+\end{corollary}
+\begin{proof}
+Identify the original affine section ring with its image in the actual
+function field.  Smoothness supplies Noetherianity of this source algebra,
+and the nonzero generic stalk hypothesis supplies nonzero positive-index
+affine ideals.  The exact original affine comparison identifies the
+whole scheme asymptotic ideal with the inverse image of the full affine
+asymptotic ideal under this ring isomorphism.  Apply the preceding
+extended-real estimate and compose the original section map with the
+inclusion into $V$.  Extension of ideals under this composite equals
+successive extension under the two maps, so both the section orders and
+the original sequence ideal orders are exactly those asserted.
+\end{proof}

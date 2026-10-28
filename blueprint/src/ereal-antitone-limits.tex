@@ -1,0 +1,74 @@
+\subsection{Pure extended-real antitone limits and genuine rational approximation}
+
+\begin{lemma}[Actual infima and antitone extended-real arithmetic]
+\label{analysis:actual-ereal-antitone-infima}
+\leanok
+\lean{EnvelopeProperty.iInf_eq_of_tendsto_of_antitone,
+EnvelopeProperty.iInf_comp_of_antitone,
+EnvelopeProperty.iInf_max_of_antitone,
+EnvelopeProperty.iInf_add_of_antitone,
+EnvelopeProperty.iInf_add_coe_of_antitone,
+EnvelopeProperty.iInf_coe_mul_of_antitone}
+The actual infimum of a decreasing extended-real sequence is its limit. A
+monotone map continuous at that original infimum commutes with it. Finite
+maxima commute with the actual infima of two antitone sequences. Their sums
+do so when each sequence has a first term different from positive infinity;
+adding any finite real constant also commutes. Multiplication by a strictly
+positive finite real commutes with any such antitone infimum. All statements
+use the ORIGINAL extended-real operations, including their actual infinity
+conventions; no convergence or arithmetic certificate is supplied.
+\end{lemma}
+\begin{proof}
+The order-topology antitone convergence theorem gives convergence to the
+actual infimum. If an independently given limit exists, uniqueness in the
+Hausdorff extended-real topology identifies it with this same infimum.
+Continuous composition and monotonicity then identify the actual image
+infimum. For maxima use genuine continuity of maximum and the actual product
+of the two convergent sequences.
+
+For sums, the original infima are bounded above by their respective first
+terms different from positive infinity and hence cannot be positive infinity. At this actual pair,
+extended-real addition is continuous: neither mixed positive/negative infinity
+case occurs. Compose that genuine continuity with the original two sequence
+limits; the sums remain antitone, so uniqueness gives exactly their original
+infimum. A constant finite real is a particular constant antitone sequence.
+For multiplication by a fixed positive finite real, the actual extended-real
+map is monotone and continuous, including at both infinities. Apply the same
+continuous-composition argument. This retains negative-infinite limits and
+never assumes uniform convergence.
+\end{proof}
+
+\begin{lemma}[True negative-infinite examples and rational approximation of every real]
+\label{analysis:actual-rational-antitone-real-approximation}
+\leanok
+\lean{EnvelopeProperty.iInf_coe_sub_natCast,
+EnvelopeProperty.iInf_neg_natCast,
+EnvelopeProperty.coe_mul_ne_bot,
+EnvelopeProperty.exists_antitone_rat_iInf_eq}
+For every real $c$, the original infimum of $c-j$ over natural $j$ is negative
+infinity, as is the infimum of $-j$. A positive finite real multiple of an
+extended real different from negative infinity is still different from
+negative infinity. Every real $c$ admits an ACTUAL antitone rational sequence
+$q_j$ with $c<q_j$ and actual extended-real infimum equal to $c$.
+\end{lemma}
+\begin{proof}
+For every finite real threshold choose a genuine natural integer large enough
+that $c-j$ lies below it. The actual characterization of infimum at negative
+infinity proves the first assertion and its $c=0$ specialization. The
+multiplication assertion follows by the three actual extended-real cases:
+negative infinity is excluded, a finite real product remains finite, and a
+strictly positive finite real times positive infinity is positive infinity.
+
+For each natural $j$, rational density chooses an ORIGINAL rational $q_j$ in
+\[
+ c+\frac1{j+2}<q_j<c+\frac1{j+1}.
+\]
+The adjacent open intervals give $q_{j+1}<q_j$, hence the actual sequence is
+antitone, and every term lies above $c$. This gives the lower bound $c$ for
+its actual infimum. Given any real threshold $b>c$, take a true natural $j$
+with $1/(j+1)<b-c$. The displayed upper bound gives $q_j<b$, so the actual
+infimum is at most every such threshold and therefore at most $c$. The
+positive-infinite threshold is immediate from any finite first term, and the
+negative-infinite threshold cannot lie above $c$. Thus the original infimum
+is exactly the original $c$.
+\end{proof}

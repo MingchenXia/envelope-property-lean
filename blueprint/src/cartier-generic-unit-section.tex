@@ -1,0 +1,44 @@
+\section{Canonical actual Cartier generic unit sections and their true model norm}
+
+\begin{definition}[Original generic Cartier inclusion frame]
+\label{def:actual-cartier-generic-inclusion-frame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericIdealInclusionIso}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericIdealInclusionIso_hom}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericIdealUnitSection}
+\leanok
+\uses{cor:actual-cartier-ideal-nonzero-generic-inclusion}
+When the original intrinsic Cartier ideal norm at an original
+relative scheme-valued point is nonzero, the actual whole generic
+pullback inclusion is an isomorphism. Follow it by the native
+original pullback-unit isomorphism. Its inverse applied to the
+original unit section gives a canonical actual section $s_I$ of
+the same original residue-field pullback Cartier line.
+\end{definition}
+
+\begin{lemma}[Actual generic unit section and model norm]
+\label{lem:actual-cartier-generic-unit-section-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericIdealUnitSection_coefficient}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericIdealUnitSection_mul}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_genericIdealUnitSection}
+\leanok
+\uses{def:actual-cartier-generic-inclusion-frame,def:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-unit-norm,thm:actual-cartier-inclusion-model-norm}
+The entire original generic inclusion frame maps $s_I$ to the
+original unit section. Its actual model norm satisfies
+$\|I\|_y\|s_I\|_y=1$, where $\|I\|_y$ is the original Cartier
+inclusion morphism norm, equivalently the original intrinsic ideal
+norm. Consequently the actual model norm of $s_I$ is its reciprocal.
+\end{lemma}
+\begin{proof}
+The unit-section identity is the original inverse-hom identity of
+the actual generic inclusion frame, evaluated on the actual unit
+section. The original structure-line model norm of its image is
+therefore one. The genuine original module-morphism scaling
+identity says that the same norm is the actual inclusion norm
+times the original model norm of $s_I$. The inclusion norm equals
+the intrinsic model ideal norm by the proved Cartier metric
+identity. Its nonvanishing follows from the given intrinsic norm
+nonvanishing. Cancellation in the original nonnegative scalar
+field yields the reciprocal formula. Thus the entire rational
+trivialization and its actual norm are derived, with no extra
+section or metric certificate supplied.
+\end{proof}

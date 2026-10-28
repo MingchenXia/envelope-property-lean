@@ -1,0 +1,32 @@
+\section{Finite principal Rees refinements of actual open covers}
+
+\begin{lemma}[A finite principal refinement generating the unit ideal]\label{lem:sc0-finite-principal-open-refinement}
+\lean{EnvelopeProperty.Char0.exists_finite_principal_refinement}
+\leanok
+Every actual open cover of $\operatorname{Spec}R$ admits a finite principal-open
+refinement $D(g_1),\ldots,D(g_n)$ such that $(g_1,\ldots,g_n)=R$.
+\end{lemma}
+\begin{proof}
+At each point choose a covering open containing it and a basic open containing
+the point and contained in that covering open. The spectrum is quasi-compact,
+so finitely many of the chosen basic opens cover it. If their functions generated
+a proper ideal, that ideal would be contained in a prime ideal, giving a point
+outside all the chosen basic opens. Therefore the functions generate the unit
+ideal. This also handles an empty spectrum, where the empty family generates the
+unit ideal of the zero ring.
+\end{proof}
+
+\begin{corollary}[Actual finite Rees refinement subordinate to an open cover]\label{cor:sc0-finite-principal-rees-refinement}
+\lean{EnvelopeProperty.Char0.exists_finite_principal_rees_refinement}
+\leanok
+\uses{lem:sc0-finite-principal-open-refinement,lem:sc0-principal-rees-finite-cover}
+For a subalgebra $C\subseteq K$ of a field, every actual open cover of
+$\operatorname{Spec}C$ admits a finite unit-generating Rees node whose actual
+chart images are each contained in one covering open.
+\end{corollary}
+\begin{proof}
+Apply the finite principal-refinement lemma and identify every actual nonzero
+Rees chart image with the corresponding original basic open. The family has a
+nonzero member by the actual principal Rees cover theorem, so it defines an
+allowed Rees node.
+\end{proof}

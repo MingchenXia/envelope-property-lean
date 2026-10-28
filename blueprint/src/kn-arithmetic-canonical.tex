@@ -1,0 +1,447 @@
+\section{Relative canonical models and their actual arithmetic fibres}
+
+The smooth affine arithmetic producer in PR~215 constructs a smooth algebra
+$B$ over a finite-type smooth integer algebra $S$, and an actual algebra
+isomorphism $k\otimes_S B\simeq A$ to the original characteristic-zero affine
+algebra.  Its projective-family producer likewise retains the original scheme,
+closed embedding, and projective twisting lines.  The missing comparison is
+for relative differential and canonical sheaves on this arithmetic family.
+
+\begin{lemma}[Actual affine pullback of an associated module sheaf]
+\label{lem:kn-arithmetic-affine-tilde-pullback}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalAffine.tildePullbackIso}
+\leanok
+For a ring map $A\to C$ and an actual $A$-module $M$, pullback along
+$\operatorname{Spec}C\to\operatorname{Spec}A$ identifies $\widetilde M$ with
+$\widetilde{C\otimes_A M}$.
+\end{lemma}
+\begin{proof}
+The actual affine pullback is quasicoherent.  The affine pullback global-section
+comparison identifies its sections with extension of scalars of the sections
+of $\widetilde M$.  The latter sections are the original $M$.  Apply the tilde
+functor to this isomorphism and use the actual quasicoherent counit
+$\widetilde{\Gamma(-)}\simeq(-)$ to recover the whole pulled-back sheaf.
+\end{proof}
+
+\begin{theorem}[The constructed global relative canonical line]
+\label{thm:kn-arithmetic-global-canonical-atlas}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalFrames.chartFrame,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalFrames.canonicalAtlas,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalFrames.canonicalObject_isInvertible}
+\leanok
+\uses{thm:kn-arithmetic-fixed-base-standard-charts,lem:kn-arithmetic-global-exterior-restriction,lem:kn-arithmetic-global-affine-exterior}
+For any commutative $R$ and any actual $n$-smooth $X\to\operatorname{Spec}R$,
+the constructed global relative top exterior object has a derived genuine
+line atlas and is a native invertible module on the whole original $X$.
+\end{theorem}
+\begin{proof}
+Choose the actual fixed-$R$ standard-smooth affine neighbourhood produced at
+each original point.  Its actual K\"ahler module has a derived rank-$n$ basis.
+The coordinate exterior localization maps identify the constructed global
+exterior sheaf on this chart with the tilde of its genuine exterior module.
+The top wedge basis gives an actual rank-one affine frame.  Apply the proved
+open-restriction comparison and the native equivalence between the affine
+spectrum, the original open subscheme, and its open site to obtain the frame
+on the original sheaf over that same open.  These actual opens cover every
+original point.  Their derived frames therefore form a line atlas of the
+already constructed whole sheaf, and the native line-atlas construction
+derives invertibility.  Neither the global object nor its gluing is assumed.
+\end{proof}
+
+\begin{lemma}[Actual open restriction over an arbitrary arithmetic base]
+\label{lem:kn-arithmetic-global-cotangent-restriction}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalRestriction.cotangentPullbackIso}
+\leanok
+\uses{thm:kn-arithmetic-global-relative-objects}
+For an actual open immersion $g:Y\to X$, the pullback of the constructed
+global relative cotangent sheaf of $f$ is the constructed cotangent sheaf of
+$f\circ g$, over the same original ring $R$.
+\end{lemma}
+\begin{proof}
+The open immersion identifies actual coefficient rings on corresponding
+opens.  The structural constant square commutes, so the inverse coefficient
+map gives the genuine relative K\"ahler map.  Native localization at the unit
+shows that map is bijective.  Naturality follows from inverse-coefficient
+naturality on every actual differential.  Sheafify the resulting presheaf
+isomorphism and apply the actual open-restriction sheafification comparison.
+Finally use the native restriction--pullback isomorphism.
+\end{proof}
+
+\begin{lemma}[Actual exterior restriction over an arbitrary arithmetic base]
+\label{lem:kn-arithmetic-global-exterior-restriction}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalRestriction.exteriorPullbackIso}
+\leanok
+\uses{lem:kn-arithmetic-global-cotangent-restriction}
+The same open pullback comparison holds for every constructed exterior
+degree, without a smoothness or freeness hypothesis.
+\end{lemma}
+\begin{proof}
+Take the literal exterior maps of the preceding cotangent coefficient maps.
+They commute with restrictions by equality on spanning pure wedges.  Their
+inverse coefficient-ring isomorphisms induce inverse exterior maps, also
+checked on pure wedges.  Sheafification and the actual native open
+restriction--pullback comparison give the whole-sheaf isomorphism.
+\end{proof}
+
+\begin{lemma}[The global exterior construction on actual arithmetic affine charts]
+\label{lem:kn-arithmetic-global-affine-exterior}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalFrames.affineExteriorSheafIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalFrames.affineFieldFiberExteriorIso}
+\leanok
+\uses{thm:kn-arithmetic-global-relative-objects,thm:kn-arithmetic-affine-canonical-fibre}
+On every actual standard-smooth $R$-algebra chart $A$, the constructed global
+exterior sheaf is the associated sheaf of the genuine exterior K\"ahler
+module.  Its pullback to the actual categorical field fibre is the existing
+field-relative exterior cotangent sheaf, in every degree.
+\end{lemma}
+\begin{proof}
+The actual coordinate K\"ahler maps commute with restriction.  Their literal
+exterior maps therefore commute with restriction by equality on spanning
+wedges.  The standard-smooth presentation produces the actual differential
+basis, which proves that the maps on each principal open are localization
+maps of the exterior module.  The native localized-presheaf comparison
+identifies the whole sheaf with its associated module.  Pull this derived
+isomorphism to the actual fibre and compose with the already proved tensor
+fibre exterior comparison.
+\end{proof}
+
+\begin{theorem}[Relative affine differentials on the actual arithmetic fibre]
+\label{thm:kn-arithmetic-affine-cotangent-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalAffine.fiberCotangentIso}
+\leanok
+\uses{lem:kn-arithmetic-affine-tilde-pullback}
+Let $S\to B$ and $S\to\kappa$ be ring maps, with $\kappa$ a field, and put
+$C=\kappa\otimes_S B$.  On the actual fibre of
+$\operatorname{Spec}B\to\operatorname{Spec}S$ over $\operatorname{Spec}\kappa$,
+the pullback of $\widetilde{\Omega_{B/S}}$ is the actual field-relative
+cotangent sheaf.  This applies in particular to residue fields of closed
+points of the Noetherian arithmetic base.
+\end{theorem}
+\begin{proof}
+The native tensor-product spectrum isomorphism identifies the actual fibre
+with $\operatorname{Spec}C$, and its projection with the spectrum of the actual
+inclusion $B\to C$.  Apply the affine pullback comparison.  The native K\"ahler
+pushout isomorphism gives
+$C\otimes_B\Omega_{B/S}\simeq\Omega_{C/\kappa}$; it sends every
+$1\otimes db$ to the differential of the image of the same $b$.
+Sheafifying this module isomorphism and using the existing actual affine
+cotangent comparison gives the claimed whole-sheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[Relative top exterior models on standard-smooth arithmetic charts]
+\label{thm:kn-arithmetic-affine-canonical-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalAffine.fiberExteriorIso}
+\leanok
+\uses{lem:kn-arithmetic-affine-tilde-pullback,thm:kn-arithmetic-affine-cotangent-fibre}
+If $B$ is standard smooth of relative dimension $n$ over $S$, the sheaf
+$\widetilde{\bigwedge^n_B\Omega_{B/S}}$ pulls back on the actual fibre to the
+existing top exterior cotangent sheaf of that fibre.  The corresponding
+comparison holds in every exterior degree.
+\end{theorem}
+\begin{proof}
+The standard-smooth presentation produces a genuine basis of
+$\Omega_{B/S}$ indexed by $\{1,\ldots,n\}$.  Extension of scalars commutes with
+exterior powers by comparing the induced exterior bases.  Compose this with
+the exterior power of the actual K\"ahler pushout isomorphism.  The comparison
+takes a wedge of arbitrary original differentials to the wedge of their actual
+images on the fibre.  Apply the affine tilde pullback comparison and the
+existing affine exterior-cotangent sheaf comparison.  No comparison
+isomorphism is supplied as an additional hypothesis.
+\end{proof}
+
+\begin{theorem}[Canonical-twisted actual model coefficients on the fibre]
+\label{thm:kn-arithmetic-canonical-twist-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalAffine.fiberCanonicalTwistIso}
+\leanok
+\uses{thm:kn-arithmetic-affine-canonical-fibre}
+For the standard-smooth arithmetic chart above and any actual model module $L$,
+pullback of $L\otimes\widetilde{\bigwedge^n\Omega_{B/S}}$ to the actual fibre
+is $L_\kappa\otimes\omega_{X_\kappa/\kappa}$.  In particular, this retains
+the original model coefficient whenever it is a line.
+\end{theorem}
+\begin{proof}
+Actual sheaf pullback is monoidal.  Apply its tensor comparison and the
+all-degree exterior comparison in degree $n$.  The second tensor factor is
+the existing native top exterior cotangent sheaf on the actual fibre, which
+is its canonical object.  The first factor is the pullback of the same actual
+model coefficient $L$.
+\end{proof}
+
+These affine comparison producers extend to the global relative objects,
+derived canonical line atlas and whole nonaffine field-fibre comparison
+below.  Selecting the actual arithmetic stage and transport through its
+produced generic-fibre isomorphism back to the original scheme remain
+separate from constructing this global canonical model and fibre comparison.
+
+\subsection{Global relative objects over the arithmetic base}
+
+\begin{theorem}[The actual global relative cotangent and exterior sheaves]
+\label{thm:kn-arithmetic-global-relative-objects}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.relativeSheafHomEquiv,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.relativeExteriorSheaf,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.fieldCotangentIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.fieldExteriorIso}
+\leanok
+Let $f:X\to\operatorname{Spec}R$ for any commutative ring $R$.  The structural
+map gives compatible constants $R\to\Gamma(X,U)$ on every actual open $U$.
+The presheaf of relative K\"ahler modules, and its sheafification as an
+$\mathcal O_X$-module, give the global relative cotangent sheaf.  Morphisms
+from this sheaf to any actual module sheaf are precisely derivations
+annihilating these structural constants.  Sheafifying the exterior powers
+of the same cotangent presheaf gives its global all-degree exterior objects.
+For a field base these are the already existing native objects.
+\end{theorem}
+\begin{proof}
+The actual structural morphism and the global-section isomorphism of an
+affine spectrum define the constant map, and restriction naturality follows
+from functoriality of the actual structure presheaf.  The native relative
+differentials construction supplies a universal derivation objectwise and
+naturally.  Compose its hom--derivation equivalence with the sheafification
+adjunction to obtain the displayed global universal property.  Exterior
+powers use the same genuine restriction maps before sheafification.  Over a
+field these formulas are definitionally the existing cotangent and exterior
+sheaf definitions; no comparison datum is supplied.
+\end{proof}
+
+\begin{theorem}[The global construction on an actual affine arithmetic chart]
+\label{thm:kn-arithmetic-global-affine-cotangent}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.affineCotangentSheafIso}
+\leanok
+\uses{thm:kn-arithmetic-global-relative-objects}
+For an actual $R$-algebra $A$, the global relative cotangent sheaf of
+$\operatorname{Spec}A\to\operatorname{Spec}R$ is canonically isomorphic to
+$\widetilde{\Omega_{A/R}}$.
+\end{theorem}
+\begin{proof}
+The actual coordinate constants on every open define canonical K\"ahler maps
+from $\Omega_{A/R}$ to the cotangent presheaf.  They commute with all actual
+restriction maps and send $da$ to the differential of the same coordinate
+function.  On each principal open these maps are the native localization
+maps of K\"ahler differentials, hence give localized modules.  The existing
+affine localized-presheaf sheafification comparison yields the whole sheaf
+isomorphism.  It uses no prescribed local or global isomorphism.
+\end{proof}
+
+\begin{theorem}[Actual affine fibres of the global relative construction]
+\label{thm:kn-arithmetic-global-affine-cotangent-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.affineFieldFiberCotangentIso}
+\leanok
+\uses{thm:kn-arithmetic-global-affine-cotangent,thm:kn-arithmetic-affine-cotangent-fibre}
+For an actual field $k/R$, pullback of the global relative cotangent sheaf
+of $\operatorname{Spec}A/R$ to its actual categorical fibre is the existing
+native field-relative cotangent sheaf of that same fibre.
+\end{theorem}
+\begin{proof}
+Pull back the preceding derived affine comparison and compose with the
+already proved actual categorical-fibre K\"ahler comparison.  Both the model
+projection and the fibre's structural projection are retained.  The same
+construction therefore applies to actual residue fields of the arithmetic
+base without any additional comparison hypothesis.
+\end{proof}
+
+\begin{theorem}[Actual standard-smooth charts over the fixed arithmetic base]
+\label{thm:kn-arithmetic-fixed-base-standard-charts}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.affineChartStructure,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.affineChart_locallyStandardSmooth,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobal.exists_standardSmoothChart}
+\leanok
+\uses{thm:kn-arithmetic-global-relative-objects}
+Let $R$ be any commutative ring and $f:X\to\operatorname{Spec}R$ be smooth of
+relative dimension $n$.  Every original $x\in X$ has an actual affine
+neighbourhood $V$ whose actual constant map $R\to\Gamma(X,V)$ is standard
+smooth of relative dimension $n$.  Its spectrum morphism is exactly
+$\operatorname{Spec}\Gamma(X,V)\to X\to\operatorname{Spec}R$.
+\end{theorem}
+\begin{proof}
+Choose an original affine neighbourhood of $x$.  Composing its open immersion
+with $f$ retains relative dimension $n$.  The native ring-hom characterization
+of this geometric property implies that its actual coordinate map over the
+fixed $R$ is source-locally standard smooth of dimension $n$.  Thus a set of
+actual coordinate functions generates the unit ideal and standard smoothness
+holds after localization at each function.  Their principal opens cover the
+chosen affine neighbourhood; choose one containing the original $x$.
+The genuine section ring on this principal open is canonically the same
+localization, so its actual constant map is standard smooth with the same
+dimension.  The spectrum triangle follows from the original global constants
+and the native affine chart structure identity.  No target open is forced to
+be the whole base, and no field or one-point-base assumption is used.
+\end{proof}
+
+\subsection{The actual global base-change differential}
+
+\begin{lemma}[The canonical morphism on the actual global arithmetic fibre]
+\label{lem:kn-arithmetic-global-basechange-map}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.cotangentPullbackMap,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.cotangentPresheafMap_d,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.cotangentPullbackMap_unit}
+\leanok
+Let $S$ be an actual $R$-algebra and let $Y$ be the actual categorical
+pullback of $X/R$ to $\operatorname{Spec}S$, with original projection $\pi$
+and actual structural map $h:Y\to\operatorname{Spec}S$.  There is a canonical
+whole-sheaf map $\pi^*\Omega_{X/R}\to\Omega_{Y/S}$ which takes every original
+differential $da$ to the differential of the actual pullback of $a$.
+\end{lemma}
+\begin{proof}
+The actual pullback square identifies the pullback of each structural
+$R$-constant with the corresponding $S$-constant on $Y$.  Compose pullback of
+regular functions with the genuine universal derivation over $S$.  This
+annihilates every original $R$-constant, and its restriction naturality follows
+from the actual structure-presheaf map.  Universality of the constructed
+relative K\"ahler presheaf gives the actual raw differential map.  Compose
+with the target sheafification unit, descend through the source
+sheafification adjunction, and use the native sheaf pullback--pushforward
+adjunction.  Its unit identity preserves the displayed raw differential map.
+\end{proof}
+
+The affine comparison below identifies this actual morphism with the native
+K\"ahler tensor-product isomorphism on original standard-smooth affine
+schemes.  The nonaffine theorem below uses actual open base-change
+compatibility and genuine open-cover isomorphism detection to finish the
+whole canonical comparison.
+
+\begin{lemma}[The canonical exterior morphisms on the actual global fibre]
+\label{lem:kn-arithmetic-global-exterior-basechange-map}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.exteriorPullbackMap,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.exteriorPullbackMap_unit,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalBaseChange.fieldExteriorPullbackMap}
+\leanok
+\uses{lem:kn-arithmetic-global-basechange-map}
+The same actual categorical fibre has canonical whole-sheaf exterior maps in
+every degree.  For a field fibre their targets are the existing native
+exterior cotangent objects of that same whole fibre.
+\end{lemma}
+\begin{proof}
+Take the literal exterior semilinear maps of the actual raw cotangent map.
+On spanning pure wedges their restriction naturality is precisely that of
+the cotangent map.  Compose with the actual target sheafification unit and
+use sheafification and sheaf pullback adjunctions as above.  Their unit
+identities preserve the whole raw exterior map.  Over a field the constructed
+target is definitionally the existing native exterior object.  No claim of
+invertibility of these morphisms is used in this construction.
+\end{proof}
+
+\begin{lemma}[Actual affine units retain all relative exterior forms]
+\label{lem:kn-arithmetic-global-affine-unit}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalUnits.affineChartUnit_bijective,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalUnits.standardSmoothChartUnit_bijective}
+\leanok
+On every actual affine chart whose relative differential module has a
+derived free basis over the original $R$, the original exterior
+sheafification unit itself is bijective, in every degree.  In particular,
+this holds on the actual fixed-$R$ standard-smooth charts constructed above.
+\end{lemma}
+\begin{proof}
+On each actual principal open of an affine coordinate spectrum, the derived
+whole-sheaf comparison composed with the original sheafification unit is
+the genuine localized-basis isomorphism.  Both comparisons are actual
+isomorphisms, so the original unit is bijective.  This includes the whole
+coordinate spectrum by taking the principal open of $1$.  For an arbitrary
+original affine open of $X$, the actual inverse open-restriction comparison
+commutes with the original units and raw coefficient isomorphism.  Its two
+bijective coefficient and sheaf maps therefore preserve and reflect unit
+bijectivity.  Transfer the affine-coordinate result along the actual
+\texttt{fromSpec} map, retaining its whole original structural triangle.
+The standard-smooth presentation supplies the basis internally in the final
+specialization; no unit or cohomology comparison is assumed.
+\end{proof}
+
+\begin{lemma}[The actual affine global canonical differential is invertible]
+\label{lem:kn-arithmetic-global-affine-basechange-iso}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalAffineBaseChange.affineCanonicalPullback_isIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalAffineBaseChange.affineFieldCanonicalIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalAffineBaseChange.affineSpecCanonicalPullback_isIso}
+\leanok
+\uses{lem:kn-arithmetic-global-exterior-basechange-map,lem:kn-arithmetic-global-affine-unit}
+Suppose the original $X/R$ is affine, smooth of relative dimension $n$, and
+its actual whole-open structural ring map is standard smooth of dimension
+$n$.  On the actual native categorical base change to any $R$-algebra $S$,
+the previously constructed global map
+$\pi^*\Omega^n_{X/R}\to\Omega^n_{Y/S}$ is an isomorphism.  For an actual field
+fibre its target is the existing native canonical line of that same fibre.
+For $X=\operatorname{Spec} A$, standard smoothness of the original $R$-algebra
+$A$ produces all of the displayed geometric and whole-open hypotheses.
+\end{lemma}
+\begin{proof}
+The existing original affine section theorem derives the pushout of the
+actual structural coefficient maps and both original projection maps,
+without flatness.  The native K\"ahler tensor equivalence and the internally
+produced standard-smooth differential basis therefore give an exterior
+linear equivalence.  On differentials of all original functions this is
+the actual raw cotangent map; spanning differentials and then spanning pure
+wedges identify the entire raw scalar-extension map with the equivalence.
+
+The genuine affine pullback section comparison preserves every raw form
+through the same two sheafification units, by the actual pullback and
+sheafification adjunction unit equations.  Both units are bijective by the
+preceding lemma; target standard smoothness follows from the internally
+derived coefficient pushout.  Thus the actual global sheaf morphism is
+invertible on whole affine sections.  Smoothness produces the genuine
+canonical atlases and hence quasicoherence on both sides, so native affine
+quasicoherent isomorphism detection proves invertibility of the sheaf map
+itself.  The spectrum case retains the actual $\Gamma\operatorname{Spec}$
+coefficient isomorphism and derives scheme smoothness from the original
+standard-smooth algebra.  No desired sheaf, gluing, unit, or comparison
+certificate is an input.
+\end{proof}
+
+\begin{lemma}[Actual standard-smooth chart fibres cover the whole fibre]
+\label{lem:kn-arithmetic-global-fibre-chart-cover}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalCover.chartCover,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalCover.chartStructure_eq,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalCover.chartCanonicalPullback_isIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalCover.fiberChartCover,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalCover.fiberChartCover_iSup_opensRange}
+\leanok
+\uses{lem:kn-arithmetic-global-affine-basechange-iso}
+Actual smoothness of the original $X/R$ of relative dimension $n$ produces an
+open cover by actual spectra of its fixed-$R$ standard-smooth affine charts.
+On every such original covering spectrum, the actual native fibre canonical
+differential is invertible.  The native categorical base changes of these
+same charts form an open cover of the same whole fibre $Y/S$.
+\end{lemma}
+\begin{proof}
+Use the constructed fixed-$R$ standard-smooth chart containing each original
+point, and its actual \texttt{fromSpec} open immersion.  The original
+structural triangle identifies its map to the base with the spectrum of the
+actual scalar map on that affine open.  The preceding affine theorem
+therefore applies, with the spectrum's actual whole-open coefficient map
+derived from the original coordinate algebra.  The native pullback-cover
+construction uses exactly the fibre of each composite chart-to-base map;
+its maps to the whole fibre are the literal pullback maps induced by the
+original chart immersion.  Native cover stability under base change proves
+that their open ranges cover the whole categorical fibre.  Thus neither a
+chart cover nor its local fibre comparison is supplied as a hypothesis.
+The next theorem transports this local invertibility to the restriction of
+the same original global differential and closes the whole comparison.
+\end{proof}
+
+\begin{theorem}[The whole arithmetic canonical model has its actual field fibres]
+\label{thm:kn-arithmetic-global-canonical-fibre}
+\lean{EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalComparison.canonicalPullback_isIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalComparison.fieldCanonicalIso,EnvelopeProperty.Vanishing.ArithmeticCanonicalGlobalComparison.fieldCanonicalTensorIso}
+\leanok
+\uses{lem:kn-arithmetic-global-fibre-chart-cover}
+Let $R$ be any commutative ring, let the original $X/R$ be smooth of relative
+dimension $n$, and let $S$ be an actual $R$-algebra.  On the same native
+categorical fibre $Y=X\times_R\operatorname{Spec}S$, with original first
+projection $\pi$ and structural second projection $h$, the actual global
+canonical differential is an isomorphism
+\[
+  \pi^*\omega_{X/R}\ \simeq\ \omega_{Y/S}.
+\]
+For a field $S=\kappa$, the target is the existing native canonical line of
+this same whole fibre.  For every original model module $L$, the same
+construction also proves
+\[
+  \pi^*(\omega_{X/R}\otimes L)
+    \ \simeq\ \omega_{Y/\kappa}\otimes\pi^*L.
+\]
+No global model, gluing datum, field-fibre comparison, or vanishing statement
+is a hypothesis.
+\end{theorem}
+\begin{proof}
+On arbitrary genuine structural coefficient squares, construct the raw
+relative K\"ahler map and its whole exterior maps from the original universal
+derivations.  Spanning differentials and pure wedges prove composition of
+the whole raw maps.  The actual sheafification and pullback adjunction units
+give composition of the whole sheaf maps with the native pullback composition
+isomorphism.  These constructed maps identify with the original global
+base-change differential; along an open immersion their actual comparison is
+invertible, including its original structural-map equality transport.
+
+Apply this checked functoriality to the two actual paths from each derived
+chart fibre to the original $X$.  The native first- and second-projection
+equations retain both the original source map and the $S$-relative target.
+The proved local fibre differential is invertible, and the actual open
+comparisons and native pullback composition isomorphisms transport that
+invertibility to the open pullback of the same original global map.
+These actual fibre charts cover the whole native fibre by the preceding
+lemma.  Native module-sheaf isomorphism detection on this open cover therefore
+proves invertibility of the original whole map.
+
+Over a field the constructed relative exterior object is definitionally the
+existing native canonical object on that same fibre.  The genuine pullback
+of the original tensor module commutes with the native sheafified tensor;
+apply the canonical comparison to its first factor and retain the actual
+pullback of the same original $L$ in the second factor.
+\end{proof}

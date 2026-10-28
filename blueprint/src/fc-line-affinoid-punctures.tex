@@ -1,0 +1,40 @@
+\subsection{Actual rigid discs and a designated low hole}\label{subsec:fc-line-affinoid-punctures}
+
+\begin{lemma}[Closed discs form a basis at rigid points]\label{lem:fc-rigid-closed-disc-basis}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_closedDisc_rigid_nhds}
+\leanok
+\uses{thm:fc-separated-affinoid-basis, lem:fc-inflation-linear}
+For every actual rigid evaluation point $a$ and every neighbourhood $N$
+of it, there is $r>0$ such that the whole actual closed disc $D(a,r)$
+is contained in $N$.
+\end{lemma}
+
+\begin{proof}
+Take an actual affinoid with the rigid point in its strict core, contained
+in $N$. Choose $r$ smaller than the outer radius and all its positive
+distances from the hole centres. The ultrametric linear-coordinate
+identities show every point of $D(a,r)$ satisfies every affinoid inequality.
+\end{proof}
+
+\begin{lemma}[Adding an actual separated hole]\label{lem:fc-separated-affinoid-puncture}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.puncture, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsSeparated.puncture, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.puncture_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.puncture_strictCore, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.puncture_boundary}
+\leanok
+\uses{def:fc-separated-affinoid-core}
+Let $U$ have a separated presentation, let the rigid point $a$ lie in its
+strict core, and let $r>0$ be smaller than the outer radius and all distances
+from $a$ to the old hole centres. Removing the actual open disc $D^-(a,r)$
+gives an actual separated standard affinoid $V$. Its carrier and strict core
+are respectively those of $U$ intersected with $\{|T-a|\ge r\}$ and
+$\{|T-a|>r\}$. Its actual boundary is the union of the old boundary and
+the actual point $\zeta_{a,r}$.
+\end{lemma}
+
+\begin{proof}
+Append the original centre $a$ and radius $r$ to the actual hole data.
+The old hole radii are smaller than their distances from $a$ because the
+rigid point lies in the strict core. The new radius is also smaller than
+these distances by construction. The ultrametric centre-distance bound
+therefore proves the new open hole disjoint from every old open hole,
+and all strict separation inequalities hold for the same presentation.
+The set identities follow directly from these literal appended data.
+\end{proof}

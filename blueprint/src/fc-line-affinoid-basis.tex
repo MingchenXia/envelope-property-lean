@@ -1,0 +1,77 @@
+\subsection{Actual standard-affinoid neighbourhoods}\label{subsec:fc-line-affinoid-basis}
+
+\begin{lemma}[Finite closed linear-coordinate boxes]\label{lem:fc-finite-linear-box}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_isInducing_linearCoordinates, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_finite_linear_box}
+\leanok
+\uses{lem:fc-linear-convergence}
+Let $x$ be an actual point of the analytic line and let $N$ be a neighbourhood
+of $x$. There are finitely many centres $a_i$ and bounds $0\le l_i<u_i$
+such that $|T-a_i|_x<u_i$, and either $l_i=0$ or $l_i<|T-a_i|_x$, and
+\[
+ \{y: l_i\le |T-a_i|_y\le u_i\text{ for every }i\}\subseteq N.
+\]
+There is at least one upper bound.
+\end{lemma}
+
+\begin{proof}
+The map sending a point to all its linear-coordinate values induces the
+analytic topology: convergence to any point is equivalent to convergence of
+every linear value. A product neighbourhood therefore supplies finitely many
+coordinate neighbourhoods. In each coordinate choose a sufficiently small
+closed interval about its value, with a strictly larger upper endpoint and a
+strictly smaller lower endpoint unless the value is zero. Those intervals lie
+in the chosen coordinate neighbourhoods. Add the harmless upper bound
+$|T|\le |T|_x+1$ if necessary to make the finite family nonempty.
+\end{proof}
+
+\begin{lemma}[Pruning finitely many open holes]\label{lem:fc-finite-hole-pruning}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_openDiscs_laminar, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_disjoint_maximal_subfamily}
+\leanok
+\uses{lem:fc-inflation-linear}
+A finite family of positive-radius open discs contained in a fixed closed
+disc has a pairwise disjoint subfamily with the same union.
+\end{lemma}
+
+\begin{proof}
+Two intersecting open discs are nested. Indeed, order their radii $r\le s$
+and choose a point $z$ in their intersection. The constant-distance inequality
+gives $|a-b|\le\max\{|T-a|_z,|T-b|_z\}<s$, and then every point of the
+first disc belongs to the second by the ultrametric inequality. Regard the
+finite family as a finite set of subsets, so repeated discs occur only once.
+Retain its maximal members under inclusion. Every original member is contained
+in a maximal member, so the union is preserved. Distinct maximal members are
+disjoint by nesting.
+\end{proof}
+
+\begin{theorem}[Actual standard-affinoid neighbourhood basis]\label{thm:fc-standard-affinoid-basis}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_standardAffinoid_for_finite_lower_bounds, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_standardAffinoid_nhds, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_nhds_hasBasis_standardAffinoid}
+\leanok
+\uses{lem:fc-finite-linear-box, lem:fc-finite-hole-pruning, lem:fc-standard-boundary}
+For every actual point $x$ and every neighbourhood $N$ of $x$, there is an
+actual standard affinoid $U$ with $x\in\operatorname{int}(U)$ and $U\subseteq N$.
+Consequently the interiors of actual standard affinoids form a neighbourhood
+basis at every point.
+\end{theorem}
+
+\begin{proof}
+Take the finite linear-coordinate box above and choose an upper disc of least
+radius, say $D(a_0,r_0)$. It is contained in every other upper disc: their
+centres have distance at most the maximum of their values at $x$, strictly
+smaller than the larger upper radius, and $r_0$ is the least upper radius.
+For each positive lower bound remove the open disc $D^-(a_i,l_i)$.
+Discard those lower discs whose centres are outside $D(a_0,r_0)$. They do not
+meet the outer disc: throughout the outer disc their linear value equals the
+constant centre distance, which is also their value at $x$ and is greater
+than $l_i$. Every retained centre belongs to the outer disc. Its lower radius
+is strictly smaller than its value at $x$, which is at most $r_0$; hence its
+open disc is contained in the outer disc. Prune the retained holes by the
+preceding lemma, and enumerate the resulting finite set of discs. Their actual
+centres and positive radii, together with the original outer disc, give the
+standard-affinoid data and all its required inequalities and disjointness.
+Its carrier is the outer disc with exactly the original relevant lower discs
+removed, so it lies in the finite box and hence in $N$.
+At $x$ every upper inequality and every retained lower inequality is strict.
+The corresponding finite intersection of strict coordinate inequalities is an
+open neighbourhood of $x$ contained in the carrier. Thus $x$ is interior.
+The same construction for every $N$ gives the asserted neighbourhood basis.
+\end{proof}

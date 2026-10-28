@@ -1,0 +1,70 @@
+\subsection{Actual coefficient restriction on whole normalized projective spectra}
+
+\begin{lemma}[Homogeneous components commute with actual coefficient maps]
+\label{projective:actual-coefficient-homogeneous-components}
+\lean{EnvelopeProperty.Berkovich.map_homogeneousComponent}
+\leanok
+For arbitrary commutative rings $R,S$, every homomorphism $f:R\to S$,
+original polynomial $F\in R[z_0,\dots,z_n]$, and $d\in\mathbb N$,
+$f_*(F_d)=(f_*F)_d$ for the original total-degree homogeneous components.
+\end{lemma}
+\begin{proof}
+Compare every original monomial coefficient. Both sides equal the image
+under $f$ of that coefficient when its total degree is $d$, and zero
+otherwise. The zero case uses $f(0)=0$; injectivity is unnecessary.
+\end{proof}
+
+\begin{definition}[Whole actual normalized coefficient pullback]
+\label{projective:actual-normalized-coefficient-pullback}
+\lean{EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coefficientComap, EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.coefficientComap_val, EnvelopeProperty.Berkovich.NormalizedProjectiveSpectrum.continuous_coefficientComap}
+\leanok
+\uses{projective:actual-coefficient-homogeneous-components}
+For every such $f$, pullback along $f_*:R[z]\to S[z]$ gives a continuous
+map of the WHOLE actual normalized projective seminorm spectra. For every
+original $F$, its value is the target seminorm evaluated on $f_*F$.
+\end{definition}
+\begin{proof}
+Compose the entire original valuation with the actual ring homomorphism.
+The previous component identity transfers every graded inequality.
+The variables are unchanged, so their original finite maximum remains
+one. Continuity follows from continuity of actual spectrum pullback and
+of the subtype inclusion. No assertion merely on coordinate values is
+used to identify entire points.
+\end{proof}
+
+\begin{lemma}[Gauss interchange retains every base form]
+\label{projective:actual-gauss-base-form-value}
+\lean{EnvelopeProperty.Berkovich.Spectrum.polynomialGauss_val_map_C}
+\leanok
+For any original polynomial seminorm $x$ over $R$, radius $r\ge0$ and
+original base form $F$, the actual coefficient-interchanged Gauss point
+satisfies $|C_*F|_{x_r}=|F|_x$.
+\end{lemma}
+\begin{proof}
+The actual whole coefficient-swap isomorphism sends $C_*F$ to the constant
+polynomial $C(F)$. Prove this whole-ring identity by constants, addition
+and multiplication by each original variable. The genuine Gauss value
+of a constant polynomial is its original coefficient value.
+\end{proof}
+
+\begin{definition}[Original restriction of an arbitrary Gauss-base point]
+\label{projective:actual-relative-polynomial-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.polynomialRestriction, EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.polynomialRestriction_val, EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.polynomialRestriction_polynomialGauss, EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.continuous_polynomialRestriction}
+\leanok
+\uses{projective:actual-normalized-coefficient-pullback, projective:actual-gauss-base-form-value}
+Let $v$ be any real valuation on $R$ and $r\ge0$. Every actual relative
+normalized projective point over the prescribed Gauss valuation $v_r$ on
+$R[t]$ restricts continuously to an actual relative normalized projective
+point over $v$ on $R$. EVERY original base form has its whole pulled-back
+value. Restriction of the actual Gauss extension of an original relative
+point recovers the SAME entire original point. The arbitrary input point
+is not required to be a Gauss extension.
+\end{definition}
+\begin{proof}
+Apply whole normalized coefficient pullback to $R\to R[t]$. The prescribed
+coefficient condition restricts correctly because $v_r(C(a))=v(a)$.
+For the recovery statement, compare every original form and apply the
+actual Gauss base-form identity, then extensionality of whole valuations
+and the two actual subtype objects. Continuity restricts the preceding
+whole continuous pullback to the genuine prescribed-coefficient loci.
+\end{proof}

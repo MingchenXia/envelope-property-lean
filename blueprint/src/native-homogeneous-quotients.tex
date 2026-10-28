@@ -1,0 +1,83 @@
+\subsection{Actual polynomial projective ideal sheaves and native quotient points}
+\label{subsec:native-homogeneous-quotients}
+
+\begin{theorem}[Actual coordinate section ideal of an original homogeneous quotient]
+\label{graded:native-polynomial-quotient-coordinate-ideal}
+\lean{EnvelopeProperty.ProjBerk.homogeneousQuotient_coordinateKernel,
+EnvelopeProperty.ProjBerk.homogeneousQuotient_coordinateSectionIdeal}
+\leanok
+\uses{graded:projective-homogeneous-quotient-ideal-sheaf,projective:native-homogeneous-chart-coordinates,projective:native-scheme-coordinate-sections}
+Let $R$ be any commutative ring and let $J$ be an actual homogeneous
+ideal of $R[X_0,\ldots,X_n]$. On the actual coordinate open $D_+(X_j)$
+of polynomial projective space, pull the genuine kernel ideal sheaf of
+$\operatorname{Proj}(R[X]/J)$ back under the actual coordinate
+section-ring isomorphism. The entire resulting ideal is exactly the
+original affine dehomogenization image of $J$, obtained by setting
+$X_j=1$ and the other variables to the true coordinate variables.
+No radical, reducedness, domain or noetherian hypothesis is required.
+\end{theorem}
+\begin{proof}
+First pull the genuine section ideal back to the actual homogeneous
+localization using the preceding whole away-to-section kernel identity.
+The actual coordinate ring isomorphism identifies its elements with
+these real homogeneous fractions, not merely their coordinate values.
+
+Suppose an actual coordinate element lies in that kernel. Express its
+homogeneous-localization image as a same-degree fraction $F/X_j^d$.
+The genuine original-ideal annihilator criterion gives $X_j^mF\in J$
+for some $m$. Under the actual dehomogenization ring map, $X_j$ becomes
+one, so the entire polynomial $F$ dehomogenizes to an element of the
+actual image ideal of $J$. The true inverse coordinate-ring identity
+identifies that polynomial with the original selected coordinate
+element. This proves the first ideal inclusion.
+
+Conversely, for $F\in J$ decompose the entire polynomial into its
+actual homogeneous components. Each lies in the original ideal by
+its genuine homogeneity. The actual dehomogenized value of each
+component corresponds to the real homogeneous fraction with that
+component as numerator. Its quotient image is zero by the original
+annihilator criterion with exponent zero. Add the entire finite
+homogeneous decomposition and use the kernel ideal's closure under
+multiplication to contain all of the actual image ideal. Thus both
+whole ideal inclusions hold. The true homogeneous-fraction section
+identity then gives the stated actual section-ideal comparison.
+\end{proof}
+
+\begin{theorem}[Actual native homogeneous quotient and original normalized vanishing locus]
+\label{graded:native-polynomial-homogeneous-quotient-points}
+\lean{EnvelopeProperty.ProjBerk.homogeneousQuotient_normalizedClosedLocus,
+EnvelopeProperty.ProjBerk.nativeHomogeneousQuotientHomeomorph,
+EnvelopeProperty.ProjBerk.nativeHomogeneousQuotientHomeomorph_apply,
+EnvelopeProperty.ProjBerk.nativeHomogeneousQuotientHomeomorph_support,
+EnvelopeProperty.ProjBerk.compactSpace_nativeHomogeneousQuotient,
+EnvelopeProperty.ProjBerk.t2Space_nativeHomogeneousQuotient}
+\leanok
+\uses{graded:projective-homogeneous-quotient-ideal-sheaf,projective:native-closed-normalized-comparison,projective:native-closed-projective-compactness}
+For any prescribed real seminorm $v$ on $R$, the actual native point
+space of $\operatorname{Proj}(R[X]/J)$ above $v$ is homeomorphic to
+the normalized graded seminorms of $R[X]$ with the original coefficient
+values $v$ and with $J$ contained in their entire polynomial kernel.
+The comparison preserves the whole actual native inclusion and the
+entire homogeneous prime support. The actual native quotient space
+is compact and Hausdorff for every $v$, including unbounded coefficient
+seminorms; the locus can be empty. No field, completion or nonempty
+quotient hypothesis is required.
+\end{theorem}
+\begin{proof}
+Use the actual homogeneous quotient closed immersion proved above and
+its genuine source structure map obtained by composition with the
+original polynomial projective base morphism. The independently
+constructed native closed-projective homeomorphism identifies its
+entire fixed-base source point space with the normalized points whose
+actual native support lies in its true scheme image. The proved
+original-ideal range equality makes this condition exactly containment
+of $J$ in the entire polynomial seminorm kernel; this support equality
+holds on whole ideals, without a radical or chart certificate.
+Restrict the genuine homeomorphism by this literal set equality.
+Its whole-point formula and polynomial support formula are the same
+as those of the underlying actual closed-projective comparison.
+Finally its source compactness and Hausdorffness are the actual
+closed-projective producers, which use projective compactness for
+every fixed $v$ and the genuine native closed embedding. No uniform
+bound on the coefficients is introduced.
+\end{proof}

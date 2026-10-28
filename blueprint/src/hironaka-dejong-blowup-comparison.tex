@@ -1,0 +1,70 @@
+\section{The same native blowup across affine gluing constructions}
+
+\begin{lemma}[The original affine Rees projective schemes agree]
+\label{lem:fc-hironaka-dejong-affine-rees-comparison}
+\leanok
+\lean{EnvelopeProperty.HironakaDeJongReesComparison.grading_eq, EnvelopeProperty.HironakaDeJongReesComparison.toDeJong, EnvelopeProperty.HironakaDeJongReesComparison.toHironaka, EnvelopeProperty.HironakaDeJongReesComparison.affineIso, EnvelopeProperty.HironakaDeJongReesComparison.affineIso_structure}
+The grading of the actual Rees subalgebra defined by vanishing of all
+other polynomial coefficients is the grading defined by monomials of
+the specified degree.  The identity of the original Rees subalgebra
+therefore induces an isomorphism of their entire native projective
+schemes, over the same original coefficient spectrum.
+\end{lemma}
+\begin{proof}
+A polynomial whose coefficients outside degree $d$ vanish is exactly
+the monomial formed from its coefficient in degree $d$.  Conversely
+such a monomial has every other coefficient zero.  This proves
+equality of every graded submodule.  The identity ring maps in both
+directions are consequently graded homomorphisms and are surjective;
+the irrelevant-ideal conditions are derived from surjectivity.  The
+induced native projective maps are inverse, by functoriality of
+projective spectrum and the two literal identity composites.  In
+degree zero both maps preserve the original coefficient as the same
+constant polynomial.  Naturality of the degree-zero projective
+structure morphism gives equality of the original projections.
+\end{proof}
+
+\begin{lemma}[Compatibility with every original coefficient restriction]
+\label{lem:fc-hironaka-dejong-rees-restriction}
+\leanok
+\lean{EnvelopeProperty.HironakaDeJongReesComparison.graded_naturality, EnvelopeProperty.HironakaDeJongReesComparison.affineIso_naturality}
+\uses{lem:fc-hironaka-dejong-affine-rees-comparison}
+For an original ring homomorphism $R\to S$ carrying an ideal to its
+extension, the preceding entire affine-blowup isomorphism commutes
+with the two actual original higher-level Rees morphisms and their
+original coefficient maps.
+\end{lemma}
+\begin{proof}
+Both homomorphisms on the original Rees subalgebras apply the same
+ring homomorphism to every coefficient of the same polynomial.
+Composing with either identity comparison therefore gives the same
+graded ring homomorphism.  Contravariant functoriality of native
+projective spectrum gives the asserted equality of entire scheme
+morphisms.  Their original coefficient squares agree by the
+preceding degree-zero comparison.
+\end{proof}
+
+\begin{theorem}[The whole original ideal-sheaf blowup comparison]
+\label{thm:fc-hironaka-dejong-global-blowup-comparison}
+\leanok
+\lean{EnvelopeProperty.HironakaDeJongBlowupComparison.comparison, EnvelopeProperty.HironakaDeJongBlowupComparison.chart_comparison, EnvelopeProperty.HironakaDeJongBlowupComparison.comparison_projection, EnvelopeProperty.HironakaDeJongBlowupComparison.isPullback_chart_comparison, EnvelopeProperty.HironakaDeJongBlowupComparison.comparison_isIso, EnvelopeProperty.HironakaDeJongBlowupComparison.globalIso, EnvelopeProperty.HironakaDeJongBlowupComparison.globalIso_structure}
+\uses{lem:fc-hironaka-dejong-rees-restriction}
+For an ideal sheaf $I$ on an arbitrary original scheme $X$, the
+blowup glued over all affine opens and the blowup glued over the
+small affine Zariski site are isomorphic over the same original $X$.
+\end{theorem}
+\begin{proof}
+Every object of the small affine site is an original affine open.
+On it use the preceding entire affine-blowup comparison followed by
+the canonical inclusion in the blowup glued over all affine opens.
+The restriction comparison makes these maps a cocone for the small
+site diagram, hence gives a morphism of the two whole glued schemes.
+The component coefficient squares give its original projection
+triangle.  Over every original affine open of $X$, both gluing
+constructions are the pullback of their whole projection, and the
+constructed morphism is the preceding affine isomorphism under
+these two pullback identifications.  Thus it is an isomorphism on the
+inverse images of the original affine cover.  Being an isomorphism
+is local on the target, so the whole morphism is an isomorphism over
+$X$, with the stated literal original projection equality.
+\end{proof}

@@ -1,0 +1,109 @@
+\subsection{The original adic coefficient map into actual compatible sections}
+
+Retain ANY commutative ring $R$, ANY ideal $I\subseteq R$, ANY scheme
+$X$, and ANY original morphism $f:X\to\operatorname{Spec}R$. Write
+$X_n=X\times_{\operatorname{Spec}R}\operatorname{Spec}(R/I^n)$ with the
+LITERAL original projections, and retain the actual transitions
+$j_{n,m}:X_n\to X_m$ for $n\le m$. The actual compatible-section ring is
+$C=\{(s_k)_{k\ge0}:s_k\in\Gamma(X_{k+1},\top),
+ j_{k+1,l+1}^*(s_l)=s_k\text{ for every }k\le l\}$.
+These are the already constructed whole schemes and section RingHoms.
+No properness, Noetherianity, separation, reducedness, finiteness or
+completion comparison hypothesis enters either producer below.
+
+\begin{theorem}[Every original quotient coefficient map retains the whole transition square]
+\label{scheme:actual-original-infinitesimal-coefficient-map}
+\leanok
+\lean{EnvelopeProperty.AdicCompletionSections.coefficient,
+EnvelopeProperty.AdicCompletionSections.transition_coefficient,
+EnvelopeProperty.AdicCompletionSections.restriction_coefficient,
+EnvelopeProperty.AdicCompletionSections.coefficientFamily,
+EnvelopeProperty.AdicCompletionSections.coefficientFamily_apply}
+\uses{scheme:actual-original-infinitesimal-idempotent-family,scheme:actual-proper-global-section-valuation-membership}
+Let $c_n:R/I^n\to\Gamma(X_n,\top)$ be the ORIGINAL coefficient RingHom,
+obtained from the actual second projection by the genuine
+$\Gamma(\operatorname{Spec}(R/I^n))\simeq R/I^n$ isomorphism. For EVERY
+$n\le m$ prove the ENTIRE RingHom identity
+\[
+ j_{n,m}^*\circ c_m=c_n\circ\pi_{n,m},
+ \qquad \pi_{n,m}:R/I^m\to R/I^n.
+\]
+The whole coefficient RingHom $c:R\to C$ is thereby constructed, with
+EVERY actual coordinate exactly
+$c(r)_k=c_{k+1}(r\bmod I^{k+1})$. Its coordinate maps and original
+$R$-coefficient laws are proved on every element, not just on supports.
+\end{theorem}
+\begin{proof}
+Use the already constructed WHOLE scheme identity
+$\operatorname{pr}_{2,m}\circ j_{n,m}
+ =\operatorname{Spec}(\pi_{n,m})\circ\operatorname{pr}_{2,n}$.
+Apply the genuine contravariant global-section functor. The ACTUAL
+naturality of the original $\Gamma\operatorname{Spec}$ isomorphisms
+identifies the coefficient corners with the SAME quotient rings. This
+gives the displayed RingHom identity on every original quotient element.
+Compose it with the ORIGINAL quotient maps $R\to R/I^m$; their actual
+factor law gives every compatibility equation for the tuple defining
+$c(r)$. Each coordinate is an actual RingHom, so coordinatewise ring
+operations construct the true RingHom $c$ into the ORIGINAL subring $C$.
+\end{proof}
+
+\begin{theorem}[The original adic completion has its actual coefficient RingHom into the whole section limit]
+\label{scheme:actual-adic-completion-compatible-section-coefficients}
+\leanok
+\lean{EnvelopeProperty.AdicCompletionEvalCompatibility.factorPow_eval,
+EnvelopeProperty.AdicCompletionEvalCompatibility.factorPow_comp_eval,
+EnvelopeProperty.AdicCompletionSections.completionCoefficient,
+EnvelopeProperty.AdicCompletionSections.completionCoefficient_apply,
+EnvelopeProperty.AdicCompletionSections.completionCoefficient_of,
+EnvelopeProperty.AdicCompletionSections.completionCoefficient_comp_algebraMap,
+EnvelopeProperty.AdicCompletionSections.idempotentFamily,
+EnvelopeProperty.AdicCompletionSections.idempotentFamily_zero}
+\uses{scheme:actual-original-infinitesimal-coefficient-map,scheme:actual-original-infinitesimal-idempotent-family}
+Let $\widehat R=\operatorname{AdicCompletion}_I(R)$ be Mathlib's ACTUAL
+adic completion. Construct the ORIGINAL coefficient RingHom
+$\widehat c:\widehat R\to C$ with EVERY genuine coordinate formula
+\[
+ \widehat c(a)_k=c_{k+1}(\operatorname{ev}_{k+1}(a)),
+ \qquad \operatorname{ev}_n:\widehat R\to R/I^n.
+\]
+Prove the WHOLE RingHom equality
+$\widehat c\circ\iota_R=c$, where $\iota_R:R\to\widehat R$ is the actual
+original completion coefficient map. Actual coordinate evaluation and
+EVERY original section restriction commute with $\widehat c$ through the
+SAME original quotient maps. A true idempotent of $\widehat R$ maps to
+an actual idempotent compatible family, whose original order-one
+coordinate is exactly $c_1(\operatorname{ev}_1(a))$.
+No injectivity, surjectivity, image characterization or isomorphism of
+$\widehat c$ is asserted or assumed.
+\end{theorem}
+\begin{proof}
+REUSE the genuine existing algebra RingHoms
+$\operatorname{ev}_n$ of the original adic completion; do not define a
+replacement completion. Their actual compatible-tuple property, with
+the genuine equality $I^n\top=I^n$ transported through the original
+quotient RingEquivs, gives
+$\pi_{n,m}(\operatorname{ev}_m(a))=\operatorname{ev}_n(a)$ for EVERY
+$n\le m$. Combine this WHOLE quotient identity with the preceding
+original coefficient transition square. The resulting tuple therefore
+belongs to the ACTUAL compatible-section subring $C$. Every coordinate
+is the actual composite of two RingHoms, so the whole tuple map is a
+RingHom and has exactly the displayed coordinates. The existing genuine
+identity $\operatorname{ev}_n(\iota_R(r))=r\bmod I^n$ gives every
+coordinate of $\widehat c\circ\iota_R=c$; true subtype/function
+extensionality gives the WHOLE map equality. RingHom preservation of
+idempotents and the actual first coordinate yield the final laws.
+\end{proof}
+
+\begin{remark}[The exact formal-functions obligation remains]
+This constructs a map INTO the section limit; it does not prove a
+completion comparison. In the proper Noetherian-local situation the
+source proof still needs the genuine formal-functions theorem identifying
+the completed pushforward stalk with this ACTUAL section limit, together
+with the finite-module completion comparison, before any arbitrary fibre
+idempotent can be shown to lie in the original pushforward-stalk image.
+Existing localness of the actual finitely generated maximal-adic
+completion is REUSED when needed, not postulated or reproved here.
+No proper-fibre idempotent image theorem, Stein factorization,
+geometrically connected proper fibre, or native connectedness conclusion
+follows from the two coefficient-map producers alone.
+\end{remark}

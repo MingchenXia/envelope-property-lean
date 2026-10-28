@@ -1,0 +1,191 @@
+\section{Actual fixed-radius norms on the original surface field}
+
+Let $k$ be a field, let $S$ be the SAME original Noetherian local domain
+with its actual $k$-algebra structure, and suppose
+$\mathfrak m_S=(\pi,z)$, $\pi$ is prime, and $\pi\nmid z$.
+Write $K=\operatorname{Frac}S$, $T=S_{(\pi)}$, and keep the actual weighted
+DVRs $V_N$ and their previously constructed embeddings into this SAME $K$.
+The coefficient action on $K$ is the original action through $S$.
+Fix an original $t\in S$ with $t\ne0$ and $\pi\mid t$, and a real radius
+$0<r<1$. No family of norms or comparison of orders is supplied.
+
+\begin{definition}[Actual scaled points on the same original field]
+\label{def:gauss-surface-actual-scaled-field-points}
+\uses{thm:gauss-regular-surface-original-dvr,lem:gauss-surface-original-vertical-fraction-identities,lem:gauss-surface-original-residual-vertical-dvrs,thm:actual-dvr-fraction-point,def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedPoint,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalPoint}
+\leanok
+\leavevmode\par
+For $c>0$, let $w_{N,c}$ be the actual extended DVR point of $V_N$ with
+uniformizer norm $\exp(-c)$, and let $w_{T,c}$ be the corresponding actual
+point of $T$. Both are genuine elements of $\operatorname{Berk}_k K$ on
+the literal original field, with the literal original coefficient action.
+\end{definition}
+\begin{proof}
+Give each actual DVR its $k$-action through the original map from $S$.
+The previously proved identity for EVERY original coefficient says that
+the composite into $K$ is its original coefficient map. Applied to the
+original coefficients from $k$, this proves the actual scalar tower.
+The already constructed embeddings make $K$ the fraction ring of these
+same DVRs. Apply the existing actual DVR fraction-point construction with
+these maps and towers. Its coefficient norm is trivial because every
+nonzero original coefficient from the field $k$ is a unit.
+\end{proof}
+
+\begin{lemma}[All original surface coefficients remain bounded]
+\label{lem:gauss-surface-scaled-field-points-bounded}
+\uses{def:gauss-surface-actual-scaled-field-points,thm:actual-dvr-fraction-point,lem:gauss-surface-original-vertical-fraction-identities,thm:gauss-regular-surface-original-dvr}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedPoint_coefficient,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalPoint_coefficient,EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedPoint_coefficient_le_one,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalPoint_coefficient_le_one}
+\leanok
+\leavevmode\par
+Every original $s\in S$ has its exact original extended DVR coefficient
+value $\exp(-c\operatorname{ord}(s))$, in particular at most one at every $w_{N,c}$ and
+every $w_{T,c}$.
+\end{lemma}
+\begin{proof}
+Its literal image in the actual DVR has extended norm at most one.
+The original whole-coefficient embedding identity identifies that value
+with the value of the original image of $s$ in $K$.
+\end{proof}
+
+\begin{lemma}[Native whole-field order determines the real logarithm]
+\label{lem:gauss-surface-native-order-real-log}
+\uses{def:gauss-surface-actual-scaled-field-points,def:gauss-surface-same-field-native-orders,thm:actual-dvr-fraction-point,lem:gauss-surface-original-vertical-fraction-identities,thm:gauss-regular-surface-original-dvr}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedPoint_log_of_order,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalPoint_log_of_order}
+\leanok
+\leavevmode\par
+If the actual native order of $f\in K^\times$ for the indicated original
+DVR is $\exp(a)$, then the corresponding actual point satisfies
+$\log|f|=-ca$. In particular this uses the native integer order on the
+whole original fraction field, including negative orders.
+\end{lemma}
+\begin{proof}
+Write the SAME nonzero original field element as a ratio of two actual
+nonzero DVR elements, of actual finite additive orders $m,n$. The native
+comparison between whole-field order and the maximal-ideal valuation gives
+native orders $\exp(m)$ and $\exp(n)$ for these literal coefficients.
+Thus its actual whole-field order is $\exp(m-n)$, and injectivity of the
+native exponential gives $m-n=a$. The actual extended coefficient formula
+gives norm $\exp(-c)^m/\exp(-c)^n$. Both factors are positive, so taking
+the ordinary real logarithm gives $-c(m-n)=-ca$.
+\end{proof}
+
+\begin{lemma}[The actual parameter has positive vertical order]
+\label{lem:gauss-surface-parameter-positive-vertical-order}
+\uses{thm:gauss-surface-original-eventual-orders,lem:gauss-surface-original-residual-vertical-dvrs,lem:gauss-surface-original-vertical-fraction-identities,thm:gauss-regular-surface-original-dvr,def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.exists_parameter_orders,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalParameterOrder,EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedParameterOrder,EnvelopeProperty.GaussRegularSurfaceRealNorms.verticalParameterOrder_spec,EnvelopeProperty.GaussRegularSurfaceRealNorms.weightedParameterOrder_spec}
+\leanok
+\leavevmode\par
+Internally produce integers $e,c\in\mathbf N$ with $e>0$ such that the
+actual vertical additive order of $t$ is $e$, and the actual $V_N$-order
+of $t$ is $eN+c$ for every $N>c$. Moreover its actual vertical
+order and every actual weighted order $d_N$ for $N>0$ are finite positive
+natural numbers, defined by their genuine additive orders.
+\end{lemma}
+\begin{proof}
+Apply the genuine eventual-order theorem to this nonzero original $t$.
+The actual image of $\pi$ is a vertical uniformizer, and divides the
+actual image of $t$. The native additive-order divisibility criterion
+therefore gives vertical order at least one. Thus the internally
+produced $e$ is positive. The remaining assertion is exactly that
+theorem's actual eventual order formula. Each actual coefficient image
+of $t$ is nonzero, by its actual embedding into $K$. The image of $\pi$
+divides it and has weighted order $N>0$, giving positivity for EVERY $N$.
+This does not assert that
+$t$ is a unit times $\pi^e$ in $S$.
+\end{proof}
+
+\begin{theorem}[Internally normalized actual fixed-radius points]
+\label{thm:gauss-surface-actual-fixed-radius-points}
+\uses{lem:gauss-surface-parameter-positive-vertical-order,def:gauss-surface-actual-scaled-field-points,lem:gauss-surface-scaled-field-points-bounded,lem:gauss-surface-native-order-real-log,berkovich:actual-trivial-parameter-gauss-evaluation}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.normalizedWeightedPoint,EnvelopeProperty.GaussRegularSurfaceRealNorms.normalizedVerticalPoint,EnvelopeProperty.GaussRegularSurfaceRealNorms.normalizedWeightedPoint_gauss,EnvelopeProperty.GaussRegularSurfaceRealNorms.normalizedVerticalPoint_gauss}
+\leanok
+\leavevmode\par
+For EVERY $N>0$, normalize by the actual positive order $d_N$ of $t$
+in $V_N$. For the internally produced vertical order $e$, put
+\[
+ N_n=n+1,\qquad
+ \varepsilon_n=\frac{-\log r}{d_{N_n}},\qquad
+ \varepsilon_0=\frac{-\log r}{e}.
+\]
+Eventually $d_{N_n}=eN_n+c$ with the internally produced $c$.
+These numbers are positive. The literal actual points
+$w_n=w_{N_n,\varepsilon_n}$ and $w_0=w_{T,\varepsilon_0}$ satisfy
+$|t|_{w_n}=|t|_{w_0}=r$. Every original surface coefficient is bounded
+by one, and for EVERY original polynomial $F\in k[X]$,
+\[
+ |F(t)|_{w_n}=|F(t)|_{w_0}=|F|_{\mathrm{Gauss},r}.
+\]
+\end{theorem}
+\begin{proof}
+The displayed denominators are the actual positive orders just proved.
+Use the actual additive orders $d_{N_n}$ and $e$ in the original
+coefficient norm formula. The chosen scales give $\exp(\log r)=r$.
+The whole-coefficient boundedness lemma gives the surface assertion.
+Apply the existing polynomial Gauss comparison to each genuine point
+and its now proved parameter value $r\in(0,1)$. This proves EVERY
+polynomial identity without supplying a restriction certificate.
+\end{proof}
+
+\begin{theorem}[Whole-field convergence of the genuine points]
+\label{thm:gauss-surface-actual-fixed-radius-convergence}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.exists_normalized_log_profile,EnvelopeProperty.GaussRegularSurfaceRealNorms.tendsto_normalizedWeightedPoint}
+\leanok
+\leavevmode\par
+\uses{thm:gauss-surface-actual-fixed-radius-points,thm:gauss-surface-original-fraction-eventual-orders,lem:gauss-surface-native-order-real-log,lem:gauss-surface-canonical-vertical-leading-field}
+The SAME actual points $w_n$ tend to the SAME actual vertical point
+$w_0$ in the genuine evaluation topology of $\operatorname{Berk}_k K$.
+For every nonzero original $f\in K$, let $a,b\in\mathbf Z$ be internally
+produced by its genuine eventual-order theorem. Then, eventually,
+\[
+ \log|f|_{w_n}=\frac{a}{e}\log r
+       -\varepsilon_n\left(b-\frac{a}{e}c\right),\qquad
+ \log|f|_{w_0}=\frac{a}{e}\log r.
+\]
+Here $a$ is the true vertical order, and $b$ is the true residual order
+of its leading unit under the canonical original residue-field map.
+\end{theorem}
+\begin{proof}
+The old whole-field theorem gives the actual orders $aN+b$ eventually
+for the SAME original $f$, together with its actual vertical order and
+canonical leading-unit residue. Apply the native-order logarithm lemma
+to these actual orders. Substitution of the displayed $\varepsilon_n$
+and the eventual identity $d_{N_n}=eN_n+c$, followed by an algebraic
+rearrangement, give the first identity, including the
+correction term $-(a/e)c$. The vertical formula gives the second.
+Since $N_n\to\infty$ and $e>0$, one has $\varepsilon_n\to0$.
+Thus the actual log values converge for every nonzero original $f$;
+exponentiation gives convergence of their actual positive norm values.
+At $f=0$ all values are zero. The topology on genuine field-valued
+Berkovich points is induced by ALL evaluations $K\to\mathbf R_{\ge0}$.
+Their pointwise convergence therefore proves the asserted native
+point convergence, rather than convergence of an auxiliary parameter.
+\end{proof}
+
+\begin{corollary}[The exact fixed-base corrected quotient]
+\label{cor:gauss-surface-actual-fixed-radius-log-quotient}
+\lean{EnvelopeProperty.GaussRegularSurfaceRealNorms.exists_normalized_log_quotient}
+\leanok
+\leavevmode\par
+\uses{thm:gauss-surface-actual-fixed-radius-convergence,lem:gauss-surface-canonical-vertical-leading-field}
+For every nonzero original $f$ the actual quotient
+\[
+ \frac{\log|f|_{w_n}-\log|f|_{w_0}}{\varepsilon_n}
+\]
+is eventually equal to $-\bigl(b-(a/e)c\bigr)$, and hence tends to that
+number. Equivalently the actual negative-log quotient is eventually
+$b-(a/e)c$ and tends to that number. If its true vertical order is zero,
+the negative-log quotient
+is exactly its true original residual order $b$.
+\end{corollary}
+\begin{proof}
+Subtract the two genuine log formulas and divide by the strictly
+positive actual $\varepsilon_n$. This gives eventual equality, which
+implies the limit. For $a=0$ the correction vanishes. The native
+leading-residue theorem identifies this $b$ with the actual residual
+order; no desired slope is an input.
+\end{proof}
+
+This construction concerns the literal original field and actual bounded
+surface coefficients. It supplies neither a global surface selection nor
+a representation of arbitrary harmonic functions. Transport to an
+original global model and its original line is a separate geometric step.

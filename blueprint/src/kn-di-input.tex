@@ -1,0 +1,212 @@
+\section{The temporary geometric Deligne--Illusie boundary}
+
+\input{kn-di-input-source}
+
+\begin{definition}[The actual full decomposition input]
+\label{def:kn-geometric-di-input}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.target,EnvelopeProperty.Vanishing.DeligneIllusieInput.Decomposition,EnvelopeProperty.Vanishing.DeligneIllusieInput.WittDecompositionInput,EnvelopeProperty.Vanishing.DeligneIllusieInput.ofWittLift}
+\leanok
+\uses{def:kn-actual-di-source,lem:kn-witt-special-fibre-dimension}
+Let $k$ be a perfect field of prime characteristic $p$.  For a smooth
+scheme $f:X\to\operatorname{Spec}k$ of relative dimension $n$, put
+$X'=X\times_{\operatorname{Spec}k,F_k}\operatorname{Spec}k$, and let
+$F:X\to X'$ be the actual relative Frobenius.  The decomposition is an
+isomorphism in $D(\mathcal O_{X'})$
+\[
+ \bigoplus_{i=0}^{n}\Omega_{X'/k}^{i}[-i]
+ \;\simeq\;F_*\Omega_{X/k}^{\bullet}.
+\]
+The temporary input asserts this isomorphism for the actual special
+fibre of every separated smooth relative-dimension-$n$ scheme over $W_2(k)$,
+when $n<p$.  It is an explicit hypothesis, not an axiom or an instance.
+Given this input and a genuine Witt model, its application chooses the
+asserted isomorphism on precisely that model's actual special fibre.
+\end{definition}
+
+\begin{lemma}[The genuine Witt special fibre retains its dimension]
+\label{lem:kn-witt-special-fibre-dimension}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.specialFibre,EnvelopeProperty.Vanishing.DeligneIllusieInput.specialFibreStructure,EnvelopeProperty.Vanishing.DeligneIllusieInput.specialFibre_smoothOfRelativeDimension}
+\leanok
+Let $\widetilde f:\widetilde X\to\operatorname{Spec}W_2(k)$ be
+smooth of relative dimension $n$.  The actual pullback
+$X=\operatorname{Spec}k\times_{\operatorname{Spec}W_2(k)}\widetilde X$
+along Witt reduction, with its first projection to $\operatorname{Spec}k$,
+is smooth of relative dimension $n$.
+\end{lemma}
+\begin{proof}
+This square is the categorical pullback of $\widetilde f$ along the
+actual Witt reduction morphism.  Smoothness of relative dimension $n$
+is stable under base change.  Apply this stability to the flipped
+pullback square; its structural map is precisely the indicated first
+projection.  Neither a choice of coordinates nor a Cartier comparison
+is required.
+\end{proof}
+
+\begin{lemma}[Tensoring the actual derived decomposition by a line]
+\label{lem:kn-di-line-tensor}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.tensorDecomposition}
+\leanok
+\uses{def:kn-geometric-di-input,lem:kn-line-tensor-exact}
+Let $L'$ be an invertible module on the same $X'$.  A supplied actual
+decomposition induces the corresponding isomorphism after tensoring
+both complexes with $L'$.
+\end{lemma}
+\begin{proof}
+Tensoring by $L'$ is an exact equivalence, whose inverse is tensoring
+by its dual.  Hence it preserves quasi-isomorphisms and induces a
+functor of the original derived category.  Apply this functor to the
+supplied isomorphism, and use its canonical comparison with termwise
+tensoring before localization.  These comparisons identify both
+endpoints with the indicated actual tensor complexes.
+\end{proof}
+
+\begin{lemma}[Underlying abelian derived decomposition]
+\label{lem:kn-di-underlying-abelian}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.sheafSource,EnvelopeProperty.Vanishing.DeligneIllusieInput.sheafTarget,EnvelopeProperty.Vanishing.DeligneIllusieInput.sheafDecomposition,EnvelopeProperty.Vanishing.DeligneIllusieInput.sheafTensorDecomposition}
+\leanok
+\uses{lem:kn-di-line-tensor}
+The original module-derived decomposition, also after line tensoring,
+induces the corresponding decomposition of the original underlying
+abelian-sheaf complexes.
+\end{lemma}
+\begin{proof}
+The underlying-abelian-sheaf functor is additive and preserves finite
+limits and colimits, hence is exact.  It induces a functor on the
+derived categories.  Apply it to the actual module-derived
+isomorphism and compose with the localization comparison at both
+endpoints.  These comparisons retain the original underlying sheaf
+of every term and the original differential.
+\end{proof}
+
+\begin{lemma}[Transport of every original complex differential]
+\label{lem:kn-complex-term-transport}
+\lean{EnvelopeProperty.Vanishing.CartierConnectionTransport.complex,EnvelopeProperty.Vanishing.CartierConnectionTransport.iso,EnvelopeProperty.Vanishing.CartierConnectionTransport.differential_comp}
+\leanok
+Let $K$ be a complex in a category with zero morphisms and let
+$e_i:K^i\simeq A_i$ be actual isomorphisms.  On the terms $A_i$,
+the maps $e_jd_{ij}e_i^{-1}$ form a complex of the same shape,
+isomorphic to the whole original complex through the original $e_i$.
+\end{lemma}
+\begin{proof}
+Every map outside the original shape is zero because the corresponding
+$d_{ij}$ is zero.  A composite of two transported differentials is
+$e_kd_{jk}e_j^{-1}e_jd_{ij}e_i^{-1}$; cancellation of the middle
+inverse pair reduces it to $e_kd_{jk}d_{ij}e_i^{-1}=0$.
+The identity $e_jd_{ij}=(e_jd_{ij}e_i^{-1})e_i$ proves compatibility
+with every original differential.  The inverse term isomorphisms give
+the inverse complex morphism, so this is a complex isomorphism.
+\end{proof}
+
+\begin{definition}[The actual line-twisted Cartier complex]
+\label{def:kn-cartier-connection-complex}
+\lean{EnvelopeProperty.Vanishing.CartierConnection.twistedComplex,EnvelopeProperty.Vanishing.CartierConnection.termProjectionIso,EnvelopeProperty.Vanishing.CartierConnection.connectionTerm,EnvelopeProperty.Vanishing.CartierConnection.connectionDifferential,EnvelopeProperty.Vanishing.CartierConnection.connectionComplex}
+\leanok
+Let $L'$ be invertible on $X'$.  Tensor the $\mathcal O_{X'}$-linear
+complex $F_*\Omega_X^\bullet$ by $L'$.  The line projection formula
+identifies its degree-$i$ term with
+$F_*(\Omega_X^i\otimes F^*L')$.  Transporting the differentials
+through these actual term isomorphisms defines the corresponding
+Cartier-connection complex on these pushed modules.
+\end{definition}
+
+\begin{lemma}[The transported connection retains the original complex]
+\label{lem:kn-cartier-connection-complex-iso}
+\lean{EnvelopeProperty.Vanishing.CartierConnection.connectionDifferential_square,EnvelopeProperty.Vanishing.CartierConnection.connectionComplexIso}
+\leanok
+\uses{def:kn-cartier-connection-complex,lem:kn-complex-term-transport}
+The term projection formulas form an isomorphism from the original
+line-twisted relative-Frobenius complex to the Cartier-connection
+complex.  In particular its differential has square zero.
+\end{lemma}
+\begin{proof}
+Write $e_i$ for the projection formula in degree $i$ and $d_i$ for
+the original twisted differential.  Define the transported
+differential as $e_{i+1}d_i e_i^{-1}$.  The composite of two successive
+differentials is $e_{i+2}d_{i+1}d_i e_i^{-1}=0$.  The same formula
+states exactly that $e_i$ commutes with the differentials; its inverse
+also does, giving the required complex isomorphism.
+\end{proof}
+
+The ordinary de Rham differential on $X$ is not
+$\mathcal O_X$-linear.  The construction tensors only after the
+actual relative Frobenius pushforward, on $X'$, where its differential
+is linear.  It does not replace the missing projection, field-twist
+or hypercohomology comparisons by vanishing assumptions.
+
+\begin{lemma}[The amplified original Hodge terms]
+\label{lem:kn-amplified-cartier-terms}
+\lean{EnvelopeProperty.Vanishing.CartierConnectionPower.twistLinePower,EnvelopeProperty.Vanishing.CartierConnectionPower.twistLinePower_isInvertible,EnvelopeProperty.Vanishing.CartierConnectionPower.twistedComplex,EnvelopeProperty.Vanishing.CartierConnectionPower.term,EnvelopeProperty.Vanishing.CartierConnectionPower.termIso,EnvelopeProperty.Vanishing.CartierConnectionPower.differential,EnvelopeProperty.Vanishing.CartierConnectionPower.differential_square,EnvelopeProperty.Vanishing.CartierConnectionPower.complex,EnvelopeProperty.Vanishing.CartierConnectionPower.complexIso,EnvelopeProperty.Vanishing.CartierConnectionPower.sheafTermIso}
+\leanok
+\uses{cor:kn-frobenius-line-projection,lem:kn-cartier-connection-complex-iso}
+For an original line $L$ on $X$, let $L'$ be its pullback to the
+actual twist.  In every degree $q$ the actual complex
+$F_*\Omega_X^\bullet\otimes (L')^m$ has its original term canonically
+isomorphic to $F_*(L^{pm}\otimes\Omega_X^q)$.  Transporting the
+original differential through these isomorphisms gives an isomorphic
+complex on precisely these pushed positive-power modules.
+\end{lemma}
+\begin{proof}
+Pullback preserves invertibility, and the $m$th power of the pulled
+line has inverse the $m$th power of its dual, including the tensor
+unit when $m=0$.  Thus every line used in this projection formula
+is actually invertible.
+The actual Frobenius line comparison gives
+$F^*((L')^m)\simeq L^{pm}$.  Apply the actual line projection
+formula to $\Omega_X^q$ and $(L')^m$, use this pullback comparison,
+and use tensor symmetry to put the original power on the left.
+This is the indicated term isomorphism.  Transport of the original
+differentials preserves square zero and gives a whole complex
+isomorphism, by the preceding transport argument.  Extension to
+integer degrees has the canonical original term comparison at every
+nonnegative degree, and the underlying abelian-sheaf functor
+preserves these term isomorphisms.
+\end{proof}
+
+\begin{lemma}[The actual amplified target has bounded terms]
+\label{lem:kn-amplified-cartier-bounded}
+\lean{EnvelopeProperty.Vanishing.CartierConnectionPower.twistedTerm_isZero,EnvelopeProperty.Vanishing.CartierConnectionPower.term_isZero,EnvelopeProperty.Vanishing.CartierConnectionPower.complex_extend_isStrictlyLE,EnvelopeProperty.Vanishing.CartierConnectionPower.sheafComplex,EnvelopeProperty.Vanishing.CartierConnectionPower.sheafComplex_X_isZero_below,EnvelopeProperty.Vanishing.CartierConnectionPower.sheafComplex_X_isZero_above}
+\leanok
+\uses{lem:kn-amplified-cartier-terms}
+The underlying integer-indexed actual amplified complex is zero in
+every degree below zero and in every degree above $n$.
+The corresponding natural-degree module terms and the extended
+transported complex obey the same upper bound.
+\end{lemma}
+\begin{proof}
+Negative terms are zero by extension from the natural-number-indexed
+original de Rham complex.  Above $n$, the original exterior sheaves
+are zero: on every genuine smooth affine chart the exterior basis
+is indexed by $q$-element subsets of an $n$-element set, hence is
+empty for $q>n$.  These chart equalities detect the zero original
+sheaf.  Pushforward, tensoring and forgetting scalars all preserve
+zero objects.  Thus the same zero bounds hold for the actual
+amplified underlying complex.
+\end{proof}
+
+\begin{lemma}[The decomposition has the actual amplified target]
+\label{lem:kn-di-amplified-target}
+\lean{EnvelopeProperty.Vanishing.CartierConnectionPower.realizedSource,EnvelopeProperty.Vanishing.CartierConnectionPower.decompositionIso,EnvelopeProperty.Vanishing.CartierConnectionPower.source_hodge_H}
+\leanok
+\uses{lem:kn-di-underlying-abelian,lem:kn-amplified-cartier-terms,lem:kn-di-exterior-summand-extraction}
+The supplied original Deligne--Illusie isomorphism gives a derived
+isomorphism from its realized source tensored by $(L')^m$ to the
+actual amplified underlying-abelian complex used above.
+If the realized source has zero derived Hom from the constant integer
+sheaf in total degree $t$, then for each $0\leq i\leq n$ with
+$t-i\geq0$ its native group
+$H^{t-i}(X',\Omega^i_{X'/k}\otimes(L')^m)$ is zero.
+\end{lemma}
+\begin{proof}
+The original line remains invertible after pullback and taking the
+$m$th tensor power.  Apply the exact line-tensor and underlying
+abelian-sheaf derived functors to the supplied original
+decomposition.  The target is, by its definition, precisely the
+underlying abelian complex obtained by tensoring the extended
+original de Rham complex with $(L')^m$.  No change of original
+differential, scheme or coefficient projection is made.
+Apply the original summand retractions and the native single/Ext
+comparison to obtain the last assertion.  The displayed derived
+isomorphism also transports zero Hom from the actual target to the
+same realized source, so it can be combined directly with bounded
+hypercohomology vanishing.
+\end{proof}

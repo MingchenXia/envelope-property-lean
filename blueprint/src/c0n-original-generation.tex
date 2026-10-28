@@ -1,0 +1,203 @@
+\section{The original homogeneous obstacle family generates its whole scheme ideal}
+\label{sec:c0n-original-generation}
+
+Keep the original projective subvariety $X\subset\mathbb P^M_k$, the
+original obstacle $\varphi$, original polarization integer $d$, and index
+$m\geq0$.  Write $J_m$ for the actual original homogeneous obstacle ideal,
+with the parameter moved only by the proved polynomial exchange to the
+coefficient ring $k[t]$.  Let $Y$ be the actual coefficient-extension
+projective family, $i:Y\hookrightarrow\mathbb P^M_{k[t]}$ its actual closed
+inclusion, and $I_m=i^{-1}J_m\,\mathcal O_Y$ its whole geometric comap ideal.
+This section never replaces $J_m$ by an unrelated full-section base ideal.
+
+\begin{lemma}[An original homogeneous form gives its whole principal chart ideal]
+\label{lem:c0n-original-homogeneous-section-ideal}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGenerationCore.homogeneousSection_sectionIdeal}
+\leanok
+For an original homogeneous $F\in R[x_0,\ldots,x_M]$ of degree $e$,
+the native global section of the original $\mathcal O(e)$ has, on every
+whole native coordinate chart $U_j$, the principal section ideal generated
+by the actual dehomogenization $F/x_j^e$ under the native chart-ring
+isomorphism.  This is equality of entire ideals.
+\end{lemma}
+\begin{proof}
+The proved native frame-coefficient formula identifies the whole section
+ideal with the principal ideal of its actual coefficient in the original
+$\mathcal O(e)$ frame.  The proved native homogeneous-section coefficient
+comparison identifies that coefficient exactly with the original
+$F/x_j^e$, including its original chart-ring isomorphism.  Substitute
+this equality in the principal ideal formula.  No radical or support
+comparison is used.
+\end{proof}
+
+\begin{lemma}[Actual finite evaluation has exactly the original whole ideal image]
+\label{lem:c0n-original-homogeneous-evaluation-image}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGenerationCore.homogeneousEvaluation_imageIdeal}
+\leanok
+Let $J$ be a homogeneous ideal of $R[x_0,\ldots,x_M]$, and let a finite
+set $G$ of actual degree-$e$ forms generate its entire ideal.  The genuine
+evaluation from the direct sum of the original $\mathcal O(-e)$ factors,
+using the original global sections represented by $F\in G$, has whole
+image ideal equal to the original sheaf ideal associated with $J$.
+\end{lemma}
+\begin{proof}
+The native family-evaluation image ideal is the supremum of the section
+ideals of the same original family.  On each native coordinate affine
+chart, the preceding lemma identifies these with the principal ideals
+of the actual dehomogenizations of $F\in G$.  Their supremum is exactly
+the ideal spanned by those same coefficients.  Ideal-map preservation of
+span and the given whole span equality identify this with the actual
+coordinate ideal of the native quotient sheaf.  The native coordinate
+charts cover the entire target, so equality on those whole affine ideals
+proves equality of the entire original sheaf ideals.
+\uses{lem:c0n-original-homogeneous-section-ideal}
+\end{proof}
+
+\begin{lemma}[The pulled original evaluation source is genuinely quasi-coherent]
+\label{lem:c0n-original-pulled-evaluation-source-coherent}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGenerationCore.pullbackFreeTensorDual_isQuasicoherent}
+\leanok
+For any original invertible $L$, finite index type $G$, and actual morphism $f$,
+the actual pullback of $\mathcal O^{(G)}\otimes L^{-1}$ is quasi-coherent.
+No flatness or quasi-coherence certificate for the pulled source is input.
+\end{lemma}
+\begin{proof}
+The native free-tensor-dual isomorphism identifies the original source
+with the actual coproduct of copies of $L^{-1}$.  Pull back this whole
+isomorphism and use preservation of coproducts by the actual pullback
+left adjoint.  Its target is the coproduct of the actual $f^*L^{-1}$.
+Reindex this finite coproduct by its actual finite ordinal.  Each summand
+is genuinely invertible and hence quasi-coherent.  The proved
+native coproduct closure gives quasi-coherence of that coproduct, and the
+actual whole isomorphism transfers it to the original pulled source.
+\end{proof}
+
+\begin{lemma}[The pulled original evaluation has the whole geometric comap as image]
+\label{lem:c0n-original-pulled-evaluation-image}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGenerationCore.pullbackEvaluation_imageIdeal}
+\leanok
+For the same finite homogeneous family and any actual $f:Z\to\mathbb P^M_R$,
+pull its original evaluation morphism back and compose with the actual
+pullback-unit isomorphism.  The image ideal of this exact morphism is the
+entire original geometric comap $J\mathcal O_Z$.
+\end{lemma}
+\begin{proof}
+The preceding whole image equality supplies the actual epimorphic factor
+of the original evaluation through the actual $J$-module.  Pull back this
+factor and compose it with the native epimorphism from the pulled ideal
+module to its genuine geometric comap.  The native ideal-inclusion
+naturality square, the original image-factor inclusion equation, and
+functoriality show that this epimorphic factor composes with the original
+comap ideal inclusion to exactly the pulled original evaluation followed
+by the native unit isomorphism.  In the abelian category of actual scheme
+modules this is a strong-epi/mono factorization of that same morphism.
+Uniqueness of its whole image identifies its entire geometric image ideal
+with the original geometric comap.  The inclusion of whole ideal modules
+also proves equality on every original affine ideal, so this is not only
+a categorical or support identification.
+\uses{lem:c0n-original-homogeneous-evaluation-image,lem:c0n-original-pulled-evaluation-source-coherent}
+\end{proof}
+
+\begin{lemma}[Actual homogeneous finite generators survive every geometric comap]
+\label{lem:c0n-original-homogeneous-pullback-generation}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGenerationCore.exists_pullback_generatingSections_of_homogeneous_span}
+\leanok
+For any actual morphism $f:Z\to\mathbb P^M_R$, the original finite family
+in the preceding lemma gives a genuine finite generating family of
+$(J\mathcal O_Z)\otimes f^*\mathcal O(e)$.
+No flatness, extra generators, or desired image certificate is input.
+\end{lemma}
+\begin{proof}
+The native image factorization of the actual evaluation, using its proved
+whole image equality, is epimorphic onto the actual original ideal module.
+Pull back this epimorphism by $f$ and compose with the native epimorphism
+from the pulled ideal module onto the genuine geometric comap module.
+Tensor by the actual pulled invertible $\mathcal O(e)$ and use the native
+monoidal comparison and dual evaluation to cancel $\mathcal O(-e)$.
+All these functors preserve the actual epimorphisms.  Pull back the genuine
+finite standard basis of the free module indexed by the same finite set
+$G$, and descend its evaluation through the resulting epimorphism.
+Its index remains finite, proving actual whole-module global generation.
+\uses{lem:c0n-original-homogeneous-evaluation-image}
+\end{proof}
+
+\begin{proposition}[The same original obstacle forms give the whole ambient image]
+\label{prop:c0n-original-obstacle-evaluation-image}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGeneration.exists_original_homogeneous_evaluation_image}
+\leanok
+For every original $X,d,\varphi,m$, there is a finite set $G_m$ consisting
+of original obstacle forms, each of exact degree $md$, such that their
+actual homogeneous evaluation has whole image ideal equal to the entire
+original ambient obstacle sheaf $J_m$.
+\end{proposition}
+\begin{proof}
+The proved original generator theorem uses Noetherianity to select a
+finite subset of the same original parameter-exchanged obstacle monomials.
+It proves both whole ideal span and exact degree $md$ for every selected
+form, internally from the original obstacle construction.  Apply the
+second lemma to this very family and the original homogeneous ideal.
+No finite family, span equality, or evaluation image equality is supplied
+as an external hypothesis to this proposition.
+\uses{lem:c0n-original-homogeneous-evaluation-image}
+\end{proof}
+
+\begin{proposition}[The original family evaluation cuts exactly the original obstacle ideal]
+\label{prop:c0n-original-family-evaluation-image}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGeneration.exists_original_family_evaluation_image}
+\leanok
+The same internally selected original finite obstacle forms, pulled along
+the actual family inclusion $i$, have geometric evaluation image exactly
+$I_m$ as a whole ideal sheaf on the actual original family $Y$.
+\end{proposition}
+\begin{proof}
+Internally use the original finite homogeneous generator theorem, then
+apply the preceding pulled-evaluation image lemma to the actual inclusion
+$i$ and the original ambient obstacle ideal.  Its geometric comap is
+literally the definition of $I_m$.  Thus every selected form, parameter
+coefficient, original morphism, and whole ideal is preserved.
+\uses{lem:c0n-original-pulled-evaluation-image,prop:c0n-original-obstacle-evaluation-image}
+\end{proof}
+
+\begin{proposition}[The actual original sequence has finite polarized generators]
+\label{prop:c0n-original-obstacle-finite-generation}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGeneration.exists_generatingSections}
+\leanok
+Let $H=i^*\mathcal O(1)$ be the actual family hyperplane module.  For all
+original $d,\varphi,m$, the same whole module $I_m\otimes H^{md}$ has an
+actual finite generating family.  This includes $m=0$ and $d=0$.
+\end{proposition}
+\begin{proof}
+Internally choose the original finite set $G_m$ just described.  Apply the
+third lemma to the actual original family inclusion $i$.  Its geometric
+comap is literally the already defined $I_m$; its invertible factor is
+literally the pulled native pole-sheaf power $i^*\mathcal O(md)$.
+The genuine native positive-twist/power isomorphism and pullback monoidality
+identify this actual line with $H^{md}$, including power zero.  Transport
+the finite family through that whole module isomorphism.  Every original
+object is retained, and no target global-generation premise occurs.
+\uses{lem:c0n-original-homogeneous-pullback-generation,prop:c0n-original-obstacle-evaluation-image}
+\end{proof}
+
+\begin{proposition}[The same original polarization supplies every index needed by Nadel]
+\label{prop:c0n-original-polarization-power-generation}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierOriginalGeneration.exists_generatingSections_polarization_power}
+\leanok
+With the same original $H$, put $L=H^d$.  Every natural index $m$ has a
+finite actual generating family of the whole original module
+$I_m\otimes L^m$, with no replacement of $I_m$ or choice of another line.
+\end{proposition}
+\begin{proof}
+The preceding proposition constructs actual generators of
+$I_m\otimes H^{md}$.  Commutativity of the natural-number exponents and
+the native iterated tensor-power isomorphism identify $H^{md}$ with
+$(H^d)^m$.  Tensor this actual isomorphism by the same ideal module and
+transport the produced finite family.  This is the exact original
+polarization required by the uniform multiplier theorem, for every index
+and including zero; no desired generation premise is supplied.
+\uses{prop:c0n-original-obstacle-finite-generation}
+\end{proof}
+
+The conclusions are algebraic finite generation for the actual original
+obstacle ideals, not the uniform multiplier-ideal generation theorem or
+the final analytic envelope statement.  They supply the formerly missing
+input family for those separately proved conditional consumers.

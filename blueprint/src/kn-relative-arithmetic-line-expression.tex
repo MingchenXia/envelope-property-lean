@@ -1,0 +1,38 @@
+\section{The original line over an arbitrary relative affine base}
+
+\begin{lemma}[A mixed projective expression for the original line]
+\label{lem:kn-relative-arithmetic-original-line-expression}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticLineExpression.exists_original_line_expression}
+\uses{thm:kn-arithmetic-original-line-generated}
+\leanok
+Let $k$ be a field, let $R$ be any commutative ring, let $X$ be a
+$k$-scheme, and let $j:X\hookrightarrow\mathbb P_R^d$ be a closed
+immersion.  For every invertible module $L$ on $X$, there are integers
+$N,b\geq0$ and a morphism $h:X\to\mathbb P_k^b$ over $k$ with
+\[
+ h^*\mathcal O_{\mathbb P_k^b}(1)
+   \simeq L\otimes j^*\mathcal O_{\mathbb P_R^d}(N).
+\]
+Consequently the same original $L$ is isomorphic to
+$h^*\mathcal O(1)\otimes(j^*\mathcal O(N))^\vee$.
+Neither $R$ nor $X$ is assumed integral, and $X$ need not be proper
+over $k$.
+\end{lemma}
+\begin{proof}
+The original line $L$ is quasicoherent and of finite type.  Serre
+generation for the closed immersion $j$ gives an $N$ such that
+$L\otimes j^*\mathcal O(N)$ has finitely many global generating
+sections.  This tensor product is again invertible.  Projectivize
+those same finitely many sections using the field structure of $X$.
+On the open where one chosen section generates the line, divide all
+the sections by that generator.  The resulting coefficients define
+a morphism to the corresponding standard affine chart of
+$\mathbb P_k^b$.  On pairwise intersections their coordinate ratios
+agree, so these maps glue to a morphism $h$ over $k$.  The same local
+generator identifies the pulled-back $\mathcal O(1)$ with the
+generated line.  These identifications agree on intersections since
+they carry each coordinate section to its original global section;
+hence they glue to the displayed whole-line isomorphism.  Tensor
+with the dual of $j^*\mathcal O(N)$, use associativity, and cancel the
+line with its dual by evaluation to obtain the final assertion.
+\end{proof}

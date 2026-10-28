@@ -1,0 +1,37 @@
+\section{Entire image ideals of original module maps}
+
+\begin{lemma}[The entire actual image ideal localizes]
+\label{lem:actual-module-image-ideal-localizes}
+Let $R\to S=T^{-1}R$, let $M\to N=T^{-1}M$ be actual module
+localization, and let $\alpha:M\to R$, $\beta:N\to S$ be compatible
+linear maps. Then $(\operatorname{im}\alpha)S=\operatorname{im}\beta$.
+No finite generation hypothesis on $M$ is needed.
+\lean{EnvelopeProperty.map_image_ideal_of_isLocalizedModule}
+\leanok
+\end{lemma}
+\begin{proof}
+Every original image maps into the localized image. Conversely, given
+$y=\beta(n)$, actual module localization supplies $m\in M$ and $s\in T$
+with $sn=\rho(m)$. Applying the same $\beta$ gives
+$sy=\alpha(m)$ in $S$, hence $y=\alpha(m)/s$ belongs to the extension
+of the entire original image ideal. This uses the actual localized
+module, not a selected compatible submodule or a finite presentation.
+\end{proof}
+
+\begin{proposition}[The whole affine image defines the actual ideal sheaf]
+\label{prop:actual-module-image-ideal-sheaf}
+\uses{lem:actual-module-image-ideal-localizes}
+\lean{AlgebraicGeometry.Scheme.Modules.unitTargetImageIdeal,AlgebraicGeometry.Scheme.Modules.map_unitTargetImageIdeal_basicOpen,AlgebraicGeometry.Scheme.Modules.unitTargetImageIdealSheaf,AlgebraicGeometry.Scheme.Modules.unitTargetImageIdealSheaf_ideal,AlgebraicGeometry.Scheme.Modules.mem_unitTargetImageIdealSheaf_ideal_iff}
+Let $M$ be an original quasicoherent module on a scheme $X$ and
+$\alpha:M\to\mathcal O_X$ an actual sheaf morphism. The ideals
+$\operatorname{im}(\Gamma(U,M)\to\Gamma(U,\mathcal O_X))$ on every
+original affine open $U$ form the actual image ideal sheaf.
+\leanok
+\end{proposition}
+\begin{proof}
+Quasicoherence identifies the actual restriction from each affine open
+to every original principal open with module localization. Naturality
+of $\alpha$ is the commutative square in the preceding lemma, which
+gives equality of the whole ideals after restriction. These exact
+ideals therefore satisfy the defining ideal-sheaf compatibility.
+\end{proof}

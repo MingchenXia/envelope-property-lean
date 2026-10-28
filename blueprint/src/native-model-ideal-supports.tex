@@ -1,0 +1,93 @@
+\subsection{Native supports and true center support of intrinsic model ideals}
+\label{subsec:native-model-ideal-supports}
+
+The native scheme support and the model center have different roles.
+Vanishing of a model ideal norm detects the original native support;
+strictly smaller than one concerns closed-ideal support at the true model
+center. Finite generation is load-bearing for the converse of the latter
+statement and is supplied explicitly on an actual affine center neighborhood.
+No continuity or anti-continuity of the center map is inferred.
+
+\begin{lemma}[Actual scheme closed-ideal support in germs and residue values]
+\label{scheme:actual-ideal-support-in-germs}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.stalkIdeal_le_maximalIdeal_iff_mem_support,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.sectionIdealNorm_eq_zero_iff_mem_support}
+\leanok
+\uses{scheme:ideal-sheaf-data-stalk,scheme:valued-points}
+For actual ideal-sheaf data $I$, its intrinsic stalk ideal at $x$ is
+contained in the genuine local maximal ideal exactly when $x$ belongs to
+its actual scheme closed support. For any native valued point supported
+in an actual affine $U$, the norm of $I(U)$ in the original section
+seminorm is zero exactly when the original native point belongs to that
+same actual scheme support.
+\end{lemma}
+\begin{proof}
+Choose an actual affine neighborhood of $x$ and use the established stalk
+ideal equality with its genuine germ-image. The ideal-map inequality is
+equivalent to all ideal section germs belonging to the local maximal
+ideal. A germ is nonunit exactly when the original point lies outside
+the section's basic open. The actual scheme zero-locus criterion and
+Mathlib's actual ideal-sheaf support restriction therefore prove the first
+equivalence. For a native valued point, ideal norm zero means every ideal
+section has value zero. Its valuation on the actual residue field is zero
+only on zero, so original section evaluation vanishes exactly outside its
+basic open. The same genuine zero-locus and support criteria prove the
+second equivalence without any bound on the original section seminorm.
+\end{proof}
+
+\begin{theorem}[Genuine native zero locus of intrinsic model ideals]
+\label{scheme:native-model-ideal-zero-locus}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_eq_zero_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_eq_bot_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosed_modelIdealNorm_zeroLocus}
+\leanok
+\uses{scheme:actual-ideal-support-in-germs,scheme:native-model-ideal-function,
+scheme:valued-point-topology}
+At a native point of a proper scheme over the explicitly bounded
+prescribed base, the intrinsic model ideal norm is zero, equivalently its
+logarithm is $-\infty$, precisely when its \emph{original native support}
+belongs to the actual scheme support of $I$. This native zero locus is
+closed.
+\end{theorem}
+\begin{proof}
+Choose a true affine neighborhood of the model center. The original
+native support belongs to it by the proved specialization, and the intrinsic
+norm equals the actual affine section ideal norm. Apply the preceding
+native residue-value equivalence. The actual extended logarithm has
+bottom value precisely at zero, proving the logarithmic statement. The
+scheme closed support of $I$ is genuinely closed and the original native
+support projection is continuous. Its inverse image is therefore closed,
+exactly the just-proved zero locus. This does not require global continuity
+of the full model ideal function or replace the center in its definition.
+\end{proof}
+
+\begin{theorem}[True center closed-ideal criterion with explicit finite generators]
+\label{scheme:model-ideal-strict-center-criterion}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_mem_support_of_modelIdealNorm_lt_one,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_lt_one_iff_of_generators}
+\leanok
+\uses{scheme:actual-ideal-support-in-germs,scheme:native-model-ideal-generators,
+scheme:proper-center-local-bounds}
+An intrinsic norm smaller than one always implies that the true model
+center belongs to the scheme closed support of $I$. If a supplied finite
+family generates $I(U)$ on an actual affine center neighborhood, the
+converse holds too. These statements concern the genuine model center,
+rather than vanishing at the original native support.
+\end{theorem}
+\begin{proof}
+Every intrinsic stalk ideal element has valuation at most its actual ideal
+norm. When that norm is smaller than one, all such values are smaller
+than one. The true center-stalk valuation detects its actual maximal
+ideal by this strict inequality, so the stalk ideal lies in that maximal
+ideal. The first lemma proves membership of the center in the scheme support.
+
+With actual finite generators, the established maximum formula says that
+the norm is smaller than one precisely when all generator values are.
+The original generator values equal the actual center-stalk germ values.
+Strict-value detection turns this into maximal-ideal membership for all
+generators; the genuine germ-image span theorem makes it equivalent to
+containment of the entire stalk ideal. Apply the first lemma again. The
+finite-family maximum includes the empty family, hence the genuine zero
+ideal. Without finite generation, individual values below one need not
+bound their supremum strictly below one; no such converse is asserted.
+\end{proof}

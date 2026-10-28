@@ -1,0 +1,52 @@
+\subsection{Actual maximum attainment on the original completed blowup fibre}
+
+\begin{lemma}[Compactness of the whole actual completed fibre]
+\label{lem:fc-whole-completed-fibre-compact}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fcAffineCompletedFibre_compactSpace}
+\leanok
+The fixed-norm native point space of the literal completed-residue-field
+blowup fibre is compact.
+\end{lemma}
+\begin{proof}
+The original analytic blowup space is compact Hausdorff and its projection is
+continuous, so the inverse image of the singleton original base point is
+compact. Its subtype is compact. Transport this compactness through the
+actual whole-fibre homeomorphism to the prescribed-norm native point space
+of the literal scheme pullback over the original completed residue field.
+\end{proof}
+
+\begin{lemma}[Whole original fibre maximum and the finite-maximum dichotomy]
+\label{lem:fc-original-fibre-finite-maximum-attainment}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_exists_isMaxOn_fibre,EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_fibre_eq_bot_or_exists_finite_maximum}
+\leanok
+Every original global blowup psh potential attains a maximum on each whole
+original analytic fibre. Either it is identically minus infinity on that
+fibre, or it attains a finite real maximum there. No countability assumption
+on the original field is needed.
+\end{lemma}
+\begin{proof}
+Surjectivity of the actual original blowup projection makes each fibre
+nonempty. The potential is upper semicontinuous by its original global psh
+definition. Apply the upper semicontinuous extreme-value theorem to the actual
+compact fibre. Global psh potentials never take plus infinity, since each
+value is bounded above by a finite original Fubini--Study approximant.
+If the potential is not identically minus infinity on the fibre, choose a
+fibre point whose value exceeds minus infinity. The attained maximum is at
+least that value and is below plus infinity, so it is a finite real value.
+\end{proof}
+
+\begin{lemma}[Attainment on the literal whole completed scheme fibre]
+\label{lem:fc-native-completed-fibre-maximum-attainment}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_exists_isMaxOn_wholeCompletedFibre}
+\leanok
+\uses{lem:fc-whole-completed-fibre-compact,lem:fc-original-fibre-finite-maximum-attainment}
+The pullback of every original global blowup psh potential to the whole native
+point space of its literal completed scheme fibre attains a global maximum.
+\end{lemma}
+\begin{proof}
+Use the inverse of the actual whole-fibre homeomorphism to lift the attained
+original fibre maximizer. Every other native point maps into the same original
+fibre, so the original whole-fibre maximizing inequality proves the required
+global inequality. The whole original projection and every original potential
+value are retained by this exact homeomorphism.
+\end{proof}

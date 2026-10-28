@@ -1,0 +1,62 @@
+\section{The actual finite total cup and original section pairing}
+
+\begin{definition}[The signed finite total cup]
+\label{def:di-cech-total-cup}
+\uses{def:native-cech-ordered-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCupComponent,EnvelopeProperty.DI.CechTotalCup.totalCup}
+Let $Y=X^{(p)}$, let $K$ be the original pushed de Rham complex
+of a smooth morphism of pure relative dimension $n$, and let $U$ be any
+family of opens of $Y$. Let $T=\operatorname{Tot}\check C(U,K)$ be the
+original first-quadrant total complex. For $q+j=a$ and $r+j'=b$, take
+the original projections from $T^a,T^b$ to these two bidegrees, their
+original tensor map, the ordered Alexander--Whitney wedge product,
+and the original inclusion of bidegree $(r+q,j+j')$ in $T^{a+b}$.
+Multiply this composite by $(-1)^{jr}$ and sum over the two finite
+antidiagonals. This defines an actual sheaf morphism
+$T^a\otimes T^b\to T^{a+b}$. Neither a cover nor a finite indexing
+set is required: each total degree has only finitely many bidegrees.
+\end{definition}
+\begin{proof}
+The published wedge has form degree $r+q$, and the ordered cup has
+Cech degree $j+j'$. The antidiagonal equalities imply
+$(r+q)+(j+j')=a+b$, which is the equality used in the original total
+inclusion. Every summand has the same tensor source and total target,
+so the two finite sums exist in the original additive module category.
+\end{proof}
+
+\begin{definition}[The whole original bilinear section pairing]
+\label{def:di-cech-total-cup-section}
+\uses{def:di-cech-total-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCupSection}
+For every open $W\subseteq Y$, compose the original tensor-section
+bilinear map on $\Gamma(W,T^a),\Gamma(W,T^b)$ with the section map
+of the actual total cup morphism. This is a bilinear pairing on every
+pair of original sections, with values in $\Gamma(W,T^{a+b})$.
+\end{definition}
+\begin{proof}
+The original tensor-section pairing is bilinear over
+$\Gamma(W,\mathcal O_Y)$, and the section map of a sheaf-module
+morphism is linear over that same ring. Their composition is bilinear.
+\end{proof}
+
+\begin{theorem}[Original tensor evaluation and restriction]
+\label{thm:di-cech-total-cup-section-restriction}
+\uses{def:di-cech-total-cup-section}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCup.totalCupSection_tensorSection,EnvelopeProperty.DI.CechTotalCup.totalCupSection_restrict}
+The entire section pairing is the actual total cup applied to the
+original tensor section. It commutes with restriction along every
+open inclusion, for every pair of whole original sections.
+\end{theorem}
+\begin{proof}
+The tensor evaluation identity is the definition of composition of the
+original bilinear map with the section map. The original tensor section
+commutes with restriction, by naturality of the original sheafification
+unit. Naturality of the actual total cup sheaf morphism then identifies
+restriction of its value with its value on the two restricted sections.
+\end{proof}
+
+The differential Leibniz identity and its closedness consequence are
+separate subsequent results, not hypotheses or claims of this construction.

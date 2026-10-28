@@ -1,0 +1,27 @@
+\section{The whole degree of the actual regular pulled-line trace}
+
+\begin{lemma}[Native canonical-line unit and the same regular pulled-line trace]
+\label{lem:kn-canonical-regular-pulled-line-native-unit-degree}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unit_comp_regularPulledCanonicalTrace}
+\leanok
+Keep the original smooth base and tame SNC auxiliary data, the entire
+original cover $\pi:Y\to X$, its original whole degree $D$, and the
+regular pulled-line trace $R:\pi_*\pi^*\omega_X\to\omega_X$ constructed
+from the actual global structure trace by the original projection formula.
+Then the native adjunction unit satisfies $\eta_{\omega_X}R=D\,1_{\omega_X}$.
+This trace has source $\pi_*\pi^*\omega_X$; a regular trace on $\omega_Y$
+is a separate assertion.
+\uses{def:nadel-regular-pulled-canonical-trace,lem:line-pf-native-adjunction-unit,thm:kn-structure-trace-global-unit-degree}
+\end{lemma}
+\begin{proof}
+Use the proved actual projection-formula normalization of the native
+adjunction unit. Cancel the original pushed unit constraint with its
+inverse, followed by the original projection formula with its inverse.
+The remaining map is the actual global structural-unit/structure-trace
+composite tensored with the original canonical line. Apply the already
+proved global whole-degree law. Invertible tensoring is an additive
+equivalence, so it preserves the natural-number multiple of the identity.
+Conjugation by the same original unit constraint gives the result.
+No generic base change, field trace interface or incoming degree equation
+is used for this global identity.
+\end{proof}

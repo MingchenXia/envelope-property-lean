@@ -1,0 +1,46 @@
+\section{Actual homogeneous generators for the raw chart estimate}
+
+\begin{lemma}[Finite homogeneous generators of the same whole ideal]
+\label{lem:c0n-finite-homogeneous-whole-generators}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.exists_finset_homogeneous_generators}
+\leanok
+Over a Noetherian coefficient ring, every actual homogeneous ideal in a
+polynomial ring with finitely many variables has a finite set of genuine
+homogeneous members generating that entire same ideal.
+\end{lemma}
+\begin{proof}
+Every element of a homogeneous ideal is the finite sum of its homogeneous
+components, which remain members of the same ideal.  Thus all genuine
+homogeneous members span the whole ideal.  Noetherianity selects a finite
+subset of this actual spanning set, retaining both membership and
+homogeneous degree for every selected generator.
+\end{proof}
+
+\begin{lemma}[Whole canonical cone ideals have actual finite homogeneous polynomial generators]
+\label{lem:c0n-raw-canonical-cone-generators}
+\uses{lem:c0n-finite-homogeneous-whole-generators,lem:c0n-canonical-scheme-cone-representative,lem:c0n-relative-homogeneous-parameter-coefficients}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.exists_finset_coneIdeal_homogeneous_generators}
+\leanok
+For every actual ideal sheaf $K$ of the original parameter family, its
+same canonical cone ideal has a finite set $G$ of whole original ambient
+polynomials such that every polynomial is homogeneous of one $x$-degree,
+its actual parameter exchange belongs to the canonical homogeneous
+representative of $K$, and the image of $(G)$ under the original cone
+quotient equals the entire canonical cone ideal exactly.
+No bound on these degrees is asserted.
+\end{lemma}
+\begin{proof}
+Apply the preceding lemma to the canonical homogeneous representative of
+the same whole $K$, over the Noetherian coefficient ring $k[t]$.
+Apply the inverse of the actual original parameter exchange to each of
+these finitely many homogeneous members.  Coefficient preservation shows
+that every resulting whole polynomial has the same homogeneous
+$x$-degree in all of its parameter coefficients.
+The forward parameter exchange returns the original representative
+member, so membership is retained exactly.
+Extension of ideals under the inverse parameter exchange followed by
+the original cone quotient equals extension under their actual composite,
+which is the defining original parameter cone quotient.
+The selected members span the entire canonical representative; therefore
+their resulting cone ideal is exactly the original canonical cone ideal.
+\end{proof}

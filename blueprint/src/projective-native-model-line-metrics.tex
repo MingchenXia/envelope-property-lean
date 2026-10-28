@@ -1,0 +1,68 @@
+\section{Original line model norms under the same global native homeomorphism}
+\label{sec:projective-native-model-line-metrics}
+
+\begin{theorem}[Every original section value under the global homeomorphism]
+\label{thm:projective-native-model-global-section-values}
+\lean{EnvelopeProperty.ProjectiveNativeModelLineMetrics.nativeModelHomeomorph_chart_val}
+\leanok
+\uses{thm:projective-fixed-native-analytic-gluing,thm:projective-fixed-native-analytic-values}
+\source{bj22-trivval:sec:tc}
+The whole global native homeomorphism, viewed in any actual coordinate chart,
+evaluates every original regular section by its exact original native value.
+\end{theorem}
+\begin{proof}
+The global map is literally the original chart homeomorphism on that chart.
+Its affine-chart square is the original native affine comparison, which
+preserves the value of every original section. Compose these two whole-point
+identities and evaluate the arbitrary original chart section.
+\end{proof}
+
+\begin{theorem}[Actual normalized model charts contain the original proper center]
+\label{thm:projective-native-model-value-one-center}
+\lean{EnvelopeProperty.ProjectiveNativeModelLineMetrics.center_mem_of_model_coordinate_eq_one}
+\leanok
+\uses{thm:projective-native-model-global-section-values,scheme:proper-center-bounded-affine-criterion}
+\source{bj22-trivval:sec:tc}
+If an original coordinate has value one at the image under the same global
+homeomorphism, the actual original proper-model center lies in that original
+coordinate chart. The center is distinct from the native kernel support;
+its chart membership is derived from boundedness of the whole section ring.
+\end{theorem}
+\begin{proof}
+The nonzero coordinate and exact support comparison first put the native
+support in the actual original chart. Every element of the whole model chart
+algebra is a genuine homogeneous fraction. Its denominator has value one,
+while its numerator has value at most one by actual model normalization.
+Thus every model chart element has value at most one. Exact original section
+values transfer this bound to every element of the entire original native
+affine section ring. Its genuine evaluation map factors through the native
+valuation ring, yielding an actual affine valuative lift. Proper uniqueness
+identifies this lift with the original proper-model lift; hence its center
+lies in the original chart. No center-matching premise is assumed.
+\end{proof}
+
+\begin{theorem}[Actual original pulled homogeneous line norms]
+\label{thm:projective-native-model-homogeneous-line-norms}
+\lean{EnvelopeProperty.ProjectiveNativeModelLineMetrics.modelLineNorm_homogeneousSection_eq_chartValue}
+\leanok
+\uses{thm:projective-native-model-global-section-values,thm:projective-native-model-value-one-center,lem:fc-original-homogeneous-form-frame-coefficient,thm:fc-original-section-pullback-model-norm}
+\source{bj22-trivval:sec:tc}
+For every original homogeneous polynomial, the norm of its genuine original
+global section of the actual pulled-back O(d), evaluated on the original
+native residue-field fibre, equals the value of its whole original chart
+coefficient at the image under the same global homeomorphism, whenever that
+original chart coordinate has model value one. Both the whole original line
+and its whole section are retained; no metric comparison is a premise.
+\end{theorem}
+\begin{proof}
+The preceding theorem puts the actual original proper-model center in the
+original chart. In its genuine original O(d) frame, the entire original
+global homogeneous section has the actual coefficient $F/X_j^d$. Pull this
+whole scalar equation back along the original embedding. The genuine proper
+model norm is exactly the original native evaluation of this coefficient.
+The first theorem identifies that value with its value in the same fixed
+model chart under the global homeomorphism. This proves the actual line-norm
+identity, including zero sections. Identification with the fixed model's
+entire graded section spaces, finite weighted FS functions, and numerical
+PSH transport remain subsequent steps.
+\end{proof}

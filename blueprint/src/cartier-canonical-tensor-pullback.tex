@@ -1,0 +1,49 @@
+\section{Composition of the original explicit tensor-pullback comparisons}
+
+\begin{lemma}[Naturality of the genuine explicit tensor identification]
+\label{lem:cartier-actual-monoidal-explicit-tensor-naturality}
+\lean{ModularCurves.cartierMonoidalTensorObjIso_hom_natural}
+\leanok
+The canonical identification between the actual coherent tensor of two
+original module sheaves and their explicit sheafified tensor commutes
+with arbitrary original morphisms in both module factors.
+\end{lemma}
+\begin{proof}
+The inverse identification is the original sheafification inverse
+tensorator followed by the tensor of the two actual sheafification
+counits. Naturality of that true inverse tensorator moves the actual
+sheafified tensor of the two original morphisms through its first
+factor. Naturality of each actual counit then moves their tensor
+through its last factor. Functoriality of the tensor identifies the
+two resulting composites. This proves inverse naturality; composing
+with the actual identification on the source and target gives the
+corresponding direct naturality.
+\end{proof}
+
+\begin{lemma}[The actual canonical explicit tensor pullback respects composition]
+\label{lem:cartier-canonical-explicit-tensor-pullback-composition}
+\uses{lem:cartier-actual-monoidal-explicit-tensor-naturality,lem:cartier-actual-pullback-inverse-tensorator-composition,lem:cartier-ratio-canonical-pullback}
+\lean{AlgebraicGeometry.Scheme.Modules.canonicalTensorPullbackIso_comp}
+\leanok
+For genuine original scheme morphisms $f:X\to Y$ and $g:Y\to Z$, the
+actual canonical tensor pullback comparison for $f\circ g$ is the two
+successive original canonical comparisons, followed by the genuine
+pullback-composition isomorphisms on both original module factors.
+The equality holds on the entire original module sheaves.
+\end{lemma}
+\begin{proof}
+Expand each canonical comparison as original pullback of the inverse
+explicit-tensor identification, the genuine inverse pullback tensorator
+and the actual explicit-tensor identification on its original pulled
+factors. The two intermediate original identifications cancel inside
+pullback. Move the last identification through the tensor of the true
+factor-composition maps by the preceding actual naturality theorem.
+The true inverse-tensorator composition identity now replaces the two
+successive inverse tensorators by the actual tensor-composition map
+followed by the original composite-pullback inverse tensorator.
+Finally naturality of the actual native pullback-composition comparison
+moves that tensor-composition map through the first original inverse
+explicit-tensor identification. The resulting composite is exactly
+the original pullback-composition map on the explicit tensor followed
+by the canonical comparison for composite pullback.
+\end{proof}

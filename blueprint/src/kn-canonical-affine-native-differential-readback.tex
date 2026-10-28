@@ -1,0 +1,134 @@
+\section{The original affine native differential in its original section carrier}
+
+\begin{lemma}[Original affine section presentations]
+\label{lem:kn-canonical-affine-native-readers}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.restrictedNativeSection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.restrictedModuleSpecGammaToRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.restrictedModuleSpecGammaFromNative,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.restrictedModuleSpecGammaToRaw_original,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawSection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawRead,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawRead_section,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawSection_read}
+\leanok
+Let $R\to S$ be a homomorphism of commutative rings, and let $M$ be
+an $\mathcal O_{\operatorname{Spec}S}$-module. The native affine section
+module, its restriction of scalars to $R$, and the raw global-section
+carrier of $M$ have their canonical original underlying additive groups.
+The maps that forget the restricted scalar presentation or read a native
+section as its raw section preserve the section itself. Reading a top
+pushforward section of $M$ likewise preserves the same section, and is
+inverse to its canonical presentation as a pushforward section.
+\end{lemma}
+\begin{proof}
+Restriction of scalars changes the scalar action and keeps the underlying
+additive group. The native affine global-section functor obtains the
+$S$-action from the whole structure-section action through the canonical
+spectrum section isomorphism. Its raw reader keeps the underlying section.
+Finally, for $\beta:\operatorname{Spec}S\to\operatorname{Spec}R$,
+the inverse image of the whole target is the whole source. The top
+pushforward section and the source section are therefore the same
+section. Each asserted readback or inverse identity follows directly
+from these definitions; no new section or coefficient is chosen.
+\end{proof}
+
+\begin{lemma}[The actual map on the original raw carrier]
+\label{lem:kn-canonical-affine-native-raw-map}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawModuleMap,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineRawModuleMap_apply,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.moduleSpecGamma_map_toRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.moduleSpecGamma_smul_toRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawSection_map,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePushforwardRawRead_map,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.specPushforwardSectionsIso_hom_raw}
+\leanok
+For a scheme $X$, $\mathcal O_X$-modules $F,G$, and a morphism $a:F\to G$,
+the raw section map is the actual component $a(X)$ on the original raw
+section carriers of $F$ and $G$. The native affine section functor reads
+as this same component. Scalar multiplication by an affine coefficient
+$s\in S$ reads as multiplication by its image in
+$\Gamma(\operatorname{Spec}S,\mathcal O)$ under the canonical spectrum
+section isomorphism. The canonical affine pushforward comparison also
+reads as the original section.
+\end{lemma}
+\begin{proof}
+\uses{lem:kn-canonical-affine-native-readers}
+The raw map is defined by evaluating the original sheaf morphism on the
+whole open set. The affine section functor applies that same component
+and then restricts the scalar action along the spectrum section
+isomorphism. This gives both the map identity and the scalar identity.
+Pushforward uses the same original component on the inverse-image open;
+on whole opens this is the component just described. The canonical
+pushforward section comparison therefore gives the same readback.
+\end{proof}
+
+\begin{lemma}[The original affine pullback unit]
+\label{lem:kn-canonical-affine-native-unit-readback}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePullbackUnitTop_eq_unit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affinePullbackUnitTop_eq_read_unit}
+\leanok
+Let $\beta:\operatorname{Spec}S\to\operatorname{Spec}R$ come from the
+original ring homomorphism, and let $L$ be an
+$\mathcal O_{\operatorname{Spec}R}$-module. The original affine top pullback
+unit applied to a section $w$ is exactly the raw source readback of the
+actual adjunction unit $L\to\beta_*\beta^*L$ applied to $w$.
+\end{lemma}
+\begin{proof}
+\uses{lem:kn-canonical-affine-native-readers}
+The affine top pullback unit is the pullback unit on the whole open,
+with the inverse-image whole open identified with the original whole
+source. The identity restriction on that whole open fixes every
+section. Reading the resulting pushforward section therefore gives the
+same original pullback section, as asserted.
+\end{proof}
+
+\begin{lemma}[Original field-structure equality transport]
+\label{lem:kn-canonical-affine-native-transport}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineCanonicalGammaTransport_toRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineCanonicalGammaTransport_restricted_toRaw}
+\leanok
+Let $k$ be a field, let $S$ be any commutative ring, and let
+$g_1,g_2:\operatorname{Spec}S\to\operatorname{Spec}k$ be the same original
+morphism by an equality $h:g_1=g_2$. The original native equality transport
+between the affine section modules of $\Omega^n_{g_1}$ and
+$\Omega^n_{g_2}$ reads as the actual raw component of the sheaf equality
+transport induced by $h$. This remains true after any restriction of
+scalars along an original ring homomorphism $R\to S$.
+\end{lemma}
+\begin{proof}
+\uses{lem:kn-canonical-affine-native-readers,lem:kn-canonical-affine-native-raw-map}
+The original native transport equals the affine section functor applied
+to the actual sheaf equality transport. Replace it by that equal original
+map and use the preceding component identity. Alternatively, eliminate
+$h$. Both transports then become the identity; the assertion is the
+identity readback of the original section. Restriction of scalars does
+not change this underlying value.
+\end{proof}
+
+\begin{theorem}[Actual native differential readback over arbitrary affine rings]
+\label{thm:kn-canonical-affine-native-differential-readback}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalPullbackMap_raw_apply,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeCanonicalPullbackMap_restricted_toRaw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalPullbackMap_toRaw_onCarriers,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalPullbackMap_toRaw}
+\leanok
+Let $k$ be a field and $R,S$ arbitrary commutative $k$-algebras. Let
+$\varphi:R\to S$ be the original $k$-algebra homomorphism,
+$\beta:\operatorname{Spec}S\to\operatorname{Spec}R$ its spectrum map,
+and $f_R,f_S$ the original structural maps to $\operatorname{Spec}k$.
+Assume $f_R$ is smooth of relative dimension $n$. Let
+$h:f_R\circ\beta=f_S$ be the canonical equality supplied by the
+same algebra homomorphism, and let
+\[
+ \delta:\Omega^n_{f_R}\longrightarrow\beta_*\Omega^n_{f_R\circ\beta}
+\]
+be the actual adjoint exterior differential. For every original native
+affine canonical section $w$ over $R$, reading its original native
+algebra-map pullback over $S$ gives exactly
+\[
+ \operatorname{read}_S\bigl(P_\varphi(w)\bigr)
+ =\Omega^n(h)(\operatorname{Spec}S)
+   \Bigl(\operatorname{read}_{\beta_*}
+          \bigl(\delta(\operatorname{Spec}R)(\operatorname{read}_R(w))\bigr)
+   \Bigr).
+\]
+Every ring, structural map, native section module, and sheaf component in
+this identity is the original one. There is no smoothness or integrality
+assumption on $S$.
+\end{theorem}
+\begin{proof}
+\uses{lem:kn-canonical-affine-native-readers,lem:kn-canonical-affine-native-raw-map,lem:kn-canonical-affine-native-transport,lem:kn-global-trace-native-branch-differential,lem:kn-global-trace-native-coordinate-wedge}
+By its original definition, $P_\varphi$ is the original native pullback
+for $\beta$, followed by the original affine equality transport for $h$.
+The native affine pullback reads as the actual adjoint exterior
+component $\delta$ on the same original section. Apply the field-structure
+transport identity to that value. The restriction-of-scalars reader and
+pushforward reader keep the section unchanged, giving the displayed
+formula. This proves the identity for every section $w$, without a
+coordinate expansion, a trace identity, or a coefficient localization.
+A bundled commutative ring has the same original carrier and ring
+structure; exposing those fields gives the identical statement for
+arbitrary original bundled affine rings.
+\end{proof}

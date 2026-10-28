@@ -1,0 +1,88 @@
+\section{Rounded dual coefficients of the original cyclic cover}
+
+Let $f:X\to\operatorname{Spec}k$ be smooth and let $L$ be an invertible
+module.  For a section $s$ of $L^{\otimes n}$, write $J$ for its actual
+zero ideal.  Suppose $J$ is the ideal of an SNC divisor
+$D=\sum_\alpha a_\alpha D_\alpha$.  For $0\le i<n$, put
+\[
+ I_i=\mathcal O_X(-\lfloor iD/n\rfloor),\qquad
+ E_i=L^{\otimes(-i)}\otimes I_i^\vee.
+\]
+Here $I_i$ is the intrinsic rounded ideal module of the same original
+$J$, and $L^{\otimes(-i)}$ is the native sheaf dual of $L^{\otimes i}$.
+When $X$ is integral, $k$ is perfect, and $n>0$ is invertible in $k$,
+these are the rounded inverse-power coefficients of the structural
+pushforward of the normalized cyclic cover.
+
+\begin{lemma}[The original branch multiplicities give the rounded ideal]
+\label{lem:kn-nadel-cyclic-rounded-product}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCyclicComparison.rounded_quotient_eq_product}
+\uses{thm:rounded-snc-original-independent,thm:rounded-snc-original-ideal}
+For the same original SNC presentation,
+\[
+ \operatorname{round}(J,i/n)
+ =\prod_\alpha \mathcal I_{D_\alpha}^{\lfloor ia_\alpha/n\rfloor}.
+\]
+\end{lemma}
+\begin{proof}
+Presentation independence identifies the intrinsic rounded ideal with
+the rounded product of this actual SNC family.  Its exponent at the
+component $D_\alpha$ is the natural floor of $(i/n)a_\alpha$.
+Since the numerator and denominator are natural integers, this floor
+is exactly the integer quotient $ia_\alpha/n$.  Thus every component
+factor in the two products is equal, proving equality of the whole
+original ideal sheaves.
+\end{proof}
+
+\begin{lemma}[The dual rounded coefficient is the positive power with the rounded ideal]
+\label{lem:kn-nadel-cyclic-dual-rounded}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCyclicComparison.dualInverseTensorIso,EnvelopeProperty.Vanishing.NadelCyclicComparison.roundedInversePowerDualIso,EnvelopeProperty.Vanishing.NadelCyclicComparison.sectionSummandDualIso}
+\uses{lem:actual-invertible-tensor-dual-contraction,lem:rounded-snc-original-module}
+On the same original scheme there is a whole module isomorphism
+\[
+ E_i^\vee\simeq L^{\otimes i}\otimes I_i.
+\]
+\end{lemma}
+\begin{proof}
+For every original invertible module $M$, the evaluation pairings for
+$M$ and $M^\vee$ identify $M$ with its double dual.  Indeed tensoring
+on the right with $M^\vee$ is fully faithful, and the two evaluations
+identify the images of $M$ and $M^{\vee\vee}$ with the same structure
+module.  The resulting comparison therefore descends uniquely to an
+isomorphism $M\simeq M^{\vee\vee}$.
+
+The actual tensor-dual comparison sends
+$(P^\vee\otimes Q^\vee)^\vee$ to
+$P^{\vee\vee}\otimes Q^{\vee\vee}$.  Apply the preceding double-dual
+comparisons to $P=L^{\otimes i}$ and $Q=I_i$.
+The positive tensor power is invertible because $L$ is invertible,
+and smoothness and the original SNC divisor prove that $I_i$ is
+invertible.  All comparisons use the native sheaf dual, the actual
+coherent tensor, and their canonical evaluation maps.  Taking $J$ to
+be the actual zero ideal of $s$ proves the asserted original-section
+specialization.
+\end{proof}
+
+\begin{corollary}[The original canonical coefficient retains the same rounding]
+\label{cor:kn-nadel-cyclic-canonical-rounded}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCyclicComparison.canonicalRoundedInversePowerIso,EnvelopeProperty.Vanishing.NadelCyclicComparison.sectionCanonicalSummandDualIso}
+\uses{lem:kn-nadel-cyclic-dual-rounded,thm:canonical-original-native-invertible}
+If $f$ is smooth of relative dimension $d$, write
+$\omega_X=\bigwedge^d\Omega_{X/k}$.  Then
+\[
+ \omega_X\otimes E_i^\vee
+ \simeq L^{\otimes i}\otimes(\omega_X\otimes I_i).
+\]
+The right-hand rounded canonical module is the one defined from the
+same original structural morphism, dimension, and zero ideal.
+\end{corollary}
+\begin{proof}
+Tensor the preceding whole coefficient isomorphism with the original
+$\omega_X$.  The actual tensor associators and symmetry identify
+$\omega_X\otimes(L^{\otimes i}\otimes I_i)$ with
+$L^{\otimes i}\otimes(\omega_X\otimes I_i)$.  By definition, the last
+parenthesized module is the original absolute rounded canonical module.
+\end{proof}

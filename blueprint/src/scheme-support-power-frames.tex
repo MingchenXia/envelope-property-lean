@@ -1,0 +1,59 @@
+\section{Actual original support frames and compatible pullback powers}
+
+\begin{lemma}\label{lem:actual-original-support-power-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportPowerFrames.supportGenericFrame_power}
+\leanok
+\uses{thm:fc-actual-pulled-power-frame-factor-coherence,def:scheme-support-line-frame}
+An actual original open frame raised through the genuine native
+power pullback comparison induces exactly the genuine pulled
+power of its original support residue frame, in every degree.
+\end{lemma}
+\begin{proof}
+The support residue frame is factor transport through the actual
+residue-field lift to the support open. Its whole factor triangle
+is the native residue morphism. Apply the actual factor-power
+frame identity to this triangle and the original open frame.
+The resulting equality is precisely the assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:actual-local-pullback-power-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportPowerFrames.localPullbackFrame_power}
+\leanok
+\uses{lem:actual-factor-power-frame-composition,lem:fc-original-section-pullback-frame}
+For any actual $f:Y\to X$, original open $U\subseteq X$ and frame
+$e$ of the actual $U$-restriction of $L$, the local pullback frame
+of the original power frame of $e$ equals the local residue-free
+pullback of the genuine power comparison for $f$, followed by the
+pulled power frame of the original local pullback frame.
+\end{lemma}
+\begin{proof}
+Write $j:f^{-1}U\hookrightarrow Y$ and $q:f^{-1}U\to U$ for the
+actual inclusion and restricted map. Their actual equality
+$q\iota_U=jf$ is the original restriction square. The local
+pullback frame is the native composition comparison for $jf$
+followed by factor transport of $e$ through $q$. Apply the factor
+power frame composition identity to these exact maps. Its two
+sides are the asserted original local pullback power frames.
+\end{proof}
+
+\begin{theorem}\label{thm:actual-support-local-pullback-power-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeSupportPowerFrames.supportGenericFrame_localPullbackPower}
+\leanok
+\uses{lem:actual-local-pullback-power-frame,lem:actual-original-support-power-frame,lem:fc-actual-factor-frame-tensor-naturality}
+Let $y\in f^{-1}U$ be any actual support point. The support residue
+frame obtained from the local pullback of the original power
+frame of $e$ is the actual residue pullback of the canonical power
+comparison for $f$, followed by the genuine pulled power frame
+of the same original degree-one support frame. This holds for
+all nonnegative degrees on the same original support open.
+\end{theorem}
+\begin{proof}
+Apply the preceding local frame identity and transport it through
+the actual support residue-field factor. Naturality of factor
+transport moves the pulled original power comparison to the
+native residue morphism. The preceding support-power identity
+identifies the remaining factor frame with the genuine pulled
+power of the same degree-one support frame. Thus the entire
+original residue-frame identity follows without a new frame
+choice or a frame-preservation assumption.
+\end{proof}

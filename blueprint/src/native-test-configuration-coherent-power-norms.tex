@@ -1,0 +1,126 @@
+\section{One positive native factor for all original degrees and sections}
+
+\begin{definition}\label{def:native-tc-one-proper-center-power-frame}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleCenterFrame,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleTargetFrame}
+\leanok
+\uses{thm:native-tc-product-polynomial-gauss-source,thm:proper-model-norm-source-frame-existence,lem:scheme-line-actual-center-frame}
+At the actual original product Gauss point, choose one genuine
+unit frame of the original total line over its actual proper
+center valuation ring. Restrict this one frame to the native
+generic residue line and denote it by $e_M$. Its powers are the
+genuine native pulled power frames of this same $e_M$.
+\end{definition}
+\begin{proof}
+The product Gauss point has the actual polynomial Gauss base.
+For $0<r\leq1$ this entire polynomial valuation is bounded by one,
+as follows from the genuine polynomial Gauss formula and the
+trivial coefficient valuation. Original total-space properness
+therefore supplies its unique valuation-ring lift. The original
+invertible line becomes free of rank one on this local valuation
+ring, so a unit frame exists. Choose such a frame once and use
+the actual native center-to-generic comparison to restrict it.
+This constructs an original residue frame before any power or
+section is chosen.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-coherent-frame-all-section-norm}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleTargetFrame_power_norm_one,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerSectionNorm_eq_compatibleFrame}
+\leanok
+\uses{def:native-tc-one-proper-center-power-frame,thm:fc-proper-center-power-frame-coherence,thm:proper-model-norm-framed-source,thm:native-tc-compatible-product-power-frames}
+Every genuine power-frame inverse unit has true original
+total-model norm one. For every $n\geq0$ and every original
+section of $M^{\otimes n}$, its true total-model Gauss norm is
+the native coefficient value of its actual entire product
+transport in the model power residue frame constructed from
+this one $e_M$.
+\end{theorem}
+\begin{proof}
+The actual proper-center power frames restrict to exactly the
+genuine generic power frames. Their inverse units have true
+model norm one by the actual center-frame norm formula, in every
+degree. The actual original product map sends the original
+product Gauss point to the same total Gauss point. Apply genuine
+framed pullback of proper-target norms through this actual map
+and the literal original product power isomorphism. Its target
+frame-unit factor is the preceding number one. The transported
+whole section is exactly the original product section by its
+definition, giving the asserted equality for all sections,
+including zero, without properness of the Laurent source.
+\end{proof}
+
+\begin{definition}\label{def:native-tc-coherent-positive-norm-factor}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleNormFactor,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleNormFactor_pos}
+\leanok
+\uses{def:native-tc-one-proper-center-power-frame,def:native-tc-compatible-product-residue-frames,thm:native-tc-frame-transition-unit-powers}
+Choose an actual original frame $e_U$ of $L$ on a single original
+open $U$ containing the actual proper center of $x$. Define $c$
+to be the actual product residue valuation of the native unit
+transition from its original reference residue frame to the
+model residue frame induced from the preceding one $e_M$.
+Then $c>0$, and this definition precedes every degree, section
+and finite section family.
+\end{definition}
+\begin{proof}
+The original product Gauss point lies in the inverse image of
+$U$: the actual completed-point map factors through $U$, and
+its genuine whole open product-point identity gives membership.
+Thus the actual reference residue frame exists on the same
+product residue line as the model residue frame. Their native
+transition is a genuine unit, so its residue valuation is
+strictly positive. Neither a section nor a degree occurs in
+this construction.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-coherent-all-power-section-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerSectionNorm_eq_compatibleFactor,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_weightedLaurentPowerSectionNorm_powerFactor}
+\leanok
+\uses{thm:native-tc-coherent-frame-all-section-norm,def:native-tc-coherent-positive-norm-factor,thm:native-tc-frame-transition-unit-powers,cor:fc-native-laurent-support-frame-values,def:native-tc-weighted-laurent-section-norm}
+For the actual factor $c$ just defined, every $n\geq0$ and every
+original total-space section $s\in H^0(\mathcal X,M^{\otimes n})$
+satisfy
+\[
+ \lVert s\rVert_{\mathcal X,r,x}=c^n
+ \max_i\{\lVert s_i(x)\rVert_{L^{\otimes n}}r^i\},
+\]
+where $s_i$ are the actual entire original Laurent coefficients.
+In particular genuine original invertibility of $L$ derives the
+existence of one $c>0$ before all degrees and all original
+sections. Negative exponents and zero sections are retained.
+\end{theorem}
+\begin{proof}
+Compute the true total-model norm in the preceding compatible
+model power frame. The genuine transition identity changes it
+to the coefficient value in the original reference power frame,
+multiplied by the native transition value. The actual transition
+unit power theorem identifies this factor with $c^n$. The
+reference power frame is the support frame obtained from the
+same original $U$ and the genuine power frame of $e_U$.
+Its native coefficient value is the actual Laurent support
+maximum of the true original coefficient norms. This is the
+displayed equality, simultaneously for every degree and every
+section. Finally an original trivializing cover for the actual
+invertible $L$ contains its actual proper center in one open;
+choose that original open and frame once. The explicit positive
+factor then proves the existential statement with the required
+order of quantifiers.
+\end{proof}
+
+\begin{corollary}\label{cor:native-tc-coherent-all-power-family-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_weightedLaurentPowerNorms_powerFactor}
+\leanok
+\uses{thm:native-tc-coherent-all-power-section-norms,thm:native-tc-global-laurent-fixed-family}
+The same one positive $c$ works for all degrees, all original
+sections and all original finite section families. The maximum
+total norm on a family equals $c^n$ times the maximum of true
+weighted original coefficient norms on its actual finite
+coefficient/exponent family, chosen before evaluation.
+\end{corollary}
+\begin{proof}
+Choose $c$ from the preceding all-degree all-section identity.
+For each degree and original finite family take its finite
+maximum. Multiplication by the nonnegative $c^n$ preserves that
+maximum. The maximum of the individual Laurent support maxima
+is exactly the maximum over their original finite union, which
+is the actual coefficient/exponent family. Empty families and
+repeated values give the same equality, including zero.
+\end{proof}

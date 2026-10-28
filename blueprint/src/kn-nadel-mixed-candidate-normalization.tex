@@ -1,0 +1,141 @@
+\section{Normalization of the mixed canonical candidate}
+\label{sec:kn-nadel-mixed-candidate-normalization}
+
+Let $k$ be a field and $A$ a $k$-algebra with \'etale coordinates
+$x=(x_1,\dots,x_n)$, i.e.\ $k[X_1,\dots,X_n]\to A$, $X_j\mapsto x_j$, is
+\'etale. Fix positive tame degrees $N_i$, an active set with injection
+$\sigma$ into the coordinates and units $u_i\in A^\times$, and let
+$B=A[t]/(t_i^{N_i}-d_i)$ be the mixed Kummer algebra, $\varphi:A\to B$,
+$S=A[s]/(s_i^{N_i}-u_i)$ the \'etale unit cover, $C=S\otimes_AB$ and
+$e:C\simeq P$ the purification onto the pure Kummer algebra $P$ over $S$
+(\cref{lem:kn-global-trace-mixed-extended-counit}). For a $k$-algebra $R$ write
+$\Omega_R$ for the module of global sections of $\Omega^n_{\operatorname{Spec}R/k}$,
+and $d_{R'/R}:\Omega_R\to\Omega_{R'}$ for the native canonical differential of
+a $k$-algebra map $R\to R'$ (\cref{lem:kn-nadel-mixed-original-native-canonical-input}).
+Let $E:S\otimes_A\Omega_B\simeq\Omega_C$ be the scalar comparison,
+$Q:\Omega_C\simeq\Omega_P$ the purification comparison and
+$U:S\otimes_A\Omega_A\simeq\Omega_S$ the unit comparison.
+
+\begin{lemma}[Morphisms out of a scalar extension of a cyclic module]
+\label{lem:kn-nadel-extend-scalars-hom-ext-generator}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.extendScalars_hom_ext_of_generator}
+\leanok
+Let $\alpha:R\to S$ be a map of commutative rings and $M=Rm_0$ a cyclic
+$R$-module. Two $S$-linear maps $f,g:S\otimes_RM\to P$ with
+$f(1\otimes m_0)=g(1\otimes m_0)$ are equal.
+\end{lemma}
+\begin{proof}
+By the adjunction $S\otimes_R-\dashv\operatorname{res}_\alpha$ it suffices that the
+$R$-linear maps $m\mapsto f(1\otimes m)$ and $m\mapsto g(1\otimes m)$ agree; they
+agree on $m_0$, hence on $rm_0$ for every $r\in R$.
+\end{proof}
+
+\begin{lemma}[Top forms on \'etale coordinates]
+\label{lem:kn-nadel-base-canonical-sections-generated}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.baseCanonicalSections_eq_smul_coordinate}
+\uses{lem:kn-global-trace-pure-affine-counit}
+\leanok
+Every $w\in\Omega_A$ is $w=r\,dx_1\wedge\dots\wedge dx_n$ for some $r\in A$.
+\end{lemma}
+\begin{proof}
+Since $k[X]\to A$ is \'etale, $\Omega^1_{A/k}$ is free on $dx_1,\dots,dx_n$, so its
+$n$th exterior power is free on $dx_1\wedge\dots\wedge dx_n$. The affine comparison
+of sections identifies $\Omega_A$ with this exterior power, carrying
+$dx_1\wedge\dots\wedge dx_n$ to the coordinate section; transport the
+decomposition $w=r\cdot(dx_1\wedge\dots\wedge dx_n)$ along the $A$-linear comparison.
+\end{proof}
+
+\begin{theorem}[The mixed native square commutes]
+\label{thm:kn-nadel-mixed-native-square-commutes}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalMixedNativeSquareLeft_eq_rightAligned}
+\uses{thm:kn-mixed-native-original-coordinate-equation,lem:kn-nadel-extend-scalars-hom-ext-generator,lem:kn-nadel-base-canonical-sections-generated,lem:kn-global-trace-mixed-extended-counit,lem:kn-global-trace-actual-base-unit-sections}
+\leanok
+The two $S$-linear maps $S\otimes_A\Omega_A\to\Omega_P$
+\[
+ (S\otimes d_{B/A});E;Q
+ \qquad\text{and}\qquad
+ U;d_{P/S}
+\]
+are equal.
+\end{theorem}
+\begin{proof}
+By \cref{lem:kn-nadel-base-canonical-sections-generated} the $A$-module $\Omega_A$
+is cyclic on $\omega_x=dx_1\wedge\dots\wedge dx_n$, so by
+\cref{lem:kn-nadel-extend-scalars-hom-ext-generator} it suffices to compare the two
+maps on $1\otimes\omega_x$. The left map sends $1\otimes\omega_x$ to
+$Q(E(1\otimes d_{B/A}\omega_x))$, and $E(1\otimes d_{B/A}\omega_x)$ is the
+coordinate wedge of the images of the $x_j$ in $C$. The right map sends it to
+$d_{P/S}(U(1\otimes\omega_x))$. The coordinate equation
+\cref{thm:kn-mixed-native-original-coordinate-equation} identifies the two values
+(both are the coordinate wedge of the common images of the $x_j$ in $P$, by the
+ring square $A\to B\to C\to P=A\to S\to P$ of the purification).
+\end{proof}
+
+\begin{lemma}[Semilinearity of the purification comparison]
+\label{lem:kn-nadel-outer-comparison-semilinear}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.outerComparison_smul}
+\leanok
+Let $\gamma:S\to C$, $\rho:C\to P$ and $\beta=\rho\gamma$ be ring maps, $M$ a
+$C$-module, $Q_0,N_0$ $P$-modules, $E_0:M\simeq\rho^*Q_0$ a $C$-linear and
+$T:Q_0\simeq N_0$ a $P$-linear isomorphism. Then the composite
+$\gamma^*M\simeq\gamma^*\rho^*Q_0=\beta^*Q_0\simeq\beta^*N_0$ sends $c\,z$ to
+$\rho(c)$ times the image of $z$, for $c\in C$ and $z\in M$.
+\end{lemma}
+\begin{proof}
+$E_0(cz)=c\cdot E_0(z)=\rho(c)E_0(z)$ in $\rho^*Q_0$, the middle identification is
+the identity on elements, and $T$ is $P$-linear.
+\end{proof}
+
+\begin{theorem}[Normalization of the mixed canonical candidate]
+\label{thm:kn-nadel-mixed-candidate-normalization}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalCandidate_native,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalCandidate_value_finish}
+\uses{thm:kn-nadel-mixed-native-square-commutes,lem:kn-nadel-outer-comparison-semilinear,lem:kn-global-trace-mixed-canonical-candidate,lem:kn-global-trace-mixed-extended-counit,lem:kn-global-trace-unit-section-retraction,lem:kn-global-trace-unit-coefficient-retraction,thm:kn-global-trace-native-pure-counit-normalization,lem:kn-nadel-mixed-purification-ring-map-trace-tensor,def:kn-mixed-canonical-candidate-normalization}
+\leanok
+Let $k$ have characteristic zero and $A\neq0$. The mixed canonical candidate
+$\tau:\Omega_B\to\Omega_A$ (\cref{lem:kn-global-trace-mixed-canonical-candidate})
+satisfies
+\[
+ \tau\bigl(b\cdot d_{B/A}(w)\bigr)=\operatorname{Tr}_{B/A}(b)\,w
+ \qquad(b\in B,\ w\in\Omega_A).
+\]
+In particular the normalization of the mixed canonical candidate
+(\cref{def:kn-mixed-canonical-candidate-normalization}) holds for every field of
+characteristic zero.
+\end{theorem}
+\begin{proof}
+By definition $\tau(v)=(\varepsilon\otimes\mathrm{id})(\mathcal E(1\otimes v))$ with
+$\mathcal E=E;Q;\kappa;U^{-1}$, where $\kappa:\Omega_P\to\Omega_S$ is the pure
+canonical counit and $\varepsilon=\deg^{-1}\operatorname{Tr}_{S/A}$. The scalar
+comparison $E$ is $C$-linear for $1\otimes b\in C$, so
+$E(1\otimes b\,d_{B/A}w)=(1\otimes b)\,E(1\otimes d_{B/A}w)$. The purification
+comparison has the shape of \cref{lem:kn-nadel-outer-comparison-semilinear} with
+$\rho=e$, hence
+$Q((1\otimes b)z)=e(1\otimes b)\,Q(z)$. By
+\cref{thm:kn-nadel-mixed-native-square-commutes},
+$Q(E(1\otimes d_{B/A}w))=d_{P/S}(U(1\otimes w))$. The pure counit satisfies
+$\kappa(c\cdot d_{P/S}w')=\operatorname{Tr}_{P/S}(c)\,w'$
+(\cref{thm:kn-global-trace-native-pure-counit-normalization}), so
+\[
+ \mathcal E(1\otimes b\,d_{B/A}w)
+ =U^{-1}\bigl(\operatorname{Tr}_{P/S}(e(1\otimes b))\,U(1\otimes w)\bigr)
+ =\operatorname{Tr}_{P/S}(e(1\otimes b))\otimes w .
+\]
+Base change of the trace along the purification gives
+$\operatorname{Tr}_{P/S}(e(1\otimes b))=\operatorname{Tr}_{C/S}(1\otimes b)
+=\operatorname{Tr}_{B/A}(b)$, viewed in $S$
+(\cref{lem:kn-nadel-mixed-purification-ring-map-trace-tensor}). Finally
+$\varepsilon$ fixes the image of $A$
+(\cref{lem:kn-global-trace-unit-coefficient-retraction}) and
+$(\varepsilon\otimes\mathrm{id})(s\otimes w)=\varepsilon(s)w$
+(\cref{lem:kn-global-trace-unit-section-retraction}), so
+$\tau(b\,d_{B/A}w)=\operatorname{Tr}_{B/A}(b)\,w$.
+\end{proof}
+
+This is the Euler-lemma normalization of the trace of top forms on a Kummer
+chart (classical; Esnault--Viehweg, \emph{Lectures on vanishing theorems},
+\S3): after adjoining roots of the units the chart becomes a pure Kummer cover,
+on which the normalization is the pure counit computation. The route adapts the
+source argument in one respect: instead of decomposing the cover into
+eigensheaves, the unit cover is split off by an explicit coefficient trace
+$\varepsilon$, and the comparison of the two descriptions of the pulled-back
+coordinate form is the commuting native square.

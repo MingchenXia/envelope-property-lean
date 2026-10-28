@@ -1,0 +1,33 @@
+\subsection{Whole uniqueness of the original Rees generic map}
+
+\begin{lemma}[The actual original Rees generic lift is the unique whole map over the original field point]
+\label{scheme:actual-rees-original-generic-map-unique}
+\lean{EnvelopeProperty.ReesPresentation.genericLift_unique}
+\leanok
+\uses{scheme:actual-rees-good-open-isomorphism,scheme:actual-rees-projection-surjective}
+Let $A$ be ANY commutative DOMAIN and $G:J\to A$ any original family, with
+an actual member $G_j\ne0$.  The genuine original
+$\eta_j:\operatorname{Spec}\operatorname{Frac}A\to\operatorname{ReesScheme}(G)$
+is the UNIQUE WHOLE scheme map whose original coefficient projection is the
+canonical $\operatorname{Spec}\operatorname{Frac}A\to\operatorname{Spec}A$.
+No finite family, separatedness, field identification, generic-map comparison
+or density hypothesis is supplied.
+\end{lemma}
+\begin{proof}
+The actual nonzero $G_j$ maps to a genuine unit of the ORIGINAL fraction field.
+The real principal-localization universal property constructs the whole
+$\lambda:\operatorname{Spec}\operatorname{Frac}A\to\operatorname{Spec}A[1/G_j]$
+retaining EVERY original coefficient.
+
+The checked ORIGINAL good-open square is an actual pullback with identity
+map on $\operatorname{Spec}A[1/G_j]$.  Any given whole Rees map with the stated
+coefficient projection forms a genuine commutative cone with $\lambda$.
+The ACTUAL pullback lift has first projection $\lambda$; since that projection
+is the identity, the whole lift ITSELF is $\lambda$.  Its second projection
+therefore identifies the whole given map with $\lambda$ followed by the
+ORIGINAL good-open inclusion.  The constructed original generic lift has
+the same true coefficient projection, so the same argument identifies it
+with that same composite.  Hence the whole maps agree.  No selected values,
+support-only equality, density certificate or reduction substitutes for
+scheme-map equality.
+\end{proof}

@@ -1,0 +1,38 @@
+\subsection{Actual local valuation domination and whole proper lifts}
+
+\begin{lemma}[A proper lift retains the original chart prime and entire field point]
+\label{scheme:actual-proper-local-valuation-lift}
+\lean{EnvelopeProperty.exists_properLocalValuationLift}
+\leanok
+Let $A,B$ be commutative rings, $K$ a field with actual $A$-algebra actions,
+and $\iota:B\to_A K$ an ACTUAL injective algebra homomorphism.  Let
+$f:Y\to\operatorname{Spec}A$ be actually proper and let
+$q:\operatorname{Spec}K\to Y$ satisfy the WHOLE original coefficient triangle.
+For EVERY actual prime $p\subset B$, construct a REAL valuation subring
+$V\subset K$ containing EVERY original $\iota(b)$, with actual contraction
+\[
+ (\iota:B\to V)^{-1}(\mathfrak m_V)=p,
+\]
+and a genuine $\ell:\operatorname{Spec}V\to Y$ whose WHOLE generic restriction
+is $q$ and whose WHOLE base map is induced by the original coefficient
+composite $A\to B\to V$.  Neither a valuation ring, local factor, proper lift
+nor contraction equation is supplied as input.
+\end{lemma}
+\begin{proof}
+Every original element outside $p$ is nonzero, and injectivity of $\iota$
+makes its image a nonzero field element.  Actual prime localization therefore
+constructs $B_p\to K$ retaining EVERY original $B$ element.  The genuine
+local valuation-domination theorem constructs $V\subset K$ and a LOCAL
+factor $B_p\to V$, with the same whole field composite.  Restricting this
+factor to $B$ gives precisely the original map $\iota$ with codomain $V$.
+Locality reflects units, while the actual prime-localization maximal ideal
+contracts to $p$.  These two genuine facts give the displayed equality of
+the ORIGINAL ideals, not just a selected support witness.
+
+The actual original coefficient identity for $\iota$ and the WHOLE triangle
+for $q$ form a true valuative square with field $K$ and valuation ring $V$.
+Apply the genuine proper valuative criterion to construct $\ell$.  Its two
+actual lift equations are exactly the stated generic and base triangles.
+No real valuation, completeness, Noetherianity, finite generation, rank-one
+condition, or bounded coefficient hypothesis is needed.
+\end{proof}

@@ -1,0 +1,116 @@
+\section{Canonical trace compatibility between distinct actual power charts}
+\label{sec:kn-nadel-kummer-cross-chart}
+
+Fix the original coefficient algebra $R\to S$ and an integer $n$.
+For $i=1,2$, let $a_i:R[x_1,\ldots,x_n]\to S$ be an actual
+$R$-algebra homomorphism, $d_i:\{1,\ldots,n\}\to\mathbf N$, and
+let $C_i=S\otimes_{(R[x],\,x_j\mapsto t_j^{d_i(j)+1})}R[t]$ be
+the literal tensor algebra.  Write $\ell_i:S\to C_i$ for its actual
+left inclusion.  The two degrees, chart maps, tensor algebras, and
+scalar actions are retained separately throughout.
+
+\begin{lemma}[The actual common original base top-form module]
+\label{lem:kn-nadel-cross-chart-original-coefficients}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCrossChart.canonicalAlgebraTransport,EnvelopeProperty.Vanishing.NadelKummerCrossChart.canonicalAlgebraTransport_wedge,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseRAlgebra_eq,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseCanonicalActualIso,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseCanonicalActualIso_wedge,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseCanonicalComparison,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseCanonicalComparison_wedge,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseCanonicalComparison_cancel,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseActualMorphism,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseComparisonMorphism,EnvelopeProperty.Vanishing.NadelKummerCrossChart.baseComparisonMorphism_actual}
+\leanok
+The original algebra condition on each $a_i$ internally identifies
+the chart's genuine base top-form module with the same original
+$\omega_S=\bigwedge^n_S\Omega_{S/R}$.  This identification fixes
+every actual ordered differential wedge, not only the chosen chart
+generator.  In particular it supplies the actual comparison between
+the two base top-form modules without a canonical-comparison input.
+\end{lemma}
+\begin{proof}
+The whole small coefficient triangle is
+$a_i\circ C=\operatorname{algebraMap}_{R,S}$ by the actual native
+algebra homomorphism law.  The induced algebra structure on $S$
+therefore equals the original one.  Transport the actual native
+K\"ahler module and its top exterior module along this equality.
+After that actual coefficient identification the map is the identity,
+so it fixes every wedge of actual differentials.  Composing the first
+identification with the inverse of the second gives the claimed
+whole base comparison.
+\uses{thm:kn-nadel-etale-top-frame-base-change}
+\end{proof}
+
+\begin{theorem}[The genuine differential square for an actual cross-chart algebra isomorphism]
+\label{thm:kn-nadel-cross-chart-exterior-square}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCrossChart.targetConstants_eq_left,EnvelopeProperty.Vanishing.NadelKummerCrossChart.ChartEquiv,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossChartAlgEquiv,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossExteriorMap,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossExteriorMorphism,EnvelopeProperty.Vanishing.NadelKummerCrossChart.canonicalPullback_wedge,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossExterior_pulled_wedge,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossExterior_pulled_topform}
+\leanok
+Suppose $a_1$ is formally etale.  Let $e:C_1\simeq_S C_2$ be an actual coefficient-preserving native
+algebra isomorphism.  It induces an actual original $R$-algebra
+isomorphism and hence a genuine K\"ahler exterior map
+$E:\omega_{C_1}\to\omega_{C_2}$.  After identifying the two actual
+base top-form modules with the original $\omega_S$, the genuine
+differential pullbacks satisfy
+\[
+ E(P_1(w))=P_2(w)\qquad(w\in\omega_S).
+\]
+The square is proved from the actual coefficient homomorphisms;
+no differential or canonical comparison diagram is an input.
+\end{theorem}
+\begin{proof}
+The whole tensor coefficient square identifies the original
+$R\to C_i$ map with $R\to S\xrightarrow{\ell_i} C_i$.
+Because the actual $S$-algebra isomorphism fixes these coefficient
+images, it preserves the actual original $R$-structures.  Apply
+the native algebra K\"ahler morphism and its exterior universal
+property to construct $E$.
+
+On any differential wedge of actual functions $s_j\in S$, the
+left composite is the wedge of $D_{C_2}(e(\ell_1(s_j)))$; the
+right composite is the wedge of $D_{C_2}(\ell_2(s_j))$.  The actual
+coefficient-preserving law gives equality term by term.  The
+previous lemma identifies the base differential wedges exactly.
+The first genuine etale chart's top-form basis, together with
+actual $S$-linearity and semilinearity through the same coefficient
+maps, extends this equality to every actual base top form.
+\uses{lem:kn-nadel-cross-chart-original-coefficients,thm:kn-nadel-etale-all-topforms-trace-normalization}
+\end{proof}
+
+\begin{theorem}[The whole canonical trace is independent of the distinct power-chart presentation]
+\label{thm:kn-nadel-cross-chart-canonical-counit}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossTrace,EnvelopeProperty.Vanishing.NadelKummerCrossChart.canonicalCounitOriginal,EnvelopeProperty.Vanishing.NadelKummerCrossChart.transportedCounit_eq,EnvelopeProperty.Vanishing.NadelKummerCrossChart.crossCanonicalCounit}
+\leanok
+Suppose $R$ is a characteristic-zero domain, both $a_i$ are formally
+etale, and $a_1$ is flat.  For the actual cross-chart algebra
+isomorphism above, let $\tau_i:\omega_{C_i}\to\omega_S$ be the
+already constructed actual canonical counits, followed by the
+internally produced common-base identifications.  Then
+\[
+ \tau_2\circ E=\tau_1
+\]
+as whole actual $S$-linear maps.  The two degree functions and
+presentations need not agree.  No trace, canonical, differential,
+or vanishing comparison is supplied as a premise.
+\end{theorem}
+\begin{proof}
+The genuine exterior map $E$ is $S$-linear after restriction through
+the two actual inclusions, since $e(\ell_1(s))=\ell_2(s)$.  Its
+composite with the second actual counit and the proved base
+identifications is thus an actual candidate counit for the first
+chart.  For every actual $c\in C_1$ and $w\in\omega_S$, the
+preceding differential square and the proved all-top-form
+normalization on the second chart give
+\[
+ (\tau_2 E)(cP_1(w))
+   =\tau_2(e(c)P_2(w))
+   =\operatorname{Tr}_{C_2/S}(e(c))w
+   =\operatorname{Tr}_{C_1/S}(c)w.
+\]
+The last equality is native trace invariance under the actual
+$S$-algebra isomorphism, with each original scalar action retained.
+The whole-counit uniqueness theorem for the first actual flat chart
+therefore identifies this composite with its internally normalized
+canonical counit.  Transport through the actual common-base
+identification gives the displayed whole-map equality.
+\uses{thm:kn-nadel-cross-chart-exterior-square,thm:kn-nadel-etale-all-topforms-trace-normalization,thm:kn-nadel-etale-canonical-counit-uniqueness}
+\end{proof}
+
+The actual coefficient-preserving algebra isomorphism is geometric
+ring data; no desired differential compatibility is part of it.
+Producing these ring identifications for the original whole-cover
+overlaps and subsequently gluing the canonical sheaf maps remain
+separate geometric tasks.  This theorem does not assert an ordinary
+canonical line on a singular normalized cyclic cover or completed
+Nadel vanishing.

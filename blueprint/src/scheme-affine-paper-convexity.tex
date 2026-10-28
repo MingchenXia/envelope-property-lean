@@ -1,0 +1,68 @@
+\subsection{Original affine convexity and actual native regular-unit presentations}
+
+\begin{definition}[The original affine native/Berkovich homeomorphism]
+\label{berkovich:actual-affine-paper-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineBerkHomeomorph}
+\leanok
+For every algebra $A$ over a field $k$, the native points of the actual
+$\operatorname{Spec} A$ over the trivial valuation of $k$ are canonically
+homeomorphic to the original affine Berkovich space of $A$.
+\end{definition}
+\begin{proof}
+Compose the actual affine native-point/relative-seminorm homeomorphism
+with the inverse of the original trivial-field Berkovich/relative-seminorm
+homeomorphism. Both factors retain every original ring value.
+\end{proof}
+
+\begin{lemma}[The whole inverse affine point]
+\label{berkovich:actual-affine-paper-homeomorphism-inverse}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineBerkHomeomorph_symm_coe}
+\leanok
+\uses{berkovich:actual-affine-paper-homeomorphism}
+The inverse homeomorphism sends an original seminorm $z$ to its canonical
+actual affine native point, including the original residue-field valuation.
+\end{lemma}
+\begin{proof}
+The two relative subtypes impose the same trivial coefficient condition.
+After forgetting that proof, their inverse homeomorphism is definitionally
+the canonical affine spectrum/native-point inverse.
+\end{proof}
+
+\begin{lemma}[Original convexity gives actual regular units]
+\label{berkovich:actual-affine-convexity-from-paper}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.of_paperAffine}
+\leanok
+\uses{berkovich:actual-affine-paper-homeomorphism,paper:original-affine-local-psh-comparison}
+Let $U$ be any original affine analytic locus and $u$ any extended-real
+function. If $u$ is convex PL on $U$ in the original paper definition,
+its pullback is convex PL in actual scheme regular units on the whole
+inverse-image native locus. No presentation-preservation premise is needed.
+\end{lemma}
+\begin{proof}
+The proven original/relative-spectrum comparison converts the original
+finite-coefficient presentations to relative-spectrum presentations, with
+the same neighborhoods and nonvanishing coefficients. The genuine affine
+regular-unit comparison replaces the coefficients by their actual regular
+sections on a principal open where their product is invertible. Their
+values, every rational affine expression, and its finite maximum are
+unchanged. The two inverse homeomorphisms cancel on the original locus.
+\end{proof}
+
+\begin{lemma}[Actual regular units give original convexity]
+\label{berkovich:actual-affine-convexity-to-paper}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.to_paperAffine}
+\leanok
+\uses{berkovich:actual-affine-paper-homeomorphism}
+Conversely, every genuine intrinsic regular-unit convex presentation on an
+actual affine native locus gives an original convex PL presentation after
+the inverse homeomorphism, including its entire analytic neighborhood.
+\end{lemma}
+\begin{proof}
+The actual affine comparison writes each original regular unit, near the
+given point, as a fraction of actual elements of $A$ whose numerator and
+denominator have nonzero value. Split its rational logarithmic term into
+numerator and denominator terms. This produces the actual relative-spectrum
+finite-coefficient presentation. Apply the original/relative-spectrum
+comparison, retaining the whole finite maxima and neighborhoods. This is
+the claimed pullback under the composite affine homeomorphism.
+\end{proof}

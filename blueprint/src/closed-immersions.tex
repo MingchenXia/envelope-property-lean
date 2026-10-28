@@ -1,0 +1,102 @@
+\section{Closed affine subspaces}\label{sec:closed-affine-subspaces}
+
+Throughout this section, $k$ is any trivially valued field and $A$ is any commutative
+$k$-algebra. The statements do not require the additional conventions of Section~5
+of Fang--Han--Xia.
+
+\begin{definition}[Analytic zero locus]\label{def:analytic-zero-locus}
+\lean{EnvelopeProperty.Berk.zeroLocus}
+\leanok
+\uses{def:berk}
+For an ideal $I\subseteq A$, set
+\[
+ V^{\an}(I)=\{x\in(\Spec A)^{\an}: I\subseteq\operatorname{supp}(x)\}
+ =\{x: |a|_x=0\text{ for every }a\in I\}.
+\]
+\end{definition}
+
+\begin{lemma}[Closedness of the analytic zero locus]\label{lem:analytic-zero-locus-closed}
+\lean{EnvelopeProperty.Berk.isClosed_zeroLocus}
+\leanok
+\uses{def:analytic-zero-locus}
+The set $V^{\an}(I)$ is closed in $(\Spec A)^{\an}$.
+\end{lemma}
+
+\begin{proof}
+For each $a\in I$, the evaluation map $x\mapsto |a|_x$ is continuous, and
+$\{0\}\subseteq\R_{\ge0}$ is closed. Thus $\{x:|a|_x=0\}$ is closed.
+Their intersection, which equals $V^{\an}(I)$ by the definition of support, is closed.
+\end{proof}
+
+\begin{lemma}[Analytification of an affine quotient]\label{lem:analytic-affine-quotient}
+\lean{EnvelopeProperty.Berk.quotientHomeomorph, EnvelopeProperty.Berk.range_quotientComap,
+EnvelopeProperty.Berk.isClosedEmbedding_quotientComap}
+\leanok
+\uses{def:analytic-zero-locus,lem:analytic-zero-locus-closed}
+\source{fhx-envelope-20261028:prop:projection-step}
+For every ideal $I\subseteq A$, restriction along $A\to A/I$ identifies
+$(\Spec(A/I))^{\an}$ homeomorphically with $V^{\an}(I)$.
+Consequently this restriction map is a closed embedding into $(\Spec A)^{\an}$.
+\end{lemma}
+
+\begin{proof}
+The pullback of a multiplicative seminorm on $A/I$ vanishes on $I$.
+Conversely, if $x\in V^{\an}(I)$, define $|a+I|=|a|_x$.
+If $a-b\in I$, the ultrametric inequality gives
+$|a|_x\le\max\{|b|_x,|a-b|_x\}=|b|_x$ and also $|b|_x\le|a|_x$,
+so this formula is well defined. The identities for products, sums, zero, and one
+descend from $x$, as does triviality on nonzero scalars from $k$.
+These operations are inverse: their values agree on every representative $a\in A$.
+Restriction is continuous because evaluation on $a$ becomes evaluation on $a+I$.
+For the inverse, every element of $A/I$ has a representative $a\in A$,
+and its evaluation is the restriction of the continuous map $x\mapsto |a|_x$.
+The evaluation definition of the two topologies therefore makes the inverse continuous.
+The image is $V^{\an}(I)$, which is closed by the preceding lemma.
+\end{proof}
+
+\begin{lemma}[Analytification of a closed immersion]\label{lem:analytic-closed-immersion}
+\lean{EnvelopeProperty.Berk.isClosedEmbedding_comap_of_surjective}
+\leanok
+\uses{spectrum:surjective-closed-embedding,spectrum:trivial-field-bridge}
+\source{fhx-envelope-20261028:prop:projection-step}
+If $\phi:A\to B$ is a surjective $k$-algebra homomorphism, then
+$\phi^{\an}:(\Spec B)^{\an}\to(\Spec A)^{\an}$ is a closed embedding.
+\end{lemma}
+
+\begin{proof}
+Identify each affine analytification with the relative seminorm spectrum for the
+trivial valuation of $k$. These homeomorphisms commute with pullback along
+$k$-algebra homomorphisms. The general closed-embedding theorem for surjective
+homomorphisms preserving a prescribed base seminorm applies to $\phi$.
+Transporting that closed embedding through the two specialization homeomorphisms
+gives the asserted closed embedding of affine analytifications.
+\end{proof}
+
+\begin{corollary}[Injectivity on a closed affine subset]\label{cor:analytic-closed-restriction-injective}
+\lean{EnvelopeProperty.Berk.comap_injOn_zeroLocus_of_surjective_quotient,
+EnvelopeProperty.eq_of_comap_eq_of_surjective_quotient}
+\leanok
+\uses{lem:analytic-affine-quotient,lem:analytic-closed-immersion}
+\source{fhx-envelope-20261028:prop:projection-step}
+Let $\phi:B\to A$ be a $k$-algebra homomorphism and $I\subseteq A$ an ideal.
+If the composite $B\to A\to A/I$ is surjective, then $\phi^{\an}$ is injective on
+$V^{\an}(I)$. In particular, this applies to a finite set of equations $S\subseteq A$
+with $I=(S)$.
+\end{corollary}
+
+\begin{proof}
+Identify $V^{\an}(I)$ with $(\Spec(A/I))^{\an}$ by the quotient homeomorphism.
+The restriction of $\phi^{\an}$ becomes the analytification of $B\to A/I$,
+which is a closed embedding by the surjectivity assumption and hence is injective.
+For the last assertion, a seminorm vanishes on $(S)$ exactly when it vanishes
+on every element of $S$, because its support is an ideal.
+\end{proof}
+
+\begin{remark}\label{rmk:analytic-closed-immersion-use}
+\uses{cor:analytic-closed-restriction-injective}
+The proof of Fang--Han--Xia Proposition~5.24 uses the injectivity of the analytified
+restriction of a finite projection to a closed affine subset. The closed embedding
+proved here supplies this implication whenever that restriction is given by a
+surjective homomorphism of coordinate rings. No reducedness, finite generation,
+normality, countability, or algebraic closedness is needed for this affine statement.
+\end{remark}

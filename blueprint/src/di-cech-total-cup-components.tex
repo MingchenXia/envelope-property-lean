@@ -1,0 +1,30 @@
+\section{Original bidegree inputs recover the signed cup}
+
+\begin{theorem}[The whole original pure-bidegree input formula]
+\label{thm:di-cech-total-cup-pure-input}
+\uses{def:di-cech-total-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechTotalCupComponents.totalCup_ιTotal}
+Let $q+j=a$ and $r+j'=b$. Compose the actual total cup
+$T^a\otimes T^b\to T^{a+b}$ with the tensor map of the original total
+inclusions from bidegrees $(q,j)$ and $(r,j')$. The entire resulting
+sheaf morphism is $(-1)^{jr}$ times the original ordered cup followed
+by the original inclusion of bidegree $(r+q,j+j')$ into total degree
+$a+b$. This is an equality of actual morphisms, with no differential,
+closedness, or leading-homology hypothesis.
+\end{theorem}
+\begin{proof}
+The original tensor map preserves composition, as is seen on every
+original tensor section using the sheafification unit's naturality.
+Precomposing each summand of the total cup thus gives the tensor map
+of the two original inclusion--projection composites, followed by its
+ordered cup and total inclusion. Native total inclusion--projection
+orthogonality makes a summand zero unless both antidiagonal indices
+are the specified input bidegrees. A zero component gives a zero
+tensor map, by additivity of the actual tensor functor in that input.
+For the unique remaining pair, both inclusion--projection maps are
+identities, and their tensor map is the identity on the original
+tensor sheaf. The finite sum therefore reduces to precisely the
+stated signed ordered cup and original total inclusion. Proof
+irrelevance identifies the original arithmetic equality witnesses.
+\end{proof}

@@ -1,0 +1,158 @@
+\subsection{Actual general etale openness on spectra and native schemes}
+\label{subsec:etale-spectrum-native-openness}
+
+\begin{theorem}[Genuine monic root principal opens map openly]
+\label{spectrum:actual-monic-root-open-map}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_monic_adjoinRoot_away}
+\leanok
+\uses{spectrum:actual-finite-free-open-map,spectrum:principal-open}
+For any commutative ring $A$, actual monic $f\in A[T]$, and original
+$g\in A[T]/(f)$, the genuine restriction from the seminorm spectrum
+of $(A[T]/(f))[1/g]$ to that of $A$ is open. No derivative,
+separability, nonzero element or field assumption is needed.
+\end{theorem}
+\begin{proof}
+The actual monic polynomial supplies the genuine finite free power
+basis of its original root algebra. Its seminorm map is therefore
+open by the proved finite free theorem. The actual principal
+localization map is an open embedding onto its true nonvanishing
+locus, so it too is open. Compose these genuine open maps. Both whole
+coefficient ring composites agree by the actual scalar tower; point
+extensionality identifies this composite on every original $a\in A$
+with the asserted original restriction map. Zero or nilpotent $g$
+gives the actual empty source locus, which causes no exception.
+\end{proof}
+
+\begin{theorem}[Actual standard-etale presentations give open restriction maps]
+\label{spectrum:actual-standard-etale-open-map}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_standardEtalePair,
+EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_of_isStandardEtale}
+\leanok
+\uses{spectrum:actual-monic-root-open-map}
+Every genuine standard-etale pair and every actual standard-etale
+$A$-algebra has an open seminorm map to $A$, without a separate
+module-finiteness or openness hypothesis.
+\end{theorem}
+\begin{proof}
+The actual standard-etale pair has a monic original polynomial $f$
+and a true whole algebra isomorphism from its presentation ring to
+the original monic root algebra localized at the given $g$. The
+preceding proved principal root openness applies to that real ring.
+Pullback along the actual inverse ring equivalence is a genuine
+whole spectrum homeomorphism. Compose it with the proved open map;
+the algebra-equivalence coefficient law shows that its value on
+EVERY original coefficient is the original coefficient value, so
+this composite is the asserted entire restriction.
+
+For an arbitrary actual standard-etale algebra, choose its genuine
+standard-etale presentation, whose actual whole algebra isomorphism
+identifies it with the pair presentation ring. Apply the same
+homeomorphism argument and full coefficient law. This uses the real
+algebraic presentation, not an assumed point map, open map or finite
+module certificate.
+\end{proof}
+
+\begin{theorem}[Every genuine etale affine algebra map is open]
+\label{spectrum:actual-general-etale-open-map}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_of_etale,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isOpenMap_comap_of_etale}
+\leanok
+\uses{spectrum:actual-standard-etale-open-map,spectrum:principal-open,spectrum:relative}
+Every actual etale commutative-ring algebra $A\to B$ induces an open
+map of real-valued multiplicative seminorm spectra. The same holds
+for every actual compatible prescribed-base relative spectrum over
+an arbitrary commutative coefficient ring. There is no global module
+finiteness, field, bound, reducedness or Noetherian assumption.
+\end{theorem}
+\begin{proof}
+For an original seminorm $y$ of $B$, its actual support is a genuine
+prime. Actual etaleness implies etaleness at this original prime and
+actual finite presentation. The genuine standard-etale neighborhood
+theorem constructs an original $c$ outside that prime such that
+$B[1/c]$ is actually standard-etale over $A$. Its seminorm map to
+$A$ is open by the preceding proved presentation theorem.
+
+Given an actual source open $U$ containing $y$, the true nonzero
+value of $c$ gives the actual whole localization lift of $y$ to
+$B[1/c]$. Pull $U$ back to that genuine localization; continuity
+makes it open. Its image under the actual standard-etale open map is
+an actual open neighborhood of the image of $y$. The entire original
+coefficient tower identifies this point map with the original
+$B$-to-$A$ map composed with true localization restriction. Hence
+the resulting neighborhood lies inside the whole original image of
+$U$. This proves openness at every original image point, with no
+chosen source cover or global finite module.
+
+For a genuine compatible coefficient algebra map, the entire
+coefficient identities prove that the fixed-base source locus is
+exactly the inverse image of its fixed-base target locus. Restrict
+the proved absolute open map to this true inverse image and use
+subspace openness and whole point equality. Actual etaleness supplies
+the needed finite presentation; none is replaced by an openness
+certificate or by a separately prescribed scalar-extension lift.
+\end{proof}
+
+\begin{lemma}[The actual section-ring square on arbitrary affine support pieces]
+\label{scheme:actual-affine-appLE-native-square}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_map_appLE}
+\leanok
+\uses{scheme:affine-chart-section-values}
+For any actual morphism $f:X\to Y$, affine opens $U\subseteq Y$,
+$V\subseteq X$ with $V\subseteq f^{-1}(U)$, and a whole native point
+supported in $V$, its actual native image chart is exactly the
+seminorm pullback under the genuine section map
+$\Gamma(Y,U)\to\Gamma(X,V)$. The morphism need not be affine.
+\end{lemma}
+\begin{proof}
+Use the genuine affine-open/native-spectrum homeomorphisms. Their
+proved value formula identifies each coordinate with evaluation of
+the corresponding actual local section in the point's real residue
+field. Actual residue-field pullback preserves this value through
+$f$ on $f^{-1}(U)$. Genuine section restriction from $f^{-1}(U)$ to
+$V$ preserves the same residue evaluation. Their composition is
+literally the actual section homomorphism $f.\mathrm{appLE}$.
+Consequently every original section value agrees, and seminorm point
+extensionality proves equality of the entire chart points.
+\end{proof}
+
+\begin{theorem}[Actual etale scheme morphisms are open on native point spaces]
+\label{scheme:actual-general-etale-native-open-map}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpenMap_map_affinePieces_of_etale,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpenMap_map_of_etale,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpenMap_map_of_etale}
+\leanok
+\uses{scheme:actual-affine-appLE-native-square,spectrum:actual-general-etale-open-map,scheme:native-affine-atlas,scheme:relative-valued-point-functor,scheme:relative-native-closed-immersion}
+Every genuine etale morphism of arbitrary schemes induces an open map
+of their independently defined native residue-valued point spaces.
+For any actual commuting morphism over $\operatorname{Spec}R$, the
+same map is open on every whole fixed-seminorm relative native space.
+No affine-morphism, quasi-compactness, global module-finiteness,
+separation, field, coefficient-bound or Noetherian assumption occurs.
+\end{theorem}
+\begin{proof}
+On any actual compatible affine pair $V\subseteq f^{-1}(U)$, genuine
+scheme etaleness makes the entire actual section map etale. Its
+seminorm map is open by the preceding proved general affine theorem.
+Conjugate by the true affine support homeomorphisms. The entire
+section-ring square above proves that the resulting open map is
+exactly the original native map between those actual support pieces.
+
+For an original native point in any actual native open $T$, choose
+an actual affine neighborhood $U$ of the support of its image. The
+real affine basis gives an actual affine neighborhood $V$ of its
+support contained in $f^{-1}(U)$. Pull $T$ back to this genuine open
+support piece. The proved affine-piece map sends it to an open set in
+the target support piece; the latter is an actual open subset of the
+whole independently topologized native target. Thus its image in the
+whole target is an actual open neighborhood of the original native
+image, contained in the whole image of $T$. This proves global
+openness without assuming a native topology or atlas comparison.
+
+The actual commuting structure triangle identifies the whole
+fixed-base source locus with the inverse image of the whole target
+locus under this original map. Restrict the proved absolute open map
+and use its true subspace homeomorphism. No Hausdorff conclusion for
+arbitrary schemes, local homeomorphism assertion, scalar point
+extension, analytic structure-sheaf identification or potential
+theorem is inferred.
+\end{proof}

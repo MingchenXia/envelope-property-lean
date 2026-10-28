@@ -1,0 +1,29 @@
+\subsection{Actual native projective compactness for arbitrary coefficient seminorms}
+\label{subsec:native-projective-compactness}
+
+\begin{theorem}[Genuine fixed-base projective compactness]
+\label{projective:native-fixed-base-compactness}
+\lean{EnvelopeProperty.ProjBerk.compactSpace_nativeProjective,
+  EnvelopeProperty.ProjBerk.isCompact_nativeProjective_relativeLocus,
+  EnvelopeProperty.ProjBerk.nonempty_nativeProjective}
+\leanok
+\uses{projective:normalized-native-homeomorphism,projective:general-relative-normalized-charts}
+For every commutative coefficient ring $R$, every prescribed real
+seminorm $v$ on $R$ and every $n$, the actual native valued-point space
+of polynomial projective $n$-space above the whole base point $v$ is
+compact and nonempty. Its actual fixed-base locus is a compact subset
+of the absolute native valued-point space.
+\end{theorem}
+\begin{proof}
+The genuine normalized fixed-base spectrum is compact: the coordinate
+values are bounded by one, while the fixed coefficient seminorm gives
+an individual bound for every polynomial evaluation. This requires no
+uniform bound on all base coefficients. The actual native homeomorphism
+transports this genuine compactness to the native fixed-base space.
+By the compact-subtype criterion its original fixed-base locus is a
+compact subset of the independently defined absolute native space.
+The true zero-coordinate inverse Gauss chart gives an actual normalized
+point above $v$, including when $n=0$. Its image under the genuine native
+homeomorphism proves nonemptiness. No field, completeness, noetherianity,
+coefficient bound or compactness certificate is assumed.
+\end{proof}

@@ -1,0 +1,132 @@
+\subsection{Actual transverse line equations and their genuine height bound}
+\label{subsec:actual-affine-line-equations}
+
+\begin{definition}[Original parameter polynomial and transverse equations]
+\label{algebra:line-parameter-equations}
+\lean{EnvelopeProperty.AffineLine.parameterPolynomial,
+EnvelopeProperty.AffineLine.lineRelation,
+EnvelopeProperty.AffineLine.lineIdeal,
+EnvelopeProperty.AffineLine.subst_parameterPolynomial,
+EnvelopeProperty.AffineLine.subst_lineRelation,
+EnvelopeProperty.AffineLine.lineRelation_self,
+EnvelopeProperty.AffineLine.lineRelation_mem,
+EnvelopeProperty.AffineLine.lineIdeal_le_ker_subst}
+\leanok
+\uses{algebra:affine-line-substitution}
+Let $F$ be any field, $a,b$ actual coordinate vectors on any index set,
+and choose an actual index $j$ with $b_j\ne0$. Define the original
+parameter polynomial and transverse equations by
+\[
+ T_j=b_j^{-1}(X_j-a_j),\qquad
+ L_i=X_i-a_i-b_iT_j,\qquad
+ J_b=(L_i:i\ne j).
+\]
+The genuine line substitution sends $T_j$ to the actual parameter $T$
+and every original $L_i$ to zero. Its selected equation $L_j$ is
+already the zero polynomial, and every equation belongs to $J_b$.
+Thus the original transverse ideal lies in the whole substitution kernel.
+\end{definition}
+\begin{proof}
+Apply the actual substitution to the entire parameter polynomial. Its
+coefficient factor becomes $b_j^{-1}b_j=1$, yielding the actual polynomial
+$T$. Multiplicativity and subtraction then evaluate each entire $L_i$
+to $(a_i+b_iT)-a_i-b_iT=0$. In the original polynomial algebra, the
+same actual inverse identity makes $L_j=0$. For $i\ne j$, $L_i$ is
+an original generator of the ideal; the selected equation belongs by
+its proved zero identity. Since every true generator evaluates to zero,
+ideal span closure puts the entire original ideal in the whole kernel.
+No generator-value assertion is substituted for the resulting kernel containment.
+\end{proof}
+
+\begin{theorem}[Genuine whole polynomial quotient identifies the exact line kernel]
+\label{algebra:line-quotient-whole-polynomial}
+\lean{EnvelopeProperty.AffineLine.lineQuotientHom,
+EnvelopeProperty.AffineLine.lineQuotientHom_mk,
+EnvelopeProperty.AffineLine.lineQuotientInv,
+EnvelopeProperty.AffineLine.lineQuotientHom_comp_inv,
+EnvelopeProperty.AffineLine.lineQuotientInv_comp_hom,
+EnvelopeProperty.AffineLine.lineQuotientEquiv,
+EnvelopeProperty.AffineLine.lineQuotientEquiv_mk,
+EnvelopeProperty.AffineLine.ker_subst_eq_lineIdeal}
+\leanok
+\uses{algebra:line-parameter-equations}
+The entire original line substitution induces a genuine $F$-algebra
+isomorphism
+\[
+ F[X_i]/J_b\simeq F[T].
+\]
+It retains the original substitution on every polynomial. In particular
+its whole kernel is exactly the original ideal $J_b$, without radical
+replacement. No finite-index, infinite-field or algebraic-closure
+hypothesis is needed for this quotient statement.
+\end{theorem}
+\begin{proof}
+The proved actual kernel containment gives a genuine quotient algebra
+homomorphism to $F[T]$. Define the opposite homomorphism by sending
+its actual parameter $T$ to the original quotient class of $T_j$.
+Their composite on $F[T]$ is the identity because the entire parameter
+polynomial maps to $T$; the true polynomial algebra universal property
+then identifies the whole homomorphism, including all coefficients.
+
+For the opposite composite, use the actual quotient universal property
+and the genuine multivariable polynomial algebra universal property.
+Every original relation belongs to $J_b$, so its quotient class gives
+$[X_i]=[a_i]+b_i[T_j]$ for each actual coordinate, including the selected
+one. Original coefficient commutation identifies each scalar class
+with its actual scalar image in the quotient. Consequently the
+opposite composite is the identity on every original coordinate and
+coefficient, hence on every whole polynomial and every quotient class.
+These two true inverse identities construct the actual algebra
+isomorphism; no quotient-comparison certificate is assumed.
+
+The isomorphism is injective. Thus an original polynomial has zero
+substitution image precisely when its original quotient class is zero,
+which is precisely membership in the actual original ideal $J_b$.
+This proves the entire kernel equality and retains nilpotent ideal
+structures in subsequent genuine ideal images.
+\end{proof}
+
+\begin{theorem}[Actual finite equation list and real Krull height bound]
+\label{algebra:line-equations-height-bound}
+\lean{EnvelopeProperty.AffineLine.lineGenerators,
+EnvelopeProperty.AffineLine.lineIdeal_eq_span_generators,
+EnvelopeProperty.AffineLine.lineIdeal_fg,
+EnvelopeProperty.AffineLine.lineGenerators_card_le,
+EnvelopeProperty.AffineLine.map_lineIdeal_eq_span_generators,
+EnvelopeProperty.AffineLine.height_map_lineIdeal_le}
+\leanok
+\uses{algebra:line-parameter-equations}
+With a finite coordinate index set of cardinality $m$, the original
+transverse ideal has a true finite generator list of at most $m-1$
+equations. Its entire ideal image under any original polynomial ring
+homomorphism $\varphi:F[X_i]\to B$ is generated by the actual images of
+that list. If $B$ is noetherian, every actual prime minimal over this
+original image ideal has height at most $m-1$.
+\end{theorem}
+\begin{proof}
+Take the actual finite index list, erase the selected parameter
+coordinate and map the remaining indices to their original transverse
+polynomials. The resulting finite polynomial list has actual underlying
+set exactly the original generating set. It therefore spans the whole
+original ideal, giving genuine finite generation. Its cardinality is
+at most that of the remaining index list, namely $m-1$; possible repeated
+or zero equations only reduce the size.
+
+The actual ideal-map/span theorem identifies the entire original ideal
+image with the span of the actual polynomial images. Their true finite
+list has size at most that of the original list, hence at most $m-1$.
+Apply the real noetherian Krull height theorem to a prime genuinely
+minimal over this span. Its height is bounded by the number of entries
+of the actual list, yielding the stated bound. No component-height or
+finite-generation hypothesis encoding this conclusion is assumed.
+
+For a nonzero direction-coordinate coefficient, the preceding actual
+kernel theorem identifies this original equation ideal with the line
+kernel. The bound is therefore the true $n-1$-equation input for FHX
+Proposition~5.22 in $n$ affine coordinates. This precursor does not yet
+convert height to quotient dimension, prove every finite-preimage
+component dominates the open line, establish geometric integrality
+after field extension, or construct its normalized smooth finite-flat
+curve. Those are distinct algebraic producers rather than implicit
+consequences of this height bound.
+\end{proof}

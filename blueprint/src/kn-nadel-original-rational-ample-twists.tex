@@ -1,0 +1,28 @@
+\section{Actual positive twists of the original rational ample tuple}
+
+\begin{lemma}[The same original numerator after a base ample twist]
+\label{lem:kn-original-rational-ample-twist-data}
+\lean{EnvelopeProperty.Vanishing.NadelOriginalRationalAmpleTwists.twistedSourcePowerIso,EnvelopeProperty.Vanishing.NadelOriginalRationalAmpleTwists.twistedSourceData}
+\uses{thm:fc-original-ample-line-positive-powers,thm:fc-original-ample-tensor-ample}
+\leanok
+Suppose $A,B,C,H$ are original lines, $C,H$ are ample, $d>0$,
+and $e:A^d\simeq C\otimes B^t$ is the original power isomorphism.
+For every $m\geq1$, put $A_m=A\otimes H^m$ and
+$C_m=C\otimes H^{md}$. Then $A_m$ is invertible, $C_m$ is ample,
+and there is an actual isomorphism
+$A_m^d\simeq C_m\otimes B^t$.
+\end{lemma}
+\begin{proof}
+The original tensor-power comparison identifies $A_m^d$ with
+$A^d\otimes(H^m)^d$. Apply $e$ to the first factor and the original
+iterated-power comparison to the second. Associativity and symmetry
+move $B^t$ past $H^{md}$, giving exactly $C_m\otimes B^t$.
+Invertibility is preserved by tensor products and actual powers.
+Since $md>0$, the line $H^{md}$ is ample, and the tensor product
+of the two ample lines $C$ and $H^{md}$ is ample.
+\end{proof}
+
+The original $B,d,t$ and the original finite generating family of
+$I\otimes B$ are retained. Any original relation $dc=t$ therefore
+also remains the same. The principalization is selected from the original
+structure map and original ideal, so it is identical throughout these twists.

@@ -1,0 +1,60 @@
+\subsection{Density of actual rigid points}\label{subsec:fc-line-rigid-density}
+
+\begin{lemma}[Archimedean subgroup density]\label{lem:fc-archimedean-subgroup-density}
+\lean{Subgroup.dense_of_no_min}
+\mathlibok
+A nontrivial multiplicative subgroup of the positive real numbers is dense
+if its elements greater than $1$ have no least member.
+\end{lemma}
+
+\begin{lemma}[Density of the value range]\label{lem:fc-value-range-dense}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_denseRange_valuation}
+\leanok
+\uses{conv:fc-line, lem:fc-archimedean-subgroup-density}
+Let $F$ be algebraically closed and let $v$ be nontrivial, in the equivalent
+form that $v(t)>1$ for some $t\in F$. Then the range of $v$ is dense in
+$\R_{\ge0}$.
+\end{lemma}
+
+\begin{proof}
+The values of nonzero elements form a nontrivial multiplicative subgroup
+of the positive reals. It has no least member greater than $1$: if such
+a value $s>1$ were least, choose a square root of an element of value $s$.
+Its value $u$ satisfies $u^2=s$, hence $1<u<s$, a contradiction.
+Apply the Archimedean subgroup density lemma. Thus each interval with
+positive endpoints contains a field value. An interval beginning at $0$ contains
+an interval with positive endpoints, so the range is dense also in the
+nonnegative real line.
+\end{proof}
+
+\begin{lemma}[Rigid approximations to Gauss points]\label{lem:fc-gauss-rigid-approximation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_rigid_tendsto_gauss, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_gauss_mem_closure_rigid}
+\leanok
+\uses{lem:fc-value-range-dense, lem:fc-branch-end-convergence}
+Every positive-radius Gauss point is the limit of actual evaluation points.
+Every radius-zero Gauss point is itself an evaluation point.
+\end{lemma}
+
+\begin{proof}
+For $r>0$, density of field values provides a strictly increasing sequence
+$s_n$ of positive field values below $r$ with $s_n\to r$. Choose $c_n\in F$
+with $v(c_n)=s_n$. The evaluation point at $a+c_n$ has value $s_n$ on
+$T-a$. Its coordinate therefore approaches $r$ from below. Whole-branch
+end convergence shows that these actual points tend to $\zeta_{a,r}$.
+At radius zero the defining Gauss seminorm is evaluation at its centre.
+\end{proof}
+
+\begin{theorem}[Rigid-point density]\label{thm:fc-rigid-density}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_denseRange_rigid, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_denseRange_rigid_norm}
+\leanok
+\uses{lem:fc-gauss-rigid-approximation, thm:fc-nested-disc-classification}
+The actual evaluation points are dense in the analytic affine line.
+\end{theorem}
+
+\begin{proof}
+Their closure contains all Gauss points by the preceding lemma. Every
+analytic-line point is a Gauss point or a limit of actual Gauss points
+by nested-disc classification. The closure of the evaluation points is
+closed, so in either case it contains the point. It is therefore the
+whole analytic line.
+\end{proof}

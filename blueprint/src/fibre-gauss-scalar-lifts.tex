@@ -1,0 +1,47 @@
+\subsection{Actual scalar lifts to the original completed Gauss field}
+
+\begin{lemma}[A genuine completed Gauss coefficient field and tensor lift]
+\label{lem:fc-gauss-scalar-tensor-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussBasePoint, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussField, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussFieldAlgebra, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussField_val_algebraMap, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_gauss_comap_base, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarCoefficient, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarCoefficient_norm, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussOriginalEvaluation, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarEval, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarEval_tmul, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarLift, EnvelopeProperty.Berkovich.RelativeSpectrum.fcGaussScalarLift_baseChangeRestriction, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_baseChangeRestriction_gauss_surjective}
+\uses{lem:fc-scheme-scalar-affine-tensor}
+For every actual coefficient ring with prescribed seminorm and radius
+$r\ge0$, the completed residue field of its actual base-line Gauss
+point is a genuine coefficient extension with the prescribed original
+values. Every original algebra point has an actual scalar lift to this
+field, retaining every original algebra value.
+\end{lemma}
+\begin{proof}
+Whole Gauss naturality identifies the base Gauss point under the actual
+polynomial coefficient map. Its genuine completed-field functor gives
+an entire coefficient-preserving isometric map into the completed field
+of the Gauss point above the original algebra point. Combine this map
+with the original algebra evaluation into that same field through the
+actual tensor universal property. Pull back its actual norm. On the
+new coefficient field the whole isometric map gives the prescribed
+norm; on every original algebra element the original constant
+polynomial evaluation gives its exact original value. Thus actual
+scalar restriction recovers the entire original point.
+\end{proof}
+
+\begin{lemma}[Whole-scheme Gauss scalar lifts]
+\label{lem:fc-scheme-gauss-scalar-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_gauss}
+\uses{lem:fc-gauss-scalar-tensor-lift,lem:fc-scheme-scalar-affine-tensor}
+Every whole native point of any actual scheme lifts to its literal
+scalar scheme pullback by the completed residue field of the original
+base-line Gauss point. This holds for arbitrary coefficient rings and
+$r\ge0$, and in particular for the complete-field extensions used
+in Lemma~\ref{lem:fc-base-change}.
+\end{lemma}
+\begin{proof}
+Choose a genuine original affine Spec chart through the support. The
+actual chart structure morphism derives its coefficient action and
+its exact whole Spec identity. Apply the preceding actual tensor
+point lift and the true affine tensor scheme comparison. The actual
+pullback morphism induced by the original chart inclusion preserves
+the entire new coefficient structure and the whole original
+projection. Its native image therefore recovers exactly the input
+whole point. No affine-cover gluing certificate is supplied.
+\end{proof}

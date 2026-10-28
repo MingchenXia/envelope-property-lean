@@ -1,0 +1,139 @@
+\section{Lifting a prescribed original central generic line section}
+
+This chapter uses the actual closed immersion $i:C\hookrightarrow Y$, the
+actual generic point $\xi$ of integral $C$, its image $\eta=i(\xi)$, and the
+same original invertible sheaf $L$ on $Y$.  The prescribed nonzero section
+$\sigma_C$ belongs to the actual $\kappa(\xi)$-fibre of the SAME $i^*L$.
+It is never replaced by a section of another line or by a norm certificate.
+The local construction does not require normality, dimension, properness,
+Noetherianity, an SNC equation, or a projective presentation.
+
+\begin{lemma}[The actual closed generic coefficient lifts to an ambient unit]
+\label{lem:central-generic-original-unit-lift}
+\lean{EnvelopeProperty.CentralGenericLineSectionLift.exists_unit_lift}
+\leanok
+For every nonzero $b\in C.\mathrm{functionField}=\mathcal O_{C,\xi}$,
+there is an actual unit $a\in\mathcal O_{Y,\eta}$ such that the SAME
+original stalk map $i_\xi^\#$ sends $a$ to $b$.
+\end{lemma}
+\begin{proof}
+The actual closed immersion makes its original stalk map surjective, so
+choose a preimage $a$ of $b$.  The target is the native generic stalk of
+integral $C$, hence a field, and $b\ne0$ is a unit.  Scheme stalk maps are
+local homomorphisms.  Unit reflection along that SAME local homomorphism
+therefore proves that $a$ is a unit.  Neither surjectivity, a field map,
+nor unit matching is an incoming certificate.
+\end{proof}
+
+\begin{lemma}[An actual center-stalk unit has an actual unit neighborhood]
+\label{lem:central-generic-original-unit-neighborhood}
+\lean{EnvelopeProperty.CentralGenericLineSectionLift.exists_unit_neighborhood}
+\leanok
+For any actual point $\eta\in Y$, an actual unit
+$a\in\mathcal O_{Y,\eta}$ and an actual open $U$ containing $\eta$, there
+are $V\subseteq U$ containing $\eta$ and a genuine unit
+$c\in\Gamma(Y,V)^\times$ whose original germ is exactly $a$.
+\end{lemma}
+\begin{proof}
+Represent $a$ by a genuine original section on a neighborhood of $\eta$.
+Intersect that neighborhood with $U$ and restrict the representative.
+Original germ naturality preserves its exact value $a$.  Since that germ
+is a unit, the ringed-space unit-germ theorem shrinks this SAME
+representative to an actual unit on a smaller neighborhood of $\eta$.
+The composite original restriction still has germ $a$; package its proved
+unit as an element of the actual section-ring unit group.  This is a
+neighborhood of $\eta$, rather than merely of the generic point of $Y$.
+\end{proof}
+
+\begin{definition}[The true central generic restriction of an original local section]
+\label{def:central-generic-original-local-section-value}
+\uses{def:actual-line-frame-via-factor,thm:fc-line-section-factorization,berkovich:actual-residue-module-pullback-iso}
+\lean{EnvelopeProperty.CentralGenericLineSectionLift.closedGenericSection}
+\leanok
+Given an actual $\eta$-neighborhood $U$ and actual section morphism
+$\delta:O_U\to L|_U$, factor the original composite
+$\operatorname{Spec}\kappa(\xi)\to C\to Y$ through $U$.  Pull back
+$\delta$, use the genuine original factor comparison, then the inverse
+of the native comparison between the pullback of $i^*L$ and the pullback
+along the composite.  Evaluating at one gives an actual section of the
+original generic fibre of the SAME $i^*L$.
+\end{definition}
+\begin{proof}
+The original residue-field morphism maps every point to $\xi$, so the
+composite maps every point to $\eta\in U$.  The actual open-immersion
+lift supplies the factor and its whole original triangle.  Named native
+module pullback and unit comparisons give the stated whole section; no
+chosen fibre-identification or preservation premise is required.
+\end{proof}
+
+\begin{theorem}[A prescribed central generic section is the residue of an actual local frame]
+\label{thm:central-generic-prescribed-section-local-lift}
+\uses{lem:central-generic-original-unit-lift,lem:central-generic-original-unit-neighborhood,def:central-generic-original-local-section-value,def:fc-original-section-whole-frame-scalar,thm:fc-original-section-basic-open-frame,thm:fc-line-section-factor-scalar-relation,thm:fc-closed-immersion-stalk-order-length,lem:actual-line-frame-via-factor-composition}
+\lean{EnvelopeProperty.CentralGenericLineSectionLift.exists_local_section_lift}
+\leanok
+For every actual nonzero $\sigma_C$ in the original generic residue fibre
+of $i^*L$, there are an actual open $U$ containing $\eta$ and a whole
+original section morphism $\delta:O_U\to L|_U$ which is an isomorphism,
+whose original central generic restriction is EXACTLY $\sigma_C$.
+\end{theorem}
+\begin{proof}
+Choose an actual original trivializing open for $L$ at $\eta$ from its
+invertibility cover.  Pull this SAME frame to the actual generic fibre
+of $i^*L$, using the actual open factor and native composition
+comparison.  Applying it and the actual affine global-section
+isomorphism to $\sigma_C$ gives a nonzero element of $\kappa(\xi)$;
+nonzero follows from injectivity of these original isomorphisms.
+
+The native residue quotient of the generic stalk
+$C.\mathrm{functionField}$ is an isomorphism, because that stalk is a
+field.  Lift the coefficient through this actual quotient, then through
+the original closed-immersion stalk map by the first lemma.  The second
+lemma represents the resulting ambient unit on an actual smaller
+$\eta$-neighborhood inside the original frame open.  Multiply the SAME
+local frame generator by this actual section-ring unit.  The resulting
+original section morphism is a whole isomorphism, since both scalar
+multiplication by a unit and the original frame are isomorphisms.
+
+Original germ--stalk-map naturality and the actual residue-stalk square
+identify its central generic coefficient with the original coefficient
+of $\sigma_C$.  Native whole pullback composition retains every section
+and scalar.  Injectivity of the original generic frame therefore gives
+the FULL section equality, not merely equality of norms.  The frame,
+coefficient, lift, and exact section equality are derived internally.
+\end{proof}
+
+\begin{corollary}[The same local lift gives the actual ambient generic rational section]
+\label{cor:central-generic-prescribed-section-same-rational-lift}
+\uses{thm:central-generic-prescribed-section-local-lift,def:actual-line-frame-via-factor,thm:fc-line-section-factorization}
+\lean{EnvelopeProperty.CentralGenericLineSectionLift.genericSection,EnvelopeProperty.CentralGenericLineSectionLift.exists_generic_section_lift}
+\leanok
+If $Y$ is also integral, the SAME produced $U,\delta$ have an actual
+nonzero generic section $\rho$ of the original $L$, obtained by pulling
+$\delta$ to the original generic residue-field spectrum of $Y$.
+Its central generic restriction through this SAME local extension is
+exactly the prescribed $\sigma_C$.
+\end{corollary}
+\begin{proof}
+The original $U$ contains $\eta$ and is nonempty.  Integral geometry puts
+the original generic point of $Y$ in $U$, so its actual residue-field
+map factors through $U$.  Pull the SAME $\delta$ through that factor
+and use the original native comparison to define $\rho$.  Pullback
+preserves the actual isomorphism $\delta$.  Its value at one is nonzero:
+in its actual inverse frame the coefficient is the original nonzero
+unit section of the generic residue field.  Retain the preceding
+corollary's exact central section equality for this SAME $U,\delta$.
+This does not assert that arbitrary rational sections restrict through
+a closed immersion, or that the chosen lift is unique.
+\end{proof}
+
+The existing proper-model norm can subsequently be computed in
+$\delta^{-1}$ by \texttt{modelLineNorm\_eq\_localFrame} when the actual
+proper center lies in $U$; its coefficient is one.  Producing the true
+center of a distinguished vertical point is separate geometry.  An
+inclusion frame on a Cartier-support complement can omit that center
+and its generic coefficient one does not prove model norm one.
+The valuation-ring residue of this section is its canonical scalar
+pullback; it is not silently identified with the unchanged
+$C.\mathrm{functionField}$.  No norm, degree, balancing, common vertical
+point, global SNC model, LocalPositivity, or final envelope assertion
+is proved by this chapter.

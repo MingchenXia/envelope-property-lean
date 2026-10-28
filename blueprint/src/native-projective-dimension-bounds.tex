@@ -1,0 +1,56 @@
+\subsection{Dimension bounds for projective schemes}
+
+\begin{lemma}[The actual projective space has its coordinate dimension bound]
+\label{lem:native-projective-space-dimension-bound}
+\uses{lem:actual-open-cover-scheme-dimension-bound}
+\lean{EnvelopeProperty.NativeProjectiveDimensionBounds.projectiveSpace_dimension_le}
+\leanok
+For any field $k$ and natural number $d$, the actual projective space
+$\mathbf P^d_k$ has topological Krull dimension at most $d$.
+\end{lemma}
+\begin{proof}
+Use the actual standard homogeneous-coordinate affine cover of
+$\mathbf P^d_k$.  For each index $j$, its coordinate ring is the
+polynomial ring over the same $k$ with variables indexed by the other
+$d$ homogeneous coordinates.  Deleting $j$ from the $d+1$ coordinate
+indices gives a set of cardinality $d$.  A polynomial ring in $d$
+variables over a field has Krull dimension $d$.  The spectrum of
+each actual coordinate ring consequently has topological Krull
+dimension at most $d$.  The open-cover dimension bound gives the
+same upper bound on the whole original projective space.
+\end{proof}
+
+\begin{lemma}[The original closed projective embedding bounds whole dimension]
+\label{lem:native-projective-closed-embedding-dimension-bound}
+\uses{lem:native-projective-space-dimension-bound,lem:actual-integral-projection-dimension-bound}
+\lean{EnvelopeProperty.NativeProjectiveDimensionBounds.dimension_le_of_closedImmersion}
+\leanok
+Let $k$ be any field, $X$ any scheme, and
+$i:X\hookrightarrow\mathbf P^d_k$ an actual closed immersion.
+Then $\dim X\le d$, including when $X$ is empty, reducible or nonreduced.
+\end{lemma}
+\begin{proof}
+A closed immersion is an integral morphism.  Apply the dimension
+bound for an integral morphism to this same $i$, with the preceding
+bound on its actual projective-space target.  No replacement of
+$X$ by a reduction or an irreducible component is made.
+\end{proof}
+
+\begin{theorem}[The actual projective scheme has a finite whole dimension bound]
+\label{thm:native-projective-scheme-finite-dimension-bound}
+\uses{lem:native-projective-closed-embedding-dimension-bound,thm:fc-affine-projectivity-polynomial-factorization}
+\lean{EnvelopeProperty.NativeProjectiveDimensionBounds.exists_dimension_le_of_isProjective}
+\leanok
+For any field $k$ and any actual projective morphism
+$p:X\to\operatorname{Spec}k$, there is a natural number $d$ such
+that the whole original $X$ has topological Krull dimension at most $d$.
+\end{theorem}
+\begin{proof}
+Over the affine coefficient spectrum, the proved comparison of
+projectivity with finite polynomial projective factorization gives
+an actual natural number $d$ and a closed immersion
+$i:X\hookrightarrow\mathbf P^d_k$ whose projection is the same $p$.
+Apply the preceding closed-embedding bound to this $i$.  The choice
+of $d$ comes from projectivity itself; no dimension or embedding
+certificate is assumed in addition to projectivity.
+\end{proof}

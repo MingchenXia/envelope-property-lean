@@ -1,0 +1,37 @@
+\section{Actual normal affine support through original open isomorphisms}
+
+\begin{theorem}[Actual original normal stalks over a whole open isomorphism]
+\label{thm:actual-normal-stalk-over-open-isomorphism}
+\lean{AlgebraicGeometry.Scheme.Hom.stalk_isIntegrallyClosed_of_restrictIso}
+\leanok
+Suppose the same actual original morphism $\mu:Z\to Y$ is an isomorphism over
+an original open $W\subset Y$, and the actual original target stalks are
+integrally closed. Every actual source stalk supported over $W$ is integrally
+closed.
+\end{theorem}
+\begin{proof}
+For an actual original point $z\in\mu^{-1}W$, regard it as its true point
+$q$ of the actual source open. First use the genuine open-immersion stalk map
+from $Y$ to $W$, then the genuine stalk map of the whole isomorphism
+$\mu^{-1}W\to W$, to give normality of the actual source-open stalk at $q$.
+Finally use the inverse of the true source-open-immersion stalk isomorphism
+to identify this with the same original $Z$ stalk at $z$.
+\end{proof}
+
+\begin{theorem}[An actual normal affine neighborhood in the same source]
+\label{thm:actual-normal-affine-neighborhood-over-open-isomorphism}
+\lean{AlgebraicGeometry.Scheme.Hom.exists_normal_affine_neighborhood_of_restrictIso}
+\leanok
+\uses{thm:actual-normal-stalk-over-open-isomorphism,lem:actual-normal-affine-open-section-ring}
+If this same original source $Z$ is integral, each such actual original point
+has an actual original affine neighborhood $U\subset Z$ whose same original
+ring $\Gamma(Z,U)$ is integrally closed.
+\end{theorem}
+\begin{proof}
+Choose an actual affine neighborhood inside the actual open $\mu^{-1}W$.
+It is nonempty because it contains the original point. The preceding actual
+stalk comparison gives normality at every original point of that neighborhood.
+The proved original affine-ring local-to-global normality theorem then makes
+its same original section ring integrally closed. Thus neither a normal
+neighborhood nor a normalization-isomorphism certificate is an input.
+\end{proof}

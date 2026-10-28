@@ -1,0 +1,174 @@
+\section{Canonical trace on the whole tame unit-root layer}
+\label{sec:kn-nadel-canonical-unit-root}
+
+Let $A$ be a nonzero commutative ring.  Throughout this section the algebra is the entire actual monic quotient
+$B=A[z]/(z^{m+1}-u)$, where $u\in A^\times$ and $m+1$ is invertible
+in $A$.  No connected component, field factor, or chosen root is selected.
+
+\begin{theorem}[The whole tame unit-root trace dual]
+\label{thm:kn-nadel-canonical-unit-root-trace-dual}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.root_etale,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.root_isUnit,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.jacobian_isUnit,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.jacobianUnit,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.jacobianUnit_coe,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.traceDualizingEquiv,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.traceDualizingEquiv_apply,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.traceDualizingIso,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.traceDualizingIso_counit}
+The actual root and $J=(m+1)z^m$ are units in $B$.  The whole algebra
+is etale over $A$, and native algebra trace gives a genuine $B$-linear
+isomorphism
+\[
+ B\xrightarrow{\sim}\operatorname{Hom}_A(B,A),\qquad
+ b\longmapsto(c\longmapsto\operatorname{Tr}_{B/A}(cb)).
+\]
+Its true restriction/coextension counit is $\operatorname{Tr}_{B/A}$
+on every original element of the whole algebra.
+\end{theorem}
+\begin{proof}
+The original unit-root cover theorem proves the root unit and actual
+etaleness from the invertible evaluated derivative.  The actual
+positive-degree monic basis already proves the top-coefficient
+multiplication pairing $\Lambda$ is perfect, and its native trace
+calculation is $\operatorname{Tr}(b)=\Lambda(Jb)$ for every $b$.
+Multiply the original regular $B$-module by the actual unit $J$ and
+compose with that original dual-frame isomorphism.  Evaluation at
+every $c$ gives the displayed native trace functional.  The native
+adjunction counit evaluates at $1_B$, proving the whole trace formula.
+All computations occur on the entire quotient algebra, even if it is
+disconnected or splits as a finite product.
+\uses{thm:actual-kummer-unit-root-finite-etale,lem:kn-nadel-root-trace-jacobian}
+\end{proof}
+
+\begin{theorem}[Actual top differentials on the tame layer]
+\label{thm:kn-nadel-canonical-unit-root-differentials}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.topPullback,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.etaleTopEquiv,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.etaleTopEquiv_wedge,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.topPullback_wedge,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.topPullback_generator,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.etaleTopEquiv_generator,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootStructure,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootConstants,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootRAlgebra,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootRAlgebra_map,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootCanonicalModule,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalPullback,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.rootDifferentialBasis,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalTensorIso,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalPullback_generator,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalTensorIso_generator,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartDifferentialBasis,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartDifferentialBasis_apply}
+Fix the original $R$-algebra $A$ and its actual differential frame
+$b$ of rank $n$.  Native etale K\"ahler base change internally constructs
+the genuine frame on $\Omega_{B/R}$ and the actual isomorphism
+\[
+ B\otimes_A\bigwedge_A^n\Omega_{A/R}
+   \xrightarrow{\sim}\bigwedge_B^n\Omega_{B/R}.
+\]
+It sends every original wedge to the wedge of its actual differential
+images.  In particular the true exterior pullback $P$ sends the actual
+base frame wedge to the actual target frame wedge.
+\end{theorem}
+\begin{proof}
+The original scalar tower $R\to A\to B$ defines the actual target
+$R$-structure.  Use the proved etaleness and native
+$B\otimes_A\Omega_{A/R}\simeq\Omega_{B/R}$ to transport the original
+frame.  Native exterior basis base change followed by the exterior
+map of this actual linear equivalence gives the displayed isomorphism.
+Its wedge formula follows from the original universal differential
+map.  The actual ordered top wedges therefore agree under $P$.
+If the base is given by an actual formally etale polynomial coordinate
+map, its frame is produced internally by the native polynomial
+differential basis, rather than assumed as an Omega-model certificate.
+\uses{thm:kn-nadel-canonical-unit-root-trace-dual}
+\end{proof}
+
+\begin{theorem}[The actual canonical counit and its intrinsic normalization]
+\label{thm:kn-nadel-canonical-unit-root-counit}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalIso,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalIso_apply,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalCounit,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalCounit_generator,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalCounit_pulled_topform,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalCounit_unique,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.canonicalCounit_frame_independent,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartCanonicalIso,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartCanonicalCounit,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartCanonicalCounit_pulled_topform,EnvelopeProperty.Vanishing.NadelCanonicalUnitRoot.chartCanonicalCounit_independent}
+For the same whole algebra, the genuine top differential module
+$\omega_B=\bigwedge_B^n\Omega_{B/R}$ is its actual native coextension
+dual of $\omega_A=\bigwedge_A^n\Omega_{A/R}$.  The actual canonical
+counit $\tau:\omega_B\to\omega_A$ satisfies
+\[
+ \tau(cP(w))=\operatorname{Tr}_{B/A}(c)w
+       \qquad(c\in B,\ w\in\omega_A).
+\]
+This whole counit is independent of the actual differential frame.
+No canonical or trace-comparison diagram is an input.
+\end{theorem}
+\begin{proof}
+Use the two genuine top-form frame trivializations and the preceding
+native trace-dual isomorphism.  Their composite is an actual
+$B$-linear isomorphism into the original coextension object.  Its
+functional value at $c$ is trace of $c$ times the target coefficient,
+times the original base wedge.  The native counit again evaluates
+at one.  The genuine exterior pullback preserves the frame wedge;
+$A$-linearity of native trace and the actual two frames prove the
+displayed formula for every original base form.
+
+Every target form is a coefficient times this pulled frame wedge.
+Consequently any actual $A$-linear candidate with this intrinsic
+normalization agrees on every target form.  The counit constructed
+from any other actual frame satisfies the same proved normalization,
+so whole-counit uniqueness proves frame independence.
+\uses{thm:kn-nadel-canonical-unit-root-trace-dual,thm:kn-nadel-canonical-unit-root-differentials}
+\end{proof}
+
+\begin{theorem}[Retaining the unit-root layer after the actual ramified power cover]
+\label{thm:kn-nadel-canonical-power-unit-composition}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCanonicalPowerUnitTower.coefficientHom,EnvelopeProperty.Vanishing.NadelCanonicalPowerUnitTower.canonicalIso,EnvelopeProperty.Vanishing.NadelCanonicalPowerUnitTower.canonicalCounit,EnvelopeProperty.Vanishing.NadelCanonicalPowerUnitTower.canonicalCounit_composition,EnvelopeProperty.Vanishing.NadelCanonicalPowerUnitTower.canonicalCounit_generator}
+After an original independent-coordinate ramified power algebra,
+adjoin the entire actual tame root of any original unit on that
+whole algebra.  Its genuine top differential module is the native
+coextension of the original polynomial base canonical module along
+the actual composite coefficient map.  The whole counit is the
+actual tame trace followed by the already proved ramified canonical
+counit, on every actual top form.  Neither the unit layer nor any
+of its components is discarded.
+\end{theorem}
+\begin{proof}
+Apply the preceding actual unit-layer isomorphism to the original
+polynomial differential frame on the ramified source.  Coextend the
+already proved actual ramified-power canonical isomorphism along
+the actual unit-root coefficient map.  Native coextension composition
+then identifies this with coextension along the genuine whole
+composite map.  The proved native coextension counit composition
+evaluates the resulting functional by first taking the whole tame
+trace and then the original ramified counit.  The original power
+action and the actual root coefficient map remain separate.
+\uses{thm:kn-nadel-canonical-unit-root-counit,thm:kn-nadel-kummer-canonical-module}
+\end{proof}
+
+\begin{theorem}[The actual mixed tensor and top differential comparison]
+\label{thm:kn-nadel-canonical-tensor-omega}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.mixedTensorEquiv,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.mixedTensorEquiv_tmul,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.originalTopModule,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.pushoutTopModule,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.pushoutTopEquiv,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.pushoutTopEquiv_wedge,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.pushoutRight_formallyEtale,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.coefficientPushoutTopEquiv,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.tensorRight_scalarTower,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.tensorTopEquiv,EnvelopeProperty.Vanishing.NadelCanonicalBaseChange.tensorTopEquiv_wedge}
+Let $R\to A\to B$ and $R\to A\to S$ be the original commutative-ring
+towers, let $A\to S$ be formally etale, and put $C=S\otimes_A B$ with
+its literal original left and right coefficient maps.  Given an actual
+rank-$n$ differential frame of $\Omega_{B/R}$, there is an internally
+constructed genuine comparison
+\[
+ S\otimes_A\bigwedge_B^n\Omega_{B/R}
+   \xrightarrow{\sim}\bigwedge_C^n\Omega_{C/R}
+\]
+of $S$-modules.  On every original differential wedge, $1\otimes
+(w_1\wedge\cdots\wedge w_n)$ maps to the wedge of its native
+K\"ahler images in $C$.  The analogous original base comparison
+$S\otimes_A\bigwedge_A^n\Omega_{A/R}\simeq
+\bigwedge_S^n\Omega_{S/R}$ is also internally produced.
+These comparisons require no flatness beyond original formal etaleness,
+no chosen component, and no supplied Omega-model isomorphism.
+\end{theorem}
+\begin{proof}
+First work on the actual ring pushout with its true four coefficient
+maps.  Native pushout tensor cancellation gives
+$C\otimes_B M\simeq S\otimes_A M$ for every original $B$-module
+$M$, and its inverse sends $s\otimes m$ to $a_C(s)\otimes m$.
+Every actual $C$-linear comparison can therefore be restricted and
+composed to an $S$-linear comparison with this exact formula.
+Formal etaleness of $A\to S$ is preserved by the actual pushout,
+so the true map $B\to C$ is formally etale.  Apply native etale
+K\"ahler and exterior base change to the original differential frame,
+and compose with this tensor cancellation.  The original pure-tensor
+formula and native wedge formula prove the claimed genuine
+whole differential map.  For the literal tensor algebra, its native
+pushout instance is produced internally; tensor balance and the
+original scalar towers prove equality of the two original $R$-actions.
+Applying the same native etale exterior construction directly to
+$A\to S$ gives the original base comparison.  If $A\to S$ is
+additionally faithfully flat, these are the actual module comparisons
+needed to transport canonical maps to the previously proved descent
+functor; the overlap equality is a separate proof obligation.
+\uses{thm:kn-nadel-canonical-unit-root-differentials}
+\end{proof}
+
+Faithfully flat canonical descent still requires the actual overlap
+identifications and actual tensor/Omega comparisons for the original
+whole cover.  This section supplies the genuine missing tame-layer
+duality and its canonical normalization; it does not identify a
+singular normalized cover with a smooth polynomial component or
+assert global canonical gluing or Nadel vanishing.

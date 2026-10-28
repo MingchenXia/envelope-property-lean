@@ -1,0 +1,149 @@
+\subsection{Actual proper valuative centers and bounded model stalks}
+\label{subsec:proper-native-centers}
+
+Let $R$ be any commutative ring and fix a real multiplicative ultrametric
+seminorm $v$ with the explicit boundedness hypothesis $v(r)\leq1$ for every
+$r\in R$. Let $f:X\to\operatorname{Spec}R$ be an actual proper scheme
+morphism and let $y$ be a native valued point lying over the exact prescribed
+base point. Write $x$ for its underlying scheme point and $w$ for its
+valuation on the actual residue field $\kappa(x)$.
+The native kernel support $x$ and the model center constructed below have
+different definitions. No anti-continuity, analytic structure sheaf or
+Noetherian hypothesis is asserted or used.
+
+\begin{lemma}[Actual local residue-section pullback]
+\label{scheme:actual-residue-section-pullback}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecResidueField_appTop,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecStalk_preimage_eq_top,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecStalk_appLE_top,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecResidueField_preimage_eq_top,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.fromSpecResidueField_appLE_top}
+\leanok
+\uses{scheme:valued-points}
+The actual morphism $\operatorname{Spec}\kappa(x)\to X$ pulls every
+section near $x$ back to its original residue value. The analogous map
+from the spectrum of the local stalk pulls back to its genuine germ.
+\end{lemma}
+\begin{proof}
+Every point of the spectrum of a local ring specializes to its closed point.
+Consequently an open neighborhood of that point pulls back to the whole
+local spectrum. The actual stalk-to-scheme section formula therefore reduces
+to the germ map followed by the inverse global-section isomorphism of Spec.
+The genuine residue map from the stalk, composition of actual section maps,
+and Spec global-section naturality identify residue-field pullback with the
+original germ followed by the residue map, exactly local residue evaluation.
+This calculation preserves all sections, not only coefficient sections.
+\end{proof}
+
+\begin{definition}[Genuine bounded valuative square]
+\label{scheme:bounded-native-valuative-square}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.residueBaseMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.residueBaseMap_val,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.CenterRing,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerBaseMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerBaseMap_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_commSq,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerSquare}
+\leanok
+\uses{scheme:actual-residue-section-pullback,scheme:relative-valued-points,
+scheme:relative-section-coefficients}
+Let $V_y=\{a\in\kappa(x):w(a)\leq1\}$ be the actual valuation subring.
+The actual structure morphism gives a coefficient residue map
+$R\to\kappa(x)$ with valuation precisely $v$. The boundedness hypothesis
+therefore makes it an actual map $R\to V_y$ and gives a genuine commutative
+square
+\[
+\begin{array}{ccc}
+\operatorname{Spec}\kappa(x)&\longrightarrow&X\\
+\downarrow&&\downarrow f\\
+\operatorname{Spec}V_y&\longrightarrow&\operatorname{Spec}R.
+\end{array}
+\]
+The upper map is the genuine residue-field morphism, and
+$\kappa(x)$ is the actual fraction field of the valuation ring $V_y$.
+\end{definition}
+\begin{proof}
+Compose the genuine coefficient action on global sections with actual
+residue evaluation. Prescribed-base section evaluation proves that each
+coefficient has value $v(r)$. Thus $v(r)\leq1$ proves actual membership in
+$V_y$, and restricting the ring-map codomain defines the lower morphism.
+For the whole square, compare genuine maps to Spec by their global section
+maps. The preceding residue pullback formula and the actual Spec global
+section isomorphisms show equality on every coefficient. Mathlib's actual
+valuation-subring structure supplies valuation-ring and fraction-field
+instances, so this is a genuine valuative square without an assumed lift.
+\end{proof}
+
+\begin{theorem}[Actual unique proper center]
+\label{scheme:proper-native-center}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLiftStruct,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift_generic,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift_base,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift_unique,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.support_specializes_center,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.support_mem_of_center_mem}
+\leanok
+\uses{scheme:bounded-native-valuative-square}
+Properness constructs an actual morphism $\operatorname{Spec}V_y\to X$
+whose two triangles commute. It is unique among whole scheme morphisms
+with those two triangles. Define $c(y)$ as its image of the closed point
+of $\operatorname{Spec}V_y$. Then $x$ specializes to $c(y)$, so every
+open neighborhood of the model center contains the original native support.
+\end{theorem}
+\begin{proof}
+Apply Mathlib's proper valuative criterion to the genuine square above.
+It supplies the whole lift and both commuting triangles. The uniqueness
+part follows from separatedness of the proper structure morphism.
+The generic point of the valuation ring is the image of the unique point
+of $\operatorname{Spec}\kappa(x)$, whose image in $X$ is $x$ by the first
+triangle. That generic point specializes to the actual closed point of
+$V_y$. Continuity of the constructed scheme morphism proves
+$x\rightsquigarrow c(y)$. Open sets are stable under generization, giving
+the neighborhood assertion. No kernel-support identification with the
+center is assumed.
+\end{proof}
+
+\begin{theorem}[Genuine bounded model-section and stalk valuations]
+\label{scheme:proper-center-local-bounds}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerSectionMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerSectionMap_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.eval_le_one_of_center_mem,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isBounded_sectionSpectrum_of_center_mem,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkMap,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkVal,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkVal_le_one,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkVal_lt_one_iff,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkMap_germ,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkVal_germ}
+\leanok
+\uses{scheme:proper-native-center,scheme:actual-residue-section-pullback,
+scheme:relative-section-coefficients,def:general-ideal-norm}
+For every actual scheme open $U$ containing $c(y)$, lift pullback gives an
+actual ring map $\Gamma(X,U)\to V_y$. Its inclusion into $\kappa(x)$
+is exactly original residue evaluation at $x$. Thus every section on $U$
+has native value at most one, and its actual section-spectrum point is bounded.
+The genuine local scheme map also gives $\mathcal O_{X,c(y)}\to V_y$.
+Pulling back $w$ gives a bounded center-stalk valuation, agrees with every
+original section value on its germ, and has value strictly smaller than one
+precisely on the genuine maximal ideal of $\mathcal O_{X,c(y)}$.
+\end{theorem}
+\begin{proof}
+The inverse image of $U$ in $\operatorname{Spec}V_y$ contains its closed
+point, hence is the whole local spectrum. The actual section pullback and
+global Spec isomorphism therefore land in $V_y$. The generic triangle,
+composition of actual section maps, and the first lemma identify its inclusion
+with original residue evaluation on every section. Membership in $V_y$
+proves the section bound and actual spectrum boundedness.
+
+The true local map at the closed point is Mathlib's stalk-closed-point map
+of the constructed lift. It lands in $V_y$, so the induced stalk valuation
+is bounded. The genuine germ/stalk pullback identity identifies its value
+on each section germ with the preceding section value. The valuation ring
+maximal ideal consists exactly of elements of value smaller than one; the
+local-homomorphism property of the scheme stalk map pulls that maximal ideal
+back to the actual center-stalk maximal ideal, proving the last equivalence.
+Merely deriving an $R$-algebra action on an arbitrary section ring would not
+provide these bounds; the actual proper valuative lift does.
+\end{proof}

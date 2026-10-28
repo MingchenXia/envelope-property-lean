@@ -1,0 +1,38 @@
+\section{The original ample line under arbitrary coefficient base change}
+
+\begin{theorem}[Whole native very ampleness and ampleness commute with base change]
+\label{thm:pl-auxiliary-native-ampleness-base-change}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.projectiveSpaceStructure_eq_nativeStructureMap,EnvelopeProperty.PLModelAuxiliaryPolarization.isVeryAmple_of_isPullback,EnvelopeProperty.PLModelAuxiliaryPolarization.isAmple_of_isPullback}
+\leanok
+\uses{projective:actual-original-pole-power-coefficient-pullback}
+Let $R\to S$ be a ring map and let the square formed by
+$i:Y\to X$, $q:Y\to\operatorname{Spec}S$,
+$p:X\to\operatorname{Spec}R$ and the actual coefficient morphism
+be Cartesian. If the original whole line $L$ is natively very
+ample, respectively ample, for $p$, then the same original $i^*L$
+is natively very ample, respectively ample, for $q$.
+\end{theorem}
+\begin{proof}
+\leanok
+Unpack the original very ample closed embedding
+$j:X\hookrightarrow\mathbf P_R^n$ with its whole
+$j^*\mathcal O_R(1)\simeq L$ comparison. Pullback pasting gives
+the actual closed immersion
+$Y\hookrightarrow\mathbf P_R^n\times_R\operatorname{Spec}S$.
+Compose it with the inverse of the original coefficient
+base-change isomorphism to obtain an actual closed embedding into
+$\mathbf P_S^n$, over the specified original $q$.
+
+The coefficient projection of this same embedding is exactly
+$j\circ i$. The existing whole coefficient-twist comparison
+identifies the pullback of $\mathcal O_R(1)$ with the original
+$\mathcal O_S(1)$. Whole pullback composition and the original
+line comparison therefore identify the embedding's whole
+$\mathcal O_S(1)$ pullback with the same original $i^*L$.
+This proves native very ampleness. For an ample line, apply this
+argument to the internally supplied positive very ample power
+$L^r$, and then use the canonical original
+$i^*(L^r)\simeq(i^*L)^r$ comparison. The same positive exponent
+gives precisely the native ample criterion after base change.
+No flatness or injectivity of $R\to S$ is needed.
+\end{proof}

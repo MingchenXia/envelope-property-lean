@@ -1,0 +1,143 @@
+\subsection{Actual weighted norm forms over every complete base field}
+\label{subsec:general-weighted-norms}
+
+The determinant polynomial contains more information than its values on the
+original field. This section uses that polynomial information to prove the
+weighted norm identity also when the completed residue field is finite.
+
+\begin{lemma}[Whole norm polynomials and base change]
+\label{spectrum:whole-norm-form-base-change}
+\lean{EnvelopeProperty.map_normForm_baseChange,
+EnvelopeProperty.normForm_algEquiv,
+EnvelopeProperty.normForm_eq_prod_of_algEquiv}
+\leanok
+\uses{spectrum:algebra-norm-base-change}
+Let $B$ be finite free over a commutative ring $A$ and let $K$ be any
+commutative $A$-algebra. The actual determinant norm polynomial satisfies
+\[
+ \operatorname{map}_{A\to K}N_{B/A}\Bigl(\sum_j X_jb_j\Bigr)
+ =N_{K\otimes_A B/K}\Bigl(\sum_j X_j(1\otimes b_j)\Bigr).
+\]
+Algebra isomorphisms preserve this whole polynomial. A genuine product
+isomorphism to finite free factors factors it into the product of their
+whole determinant norm polynomials.
+\end{lemma}
+\begin{proof}
+Choose a finite free basis of $B$. In the scalar-extended basis and then its
+polynomial extension, the multiplication matrix of the linear form is
+obtained by applying the coefficient map to every entry of the original
+polynomial multiplication matrix. Determinants commute with this ring map,
+proving coefficient base change as an equality of polynomials.
+An algebra isomorphism induces the actual polynomial tensor isomorphism;
+invariance of determinant norm under that isomorphism proves the second
+assertion. For a product, the tensor product with the polynomial ring
+commutes with the finite product. The norm of this product algebra is the
+product of the factor norms, yielding the whole-polynomial factorization.
+No polynomial interpolation is used in these three identities.
+\end{proof}
+
+\begin{theorem}[Weighted field norm form without infinitude]
+\label{spectrum:weighted-field-norm-without-infinitude}
+\lean{EnvelopeProperty.wgaussValuation_normForm_field}
+\leanok
+\uses{spectrum:whole-norm-form-base-change,spectrum:complete-norm-extension}
+Let $H$ be a complete ultrametric normed field, $L/H$ a finite separable
+extension, and $w$ its extending real valuation. For finitely many $b_j\in L$
+and arbitrary $r_j\ge0$,
+\[
+ \left\|N_{L/H}\Bigl(\sum_j X_jb_j\Bigr)\right\|_r
+ =\left(\max_j w(b_j)r_j\right)^{[L:H]}.
+\]
+There is no infinitude hypothesis on $H$.
+\end{theorem}
+\begin{proof}
+Let $\Omega$ be an algebraic closure of $H$ and choose its extending
+valuation $w_\Omega$. The actual finite separable base change
+$\Omega\otimes_H L$ is formally etale and is a product of copies of
+$\Omega$ indexed by its prime spectrum. Each factor projection, restricted
+along $L\to\Omega\otimes_H L$, is an $H$-embedding $\tau_m:L\to\Omega$.
+Complete-field uniqueness gives $w_\Omega(\tau_m(b))=w(b)$ for every $b$.
+
+Evaluate the scalar-extended actual norm polynomial at any
+$t\in\Omega^{\{j\}}$. The determinant base-change and evaluation identity
+makes its value the norm of $\sum_j t_j(1\otimes b_j)$ in the actual split
+algebra. The split algebra computes this norm as
+$\prod_m\sum_j t_j\tau_m(b_j)$. Since the algebraically closed field
+$\Omega$ is infinite, these evaluations prove equality of the whole
+polynomial with the product of the indicated linear polynomials.
+Infinitude of the original field is never needed.
+
+Each linear factor has weighted Gauss norm $\max_j w(b_j)r_j$.
+Multiplicativity gives one such factor for each prime of the split algebra. Its
+number of factors equals $[L:H]$: dimension is preserved by tensor base
+change and the product of that many copies of $\Omega$ has that dimension.
+Coefficient valuation compatibility returns the weighted norm to $H$.
+No complete or normed field structure on $\Omega$ is used; only its
+extending valuation is needed.
+\end{proof}
+
+\begin{theorem}[Weighted norm forms for products of separable fields]
+\label{spectrum:weighted-product-norm-without-infinitude}
+\lean{EnvelopeProperty.wgaussValuation_normForm_of_algEquiv}
+\leanok
+\uses{spectrum:whole-norm-form-base-change,spectrum:weighted-field-norm-without-infinitude}
+Suppose a commutative $H$-algebra has a genuine isomorphism
+$E\simeq\prod_iL_i$ with finite separable field extensions, each carrying
+its extending valuation $w_i$. Then
+\[
+ \left\|N_{E/H}\Bigl(\sum_j X_jb_j\Bigr)\right\|_r
+ =\prod_i\left(\max_jw_i(b_{ij})r_j\right)^{[L_i:H]}.
+\]
+The complete field $H$ may be finite or trivially normed.
+\end{theorem}
+\begin{proof}
+The actual product isomorphism factors the entire determinant norm
+polynomial by the first lemma. Weighted Gauss multiplicativity reduces
+its value to the product of the factor values. Apply the preceding field
+formula to every finite separable factor. This proves the polynomial
+identity without replacing the norm polynomial by an unspecified
+polynomial with the same values on $H$.
+\end{proof}
+
+\begin{theorem}[Weighted finite etale norm identity at every seminorm point]
+\label{spectrum:weighted-etale-norm-without-infinitude}
+\lean{EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_map_normForm_of_etale,
+EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_normForm_of_etale}
+\leanok
+\uses{spectrum:whole-norm-form-base-change,spectrum:weighted-product-norm-without-infinitude,
+spectrum:etale-fibre-multiplicities}
+Let $A\to B$ be finite free etale, $x\in\mathcal S(A)$, and let
+$N_{B/A}(\sum_j X_jb_j)=\sum_\alpha c_\alpha X^\alpha$. For all $r_j\ge0$,
+\[
+ \max_\alpha |c_\alpha|_x r^\alpha
+ =\prod_{y\text{ over }x}\left(\max_j|b_j|_y r_j\right)^{m_y},
+ \qquad m_y=[(H(x)\otimes_A B)/\mathfrak m_y:H(x)].
+\]
+This includes finite completed residue fields and arbitrary prescribed
+coefficient seminorms.
+\end{theorem}
+\begin{proof}
+Whole-polynomial coefficient base change identifies the image of the
+original determinant norm polynomial in $H(x)[X]$ with the actual norm
+form of $E_x=H(x)\otimes_A B$. The reduced Artinian etale decomposition
+of $E_x$ gives genuine finite separable maximal quotient fields.
+The actual completed tensor maps to $H(y)$ descend to these quotients,
+provide valuations extending the norm of $H(x)$, and take value $|b_j|_y$
+on the component of $1\otimes b_j$.
+
+Apply the preceding product-field formula to this actual norm form.
+The genuine maximal-kernel classification of completed tensor fibres
+reindexes every factor by the corresponding point $y$ and identifies
+its exponent with the defined residue-degree multiplicity. Preservation
+of the coefficient seminorm under $A\to H(x)$ gives the stated original
+coefficient formula. These steps use equality on whole polynomials and
+whole tensor points. Etaleness is load-bearing: a nonetale norm formula
+would also require local-length factors, which this theorem does not
+assert.
+\end{proof}
+
+The older evaluation-characterized polynomial lemmas still require an
+infinite original field: over a finite field, different polynomials can
+agree at every field point. The new theorem applies to the actual
+determinant norm polynomial and removes that restriction by using its
+proved coefficient base-change identity.

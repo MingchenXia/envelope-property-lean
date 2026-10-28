@@ -1,0 +1,29 @@
+\section{The original transitions between ideal-power cohomologies}
+
+\begin{lemma}[Literal original ideal-power transition maps]
+\label{lem:fc-rees-cech-degree-transitions}
+\leanok
+\lean{EnvelopeProperty.FcReesCechDegreeTransitions.termLower, EnvelopeProperty.FcReesCechDegreeTransitions.termLower_coface, EnvelopeProperty.FcReesCechDegreeTransitions.termLower_differential, EnvelopeProperty.FcReesCechDegreeTransitions.degreeLower, EnvelopeProperty.FcReesCechDegreeTransitions.degreeLower_self, EnvelopeProperty.FcReesCechDegreeTransitions.degreeLower_comp, EnvelopeProperty.FcReesCechDegreeTransitions.degreeMultiply_lower, EnvelopeProperty.FcReesCechDegreeTransitions.homologyLower, EnvelopeProperty.FcReesCechDegreeTransitions.homologyLower_self, EnvelopeProperty.FcReesCechDegreeTransitions.homologyLower_comp, EnvelopeProperty.FcReesCechDegreeTransitions.homologyMultiply_lower}
+\uses{lem:fc-rees-cech-degree-complex,lem:fc-rees-cech-homogeneous-multiplication}
+For $n\leq m$, the original inclusions of ideal powers give cochain maps
+from the literal degree-$m$ complex to the literal degree-$n$ complex.
+They retain the original underlying section on every affine intersection,
+are the identity for $m=n$, and compose according to the original order.
+If $a\in I^e$, homogeneous multiplication followed by lowering to degree
+$n$ equals the original coefficient $a$ times the original lowering map
+from degree $m$ to degree $n$.  These identities hold on every
+cohomology group as well.
+\end{lemma}
+\begin{proof}
+The inclusion $I^m\subseteq I^n$ retains each original coefficient.
+Applying it on every affine intersection therefore commutes with every
+restriction and every ordered coface.  Taking the alternating sums gives
+a cochain map.  The same coefficient identity proves its identity and
+composition laws.  Multiplication by $a$ sends a section $s$ to
+$(a|_V)s$ on an intersection $V$.  Forgetting its higher ideal-power
+membership leaves exactly the original scalar multiple of the
+underlying section.  This proves the asserted equality of entire
+cochain maps.  The homology functor preserves compositions, identities,
+and the original base scalar multiplication, so it preserves all these
+equalities.
+\end{proof}

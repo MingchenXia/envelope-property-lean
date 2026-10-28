@@ -1,0 +1,145 @@
+\section{Actual very-ample auxiliary divisor families}
+
+The original structure map $p:X\to\operatorname{Spec}k$ is smooth of
+relative dimension $n$, and $F$ is the original finite SNC family.
+All points below are arbitrary scheme points; none is assumed closed.
+
+\begin{lemma}[At most the original relative dimension many SNC members meet]
+\label{lem:kn-nadel-bertini-auxiliary-dimension}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyDimension.card_members_through_le,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyDimension.sum_eq_top_of_injective_succ}
+\leanok
+At every original point $x$, at most $n$ distinct members of $F$ pass
+through $x$. Consequently any $n+1$ distinctly indexed members have
+whole scheme-theoretic intersection empty: their ideal-sheaf sum is the
+unit ideal.
+\end{lemma}
+\begin{proof}
+Reuse the native SNC dimension-count theorem. The original SNC data
+injects the members through $x$ into a regular system of parameters of
+$\mathcal O_{X,x}$. Its length is the dimension of this actual local
+ring. The native smooth relative dimension formula at the same
+arbitrary point is
+$\dim\mathcal O_{X,x}+\operatorname{trdeg}_k\kappa(x)=n$;
+the second summand is nonnegative, so this local dimension is at most
+$n$. An injection of $n+1$ distinct member indices through one point
+would contradict this bound. Thus the support of their actual
+ideal-sheaf sum is empty, which for the native quasi-coherent ideal
+sheaf means that the whole sum is the unit ideal. This also handles
+$n=0$: every such selected member is empty.
+\end{proof}
+
+\begin{lemma}[An original very-ample line gives an actual transverse original section]
+\label{lem:kn-nadel-bertini-auxiliary-very-ample-section}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilySection.exists_veryAmple_snc_section}
+\leanok
+\uses{thm:kn-nadel-bertini-snc-flat-chosen-hyperplane}
+For any original very-ample line $M$ and original SNC family $F$, there
+is an actual original section $\sigma:\mathcal O_X\to M$ whose whole
+zero ideal is Cartier, whose whole zero scheme is smooth, and whose
+addition to the original family preserves SNC.
+\end{lemma}
+\begin{proof}
+Internally choose the closed projective embedding and whole line
+isomorphism in the original very-ampleness proof. The original
+structural triangle transports the supplied original smoothness to
+that actual embedding. Apply the proved one-step SNC Bertini producer
+to this embedding and the same original family. Compose its actual
+selected-section homomorphism with the actual original line isomorphism.
+The proved whole zero-ideal isomorphism theorem identifies the resulting
+zero ideal with the same original selected ideal, retaining its whole
+scheme structure. Transport its Cartier, smoothness, appended SNC and
+SNC-with-family conclusions through this equality and the original
+structural triangle. Neither an embedding, line-matching certificate,
+selected section nor desired divisor is an input to this producer.
+\end{proof}
+
+\begin{lemma}[The actual appended finite family retains every original label]
+\label{lem:kn-nadel-bertini-auxiliary-family-labels}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndices.joinedFin,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndices.consEquiv,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndices.consEquiv_component,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndices.joinedFin_zero_isSnc,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndices.joinedFin_cons_isSnc,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndexed.joined,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndexed.memberIndex,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndexed.memberIndex_injective,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndexed.component_memberIndex}
+\leanok
+For actual $A_j$ indexed by $\operatorname{Fin}r$, join the original
+family $F$ and these actual ideals using the ordered sum of their
+original labels. The empty join has the original SNC condition. Joining
+$A_0$ and the tail is a relabelling of the actual tail family with this
+same original $A_0$ appended, preserving each whole original ideal.
+\end{lemma}
+\begin{proof}
+The empty ordered sum is the original index set. For the successor
+case use the actual equivalence
+$((F.\iota+\operatorname{Fin}r)+\{*\})\simeq
+F.\iota+\operatorname{Fin}(r+1)$, taking the appended singleton to $0$
+and the old finite labels to their successors. Checking the two old
+summands and the actual appended singleton proves equality of their
+whole component ideals. Native SNC invariance under this actual
+component-preserving relabelling gives the claims.
+\end{proof}
+
+\begin{theorem}[Internally construct sections of the whole original finite line family]
+\label{thm:kn-nadel-bertini-auxiliary-finite-sections}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyFinite.exists_fin_snc_sections,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamilyIndexed.exists_indexed_snc_sections}
+\leanok
+\uses{lem:kn-nadel-bertini-auxiliary-very-ample-section,lem:kn-nadel-bertini-auxiliary-family-labels}
+For any original finite list of very-ample lines, internally construct
+an actual original section of each line so that all the original zero
+ideals are Cartier with smooth whole zero schemes, and the original
+family joined with all these actual zero ideals remains SNC.
+\end{theorem}
+\begin{proof}
+Induct on the actual finite list length. The empty list retains the
+original family. For the successor list first construct the sections
+of its tail by induction. Apply the original very-ample section
+producer for the head line to the actual already constructed tail
+family, whose SNC condition the induction has proved. This gives a
+head section transverse to the entire original family and the entire
+tail at once. The actual label equivalence just proved identifies the
+appended result with the joined original family and all the actual
+section zero ideals. All selected sections, Cartier witnesses and SNC
+coordinates are internally produced by this induction; none is an
+extra premise on the original finite line family.
+For an arbitrary actual finite original index set $I$, use its actual
+finite equivalence $e:I\simeq\operatorname{Fin}|I|$. Transport the
+constructed section of $M_{e^{-1}e(i)}$ along the canonical equality
+$M_{e^{-1}e(i)}=M_i$. The proved whole zero-ideal transport for this
+actual equality isomorphism retains the entire original zero ideal.
+Thus the actual joined families agree member by member; their Cartier,
+smoothness and whole-family SNC conclusions transport to the same
+original finite line indices.
+\end{proof}
+
+\begin{theorem}[The actual auxiliary divisor family for all original lines]
+\label{thm:kn-nadel-bertini-auxiliary-family}
+\lean{EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamily.auxiliaryFamily,
+EnvelopeProperty.Vanishing.NadelBertiniAuxiliaryFamily.exists_veryAmple_auxiliary_family}
+\leanok
+\uses{thm:kn-nadel-bertini-auxiliary-finite-sections,lem:kn-nadel-bertini-auxiliary-dimension}
+For a finite family of original very-ample lines $M_i$, internally
+construct $n+1$ actual original sections $\sigma_{ij}$ of each $M_i$.
+Write $A_{ij}$ for their actual whole zero ideals. Each $A_{ij}$ is
+Cartier with smooth whole zero scheme, the original family joined with
+all $A_{ij}$ is SNC, and for every fixed original $i$ one has
+$\sum_{j=0}^{n}A_{ij}=\mathcal O_X$. Thus the entire actual common zero
+scheme for that original line's sections is empty.
+\end{theorem}
+\begin{proof}
+Apply finite repetition to the actual finite product of the original
+line indices and $\operatorname{Fin}(n+1)$, retaining $M_i$ for every
+pair $(i,j)$. An actual finite index equivalence only orders this same
+finite set; it does not change a line, section, or whole zero ideal.
+The constructed joint family is SNC. For a fixed original $i$, the
+$n+1$ labels $(i,j)$ give an actual injection into that joint family's
+new-member labels. Apply the arbitrary-point dimension bound to the
+actual joint family. Its whole ideal-sheaf sum over these same $n+1$
+original zero ideals is therefore the unit ideal. No chosen sections,
+Cartier, SNC, dimension drop or empty-intersection certificate is a
+premise.
+\end{proof}

@@ -1,0 +1,131 @@
+\subsection{Actual projective model ideal functions and homogeneous coordinates}
+\label{subsec:native-projective-model-ideals}
+
+\begin{theorem}[Actual polynomial projective structure morphism is proper]
+\label{projective:native-polynomial-structure-proper}
+\lean{EnvelopeProperty.ProjBerk.homogeneousCoefficientZero_bijective,
+EnvelopeProperty.ProjBerk.homogeneousCoefficientZeroIso,
+EnvelopeProperty.ProjBerk.nativeStructureMap_isProper}
+\leanok
+\uses{projective:native-structure-morphism}
+For every commutative coefficient ring $R$, the genuine constant
+homomorphism from $R$ to the degree-zero homogeneous component of
+$R[X_0,\ldots,X_n]$ is a whole ring isomorphism. The actual polynomial
+projective structure morphism to $\operatorname{Spec}R$ is proper.
+\end{theorem}
+\begin{proof}
+The original constant polynomial homomorphism is injective. Every actual
+degree-zero homogeneous polynomial is its own degree-zero component,
+which is the constant polynomial with its original constant coefficient.
+Thus every degree-zero element has a genuine constant preimage, proving
+surjectivity and the whole ring isomorphism. Polynomial finite generation
+also supplies actual finite generation over the degree-zero component
+by restriction of scalars. The genuine Mathlib projective structure
+morphism to that component's spectrum is therefore proper. Composing
+it with the actual spectrum isomorphism of the preceding constant ring
+isomorphism proves properness of the original coefficient structure map.
+\end{proof}
+
+\begin{theorem}[A value-one normalized chart contains the actual proper center]
+\label{projective:native-normalized-value-one-center}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isBounded_mvPolynomial_of_C_X,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isBounded_polynomial,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.isBounded_coordinateChart_of_val_X_eq_one,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.center_nativeHomeomorph_mem_coordinateOpen}
+\leanok
+\uses{projective:native-polynomial-structure-proper,projective:general-relative-normalized-charts,scheme:proper-center-bounded-affine-criterion}
+Let $v$ be a real seminorm on an arbitrary commutative ring $R$, bounded
+by one on every coefficient. Let $x$ be a normalized graded polynomial
+seminorm with those precise coefficient values, and suppose
+$|X_j|_x=1$. Its genuine native projective point has its actual proper
+model center in $D_+(X_j)$. Its entire affine coordinate seminorm and
+its original whole polynomial seminorm are bounded by one.
+\end{theorem}
+\begin{proof}
+A polynomial seminorm bounded on every original coefficient and variable
+is bounded on every polynomial: use true polynomial induction,
+ultrametric addition and multiplicativity. The actual normalized
+variables have values at most one and the original prescribed coefficients
+satisfy the stated bound, so this proves the whole polynomial bound.
+On the selected coordinate chart, each genuine variable has ratio value
+$|X_i|_x/|X_j|_x\le1$, and every coefficient retains the original value
+$v(r)\le1$. The same true whole-polynomial bound proves boundedness of
+the entire coordinate ring.
+
+Every real affine section is represented through the genuine coordinate
+section-ring isomorphism. The actual normalized/native comparison
+preserves each of those entire section values, so all sections on the
+selected actual affine open have value at most one. The independently
+constructed proper-center theorem then forces the actual center into
+that open. Properness was derived above; the chosen center, section
+bounds and coordinate evaluations are not assumed certificates.
+\end{proof}
+
+\begin{theorem}[Whole homogeneous ideal norm on a value-one chart]
+\label{projective:native-homogeneous-ideal-coordinate-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChart_val_dehom_of_isHomogeneous,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.coordinateChart_val_dehom_le,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.idealNorm_coordinateDehom}
+\leanok
+\uses{projective:general-normalized-charts,projective:native-normalized-value-one-center,lem:general-ideal-pullback}
+Under these bounded-coefficient hypotheses, for every original homogeneous
+ideal $J$, its intrinsic whole polynomial ideal norm at $x$ equals the
+intrinsic norm of its original dehomogenized coordinate ideal at the
+actual selected affine chart point. No finite generators are required. The coefficient bound is on the
+chosen model ring; it is not a bound on all elements of a nontrivially
+valued field.
+\end{theorem}
+\begin{proof}
+For a homogeneous form $F$ of degree $d$, its original dehomogenized
+coordinate value is the true fraction value $|F|_x/|X_j|_x^d=|F|_x$.
+This is a whole homogeneous-fraction evaluation theorem, rather than an
+inference from norms of coordinate generators. For a general polynomial,
+decompose its entire finite homogeneous sum. Ultrametricity bounds its
+dehomogenized value by the maximum of those actual component values,
+which is its original norm by true gradedness. Consequently every
+original element of $J$ has dehomogenized value bounded by the original
+ideal norm. Actual bounded-coordinate ideal-map/span calculus extends
+this inequality to the whole image ideal, giving the first norm bound.
+
+Conversely every homogeneous component of any original $F\in J$ belongs
+to the original ideal by genuine homogeneity, so its dehomogenization
+lies in the actual image ideal. The original graded evaluation identity
+makes $|F|_x$ the maximum of these component values. Each equals its
+actual dehomogenized value and is bounded by the whole coordinate ideal
+norm. Taking the supremum over every original $F\in J$ proves the
+opposite inequality. These arguments identify entire ideal suprema,
+not whole polynomial values inferred from selected homogeneous values.
+Zero ideals and bottom logarithms are retained.
+\end{proof}
+
+\begin{theorem}[Genuine center-stalk model ideal equals the original homogeneous ideal function]
+\label{projective:native-homogeneous-model-ideal-representation}
+\lean{EnvelopeProperty.ProjBerk.nativeHomogeneousIdealSheaf,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.modelIdealNorm_quotient_eq_idealNorm,
+EnvelopeProperty.Berkovich.RelativeNormalizedProjectiveSpectrum.modelIdealLog_quotient_eq_idealLog}
+\leanok
+\uses{projective:native-normalized-value-one-center,projective:native-homogeneous-ideal-coordinate-norm,graded:native-polynomial-quotient-coordinate-ideal,scheme:native-model-ideal-function}
+Let $\mathcal J$ be the actual kernel ideal sheaf of the original
+homogeneous projective quotient by $J$. At the genuine native point of
+$x$, its intrinsic proper-center model ideal norm equals the whole
+polynomial ideal norm of $J$ at $x$. Its intrinsic model logarithm equals
+the corresponding whole polynomial ideal logarithm. This uses the
+original ideal, including powers and nilpotents, with no finite-generator,
+noetherian, field, completeness or infinitude hypothesis.
+\end{theorem}
+\begin{proof}
+Choose a normalized coordinate of value one, whose existence is the
+actual finite normalization identity. The preceding whole affine bound
+puts the genuine proper center in that actual affine open. The true
+center-stalk model ideal theorem computes the intrinsic norm on this
+affine neighborhood, using the actual ideal sheaf's affine section ideal.
+The proved original-ideal coordinate section comparison identifies that
+whole ideal, under the true section-ring isomorphism, with the original
+dehomogenization image of $J$. Bounded ideal-map calculus and the entire
+section-evaluation identity therefore identify this norm with the actual
+coordinate ideal norm. The preceding homogeneous-ideal norm comparison
+identifies it with the whole original polynomial ideal norm at $x$.
+Taking the genuine extended-real logarithm gives the logarithmic
+identity, including zero ideals and negative infinity. No radical
+replacement or analytic structure-sheaf identification is involved.
+\end{proof}

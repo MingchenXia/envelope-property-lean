@@ -1,0 +1,41 @@
+\section{The fixed boundary DVRs detect all rounded leaf ideals}
+
+\begin{lemma}[Intrinsic contributions are the actual localized monomial tests]\label{lem:sc0-boundary-multiplier-localization-test}
+\lean{EnvelopeProperty.Char0.mem_etaleBoundaryDVRContribution_iff_localized_monomial}
+\leanok
+\uses{thm:sc0-intrinsic-localized-multiplier-formula,def:sc0-etale-boundary-divisorial-dvr}
+On an actual etale monomial leaf for an original nonzero source ideal,
+the intrinsic multiplier condition at the actual divisorial DVR of a
+fixed boundary prime $P$ is equivalent to divisibility by the actual
+rounded monomial in the literal original prime localization $E_P$.
+\end{lemma}
+\begin{proof}
+The actual boundary DVR is the literal image of $E_P$ in the original
+function field. The intrinsic localized multiplier formula identifies
+its contribution with the comap of the actual rounded monomial ideal
+in that image. Membership is exactly divisibility there. The genuine
+prime-localization algebra isomorphism identifies this with divisibility
+of the same original elements in the literal localization $E_P$.
+\end{proof}
+
+\begin{theorem}[Fixed finite boundary divisorial tests for all rational exponents]\label{thm:sc0-fixed-boundary-multiplier-detection}
+\lean{EnvelopeProperty.Char0.mem_rounded_leaf_iff_all_boundaryDVRContributions}
+\leanok
+\uses{lem:sc0-boundary-multiplier-localization-test,thm:fixed-boundary-localization-detection,thm:sc0-finite-etale-boundary-divisorial-dvrs}
+For every actual etale monomial leaf of an original nonzero source
+ideal and every rational exponent $q$, original-source membership in
+the rounded leaf ideal is equivalent to its intrinsic multiplier
+conditions at all the actual fixed boundary DVRs. This is the same
+finite family for all $q$.
+\end{theorem}
+\begin{proof}
+Actual etale coordinates make the leaf regular, and each selected
+boundary coordinate is nonzero because its differential is a basis
+vector. The fixed-family principal monomial criterion therefore detects
+the rounded monomial by the actual localizations at exactly the fixed
+boundary primes, for every tuple of its natural rounded exponents.
+The preceding lemma identifies each of those localization tests with
+the corresponding actual intrinsic multiplier contribution. The actual
+DVR family is finite and depends only on the boundary coordinates, so
+the same family applies for every rational $q$.
+\end{proof}

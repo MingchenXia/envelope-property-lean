@@ -1,0 +1,67 @@
+\section{Actual special-fibre etale coordinate charts with original affine lifts}
+\label{sec:witt-two-special-fibre-etale-basis}
+
+Let the original morphism $\widetilde X\to\operatorname{Spec}W_2(k)$
+be smooth of relative dimension $n$. The original special-fibre
+morphism is denoted $g:X\to\operatorname{Spec}k$.
+
+\begin{theorem}[Smooth relative dimension on the actual special fibre]
+\label{thm:witt-two-special-fibre-smooth-relative-dimension}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreEtaleBasis.smoothOfRelativeDimension}
+\leanok
+The ACTUAL categorical special-fibre morphism $g$ is smooth of
+relative dimension $n$.
+\uses{thm:witt-two-special-fibre-original-open-iso}
+\end{theorem}
+\begin{proof}
+It is the original smooth relative-dimension morphism's actual
+base change along the original spectrum reduction map. Smoothness
+of the prescribed relative dimension is stable under base change.
+\end{proof}
+
+\begin{theorem}[Genuine etale coordinates with original affine lifted refinement]
+\label{thm:witt-two-special-fibre-lifted-etale-refinement}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreEtaleBasis.exists_etale_affine_refinement}
+\leanok
+For every original special-fibre neighborhood $W$ of $x$ and every
+original lifted open $V$ with $x\in V_0$, there is an original
+affine $U\subseteq V$ such that $x\in U_0\subseteq W$ and
+$\Gamma(X,U_0)$ has an ACTUAL etale coordinate tuple of length $n$
+over its SAME structural $k$-algebra.
+\uses{thm:witt-two-special-fibre-smooth-relative-dimension,cor:witt-two-special-fibre-original-affine-refinement-below,thm:cartier-original-smooth-etale-subchart}
+\end{theorem}
+\begin{proof}
+Smoothness of $g$ supplies an original affine etale-coordinate
+neighborhood $T$ of $x$ contained in $W$. Refine $T$ by a genuine
+original lifted affine $U\subseteq V$, using the previous lifted
+refinement theorem. Thus $x\in U_0\subseteq T\subseteq W$.
+The original section restriction $\Gamma(X,T)\to\Gamma(X,U_0)$
+is etale because both opens are affine and their inclusion is an
+actual open immersion. Restrict each of the original etale
+coordinates on $T$ along that SAME structure-sheaf restriction.
+The evaluation map of the restricted tuple is the composite of
+the original etale evaluation map and this etale restriction,
+so is etale. All structural algebra actions are those of $g$.
+\end{proof}
+
+\begin{theorem}[The original lifted etale coordinate opens form an actual basis]
+\label{thm:witt-two-special-fibre-lifted-etale-basis}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreEtaleBasis.coordinateOpens,EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreEtaleBasis.basisOpens,EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreEtaleBasis.isBasis_basisOpens}
+\leanok
+Index the original affine $U$ for which $U_0$ admits such an
+actual length-$n$ coordinate tuple, and assign its literal
+inverse-image open $U_0$. The range of this original family is
+an ACTUAL topological basis of the SAME special fibre $X$.
+\uses{thm:witt-two-special-fibre-lifted-etale-refinement}
+\end{theorem}
+\begin{proof}
+Given $x\in W$, apply the preceding refinement theorem with the
+whole original lifted scheme as $V$. The resulting original
+affine $U$ has actual etale coordinates on $U_0$, and satisfies
+$x\in U_0\subseteq W$. This is exactly the neighborhood criterion
+for the asserted indexed family to be a topological basis.
+\end{proof}
+
+This actual basis supports native form-sheaf comparison and
+restricted Frobenius lifts; coherent higher overlap homotopies
+and global DI are not conclusions of this chapter.

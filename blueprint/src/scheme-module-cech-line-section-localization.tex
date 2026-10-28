@@ -1,0 +1,58 @@
+\section{Actual canonical normalization on the nonzero open of a section}
+
+These results construct the actual maps used for denominator clearing. The finite cochain lift and higher-cohomology conclusion are separate steps.
+
+\begin{lemma}[The original section gives the entire canonical frame]
+\label{lem:cech-line-section-original-canonical-open}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpen,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionFrame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionFrame_section,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionFrame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionFrame_section,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedTwistIso,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedRestriction,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.exists_finite_affine_frame_cover}
+\leanok
+For an original invertible module $L$ and section $s:\mathcal O_X\to L$, let $U$ be its actual nonzero open. The actual restricted section frames $L|_U$, and every original power $s^m$ frames $L^m|_U$, sending that power to one. These frames construct the actual normalized restriction of $F\otimes L^m$ to $F|_U$. On a quasicompact original scheme, a finite affine cover with actual local frames of $L$ is produced internally.
+\end{lemma}
+\begin{proof}
+Restrict the original section to its original nonzero locus. Local section frames prove it is an isomorphism there; actual sheaf gluing retains this same section. Take its native tensor powers and the genuine unit and pullback comparisons. Compactness selects finitely many actual framed affine neighborhoods.
+\end{proof}
+
+\begin{lemma}[Actual multiplication and framed tensor values]
+\label{lem:cech-line-section-original-tensor-values}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorSectionMap,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorFrameIso,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorSectionMap_frame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorSectionMap_frame_apply,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionTensorMap,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionTensorMap_frame}
+\leanok
+For an actual frame of the same original $L$, the native tensor frame identifies multiplication by $s^m$ with multiplication by the $m$th power of its actual scalar coefficient. The corresponding whole-map and section-value identities retain the original $F$, original section and actual module actions.
+\uses{lem:cech-line-section-original-canonical-open}
+\end{lemma}
+\begin{proof}
+Use the actual tensor of the frame with the identity of $F$, the native unit map and the original section tensor map. Naturality and the original unit-action formula give equality of whole maps, hence of every original section value.
+\end{proof}
+
+\begin{lemma}[The original affine frame gives its exact scalar open]
+\label{lem:cech-line-section-original-affine-open}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpen_eq_basicOpen_of_frame,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.sectionOpen_pullback,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionFrame_compare}
+\leanok
+On an original affine chart with an actual frame of $L$, the original nonzero section open is precisely the basic open of its actual coefficient $r$. Actual pullback preserves that same open, and the canonical power frame compares with the inherited frame by the literal coefficient $r^m$. No open or coefficient comparison is supplied by the caller.
+\uses{lem:cech-line-section-original-tensor-values}
+\end{lemma}
+\begin{proof}
+Read the original section zero ideal in the actual frame. Its unit locus is the basic open of the same coefficient. Native pullback of the original ideal gives the original inverse-image open. Compare the two power frames on the same pulled section, whose coefficient is exactly the original $r^m$.
+\end{proof}
+
+\begin{lemma}[The actual tensor maps commute with native pullback]
+\label{lem:cech-line-section-original-native-pullback}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorFrameIso_pullback,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.tensorSectionMap_pullback,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.powerSectionTensorMap_normalized}
+\leanok
+The original tensor frame and section tensor map have their genuine native pullback formulas. On the original nonzero open, normalized restriction cancels multiplication by the same actual section power on the whole original module.
+\uses{lem:cech-line-section-original-canonical-open,lem:cech-line-section-original-tensor-values}
+\end{lemma}
+\begin{proof}
+Apply the actual pullback unit, tensor and power comparisons to the original maps. The canonical frame sends the pulled original section power to one, so the two native maps compose to the identity on the same original module.
+\end{proof}
+
+\begin{lemma}[Produce an actual normalized lift on a framed affine chart]
+\label{lem:cech-line-section-original-affine-normalized-lift}
+\lean{EnvelopeProperty.SchemeModuleCechLineSectionLocalization.normalizedTopValue,EnvelopeProperty.SchemeModuleCechLineSectionLocalization.affine_normalized_lift}
+\leanok
+Let $F$ be the original quasicoherent module on an affine chart and let $L$ have an actual frame there. Every original section $x$ of $F$ on the actual nonzero open of $s$ is the canonical normalized value of a genuine original global section $y$ of $F\otimes L^m$ for some $m$. Neither a localization certificate, a lift nor a normalization comparison is an input.
+\uses{lem:cech-line-section-original-affine-open,lem:cech-line-section-original-native-pullback}
+\end{lemma}
+\begin{proof}
+The preceding actual open identification reduces restriction to the original scalar principal localization. Its genuine surjectivity produces an original numerator and a power denominator. The inverse actual tensor frame produces $y$ in the same original twisted module. The whole-map identities compare its canonical normalized value with $x$ after multiplication by the original denominator. This denominator is a unit on the original open, so cancellation proves equality.
+\end{proof}
+

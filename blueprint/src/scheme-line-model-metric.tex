@@ -1,0 +1,54 @@
+\section{The actual proper-model norm is independent of the valuative frame}
+
+\begin{lemma}[Actual original valuative frames give the same line norm]
+\label{lem:scheme-line-actual-model-norm-frame-independent}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameLineNorm_independent}
+\leanok
+\uses{def:scheme-line-actual-center-frame-norm,lem:actual-unit-module-automorphism-scalar}
+Any two actual global frames of the original line over its genuine
+proper residue-field valuation-ring center give the same norm on
+every section of the actual original generic-line module.
+\end{lemma}
+\begin{proof}
+Let the two original valuative frames be $e,e'$. Their actual ratio
+$e^{-1}e'$ is a whole structure-module automorphism over the genuine
+valuation ring $V_y$. Hence it is multiplication by an original global
+unit $u$ of $\Gamma(\operatorname{Spec}V_y,\mathcal O)$, identified
+with a unit of $V_y$. The actual structure-module scalar pullback
+identity says that the two original generic frames differ by
+multiplication by the actual image of $u$ in $\kappa(y)$. The actual
+affine global-section naturality square identifies this scalar with
+the original inclusion $V_y\hookrightarrow\kappa(y)$ applied to $u$.
+A unit and its inverse both belong to the original valuation ring,
+so both have valuation at most one. Their product has valuation one;
+therefore $|u|_y=1$. The generic coefficient in frame $e'$ is the
+coefficient in frame $e$ times this actual scalar, so its norm is
+unchanged by the original valuation multiplication law. This proves
+equality for every section of the same original generic line.
+\end{proof}
+
+\begin{definition}[Actual norm of the original proper-model line]
+\label{def:scheme-line-actual-model-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_eq_frame}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_eq_zero_iff}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_add_le_max}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_smul}
+\leanok
+\uses{lem:scheme-line-actual-model-norm-frame-independent,lem:scheme-line-actual-center-frame}
+For an actual original invertible module sheaf $\mathcal L$, define
+its proper-model norm at the original valued point by taking any
+actual valuative frame and its just constructed original generic-line
+norm. This norm is independent of that choice, vanishes exactly at
+zero, is nonarchimedean, and scales by the original residue-field
+valuation for every original scalar.
+\end{definition}
+\begin{proof}
+The actual valuative frame exists by original invertibility, properness
+and local-spectrum triviality. The preceding lemma identifies the
+norms of every two such frames, so the definition is independent of
+which existing original frame is chosen. Apply the original frame
+norm's proved zero, nondegeneracy, addition and scalar identities to
+that chosen actual frame. Every identity is on the entire original
+generic-line section module, which is unchanged in this construction.
+\end{proof}

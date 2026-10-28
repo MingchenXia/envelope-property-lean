@@ -1,0 +1,43 @@
+\section{The actual affine differential and canonical coefficient}
+
+Let $f:X\to\operatorname{Spec}k$ and $g:Y\to X$ be actual scheme morphisms over a field, and let $U\subset X$ be any open. Put $A=\mathcal O_X(U)$ and $B=\mathcal O_Y(g^{-1}U)$ with their structural $k$-algebras and their actual map $g^\#:A\to B$.
+
+\begin{definition}\label{sc0-canonical-morphism-sections:algebra}
+\lean{EnvelopeProperty.CanonicalGeometry.schemeMorphismSectionAlgebraHom}
+\leanok
+\uses{sc0-cotangent-morphism:constants}
+The actual structure map $g^\#:A\to B$ is a $k$-algebra homomorphism.
+\end{definition}
+\begin{proof}
+Its underlying ring homomorphism is the original structure-presheaf map of $g$. Its compatibility with the two structural maps from $k$ is exactly the previously proved constant square.
+\end{proof}
+
+\begin{lemma}\label{sc0-canonical-morphism-sections:kaehler}
+\lean{EnvelopeProperty.CanonicalGeometry.cotangentMorphismSemilinear_eq_kaehlerMap}
+\leanok
+\uses{sc0-canonical-morphism-sections:algebra,sc0-cotangent-morphism:raw}
+On the actual section Kähler modules, the constructed raw cotangent component equals the ordinary Kähler map of the actual algebra homomorphism $A\to B$ on every element.
+\end{lemma}
+\begin{proof}
+Both maps are $A$-linear after restricting the target scalars. On every universal differential $da$, both equal $d(g^\#a)$ by the actual differential formula. Universal differentials span $\Omega_{A/k}$, so linearity proves equality on the whole module.
+\end{proof}
+
+\begin{definition}\label{sc0-canonical-morphism-sections:base-change}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentMorphismBaseChange,EnvelopeProperty.CanonicalGeometry.exteriorCotangentMorphismBaseChange_eq_affineCanonicalDifferentialMap}
+\leanok
+\uses{sc0-canonical-morphism-sections:kaehler,sc0-exterior-cotangent-morphism:coefficients}
+Scalar extension of the actual exterior component is an actual $B$-linear map $B\otimes_A\bigwedge_A^n\Omega_{A/k}\to\bigwedge_B^n\Omega_{B/k}$. It is exactly the full ordinary canonical differential map of this same actual algebra map.
+\end{definition}
+\begin{proof}
+The exterior component is $A$-linear with target scalars restricted along the actual $A\to B$, so its actual linear base change exists. On a pure scalar tensor with a pure exterior product, it sends $b\otimes(m_1\wedge\cdots\wedge m_n)$ to $b\,(dg(m_1)\wedge\cdots\wedge dg(m_n))$. The preceding lemma identifies each $dg$ with the genuine Kähler map. This is precisely the ordinary canonical differential map's defining formula. Pure products span the exterior power and pure tensors span the tensor product, proving equality of the entire maps.
+\end{proof}
+
+\begin{theorem}\label{sc0-canonical-morphism-sections:image}
+\lean{EnvelopeProperty.CanonicalGeometry.range_exteriorCotangentMorphismBaseChange,EnvelopeProperty.CanonicalGeometry.exteriorCotangentMorphismBaseChange_volumeCoefficient}
+\leanok
+\uses{sc0-canonical-morphism-sections:base-change}
+The full range of the constructed scalar-extended component is the intrinsic all-source-functions differential image. If the actual source and target Kähler modules have bases of the same finite rank, the coefficient on their genuine top basis wedges is the determinant of the actual differential matrix.
+\end{theorem}
+\begin{proof}
+Use the preceding equality of the entire maps. The already proved full-range theorem for the ordinary canonical differential map identifies its range with the span of the wedges of the differentials of all original source functions. The already proved coefficient theorem evaluates this same map on the source basis wedge and computes its target volume coefficient as the actual relative differential determinant. Thus both assertions retain the original ring map and all original functions.
+\end{proof}

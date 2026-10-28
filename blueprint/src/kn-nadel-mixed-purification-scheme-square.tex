@@ -1,0 +1,81 @@
+\section{The original purification square over the original base}
+
+Let $A$ be a $k$-algebra, let $B$ be the original mixed root algebra,
+let $S$ be the entire original unit-root algebra, and put
+$C=S\otimes_A B$.  Let $P$ be the original pure target and let
+$\rho:C\to P$ be the ring map of the original produced purification.
+Every factor of the original root family is retained.
+
+\begin{lemma}[The original purification retains every unit-base coefficient]
+\label{lem:kn-mixed-purification-original-unit-coefficients}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationMap_over_unit}
+\uses{lem:kn-global-trace-actual-purification,lem:kn-global-trace-mixed-extended-counit}
+\leanok
+The original map satisfies
+$\rho\circ(S\to C)=S\to P$ as an equality of entire ring homomorphisms.
+\end{lemma}
+\begin{proof}
+For every $s\in S$, the value of $\rho$ is the value of the original
+$S$-algebra equivalence.  That equivalence sends the image of $s$ to
+the same structural image of $s$ in $P$.  Equality on every coefficient
+gives equality of the ring homomorphisms.
+\end{proof}
+
+\begin{lemma}[The entire original base square commutes]
+\label{lem:kn-mixed-purification-original-ring-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurification_ring_square}
+\uses{lem:kn-mixed-purification-original-unit-coefficients}
+\leanok
+The original structural maps satisfy
+\[
+ \rho\circ(B\to C)\circ(A\to B)=(S\to P)\circ(A\to S).
+\]
+\end{lemma}
+\begin{proof}
+The two maps from $A$ into $S\otimes_A B$ are equal by the balancing
+relation of the tensor product.  Compose this equality with the same
+original $\rho$.  Its value on the image of $S$ is the original
+structural map $S\to P$ by the preceding lemma.
+\end{proof}
+
+\begin{lemma}[The original whole spectrum square commutes]
+\label{lem:kn-mixed-purification-original-scheme-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurification_scheme_square}
+\uses{lem:kn-mixed-purification-original-ring-square}
+\leanok
+The original spectrum maps form a commuting square
+\[
+ \operatorname{Spec}P\longrightarrow\operatorname{Spec}B
+ \longrightarrow\operatorname{Spec}A
+ \;=\;
+ \operatorname{Spec}P\longrightarrow\operatorname{Spec}S
+ \longrightarrow\operatorname{Spec}A.
+\]
+The map to $\operatorname{Spec}B$ is the original purification followed
+by the original tensor-right projection, on the entire original schemes.
+\end{lemma}
+\begin{proof}
+Apply the contravariant spectrum functor to the equality of entire
+ring homomorphisms.  Its composition law identifies the resulting maps
+with the displayed original composites.
+\end{proof}
+
+\begin{lemma}[Original field-structure triangles]
+\label{lem:kn-mixed-purification-original-field-triangles}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedBase_structure_triangle,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPure_structure_triangle}
+\uses{lem:kn-global-trace-actual-purification}
+\leanok
+The original maps $\operatorname{Spec}B\to\operatorname{Spec}A$ and
+$\operatorname{Spec}P\to\operatorname{Spec}S$ preserve their original
+maps to $\operatorname{Spec}k$.
+\end{lemma}
+\begin{proof}
+Each original ring map is the indicated map of $k$-algebras.  Its
+coefficient identity on $k$ gives the structural triangle after applying
+the spectrum functor.  The mixed structural map is its defining original
+map induced by $k\to B$.
+\end{proof}
+
+These are ordinary algebra and scheme identities.  They do not assert a
+canonical-section commuting square, a counit normalization, a canonical
+trace, or a vanishing theorem.

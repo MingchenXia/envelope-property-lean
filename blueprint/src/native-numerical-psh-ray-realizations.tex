@@ -1,0 +1,96 @@
+\section{Realizing a varying-line Fubini--Study function on a fixed ray}
+\label{sec:native-numerical-psh-ray-realizations}
+
+We keep the notation of Section~\ref{sec:native-numerical-psh-generated-twists}.
+For an invertible sheaf $L$ and $a\in\mathbb Q$, $\mathcal H(L,a)$ denotes the
+set of fixed-ray Fubini--Study functions of class $a[L]$: functions
+$m^{-1}\max_j(\log\lVert s_j\rVert+w_j)$ with $s_j$ global sections, not all
+zero, of $L^{\otimes d}$, where $d=ma$.  The results below are BJ22,
+Proposition~2.19(iii), in the form $\mathcal H(M/m)\subset\mathcal H(M/m+A/(mr))$
+for an ample line $A$, which is how it enters the proofs of BJ22, Lemma~4.9
+and Theorem~4.15(i).
+
+\begin{lemma}[Transport along an isomorphism with a power of $L$]
+\label{lem:native-numerical-ray-realization-iso}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.toRayDatum,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.toRayDatum_eval,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_iso}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,def:native-line-whole-section-fs,def:native-line-whole-section-general-fs,thm:scheme-global-section-weighted-norm-isometry}
+Let $D=(M,m,(s_j,w_j)_j)$ be a nonzero varying-line datum and suppose
+$e:M\cong L^{\otimes d}$.  Then $\varphi_D\in\mathcal H(L,d/m)$.
+\end{lemma}
+\begin{proof}
+The datum $(L^{\otimes d},m,(e(s_j),w_j)_j)$ is a fixed-ray datum of class
+$d/m$.  An isomorphism of invertible sheaves preserves the norms of global
+sections at every point, so both data have the same function.  Since $e$ is
+injective on global sections, not all $e(s_j)$ vanish.
+\end{proof}
+
+\begin{theorem}[Realization through a generated twist]
+\label{thm:native-numerical-ray-realization-generated}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_generatedTwist}
+\leanok
+\uses{lem:native-numerical-ray-realization-iso,thm:native-numerical-generated-twist-exact}
+\source{bj22-trivval:prop:FS}
+Let $X$ be integral and proper, let $D=(M,m,\dots)$ be a nonzero varying-line
+datum, and let $T$ be an invertible sheaf with a finite family of global
+generators such that $M\otimes T\cong L^{\otimes d}$.  Then
+$\varphi_D\in\mathcal H(L,d/m)$.
+\end{theorem}
+\begin{proof}
+The generated twist $D_T$ of
+Theorem~\ref{thm:native-numerical-generated-twist-exact} is nonzero, has line
+$M\otimes T$, denominator $m$ and function $\varphi_D$.  Apply
+Lemma~\ref{lem:native-numerical-ray-realization-iso} to $D_T$.
+\end{proof}
+
+\begin{theorem}[Realization through an ample twist]
+\label{thm:native-numerical-ray-realization-ample}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_ampleTwist}
+\leanok
+\uses{thm:native-numerical-ray-realization-generated,lem:native-numerical-fs-power-datum,lem:scheme-ample-line-eventual-generation}
+\source{bj22-trivval:prop:FS,bj22-trivval:lem:twopsh}
+Let $X$ be integral and projective, let $D=(M,m,\dots)$ be a nonzero
+varying-line datum, let $A$ be ample, and let $r>0$ and $d\ge0$ be integers
+with $M^{\otimes r}\otimes A\cong L^{\otimes d}$.  Then
+$\varphi_D\in\mathcal H(L,d/(mr))$.
+\end{theorem}
+\begin{proof}
+Choose $q>0$ such that $A^{\otimes q}$ has a finite family of global
+generators.  The given isomorphism induces
+\[
+ M^{\otimes rq}\otimes A^{\otimes q}\cong(M^{\otimes r})^{\otimes q}\otimes A^{\otimes q}
+ \cong(M^{\otimes r}\otimes A)^{\otimes q}\cong(L^{\otimes d})^{\otimes q}\cong L^{\otimes dq}.
+\]
+The power $D^{(rq)}$ of Lemma~\ref{lem:native-numerical-fs-power-datum} is
+nonzero, has line $M^{\otimes rq}$, denominator $mrq$ and function
+$\varphi_D$.  By Theorem~\ref{thm:native-numerical-ray-realization-generated}
+with $T=A^{\otimes q}$, $\varphi_D\in\mathcal H(L,dq/(mrq))=\mathcal H(L,d/(mr))$.
+\end{proof}
+
+\begin{corollary}[Realization through an ample difference line]
+\label{cor:native-numerical-ray-realization-difference}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_ample_difference,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.lineClass_ampleDifference}
+\leanok
+\uses{thm:native-numerical-ray-realization-ample,thm:native-numerical-generated-line-sums,lem:native-numerical-line-tensor-power}
+Let $X$, $D=(M,m,\dots)$ be as in
+Theorem~\ref{thm:native-numerical-ray-realization-ample}, let $r>0$ and $d\ge0$,
+and suppose that the invertible sheaf
+$A=L^{\otimes d}\otimes(M^{\otimes r})^\vee$ is ample.  Then
+$\varphi_D\in\mathcal H(L,d/(mr))$.  The numerical class of $A$ is
+\[
+ [A]=mr\Big(\frac{d}{mr}[L]-[D]\Big).
+\]
+\end{corollary}
+\begin{proof}
+Evaluation $M^{\otimes r}\otimes(M^{\otimes r})^\vee\cong\mathcal O_X$ gives
+$M^{\otimes r}\otimes A\cong L^{\otimes d}$; apply
+Theorem~\ref{thm:native-numerical-ray-realization-ample}.  Numerical classes
+are additive on tensor products, change sign under duals and are multiplied
+by $n$ under $n$-th tensor powers, so $[A]=d[L]-r[M]=d[L]-mr[D]$.
+\end{proof}
+
+\begin{remark}
+To deduce the ampleness of $A$ from the numerical condition
+$\frac{d}{mr}[L]-[D]\in\operatorname{Amp}(X)$ one needs Kleiman's criterion:
+an invertible sheaf whose numerical class lies in the ample cone is ample.
+\end{remark}

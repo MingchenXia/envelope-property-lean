@@ -1,0 +1,46 @@
+\section{Native structure traces under the actual tensor square}
+
+\begin{lemma}[Every actual affine section has its original trace]
+\label{lem:kn-structure-trace-raw-top}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_top}
+\leanok
+For a finite free algebra $A\to B$, the value of the actual affine
+sheaf trace on every actual whole section of $\operatorname{Spec}B$
+is the native algebra trace under the genuine spectrum--sections
+isomorphisms.
+\uses{lem:kn-structure-trace-affine-every-coefficient}
+\end{lemma}
+\begin{proof}
+Evaluate the proved entire native affine section map on the given
+section. The original pushforward section equivalence is the actual
+spectrum--sections isomorphism for $B$, and the original unit section
+equivalence is the one for $A$. Substituting these equalities gives the
+asserted formula on the actual section.
+\end{proof}
+
+\begin{lemma}[The actual affine sheaf trace commutes with tensor base change]
+\label{lem:kn-structure-trace-tensor-sheaf-naturality}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_tensor_naturality}
+\leanok
+Let $A\to B$ be finite free and let $A\to S$ be any algebra. The
+actual sheaf traces of $B/A$ and $(S\otimes_A B)/S$ commute with the
+actual square of coefficient spectra. More precisely, pulling sections
+back along $\operatorname{Spec}(S\otimes_A B)\to\operatorname{Spec}B$
+and applying the latter trace is the same module morphism as applying
+the former trace and pulling back along
+$\operatorname{Spec}S\to\operatorname{Spec}A$. No trace agreement is
+an incoming hypothesis, and $S$ need not be flat over $A$.
+\uses{lem:kn-structure-trace-raw-top,lem:kn-nadel-tensor-trace-normalization}
+\end{lemma}
+\begin{proof}
+All source and target modules are quasicoherent on the affine base,
+so equality is detected on whole sections. The actual square map on
+whole sections is the pullback along its original upper spectrum map.
+Naturality of the actual spectrum--sections isomorphism identifies
+this with $b\mapsto1\otimes b$. The native finite-free trace
+base-change identity gives
+$\operatorname{Tr}_{S\otimes_A B/S}(1\otimes b)
+=\operatorname{Tr}_{B/A}(b)$ viewed in $S$. The actual trace formula
+on every whole section identifies both sides with the asserted sheaf
+maps. Thus those actual module morphisms are equal.
+\end{proof}

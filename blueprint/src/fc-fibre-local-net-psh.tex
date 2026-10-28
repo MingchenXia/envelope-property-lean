@@ -1,0 +1,57 @@
+\subsection{Original blowup psh potentials give genuine local directed limits}
+
+\begin{lemma}[Dyadic nets on the actual original blowup]
+\label{lem:fc-blowup-dyadic-finite-fs-net}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.exists_isFinFS_net_dyadic}
+\leanok
+\uses{thm:fc-finite-fs-dyadic-net}
+Every original psh potential of rational bidegree $(a,b)$ on the original
+analytic blowup is the decreasing infimum of a genuine directed finite
+Fubini--Study net of bidegrees $(a+2^{-n(\alpha)},b+2^{-n(\alpha)})$, with an
+increasing cofinal natural index $n$. No countability of the field is required.
+\end{lemma}
+\begin{proof}
+Apply the genuine dyadic-net regularization theorem to the actual original
+blowup Fubini--Study system and the rational class $(a,b)$. Its system and
+classes are exactly those defining the original blowup psh potential.
+\end{proof}
+
+\begin{lemma}[Normalized original chart potentials are directed convex PL limits]
+\label{lem:fc-normalized-chart-convex-pl-net}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_exists_convexPL_net_chartPotential}
+\leanok
+\uses{lem:fc-blowup-dyadic-finite-fs-net}
+For every original blowup psh potential of class $(a,0)$, the actual normalized
+potential on each genuine nonzero Rees chart over an integral original
+affine base chart is the decreasing infimum of a
+genuine directed net of original regular-unit convex PL functions. No
+countability or prescribed approximation data are assumptions.
+\end{lemma}
+\begin{proof}
+Write each of the constructed finite Fubini--Study approximants on the actual
+Rees chart by its original finite rational terms. The unchanged chart formula
+adds the bidegree normalization to its value. The two logarithmic chart scales
+are nonnegative. The approximants decrease, and their dyadic classes decrease,
+so these actual finite chart maxima decrease as well. Add the actual finite
+standard truncation at the cofinal natural index to make every chart term a
+finite original regular-unit convex PL function. These truncations decrease
+to minus infinity and hence do not change the directed infimum.
+
+The first logarithmic coefficient tends to $a$ and the second tends to zero.
+Continuity of the finite real coefficient expression identifies the infimum
+of the normalization terms with the unchanged original normalization.
+Addition commutes with these directed decreasing infima because each
+approximant and normalization term is finite above. The exact original
+finite-term formula therefore identifies the total infimum with the original
+normalized chart potential, retaining every original point and value.
+\end{proof}
+
+\begin{remark}[Relation to the source local psh class]
+\label{rmk:fc-directed-pl-source-relation}
+The source definition of locally psh uses decreasing sequences. The directed
+limit statement above is kept separate from that definition. Its curve
+comparison consequences follow directly from finite multiplicity-weighted
+norms commuting with directed decreasing infima and the directed-limit
+closure of source line subharmonic comparison. It does not assert that every
+directed net has a cofinal sequence.
+\end{remark}

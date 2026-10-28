@@ -1,0 +1,61 @@
+\section{Generated twists preserve the Fubini--Study function}
+\label{sec:native-numerical-psh-generated-twists}
+
+Let $p:X\to\operatorname{Spec}k$ be proper, with $k$ trivially valued.  A
+varying-line Fubini--Study datum $D$ consists of an invertible sheaf $M$, an
+integer $m>0$ and finitely many pairs $(s_j,w_j)$ of global sections of $M$
+and real weights; its function is
+$\varphi_D=m^{-1}\max_j(\log\lVert s_j\rVert+w_j)$ and its class is
+$[D]=m^{-1}[M]$.  The following is the special case
+$\mathcal H(L)+0\subset\mathcal H(L+L')$ of BJ22, Proposition~2.19(iii), for a
+globally generated $L'$; it is the basic step of the perturbations in the
+ample direction of BJ22, Lemma~4.9 and Theorem~4.15(i).
+
+\begin{theorem}[Exact generated twist of a varying-line datum]
+\label{thm:native-numerical-generated-twist-exact}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.generatedTwist,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.generatedTwist_eval,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.generatedTwist_numericalClass,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.IsRational.generatedTwist,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.Nonzero.generatedTwist}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,lem:scheme-original-global-generator-norms,thm:scheme-global-section-tensor-norm,thm:native-numerical-generated-line-sums,thm:native-numerical-fs-nonvanishing}
+\source{bj22-trivval:prop:FS}
+Let $D=(M,m,(s_j,w_j)_j)$ be a varying-line Fubini--Study datum and let $T$
+be an invertible sheaf with a finite family of global generators
+$(t_i)_i$.  Let $D_T$ be the datum with line $M\otimes T$, the same
+denominator $m$, and terms $(s_j\otimes t_i,w_j)_{j,i}$.  Then
+$\varphi_{D_T}(y)=\varphi_D(y)$ at every point $y$, and
+\[
+ [D_T]=[D]+\frac1m[T].
+\]
+If the weights of $D$ are rational, so are those of $D_T$.  If $X$ is
+integral and $D$ is nonzero, then $D_T$ is nonzero.
+\end{theorem}
+\begin{proof}
+Fix $y$.  Every global section of an invertible sheaf has norm at most one
+at $y$, and some generator $t_i$ has norm exactly one at $y$
+(Lemma~\ref{lem:scheme-original-global-generator-norms}).  Since
+$\lVert s_j\otimes t_i\rVert_y=\lVert s_j\rVert_y\lVert t_i\rVert_y$, we get
+$\log\lVert s_j\otimes t_i\rVert_y+w_j\le\log\lVert s_j\rVert_y+w_j$ for all
+$i$, with equality for a generator of norm one; this holds also when
+$\lVert s_j\rVert_y=0$, both sides being $-\infty$.  Taking the maximum over
+all pairs $(j,i)$ and dividing by $m$ gives $\varphi_{D_T}(y)=\varphi_D(y)$.
+The class of a tensor product is the sum of the classes, so
+$[D_T]=m^{-1}([M]+[T])$.  Every weight of $D_T$ is a weight of $D$.  On an
+integral scheme a datum is nonzero exactly when its function is somewhere
+different from $-\infty$
+(Theorem~\ref{thm:native-numerical-fs-nonvanishing}); this property passes
+from $D$ to $D_T$ by the equality of functions.
+\end{proof}
+
+\begin{corollary}[The same function in the twisted class]
+\label{cor:native-numerical-generated-twist-isfs}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_generatedTwist}
+\leanok
+\uses{thm:native-numerical-generated-twist-exact,def:native-numerical-whole-section-fs}
+Let $X$ be integral and projective, let $D$ be a nonzero varying-line
+Fubini--Study datum with denominator $m$, and let $T$ be an invertible
+sheaf with a finite family of global generators.  Then $\varphi_D$ is a
+varying-line Fubini--Study function of class $[D]+m^{-1}[T]$.
+\end{corollary}
+\begin{proof}
+The datum $D_T$ of Theorem~\ref{thm:native-numerical-generated-twist-exact}
+is nonzero, has class $[D]+m^{-1}[T]$ and has function $\varphi_D$.
+\end{proof}

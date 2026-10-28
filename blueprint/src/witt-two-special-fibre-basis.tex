@@ -1,0 +1,76 @@
+\section{A genuine affine basis from the original Witt scheme}
+\label{sec:witt-two-special-fibre-basis}
+
+Let $X$ be the ACTUAL categorical special fibre of an original
+scheme $\widetilde X\to\operatorname{Spec}W_2(k)$.
+
+\begin{theorem}[The actual original special-fibre projection is a closed immersion]
+\label{thm:witt-two-special-fibre-projection-closed-immersion}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.projection_isClosedImmersion}
+\leanok
+The original projection $j:X\to\widetilde X$ is a closed immersion.
+\uses{thm:witt-two-special-fibre-original-open-iso}
+\end{theorem}
+\begin{proof}
+The original Witt reduction is surjective: every element of $k$
+has its actual truncated Teichm\"uller lift. Its spectrum map is
+therefore a closed immersion. The actual categorical special-fibre
+projection is its base change along the given original structure
+morphism, so stability under base change proves the assertion.
+\end{proof}
+
+\begin{theorem}[Original affine inverse-image opens form a basis]
+\label{thm:witt-two-special-fibre-original-affine-basis}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.affineOpens,EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.affineOpens_affine,EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.isBasis_affineOpens}
+\leanok
+The family $\{j^{-1}U: U\subseteq\widetilde X\text{ original affine open}\}$
+is an ACTUAL topological basis of $X$. Every one of these original
+inverse-image opens is genuinely affine.
+\uses{thm:witt-two-special-fibre-projection-closed-immersion,thm:witt-two-special-fibre-original-affine-open}
+\end{theorem}
+\begin{proof}
+The affine opens form a basis of the original scheme
+$\widetilde X$. A closed immersion induces the subspace topology.
+For a map inducing the subspace topology, inverse images of a
+basis form a basis: every open neighborhood is the inverse image
+of an ambient open neighborhood, which can be refined around
+the given image point by an ambient basis member. The preceding
+actual inverse-image-open spectrum isomorphism proves each
+member affine. Thus this is the asserted original affine basis.
+\end{proof}
+
+\begin{corollary}[Every original special-fibre neighborhood has a lifted affine refinement]
+\label{cor:witt-two-special-fibre-original-affine-refinement}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.exists_affine_refinement}
+\leanok
+For every original open $W\subseteq X$ and every $x\in W$, there
+is an original affine open $U\subseteq\widetilde X$ with
+$x\in j^{-1}U\subseteq W$.
+\uses{thm:witt-two-special-fibre-original-affine-basis}
+\end{corollary}
+\begin{proof}
+Apply the neighborhood property of the preceding ACTUAL basis
+to the original point $x$ and its given neighborhood $W$.
+Each member of that indexed basis is literally the inverse
+image of its own original affine open, giving the claimed $U$.
+\end{proof}
+
+\begin{corollary}[Refinement below a specified original lifted neighborhood]
+\label{cor:witt-two-special-fibre-original-affine-refinement-below}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoSpecialFibreBasis.exists_affine_refinement_below}
+\leanok
+If $x\in W\subseteq X$ and $x\in j^{-1}V$ for an original
+open $V\subseteq\widetilde X$, the affine refinement can be
+chosen with $U\subseteq V$ as well as $x\in j^{-1}U\subseteq W$.
+\uses{cor:witt-two-special-fibre-original-affine-refinement}
+\end{corollary}
+\begin{proof}
+Choose an original affine $U_1$ with $x\in j^{-1}U_1\subseteq W$.
+The original image point $j(x)$ lies in $V\cap U_1$. The actual
+affine basis of $\widetilde X$ gives an affine $U$ containing
+$j(x)$ and contained in this intersection. Then $U\subseteq V$,
+and inverse image gives $x\in j^{-1}U\subseteq j^{-1}U_1\subseteq W$.
+\end{proof}
+
+This supplies genuine geometry for restrictions and eventual descent;
+it does not supply overlap homotopies or a global DI decomposition.

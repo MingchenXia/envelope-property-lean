@@ -1,0 +1,38 @@
+\section{The actual mixed coordinate chart algebra}
+\begin{definition}[The actual pair coordinate in the padded tuple]
+\label{def:central-embedding-actual-mixed-padded-pair-coordinate}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateAlgebra.pairCoordinate}
+\leanok
+The coordinate of the original pair $(a,b)$ is its actual finite pair index
+under the native finite-index equivalence, followed by successor for the one
+zero coordinate of the original generated-line projective construction.
+\end{definition}
+\begin{proof}
+Use the literal actual universe-lifted finite pair index and its native
+finite-index equivalence. This is the original coefficient padding convention.
+\end{proof}
+\begin{lemma}[The actual mixed chart polynomial map is surjective]
+\label{lem:central-embedding-actual-mixed-chart-polynomial-surjective}
+\uses{def:central-embedding-actual-mixed-padded-pair-coordinate}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedCoordinateAlgebra.mixedChartMap_surjective}
+\leanok
+Over any commutative coefficient ring, evaluation at the ACTUAL padded
+mixed tuple in the original $i$-th coordinate ring is surjective from the
+actual target chart polynomial ring at the $(i,i)$ coordinate.
+\end{lemma}
+\begin{proof}
+Internally send each actual source-chart variable $a\ne i$ to the actual
+target-chart variable corresponding to $(i,a)$. This is a valid target variable:
+if $(i,a)$ had the same padded coordinate as $(i,i)$, successor injectivity
+and injectivity of the actual finite-index equivalence would give $a=i$.
+The actual padded evaluation on that row is
+$(X_i/X_i)^d(X_a/X_i)=X_a/X_i$, the original source variable. On original
+coefficients it is the original coefficient inclusion. Native polynomial
+extensionality proves that evaluation followed by this constructed polynomial
+section is the identity. Every source polynomial is therefore the image of
+its actual section. No surjectivity, matching, closedness, domain or reducedness
+certificate is supplied.
+\end{proof}
+This is the actual polynomial algebra needed for the mixed map. Identification
+with its actual native whole projective chart, actual whole preimages and
+closed-immersion/whole-line conclusions remain subsequent obligations.

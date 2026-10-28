@@ -1,0 +1,47 @@
+\section{Literal affine coefficients in projective factorizations}
+
+\begin{lemma}[Transport along an actual coefficient-ring isomorphism]
+\label{lem:fc-projective-factorization-ring-isomorphism}
+\leanok
+\lean{EnvelopeProperty.ProjectiveFactorizationRingIso.postcomp_inverse}
+\uses{thm:fc-whole-affine-bundle-polynomial-embedding}
+Let $e:R\simeq S$ be a ring isomorphism.  If $f:Y\to\operatorname{Spec}R$
+admits a finite polynomial projective factorization, then its composite
+with $\operatorname{Spec}(e^{-1})$ admits such a factorization over the
+literal coefficient ring $S$.
+\end{lemma}
+\begin{proof}
+Base change the original polynomial closed embedding along
+$\operatorname{Spec}e:\operatorname{Spec}S\simeq\operatorname{Spec}R$.
+The base-changed projective space is the original polynomial
+projective space over $S$, and the base-changed immersion is closed.
+The map from $Y$ to the base change given by the identity of $Y$ and
+$f$ followed by $\operatorname{Spec}(e^{-1})$ is an isomorphism, since
+its composite with the first projection is the identity and that
+first projection is an isomorphism.  Precompose the base-changed
+closed embedding with this map.  The second-projection equality of
+the pullback gives the required original composite as the structure
+morphism.
+\end{proof}
+
+\begin{theorem}[A literal polynomial factorization of a projective morphism to a spectrum]
+\label{thm:fc-affine-projectivity-polynomial-factorization}
+\leanok
+\lean{EnvelopeProperty.ProjectiveFactorizationRingIso.of_isProjective}
+\uses{cor:fc-projective-bundle-to-polynomial-factorization,lem:fc-projective-factorization-ring-isomorphism}
+Every morphism $f:Y\to\operatorname{Spec}R$ that is projective in the
+finite quasi-coherent projective-bundle sense admits a closed
+factorization through a finite polynomial projective space over the
+literal original ring $R$.
+\end{theorem}
+\begin{proof}
+The whole affine-bundle comparison constructs a polynomial
+factorization of $f$ followed by the canonical affine isomorphism
+$\operatorname{Spec}R\simeq\operatorname{Spec}\Gamma(\operatorname{Spec}R,
+\mathcal O)$.  Apply the preceding coefficient transport using the
+canonical ring isomorphism
+$\Gamma(\operatorname{Spec}R,\mathcal O)\simeq R$.  The inverse
+spectrum morphism of this canonical isomorphism is exactly the
+inverse of that affine isomorphism.  Their composites cancel, so the
+resulting structure morphism is the literal original $f$.
+\end{proof}

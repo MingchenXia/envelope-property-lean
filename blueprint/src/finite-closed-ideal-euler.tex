@@ -1,0 +1,51 @@
+\section{The genuine Euler degree of an actual finite closed ideal}
+
+\begin{theorem}[The true closed-ideal sequence]
+\label{thm:fc-finite-closed-ideal-sequence}
+\leanok
+\lean{EnvelopeProperty.FiniteClosedIdealEuler.quotientMap, EnvelopeProperty.FiniteClosedIdealEuler.quotientMap_isLocallySurjective, EnvelopeProperty.FiniteClosedIdealEuler.quotientMap_epi, EnvelopeProperty.FiniteClosedIdealEuler.sequence, EnvelopeProperty.FiniteClosedIdealEuler.sequence_shortExact}
+For an actual closed immersion $g:D\hookrightarrow C$, the actual
+native ideal module is the genuine categorical kernel of
+$\mathcal O_C\to g_*\mathcal O_D$, and this original sequence is short
+exact. In particular the last arrow is a genuine sheaf epimorphism,
+derived from actual affine closed-immersion section surjectivity.
+\end{theorem}
+\begin{proof}
+The native ideal module is defined as that categorical kernel.
+Around any original point, choose an actual affine open neighborhood.
+The original closed immersion is surjective on its actual ring of
+sections there. These neighborhoods prove local sheaf surjectivity and
+hence the original module map is an epimorphism. The kernel sequence
+is therefore genuinely short exact.
+\end{proof}
+
+\begin{theorem}[Actual finite closed-ideal Euler degree]
+\label{thm:fc-finite-closed-ideal-euler}
+\leanok
+\lean{EnvelopeProperty.FiniteClosedIdealEuler.fieldSections_finite, EnvelopeProperty.FiniteClosedIdealEuler.normalizedEulerCharacteristic_idealModule, EnvelopeProperty.FiniteClosedIdealEuler.finrank_eq_of_idealModule_iso}
+\uses{thm:fc-finite-closed-ideal-sequence, thm:fc-scheme-coherent-euler-affine, thm:fc-scheme-coherent-euler-characteristic-exact}
+Let the actual structure morphism of $C$ over $k$ admit a projective
+factorization. If the literal composite $D\hookrightarrow C\to
+\operatorname{Spec}k$ is finite, then the normalized full Euler
+characteristic of its actual original ideal module is
+$-\dim_k\Gamma(D,\mathcal O_D)$. This original vector space is finite
+dimensional, derived from the actual geometry. Consequently two such
+original ideal modules which are actually isomorphic give finite
+closed subschemes of the same original field degree.
+\end{theorem}
+\begin{proof}
+Pushforward of the actual structure module through the original closed
+immersion is finite type and quasicoherent. The actual projective
+scheme is locally Noetherian, so the original kernel is also finite
+type and quasicoherent. Genuine full coherent Euler additivity applied
+to the preceding actual short exact sequence gives the difference as
+minus the Euler characteristic of that original pushforward. The
+literal finite structure map makes the original closed subscheme
+affine. Actual affine pushforward invariance and actual affine
+cohomology therefore identify its characteristic with the original
+field dimension of its original global sections. Their finite
+dimensionality also follows from genuine projective coherent section
+finiteness on the same pushforward and the true field-linear section
+isomorphism. Finally, actual ideal-module isomorphisms preserve the
+intrinsic normalized Euler characteristic, giving equal dimensions.
+\end{proof}

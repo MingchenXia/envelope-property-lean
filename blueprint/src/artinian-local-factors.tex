@@ -1,0 +1,111 @@
+\subsection{Actual nonreduced Artinian local factors}
+\label{subsec:artinian-local-factors}
+
+\begin{theorem}[Actual local-power CRT decomposition]
+\label{algebra:artinian-local-power-decomposition}
+\lean{EnvelopeProperty.ArtinianFactors.exists_positive_nilradical_pow_eq_bot,
+EnvelopeProperty.ArtinianFactors.exponent,
+EnvelopeProperty.ArtinianFactors.exponent_pos,
+EnvelopeProperty.ArtinianFactors.nilradical_pow_exponent,
+EnvelopeProperty.ArtinianFactors.PowerFactor,
+EnvelopeProperty.ArtinianFactors.powerEquiv,
+EnvelopeProperty.ArtinianFactors.powerEquiv_apply,
+EnvelopeProperty.ArtinianFactors.localIdempotent,
+EnvelopeProperty.ArtinianFactors.powerEquiv_localIdempotent}
+\leanok
+Every commutative Artinian ring $E$ has a positive integer $N$ with
+$\operatorname{nilrad}(E)^N=0$. The actual canonical map gives an
+$E$-algebra equivalence
+\[
+ E\simeq\prod_{m\in\operatorname{MaxSpec}E}E/m^N.
+\]
+Its $m$ coordinate sends every original element to its quotient class.
+\end{theorem}
+\begin{proof}
+The nilradical is genuinely nilpotent in an Artinian ring; increase a
+nilpotence exponent by one if necessary to make it positive. Mathlib's
+proved Chinese remainder producer identifies the quotient by that
+nilradical power with the product of the maximal-power quotients.
+The power is zero, so the quotient-by-zero equivalence gives the
+claimed actual equivalence and its original-element coordinate formula.
+The maximal spectrum is finite by Artinianity. This remains valid
+for the zero ring, whose maximal spectrum is empty.
+\end{proof}
+
+\begin{theorem}[Power factors are the actual localizations]
+\label{algebra:artinian-localization-decomposition}
+\lean{EnvelopeProperty.ArtinianFactors.localIdempotent_not_mem,
+EnvelopeProperty.ArtinianFactors.localIdempotent_mul_eq_zero,
+EnvelopeProperty.ArtinianFactors.powerFactor_isUnit_of_not_mem,
+EnvelopeProperty.ArtinianFactors.powerFactor_isLocalization,
+EnvelopeProperty.ArtinianFactors.powerFactorLocalizationEquiv,
+EnvelopeProperty.ArtinianFactors.powerFactorLocalizationEquiv_algebraMap,
+EnvelopeProperty.ArtinianFactors.localizationEquiv,
+EnvelopeProperty.ArtinianFactors.localizationEquiv_apply,
+EnvelopeProperty.artinianLocalizationEquiv,
+EnvelopeProperty.artinianLocalizationEquiv_apply}
+\leanok
+\uses{algebra:artinian-local-power-decomposition}
+For the same genuine exponent $N$, every factor $E/m^N$ is canonically
+isomorphic as an $E$-algebra to $E_m$. Thus the actual ring map is an
+$E$-algebra equivalence $E\simeq\prod_m E_m$.
+\end{theorem}
+\begin{proof}
+Use the preceding actual product equivalence to pull back the vector
+with coordinate one at $m$ and zero elsewhere. Its preimage $e_m$ is
+outside $m$: its class modulo $m^N$ is one, and $m^N\subseteq m$.
+It annihilates every element of $m^N$, as is checked on all product
+coordinates. Hence equality of quotient classes is killed by a
+multiplier outside $m$.
+If $s\notin m$, its residue modulo $m$ has an inverse. Lift this inverse
+to $a\in E$. Then $as-1\in m$, so its image in $E/m^N$ has nilpotent
+$N$th power. A nilpotent perturbation of one is a unit, proving that
+the class of $s$ is a unit. The quotient map is surjective; these unit
+and equality facts verify all actual localization axioms at $m$.
+Uniqueness of genuine localization therefore identifies $E/m^N$ with
+$E_m$, preserving the original ring map. Composing the actual product
+equivalence with the coordinate localization equivalences yields the
+claimed whole-ring equivalence, without reducedness assumptions.
+\end{proof}
+
+\begin{theorem}[Finite algebra factors and their actual residue fields]
+\label{algebra:finite-artinian-local-factors}
+\lean{EnvelopeProperty.artinianLocalization_moduleFinite,
+EnvelopeProperty.finiteAlgebraLocalizationEquiv,
+EnvelopeProperty.finiteAlgebraLocalizationEquiv_apply,
+EnvelopeProperty.finiteAlgebraLocalization_moduleFinite,
+EnvelopeProperty.artinianLocalizationResidueEquiv,
+EnvelopeProperty.artinianLocalizationResidueEquiv_apply,
+EnvelopeProperty.finrank_finiteAlgebraLocalization,
+EnvelopeProperty.finiteAlgebraMaximalSpectrumFinite,
+EnvelopeProperty.sum_finrank_finiteAlgebraLocalization}
+\leanok
+\uses{algebra:artinian-localization-decomposition,spectrum:local-algebra-norm-length}
+\source{fhx-envelope-20261028:lem:finite-flat-norm}
+For a finite-dimensional algebra $E$ over a field $H$, every actual
+factor $E_m$ is a finite-dimensional local Artinian $H$-algebra. The
+product equivalence is an $H$-algebra equivalence. Its actual local
+residue field is canonically the quotient field $E/m$, preserving
+the residues of every original element. This residue-field equivalence
+already holds at any maximal ideal without Artinianity. For an arbitrary
+commutative coefficient ring, module finiteness likewise descends through
+the Artinian localization map. Local lengths and residue
+degrees are genuine, so dimension is the sum of the local-factor
+dimensions, each equal to its length times residue degree.
+\end{theorem}
+\begin{proof}
+A localization of an Artinian ring is a surjective image of the
+original ring. Therefore its canonical linear map transfers finite
+$H$-dimension and Artinianity; localization at a maximal ideal is
+actually local. Restricting the original-ring algebra equivalence
+through $H\to E$ gives the genuine $H$-algebra equivalence.
+The local residue field is the actual prime residue field, supplied
+with its genuine fraction-field structure over $E/m$. At a maximal
+ideal $m$, that quotient is already a field, so its canonical
+map to this fraction field is bijective. Its true inverse algebra
+equivalence preserves every original element. Restricting this
+equivalence through the original coefficient map preserves arbitrary
+coefficients, without requiring Artinianity for the residue statement. Finite product dimension gives
+the sum, and the proved local length-dimension formula gives each
+length times residue-degree factor.
+\end{proof}

@@ -1,0 +1,9 @@
+\section{The original ring at a birational valuation center}
+\begin{theorem}\label{thm:scheme-trait-center-original-ring}
+Let $X$ and $Y$ be integral schemes, let $V$ be a local domain with fraction field the native function field $K$ of $X$, and let $q:\operatorname{Spec}V\to Y$ be a trait whose generic restriction is dominant. Suppose a morphism $p:Y\to X$ carries that entire generic restriction to the canonical generic $K$-point of $X$. If the native stalk of $Y$ at the center $c=q(\mathfrak m_V)$ is a valuation ring, then its canonical native local map into $V$ is bijective.
+\uses{thm:coefficient-slice-normalized-trait-fraction}
+\lean{EnvelopeProperty.SchemeTraitCenterOriginalRing.stalkClosedPointTo_bijective}\leanok
+\end{theorem}
+\begin{proof}
+The entire generic triangle identifies the actual native function field of $Y$ with $K$. The fraction restriction of $q$ and the canonical specialization from the generic stalk to the center show that the two maps from the center stalk to $K$ agree: both spectrum maps, composed with the canonical center-stalk morphism into $Y$, are exactly the given generic restriction. The center-stalk morphism is a monomorphism, so the maps agree before composition. Transporting the inclusion $V\hookrightarrow K$ through the native function-field isomorphism therefore makes $V$ an injective local overring of the center stalk in its own fraction field. A valuation ring has no larger local overring in its own fraction field with the same center. Explicitly, each fraction belongs to the valuation ring or has inverse there; if a fraction belongs to the local overring, its inverse in the valuation ring must be a unit by locality, which places the fraction back in the valuation ring. This proves surjectivity of the actual native local map; its composite into the fraction field is injective, so the map is also injective.
+\end{proof}

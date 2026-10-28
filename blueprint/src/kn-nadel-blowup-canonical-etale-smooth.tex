@@ -1,0 +1,57 @@
+\section{Basis-free whole native etale canonical base change}
+
+\begin{lemma}[The actual native differential over a standard-smooth affine chart]
+\label{lem:kn-canonical-standard-smooth-etale}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmoothAffine.structural_smooth,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmoothAffine.spectrumSectionBasis,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmoothAffine.affine_etale_isIso,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmoothAffine.etale_isIso,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmoothAffine.differential_composite_isIso}
+\leanok
+For any actual standard-smooth original affine algebra of relative
+dimension $n$ over the original field and any actual etale morphism from
+an arbitrary original scheme to its spectrum, the entire native top
+exterior differential is an isomorphism. No target frame or supplied
+canonical comparison is used.
+\end{lemma}
+\begin{proof}
+The genuine spectrum/global-section algebra isomorphism transfers actual
+standard smoothness to the original spectrum section ring, which internally
+produces its actual differential basis. On each original affine source
+chart the actual whole section-ring map is etale, hence formally etale.
+The native affine formally-etale differential theorem applies. The full
+native composition law and actual open-immersion differential identify
+these with the pullbacks of the same whole map. The actual affine point-cover
+detects the whole differential as an isomorphism.
+\end{proof}
+
+\begin{theorem}[The whole native etale canonical differential on any smooth scheme]
+\label{thm:kn-canonical-smooth-etale}
+\lean{EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.chartRing,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.chartMap,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.chartMap_point,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.chart_pullback_differential_isIso,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.chart_pullback_point_cover,
+EnvelopeProperty.Vanishing.NadelBlowupCanonicalEtaleSmooth.etale_isIso}
+\leanok
+\uses{lem:kn-canonical-standard-smooth-etale}
+Let $X$ be the SAME original smooth scheme of pure relative dimension $n$
+over the original field. For every actual etale morphism $g:Y\to X$,
+the SAME entire native canonical differential
+$g^*\omega_X\to\omega_Y$ is an isomorphism. No integrality or global
+freeness of the original differential module is assumed.
+\end{theorem}
+\begin{proof}
+At every original point, smoothness internally produces an actual affine
+standard-smooth neighbourhood and its genuine spectrum chart to $X$.
+Their actual Cartesian inverse images along $g$ are open immersions covering
+all original points of $Y$. The other projection is etale. The preceding
+standard-smooth chart theorem gives its entire differential isomorphism,
+with the original field structure retained by the actual affine-chart
+triangle. The genuine original chart differential is an isomorphism by
+open immersion. The full native exterior composition law and the actual
+Cartesian square therefore give the composite differential isomorphism.
+Open-composite cancellation and actual point-cover detection finish the
+SAME whole map. Every local basis is internally produced on these actual
+charts; no original global differential basis is supplied.
+\end{proof}

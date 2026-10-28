@@ -1,0 +1,90 @@
+\section{Chosen Witt Frobenius lifts extend along actual etale restrictions}
+\label{sec:witt-two-etale-lift-restriction}
+
+Let $k$ be the original perfect field of characteristic $p$, and let
+$A,A'$ be smooth algebras over its length-two Witt ring. Let
+$\beta:A\to A'$ be an actual etale Witt algebra map. Retain an
+arbitrary actual relative Frobenius lift on $A$, with its genuine
+reduction equation. No lift on $A'$ or commuting lifted square is
+supplied.
+
+\begin{lemma}[Actual etaleness of the original twisted restriction]
+\label{lem:witt-two-twisted-restriction-etale}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoEtaleLiftRestriction.twistMap_etale}
+\leanok
+The SAME original tensor restriction between the actual Witt
+Frobenius twists of $A$ and $A'$ is etale.
+\uses{thm:witt-two-source-native-untwist,def:witt-two-actual-twist-restriction-map}
+\end{lemma}
+\begin{proof}
+The original inverse-Witt-coefficient tensor equivalences identify
+the two actual twisted rings with $A$ and $A'$. On every pure
+tensor, the actual tensor restriction keeps its copied coefficient
+and applies $\beta$ to its original algebra factor. The two actual
+untwisting maps therefore commute with this restriction by the
+Witt algebra equation for $\beta$. Tensor induction proves the
+whole ring-map identity. Thus the SAME twisted restriction is
+obtained from $\beta$ by composing actual ring equivalences.
+Etaleness is invariant under these equivalences.
+\end{proof}
+
+\begin{theorem}[An actual restricted lift is produced]
+\label{thm:witt-two-etale-restricted-lift-exists}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoEtaleLiftRestriction.exists_restrictedLift}
+\leanok
+There exists an actual target relative Frobenius lift whose entire
+reduction is the original target relative Frobenius and whose
+composite with the SAME actual twisted restriction equals
+$\beta$ composed with the prescribed source lift, on EVERY
+original twisted element.
+\uses{lem:witt-two-twisted-restriction-etale,lem:witt-two-smooth-algebra-reduction,thm:witt-two-actual-residue-frobenius-naturality}
+\end{theorem}
+\begin{proof}
+Give $A'$ its actual source-twist algebra structure through the
+prescribed lift followed by $\beta$. Give its actual residue ring
+the composite reduction algebra structure. The original target
+residue Frobenius is a homomorphism of these source-twist
+algebras: actual reduction naturality, the supplied source lift's
+reduction equation, and the proved whole residue Frobenius
+naturality give the equation on EVERY source-twist element.
+The actual target reduction is surjective and its ENTIRE kernel
+has square zero, as derived from smooth Witt prime exactness.
+The first lemma gives formal smoothness of the actual twisted
+restriction. Its infinitesimal lifting property produces a
+source-twist algebra homomorphism from the actual target twist
+to $A'$. Its source-twist algebra equation is precisely the
+required original lifted commutation equation. Evaluating that
+same equation on the copied coefficient image proves the
+produced map is a homomorphism over the original copied Witt
+base. The lifting equation is its required entire original
+relative Frobenius reduction. Thus both equations follow from
+the produced actual homomorphism; neither is an input matching
+certificate.
+\end{proof}
+
+\begin{theorem}[The produced actual restriction lift is unique]
+\label{thm:witt-two-etale-restricted-lift-unique}
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoEtaleLiftRestriction.restrictedLift_unique}
+\leanok
+Any two actual target relative Frobenius lifts with the original
+reduction equation and the same prescribed commutation along the
+actual twisted restriction are equal as whole copied-Witt-base
+algebra homomorphisms.
+\uses{lem:witt-two-twisted-restriction-etale,lem:witt-two-smooth-algebra-reduction}
+\end{theorem}
+\begin{proof}
+Retain the actual source-twist algebra structure on $A'$ through
+the prescribed source lift and $\beta$. Each target lift is a
+homomorphism of these algebras by its given actual commutation
+equation. Their reductions are the SAME original target residue
+Frobenius. Formal unramifiedness of the actual twisted restriction
+implies injectivity on lifts across the actual square-zero
+reduction kernel. The two source-twist algebra homomorphisms are
+therefore equal, so their underlying ring maps and original
+copied-Witt-base algebra maps are equal. No uniqueness or
+restriction-matching conclusion is supplied as an input.
+\end{proof}
+
+This constructs actual etale restriction lifts at the original
+Witt algebra level. Actual scheme overlap comparison, composition of these restrictions, higher coherent overlap
+homotopies and global Deligne--Illusie remain further producers.

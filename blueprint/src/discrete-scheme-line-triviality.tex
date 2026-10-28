@@ -1,0 +1,42 @@
+\section{Actual line sheaves on the original finite closed scheme}
+
+\begin{theorem}[True global triviality on the same discrete scheme]
+\label{thm:fc-discrete-scheme-line-triviality}
+\leanok
+\lean{EnvelopeProperty.DiscreteSchemeLineTriviality.nonempty_iso_unit}
+\uses{thm:scheme-original-module-isomorphism-gluing}
+Every actual original invertible module sheaf on an actual discrete scheme
+has a genuine whole module-sheaf isomorphism with its original structure
+line. This does not require a supplied global frame or any finiteness premise.
+\end{theorem}
+\begin{proof}
+The singleton opens form an actual original open cover. Original cover-local
+invertibility restricts to an actual frame on each singleton. Distinct
+singleton opens have empty intersection; actual structure sections on the
+empty open form the zero ring, so every actual module there is zero and the
+restricted original frame morphisms coincide. The genuine original module
+morphism sheaf glues these compatible local isomorphisms and their inverses
+into a whole original module-sheaf isomorphism.
+\end{proof}
+
+\begin{theorem}[Any true line retains the finite closed scheme's original degree]
+\label{thm:fc-finite-closed-line-degree}
+\leanok
+\lean{EnvelopeProperty.DiscreteSchemeLineTriviality.discreteTopology_of_finite_sections, EnvelopeProperty.DiscreteSchemeLineTriviality.nonempty_iso_unit_on_finite_closed, EnvelopeProperty.DiscreteSchemeLineTriviality.fieldSections_finrank_eq_on_finite_closed}
+\uses{thm:fc-discrete-scheme-line-triviality, thm:fc-affine-scheme-local-degrees}
+An actual affine scheme with original section algebra finite over the
+original field has discrete original topology. Hence every actual line on
+an actual finite closed subscheme of the original projective scheme is
+actually globally trivial. Its original field-linear global-section
+dimension equals that of the same original structure sheaf.
+\end{theorem}
+\begin{proof}
+The original finite section algebra is Artinian, so its actual prime
+spectrum is discrete. The whole canonical original affine scheme
+isomorphism transfers this topology to the same original scheme.
+For the actual finite closed subscheme, affineness comes from the actual
+finite structure morphism and section finiteness comes from original closed
+projective geometry. Apply the genuine preceding whole line triviality and
+then the original field-linear global-section functor. No global frame,
+rank, degree, or scalar comparison is supplied.
+\end{proof}

@@ -1,0 +1,55 @@
+\section{The original Cech differential is a derivation}
+
+\begin{lemma}[The whole ordered Cech product rule]
+\label{lem:native-cech-ordered-cup-leibniz}
+\uses{def:native-cech-ordered-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.cup_cech_leibniz}
+For the original relative Frobenius forms and the original all-tuple
+sheaf Cech complex, the actual ordered product satisfies the whole
+sheaf-map identity
+\[
+ \delta\circ\smile=\smile\circ(\delta\otimes1)
+      +(-1)^j\smile\circ(1\otimes\delta),
+ \qquad \check C^j(E^q)\otimes\check C^{j'}(E^r)
+       \longrightarrow\check C^{j+j'+1}(E^{q+r}).
+\]
+The two output indices $(j+1)+j'$ and $j+(j'+1)$ are transported
+by their original equalities with $j+j'+1$. These are the original
+indexed objects and original cup morphisms. No covering, finiteness,
+or smoothness assertion is needed for this identity.
+\end{lemma}
+\begin{proof}
+\leanok
+Project to an original full tuple $i$ of length $j+j'+2$. Each
+native coface projects to the original tuple with its indicated
+entry deleted and restricts from that intersection to the full
+intersection. The original differential is its finite signed sum.
+Selecting a subtuple and restricting to a further original
+intersection composes the same restriction maps. Consequently,
+every projected coface of the product is the original exterior
+product after the two corresponding composite subtuple selections.
+
+Split the deletions into positions $0,\ldots,j$ and
+$j+1,\ldots,j+j'+1$. For $k\leq j$, deleting $k$ before selecting
+the prefix is the same as selecting the prefix of length $j+2$
+and deleting its $k$th entry; the suffix now starts in position
+$j+1$. These are exactly the source-left cofaces except their last
+face. For $k=j+1+l$, the prefix stays unchanged and the suffix
+has its $(l+1)$st entry deleted. These are exactly the source-right
+cofaces except their first face. The latter signs agree because
+$(-1)^{j+1+l}=(-1)^j(-1)^{l+1}$.
+
+The omitted last-left and first-right faces have the identical
+prefix ending in position $j$ and identical suffix beginning in
+position $j+1$. Their entire original factor maps therefore coincide.
+Their coefficients $(-1)^{j+1}$ and $(-1)^j$ sum to zero.
+This proves the finite alternating-sum identity in the original
+additive group of morphisms to this original tuple factor.
+The actual tensor construction is additive in each original input
+map, so its signed sums are precisely the tensor maps of the
+original source differentials. Thus the projected identity is
+exactly the displayed product rule. All original product projections
+jointly detect morphism equality, proving the whole sheaf-map
+identity.
+\end{proof}

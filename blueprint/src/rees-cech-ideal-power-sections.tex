@@ -1,0 +1,36 @@
+\section{Coherent ideal powers and the original Rees degrees}
+
+\begin{lemma}[The ideal-power Čech complex]
+\label{lem:fc-rees-cech-ideal-power-sections}
+\leanok
+\lean{EnvelopeProperty.FcReesCechIdealPowerSections.baseScalar, EnvelopeProperty.FcReesCechIdealPowerSections.chartLinearIso, EnvelopeProperty.FcReesCechIdealPowerSections.chartLinearIso_naturality, EnvelopeProperty.FcReesCechIdealPowerSections.factorIso, EnvelopeProperty.FcReesCechIdealPowerSections.termIso, EnvelopeProperty.FcReesCechIdealPowerSections.termIso_projection, EnvelopeProperty.FcReesCechIdealPowerSections.factorIso_face, EnvelopeProperty.FcReesCechIdealPowerSections.termIso_coface, EnvelopeProperty.FcReesCechIdealPowerSections.termIso_differential, EnvelopeProperty.FcReesCechIdealPowerSections.complexIso, EnvelopeProperty.FcReesCechIdealPowerSections.homologyIso}
+\uses{lem:fc-rees-cech-degree-complex}
+Let $X\to\operatorname{Spec}R$ be separated, let $I\subseteq R$ be an
+ideal, and let $(U_i)$ be a finite linearly ordered family of affine opens
+of $X$.  For every $d\geq0$, the ordered Čech complex of the ideal
+sheaf $I^d\mathcal O_X$, regarded as an $R$-linear complex through the
+original structural map, is canonically isomorphic to the degree-$d$
+complex obtained from the schematic Rees family.  Its map on every
+intersection is the identification with
+$(I\mathcal O_X(U_{i_0}\cap\cdots\cap U_{i_q}))^d$; in particular the
+comparison preserves every restriction and every coface.  It therefore
+identifies their cohomology in every degree.
+\end{lemma}
+\begin{proof}
+On an affine open $V$, the sheaf associated to the extended ideal power
+has sections equal to that ideal power inside $\mathcal O_X(V)$.  The
+structural map from $R$ to these sections is the original coefficient
+map, so this identification is $R$-linear.  If $V\subseteq W$ are affine,
+both maps from sections over $W$ to the ideal power over $V$ are the
+restriction in the structure sheaf, hence agree on every section.
+Every intersection of members of the affine family is affine because
+$X$ is separated.  Taking the product of the affine identifications over
+all increasing intersection indices gives an isomorphism in each Čech
+degree.  A coface is an intersection projection followed by precisely
+one of these restrictions; the restriction equality therefore proves
+that the whole coface square commutes.  Taking the alternating finite
+sum proves compatibility with the differential.  These termwise
+isomorphisms give an isomorphism of complexes.  Restriction of scalars
+along the affine section isomorphism is exact, so passage to cohomology
+gives the asserted original $R$-linear cohomology comparison.
+\end{proof}

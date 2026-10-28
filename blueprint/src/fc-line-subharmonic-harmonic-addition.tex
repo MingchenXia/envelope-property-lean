@@ -1,0 +1,49 @@
+\subsection{Adding actual harmonic functions}\label{subsec:fc-line-subharmonic-harmonic-addition}
+
+\begin{definition}[Harmonicity on an open line domain]\label{def:fc-actual-line-harmonic-on}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineHarmonicOn}
+\leanok
+\uses{def:fc-actual-harmonic}
+A real function $h$ is harmonic on $\Omega$ if its restriction to every
+actual standard affinoid contained in $\Omega$ is an actual harmonic function
+in the logarithmic-coordinate sense.
+\end{definition}
+
+\begin{lemma}[Continuity of actual harmonic functions on open domains]\label{lem:fc-line-harmonic-on-continuity}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineHarmonicOn.continuousOn, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineHarmonicOn.const, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineHarmonicOn.mono}
+\leanok
+\uses{def:fc-actual-line-harmonic-on, lem:fc-harmonic-retraction,
+  thm:fc-standard-affinoid-basis}
+On an open domain $\Omega$, an actual harmonic function is continuous.
+Constants are harmonic, and harmonic functions restrict to smaller domains.
+\end{lemma}
+
+\begin{proof}
+Every point of $\Omega$ belongs to the interior of an actual standard affinoid
+contained in $\Omega$. The given function is actually harmonic on that
+affinoid, hence continuous there. A set containing a neighbourhood of the
+point therefore witnesses continuity at the point. This proves continuity
+on $\Omega$. Constants and restriction follow directly from the literal
+finite-coordinate definition on each test affinoid.
+\end{proof}
+
+\begin{lemma}[Addition of actual harmonic functions]\label{lem:fc-line-subharmonic-harmonic-addition}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add_harmonic, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add_harmonic_of_continuousOn, EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.add_const}
+\leanok
+\uses{def:fc-actual-line-subharmonic, def:fc-actual-line-harmonic-on,
+  lem:fc-line-harmonic-on-continuity, lem:fc-harmonic-vector-space}
+If $u$ is subharmonic and $h$ is harmonic on the open domain $\Omega$, then
+$u+h$ is subharmonic. In particular, addition of a real constant preserves
+subharmonicity.
+\end{lemma}
+
+\begin{proof}
+Continuity of the finite real function $h$ and upper semicontinuity of $u$
+make $u+h$ upper semicontinuous; addition of a finite real number preserves
+exclusion of $+\infty$. On any actual test affinoid $U$, if $u+h\le k$ on
+the boundary for actual harmonic $k$, then $u\le k-h$ on that boundary.
+The actual function $k-h$ is harmonic by vector-space closure. Comparison
+for $u$ therefore gives $u\le k-h$ throughout $U$, which is equivalent to
+$u+h\le k$. For a constant $h$, its continuity and harmonicity hold on any
+domain, even without the openness condition.
+\end{proof}

@@ -1,0 +1,45 @@
+\section{Every original finite-family preimage of the intrinsic ample cone is open}
+\label{sec:native-numerical-ample-family-openness}
+
+\begin{theorem}[Finite-family openness at every intrinsic ample class]
+\label{thm:native-numerical-ample-family-openness}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.exists_ampleCone_lineFamily_radius, EnvelopeProperty.NativeRealNumericalClasses.isOpen_lineFamilyMap_preimage_ampleCone}
+\leanok
+\uses{def:native-numerical-ample-cone,thm:native-numerical-finite-ample-openness}
+\source{bj22-trivval:sec:tc}
+Let $X$ be integral and projective. For every class $\theta$ in its
+original intrinsic ample cone and every finite family $(B_i)$ of
+original invertible lines, there is $\varepsilon>0$ such that
+\[
+ |a_i|<\varepsilon\quad(i\in I)
+ \quad\Longrightarrow\quad
+ \theta+\sum_i a_i[B_i]\in\operatorname{Amp}(X).
+\]
+In particular the inverse image of this entire ample cone under every
+original finite line-family coefficient map is open in the ordinary
+real coefficient space. Global finite dimensionality of the original
+numerical quotient is not assumed or concluded.
+\end{theorem}
+\begin{proof}
+Fix the finite original line-family map $F:\mathbb R^I\to N^1(X)$.
+For a convex cone $C$, consider the set $D$ of points $x$ for which
+$x+F(a)$ belongs to $C$ whenever every coefficient of $a$ is sufficiently
+small. This set is itself a convex cone. Indeed, if the radius for $x$
+is $\varepsilon$ and $r>0$, then the radius $r\varepsilon$ works for
+$rx$, because $rx+F(a)=r(x+F(a/r))$. If $x,y\in D$, evaluation at zero
+gives $y\in C$, so the radius for $x$ also works for $x+y$, by adding
+this same $y$. These identities use the whole linear map $F$, not a
+finite set of numerical tests.
+
+Apply this construction to the intrinsic ample cone. The preceding
+geometric finite-family openness theorem puts every original ample
+line class in $D$. Convex-cone hull minimality therefore puts every
+class of the intrinsic ample cone in $D$, proving the radius assertion.
+
+If $F(b)$ is ample, choose the resulting radius at this very class.
+The finite-coordinate neighborhood defined by
+$|a_i-b_i|<\varepsilon$ is ordinary open and contains $b$.
+For every $a$ in it, the radius assertion gives
+$F(b)+F(a-b)=F(a)$ in the ample cone. These neighborhoods prove
+openness of the entire inverse image of the same intrinsic ample cone.
+\end{proof}

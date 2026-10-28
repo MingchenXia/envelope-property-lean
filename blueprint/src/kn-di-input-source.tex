@@ -1,0 +1,72 @@
+\begin{definition}[The actual finite exterior-degree source]
+\label{def:kn-actual-di-source}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.twistStructure,EnvelopeProperty.Vanishing.DeligneIllusieInput.summandNat,EnvelopeProperty.Vanishing.DeligneIllusieInput.sourceNat,EnvelopeProperty.Vanishing.DeligneIllusieInput.source,EnvelopeProperty.Vanishing.DeligneIllusieInput.realizationFunctor}
+\leanok
+Let $f:X\to\operatorname{Spec}k$ be a scheme over a field of prime
+characteristic $p$, let $X'$ be its actual relative Frobenius twist,
+and give $X'$ the structural map defined by the second projection.
+For $n\geq0$ take the finite direct sum of the original sheaves
+$\Omega^i_{X'/k}$, each placed in its own natural cochain degree $i$,
+for $0\leq i\leq n$.  Extend this complex by zero to integer degrees.
+For an invertible $L'$ on $X'$, its realized source is obtained by
+termwise tensoring with $L'$, forgetting to abelian sheaves, and
+localizing in their derived category.  This construction does not
+require a decomposition theorem.
+\end{definition}
+
+\begin{lemma}[Exact additive tensoring by an actual invertible line]
+\label{lem:kn-line-tensor-exact}
+\lean{EnvelopeProperty.Vanishing.CartierConnection.tensorFunctor,EnvelopeProperty.Vanishing.CartierConnection.tensorFunctor_isEquivalence,EnvelopeProperty.Vanishing.CartierConnection.tensorFunctor_additive}
+\leanok
+For an actual invertible module $L'$ on a scheme, the original
+functor $M\mapsto M\otimes L'$ is an additive equivalence of the
+actual module category, hence is exact.
+\end{lemma}
+\begin{proof}
+Tensoring by the actual dual of $L'$ is an inverse: evaluation,
+tensor symmetry and associativity give the two original inverse
+comparisons with the tensor unit.  Every equivalence preserves zero
+objects, binary products and coproducts.  The biproduct expression
+for the sum of two morphisms therefore shows that this original
+functor is additive.  Preservation of finite limits and colimits
+then gives exactness.
+\end{proof}
+
+\begin{lemma}[Extraction of the actual exterior-degree summands]
+\label{lem:kn-di-exterior-summand-extraction}
+\lean{EnvelopeProperty.Vanishing.DeligneIllusieInput.summandInclusionNat,EnvelopeProperty.Vanishing.DeligneIllusieInput.summandProjectionNat,EnvelopeProperty.Vanishing.DeligneIllusieInput.summandInclusion_projection_nat,EnvelopeProperty.Vanishing.DeligneIllusieInput.realizedSummandIso,EnvelopeProperty.Vanishing.DeligneIllusieInput.realized_summand_retract,EnvelopeProperty.Vanishing.DeligneIllusieInput.subsingleton_realized_summand_hom,EnvelopeProperty.Vanishing.DeligneIllusieInput.subsingleton_hodge_summand_hom,EnvelopeProperty.Vanishing.DeligneIllusieInput.subsingleton_hodge_H}
+\leanok
+\uses{def:kn-actual-di-source,lem:kn-line-tensor-exact}
+For every $0\leq i\leq n$, the original single sheaf
+$(\Omega_{X'/k}^i\otimes L')[-i]$ is a retract of the realized
+line-twisted decomposition source.  Thus vanishing of the latter's
+derived Hom from any fixed object forces vanishing of the derived
+Hom into this actual exterior-degree summand.  Taking the source to
+be the constant integer sheaf in total degree $t$, the actual
+displaced-single/Ext comparison gives the corresponding native
+$H^{t-i}(X',\Omega_{X'/k}^i\otimes L')=0$ whenever $t-i\geq0$.
+\end{lemma}
+\begin{proof}
+In the finite coproduct defining the source, take its original
+inclusion and the projection that is the identity on the chosen
+summand and zero on every other summand.  Their composite on the
+chosen summand is the identity.  Extension by zero, tensoring,
+forgetting scalars and localization are functors, so they preserve
+this exact retraction equation.  Extension of a single complex is
+the single complex in the embedded degree; termwise functors also
+commute with single complexes.  These canonical comparisons identify
+the realized chosen summand with precisely
+$(\Omega_{X'/k}^i\otimes L')[-i]$.  If two morphisms into that summand
+have equal composites with its inclusion, compose with its
+projection to obtain their equality.  When the Hom into the whole
+source is zero, their inclusion composites are equal, proving the
+asserted vanishing.  For the constant integer sheaf in total degree
+$t$, shift both single complexes by $t$.  The source becomes the
+single constant sheaf in degree zero and the target becomes the
+single original exterior sheaf shifted by $t-i$.  The defining
+single-complex/Ext comparison therefore identifies this Hom group
+with $\operatorname{Ext}^{t-i}(\mathbb Z,
+\Omega_{X'/k}^i\otimes L')$.  This is the native sheaf cohomology
+group by definition, proving its vanishing as well.
+\end{proof}
+

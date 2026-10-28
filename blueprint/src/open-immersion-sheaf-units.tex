@@ -1,0 +1,41 @@
+\section{The actual sheafification units under open-immersion canonical comparison}
+
+\begin{lemma}\label{sc0-open-immersion-sheaf-units:restricted}
+\lean{EnvelopeProperty.CanonicalGeometry.openImmersionSheafificationIso_inv_unit}
+\leanok
+\uses{sc0-canonical-port:geom:sheafification-open-immersion-restriction}
+For an arbitrary original module presheaf and actual open immersion, the inverse actual sheafification restriction comparison carries the SAME restricted-site sheafification unit to the SAME original restricted sheafification unit.
+\end{lemma}
+\begin{proof}
+The inverse comparison is actual sheafification of the restricted original unit followed by the actual counit. By the genuine sheafification adjunction this is precisely the map corresponding to that restricted original unit. The inverse law of the adjunction therefore gives the entire original unit identity.
+\end{proof}
+
+\begin{lemma}\label{sc0-open-immersion-sheaf-units:exterior}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafOpenImmersionIso_inv_unit}
+\leanok
+\uses{sc0-open-immersion-sheaf-units:restricted}
+For every exterior degree, the actual canonical open-immersion sheaf isomorphism is compatible with BOTH SAME original exterior sheafification units and the SAME actual raw exterior coefficient isomorphism.
+\end{lemma}
+\begin{proof}
+The actual exterior sheaf isomorphism is the preceding genuine sheafification restriction comparison followed by actual sheafification of the inverse original raw exterior coefficient isomorphism. Invert this composite. The original sheafification unit is natural under the original raw coefficient map. Compose this naturality identity with the preceding restricted-unit identity. This proves the entire original map identity, before evaluating any chosen coordinate vector.
+\end{proof}
+
+\begin{theorem}\label{sc0-open-immersion-sheaf-units:bijective}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafificationUnit_bijective_iff_openImmersion}
+\leanok
+\uses{sc0-open-immersion-sheaf-units:exterior}
+The actual exterior sheafification unit is bijective on an original open in the domain of an actual open immersion if and only if it is bijective on its original image open. No smoothness, freeness or chosen chart is a premise.
+\end{theorem}
+\begin{proof}
+Evaluate the preceding entire unit identity on the original open. Its two side comparisons are bijective: the raw coefficient comparison by the genuine inverse structure-ring and Kähler isomorphisms, and the sheaf comparison by its actual inverse. Composing with these genuine bijections preserves and reflects bijectivity. Thus the two original unit maps are bijective simultaneously.
+\end{proof}
+
+\begin{theorem}\label{sc0-open-immersion-sheaf-units:original-chart}
+\lean{EnvelopeProperty.CanonicalGeometry.affineChartExteriorSheafificationMap_bijective,EnvelopeProperty.CanonicalGeometry.standardSmoothAffineChartExteriorSheafificationMap_bijective}
+\leanok
+\uses{sc0-open-immersion-sheaf-units:bijective,sc0-affine-exterior-sections:unit}
+On every original affine open with an actual coordinate cotangent basis, the SAME original exterior sheafification unit is bijective in every degree. An actual original standard-smooth chart internally supplies that basis; no unit comparison or chosen basis is a premise of this final chart endpoint.
+\end{theorem}
+\begin{proof}
+Take the original affine chart spectrum isomorphism onto this actual open. Its actual structural map equals the genuine coordinate affine structural map by the already proved original structure-map comparison. Transport the proved unit bijectivity on the literal spectrum along this equality, then use the preceding genuine open-immersion equivalence. The original image of the whole spectrum is exactly the original affine open. For a standard-smooth chart, its actual standard differential basis supplies the input basis in the independently given exterior degree.
+\end{proof}

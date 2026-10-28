@@ -1,0 +1,46 @@
+\section{The genuine Gauss point on each literal original test configuration}
+
+\begin{definition}\label{def:native-test-configuration-gauss-point}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitGaussPoint, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.totalGaussPoint}
+\leanok
+Let $C$ be a literal original test configuration for $X$ over a field $k$,
+let $v$ be a valuation of $k$, let $x$ be an original native point of $X$
+extending $v$, and let $r>0$. Construct the actual completed-field Laurent
+Gauss product point of $X\times\mathbf G_m$, map it through the inverse
+original noncentral-open trivialization of $C$, and then through the
+original open inclusion into the original total scheme. Denote the
+resulting actual native total-space point by $y_{C,x,r}$.
+\uses{thm:native-point-laurent-gauss-projections,thm:native-test-configuration-unit-fibre}
+\end{definition}
+\begin{proof}
+The preceding construction supplies the actual whole product point and
+its original coefficient and parameter projections from $H(x)$.
+The literal original source action and fibre-one isomorphism supply the
+actual whole scheme isomorphism between the original noncentral open
+and $X\times\mathbf G_m$. Its inverse and the actual open inclusion give
+the asserted actual total-space point. No selected lift or projection
+matching data are added as hypotheses.
+\end{proof}
+
+\begin{theorem}\label{thm:native-test-configuration-gauss-point-base}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitGaussPoint_originalProjection, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.totalGaussPoint_projection, EnvelopeProperty.NativeTestConfiguration.TestConfiguration.relativeGaussPoint}
+\leanok
+The whole polynomial-base image of $y_{C,x,r}$ equals the original
+polynomial Gauss point of $v$ at radius $r$. Thus $y_{C,x,r}$ is an actual
+relative valued point of the original projection $C\to\mathbf A^1_k$
+with precisely that prescribed valuation. On the original noncentral
+open its whole $X$ projection recovers exactly $x$.
+\uses{def:native-test-configuration-gauss-point,thm:native-point-laurent-gauss-projections}
+\end{theorem}
+\begin{proof}
+The whole original noncentral-open trivialization retains the actual
+parameter morphism to the original affine line. Cancel its isomorphism
+to identify the polynomial-base composite of the constructed point
+with the original product parameter projection. The actual completed-field
+Gauss point projects to the entire original polynomial Gauss point by the
+preceding theorem. This proves the prescribed-base equation, hence the
+relative valued-point assertion. Cancelling the same isomorphism in the
+original first projection gives the entire original $X$-point equality.
+These arguments compare actual native valued points, not only their
+supports, valuations of the parameter, or chosen affine coordinates.
+\end{proof}

@@ -1,0 +1,43 @@
+\subsection{Connectedness detected by the actual infinitesimal idempotents}
+
+\begin{lemma}[The actual compatible-section ring detects nonemptiness]
+\label{lem:fc-compatible-sections-nontrivial-first-model}
+\leanok
+\lean{EnvelopeProperty.FibreCompatibleConnectedness.modelOne_globalSections_nontrivial}
+Let $X_n$ be the literal order-$n$ ideal-power thickenings of a scheme over
+an affine base. If the ring of compatible whole sections on the positive
+orders is nontrivial, then the whole global-section ring of $X_1$ is
+nontrivial.
+\end{lemma}
+\begin{proof}
+Suppose that $0=1$ in the global-section ring of $X_1$. The constant zero
+and constant one compatible families are idempotents. Their order-one
+coordinates coincide. Restriction to order one is injective on compatible
+idempotents: every positive-order transition is a nilpotent thickening and
+idempotents have unique lifts through these transitions. The two whole
+families therefore coincide, contradicting nontriviality of their ring.
+\end{proof}
+
+\begin{theorem}[Local actual compatible sections imply connectedness]
+\label{thm:fc-compatible-local-sections-connected-first-model}
+\leanok
+\lean{EnvelopeProperty.FibreCompatibleConnectedness.modelOne_connectedSpace}
+\uses{lem:fc-compatible-sections-nontrivial-first-model}
+If the ring of actual compatible whole sections on the positive
+ideal-power thickenings is local, the entire order-one scheme $X_1$ is
+connected. No reduction of $X_1$ or equality of its global sections with
+its coefficient field is assumed.
+\end{theorem}
+\begin{proof}
+The preceding lemma makes the global-section ring of $X_1$ nontrivial, so
+$X_1$ is nonempty: the section ring of the empty scheme is the zero ring.
+An arbitrary global idempotent on $X_1$ has a unique compatible idempotent
+family on all positive orders. In a local ring an idempotent $e$ is zero or
+one. Indeed either $e$ is a unit, in which case $e^2=e$ gives $e=1$, or
+$1-e$ is a unit, in which case $(1-e)^2=1-e$ gives $1-e=1$ and $e=0$.
+Evaluating the family at order one makes the original idempotent zero or
+one. The genuine correspondence between global idempotents and clopen
+subsets of an arbitrary scheme consequently makes every clopen subset of
+$X_1$ empty or the whole space. Together with nonemptiness this is
+connectedness of the whole scheme.
+\end{proof}

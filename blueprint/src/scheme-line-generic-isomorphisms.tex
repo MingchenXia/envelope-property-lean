@@ -1,0 +1,55 @@
+\section{Nonzero original model-morphism norms detect true generic isomorphisms}
+
+\begin{lemma}[Actual nonzero line morphisms on the original residue field]
+\label{lem:actual-model-morphism-nonzero-generic-iso}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isIso_genericMap_of_modelHomNorm_ne_zero}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_ne_zero_of_isIso_genericMap}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_ne_zero_iff_isIso_genericMap}
+\leanok
+\uses{def:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-norm-one-section,lem:scheme-line-actual-model-hom-scalar}
+A morphism between actual invertible modules on an original proper
+model induces a genuine isomorphism on the entire original
+residue-field pullback line precisely when its genuine model
+morphism norm is nonzero.
+\end{lemma}
+\begin{proof}
+Choose actual unit frames on the original center valuation-ring
+spectrum, supplied by original invertibility and locality. The
+true whole original generic morphism, in their actual generic
+frames, is scalar multiplication by the actual pullback of its
+original center coefficient. Its value is exactly the genuine
+model morphism norm, by the original global-section naturality of
+$\Gamma(\operatorname{Spec}(-))$.
+
+If this value is nonzero, the actual original residue-field scalar
+is nonzero, hence is a unit. The actual global-section isomorphism
+reflects that unit to the original structure ring of the original
+residue-field spectrum. Its original scalar automorphism is a
+true whole module isomorphism. The whole generic coefficient
+equality and the two actual generic frames then show that the
+original pulled module morphism is an isomorphism.
+
+Conversely, suppose the original whole generic map is an
+isomorphism but its model norm is zero. The genuine source line
+has an actual original section of model norm one. Its image has
+zero model norm by the original scaling theorem, hence is the
+zero original section. The true whole isomorphism is injective
+on original global sections, forcing the source section to be
+zero, contrary to its model norm one.
+\end{proof}
+
+\begin{corollary}[Original Cartier ideal generic trivialization]
+\label{cor:actual-cartier-ideal-nonzero-generic-inclusion}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_ne_zero_iff_isIso_genericInclusion}
+\leanok
+\uses{lem:actual-model-morphism-nonzero-generic-iso,thm:actual-cartier-inclusion-model-norm}
+The whole original generic pullback of an actual Cartier ideal
+inclusion is an isomorphism precisely when its intrinsic model
+ideal norm is nonzero.
+\end{corollary}
+\begin{proof}
+Apply the preceding criterion to the original Cartier ideal line
+and original structure line, and use the exact actual Cartier
+inclusion metric identity. The natural nonnegative-real embedding
+preserves and reflects zero.
+\end{proof}

@@ -1,0 +1,129 @@
+\section{Characteristic-zero envelopes with Nadel vanishing as input}
+\label{sec:c0n-char0-after-nadel}
+
+Keep the original characteristic-zero field, original smooth scheme,
+original whole multiplier ideals and original projective polarization.
+The temporary assumption in this section is Nadel vanishing.  Uniform
+generation, the original graded base-ideal comparisons and the envelope
+property are deductions from that input, culminating in
+Theorem~\ref{thm:c0n-original-smooth-envelope-from-nadel}.  In particular the existing
+\nolinkurl{SmoothEnvelopeCharZero} conclusion is not an input.
+The source approximation uses ideals on $X\times\mathbb A^1$; its
+vanishing input therefore has the relative form over an affine base.
+\source{bj22-trivval:thm:contenvlisse,fhx-envelope-20261028:thm:smooth-EP}
+
+\begin{definition}[The original canonical multiplier module]
+\label{def:c0n-original-nadel-module}
+\lean{EnvelopeProperty.Char0.nadelTwistedModule}
+\leanok
+For the original $n$-smooth integral $k$-scheme $Y$, original ideal $I$
+nonzero at the generic point, coefficient $c\in\mathbb Q$ and line $A$,
+put
+\[
+ M(Y,I,c,A)=\bigl(\omega_{Y/k}\otimes A\bigr)
+                 \otimes\mathcal J_Y(I^c).
+\]
+Here $\omega_{Y/k}=\bigwedge^n\Omega^1_{Y/k}$ and
+$\mathcal J_Y(I^c)$ is the original whole all-divisorial-DVR multiplier
+ideal, with its original ideal module.
+\end{definition}
+
+\begin{definition}[The explicit relative ample Nadel input]
+\label{def:c0n-relative-ample-nadel-input}
+\lean{EnvelopeProperty.Char0.RelativeAmpleNadelVanishingInput}
+\leanok
+For a characteristic-zero field $k$, the input asserts the following
+vanishing statement.  Let $R$ be a finite-type $k$-algebra,
+$\pi:Y\to\operatorname{Spec}R$ projective, and let its original composite
+to $\operatorname{Spec}k$ be $n$-smooth and integral.  Suppose $A,B$ are
+invertible, $I$ is generically nonzero, $I\otimes B$ is finitely globally
+generated, and $c\geq0$ is rational.  If $d>0$, $t\in\mathbb N$,
+$dc=t$, and there is an actual $\pi$-ample line $C$ with
+\[
+ A^{\otimes d}\simeq C\otimes B^{\otimes t},
+\]
+then $H^q(Y,M(Y,I,c,A))=0$ for every $q>0$.
+The displayed identity expresses that the actual rational line $A-cB$
+is relatively ample.  This definition specifies a proposition; no
+instance or proof of that proposition is declared here.
+\end{definition}
+
+\begin{proposition}[One twist generates every original ordinary multiplier ideal]
+\label{prop:c0n-ordinary-uniform-generation}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGeneration.exists_generatingSections}
+\leanok
+\uses{prop:c0n-uniform-canonical-generators}
+Assume the preceding Nadel input.  Let the original $Y$ have a closed
+embedding in $\mathbb P^N_R$ with actual hyperplane line $H$.  Let $L$
+be invertible, $p>0$, and let the original generically nonzero $I$ satisfy
+that $I\otimes L^p$ is finitely globally generated.  For every $m\geq0$,
+\[
+ \omega_{Y/k}\otimes H^{N+1}\otimes L^m
+          \otimes\mathcal J_Y(I^{m/p})
+\]
+is finitely globally generated.  The same fixed canonical-hyperplane
+twist works for all $m$ and all such $I,p$.
+\end{proposition}
+\begin{proof}
+Call the displayed actual coherent module $M_m$.  For each
+$1\leq j\leq N$, its original negative hyperplane twist is
+\[
+ M_m\otimes H^{-j}
+  \simeq\omega_{Y/k}\otimes
+       (H^{N+1-j}\otimes L^m)\otimes\mathcal J_Y(I^{m/p}).
+\]
+Use the Nadel input with $A=H^{N+1-j}\otimes L^m$, $B=L^p$,
+$c=m/p$, $d=p$ and $t=m$.  Positivity of $p$ gives $dc=t$ exactly.
+The actual tensor-power laws construct
+\[
+ A^p\simeq H^{p(N+1-j)}\otimes (L^p)^m.
+\]
+Its first factor is genuinely relatively ample: $H$ is the original
+very ample hyperplane pullback, and $p(N+1-j)>0$.  The input therefore
+kills the actual $j$th cohomology of the original negative twist.
+These are exactly the finitely many regularity groups for the original
+closed projective embedding.  Its proved regularity-to-generation
+theorem constructs a finite original generating family of $M_m$.
+For $N=0$ the regularity family is empty and that same theorem applies.
+The original tensor comparisons, finite presentation and all multiplier
+ideals are retained; no generation or vanishing conclusion is supplied
+as a hypothesis beyond the specified Nadel input.
+\end{proof}
+
+\begin{proposition}[The same twist generates the whole asymptotic multiplier ideal]
+\label{prop:c0n-asymptotic-uniform-generation}
+\lean{EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_generatingSections}
+\leanok
+\uses{thm:c0n-asymptotic-uniform-canonical-generation}
+Let $I_\bullet$ be the original graded ideal sequence, generically
+nonzero at every positive index, and suppose every actual
+$I_p\otimes L^p$ is finitely globally generated.  Under the same Nadel
+input, for every $m\geq0$ the entire original module
+\[
+ \omega_{Y/k}\otimes H^{N+1}\otimes L^m
+        \otimes\mathcal J_Y(\|I_\bullet^m\|)
+\]
+is finitely globally generated, with twist independent of $m$.
+\end{proposition}
+\begin{proof}
+The actual projective source is quasi-compact and locally Noetherian.
+The proved original divisible-index stabilization theorem, using the
+actual gradedness, produces a positive index $p$ at which the entire
+original asymptotic multiplier ideal is exactly
+$\mathcal J_Y(I_p^{m/p})$.  Apply the preceding proposition to this
+same original $I_p,L,p,m$ and its genuine generating family.  The
+produced equality of whole ideals identifies their actual modules and
+transports that finite family to the displayed original module.
+The selected index may depend on $m$; the twist $\omega_{Y/k}H^{N+1}$
+does not.  Nonvanishing and gradedness for the paper's actual base-ideal sequence
+are established in the original-family construction.
+\uses{prop:c0n-ordinary-uniform-generation}
+\end{proof}
+
+The final characteristic-zero deduction uses the actual
+scheme-to-homogeneous-cone ideal and section comparisons, the original
+nonzero Veronese sequence, and the original divisorial envelope
+approximation.  The already proved subadditivity and asymptotic valuative
+estimates are reused.  These geometric and analytic producers are proved in the following
+sections and assembled in Theorem~\ref{thm:c0n-original-smooth-envelope-from-nadel};
+they are not part of the vanishing input above.

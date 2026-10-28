@@ -1,0 +1,81 @@
+\subsection{Original prescribed-class convexity on the actual native quotient chart}
+
+\begin{definition}[The actual analytic projection of the original chart]
+\label{projective:actual-admissible-analytic-projection}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleAnalyticProjection}
+\leanok
+\uses{projective:actual-admissible-analytic-native-chart}
+An actual native point of the original quotient-chart scheme over the trivial
+coefficient valuation gives an original point of $X$ by applying the actual
+original chart map and the inverse original analytic/native homeomorphism.
+\end{definition}
+\begin{proof}
+The established original chart map preserves the actual coefficient structure.
+It therefore maps the entire prescribed-base point space to that of the
+original $X$, on which the inverse original homeomorphism is defined.
+\end{proof}
+
+\begin{lemma}[The actual projection equals the original chart inverse]
+\label{projective:actual-admissible-projection-chart-inverse}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleAnalyticProjection_eq_chartInv}
+\leanok
+\uses{projective:actual-admissible-analytic-projection,berkovich:actual-affine-paper-homeomorphism-inverse,projective:actual-admissible-analytic-native-chart}
+For every actual original affine native point, this actual projection is the
+original chart inverse of precisely its original affine seminorm point.
+\end{lemma}
+\begin{proof}
+Apply injectivity of the original analytic/native homeomorphism. Its inverse
+cancels the actual mapped point. The whole original chart comparison gives
+the image of the original chart inverse. The canonical affine native point
+of its original affine seminorm is the original native point itself, by the
+two-sided affine homeomorphism identity. The entire mapped points agree.
+\end{proof}
+
+\begin{definition}[The actual original admissible weight]
+\label{projective:actual-original-admissible-chart-weight}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleChartWeight}
+\leanok
+\uses{projective:actual-admissible-analytic-projection}
+For an original real function $\varphi$, an integer $m$, and an original
+nonzero homogeneous $F$ of degree $d>0$, the actual chart weight is
+$\varphi(w)-m^{-1}\log|F(w)|$, where $w$ is the actual preceding projection.
+It is an extended-real function on the genuine original native quotient chart.
+\end{definition}
+\begin{proof}
+Use the original normalized value of the same original polynomial at the true
+projected point. The formula is defined for every original chart point; the
+preceding chart identity also gives its nonvanishing denominator there.
+\end{proof}
+
+\begin{lemma}[Original chart convexity supplies genuine regular-unit convexity]
+\label{projective:actual-original-admissible-chart-convexity}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleChartWeight_isConvexPLOn}
+\leanok
+\uses{projective:actual-admissible-projection-chart-inverse,projective:actual-original-admissible-chart-weight,berkovich:actual-affine-convexity-from-paper}
+If the original admissible coefficient-chart weight is convex PL on the whole
+original affine chart, then the actual preceding weight is convex PL on the
+whole actual native chart in the intrinsic definition using genuine units of
+actual original scheme section rings.
+\end{lemma}
+\begin{proof}
+Apply the original-affine to genuine-native regular-unit convexity theorem.
+The actual projected point equals the original chart inverse by the preceding
+lemma. Substitute that whole equality into the function, so its pullback is
+literally the original admissible chart function. Its domain is the whole chart.
+\end{proof}
+
+\begin{corollary}[The prescribed rational class is retained]
+\label{projective:actual-original-prescribed-class-chart-convexity}
+\lean{EnvelopeProperty.ProjSubvariety.IsLocallyConvexAll.nativeAdmissibleChartWeight_isConvexPLOn}
+\leanok
+\uses{projective:actual-original-admissible-chart-convexity}
+Original local $\mathcal O(a)$-convexity supplies the preceding genuine native
+regular-unit convexity for every original admissible pair $m,d>0$ with the
+exact original identity $d=ma$ and every original $F\notin I_X$ of degree $d$.
+No nefness, curve-slope identity, or numerical positivity premise is supplied.
+\end{corollary}
+\begin{proof}
+Specialize the unchanged original universally quantified local convexity
+hypothesis to this original $m,d,F$, retaining its original equality $d=ma$.
+Apply the preceding actual chart convexity theorem.
+\end{proof}

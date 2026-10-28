@@ -1,0 +1,52 @@
+\section{Normal actual polynomial base change on original affine charts}
+
+\begin{definition}[The entire original polynomial section ring]
+\label{def:actual-affine-polynomial-base-change-sections}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.affinePolynomialSectionsEquiv}
+\leanok
+For any original affine scheme $X\to\operatorname{Spec}R$, the actual
+polynomial base change $X\times_R\operatorname{Spec}R[t]$ has its entire
+original global ring isomorphic to $\Gamma(X,\mathcal O_X)[t]$.
+\end{definition}
+\begin{proof}
+The actual original affine base-change section square is a pushout without
+flatness. Its whole original section ring is therefore the actual tensor
+product $R[t]\otimes_R\Gamma(X,\mathcal O_X)$. Commute these actual tensor
+factors and use the native whole polynomial-tensor equivalence. This constructs
+the stated whole original ring isomorphism.
+\end{proof}
+
+\begin{theorem}[Domain and normal original polynomial-base-change global rings]
+\label{thm:actual-affine-polynomial-base-change-ring-normal}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.affinePolynomialSections_isDomain}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.affinePolynomialSections_isIntegrallyClosed}
+\leanok
+\uses{def:actual-affine-polynomial-base-change-sections}
+If the same original affine global ring is a domain, so is the actual
+polynomial-base-change global ring. If the original domain is integrally
+closed, the actual polynomial-base-change global ring is integrally closed.
+\end{theorem}
+\begin{proof}
+A polynomial ring over a domain is a domain; a polynomial ring over a normal
+domain is normal. Transport these genuine polynomial-ring properties through
+the whole original section-ring isomorphism just constructed.
+\end{proof}
+
+\begin{theorem}[Domain and normal actual original polynomial stalks]
+\label{thm:actual-affine-polynomial-base-change-stalk-normal}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.affinePolynomial_stalk_isDomain}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.affinePolynomial_stalk_isIntegrallyClosed}
+\leanok
+\uses{thm:actual-affine-polynomial-base-change-ring-normal}
+Every actual stalk of the original polynomial base change is a domain when
+the original affine global ring is a domain, and integrally closed when that
+original domain is integrally closed.
+\end{theorem}
+\begin{proof}
+Both original schemes in the base-change square are affine, hence so is the
+actual polynomial base change. Its original spectrum isomorphism and actual
+spectrum-stalk isomorphism identify each same original stalk with the true
+prime localization of its actual global ring. Domain and integral-closedness
+properties persist in these actual prime localizations. Transport them back
+through those genuine original stalk isomorphisms.
+\end{proof}

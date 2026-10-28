@@ -1,0 +1,27 @@
+\section{Actual flat base change of ideal modules}
+
+\begin{lemma}[Canonical tensor map to the actual extended ideal]
+\label{lem:ideal-tensor-base-change}
+\leanok
+\lean{EnvelopeProperty.IdealTensorBaseChange.toIdealMap,EnvelopeProperty.IdealTensorBaseChange.toIdealMap_tmul,EnvelopeProperty.IdealTensorBaseChange.toIdealMap_inclusion,EnvelopeProperty.IdealTensorBaseChange.toIdealMap_surjective,EnvelopeProperty.IdealTensorBaseChange.toIdealMap_injective,EnvelopeProperty.IdealTensorBaseChange.equiv,EnvelopeProperty.IdealTensorBaseChange.equiv_tmul}
+For an actual commutative algebra $R\to S$ and any actual ideal $I$ of $R$,
+the canonical $S$-linear map $S\otimes_R I\to IS$ sends
+$s\otimes x$ to $s\,f(x)$. It is always surjective. If $S$ is flat over
+$R$, it is an actual linear isomorphism onto the original extended ideal.
+There are no finiteness, principal-generator, reduction or domain hypotheses.
+\end{lemma}
+\begin{proof}
+Extend the original true ideal inclusion along the actual algebra map,
+then apply the genuine tensor extension-of-scalars universal property.
+Composing with the true extended-ideal inclusion gives exactly the
+base change of the original ideal inclusion followed by the genuine
+right-unit tensor isomorphism. The range contains each original
+extended generator, since $f(x)$ is the image of $1\otimes x$.
+The actual extended ideal is their $S$-span, proving surjectivity.
+Flatness preserves injectivity of the actual original ideal inclusion,
+and the right-unit isomorphism is injective, so the same composite is
+injective. Thus the canonical original tensor map is bijective and
+supplies the stated linear isomorphism. This is the actual ring-module
+base-change producer; its scheme-sheaf comparison and group
+linearization are subsequent obligations.
+\end{proof}

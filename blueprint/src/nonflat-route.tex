@@ -1,0 +1,633 @@
+\section{Nonflat norms without potential theory on curves}\label{sec:nf-route}
+
+This chapter proves the nonflat norm statement of Proposition~\ref{prop:nonflat-norm} for the functions to which the
+local regularization theorem is applied in Corollary~\ref{cor:normal-weak-global}, namely functions whose pullback to
+the charts of a blowup is regularizable (Definition~\ref{def:nf-chart-regularizable}). The weights are defined by
+characteristic polynomials at a rigid lift (Definition~\ref{def:nf-weights}). The identification of the extended norm
+off the \'etale locus (the last step of the proof of \cite[Proposition~5.22]{FHX}) is made on a line through the rigid
+lift, using Gauss points of small discs, the hull inequality on $S$ and a weighted maximum principle for pullbacks of
+Fubini--Study functions along a finite free cover of the line (Lemma~\ref{lem:nf-pieces}). Subharmonic functions in the
+sense of \cite{GR25} and Lemma~\ref{lem:curves} are not used; see Remark~\ref{rmk:nf-source}.
+
+\subsection{Setting and the function class}\label{subsec:nf-setting}
+
+\begin{convention}\label{conv:nf-setting}
+\uses{conv:sec5, prop:nonflat-norm}
+As in Convention~\ref{conv:sec5}, $k$ is countable, algebraically closed and trivially valued. Throughout,
+$Y=\Spec A$ is a normal affine variety of dimension $n\ge1$, $S=\Spec B$ with $B\cong k[x_1,\dots,x_n]_{h_S}$
+($0\ne h_S$) a principal open subset of $\A^n$, $\varphi\colon B\to A$ is finite and injective, $\pi=\Spec\varphi$ is
+generically \'etale of degree $d=[\mathrm{Frac}\,A:\mathrm{Frac}\,B]$, and $Z=V(I_Z)\subsetneq Y$ is closed, $I_Z\ne0$.
+For a finite morphism $\Spec R'\to\Spec Q$ and a point $z$ of $(\Spec Q)^\an$, the points over $z$ correspond to the
+maximal ideals of the finite $\mathcal H(z)$-algebra $\mathcal H(z)\otimes_QR'$, and the multiplicity $m_x$ of a point
+$x$ over $z$ is the dimension over $\mathcal H(z)$ of the local factor of $\mathcal H(z)\otimes_QR'$ at $x$
+(Lemma~\ref{lem:finite-flat-norm}). For a function $w$ on $(\Spec R')^\an$ we write
+$\Norm w(z)=\sum_{x\mapsto z}m_xw(x)$. If $F$ is a complete valued field extension of $k$ and $R$ is an $F$-algebra,
+the points of $(\Spec R)^\an$ over $F$ are the multiplicative seminorms on $R$ restricting to the absolute value of $F$.
+\end{convention}
+
+\begin{definition}[Functions regularizable on the charts of a blowup]\label{def:nf-chart-regularizable}
+\lean{EnvelopeProperty.IsChartRegularizable, EnvelopeProperty.IsRegularizable.isChartRegularizable}
+\leanok
+\uses{def:fs, def:weakly-psh, rmk:weakly-psh-blowup}
+A function $u\colon Y^\an\to[-\infty,\infty)$ is \emph{regularizable on the charts of a blowup} if there is a finite set
+$s\subseteq A$ containing a nonzero element such that for every $\sigma\in s\setminus\{0\}$ the function
+$u\circ\mu_\sigma$ lies in $\Rcal(A[s/\sigma])$, where $A[s/\sigma]\subseteq\mathrm{Frac}\,A$ is the chart of the blowup
+of $Y$ along $(s)$ and $\mu_\sigma\colon(\Spec A[s/\sigma])^\an\to Y^\an$ is restriction along $A\subseteq A[s/\sigma]$.
+The set $s$ is called a \emph{witness}.
+\end{definition}
+
+\begin{lemma}[Closure properties of the class]\label{lem:nf-chart-regularizable-closure}
+\lean{EnvelopeProperty.isPshClass_isChartRegularizable, EnvelopeProperty.IsChartRegularizable.isWeaklyPSHOn, EnvelopeProperty.IsChartRegularizable.upperSemicontinuous, EnvelopeProperty.IsChartRegularizable.add_isRegularizable, EnvelopeProperty.IsChartRegularizable.max_isRegularizable, EnvelopeProperty.IsChartRegularizable.add_const, EnvelopeProperty.IsChartRegularizable.comp_awayComap, EnvelopeProperty.IsChartRegularizable.comp_proj_add_logAbs_X}
+\leanok
+\uses{def:nf-chart-regularizable, lem:reg-closure-elementary, lem:reg-triv-finite, lem:fs-basic, def:weakly-psh, rmk:weakly-psh-blowup}
+Let $u$ be regularizable on the charts of a blowup, with witness $s$.
+\begin{enumerate}
+\item $u$ is weakly psh with the blowup along $(s)$ as witness; in particular $u$ is upper semicontinuous.
+\item For $v\in\Rcal(Y)$, the functions $u+v$ and $\max\{u,v\}$ are regularizable on the charts of a blowup, with
+witness $s$.
+\item For $0\ne h\in A$, the restriction of $u$ to $Y_h^\an$ is regularizable on the charts of a blowup of $Y_h$,
+with witness the image of $s$.
+\item On $\widetilde Y=Y\times\A^1=\Spec A[w]$ with projection $p$, the function $u\circ p+\log|w|$ is regularizable on
+the charts of a blowup, with witness $s\subseteq A\subseteq A[w]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Every regularizable function is a decreasing limit of Fubini--Study functions, which are convex PL
+(Lemma~\ref{lem:fs-basic}); so $u\circ\mu_\sigma$ is locally psh on every chart, which is
+Definition~\ref{def:weakly-psh} in the form of Remark~\ref{rmk:weakly-psh-blowup}; weakly psh functions are upper
+semicontinuous. (2) The function $v\circ\mu_\sigma$ is finite at the trivial valuation of $A[s/\sigma]$, which lies over
+the trivial valuation of $A$ (Lemma~\ref{lem:reg-triv-finite}), so $v\circ\mu_\sigma\in\Rcal(A[s/\sigma])$ by
+Lemma~\ref{lem:reg-closure-elementary}(4). Sums and maxima of regularizable functions are regularizable
+(Lemma~\ref{lem:reg-closure-elementary}), and $(u+v)\circ\mu_\sigma=u\circ\mu_\sigma+v\circ\mu_\sigma$,
+$\max\{u,v\}\circ\mu_\sigma=\max\{u\circ\mu_\sigma,v\circ\mu_\sigma\}$. (3) Inside $\mathrm{Frac}\,A$, the chart
+$A_h[s/\sigma]$ of the blowup of $Y_h$ is generated by $A[s/\sigma]$ and $h^{-1}$; the restriction of $u|_{Y_h^\an}$ to
+its chart is $u\circ\mu_\sigma$ pulled back along $A[s/\sigma]\to A_h[s/\sigma]$, which is regularizable by
+Lemma~\ref{lem:reg-closure-elementary}(4) (it is finite at the trivial valuation, which lies over the trivial valuation
+of $A[s/\sigma]$). (4) The chart of the blowup of $\widetilde Y$ along $(s)$ is $A[w][s/\sigma]=A[s/\sigma][w]$. On it,
+$u\circ p$ is the pullback of $u\circ\mu_\sigma$ along $A[s/\sigma]\to A[s/\sigma][w]$, regularizable by
+Lemma~\ref{lem:reg-closure-elementary}(4), and $\log|w|$ is regularizable by Lemma~\ref{lem:reg-closure-elementary}(3);
+their sum is regularizable.
+\end{proof}
+
+\begin{lemma}[The functions of the descent corollary]\label{lem:nf-descent-chart}
+\lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.isChartRegularizable_descentChartFun}
+\leanok
+\uses{def:nf-chart-regularizable, lem:pg-descent-weakly-psh}
+In the setting of Theorem~\ref{thm:pg-psh-descent}, for every $i$ with $x_i\notin I$ the chart function $u_i$ on
+$Y_i^\an$ is regularizable on the charts of a blowup, with witness $\mathfrak a_i$.
+\end{lemma}
+
+\begin{proof}
+The proof of Lemma~\ref{lem:pg-descent-weakly-psh} shows that on every chart
+$\Spec A_{x_i}[\mathfrak a_i/g_{il}]$, $g_{il}\ne0$, the function $w\mapsto u_i(w|_{A_{x_i}})$ is the limit of a
+decreasing sequence of Fubini--Study functions of the chart, and it is finite at the trivial valuation; this is
+Definition~\ref{def:nf-chart-regularizable}.
+\end{proof}
+
+\subsection{Characteristic polynomials over a normal base}\label{subsec:nf-charpoly}
+
+\begin{lemma}[Characteristic polynomials of integral elements]\label{lem:nf-charpoly}
+\lean{EnvelopeProperty.nonflatCharpoly, EnvelopeProperty.charpoly_lmul_tensor_eq_map_nonflatCharpoly, EnvelopeProperty.natDegree_nonflatCharpoly, EnvelopeProperty.aeval_nonflatCharpoly, EnvelopeProperty.dvd_algebraMap_coeff_zero_nonflatCharpoly, EnvelopeProperty.coeff_zero_nonflatCharpoly_ne_zero, EnvelopeProperty.nonflatCharpoly_comparison, EnvelopeProperty.nonflat_exists_free_localizationAway}
+\leanok
+Let $R$ be an integrally closed domain with fraction field $K$, and $T$ a domain containing $R$ and finite over $R$,
+with $\dim_K(K\otimes_RT)=d$. For $b\in T$ let $\chi_b\in K[X]$ be the characteristic polynomial of multiplication by
+$b$ on the $K$-vector space $K\otimes_RT$.
+\begin{enumerate}
+\item $\chi_b\in R[X]$, and $\chi_b$ is monic of degree $d$.
+\item $\chi_b(b)=0$ in $T$.
+\item $\chi_b(0)\in bT$, and $\chi_b(0)\ne0$ if $b\ne0$.
+\item Let $0\ne f\in R$ be such that $T_f$ is a free $R_f$-module, let $\psi\colon R\to Q$ be a homomorphism to a domain
+with $\psi(f)\ne0$, let $T'$ be a finite free $Q$-algebra and $\theta\colon T\to T'$ a homomorphism compatible with
+$\psi$, and assume that for some $0\ne c\in Q$ the induced map $Q_{c\psi(f)}\otimes_{R_f}T_f\to T'_{c\psi(f)}$ is an
+isomorphism. Then the characteristic polynomial of multiplication by $\theta(b)$ on $T'$ over $Q$ is $\psi(\chi_b)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $L=K\otimes_RT=\mathrm{Frac}\,T$ is a field, finite over $K$, and $\chi_b=\mu_b^{[L:K(b)]}$ for the minimal
+polynomial $\mu_b$ of $b$ over $K$. Since $b$ is integral over the integrally closed domain $R$, $\mu_b\in R[X]$.
+(2) By the Cayley--Hamilton theorem $\chi_b(b)=0$ in $L$, and $T\subseteq L$. (3) By (2),
+$\chi_b(0)=-b\,(b^{d-1}+c_{d-1}b^{d-2}+\dots+c_1)$ with $c_i\in R$; and $\pm\chi_b(0)$ is the norm of $b$ from $L$ to
+$K$, nonzero when $b\ne0$. (4) Since $T_f$ is free over $R_f$ and $K\otimes_{R_f}T_f=L$, the characteristic polynomial
+of $b$ on $T_f$ over $R_f$ is $\chi_b$; characteristic polynomials of free modules commute with base change, so the
+characteristic polynomial of $\theta(b)$ on $Q_{c\psi(f)}\otimes_{R_f}T_f\cong T'_{c\psi(f)}$ over $Q_{c\psi(f)}$ is
+$\psi(\chi_b)$. It is also the image of the characteristic polynomial $\chi'$ of $\theta(b)$ on $T'$ over $Q$, by base
+change along $Q\to Q_{c\psi(f)}$. This map is injective because $Q$ is a domain and $c\psi(f)\ne0$, so
+$\chi'=\psi(\chi_b)$.
+\end{proof}
+
+\begin{lemma}[Characteristic polynomials on local Artinian factors]\label{lem:nf-local-charpoly}
+\lean{EnvelopeProperty.charpoly_lmul_eq_prod_nonflatResidue, EnvelopeProperty.nonflat_rootMultiplicity_charpoly_lmul, EnvelopeProperty.nonflatResidue, EnvelopeProperty.nonflat_finrank_localization_eq_length}
+\leanok
+\uses{spectrum:algclosed-local-norm-form}
+Let $F$ be algebraically closed and $E$ a finite $F$-algebra, $E=\prod_xE_x$ its decomposition into local factors
+with residue fields $F$, and $e_x=\dim_FE_x$. For $b\in E$ with residues $b(x)\in F$, the characteristic polynomial of
+multiplication by $b$ on $E$ is $\prod_x(X-b(x))^{e_x}$.
+\end{lemma}
+
+\begin{proof}
+Multiplication by $b$ preserves each factor $E_x$, so the characteristic polynomial is the product of those on the
+$E_x$. On $E_x$, $b-b(x)$ lies in the maximal ideal of the Artinian local ring $E_x$, hence is nilpotent, so its
+characteristic polynomial is $X^{e_x}$ and that of $b$ is $(X-b(x))^{e_x}$.
+\end{proof}
+
+\subsection{The good locus, rigid data and the weights}\label{subsec:nf-weights}
+
+\begin{lemma}[A good principal open of $S$]\label{lem:nf-good-locus}
+\lean{EnvelopeProperty.IsNonflatGoodLocus, EnvelopeProperty.exists_isNonflatGoodLocus, EnvelopeProperty.IsNonflatGoodLocus.exists_mem_ne_zero, EnvelopeProperty.IsNonflatGoodLocus.awayMap_etale, EnvelopeProperty.IsNonflatGoodLocus.awayMap_free, EnvelopeProperty.nonflat_awayMap_finite}
+\leanok
+\uses{conv:nf-setting, lem:nf-charpoly, lem:finite-flat-norm}
+There is $0\ne h\in B$ such that $A_{\varphi(h)}$ is a finite free \'etale $B_h$-algebra and
+$Y_0=\Spec A_{\varphi(h)}=\pi^{-1}(S_h)$ is contained in $Y\setminus Z$.
+\end{lemma}
+
+\begin{proof}
+By generic \'etaleness there is $0\ne h_1\in B$ with $B_{h_1}\to A_{\varphi(h_1)}$ \'etale. The finite module $A$ over
+the Noetherian domain $B$ is free at the generic point, so there is $0\ne h_2\in B$ with $A_{\varphi(h_2)}$ free over
+$B_{h_2}$ (as in the proof of Lemma~\ref{lem:finite-flat-norm}). Choose $0\ne f\in I_Z$ and put $c_f=\chi_f(0)$
+(Lemma~\ref{lem:nf-charpoly} for $B\subseteq A$); then $0\ne c_f\in B$ and $\varphi(c_f)\in fA\subseteq I_Z$. Put
+$h=h_1h_2c_f$. Localization at a further element preserves finiteness, freeness and \'etaleness, and $\varphi(h)$
+vanishes on $Z$, so $Y_0\cap Z=\varnothing$.
+\end{proof}
+
+We fix $h$ as in Lemma~\ref{lem:nf-good-locus}, $S_0=S_h$ and $Y_0=Y_{\varphi(h)}$.
+
+\begin{definition}[Rigid data]\label{def:nf-rigid-data}
+\lean{EnvelopeProperty.NonflatRigidEmbedding, EnvelopeProperty.NonflatRigidEmbedding.basePoint, EnvelopeProperty.NonflatRigidEmbedding.fibre, EnvelopeProperty.nonflatRigidField, EnvelopeProperty.nonflatRigidEmbedding, EnvelopeProperty.nonflatRigidField_norm_algebraMap, EnvelopeProperty.nonflatRigidField_exists_one_lt_norm}
+\leanok
+\uses{spectrum:gauss-point, spectrum:completed-residue-field-pullback, spectrum:complete-valued-algebraic-closure}
+Let $s\in S^\an$. A \emph{rigid datum} for $s$ is a complete, algebraically closed, nontrivially valued field $F$ with
+an isometric embedding $\mathcal H(s)\to F$. The composite $B\to\mathcal H(s)\to F$ extends to the $F$-point
+$\xi\colon B_F=F\otimes_kB\to F$, and we write $A_F=F\otimes_kA$, $\pi_F\colon\Spec A_F\to\Spec B_F$, and
+$\pi_F^{-1}(\xi)$ for the set of points of $(\Spec A_F)^\an$ over $F$ lying over $\xi$. A rigid datum exists: let $s'$
+be the Gauss point of radius $1/2$ over $s$ on $\Spec B[w]$; then $\mathcal H(s)\to\mathcal H(s')$ is isometric and
+$|w|_{s'}=1/2$, and the completed algebraic closure of $\mathcal H(s')$ is complete, algebraically closed and
+nontrivially valued.
+\end{definition}
+
+\begin{lemma}[Rigid fibres]\label{lem:nf-rigid-fibre}
+\lean{EnvelopeProperty.nonflat_baseChange_finite, EnvelopeProperty.NonflatRigidEmbedding.finite_fibre, EnvelopeProperty.NonflatRigidEmbedding.fibreEval, EnvelopeProperty.NonflatRigidEmbedding.val_eq_nnnorm_fibreEval, EnvelopeProperty.NonflatRigidEmbedding.exists_mem_fibre_comap_includeRight_eq, EnvelopeProperty.NonflatRigidEmbedding.surjOn_comap_includeRight_fibre, EnvelopeProperty.NonflatRigidEmbedding.exists_fibreEval_injective, EnvelopeProperty.nonflat_exists_injOn_algHom, EnvelopeProperty.nonflatBaseEquiv, EnvelopeProperty.nonflat_isDomain_baseChange_base, EnvelopeProperty.nonflat_isIntegrallyClosed_baseChange_base, EnvelopeProperty.IsNonflatGoodLocus.finrank_baseChange}
+\leanok
+\uses{def:nf-rigid-data, spectrum:finite-completed-fibres, spectrum:complete-norm-extension, spectrum:finite-rational-rigid-fibre-lift, algebra:geometric-domain-base-change, algebra:principal-open-scalar-tensor}
+Let $(F,\xi)$ be a rigid datum for $s\in S^\an$.
+\begin{enumerate}
+\item $B_F\cong F[x_1,\dots,x_n]_{h_S}$ is an integrally closed domain, $A_F$ is a domain, finite over $B_F$, and
+$\dim_{\mathrm{Frac}\,B_F}(\mathrm{Frac}\,B_F\otimes_{B_F}A_F)=d$.
+\item $\pi_F^{-1}(\xi)$ is finite. Each $z\in\pi_F^{-1}(\xi)$ is an $F$-point: there is a homomorphism
+$A_F\to F$, $b\mapsto b(z)$, over $\xi$, with $|b|_z=|b(z)|$.
+\item The restriction map $r\colon\pi_F^{-1}(\xi)\to\pi^{-1}(s)$ is surjective.
+\item There is $b_s\in A_F$ whose values $b_s(z)$, $z\in\pi_F^{-1}(\xi)$, are pairwise distinct.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $B_F$ is a localization of a polynomial ring over a field; $A_F$ is a domain because $k$ is algebraically closed
+(Lemma~\ref{algebra:geometric-domain-base-change}); finiteness and the degree follow by base change from a free
+localization $A_{\varphi(h)}$ of rank $d$ over $B_h$ (Lemma~\ref{lem:nf-good-locus}), as $\mathrm{Frac}\,B_F$ is a
+$B_h$-algebra. (2) The points over $\xi$ correspond to the maximal ideals of the finite $F$-algebra
+$F\otimes_{B_F,\xi}A_F$; their residue fields are finite over $F$, hence equal to $F$, and the absolute value on each is
+the unique extension of that of $F$. (3) Let $y\in\pi^{-1}(s)$. The completed residue field $\mathcal H(y)$ is finite
+over $\mathcal H(s)$, so there is an $\mathcal H(s)$-embedding $\tau\colon\mathcal H(y)\to F$; it is isometric, since the
+absolute value of the complete field $\mathcal H(s)$ has a unique extension to $\mathcal H(y)$. The homomorphism
+$F\otimes_kA\to F$, $c\otimes a\mapsto c\,\tau(a)$, lies over $\xi$ and defines $z\in\pi_F^{-1}(\xi)$ with $r(z)=y$.
+(4) The map $A_F\to\prod_zF$, $b\mapsto(b(z))_z$, is surjective by the Chinese remainder theorem, since the $z$ have
+pairwise distinct kernels; take a preimage of a vector with distinct entries.
+\end{proof}
+
+\begin{definition}[The weights]\label{def:nf-weights}
+\lean{EnvelopeProperty.nonflatBaseCharpoly, EnvelopeProperty.NonflatRigidEmbedding.rigidMult, EnvelopeProperty.NonflatRigidEmbedding.rigidWeight, EnvelopeProperty.nonflatSeparating, EnvelopeProperty.nonflatWeight, EnvelopeProperty.nonflatNorm}
+\leanok
+\uses{lem:nf-good-locus, def:nf-rigid-data, lem:nf-rigid-fibre, lem:nf-charpoly, lem:finite-etale-norm}
+For $s\in S_0^\an$ and $y\in\pi^{-1}(s)$, let $m_y(\pi)$ be the multiplicity of Lemma~\ref{lem:finite-etale-norm}.
+For $s\in S^\an\setminus S_0^\an$, fix a rigid datum $(F_s,\xi_s)$ and $b_s$ as in Lemma~\ref{lem:nf-rigid-fibre}(4),
+and let $\chi_s\in B_{F_s}[X]$ be the characteristic polynomial of $b_s$ over $\mathrm{Frac}\,B_{F_s}$
+(Lemma~\ref{lem:nf-charpoly}). For $z\in\pi_{F_s}^{-1}(\xi_s)$ let $M_z$ be the multiplicity of $b_s(z)$ as a root of
+$\chi_s(\xi_s)\in F_s[X]$, the polynomial obtained by applying $\xi_s$ to the coefficients. For $y\in\pi^{-1}(s)$ put
+$m_y(\pi)=\sum_{z\in\pi_{F_s}^{-1}(\xi_s),\,r(z)=y}M_z$. For a function $u$ on $Y^\an$ put
+$\Norm_\pi u(s)=\sum_{\pi(y)=s}m_y(\pi)u(y)$.
+\end{definition}
+
+The weights depend on the choices made for each $s$, but not on any function $u$.
+
+\subsection{Lines through a rigid lift}\label{subsec:nf-lines}
+
+\begin{definition}[Admissible lines and their normalized curves]\label{def:nf-line}
+\uses{def:nf-rigid-data, algebra:affine-line-substitution, algebra:principal-open-line-ring, algebra:line-preimage-actual-components, algebra:normalized-line-component-ring}
+Let $(F,\xi)$ be a rigid datum for $s\in S^\an$, with $\xi$ the point $a\in F^n$, $h_S(a)\ne0$. For a direction
+$0\ne w\in F^n$ let $\iota\colon B_F\to Q$ be the restriction to the line $t\mapsto a+tw$, where
+$Q=F[t]_{p}$, $p(t)=h_S(a+tw)$; then $p(0)\ne0$, $Q$ is a principal ideal domain, and composing $\iota$ with evaluation
+at $t=0$ gives $\xi$. Put $A_C=Q\otimes_{B_F}A_F$ and let $R'=\prod_PD_P$, the product over the minimal primes $P$ of
+$A_C$ of the integral closures $D_P$ of $A_C/P$ in their fraction fields; let $q\colon\Spec R'\to\Spec Q$ and
+$p\colon\Spec R'\to\Spec A_F$ be the natural maps. The direction $w$ is \emph{admissible} for an element
+$0\ne e\in B$ if $\iota(e)\ne0$ in $Q$.
+\end{definition}
+
+\begin{lemma}[Admissible directions exist]\label{lem:nf-line-exists}
+\lean{EnvelopeProperty.nonflatLinePoint, EnvelopeProperty.nonflat_lineEval_comp, EnvelopeProperty.nonflat_exists_admissible_direction, EnvelopeProperty.nonflat_admissible_of_mul}
+\leanok
+\uses{def:nf-line, algebra:affine-line-avoids-polynomial}
+For every $0\ne e\in B$ and every rigid datum there is a direction admissible for $e$.
+\end{lemma}
+
+\begin{proof}
+Write $e=e^\circ/h_S^m$ with $0\ne e^\circ\in k[x]$. Then $\iota(e)\ne0$ if and only if $e^\circ(a+tw)\ne0$ in $F[t]$,
+and since $F$ is infinite such a $w$ exists (Lemma~\ref{algebra:affine-line-avoids-polynomial}).
+\end{proof}
+
+\begin{lemma}[The normalized curve of an admissible line]\label{lem:nf-line-curve}
+\lean{EnvelopeProperty.AffineLine.nonflatLineTensorEquiv, EnvelopeProperty.AffineLine.nonflatLine_exists_baseChange_bijective, EnvelopeProperty.AffineLine.nonflatLine_exists_mul_mem_range, EnvelopeProperty.AffineLine.nonflatLine_exists_pow_mul_eq_zero, EnvelopeProperty.AffineLine.nonflatLine_finrank_eq, EnvelopeProperty.AffineLine.nonflatLine_finrank_eq_finrank, EnvelopeProperty.AffineLine.nonflatLine_normalizedCurve_structure, EnvelopeProperty.AffineLine.nonflatLine_tensor_etale}
+\leanok
+\uses{def:nf-line, lem:nf-good-locus, lem:nf-rigid-fibre, algebra:finite-free-normalized-line-product, algebra:line-component-domination, algebra:line-tensor-original-unreduced-preimage, algebra:line-tensor-free-rank-etale}
+Let $w$ be admissible for $h$. Then:
+\begin{enumerate}
+\item each $D_P$ is a Dedekind domain, finite over $Q$, with $Q\to D_P$ injective, and $R'$ is a finite free $Q$-module;
+\item there is $0\ne c\in Q$ such that $A_C\to R'$ becomes an isomorphism after inverting $c$;
+\item $R'$ has rank $d$ over $Q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) This is Lemma~\ref{algebra:finite-free-normalized-line-product} and the domination of the components of $A_C$
+(Lemma~\ref{algebra:line-component-domination}). (2) Let $K=\mathrm{Frac}\,Q$. Since $\iota(h)\ne0$, $K$ is a
+$B_{F,h}$-algebra and $K\otimes_QA_C=K\otimes_{B_{F,h}}A_{F,h}$ is a finite \'etale $K$-algebra of dimension $d$
+(Lemma~\ref{algebra:line-tensor-free-rank-etale}), hence a finite product of fields. Every minimal prime $P$ of $A_C$
+lies over $(0)$ of $Q$ (Lemma~\ref{algebra:line-component-domination}), so the minimal primes of $K\otimes_QA_C$ are the
+$K\otimes P$, and $K\otimes_QA_C\cong\prod_PK\otimes_Q(A_C/P)$, the nilradical of $A_C$ vanishing after
+$\otimes K$. Each $K\otimes_Q(A_C/P)$ is a domain finite over $K$, hence equal to $\mathrm{Frac}(A_C/P)$; and
+$K\otimes_QD_P=\mathrm{Frac}(D_P)=\mathrm{Frac}(A_C/P)$ as $D_P$ is finite over $Q$. So $K\otimes A_C\to K\otimes R'$ is
+an isomorphism. The kernel and the cokernel of $A_C\to R'$ are finitely generated $Q$-modules ($A_C$ and $R'$ are finite
+over the Noetherian ring $Q$) that vanish after $\otimes K$; they are annihilated by a single $0\ne c\in Q$, and
+localization at $c$ is exact. (3) $\dim_K(K\otimes R')=\dim_K(K\otimes A_C)=d$.
+\end{proof}
+
+\begin{lemma}[Line multiplicities are the weights]\label{lem:nf-line-weights}
+\lean{EnvelopeProperty.AffineLine.nonflatLine_lineWeights, EnvelopeProperty.AffineLine.nonflatLine_charpoly_lmul_eq, EnvelopeProperty.nonflat_charpoly_map_eq_prod_fibre, EnvelopeProperty.nonflat_sum_flatFibreMult_eq_rootMultiplicity, EnvelopeProperty.nonflat_sum_rootMultiplicity_eq_finrank, EnvelopeProperty.nonflat_one_le_rootMultiplicity_map_nonflatCharpoly, EnvelopeProperty.nonflat_one_le_rootMultiplicity_of_mem_lineBaseFibre, EnvelopeProperty.nonflat_exists_comap_eq_of_mem_lineBaseFibre, EnvelopeProperty.nonflat_flatNormFun_comap_eq_sum_rootMultiplicity}
+\leanok
+\uses{def:nf-weights, lem:nf-line-curve, lem:nf-charpoly, lem:nf-local-charpoly, lem:nf-rigid-fibre}
+Let $s\notin S_0^\an$, with the data of Definition~\ref{def:nf-weights}, and let $w$ be admissible for $h$. Let $\xi$
+also denote the point $t=0$ of $(\Spec Q)^\an$. Then every point $x$ of $(\Spec R')^\an$ over $\xi$ is an $F$-point,
+$p(x)\in\pi_F^{-1}(\xi)$, and for every $z\in\pi_F^{-1}(\xi)$
+\[
+\sum_{x\mapsto\xi,\ p(x)=z}m_x(q)=M_z .
+\]
+Moreover $M_z\ge1$ and $\sum_zM_z=d$.
+\end{lemma}
+
+\begin{proof}
+The points over $\xi$ correspond to the maximal ideals of the finite $F$-algebra $F\otimes_{Q,\xi}R'$, whose residue
+fields are $F$; the restriction of $x$ to $A_F$ lies over $\iota^*\xi=\xi$. Let $\chi'$ be the characteristic
+polynomial of (the image of) $b_s$ on the free $Q$-module $R'$. By Lemma~\ref{lem:nf-charpoly}(4), with $R=B_F$,
+$T=A_F$, $f=h$, $\psi=\iota$, $T'=R'$ and $c$ from Lemma~\ref{lem:nf-line-curve}(2) (note $A_{F,h}$ is free over
+$B_{F,h}$ and $Q_{c\iota(h)}\otimes_{B_{F,h}}A_{F,h}=(A_C)_{c\iota(h)}$), $\chi'=\iota(\chi_s)$. Applying evaluation at
+$t=0$ to the coefficients, $\iota(\chi_s)$ becomes $\chi_s(\xi)$. On the other hand, by base change of the free module
+$R'$, the image of $\chi'$ is the characteristic polynomial of $b_s$ on $F\otimes_{Q,\xi}R'$, which is
+$\prod_x(X-b_s(x))^{m_x(q)}$ by Lemma~\ref{lem:nf-local-charpoly}, and $b_s(x)=b_s(p(x))$. Hence
+$\prod_x(X-b_s(p(x)))^{m_x(q)}=\chi_s(\xi)$. As the $b_s(z)$ are pairwise distinct, comparing the multiplicity of the
+root $b_s(z)$ gives the displayed formula. By Lemma~\ref{lem:nf-charpoly}(2), $\chi_s(b_s)=0$ in $A_F$; applying the
+point $z$ gives $\chi_s(\xi)(b_s(z))=0$, so $M_z\ge1$. Every root of $\chi_s(\xi)$ is some $b_s(p(x))$, so
+$\sum_zM_z=\deg\chi_s=d$.
+\end{proof}
+
+\begin{lemma}[Basic properties of the weights]\label{lem:nf-weights-basic}
+\lean{EnvelopeProperty.one_le_nonflatWeight, EnvelopeProperty.sum_nonflatWeight, EnvelopeProperty.NonflatRigidEmbedding.one_le_rigidMult, EnvelopeProperty.nonflatNormWeights}
+\leanok
+\uses{def:nf-weights, lem:nf-line-weights, lem:nf-line-exists, lem:nf-rigid-fibre, lem:finite-etale-norm, lem:nf-whole-rigid-weighted-norm}
+For every $s\in S^\an$ the fibre $\pi^{-1}(s)$ is finite, $m_y(\pi)\ge1$ for $y\in\pi^{-1}(s)$, and
+$\sum_{\pi(y)=s}m_y(\pi)=d$.
+\end{lemma}
+
+\begin{proof}
+Fibres of finite maps are finite. For $s\in S_0^\an$ this is Lemma~\ref{lem:finite-etale-norm}. Otherwise, choose a
+direction admissible for $h$ (Lemma~\ref{lem:nf-line-exists}); by Lemma~\ref{lem:nf-line-weights} every $M_z\ge1$ and
+$\sum_zM_z=d$. By Lemma~\ref{lem:nf-rigid-fibre}(3) every $y\in\pi^{-1}(s)$ is $r(z)$ for some $z$, so $m_y(\pi)\ge1$,
+and $\sum_ym_y(\pi)=\sum_zM_z=d$.
+\end{proof}
+
+\subsection{Gauss rays and generic fibres}\label{subsec:nf-gauss}
+
+\begin{lemma}[Gauss rays on a line]\label{lem:nf-gauss-ray}
+\lean{EnvelopeProperty.nonflatFieldPoint, EnvelopeProperty.nonflatEvalPoint, EnvelopeProperty.nonflatGaussPoint, EnvelopeProperty.nonflatGaussPoint_zero, EnvelopeProperty.continuous_nonflatGaussPoint, EnvelopeProperty.nonflatGaussPoint_val_ne_zero, EnvelopeProperty.tendsto_nonflatGaussPoint_zero, EnvelopeProperty.exists_nonflatGaussPoint_maxModulus, EnvelopeProperty.eventually_nonflatGaussPoint_maxModulus}
+\leanok
+\uses{spectrum:centered-gauss-whole-ray, spectrum:centered-gauss-generic-support, spectrum:centered-gauss-principal-open-lift}
+Let $F$ be a complete valued field and $Q=F[t]_p$ with $p(0)\ne0$. For $\epsilon\ge0$ let $\zeta_\epsilon$ be the point
+of $(\Spec Q)^\an$ with $|\sum_ia_it^i|_{\zeta_\epsilon}=\max_i|a_i|\epsilon^i$ on $F[t]$. Then $\zeta_0$ is evaluation at
+$0$, $\epsilon\mapsto\zeta_\epsilon$ is continuous, $\zeta_\epsilon$ has zero kernel for $\epsilon>0$, and there is
+$\epsilon_0>0$ such that $|f(0)|\le|f|_{\zeta_\epsilon}$ for all $f\in Q$ and $0<\epsilon<\epsilon_0$.
+\end{lemma}
+
+\begin{proof}
+The first three assertions are Lemmas~\ref{spectrum:centered-gauss-whole-ray}, \ref{spectrum:centered-gauss-generic-support}
+and~\ref{spectrum:centered-gauss-principal-open-lift} (the ray lies in the principal open because $p(0)\ne0$). Choose
+$\epsilon_0>0$ with $|p_i|\epsilon_0^i<|p(0)|$ for the finitely many coefficients $p_i$, $i\ge1$; then
+$|p|_{\zeta_\epsilon}=|p(0)|$ for $\epsilon<\epsilon_0$. For $f=P/p^m$ with $P\in F[t]$, the constant term gives
+$|P(0)|\le|P|_{\zeta_\epsilon}$, so $|f(0)|=|P(0)|/|p(0)|^m\le|P|_{\zeta_\epsilon}/|p|_{\zeta_\epsilon}^m=|f|_{\zeta_\epsilon}$.
+\end{proof}
+
+\begin{lemma}[Approach through the \'etale locus]\label{lem:nf-hull-approach}
+\lean{EnvelopeProperty.nonflat_comap_nonflatGaussPoint_val_ne_zero, EnvelopeProperty.tendsto_comap_nonflatGaussPoint, EnvelopeProperty.eventually_mem_hull_comap_nonflatGaussPoint, EnvelopeProperty.IsRegularizable.nonflat_hull_approach, EnvelopeProperty.NonflatRigidEmbedding.comap_coordLine_nonflatEvalPoint}
+\leanok
+\uses{lem:nf-gauss-ray, def:nf-line, lem:hull-basic, def:hull}
+Let $s\in S^\an\setminus S_0^\an$, $(F,\xi)$ a rigid datum and $w$ admissible for $h$. Put
+$s_\epsilon=(\iota^*\zeta_\epsilon)|_B\in S^\an$. Then $s_\epsilon\in S_0^\an$ for $\epsilon>0$, $s_\epsilon\to s$ as
+$\epsilon\to0$, and $s\in\widehat{\{s_\epsilon\}}$ for $0<\epsilon<\epsilon_0$. Consequently, for every $v\in\Rcal(S)$,
+$v(s)\le v(s_\epsilon)$ for $0<\epsilon<\epsilon_0$ and $\limsup_{\epsilon\to0}v(s_\epsilon)\le v(s)$.
+\end{lemma}
+
+\begin{proof}
+$|h|_{s_\epsilon}=|\iota(h)|_{\zeta_\epsilon}\ne0$, since $\iota(h)\ne0$ and $\zeta_\epsilon$ has zero kernel
+(Lemma~\ref{lem:nf-gauss-ray}). Restriction maps are continuous and $s_0=\xi|_B=s$, so $s_\epsilon\to s$. For $f\in B$,
+$|f|_s=|\iota(f)(0)|\le|\iota(f)|_{\zeta_\epsilon}=|f|_{s_\epsilon}$ by Lemma~\ref{lem:nf-gauss-ray}, i.e.
+$s\in\widehat{\{s_\epsilon\}}$. The hull inequality for $v$ (Lemma~\ref{lem:hull-basic}) with the compact set
+$\{s_\epsilon\}$ gives $v(s)\le v(s_\epsilon)$, and upper semicontinuity of $v$ gives the last assertion.
+\end{proof}
+
+\begin{lemma}[Generic fibres of the normalized curve]\label{lem:nf-generic-fibre}
+\lean{EnvelopeProperty.NonflatRigidEmbedding.exists_flatNormFun_line_eq_nonflatNorm, EnvelopeProperty.AffineLine.nonflatLine_exists_flatNormFun_eq, EnvelopeProperty.AffineLine.nonflatLine_exists_baseChangeAlgHom_bijective, EnvelopeProperty.nonflat_flatNormFun_comap_eq_of_bijective, EnvelopeProperty.nonflat_flatNormFun_comap_eq_of_baseChange_bijective, EnvelopeProperty.Berk.nonflat_flatNormFun_comap_of_tensorMap_bijective, EnvelopeProperty.nonflatBaseChangeAlgHom}
+\leanok
+\uses{lem:nf-line-curve, def:nf-weights, spectrum:finite-base-change-multiplicity-mass, spectrum:all-function-finite-base-change, lem:finite-flat-norm-base-change}
+Let $w$ be admissible for $h$, $c$ as in Lemma~\ref{lem:nf-line-curve}(2), and $u$ any function on $Y^\an$; put
+$u''=u\circ r\circ p$ on $(\Spec R')^\an$, where $r$ denotes restriction to $A$. If $z\in(\Spec Q)^\an$ satisfies
+$|c\,\iota(h)|_z\ne0$, then $s':=(\iota^*z)|_B\in S_0^\an$ and $\Norm_qu''(z)=\Norm_\pi u(s')$.
+\end{lemma}
+
+\begin{proof}
+$|h|_{s'}=|\iota(h)|_z\ne0$. Since $c$ is invertible in $\mathcal H(z)$, $\mathcal H(z)\otimes_QR'\cong\mathcal H(z)\otimes_QA_C$
+compatibly with the maps from $A_F$ (Lemma~\ref{lem:nf-line-curve}(2)); so the points of $\Spec R'$ over $z$, with their
+multiplicities and their restrictions to $A_F$, are those of $\Spec A_C$ over $z$. Now $A_C=Q\otimes_{B_F}A_F=Q\otimes_BA$
+is the base change of $B\to A$ along $B\to Q$, and for every function the weighted fibre sum of a base change at $z$
+equals the weighted fibre sum of $B\to A$ at the restriction $s'$ of $z$ to $B$
+(Lemmas~\ref{spectrum:finite-base-change-multiplicity-mass} and~\ref{spectrum:all-function-finite-base-change}). Over
+$S_0$, the multiplicities of Definition~\ref{def:nf-weights} are the fibre multiplicities of $B\to A$.
+\end{proof}
+
+\subsection{The weighted maximum principle on pieces}\label{subsec:nf-pieces}
+
+In this subsection $F$ is a complete, algebraically closed, nontrivially valued field, $Q=F[t]_p$ with $p(0)\ne0$, $\xi$
+is the point $t=0$ and $\zeta_\epsilon$ the Gauss points of Lemma~\ref{lem:nf-gauss-ray}. Let $R'=\prod_{i\in I}D_i$ be
+a finite product of domains $D_i$, each containing $Q$ and finite over it, such that $R'$ is a free $Q$-module of rank
+$d$. Let $x_1,\dots,x_m$ be the points of $(\Spec R')^\an$ over $\xi$ (they are $F$-points), with multiplicities $e_l$,
+so $\sum_le_l=d$, and $q$ the map to $(\Spec Q)^\an$.
+
+\begin{lemma}[Fibres over small discs]\label{lem:nf-fibre-shrink}
+\lean{EnvelopeProperty.Berk.eventually_preimage_subset_of_continuous, EnvelopeProperty.eventually_nonflatFibre_nonflatGaussPoint_subset}
+\leanok
+\uses{spectrum:integral-compact-preimage, spectrum:topology, lem:nf-gauss-ray}
+If $V$ is an open neighbourhood of $q^{-1}(\xi)$, then $q^{-1}(\zeta_\epsilon)\subseteq V$ for all sufficiently small
+$\epsilon>0$.
+\end{lemma}
+
+\begin{proof}
+Otherwise there are $\epsilon_n\to0$ and $x'_n\in q^{-1}(\zeta_{\epsilon_n})\setminus V$. The set
+$K=\{\zeta_\epsilon:0\le\epsilon\le1\}$ is compact, as the continuous image of $[0,1]$, so $q^{-1}(K)$ is compact
+(Lemma~\ref{spectrum:integral-compact-preimage}), and the $x'_n$ have a cluster point $x^*$ in the closed set
+$q^{-1}(K)\setminus V$. By continuity $q(x^*)$ is a cluster point of $\zeta_{\epsilon_n}\to\zeta_0=\xi$, so
+$q(x^*)=\xi$, the spaces being Hausdorff; thus $x^*\in q^{-1}(\xi)\subseteq V$, a contradiction.
+\end{proof}
+
+\begin{lemma}[Pieces of fibres over Gauss points]\label{lem:nf-pieces}
+\lean{EnvelopeProperty.exists_nonflatPieces, EnvelopeProperty.nonflat_piece_norm_estimate, EnvelopeProperty.exists_nonflat_separating, EnvelopeProperty.exists_val_sub_eq_zero_of_mem_fibre_nonflatEvalPoint, EnvelopeProperty.Berk.val_algebraNorm_eq_prod_flatFibreMult}
+\leanok
+\uses{lem:nf-fibre-shrink, lem:nf-gauss-ray, spectrum:finite-free-scalar-norm}
+There are pairwise disjoint open neighbourhoods $U_l$ of $x_l$ and $\epsilon_1>0$ with the following properties, where
+$G_l(\epsilon)=q^{-1}(\zeta_\epsilon)\cap U_l$ for $0<\epsilon<\epsilon_1$:
+\begin{enumerate}
+\item $q^{-1}(\zeta_\epsilon)$ is the disjoint union of the $G_l(\epsilon)$;
+\item $\sum_{x'\in G_l(\epsilon)}m_{x'}=e_l$;
+\item $\prod_{x'\in G_l(\epsilon)}|b|_{x'}^{m_{x'}}\ge|b(x_l)|^{e_l}$ for every $b\in R'$;
+\item for open neighbourhoods $V_l\subseteq U_l$ of $x_l$, $G_l(\epsilon)\subseteq V_l$ for all sufficiently small
+$\epsilon$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $i(l)$ be the index with $x_l$ a point of $\Spec D_{i(l)}$, and $\varepsilon_i\in R'$ the idempotent of the factor
+$D_i$. By the Chinese remainder theorem choose $\tilde e_l\in R'$ with $\tilde e_l(x_l)=1$ and $\tilde e_l(x_{l'})=0$ for
+$l'\ne l$, and put $e'_l=\varepsilon_{i(l)}\tilde e_l$; it has the same values at the $x_{l'}$. Let
+\[
+U_l=\{|1-e'_l|<1\}\cap\bigcap_{l'\ne l}\{|e'_{l'}|<1\}.
+\]
+These sets are open and contain $x_l$; they are pairwise disjoint, since $|e'_l|<1$ and $|1-e'_l|<1$ cannot hold at
+the same point. A point $x'\in U_l$ has $|e'_l|_{x'}=1$, hence $|\varepsilon_{i(l)}|_{x'}\ne0$ and, as
+$\varepsilon_{i(l)}(1-\varepsilon_{i(l)})=0$, $|1-\varepsilon_{i(l)}|_{x'}=0$: so $x'$ is a point of $\Spec D_{i(l)}$. By
+Lemmas~\ref{lem:nf-fibre-shrink} and~\ref{lem:nf-gauss-ray} choose $\epsilon_1\le\epsilon_0$ with
+$q^{-1}(\zeta_\epsilon)\subseteq\bigcup_lU_l$ for $\epsilon<\epsilon_1$; this gives (1), and (4) follows in the same way
+from Lemma~\ref{lem:nf-fibre-shrink} applied to $\bigcup_lV_l$.
+
+Fix $\epsilon<\epsilon_1$ and $l$, write $G_{l'}=G_{l'}(\epsilon)$, $w_{l'}=\sum_{x'\in G_{l'}}m_{x'}$; then
+$\sum_{l'}w_{l'}=d$, the module $R'$ being free of rank $d$. A point $x'\in G_l$ has zero kernel on $D_{i(l)}$: the
+kernel is a prime of $D_{i(l)}$ lying over the zero kernel of $\zeta_\epsilon$, and $D_{i(l)}$ is an integral extension
+of the domain $Q$. We claim: if $b\in R'$, $b(x_l)\ne0$, and $\kappa\in F$ satisfies $|\kappa|\ge1$ and
+$|\kappa|>|b|_{x''}$ for all $x''\in q^{-1}(\zeta_\epsilon)$, then
+\[
+\prod_{x'\in G_l}|b|_{x'}^{m_{x'}}\cdot|\kappa|^{d-w_l}\ \ge\ |b(x_l)|^{e_l}\,|\kappa|^{d-e_l}. \tag{$\ast$}
+\]
+Since $b(x_l)\ne0$, $b$ is nonzero in $D_{i(l)}$, so $\beta=\min_{G_l}|b|>0$; also $\theta=\max_{G_l}|1-e'_l|<1$.
+Choose $N\ge1$ with $|\kappa|\theta^N<\beta$, put $E=1-(1-e'_l)^N$ and $b_2=bE+\kappa(1-E)\in R'$. At $x'\in G_l$:
+$|1-E|_{x'}\le\theta^N<1$, so $|E|_{x'}=1$ and $|bE|_{x'}=|b|_{x'}\ge\beta>|\kappa(1-E)|_{x'}$; hence
+$|b_2|_{x'}=|b|_{x'}$. At $x'\in G_{l'}$, $l'\ne l$: $|e'_l|_{x'}<1$, and $E=\sum_{j=1}^N(-1)^{j+1}\binom Nje_l'^{\,j}$, so
+$|E|_{x'}<1$, $|1-E|_{x'}=1$ and $|\kappa(1-E)|_{x'}=|\kappa|>|b|_{x'}\ge|bE|_{x'}$; hence $|b_2|_{x'}=|\kappa|$. Further
+$E(x_l)=1$ and $E(x_{l'})=0$, so $b_2(x_l)=b(x_l)$ and $b_2(x_{l'})=\kappa$. The norm $\Norm_{R'/Q}(b_2)\in Q$ satisfies
+$|\Norm_{R'/Q}(b_2)|_y=\prod_{x\mapsto y}|b_2|_x^{m_x}$ at every point $y$ of $(\Spec Q)^\an$
+(Lemma~\ref{spectrum:finite-free-scalar-norm}), and $|\Norm(b_2)(0)|\le|\Norm(b_2)|_{\zeta_\epsilon}$
+(Lemma~\ref{lem:nf-gauss-ray}). Thus
+$|b(x_l)|^{e_l}|\kappa|^{d-e_l}\le\prod_{G_l}|b|^{m}\cdot|\kappa|^{\sum_{l'\ne l}w_{l'}}$, which is $(\ast)$.
+
+(2) As $F$ is nontrivially valued, there is $\kappa\in F$ with $|\kappa|>1$. Apply $(\ast)$ to $b=1$: $|\kappa|^{d-w_l}\ge|\kappa|^{d-e_l}$, so
+$w_l\le e_l$. Since $\sum_lw_l=d=\sum_le_l$, $w_l=e_l$ for all $l$. (3) If $b(x_l)=0$ there is nothing to prove;
+otherwise apply $(\ast)$ with any admissible $\kappa$ and use $w_l=e_l$.
+\end{proof}
+
+\begin{lemma}[Weighted maximum principle for Fubini--Study pullbacks]\label{lem:nf-pieces-fs}
+\lean{EnvelopeProperty.IsNonflatAwayFS, EnvelopeProperty.eventually_nonflat_weighted_maxPrinciple, EnvelopeProperty.eventually_nonflat_weighted_maxPrinciple_iInf, EnvelopeProperty.eventually_flatNormFun_nonflatEvalPoint_le}
+\leanok
+\uses{lem:nf-pieces}
+Keep the notation of Lemma~\ref{lem:nf-pieces}, fix $l$ and $g\in R'$ with $g(x_l)\ne0$. Call a function $G$ on
+$\{|g|\ne0\}\subseteq(\Spec R')^\an$ \emph{of FS type in $R'_g$} if $G=\max\{c_0,\max_i(a_i\log|\beta_i|+c_i)\}$ for
+finitely many $\beta_i\in R'_g$, $a_i\in\Q_{>0}$ and $c_i\in\R$. There is $\epsilon_2>0$ such that for $0<\epsilon<\epsilon_2$:
+\begin{enumerate}
+\item $\sum_{x'\in G_l(\epsilon)}m_{x'}G(x')\ge e_l\,G(x_l)$ for every $G$ of FS type in $R'_g$;
+\item if $W$ is the pointwise limit on $\{|g|\ne0\}$ of a decreasing sequence $G_j$ of functions of FS type in $R'_g$, then
+$\sum_{x'\in G_l(\epsilon)}m_{x'}W(x')\ge e_l\,W(x_l)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+On the open neighbourhood $V_l=U_l\cap\{|g-g(x_l)|<|g(x_l)|\}$ of $x_l$ we have $|g|=|g(x_l)|$. By
+Lemma~\ref{lem:nf-pieces}(4) choose $\epsilon_2$ with $G_l(\epsilon)\subseteq V_l$ for $\epsilon<\epsilon_2$. For
+$\beta=b/g^n$ with $b\in R'$, Lemma~\ref{lem:nf-pieces}(2),(3) give
+$\prod_{G_l(\epsilon)}|\beta|^{m}=\prod_{G_l(\epsilon)}|b|^m/|g(x_l)|^{ne_l}\ge|b(x_l)|^{e_l}/|g(x_l)|^{ne_l}=|\beta(x_l)|^{e_l}$.
+(1) For each $i$, using $G\ge a_i\log|\beta_i|+c_i$ and $\sum_{G_l(\epsilon)}m=e_l$,
+\[
+\sum_{x'\in G_l(\epsilon)}m_{x'}G(x')\ge a_i\log\prod_{G_l(\epsilon)}|\beta_i|^{m}+e_lc_i\ge e_l\bigl(a_i\log|\beta_i(x_l)|+c_i\bigr),
+\]
+and likewise $\sum m_{x'}G(x')\ge e_lc_0$; take the maximum over the terms (with $\log0=-\infty$). (2) For a decreasing
+sequence, the finite weighted sums with nonnegative weights converge to the weighted sum of the limits, so (2) follows
+from (1) by letting $j\to\infty$ on both sides.
+\end{proof}
+
+\subsection{Local approximation on the normalized curve}\label{subsec:nf-local}
+
+\begin{lemma}[Local approximants at rigid points]\label{lem:nf-local-approx}
+\lean{EnvelopeProperty.exists_nonflatLocalApprox, EnvelopeProperty.exists_nonflatLocalApprox_away, EnvelopeProperty.exists_nonflatLocalApprox_chart, EnvelopeProperty.exists_nonflatLocalApprox_of_lift, EnvelopeProperty.nonflat_exists_chart_denominator, EnvelopeProperty.nonflat_apply_ne_zero_of_mul}
+\leanok
+\uses{def:nf-chart-regularizable, def:nf-line, lem:nf-line-curve, lem:nf-charpoly, def:fs}
+Let $u$ be regularizable on the charts of a blowup, with witness $s$. Fix $0\ne\sigma_0\in s$, put $e_u=\chi_{\sigma_0}(0)$
+(Lemma~\ref{lem:nf-charpoly} for $B\subseteq A$), let $(F,\xi)$ be a rigid datum for some $s\in S^\an$ and let $w$ be
+admissible for $h\,e_u$. Then for every point $x$ of $(\Spec R')^\an$ there is $g\in R'$ with $g(x)\ne0$
+such that $u''=u\circ r\circ p$ is, on $\{|g|\ne0\}$, the limit of a decreasing sequence of functions of FS type in
+$R'_g$ (Lemma~\ref{lem:nf-pieces-fs}).
+\end{lemma}
+
+\begin{proof}
+Put $y=r(p(x))\in Y^\an$. \emph{Case $y\notin Z^\an$.} Choose $g_0$ with $|g_0|_y\ne0$ and
+$u|_{Y_{g_0}^\an}=\lim_jG_j$, $G_j\in\FS(Y_{g_0})$ decreasing. Let $g\in R'$ be the image of $g_0$; then
+$|g|_x=|g_0|_y\ne0$, and $A\to R'$ extends to $A_{g_0}\to R'_g$. For $x'$ with $|g|_{x'}\ne0$, the point $r(p(x'))$ lies
+in $Y_{g_0}^\an$, and $G_j(r(p(x')))$ is obtained by replacing each $\log|f|$, $f\in A_{g_0}$, in the formula for $G_j$ by
+$\log|f'|(x')$ with $f'$ the image of $f$ in $R'_g$. These functions are of FS type in $R'_g$ and decrease to $u''$.
+\emph{Case $y\in Z^\an$.} Let $D=D_P$ be the factor of $R'$ containing $x$, $\mathfrak m_x\subseteq D$ the maximal ideal
+of $x$, and $\mathcal O=D_{\mathfrak m_x}$, a discrete valuation ring with valuation $\ord_x$
+(Lemma~\ref{lem:nf-line-curve}(1)). The image of $\sigma_0$ in $D$ is nonzero: by Lemma~\ref{lem:nf-charpoly}(3)
+$e_u\in\sigma_0A$, so otherwise the image of $\iota(e_u)$ in $D$ would vanish, while $Q\to D$ is injective and
+$\iota(e_u)\ne0$. Choose $\sigma\in s$ with nonzero image in $D$ and $\ord_x(\sigma)$ minimal among such elements. Then
+$\sigma'/\sigma\in\mathcal O$ for every $\sigma'\in s$ (if $\sigma'$ maps to $0$ this is $0$). The chart $A[s/\sigma]$ is
+contained in $A_\sigma$, and $A\to D$ extends to $A_\sigma\to D_\sigma\subseteq\mathrm{Frac}\,D$; the image of
+$A[s/\sigma]$ is generated by the images of $A$ and of the $\sigma'/\sigma$, so it lies in $\mathcal O$, and as
+$A[s/\sigma]$ is finitely generated it lies in $D_{g'}$ for some $g'\in D\setminus\mathfrak m_x$. Let $g\in R'$ be $g'$
+on the factor $D$ and $0$ on the other factors; then $R'_g=D_{g'}$, $g(x)\ne0$, and we obtain
+$\psi\colon A[s/\sigma]\to R'_g$ extending $A\to R'$. For $x'$ with $|g|_{x'}\ne0$, the restriction $\psi^*x'$ of $x'$ to
+$A[s/\sigma]$ satisfies $\mu_\sigma(\psi^*x')=r(p(x'))$, so $u''(x')=(u\circ\mu_\sigma)(\psi^*x')$. Since
+$u\circ\mu_\sigma\in\Rcal(A[s/\sigma])$, its Fubini--Study approximants composed with $\psi^*$ are as in the first case.
+The second case uses $y\in Z^\an$ only through the nonvanishing of $\sigma_0$ on $D$, which holds on every factor; so it applies at
+every point $x$ (if the kernel of $x$ on $D$ is zero, $\mathcal O=\mathrm{Frac}\,D$), and the covering hypothesis of the first case is not
+needed. The first case is kept as a separate statement.
+\end{proof}
+
+\subsection{Identification and the nonflat norm}\label{subsec:nf-main}
+
+\begin{proposition}[Identification off the \'etale locus]\label{prop:nf-identification}
+\lean{EnvelopeProperty.IsChartRegularizable.eq_nonflatNorm, EnvelopeProperty.IsChartRegularizable.eq_nonflatNorm_of_satisfiesHullIneq, EnvelopeProperty.NonflatRigidEmbedding.eq_sum_rigidWeight_of_line, EnvelopeProperty.nonflat_eq_flatNormFun_of_gaussRay, EnvelopeProperty.NonflatRigidEmbedding.exists_nonflatLocalApprox_line}
+\leanok
+\uses{lem:nf-chart-regularizable-closure, def:nf-weights, lem:nf-line-exists, lem:nf-line-curve, lem:nf-line-weights, lem:nf-hull-approach, lem:nf-generic-fibre, lem:nf-pieces, lem:nf-pieces-fs, lem:nf-local-approx, lem:nf-general-gauss-usc-upper, lem:nf-general-order-squeeze, lem:nf-whole-rigid-weighted-norm}
+Let $u$ be regularizable on the charts of a blowup. Let $v\in\Rcal(S)$ (it suffices that $v$ is upper semicontinuous and satisfies the hull inequality) with
+$v=\Norm_\pi u$ on $S_0^\an$. Then
+$v(s)=\Norm_\pi u(s)$ for every $s\in S^\an$.
+\end{proposition}
+
+\begin{proof}
+Let $s\notin S_0^\an$, with $(F,\xi)=(F_s,\xi_s)$ and $b_s,\chi_s$ as in Definition~\ref{def:nf-weights}; let $e_u$ be as
+in Lemma~\ref{lem:nf-local-approx} and $w$ a direction admissible for $h\,e_u$ (Lemma~\ref{lem:nf-line-exists}); it is
+admissible for $h$. Let $Q,R',q,p$ be as in Definition~\ref{def:nf-line}, $c$ as in Lemma~\ref{lem:nf-line-curve}(2),
+$u''=u\circ r\circ p$, and $x_1,\dots,x_m$ the points over $\xi$, with multiplicities $e_l$. The hypotheses of the
+subsection on pieces hold by Lemma~\ref{lem:nf-line-curve}. By Lemma~\ref{lem:nf-line-weights},
+\[
+\Norm_qu''(\xi)=\sum_le_l\,u(r(p(x_l)))=\sum_zM_z\,u(r(z))=\sum_{\pi(y)=s}m_y(\pi)u(y)=\Norm_\pi u(s).
+\]
+\emph{Lower bound.} For each $l$ take $g_l$ from Lemma~\ref{lem:nf-local-approx} and $\epsilon_2^{(l)}$ from
+Lemma~\ref{lem:nf-pieces-fs}(2). For $0<\epsilon<\min_l\epsilon_2^{(l)}$, Lemma~\ref{lem:nf-pieces}(1) and
+Lemma~\ref{lem:nf-pieces-fs}(2) give
+$\Norm_qu''(\zeta_\epsilon)=\sum_l\sum_{G_l(\epsilon)}m\,u''\ge\sum_le_lu''(x_l)=\Norm_qu''(\xi)$.
+\emph{Upper bound.} $u''$ is upper semicontinuous, $u$ being so (Lemma~\ref{lem:nf-chart-regularizable-closure}(1)), and $u''(x_l)<+\infty$ (the local
+approximants of Lemma~\ref{lem:nf-local-approx} are of FS type). For
+reals $c_l>u''(x_l)$ the sets $V_l=U_l\cap\{u''<c_l\}$ are open neighbourhoods of $x_l$, so by
+Lemma~\ref{lem:nf-pieces}(2),(4) $\Norm_qu''(\zeta_\epsilon)\le\sum_le_lc_l$ for small $\epsilon$. Hence
+$\limsup_{\epsilon\to0}\Norm_qu''(\zeta_\epsilon)\le\Norm_qu''(\xi)$.
+\emph{Comparison with $v$.} The point $\zeta_\epsilon$, $\epsilon>0$, has zero kernel, so $|c\,\iota(h)|_{\zeta_\epsilon}\ne0$
+and Lemma~\ref{lem:nf-generic-fibre} gives $\Norm_qu''(\zeta_\epsilon)=\Norm_\pi u(s_\epsilon)=v(s_\epsilon)$, with
+$s_\epsilon\in S_0^\an$ as in Lemma~\ref{lem:nf-hull-approach}. By that lemma, $v(s)\le v(s_\epsilon)$ for small $\epsilon$,
+so $v(s)\le\limsup_\epsilon\Norm_qu''(\zeta_\epsilon)\le\Norm_\pi u(s)$; and
+$v(s)\ge\limsup_\epsilon v(s_\epsilon)\ge\Norm_\pi u(s)$ by the lower bound. For $s\in S_0^\an$ the identity is the
+hypothesis.
+\end{proof}
+
+\begin{proposition}[Nonflat norms for functions regularizable on blowup charts]\label{prop:nf-nonflat-norm}
+\lean{EnvelopeProperty.IsChartRegularizable.isRegularizable_nonflatNorm, EnvelopeProperty.nonempty_normWeights_isChartRegularizable, EnvelopeProperty.ChartNonflatNorms.of_wuRegularization, EnvelopeProperty.hasLogGrowth_nonflatNorm, EnvelopeProperty.IsChartRegularizable.isRegularizable_awayComap_goodLocus}
+\leanok
+\uses{conv:nf-setting, def:nf-chart-regularizable, lem:nf-chart-regularizable-closure, lem:nf-good-locus, def:nf-weights, lem:nf-weights-basic, prop:gluing, lem:reg-closure-elementary, lem:finite-etale-norm, lem:growth, lem:nonflat-extension, prop:nf-identification}
+\source{fhx-envelope-20261028:prop:nonflat-norm}
+In the setting of Convention~\ref{conv:nf-setting}, the integers $m_y(\pi)$ of Definition~\ref{def:nf-weights} satisfy
+$m_y(\pi)\ge1$ and $\sum_{\pi(y)=s}m_y(\pi)=d$ for every $s\in S^\an$. If $u$ is regularizable on the charts of a blowup,
+of logarithmic growth, and every $x\in Y^\an\setminus Z^\an$ lies in some $Y_{g_0}^\an$ with $u|_{Y_{g_0}^\an}\in\Rcal(Y_{g_0})$,
+then $\Norm_\pi u\in\Rcal(S)$.
+\end{proposition}
+
+\begin{proof}
+The first assertion is Lemma~\ref{lem:nf-weights-basic}. The variety $Y_0$ is normal and affine and contained in
+$Y\setminus Z$, and it is covered by the principal opens $Y_{\varphi(h)g_0}$ on which $u$ is regularizable
+(Lemma~\ref{lem:reg-closure-elementary}(4)); $u$ is upper semicontinuous and of logarithmic growth, so
+$u|_{Y_0^\an}\in\Rcal(Y_0)$ by Proposition~\ref{prop:gluing}(2). By Lemma~\ref{lem:finite-etale-norm} applied to the finite
+free \'etale $B_h\to A_{\varphi(h)}$, $v_0=\Norm_{\pi|_{Y_0}}u\in\Rcal(S_0)$; for $s\in S_0^\an$ the fibre algebras of
+$B\to A$ and $B_h\to A_{\varphi(h)}$ at $s$ coincide, so $v_0=\Norm_\pi u$ on $S_0^\an$. By logarithmic growth of $u$ and
+Lemma~\ref{lem:growth}(2), $u\le C\,g\circ\pi+C'$ with $g\in\FS(S)$, $C\ge0$; as the weights over each point sum to $d$,
+$v_0\le dC\,g+d|C'|$ on $S_0^\an$, and $dC\,g$ may be replaced by a function in $\FS(S)$ (enlarging $C$ to a rational
+number and using $g\ge b_0$). Lemma~\ref{lem:nonflat-extension} gives $v\in\Rcal(S)$ with $v=v_0$ on $S_0^\an$, and
+Proposition~\ref{prop:nf-identification} gives $v=\Norm_\pi u$.
+\end{proof}
+
+\begin{proposition}[Projection step for functions regularizable on blowup charts]\label{prop:nf-projection-step}
+\lean{EnvelopeProperty.IsRegularizable.of_projection_chartRegularizable, EnvelopeProperty.ChartNonflatNorms, EnvelopeProperty.ChartNonflatNorms.of_nonflatNorms, EnvelopeProperty.NormWeights.ofSubclass}
+\leanok
+\uses{prop:projection-step, prop:nf-nonflat-norm, lem:nf-chart-regularizable-closure}
+\source{fhx-envelope-20261028:prop:projection-step}
+Proposition~\ref{prop:projection-step} holds for every $u$ that is regularizable on the charts of a blowup (in place of
+weakly psh), with the weights of Proposition~\ref{prop:nf-nonflat-norm}.
+\end{proposition}
+
+\begin{proof}
+The proof of Proposition~\ref{prop:projection-step} uses of the weakly psh hypothesis only upper semicontinuity, stability
+of the class under adding and taking maxima with regularizable functions, stability under $u\mapsto u\circ p+\log|w|$ on
+$\widetilde Y$, and Proposition~\ref{prop:nonflat-norm} for $\pi$ and for $\pi\times\mathrm{id}$ on $\widetilde Y$, whose
+base $S\times\A^1$ is a principal open of $\A^{n+1}$ and whose map is again finite, injective and generically \'etale of
+degree $d$. The first three are Lemma~\ref{lem:nf-chart-regularizable-closure}(1),(2),(4), and the last is
+Proposition~\ref{prop:nf-nonflat-norm} applied to $\pi$ and to $\pi\times\mathrm{id}$.
+\end{proof}
+
+\begin{theorem}[Local regularization for functions regularizable on blowup charts]\label{thm:nf-local-regularization}
+\lean{EnvelopeProperty.IsRegularizable.of_isChartRegularizable, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_isAlgClosed, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_convexPLApproximation, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_localPositivity}
+\leanok
+\uses{thm:normal-local-regularization, prop:nf-projection-step, lem:nf-chart-regularizable-closure}
+\source{fhx-envelope-20261028:thm:normal-local-regularization}
+Theorem~\ref{thm:normal-local-regularization} holds for every $u$ that is regularizable on the charts of a blowup, of
+logarithmic growth, and regularizable on principal opens covering $Y\setminus Z$.
+\end{theorem}
+
+\begin{proof}
+The proof of Theorem~\ref{thm:normal-local-regularization} restricts $u$ to principal opens $Y_h$ and applies the
+projection step there. Restrictions stay in the class (Lemma~\ref{lem:nf-chart-regularizable-closure}(3)), and
+Proposition~\ref{prop:nf-projection-step} replaces Proposition~\ref{prop:projection-step}.
+\end{proof}
+
+\begin{corollary}[Psh descent without the nonflat norm hypothesis]\label{cor:nf-psh-descent}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj, EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj_of_convexPLApproximation}
+\leanok
+\uses{thm:pg-psh-descent, lem:nf-descent-chart, thm:nf-local-regularization}
+\source{fhx-envelope-20261028:cor:normal-weak-global}
+Theorem~\ref{thm:pg-psh-descent} holds without assuming Proposition~\ref{prop:nonflat-norm}.
+\end{corollary}
+
+\begin{proof}
+In the proof of Theorem~\ref{thm:pg-psh-descent}, Theorem~\ref{thm:normal-local-regularization} is applied to the chart
+functions $u_i$, which are regularizable on the charts of a blowup by Lemma~\ref{lem:nf-descent-chart}; apply
+Theorem~\ref{thm:nf-local-regularization} instead.
+\end{proof}
+
+\begin{remark}[Relation to the source]\label{rmk:nf-source}
+\uses{prop:nonflat-norm, lem:curves, prop:nf-nonflat-norm}
+The proof of \cite[Proposition~5.22]{FHX} chooses one line through the rigid point for each $s$, defines the weights by
+the multiplicities of the normalized curve over that line, and identifies the extended norm with $\Norm_\pi u$ through
+\cite[Lemma~5.21]{FHX}: subharmonicity of norms along finite flat maps of curves, equality of subharmonic functions that
+agree off finitely many rigid points, and subharmonicity of pullbacks of weakly psh functions to curves, all from
+\cite[Proposition~3.5(1),(4),(6),(8) and Proposition~4.2]{GR25}. Here the weights are defined by characteristic
+polynomials; by Lemma~\ref{lem:nf-line-weights} they coincide with the line multiplicities of \cite{FHX} for every line
+admissible for $h$, so the line may be chosen after the function $u$ (it must avoid the image of the blowup centre,
+through the element $e_u$). The identification uses the hull inequality along Gauss points of discs in the line
+(Lemma~\ref{lem:nf-hull-approach}) instead of the maximum principle for subharmonic functions, and the weighted inequality
+of Lemma~\ref{lem:nf-pieces-fs} on the normalized curve, where the function is approximated by Fubini--Study functions of
+a blowup chart (Lemma~\ref{lem:nf-local-approx}). Only the discrete valuation rings of the normalized curve are used, not
+its smoothness. The rigid field is taken nontrivially valued (Definition~\ref{def:nf-rigid-data}); the completed
+algebraic closure of $\mathcal H(s)$ used in \cite{FHX} is trivially valued when $\mathcal H(s)$ is. The class of
+Definition~\ref{def:nf-chart-regularizable} is smaller than the class of weakly psh functions of \cite[Proposition~5.22]{FHX}
+and contains the functions of \cite[Corollary~5.26]{FHX} (Lemma~\ref{lem:nf-descent-chart}); the statement of
+Proposition~\ref{prop:nonflat-norm} for all weakly psh functions is not proved by this route, and Lemma~\ref{lem:curves}
+is not used.
+\end{remark}

@@ -1,0 +1,96 @@
+\section{Native smooth projective modifications of the original projective varieties}
+
+\begin{lemma}[The original projective subvariety is a native integral projective scheme]
+\label{lem:fc-original-projective-variety-native-scheme}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.homogeneousIdeal, EnvelopeProperty.ProjSubvariety.nativeScheme, EnvelopeProperty.ProjSubvariety.nativeEmbedding, EnvelopeProperty.ProjSubvariety.nativeEmbedding_isClosedImmersion, EnvelopeProperty.ProjSubvariety.quotientNativeStructure, EnvelopeProperty.ProjSubvariety.quotientNativeStructure_isProjectiveFactorization, EnvelopeProperty.ProjSubvariety.quotientNativeStructure_isProper, EnvelopeProperty.ProjSubvariety.nativeAlgebraicScheme, EnvelopeProperty.ProjSubvariety.native_irrelevant_ne_bot, EnvelopeProperty.ProjSubvariety.nativeScheme_isIntegral}
+Every original projective subvariety $X=V(I)\subseteq\mathbf P^n_k$, given by
+its original relevant homogeneous prime ideal, supplies a native integral
+projective algebraic scheme over the same field, using the same original
+homogeneous quotient ring and its actual quotient closed immersion.
+\end{lemma}
+\begin{proof}
+The original componentwise homogeneity property is precisely native homogeneity
+for the original polynomial grading.  Its quotient components therefore form
+a true internal grading on the original quotient ring.  The actual graded
+quotient map induces the native quotient closed immersion in the original
+polynomial projective space; its composite with the original coefficient
+projection is an explicit polynomial projective factorization and is proper.
+Properness gives local finite type, universal closedness gives quasi-compactness,
+and together these give finite type; separatedness also follows from properness.
+These actual data give the native algebraic scheme over the same field.
+The original quotient ring is a domain because the original ideal is prime.
+An original coordinate outside that ideal has nonzero image of degree one,
+so the quotient irrelevant ideal is nonzero.  The zero homogeneous prime
+is consequently an actual projective point generic in the whole projective
+scheme.  Reducedness follows from the true native Proj stalk localizations
+of the domain, and genericity gives irreducibility.  Thus the original native
+projective quotient is integral.
+\end{proof}
+
+\begin{lemma}[The original whole projective graph is a closed immersion]
+\label{lem:fc-original-projective-product-graph}
+\leanok
+\lean{EnvelopeProperty.ProjectiveGraphEmbedding.embedding, EnvelopeProperty.ProjectiveGraphEmbedding.embedding_fst, EnvelopeProperty.ProjectiveGraphEmbedding.embedding_snd, EnvelopeProperty.ProjectiveGraphEmbedding.embedding_isClosedImmersion, EnvelopeProperty.ProjectiveGraphEmbedding.exists_closedProductEmbedding}
+\uses{lem:fc-projective-space-projections-agree}
+For an actual original morphism $f:Y\to X$ and an original target embedding
+$X\to\mathbf P^n_R$, an actual finite polynomial projective factorization
+of the composite source structure constructs an entire closed immersion
+$Y\to\mathbf P^n_R\times_R\mathbf P^m_R$ whose first projection is the
+literal original $Y\to X\to\mathbf P^n_R$.
+\end{lemma}
+\begin{proof}
+Use the actual polynomial projective factorization to obtain the genuine
+closed immersion $Y\to\mathbf P^m_R$ and its original coefficient triangle.
+The two original maps form a map to the actual native pullback product;
+the native pullback identities give both literal projection equalities.
+The second product projection is separated, being the base change of the
+proper first projective-space projection.  A morphism whose composite with
+a separated morphism is a closed immersion is a closed immersion.  Applying
+this to the second projection and the original source embedding proves
+the whole graph closed, without requiring a projective certificate for $f$.
+\end{proof}
+
+\begin{theorem}[An actual smooth integral projective resolution of the ORIGINAL variety]
+\label{thm:fc-original-projective-variety-native-resolution}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.exists_native_projective_resolution}
+\uses{lem:fc-original-projective-variety-native-scheme,thm:fc-polynomial-projective-strong-resolution}
+Over a characteristic-zero field, every original projective subvariety
+admits an actual native integral smooth projective modification, proper
+over the original native variety and an isomorphism over a dense original open.
+No native projectivity, alteration, resolution or normality certificate is supplied.
+\end{theorem}
+\begin{proof}
+The first lemma supplies all original integral algebraic scheme data and
+its literal polynomial projectivity.  Apply the genuine native polynomially
+projective strong-resolution producer.  It yields the actual smooth integral
+final scheme, its original polynomial projective embedding, and its original
+dense-isomorphism open.  Finite type over the original field makes the original
+base locally Noetherian, so the actual finite blowup succession composite is
+proper.  These are the required original morphism and source properties.
+\end{proof}
+
+\begin{theorem}[An actual closed product model over the ORIGINAL coordinates]
+\label{thm:fc-original-projective-variety-native-resolution-product}
+\leanok
+\lean{EnvelopeProperty.ProjSubvariety.exists_native_projective_resolution_product}
+\uses{thm:fc-original-projective-variety-native-resolution,lem:fc-original-projective-product-graph}
+The preceding smooth integral projective modification has an actual closed
+embedding in $\mathbf P^n_k\times_k\mathbf P^m_k$ with first projection equal
+to its original morphism followed by the original quotient projective embedding.
+\end{theorem}
+\begin{proof}
+Use the preceding actual modification and its derived finite polynomial
+projectivity over the original field.  The literal coefficient-projection
+comparison identifies the composite with the original target embedding's
+coefficient morphism.  Apply the original whole projective graph construction;
+its first pullback projection is exactly the required original composite.
+\end{proof}
+
+\begin{remark}
+These are actual scheme-existence and whole-product embedding producers.
+The further bihomogeneous coordinate-kernel, original quotient chart, and
+function-field identifications needed by the model-form alteration class
+are separate claims and are not asserted by these results.
+\end{remark}

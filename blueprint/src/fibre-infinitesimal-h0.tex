@@ -1,0 +1,81 @@
+\section{The original global-section image filtration and infinitesimal quotients}
+
+\begin{lemma}[The whole original global-section image kernel]
+\label{lem:fibre-infinitesimal-global-image-kernel}
+\uses{lem:fibre-infinitesimal-whole-module-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalH0.sectionKernel,EnvelopeProperty.FibreInfinitesimalH0.mem_sectionKernel_iff,EnvelopeProperty.FibreInfinitesimalH0.mem_sectionKernel_iff_exists,EnvelopeProperty.FibreInfinitesimalH0.sectionKernel_eq_range,EnvelopeProperty.FibreInfinitesimalH0.sectionsEquivKernel,EnvelopeProperty.FibreInfinitesimalH0.sectionsEquivKernel_apply}
+\leanok
+For every order $n$, let $F_n$ be the kernel ideal of the literal original
+projection homomorphism
+$\Gamma(X,\mathcal O_X)\to\Gamma(X_n,\mathcal O_{X_n})$.
+A global section belongs to $F_n$ exactly when it is a section of the
+original geometric ideal power $(I\mathcal O_X)^n$. Consequently $F_n$
+is exactly the entire image of the original ideal-power global-section
+inclusion.
+\end{lemma}
+\begin{proof}
+Apply the proved whole-open section-kernel theorem to the top open of
+$X$. A section in its kernel has, on every affine open, a restriction
+in the actual original extended ideal power. This is precisely the
+section condition for the original ideal module, and its subtype
+inclusion retains that entire global section. Conversely, every
+ideal-module section has this local membership and its whole original
+projection therefore vanishes. Both maps are the original global-section
+maps, so this proves the asserted equality of kernel and image.
+\end{proof}
+
+\begin{lemma}[The actual original coefficient-ideal filtration]
+\label{lem:fibre-infinitesimal-global-image-filtration}
+\uses{lem:fibre-infinitesimal-global-image-kernel,lem:fibre-infinitesimal-global-quotient-transition}
+\lean{EnvelopeProperty.FibreInfinitesimalH0.sectionKernel_antitone,EnvelopeProperty.FibreInfinitesimalH0.sectionKernel_zero,EnvelopeProperty.FibreInfinitesimalH0.coefficient_restriction,EnvelopeProperty.FibreInfinitesimalH0.coefficient_mul_mem_sectionKernel,EnvelopeProperty.FibreInfinitesimalH0.imageFiltration,EnvelopeProperty.FibreInfinitesimalH0.mem_imageFiltration,EnvelopeProperty.FibreInfinitesimalH0.imageFiltration_zero}
+\leanok
+With the genuine original $R$-module structure on
+$\Gamma(X,\mathcal O_X)$, the submodules $F_n$ form an $I$-filtration:
+$F_0=\Gamma(X,\mathcal O_X)$, $F_{n+1}\subseteq F_n$ and
+$I F_n\subseteq F_{n+1}$.
+\end{lemma}
+\begin{proof}
+The zeroth geometric ideal power is the whole structure sheaf, giving
+$F_0=\Gamma(X,\mathcal O_X)$. The original infinitesimal transition
+$X_n\to X_m$ for $n\le m$ commutes with the original projection to $X$.
+Its section map therefore carries a vanishing projection at order $m$
+to a vanishing projection at order $n$, proving monotonicity.
+For $r\in I$ and $s\in F_n$, restrict to any original affine open $U$.
+The restriction of the original global coefficient $r$ is its actual
+original coefficient image in $\mathcal O_X(U)$, so lies in
+$I\mathcal O_X(U)$. The restriction of $s$ lies in its $n$th power by
+the preceding lemma. Their product lies in the $(n+1)$st power.
+Every such local product is the restriction of the actual original
+scalar product $rs$. The whole-open kernel characterization therefore
+places $rs$ in $F_{n+1}$. Additivity gives the required inclusion for
+the entire submodule $I F_n$.
+\end{proof}
+
+\begin{lemma}[The genuine quotient inclusion and all original transitions]
+\label{lem:fibre-infinitesimal-global-quotient-transition}
+\uses{lem:fibre-infinitesimal-global-image-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalH0.transition_projection_sections,EnvelopeProperty.FibreInfinitesimalH0.quotientInclusion,EnvelopeProperty.FibreInfinitesimalH0.quotientInclusion_mk,EnvelopeProperty.FibreInfinitesimalH0.projection_coefficient,EnvelopeProperty.FibreInfinitesimalH0.quotientInclusionAlgHom,EnvelopeProperty.FibreInfinitesimalH0.quotientInclusion_injective,EnvelopeProperty.FibreInfinitesimalH0.quotientTransition,EnvelopeProperty.FibreInfinitesimalH0.quotientInclusion_transition}
+\leanok
+The actual projection induces an injective homomorphism
+$\Gamma(X,\mathcal O_X)/F_n\to\Gamma(X_n,\mathcal O_{X_n})$
+which sends every original quotient representative to its literal
+original projection section. For $n\le m$, the whole original
+transition map intertwines this inclusion with the canonical quotient
+map modulo $F_m\subseteq F_n$. These maps preserve the whole original
+$R$-coefficient structures, so the quotient inclusion is an
+$R$-algebra homomorphism.
+\end{lemma}
+\begin{proof}
+The projection vanishes exactly on $F_n$, so it descends to the quotient.
+A quotient class mapping to zero has a representative in its original
+kernel $F_n$, hence is zero; this proves injectivity. The defining
+formula on representatives is the original projection itself. The
+original scheme transition and projection compose to the order-$n$
+projection. Contravariance of the global-section functor gives the
+same equality of their whole section homomorphisms. Apply this equality
+to each quotient representative; surjectivity of the original quotient
+map proves the complete quotient-transition square. The same
+composition rule identifies the original coefficient map followed by
+projection with the coefficient map of the composite structure
+morphism, proving the asserted $R$-algebra compatibility.
+\end{proof}

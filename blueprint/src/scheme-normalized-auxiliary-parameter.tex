@@ -1,0 +1,19 @@
+\section{The genuine auxiliary uniformizer parameter is smooth}
+\begin{lemma}\label{lem:plane-first-coordinate-smooth-parameter}
+For a field $F$, the actual ring map $F[P]\to F[P,Q]$ sends $P$ to the first coordinate. Its spectrum map is smooth of relative dimension one.
+\lean{EnvelopeProperty.SchemeNormalizedAuxiliaryParameter.coefficientMap, EnvelopeProperty.SchemeNormalizedAuxiliaryParameter.parameterMap, EnvelopeProperty.SchemeNormalizedAuxiliaryParameter.parameterMap_smooth}
+\leanok
+\end{lemma}
+\begin{proof}
+The polynomial ring $F[P,Q]$, regarded over $F[P]$ through the stated map, is exactly the polynomial ring $F[P][Q]$. The variable correspondence sends the original first coordinate to the coefficient polynomial $P$ and the second coordinate to $Q$. It preserves every polynomial in the original first coordinate. The polynomial algebra in $Q$ has a presentation with one generator and no relations, whose empty Jacobian determinant is one. It is therefore standard smooth of relative dimension one. Transporting this actual presentation along the stated polynomial-ring isomorphism and passing to spectra gives the assertion.
+\end{proof}
+
+\begin{theorem}\label{thm:normalized-actual-smooth-auxiliary-parameter}
+Under the characteristic-zero original normalized coefficient-slice hypotheses, there is an actual affine open immersion $j:A\to N$ containing the unchanged original center and an actual closed original residual point, with an actual etale chart $g:A\to\mathbb A_E^2$ adapted to the entire original residual ideal. The composite of $g$ with projection to its first coordinate is smooth of relative dimension one. The whole original $E$-coefficient square and the exact residual-ideal pullback equality are retained.
+\uses{thm:normalized-actual-adapted-etale-chart,lem:plane-first-coordinate-smooth-parameter}
+\lean{EnvelopeProperty.SchemeNormalizedAuxiliaryParameter.exists_smooth_auxiliary_chart}
+\leanok
+\end{theorem}
+\begin{proof}
+Take the actual original adapted etale chart proved above. An etale map is smooth of relative dimension zero. Compose it with the actual first-coordinate projection, which is smooth of relative dimension one by the preceding lemma. Relative dimensions add under composition, so the composite is smooth of relative dimension one. Use the same original open immersion, coefficient square, original center and residual point, and entire residual ideal. This auxiliary coordinate is a local equation of the original residual curve; it does not replace the original parameter by a multiplicity-one assumption. The original parameter retains its actual unrestricted positive order in the unchanged original DVR.
+\end{proof}

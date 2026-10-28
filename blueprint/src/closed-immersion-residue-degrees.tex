@@ -1,0 +1,39 @@
+\section{Original ambient residue degrees and weighted local orders}
+
+\begin{definition}[The same original coefficient-linear residue map]
+\label{def:fc-closed-immersion-residue-algebra}
+\leanok
+\lean{EnvelopeProperty.ClosedImmersionResidueDegrees.residueFieldAlgEquiv, EnvelopeProperty.ClosedImmersionResidueDegrees.residueFieldAlgEquiv_apply}
+For an actual closed immersion $g:D\hookrightarrow X$ over the original
+field $k$, its literal original residue-field map
+$\kappa(g(y))\to\kappa(y)$ is an algebra isomorphism over that same field.
+The isomorphism is the original map on every actual residue-field element.
+\end{definition}
+
+\begin{theorem}[True ambient weighted orders and the original ideal degree]
+\label{thm:fc-closed-immersion-residue-degrees}
+\leanok
+\lean{EnvelopeProperty.ClosedImmersionResidueDegrees.residue_finrank_eq, EnvelopeProperty.ClosedImmersionResidueDegrees.ord_mul_residue_finrank_eq_local_degree, EnvelopeProperty.ClosedImmersionResidueDegrees.normalizedEulerCharacteristic_idealModule_eq_neg_sum_ambient_residue}
+\uses{def:fc-closed-immersion-residue-algebra, thm:fc-closed-immersion-stalk-order-length, thm:fc-affine-scheme-local-degrees}
+The actual closed and ambient residue-field degrees over the same original
+field agree. At a codimension-one original ambient point, if the actual
+original affine kernel has a nonzero original equation, its native original
+order multiplied by the actual ambient residue degree equals the true
+closed-subscheme stalk length multiplied by its actual residue degree.
+For an actual finite closed subscheme of the original projective scheme,
+the normalized full Euler characteristic of its same native ideal is minus
+the sum over its original points of its actual local lengths weighted by
+the actual original ambient residue-field degrees.
+\end{theorem}
+\begin{proof}
+The actual original residue-field map is already an isomorphism from original
+closed-immersion stalk surjectivity. Naturality of the original global
+residue evaluation identifies its coefficient map with the actual coefficient
+map from the literal composite structure morphism, so it is an algebra
+isomorphism over the same original field. Thus its genuine linear
+isomorphism preserves the actual original residue degree. Combine that
+identity with the already proved original native order--closed-stalk-length
+formula. Finally replace each true closed residue degree in the original
+same-point ideal Euler sum by its actual ambient degree using this original
+map. No order, degree, residue or coefficient-preservation datum is supplied.
+\end{proof}

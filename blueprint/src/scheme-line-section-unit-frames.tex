@@ -1,0 +1,45 @@
+\section{Actual section frames on genuine coefficient unit opens}
+
+\begin{definition}[The whole original scalar in a genuine frame]
+\label{def:fc-original-section-whole-frame-scalar}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionUnitFrames.frameScalar, EnvelopeProperty.SchemeLineSectionUnitFrames.frameScalar_identity, EnvelopeProperty.SchemeLineSectionUnitFrames.pullback_frameScalar}
+\uses{def:fc-original-line-section-frame-coefficient}
+For any actual original whole frame $e:N\simeq O_X$ and original
+section map $s:O_X\to N$, let $c$ be the actual top-open value of
+$e(s(1))$. The entire original composite $s\circ e$ is actual scalar
+multiplication by $c$. Under any actual map $f:Y\to X$, the true
+pulled original section composed with the actual pulled frame is
+scalar multiplication by the same original pulled coefficient
+$f^*c$.
+\end{definition}
+\begin{proof}
+Every original structure-module endomorphism is multiplication by its
+actual top-open value at one, by linearity and restriction
+naturality. Native pullback/unit coherence preserves this whole
+scalar equality and uses the actual original map on coefficients.
+\end{proof}
+
+\begin{theorem}[The original section gives its canonical actual basic-open frame]
+\label{thm:fc-original-section-basic-open-frame}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionUnitFrames.pullbackSectionHom_isIso_of_isUnit, EnvelopeProperty.SchemeLineSectionUnitFrames.basicOpen_appTop_isUnit, EnvelopeProperty.SchemeLineSectionUnitFrames.basicOpenSection_isIso, EnvelopeProperty.SchemeLineSectionUnitFrames.basicOpenFrame, EnvelopeProperty.SchemeLineSectionUnitFrames.basicOpenFrame_section}
+\uses{def:fc-original-section-whole-frame-scalar}
+On the actual original basic open $D(c)$, the true pullback of the
+same original section map $s$ is a whole isomorphism
+$O_{D(c)}\simeq N|_{D(c)}$. Its inverse is an actual local frame in
+which the same original pulled section is exactly one. No
+nonvanishing, invertibility, section-frame, or projective-map
+certificate is assumed, including when this open is empty.
+\end{theorem}
+\begin{proof}
+The actual original restriction of $c$ to its genuine basic open is a
+unit by the locally ringed structure sheaf. Transport through the
+original open top-section identification preserves this actual unit.
+The preceding whole pullback scalar identity identifies the pulled
+section followed by the actual pulled frame with multiplication by
+this genuine unit, hence with an actual original automorphism. The
+pulled frame is already an isomorphism, so the same original pulled
+section is an isomorphism. Take its actual inverse; the asserted
+coefficient-one identity is its whole inverse identity.
+\end{proof}

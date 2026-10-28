@@ -1,0 +1,65 @@
+\subsection{Projective ideal evaluation and the intrinsic calculus}
+\label{subsec:projective-ideal-bridge}
+
+The normalized graded seminorm model of projective space carries a polynomial
+Gauss extension of radius $\exp(-1)$. The following statements identify its
+ideal functions with the intrinsic ideal calculus on affine seminorm spectra.
+They concern the existing normalized model; they do not identify it with a
+canonical projective analytification or construct coherent ideal sheaf gluing.
+
+\begin{lemma}[Bounded Gauss extension]
+\label{projective:bounded-gauss-extension}
+\lean{EnvelopeProperty.ProjBerk.gaussExt_isBounded}
+\leanok
+\uses{def:bounded-ideal-norm,def:pn-gauss}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For a normalized graded seminorm $v$ on
+$R=k[x_0,\ldots,x_n]$, its Gauss extension $\sigma(v)$ is bounded on
+$R[t]$: $|F|_{\sigma(v)}\le1$ for every $F\in R[t]$.
+\end{lemma}
+\begin{proof}
+Every coordinate has value at most one and the coefficient field is trivially
+valued, so the ultrametric polynomial estimate gives $|a|_v\le1$ for all
+$a\in R$. The Gauss formula gives
+$|F|_{\sigma(v)}=\max_j |F_j|_v\exp(-j)\le1$.
+This is precisely boundedness on the coefficient ring $R[t]$.
+\end{proof}
+
+\begin{theorem}[Correspondence of projective ideal functions]
+\label{projective:ideal-spectrum-bridge}
+\lean{EnvelopeProperty.ProjBerk.phiNorm_eq_idealNorm,
+EnvelopeProperty.ProjBerk.phiIdeal_eq_idealLog,
+EnvelopeProperty.ProjBerk.phiNorm_eq_spectrumIdealNorm,
+EnvelopeProperty.ProjBerk.phiIdeal_eq_spectrumIdealLog}
+\leanok
+\uses{projective:bounded-gauss-extension,def:bounded-ideal-norm,
+def:general-ideal-norm,spectrum:trivial-field-bridge}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For every ideal $I\subseteq R[t]$ and every normalized model point $v$,
+\[
+ \phi_I^{\mathrm{mult}}(v)=|I|_{\sigma(v)},\qquad
+ \phi_I(v)=\log|I|(\sigma(v)).
+\]
+These equalities are unchanged when the prescribed trivial base values are
+forgotten and $\sigma(v)$ is viewed in the general seminorm spectrum of $R[t]$.
+\end{theorem}
+\begin{proof}
+Both multiplicative functions are the supremum of $|g|_{\sigma(v)}$ for
+$g\in I$, giving the first equality. The projective logarithmic function
+is $\sup_{g\in I}\log|g|_{\sigma(v)}$. The extended logarithm is an order
+isomorphism and preserves all suprema, so this equals
+$\log\sup_{g\in I}|g|_{\sigma(v)}$, the intrinsic logarithmic ideal function.
+Forgetting the base restriction preserves the underlying seminorm and every
+one of its values, so it preserves both suprema and their logarithms.
+The boundedness lemma permits the finite generator formulas and ideal arithmetic
+of the intrinsic calculus to be applied to these model functions.
+\end{proof}
+
+\begin{remark}\label{projective:ideal-bridge-scope}
+\uses{projective:ideal-spectrum-bridge}
+The correspondence is a formula on polynomial ideals in the normalized model.
+Relating it to the source's coherent ideal functions requires the projective
+model identification and the homogeneous sheaf data; in the equivariant setting
+the appropriate invariance condition is required as well. These geometric
+identifications are separate from the intrinsic evaluation equalities proved here.
+\end{remark}

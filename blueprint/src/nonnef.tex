@@ -1,0 +1,603 @@
+\section{Classes outside the model-nef cone}\label{sec:nonnef}
+
+This chapter removes the restriction $\theta\in N(\mathcal X)$ from the global chapter (\S\ref{sec:global}): the main theorem
+\texttt{thm:intro-main} of \cite{FHX} holds for every class $\theta\in\R^r$, with the same imported statements and no further
+hypothesis. Notation is that of \S\ref{sec:global}; $|\cdot|$ is the sup norm on $\R^r$, $\mathbf 1=(1,\dots,1)$, and functions take
+values in $[-\infty,\infty)$.
+
+\begin{itemize}
+\item \emph{The obstruction.} Revision \texttt{832e086} of \cite{FHX} uses the decreasing-limit property PSH2
+(\cite[Theorem~4.5]{BJ22}) at possibly non-nef classes in three places: the last step of \cite[Theorem~7.2]{FHX}, the limit $U$ in
+\cite[Proposition~7.5]{FHX} (Proposition~7.4 of that revision), and characteristic zero in \cite[Theorem~8.3]{FHX}. \cite{BJ22} derives
+PSH2 from \cite[Lemma~4.6]{BJ22}, whose statement is false for families with the value $-\infty$
+(Proposition~\ref{prop:nn-bj-lemma46-false}); the repairs of \S\ref{sec:global} need semiample classes. The revision of 2026-10-28
+of \cite{FHX} restricts \cite[Proposition~2.1(1)]{FHX} to nef classes and homogeneous nets, proves PSH2 for homogeneous nets
+(\cite[Lemma~2.3]{FHX}, here Theorem~\ref{thm:nn-psh2-hom}) and for decreasing limits below a homogeneous carrier
+(\cite[Lemma~7.4]{FHX}, here Lemma~\ref{lem:hm-carrier-limit}), no longer applies PSH2 at non-nef classes, and deduces PSH2 at every
+class on unibranch varieties (\cite[Corollary~8.4]{FHX}, here Corollary~\ref{cor:nn-psh2-unibranch}).
+\item \emph{The repair.} Approximants are compared up to a factor $1-\kappa$ instead of an additive constant
+(Lemma~\ref{lem:nn-mult-diagonal}). For homogeneous Fubini--Study functions such multiplicative comparisons are decided at finitely
+many points attached to Rees valuations (Lemma~\ref{lem:nn-hom-shilov}). This gives PSH2 for homogeneous functions at every class
+(Theorem~\ref{thm:nn-psh2-hom}), for maxima of homogeneous functions with termwise domination (Theorem~\ref{thm:nn-hom-max-diagonal}),
+and for multiplicatively sandwiched approximants (Corollary~\ref{cor:nn-sandwich-diagonal}). These are exactly the three uses of
+revision \texttt{832e086}.
+\item \emph{Consequences.} Siu division, homogeneous slices, the normal case, descent through the normalization and the main
+theorem hold for all classes (\S\S\ref{subsec:nn-normal}, \ref{subsec:nn-main}). PSH2 itself holds at every class wherever the
+envelope property holds (Theorem~\ref{thm:nn-psh2-of-ep}), in particular on unibranch models. PSH2 at non-nef classes on
+non-unibranch models is not settled here and is not needed.
+\end{itemize}
+Nothing below depends on \cite[Theorem~6.21]{BJ22} or on \cite[Lemma~4.6]{BJ22}.
+
+\subsection{The diagonal lemma of Boucksom--Jonsson}\label{subsec:nn-bj-lemma}
+
+\begin{proposition}[The diagonal lemma fails for families with the value $-\infty$]\label{prop:nn-bj-lemma46-false}
+\lean{EnvelopeProperty.not_bj22Lemma46, EnvelopeProperty.not_bj22Lemma46StatementExplicit, EnvelopeProperty.BJ22Lemma46Statement, EnvelopeProperty.BJ22Lemma46StatementExplicit, EnvelopeProperty.bj22Lemma46Statement_iff_explicit, EnvelopeProperty.BJ22Lemma46Counterexample.limit_mem_iterated_Icc, EnvelopeProperty.BJ22Lemma46Counterexample.limit_not_mem_Icc}
+\leanok
+\source{bj22-trivval:lem:PSH, bj22-trivval:thm:psh12, fhx-envelope-20261028:rem:BJ-decreasing-limits}
+There are a compact metric space $K$, a family $\mathcal F$ of continuous functions $K\to[-\infty,\infty)$ stable under addition of
+real constants, and a decreasing sequence $(g_n)$ of functions, each the pointwise limit of a decreasing sequence in $\mathcal F$,
+whose pointwise limit $g$ is not the pointwise limit of any decreasing net in $\mathcal F$. In particular \cite[Lemma~4.6]{BJ22}
+fails, with $S$ and $T$ one point. The limit $g$ is not identically $-\infty$ ($g(1)=0$ in the proof), so the restriction of
+\cite[Lemma~4.6]{BJ22} to limits $\not\equiv-\infty$, the form used in the proof of \cite[Theorem~4.5]{BJ22}, fails as well. The
+counterexample of \cite[Remark~2.2]{FHX} refutes the literal statement of \cite[Lemma~4.6]{BJ22} with the iterated limit
+identically $-\infty$; it does not refute that restriction.
+\end{proposition}
+
+\begin{proof}
+Let $K=[0,1]$, and for $i\ge1$ let $p_i=2^{-i}$, $r_i=2^{-i-2}$ and $B_i=[p_i-r_i,p_i+r_i]$. The intervals $B_i$ are pairwise disjoint,
+since $p_i-r_i=6\cdot2^{-i-3}>5\cdot2^{-i-3}=p_{i+1}+r_{i+1}$, and they contain neither $0$ nor $1$. Let $\ell_i(x)=\log(|x-p_i|/r_i)$ for
+$x\in B_i$ and $\ell_i(x)=0$ otherwise; $\ell_i\colon K\to[-\infty,0]$ is continuous and equals $-\infty$ exactly at $p_i$. For integers
+$n,j\ge1$ put
+\[
+f_{n,j}=\sum_{i=1}^n\max\{2\ell_i,\ (1+\tfrac1n)\ell_i-j\},\qquad \mathcal F=\{f_{n,j}+c:\ n,j\ge1,\ c\in\R\}.
+\]
+Each summand is continuous with values in $[-\infty,0]$, so $f_{n,j}$ is continuous; it vanishes outside $B_1\cup\dots\cup B_n$.
+
+For fixed $n$ the sequence $(f_{n,j})_j$ decreases to $g_n=\sum_{i\le n}2\ell_i$: where $\ell_i>-\infty$, $(1+\frac1n)\ell_i-j\to-\infty$. The
+$g_n$ decrease (as $\ell_i\le0$) to $g=\sum_{i\ge1}2\ell_i$, a finite sum at every point; $g(1)=0$ and $g(p_i)=-\infty$ for all $i$.
+
+Near $p_1$ the functions of $\mathcal F$ have a rate depending on $n$: for $x\in B_1$ close to $p_1$, $x\ne p_1$, the summands with
+$i\ge2$ vanish, and $f_{n,j}(x)=(1+\frac1n)\ell_1(x)-j$ if $n\ge2$ (because $(1+\frac1n)\ell_1-j\ge2\ell_1$ as soon as
+$(1-\frac1n)|\ell_1|\ge j$), while $f_{1,j}=2\ell_1$ on $B_1$.
+
+Suppose $(f_{n_\alpha,j_\alpha}+c_\alpha)_{\alpha\in D}$ is a decreasing net with limit $g$. If $\beta\ge\alpha$ and $n_\beta>n_\alpha$, then for $x\to p_1$
+\[
+(f_{n_\beta,j_\beta}+c_\beta)(x)-(f_{n_\alpha,j_\alpha}+c_\alpha)(x)=\Bigl(\frac1{n_\alpha}-\frac1{n_\beta}\Bigr)|\ell_1(x)|+\text{const}\longrightarrow+\infty,
+\]
+contradicting monotonicity. Hence $n_\beta\le n_\alpha$ whenever $\beta\ge\alpha$. Fix $\alpha_0$ and choose $\alpha_1\ge\alpha_0$ with
+$n_{\alpha_1}=N:=\min\{n_\beta:\beta\ge\alpha_0\}$; then $n_\beta=N$ for all $\beta\ge\alpha_1$. For such $\beta$, the points $1$ and
+$p_{N+1}$ lie outside $B_1\cup\dots\cup B_N$, so $(f_{N,j_\beta}+c_\beta)(1)=c_\beta=(f_{N,j_\beta}+c_\beta)(p_{N+1})$. Convergence at $1$ gives
+$c_\beta\to g(1)=0$, and convergence at $p_{N+1}$ gives $c_\beta\to g(p_{N+1})=-\infty$, a contradiction.
+\end{proof}
+
+\subsection{A multiplicative diagonal lemma}\label{subsec:nn-diagonal}
+
+\begin{lemma}[Multiplicative diagonal lemma]\label{lem:nn-mult-diagonal}
+\lean{EnvelopeProperty.exists_antitone_net_of_multCompatible, EnvelopeProperty.FSSystemC.isPSH_of_multCompatible, EnvelopeProperty.MultDiagonalIndex}
+\leanok
+\uses{def:gl-fs-system, thm:gl-fs-system-theory}
+\source{bj22-trivval:lem:PSH, bj22-trivval:thm:psh12}
+Let $(K,\star,\mathcal H)$ be a Fubini--Study system with semiample cone (Definition~\ref{def:gl-fs-system}). Let $(u_i)_{i\in I}$ be a
+decreasing net of functions $K\to[-\infty,0]$ and $\theta_i\in\R^r$ with $\theta_i\to\theta$, and assume $u=\lim_iu_i\not\equiv-\infty$.
+For each $i$ let $\mathcal A_i$ be a set of pairs $(a,f)$ with $a\in\Q^r$, $f\in\mathcal H(a)$ and $u_i\le f\le0$, such that:
+\begin{enumerate}
+\item[(A)] for all $i\in I$, $x\in K$, $M\in\R$ with $M>u_i(x)$, and $\eta>0$, there is $(a,f)\in\mathcal A_i$ with $|a-\theta_i|<\eta$ and
+$f(x)<M$;
+\item[(B)] for all $i_1,i_2\le i$ in $I$, $(a_\nu,f_\nu)\in\mathcal A_{i_\nu}$ ($\nu=1,2$), rational $\gamma\in(0,1)$ and $\eta>0$, there is
+$(a,f)\in\mathcal A_i$ with $|a-\theta_i|<\eta$, $f\le\gamma f_1$ and $f\le\gamma f_2$.
+\end{enumerate}
+Then $u\in\PSH(\theta)$, and $u$ is the limit of a decreasing net of functions $(1-\kappa)f$ with $(a,f)\in\bigcup_i\mathcal A_i$ and
+$\kappa\in\Q\cap(0,1)$.
+\end{lemma}
+
+\begin{proof}
+Let $D$ be the set of quadruples $d=(i,a,f,\kappa)$ with $(a,f)\in\mathcal A_i$, $\kappa\in\Q\cap(0,1)$ and $|a-\theta_i|<\kappa$. Put
+$W_d=(1-\kappa)f$, which lies in $\mathcal H((1-\kappa)a)$ by (FS4), and preorder $D$ by $d'\ge d$ if $i'\ge i$, $\kappa'\le\kappa$ and
+$W_{d'}\le W_d$ on $K$.
+
+\emph{$D$ is nonempty and directed.} (A) with any $i$, $x=\star$, $M=1>u_i(\star)$ and $\eta=\frac12$ gives an element with
+$\kappa=\frac12$. Let $d_1,d_2\in D$. Choose $i\ge i_1,i_2$, a rational $\kappa\in(0,\min\{\kappa_1,\kappa_2\})$, and let
+$\gamma=\max_\nu(1-\kappa_\nu)/(1-\kappa)$, a rational number in $(0,1)$. (B) with $\eta=\kappa$ gives $(a,f)\in\mathcal A_i$ with
+$|a-\theta_i|<\kappa$ and $f\le\gamma f_\nu$. Since $f_\nu\le0$ and $(1-\kappa)\gamma\ge1-\kappa_\nu$,
+$(1-\kappa)f\le(1-\kappa)\gamma f_\nu\le(1-\kappa_\nu)f_\nu$; so $d=(i,a,f,\kappa)\in D$ dominates $d_1$ and $d_2$. By construction
+$(W_d)_{d\in D}$ is a decreasing net.
+
+\emph{Lower bound.} For $d\in D$, $W_d=(1-\kappa)f\ge f\ge u_i\ge u$, because $f\le0$ and the net $(u_i)$ decreases to $u$.
+
+\emph{Upper bound.} Let $x\in K$ and $M>u(x)$. Choose $M'\in(u(x),M)$ and a rational $\kappa_0\in(0,1)$ with $(1-\kappa_0)M'<M$, then
+$i_0$ with $u_{i_0}(x)<M'$, and by (A) a pair $(a,f)\in\mathcal A_{i_0}$ with $|a-\theta_{i_0}|<\kappa_0$ and $f(x)<M'$. Then
+$d_0=(i_0,a,f,\kappa_0)\in D$ and $W_d(x)\le W_{d_0}(x)<(1-\kappa_0)M'<M$ for all $d\ge d_0$. With the lower bound, $W_d\to u$
+pointwise.
+
+\emph{Classes.} Let $0<\epsilon\le1$. Choose $i_0$ with $|\theta_i-\theta|<\epsilon/3$ for $i\ge i_0$, put $C=|\theta|+2$, and choose a rational
+$\kappa_0\in(0,1)$ with $\kappa_0(1+C)<\epsilon/3$. By (A) there is $d_0=(i_0,a_0,f_0,\kappa_0)\in D$. For $d=(i,a,f,\kappa)\ge d_0$ we have
+$i\ge i_0$, $\kappa\le\kappa_0$, $|a|\le|\theta_i|+\kappa<C$, and
+\[
+|(1-\kappa)a-\theta|\le|a-\theta_i|+\kappa|a|+|\theta_i-\theta|<\kappa_0(1+C)+\epsilon/3<\epsilon.
+\]
+Finally $u$ is upper semicontinuous as the infimum of the continuous $W_d$, and $u\not\equiv-\infty$; so $u\in\PSH(\theta)$.
+\end{proof}
+
+\begin{corollary}[Multiplicatively sandwiched approximants]\label{cor:nn-sandwich-diagonal}
+\lean{EnvelopeProperty.FSSystemC.isPSH_of_sandwich, EnvelopeProperty.FSSystemC.isPSH_of_sandwich_seq}
+\leanok
+\uses{lem:nn-mult-diagonal}
+\source{fhx-envelope-20261028:thm:normalization-reflection, fhx-envelope-20261028:eq:normalization-global-sandwich}
+Let $(K,\star,\mathcal H)$, $(u_i)$, $\theta_i\to\theta$ and $u\not\equiv-\infty$ be as in Lemma~\ref{lem:nn-mult-diagonal}. Assume that for every
+$i$, every rational $\delta\in(0,1)$ and every $\eta>0$ there are $a\in\Q^r$ with $|a-\theta_i|<\eta$ and $f\in\mathcal H(a)$ with
+$u_i\le f\le(1-\delta)u_i$. Then $u\in\PSH(\theta)$.
+\end{corollary}
+
+\begin{proof}
+Let $\mathcal A_i$ be the set of pairs $(a,f)$, $f\in\mathcal H(a)$, with $u_i\le f\le(1-\delta)u_i$ for some rational $\delta\in(0,1)$; then
+$f\le0$. (A): given $i$, $x$, $M>u_i(x)$ and $\eta$, choose $\delta$ with $(1-\delta)u_i(x)<M$ (any $\delta$ if $u_i(x)=-\infty$); the hypothesis gives
+$(a,f)$ with $f(x)\le(1-\delta)u_i(x)<M$. (B): given $i\ge i_1,i_2$, $(a_\nu,f_\nu)\in\mathcal A_{i_\nu}$, $\gamma$ and $\eta$, take $\delta=1-\gamma$ and
+$(a,f)$ from the hypothesis; then $f\le\gamma u_i\le\gamma u_{i_\nu}\le\gamma f_\nu$. Lemma~\ref{lem:nn-mult-diagonal} applies.
+\end{proof}
+
+\subsection{Homogeneous comparison at Rees points}\label{subsec:nn-shilov}
+
+\begin{lemma}[Homogeneous Fubini--Study functions]\label{lem:nn-hom-fs-operations}
+\lean{EnvelopeProperty.MultiModel.IsHomFS.apply_triv, EnvelopeProperty.MultiModel.IsHomFS.le_zero, EnvelopeProperty.MultiModel.IsHomFS.mono_class, EnvelopeProperty.MultiModel.IsHomFS.smul, EnvelopeProperty.MultiModel.FSData.eval_eq_log_sup_secAbs, EnvelopeProperty.MultiModel.FSData.eval_le_mul_eval_iff}
+\leanok
+\uses{def:gl-fs, lem:gl-sections, lem:gl-scaling, lem:gl-fs-system}
+\source{bj22-trivval:lem:homFSideal, bj22-trivval:prop:FS}
+Let $a,b\in\Q^r$ and $c\in\Q_{>0}$.
+\begin{enumerate}
+\item $\mathcal H_{\mathrm{hom}}(\mathcal X,a)\subseteq\mathcal H(\mathcal X,a)$, and every $F\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$ is homogeneous and
+satisfies $F\le0=F(\star)$.
+\item If $a\le b$, then $\mathcal H_{\mathrm{hom}}(\mathcal X,a)\subseteq\mathcal H_{\mathrm{hom}}(\mathcal X,b)$.
+\item $c\,\mathcal H_{\mathrm{hom}}(\mathcal X,a)\subseteq\mathcal H_{\mathrm{hom}}(\mathcal X,ca)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $F=m^{-1}\max_t\log|f_t|$ with $f_t\in R_{ma}$ not all zero. (1) The inclusion is the definition (all weights $0$). By
+Lemma~\ref{lem:gl-sections}(3), $|f_t|\le1$ and $|f_t|_\star=1$ for $f_t\ne0$, so $F\le0=F(\star)$; $t\cdot F=F$ by
+Lemma~\ref{lem:gl-scaling}(2). (2) For an integer $m'$ divisible by $m$ with $m'(b-a)\in\N^r$,
+$F=m'^{-1}\max_t\log|f_t^{m'/m}|$, and replacing the family by the products $f_t^{m'/m}\tilde z^\gamma$, $\gamma\in\mathrm{Mon}(m'(b-a))$, does not
+change the function since $\max_\gamma|\tilde z^\gamma|=1$ (proof of Lemma~\ref{lem:gl-fs-system}, (FS2)); the weights stay $0$. (3) For
+$c=p/q$, $cF=(qm)^{-1}\max_t\log|f_t^p|$ with $f_t^p\in R_{pma}=R_{qm\cdot ca}$ (Lemma~\ref{lem:gl-sections}(2)).
+\end{proof}
+
+\begin{lemma}[Points attached to Rees valuations of chart ideals]\label{lem:nn-rees-points}
+\lean{EnvelopeProperty.MultiModel.chartReesDVR, EnvelopeProperty.MultiModel.chartReesBerk, EnvelopeProperty.MultiModel.chartReesPoint, EnvelopeProperty.MultiModel.chartReesDVR_ord_idx_pos, EnvelopeProperty.MultiModel.chartReesDVR_ord_idx_le, EnvelopeProperty.MultiModel.algebraMap_pow_dvd_of_nsmul_ord_le, EnvelopeProperty.MultiModel.logSecAbs_chartReesPoint, EnvelopeProperty.MultiModel.finite_reesIndex_chartAlg}
+\leanok
+\uses{lem:gl-charts, lem:gl-sections, def:bj-rees}
+\source{bj22-trivval:defi:Rees, bj22-trivval:lem:Shilov}
+Let $j$ be a chart (Lemma~\ref{lem:gl-charts}), $g_1,\dots,g_s\in A_j$ nonzero, $I=(g_1,\dots,g_s)$ and $V\in\mathrm{RV}(I;g)$
+(Definition~\ref{def:bj-rees}). There is a point $v_V\in U_j$ with $|z^{(c)}_{j_c}|_{v_V}=1$ for every $c$ and
+$\log|f|(v_V)=-\operatorname{ord}_V(f/\tilde z_j^{d})$ for all $d\in\mathbf Z^r$ and $f\in R_d$. Moreover $\operatorname{ord}_V(I)=\min_\ell\operatorname{ord}_V(g_\ell)$ is a
+positive integer.
+\end{lemma}
+
+\begin{proof}
+$V$ is a discrete valuation ring containing $A_j$ (Definition~\ref{def:bj-rees}), so $|h|_y=\exp(-\operatorname{ord}_V(h))$ ($|0|_y=0$) is a multiplicative
+ultrametric seminorm $y$ on $A_j$, trivial on $k$ and $\le1$ on $A_j$. Let $v_V=\iota_j^{-1}(y)\in U_j$ (Lemma~\ref{lem:gl-charts}(2)). The ratios
+$f^{(c)}_i/f^{(c)}_{j_c}$ lie in $A_j$ and equal $1$ for $i=j_c$, so $\mu_c(y)=1$, and the formula for $\iota_j^{-1}$ gives $|gT^d|_{v_V}=|g/\tilde z_j^d|_y$
+for $g\in S_d$; in particular $|z^{(c)}_{j_c}|_{v_V}=1$. For $f\in R_d$, Lemma~\ref{lem:gl-sections}(4) gives
+$|f|_{v_V}=|f/\tilde z_j^d|_y\,|z_j^d|_{v_V}=\exp(-\operatorname{ord}_V(f/\tilde z_j^d))$. Finally $V=(E_\ell)_P$ for a minimal prime $P$ of $g_\ell E_\ell$, so
+$\operatorname{ord}_V(g_\ell)\ge1$, and $\operatorname{ord}_V(I)=\operatorname{ord}_V(g_\ell)$ since $g_i/g_\ell\in V$ for all $i$; it is finite because $g_\ell\ne0$.
+\end{proof}
+
+\begin{lemma}[Homogeneous comparison at finitely many points]\label{lem:nn-hom-shilov}
+\lean{EnvelopeProperty.MultiModel.IsHomFS.exists_finset_le_of_le, EnvelopeProperty.MultiModel.FSData.eval_le_mul_eval_of_forall_chartReesPoint, EnvelopeProperty.MultiModel.FSData.exists_dvd_of_eval_le_chartReesPoint, EnvelopeProperty.MultiModel.FSData.eval_chartReesPoint_mem_Ioo, EnvelopeProperty.BirationalDVR.exists_nsmul_ord_le_of_berkPoint_le}
+\leanok
+\uses{lem:nn-rees-points, lem:nn-hom-fs-operations, thm:bj-rees, lem:gl-charts, lem:gl-sections, lem:gl-cones, thm:gl-comparison, lem:gl-div-generic, thm:gl-fs-system-theory}
+\source{bj22-trivval:lem:Shilov, bj22-trivval:lem:CLT, bj22-trivval:lem:supPL}
+For every $F\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$ there is a finite set $\Sigma_F\subseteq\mathcal X^\an$ with $F(v)\in(-\infty,0)$ for $v\in\Sigma_F$, such
+that for every $b\in\Q^r$, every $G\in\mathcal H_{\mathrm{hom}}(\mathcal X,b)$ and every rational $c>0$: if $G\le cF$ on $\Sigma_F$, then $G\le cF$ on
+$\mathcal X^\an$.
+\end{lemma}
+
+\begin{proof}
+Write $F=m^{-1}\max_t\log|f_t|$ with finitely many nonzero $f_t\in R_{ma}$. For each of the finitely many charts $j$ let
+$\varphi_t^{(j)}=f_t/\tilde z_j^{ma}\in A_j$ (nonzero, Lemma~\ref{lem:gl-sections}(4)) and $I_j=(\varphi_t^{(j)})_t$. Let $\Sigma_F$ consist of the points
+$v_V$ of Lemma~\ref{lem:nn-rees-points}, $V\in\mathrm{RV}(I_j;\varphi^{(j)})$, over all charts $j$; it is finite (Definition~\ref{def:bj-rees}). At
+$v_V$, $F(v_V)=-m^{-1}\min_t\operatorname{ord}_V(\varphi^{(j)}_t)=-m^{-1}\operatorname{ord}_V(I_j)\in(-\infty,0)$.
+
+Let $G=M^{-1}\max_s\log|g_s|$ with nonzero $g_s\in R_{Mb}$, and $c=p/q$ with positive integers $p,q$. For a chart $j$ put
+$h_s=(g_s/\tilde z_j^{Mb})^{qm}\in A_j$. At $v_V$ ($V\in\mathrm{RV}(I_j)$), Lemma~\ref{lem:nn-rees-points} shows that $G(v_V)\le cF(v_V)$ means
+$qm\operatorname{ord}_V(g_s/\tilde z_j^{Mb})\ge pM\operatorname{ord}_V(I_j)$ for all $s$, that is, $\operatorname{ord}_V(h_s)\ge pM\operatorname{ord}_V(I_j)$.
+
+Let $\Omega=\{v:\max_t|f_t|_v>0\}=\{F>-\infty\}$, an open set. For $v\in\Omega$ choose a chart $j$ with $|z^{(c)}_{j_c}|_v=1$ for all $c$
+(Lemma~\ref{lem:gl-charts}(3)) and let $w=\iota_j(v)$. Then $w$ is a multiplicative seminorm on $A_j$ with $|h|_w\le1$ for $h\in A_j$ (proof of
+Lemma~\ref{lem:gl-cones}(2)), and $|f/\tilde z_j^d|_w=|f|_v$ for $f\in R_d$ (Lemma~\ref{lem:gl-sections}(4)); in particular
+$\max_t|\varphi^{(j)}_t|_w=\max_t|f_t|_v>0$. By hypothesis and the previous paragraph, $\operatorname{ord}_V(h_s)\ge pM\operatorname{ord}_V(I_j)$ for all
+$V\in\mathrm{RV}(I_j;\varphi^{(j)})$, so Theorem~\ref{thm:bj-rees} gives $|h_s|_w\le\max_t|\varphi^{(j)}_t|_w^{pM}$, i.e.\
+$|g_s|_v^{qm}\le\max_t|f_t|_v^{pM}$. Taking logarithms and dividing by $qmM$ gives $G(v)\le cF(v)$.
+
+Thus $G\le cF$ on $\Omega$, which contains $\mathcal X^{\divv}$ (Lemma~\ref{lem:gl-div-generic}). $G$ is $b$-psh (Theorem~\ref{thm:gl-fs-system-theory}(1),
+Lemma~\ref{lem:nn-hom-fs-operations}(1)) and $cF$ is continuous with values in $[-\infty,0]$, hence upper semicontinuous; Theorem~\ref{thm:gl-comparison} gives
+$G\le cF$ on $\mathcal X^\an$.
+\end{proof}
+
+\subsection{Decreasing limits of homogeneous psh functions}\label{subsec:nn-psh2-hom}
+
+\begin{theorem}[PSH2 for homogeneous functions]\label{thm:nn-psh2-hom}
+\lean{EnvelopeProperty.MultiModel.isPSHHom_of_antitone, EnvelopeProperty.MultiModel.exists_isHomFS_net_of_antitone, EnvelopeProperty.MultiModel.isPSHHom_of_antitone_seq, EnvelopeProperty.MultiModel.isPSHHom_of_tendsto_class, EnvelopeProperty.MultiModel.IsPSHHom.exists_isHomFS_approx}
+\leanok
+\uses{lem:nn-mult-diagonal, lem:nn-hom-shilov, lem:nn-hom-fs-operations, cor:gl-pshhom, lem:gl-scaling, def:gl-psh}
+\source{bj22-trivval:thm:psh12, bj22-trivval:cor:pshhom, fhx-envelope-20261028:thm:homogeneous-Siu, fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:lem:homogeneous-decreasing-stability}
+Let $(\psi_i)_{i\in I}$ be a decreasing net with $\psi_i\in\PSH_{\mathrm{hom}}(\mathcal X,\theta_i)$ and $\theta_i\to\theta\in\R^r$. Then
+$\psi=\lim_i\psi_i\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$, and $\psi$ is the limit of a decreasing net in $\mathcal H_{\mathrm{hom}}(\mathcal X,a_\beta)$ with
+$a_\beta\to\theta$. The first assertion is \cite[Lemma~2.3]{FHX} on models; the proof below compares approximants at finitely many
+Rees points instead of on the compact set $\{q=-1\}$ and at generic points of zero loci.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:gl-scaling}(3), $\psi_i\le0$ and $\psi_i(\star)=0$, so $\psi(\star)=0$ and $\psi\not\equiv-\infty$. Let $\mathcal A_i$ be the set of pairs $(a,F)$
+with $F\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$ and $F\ge\psi_i$; then $F\le0$ (Lemma~\ref{lem:nn-hom-fs-operations}(1)). Since $\hat\psi_i=\psi_i$,
+Corollary~\ref{cor:gl-pshhom} gives a decreasing net $F_{i,\alpha}\in\mathcal H_{\mathrm{hom}}(\mathcal X,a_{i,\alpha})$ with limit $\psi_i$ and $a_{i,\alpha}\to\theta_i$;
+every $(a_{i,\alpha},F_{i,\alpha})$ lies in $\mathcal A_i$.
+
+(A): for $x$, $M>\psi_i(x)$ and $\eta>0$, $F_{i,\alpha}(x)<M$ and $|a_{i,\alpha}-\theta_i|<\eta$ for $\alpha$ large.
+
+(B): let $i\ge i_1,i_2$, $(a_\nu,F_\nu)\in\mathcal A_{i_\nu}$, $\gamma\in\Q\cap(0,1)$ and $\eta>0$. For $v\in\Sigma_{F_\nu}$ (Lemma~\ref{lem:nn-hom-shilov}),
+$\psi_i(v)\le\psi_{i_\nu}(v)\le F_\nu(v)<\gamma F_\nu(v)$, because $F_\nu(v)\in(-\infty,0)$. The set $\Sigma_{F_1}\cup\Sigma_{F_2}$ is finite and
+$F_{i,\alpha}\downarrow\psi_i$ pointwise, so there is $\alpha$ with $|a_{i,\alpha}-\theta_i|<\eta$ and $F_{i,\alpha}<\gamma F_\nu$ on $\Sigma_{F_\nu}$ for $\nu=1,2$.
+Lemma~\ref{lem:nn-hom-shilov} gives $F_{i,\alpha}\le\gamma F_\nu$ on $\mathcal X^\an$.
+
+Lemma~\ref{lem:nn-mult-diagonal} shows that $\psi\in\PSH(\mathcal X,\theta)$ is the limit of a decreasing net of functions $(1-\kappa)F$ with
+$F\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$, which lie in $\mathcal H_{\mathrm{hom}}(\mathcal X,(1-\kappa)a)$ (Lemma~\ref{lem:nn-hom-fs-operations}(3)), with classes
+tending to $\theta$. As a limit of homogeneous functions, $\psi$ is homogeneous ($t\cdot\psi=\lim_it\cdot\psi_i=\psi$).
+\end{proof}
+
+\begin{theorem}[Decreasing limits of maxima of homogeneous psh functions]\label{thm:nn-hom-max-diagonal}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_dominated_homMax, EnvelopeProperty.MultiModel.isPSH_of_dominated_homMax_seq, EnvelopeProperty.antitone_finset_sup_add_of_dominated}
+\leanok
+\uses{lem:nn-mult-diagonal, lem:nn-hom-shilov, lem:nn-hom-fs-operations, cor:gl-pshhom, lem:gl-fs-system, def:gl-psh}
+\source{fhx-envelope-20261028:prop:homogeneous-slices, bj22-trivval:thm:psh12}
+Let $(I,\le)$ be a directed set and $\theta_i\to\theta$ a net in $\R^r$. For $i\in I$ let $K_i$ be a finite nonempty set and, for $k\in K_i$,
+$\psi_{i,k}\in\PSH_{\mathrm{hom}}(\mathcal X,\theta_i)$ and $c_{i,k}\in\R_{\le0}$; put $U_i=\max_{k\in K_i}(\psi_{i,k}+c_{i,k})$. Assume \emph{termwise domination}:
+whenever $i\le i'$ and $k'\in K_{i'}$, there is $k\in K_i$ with $\psi_{i',k'}\le\psi_{i,k}$ and $c_{i',k'}\le c_{i,k}$. Then $(U_i)$ is decreasing, and
+$U=\lim_iU_i$ lies in $\PSH(\mathcal X,\theta)$ unless $U\equiv-\infty$.
+\end{theorem}
+
+\begin{proof}
+Every term of $U_{i'}$ is bounded by a term of $U_i$ when $i\le i'$, so $U_{i'}\le U_i$. Assume $U\not\equiv-\infty$; note $U_i\le0$. Let $\mathcal A_i$ be the
+set of pairs $(b,\max_{k\in K_i}(F_k+c_{i,k}))$ with $b\in\Q^r$ and $F_k\in\mathcal H_{\mathrm{hom}}(\mathcal X,b)$, $F_k\ge\psi_{i,k}$. These functions lie in
+$\mathcal H(\mathcal X,b)$ (Lemma~\ref{lem:nn-hom-fs-operations}(1); $\mathcal H(b)$ is stable under real translates and finite maxima,
+Lemma~\ref{lem:gl-fs-system}), they are $\ge U_i$, and $\le0$. For each $(i,k)$ fix, by Corollary~\ref{cor:gl-pshhom}, a decreasing net
+$F_{i,k,\alpha}\in\mathcal H_{\mathrm{hom}}(\mathcal X,a_{i,k,\alpha})$ with limit $\psi_{i,k}$ and $a_{i,k,\alpha}\to\theta_i$.
+
+\emph{Common classes.} If $F_k\in\mathcal H_{\mathrm{hom}}(\mathcal X,a_k)$ with $|a_k-\theta_i|<\eta$ for all $k\in K_i$, then $b=\max_ka_k$ (coordinatewise) is rational,
+$|b-\theta_i|<\eta$, and $F_k\in\mathcal H_{\mathrm{hom}}(\mathcal X,b)$ by Lemma~\ref{lem:nn-hom-fs-operations}(2).
+
+(A): for $x$, $M>U_i(x)$ and $\eta$: for each $k$, $\psi_{i,k}(x)+c_{i,k}<M$, so some $F_k=F_{i,k,\alpha}$ has $F_k(x)+c_{i,k}<M$ and class within $\eta$ of
+$\theta_i$; pass to a common class.
+
+(B): let $i\ge i_1,i_2$, $(b_\nu,f_\nu)\in\mathcal A_{i_\nu}$ with $f_\nu=\max_k(F^{(\nu)}_k+c_{i_\nu,k})$, $\gamma\in\Q\cap(0,1)$ and $\eta>0$. For $k'\in K_i$ choose
+$k_\nu=k_\nu(k')\in K_{i_\nu}$ by termwise domination. On $\Sigma_{F^{(\nu)}_{k_\nu}}$, $\psi_{i,k'}\le\psi_{i_\nu,k_\nu}\le F^{(\nu)}_{k_\nu}<\gamma F^{(\nu)}_{k_\nu}$; as in the
+proof of Theorem~\ref{thm:nn-psh2-hom}, some $G_{k'}=F_{i,k',\alpha}$ with class within $\eta$ of $\theta_i$ satisfies $G_{k'}\le\gamma F^{(\nu)}_{k_\nu}$ on $\mathcal X^\an$
+for $\nu=1,2$ (Lemma~\ref{lem:nn-hom-shilov}). Pass to a common class $b$ and put $f=\max_{k'}(G_{k'}+c_{i,k'})$. Since $c_{i,k'}\le c_{i_\nu,k_\nu}\le0$,
+\[
+G_{k'}+c_{i,k'}\le\gamma F^{(\nu)}_{k_\nu}+c_{i_\nu,k_\nu}\le\gamma\bigl(F^{(\nu)}_{k_\nu}+c_{i_\nu,k_\nu}\bigr)\le\gamma f_\nu,
+\]
+so $f\le\gamma f_\nu$. Lemma~\ref{lem:nn-mult-diagonal} gives $U\in\PSH(\mathcal X,\theta)$.
+\end{proof}
+
+\subsection{Siu division, slices and normal models for all classes}\label{subsec:nn-normal}
+
+\begin{theorem}[Homogeneous Siu division for all classes]\label{thm:nn-homogeneous-siu}
+\lean{EnvelopeProperty.MultiModel.IsPSHHom.exists_isPSHHom_eq_add_of_le_logSecAbs, EnvelopeProperty.MultiModel.IsPSHHom.exists_isPSHHom_eq_add_of_isDivisorial, EnvelopeProperty.MultiModel.IsPSHHom.exists_add_logSecAbs_eq_of_le_logSecAbs, EnvelopeProperty.MultiModel.exists_finset_sections_logSecAbs_eq_zero, EnvelopeProperty.MultiModel.isPSHHom_inv_mul_logSecAbs}
+\leanok
+\uses{thm:nn-psh2-hom, lem:gl-fixed-coefficient-division, thm:gl-normal-ample-ep, lem:gl-usc-local, thm:gl-comparison, lem:gl-scaling, thm:gl-fs-system-theory, lem:gl-div-generic, lem:gl-cones}
+\source{fhx-envelope-20261028:thm:homogeneous-Siu, fhx-envelope-20261028:rem:BJ-6-21}
+Assume the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep}. Let $\mathcal X$ be normal, $\theta\in\R^r$, and $s_E$, $e$, $e_E$ as in
+Lemma~\ref{lem:gl-fixed-coefficient-division}. If $\psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta+e)$ and $\psi\le e_E$, then $\psi=e_E+\varphi$ with
+$\varphi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $\Omega=\{e_E>-\infty\}$ (open) and $u=\psi-e_E$ on $\Omega$; $u$ is usc and $\le0$ there. Choose $N\in\N$, $N\ge1$, with $\theta+N\mathbf 1$ positive ($N\ge1$ is needed for $(1-t_0)e\le\epsilon A$ when $\theta$ is already positive), put $A=N\mathbf1$,
+and for $\beta\in\mathrm{Mon}(A)$ let $e_\beta=\log|\tilde z^\beta|\in\mathcal H_{\mathrm{hom}}(A)$ and $\Omega_\beta=\{e_\beta>-\infty\}$. The monomials of degree $A$ have no
+common zero, so $\max_\beta e_\beta=0$ (Lemma~\ref{lem:gl-cones}(1),(2)). Let $V=\Omega\cap\bigcap_\beta\Omega_\beta$, an open set containing $\mathcal X^{\divv}$
+(Lemma~\ref{lem:gl-div-generic}).
+
+Fix $\beta$ and a rational $\epsilon\in(0,1)$, and choose a rational $t_0<1$ with $(1-t_0)e\le\epsilon A$. For rational $t\in[t_0,1)$,
+Lemma~\ref{lem:gl-fixed-coefficient-division}, applied to $\psi+e_\beta\in\PSH_{\mathrm{hom}}(\theta+e+A)$ (a sum of homogeneous psh functions, $\le e_E$ as
+$e_\beta\le0$), gives $q_t\in\PSH_{\mathrm{hom}}(\theta+A+(1-t)e)\subseteq\PSH_{\mathrm{hom}}(\theta+(1+\epsilon)A)$ (monotonicity in the class,
+Theorem~\ref{thm:gl-fs-system-theory}(1)) with $\psi+e_\beta=te_E+q_t$; so $q_t=u+e_\beta+(1-t)e_E$ on $\Omega$. There $q_t\le e_\beta$, hence
+$q_t\le e_\beta$ everywhere (Lemma~\ref{lem:gl-usc-local}(3)). Let $g=\sup_tq_t\le e_\beta$. The class $\theta+(1+\epsilon)A$ is positive, so
+Theorem~\ref{thm:gl-normal-ample-ep} gives $\chi_\beta=g^\star\in\PSH(\theta+(1+\epsilon)A)$; it is homogeneous (Lemma~\ref{lem:gl-scaling}(5)) and
+$\chi_\beta\le e_\beta$ ($e_\beta$ is continuous). On $\Omega$, $g=u+e_\beta$ (let $t\uparrow1$), which is usc on $\Omega$, so $\chi_\beta=u+e_\beta$ on $\Omega$
+(Lemma~\ref{lem:gl-usc-local}(1)).
+
+Lemma~\ref{lem:gl-fixed-coefficient-division}, applied to $\chi_\beta$, the section $\tilde z^\beta$ of degree $A$ and the coefficient $1-\epsilon$, gives
+$q'_\beta\in\PSH_{\mathrm{hom}}(\theta+(1+\epsilon)A-(1-\epsilon)A)=\PSH_{\mathrm{hom}}(\theta+2\epsilon A)$ with $\chi_\beta=(1-\epsilon)e_\beta+q'_\beta$, so
+$q'_\beta=u+\epsilon e_\beta$ on $V$. Then $\varphi_\epsilon=\max_\beta q'_\beta\in\PSH_{\mathrm{hom}}(\theta+2\epsilon A)$ (Theorem~\ref{thm:gl-fs-system-theory}(1)) equals
+$u+\epsilon\max_\beta e_\beta=u$ on $V$. By Lemma~\ref{lem:gl-usc-local}(3) the $\varphi_\epsilon$ do not depend on $\epsilon$; call this function $\varphi$.
+
+The constant sequence $\varphi\in\PSH_{\mathrm{hom}}(\theta+\frac2{n+1}A)$, $n\ge1$, is decreasing with classes tending to $\theta$, so
+Theorem~\ref{thm:nn-psh2-hom} gives $\varphi\in\PSH_{\mathrm{hom}}(\theta)$. Finally $e_E+\varphi$ and $\psi$ are $(\theta+e)$-psh and agree on $V$, hence
+everywhere (Theorem~\ref{thm:gl-comparison}).
+\end{proof}
+
+\begin{proposition}[Envelopes from homogeneous slices for all classes]\label{prop:nn-homogeneous-slices}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isPSHHom_uscReg_iSup, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_homogeneous_slices, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_monotone, EnvelopeProperty.SliceGrid.dominated}
+\leanok
+\uses{thm:nn-hom-max-diagonal, thm:gl-homog-decomposition, thm:gl-fs-system-theory, lem:gl-scaling}
+\source{fhx-envelope-20261028:prop:homogeneous-slices, fhx-envelope-20261028:eq:Legendre-reconstruction}
+Let $\theta\in\R^r$. Suppose that $(\sup_i\psi_i)^\star\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ for every nonempty increasing net $(\psi_i)$ in
+$\PSH_{\mathrm{hom}}(\mathcal X,\theta)$. Then $\mathrm{EP}_{\mathcal X}(\theta)$.
+\end{proposition}
+
+\begin{proof}
+Let $(\varphi_i)$ be a nonempty family in $\PSH(\theta)$ bounded above. Replacing it by its finite maxima (Theorem~\ref{thm:gl-fs-system-theory}(1)) we may
+assume it is an increasing net, and after subtracting a constant that $b_i=\varphi_i(\star)$ increases to $0$. Let $f=\sup_i\varphi_i$. For $\lambda<0$ let
+$I_\lambda=\{i:b_i>\lambda\}$, a nonempty upper set, $\psi_{i,\lambda}=(\hat\varphi_i)_\lambda\in\PSH_{\mathrm{hom}}(\theta)$ for $i\in I_\lambda$
+(Theorem~\ref{thm:gl-homog-decomposition}), increasing in $i$, $g_\lambda=\sup_{i\in I_\lambda}\psi_{i,\lambda}$ and $\psi_\lambda=g_\lambda^\star\in\PSH_{\mathrm{hom}}(\theta)$
+(hypothesis). For $\lambda\le\lambda'$, $I_{\lambda'}\subseteq I_\lambda$ and $\psi_{i,\lambda'}\le\psi_{i,\lambda}$, so $\psi_{\lambda'}\le\psi_\lambda$. Let
+$\Psi=(\sup_n\psi_{-n})^\star\in\PSH_{\mathrm{hom}}(\theta)$ (hypothesis); then $\Psi\ge\psi_\lambda$ for all $\lambda<0$. By
+Theorem~\ref{thm:gl-homog-decomposition}, $f=\sup_i\sup_{\lambda<b_i}(\psi_{i,\lambda}+\lambda)=\sup_{\lambda<0}(g_\lambda+\lambda)$.
+
+For $n\ge1$ let $h_n=2^{-n}$, $A_n=\{-n+\ell h_n:0\le\ell<n2^n\}$ and $U_n=\max\{\Psi-n,\ \max_{a\in A_n}(\psi_a+a+h_n)\}$, with $U_n(\star)=0$. Termwise
+domination holds for $n\le n'$: the term $\Psi-n'$ is dominated by $\Psi-n$; for $a'\in A_{n'}$ with $a'\ge-n$ let $a\in A_n$ with $a\le a'<a+h_n$, then
+$\psi_{a'}\le\psi_a$ and $a'+h_{n'}\le a+h_n$ (the grid $A_{n'}$ refines $A_n$); for $a'\in A_{n'}$ with $a'<-n$, $\psi_{a'}\le\Psi$ and $a'+h_{n'}\le-n$. All
+constants are $\le0$. Theorem~\ref{thm:nn-hom-max-diagonal} (constant class $\theta$) gives $U=\lim_nU_n\in\PSH(\theta)$, since $U(\star)=0$.
+
+Lower bound: for $\lambda<-n$, $\psi_\lambda+\lambda\le\Psi-n$, and for $\lambda\in[a,a+h_n)$, $a\in A_n$, $\psi_\lambda+\lambda\le\psi_a+a+h_n$; as
+$g_\lambda\le\psi_\lambda$, $f\le U_n$, so $f^\star\le U_n$ and $f^\star\le U$. Upper bound: $\psi_\lambda+\lambda=(g_\lambda+\lambda)^\star\le f^\star$, so
+$U_n\le\max\{\Psi-n,f^\star+h_n\}$, and $U\le f^\star$ since $\Psi<\infty$. Hence $(\sup_i\varphi_i)^\star=f^\star=U\in\PSH(\theta)$.
+\end{proof}
+
+\begin{corollary}[All classes on normal models]\label{cor:nn-normal-ep}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal, EnvelopeProperty.MultiModel.isPSHHom_uscReg_iSup_of_isNormal}
+\leanok
+\uses{prop:nn-homogeneous-slices, thm:nn-homogeneous-siu, thm:gl-normal-ample-ep, lem:gl-usc-local, lem:gl-scaling}
+\source{fhx-envelope-20261028:cor:normal-EP}
+Under the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep}, $\mathrm{EP}_{\mathcal X}(\theta)$ holds for every normal model $\mathcal X$ and every
+$\theta\in\R^r$.
+\end{corollary}
+
+\begin{proof}
+We verify the hypothesis of Proposition~\ref{prop:nn-homogeneous-slices}. Let $(\psi_i)$ be a nonempty increasing net in $\PSH_{\mathrm{hom}}(\theta)$. Choose $N$
+with $\eta=\theta+N\mathbf1$ positive, a monomial $s_E=\tilde z^{\beta_0}$ of degree $e=N\mathbf1$, $e_E=\log|s_E|$ and $\Omega=\{e_E>-\infty\}$. The functions
+$\psi_i+e_E\in\PSH_{\mathrm{hom}}(\eta)$ increase and are $\le e_E\le0$; by Theorem~\ref{thm:gl-normal-ample-ep},
+$\chi=(\sup_i(\psi_i+e_E))^\star\in\PSH_{\mathrm{hom}}(\eta)$ (homogeneous by Lemma~\ref{lem:gl-scaling}(5)), and $\chi\le e_E$. Theorem~\ref{thm:nn-homogeneous-siu}
+gives $\chi=e_E+\psi$ with $\psi\in\PSH_{\mathrm{hom}}(\theta)$. On $\Omega$, $\chi=(\sup_i\psi_i)^\star+e_E$ (Lemma~\ref{lem:gl-usc-local}(2)), so $\psi=G:=(\sup_i\psi_i)^\star$
+on $\Omega\supseteq\mathcal X^{\divv}$. Then $\psi_i\le\psi$ on $\Omega$, hence everywhere, so $G\le\psi$; and $\psi\le G$ everywhere, since $G$ is usc and they agree on
+$\Omega$ (Lemma~\ref{lem:gl-usc-local}(3)). So $G=\psi\in\PSH_{\mathrm{hom}}(\theta)$.
+\end{proof}
+
+\subsection{The normalization and the main theorem for all classes}\label{subsec:nn-main}
+
+\begin{lemma}[Additive-power sandwich]\label{lem:nn-additive-sandwich}
+\lean{EnvelopeProperty.MultiModel.IsUnibranch.exists_isHomFS_sandwich, EnvelopeProperty.MultiModel.IsUnibranch.exists_uniform_addPow, EnvelopeProperty.MultiModel.exists_pow_mul_mem_chartAlg_normalization, EnvelopeProperty.exists_pow_smul_mem_one_of_finite}
+\leanok
+\uses{lem:gl-unibranch-universal, thm:gl-additive-powers, lem:gl-lagrange, lem:gl-sections, lem:gl-charts, lem:gl-cones, def:gl-fs}
+\source{fhx-envelope-20261028:thm:normalization-reflection, fhx-envelope-20261028:eq:normalization-global-sandwich}
+Let $\mathcal X$ be a unibranch model over $k$ of characteristic $0$, $\mathcal Y=\mathcal X^\nu$, and identify $\mathcal Y^\an$ with $\mathcal X^\an$ by
+$\nu^\an$. Let $a\in\mathbf Z^r$, $0\ne s\in R_a(\mathcal Y)$ and $u=\log|s|$. There are integers $d,R\ge0$ and $n_0\ge1$ such that for every $n\ge n_0$ there is
+$F_n\in\mathcal H_{\mathrm{hom}}(\mathcal X,a+\frac{3R}{n+2d}\mathbf1)$ with $u\le F_n\le\frac n{n+2d}\,u$.
+\end{lemma}
+
+\begin{proof}
+For each chart $j$ let $f_j=s/\tilde z_j^a\in B_j$ (Lemma~\ref{lem:gl-sections}(4)); $A_j\subseteq B_j$ is subintegral (Lemma~\ref{lem:gl-unibranch-universal}).
+Theorem~\ref{thm:gl-additive-powers} gives integers $N\ge d\ge0$ and $c_{ji}\in B_j$ with $a_{jm}=f_j^m+\sum_{i=1}^d\binom mic_{ji}f_j^{m-i}\in A_j$ for $m\ge N$;
+adding zero coefficients we take $d,N$ common to the finitely many charts. Fix $R$ such that (i) $\hat c_{ji}=c_{ji}\tilde z_j^{R\mathbf1+ia}\in R_{ia+R\mathbf1}(\mathcal Y)$ for
+$i\le d$; (ii) multiplication by $\tilde z_j^{R\mathbf1}$ kills the $z_j$-power torsion of the finite $S$-module $S^\nu/S$ (Noetherianity); (iii) $R\mathbf1+ia\ge0$ for
+$0\le i\le d$. For $m\ge N$, $\tilde a_{jm}=\tilde z_j^{R\mathbf1}s^m+\sum_i\binom mi\hat c_{ji}s^{m-i}\in R_{ma+R\mathbf1}(\mathcal Y)$ satisfies
+$\tilde a_{jm}/\tilde z_j^{ma+R\mathbf1}=a_{jm}\in A_j$, so by (ii) $t_{jm}=\tilde z_j^{R\mathbf1}\tilde a_{jm}\in R_{ma+2R\mathbf1}(\mathcal X)$.
+
+Let $n_0=\max\{1,N-d\}$ and $n\ge n_0$. Let $\mathcal S_n$ be the set of products of the $t_{jm}$, $n+d\le m\le n+2d$, with the monomials of degree
+$R\mathbf1+(n+2d-m)a\in\N^r$ (by (iii)); these are sections of $\mathcal X$ of degree $(n+2d)a+3R\mathbf1$. For $v\in\mathcal X^\an$: every $t\in\mathcal S_n$ is $s^n$
+times a section of $\mathcal Y$ (in $\tilde a_{jm}$, $m-i\ge n$), and sections have absolute value $\le1$, so $\log|t|(v)\le n\,u(v)$. For a chart $j$ with
+$|z^{(c)}_{j_c}|_v=1$, Lemma~\ref{lem:gl-lagrange} gives $f_j^{n+2d}\in(a_{j,n+d},\dots,a_{j,n+2d})B_j$; elements of $B_j$ have absolute value $\le1$ at $w=\iota_j(v)$, $|f_j|_w=|s|_v$, and
+$|t_{jm}\tilde z_j^\gamma|_v=|a_{jm}|_w$ for the monomial $\tilde z_j^\gamma$ of degree $R\mathbf1+(n+2d-m)a$ in the $z^{(c)}_{j_c}$ (Lemma~\ref{lem:gl-sections}(4)), so $(n+2d)u(v)=\log|f_j^{n+2d}|_w\le\max_m\log|a_{jm}|_w\le\max_{t\in\mathcal S_n}\log|t|(v)$.
+At $\star$ the upper bound is $0$, so $\mathcal S_n$ contains a nonzero section, and
+$F_n=(n+2d)^{-1}\max_{t\in\mathcal S_n}\log|t|\in\mathcal H_{\mathrm{hom}}(\mathcal X,a+\frac{3R}{n+2d}\mathbf1)$ satisfies $u\le F_n\le\frac n{n+2d}u$.
+\end{proof}
+
+\begin{theorem}[Psh functions descend through the normalization, all classes]\label{thm:nn-normalization-reflection}
+\lean{EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp_symm_of_charZero, EnvelopeProperty.MultiModel.IsUnibranch.exists_isFS_sandwich, EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp_symm}
+\leanok
+\uses{lem:nn-additive-sandwich, cor:nn-sandwich-diagonal, lem:nn-hom-fs-operations, thm:gl-normalization-reflection, lem:gl-fs-system, def:gl-psh}
+\source{fhx-envelope-20261028:thm:normalization-reflection}
+Let $\mathcal X$ be unibranch, $\mathcal Y=\mathcal X^\nu$, and identify $\mathcal Y^\an$ with $\mathcal X^\an$. Then $\PSH(\mathcal Y,\theta)\subseteq\PSH(\mathcal X,\theta)$
+for every $\theta\in\R^r$ (assuming Theorem~\ref{thm:gl-frobenius-descent} in characteristic $p$ and Theorem~\ref{thm:gl-additive-powers} in characteristic $0$).
+\end{theorem}
+
+\begin{proof}
+In characteristic $p$ this is Theorem~\ref{thm:gl-normalization-reflection}. Let $\operatorname{char}k=0$ and $\psi\in\PSH(\mathcal Y,\theta)$, the limit of a decreasing net
+$\psi_\alpha\in\mathcal H(\mathcal Y,a_\alpha)$ with $a_\alpha\to\theta$. Fix $\alpha_0$, put $C=\psi_{\alpha_0}(\star)$, and for $\alpha\ge\alpha_0$ let
+$u_\alpha=\psi_\alpha-C\le0$ (as $\psi_\alpha\le\psi_\alpha(\star)\le C$). Write $u_\alpha=\max_t(m^{-1}\log|s_t|+\mu_t)$ with nonzero $s_t\in R_{ma_\alpha}(\mathcal Y)$ and
+$\mu_t\in\R$; then $\mu_t\le u_\alpha(\star)\le0$.
+
+Let $\delta\in\Q\cap(0,1)$ and $\eta>0$. For each $t$ let $d_t,R_t,n_t$ be the integers of Lemma~\ref{lem:nn-additive-sandwich} for $s_t$ (degree $ma_\alpha\in\mathbf Z^r$),
+and choose $n\ge\max_tn_t$ with $\frac{2d_t}{n+2d_t}\le\delta$ and $\frac{3R_t}{m(n+2d_t)}<\eta$ for all $t$; let $F^{(t)}=F_n$ for $s_t$. By
+Lemma~\ref{lem:nn-hom-fs-operations}(3),(2), $m^{-1}F^{(t)}\in\mathcal H_{\mathrm{hom}}(\mathcal X,b)$ for the rational class
+$b=a_\alpha+\max_t\frac{3R_t}{m(n+2d_t)}\mathbf1$, with $|b-a_\alpha|<\eta$. Let $G=\max_t(m^{-1}F^{(t)}+\mu_t)\in\mathcal H(\mathcal X,b)$ (Lemma~\ref{lem:gl-fs-system}). Then
+$u_\alpha\le G$, and since $\log|s_t|\le0$, $\frac n{n+2d_t}\ge1-\delta$ and $\mu_t\le0$,
+\[
+m^{-1}F^{(t)}+\mu_t\le(1-\delta)m^{-1}\log|s_t|+\mu_t\le(1-\delta)\bigl(m^{-1}\log|s_t|+\mu_t\bigr),
+\]
+so $G\le(1-\delta)u_\alpha$. Corollary~\ref{cor:nn-sandwich-diagonal} (on $\mathcal X$, net $(u_\alpha)_{\alpha\ge\alpha_0}$, classes $a_\alpha\to\theta$) gives
+$\lim_\alpha u_\alpha=\psi-C\in\PSH(\mathcal X,\theta)$, hence $\psi\in\PSH(\mathcal X,\theta)$.
+\end{proof}
+
+\begin{theorem}[Main theorem, all classes]\label{thm:nn-main}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_of_charP, EnvelopeProperty.MultiModel.IsUnibranch.hasEnvelopeProperty_of_forall_subfield, EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch}
+\leanok
+\uses{lem:gl-unibranch-universal, cor:nn-normal-ep, thm:nn-normalization-reflection, lem:gl-pullback}
+\source{fhx-envelope-20261028:thm:intro-main}
+Assume the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep} over the countable algebraically closed subfields of $k$ (Theorems~\ref{thm:gl-frobenius-descent} and~\ref{thm:gl-additive-powers} are proved). Let $\mathcal X$ be a
+unibranch model and $\theta\in\R^r$. Every nonempty family $(\varphi_i)\subseteq\PSH(\mathcal X,\theta)$ bounded above satisfies
+$(\sup_i\varphi_i)^\star\in\PSH(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal Y=\mathcal X^\nu$, a normal model, and identify $\mathcal Y^\an=\mathcal X^\an$ by the homeomorphism $\nu^\an$ (Lemma~\ref{lem:gl-unibranch-universal}), which
+commutes with suprema and usc regularization. The $\varphi_i$ lie in $\PSH(\mathcal Y,\theta)$ (Lemma~\ref{lem:gl-pullback}), so
+$(\sup_i\varphi_i)^\star\in\PSH(\mathcal Y,\theta)$ (Corollary~\ref{cor:nn-normal-ep}), hence $\in\PSH(\mathcal X,\theta)$ (Theorem~\ref{thm:nn-normalization-reflection}).
+\end{proof}
+
+\begin{corollary}[Characterization of unibranch models, all classes]\label{cor:nn-characterization}
+\lean{EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty, EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty_of_charP, EnvelopeProperty.MultiModel.isUnibranch_tfae_of_imp, EnvelopeProperty.MultiModel.isUnibranch_of_forall_hasEnvelopeProperty, EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae}
+\leanok
+\uses{thm:nn-main, cor:gl-characterization}
+\source{fhx-envelope-20261028:cor:intro-characterization}
+Under the hypotheses of Theorem~\ref{thm:nn-main}, for a model $\mathcal X$ the following are equivalent: (1) $\mathcal X$ is unibranch; (2)
+$\mathrm{EP}_{\mathcal X}(\theta)$ for every $\theta\in\R^r$; (3) $\mathrm{EP}_{\mathcal X}(\omega)$ for some positive $\omega$.
+\end{corollary}
+
+\begin{proof}
+(1)$\Rightarrow$(2) is Theorem~\ref{thm:nn-main}; (2)$\Rightarrow$(3): take $\omega=\mathbf1$; (3)$\Rightarrow$(1) is the implication (3)$\Rightarrow$(1) of
+Corollary~\ref{cor:gl-characterization}, which concerns only the positive class $\omega$.
+\end{proof}
+
+\begin{definition}[Effective and pseudoeffective classes]\label{def:nn-effective-cone}
+\lean{EnvelopeProperty.MultiModel.effectiveCone, EnvelopeProperty.MultiModel.psefCone}
+\leanok
+\uses{def:gl-sections}
+\source{bj22-trivval:equ:pshpsef, bj22-trivval:equ:cHvalnempty}
+$E(\mathcal X)\subseteq\Q^r$ is the set of $a$ for which $R_{ma}$ contains a nonzero element for some $m\ge1$ with $ma\in\mathbf Z^r$; a class $\theta\in\R^r$ is
+\emph{pseudoeffective} if it lies in the closure $\overline E$ of $E(\mathcal X)$ in $\R^r$.
+\end{definition}
+
+\begin{remark}[Scope of the statement]\label{rmk:nn-well-posed}
+\notready
+\uses{thm:nn-main, cor:nn-psef, def:nn-effective-cone, lem:gl-ep-basic, rmk:gl-model-comparison}
+Theorem~\ref{thm:nn-main} is stated for every $\theta\in\R^r$, which by Remark~\ref{rmk:gl-model-comparison} covers every class of $N^1(X)_\R$, as in
+\texttt{thm:intro-main} of \cite{FHX}. No psef hypothesis is needed: if $\PSH(\mathcal X,\theta)=\varnothing$ the statement is empty
+(Lemma~\ref{lem:gl-ep-basic}(3)), and by Corollary~\ref{cor:nn-psef} this happens on unibranch models exactly for the classes that are not pseudoeffective
+(Definition~\ref{def:nn-effective-cone}).
+\end{remark}
+
+\subsection{PSH2 under the envelope property}\label{subsec:nn-psh2-ep}
+
+\begin{lemma}[Rays and slices of decreasing limits]\label{lem:nn-ray-limit}
+\lean{EnvelopeProperty.MultiModel.iInf_psh_ne_top, EnvelopeProperty.MultiModel.iInf_psh_le_triv, EnvelopeProperty.MultiModel.iInf_psh_triv_ne_bot, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_convex, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_ne_bot, EnvelopeProperty.MultiModel.convexOn_rayFun_iInf_psh, EnvelopeProperty.MultiModel.iInf_psh_eq_iSup_legendreSlice, EnvelopeProperty.MultiModel.legendreSlice_iInf}
+\leanok
+\uses{lem:gl-action-convex, lem:gl-scaling, cor:gl-pshhom, thm:gl-fs-system-theory}
+\source{bj22-trivval:thm:homogpsh, bj22-trivval:lem:actionconvex, bj22-trivval:lem:homogdec, fhx-envelope-20261028:eq:Legendre-reconstruction}
+Let $u_i\in\PSH(\mathcal X,\theta_i)$ be a decreasing net with limit $u\not\equiv-\infty$, and $b=u(\star)$. Then $b\in\R$, $u\le b$, and:
+\begin{enumerate}
+\item for every $v\in\mathcal X^\an$, $g_v(t)=(t\cdot u)(v)$ is either identically $-\infty$ on $(0,\infty)$ or real valued and convex, and $g_v(t)\le tb$;
+\item for $\lambda<b$, $(\hat u_i)_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta_i)$ for every $i$, and $(\hat u_i)_\lambda\downarrow\hat u_\lambda$;
+\item $u=\sup_{\lambda<b}(\hat u_\lambda+\lambda)$ pointwise on $\mathcal X^\an$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Choose $x$ with $u(x)>-\infty$. Since $u_i\le u_i(\star)$ (Theorem~\ref{thm:gl-fs-system-theory}(1)), passing to the limit gives $u\le u(\star)$; so $b\ge u(x)>-\infty$, and
+$b\le u_{i}(\star)<\infty$.
+
+(1) $(t\cdot u)(v)=t\,u(t^{-1}\cdot v)=\lim_i(t\cdot u_i)(v)$. By Lemma~\ref{lem:gl-action-convex} each $t\mapsto(t\cdot u_i)(v)$ is identically $-\infty$ or real and
+convex; the convexity inequality, valid in $[-\infty,\infty)$, passes to the decreasing limit. If $g_v(t_1)=-\infty$ and $t_0\ne t_1$, choose $t_2$ with $t_0$
+strictly between $t_1$ and $t_2$; convexity gives $g_v(t_0)=-\infty$. The bound is $u\le b$.
+
+(2) $u_i-\lambda\in\PSH(\theta_i)$ and $(u_i-\lambda)(\star)=u_i(\star)-\lambda\ge b-\lambda>0$, so $(\hat u_i)_\lambda=\widehat{u_i-\lambda}\in\PSH_{\mathrm{hom}}(\theta_i)$
+(Corollary~\ref{cor:gl-pshhom}). Since $u_i-\lambda\downarrow u-\lambda$, Lemma~\ref{lem:gl-scaling}(4) gives $\widehat{u_i-\lambda}\downarrow\widehat{u-\lambda}=\hat u_\lambda$.
+
+(3) Fix $v$ and write $g=g_v$; by definition $\hat u_\lambda(v)=\inf_{t>0}(g(t)-t\lambda)$. If $g\equiv-\infty$, then $u(v)=g(1)=-\infty$ and every
+$\hat u_\lambda(v)=-\infty$. Otherwise $\hat u_\lambda(v)+\lambda\le g(1)$ for every $\lambda$ (take $t=1$). Conversely let $\lambda_0$ be the right derivative of $g$ at
+$1$, so $g(t)\ge g(1)+\lambda_0(t-1)$ for all $t>0$. For $t>1$, $\lambda_0\le(g(t)-g(1))/(t-1)\le(tb-g(1))/(t-1)$, and letting $t\to\infty$ gives $\lambda_0\le b$. If
+$\lambda_0<b$, then $g(t)-t\lambda_0\ge g(1)-\lambda_0$ for all $t$, so $\hat u_{\lambda_0}(v)+\lambda_0\ge g(1)$. If $\lambda_0=b$, then for $\lambda<b$,
+$g(t)-t\lambda\ge g(1)-b+t(b-\lambda)\ge g(1)-b$, so $\hat u_\lambda(v)+\lambda\ge g(1)-b+\lambda$, which tends to $g(1)$ as $\lambda\uparrow b$. In both cases
+$\sup_{\lambda<b}(\hat u_\lambda(v)+\lambda)=g(1)=u(v)$.
+\end{proof}
+
+\begin{theorem}[PSH2 under the envelope property]\label{thm:nn-psh2-of-ep}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_hasEnvelopeProperty}
+\leanok
+\uses{lem:nn-ray-limit, thm:nn-psh2-hom, def:gl-psh, thm:gl-fs-system-theory}
+\source{bj22-trivval:thm:psh12, fhx-envelope-20261028:prop:BJ-package}
+Let $\theta\in\R^r$ satisfy $\mathrm{EP}_{\mathcal X}(\theta)$. If $u_i\in\PSH(\mathcal X,\theta_i)$ is a decreasing net, $\theta_i\to\theta$, and $u=\lim_iu_i\not\equiv-\infty$,
+then $u\in\PSH(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $b=u(\star)$. For $\lambda<b$, Lemma~\ref{lem:nn-ray-limit}(2) and Theorem~\ref{thm:nn-psh2-hom} give $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\theta)$, so
+$\hat u_\lambda+\lambda\in\PSH(\theta)$ (Theorem~\ref{thm:gl-fs-system-theory}(1)). The family $\{\hat u_\lambda+\lambda\}_{\lambda<b}$ is nonempty and bounded above by $b$. By
+Lemma~\ref{lem:nn-ray-limit}(3) its supremum is $u$, which is usc as a decreasing limit of usc functions. $\mathrm{EP}(\theta)$ gives $u=u^\star\in\PSH(\theta)$.
+\end{proof}
+
+\begin{corollary}[PSH2 on unibranch models]\label{cor:nn-psh2-unibranch}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch}
+\leanok
+\uses{thm:nn-psh2-of-ep, thm:nn-main}
+\source{fhx-envelope-20261028:cor:unibranch-decreasing-stability}
+Under the hypotheses of Theorem~\ref{thm:nn-main}, on every unibranch model (in particular every normal model) PSH2 holds at every class: decreasing nets
+$u_i\in\PSH(\mathcal X,\theta_i)$ with $\theta_i\to\theta\in\R^r$ and $\lim u_i\not\equiv-\infty$ have $\lim u_i\in\PSH(\mathcal X,\theta)$. This is
+\cite[Corollary~8.4]{FHX} on models; the proof below applies the envelope property at the limit class once, where \cite{FHX} builds
+the dyadic approximants of \cite[Proposition~7.5]{FHX} and applies \cite[Lemma~7.4]{FHX}.
+\end{corollary}
+
+\begin{proof}
+$\mathrm{EP}_{\mathcal X}(\theta)$ holds by Theorem~\ref{thm:nn-main}; apply Theorem~\ref{thm:nn-psh2-of-ep}.
+\end{proof}
+
+\begin{corollary}[Psef classes]\label{cor:nn-psef}
+\lean{EnvelopeProperty.MultiModel.exists_isPSH_iff_mem_psefCone_of_isUnibranch}
+\leanok
+\uses{def:nn-effective-cone, thm:nn-main, thm:nn-psh2-of-ep, thm:gl-fs-system-theory, lem:nn-hom-fs-operations, lem:gl-sections, def:gl-fs}
+\source{bj22-trivval:equ:pshpsef, bj22-addendum:cor:contenvcomp}
+Under the hypotheses of Theorem~\ref{thm:nn-main}, for a unibranch model $\mathcal X$ and $\theta\in\R^r$: $\PSH(\mathcal X,\theta)\ne\varnothing$ if and only if
+$\theta$ is pseudoeffective (Definition~\ref{def:nn-effective-cone}).
+\end{corollary}
+
+\begin{proof}
+If $u\in\PSH(\theta)$ is the limit of a decreasing net $\varphi_\alpha\in\mathcal H(a_\alpha)$ with $a_\alpha\to\theta$, each $\mathcal H(a_\alpha)$ is nonempty, so
+$a_\alpha\in E$ and $\theta\in\overline E$. Conversely let $\theta\in\overline E$ and $\theta_n=\theta+\frac1n\mathbf1$. Choose $e_n\in E$ with $|e_n-\theta|<\frac1n$, so
+$e_n\le\theta_n$, and $0\ne s\in R_{me_n}$; then $m^{-1}\log|s|\in\mathcal H_{\mathrm{hom}}(e_n)\subseteq\PSH(e_n)\subseteq\PSH(\theta_n)$ (Lemma~\ref{lem:nn-hom-fs-operations}(1), Theorem~\ref{thm:gl-fs-system-theory}(1)). So
+$\mathcal F_n=\{w\in\PSH(\theta_n):w\le0\}$ is nonempty (subtract $w(\star)$), and $V_n=(\sup\mathcal F_n)^\star\in\PSH(\theta_n)$ by Theorem~\ref{thm:nn-main}; $V_n\le0$ and
+$V_n(\star)=0$. As $\theta_{n+1}\le\theta_n$, $\mathcal F_{n+1}\subseteq\mathcal F_n$ and $V_{n+1}\le V_n$. The limit $V$ has $V(\star)=0$, and
+Theorem~\ref{thm:nn-psh2-of-ep} (with $\mathrm{EP}(\theta)$ from Theorem~\ref{thm:nn-main}) gives $V\in\PSH(\theta)$.
+\end{proof}
+
+\subsection{Remarks}\label{subsec:nn-remarks}
+
+\begin{remark}[Forced poles]\label{rmk:nn-negative-part}
+\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder, EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder, EnvelopeProperty.MultiModel.IsPSH.apply_rpow_le_sub_relaxedSectionVanishingOrder, EnvelopeProperty.MultiModel.IsPSH.not_exists_real_lower_bound_of_pos_relaxedSectionVanishingOrder, EnvelopeProperty.MultiModel.not_isPSH_const_of_pos_relaxedSectionVanishingOrder, EnvelopeProperty.MultiModel.eventually_exists_eq_bot_of_pos_relaxedSectionVanishingOrder}
+\leanok
+\uses{def:gl-psh, def:nn-effective-cone, lem:gl-scaling, lem:gl-sections, def:fp-section-order, def:fp-relaxed-order, thm:fp-psh-ray, cor:fp-no-real-lower-bound, cor:fp-no-constant-psh, cor:fp-eventual-approximant-poles}
+\source{bj22-trivval:equ:pshnef, bj22-trivval:equ:cstpsh, bj22-trivval:prop:pshconvex}
+For $v\in\mathcal X^\an$ and $a\in E(\mathcal X)$ let $\sigma_v(a)=\inf\{-m^{-1}\log|f|_v:m\ge1,\ ma\in\mathbf Z^r,\ 0\ne f\in R_{ma}\}\in[0,\infty]$, and
+$\sigma^-_v(\theta)=\liminf_{a\to\theta,\,a\in E}\sigma_v(a)$. Every $u\in\PSH(\mathcal X,\theta)$ satisfies $u(t\cdot v)\le u(\star)-t\,\sigma^-_v(\theta)$ for $t>0$. Indeed, for
+$f=m^{-1}\max_t\{\log|f_t|+\lambda_t\}\in\mathcal H(a)$, $f(t\cdot v)=m^{-1}\max_t\{t\log|f_t|_v+\lambda_t\}\le f(\star)-t\sigma_v(a)$ by Lemma~\ref{lem:gl-scaling}(1), and the
+bound passes to decreasing limits with $a_\alpha\to\theta$, since $\sigma_v(a_\alpha)\ge\inf\{\sigma_v(a):|a-\theta|<\epsilon\}$ for $\alpha$ large. If $\sigma^-_v(\theta)>0$, no
+$\theta$-psh function is bounded below, the constants are not $\theta$-psh, and, for $\alpha$ large, the approximating Fubini--Study functions $f_\alpha$ of a $\theta$-psh
+function are unbounded below along the ray $t\cdot v$, hence not real valued (a continuous real function on the compact space $\mathcal X^\an$ is bounded); this is why the truncation repairs of \S\ref{sec:global}
+(Remark~\ref{rmk:gl-nonnef}) cannot reach such classes, and why the comparisons above are multiplicative. The divisorial terminology is discussed after Definition~\ref{def:fp-section-order}; these conclusions use the original section infimum throughout.
+\end{remark}
+
+\begin{remark}[The setting of Boucksom--Jonsson]\label{rmk:nn-bj22-setting}
+\notready
+\uses{lem:nn-mult-diagonal, lem:nn-hom-shilov, thm:nn-psh2-hom, thm:nn-hom-max-diagonal, thm:nn-psh2-of-ep, prop:nn-bj-lemma46-false}
+\source{bj22-trivval:defi:psh, bj22-trivval:thm:psh12, bj22-trivval:lem:PSH, bj22-trivval:thm:pshample, bj22-trivval:lem:envppty, bj22-addendum:cor:Siu}
+The arguments of this chapter apply to the $\theta$-psh functions of \cite[Definition~4.1]{BJ22} on an integral projective variety $X$, $\theta\in N^1(X)_\R$:
+homogeneous Fubini--Study functions are the functions $m^{-1}\log|\mathfrak b|$ for ideals $\mathfrak b$ with $mL\otimes\mathfrak b$ globally generated, Rees valuations are taken
+on affine charts trivializing $L$, and the comparison theorem is proved as in Theorem~\ref{thm:gl-comparison} (the proof of \cite[Theorem~4.22]{BJ22} passes through
+\cite[Theorem~4.15(i)]{BJ22}, whose first step applies \cite[Lemma~4.6]{BJ22} to families with the value $-\infty$; the rational rounding of
+Corollary~\ref{cor:gl-pshhom} replaces it). In that setting \cite[Theorem~4.5]{BJ22} therefore holds for nets with nef limit class, for nets of homogeneous
+functions at every class, for the nets of Theorem~\ref{thm:nn-hom-max-diagonal} and Corollary~\ref{cor:nn-sandwich-diagonal}, and for all nets on unibranch varieties; for
+decreasing nets of arbitrary psh functions at psef non-nef classes on non-unibranch varieties it is not settled. Statements of \cite{BJ22} and \cite{BJadd} that apply
+\cite[Theorem~4.5]{BJ22} or \cite[Lemma~5.9]{BJ22} at possibly non-nef classes, such as \cite[Theorem~4.7(i)]{BJ22} for real scalars, Theorem~A of \cite{BJadd} for real
+psef classes and its corollaries, are covered on smooth varieties by the route of this chapter; real scaling $t\PSH(\theta)=\PSH(t\theta)$ also follows directly: for
+$u\le-1$ with approximants $F_\alpha\le0$, the net $qF_\alpha$, indexed by pairs $(\alpha,q)$ with $q\in\Q\cap(0,t)$ ordered componentwise, decreases to $tu$.
+\end{remark}
+
+\begin{remark}[Relation to the sources]\label{rmk:nn-sources}
+\notready
+\uses{prop:nn-bj-lemma46-false, thm:nn-homogeneous-siu, prop:nn-homogeneous-slices, thm:nn-normalization-reflection, rmk:gl-nonnef}
+\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:thm:homogeneous-Siu, fhx-envelope-20261028:prop:homogeneous-slices, fhx-envelope-20261028:thm:normalization-reflection, bj22-trivval:lem:PSH, fhx-envelope-20261028:rem:BJ-decreasing-limits, fhx-envelope-20261028:lem:homogeneous-decreasing-stability, fhx-envelope-20261028:lem:homogeneous-carrier-limit, fhx-envelope-20261028:cor:unibranch-decreasing-stability}
+In revision \texttt{832e086} of \cite{FHX}, Proposition~2.1(1) states PSH2 for all classes, citing \cite[Theorem~4.5]{BJ22}, and PSH2 is
+applied at possibly non-nef classes in the last step of Theorem~7.2, for the limit $U$ of Proposition~7.4 (Proposition~7.5 of the revision of
+2026-10-28) and in characteristic zero in Theorem~8.3. The revision of 2026-10-28 restricts \cite[Proposition~2.1(1)]{FHX} to nef
+classes and homogeneous nets (\cite[Remark~2.2]{FHX}) and replaces these applications: the last step of \cite[Theorem~7.2]{FHX} by
+\cite[Lemma~2.3]{FHX} for a constant net, the limit $U$ of \cite[Proposition~7.5]{FHX} by \cite[Lemma~7.4]{FHX}, and characteristic zero
+in \cite[Theorem~8.3]{FHX} by a decreasing sequence of homogeneous Fubini--Study functions built from the sandwich
+\texttt{eq:normalization-global-sandwich}; it then proves PSH2 at every class on unibranch varieties (\cite[Corollary~8.4]{FHX}). Here PSH2
+is used only at limit classes in $N(\mathcal X)$ (Theorem~\ref{thm:gl-fs-system-theory}(2)) and in the forms of
+Theorems~\ref{thm:nn-psh2-hom}, \ref{thm:nn-hom-max-diagonal} and Corollary~\ref{cor:nn-sandwich-diagonal}: the last step of
+\cite[Theorem~7.2]{FHX} is Theorem~\ref{thm:nn-psh2-hom} (\cite[Lemma~2.3]{FHX} on models) for a constant net; the limit $U$ of
+\cite[Proposition~7.5]{FHX} is Theorem~\ref{thm:nn-hom-max-diagonal}, which uses the termwise domination of the dyadic maxima instead of
+\cite[Lemma~7.4]{FHX} (formalized separately as Lemma~\ref{lem:hm-carrier-limit}); characteristic zero in \cite[Theorem~8.3]{FHX} is
+Corollary~\ref{cor:nn-sandwich-diagonal}, applied to the sandwich \texttt{eq:normalization-global-sandwich} in the form of
+Lemma~\ref{lem:nn-additive-sandwich}. Corollary~\ref{cor:nn-psh2-unibranch} is \cite[Corollary~8.4]{FHX} on models. No statement of
+\cite{FHX} needs to be changed. The hypothesis (\textsc{PSH2}$_{\mathcal X}$) of Remark~\ref{rmk:gl-nonnef} is not needed.
+\cite[Lemma~4.6]{BJ22} is false (Proposition~\ref{prop:nn-bj-lemma46-false}); Lemma~\ref{lem:nn-mult-diagonal} is the form of it used
+here.
+\end{remark}

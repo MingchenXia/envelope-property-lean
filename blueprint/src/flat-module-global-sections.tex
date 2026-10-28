@@ -1,0 +1,49 @@
+\section{Flat base change of the whole original module of global sections}
+
+\begin{theorem}[Whole original quasicoherent global sections commute with flat base change]
+\label{thm:fc-flat-module-global-sections}
+\lean{EnvelopeProperty.FlatModuleGlobalSections.isIso_comparison,EnvelopeProperty.FlatModuleGlobalSections.globalComparison,EnvelopeProperty.FlatModuleGlobalSections.globalComparison_tmul,EnvelopeProperty.FlatModuleGlobalSections.tensorEquiv,EnvelopeProperty.FlatModuleGlobalSections.tensorEquiv_tmul}
+\leanok
+\uses{scheme:existing-affine-module-pullback-sections,lem:fc-module-flat-base-change-affine-open,lem:fc-scheme-scalar-module-presheaf,lem:fc-scheme-module-flat-base-change-map,lem:fc-flat-kernel-base-change,lem:fc-affine-module-flat-base-change,lem:fc-module-pullback-open-restriction,prop:fc-finite-cech-flat-base-change}
+Let $X$ be an original compact separated scheme over
+$\operatorname{Spec}R$, let $M$ be any original quasicoherent module on
+$X$, and let $S$ be an actual flat $R$-algebra. Put
+$X_S=X\times_{\operatorname{Spec}R}\operatorname{Spec}S$ and retain its
+original projections $g$ and $q$. The canonical original map is an
+$S$-linear equivalence
+\[
+ S\otimes_R\Gamma(X,M)\ \simeq\ \Gamma(X_S,g^*M).
+\]
+For every original $s\in S$ and $m\in\Gamma(X,M)$ its value is
+$q^*(s)$ times the actual original pullback-unit section of $m$.
+The comparison uses the literal original modules, original coefficient
+maps and original pullback, including every pure tensor.
+\end{theorem}
+\begin{proof}
+Choose an actual finite affine open cover of the original compact
+scheme. Separatedness makes each actual nonempty finite tuple
+intersection affine; its original inverse image under $g$ is the
+corresponding actual tuple intersection on $X_S$. Apply the preceding
+affine comparison to these original intersections. Tensor product
+commutes with the finite products, so these comparisons give whole
+linear equivalences in degrees zero and one of the actual base-linear
+Cech complexes. Their genuine restriction naturality gives the whole
+first-differential square, using its actual alternating-sum formula.
+
+The sheaf condition identifies the entire original global-section
+module, with its original base action and actual augmentation, with the
+kernel of the first Cech differential on each side. Apply the preceding
+flat-kernel theorem to the derived square and compose these whole
+kernel identifications. There is no supplied H0 comparison, Cech
+matching assumption, or global-section isomorphism certificate.
+The augmentation maps retain actual restrictions, so the affine pure
+tensor formula and the sheaf uniqueness theorem give the stated global
+formula. The actual natural section map comes from the original pullback
+adjunction unit on every open. Its genuine isomorphism at the top,
+combined with the original whole top-coefficient identifications,
+gives the stated equivalence between literal global-section modules.
+The original tensor-map formula and actual top restriction transport
+give the displayed coefficient-times-pullback-unit identity for every
+original pure tensor. The literal original $R$ and $S$ actions are
+retained through their actual spectrum section isomorphisms.
+\end{proof}

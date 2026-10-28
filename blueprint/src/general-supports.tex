@@ -1,0 +1,98 @@
+\section{Supports of general seminorms}\label{sec:general-supports}
+
+Let $A$ be any commutative ring. These support statements apply to the absolute
+seminorm spectrum without choosing a coefficient ring. For a relative spectrum,
+the prescribed base seminorm forces a specific contraction of every support.
+
+\begin{definition}[The support map]\label{spectrum:support}
+\lean{EnvelopeProperty.Berkovich.Spectrum.support,
+EnvelopeProperty.Berkovich.Spectrum.preimage_support_zeroLocus,
+EnvelopeProperty.Berkovich.Spectrum.continuous_support,
+EnvelopeProperty.Berkovich.Spectrum.support_comap}
+\leanok
+\uses{spectrum:topology, spectrum:pullback, spectrum:quotient-zero-locus,
+spectrum:quotient-zero-locus-closed}
+For $x\in\mathcal S(A)$ its support is the prime ideal
+$\mathfrak p_x=\{a\in A:|a|_x=0\}$. The support map
+$\mathcal S(A)\to\Spec A$ is continuous and commutes with restriction of seminorms.
+The inverse image of $V(I)$ is the seminorm zero locus of $I$.
+\end{definition}
+\begin{proof}
+The zero set is an ideal by the ultrametric inequality and multiplicativity.
+It is proper because $|1|_x=1$; multiplicativity implies that a product has value
+zero only if a factor does, proving primality. A support contains $I$ exactly when
+every element of $I$ has value zero. This proves the inverse-image formula and
+continuity, since such vanishing conditions are closed and all Zariski closed
+sets are of the form $V(I)$. Evaluation after restriction is evaluation on the
+image of a ring element, proving functoriality of supports.
+\end{proof}
+
+\begin{lemma}[Absolute supports are surjective]\label{spectrum:support-surjective}
+\lean{EnvelopeProperty.Berkovich.Spectrum.primePoint,
+EnvelopeProperty.Berkovich.Spectrum.support_primePoint,
+EnvelopeProperty.Berkovich.Spectrum.support_surjective}
+\leanok
+\uses{spectrum:support, spectrum:quotient-homeomorphism}
+Every prime ideal $\mathfrak p$ of $A$ is the support of a real-valued seminorm:
+pull back the trivial seminorm of the domain $A/\mathfrak p$.
+\end{lemma}
+\begin{proof}
+The trivial seminorm on a domain assigns zero to zero and one to every other
+element. Its pullback to $A$ has value zero precisely on the kernel of
+$A\to A/\mathfrak p$, which is $\mathfrak p$. Its support is therefore the
+prescribed prime, giving surjectivity of the support map.
+\end{proof}
+
+\begin{lemma}[Radicals are detected by absolute seminorms]\label{spectrum:radical-vanishing}
+\lean{EnvelopeProperty.Berkovich.Spectrum.zeroLocus_radical,
+EnvelopeProperty.Berkovich.Spectrum.zeroLocus_subset_zeroLocus_iff,
+EnvelopeProperty.Berkovich.Spectrum.zeroLocus_eq_zeroLocus_iff,
+EnvelopeProperty.Berkovich.Spectrum.val_eq_zero_forall_iff_isNilpotent,
+EnvelopeProperty.Berkovich.Spectrum.val_eq_of_sub_isNilpotent,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_eq_of_sub_isNilpotent,
+EnvelopeProperty.Berkovich.Spectrum.zeroLocus_nilradical}
+\leanok
+\uses{spectrum:support, spectrum:support-surjective}
+For ideals $I,J$ of $A$, their seminorm zero loci satisfy
+$V(I)^\mathcal S=V(\sqrt I)^\mathcal S$ and
+$V(I)^\mathcal S\subseteq V(J)^\mathcal S$ exactly when $J\subseteq\sqrt I$.
+They are equal exactly when $\sqrt I=\sqrt J$.
+An element has value zero at every point of $\mathcal S(A)$ exactly when it is nilpotent.
+Functions differing by a nilpotent have equal seminorms and equal logarithmic evaluations.
+The nilradical vanishes at every seminorm.
+\end{lemma}
+\begin{proof}
+Every support is prime, so it contains $I$ exactly when it contains $\sqrt I$.
+Because the support map is surjective, inclusion or equality of its inverse images
+is equivalent to inclusion or equality of the corresponding Zariski zero loci.
+The intersection of the primes containing $I$ is $\sqrt I$, which gives the
+inclusion criterion and then the equality criterion. Similarly an element vanishes
+at every seminorm precisely when it belongs to every prime, that is, to the
+nilradical. Elements of the nilradical are precisely the nilpotents.
+If $a-b$ is nilpotent, its seminorm is zero. The ultrametric inequality applied
+to $a=b+(a-b)$ and $b=a-(a-b)$ gives $|a|\le|b|$ and $|b|\le|a|$,
+respectively; thus their values and logarithms agree.
+\end{proof}
+
+\begin{lemma}[Relative supports lie over the prescribed base support]
+\label{spectrum:relative-support}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.support,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_support,
+EnvelopeProperty.Berkovich.RelativeSpectrum.support_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.support_base,
+EnvelopeProperty.Berkovich.RelativeSpectrum.supp_comap_algebraMap}
+\leanok
+\uses{spectrum:relative, spectrum:support}
+Let $R$ be a commutative ring, $v$ a real-valued multiplicative ultrametric seminorm
+on $R$, and $A$ an $R$-algebra. The support map from $\mathcal S_v(A)$ to $\Spec A$
+is continuous and commutes with restriction along $R$-algebra homomorphisms.
+For every $x\in\mathcal S_v(A)$,
+$\mathfrak p_x\cap R=\mathfrak p_v$, where contraction is taken along $R\to A$.
+No surjectivity assertion for this relative support map is made.
+\end{lemma}
+\begin{proof}
+The relative support map is the restriction of the absolute support map to a
+subspace, hence is continuous and retains its functoriality. For $r\in R$,
+the prescribed restriction gives $|r|_x=|r|_v$. Thus $r$ belongs to the contraction
+of $\mathfrak p_x$ exactly when $|r|_v=0$, proving the contraction equality.
+\end{proof}

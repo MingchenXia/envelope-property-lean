@@ -1,0 +1,31 @@
+\section{The projective ambient family after coefficient extension}
+
+\begin{lemma}[Relative projective space over the modeled affine base]
+\label{lem:kn-relative-arithmetic-ambient-base-change}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticAmbientBaseChange.relative_isPullback,EnvelopeProperty.Vanishing.RelativeArithmeticAmbientBaseChange.twist_isVeryAmple}
+\leanok
+Let $B$ and $C$ be arbitrary commutative $A$-algebras.  Put
+$B_C=C\otimes_A B$ and
+$Y=\mathbb P_B^d\times_{\operatorname{Spec}A}\operatorname{Spec}C$.
+There is a canonical map $Y\to\operatorname{Spec}B_C$ making $Y$
+the base change of $\mathbb P_B^d$ along
+$\operatorname{Spec}B_C\to\operatorname{Spec}B$.  The pullback of
+$\mathcal O_{\mathbb P_B^d}(1)$ is very ample for this map.  The
+composite to $\operatorname{Spec}C$ is the original second projection.
+No domain, flatness, or reducedness hypotheses occur.
+\end{lemma}
+\begin{proof}
+The spectrum of the tensor product is the cartesian product of
+$\operatorname{Spec}C$ and $\operatorname{Spec}B$ over
+$\operatorname{Spec}A$.  The original two projections from $Y$, the
+first followed by $\mathbb P_B^d\to\operatorname{Spec}B$, have equal
+composites to $\operatorname{Spec}A$.  They therefore induce the
+canonical map to $\operatorname{Spec}B_C$.  Its two composites are
+exactly those original projections by the universal property of the
+cartesian product.  Pasting its proposed square with the tensor
+cartesian square gives the defining square of $Y$.  Cancellation of
+cartesian squares proves that the proposed square is cartesian.
+Finally $\mathcal O(1)$ is very ample on $\mathbb P_B^d$ via its
+identity embedding.  The actual projective-space base-change
+embedding transports this whole line to a very ample line on $Y$.
+\end{proof}

@@ -1,0 +1,82 @@
+\section{Every finite original projective family retains its actual Segre line and sections}
+\label{sec:finite-segre-original-projective-maps}
+\begin{definition}[The actual finite Segre index and original morphism]
+\label{def:finite-original-segre-morphism}
+\lean{EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.dimension,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.index,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.index_bijective,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.presentation,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.morphism,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.morphism_structure,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.morphism_isClosedImmersion}
+\leanok
+\uses{def:original-pair-segre-morphism,thm:original-segre-composite-closed-embedding}
+Let $q_j:X\to\mathbf P_k^{d_j}$ be a nonempty finite family of actual
+original morphisms with the same original base triangle. Iterating the
+genuine binary Segre morphism constructs one actual original projective
+morphism on the unchanged $X$. Its coordinates are in bijection with
+all tuples of original factor coordinates. Its entire original base
+triangle is retained. If $q_0$ is a closed immersion, this morphism is
+a closed immersion.
+\end{definition}
+\begin{proof}
+For one factor use the original map and its actual coordinate index.
+For a larger family separate the first factor and the remaining nonempty
+family. Apply the recursively constructed map to the remaining family,
+and form its actual binary Segre composite with the first factor.
+Both base composites are the original base, so the whole pair exists
+and retains that base triangle. The binary coordinate-index bijection,
+together with the recursively constructed tail bijection, gives a
+bijection from all factor-coordinate tuples to all target coordinates:
+its inverse first separates the binary index and then recursively
+recovers every tail coordinate. If the first original map is a closed
+immersion, the actual binary Segre closed-embedding theorem applies
+irrespective of the remaining map. This proves the closed-embedding
+assertion at every family length.
+\end{proof}
+\begin{theorem}[The entire original finite tensor line and every coordinate section]
+\label{thm:finite-original-segre-whole-line}
+\lean{EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.tensorLine,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.tensorLine_isInvertible,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.tensorCoordinate,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.lineIso,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.lineIso_coordinate}
+\leanok
+\uses{def:finite-original-segre-morphism,thm:original-segre-pulled-line-iso,thm:original-segre-pulled-coordinate-section,lem:fc-original-tensor-section-homs}
+The actual pullback of the target $\mathcal O(1)$ is isomorphic to the
+entire original tensor product $\bigotimes_jq_j^*\mathcal O(1)$.
+Under this derived whole isomorphism, every actual target coordinate
+section is the tensor of the same tuple of original coordinate sections.
+All these actual original line modules are invertible.
+\end{theorem}
+\begin{proof}
+For one factor the comparison is the identity. For a larger family use
+the genuine binary Segre line isomorphism, then tensor the first-factor
+identity with the recursively constructed whole comparison for the tail.
+Original projective pullbacks are invertible, and the tensor of actual
+invertible modules is invertible. The binary comparison sends each
+coordinate section to the two original factor sections. Naturality of
+the actual tensor-section morphism then composes its second section
+with the recursive comparison, whose coordinate identity gives the
+entire original tail tensor. This proves the assertion for every tuple.
+\end{proof}
+\begin{theorem}[The full original section spaces and weighted families are isometric]
+\label{thm:finite-original-segre-whole-section-isometry}
+\lean{EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.wholeSectionsEquiv,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.wholeSectionsNorm,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.weightedNormEval,EnvelopeProperty.FiniteSegreOriginalProjectiveMaps.coordinateNorm}
+\leanok
+\uses{thm:finite-original-segre-whole-line,thm:scheme-global-section-model-norm-isometry,thm:scheme-global-section-weighted-norm-isometry,thm:original-segre-coordinate-model-norm}
+The derived whole line isomorphism gives an equivalence on the entire
+original global section spaces. If $X$ is proper, it preserves every
+actual proper-model section norm and every finite real-weighted norm
+evaluation, with the same denominator and weights, at every native valued
+point over a bounded base valuation. Every actual target coordinate norm
+is the product of the corresponding original factor-coordinate norms,
+including zero values and nongeneric supports.
+\end{theorem}
+\begin{proof}
+Apply whole global sections to the constructed line isomorphism and its
+actual inverse. Whole-module isometries preserve every section norm at
+every actual proper valued point. Mapping a finite family through this
+same equivalence leaves each logarithmic term and its real weight
+unchanged, hence leaves its finite supremum and denominator-normalized
+value unchanged, including empty and common-zero families. The binary
+coordinate norm theorem identifies the first factor times the tail
+coordinate norm. Repeatedly apply this identity to the tail. The finite
+product over the entire family is exactly the first factor times that
+tail product, proving the stated formula without nonvanishing conditions.
+\end{proof}
+These statements concern the actual finite original Segre embedding and
+its whole original tensor line. Identifying its graded algebra with the
+positive diagonal of the reconstructed multigraded model is a further
+step; whole projective numerical-class finite dimensionality and the
+paper topology are separate unresolved obligations.

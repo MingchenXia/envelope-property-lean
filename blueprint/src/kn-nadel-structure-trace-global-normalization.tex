@@ -1,0 +1,41 @@
+\section{The actual global structure trace retains the original degree}
+
+\begin{lemma}[The global regular factor has every original chart trace]
+\label{lem:kn-structure-trace-global-original-chart}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.originalStructureTrace_onChart}
+\leanok
+On every nonempty actual whole free chart of the same original adapted
+cover, the actual global regular structure trace restricts to that
+chart's actual native algebra trace. No agreement is an input.
+\uses{thm:kn-structure-trace-global-regular-factor,lem:kn-structure-trace-local-regular-factor}
+\end{lemma}
+\begin{proof}
+The original generic structural unit is a monomorphism, and its
+restriction remains a monomorphism. The global trace and the actual
+chart trace have the same composite with this restricted inclusion:
+both composites are the restriction of the same original rational
+trace. Right cancellation gives the equality of whole restricted maps.
+\end{proof}
+
+\begin{theorem}[The entire original global degree identity]
+\label{thm:kn-structure-trace-global-unit-degree}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.unit_comp_originalStructureTrace}
+\leanok
+For the same original adapted cover $\pi:Y\to X$ and actual global
+regular structure trace $T$, the original structural unit satisfies
+$\mathcal O_X\to\pi_*\mathcal O_Y\xrightarrow{T}\mathcal O_X
+=D\,\mathrm{id}_{\mathcal O_X}$ as an equality of whole original
+module maps, with $D$ the product of all original root degrees.
+\uses{lem:kn-structure-trace-global-original-chart,lem:kn-structure-trace-local-spec-unit,thm:kn-structure-trace-produced-whole-free-chart}
+\end{theorem}
+\begin{proof}
+The original geometry produces a nonempty whole free chart at every
+base point, and their original coefficient spectra form an open cover.
+On each such chart the preceding equality identifies the restriction
+of $T$ with the actual local trace. The already proved whole local
+unit identity is multiplication by its actual basis cardinality $D$.
+Restriction preserves composition, addition and identity. Transport
+the resulting equality through the genuine restriction--pullback
+natural isomorphism. Detection of whole module maps on the produced
+open-immersion point cover yields the asserted global identity.
+\end{proof}

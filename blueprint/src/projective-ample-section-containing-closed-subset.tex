@@ -1,0 +1,108 @@
+\section{An actual ample-power section containing a prescribed closed set}
+Fix the original projective morphism $p:X\to\operatorname{Spec}k$ over
+a field, with original integral $X$, an original ample line $A$, and an
+ordinary closed set $Z\ne X$. Set the ideal literally to
+$I=\operatorname{vanishingIdeal}(Z)$. Neither a section, its exponent,
+a factorization, an auxiliary vanishing assertion nor a generator family
+is supplied by the caller. The empty closed set is allowed.
+
+\begin{lemma}[A nonzero original ideal has a nonzero original module]
+\label{lem:projective-original-proper-closed-ideal-nonzero}
+\lean{EnvelopeProperty.ProjectiveAmpleSectionContainingClosedSubset.not_isZero_idealModule_of_ne_bot}
+\leanok
+For any actual original ideal sheaf $J\ne0$, the same original
+$J.\mathrm{toModules}$ is not a zero module.
+\end{lemma}
+\begin{proof}
+If the actual original ideal module were zero, its
+original inclusion into the structure module would be the zero map.
+For every actual affine open, the existing original ideal-section
+equivalence identifies the value of that inclusion with every actual
+element of the original ideal. Every such element would therefore be
+zero, forcing $J=0$, a contradiction. The prescribed-closed-set theorem
+below derives the nonzero-ideal condition internally from its ordinary
+$Z\ne X$ premise; no nonzero stalk or support certificate is required.
+\end{proof}
+
+\begin{lemma}[The same ideal-twist section has zero ideal inside the ideal]
+\label{lem:projective-original-ideal-twist-zero-ideal-contained}
+\lean{EnvelopeProperty.ProjectiveAmpleSectionContainingClosedSubset.zeroIdeal_le_of_idealTwistSection}
+\leanok
+For an actual original ideal sheaf $J$, an original invertible $P$, and
+an actual whole section $u:\mathcal O_X\to J\otimes P$, compose the
+actual tensor of $J\hookrightarrow\mathcal O_X$ with the native left
+unit comparison to form the original section $s:\mathcal O_X\to P$.
+Then the literal native zero ideal of this same $s$ is contained in $J$.
+\end{lemma}
+\begin{proof}
+Use the actual original invertibility cover of $P$. Around each original
+point of an affine test open, choose a cover member with its actual line
+frame. On every actual smaller affine open, restrict this same frame and
+apply the already proved native frame producer: one original section
+$t$ makes $m\mapsto m\otimes t$ bijective for every original module.
+Apply its surjectivity to the original value of $u$, with module
+$J.\mathrm{toModules}$. Thus this original value is $m\otimes t$ for an
+actual original ideal-module section $m$.
+
+The existing original tensor-section naturality and native left-unit
+formula show that the value of the same actual $s$ is $m\,t$, with the
+original scalar $m$ lying in the original affine ideal. Evaluating any
+original local dual functional gives $m$ times its original evaluation
+on $t$, which still belongs to that ideal. Original morphism naturality
+retains this equality when restricting an original dual-image generator.
+The existing local-membership criterion for original ideal sheaves
+therefore puts every affine original zero-ideal generator in $J$.
+This proves containment for the literal image-defined zero ideal, not
+for a replacement divisor or a chosen coefficient ideal. No new frame,
+tensor-comparison or evaluation-matching premise is introduced.
+\end{proof}
+
+\begin{theorem}[An internally produced positive ample-power section]
+\label{thm:projective-original-ample-section-prescribed-closed-set}
+\lean{EnvelopeProperty.ProjectiveAmpleSectionContainingClosedSubset.exists_nonzero_power_section_containing_closed}
+\leanok
+There exist an actual exponent $r>0$ and an actual nonzero original
+section $s:\mathcal O_X\to A^r$ such that the actual reduced closed
+subscheme of the same literal $I$ has an actual closed immersion into
+the literal zero subscheme $D$ of this same $s$. The composite with the
+original inclusion $D\to X$ is exactly the original inclusion of $I$.
+\uses{lem:projective-original-proper-closed-ideal-nonzero,lem:projective-original-ideal-twist-zero-ideal-contained}
+\end{theorem}
+\begin{proof}
+The original support of the literal $I=\operatorname{vanishingIdeal}Z$
+is exactly the original $Z$. If $I=0$, its support would be the whole
+original $X$, contrary to $Z\ne X$. Thus the first lemma gives actual
+nonzeroness of the same ideal module internally. Original projectivity
+over the field internally gives local Noetherianity.
+Use the existing genuine quasicoherence and finite presentation of the
+same original ideal module; the original native finite-presentation
+instance gives its finite type. Apply the existing proved ample coherent
+global-generation theorem to this fixed module and the same original
+$A$. It supplies one bound and actual finite generating sections of
+$I\otimes A^r$ for every exponent above it. Choose the actual exponent
+$r=\max(N,1)$, so it is positive.
+
+The actual tensor equivalence for the same invertible $A^r$ preserves
+nonzeroness of the original ideal module. An epic original free evaluation
+onto this nonzero module has at least one nonzero actual generator map:
+otherwise its whole original free map would be zero and force the
+identity of its target to vanish. Choose such an original section $u$.
+The actual inclusion $I\hookrightarrow\mathcal O_X$ is monic, and the
+existing original invertible tensor functor preserves monomorphisms.
+Hence the actual tensor-ideal map to $A^r$ is monic and its composite
+$s$ with this same $u$ is nonzero.
+
+The preceding actual evaluation result gives $D\le I$ as original ideal
+sheaves. The native ideal-sheaf inclusion morphism gives an actual map
+\[j:I.\mathrm{subscheme}\longrightarrow D.\mathrm{subscheme}\]
+with the exact original composition identity. Its composite into $X$ is the original closed
+immersion of $I$, while the inclusion of $D$ is separated; the native
+closed-immersion cancellation theorem makes $j$ a closed immersion.
+All choices and all maps occur inside the proof, including when $Z$ is
+empty. No desired section, exponent, factor or comparison is assumed.
+\end{proof}
+
+These three nodes are proved by the actual original-source producer.
+This producer supplies the prescribed closed-stratum cut for the
+separate dimension-chain and Nakai induction; it does not assert those
+later criteria or Main.

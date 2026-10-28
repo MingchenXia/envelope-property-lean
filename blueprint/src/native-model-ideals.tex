@@ -1,0 +1,153 @@
+\subsection{Intrinsic native model ideal functions from genuine ideal-sheaf data}
+\label{subsec:native-model-ideals}
+
+Mathlib's actual $\operatorname{IdealSheafData}$ specifies an ideal on
+\emph{every} genuine affine open and compatibility with genuine basic-open
+localization. It is the existing scheme ideal-sheaf data object, not an
+assumption that the desired function exists. Mathlib has not yet packaged
+these data as an actual ideal subsheaf; no additional such packaging or
+analytic coherent-sheaf gluing is asserted here. The algebraic stalk
+construction works on every scheme. Its model-function application uses
+an actual proper structure morphism over an arbitrary prescribed seminorm
+bounded on all coefficients. No Noetherian or global finite-generation
+hypothesis is imposed. Finite-generator formulas retain the explicit
+local generating-family hypothesis.
+
+\begin{definition}[Intrinsic ideal of genuine section germs]
+\label{scheme:ideal-sheaf-data-stalk}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.stalkIdeal,
+AlgebraicGeometry.Scheme.IdealSheafData.affineGermIdeal_eq_of_le,
+AlgebraicGeometry.Scheme.IdealSheafData.affineGermIdeal_eq,
+AlgebraicGeometry.Scheme.IdealSheafData.stalkIdeal_eq_affine,
+AlgebraicGeometry.Scheme.IdealSheafData.germ_mem_stalkIdeal}
+\leanok
+Let $I$ be actual ideal-sheaf data on $X$. For $x\in X$ define its stalk
+ideal to be the supremum of the genuine germ-map images $I(U)\mathcal O_{X,x}$
+over all actual affine opens $U$ containing $x$. For \emph{any} such affine
+open, this intrinsic ideal equals that one germ-map image.
+\end{definition}
+\begin{proof}
+For an affine inclusion $W\subset U$, the genuine localization theorem
+$I(U)\Gamma(X,W)=I(W)$ and compatibility of actual restriction with germs
+show equality of the two germ-map images in the stalk. Given affine
+neighborhoods $U,V$ of $x$, the actual affine basis supplies an affine
+$W$ containing $x$ inside $U\cap V$. The preceding inclusion equality
+therefore makes the images from $U$ and $V$ equal. Every term in the
+intrinsic supremum is thus equal to the image from the chosen affine
+neighborhood; that image is itself one of the terms, proving both ideal
+inclusions. Genuine section germs of $I(U)$ belong to this ideal by
+actual ideal-map membership. No stalk ideal equality is assumed.
+\end{proof}
+
+\begin{lemma}[Actual stalk ideal arithmetic]
+\label{scheme:ideal-sheaf-data-stalk-arithmetic}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_bot,
+AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_top,
+AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_sup,
+AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_mul,
+AlgebraicGeometry.Scheme.IdealSheafData.paperStalkIdeal_pow}
+\leanok
+\uses{scheme:ideal-sheaf-data-stalk}
+The intrinsic stalk ideals preserve zero, unit, ideal sums, products and
+all powers, including exponent zero.
+\end{lemma}
+\begin{proof}
+Choose an actual affine neighborhood from the genuine affine basis.
+The preceding theorem identifies each intrinsic ideal with its image
+from that common neighborhood. Mathlib's actual ideal-sheaf-data arithmetic
+is computed on its affine section ideals. The genuine ideal-map laws
+preserve their zero, unit, sums, products and powers, proving every
+stalk identity. No reducedness or surjectivity of the germ map is used.
+\end{proof}
+
+\begin{definition}[Intrinsic actual centered model norm]
+\label{scheme:native-model-ideal-function}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isBounded_centerStalkSpectrum,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerStalkSpectrum_comap_germ,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_eq_affine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_eq_affine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_le_one,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_le_zero}
+\leanok
+\uses{scheme:ideal-sheaf-data-stalk,scheme:proper-center-local-bounds,
+scheme:relative-section-coefficients,def:general-ideal-norm,lem:general-ideal-pullback}
+Let $y$ be a native prescribed-base point of an actual proper scheme,
+with true model center $c(y)$. Evaluate the intrinsic stalk ideal of $I$
+at the actual bounded center-stalk seminorm to define its norm; its
+logarithm defines the model ideal function. For any actual affine center
+neighborhood $U$, these equal the ordinary ideal norm and logarithm of
+$I(U)$ at the genuine native section-spectrum point. The norm is at most
+one and the logarithm at most zero.
+\end{definition}
+\begin{proof}
+The already constructed proper center-stalk valuation gives a genuine
+bounded seminorm point of $\mathcal O_{X,c(y)}$. Its pullback along the
+actual germ map equals the entire original native section-spectrum
+point, because their evaluations agree on every section. The intrinsic
+stalk ideal equals the germ-image of $I(U)$ by the first theorem. Ideal
+norm pullback at the genuinely bounded target stalk therefore identifies
+the intrinsic norm with the actual affine section-ideal norm. Applying
+the actual extended logarithm gives the logarithmic identity. Genuine
+center-stalk boundedness proves the two bounds. These follow from the
+actual proper valuative lift, rather than an assumed coefficient action
+or an assumed bound on unrelated section elements.
+\end{proof}
+
+\begin{theorem}[Actual affine generators give the same intrinsic function]
+\label{scheme:native-model-ideal-generators}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_eq_generators,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdeal_generators_eq}
+\leanok
+\uses{scheme:native-model-ideal-function,lem:general-ideal-norm-generators}
+If a finite family $S$ generates the actual ideal $I(U)$ on an affine
+center neighborhood, the intrinsic norm equals the maximum of the
+original native values of those sections. Any second actual affine center
+neighborhood and finite generating family give the same maximum.
+The empty generating family computes the genuine zero ideal.
+\end{theorem}
+\begin{proof}
+The previous affine comparison and genuine boundedness of the actual
+section-spectrum point allow the proved finite-generator ideal-norm
+formula. All section values are original native residue values by the
+actual point definition. Both affine maxima equal the one intrinsic
+stalk norm, so injectivity of the nonnegative-real inclusion into the
+extended nonnegative reals makes them equal. This proves independence
+across different affine neighborhoods and their section rings, not only
+for two generators of one ideal in one ring. No finite family is assumed
+to exist unless explicitly supplied.
+\end{proof}
+
+\begin{theorem}[Genuine centered model ideal arithmetic]
+\label{scheme:native-model-ideal-arithmetic}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_bot,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_top,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_sup,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_mul,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_pow,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_bot,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_top,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_sup,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_mul,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_pow}
+\leanok
+\uses{scheme:ideal-sheaf-data-stalk-arithmetic,scheme:native-model-ideal-function,
+lem:general-ideal-norm-arithmetic,lem:general-ideal-log}
+Zero and unit model ideals have norms zero and one and logarithms
+$-\infty$ and zero. Sums take maxima, products multiply norms and add
+logarithms, and every natural ideal power scales the logarithm by that
+exponent. These formulas include zero exponents and negative-infinite
+values with the actual extended-real conventions.
+\end{theorem}
+\begin{proof}
+Actual stalk ideal arithmetic identifies the relevant intrinsic ideals.
+Apply the established bounded seminorm ideal calculus to the actual
+center-stalk point. Unit and zeroth-power identities use its genuine
+boundedness. Applying the true extended logarithm gives maxima, products
+and powers with their already proved infinity conventions. This constructs
+a global intrinsic native model ideal function but does not prove global
+continuity, center anti-continuity, analytic sheaf realization or decreasing
+function-limit transport. Those need their own explicit producers.
+\end{proof}

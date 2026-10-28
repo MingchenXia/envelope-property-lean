@@ -1,0 +1,36 @@
+\section{The true local degrees of the original finite closed subscheme}
+
+\begin{definition}[The actual coefficient action on original structure sections]
+\label{def:fc-finite-closed-structure-sections}
+\leanok
+\lean{EnvelopeProperty.FiniteClosedIdealLocalDegrees.structureSectionsAlgebra, EnvelopeProperty.FiniteClosedIdealLocalDegrees.structureFieldSectionsIso}
+The original structure morphism gives the actual algebra map
+$k\to\Gamma(D,\mathcal O_D)$ by the canonical $k\simeq\Gamma(\operatorname{Spec}k,\mathcal O)$
+followed by the literal original structure-map pullback. The actual
+field-linear global sections of the original structure module are
+linearly identified with this same original ring under that action.
+\end{definition}
+
+\begin{theorem}[The same original ideal's true residue-weighted Euler degree]
+\label{thm:fc-finite-closed-ideal-local-degrees}
+\leanok
+\lean{EnvelopeProperty.FiniteClosedIdealLocalDegrees.structureSections_finite, EnvelopeProperty.FiniteClosedIdealLocalDegrees.fieldDegree_eq_sum_local_degrees, EnvelopeProperty.FiniteClosedIdealLocalDegrees.normalizedEulerCharacteristic_idealModule_eq_neg_sum}
+\uses{def:fc-finite-closed-structure-sections, thm:fc-finite-closed-ideal-euler, thm:fc-finite-algebra-degree-sum}
+The original field degree of an actual finite closed subscheme is the
+sum of the true local lengths of its actual global section algebra's
+prime localizations, weighted by their actual residue-field degrees
+over the original field. The normalized full Euler characteristic of
+its same actual native ideal module is minus this sum.
+\end{theorem}
+\begin{proof}
+The whole original field-linear structure-section isomorphism retains
+the literal original scalar map. Actual projective closed-immersion
+section finiteness therefore makes the same original section ring a
+finite algebra over the original field. Apply the genuine finite-algebra
+local-degree decomposition to this same algebra. The original finite
+closed structure morphism makes the original closed subscheme affine,
+so its canonical native spectrum isomorphism identifies these prime
+localizations with its actual points and local rings. The already
+proved original finite closed-ideal Euler formula gives the negative
+of this actual degree, hence the negative weighted local sum.
+\end{proof}

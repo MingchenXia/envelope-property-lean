@@ -1,0 +1,168 @@
+\subsection{Actual Gauss completions and closed-disc functions}
+\label{subsec:gauss-completion-closed-discs}
+
+\begin{definition}[The genuine weighted Gauss completion]
+\label{analytic:actual-polynomial-gauss-completion}
+\uses{spectrum:gauss-valuation}
+\lean{EnvelopeProperty.Berkovich.GaussCompletion.polynomialAbs,
+EnvelopeProperty.Berkovich.GaussCompletion.PolynomialRing,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialNormedCommRing,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialNormedAlgebra,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialIsUltrametricDist,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialNormMulClass,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialNormOneClass,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialEquiv,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_polynomial,
+EnvelopeProperty.Berkovich.GaussCompletion.Ring,
+EnvelopeProperty.Berkovich.GaussCompletion.normMulClass,
+EnvelopeProperty.Berkovich.GaussCompletion.normOneClass,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.coefficients,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_coefficients,
+EnvelopeProperty.Berkovich.GaussCompletion.coefficientMap_eq_algebraMap}
+\leanok
+Let $K$ be an ultrametric normed field and $r>0$ a real radius.
+Give $K[T]$ its ACTUAL weighted Gauss absolute value
+\[
+ \left\|\sum_i a_iT^i\right\|_r=\max_i\|a_i\|r^i.
+\]
+The genuine separated norm completion of this ring is the
+weighted one-variable Gauss algebra. It is an actual complete
+commutative normed ring, with a genuine original coefficient and
+polynomial map. Every original polynomial retains its entire
+weighted Gauss norm. Completeness of $K$ is not required to construct
+this ring; when $K$ is complete, it is the usual closed-disc
+Banach algebra over $K$. The radius-zero case is excluded here
+because the polynomial seminorm would not be a norm. We define
+this algebra by norm completion; identification with a separately
+constructed restricted formal-power-series presentation is not
+asserted here.
+\end{definition}
+\begin{proof}
+The proved Gauss valuation is multiplicative for the full finite
+coefficient maximum. Positive radius and faithful coefficient norm
+imply that zero Gauss value forces every polynomial coefficient
+to vanish; hence it is a genuine absolute value. Use the actual
+normed copy of the polynomial ring specified by this absolute
+value, then its actual uniform ring completion. The normed ring
+and complete-space structures are the genuine completion
+structures. Its original polynomial embedding preserves the whole
+norm by the real completion norm law, and its coefficient embedding
+is isometric since the constant-polynomial Gauss norm is the
+original coefficient norm. The ultrametric inequality extends
+from all original polynomial pairs by actual completion density.
+No formal-power-series evaluation theorem with a linear-topology
+hypothesis on the valued field is used.
+\end{proof}
+
+\begin{theorem}[The actual Gauss algebra spectrum is the genuine closed disc]
+\label{analytic:actual-gauss-completion-disc-homeomorphism}
+\lean{EnvelopeProperty.Berkovich.GaussCompletion.ClosedDisc,
+EnvelopeProperty.Berkovich.GaussCompletion.gaussPoint,
+EnvelopeProperty.Berkovich.GaussCompletion.closedDiscNonempty,
+EnvelopeProperty.Berkovich.GaussCompletion.PolynomialSpectrum,
+EnvelopeProperty.Berkovich.GaussCompletion.CompletionSpectrum,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialRestrict,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialExtend,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialRestrict_polynomialExtend,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialExtend_polynomialRestrict,
+EnvelopeProperty.Berkovich.GaussCompletion.continuous_polynomialRestrict,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomialSpectrumHomeomorph,
+EnvelopeProperty.Berkovich.GaussCompletion.discHomeomorph,
+EnvelopeProperty.Berkovich.GaussCompletion.discHomeomorph_val_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.compactSpace_closedDisc}
+\leanok
+\uses{analytic:actual-polynomial-gauss-completion,spectrum:actual-bounded-completion-homeomorphism,spectrum:gauss-maximality,spectrum:gauss-point}
+The contractive spectrum of this ACTUAL completion, with every
+original $K$ coefficient prescribed its true norm, is genuinely
+homeomorphic to the closed radius-$r$ locus $|T|\leq r$ of the
+existing affine prescribed-base spectrum of $K[T]$. Restriction
+is along the original polynomial map and preserves EVERY original
+polynomial value. Every disc point extends uniquely to a
+contractive multiplicative ultrametric seminorm on the completion.
+\end{theorem}
+\begin{proof}
+A genuine completion point restricts to the actual weighted
+normed polynomial copy. Its coefficient values stay prescribed,
+and its true contractivity gives $|T|\leq\|T\|_r=r$.
+Conversely, a real affine point with these coefficient values
+and $|T|\leq r$ satisfies the bound on EVERY original polynomial:
+write the polynomial as its actual finite coefficient sum,
+apply the true ultrametric inequality, and bound each monomial
+by $\|a_i\|r^i$. The original weighted normed-copy ring
+equivalence therefore identifies its entire polynomial seminorm
+with a genuine contractive point, retaining every scalar value.
+Both constructions are true inverse maps on all polynomial
+elements. Their evaluation-coordinate descriptions give continuous
+maps, hence a genuine homeomorphism with the norm-bounded original
+polynomial spectrum. Compose this with the actual completion
+homeomorphism of the preceding theorem. Its genuine extension
+through the true completed residue field supplies existence and
+uniqueness on EVERY completion element, rather than assigning
+values only to original coordinates. Nonemptiness follows from
+the actual original Gauss point, including trivial field norms.
+\end{proof}
+
+\begin{theorem}[Every genuine completed disc function has continuous absolute value]
+\label{analytic:actual-gauss-disc-function-values}
+\lean{EnvelopeProperty.Berkovich.GaussCompletion.originalEvaluation,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_originalEvaluation_le,
+EnvelopeProperty.Berkovich.GaussCompletion.lipschitz_originalEvaluation,
+EnvelopeProperty.Berkovich.GaussCompletion.evaluationToH,
+EnvelopeProperty.Berkovich.GaussCompletion.evaluationToH_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.nnnorm_evaluationToH_le,
+EnvelopeProperty.Berkovich.GaussCompletion.evaluationToH_unique,
+EnvelopeProperty.Berkovich.GaussCompletion.value,
+EnvelopeProperty.Berkovich.GaussCompletion.value_polynomialMap,
+EnvelopeProperty.Berkovich.GaussCompletion.continuous_value,
+EnvelopeProperty.Berkovich.GaussCompletion.continuous_logValue,
+EnvelopeProperty.Berkovich.GaussCompletion.value_eq_nnnorm_evaluationToH,
+EnvelopeProperty.Berkovich.GaussCompletion.value_gaussPoint,
+EnvelopeProperty.Berkovich.GaussCompletion.value_le_gaussPoint}
+\leanok
+\uses{analytic:actual-gauss-completion-disc-homeomorphism,spectrum:completed-residue-field}
+For every ACTUAL element of the Gauss completion, its value at
+every closed-disc point is the unique completed seminorm value.
+Its nonnegative absolute value and extended logarithm are
+continuous on the whole genuine disc. The ACTUAL original Gauss
+point realizes the norm of every completion element and dominates
+its value at every other actual disc point. Original polynomials
+recover their entire original seminorm functions, including
+zeros and logarithmic value $-\infty$.
+\end{theorem}
+\begin{proof}
+First construct an actual completion evaluation into the true
+$\mathcal H(x)$ of the ORIGINAL polynomial disc point: its original
+polynomial evaluator, composed with the genuine normed-copy ring
+equivalence, is contractive on every polynomial by the whole disc
+bound. Its actual ring completion extension preserves every original
+polynomial and remains contractive on every completion element.
+Actual density gives uniqueness among continuous ring maps with
+these whole original polynomial values. The true completed residue
+field is not identified definitionally with that of the normed
+polynomial copy. Instead, the two continuous seminorm functions
+agree on ALL original polynomials, so actual completion density
+proves equality on EVERY completion element. Thus the spectral
+value is exactly the norm of this true original-$\mathcal H(x)$
+evaluation.
+
+Evaluate the actual completed spectrum point furnished by the
+inverse of the just-proved homeomorphism on the given completion
+element. Every such spectrum evaluation is genuinely continuous
+for the original evaluation topology. Compose with the real
+homeomorphism inverse. Continuity of the extended nonnegative
+logarithm gives the logarithmic assertion, including zero.
+The whole polynomial restriction identity gives the original
+polynomial formula. The real original Gauss point is a witness in
+the disc. Its value on every polynomial is the whole weighted
+Gauss norm. Density of the entire original polynomial image and
+continuity of both completed seminorm and actual norm extend that
+equality to EVERY completion element. Contractivity of every other
+completion point then makes this same Gauss point dominate its
+value on each actual completed function. These are genuine analytic disc functions
+constructed from norm convergence; no analytic structure sheaf,
+rational-domain gluing, boundary, skeleton, harmonic comparison,
+subharmonicity or maximum-principle structure has yet been asserted.
+Those remain distinct producers required for GR25 curve theory.
+\end{proof}

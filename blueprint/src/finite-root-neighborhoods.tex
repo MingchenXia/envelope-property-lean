@@ -1,0 +1,66 @@
+\subsection{Actual finite-root neighborhoods of original line points}
+
+\begin{lemma}[Every translated original linear value is retained]
+\label{analytic:actual-translation-all-linear-values}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation_val_X_sub_C_eq}
+\uses{analytic:actual-polynomial-translation-homeomorphisms}
+For ANY commutative coefficient algebra and ANY prescribed real valuation,
+the actual whole polynomial-point translation by $a$ satisfies
+\[
+ |T-b|(\operatorname{tr}_a x)=|T-(b-a)|(x)
+\]
+for EVERY original $a,b,x$. The original whole homeomorphism and all original
+coefficient actions are retained; this is an actual polynomial identity,
+not an identification of whole points from selected values.
+\leanok
+\end{lemma}
+\begin{proof}
+The checked actual translation formula evaluates the WHOLE original
+polynomial $(T-b)$ by the original substitution $T\mapsto T+a$.
+The original ring identity $(T+a)-b=T-(b-a)$ gives the displayed equality.
+\end{proof}
+
+\begin{theorem}[Actual original points are Gauss points or have genuine finite-root-constant disc neighborhoods]
+\label{analytic:actual-finite-root-neighborhood-dichotomy}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.exists_gauss_or_strictDisc_constant_linearValues}
+\uses{spectrum:topology,spectrum:centered-gauss-whole-ray,analytic:actual-translation-all-linear-values,analytic:actual-polynomial-translation-homeomorphisms,analytic:actual-algclosed-disc-branch-cover}
+Let $K$ be ANY algebraically closed field with ANY real-valued ultrametric
+valuation $v$, without a completeness or nontrivial-norm hypothesis. Let
+$S\subset K$ be an ACTUAL finite nonempty original set and $x$ a WHOLE
+original polynomial point over $v$ with $|T-b|(x)>0$ for EVERY $b\in S$.
+Then one of the following ACTUAL alternatives holds:
+\begin{enumerate}
+\item $x$ is the ENTIRE original translated Gauss point with some center
+$a\in S$ and genuine radius $t>0$;
+\item there are an original $c\in K$ and genuine $t>0$ such that the ACTUAL
+strict disc $U=\{y:|T-c|(y)<t\}$ is open, contains $x$, and
+$|T-b|(y)=|T-b|(x)$ for EVERY original $y\in U$ and EVERY $b\in S$.
+\end{enumerate}
+No Gauss/branch classification, finite-value neighborhood or local analytic
+profile certificate is an input. This classifies the finite-root behavior
+needed by actual rational-unit consumers, not all point types from their
+scheme support.
+\leanok
+\end{theorem}
+\begin{proof}
+The minimum of the finitely many ACTUAL values $|T-b|(x)$ is attained at
+some original $a\in S$; call the true minimum $t>0$. Translate the WHOLE
+point by $-a$. The real translated coordinate value is $t$, so this
+is an actual point of the original closed coordinate disc of radius $t$.
+If it is the true Gauss point of that SAME disc, undoing the whole original
+homeomorphism gives the FIRST entire-point equality.
+
+Otherwise the genuine split-factorization branch-cover theorem constructs
+an ACTUAL strict branch inside that disc containing the WHOLE translated
+point. Undo the true translation; this gives an actual original strict
+disc $U$ centered at some $c$ with the SAME positive radius $t$ and containing
+$x$. For every original $b\in S$, its actual original coefficient distance
+from $c$ is at least $t$: a smaller distance, together with $|T-c|(x)<t$,
+would force $|T-b|(x)<t$ by the true ultrametric inequality, contradicting
+minimality. On EVERY original $y\in U$, therefore,
+$|T-c|(y)<t\leq v(b-c)$. The genuine unequal-term valuation identity gives
+$|T-b|(y)=v(b-c)$, including at the SAME original $x$.
+Thus all displayed finite values agree on the ENTIRE actual disc.
+Original evaluation continuity makes the strict disc open. No whole-point
+equality is inferred in this second alternative from those finite values.
+\end{proof}

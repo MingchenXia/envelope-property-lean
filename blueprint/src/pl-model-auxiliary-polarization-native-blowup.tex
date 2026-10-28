@@ -1,0 +1,33 @@
+\section{The same auxiliary twist on the original all-affine blowup}
+
+\begin{theorem}[Native whole-blowup tautological very ampleness]
+\label{thm:pl-original-native-blowup-tautological-very-ample}
+\lean{EnvelopeProperty.PLModelAuxiliaryPolarization.nativeTautologicalTwist,EnvelopeProperty.PLModelAuxiliaryPolarization.exists_veryAmple_nativeTautologicalTwist}
+\leanok
+\uses{thm:fc-original-segre-projective-twist,prop:whole-original-native-product-witness-line-sections}
+Let $R$ be Noetherian, $X$ integral, and
+$j:X\hookrightarrow\mathbf P_R^n$ an original closed embedding
+over $p$. For any original ideal $D$, its original all-affine
+blowup $\mu:D.\mathrm{blowUp}\to X$ has an internally chosen
+$q>0$ for which
+\[
+ \mu^*j^*\mathcal O(q)\otimes(D\mathcal O_{D.\mathrm{blowUp}})
+\]
+is genuinely very ample over $R$.
+\end{theorem}
+\begin{proof}
+\leanok
+Use the internally constructed original native product-line
+comparison. It supplies a same-degree form presentation of $D$,
+the actual closed product map from this original $D.\mathrm{blowUp}$,
+its exact first projection $\mu$, and the whole original second
+factor $\mathcal O(1)$ comparison with
+$\mu^*j^*\mathcal O(d)\otimes D\mathcal O_{D.\mathrm{blowUp}}$.
+Base change of $j$ followed by the original Segre closed immersion
+gives an actual closed projective embedding of this same source.
+The whole Segre line comparison and canonical monoidal pullback
+identify its original $\mathcal O(1)$ with the displayed line for
+$q=d+1$. Thus the exponent is positive and every required very
+ample datum is internally constructed on the original all-affine
+blowup. Its native ideal and projection are retained throughout.
+\end{proof}

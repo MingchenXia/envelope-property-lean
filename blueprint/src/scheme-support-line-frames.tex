@@ -1,0 +1,51 @@
+\section{Generic frames on an open containing the valued point}
+
+\begin{definition}\label{def:scheme-support-line-frame}
+\lean{EnvelopeProperty.SchemeSupportLineFrames.supportGenericFactor, EnvelopeProperty.SchemeSupportLineFrames.supportGenericFactor_comp, EnvelopeProperty.SchemeSupportLineFrames.supportGenericFrame}
+\leanok
+Let $X$ be a scheme, $x$ a point of $X$, and $U$ an open containing
+$x$. The canonical map $\operatorname{Spec}\kappa(x)\to X$ factors
+uniquely through $U$. A trivialization of a module $M$ on $U$ therefore
+induces a trivialization of its entire residue-field pullback.
+\uses{cor:actual-line-model-norm-local-frame}
+\end{definition}
+\begin{proof}
+Every point of $\operatorname{Spec}\kappa(x)$ maps to $x$, so the range
+of its canonical map is contained in the range of $U\to X$. The
+open-immersion lifting property gives the factor and its exact
+composition with the inclusion. Two factors are equal because an
+open immersion is a monomorphism. Pull the given module trivialization
+along this factor and compose with the native pullback-composition
+and structure-unit isomorphisms. This constructs a frame on the
+whole residue-field module.
+\end{proof}
+
+\begin{theorem}\label{thm:scheme-support-frame-model-norm}
+\lean{EnvelopeProperty.SchemeSupportLineFrames.supportGenericFrame_eq_localFrameGenericIso, EnvelopeProperty.SchemeSupportLineFrames.modelLineNorm_eq_supportFrameCoefficient_mul, EnvelopeProperty.SchemeSupportLineFrames.supportFrameUnit_modelLineNorm_pos}
+\leanok
+Let $X\to\operatorname{Spec}R$ be proper, with a valuation on $R$
+bounded by one. Let $x$ be a valued point above this valuation, $M$
+an invertible module, and $U$ any open containing the support of $x$.
+For a frame on $M|_U$, let $e$ be its induced residue-field frame and
+$b=e^{-1}(1)$. Then $\|b\|_M>0$ and, for every residue-field section $s$,
+\[
+ \|s\|_M=|e(s)|\,\|b\|_M.
+\]
+The proper valuative center is not required to belong to $U$.
+If it does belong to $U$, this support-induced frame equals the
+frame obtained from the actual valuative-center factor.
+\uses{def:scheme-support-line-frame,cor:actual-line-model-norm-local-frame,prop:generated-line-generic-frame-norms}
+\end{theorem}
+\begin{proof}
+The induced frame is a linear isomorphism on all residue-field
+sections. Its inverse is linear, so $s=e(s)b$. Apply scalar
+homogeneity of the genuine proper-model norm to obtain the formula.
+The inverse image of one is nonzero: applying the frame sends it to
+one in the residue field. The genuine model norm detects zero, hence
+its norm is positive. If the center is in $U$, both the support
+factor and the center-induced generic factor compose with $U\to X$
+to the canonical residue-field map. Monomorphy makes these factors
+equal. Substitution in the native pullback frame makes the two whole
+frames equal. No metric comparison or frame-preservation equality is
+an input.
+\end{proof}

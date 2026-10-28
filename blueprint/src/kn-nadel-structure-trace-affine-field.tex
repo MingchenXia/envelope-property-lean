@@ -1,0 +1,41 @@
+\section{The actual affine free-chart trace specializes to the field trace}
+
+\begin{lemma}[The original affine section comparison preserves all coefficients]
+\label{lem:kn-structure-trace-spec-section-algebra}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.specSectionsAlgEquiv}
+\leanok
+For any algebra $A\to B$, the actual spectrum--sections isomorphism
+$B\simeq\Gamma(\operatorname{Spec}B,\mathcal O)$ is an $A$-algebra
+isomorphism for the original structural morphism and its original
+coefficient action.
+\end{lemma}
+\begin{proof}
+The underlying ring isomorphism is the actual spectrum--sections
+isomorphism. Its commutation with every original coefficient is the
+naturality identity of that isomorphism for the original map $A\to B$.
+Thus it is an isomorphism of precisely the original algebras.
+\end{proof}
+
+\begin{lemma}[The actual affine sheaf trace specializes to the actual finite-field trace]
+\label{lem:kn-structure-trace-affine-field-specialization}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.affineStructureTrace_fieldBaseChange_top}
+\leanok
+Let $A\to B$ be finite free and $A\to K$ an algebra with $K$ a field.
+On every actual whole section of $\operatorname{Spec}B$, the trace on
+the entire actual base change to $K$ is the image in $K$ of its actual
+affine sheaf trace over $A$. Both sheaf traces and the first projection
+are the original constructed maps; no trace-matching premise is given.
+\uses{lem:kn-structure-trace-spec-section-algebra,lem:kn-structure-trace-affine-base-change,lem:kn-structure-trace-raw-top,lem:kn-structure-trace-field-producer}
+\end{lemma}
+\begin{proof}
+Transport the given finite free $A$-module structure of $B$ through the
+preceding genuine algebra isomorphism. Hence its entire original affine
+section algebra is free over $A$, as required by the proved actual
+affine-scheme trace base-change formula. That formula computes the trace
+of the pullback of every given section to the entire actual base change.
+The native algebra trace is unchanged by the original section algebra
+isomorphism. Finally, the actual whole-section formulas for the affine
+sheaf trace and for the finite-field sheaf trace identify the two native
+algebra traces with the asserted original sheaf values. No assertion of
+freeness on an arbitrary other affine open is used.
+\end{proof}

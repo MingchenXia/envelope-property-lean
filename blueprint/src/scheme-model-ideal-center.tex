@@ -1,0 +1,59 @@
+\section{Entire ideal images on the actual proper valuative center}
+
+\begin{definition}[Original spectrum of center global sections]
+\label{def:actual-center-top-spectrum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerTopSpectrum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isBounded_centerTopSpectrum}
+\leanok
+\uses{scheme:proper-native-center}
+For an actual relative scheme-valued point $y$ of the original proper
+model, let $V$ be its residue-field valuation ring. The actual ring
+isomorphism $\Gamma(\operatorname{Spec}V)\simeq V$, followed by the
+actual inclusion into the original residue field, pulls its valuation
+back to a spectrum point $z_V$ on the entire original global section
+ring. Every such section has value at most one, since its actual
+image belongs to the original valuation ring.
+\end{definition}
+
+\begin{lemma}[Actual center-section restriction]
+\label{lem:actual-center-top-spectrum-restriction}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerTopSpectrum_comap_centerLift}
+\leanok
+\uses{def:actual-center-top-spectrum,scheme:proper-center-local-bounds}
+Pulling $z_V$ back by the actual section map of the genuine proper
+valuative lift, on any original open neighborhood of its actual
+closed-point image, gives exactly the original residue-field section
+spectrum of $y$ on that neighborhood.
+\end{lemma}
+\begin{proof}
+The inverse image of this neighborhood is the entire original local
+spectrum. The actual valuative lift generic triangle identifies the
+inclusion of its pulled section into the original residue field with
+the original section evaluation at $y$. Apply the actual original
+residue-field valuation to this equality for every section. Spectrum
+extensionality gives the entire asserted equality.
+\end{proof}
+
+\begin{lemma}[Intrinsic ideal norm on the entire actual center pullback]
+\label{lem:actual-model-ideal-center-pullback-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_eq_centerPullback}
+\leanok
+\uses{lem:actual-center-top-spectrum-restriction,scheme:native-model-ideal-function,scheme:genuine-ideal-pullback-stalk}
+For every original ideal sheaf $I$ on an original proper model, its
+intrinsic original model ideal norm at $y$ equals the ideal norm at
+$z_V$ of the entire actual geometric pullback ideal on
+$\operatorname{Spec}V$.
+\end{lemma}
+\begin{proof}
+Choose an actual affine neighborhood of the actual proper center.
+The entire local spectrum maps into this neighborhood. The native
+geometric pullback ideal on its actual top affine chart is exactly
+the ring-map image of the entire ideal on the chosen neighborhood.
+The bounded ideal-image norm identity identifies its norm with that
+of the original affine ideal at the pulled spectrum. The preceding
+whole spectrum equality identifies this spectrum with the original
+section spectrum. The intrinsic model ideal norm equals that affine
+ideal norm, by the original intrinsic stalk-ideal calculation. No
+Cartier, finite generation, flatness, or affine-target premise is
+needed.
+\end{proof}

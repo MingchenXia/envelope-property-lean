@@ -1,0 +1,63 @@
+\section{From actual blowup sequences to finite Rees chart trees}
+
+\begin{lemma}[The actual scheme cover by nonzero Rees charts]\label{lem:sc0-actual-rees-chart-cover}
+\lean{EnvelopeProperty.Char0.reesAffineBlowUpChart,EnvelopeProperty.Char0.isOpenImmersion_reesAffineBlowUpChart,EnvelopeProperty.Char0.reesAffineBlowUpChart_π,EnvelopeProperty.Char0.reesAffineBlowUpOpenCover,EnvelopeProperty.Char0.finite_reesAffineBlowUpOpenCover_index}
+\leanok
+\uses{lem:sc0-hironaka-affine-chart}
+Let $C\subseteq K$ be a subalgebra of a field, let $g_1,\ldots,g_n\in C$, and let
+$I=(g_1,\ldots,g_n)$. For each $g_i\ne0$ the chart comparison induces an actual open immersion
+\[
+ \operatorname{Spec} C[g_1/g_i,\ldots,g_n/g_i]\longrightarrow
+ \operatorname{Bl}_I(\operatorname{Spec}C).
+\]
+These finitely many open immersions cover the blowup, and their composites to
+$\operatorname{Spec}C$ are induced by the inclusions of the original algebra into the ratio charts.
+\end{lemma}
+\begin{proof}
+Compose the spectrum of the ring isomorphism of
+Lemma~\ref{lem:sc0-hironaka-affine-chart} with the actual affine blowup chart. An isomorphism
+followed by an open immersion is an open immersion. The chart-ring comparison commutes with
+the map from $C$, which gives the claimed structure morphism. The charts of all chosen
+generators cover the Rees Proj. A zero denominator contributes an empty chart: its image in
+the localized chart algebra is both zero and a nonzerodivisor, so that algebra is the zero ring
+and has empty spectrum. Remove exactly these empty charts. Every remaining chart index is in
+the finite original index set, giving the stated finite cover. If every generator is zero,
+the whole blowup is empty and the empty cover satisfies the same statement.
+\end{proof}
+
+\begin{lemma}[Nonzero centres on charts meeting the generic lift]\label{lem:sc0-nonzero-chart-centre}
+\notready
+\uses{lem:sc0-actual-rees-chart-cover}
+Let a finite sequence of blowups over an integral affine scheme be an isomorphism over a
+nonempty open subset. Restrict any tail of the sequence to a nonempty affine chart whose
+coordinate ring is embedded in the common function field. Then its first centre ideal is nonzero.
+\end{lemma}
+\begin{proof}
+The chart contains the generic point. The given isomorphism supplies a point in the final
+stage over that generic point, and every intermediate projection supplies a point over it.
+If the first centre restricted to this chart were zero, its blowup would be empty, contradicting
+that intermediate point. This argument also applies after each of the nonzero Rees chart
+restrictions, because their coordinate inclusions preserve the generic point.
+\end{proof}
+
+\begin{theorem}[Recursive finite Rees transport]\label{thm:sc0-recursive-rees-transport}
+\notready
+\uses{lem:sc0-actual-rees-chart-cover,lem:sc0-nonzero-chart-centre,lem:sc0-principal-cover-chart}
+A finite sequence of blowups over a Noetherian affine domain, isomorphic over a nonempty open
+subset, has a finite Rees chart tree whose leaves give an actual affine open cover of the final
+scheme, with their coordinate rings embedded in the original function field and the structure
+maps induced by the inclusions from the original algebra.
+\end{theorem}
+\begin{proof}
+Induct on the sequence length, with the assertion generalized to every affine chart of an
+intermediate stage. The empty sequence gives one leaf. For a nonempty sequence, the restricted
+centre is nonzero by the preceding lemma and has finitely many generators by Noetherianity.
+The actual nonzero Rees charts of the first blowup give a finite cover. Pull back the remaining
+sequence along each open immersion; its final scheme is the inverse image of that chart, since
+blowups commute with open restriction. Each chart algebra is already a subalgebra of the common
+function field. Apply the induction hypothesis to each tail and attach its resulting tree as
+the child at that generator. The composite leaf open immersions cover the final scheme and
+commute with the original structure map. The tree is finite because its depth and every
+generator family are finite. Principal-open refinements are attached by
+Lemma~\ref{lem:sc0-principal-cover-chart}.
+\end{proof}

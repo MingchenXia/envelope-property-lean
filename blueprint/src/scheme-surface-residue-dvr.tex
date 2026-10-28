@@ -1,0 +1,16 @@
+\section{Codimension one from the actual residue field on an integral surface}
+\begin{lemma}\label{lem:scheme-closed-point-residue-finite}
+Let $Y$ be an integral scheme locally of finite type over a field $E$. If $z$ is a closed point of $Y$, its native residue field $\kappa(z)$ is finite over $E$, for the coefficient action induced by the structure morphism.
+\lean{EnvelopeProperty.SchemeSurfaceResidueDVR.closedPoint_residue_finite}\leanok
+\end{lemma}
+\begin{proof}
+The canonical morphism $\operatorname{Spec}\kappa(z)\to Y$ is a closed immersion. Its composite with $Y\to\operatorname{Spec}E$ is locally of finite type. A reduced one-point scheme locally of finite type over a Jacobson scheme is finite over that scheme. The composite is exactly the spectrum map of the native coefficient homomorphism $E\to\kappa(z)$: this follows by composing the native stalk coefficient map with its residue quotient. Thus the actual field extension is finite.
+\end{proof}
+\begin{theorem}\label{thm:scheme-surface-residue-dvr}
+Let $Y$ be an integral scheme locally of finite type over a field $E$. Suppose that the native function field has transcendence degree two over $E$, and that the native residue field of a point $z$ has transcendence degree one over $E$. If the native stalk at $z$ is integrally closed, then that same stalk is a discrete valuation ring.
+\uses{lem:scheme-closed-point-residue-finite,thm:normal-surface-original-stalk-dvr}
+\lean{EnvelopeProperty.SchemeSurfaceResidueDVR.stalk_isDiscreteValuationRing}\leanok
+\end{theorem}
+\begin{proof}
+The dimension theorem identifies the dimension of $Y$ with the transcendence degree of its native function field, so $Y$ has dimension two. Local finite type over $E$ implies that $Y$ is Jacobson and locally Noetherian. The point $z$ cannot be the generic point: the residue quotient of the generic stalk is an isomorphism of $E$-algebras, since that stalk is the native function field. A generic point would therefore give residue transcendence degree two instead of one. The point is not closed either: the preceding lemma would make its residue field finite over $E$ and hence of transcendence degree zero. Thus $z$ is nongeneric and nonclosed on an integral Jacobson surface. Its stalk has dimension one. That stalk is a Noetherian normal local domain, and a one-dimensional Noetherian normal local domain is a discrete valuation ring.
+\end{proof}

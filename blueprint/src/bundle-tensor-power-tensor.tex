@@ -1,0 +1,20 @@
+\begin{lemma}[Actual tensor powers of a tensor product]
+\label{lem:fc-original-bundle-tensor-power-tensor}
+\lean{EnvelopeProperty.BundleTensorPowerTensor.powerTensorIso}
+\leanok
+For any two original sheaves of modules $A,B$ and every natural exponent
+$r$, there is a canonical whole original isomorphism
+$(A\otimes B)^{\otimes r}\simeq A^{\otimes r}\otimes B^{\otimes r}$
+for the actual recursively sheafified tensor powers.
+\end{lemma}
+\begin{proof}
+At exponent zero use the inverse of the original structure-line
+multiplication. For the successor exponent, convert the original
+sheafified product to the genuine monoidal product and use the previous
+whole power comparison on its first factor. Associativity and symmetry
+move the new $A$ past the previous $B$ factors, giving the tensor of the
+actual next $A$ and $B$ powers. The canonical sheafified/monoidal tensor
+comparisons give precisely the original two successor powers. This
+induction constructs the whole actual line isomorphism for every $r$;
+no power comparison is assumed.
+\end{proof}

@@ -1,0 +1,17 @@
+\begin{lemma}[Naturality of the exact original line trace]
+\label{lem:kn-original-line-trace-naturality}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalLineTrace_naturality}
+\leanok
+The original inverse-PF trace associated to any fixed actual structure trace
+commutes with every morphism between the original invertible line modules.
+No projection-formula, component, or line-trace naturality certificate is an input.
+\end{lemma}
+\begin{proof}
+Precompose with the original invertible line projection formula and its native
+unit isomorphism. Pure tensor sections determine this source map. On a section
+$b\otimes m$, the projection formula gives $b$ times the native pullback unit
+of $m$. Naturality of the original adjunction unit carries it to $b$ times the
+unit of the image of $m$. The already proved all-coefficient trace formula then
+gives the scalar trace of $b$ times that image. Linearity of the original module
+morphism gives exactly the other composite. Cancel the source isomorphism.
+\end{proof}

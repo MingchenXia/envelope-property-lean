@@ -1,0 +1,53 @@
+\section{The actual native factor from any original model centre frame}
+
+Fix the original test configuration and the same action/fibre-one data
+on a line $M$ with original generic line $L$.  At the actual original
+Gauss model point, let $e_C$ be any frame over its proper valuation centre.
+Let $e_U$ be a frame of $L$ on an original open neighbourhood of the
+original proper centre.  Define $c(e_C,e_U)$ by applying the actual
+product residue valuation to the transition unit from the original
+reference frame to the frame induced by $e_C$ and the given action data.
+
+\begin{lemma}[Every actual centre frame computes the same section factor]
+\label{lem:native-tc-nef-fs-arbitrary-center-factor-spec}
+\leanok
+\uses{thm:native-tc-coherent-all-power-section-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussPowerSectionNorm_eq_centerFactor}
+For every degree $n$ and every original section $s$ of $M^{\otimes n}$,
+its true original Gauss model norm equals
+$c(e_C,e_U)^n$ times its original weighted Laurent norm.
+\end{lemma}
+\begin{proof}
+The generic frame induced by a frame at the proper valuation centre,
+and all its actual power frames, have true original model unit norm one.
+The actual framed-pullback norm formula therefore computes the Gauss
+model norm by the coefficient in that same model power frame.
+The actual power-frame transition unit is the $n$th power of the
+degree-one transition unit.  Changing to the original reference frame
+multiplies coefficient values by this unit valuation.  Actual Laurent
+support evaluation in the original proper-centre open identifies the
+remaining coefficient value with the original weighted Laurent norm.
+\end{proof}
+
+\begin{lemma}[Independence from the original model centre frame]
+\label{lem:native-tc-nef-fs-native-factor-arbitrary-center}
+\leanok
+\uses{lem:native-tc-nef-fs-arbitrary-center-factor-spec, thm:native-tc-unique-positive-all-power-factor, def:native-tc-intrinsic-native-unit-factor}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeNormFactor_eq_centerFactor}
+If the original generic line $L$ is actually ample, the defined original
+native norm factor equals $c(e_C,e_U)$ for every such actual model centre
+frame and original reference frame.
+\end{lemma}
+\begin{proof}
+Actual ampleness produces an original positive-degree section of positive
+Gauss norm.  The original uniqueness theorem then compares the defined
+native factor with the factor in the preceding lemma: both are positive
+and satisfy the same equality for all original degrees and sections.
+\end{proof}
+
+\begin{remark}
+The ample hypothesis is ordinary geometric ampleness of the original
+generic line.  In the intended PL application it follows from the
+positive original $\mathcal O(n)$ power.  No potential identity or
+universal numerical-class invariance is assumed.
+\end{remark}

@@ -1,0 +1,33 @@
+\begin{theorem}[Actual Serre vanishing on the original closed projective scheme]
+\label{thm:fc-closed-projective-serre-vanishing}
+\lean{EnvelopeProperty.ClosedProjectiveSerreVanishing.exists_sheafCohomology_bound}
+\leanok
+\uses{thm:coherent-projective-serre-vanishing,thm:fc-original-scheme-line-projection-formula}
+Let $R$ be an original noetherian ring, $i:X\hookrightarrow\mathbf P^n_R$
+an actual original closed immersion, and $M$ an original finite-type
+quasicoherent module on $X$. There is an internally derived bound $N$
+such that every original twist
+$M\otimes i^*\mathcal O(d)$, $d\geq N$, has zero actual positive sheaf
+cohomology in every degree at once.
+\end{theorem}
+\begin{proof}
+Actual closed pushforward makes $i_*M$ a finite-type quasicoherent module
+on the original polynomial projective space. The genuine projective
+Serre theorem supplies one bound annihilating all positive ordered Cech
+cohomology of $i_*M\otimes\mathcal O(d)$, for every larger $d$.
+The actual whole invertible-line projection formula identifies this
+original twisted pushforward with
+$i_*(M\otimes i^*\mathcal O(d))$. The native whole ordered-Cech
+pushforward isomorphism identifies its complex on the original projective
+coordinate opens with the complex of the same original twisted $M$ on
+their actual inverse-image opens.
+
+Those inverse images cover the original $X$ and are affine because $i$
+is closed. The original $X$ is separated by its given genuine projective
+factorization. Quasicoherence and affine intersections give the actual
+acyclic cover comparison with the whole original sheaf cohomology.
+Transporting the internally derived ordered-Cech vanishing through these
+whole isomorphisms gives the asserted zero actual sheaf cohomology in
+every positive degree. No cohomological bound or vanishing premise is
+supplied for $X$.
+\end{proof}

@@ -1,0 +1,75 @@
+\section{The actual ordered cup satisfies the de Rham rule}
+
+\begin{theorem}[Original prefix and suffix naturality]
+\label{thm:di-cech-cup-projections-naturality}
+\uses{def:native-cech-ordered-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.prefixProjection_naturality,EnvelopeProperty.DI.CechAlexanderWhitneyProduct.suffixProjection_naturality}
+For every actual module-sheaf morphism, the original prefix and suffix
+projections followed by restriction to a full tuple commute with its
+original native Cech-complex map and its factor-functor map on that
+full tuple. No differential or covering assumption is imposed.
+\end{theorem}
+\begin{proof}
+\leanok
+The native Cech complex-map projection is the original factor-functor
+map on the selected prefix or suffix tuple. Naturality of the original
+factor-presheaf map moves that factor-functor map through the original
+restriction from the selected tuple to the full tuple. Associativity
+of composition gives the claimed entire morphism square.
+\end{proof}
+
+\begin{definition}[Original form-degree transport]
+\label{def:di-cech-cup-form-degree-map}
+\uses{def:native-cech-ordered-cup}
+\leanok
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.formDegreeMap,EnvelopeProperty.DI.CechAlexanderWhitneyProduct.formDegreeMap_pi}
+A natural-number degree equality induces the original equality
+morphism between pushed form sheaves. Apply the original Cech
+complex functor and evaluate in the specified Cech degree. Its
+projection to every tuple is the original factor equality morphism
+after the original projection.
+\end{definition}
+\begin{proof}
+\leanok
+This is the original functorial equality transport. Eliminating the
+degree equality leaves the identity morphism. The complex functor
+preserves this identity, so every tuple projection is unchanged.
+\end{proof}
+
+\begin{theorem}[Whole ordered-cup de Rham Leibniz]
+\label{thm:di-cech-cup-derham-leibniz}
+\uses{lem:di-cech-factor-derham-leibniz,thm:di-cech-cup-projections-naturality,def:di-cech-cup-form-degree-map}
+\leanok
+\lean{EnvelopeProperty.DI.CechAlexanderWhitneyProduct.cup_derham_leibniz}
+Let the original morphism be smooth of pure relative dimension $n$,
+and write $H_{q,j}$ for the original Cech-complex map induced in
+Cech degree $j$ by its actual pushed de Rham differential in form
+degree $q$. The entire actual ordered cup satisfies
+\[
+ \mu_{q,r}^{j,j'} H_{r+q,j+j'}=
+ (H_{q,j}\otimes 1)\mu_{q+1,r}^{j,j'}+
+ (-1)^q(1\otimes H_{r,j'})\mu_{q,r+1}^{j,j'},
+\]
+with the original degree transport from $(r+1)+q$ to $r+q+1$ on
+the second summand. The first summand has the definitionally equal
+original degree $r+(q+1)$. This is an equality of actual module-sheaf
+morphisms, with no incoming Leibniz or matching-map certificate.
+\end{theorem}
+\begin{proof}
+\leanok
+Project both sides to an arbitrary original output tuple. Native
+complex-map projection and the original ordered-cup projection
+identify the left side with the original full-tuple factor wedge
+followed by its original factor differential. The proved factor
+Leibniz law gives its two terms. Prefix and suffix naturality identify
+the differentiated factor inputs with the original complex maps
+followed by their original selected projections. Naturality of the
+actual tensor map and factor wedge identifies these with projections
+of the two displayed cup terms. The original degree-transport
+projection identifies the second target transport with its original
+factor transport. Composition distributes over the sum and integer
+scalar, so the two entire projected morphisms agree. The universal
+property of the original product over output tuples gives equality
+of the whole original morphisms.
+\end{proof}

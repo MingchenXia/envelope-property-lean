@@ -1,0 +1,110 @@
+\section{The actual dual module of the original monic root algebra}
+\label{sec:kn-nadel-finite-duality}
+
+Let $A$ be a nontrivial commutative ring, $a\in A$, $n\in\N$, and
+$B=A[t]/(t^{n+1}-a)$.  This is the original native
+\texttt{CyclicSectionAlgebra.RootRing}; its power basis and original
+line-frame rescaling already exist.  No separability, invertibility
+of $a$, characteristic assumption, or smoothness of $\operatorname{Spec}B$
+is imposed.  In particular this calculation includes the ramified
+and nilpotent root algebras.  It concerns their actual algebraic
+dual module, not an ordinary canonical line on a singular normalized
+cover.
+
+\begin{lemma}[Top-coefficient multiplication and the original dual frame]
+\label{lem:kn-nadel-root-top-pairing}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDuality.topCoefficient,EnvelopeProperty.Vanishing.NadelFiniteDuality.topCoefficient_pow_lt,EnvelopeProperty.Vanishing.NadelFiniteDuality.topCoefficient_pow_reduced,EnvelopeProperty.Vanishing.NadelFiniteDuality.topCoefficient_mul_reverse,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationPairing,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationPairing_apply,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationPairing_reverse_basis,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationEquiv,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationEquiv_toLinearMap,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationPairing_bijective}
+\leanok
+Let $\lambda:B\to A$ take the coefficient of $t^n$ in the unique
+representative of degree at most $n$.  Then
+\[
+ \lambda(t^i t^{n-j})=\delta_{ij}\qquad(0\leq i,j\leq n).
+\]
+Consequently $t^i\mapsto\bigl[y\mapsto\lambda(yt^i)\bigr]$
+is the reversed dual basis, and the actual multiplication pairing
+$B\times B\to A$, $(x,y)\mapsto\lambda(yx)$, is perfect.
+\end{lemma}
+\begin{proof}
+If $i+n-j<n+1$, this product is already a basis monomial and its
+top coefficient is one exactly when $i=j$.  Otherwise use the
+original quotient relation to replace $t^{i+n-j}$ by
+$a t^{i-j-1}$.  This exponent is strictly less than $n$, so its top
+coefficient is zero.  Evaluation on the entire original basis
+therefore identifies $y\mapsto\lambda(yt^{n-j})$ with its $j$-th
+dual functional.  Mapping the original basis to this reversed dual
+basis constructs the whole linear equivalence, rather than merely
+showing equality of ranks or a pairing on the generic fibre.
+\end{proof}
+
+\begin{theorem}[The original dual module with its actual root-algebra action]
+\label{thm:kn-nadel-root-coextension-dual}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingModule,EnvelopeProperty.Vanishing.NadelFiniteDuality.restrictedRootEquiv,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingMap,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingMap_apply,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingMap_bijective,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingEquiv,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingEquiv_apply,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingIso,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingCounit,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingCounit_apply,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingCounit_equiv}
+\leanok
+For the original coefficient homomorphism $A\to B$, use the native
+right adjoint to restriction of scalars:
+\[
+ D_B=\operatorname{Hom}_A(B,A),\qquad
+ (b\cdot\phi)(y)=\phi(yb).
+\]
+Construct a $B$-linear equivalence
+\[
+ B\xrightarrow{\sim}D_B,\qquad x\longmapsto[y\mapsto\lambda(yx)]
+\]
+to the actual object
+\texttt{ModuleCat.coextendScalars}, with its original coefficient
+action.  Its finite-duality counit is the native adjunction counit
+$\phi\mapsto\phi(1)$, which under this equivalence is $x\mapsto\lambda(x)$.
+\end{theorem}
+\begin{proof}
+Reuse the native coextension action and restriction/coextension
+adjunction; neither is postulated or rebuilt from an unrelated dual.
+The displayed map is $B$-linear because
+$\lambda(ybx)=\lambda((yb)x)$.  After identifying the native
+restricted coefficient module with the same original $A$-module,
+its underlying function is the perfect pairing map of the preceding
+lemma, hence is bijective.  Its inverse is therefore also $B$-linear.
+The native counit evaluates at one, and substituting the formula
+for the equivalence gives exactly $\lambda(x)$.  This counit is
+the duality evaluation map; it is not being identified with the
+multiplication trace on $B$, whose pairing need not be perfect
+at ramification.
+\uses{lem:kn-nadel-root-top-pairing}
+\end{proof}
+
+\begin{lemma}[The same dual functional across original root rescalings]
+\label{lem:kn-nadel-root-dual-rescaling}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDuality.topCoefficient_rescale,EnvelopeProperty.Vanishing.NadelFiniteDuality.multiplicationPairing_rescale,EnvelopeProperty.Vanishing.NadelFiniteDuality.dualizingEquiv_rescale}
+\leanok
+For $v\in A^\times$ and $b=v^{n+1}a$, let
+$e:B_b\simeq B_a$ be the existing original root rescaling
+$e(t_b)=v t_a$.  For every original $x,y\in B_b$,
+\[
+ \lambda_a(e(x))=v^n\lambda_b(x),\qquad
+ \lambda_a(e(y)e(x))=v^n\lambda_b(yx).
+\]
+Thus the dual frame has its actual transition factor, including
+at zeros of the original section coefficient.
+\end{lemma}
+\begin{proof}
+The existing whole coefficient-rescaling theorem states that the
+$i$-th coefficient is multiplied by $v^i$.  Apply it at $i=n$
+for the first equality, and to the same original element $yx$ for
+the second, using multiplicativity of $e$.  This is a whole-module
+transition formula, not just agreement on the etale locus.
+\uses{lem:kn-nadel-root-top-pairing,thm:kn-nadel-root-coextension-dual}
+\end{proof}
+
+This supplies a raw monogenic affine foundation for
+Lemma~\ref{lem:kn-nadel-normalized-canonical-duality} and to the
+smooth adapted-cover construction in
+Lemma~\ref{lem:kn-nadel-smooth-cover-rounded-summand}.  Further
+producers must identify the actual smooth Kummer chart's top
+differential module with this coextension module, prove its full
+coordinate-change compatibility, and glue the original sheaf maps.
+The following nodes supply the actual independent-root iteration.
+Passing to the
+actual normalized algebra needs its own further comparison.  No global
+canonical finite-duality theorem, normalized-cover canonical line,
+or vanishing conclusion follows from this affine calculation alone.
+
+\input{kn-nadel-finite-duality-tower}

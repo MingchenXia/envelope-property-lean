@@ -1,0 +1,77 @@
+\section{Actual varying-line numerical FS functions are continuous and curve-weak psh}
+\label{sec:native-numerical-fs-continuity}
+
+\begin{theorem}[Every actual original rational-line datum has continuous entire evaluation]
+\label{thm:native-numerical-fs-data-continuous}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.continuous_eval}
+\leanok
+\uses{def:native-numerical-whole-section-fs-data,thm:scheme-original-global-section-norm-continuous}
+On an actual integral scheme projective over its original field, every
+actual whole-section numerical FS datum has continuous evaluation on the
+same entire original native point space. The original line can be
+arbitrary, all weights are real, common zeroes are permitted and the
+family may even be zero. No model, ample representative, norm continuity
+or section comparison certificate is an input.
+\end{theorem}
+\begin{proof}
+The true norm of each actual original whole section is continuous by the
+genuine arbitrary-line norm theorem. The inclusion into extended
+nonnegative reals and the extended logarithm are continuous, including at
+zero norm. Adding the actual finite real weight preserves continuity.
+The finite supremum of these actual continuous extended-real terms is
+continuous. The denominator is a positive integer, so multiplication by
+its finite nonzero reciprocal is continuous, also at negative infinity.
+Their composition is precisely the actual datum's entire original
+evaluation.
+\end{proof}
+
+\begin{theorem}[Every genuine numerical FS function is continuous]
+\label{thm:native-numerical-fs-continuous}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsFS.continuous,EnvelopeProperty.NativeNumericalFubiniStudy.IsRationalFS.continuous}
+\leanok
+\uses{def:native-numerical-whole-section-fs,thm:native-numerical-fs-data-continuous}
+Every numerical FS function of any actual original numerical class is
+continuous on the entire original native space. This applies equally to
+the actual rational-weight subcollection.
+\end{theorem}
+\begin{proof}
+Choose the actual original defining whole datum. Its entire evaluation
+is continuous by the preceding theorem and is the same original
+function by the defining equality. The rational case uses the identical
+datum after forgetting its extra weight-rationality property.
+\end{proof}
+
+\begin{theorem}[Actual numerical FS is contained in its genuine curve-weak psh class]
+\label{thm:native-numerical-fs-is-curve-weak-psh}
+\lean{EnvelopeProperty.NativeNumericalFubiniStudy.IsFS.isCurveWeakPSH,EnvelopeProperty.NativeNumericalFubiniStudy.IsRationalFS.isCurveWeakPSH,EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isCurveWeakPSH}
+\leanok
+\uses{thm:native-numerical-fs-continuous,thm:native-numerical-fs-generically-finite,def:native-numerical-curve-weak-psh}
+Every genuine numerical FS function of an actual class $\theta$ is
+curve-weak numerical psh of that same actual class and function. In
+particular, every actual nonzero whole original rational-line datum,
+with arbitrary real weights and common zeroes allowed, gives a
+curve-weak psh function in its true class $m^{-1}[M]$. The same conclusion
+holds for actual rational weights.
+\end{theorem}
+\begin{proof}
+Actual original nonzero sections internally give genuine generic
+finiteness, and the preceding theorem gives continuity and hence upper
+semicontinuity. Use the constant net consisting of this same original
+datum, indexed by the singleton directed preorder. Its actual numerical
+classes are constantly $\theta$ and therefore converge to $\theta$ in
+the actual curve-weak topology. Its evaluations form a decreasing net,
+and the pointwise infimum is the same original evaluation. All defining
+conditions are now derived, proving the inclusion without adding an
+upper-semicontinuity or nontriviality premise. Apply the same construction
+to the rational subcollection, or directly to any given nonzero actual
+datum.
+\end{proof}
+
+\begin{remark}
+This proves the FS inclusion for the actual varying-line, curve-weak
+numerical psh definition. It does not assert the general decreasing-psh-net
+closure theorem, ample-perturbation regularization, numerical finite
+dimensionality, agreement with the paper's Euclidean topology or the
+full original/model PSH comparison. The older fixed-ray predicate remains
+a distinct scoped endpoint.
+\end{remark}

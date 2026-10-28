@@ -1,0 +1,165 @@
+\section{The rounded summand from the actual canonical differential and trace}
+\label{sec:kn-nadel-trace-retraction}
+
+Let $Y$ be the original smooth integral projective scheme of dimension $n$
+over a characteristic-zero field.  Use its actual simultaneous root cover
+$\tau:W\to Y$, with all factors retained, as in
+Lemma~\ref{lem:kn-nadel-global-normalized-geometric-properties}.
+For the original SNC components $D_i$, the prescribed positive integers
+$m_i$ are the root degrees.  The $n+1$ original auxiliary divisors in row
+$i$ have empty common intersection.
+
+\begin{lemma}[Whole root ideals and their exact powers]
+\label{lem:kn-nadel-whole-root-ideals}
+\notready
+For each row, let $s_{ij}$ be the actual normalized pullback of the original
+raw root section, a section of the same actual pulled-back line $\tau^*H_i$.
+The whole ideal
+\[
+ J_i=\sum_{j=0}^{n} I(s_{ij})
+\]
+is invertible and satisfies the equality of entire original ideals
+$J_i^{m_i}=I_{D_i}\mathcal O_W$.
+\end{lemma}
+\begin{proof}
+On an original adapted affine neighbourhood choose a row index $j_0$
+whose auxiliary divisor is absent.  In the actual whole ratio normalization
+model, put $s=s_{ij_0}$ in the chosen original line frame.  Its equation is
+$s^{m_i}=d_i u_0$, where $d_i$ generates the original $D_i$ ideal and
+$u_0$ is a unit.  Every other original root coefficient is $s v_j$, and
+the distinguished coefficient is exactly $s$.  Thus the entire ideal sum
+is $(s)$, including every unit-root factor of the normalization algebra.
+Since the cover is flat and $d_i$ is a nonzerodivisor, $s^{m_i}$ and hence
+$s$ are nonzerodivisors.  This proves invertibility on the actual open
+cover.  Raising $(s)$ to its $m_i$-th power gives $(d_i)$, since $u_0$ is
+a unit.  The original section zero ideals and ideal powers commute with
+restriction, so both assertions glue to the stated whole ideals.
+\uses{lem:kn-nadel-global-normalized-geometric-properties,thm:kn-nadel-ample-original-component-branch-family,lem:kn-adapted-whole-normalization}
+\end{proof}
+
+\begin{lemma}[Regular canonical trace on the entire original cover]
+\label{lem:kn-nadel-whole-canonical-trace}
+\notready
+Construct the actual $\mathcal O_Y$-linear map
+\[
+ T_\tau:\tau_*\omega_W\longrightarrow\omega_Y
+\]
+such that, on every original affine open, for every original section $b$
+of $\tau_*\mathcal O_W$ and every original top form $w$,
+\[
+ T_\tau\bigl(b\,d\tau(w)\bigr)=\operatorname{Tr}_{\tau_*\mathcal O_W/\mathcal O_Y}(b)w.
+ \tag{T}
+\]
+In particular $T_\tau d\tau=D\,\mathrm{id}$, where the constant positive
+degree $D$ counts all the original root factors.
+\end{lemma}
+\begin{proof}
+Work on an actual adapted affine base $\operatorname{Spec}A$, with whole
+finite free algebra $B$.  Adjoin roots of the original unit factors by a
+finite free faithfully flat etale algebra $S/A$.  On the whole algebra
+$C=S\otimes_A B$, the actual root rescaling identifies the ramified
+factors with independent powers of the actual coordinate parameters;
+all remaining unit-root factors are retained as entire etale algebras.
+The monic power-basis canonical counits and their actual compositions
+give a regular $S$-linear map on the top forms of this whole $C$, with
+formula (T) for $C/S$.
+
+Use the actual canonical sheaves in this comparison.  Along an etale map
+the entire canonical pullback is an isomorphism: this follows on an
+actual standard-smooth affine chart from its internally produced
+differential basis, the etale cotangent comparison, and the wedge basis;
+the actual source chart cover detects the whole isomorphism.  Affine
+quasicoherent pullback on global sections therefore identifies the
+source and target of the map over $S$ with the actual scalar extensions
+of $\Gamma(\omega_B)$ and $\Gamma(\omega_A)$.  No global basis of
+$\Omega^1_{B/k}$ is needed.
+
+On both literal $S\otimes_A S$ pullbacks, the two maps satisfy (T).
+After inverting the nonzero original branch product, the original
+finite map is etale and its differential is invertible, so (T)
+determines the entire map there.  The branch product remains a
+nonzerodivisor after the flat extensions, and the target canonical
+module is invertible.  The two regular maps are consequently equal
+before localization.  Faithfully flat descent now produces the actual
+map over $A$.  The same uniqueness on actual base-chart overlaps makes
+these maps glue on $Y$.
+
+The trace used over $S$ is the trace of $C/S$.  Its rank is the original
+rank $D$ of $B/A$, so no degree of the auxiliary faithfully flat unit
+cover enters the formula.  Taking $b=1$ in (T) proves the asserted
+normalization.  All components of $B$ and all original etale factors
+are included in its ordinary algebra trace.
+\uses{lem:kn-nadel-global-normalized-geometric-properties,thm:kn-canonical-smooth-etale,thm:kn-nadel-canonical-unit-root-counit,thm:kn-nadel-canonical-power-unit-composition,thm:kn-nadel-cross-chart-canonical-counit,thm:kn-nadel-flat-tensor-trace-uniqueness}
+\end{proof}
+
+\begin{lemma}[Actual bounded ramification factorization]
+\label{lem:kn-nadel-bounded-ramification-factor}
+\notready
+Let $0\leq a_i<m_i$ be original integers and put $J=\prod_i J_i^{a_i}$.
+Produce a map
+\[
+ d\tau_J:\tau^*\omega_Y\longrightarrow\omega_W\otimes J
+\]
+whose composite with the entire actual ideal inclusion into $\omega_W$
+is the original canonical differential $d\tau$.
+\end{lemma}
+\begin{proof}
+The preceding root-ideal lemma makes $J$ an invertible ideal.  On the
+actual faithfully flat etale unit cover of each adapted chart, the
+original $J_i$ becomes the whole principal ideal generated by its
+distinguished parameter root $t_i$.  In the actual pure power and unit
+model the entire top differential has Jacobian
+\[
+ \prod_{\ell\ {
+m ramified}} N_\ell t_\ell^{N_\ell-1}
+\]
+in the actual top-form frames, with the etale canonical identifications
+on the unit layers.  For the original row $i$, this contains
+$t_i^{m_i-1}$, hence $t_i^{a_i}$.  It is therefore divisible by the
+entire pulled-back ideal $J$.  The actual differential functoriality
+under the root rescaling and the etale base change retains the
+derivatives of every original variable unit.
+
+The cokernel of the original inclusion $\omega_W\otimes J\to\omega_W$
+thus kills the original differential after this faithfully flat
+pullback.  Faithfulness forces that cokernel composite to vanish
+already on the original chart.  The kernel factorization supplies
+$d\tau_J$.  The inclusion is monic, so these factorizations are unique
+and agree on all actual chart overlaps.  They glue to the stated
+factorization of the original whole morphism.
+\uses{lem:kn-nadel-whole-root-ideals,thm:kn-canonical-smooth-etale}
+\end{proof}
+
+\begin{lemma}[The actual rounded trace retraction]
+\label{lem:kn-nadel-trace-rounded-retraction}
+\notready
+Write the original rational divisor as
+$Q=M-\sum_i(a_i/m_i)D_i$, where $M=\lceil Q\rceil$ and
+$0\leq a_i<m_i$.  The actual line
+$N=\tau^*\mathcal O_Y(M)\otimes J$ is $\mathcal O_W(\tau^*Q)$.
+Construct actual inclusion and projection maps exhibiting
+$\omega_Y\otimes\mathcal O_Y(M)$ as a retract of
+$\tau_*(\omega_W\otimes N)$.
+\end{lemma}
+\begin{proof}
+Adjoint $d\tau_J$ to obtain
+$u:\omega_Y\to\tau_*(\omega_W\otimes J)$.  Compose the pushed whole
+ideal inclusion with $T_\tau$ to obtain
+$v:\tau_*(\omega_W\otimes J)\to\omega_Y$.
+The original adjunction triangle, the proved factorization of $d\tau$,
+and (T) with $b=1$ give $vu=D\,\mathrm{id}$.  The positive integer $D$
+is invertible over the original characteristic-zero field.  Thus $u$
+and $D^{-1}v$ have identity composite on the actual original canonical
+module.
+
+Tensor these two maps by the actual line $\mathcal O_Y(M)$.  The genuine
+line projection formula and the native tensor associativity and symmetry
+identify their target with
+$\tau_*(\omega_W\otimes\tau^*\mathcal O_Y(M)\otimes J)$.
+This is the stated module because $J_i^{m_i}=I_{D_i}\mathcal O_W$.
+Functoriality of tensoring and the actual projection formula preserve
+the identity composite.  These are the required original retraction
+maps; their construction introduces no group action or retraction
+premise.
+\uses{lem:kn-nadel-whole-root-ideals,lem:kn-nadel-whole-canonical-trace,lem:kn-nadel-bounded-ramification-factor}
+\end{proof}

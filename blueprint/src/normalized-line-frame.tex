@@ -1,0 +1,38 @@
+\section{The genuine coefficient frame normalized by an original nonzero line element}
+\label{sec:normalized-line-frame}
+
+\begin{definition}[Actual normalized entire line frame]
+\label{sc0-normalized-line-frame:whole-equivalence}
+\lean{EnvelopeProperty.NormalizedLineFrame.normalize,EnvelopeProperty.NormalizedLineFrame.normalize_apply}
+\leanok
+For an actual field $F$, an actual module line frame $e:M\simeq_F F$,
+and an original nonzero $m\in M$, there is a genuine entire linear
+frame normalized by that SAME element. On EVERY original $x$ its exact
+value is $e(x)/e(m)$.
+\end{definition}
+\begin{proof}
+The original frame's injectivity derives $e(m)\ne0$. Compose the SAME
+original frame with the inverse of the native linear equivalence given
+by multiplication by this nonzero scalar. Both constituents are genuine
+whole isomorphisms. The native scalar inverse formula and commutativity
+of the original field give precisely the displayed quotient for EVERY
+original element; no scalar or frame comparison is postulated.
+\end{proof}
+
+\begin{theorem}[Exact original normalization and independence of all original frames]
+\label{sc0-normalized-line-frame:normalization-independent}
+\lean{EnvelopeProperty.NormalizedLineFrame.normalize_generator,EnvelopeProperty.NormalizedLineFrame.normalize_independent}
+\leanok
+The normalized entire frame sends the SAME original $m$ to one. It is
+independent of EVERY original line frame $e$ used to construct it.
+No compatibility, change-of-frame scalar or coordinate equation is supplied.
+\end{theorem}
+\begin{proof}
+The generator formula follows from $e(m)/e(m)=1$. For any original $x$,
+the actual inverse frame and field arithmetic prove
+$x=(e(x)/e(m))m$. Both normalized frames are genuinely linear and both
+send $m$ to one. Applying either to this SAME original equality gives
+the same scalar $e(x)/e(m)$. Extensionality on every original $x$ gives
+equality of the ENTIRE genuine linear equivalences.
+\uses{sc0-normalized-line-frame:whole-equivalence}
+\end{proof}

@@ -1,0 +1,37 @@
+\section{The original whole degree acts invertibly on every module}
+
+\begin{theorem}[The whole-degree scalar automorphism]
+\label{thm:kn-nadel-whole-degree-scalar-isomorphism}
+\uses{lem:kn-nadel-whole-cover-degree,lem:kn-nadel-whole-cover-trace-degree}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalDegreeScalar.originalDegree_nsmul_id_isIso,EnvelopeProperty.Vanishing.NadelBoundedCanonicalDegreeScalar.originalDegreeScalarIso,EnvelopeProperty.Vanishing.NadelBoundedCanonicalDegreeScalar.originalDegreeScalarIso_hom}
+\leanok
+Let $k$ be a field of characteristic zero and $f:X\to\operatorname{Spec}k$.
+Let $F$ be the original divisor family, let $m_i>0$, and let $D$ be the
+whole degree of the original joined root family, with every original
+factor retained. For every $\mathcal O_X$-module $M$, multiplication by $D$
+is an automorphism $d_D(M):M\simeq M$, whose underlying morphism is
+$D\,\mathrm{id}_M$. The automorphism is constructed from $f$ and the
+original positive degrees.
+\end{theorem}
+\begin{proof}
+On every open $U\subseteq X$, the morphism $f$ gives the original
+$k$-algebra structure on $\Gamma(U,\mathcal O_X)$. The positive whole
+degree is nonzero in $k$ and hence is a unit there. Its image is therefore
+a unit in $\Gamma(U,\mathcal O_X)$, including when $U$ is empty.
+
+The native scalar-action ring homomorphism
+\[
+ \Gamma(U,\mathcal O_X)\longrightarrow
+ \operatorname{End}\bigl(\Gamma(U,M)\bigr)
+\]
+sends this unit to the endomorphism $s\mapsto Ds$, which is consequently
+invertible. The identity between this endomorphism and the $U$-component
+of $D\,\mathrm{id}_M$ follows from additivity: for $D=0$ both are zero,
+and increasing $D$ by one adds the identity on sections on both sides.
+Thus every open-section component of $D\,\mathrm{id}_M$ is an
+isomorphism. Isomorphisms of module sheaves are detected on these native
+abelian-section components, so $D\,\mathrm{id}_M$ is an isomorphism.
+Taking its associated isomorphism gives $d_D(M)$ with the stated
+underlying morphism. No trace map or trace-normalization identity is
+used.
+\end{proof}

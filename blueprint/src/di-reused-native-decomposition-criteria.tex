@@ -1,0 +1,103 @@
+\section{Native normalization, dimension and cover criteria}
+\label{sec:di-reused-native-decomposition-criteria}
+
+The following criteria are applied to the original coefficient maps,
+form sheaves, finite sources and restrictions throughout the decomposition.
+
+\begin{lemma}[Normalization over the original coefficient field]
+\label{lem:di-reused-native-normalization}
+\lean{EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizationScalar,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.factorial_cast_ne_zero,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizationScalar_mul_factorial,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizedAlternatization,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizedAlternatization_apply,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.comp_normalizedAlternatization,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizedAlternatization_closed,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizedAlternatization_recovery,EnvelopeProperty.Cartier.DeligneIllusieAlternatingNormalization.normalizedAlternatization_naturality}
+\leanok
+Let $k$ be a field of characteristic $p$, and let $\beta:k\to A$ be
+the original structural homomorphism to a commutative ring. The scalar
+$\beta((q!)^{-1})$ normalizes the signed sum over permutations of a
+$q$-multilinear map. The resulting map is alternating, commutes with
+postcomposition and compatible semilinear restriction, and remains
+closed when the original values are closed. If $q<p$, its value on an
+already alternating map is that original map.
+\end{lemma}
+\begin{proof}
+\leanok
+Each signed permutation is multilinear, and the antisymmetrization
+universal property gives the alternating map. Postcomposition and
+compatible restriction distribute over the finite sum and preserve
+the original structural scalar. An outgoing linear differential also
+distributes over it, giving closedness. If the original map is
+alternating, its value on a permuted tuple contributes the permutation
+sign a second time, so every signed summand has the same value. There
+are $q!$ summands. For $q<p$ none of the factors $1,\ldots,q$ vanishes
+in $k$, so $q!\ne0$ and its inverse cancels it in $k$. Applying the
+original $\beta$ gives the cancellation in $A$, including when $A$ is
+the zero ring. No exact-characteristic or nonemptiness assumption on
+$A$ is needed.
+\end{proof}
+
+\begin{lemma}[Original geometric dimension support]
+\label{lem:di-reused-native-dimension-support}
+\lean{EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.exteriorCotangentSheaf_isZero,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.twistStructure,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.twistStructure_smooth,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.twist_exteriorCotangentSheaf_isZero,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.formModule_isZero,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.complex_extend_isStrictlyLE,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.goodTruncationInclusion,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.goodTruncationInclusion_isIso,EnvelopeProperty.Cartier.DeligneIllusieDimensionBound.goodTruncationInclusion_quasiIso}
+\leanok
+Let $f:X\to\operatorname{Spec}k$ be smooth of pure relative dimension
+$n$. Original form sheaves vanish in degrees above $n$. The true
+Frobenius base change has the same dimension and the same vanishing.
+The original pushed de Rham complex, extended by zero, is strictly
+supported in degrees at most $n$. If $n<p$, its original good-truncation
+inclusion at $p-1$ is an isomorphism, hence a quasi-isomorphism.
+\end{lemma}
+\begin{proof}
+\leanok
+On every standard smooth affine chart, the actual cotangent module is
+free with its original $n$-element basis. Its $q$th exterior power has
+the basis indexed by $q$-element subsets; there are none for $q>n$.
+The original affine exterior-sheaf comparison and open-cover detection
+give the sheaf vanishing. Smooth relative dimension is stable under
+the actual Frobenius base change, so the same argument applies to the
+true twist. Pushforward sends zero modules to zero modules. Extension
+by zero adds zero terms in negative degrees. Finally $n<p$ places all
+nonzero terms below the cutoff, including a zero outgoing differential
+at its top. The original good-truncation inclusion is therefore an
+isomorphism in every degree.
+\end{proof}
+
+\begin{lemma}[The original bounded-source inclusion]
+\label{lem:di-reused-native-dimension-source}
+\lean{EnvelopeProperty.Cartier.DeligneIllusieDimensionSource.source,EnvelopeProperty.Cartier.DeligneIllusieDimensionSource.sourceInclusion,EnvelopeProperty.Cartier.DeligneIllusieDimensionSource.sourceInclusion_isIso,EnvelopeProperty.Cartier.DeligneIllusieDimensionSource.sourceIso,EnvelopeProperty.Cartier.DeligneIllusieDimensionSource.ι_sourceIso_hom}
+\leanok
+\uses{lem:di-reused-native-dimension-support}
+For the original true twist put
+$S_a=\bigoplus_{q<a}\Omega^q[-q]$ in natural degrees. If $n<p$, the
+original coproduct inclusion $S_{n+1}\to S_p$ is an isomorphism. Its
+forward map sends each original smaller summand to the original larger
+summand in exactly the same degree.
+\end{lemma}
+\begin{proof}
+\leanok
+Define its inverse by projecting each summand of degree at most $n$
+to the corresponding smaller summand and sending the remaining
+summands to zero. The original form sheaves in these remaining degrees
+are zero by the dimension criterion. Each composite is consequently
+the identity on every original summand. The coproduct universal
+property proves both inverse laws and the stated inclusion formula.
+\end{proof}
+
+\begin{lemma}[Detection by the original cover]
+\label{lem:di-reused-native-cover-detection}
+\lean{EnvelopeProperty.Cartier.DeligneIllusieCechLocalQuasiIso.isIso_of_restrictions,EnvelopeProperty.Cartier.DeligneIllusieCechLocalQuasiIso.quasiIsoAt_of_restrictions,EnvelopeProperty.Cartier.DeligneIllusieCechLocalQuasiIso.quasiIso_of_restrictions}
+\leanok
+An original module-sheaf map is invertible if its restrictions to an
+actual open cover are invertible. A map of the original integer
+cochain complexes is a quasi-isomorphism in degree $q$, or in all
+degrees, if the same property holds after every original cover
+restriction.
+\end{lemma}
+\begin{proof}
+\leanok
+At every point select a cover member containing it. The actual open
+restriction identifies its stalk with the original stalk, so the
+restricted inverse gives an inverse on that stalk. Stalks detect
+isomorphisms of the underlying sheaves, and the module-sheaf forgetful
+functor reflects isomorphisms. Open restriction preserves the original
+homology. Its native homology naturality square therefore identifies
+the restricted original homology map with the homology map of the
+restricted complex. Apply the sheaf-map criterion in degree $q$, and
+then in every degree for the whole quasi-isomorphism criterion.
+\end{proof}

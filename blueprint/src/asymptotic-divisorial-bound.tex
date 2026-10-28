@@ -1,0 +1,62 @@
+\section{Actual asymptotic divisorial order and original canonical discrepancy}
+
+\begin{definition}[The original asymptotic divisorial order]\label{def:sc0-original-asymptotic-divisorial-order}
+\lean{EnvelopeProperty.Char0.asymptoticDivisorialOrder}
+\leanok
+For the original positive-index nonzero ideal sequence $J_\bullet$
+and actual original divisorial DVR $V$ containing $C$, define
+$v(J_\bullet)=\inf_{q>0}\operatorname{ord}_V(J_q)/q$ as an actual
+real infimum of the original normalized orders of their actual
+extension to $V$.
+\end{definition}
+
+\begin{lemma}[Actual asymptotic order is nonnegative]\label{lem:sc0-original-asymptotic-divisorial-order-nonneg}
+\lean{EnvelopeProperty.Char0.asymptoticDivisorialOrder_nonneg}
+\leanok
+\uses{def:sc0-original-asymptotic-divisorial-order}
+This actual infimum is nonnegative.
+\end{lemma}
+\begin{proof}
+Its defining set is nonempty, using original index $1$. Every
+normalized natural DVR order in it is nonnegative. The actual
+infimum lower-bound theorem gives the assertion.
+\end{proof}
+
+\begin{lemma}[Every original normalized order bounds the actual infimum]\label{lem:sc0-original-asymptotic-divisorial-order-le}
+\lean{EnvelopeProperty.Char0.asymptoticDivisorialOrder_le}
+\leanok
+\uses{def:sc0-original-asymptotic-divisorial-order}
+For every actual positive original $q$,
+$v(J_\bullet)\le\operatorname{ord}_V(J_q)/q$.
+\end{lemma}
+\begin{proof}
+The set of actual normalized orders is bounded below by zero and
+contains precisely this original normalized order. The actual
+infimum-member inequality applies.
+\end{proof}
+
+\begin{theorem}[Actual asymptotic multiplier divisorial discrepancy bound]\label{thm:sc0-original-asymptotic-multiplier-divisorial-bound}
+\lean{EnvelopeProperty.Char0.asymptoticMultiplierIdeal_divisorial_bound}
+\leanok
+\uses{lem:sc0-original-asymptotic-divisorial-order-le}
+For the original Noetherian fraction-field source $C$, actual
+graded sequence $J_\bullet$ nonzero in every positive index,
+actual original essentially finite-type divisorial DVR $V$, and
+every nonzero actual $f\in\mathfrak b_m$, one has
+$m v(J_\bullet)<v(f)+1+\operatorname{ord}_V(J_{V/C})$,
+where $J_{V/C}$ is the whole original intrinsic canonical DVR ideal.
+\end{theorem}
+\begin{proof}
+The proved actual Noetherian attainment theorem produces a positive
+original $q$ with the whole actual asymptotic multiplier ideal equal
+to the full actual original multiplier ideal of $J_q$ at exponent
+$m/q$. Actual membership therefore gives the contribution of this
+same original DVR. Its exact proved strict order formula, using
+$f\ne0$, gives
+$(m/q)\operatorname{ord}_V(J_q)<v(f)+1+\operatorname{ord}_V(J_{V/C})$.
+The actual original asymptotic order is at most
+$\operatorname{ord}_V(J_q)/q$. Multiply by the nonnegative original
+$m$ and combine with that strict inequality. All index attainment,
+orders and intrinsic canonical comparisons remain actual proved
+constructions rather than supplied discrepancy bounds.
+\end{proof}

@@ -1,0 +1,25 @@
+\section{The original line trace inherits the proved structure-trace square}
+
+\begin{lemma}[Line trace from an actual structure-trace square]
+\label{lem:kn-native-line-trace-square-from-structure}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.lineTrace_nativeSquare_of_structureSquare}
+\uses{lem:kn-native-module-square-weighted-unit,lem:line-pf-unit-trace-native-local-coefficient,lem:scheme-native-coherent-tensor-ext}
+\leanok
+For any commuting scheme square and any original invertible base line,
+suppose the actual structure-module morphisms $\tau,\nu$ satisfy their
+structure-trace square. Then their line traces, formed using the SAME
+original PFs and structure unitors, satisfy the native pulled-line
+square. This is generic transport support; the Nadel consumer must
+supply the previously proved original structure-trace factor internally.
+\end{lemma}
+\begin{proof}
+Precompose with the original line PF followed by its original structure
+left unitor; this is an isomorphism. Test every original pure tensor
+$b\otimes m$ on every open. The left trace gives $\tau(b)m$, whose
+native restriction is $s^\sharp(\tau(b))\eta_s(m)$. The original
+weighted unit square sends the right input to
+$J(b)\eta_q(\eta_s(m))$, and the original inverse-PF local reader
+gives $\nu(J(b))\eta_s(m)$. The assumed structure-module equation
+equates precisely these two scalar coefficients. Native tensor
+extensionality and cancellation of the original isomorphism finish.
+\end{proof}

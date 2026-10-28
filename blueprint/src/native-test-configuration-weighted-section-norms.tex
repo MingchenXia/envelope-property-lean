@@ -1,0 +1,89 @@
+\section{Actual total-space section norms and weighted original Laurent coefficients}
+
+\begin{definition}\label{def:native-tc-weighted-laurent-section-norm}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.originalPowerSectionNorm,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedLaurentPowerSectionNorm}
+\leanok
+Let $M$ be the original linearized invertible module on a test
+configuration and let $L$ be its original invertible fibre-one module.
+For every original total-space section $s$ of $M^{\otimes n}$, let
+$s_i\in H^0(X,L^{\otimes n})$ be its actual Laurent coefficients
+after the whole original product transport. For an original trivially
+valued point $x$ and $r>0$, define
+\[
+ W_{n,x,r}(s)=\max_i\{\lVert s_i(x)\rVert_{L^{\otimes n}}r^i\}.
+\]
+The maximum is over the actual finite support; its empty value is zero.
+Here the norms on the original proper $X$ are its genuine model norms.
+\uses{thm:native-tc-global-laurent-sections}
+\end{definition}
+\begin{proof}
+Original test-configuration properness gives properness of $X$.
+The whole Laurent coefficient equivalence gives an actual finitely
+supported family of original sections in every degree, including zero.
+Every tensor power of the invertible original $L$ is invertible,
+so its true proper-model norm is defined. The trivial base valuation
+is bounded by one. Thus the indicated finite maximum is defined for
+every original section and every positive radius, retaining negative
+integer exponents and zero sections.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-weighted-laurent-true-section-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_weightedLaurentPowerSectionNorm_factor}
+\leanok
+For every $n\geq0$, $x$ and $0<r\leq1$, there is one number
+$c_{n,x,r}>0$ such that, simultaneously for every original total-space
+section $s$ of $M^{\otimes n}$,
+\[
+ \lVert s\rVert_{\mathcal X,r,x}=c_{n,x,r}W_{n,x,r}(s).
+\]
+The number is derived from two actual residue frames and precedes
+every section. No comparison factor, coefficient formula or matching
+frame is an input.
+\uses{def:native-tc-weighted-laurent-section-norm,thm:native-tc-product-frame-true-norm,cor:fc-native-laurent-support-frame-values,cor:fc-native-residue-frame-transition}
+\end{theorem}
+\begin{proof}
+The actual proper total-space center supplies a single residue frame
+$e_{\mathcal X}$ of the product pullback of $L^{\otimes n}$ in which
+all original total-space section norms are their true native coefficient
+values. Independently, original properness and invertibility on $X$
+choose a genuine local frame around its actual center. Its original
+product support frame $e_X$ computes the value of every entire product
+section as the weighted maximum of the genuine original coefficient
+norms. Both frames are frames of exactly the same original residue
+module at the same product Gauss point. Their entire transition
+automorphism is multiplication by one actual residue-field unit
+$u(e_X,e_{\mathcal X})$. Set $c_{n,x,r}$ equal to its native valuation.
+This is strictly positive because the unit has an inverse. The actual
+coefficient transition identity now gives the asserted equality for
+every original transported section, including zero. No properness or
+bounded valuation on the Laurent product is used.
+\end{proof}
+
+\begin{corollary}\label{cor:native-tc-weighted-laurent-finite-section-norms}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_weightedLaurentPowerFamilyNorm_factor}
+\leanok
+For any original finite family $G\subset H^0(\mathcal X,M^{\otimes n})$,
+let $T_G$ be the actual original finite family of coefficient/exponent
+pairs constructed before all points and radii. There is one positive
+$c_{n,x,r}$, independent of $G$, for which every such family satisfies
+\[
+ \max_{s\in G}\lVert s\rVert_{\mathcal X,r,x}
+ =c_{n,x,r}\max_{(a,i)\in T_G}\{\lVert a(x)\rVert_{L^{\otimes n}}r^i\}.
+\]
+The assertion retains empty families and all zero sections.
+\uses{thm:native-tc-weighted-laurent-true-section-norms,thm:native-tc-global-laurent-fixed-family}
+\end{corollary}
+\begin{proof}
+Choose the preceding factor before choosing $G$. Taking finite maxima
+preserves multiplication by this nonnegative number. The maximum of
+the individual coefficient-support maxima is exactly the maximum over
+their finite union, which is the defining original family $T_G$.
+Finite images and unions do not change a maximum when values repeat.
+For the empty family both sides are zero.
+\end{proof}
+
+\begin{remark}
+The statements compare actual norms in each fixed degree. Compatibility
+of the derived factors with tensor powers and the ensuing logarithmic
+Fubini--Study and envelope identities require further arguments.
+\end{remark}

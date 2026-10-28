@@ -1,0 +1,57 @@
+\section{The whole original global asymptotic multiplier ideal sheaf}
+
+\begin{definition}[The original global asymptotic multiplier ideal]\label{def:sc0-original-global-asymptotic-multiplier-ideal}
+\lean{EnvelopeProperty.Char0.schemeAsymptoticMultiplierIdealSheaf}
+\leanok
+\uses{def:sc0-original-global-multiplier-ideal-sheaf}
+On the original smooth integral characteristic-zero scheme $X$,
+let $J_\bullet$ be an actual original sequence of ideal sheaves with
+nonzero actual generic stalk at every positive index. Define
+$\mathfrak b_m$ to be the supremum over all positive $q$ of the
+actual full multiplier ideal sheaves $\mathcal J_X(J_q^{m/q})$.
+\end{definition}
+
+\begin{lemma}[Original constituent inclusion]\label{lem:sc0-original-global-asymptotic-constituent}
+\lean{EnvelopeProperty.Char0.schemeMultiplierIdealSheaf_le_asymptotic}
+\leanok
+\uses{def:sc0-original-global-asymptotic-multiplier-ideal}
+Every positive-index original constituent is contained in $\mathfrak b_m$.
+\end{lemma}
+\begin{proof}
+It is an actual member of the defining double supremum.
+\end{proof}
+
+\begin{theorem}[Exact full original affine asymptotic values]\label{thm:sc0-original-global-asymptotic-affine-values}
+\lean{EnvelopeProperty.Char0.schemeAsymptoticMultiplierIdealSheaf_ideal_nonempty}
+\leanok
+\uses{def:sc0-original-global-asymptotic-multiplier-ideal,thm:sc0-original-global-multiplier-ideal-affine-values}
+At every actual original nonempty affine $U$, the actual ideal
+$\mathfrak b_m(U)$ is exactly the full intrinsic affine asymptotic
+multiplier ideal of the original sequence $J_q(U)$, computed via
+the actual generic germ into the actual original function field.
+\end{theorem}
+\begin{proof}
+Actual ideal-sheaf suprema have precisely the componentwise affine
+ideal suprema. The actual original multiplier sheaves have exactly
+the full intrinsic affine multiplier ideals already proved. Under
+the actual generic-germ equivalence, comap is the same as map along
+its inverse. Such map commutes with the two suprema, so these exact
+affine constituents give the defining full affine asymptotic ideal.
+The positive-index nonzero affine ideals are derived from the
+original nonzero generic stalks; no index is removed or replaced.
+\end{proof}
+
+\begin{theorem}[Finite presentation of the whole actual global asymptotic module]\label{thm:sc0-original-global-asymptotic-finite-presentation}
+\lean{EnvelopeProperty.Char0.schemeAsymptoticMultiplierIdealSheaf_isFinitePresentation}
+\leanok
+\uses{def:sc0-original-global-asymptotic-multiplier-ideal}
+The actual module sheaf of $\mathfrak b_m$ is of finite presentation
+on the original scheme.
+\end{theorem}
+\begin{proof}
+The actual original smooth structure morphism proves local
+Noetherianity of the original scheme. Apply the actual theorem
+that an ideal-sheaf module on a locally Noetherian scheme is of
+finite presentation. This makes no uniform statement about twists
+or global generation.
+\end{proof}

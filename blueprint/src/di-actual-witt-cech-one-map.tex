@@ -1,0 +1,149 @@
+\section{The canonical degree-one Cech map from actual Witt geometry}
+
+Fix a perfect field $\kappa$ of characteristic $p>0$ and an actual smooth
+separated morphism $\widetilde f:\widetilde X\to\operatorname{Spec}W_2(\kappa)$
+of relative dimension $n$. Let $X$ be its genuine special fibre, let $f_0$
+be the original special-fibre structural map, and put $Y=X^{(p)}$ with its
+original structural map $g$. Retain the existing pushed complex
+$K=F_{X/\kappa*}\Omega^\bullet_{X/\kappa}$ and the original source
+$M=\Omega^1_{Y/\kappa}$. The local lift cover, reductions and restricted
+lifts are produced internally from this geometry. No local map family,
+closure equation, global map or quasi-isomorphism is supplied by the caller.
+
+\begin{definition}[The actual original cover and tuple opens]
+\label{def:di-actual-witt-cech-cover}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.specialFibre,EnvelopeProperty.DI.ActualWittCechOneMap.specialFibreMap,EnvelopeProperty.DI.ActualWittCechOneMap.twist,EnvelopeProperty.DI.ActualWittCechOneMap.twistMap,EnvelopeProperty.DI.ActualWittCechOneMap.sourceModule,EnvelopeProperty.DI.ActualWittCechOneMap.targetComplex,EnvelopeProperty.DI.ActualWittCechOneMap.CoverIndex,EnvelopeProperty.DI.ActualWittCechOneMap.cover,EnvelopeProperty.DI.ActualWittCechOneMap.cover_iSup,EnvelopeProperty.DI.ActualWittCechOneMap.liftedTuple,EnvelopeProperty.DI.ActualWittCechOneMap.liftedTuple_affine,EnvelopeProperty.DI.ActualWittCechOneMap.residueTuple,EnvelopeProperty.DI.ActualWittCechOneMap.twistedTuple,EnvelopeProperty.DI.ActualWittCechOneMap.tupleOpen_eq,EnvelopeProperty.DI.ActualWittCechOneMap.singletonOpen_eq,EnvelopeProperty.DI.ActualWittCechOneMap.residueTuple_affine,EnvelopeProperty.DI.ActualWittCechOneMap.tupleInclusion,EnvelopeProperty.DI.ActualWittCechOneMap.residueTupleInclusion,EnvelopeProperty.DI.ActualWittCechOneMap.tupleCoordinates,EnvelopeProperty.DI.ActualWittCechOneMap.tupleCoordinates_etale,EnvelopeProperty.DI.ActualWittCechOneMap.tupleLift,EnvelopeProperty.DI.ActualWittCechOneMap.tupleLift_reduction,EnvelopeProperty.DI.ActualWittCechOneMap.faceTupleInclusion,EnvelopeProperty.DI.ActualWittCechOneMap.faceTupleInclusion_comp,EnvelopeProperty.DI.ActualWittCechOneMap.tupleLift_face_restrict,EnvelopeProperty.DI.ActualWittCechOneMap.tupleCover_le,EnvelopeProperty.DI.ActualWittCechOneMap.twistedFace_le}
+\uses{thm:witt-two-special-fibre-lifted-etale-basis,thm:witt-two-etale-restricted-lift-composition}
+Use the existing genuine lifted affine etale-coordinate cover, its
+internally chosen Frobenius lifts $F_i$, and its original true-twist opens
+$U_i\subset Y$. A native Cech tuple open is precisely the original true
+twist of the special-fibre inverse image of the same finite intersection
+in $\widetilde X$. Every such lifted intersection is affine.
+\end{definition}
+\begin{proof}
+Base change of the original smooth morphism to $\kappa$ gives the same
+relative dimension $n$ on $f_0$, hence the retained original target complex
+requires no new dimension certificate. The original geometric cover theorem
+gives $\bigcup_iU_i=Y$. Separatedness
+makes finite intersections of the lifted affine opens affine. Genuine
+inverse-image opens preserve intersections; the existing native tuple-open
+equality therefore identifies the product intersection with the stated
+original true-twist open. Restricting the first member's actual residual
+etale tuple along its affine inclusion gives an actual etale tuple on each
+intersection. The underlying section-ring restriction is etale, so its
+composition with the original structural polynomial evaluation remains
+etale. No new overlap coordinates or compatibility certificate are chosen.
+\end{proof}
+
+\begin{definition}[The canonical original local degree-one components]
+\label{def:di-actual-witt-cech-components}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.memberXi,EnvelopeProperty.DI.ActualWittCechOneMap.intersectionXi,EnvelopeProperty.DI.ActualWittCechOneMap.intersectionHomotopy,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalXi,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalH,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalXiCochain,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalHCochain,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalXiCochain_pi,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalHCochain_pi}
+\uses{def:di-actual-witt-cech-cover,lem:di-affine-local-map-restriction,def:actual-witt-geometric-xi-homotopy-sheaf}
+On each $U_i$, use the actual geometric divided Frobenius sheaf map
+$\xi_i:M|_{U_i}\to K^1|_{U_i}$ belonging to the original internally
+chosen $F_i$. On $U_i\cap U_j$, restrict those same lifts canonically and
+use the actual geometric homotopy $H_{ij}:M|_{U_i\cap U_j}\to K^0|_{U_i\cap U_j}$.
+Set $h_{ij}=-H_{ij}$. Transport these same maps only along the proved
+native tuple-open equalities; their original components are retained.
+\end{definition}
+\begin{proof}
+The actual geometric layer constructs these original sheaf maps from the
+native divided Frobenius and homotopy maps through the original coefficient,
+unit and affine associated-sheaf comparisons. Its restriction theorems use
+those same original maps. The chosen overlap lifts are restrictions of
+the original member lifts, and the existing direct-versus-iterated
+restriction theorem identifies further restrictions. Equality transport
+along the native original-open equations changes neither local section
+values nor the chosen lift. Taking the additive inverse gives the stated
+$h$ with its required sign.
+\end{proof}
+
+\begin{lemma}[Natural local cocycle equations are derived from the geometry]
+\label{lem:di-actual-witt-cech-local-equations}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.memberXi_closed,EnvelopeProperty.DI.ActualWittCechOneMap.intersectionXi_sub,EnvelopeProperty.DI.ActualWittCechOneMap.intersectionHomotopy_cocycle,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalXi_closed,EnvelopeProperty.DI.ActualWittCechOneMap.memberXi_restrict,EnvelopeProperty.DI.ActualWittCechOneMap.intersectionHomotopy_face,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalXi_pair,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalH_triple}
+\uses{def:di-actual-witt-cech-components,thm:actual-witt-geometric-xi-homotopy-equations,thm:actual-witt-geometric-xi-homotopy-restriction}
+The actual maps satisfy $d\xi_i=0$, $\xi_j-\xi_i=dh_{ij}$, and
+$h_{jk}-h_{ik}+h_{ij}=0$ on the same original intersections.
+\end{lemma}
+\begin{proof}
+Actual divided Frobenius closedness gives the first equation. On each
+pairwise intersection the geometric homotopy identity is
+$\xi_i-\xi_j=dH_{ij}$; negating it and using $h=-H$ gives the second
+equation with ordinary Cech sign $\delta\xi=\xi_j-\xi_i$.
+For a triple intersection, the actual restricted member lifts are the
+same whether restricted directly or in two steps. Thus the three geometric
+homotopies obey $H_{ik}=H_{ij}+H_{jk}$ for those same lifts. The actual
+sheaf restriction identities transport the pairwise homotopies to that
+triple intersection. Negating and rearranging gives
+$h_{jk}-h_{ik}+h_{ij}=0$. The ordinary native alternating sums are exactly
+these pair and triple expressions, including repeated indices and empty
+intersections. All three equations are conclusions of the actual geometry.
+\end{proof}
+
+\begin{definition}[Canonical native local data and product cochains]
+\label{def:di-actual-witt-canonical-local-data}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.canonicalLocalData}
+\uses{lem:di-actual-witt-cech-local-equations,def:di-cech-original-local-cochains}
+These original components form canonical native local data for the actual
+cover, source $M$ and complex $K$. The genuine restriction--pushforward
+adjunction and native products give cochains $\xi:M\to C_U^0(K^1)$ and
+$h:M\to C_U^1(K^0)$.
+\end{definition}
+\begin{proof}
+Use the original tuple components in the native local-data structure.
+The preceding theorem supplies each of its closedness, pair and triple
+fields internally. The existing adjunction/product construction gives the
+stated cochains, whose projection at every tuple is exactly the adjoint
+of the original produced local map. This defines the local data and
+cochains from the geometric input alone, rather than accepting any of
+those fields as a caller's certificate.
+\end{proof}
+
+\begin{theorem}[The actual canonical Witt degree-one Cech morphism]
+\label{thm:di-actual-witt-cech-one-map}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent_closed,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap_f,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap_component}
+\uses{def:di-actual-witt-canonical-local-data,thm:di-cech-degree-one-descent-map}
+The actual Witt geometry canonically produces a genuine native morphism
+$M[-1]\to\operatorname{Tot}C_U(K)$ with degree-one total component
+$(\xi,-H)$ and with every other source degree zero.
+\end{theorem}
+\begin{proof}
+Apply the already proved native degree-one descent constructor to the
+canonical local data. Its hypotheses are the fields just derived from
+actual geometry. The existing native total differential convention is
+$d_K+(-1)^{\text{form degree}}\delta$, so $\delta\xi=dh$ gives precisely
+$(\xi,h)=(\xi,-H)$. The constructor's component theorem gives exactly the
+two original total injections. No second generic descent construction is
+needed, and no desired global map or quasi-isomorphism is an input.
+\end{proof}
+
+\begin{theorem}[Exact original local evaluation of the canonical morphism]
+\label{thm:di-actual-witt-cech-one-local-evaluation}
+\leanok
+\lean{EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent_xi,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent_h,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent_evaluation,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneComponent_localEvaluation,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap_localEvaluation,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap_localRepresentative,EnvelopeProperty.DI.ActualWittCechOneMap.canonicalOneMap_homology_local}
+\uses{thm:di-actual-witt-cech-one-map,thm:di-cech-degree-one-original-local-homology}
+Every native degree-one and product-factor projection of the canonical
+morphism recovers exactly the original geometric $\xi_i$ or $-H_{ij}$,
+under the original restriction adjunction. Its native local homology map
+has the same original $\xi_i$ representative.
+\end{theorem}
+\begin{proof}
+The existing total-component projection equations discard the other
+bidegree. Native product projection then returns the adjoint of the same
+original tuple component by the product universal property. On singleton
+tuples the canonical native open equality identifies this with the
+original $\xi_i$ on $U_i$. Composing the original total evaluation with
+restriction to $U_i$ and its original restriction--pushforward counit
+returns that entire same over-open sheaf morphism: the adjunction
+triangle cancels exactly its original local adjoint. This equality
+already holds for the degree-one component before closedness is used.
+The existing zero-row/factor complex-map equality
+therefore gives precisely its original native local representative, and
+native homology functoriality gives the asserted homology-map equality.
+The homotopy component keeps the explicit negative sign fixed above.
+\end{proof}

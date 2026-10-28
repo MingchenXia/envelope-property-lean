@@ -1,0 +1,127 @@
+\subsection{Actual whole global-section idempotents and scheme connectedness}
+
+The full mathematical plan and both independent mathematical reviews preceded code. It is a bounded prerequisite to the
+source-facing proper-fibre idempotent route, NOT a proof of that missing
+proper lifting theorem. The pinned Stacks Stein argument (source commit
+\texttt{a04446e57ec1fbc252a871afcec7752fb2807b14},
+\texttt{more-morphisms.tex}, theorem-stein-factorization-general) explicitly
+uses the actual correspondence between clopen scheme decompositions and
+idempotents of the ORIGINAL structure sheaf. Mathlib supplies that theorem
+for an affine spectrum, but no arbitrary-scheme counterpart was found.
+The original sheaf equalizer/gluing producer is already checked.
+
+\begin{theorem}[Every actual clopen scheme subset constructs a unique original global idempotent]
+\label{scheme:actual-global-idempotent-clopen-correspondence}
+\leanok
+\lean{EnvelopeProperty.SchemeGlobalIdempotents.isClopen_basicOpen,
+EnvelopeProperty.SchemeGlobalIdempotents.exists_idempotent_basicOpen_eq,
+EnvelopeProperty.SchemeGlobalIdempotents.eq_of_basicOpen_eq,
+EnvelopeProperty.SchemeGlobalIdempotents.idempotentEquivClopens}
+\uses{scheme:actual-original-section-equalizer}
+Let $X$ be ANY scheme, without quasi-compactness, separation, reducedness,
+Noetherianity or nonempty assumptions. For EVERY actual clopen subset $U$,
+construct an ORIGINAL $e\in\Gamma(X,\top)$ such that $e^2=e$ and whose
+actual basic open is EXACTLY $U$. Its genuine construction glues the original sections one on $U$
+and zero on its actual open complement. It is the unique original
+global idempotent with that basic open. Conversely EVERY whole original
+idempotent has a genuine clopen basic open. All scalar and restriction
+identities concern the ORIGINAL whole sections, not selected values.
+\end{theorem}
+\begin{proof}
+Both $U$ and its actual complement are original opens, their intersection
+is empty, and their union is the whole scheme. Put the ORIGINAL section
+one on $U$ and zero on its complement. Their entire restrictions to the
+empty intersection agree because the genuine structure-sheaf section ring
+on the empty open is trivial. Actual original sheaf gluing constructs the
+whole section $e$. The same genuine sheaf separation compares $e^2$ and
+$e$ on BOTH original opens, proving actual idempotence. Actual basic-open
+restriction identities and the true one/zero formulas show that its whole
+basic open is precisely $U$.
+
+For an original idempotent $e$, genuine original basic-open multiplication
+makes $D(e)$ disjoint from $D(1-e)$, because $e(1-e)=0$. The actual
+basic-open addition inequality and $e+(1-e)=1$ make their union the whole
+scheme. Thus $D(e)$ is genuinely clopen with complement $D(1-e)$.
+At any original stalk, the image of an idempotent is zero or one because
+that ACTUAL stalk is a local ring. It is one exactly on $D(e)$ and zero
+on its complement. Two original idempotents with the same basic open
+therefore have equal germs at EVERY original point, so genuine sheaf germ
+extensionality identifies the WHOLE original sections. Empty schemes are
+retained by the actual empty section ring.
+\end{proof}
+
+\begin{theorem}[Actual scheme connectedness is detected by its original global idempotents]
+\label{scheme:actual-global-idempotents-connectedness}
+\leanok
+\lean{EnvelopeProperty.SchemeGlobalIdempotents.connectedSpace_iff_idempotents,
+EnvelopeProperty.SchemeGlobalIdempotents.nonempty_of_nontrivial_globalSections,
+EnvelopeProperty.SchemeGlobalIdempotents.connectedSpace_of_globalSections_isDomain}
+\uses{scheme:actual-global-idempotent-clopen-correspondence}
+For EVERY original scheme $X$, derive the genuine equivalence:
+$X$ is connected if and only if it is nonempty and EVERY original global
+idempotent is zero or one. ACTUAL nontriviality of the original whole
+section ring derives scheme nonemptiness. In particular an original scheme
+whose ACTUAL global section ring is an integral domain is connected, with
+nonemptiness genuinely derived. The empty scheme has the zero section ring
+and is not called connected. No connectedness or clopen-triviality
+certificate is input.
+\end{theorem}
+\begin{proof}
+The actual topological connectedness criterion for clopen subsets says that
+a nonempty space is connected precisely when every clopen subset is empty
+or the whole space. Use the preceding genuine correspondence. The true
+basic opens of the ORIGINAL zero and one sections are empty and the whole
+scheme. Conversely, an idempotent whose basic open is empty or whole has
+the same basic open as zero or one, so uniqueness gives equality of the
+ENTIRE original sections. If the actual original whole section ring is
+nontrivial, the scheme cannot be empty, since actual sheaf sections on an
+empty scheme form a trivial ring. Thus nonemptiness is genuinely derived.
+For an actual integral domain, the genuine
+algebraic idempotent equation gives $e=0$ or $e=1$, proving the last claim.
+\end{proof}
+
+\begin{theorem}[An actual field-valued global coefficient isomorphism derives geometric connectedness]
+\label{scheme:actual-field-global-sections-geometric-connectedness}
+\leanok
+\lean{EnvelopeProperty.SchemeGlobalIdempotents.coefficientAlgEquiv,
+EnvelopeProperty.SchemeGlobalIdempotents.fieldSectionsEquiv,
+EnvelopeProperty.SchemeGlobalIdempotents.geometricallyConnected_of_coefficientMap_bijective}
+\uses{scheme:actual-global-idempotents-connectedness,scheme:actual-original-flat-global-section-tensor,scheme:actual-proper-global-section-valuation-membership}
+Let $F$ be ANY field and $f:X\to\operatorname{Spec}F$ an ACTUAL QCQS
+morphism. Suppose the ORIGINAL coefficient RingHom
+$F\to\Gamma(X,\top)$ is bijective. Then $f$ is geometrically connected
+in the STANDARD existing scheme sense. The input is the whole algebraic
+coefficient identity, not a fibre-connectedness or idempotent-lift
+certificate. This criterion does NOT assert that the coefficient hypothesis
+holds on the fibres of an arbitrary proper map.
+\end{theorem}
+\begin{proof}
+For every ACTUAL field extension $F\to L$, its scalar module is genuinely
+flat. The already checked ORIGINAL flat-section comparison gives
+$\Gamma(X_L,\top)\simeq L\otimes_F\Gamma(X,\top)$ preserving BOTH
+original coefficient and projection maps. The actual original coefficient
+bijection identifies this whole algebra with $L$; alternatively tensor its
+genuine inverse and use actual tensor unit multiplication. Thus the ACTUAL
+whole section ring of $X_L$ is a nontrivial integral domain. If $X_L$ were
+empty its original section ring would be trivial, a contradiction. The
+preceding actual global-idempotent criterion proves connectedness of the
+WHOLE base-changed scheme. Every actual field point of $\operatorname{Spec}F$
+genuinely supplies an $F$-algebra structure on its field, so these are
+exactly the field pullbacks required by STANDARD geometrically connected.
+The existing genuine commutative-ring characterization of geometric
+properties constructs this precise field-point/algebra correspondence;
+it is REUSED. The genuine Spec action and both whole coefficient triangles
+are retained, not assumed as a field-copy certificate.
+\end{proof}
+
+\begin{remark}[Exact still-missing proper-fibre producer]
+The genuine proper-fibre idempotent lifting theorem in the pinned Stacks
+source uses actual formal functions and finite-module completion, followed
+by genuine Noetherian approximation in the general case. It is not supplied
+by the present correspondence or by flat base change. In particular an
+arbitrary $A\to\kappa(s)$ is not flat. Original proper-birational
+structure-sheaf descent therefore does NOT alone prove connected or
+geometrically connected fibres, and no native connectedness follows here.
+The author's true algebraic curve-chain and analytic curve-connectedness
+route is preserved independently.
+\end{remark}

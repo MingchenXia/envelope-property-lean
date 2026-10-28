@@ -1,0 +1,63 @@
+\section{The example of Remark~7.3 on the projective line}\label{sec:r73-projective-line}
+
+\cite[Remark~7.3]{FHX} explains why homogeneous Siu division (\cite[Theorem~7.2]{FHX}; Theorem~\ref{thm:nn-homogeneous-siu}) divides only with a fixed coefficient:
+the published proof of \cite[Theorem~6.21]{BJ22}, of which \cite[Theorem~7.2]{FHX} is the nontrivial implication, takes a decreasing regularization $\psi_i$ of
+$\psi\le e_E$ and rational $t_i\to1$ with $\psi_i\le t_ie_E$, and asserts that $\psi_i-t_ie_E$ decreases because $\psi_i$ does. This section verifies the
+counterexample on $\PP^1$ given in the remark.
+
+We use the model of $(\PP^1)^\an$ of Definition~\ref{def:pn-an} over a trivially valued field $k$, with homogeneous coordinates $x_0,x_1$, and the Fubini--Study
+functions of Definition~\ref{def:pn-psh}. Let $E=\{x_0=0\}$, a point of $\PP^1$, so that $\mathcal O(E)=\mathcal O(1)$ with canonical section $x_0$, and put
+\[
+\ell=e_E=\log|x_0|\colon(\PP^1)^\an\to[-\infty,0].
+\]
+A \emph{homogeneous} Fubini--Study function for $\mathcal O(a)$, $a\in\Q_{\ge0}$, is a Fubini--Study function $m^{-1}\max_j\log|s_j|$ all of whose weights vanish;
+these form $\mathcal H_{\mathrm{hom}}(\mathcal O(a))$. For $s\ge0$ let $v_s\in(\PP^1)^\an$ be the graded extension of $|f|=e^{-s\operatorname{ord}_{x_0}(f)}$ on forms
+(Lemma~\ref{lem:bj-graded-extension}; these are the points used in the proof of Lemma~\ref{lem:bj-divisibility}); for $s>0$, $v_s$ is the divisorial point
+$s\operatorname{ord}_E$.
+
+\begin{proposition}[The counterexample of Remark~7.3]\label{prop:r73-p1-example}
+\lean{EnvelopeProperty.ProjBerk.bj621Coeff, EnvelopeProperty.ProjBerk.bj621Time, EnvelopeProperty.ProjBerk.bj621Psi, EnvelopeProperty.ProjBerk.bj621PsiShift, EnvelopeProperty.ProjBerk.exists_homFSData_bj621Psi, EnvelopeProperty.ProjBerk.isPSH_bj621Psi, EnvelopeProperty.ProjBerk.isScaleHomogeneous_bj621Psi, EnvelopeProperty.ProjBerk.antitone_bj621Psi, EnvelopeProperty.ProjBerk.iInf_bj621Psi, EnvelopeProperty.ProjBerk.bj621Psi_le, EnvelopeProperty.ProjBerk.bj621Time_lt_one, EnvelopeProperty.ProjBerk.tendsto_bj621Time, EnvelopeProperty.ProjBerk.bj621PsiShift_eq, EnvelopeProperty.ProjBerk.strictMono_bj621PsiShift, EnvelopeProperty.ProjBerk.logAbs_X_zero_ordPoint, EnvelopeProperty.ProjBerk.strictMono_bj621PsiShift_ordPoint, EnvelopeProperty.ProjBerk.bj621_counterexample}
+\leanok
+\uses{def:pn-an, def:pn-psh, lem:bj-graded-extension, lem:bj-divisibility}
+\source{fhx-envelope-20261028:rem:BJ-6-21}
+For $n\in\N$ put
+\[
+a_n=\frac{2n+1}{2n+2}=1-\frac1{2(n+1)},\qquad \psi_n=a_n\ell,\qquad t_n=\frac n{n+1}=1-\frac1{n+1},\qquad\psi_n'=\psi_n-t_n\ell
+\]
+(these are the functions $\psi_{n+1}$, $t_{n+1}$ and $\psi'_{n+1}$ of \cite[Remark~7.3]{FHX}). Then:
+\begin{enumerate}
+\item $\psi_n\in\mathcal H_{\mathrm{hom}}(\mathcal O(a_n))$, $\psi_n$ is homogeneous for the scaling action, and $\psi_n\in\PSH(a_n)$;
+\item the sequence $(\psi_n)$ is decreasing, with limit $\ell$;
+\item $t_n\in\Q$, $t_n<1$, $t_n\to1$, and $\psi_n\le t_n\ell$;
+\item at every $v$ with $-\infty<\ell(v)<0$ one has $\psi'_n(v)=\ell(v)/(2n+2)$, and $n\mapsto\psi'_n(v)$ is strictly increasing;
+\item $\ell(v_s)=-s$ for $s\ge0$; in particular $n\mapsto\psi'_n(v_s)$ is strictly increasing for every $s>0$, and $(\psi'_n)$ is not decreasing.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) Let $m=2n+2$ and $s=x_0^{2n+1}$, a form of degree $2n+1=ma_n$. Then $m^{-1}\log|s|=\frac{2n+1}{2n+2}\log|x_0|=\psi_n$, a Fubini--Study function for
+$\mathcal O(a_n)$ with the single weight $0$. Since $\log|x_0|(t\cdot v)=t\log|x_0|(v)$, $\psi_n$ is homogeneous. Fubini--Study functions are psh
+(Definition~\ref{def:pn-psh}).
+
+(2) Since $|x_0|\le1$ on $(\PP^1)^\an$, $\ell\le0$. The coefficients $a_n$ increase, so $a_n\ell$ decreases; where $\ell=-\infty$ all $\psi_n$ are $-\infty$, and
+elsewhere $a_n\ell(v)\to\ell(v)$ because $a_n\to1$. The limit of a decreasing sequence is its infimum.
+
+(3) $a_n-t_n=\frac1{2n+2}>0$ and $\ell\le0$ give $a_n\ell\le t_n\ell$; clearly $t_n=1-\frac1{n+1}\to1$.
+
+(4) If $\ell(v)$ is finite, $\psi'_n(v)=(a_n-t_n)\ell(v)=\ell(v)/(2n+2)$, which strictly increases with $n$ when $\ell(v)<0$.
+
+(5) $|x_0|_{v_s}=e^{-s\operatorname{ord}_{x_0}(x_0)}=e^{-s}$, so $\ell(v_s)=-s$, and (4) applies for $s>0$.
+\end{proof}
+
+\begin{remark}[Remark~7.3 of \cite{FHX}]\label{rmk:r73-bj-6-21}
+\notready
+\uses{prop:r73-p1-example, thm:nn-homogeneous-siu, lem:gl-fixed-coefficient-division}
+\source{fhx-envelope-20261028:rem:BJ-6-21, bj22-trivval:thm:psh12}
+For $j\ge i$ the inequality $\psi'_j\le\psi'_i$ amounts to $\psi_j-\psi_i\le(t_j-t_i)e_E$, which does not follow from $\psi_j\le\psi_i$ when $t_j>t_i$:
+Proposition~\ref{prop:r73-p1-example} gives a decreasing sequence $\psi_n\in\mathcal H_{\mathrm{hom}}(\mathcal O(a_n))$ with limit $e_E$ and rational $t_n\uparrow1$ with
+$\psi_n\le t_ne_E$, for which $\psi_n-t_ne_E$ strictly increases at every divisorial point centred at $E$ (such a point is $c\operatorname{ord}_E=v_c$ with
+$c>0$, where $-\infty<e_E=-c<0$). So the decreasing-limit property cannot be applied to
+the net $\psi_i-t_ie_E$ in the proof of \cite[Theorem~6.21]{BJ22}. Theorem~\ref{thm:nn-homogeneous-siu} divides only with a fixed coefficient
+(Lemma~\ref{lem:gl-fixed-coefficient-division}) and treats the passage $t\uparrow1$ as an increasing limit, through the envelope property at ample classes; it does
+not use \cite[Theorem~6.21]{BJ22}, nor its consequences \cite[Corollaries~6.22, 6.41 and Theorems~6.31, 6.35, 6.40]{BJ22}.
+\end{remark}

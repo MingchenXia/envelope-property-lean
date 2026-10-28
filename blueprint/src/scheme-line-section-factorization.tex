@@ -1,0 +1,39 @@
+\section{Actual original section relations through a genuine scheme factor}
+
+\begin{theorem}[Whole original sections retain a literal scheme factorization]
+\label{thm:fc-line-section-factorization}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionFactorization.pullbackSectionHom_congr, EnvelopeProperty.SchemeLineSectionFactorization.pullbackSectionHom_factor, EnvelopeProperty.SchemeLineSectionFactorization.isIso_pullbackSectionHom_factor}
+For actual scheme maps $g:B\to C$, $b:C\to D$, and
+$f=g\circ b$, the native original section pullback along $f$
+is exactly the iterated original section pullback along $b$ and
+$g$, under the genuine original pullback composition comparison.
+An actual local section isomorphism remains an isomorphism after
+this original factor pullback.
+\end{theorem}
+\begin{proof}
+The native section pullback includes the genuine pullback unit
+isomorphism. Its already proved composition identity, followed by
+the native congruence identity for equal scheme maps, gives the
+stated entire equality. Pullback and native composition comparisons
+preserve actual isomorphisms, proving the last assertion.
+\end{proof}
+
+\begin{theorem}[The same original scalar section relation survives the factor]
+\label{thm:fc-line-section-factor-scalar-relation}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionFactorization.pullbackSectionHom_precomp_scalar, EnvelopeProperty.SchemeLineSectionFactorization.factor_scalar_relation}
+\uses{thm:fc-line-section-factorization}
+If two original pulled sections on $C$ satisfy
+$s=r\,t$ for an actual original $r\in\Gamma(C,O_C)$, their
+original pullbacks along the same actual factor satisfy
+$f^*s=g^*(r)\,f^*t$ as whole original module morphisms on $B$.
+\end{theorem}
+\begin{proof}
+Functoriality takes the whole original scalar composition to its
+actual pullback composition. Native unit-scalar compatibility
+identifies the pulled scalar with the literal original ring map
+applied to $r$. Compose with the preceding genuine factorization
+comparison; associativity yields the claimed whole original
+relation without introducing a new local-frame comparison.
+\end{proof}

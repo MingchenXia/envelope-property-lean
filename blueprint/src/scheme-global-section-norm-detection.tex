@@ -1,0 +1,46 @@
+\section{True original model norms detect every whole original line section}
+\label{sec:scheme-global-section-norm-detection}
+
+\begin{theorem}[Actual trivial native points and the zero global-section norm]
+\label{thm:scheme-original-trivial-points-section-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormDetection.trivialPoint,EnvelopeProperty.SchemeGlobalSectionNormDetection.trivialPoint_support,EnvelopeProperty.SchemeGlobalSectionNormDetection.globalSectionNorm_zero}
+\leanok
+\uses{scheme:relative-valued-points,thm:scheme-global-section-model-norm-isometry}
+Every actual original scheme point over a field has a genuine relative native
+point with the same support and trivial valuation on its actual residue field.
+On an original proper model, the true model norm of the original zero global
+line section is zero at every actual original native point.
+\end{theorem}
+\begin{proof}
+The actual original field-to-residue-field coefficient map is injective, so
+trivial residue valuation restricts to the same original trivial base valuation.
+The original zero section has zero section-unit morphism. Actual pullback
+preserves this zero morphism, and evaluation at the original unit is zero.
+The genuine original model line norm detects the zero fibre section.
+\end{proof}
+
+\begin{theorem}[Every original nonzero whole section is detected by its true generic-point norm]
+\label{thm:scheme-original-global-section-norm-detection}
+\lean{EnvelopeProperty.SchemeGlobalSectionNormDetection.globalSectionNorm_trivialGenericPoint_eq_one,EnvelopeProperty.SchemeGlobalSectionNormDetection.exists_globalSectionNorm_ne_zero,EnvelopeProperty.SchemeGlobalSectionNormDetection.eq_zero_iff_forall_globalSectionNorm_eq_zero}
+\leanok
+\uses{thm:scheme-original-trivial-points-section-norm,scheme:proper-center-bounded-affine-criterion,sc0-native-line-ratio:all-sections,thm:fc-original-local-section-model-norm}
+For an actual original integral proper scheme and any invertible original line,
+every nonzero entire original global section has true model norm one at the
+original generic point with trivial residue valuation. A whole original section
+is therefore zero exactly when its true original model norm vanishes at every
+actual original native point.
+\end{theorem}
+\begin{proof}
+Choose a genuine original affine line frame near the original generic point.
+All actual regular values are bounded by one at the trivial residue valuation.
+The genuine proper-center bounded-affine criterion therefore places the true
+model center in this actual original affine frame. The true model norm is the
+actual native value of the original local frame coefficient. Faithfulness of
+the original generic-stalk coefficient, derived from integral line geometry,
+makes that coefficient nonzero in the original function field. The original
+residue map at the generic point is injective, since this stalk is a field.
+Its actual trivial residue valuation consequently evaluates the coefficient to
+one. This proves nonzero-section detection. The preceding zero-section theorem
+gives the converse for the entire original native point space. No generic norm,
+nonvanishing, center-matching or analytic-faithfulness certificate is assumed.
+\end{proof}

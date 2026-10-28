@@ -1,0 +1,48 @@
+\section{The actual original multiplier cone ideals satisfy the chart discrepancy bound}
+
+\begin{theorem}[Actual original multiplier cone discrepancy at chart DVR points]
+\label{thm:c0n-original-multiplier-chart-discrepancy}
+\uses{cor:c0n-original-family-chart-estimate,lem:c0n-raw-canonical-cone-generators,lem:c0n-original-native-chart-coefficients,lem:c0n-chart-generator-orders,lem:c0n-chart-obstacle-ideal-order}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.exists_originalMultiplierConeIdeal_chart_le_obstacle_all,EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.exists_originalMultiplierConeIdeal_chart_le_obstacle}
+\leanok
+Assume characteristic zero and the original smooth-chart condition on
+$X$, and let the original obstacle have a real lower bound.
+For every genuine original chart DVR datum $(j,V,b)$ with $b>0$ and the
+actual parameter torus law, there is $A\ge0$, independent of $m$, such that
+for each $m\in\mathbf N$ some $q>0$ satisfies
+\[
+ \phi_{B_m}(v_{j,V,b})\le
+ (m/q)\phi_{J_q(\phi)}(v_{j,V,b})+A.
+\]
+Here $B_m$ is exactly the actual original multiplier cone ideal obtained
+from the full original scheme asymptotic multiplier ideal.  The assertion
+includes index zero and infinite orders of zero polynomial images.
+\end{theorem}
+\begin{proof}
+The actual original family chart estimate supplies a fixed $D\ge0$.
+Put $a=1/b>0$ and $A=aD$.
+For a fixed $m$, this genuine scheme estimate chooses $q>0$ working for
+all original affine sections of the full multiplier ideal.
+Noetherianity selects finite homogeneous members spanning the entire
+canonical native representative of this same whole multiplier ideal.
+Their actual inverse parameter exchanges form finite whole polynomials
+$G$ generating the same original cone ideal exactly.
+The actual native chart membership formula places the inverse chart
+section of every dehomogenized $F\in G$ in the original multiplier ideal.
+Hence the original scheme estimate bounds
+$-a\operatorname{ord}_V(F^{(j)})$ by
+\[
+ (m/q)(-a\operatorname{ord}_V(\mathfrak a_q(U_j)\mathcal O_V))+A.
+\]
+The whole original chart-ideal identity identifies that sequence ideal
+with the dehomogenization of the original obstacle ideal $J_q(\phi)$.
+Its extension is nonzero: the original positive-index generic stalk is
+nonzero, and both actual chart/DVR maps are injective.
+The proved original-generator order lemma therefore bounds its negative
+scaled ideal order by $\phi_{J_q(\phi)}(v_{j,V,b})$.
+Since $m/q\ge0$, every $F\in G$ has the asserted common upper bound.
+The exact whole-ideal chart potential formula takes the finite maximum
+over these actual generators and gives the desired bound for $B_m$.
+The same argument works at $m=0$; zero polynomial images retain order
+$+\infty$ and logarithmic value $-\infty$ throughout.
+\end{proof}

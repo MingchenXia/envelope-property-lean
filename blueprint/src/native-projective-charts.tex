@@ -1,0 +1,110 @@
+\subsection{Actual coordinate charts of the native polynomial Proj scheme}
+\label{subsec:native-projective-charts}
+
+The polynomial ring has its actual total-degree grading over any commutative
+coefficient ring. The affine coordinate ring below is the existing
+$R[U_i:i\ne j]$. We construct genuine homogeneous-localization and actual
+scheme-section comparisons; no chart-algebra certificate is assumed.
+This chapter proves the algebraic scheme and section interfaces. It does not
+yet assert a global comparison with normalized graded seminorm points.
+
+\begin{definition}[Actual degree-zero chart coordinates]
+\label{projective:native-homogeneous-chart-coordinates}
+\lean{EnvelopeProperty.ProjBerk.ProjectiveGrading,
+  EnvelopeProperty.ProjBerk.HomogeneousChartRing,
+  EnvelopeProperty.ProjBerk.homogeneousCoefficientZero,
+  EnvelopeProperty.ProjBerk.homogeneousChartCoefficients,
+  EnvelopeProperty.ProjBerk.homogeneousChartAlgebra,
+  EnvelopeProperty.ProjBerk.homogeneousChartVal,
+  EnvelopeProperty.ProjBerk.homogeneousChartCoordinate,
+  EnvelopeProperty.ProjBerk.homogeneousChartRatioHom,
+  EnvelopeProperty.ProjBerk.homogeneousChartVal_comp_ratioHom}
+\leanok
+\uses{charts:ratio-map}
+For $P=R[X_0,\ldots,X_n]$ with its total-degree grading, let
+$P_{(X_j)}$ be Mathlib's genuine degree-zero homogeneous localization
+away from $X_j$. Constants give its actual $R$-algebra action. The
+map $R[U_i:i\ne j]\to P_{(X_j)}$ sends every $U_i$ to the actual
+homogeneous fraction $X_i/X_j$. Its inclusion into the full ordinary
+localization is the previously proved whole chart ratio homomorphism.
+\end{definition}
+\begin{proof}
+The actual degree-zero graded piece contains every constant polynomial,
+and its coefficient ring homomorphism followed by the homogeneous
+localization coefficient inclusion gives the real action. Each coordinate
+ratio has numerator and denominator both in degree one, so is an actual
+homogeneous-localization element. The polynomial universal property
+constructs the map, preserving every polynomial by its ring-map laws.
+\end{proof}
+
+\begin{theorem}[Genuine homogeneous chart algebra isomorphism]
+\label{projective:native-homogeneous-chart-isomorphism}
+\lean{EnvelopeProperty.ProjBerk.coordinateDehomLocalization,
+  EnvelopeProperty.ProjBerk.coordinateDehomLocalization_algebraMap,
+  EnvelopeProperty.ProjBerk.homogeneousChartDehom,
+  EnvelopeProperty.ProjBerk.homogeneousChartDehom_mk,
+  EnvelopeProperty.ProjBerk.homogeneousChartVal_injective,
+  EnvelopeProperty.ProjBerk.homogeneousChartDehom_comp_ratioHom,
+  EnvelopeProperty.ProjBerk.homogeneousChartRatioHom_comp_dehom,
+  EnvelopeProperty.ProjBerk.homogeneousChartEquiv}
+\leanok
+\uses{projective:native-homogeneous-chart-coordinates,charts:homogeneous-substitution}
+There is an actual $R$-algebra isomorphism
+$P_{(X_j)}\simeq R[U_i:i\ne j]$ sending $F/X_j^d$ to the actual
+$X_j=1$ dehomogenization of each degree-$d$ form $F$.
+\end{theorem}
+\begin{proof}
+Ordinary dehomogenization sends $X_j$ to one, so extends through its
+ordinary localization. Compose this actual localization homomorphism
+with inclusion of the homogeneous degree-zero subring. On the true
+coordinate ratios it recovers $U_i$, so the inverse law on the entire
+affine polynomial ring follows from its universal property.
+
+Every homogeneous-localization element has an actual representative
+$F/X_j^d$ with $F$ homogeneous of degree $d$, by the genuine fraction
+surjectivity theorem. The earlier whole homogeneous scaling identity
+says that substituting ratios into its dehomogenization, followed by
+multiplication by $X_j^d$, gives $F$ in the ordinary localization.
+The denominator is a unit, so this proves the inverse identity on every
+such fraction. The actual homogeneous-localization inclusion is injective,
+yielding the second whole-ring inverse. The argument needs no domain,
+field or nonzero coefficient-ring hypothesis.
+\end{proof}
+
+\begin{theorem}[Actual affine scheme sections on a coordinate open]
+\label{projective:native-scheme-coordinate-sections}
+\lean{EnvelopeProperty.ProjBerk.NativeProjectiveScheme,
+  EnvelopeProperty.ProjBerk.nativeCoordinateOpen,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSchemeIso,
+  EnvelopeProperty.ProjBerk.nativeCoordinateOpen_isAffine,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSchemeIso,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSectionsIso,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSectionsIso,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSectionsIso_hom,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSectionsIso_germ}
+\leanok
+\uses{projective:native-homogeneous-chart-isomorphism}
+The actual scheme $\operatorname{Proj}P$ restricted to the coordinate
+open $D_+(X_j)$ is isomorphic to $\operatorname{Spec}R[U_i:i\ne j]$.
+Its actual local section ring is genuinely isomorphic to that coordinate
+ring, preserving the above homogeneous fractions.
+\end{theorem}
+\begin{proof}
+Mathlib's actual Proj affine-open isomorphism identifies this scheme open
+with the spectrum of the genuine homogeneous degree-zero localization,
+since $X_j$ has positive degree one. Apply Spec to the actual ring
+isomorphism above and compose these genuine scheme isomorphisms.
+Their actual global section maps, combined with the Spec global-section
+isomorphism and the open-scheme global sections isomorphism, give the
+section-ring comparison. This uses the real structure sheaf of Proj.
+
+The defining structure-sheaf compatibility of the actual Proj chart says
+that the Spec global-section map followed by the chart pullback equals
+Mathlib's homogeneous fraction section homomorphism. The open-scheme
+global-section isomorphism cancels its inverse, proving equality of the
+section comparison with that fraction homomorphism on the whole ring.
+Composing with each genuine germ map then gives the localization map into
+the actual projective stalk, using Mathlib's stalk isomorphism. Thus this
+comparison preserves every homogeneous fraction and every such germ; it
+does not merely compare coordinate values.
+\end{proof}

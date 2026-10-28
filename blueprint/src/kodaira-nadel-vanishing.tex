@@ -1,0 +1,146 @@
+\section{Positive Hodge diagonals and the Kodaira--Nadel route}
+
+The positive-twist argument uses the decomposition of Deligne--Illusie
+\cite{DI87}.  For a smooth projective variety of dimension $n$, put
+\[
+ P_t(m):\quad H^{t-i}(X,\Omega_X^i\otimes L^{\otimes m})=0
+ \quad\hbox{for every }0\leq i\leq n,\qquad t>n.
+\]
+Only nonnegative cohomology degrees occur.  Each degree $t-i$ is
+positive, which is essential for the application of Serre vanishing.
+No finite-dimensionality assertion is needed.
+
+\begin{lemma}[Finite type is preserved by tensoring with a line]
+\label{lem:kn-line-tensor-finite-type}
+\lean{EnvelopeProperty.SchemeInvertibleTensorFiniteType.isFiniteType_tensorRight}
+\leanok
+Let $M$ be a quasicoherent finite-type module on a scheme $X$, and let
+$L$ be an invertible module.  Then $M\otimes L$ is of finite type.
+\end{lemma}
+\begin{proof}
+Refine a trivializing cover of $L$ by affine opens.  On each such open
+the restricted module $M$ has a finite generating family.
+Restriction of the tensor product, the chosen line frame and the
+tensor unit comparison identify the restricted $M\otimes L$ with
+the restricted $M$.  Transport its finite generating family through
+this isomorphism.  These are finite local generators on an actual
+affine open cover of $X$.
+\end{proof}
+
+\begin{theorem}[Serre vanishing with an arbitrary coherent fixed factor]
+\label{thm:kn-coherent-ample-serre}
+\lean{EnvelopeProperty.SchemeAmpleCoherentSerreVanishing.exists_sheafCohomology_bound}
+\uses{lem:kn-line-tensor-finite-type,thm:fc-closed-projective-serre-vanishing}
+\leanok
+Let $X$ carry a geometrically ample invertible module $L$ over a
+noetherian ring, and let $M$ be a quasicoherent finite-type module.
+There is an integer $N$ such that
+$H^q(X,L^{\otimes m}\otimes M)=0$ for every $m\geq N$ and every $q>0$.
+\end{theorem}
+\begin{proof}
+Choose $r>0$ and a closed projective embedding such that the pullback
+of $\mathcal O(1)$ is $L^{\otimes r}$.  For each $0\leq a<r$, the
+module $M\otimes L^{\otimes a}$ is quasicoherent and of finite type.
+Closed-projective Serre vanishing gives a threshold $N_a$ for that
+module, simultaneously in every positive cohomology degree.  Put
+$T=\max_a N_a$.  If $m\geq rT$, write $m=a+rd$, where $0\leq a<r$
+and $d\geq T$.  The tensor-power and embedding comparisons identify
+the corresponding Serre twist with $L^{\otimes m}\otimes M$.
+Transport vanishing through this module isomorphism.
+\end{proof}
+
+\begin{corollary}[One bound for a finite family]
+\label{cor:kn-finite-family-serre}
+\lean{EnvelopeProperty.SchemeAmpleCoherentSerreVanishing.exists_uniform_sheafCohomology_bound}
+\uses{thm:kn-coherent-ample-serre}
+\leanok
+For a finite family of quasicoherent finite-type modules $M_i$, one
+threshold $N$ annihilates every $H^q(X,L^{\otimes m}\otimes M_i)$
+for every $i$, every $m\geq N$, and every $q>0$.
+\end{corollary}
+\begin{proof}
+Apply the theorem to each member and take the maximum of the finitely
+many resulting thresholds.  Every exponent beyond this maximum is
+beyond the threshold for each member.  For an empty family take zero.
+\end{proof}
+
+\begin{lemma}[Finite type of the actual exterior cotangent sheaves]
+\label{lem:kn-exterior-finite-type}
+\lean{EnvelopeProperty.Vanishing.SmoothExteriorFiniteType.isFiniteType}
+\leanok
+Let $X$ be smooth of relative dimension $n$ over a field.  Every
+exterior cotangent sheaf $\Omega_X^i$, including $i=0$ and $i>n$,
+is of finite type.
+\end{lemma}
+\begin{proof}
+Around each point choose an affine standard-smooth chart.  Its
+cotangent module has a basis indexed by $\{1,\ldots,n\}$.  In exterior
+degree $i$, the wedges indexed by the $i$-element subsets form a
+finite basis.  The affine sheaf comparison and restriction along the
+chart isomorphism transport this basis to a finite free frame on the
+original open site.  Its generator sections are finite local
+generators.  If $i>n$, the indexing set is empty, which gives the zero
+module and is still finite.
+\end{proof}
+
+\begin{corollary}[Eventual vanishing on all upper Hodge diagonals]
+\label{cor:kn-hodge-serre}
+\lean{EnvelopeProperty.Vanishing.HodgeSerreVanishing.exists_bound,EnvelopeProperty.Vanishing.HodgeSerreVanishing.exists_upper_diagonal_bound}
+\uses{cor:kn-finite-family-serre,lem:kn-exterior-finite-type}
+\leanok
+Let $X$ be smooth of dimension $n$ over a field, with an ample line
+$L$.  There is one $N$ such that $P_t(m)$ holds for every $m\geq N$
+and every $t>n$.
+\end{corollary}
+\begin{proof}
+The finitely many modules $\Omega_X^0,\ldots,\Omega_X^n$ are
+quasicoherent and of finite type.  Apply the finite-family Serre bound.
+For $i\leq n<t$, the degree $t-i$ is positive, so each of the groups
+in $P_t(m)$ vanishes.  The same bound works for every $t>n$ because
+the Serre bound already works in every positive cohomology degree.
+\end{proof}
+
+\begin{lemma}[Amplification of an eventual property]
+\label{lem:kn-frobenius-diagonal-iteration}
+\lean{EnvelopeProperty.Vanishing.FrobeniusIteration.of_eventually}
+\leanok
+Let $p\geq2$ and let $P(m)$ be a property of nonnegative integers
+such that $P(pm)$ implies $P(m)$ for every $m>0$.  If $P(m)$ holds
+for every sufficiently large $m$, then it holds for every $m>0$.
+\end{lemma}
+\begin{proof}
+Induction shows that $P(mp^r)$ implies $P(m)$ for every $r$.  Since $p\geq2$,
+induction gives $r+1\leq p^r$.  Choose $r$ at least an eventual
+threshold.  Since $m\geq1$, $mp^r$ is beyond that threshold.
+Thus $P(mp^r)$ holds, and the iterated implication gives $P(m)$.
+\end{proof}
+
+\begin{corollary}[Conditional upper-diagonal descent criterion]
+\label{cor:kn-upper-diagonal-descent}
+\lean{EnvelopeProperty.Vanishing.HodgeSerreVanishing.upper_diagonal_of_descent}
+\uses{cor:kn-hodge-serre,lem:kn-frobenius-diagonal-iteration}
+\leanok
+In the preceding geometric setting, fix $p\geq2$ and $t>n$.
+Assume that $P_t(pm)$ implies $P_t(m)$ for every $m>0$.
+Then $P_t(m)$ holds for every $m>0$.
+\end{corollary}
+\begin{proof}
+The actual Hodge-Serre theorem supplies eventual $P_t(m)$.
+Apply the amplification lemma with precisely the assumed implication.
+\end{proof}
+
+\begin{remark}[Remaining geometric comparisons]
+\label{rmk:kn-geometric-frontier}
+The iteration lemma is independent of Deligne--Illusie.  To
+produce the one-step implication, the geometric proof must identify the cohomology
+of the Frobenius twist with the original cohomology, apply the
+projection formula to the derived decomposition, and prove the
+vanishing of bounded hypercohomology from a zero entire diagonal.
+The decomposition itself is temporarily treated as an input from
+Deligne--Illusie.  These comparisons are separate obligations.
+Passing to characteristic zero further requires spreading out and
+cohomological specialization.  The local and Kawamata--Viehweg
+vanishing arguments and the multiplier-ideal comparison are needed
+before this route proves Nadel vanishing; ordinary eventual Serre
+vanishing alone does not prove it.
+\end{remark}

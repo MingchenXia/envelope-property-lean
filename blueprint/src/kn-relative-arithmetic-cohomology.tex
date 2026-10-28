@@ -1,0 +1,191 @@
+\chapter{Relative arithmetic cohomology}
+
+\begin{lemma}[Extensions of flat modules]
+\label{lem:relative-flat-extension}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyFlat.flat_of_flat_submodule}
+\leanok
+Let $N$ be a submodule of an $A$-module $M$. If $N$ and $M/N$ are flat over $A$,
+then $M$ is flat over $A$.
+\end{lemma}
+\begin{proof}
+For an injection $P\to Q$, tensor the short exact sequence
+$0\to N\to M\to M/N\to0$ with $P$ and $Q$. Both resulting rows are exact,
+including at their left ends, because $M/N$ is flat. An element of
+$P\otimes M$ killed in $Q\otimes M$ maps to zero in $P\otimes(M/N)$,
+because $P\otimes(M/N)\to Q\otimes(M/N)$ is injective. It therefore lifts
+to $P\otimes N$. Its image in $Q\otimes N$ is zero by left exactness of
+the lower row. Flatness of $N$ makes its original lift zero. Thus
+$P\otimes M\to Q\otimes M$ is injective for every injection, proving flatness.
+\end{proof}
+
+\begin{lemma}[Flat opcycles]
+\label{lem:relative-flat-opcycles}
+\uses{lem:relative-flat-extension}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyFlat.opcycles_flat}
+\leanok
+Consider a complex $P\xrightarrow f M\xrightarrow g Q$. If its homology,
+$Q$, and $\operatorname{coker}g$ are flat over $A$, then
+$\operatorname{coker}f$ is flat over $A$.
+\end{lemma}
+\begin{proof}
+The image of $g$ is flat, being a submodule of the flat module $Q$ with
+flat quotient. The induced map $\operatorname{coker}f\to Q$ has kernel
+equal to the original homology and image equal to $\operatorname{im}g$.
+Apply the preceding lemma to this kernel and the resulting quotient.
+\end{proof}
+
+\begin{theorem}[Homology base change without finite arithmetic rank]
+\label{thm:relative-flat-homology-base-change}
+\uses{lem:relative-flat-opcycles}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyBaseChange.cokernel_flat,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyBaseChange.preserves_kernel_of_flat_cokernel,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyBaseChange.shortHomologyIso,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyBaseChange.naturalHomologyIso}
+\leanok
+Let $K^\bullet$ be a nonnegative cochain complex of flat $A$-modules.
+Suppose every $H^i(K^\bullet)$ is flat over $A$, and fix $N$ with
+$K^{N+1}=0$. Then for every $A$-algebra $C$ and $0<i\leq N$ the canonical map
+$C\otimes_A H^i(K^\bullet)\to H^i(C\otimes_A K^\bullet)$ is an
+isomorphism.
+\end{theorem}
+\begin{proof}
+The cokernel of $d^N$ is zero. Descending induction using the preceding
+lemma shows that the cokernel of $d^i$ is flat for every $i\leq N$.
+The kernel of each such differential therefore commutes with arbitrary tensor products:
+factor it through its image, and tensor the two short exact sequences,
+whose quotients are flat. Tensor products always preserve cokernels.
+The description of homology as the cokernel of the map into cycles now
+gives the asserted canonical isomorphism.
+\end{proof}
+
+\begin{lemma}[The same two coefficient actions]
+\label{lem:relative-arithmetic-cech-coefficients}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.openSectionsIso,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.termEquiv,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.termEquiv_coordinate,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.termEquiv_differential,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.complexIso,EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCoefficients.homologyIso}
+\leanok
+Let $A\to B$ be a homomorphism, $g:Y\to\operatorname{Spec}B$ a morphism,
+and $M$ a module on $Y$. On the same ordered cover, the Čech complex with
+its original $A$-action is canonically isomorphic to restriction of the
+Čech complex with its original $B$-action. The isomorphism fixes every
+open-section coordinate and commutes with every differential.
+\end{lemma}
+\begin{proof}
+For each open $U$, both section modules have carrier $\Gamma(U,M)$.
+The two $A$-actions agree because the structural map to
+$\operatorname{Spec}A$ is the composite of $g$ and
+$\operatorname{Spec}B\to\operatorname{Spec}A$; naturality of the
+global-sections isomorphism for affine spectra gives the same coefficient
+map $A\to\Gamma(U,\mathcal O_Y)$. The identity maps therefore give linear
+isomorphisms. They commute with restrictions because both restriction
+maps are those of the same original $M$. Taking products over the ordered
+intersections gives the degreewise comparisons, and their compatibility
+with the alternating sums of restrictions gives the complex comparison.
+Restriction of scalars is exact, giving the asserted homology comparison.
+\end{proof}
+
+\begin{lemma}[Relative finite homology and arithmetic flat terms]
+\label{lem:relative-arithmetic-coordinate-complex}
+\uses{lem:relative-arithmetic-cech-coefficients}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyCech.exists_coordinate_complex}
+\leanok
+Suppose $B$ is noetherian, $g:Y\to\operatorname{Spec}B$ is projective,
+the composite $Y\to\operatorname{Spec}A$ is flat, and $M$ is invertible.
+There is a finite ordered affine cover of $Y$ such that its Čech complex
+has flat terms over $A$, finite homology over $B$, and terms zero above
+the cardinality of the cover.
+\end{lemma}
+\begin{proof}
+Choose a closed projective embedding over $B$ and restrict the standard
+coordinate affine cover. Its intersections are affine, since projectivity
+over the affine base makes $Y$ separated. The coordinate Čech finiteness
+theorem applies to the coherent invertible module and yields homology
+finite over $B$. Flatness of $Y/A$ and invertibility of $M$ make its
+sections on each affine intersection flat over $A$. Finite products
+preserve flatness, so the terms are flat. A strictly increasing tuple
+of length exceeding the number of cover members does not exist, making
+every such term zero. The preceding lemma identifies these two coefficient
+structures on the same complex.
+\end{proof}
+
+\begin{lemma}[The original scalar tower comparison]
+\label{lem:relative-arithmetic-scalar-tower-complex}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyLocalization.iteratedShortIso}
+\leanok
+For compatible homomorphisms $A\to T\to C$, iterated scalar extension of
+an original three-term complex is canonically isomorphic to its direct
+scalar extension from $A$ to $C$.
+\end{lemma}
+\begin{proof}
+On every original module $V$, the canonical map
+$C\otimes_T(T\otimes_A V)\to C\otimes_A V$ sends
+$c\otimes(t\otimes v)$ to $ct\otimes v$. Its inverse sends
+$c\otimes v$ to $c\otimes(1\otimes v)$. Tensor balancing verifies that
+both maps are well defined; their composites are identities on pure
+tensors and hence on all tensors by additivity. Both maps commute with
+each original differential, as follows by applying the differential to
+$v$ in these same pure-tensor formulas. They therefore give the stated
+whole-complex isomorphism.
+\end{proof}
+
+\begin{lemma}[Flat scalar extension of native homology]
+\label{lem:relative-arithmetic-flat-scalar-homology}
+\uses{thm:relative-flat-homology-base-change}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyLocalization.flatHomologyIso}
+\leanok
+If $T$ is flat over $A$, then native homology of any original nonnegative
+cochain complex $K$ commutes with scalar extension to $T$, with its
+literal original coefficient action.
+\end{lemma}
+\begin{proof}
+Tensoring with the flat $A$-module $T$ preserves kernels. Tensor right
+exactness preserves cokernels. Apply these two facts to the original
+three-term complex in each degree, describing homology as the cokernel
+of the original incoming map into its kernel of the outgoing map.
+Every map is the scalar extension of the same original linear map,
+so the resulting comparison is the native homology comparison.
+\end{proof}
+
+\begin{theorem}[A free scalar fibre detects native homology]
+\label{thm:relative-arithmetic-free-scalar-homology}
+\uses{thm:relative-flat-homology-base-change,lem:relative-arithmetic-scalar-tower-complex,lem:kn-arithmetic-free-fibre-detection}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyLocalization.natural_homology_isZero_of_free_scalar_fibre}
+\leanok
+Let $K$ be a nonnegative complex of flat $A$-modules, with $K^{N+1}=0$.
+Suppose that all native homology of $T\otimes_A K$ is free over $T$.
+For compatible scalar towers $A\to T\to C$ and $A\to T\to F$ with
+$C\ne0$, if $H^j(C\otimes_A K)=0$ for $0<j\leq N$, then
+$H^j(F\otimes_A K)=0$.
+\end{theorem}
+\begin{proof}
+The extended complex has flat terms over $T$, flat homology because its
+homology is free, and zero term in degree $N+1$. Bounded homology base
+change and the scalar tower comparison identify the stipulated zero
+group with $C\otimes_T H^j(T\otimes_A K)$. A free module whose extension
+to the nonzero ring $C$ is zero has empty basis and is zero. Its extension
+to $F$ is therefore zero. Apply the same bounded homology and scalar
+tower comparisons to identify this zero module with the asserted actual
+$F$-scalar homology.
+\end{proof}
+
+\begin{lemma}[The actual Čech free Witt point]
+\label{lem:relative-arithmetic-cech-free-witt-point}
+\uses{lem:relative-arithmetic-cech-coefficients,lem:relative-arithmetic-flat-scalar-homology,lem:kn-relative-arithmetic-simultaneous-free-witt-point}
+\lean{EnvelopeProperty.Vanishing.RelativeArithmeticCohomologyFreeStage.exists_free_witt_point}
+\leanok
+Let $A$ be a characteristic-zero noetherian domain smooth and of finite
+type over $\mathbf Z$, and let $B$ be a finite-type $A$-algebra. For an
+actual bounded ordered Čech complex with homology finite over $B$, and
+any integer $b$, there is a closed point $P$, a prime $\ell>b$, a finite
+quotient field $A/P$ of characteristic $\ell$, and an actual lift
+$A\to W_2(A/P)$ of the quotient map, such that all native homology
+modules of the same complex extended to $A_P$ are free over $A_P$.
+\end{lemma}
+\begin{proof}
+Restrict the relative $B$-module homology to $A$. Apply simultaneous
+generic freeness and the large-characteristic Witt-point construction
+to the finite family of homology modules in degrees at most the complex
+bound. Localization is flat, so native homology of the same complex
+extended to $A_P$ is its original homology tensored with $A_P$.
+The original two-coefficient comparison and the universal tensor
+description of localized modules identify this with the produced free
+localization of the corresponding $B$-module homology. Beyond the bound,
+the middle Čech term is zero, so its localized homology is zero and free.
+Every scalar map and the Witt reduction equation come from the actual
+simultaneous free-point construction.
+\end{proof}

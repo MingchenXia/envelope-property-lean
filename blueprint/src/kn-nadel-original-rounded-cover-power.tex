@@ -1,0 +1,42 @@
+\section{The actual original rational line on the adapted cover}
+
+\begin{definition}
+\label{def:kn-nadel-original-rounded-cover-line}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalRoundedCoverLine}
+\leanok
+For the original SNC ideal $J=\prod_iI_{D_i}^{b_i}$ and original
+rational $q\geq0$, choose the original adapted root degrees
+$m_i=\operatorname{den}(q)$. Put
+$C=M\otimes\mathcal O(-\lfloor qD\rfloor)$, using the entire intrinsic
+rounded ideal of the original $J$, and
+$r_i=(\operatorname{num}(q)b_i)\bmod\operatorname{den}(q)$.
+The original rational cover line is the actual whole line
+$N=\pi^*C\otimes\prod_iJ_i^{r_i}$.
+\end{definition}
+
+\begin{lemma}
+\label{lem:kn-nadel-original-rounded-cover-power}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalAdaptedRoots.originalRoundedCoverLinePowerIso}
+\leanok
+\uses{def:kn-nadel-original-rounded-cover-line,lem:kn-nadel-whole-rounded-root-line-power,lem:kn-nadel-original-rounded-cleared-line}
+For the same original characteristic-zero adapted cover and every
+$d$ divisible by $m=\operatorname{den}(q)$, there is an actual whole
+module isomorphism
+\[
+ N^{\otimes d}\simeq
+ \pi^*\bigl(M^{\otimes d}\otimes J^{\operatorname{num}(q)(d/m)}\bigr).
+\]
+In particular $N^{\otimes m}\simeq\pi^*(M^{\otimes m}\otimes J^{\operatorname{num}(q)})$.
+The fractional weights, intrinsic rounding and the power comparison are
+all constructed from the original exponent and original SNC ideal.
+\end{lemma}
+\begin{proof}
+The positive denominator $m$ is a unit in the original characteristic-zero
+field. The whole root-line power theorem therefore applies to the same
+original cover, the actual base line $C$ and the derived weights $r_i$.
+It gives $N^{\otimes d}\simeq\pi^*(C^{\otimes d}\otimes K_d(r))$.
+Pull back the preceding whole original rounded-line isomorphism
+$C^{\otimes d}\otimes K_d(r)\simeq M^{\otimes d}\otimes J^{\operatorname{num}(q)(d/m)}$
+and compose the two actual module isomorphisms. For $d=m$, positivity
+of $m$ gives $m/m=1$, yielding the stated special case.
+\end{proof}

@@ -1,0 +1,49 @@
+\section{Fekete convergence when subadditivity begins on a tail}
+
+\begin{lemma}\label{lem:tail-subadditive-arithmetic}
+\leanok
+\lean{EnvelopeProperty.TailSubadditive.apply_mul_add_le}
+Let $u:\mathbf N\to\mathbf R$ and $N\in\mathbf N$ satisfy
+$u_{m+n}\leq u_m+u_n$ for $m,n\geq N$.
+If $n,r\geq N$, then $u_{kn+r}\leq ku_n+u_r$ for every $k\geq0$.
+\end{lemma}
+\begin{proof}
+The case $k=0$ is equality. In the induction step apply tail subadditivity
+to $n$ and $kn+r$, which are both at least $N$, and then use the induction
+hypothesis. No value before the specified tail is used.
+\end{proof}
+
+\begin{lemma}\label{lem:tail-subadditive-eventual-upper-bound}
+\leanok
+\lean{EnvelopeProperty.TailSubadditive.eventually_div_lt_of_div_lt}
+Under the same assumptions, let $n\geq N$, $n>0$. If $u_n/n<L$, then
+$u_p/p<L$ for every sufficiently large $p$.
+\uses{lem:tail-subadditive-arithmetic}
+\end{lemma}
+\begin{proof}
+There are finitely many residue classes modulo $n$. For each $0\leq r<n$
+put $s=Nn+r\geq N$. The previous lemma gives
+$u_{kn+s}/(kn+s)\leq(ku_n+u_s)/(kn+s)$ once the denominator is positive.
+The right side tends to $u_n/n<L$. Translating $k$ by $N$ gives the desired
+eventual estimate on the whole residue class $np+r$. Taking a common bound
+for the finitely many classes proves the assertion.
+\end{proof}
+
+\begin{theorem}\label{thm:tail-subadditive-fekete}
+\leanok
+\lean{EnvelopeProperty.TailSubadditive.tendsto_limit}
+Suppose additionally that $u_n\geq0$ for every $n\geq N$.
+\lean{EnvelopeProperty.TailSubadditive.limit}
+Then $u_n/n$ converges to the finite nonnegative real number
+$\inf\{u_n/n:n\geq\max(N,1)\}$.
+\uses{lem:tail-subadditive-eventual-upper-bound}
+\end{theorem}
+\begin{proof}
+The displayed set is nonempty and bounded below by zero, so its real
+infimum exists and is nonnegative. For every sufficiently large index,
+the normalized value lies in this set and hence is above its infimum.
+Given a real $L$ strictly above the infimum, some member is smaller than
+$L$. Its positive index lies beyond $N$, so the preceding lemma bounds
+all sufficiently large normalized values above by $L$. These two estimates
+are precisely convergence to the infimum in the order topology.
+\end{proof}

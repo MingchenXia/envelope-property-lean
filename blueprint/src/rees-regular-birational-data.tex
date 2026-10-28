@@ -1,0 +1,39 @@
+\subsection{Actual Rees birational data over a regular original generator}
+
+\begin{theorem}[A genuine regular original generator constructs the full birational record]
+\label{scheme:actual-rees-regular-birational-data}
+\uses{scheme:regular-principal-open-dense,scheme:actual-rees-good-open-density,scheme:actual-rees-good-open-isomorphism}
+\lean{EnvelopeProperty.ReesPresentation.generatorPartialIso,
+EnvelopeProperty.ReesPresentation.generatorPartialIso_isOver,
+EnvelopeProperty.ReesPresentation.birationalOver_projection}
+Let $A$ be ANY commutative ring, $(g_i)$ ANY actual family, and suppose the
+ORIGINAL selected $g_j$ is a non-zero-divisor. Then the SAME original Rees
+scheme and $\operatorname{Spec}A$ have genuinely constructed partial-isomorphism
+data, with ACTUAL dense source and target opens. The partial isomorphism is
+over the ENTIRE original projection and the identity of $\operatorname{Spec}A$.
+Consequently those whole original structure maps satisfy Mathlib's genuine
+$\mathrm{BirationalOver}$ predicate. No domain, reducedness, finite family,
+nonzero ring or supplied birational record is required. For a finite family,
+the ALREADY proved properness gives an actual proper birational projection.
+\leanok
+\end{theorem}
+\begin{proof}
+The original good-open lift $\operatorname{Spec}A[1/g_j]\to\operatorname{ReesScheme}(g)$
+is a genuine open immersion. Its exact range is the WHOLE original projection
+preimage of $D(g_j)$. The proved regular-generator density theorem makes this
+actual source open dense. The genuine original localization spectrum map
+$\operatorname{Spec}A[1/g_j]\to\operatorname{Spec}A$ is a true open immersion
+with exact range $D(g_j)$. Original regularity makes its ring map injective,
+so the actual prime-spectrum closure formula proves this real target open dense.
+
+Each of these genuine open immersions has its ACTUAL scheme isomorphism onto
+its actual open range. Compose the inverse of the first with the second to
+construct the whole isomorphism from the real source open to the real target
+open. These opens and their proved density construct the genuine partial iso.
+The true open-range isomorphism inclusion identities, together with the whole
+original good-open coefficient triangle, prove its ENTIRE $\mathrm{IsOver}$
+equation. Its actual witness supplies $\mathrm{BirationalOver}$, rather than
+an assumed generic-point, field, lift or inverse certificate. Every original
+nilpotent and coefficient action is retained; zero-ring and empty-open cases
+are allowed exactly by the genuine dense-open definition.
+\end{proof}

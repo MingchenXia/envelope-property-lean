@@ -1,0 +1,40 @@
+\section{The original rational canonical trace preserves the original differential}
+
+\begin{theorem}[Compatibility on the same entire original generic fiber]
+\label{thm:kn-canonical-original-rational-differential-compatibility}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.differential_comp_genericRationalCanonicalTrace_captured}
+\uses{def:kn-canonical-original-rational-trace,def:kn-canonical-original-generic-comparison,thm:kn-canonical-original-generic-differential-iso}
+\leanok
+Let $\pi:Y\to X$ be the original entire normalized adapted cover, with
+its original smooth integral SNC and tame data. Write
+$\delta:\pi^*\omega_X\to\omega_Y$ for its original canonical differential.
+Let $T_{\mathrm{rat}}:\pi_*\omega_Y\to\gamma_*\gamma^*\omega_X$ be the
+original rational canonical trace. Independently, let
+$R_{\mathrm{rat}}:\pi_*\pi^*\omega_X\to\gamma_*\gamma^*\omega_X$ be
+native restriction to the entire original generic fiber, followed by the
+original cartesian source comparison and the entire generic algebra
+trace with line coefficients. Then
+\[
+  (\pi_*\delta)\,T_{\mathrm{rat}}=R_{\mathrm{rat}}.
+\]
+No inverse differential, finite-cover certificate, trace map or desired
+compatibility equation is supplied by the caller. This is an identity
+of rational maps; it asserts no regular canonical trace.
+\end{theorem}
+\begin{proof}
+The original generic differential is invertible on the same entire
+generic fiber. Its original inverse followed by the native cartesian
+comparison therefore carries that differential to the cartesian
+comparison itself. Naturality of the native module restriction square
+moves the pushed differential through restriction. Apply the entire
+generic pushforward, then the same whole field trace and original line
+projection formula. The resulting composite is exactly the independent
+pulled-line rational trace.
+
+The formal proof retains the compiled original maps and their actual
+instance arguments. Three supporting definitional readbacks inspect
+only existing constant bodies. Ordinary equality reflexivity and
+equality transport give the final proof, which is checked by the normal
+Lean kernel. These adapters add no separate mathematical assertion,
+axiom, replacement instance or result certificate.
+\end{proof}

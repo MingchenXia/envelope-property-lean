@@ -1,0 +1,36 @@
+\section{Original coefficient compatibility of affine pullbacks into the function field}
+\label{sec:scheme-function-field-pullback-coefficients}
+
+\begin{theorem}[Literal native scalar compatibility under the original scheme morphism]
+\label{thm:scheme-function-field-pullback-coefficients}
+\lean{EnvelopeProperty.SchemeFunctionFieldPullbackCoefficients.sectionMap, EnvelopeProperty.SchemeFunctionFieldPullbackCoefficients.genericMap, EnvelopeProperty.SchemeFunctionFieldPullbackCoefficients.genericMap_apply}
+\leanok
+\uses{def:sc0-scheme-sections-function-field-map,thm:affine-function-field-generation}
+\source{bj22-trivval:sec:tc}
+For the actual morphism $f:X\to Y$ over the original field,
+with original coefficient map $q:Y\to\operatorname{Spec}k$,
+the unchanged pullback on sections over every original open
+$V\subset Y$ is a $k$-algebra homomorphism for the original
+coefficient structures induced by $q$ and $q\circ f$.
+If $X$ is integral and $f^{-1}V$ is nonempty, composing this
+same pullback with the actual generic germ gives a
+$k$-algebra homomorphism into the same native $K(X)$.
+Its value on every section is literally that original
+pullback followed by that original generic germ.
+\end{theorem}
+
+\begin{proof}
+The coefficient map on $\Gamma(Y,V)$ is the original map
+$k\simeq\Gamma(\operatorname{Spec}k,\mathcal O)\to\Gamma(Y,V)$.
+Compose it with the actual pullback map to
+$\Gamma(X,f^{-1}V)$. The native composition identity for
+pullback on open sections identifies this composite with
+the coefficient map for the literal composite scheme
+morphism $q\circ f$. Thus the unchanged ring homomorphism
+commutes with the original $k$-actions and is a
+$k$-algebra homomorphism. The actual generic germ is already
+a $k$-algebra homomorphism for this same composite structure
+map. Composing gives the asserted native field map, whose
+pointwise formula is its definition. No independent
+coefficient or function-field comparison is supplied.
+\end{proof}

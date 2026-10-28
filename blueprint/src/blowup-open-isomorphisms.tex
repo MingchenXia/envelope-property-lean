@@ -1,0 +1,93 @@
+\section{Nonempty isomorphism opens in blowup sequences}
+
+\begin{lemma}[Cancellation on an isomorphism open]\label{lem:sc0-open-iso-cancellation}
+\lean{EnvelopeProperty.Char0.isIso_restrict_cancel_right}
+\leanok
+Let $X\xrightarrow{f}Y\xrightarrow{g}Z$ be scheme morphisms and let $U$ be an open
+subset of $Z$. If $g$ and $g\circ f$ are isomorphisms over $U$, then $f$ is an
+isomorphism over $g^{-1}U$.
+\end{lemma}
+\begin{proof}
+Restriction of the composite is the composite of the restrictions. Composing this
+isomorphism on the right with the inverse of the restricted $g$ identifies the
+restriction of $f$ with a composite of two isomorphisms.
+\end{proof}
+
+\begin{lemma}[The final-stage square of a flatly pulled-back sequence]\label{lem:sc0-sequence-last-pullback}
+\lean{EnvelopeProperty.Char0.isPullback_pullbackLastHom,EnvelopeProperty.Char0.isIso_pullback_composite_restrict,EnvelopeProperty.Char0.isOpenImmersion_pullbackLastHom,EnvelopeProperty.Char0.range_pullbackLastHom}
+\leanok
+\uses{lem:sc0-pullback-open-iso}
+Let $S$ be an actual finite blowup sequence over $X$ and let $h:Y\to X$ be flat.
+The actual final-stage morphism from the pulled-back sequence to the original
+sequence fits into a cartesian square with their composite morphisms and $h$.
+Consequently an isomorphism open $U$ for the original composite pulls back to an
+isomorphism open $h^{-1}U$ for the pulled-back composite.
+\end{lemma}
+\begin{proof}
+The stage squares of a flatly pulled-back blowup sequence are cartesian. Take the
+last stage and identify its transported index with the last index of the pulled-back
+sequence. The final assertion follows from the preceding restriction-of-square lemma.
+\end{proof}
+
+\begin{lemma}[The tail over every nonzero ratio chart has a nonempty isomorphism open]\label{lem:sc0-rees-tail-open-iso}
+\lean{EnvelopeProperty.Char0.exists_nonempty_isIso_restrict_rees_tail,EnvelopeProperty.Char0.support_specIdealSheaf,EnvelopeProperty.Char0.basicOpen_le_compl_support,EnvelopeProperty.Char0.isIso_blowUpπ_restrict_basicOpen}
+\leanok
+\uses{lem:sc0-open-iso-cancellation,lem:sc0-rees-open-nonempty,lem:sc0-sequence-last-pullback,lem:sc0-global-affine-rees-cover}
+Let an actual blowup sequence over $\operatorname{Spec}C$, with $C\subseteq K$ a
+subalgebra of a field, be isomorphic over a nonempty open $U$. Write its first
+centre as $(g_1,\ldots,g_n)$. For every $g_i\ne0$, the remaining sequence pulled
+back to the actual ratio chart $\operatorname{Spec}C[g_j/g_i]_j$ is isomorphic over
+a nonempty open of that chart.
+\end{lemma}
+\begin{proof}
+The basic open $D(g_i)$ is nonempty because $C$ is a domain and $g_i\ne0$.
+Irreducibility therefore makes $W=U\cap D(g_i)$ nonempty. Since $g_i$ belongs to
+the centre ideal, $D(g_i)$ is disjoint from its vanishing set, so the first blowup
+is an isomorphism over $W$. The full composite is an isomorphism over $W$ by
+restriction from $U$. Cancel the first blowup to see that the tail is an
+isomorphism over the inverse image of $W$ in the first blowup. Pull back this
+assertion along the actual ratio chart, using the cartesian final-stage square.
+The resulting open is nonempty by injectivity of the inclusion into the ratio
+algebra and the nonemptiness of $W$.
+\end{proof}
+
+\begin{lemma}[Nonempty opens survive ratio charts]\label{lem:sc0-rees-open-nonempty}
+\lean{EnvelopeProperty.Char0.denseRange_specMap_of_injective,EnvelopeProperty.Char0.nonempty_reesTreeChart_preimage,EnvelopeProperty.Char0.nonempty_inf_basicOpen}
+\leanok
+\uses{lem:sc0-actual-rees-chart-cover}
+Let $C\subseteq K$ be a subalgebra of a field, let $g$ be a finite family in $C$,
+and let $i$ be an index. The inverse image of every nonempty open of
+$\operatorname{Spec}C$ in $\operatorname{Spec}C[g_j/g_i]_j$ is nonempty.
+\end{lemma}
+\begin{proof}
+The inclusion of the two subalgebras is injective. Its kernel is therefore zero,
+so the induced spectrum map has dense image. A dense subset meets every nonempty
+open, which gives a point of the asserted inverse image.
+\end{proof}
+
+\begin{lemma}[Restriction of a cartesian square]\label{lem:sc0-pullback-open-iso}
+\lean{EnvelopeProperty.Char0.isIso_restrict_of_isPullback}
+\leanok
+Suppose the square with top map $a:P\to X$, bottom map $h:Y\to Z$, left map
+$b:P\to Y$ and right map $f:X\to Z$ is cartesian. If $f$ is an isomorphism over
+an open $U\subseteq Z$, then $b$ is an isomorphism over $h^{-1}U$.
+\end{lemma}
+\begin{proof}
+Restrict the square to $U$. The resulting square is cartesian: a pair of maps to
+the two restricted factors agreeing over $U$ determines a unique map to $P$ by
+the original pullback property; its composite to $Z$ lands in $U$, so it factors
+uniquely through the corresponding open of $P$. Thus the restricted $b$ is the
+base change of the restricted $f$, and the base change of an isomorphism is an
+isomorphism.
+\end{proof}
+
+\begin{lemma}[A nonempty isomorphism open supplies an actual source point]\label{lem:sc0-open-iso-source-point}
+\lean{EnvelopeProperty.Char0.nonempty_of_isIso_restrict}
+\leanok
+If a scheme morphism is an isomorphism over a nonempty open of its target, its
+source has a point.
+\end{lemma}
+\begin{proof}
+Choose a point of the open and apply the inverse of the restricted isomorphism.
+Its image is a point of the source open and hence a point of the source.
+\end{proof}

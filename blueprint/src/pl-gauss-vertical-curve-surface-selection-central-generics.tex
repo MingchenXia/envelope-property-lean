@@ -1,0 +1,105 @@
+\section{The actual finite central generic-point avoidance family}
+The component index and every point below are constructed from the SAME
+actual original parameter cut. No family, cover, avoidance, finiteness,
+nonemptiness, chosen prime or desired comparison certificate is an input.
+
+\begin{definition}[An original point from the actual reduced component generic point]
+\label{def:pl-gauss-original-component-generic-point}
+\uses{lem:fc-scheme-curve-dimensions}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionCentralGenerics.componentPoint}
+\leanok
+For actual ideal-sheaf data $I$ on $Y$ and an actual irreducible component
+$Z$ of its SAME closed subscheme $K$, give $Z$ its existing reduced
+closed subscheme $D_Z$. Define the original point of $Y$ as
+\[
+ y_Z=(D_Z\hookrightarrow K\hookrightarrow Y)(\eta_{D_Z}),
+\]
+where $\eta_{D_Z}$ is the genuine scheme generic point.
+\end{definition}
+\begin{proof}
+An actual irreducible component is nonempty and closed. Its existing
+vanishing-ideal subscheme is reduced and irreducible, hence integral.
+Its genuine scheme generic point exists by sobriety. Apply the SAME
+original closed immersions to this actual point. This is an original
+point of $Y$, with no supplied representative or genericity witness.
+\end{proof}
+
+\begin{lemma}[A larger actual component generic point avoids the whole original closed curve]
+\label{lem:pl-gauss-original-component-generic-avoids-smaller-closed-scheme}
+\uses{def:pl-gauss-original-component-generic-point,lem:fc-scheme-curve-dimensions,lem:pl-gauss-reduced-original-image-kernel}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionCentralGenerics.componentPoint_notMem_of_dimension_gt}
+\leanok
+For an actual original closed immersion $c:C\hookrightarrow Y$, if
+$\dim C<\dim D_Z$, then $y_Z\notin c(C)$.
+\end{lemma}
+\begin{proof}
+Suppose the actual point $y_Z$ lies in $c(C)$. It lies in the actual
+closed support of $c.\ker$. Pull that closed support back along the
+SAME component inclusion $j:D_Z\hookrightarrow Y$. It contains the
+genuine generic point of the integral $D_Z$, and is closed, so it is
+the whole $D_Z$. Thus the whole original image of $j$ lies in this
+actual kernel support. The ideal/support adjunction and the genuine
+reduced-source image-kernel equality give $c.\ker\subseteq j.\ker$.
+The true closed-immersion lift constructs an actual $h:D_Z\to C$
+with the WHOLE original triangle $c\circ h=j$. Closed-immersion
+cancellation makes this $h$ a closed immersion. Its actual topological
+embedding gives $\dim D_Z\le\dim C$, contradicting the hypothesis.
+Hence the original generic image point avoids the whole original $C$.
+\end{proof}
+
+\begin{theorem}[The original central curve internally gives the finite nonempty generic avoidance family]
+\label{thm:pl-gauss-original-finite-central-generics-outside-curve}
+\uses{def:pl-gauss-original-component-generic-point,lem:pl-gauss-original-component-generic-avoids-smaller-closed-scheme,def:pl-gauss-original-homogeneous-cut,lem:pl-gauss-reduced-original-image-kernel,lem:pl-gauss-original-coefficient-cut-support,thm:pl-gauss-original-parameter-cut-component-dimension,projective:native-polynomial-structure-proper}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionCentralGenerics.central_generics_outside_original_curve}
+\leanok
+Let $Y$ be an actual integral scheme locally of finite type over the
+original field $k$, with an actual closed immersion
+$i:Y\hookrightarrow\mathbf P^n_{k[t]}$ and dominant SAME coefficient
+structure $b:Y\to\operatorname{Spec}k[t]$. Let the actual integral
+original curve $C$ have $\dim C=1$, an original structure
+$q:C\to\operatorname{Spec}k$, and an actual closed immersion
+$c:C\hookrightarrow Y$ with the literal central triangle
+\[
+ b\circ c=0\circ q.
+\]
+Assume $2<\dim Y$. For the SAME actual parameter cut $K$ defined by
+the original constant form $C(t)$, there is an actual CLOSED immersion
+$g:C\hookrightarrow K$ with the WHOLE original triangle to $Y$.
+Its ACTUAL component index $\operatorname{IrrComp}(K)$ is finite and
+NONEMPTY, and EVERY original point $y_Z$ indexed by it lies outside
+$c(C)$. Neither absolute properness of $Y$ over $k$ nor a supplied
+central family is assumed.
+\end{theorem}
+\begin{proof}
+The original central map triangle says that the actual parameter
+vanishes at every original image point of $C$. The proved exact
+coefficient-cut support equality therefore puts $c(C)$ in the SAME
+actual parameter-cut support. Since $C$ is reduced, the support/ideal
+adjunction and its genuine whole image-kernel equality put the actual
+cut ideal inside $c.\ker$. The original closed-immersion lift supplies
+$g$ and its WHOLE triangle, and cancellation makes $g$ closed.
+
+The actual native projective structure over $k[t]$ is proper. Composing
+it with the original closed immersion $i$ makes the SAME coefficient
+structure proper. Its target is Noetherian, so actual finite type
+makes $Y$ locally Noetherian, and quasi-compactness over the actual
+compact affine spectrum makes $Y$ quasi-compact. Hence $Y$ is
+Noetherian. Its SAME actual closed parameter cut is Noetherian as
+well. The genuine Noetherian component theorem therefore makes its
+actual component index finite, internally. The integral $C$ is
+nonempty; its actual image under $g$ is a point of $K$, so the
+component containing that actual point proves the index NONEMPTY.
+
+For every actual indexed component $Z$, the proved actual parameter
+component theorem gives $\dim D_Z+1=\dim Y$. If $\dim D_Z\le1$,
+then $\dim Y\le2$, a contradiction. Thus $\dim C=1<\dim D_Z$.
+The preceding lemma puts the actual original $y_Z$ outside $c(C)$.
+These are all the actual components of the SAME parameter cut, so the
+result is the genuine finite nonempty original-point avoidance family,
+without an incoming finite cover, representative or avoidance input.
+\end{proof}
+
+This actual family is ready for the existing every-large-degree original
+cut producer. Horizontal-component selection, actual coefficient
+dominance, normalization and finite lifted central curves at every
+stage, and iteration to a surface remain subsequent constructions.

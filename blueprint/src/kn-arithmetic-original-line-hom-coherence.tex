@@ -1,0 +1,92 @@
+\section{Actual right evaluation and arithmetic Hom-section coherence}
+
+\begin{lemma}[The native pullback-composition comparison is monoidal]
+\label{lem:kn-original-line-native-pullback-monoidal}
+\lean{AlgebraicGeometry.Scheme.Modules.pullbackComp_hom_isMonoidal}
+\leanok
+For original scheme maps $f:X\to Y$ and $g:Y\to Z$, the actual native
+comparison $f^*g^*\simeq(g\circ f)^*$ preserves the original tensor
+and unit comparisons of module pullback.
+\end{lemma}
+\begin{proof}
+The original module pullbacks are the left adjoints of the original
+direct-image module functors.  Their tensor and unit maps are constructed
+from the corresponding actual scalar-extension maps and their universal
+properties.  The canonical comparison between a composite scalar extension
+and its iterated extension retains the original pure tensors and the original
+unit.  These identities are compatible with restriction and sheafification.
+They therefore identify the canonical left-adjoint comparison with a
+monoidal comparison of the original whole module functors.
+\end{proof}
+
+\begin{lemma}[The original right evaluation respects actual composition]
+\label{lem:kn-original-line-right-evaluation-comp}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.rightPulledEvaluationIso_comp}
+\leanok
+\uses{lem:kn-original-line-native-pullback-monoidal,sc0-hom-section-base-change:right-evaluation}
+Let $A$ be an original invertible module on $Z$.  Under the actual native
+composition comparisons for $A^\vee$ and $A$, the original right evaluation
+pulled along $g\circ f$ equals its successive pullback along $g$ and $f$,
+with the genuine original tensor and unit maps.
+\end{lemma}
+\begin{proof}
+Apply the preceding monoidality to the two original factors $A^\vee,A$.
+The naturality square for their original right evaluation identifies the
+two evaluation morphisms after their tensor maps.  The unit part of
+monoidality identifies their maps to the original unit.  Composing these
+three genuine squares gives the stated equality of whole evaluation
+isomorphisms.  Equivalently, transport an arbitrary pairing by a monoidal
+functor, use monoidal naturality for the composition comparison, and expand
+the tensor and unit of the composite monoidal functor.
+\end{proof}
+
+\begin{lemma}[The original right evaluation uniquely detects the actual dual map]
+\label{lem:kn-original-line-right-dual-unique}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.rightDualPullbackEvaluationIso_unique}
+\leanok
+\uses{sc0-hom-section-base-change:right-evaluation}
+For any original scheme morphism and original invertible $A$, an actual
+map from the pullback of $A^\vee$ to the original dual of the pulled $A$
+which preserves the entire original right evaluation is the constructed
+actual right-dual pullback map.
+\end{lemma}
+\begin{proof}
+Tensor on the right by the actual pulled invertible module.  This is a
+fully faithful functor, derived from original invertibility.  The proposed
+map and the constructed map have the same composite with the genuine
+right evaluation isomorphism.  Cancel that isomorphism, then use the
+faithfulness of tensoring to identify the original whole dual maps.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-original-line-cartesian-detection}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.pullback_map_injective_of_isPullback}
+\leanok
+\uses{thm:kn-original-line-hom-injective}
+Let $p:Y\to\operatorname{Spec}R$ be flat, let $R\hookrightarrow S$ be
+injective, and let $w:W\to Y$ occur in the actual Cartesian square over
+$\operatorname{Spec}S\to\operatorname{Spec}R$.
+For any module $M$ on $Y$ and any invertible module $N$ on $Y$, the actual
+map $\operatorname{Hom}(M,N)\to\operatorname{Hom}(w^*M,w^*N)$ is injective.
+\end{lemma}
+\begin{proof}
+The Cartesian universal property identifies $W$ with the literal fibre
+product $Y\times_R\operatorname{Spec}S$. Pullback composition and the
+projection identity transport equality of maps pulled to $W$ into equality
+on the literal fibre product. Apply the actual original injective-fibre
+detection theorem to the same original invertible target $N$.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-original-line-cartesian-inverse}
+\lean{EnvelopeProperty.Vanishing.ArithmeticOriginalLineHomCoherence.isoOfPulledInverse_of_isPullback}
+\leanok
+\uses{lem:kn-original-line-cartesian-detection}
+In the preceding setting, let $A,B$ be invertible modules and let actual
+maps $a:A\to B$ and $b:B\to A$ have mutually inverse pullbacks by $w$.
+Then $a,b$ themselves are mutually inverse, defining an isomorphism whose
+forward and reverse maps are precisely $a,b$.
+\end{lemma}
+\begin{proof}
+Apply injectivity twice to $ab$ and the identity of $A$, and to $ba$ and
+the identity of $B$. Functoriality supplies the two equalities after
+pullback. This uses the actual two descended maps.
+\end{proof}

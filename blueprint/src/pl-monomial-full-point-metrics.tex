@@ -1,0 +1,53 @@
+\subsection{Original PL metric identities at every true native product point}
+
+\begin{theorem}[Full true monomial-ideal logarithm restriction]
+\label{local:actual-native-product-monomial-log-restriction}
+\lean{EnvelopeProperty.ProjSubvariety.modelIdealLog_nativeProductIdeal_monomial_restriction}
+\leanok
+\uses{local:actual-monomial-model-gauss-restriction, local:actual-product-original-analytic-restriction}
+Let $J$ be any original homogeneous ideal over $k[t]$ with a finite actual
+parameter-monomial generating family. At EVERY true native Gauss-base
+point $y$ of the SAME original variety product, the TRUE center logarithm
+of the original pulled ideal equals its logarithm at the actual Gauss
+lift of the SAME original analytic restriction of $y$. No Gauss-point
+hypothesis on $y$, positivity, or finite-logarithm premise is imposed.
+\end{theorem}
+\begin{proof}
+The native geometric ideal-comap formula identifies the original product
+logarithm at $y$ with the actual ambient polynomial ideal logarithm at
+its whole normalized point. Apply the all-relative-point monomial-ideal
+logarithm theorem. The actual normalized original analytic restriction
+is exactly the restriction used in that theorem by the whole original
+homeomorphism inverse identity. Map the resulting true Gauss polynomial
+point back through the actual whole product isomorphism and the original
+closed inclusion, using the native ideal-comap formula again. This proves
+the identity at all actual points from original generators, not by
+extrapolating a formula known only on Gauss lifts.
+\end{proof}
+
+\begin{theorem}[Actual original PL models valid on all native product points]
+\label{local:actual-pl-all-product-point-monomial-models}
+\lean{EnvelopeProperty.ProjSubvariety.IsPL.exists_allProductPoint_monomial_models}
+\leanok
+\uses{local:actual-pl-finite-monomial-models, local:actual-native-product-monomial-log-restriction}
+For every ORIGINAL PL function $\varphi$ on an original projective
+subvariety $X$ over any field, one can construct $r>0$, an integer $C$,
+and two finitely generated actual vertical homogeneous ideals $I,J$,
+each containing a positive parameter power and each retaining finite
+homogeneous parameter-monomial generators, such that at EVERY actual
+native Gauss-base product point $y$ both TRUE pulled-ideal logarithms
+are finite and
+$r\varphi(\operatorname{res}y)=\log|I|(y)-\log|J|(y)+C$.
+The restriction is the derived SAME original variety point. All ideals,
+presentations, finiteness and the all-point formula are constructed from
+original PL data, without an added metric or monomial certificate.
+\end{theorem}
+\begin{proof}
+Apply the actual original PL monomial model construction, retaining both
+finite generating families and exact whole ideal spans. For every actual
+$y$, apply the preceding true logarithm restriction separately to $I$
+and $J$. Their two logarithms become the actual original Gauss logarithms
+at the derived point $\operatorname{res}y\in X^{\rm an}$. The established
+original finite-logarithm and PL equality formulas at that point prove
+both asserted finiteness and the exact original all-point identity.
+\end{proof}

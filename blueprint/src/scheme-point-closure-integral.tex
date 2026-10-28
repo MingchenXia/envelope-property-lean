@@ -1,0 +1,88 @@
+\section{The actual reduced closure of an original point}
+
+For an arbitrary original scheme $X$ and $\eta\in X$, always use the literal
+native ideal sheaf
+\[
+ I_\eta=\operatorname{vanishingIdeal}
+   \bigl(\overline{\{\eta\}}\bigr).
+\]
+In particular the scheme below is exactly $I_\eta.\mathrm{subscheme}$,
+with its original native closed inclusion. No integral component, scheme-image
+presentation, chosen generic point, or comparison certificate is supplied.
+
+\begin{lemma}[The native vanishing-ideal subscheme is reduced]
+\label{lem:scheme-point-closure-vanishing-reduced}
+\lean{EnvelopeProperty.SchemePointClosureIntegral.isReduced_vanishingIdeal_subscheme}
+\leanok
+For any original closed subset $Z$ of any original scheme $X$, the actual
+subscheme of its native vanishing ideal is reduced.
+\end{lemma}
+\begin{proof}
+Use the native subscheme affine cover, whose chart on an original affine
+open $U$ is exactly the spectrum of
+$\Gamma(U,\mathcal O_X)/I_Z(U)$. The native definition of $I_Z(U)$ is the
+vanishing ideal of the inverse image of $Z$ in that original affine spectrum.
+Mathlib's vanishing-ideal theorem makes this actual ideal radical. Its proved
+quotient criterion therefore makes the actual quotient ring reduced.
+Each original quotient chart is reduced, and the native open-cover criterion
+makes their actual subscheme reduced. No hypothesis on reducedness of $X$
+is needed.
+\end{proof}
+
+\begin{definition}[The original point lifted to its actual reduced closure]
+\label{def:scheme-point-closure-canonical-lift}
+\lean{EnvelopeProperty.SchemePointClosureIntegral.pointClosureLift}
+\leanok
+The point $z_\eta$ of the literal $I_\eta.\mathrm{subscheme}$ is the original
+subtype point $\eta$ with its membership in $\overline{\{\eta\}}$.
+\end{definition}
+\begin{proof}
+The native subscheme has underlying space literally the subtype of the
+support of its ideal sheaf. The native vanishing-ideal support is the original
+closed subset. An original point belongs to the closure of its own singleton,
+so these native facts define the subtype point without choice.
+\end{proof}
+
+\begin{lemma}[The canonical lift maps to the same original point]
+\label{lem:scheme-point-closure-canonical-lift-image}
+\lean{EnvelopeProperty.SchemePointClosureIntegral.pointClosureLift_image}
+\leanok
+\uses{def:scheme-point-closure-canonical-lift}
+The original native inclusion sends $z_\eta$ to $\eta$.
+\end{lemma}
+\begin{proof}
+The native inclusion is literally the subtype value map. Its value on the
+preceding subtype constructor is definitionally the original $\eta$.
+\end{proof}
+
+\begin{theorem}[The same canonical lift is generic]
+\label{thm:scheme-point-closure-canonical-lift-generic}
+\lean{EnvelopeProperty.SchemePointClosureIntegral.isGenericPoint_pointClosureLift}
+\leanok
+\uses{def:scheme-point-closure-canonical-lift,lem:scheme-point-closure-canonical-lift-image}
+The point $z_\eta$ is a generic point of the whole literal
+$I_\eta.\mathrm{subscheme}$.
+\end{theorem}
+\begin{proof}
+The original subtype inclusion is inducing. Its native closure-preimage
+formula computes the closure of $\{z_\eta\}$ as the inverse image of
+$\overline{\{\eta\}}$. Every point of this actual subscheme belongs to that
+same original closure, by its original subtype membership and the native
+vanishing-ideal support identity. The inverse image is therefore the whole
+subscheme, exactly the definition of being its generic point.
+\end{proof}
+
+\begin{theorem}[The actual reduced point closure is integral]
+\label{thm:scheme-point-closure-integral}
+\lean{EnvelopeProperty.SchemePointClosureIntegral.isIntegral_pointClosure}
+\leanok
+\uses{lem:scheme-point-closure-vanishing-reduced,thm:scheme-point-closure-canonical-lift-generic}
+For every original point of any original scheme, the literal
+$I_\eta.\mathrm{subscheme}$ is integral.
+\end{theorem}
+\begin{proof}
+The preceding generic point makes the whole subscheme irreducible,
+by Mathlib's native generic-point theorem. The first lemma makes
+this same actual subscheme reduced. Mathlib's proved criterion
+for an integral scheme now applies to that same subscheme.
+\end{proof}

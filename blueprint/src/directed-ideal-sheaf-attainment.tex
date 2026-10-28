@@ -1,0 +1,29 @@
+\section{Actual global attainment for directed original ideal sheaves}
+
+\begin{theorem}[A genuine directed ideal-sheaf supremum is attained]\label{thm:sc0-directed-original-ideal-sheaf-attainment}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.exists_eq_iSup_of_directed}
+\leanok
+Let $X$ be the original quasi-compact locally Noetherian scheme.
+Every nonempty directed family $(F_a)$ of actual ideal sheaves on
+$X$ has its whole actual global supremum equal to an actual
+constituent $F_c$.
+\end{theorem}
+\begin{proof}
+Compactness extracts an actual finite subcover of the original
+affine open cover. Write its actual affine ranges as $U_i$.
+For each $i$, the original section ring $\Gamma(X,U_i)$ is
+Noetherian. The nonempty set of actual ideals $F_a(U_i)$ therefore
+has a maximal member, say $F_{a_i}(U_i)$. Directedness upgrades
+maximality to a greatest member: for any $a$, take a common
+upper constituent $F_b$ of $F_a$ and $F_{a_i}$. Maximality forces
+$F_b(U_i)=F_{a_i}(U_i)$, so $F_a(U_i)\subseteq F_{a_i}(U_i)$.
+
+Apply directedness finitely many times to the actual indices $a_i$.
+It gives an actual common constituent $F_c$ above all $F_{a_i}$.
+Every $F_a$ is then below $F_c$ on every original affine range
+$U_i$. The actual affine-cover ideal-sheaf order-detection theorem
+gives $F_a\subseteq F_c$ globally. Thus the whole supremum is
+below $F_c$, and the opposite inclusion follows because $F_c$
+is one of its constituents. No maximality or finite cover was
+supplied as an additional hypothesis.
+\end{proof}

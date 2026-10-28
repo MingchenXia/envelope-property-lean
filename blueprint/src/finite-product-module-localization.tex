@@ -1,0 +1,32 @@
+\section{Actual finite products of original module localizations}
+
+\begin{lemma}[A common denominator for the whole finite product]
+\label{lem:finite-product-module-localization}
+Let $I$ be finite, including the empty case, and let $a_i:M_i\to N_i$
+be actual localizations at the SAME multiplicative subset $T$ of a
+commutative ring $A$. Then the actual coordinate map
+\[
+ \prod_i M_i\longrightarrow\prod_i N_i,
+ \qquad (x_i)_i\longmapsto(a_i(x_i))_i
+\]
+is localization at that SAME $T$.
+\lean{EnvelopeProperty.FiniteProductModuleLocalization.piMap,EnvelopeProperty.FiniteProductModuleLocalization.piMap_apply,EnvelopeProperty.FiniteProductModuleLocalization.piMap_isLocalizedModule}
+\leanok
+\end{lemma}
+\begin{proof}
+Each element of $T$ acts invertibly on every actual factor, hence
+on the whole product. Given an original tuple $(y_i)$, choose actual
+numerators $x_i$ and denominators $s_i$ for its finitely many entries.
+The product $s=\prod_i s_i$ is one denominator for the ENTIRE tuple:
+multiply $x_i$ by the product of the remaining $s_j$. If two original
+tuples have the same actual image, choose an annihilating denominator
+for each coordinate and again take their product. This proves the
+three native localization conditions for the actual coordinate map.
+The empty products are one, and the empty tuple is unique, so no
+nonempty-index assumption is needed.
+
+For the whole principal-open section theorem this supplies only the
+finite-product step. The actual affine section maps, coefficient
+restrictions, Cech differential square and global kernel comparison
+still must be constructed and are not replaced by a certificate.
+\end{proof}

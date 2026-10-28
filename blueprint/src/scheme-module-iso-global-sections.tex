@@ -1,0 +1,63 @@
+\section{Whole actual global sections under original scheme and module isomorphisms}
+
+\begin{theorem}\label{thm:actual-module-iso-global-sections}
+\lean{EnvelopeProperty.SchemeModuleIsoGlobalSections.moduleIsoTopEquiv, EnvelopeProperty.SchemeModuleIsoGlobalSections.moduleIsoTopEquiv_apply, EnvelopeProperty.SchemeModuleIsoGlobalSections.moduleIsoTopOverBase, EnvelopeProperty.SchemeModuleIsoGlobalSections.moduleIsoTopOverBase_apply}
+\leanok
+Every actual original module isomorphism on a scheme induces an
+isomorphism of its entire original global-section modules, both over
+the original global function ring and over every actual original
+affine base. The whole map sends each original section to its actual
+module-isomorphism image. No affine, finite-type or quasicoherence
+hypothesis is required.
+\uses{lem:scheme-original-global-section-hom}
+\end{theorem}
+\begin{proof}
+The actual module isomorphism has an isomorphism at every original
+open by applying its two inverse module morphisms there. Take the
+actual top open. Restrict its genuine global-function-ring scalar
+structure along the actual original base coefficient map. The same
+inverse maps remain inverses and retain every original section.
+\end{proof}
+
+\begin{theorem}\label{thm:actual-scheme-iso-pullback-global-sections}
+\lean{EnvelopeProperty.SchemeModuleIsoGlobalSections.pullbackUnitTop_bijective, EnvelopeProperty.SchemeModuleIsoGlobalSections.pullbackUnitTopEquiv, EnvelopeProperty.SchemeModuleIsoGlobalSections.pullbackUnitTopEquiv_apply}
+\leanok
+For an actual original scheme isomorphism $e:Y\simeq X$ and any
+actual original module $M$ on $X$, the actual pullback-adjunction
+unit on the entire original global sections is bijective. Its
+resulting equivalence sends each original section to precisely its
+actual pullback-unit section on $Y$.
+\uses{thm:actual-module-iso-global-sections,lem:fc-original-section-pullback-frame}
+\end{theorem}
+\begin{proof}
+The actual pullback functors of $e$ and its inverse compose to the
+identity through the genuine pullback-composition and identity
+isomorphisms. Thus the original pullback functor is an equivalence.
+Its actual right-adjoint pushforward is consequently an equivalence,
+and the original pullback-pushforward adjunction unit is an
+isomorphism. Its actual top-open component is bijective. Transport
+from the inverse image of the top open to the original top open
+gives exactly the native pullback-unit global section. This
+transport is an identity isomorphism of the original open, so
+bijection is retained. No section-lifting certificate is assumed.
+\end{proof}
+
+\begin{theorem}\label{thm:actual-scheme-module-iso-global-sections}
+\lean{EnvelopeProperty.SchemeModuleIsoGlobalSections.schemeModuleIsoTopEquiv, EnvelopeProperty.SchemeModuleIsoGlobalSections.schemeModuleIsoTopEquiv_apply}
+\leanok
+An actual original scheme isomorphism, followed by an actual
+isomorphism from the original pulled module to a given module,
+induces an equivalence of the two entire original global-section
+sets. On every original section the whole map is the actual
+pullback-unit section followed by the actual module isomorphism.
+\uses{thm:actual-scheme-iso-pullback-global-sections,thm:actual-module-iso-global-sections}
+\end{theorem}
+\begin{proof}
+Compose the preceding actual global-section bijection with the
+actual module-isomorphism global-section equivalence. Both whole
+maps retain every original section by their exact formulas, which
+gives the asserted whole map. This producer compares genuinely
+given scheme and module isomorphisms; the original TC open and
+line-power isomorphisms supplying them are separately derived
+from the original test-configuration data.
+\end{proof}

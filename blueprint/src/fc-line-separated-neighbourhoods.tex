@@ -1,0 +1,59 @@
+\subsection{Separated affinoids for the strong maximum principle}\label{subsec:fc-line-separated-neighbourhoods}
+
+\begin{definition}[Separated presentation and strict core]\label{def:fc-separated-affinoid-core}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsSeparated, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.strictCore}
+\leanok
+\uses{def:fc-standard-affinoid}
+A presentation of an actual standard affinoid is separated if each hole
+centre is strictly inside the outer radius and, for distinct holes,
+each hole radius is strictly smaller than their centre distance.
+Its strict core is the set of actual points satisfying all its defining
+inequalities strictly.
+\end{definition}
+
+\begin{theorem}[Separated actual neighbourhoods]\label{thm:fc-separated-affinoid-basis}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_separated_standardAffinoid_nhds}
+\leanok
+\uses{def:fc-separated-affinoid-core, thm:fc-standard-affinoid-basis,
+  lem:fc-linear-topology}
+Every neighbourhood $N$ of every actual line point $x$ contains the closed
+carrier of an actual separated standard affinoid whose strict core contains
+$x$. This is a construction, not an additional hypothesis on the source
+definition of a standard affinoid.
+\end{theorem}
+
+\begin{proof}
+Choose a finite box in original linear coordinates inside $N$. Between the
+outer coordinate value at $x$ and the smallest permitted upper bound choose
+an outer radius avoiding the finitely many centre distances. For each
+positive lower bound choose a slightly larger radius still strictly below
+that coordinate value at $x$, avoiding all the finitely many distances
+between box centres. Keep zero lower bounds zero. Select maximal members
+of the resulting finite laminar open-disc family. They are disjoint and
+cover all the required excluded discs. The chosen avoidance inequalities
+turn every weak centre-distance bound into a strict one. The original
+point satisfies every resulting defining inequality strictly, and the
+closed carrier remains in the original coordinate box.
+\end{proof}
+
+\begin{lemma}[The connected core approaches every actual boundary]\label{lem:fc-separated-core-connected-boundary}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isPathConnected_strictCore, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.boundary_subset_closure_strictCore}
+\leanok
+\uses{def:fc-separated-affinoid-core, lem:fc-inflation-linear}
+The nonempty strict core of an actual separated standard affinoid is
+path connected. Every actual Gauss boundary point lies in its closure.
+\end{lemma}
+
+\begin{proof}
+Two strict-core points inflate to the same outer-centred Gauss point at a
+radius smaller than the outer radius and larger than both outer coordinate
+values and all hole radii and centre distances. Inflation increases all
+linear coordinates, so both paths remain in the strict core.
+An inner boundary is approached by Gauss points of the same centre at
+radii just above its hole radius and below all other centre distances and
+the outer radius. The outer boundary is approached from radii just below
+the outer radius and above all the finitely many hole radii and centre
+distances. Coincident boundaries and zero-length segments need no
+assumptions here: this separated presentation is constructed solely for
+this argument and is not imposed on arbitrary standard affinoids.
+\end{proof}

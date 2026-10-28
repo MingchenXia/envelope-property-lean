@@ -1,0 +1,203 @@
+\section{The actual bounded canonical map on the whole adapted cover}
+
+The global factorization step reuses the already proved actual
+\nolinkurl{SchemeModuleOpenCoverDetection.factorization_iff}; monicity uses
+\nolinkurl{NadelBlowupCanonicalGluingDescent.tensorIdealMap_mono}.
+No new generic locality result is asserted here.
+
+\begin{lemma}[The actual whole ratio chart lies over the original base]
+\label{lem:kn-nadel-bounded-original-ratio-projection}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalCharts.canonicalChart_over_original}
+The actual canonical whole ratio chart of the original normalization has
+its original projection to the base affine chart given by the SAME native
+coefficient algebra map. The commuting triangle is produced internally,
+without a projection-matching premise.
+\end{lemma}
+\begin{proof}
+Compose the already proved actual canonical-chart triangle over the
+original raw cover with its actual original raw projection. The raw affine
+chart lies over the same original affine base. Commutativity of the
+constructed original coefficient algebra homomorphism identifies the
+remaining composite of affine spectrum maps with the original coefficient
+algebra map. This is the required original triangle.
+\end{proof}
+
+\begin{lemma}[The actual selected root powers divide the original top differential]
+\label{lem:kn-nadel-selected-root-top-factor}
+\uses{lem:kn-global-trace-native-mixed-bounded-wedge}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalSelectedPowers.selectedRootProduct_dvd_activeRootProduct,EnvelopeProperty.Vanishing.NadelBoundedCanonicalSelectedPowers.mixedCoordinateTopDifferential_selected_factor}
+In the SAME entire mixed Kummer algebra, select any injectively indexed
+family of original roots and exponents strictly below their original degrees.
+The product of their actual powers divides the original full active-root
+Jacobian product and hence factors the actual original pulled coordinate
+top form. No unit-factor regularity or desired divisibility is input.
+\end{lemma}
+\begin{proof}
+Each selected active root power divides its same root to exponent $m_i-1$.
+Each inactive root is an actual unit: its positive power is its original
+unit coefficient. Thus its selected power divides one. The original
+injective selection and the ordinary finite-product divisibility theorem
+show that the entire selected product divides the product over all active
+indices; all inactive factors in that latter product equal one. Compose
+this genuine divisibility with the already proved full active-root top
+wedge factor, absorbing the actual remaining factor into its produced
+actual top form. This uses every selected root, including inactive units.
+\end{proof}
+
+\begin{lemma}[The literal whole ratio-chart monomial bounds its original differential]
+\label{lem:kn-nadel-bounded-original-ratio-root-factor}
+\uses{lem:kn-nadel-selected-root-top-factor}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalRatioPowers.canonicalRoundedMonomial_topDifferential_factor}
+On the SAME actual whole original ratio algebra, the original pulled
+coordinate top differential is divisible by the literal whole rounded-ideal
+monomial whenever each original row exponent is less than its original
+root degree. No coefficient-matching or divisibility hypothesis is supplied.
+\end{lemma}
+\begin{proof}
+The original joined-family labels and original SNC coordinate injection
+construct the mixed active set and distinct coordinate columns internally.
+The already proved original ratio-coefficient identity identifies every
+actual coefficient with that exact mixed expression, including every
+inactive unit coefficient. The distinguished original row roots are indexed
+injectively by their original row and selected copy, and their degrees are
+exactly the original row degrees. Apply the selected-root top-form producer
+to these actual coefficients and actual original roots. Its product is
+literally the original whole rounded-ideal chart monomial.
+\end{proof}
+
+\begin{lemma}[The original affine canonical frame retains its original generator]
+\label{lem:kn-nadel-bounded-original-source-frame}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalSourceFrame.baseCanonicalSheafFrame,EnvelopeProperty.Vanishing.NadelBoundedCanonicalSourceFrame.baseCanonicalSheafFrame_inv_one}
+The actual original etale coordinates produce a frame of the entire original
+base canonical sheaf. Its inverse on the actual structure-sheaf unit is the
+SAME ordinary-ring top differential generator, mapped by the original affine
+exterior comparison and the original sheafification unit.
+\end{lemma}
+\begin{proof}
+Use the already constructed affine top exterior frame with the differential
+basis of the original etale coordinates. Its underlying exterior comparison
+is exactly the one in the actual canonical-sections comparison. After this
+common isomorphism, the assertion is naturality of the genuine associated
+sheaf functor under the top-wedge coefficient isomorphism. That coefficient
+sends the original generator to one, whose associated-sheaf section is the
+actual structure-sheaf unit. Apply the inverse of the whole frame. No target
+canonical frame is chosen.
+\end{proof}
+
+\begin{lemma}[Actual affine frame image gives an entire ideal factor]
+\label{lem:kn-nadel-bounded-affine-frame-factor}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalAffineFactor.exists_factor_of_frame_image}
+On an actual affine scheme let the original source $A$ have its actual
+frame $e:A\simeq\mathcal O$, let the target $B$ be invertible, and keep
+an actual whole ideal $I$. If the image of the original source frame under
+the actual map $\delta:A\to B$ equals $r w$ with $r\in I$ and an actual
+section $w$ of $B$, then the entire original map factors through
+$B\otimes I\to B$. No frame of the target is required.
+\end{lemma}
+\begin{proof}
+Regard $r$ as its actual ideal-module section. The genuine tensor of this
+section with $w$ maps to $r w$ under the original tensor-ideal inclusion,
+using actual braiding and the native left unit. Every section of the
+framed original source is its actual scalar coefficient times the same
+frame vector. Thus all actual global images lie in the image of the
+original monic tensor-ideal inclusion. The already proved affine whole-map
+factorization criterion yields the entire original factor. This lemma
+assumes the image bound; the original ramification computation below must
+produce that bound internally.
+\end{proof}
+
+\begin{lemma}[Produce the actual whole-ideal factor on every original ratio chart]
+\label{lem:kn-nadel-bounded-original-ratio-sheaf-factor}
+\uses{lem:kn-nadel-bounded-original-ratio-root-factor,lem:kn-nadel-bounded-original-source-frame,lem:kn-nadel-bounded-affine-frame-factor,lem:kn-global-trace-native-coordinate-wedge}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalRatioSheafFactor.exists_canonicalRoundedIdeal_affine_factor}
+On the actual original canonical normalized ratio chart, construct a factor
+of the original affine canonical differential through the tensor product of
+the actual target canonical sheaf and the pullback of the literal whole
+rounded ideal. The original exponents satisfy only $a_i<m_i$. Neither a
+local factor nor a desired canonical-map or coefficient comparison is input.
+\end{lemma}
+\begin{proof}
+The original etale coordinates internally produce source smoothness and
+the original source canonical frame. The actual whole mixed ratio theorem
+internally gives target smoothness and hence invertibility of its genuine
+canonical sheaf. Native pullback-unit naturality identifies the inverse
+of the pulled source frame on one with the pullback of the original frame
+vector. The original source-frame readback and native coordinate-wedge
+naturality identify its image under the SAME actual canonical differential
+with the sheafification of the original ordinary pulled top form.
+
+The preceding original-ratio root computation factors that actual top form
+by the literal whole rounded monomial. The genuine affine exterior map and
+sheafification unit preserve its actual coefficient action, and the original
+whole rounded-ideal chart theorem places this coefficient in the SAME
+pulled whole ideal. Apply the actual affine frame-image factor theorem.
+All comparisons and the entire local factor have thus been produced from
+the original chart geometry.
+\end{proof}
+
+\begin{lemma}[Transport the same map factor through the original tensor inclusion]
+\label{lem:kn-nadel-bounded-map-factor-transport}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalFactorTransport.pullback_factor_of_compatible}
+For an actual open immersion, compatible isomorphisms of source and target
+and a factor of the same local map through the actual pulled ideal tensor
+give a factor of the same original pulled map. The local factor need not
+be an isomorphism, and no Cartier hypothesis on the ideal is needed.
+\end{lemma}
+\begin{proof}
+Compose the source comparison, the given actual local factor, the inverse
+target comparison tensored with the actual ideal, and the inverse genuine
+open ideal-tensor pullback comparison. Naturality of the tensor-ideal
+inclusion and the original compatible square give the required same-map
+factor equation. This transports an existing factor and does not produce
+the ramification bound.
+\end{proof}
+
+\begin{theorem}[Produce the original bounded canonical factor]
+\label{thm:kn-nadel-original-bounded-canonical-sheaf-factor}
+\lean{EnvelopeProperty.Vanishing.NadelBoundedCanonicalSheafFactor.exists_wholeRoundedIdeal_canonical_factor}
+\uses{lem:kn-nadel-bounded-original-ratio-projection,lem:kn-nadel-bounded-original-ratio-sheaf-factor,lem:kn-nadel-bounded-map-factor-transport,lem:kn-nadel-whole-global-cover-finite-smooth,lem:kn-nadel-whole-rounded-root-chart-generator}
+\leanok
+For the actual original tame smooth adapted normalization $\pi:W\to X$
+and the literal whole root ideal $J_a=\prod_iJ_i^{a_i}$ with $a_i<m_i$,
+construct a map
+\[
+ \pi^*\omega_X\longrightarrow\omega_W\otimes J_a
+\]
+whose composite with the actual whole ideal inclusion is the SAME original
+canonical differential $\pi^*\omega_X\to\omega_W$. Neither local factors,
+a chart cover, a canonical matching equality nor the global factor is a
+caller premise.
+\end{theorem}
+\begin{proof}
+At each original normalization point choose a closed specialization of its
+original base point. The original SNC/empty-row data and the existing
+original framed-coefficient producer internally construct a genuine whole
+canonical ratio chart through that point. Its actual whole $J_a$ is the
+principal ideal of the product of the original distinguished root powers.
+
+The original variable-unit root equation gives a factor of order $m_i-1$
+in each actual pulled coordinate differential, retaining the derivative
+of the unit. The SNC injection places these factors in distinct positions
+of the original coordinate wedge. Actual alternating multilinearity
+therefore yields their entire product in the original pulled top form.
+Since $a_i<m_i$, divide only by the corresponding nonnegative power
+remainders. The original etale coordinate frame generates the whole base
+canonical module. Actual affine canonical-section comparison and native
+differential naturality identify this same top form with the original
+canonical sheaf map on the actual chart. Thus the whole local map factors
+through the actual $J_a$, retaining every branch and disconnected factor.
+
+Original smoothness makes $\omega_W$ invertible, so tensoring the genuine
+ideal-module inclusion by $\omega_W$ is monic. Apply the preceding actual
+open-immersion locality lemma to the internally constructed charts and
+the actual local factors. This produces the requested whole original
+map and its exact differential composite. This argument neither assumes
+a globally normalized trace nor asserts the original base vanishing.
+\end{proof}

@@ -1,0 +1,115 @@
+\section{Canonical quasicoherent affine-cover effacement}
+
+\begin{lemma}[Finite products of quasicoherent modules]
+\label{lem:scheme-quasicoherent-finite-product}
+\lean{EnvelopeProperty.SchemeQuasicoherentAffineEffacement.isQuasicoherent_product}
+\leanok
+Let $X$ be a scheme and $(M_i)_{i\in I}$ a finite family of actual
+quasicoherent $\mathcal O_X$-modules, with $I$ in the same universe as
+$X$. The categorical product $\prod_i M_i$ is quasicoherent.
+\end{lemma}
+\begin{proof}
+Restrict the actual product to each affine open of $X$. Native open
+restriction preserves limits, hence identifies this restriction with
+the product of the restrictions of the original $M_i$. Quasicoherent
+modules on an affine scheme are closed under finite products. Transport
+this property along that comparison, then use the affine-open cover
+criterion for quasicoherence. No affineness hypothesis on $X$ is used.
+\end{proof}
+
+\begin{definition}[The original cover augmentation and its cokernel]
+\label{def:scheme-canonical-affine-effacement}
+\lean{EnvelopeProperty.SchemeQuasicoherentAffineEffacement.E,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.augmentation,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotient,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.π,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.sequence}
+\leanok
+For an original family $U:I\to X.\mathrm{Opens}$, put $j_i:U_i\hookrightarrow X$
+and define
+\[
+ E_U(M)=\prod_{i\in I}(j_i)_*j_i^*M,\qquad
+ a_M:M\longrightarrow E_U(M),\qquad Q_U(M)=\operatorname{coker}(a_M).
+\]
+Here $a_M$ is the native map \texttt{M.toCoverSheaf U}: its $i$th
+component is the original restriction--pushforward adjunction unit.
+Write $\pi_M:E_U(M)\to Q_U(M)$ for the actual cokernel projection.
+The sequence is the actual short complex $(a_M,\pi_M)$.
+These definitions require neither quasicoherence nor geometric hypotheses.
+\end{definition}
+
+\begin{theorem}[A canonical short exact sequence inside quasicoherent modules]
+\label{thm:scheme-affine-effacement-short-exact}
+\lean{EnvelopeProperty.SchemeQuasicoherentAffineEffacement.augmentation_mono,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.E_isQuasicoherent,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotient_isQuasicoherent,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.sequence_shortExact,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.sheafSequence_shortExact}
+\leanok
+\uses{def:scheme-canonical-affine-effacement,lem:scheme-quasicoherent-finite-product}
+Suppose $X$ is separated, $I$ finite, the original $U_i$ are affine
+and cover $X$, and the original $M$ is quasicoherent. Then
+\[
+ 0\longrightarrow M\xrightarrow{a_M}E_U(M)
+ \xrightarrow{\pi_M}Q_U(M)\longrightarrow0
+\]
+is short exact, both $E_U(M)$ and $Q_U(M)$ are quasicoherent, and
+the same actual sequence of underlying additive sheaves is short exact.
+\end{theorem}
+\begin{proof}
+The native cover-augmentation theorem makes this exact $a_M$ monic.
+Since $X$ is separated, each affine-open inclusion $j_i$ is affine:
+its composite with $X\to\operatorname{Spec}\mathbb Z$ is affine,
+and affine morphisms descend through separated postcomposition.
+Restriction preserves quasicoherence and affine pushforward preserves
+quasicoherence. The finite-product lemma therefore applies to $E_U(M)$.
+The native cokernel closure theorem gives quasicoherence of $Q_U(M)$.
+The cokernel complex of a monomorphism is short exact. Finally the
+actual module-to-additive-sheaf functor is exact, so its image of this
+same short complex is short exact.
+\end{proof}
+
+\begin{theorem}[Actual positive cohomology of the effacing module vanishes]
+\label{thm:scheme-affine-effacement-acyclic}
+\lean{EnvelopeProperty.SchemeQuasicoherentAffineEffacement.E_subsingleton_H}
+\leanok
+\uses{thm:scheme-affine-effacement-short-exact,thm:affine-pushforward-cohomology-vanishing}
+Under the preceding original hypotheses, for every $q\ge0$,
+the actual small sheaf-cohomology group $H^{q+1}(X,E_U(M))$ is zero.
+Neither a cohomology-vanishing certificate nor a larger-universe
+cohomology comparison is an input.
+\end{theorem}
+\begin{proof}
+The restriction $j_i^*M$ is quasicoherent on the original affine $U_i$,
+so all its positive cohomology vanishes by affine acyclicity.
+The genuine affine-pushforward comparison transfers this vanishing to
+$(j_i)_*j_i^*M$ on $X$. An order on the finite original index set is
+chosen internally solely to apply that comparison; no order is part
+of the statement. The additive-sheaf functor preserves the actual
+finite product defining $E_U(M)$. Actual small sheaf cohomology also
+preserves finite products. Thus the cohomology in question is
+isomorphic to a finite product of zero groups, and is zero.
+The empty finite index set is included whenever it covers $X$.
+\end{proof}
+
+\begin{theorem}[Whole functoriality for the original augmentation and quotient]
+\label{thm:scheme-affine-effacement-naturality}
+\lean{EnvelopeProperty.SchemeQuasicoherentAffineEffacement.EMap,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.EMap_π,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.EMap_id,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.EMap_comp,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.EFunctor,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.augmentation_naturality,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotientMap,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.π_naturality,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotientMap_id,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotientMap_comp,EnvelopeProperty.SchemeQuasicoherentAffineEffacement.quotientFunctor}
+\leanok
+\uses{def:scheme-canonical-affine-effacement}
+For every actual original morphism $f:M\to N$, the product of the
+restriction--pushforward images of $f$ defines $E_U(f)$ and satisfies
+\[
+ f\,a_N=a_M E_U(f).
+\]
+The induced actual cokernel morphism $Q_U(f)$ satisfies
+\[
+ \pi_M Q_U(f)=E_U(f)\pi_N.
+\]
+Both constructions preserve identities and composition, so they give
+endofunctors on the original category $X.\mathrm{Modules}$. All these
+are whole sheaf morphism identities; no matching hypothesis is supplied.
+\end{theorem}
+\begin{proof}
+Define $E_U(f)$ by the actual product universal property. Its composite
+with each product projection is the corresponding restricted and
+pushforward map. Naturality of each native adjunction unit gives the
+first square after these projections, hence as a whole identity.
+The actual cokernel universal property then defines $Q_U(f)$ and gives
+the second square. Product projections detect the identity and
+composition laws for $E_U$; epimorphic cokernel projections detect
+the same laws for $Q_U$. No quasicoherence or separation is needed
+for this functoriality.
+\end{proof}

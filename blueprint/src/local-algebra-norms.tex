@@ -1,0 +1,137 @@
+\subsection{Scalar norms with genuine nonetale local multiplicities}
+\label{subsec:local-algebra-norms}
+
+The local calculation retains every composition factor. Nilpotent layers
+contribute local module length, and inseparable residue extensions contribute
+their full field degree. The product formula below requires an actual product
+isomorphism into local algebras. A construction of that isomorphism for every
+Artinian algebra is a separate producer, and no arbitrary finite-fibre norm
+classification is claimed in this section.
+
+\begin{theorem}[Determinants on actual local-module composition factors]
+\label{spectrum:local-module-determinant}
+\lean{EnvelopeProperty.det_lsmul_simple_local,
+EnvelopeProperty.det_lsmul_eq_residueNorm_pow_length}
+\leanok
+\uses{spectrum:algebra-norm-base-change}
+Let $E$ be a commutative local algebra over any field $K$ and let $M$
+be an $E$-module of finite length, finite-dimensional over $K$ with compatible
+scalar actions. Multiplication by $b\in E$ on $M$ has determinant
+\[
+ \det_K(b\mid M)=N_{\kappa(E)/K}(\overline b)^{\ell_E(M)}.
+\]
+\end{theorem}
+\begin{proof}
+An actual simple $E$-module is isomorphic to a quotient by a maximal ideal.
+Locality identifies that ideal with the unique maximal ideal, so the module
+is genuinely isomorphic to $\kappa(E)$. Restrict the module isomorphism to
+$K$ and conjugate scalar action: the operator of $b$ becomes multiplication
+by $\overline b$ on this residue field. Its determinant is the residue-field
+norm.
+
+Induct on the genuine finite-length module construction. The zero module
+has determinant one and length zero. In a simple quotient extension
+$0\to N\to M\to Q\to0$, the $E$-submodule $N$ is invariant under $b$.
+All underlying $K$-spaces are finite-dimensional, so the invariant-submodule
+basis and quotient basis give a block triangular multiplication matrix.
+Its determinant is the product of the determinants on $N$ and $Q$.
+The induction hypothesis treats $N$ and the simple-module computation treats
+$Q$. Actual module length is additive in the exact sequence, with
+$\ell_E(Q)=1$, proving the exponent. This argument counts each composition
+factor and uses no reducedness or separability.
+\end{proof}
+
+\begin{theorem}[A finite local algebra's scalar norm and degree]
+\label{spectrum:local-algebra-norm-length}
+\lean{EnvelopeProperty.algebraNorm_eq_residueNorm_pow_length,
+EnvelopeProperty.finrank_eq_length_mul_residue_finrank}
+\leanok
+\uses{spectrum:local-module-determinant}
+For every finite-dimensional commutative local $K$-algebra $E$,
+\[
+ N_{E/K}(b)=N_{\kappa(E)/K}(\overline b)^{\ell_E(E)},
+ \qquad
+ \dim_K E=\ell_E(E)[\kappa(E):K].
+\]
+\end{theorem}
+\begin{proof}
+Finiteness over the field makes $E$ Noetherian and Artinian as an
+$E$-module, hence of finite length. Its multiplication determinant is its
+algebra norm, so the preceding theorem applied to the regular module gives
+the first identity.
+
+For the second, the actual local-ring length restriction theorem gives
+\[
+ \ell_K(E)=\ell_E(E)\ell_{\kappa(K)}(\kappa(E)).
+\] The canonical map
+$K\to\kappa(K)$ is surjective because $K$ is already a field, so restriction
+along this surjection preserves the residue-module length. Length of a
+finite-dimensional vector space is its dimension. Taking finite natural
+lengths yields the stated equality. Thus the local exponent times the
+actual residue degree recovers the whole dimension, including nilpotent
+layers and inseparable residue extensions.
+\end{proof}
+
+\begin{theorem}[Complete-field scalar norms including inseparability]
+\label{spectrum:inseparable-scalar-field-norm}
+\lean{EnvelopeProperty.valuation_algebraNorm_eq_pow_of_finite}
+\leanok
+\uses{spectrum:complete-norm-extension}
+Let $H$ be a complete ultrametric normed field, $L/H$ any finite field
+extension, and let $w$ explicitly extend the norm of $H$. Then
+\[
+ |N_{L/H}(b)|=w(b)^{[L:H]}.
+\]
+No separability or infinitude hypothesis is needed.
+\end{theorem}
+\begin{proof}
+Extend the norm of $H$ to an algebraic closure $\Omega$. Let $F=H(b)$.
+The genuine power basis of $F$ identifies each root of the minimal
+polynomial of $b$ in $\Omega$ with an $H$-embedding $F\to\Omega$ taking its
+generator to that root. Complete-field norm uniqueness identifies every
+root value with $w(b)$.
+
+The exact scalar norm formula is the product of the minimal-polynomial
+root multiset raised to $[L:F]$. Preserve that multiset with all of its
+repetitions: even for inseparable polynomials its cardinality, after
+splitting in $\Omega$, is the minimal-polynomial degree $[F:H]$.
+Multiplicativity thus gives $w(b)^{[F:H][L:F]}$, and genuine tower
+dimension gives $[L:H]$. This computation explicitly retains the
+inseparable multiplicities rather than counting distinct embeddings of $L$.
+\end{proof}
+
+\begin{theorem}[Valued local factors and their actual multiplicities]
+\label{spectrum:nonetale-local-valued-norm}
+\lean{EnvelopeProperty.valuation_algebraNorm_eq_pow_of_local,
+EnvelopeProperty.valuation_algebraNorm_eq_prod_of_localAlgEquiv}
+\leanok
+\uses{spectrum:local-algebra-norm-length,spectrum:inseparable-scalar-field-norm}
+Let $E$ be finite local over a complete ultrametric field $H$, and prescribe
+an extending valuation $w$ on its actual residue field. Then
+\[
+ |N_{E/H}(b)|=w(\overline b)^{\ell_E(E)[\kappa(E):H]}.
+\]
+If a commutative $H$-algebra has an actual isomorphism
+$E\simeq\prod_i E_i$ into finite local $H$-algebras and each actual
+$\kappa(E_i)$ carries its extending valuation $w_i$, then
+\[
+ |N_{E/H}(b)|=\prod_i
+ w_i(\overline{b_i})^{\ell_{E_i}(E_i)[\kappa(E_i):H]}.
+\]
+\end{theorem}
+\begin{proof}
+For a local factor, the algebraic norm-length identity replaces its
+norm by the residue-field norm raised to its local length. Apply the
+preceding complete-field norm identity to the residue field, retaining
+its full degree, and multiply the two exponents. This proves the local
+formula with both load-bearing multiplicities.
+
+For the product statement, transport the actual multiplication operator
+through the supplied algebra isomorphism. Norm invariance and the norm of
+a finite product express its scalar norm as the product of the local
+factor norms. Apply the local formula to every factor and use valuation
+multiplicativity. The hypothesis is a genuine whole-algebra isomorphism,
+not a scalar norm identity or a point-value correspondence. No reducedness,
+etaleness, separability or infinitude is imposed, and existence of a
+particular global decomposition is outside this statement.
+\end{proof}

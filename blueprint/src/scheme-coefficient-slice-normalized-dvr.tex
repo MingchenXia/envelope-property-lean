@@ -1,0 +1,19 @@
+\section{The actual DVR at the unchanged normalized coefficient-slice center}
+\begin{lemma}\label{lem:normalized-coefficient-slice-trait-coefficients}
+The actual normalization lift of the original trait to the coefficient slice retains the entire original coefficient-field map.
+\uses{def:scheme-coefficient-slice-normalization}
+\lean{EnvelopeProperty.SchemeCoefficientSliceNormalizedDVR.centerLift_coefficientBaseMap}\leanok
+\end{lemma}
+\begin{proof}
+Compose the whole original polynomial-structure triangle with the coefficient inclusion into the polynomial ring. Evaluation of every constant polynomial is its unchanged original coefficient. This identifies the composite spectrum map with the actual inclusion of the coefficient field into the original DVR.
+\end{proof}
+\begin{theorem}\label{thm:normalized-coefficient-slice-center-dvr}
+Let $X$ be integral and proper over $k[t]$, let $V$ be an essentially finite type DVR inside its native function field $K$, with fraction field $K$, and let its whole trait map to $X$ preserve the original parameter and the canonical generic $K$-point. Suppose the native residue field of the original center has transcendence degree one over $k$. Choose lifts in $V$ of a finite transcendence basis of $\kappa(V)$ over that original center residue field, and let $E\subset K$ be their generated coefficient field. Let $N$ be the actual finite normalization of the actual $E[t]$-coefficient slice, and let $c$ be the center of the unchanged original trait on $N$. Then the native stalk $\mathcal O_{N,c}$ is a DVR.
+\uses{lem:normalized-coefficient-slice-trait-coefficients,thm:scheme-surface-residue-dvr,thm:coefficient-slice-normalized-trait-fraction}
+\lean{EnvelopeProperty.SchemeCoefficientSliceNormalizedDVR.center_stalk_isDiscreteValuationRing}\leanok
+\end{theorem}
+\begin{proof}
+The coefficient slice and its finite normalization are integral and proper over $E[t]$. Thus $N$ is locally of finite type over $E$, and every stalk of $N$ is integrally closed. Its native function field is the unchanged original $K$ as an $E$-algebra. The relative residue transcendence-degree formula, together with the original center degree one, gives $\operatorname{trdeg}_E K=2$.
+
+The actual center residue field of the unnormalized slice has transcendence degree one over $E$, by the finite relative-basis residue extension and the same degree formula. The native residue maps from that slice center into the normalization center and then into $\kappa(V)$ are injective $E$-algebra maps. Both outer fields have transcendence degree one over $E$; the second equality is the same relative residue formula. The intermediate native normalization-center residue field therefore also has degree one. This uses the actual entire trait coefficient square, so every coefficient action and every center agrees with the original maps. Apply the preceding surface theorem to this same point of $N$. No reduction of the special fibre, and no multiplicity-one assertion for its parameter, is used.
+\end{proof}

@@ -1,0 +1,21 @@
+\section{All actual exterior sheaf sections on free affine charts}
+
+\begin{theorem}\label{sc0-affine-exterior-sections:unit}
+\lean{EnvelopeProperty.CanonicalGeometry.affineExteriorSheafificationMap_bijective,EnvelopeProperty.CanonicalGeometry.affineExteriorSheafificationMap_top_bijective,EnvelopeProperty.CanonicalGeometry.affineExteriorSheafificationSectionsIso,EnvelopeProperty.CanonicalGeometry.affineExteriorSheafificationTopSectionsIso}
+\leanok
+\uses{sc0-canonical-port:ext:actual-affine-exterior-sheaf-comparison}
+Let $A$ be an actual $k$-algebra with an actual basis of $\Omega_{A/k}$. For every exterior degree $n$ and every $r\in A$, the actual sheafification unit from the original raw exterior presheaf to the actual exterior cotangent sheaf is bijective on $D(r)$. In particular it is bijective on the whole affine scheme. It therefore gives an actual module isomorphism of the whole section modules.
+\end{theorem}
+\begin{proof}
+The already constructed actual affine sheaf comparison identifies the exterior cotangent sheaf with the associated sheaf of $\bigwedge_A^n\Omega_{A/k}$. On $D(r)$, its composite with the actual sheafification unit is the actual localization comparison between two localizations of this same coordinate module. This comparison is an isomorphism by the actual localization universal property. The affine sheaf comparison is itself an isomorphism on sections. Consequently the unit is injective and surjective: injectivity follows by applying the two isomorphisms; for any target section apply the sheaf comparison, lift by the localization comparison, and cancel the sheaf comparison. The top-open assertion is the case $r=1$, since $D(1)$ is the whole affine scheme. The asserted section isomorphism is this same unit with its proved bijectivity, so its forward map retains every original raw section.
+\end{proof}
+
+\begin{theorem}\label{sc0-affine-exterior-sections:standard-smooth}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothExteriorSheafificationMap_bijective}
+\leanok
+\uses{sc0-affine-exterior-sections:unit}
+For an actual standard-smooth $k$-algebra of relative dimension $d$, every exterior degree $n$ and every principal open have the preceding actual bijective sheafification unit, without an additional supplied basis or frame.
+\end{theorem}
+\begin{proof}
+The native standard-smooth hypothesis produces the actual finite differential basis of rank $d$. Apply the preceding theorem to that internally constructed basis, in the independently given exterior degree $n$.
+\end{proof}

@@ -1,0 +1,74 @@
+\subsection{Images of integral seminorm maps}
+\label{subsec:integral-spectrum-images}
+
+\begin{lemma}[Nonzero completed tensor fibres]
+\label{spectrum:integral-nontrivial-fibre}
+\lean{EnvelopeProperty.Berkovich.Spectrum.nontrivial_fibre}
+\leanok
+\leanok
+\uses{spectrum:residue-field,spectrum:completed-residue-field}
+For an integral homomorphism $A\to B$ of arbitrary commutative rings
+and a seminorm point $x$ of $A$, suppose its support contains the kernel
+of the homomorphism. Then $H(x)\otimes_A B$ is a nonzero ring.
+\end{lemma}
+\begin{proof}
+The support is prime. Lying over gives a prime of $B$ contracting to
+that support, so the ordinary residue-field fibre $\kappa(x)\otimes_A B$
+is nonzero. Extension of scalars from the field $\kappa(x)$ to its
+genuine completed field $H(x)$ is faithfully flat and preserves
+nonzero algebras. Tensor cancellation identifies this nonzero extension
+with $H(x)\otimes_A B$, giving the assertion.
+\end{proof}
+
+\begin{theorem}[Exact image of an integral pullback]
+\label{spectrum:integral-image}
+\lean{EnvelopeProperty.Berkovich.Spectrum.exists_comap_eq,
+EnvelopeProperty.Berkovich.Spectrum.exists_comap_eq_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.exists_comap_eq_iff_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.range_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.comap_surjective_of_isIntegral}
+\leanok
+\leanok
+\uses{spectrum:integral-nontrivial-fibre,spectrum:integral-completed-fibres,
+spectrum:quotient-zero-locus}
+For an integral ring homomorphism $\varphi:A\to B$, a point $x\in\mathcal S(A)$
+is the restriction of a point of $\mathcal S(B)$ if and only if
+$\ker\varphi\subseteq\operatorname{supp}(x)$. Thus the image of
+the integral pullback is the analytic zero locus of $\ker\varphi$.
+If $\varphi$ is also injective, its seminorm pullback is surjective.
+\end{theorem}
+\begin{proof}
+A restricted point vanishes on the kernel by direct evaluation.
+Conversely, the preceding lemma makes the completed tensor fibre
+nonzero, hence it has a maximal ideal. The genuine completed-fibre
+classification supplies a seminorm point lying over $x$ with that
+maximal tensor support. This proves existence with the exact obstruction.
+The pointwise equivalence proves the image formula. For injective
+$\varphi$ the kernel is zero, contained in every support, proving
+surjectivity. This uses actual integral norm-extension existence;
+no unrestricted scalar base-change existence is inferred.
+\end{proof}
+
+\begin{corollary}[Images with an arbitrary prescribed base]
+\label{spectrum:relative-integral-image}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.exists_comap_eq_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.exists_comap_eq_iff_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.range_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.comap_surjective_of_isIntegral}
+\leanok
+\leanok
+\uses{spectrum:integral-image,spectrum:relative}
+For an integral algebra homomorphism over any commutative ring carrying
+any prescribed real seminorm, the image consists exactly of the relative
+points whose support contains its kernel. In particular an injective
+integral algebra homomorphism induces a surjective relative pullback.
+\end{corollary}
+\begin{proof}
+Use the absolute existence theorem over the underlying point $x$.
+The resulting $y$ has the prescribed base values automatically:
+on every base coefficient, algebra-map compatibility and $y|_A=x$
+identify its value with the prescribed value of $x$. Bundle these
+equalities to obtain the relative point. Necessity is unchanged
+under forgetting the base. The image formula and injective case
+then follow exactly as in the absolute construction.
+\end{proof}

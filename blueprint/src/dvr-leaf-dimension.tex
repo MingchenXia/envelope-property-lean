@@ -1,0 +1,45 @@
+\section{The actual leaf and divisorial coordinate dimensions agree}
+
+\begin{lemma}[Intermediate literal algebras have the same actual fraction field]\label{lem:sc0-intermediate-actual-fraction-field}
+\lean{EnvelopeProperty.Char0.isFractionRing_intermediate_subalgebra}
+\leanok
+For literal subalgebras $C\subseteq E\subseteq K$, if $K$ is the actual
+fraction field of $C$, it is also the actual fraction field of $E$.
+\end{lemma}
+\begin{proof}
+The inclusion of $E$ into $K$ is injective. Every actual element of $K$ is
+a quotient of two elements of $C$, hence of their actual images in $E$.
+Thus $K$ has exactly the defining field-of-fractions property for $E$.
+\end{proof}
+
+\begin{lemma}[Actual coordinate ranks agree without a dimension premise]\label{lem:sc0-actual-leaf-dvr-coordinate-index}
+\lean{EnvelopeProperty.Char0.dvrLeafCoordinateIndexEquiv}
+\leanok
+\uses{lem:sc0-intermediate-actual-fraction-field,lem:sc0-etale-differential-basis,lem:c0-dvr-jacobian}
+If an actual leaf algebra $E$ with actual fraction field $K$ has actual
+\'etale coordinates indexed by $\{1,\ldots,n\}$, then any actual divisorial
+DVR coordinate system $(\pi,u)$ for that same $K$ has an index set in
+bijection with $\{1,\ldots,n\}$. The bijection is produced internally.
+\end{lemma}
+\begin{proof}
+The actual localization $E\to K$ is formally \'etale. Base change therefore
+carries the actual \'etale differential basis of $\Omega_{E/k}$ to an actual
+$n$-element basis of $\Omega_{K/k}$. The produced DVR coordinates are a
+transcendence basis of the same field and give another actual basis of this
+same differential space. The dimension theorem for two bases gives an
+actual bijection of their index sets.
+\end{proof}
+
+\begin{lemma}[An actual DVR is an actual valuation subring of its fraction field]\label{lem:sc0-actual-dvr-valuation-subring}
+\lean{EnvelopeProperty.Char0.actualDVRValuationSubring}
+\leanok
+The literal underlying subring of an actual DVR inside its actual fraction
+field is an actual valuation subring of that field.
+\end{lemma}
+\begin{proof}
+A DVR is a valuation ring. For each element of its actual fraction field,
+either that element or its inverse is integral in the localization sense,
+meaning it is the image of an actual element of the DVR. The literal
+inclusion therefore puts either the element or its inverse in the literal
+subring, which is exactly the valuation-subring property.
+\end{proof}

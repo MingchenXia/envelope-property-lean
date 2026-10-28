@@ -1,0 +1,133 @@
+\section{General affine seminorm spectra}\label{sec:spectrum-foundations}
+
+The affine seminorm spectrum in this section is defined for every commutative ring,
+without choosing a coefficient field or a norm on the ring. Its points are real-valued
+multiplicative ultrametric seminorms. For a prescribed seminorm on a coefficient ring,
+the relative spectrum consists of the points restricting to that seminorm.
+For an algebra over a trivially valued field this recovers the affine analytification
+used in \cite[\S2.1]{FHX}. This construction does not impose the boundedness condition
+that accompanies the spectrum of a Banach algebra.
+
+\begin{definition}[Affine seminorm spectrum]\label{spectrum:affine-seminorm}
+\lean{EnvelopeProperty.Berkovich.Spectrum, EnvelopeProperty.Berkovich.Spectrum.ofValuation}
+\leanok
+For a commutative ring $A$, let $\mathcal S(A)$ be the set of functions
+$x\colon A\to\R_{\ge0}$ satisfying $|0|_x=0$, $|1|_x=1$,
+$|ab|_x=|a|_x|b|_x$, and $|a+b|_x\le\max\{|a|_x,|b|_x\}$.
+Every real-valued valuation on $A$ gives such a point by its underlying seminorm.
+\end{definition}
+
+\begin{lemma}[Pointwise topology]\label{spectrum:topology}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isEmbedding_toFun,
+EnvelopeProperty.Berkovich.Spectrum.continuous_abs,
+EnvelopeProperty.Berkovich.Spectrum.continuous_iff}
+\leanok
+\uses{spectrum:affine-seminorm}
+Equip $\mathcal S(A)$ with the coarsest topology making every evaluation
+$x\mapsto|a|_x$ continuous. It is Hausdorff. A map $g$ from a topological
+space into $\mathcal S(A)$ is continuous if and only if every
+$z\mapsto|a|_{g(z)}$ is continuous.
+\end{lemma}
+\begin{proof}
+Embed $\mathcal S(A)$ into the product $\R_{\ge0}^A$ by listing all its values.
+Two seminorms with the same list of values are equal, so this map is injective.
+The induced topology has precisely the asserted characterization of continuity,
+because a map into a product is continuous exactly when all its coordinates are.
+A subspace of a Hausdorff product is Hausdorff.
+\end{proof}
+
+\begin{lemma}[Logarithmic evaluations]\label{spectrum:logarithmic-evaluation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.logAbs,
+EnvelopeProperty.Berkovich.Spectrum.continuous_logAbs,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_mul,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_pow,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_add_le,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_eq_bot_iff,
+EnvelopeProperty.Berkovich.Spectrum.logAbs_ne_top}
+\leanok
+\uses{spectrum:topology}
+The function $\log|a|(x)=\log|a|_x$ is continuous with values in
+$[-\infty,+\infty)$, equals $-\infty$ exactly when $|a|_x=0$, and satisfies
+$\log|ab|=\log|a|+\log|b|$, $\log|a^n|=n\log|a|$, and
+$\log|a+b|\le\max\{\log|a|,\log|b|\}$.
+\end{lemma}
+\begin{proof}
+The extended logarithm is a continuous order-preserving map
+$[0,+\infty]\to[-\infty,+\infty]$. Composing it with evaluation gives continuity.
+Each evaluation is finite, so its logarithm is never $+\infty$; the logarithm is
+$-\infty$ precisely at zero. Applying the product, power, and maximum identities
+for this logarithm to the seminorm axioms gives the asserted formulas.
+\end{proof}
+
+\begin{lemma}[Pullback of seminorms]\label{spectrum:pullback}
+\lean{EnvelopeProperty.Berkovich.Spectrum.comap,
+EnvelopeProperty.Berkovich.Spectrum.comap_val_apply,
+EnvelopeProperty.Berkovich.Spectrum.continuous_comap,
+EnvelopeProperty.Berkovich.Spectrum.comap_id,
+EnvelopeProperty.Berkovich.Spectrum.comap_comp}
+\leanok
+\uses{spectrum:topology}
+For a unital ring homomorphism $\varphi\colon A\to B$, restriction defines
+a continuous map $\varphi^*\colon\mathcal S(B)\to\mathcal S(A)$ with
+$|a|_{\varphi^*y}=|\varphi(a)|_y$. Restriction preserves identity maps and
+reverses composition.
+\end{lemma}
+\begin{proof}
+Composing a seminorm with a unital ring homomorphism preserves each seminorm axiom.
+Its evaluation at $a$ is evaluation at $\varphi(a)$ before restriction, hence is continuous.
+The continuity criterion therefore gives continuity of restriction.
+For the identity homomorphism the evaluation at every $a$ is unchanged.
+For $A\xrightarrow{\varphi}B\xrightarrow{\psi}C$, both restrictions evaluate
+$a$ as $|\psi(\varphi(a))|$, proving equality of the two maps.
+\end{proof}
+
+\begin{definition}[Relative spectrum]\label{spectrum:relative}
+\lean{EnvelopeProperty.Berkovich.relativeLocus,
+EnvelopeProperty.Berkovich.RelativeSpectrum,
+EnvelopeProperty.Berkovich.isClosed_relativeLocus,
+EnvelopeProperty.Berkovich.RelativeSpectrum.self,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isClosedEmbedding_subtypeVal,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_comap}
+\leanok
+\uses{spectrum:pullback}
+Let $R$ be a commutative ring, $v\in\mathcal S(R)$, and $A$ a commutative
+$R$-algebra. The relative spectrum $\mathcal S_v(A)$ is the subspace
+of $\mathcal S(A)$ consisting of the seminorms with
+$|r|_x=|r|_v$ for every $r\in R$. It is closed in $\mathcal S(A)$.
+An $R$-algebra homomorphism $A\to B$ induces a continuous restriction
+$\mathcal S_v(B)\to\mathcal S_v(A)$.
+The prescribed seminorm itself is a point of $\mathcal S_v(R)$.
+\end{definition}
+\begin{proof}
+For each $r\in R$, the equality $|r|_x=|r|_v$ defines a closed subset
+by continuity of evaluation and the Hausdorff property of $\R_{\ge0}$.
+Their intersection is the relative spectrum, proving closedness.
+An $R$-algebra homomorphism preserves the images of scalars, so restriction
+preserves each displayed equality. The restricted map is continuous because
+the unrestricted map is continuous and both relative spectra have the subspace topology.
+The identity map $R\to R$ preserves every evaluation of $v$, yielding the final point.
+\end{proof}
+
+\begin{theorem}[Compatibility with trivial-field analytification]
+\label{spectrum:trivial-field-bridge}
+\lean{EnvelopeProperty.Berk.toSpectrum,
+EnvelopeProperty.Berk.relativeSpectrumHomeomorph,
+EnvelopeProperty.Berk.relativeSpectrumHomeomorph_apply_val,
+EnvelopeProperty.Berk.relativeSpectrumHomeomorph_comap}
+\leanok
+\uses{def:berk,spectrum:relative}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+For a trivially valued field $k$ and a commutative $k$-algebra $A$, the affine
+analytification $(\Spec A)^\an$ is canonically homeomorphic to
+$\mathcal S_{\mathrm{triv}}(A)$. This homeomorphism preserves every seminorm evaluation
+and commutes with restriction along $k$-algebra homomorphisms.
+\end{theorem}
+\begin{proof}
+Both spaces consist of multiplicative ultrametric seminorms on $A$ whose value
+on a nonzero scalar is one. The equality on the zero scalar is automatic because
+seminorms and ring homomorphisms preserve zero. Thus the identity on seminorms
+is a bijection between the two descriptions. Both topologies are the pointwise
+evaluation topology, so the bijection and its inverse are continuous.
+Restriction on both descriptions is composition of the same seminorm with the
+same algebra homomorphism, proving naturality.
+\end{proof}

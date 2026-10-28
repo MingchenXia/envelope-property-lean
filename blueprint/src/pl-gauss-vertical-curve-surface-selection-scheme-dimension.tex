@@ -1,0 +1,100 @@
+\section{Whole dimensions of actual original polynomial-cut components}
+Dimension means the genuine topological or ring Krull dimension of the
+stated original object. No dimension, equidimensionality, nonzero local
+equation, affine quotient or ideal-matching certificate is supplied.
+
+\begin{theorem}[Every original nonempty affine computes the whole integral scheme dimension]
+\label{thm:pl-gauss-original-whole-dimension-equals-affine}
+\uses{lem:fc-scheme-curve-dimensions}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionSchemeDimension.whole_dimension_eq_affine}
+\leanok
+Let $p:Y\to\operatorname{Spec}k$ be an actual locally finite-type
+morphism to a field and assume $Y$ integral. For EVERY actual nonempty
+affine open $U\subseteq Y$,
+\[
+ \dim Y=\dim\Gamma(Y,U).
+\]
+The entire scheme dimension is derived; it is not required to be one
+or given in advance, and $Y$ need not be assumed quasi-compact.
+\end{theorem}
+\begin{proof}
+The genuine affine-coordinate dimension theorem identifies
+$\dim U$ with $\dim\Gamma(Y,U)$, while inclusion of the actual
+subspace $U$ gives the lower bound for $\dim Y$.
+
+For the reverse bound use the genuine scheme-point order description
+of Krull dimension as the supremum of point coheights. At each actual
+point $y$, choose an original affine neighbourhood $V$. The original
+affine chart sends its actual prime corresponding to $y$ back to $y$;
+open immersion preserves its genuine point coheight. That coheight is
+at most the Krull dimension of the actual spectrum of $\Gamma(Y,V)$,
+which equals the ring dimension. The existing actual common-principal-
+open comparison on integral locally finite-type field schemes gives
+$\dim\Gamma(Y,V)=\dim\Gamma(Y,U)$. Bound every original point
+coheight this way and take their supremum. This proves the reverse
+inequality and hence the equality for the whole original scheme.
+\end{proof}
+
+\begin{theorem}[Every actual proper polynomial-cut component has the exact whole dimension]
+\label{thm:pl-gauss-original-polynomial-cut-whole-component-dimension}
+\uses{thm:pl-gauss-original-whole-dimension-equals-affine,lem:fc-scheme-curve-dimensions,projective:normalized-native-support-stalk,thm:pl-gauss-original-cut-affine-principal-equation,thm:pl-gauss-original-cut-component-affine-minimal-prime,thm:pl-gauss-affine-principal-component-dimension,scheme:actual-affine-finite-field-point}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionSchemeDimension.original_cut_component_dimension_add_one}
+\leanok
+Let $Y$ be an actual integral scheme locally of finite type over the
+original field $k$, let $i:Y\to\mathbf P^n_R$ be an actual morphism
+over an arbitrary commutative ring $R$, and let $F$ be an original
+homogeneous form. Suppose the SAME actual pulled cut
+$K=\mathcal K_F.\mathrm{subscheme}$ has proper support in $Y$.
+For EVERY actual irreducible component $Z$ of this SAME $K$, equip
+$Z$ with its existing actual reduced closed subscheme $D$. Then
+\[
+ \dim D+1=\dim Y.
+\]
+The original $D\hookrightarrow K\hookrightarrow Y$ is retained.
+Integrality of $D$ and all affine equations, minimality and dimension
+comparisons are derived internally. No normality, flatness,
+reducedness or Cohen--Macaulay hypothesis on the whole cut is used.
+\end{theorem}
+\begin{proof}
+Choose an actual point $z\in Z$ and its original image $y\in Y$.
+The genuine original projective coordinate opens cover $i(y)$.
+Choose one such coordinate open and an original affine neighbourhood
+$U$ of $y$ inside its inverse image. The actual affine equation
+theorem computes the WHOLE original cut ideal on this exact $U$ as
+$(f)$, where $f$ is the literal original \texttt{appLE} image of the
+existing form section.
+
+This actual $f$ is nonzero. Indeed, if $f=0$, the entire original cut
+ideal on $U$ is zero. The genuine affine support membership criterion
+then puts all of $U$ in the closed original cut support. The nonempty
+open $U$ is dense in the integral $Y$, forcing that closed support to
+be all of $Y$, contrary to the stated properness. Thus local
+nonvanishing is proved from the actual geometry.
+
+The reduced-component construction makes $D$ integral. Write $j$ for
+its SAME original closed immersion into $Y$. The actual component
+affine-minimal-prime theorem gives the literal
+$P=j.\ker.\mathrm{ideal}(U)$ as a minimal prime over the actual
+$(f)$. The original affine ring $A=\Gamma(Y,U)$ is a finite-type
+domain over $k$. Apply the proved exact principal-component dimension
+theorem to these particular original $A,f,P$ to obtain
+$\dim A/P+1=\dim A$.
+
+The original inverse image $V=j^{-1}(U)$ is affine and nonempty:
+the actual chosen point $z$ has an actual lift to the reduced
+component. The SAME original closed-immersion section map
+$A\to\Gamma(D,V)$ is surjective and its actual kernel is precisely
+$P$. Its genuine quotient-kernel ring isomorphism therefore gives
+$\dim\Gamma(D,V)=\dim A/P$. Finally apply the preceding whole
+dimension theorem to the actual $Y,U$ and to the actual locally
+finite-type integral $D,V$, and substitute both original equalities.
+The result is the asserted whole $\dim D+1=\dim Y$, without an
+incoming nonzero equation, selected prime, quotient isomorphism or
+global dimension certificate.
+\end{proof}
+
+This proves whole dimension drop for the SAME actual polynomial cut.
+Constructing and avoiding all actual central-component generic points,
+proving the selected component horizontal from both parameter avoidance
+and its actual central curve, finite normalization at EVERY induction
+stage, and the final surface-family induction remain further work.

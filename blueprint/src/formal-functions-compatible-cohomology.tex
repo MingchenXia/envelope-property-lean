@@ -1,0 +1,43 @@
+\section{Separation of the original compatible cohomology families}
+
+\begin{theorem}[Vanishing of every original compatible cohomology family]
+\label{thm:fc-formal-functions-compatible-cohomology-zero}
+\leanok
+\lean{EnvelopeProperty.FormalFunctionsCompatibleCohomology.compatibleCohomology, EnvelopeProperty.FormalFunctionsCompatibleCohomology.fixedTarget_iInf_eq_bot, EnvelopeProperty.FormalFunctionsCompatibleCohomology.compatible_eq_zero, EnvelopeProperty.FormalFunctionsCompatibleCohomology.compatibleCohomology_eq_bot}
+\uses{lem:fc-formal-functions-fixed-target-stable}
+Let $R$ be Noetherian and $I$-adically complete, and let
+$X\to\operatorname{Spec}R$ admit a projective factorization.  On a
+finite ordered affine cover of the separated scheme $X$, fix $q\geq0$.
+If $b_n\in H^q(I^n\mathcal O_X)$ is compatible under all original
+higher-to-lower transitions, then every $b_n$ is zero.
+\end{theorem}
+\begin{proof}
+Fix $n$.  For every $d\geq0$, compatibility expresses $b_n$ as the
+image of $b_{n+d}$ under the original transition.  Thus $b_n$ belongs
+to every member of the genuine fixed-target image filtration $F^n$.
+That filtration is stable, and its original target cohomology module
+is finite over $R$.  Adic completeness of $R$ implies that $I$ lies
+in the Jacobson radical: for $x\in I$ and $r\in R$, the geometric
+series in $xr$ converges and provides an inverse to $1-xr$.
+Krull intersection therefore separates the $I$-adic filtration on
+the finite target.  Stability gives a uniform shift of $F^n$ inside
+each power of $I$, so the intersection of all its members is zero.
+Consequently $b_n=0$.  As $n$ was arbitrary, the entire original
+compatible family vanishes.
+\end{proof}
+
+\begin{corollary}[Literal positive-order indexing]
+\label{cor:fc-formal-functions-positive-compatible-zero}
+\leanok
+\lean{EnvelopeProperty.FormalFunctionsCompatibleCohomology.compatible_positive_eq_zero}
+\uses{thm:fc-formal-functions-compatible-cohomology-zero}
+Under the same hypotheses, every compatible original family
+$b_n\in H^q(I^{n+1}\mathcal O_X)$ vanishes.
+\end{corollary}
+\begin{proof}
+Fix $n$.  For each $d$, its original compatibility with index $n+d$
+places $b_n$ in the image from power $n+d+1$ to power $n+1$.
+Since $n+d+1=(n+1)+d$, these are exactly the members of the same
+fixed-target filtration at power $n+1$.  Their intersection is zero
+by the separation argument in the theorem, so $b_n=0$.
+\end{proof}

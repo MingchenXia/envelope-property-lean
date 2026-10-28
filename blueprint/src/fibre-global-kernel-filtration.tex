@@ -1,0 +1,58 @@
+\section{Genuine stability and reconstruction of the original global kernel filtration}
+
+\begin{theorem}[The original global-section image filtration is genuinely stable]
+\label{thm:fibre-global-kernel-filtration-stable}
+\uses{lem:fibre-global-kernel-degree-zero-cohomology}
+\lean{EnvelopeProperty.FibreGlobalKernelFiltration.image_transport,EnvelopeProperty.FibreGlobalKernelFiltration.globalSections_finite,EnvelopeProperty.FibreGlobalKernelFiltration.imageFiltration_stable}
+\leanok
+Suppose $R$ is Noetherian and the original morphism $X\to\operatorname{Spec}R$
+has an actual projective factorization. For a finite ordered original
+affine open cover, the whole original global-section module is finite
+over $R$ and its actual infinitesimal kernel filtration $F_d$ is a
+stable $I$-filtration. No finiteness, stability or cohomology comparison
+certificate is supplied.
+\end{theorem}
+\begin{proof}
+The canonical degree-zero comparison identifies the entire actual
+$H^0(I^0)$ with the original global-section module. Actual projective
+coherent cohomology makes this source finite, so the isomorphism proves
+finiteness of the original target. In every order $d$, the proved
+whole inclusion square identifies the image of $H^0(I^d)\to H^0(I^0)$
+with exactly $F_d$: one inclusion follows by applying that square to
+an original class, and the reverse inclusion uses surjectivity of the
+same degree-$d$ kernel comparison.
+
+Genuine finite projective Rees cohomology proves stability of this
+actual cohomology image filtration. Map its eventual equality
+$I G_d=G_{d+1}$ through the original linear global-section isomorphism.
+A linear map carries $I G_d$ to $I$ times the image of $G_d$, because
+it carries every scalar multiple and finite sum to that same scalar
+multiple and sum. The just-proved exact image identification therefore
+changes this equality into $I F_d=F_{d+1}$ for all sufficiently large
+$d$. This is the asserted genuine stability of the original kernel
+filtration.
+\end{proof}
+
+\begin{theorem}[Reconstruction from the actual original kernel quotients]
+\label{thm:fibre-global-kernel-quotient-reconstruction}
+\uses{thm:fibre-global-kernel-filtration-stable,lem:fibre-infinitesimal-global-quotient-transition}
+\lean{EnvelopeProperty.FibreGlobalKernelFiltration.quotientReconstructionEquiv,EnvelopeProperty.FibreGlobalKernelFiltration.quotientReconstructionEquiv_apply}
+\leanok
+If $R$ is also $I$-adically complete, the original quotient map identifies
+$\Gamma(X,\mathcal O_X)$ with all compatible families in the entire
+original quotients $\Gamma(X,\mathcal O_X)/F_{n+1}$. Every coordinate
+of the map is the quotient of the same original global section.
+\end{theorem}
+\begin{proof}
+The preceding theorem makes the original global-section module finite
+and its actual kernel filtration stable. Its zeroth term is the whole
+module. Finite modules over the actual complete Noetherian base are
+complete, and stable filtrations are cofinal with the genuine adic
+filtration. The proved stable-filtration reconstruction theorem
+therefore applies to this very original module and these very kernel
+submodules. Its forward map is, by its construction, the whole family
+of actual original quotients; it recovers every prescribed compatible
+coordinate. This theorem concerns the original kernel quotients;
+identifying their compatible families with arbitrary original
+infinitesimal sections still uses the genuine cohomology obstruction.
+\end{proof}

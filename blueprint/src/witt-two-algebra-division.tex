@@ -1,0 +1,60 @@
+\section{Canonical division in the actual smooth lifted algebra}
+\label{sec:witt-two-algebra-division}
+
+Let $A$ be the original smooth $W_2(k)$-algebra, let
+$B=k\otimes_{W_2(k)}A$, and let $I$ be the kernel ideal of the actual
+original residue algebra map $A\to B$.
+
+\begin{theorem}[Actual residue kernel and canonical prime division]
+\label{thm:witt-two-algebra-kernel-division}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.Kernel,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.primeElement,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.kernel_prime,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.dividePrimeLinear,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.dividePrime_primeElement}
+Every original $x\in I$ is an actual prime multiple $pa$ in $A$.
+Canonical division gives an $A$-linear map $I\to B$ with
+$pa\mapsto\overline a$, for every original $a\in A$.
+The actual residue action is used on the target.
+\uses{thm:witt-two-residue-tensor-exact,thm:witt-two-divided-residue-tensor}
+\end{theorem}
+\begin{proof}
+The actual residue map is exactly $a\mapsto1\otimes a$.
+Smoothness makes the original $A$ flat over $W_2(k)$, so the proved
+actual tensor-reduction exactness says its kernel is precisely the
+original prime image. The native image submodule in the original
+Witt-linear module has the same underlying elements as $I$:
+integer scalar action through $W_2(k)$ is multiplication by the same
+integer image in $A$. Apply the previously constructed canonical
+prime-division equivalence to this original prime image, then its
+actual residue-tensor identification. On every $pa$ it has value
+$1\otimes a=\overline a$.
+
+Additivity is that of the same canonical map on the prime-image module.
+For $b\in A$, write an arbitrary kernel element as $pa$ using actual
+exactness. Its product with $b$ is $p(ba)$, whose divided value is
+$\overline{ba}=\overline b\,\overline a$. The value formula on the
+same original prime multiple therefore proves $A$-linearity on every
+kernel element. No choice of division or coefficient formula is input.
+\end{proof}
+
+\begin{theorem}[Actual coefficient-linear equivalence on the original kernel ideal]
+\label{thm:witt-two-algebra-division-equivalence}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.dividePrime_bijective,EnvelopeProperty.DeligneIllusie.WittTwoAlgebraDivision.dividePrimeEquiv}
+The same original coefficient-linear division map is bijective and
+therefore an actual $A$-linear equivalence $I\simeq B$.
+\uses{thm:witt-two-algebra-kernel-division}
+\end{theorem}
+\begin{proof}
+If two kernel elements have the same divided value, their same original
+prime-image elements have equal value under the genuine already proved
+Witt-linear prime-image equivalence. Injectivity of that equivalence
+makes their original values equal, hence they are the same kernel element.
+For any $b\in B$, actual residue surjectivity gives an original $a\in A$
+with $\overline a=b$. The actual kernel element $pa$ maps to $b$ by the
+proved value formula. This gives surjectivity. The native bijective-linear-map
+construction then gives the claimed actual equivalence with that same
+map as its forward function.
+\end{proof}
+
+This original coefficient-linear division will be applied to differences
+of actual relative Frobenius lifts to construct their native derivation
+homotopies; the homotopies and global descent are further producers.

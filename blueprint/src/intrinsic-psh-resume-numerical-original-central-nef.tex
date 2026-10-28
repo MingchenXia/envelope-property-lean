@@ -1,0 +1,107 @@
+\section{Original convexity gives the same prescribed central nef class}
+
+Fix an infinite perfect field $k$, the original projectively normal
+projective subvariety $X$, a positive rational $a$, and the original
+locally convex function $\varphi$ in class $a$.  The original
+closed-central-curve degree theorem chooses the positive $r,d$, with
+$d=ra$, the original integer $B$, the original ideals $I,J$, and their
+finite-log data before any reference coordinate or curve is chosen.
+Write
+\[
+ \rho:\mathcal N\longrightarrow\operatorname{Spec}k[t],\qquad
+ z:\operatorname{Spec}k\longrightarrow\operatorname{Spec}k[t]
+\]
+for the same normalized simultaneous model and the actual evaluation-at-zero
+map.  Retain the actual categorical scheme-theoretic fibre
+\[
+ Z=\mathcal N\times_{\operatorname{Spec}k[t]}\operatorname{Spec}k,
+ \qquad i_0:Z\longrightarrow\mathcal N,\quad p_0:Z\longrightarrow\operatorname{Spec}k.
+\]
+In particular $Z$ is not replaced by its reduction or by one component.
+
+\begin{lemma}[The actual central projection is native projective]
+\label{lem:intrinsic-original-normalized-central-native-projective}
+\lean{EnvelopeProperty.NumericalOriginalCentralNef.normalizedCentralFiberProjection_isProjective}
+\leanok
+\uses{thm:pl-normalized-polynomial-projectivity,thm:native-projectivity-from-polynomial-factorization}
+For every original pair of ideals with the actual finite-log data, the
+same central projection $p_0$ is projective in the native finite
+quasicoherent-projective-bundle sense.  No integrality, reducedness,
+normality or dimension condition on $Z$ is required.
+\end{lemma}
+\begin{proof}
+The original normalized-model projectivity theorem supplies an actual
+finite polynomial closed factorization of $\rho$.  Equip $k$ with the
+actual $k[t]$-algebra structure induced by evaluation at zero.  The
+existing coefficient-base-change construction gives a finite polynomial
+closed factorization of precisely $p_0$: its second projection is that
+of the actual pullback defining $Z$, with no changed base map.  Apply
+the proved equivalence from finite polynomial factorization to native
+projectivity over the same coefficient spectrum.  This argument uses
+the original scheme structure of the fibre throughout.
+\end{proof}
+
+\begin{theorem}[The original prescribed central class belongs to the actual nef cone]
+\label{thm:intrinsic-original-convex-central-nef}
+\lean{EnvelopeProperty.NumericalOriginalCentralNef.exists_prescribedClass_originalCentralNef}
+\leanok
+\uses{thm:intrinsic-numerical-original-central-curve-degree,lem:intrinsic-original-normalized-central-native-projective,thm:native-numerical-nef-cone,thm:projective-central-fibre-actual-parameter-ideal,def:actual-normalized-pl-projective-twist-line,def:fc-original-curve-line-degree}
+The same internally chosen $r,d,B,I,J$ and finite-log data retain their
+whole original ratio-weight identity at every actual valued model
+point.  For every original reference index $j$, let
+\[
+ M_j=\operatorname{normalizedSimultaneousTwistedRatioLine}(I,J,j,d).
+\]
+Then the class of the actual invertible line $i_0^*M_j$ belongs to
+\[
+ \operatorname{NativeRealNumericalClasses.nefCone}(p_0),
+\]
+the existing true real numerical quotient tested by every original
+closed integral curve of $Z$.  The choices precede the universal
+quantifiers over $j$ and over all those curves.  No degree-sign,
+numerical-matching or nef datum is supplied as an input.
+\end{theorem}
+\begin{proof}
+Apply the proved original-convexity closed-curve degree theorem once.
+It constructs the same positive $r,d$, the relation $d=ra$, the original
+$B,I,J$, their finite-log data, and the whole original ratio-weight
+identity, independently of any later coordinate or curve.  Retain all
+these objects unchanged.  The preceding lemma gives native projectivity
+of the actual $p_0$.  The original twisted-ratio line is invertible;
+ordinary pullback gives invertibility of the same $i_0^*M_j$.
+
+Fix an actual closed integral curve $C$ of $Z$.  Its own structure map
+$q:C\to\operatorname{Spec}k$ is the literal composite $C\hookrightarrow
+Z\xrightarrow{p_0}\operatorname{Spec}k$; native projectivity of $p_0$
+internally gives the required finite polynomial projective factorization
+of $q$.  Evaluation at zero is surjective, so $z$ and its actual base
+change $i_0$ are closed immersions.  Thus the original composite
+\[
+ c:C\hookrightarrow Z\hookrightarrow\mathcal N
+\]
+is a closed immersion.  The actual pullback condition, composed with
+$C\hookrightarrow Z$, is precisely the original central triangle
+$c\rho=qz$.  The curve's integral structure and whole dimension one
+are exactly those of the original closed-curve object.
+
+Apply the previously selected original degree inequality to this same
+$C,q,c$.  It gives $\deg_q(c^*M_j)\ge0$.  Native pullback composition
+gives a whole original line isomorphism
+\[
+ (C\hookrightarrow Z)^*(i_0^*M_j)\simeq c^*M_j.
+\]
+Whole Euler degree is invariant under this isomorphism, so the same
+degree inequality holds for the actual curve pullback of $i_0^*M_j$.
+Cast this true integer inequality to the reals.  The already proved
+line-class membership criterion for the existing numerical nef cone
+is exactly this collection of inequalities for all the original closed
+integral curves.  It proves the asserted class membership, without
+changing the line, the curve maps or the numerical carrier.  The whole
+ratio-weight identity was retained verbatim from the original producer.
+\end{proof}
+
+This statement uses the existing closed-original-curve numerical
+quotient.  It does not identify it with the separate numerical quotient
+testing arbitrary curve maps.  It does not assert relative ampleness,
+Seshadri sufficiency, uniform generation, decreasing FS approximation,
+or the whole LocalPositivity or Main theorem.

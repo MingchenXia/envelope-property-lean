@@ -1,0 +1,106 @@
+\section{The original exterior differential in actual etale coordinates}
+\label{sec:etale-coordinate-de-rham}
+
+Let $R$ and $B$ be arbitrary actual commutative rings with their original
+$R$-algebra structure. Let $v_1,\ldots,v_n\in B$ be actual coordinates whose
+original polynomial evaluation map $R[x_1,\ldots,x_n]\to B$ is etale.
+The original cotangent basis is the genuine native etale base change of the
+original polynomial cotangent basis; its vectors are exactly $d v_i$.
+
+\begin{theorem}[Derived original coordinate derivatives]
+\label{lem:cartier-etale-original-partials}
+\lean{EnvelopeProperty.Cartier.EtaleDeRham.partials_commute,EnvelopeProperty.Cartier.EtaleDeRham.partials_aeval}
+\leanok
+The actual original coordinate partials $\partial_i$, defined by the dual
+cotangent basis applied to the original universal derivation, commute on every
+original function of $B$. For every original polynomial $f$ they satisfy
+\[
+ \partial_i(f(v))=(\partial_i f)(v).
+\]
+No commutation or derivative-matching premise is assumed.
+\end{theorem}
+\begin{proof}
+The actual commutator of the two original partials is itself a derivation.
+It vanishes on all original coordinate functions, since their actual partials
+are the Kronecker constants. A derivation is determined by those original
+coordinates through the genuine original cotangent basis; hence the entire
+commutator vanishes. The genuine polynomial chain rule, proved by original
+polynomial induction over arbitrary commutative rings, and the same actual
+Kronecker coordinate values give the full original polynomial formula.
+\end{proof}
+
+\begin{theorem}[The whole original etale coordinate exterior complex]
+\label{lem:cartier-etale-original-exterior-complex}
+\lean{EnvelopeProperty.Cartier.EtaleDeRham.tensorDifferential,EnvelopeProperty.Cartier.EtaleDeRham.tensorDifferential_tmul,EnvelopeProperty.Cartier.EtaleDeRham.tensorDifferential_square,EnvelopeProperty.Cartier.EtaleDeRham.formEquiv,EnvelopeProperty.Cartier.EtaleDeRham.formEquiv_one_tmul_basis,EnvelopeProperty.Cartier.EtaleDeRham.formEquiv_tmul_basis,EnvelopeProperty.Cartier.EtaleDeRham.differential,EnvelopeProperty.Cartier.EtaleDeRham.differential_formEquiv,EnvelopeProperty.Cartier.EtaleDeRham.differential_square,EnvelopeProperty.Cartier.EtaleDeRham.differential_coordinate_wedge,EnvelopeProperty.Cartier.EtaleDeRham.formEquiv_zero,EnvelopeProperty.Cartier.EtaleDeRham.differential_zero,EnvelopeProperty.Cartier.EtaleDeRham.differential_base_smul,EnvelopeProperty.Cartier.EtaleDeRham.complex}
+\leanok
+On the entire original exterior cotangent modules $\Omega^q_{B/R}$ construct
+the actual differential with coordinate formula
+\[
+ d(f\,d v_S)=\sum_i\partial_i(f)\,d v_i\wedge d v_S.
+\]
+It squares to zero in every degree, retains the original coefficient action
+and is $R$-linear. Under the genuine native zero and one exterior-power
+identifications its degree-zero map is the SAME original universal K\"ahler
+differential of $B/R$. Thus it gives an actual native cochain complex on the
+whole original exterior cotangent modules.
+\end{theorem}
+\begin{proof}
+First construct the actual tensor differential on
+$B\otimes_R\bigwedge^q_R R^n$ using the original derived partials and true
+left exterior multiplication. The actual commuting derivatives and original
+exterior anticommutation cancel every off-diagonal pair; repeated factors kill
+every diagonal, including characteristic two. Genuine tensor induction proves
+square-zero on the entire module.
+The actual original etale cotangent basis gives a derived $B$-linear
+isomorphism to the SAME $\Omega^q_{B/R}$, carrying every original coefficient
+and every original coordinate wedge exactly. Transport the actual differential
+through it. Genuine zero/one exterior identifications and the actual original
+cotangent-basis expansion of the universal derivation prove the stated exact
+degree-zero identity. The original tensor differential's $R$-linearity and the
+same actual coefficient action give the original coefficient-ring linearity.
+\end{proof}
+
+\begin{theorem}[Entire original polynomial differential compatibility]
+\label{lem:cartier-etale-polynomial-differential-map}
+\lean{EnvelopeProperty.Cartier.EtaleDeRham.polynomialTensorMap,EnvelopeProperty.Cartier.EtaleDeRham.polynomialTensorMap_tmul,EnvelopeProperty.Cartier.EtaleDeRham.tensorDifferential_polynomialTensorMap,EnvelopeProperty.Cartier.EtaleDeRham.polynomialFormMap,EnvelopeProperty.Cartier.EtaleDeRham.polynomialFormMap_formEquiv,EnvelopeProperty.Cartier.EtaleDeRham.polynomialFormMap_smul_basis,EnvelopeProperty.Cartier.EtaleDeRham.differential_polynomialFormMap}
+\leanok
+The actual original polynomial coefficient evaluation, with every original
+coordinate wedge retained, induces an entire additive map from the original
+polynomial exterior cotangent modules to the SAME original etale exterior
+cotangent modules. On every original basis form its formula is
+$f\,dx_S\mapsto f(v)\,d v_S$.
+This whole original map commutes with the two constructed original differentials
+on EVERY original input, not only on selected representatives.
+\end{theorem}
+\begin{proof}
+Take the actual original polynomial coefficient map tensored with the identity
+of the same original exterior coordinate module. The first theorem gives its
+true pure-tensor differential compatibility. Actual tensor induction extends
+this to the whole original tensor module. Compose with the two genuine original
+cotangent basis identifications. Their exact coefficient/basis formulas and
+whole differential transports give both the stated original formula and the
+entire original differential compatibility.
+\end{proof}
+
+\begin{theorem}[The actual Frobenius-linear original etale complex]
+\label{lem:cartier-etale-frobenius-complex}
+\lean{EnvelopeProperty.Cartier.EtaleDeRham.tensorDifferential_pow_smul,EnvelopeProperty.Cartier.EtaleDeRham.differential_pow_smul,EnvelopeProperty.Cartier.EtaleDeRham.frobeniusModule,EnvelopeProperty.Cartier.EtaleDeRham.frobeniusDifferential,EnvelopeProperty.Cartier.EtaleDeRham.frobeniusComplex}
+\leanok
+If $B$ has prime characteristic $p$, the same original differential is linear
+for the actual Frobenius coefficient action. It therefore gives an actual native
+module-category cochain complex on the SAME original exterior cotangent modules
+with scalars genuinely restricted along the original Frobenius of $B$.
+\end{theorem}
+\begin{proof}
+The original derivation power rule gives $\partial_i(a^p)=0$ in the SAME ring.
+Actual Leibniz and tensor induction prove the entire original tensor differential
+commutes with multiplication by $a^p$. Transport through the same genuine
+$B$-linear exterior identifications gives the whole original differential's
+Frobenius linearity. The actual native restriction-of-scalars functor then gives
+the stated complex, with the same differential and already proved square-zero.
+\end{proof}
+
+No field, Noetherian, reducedness or characteristic assumption is used before the
+last theorem. Coordinate-change independence, the complete Frobenius base-change
+isomorphism, whole sheaf comparisons, Cartier descent and global
+Deligne--Illusie/vanishing remain separate obligations.

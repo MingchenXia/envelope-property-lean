@@ -1,0 +1,65 @@
+\section{Intrinsic uniqueness of the original all-degree norm factor}
+
+\begin{lemma}\label{lem:native-tc-actual-positive-degree-section}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_positive_gaussPowerSectionNorm}
+\leanok
+\uses{thm:native-test-configuration-actual-gauss-finite-norm-family}
+For original geometrically ample $L$, every actual original Gauss
+point has a positive-degree original total-space section with
+strictly positive true total-model norm.
+\end{lemma}
+\begin{proof}
+The genuine original ampleness producer gives a threshold $N$
+and an actual finite original section family in each degree at
+least $N$, chosen before every original point, with strictly
+positive maximum true norm at every actual original Gauss
+point. Use degree $N+1$, which is positive and at least $N$.
+A finite maximum of nonnegative values is positive only if
+one of its actual members is positive. Choose that original
+member at the specified point. This supplies the claimed
+positive-degree section without asserting anything in degree one.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-unique-positive-all-power-factor}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.existsUnique_weightedLaurentPowerSectionNorm_powerFactor}
+\leanok
+\uses{lem:native-tc-actual-positive-degree-section,thm:native-tc-coherent-all-power-section-norms}
+For the original ample $L$ there is exactly one positive real
+factor $c$ satisfying the true original norm identity
+$\lVert s\rVert_{\mathcal X,r,x}=c^n W_{n,x,r}(s)$
+for every nonnegative degree and every original section.
+The existing factor is the native valuation of an actual frame
+transition unit; uniqueness does not redefine it by degree-one
+section values.
+\end{theorem}
+\begin{proof}
+The coherent original norm theorem constructs such a positive
+factor from an actual native unit before all degrees and
+sections. Suppose $c$ and $d$ both satisfy the asserted
+identities. Choose the actual positive-degree section of the
+preceding lemma, in degree $m>0$. Its true norm is positive.
+Its weighted original coefficient maximum is therefore
+nonzero: if it were zero, the identity for $c$ would force
+the true norm to be zero. The two identities give
+$c^mW=d^mW$. Cancel the nonzero $W$ to obtain $c^m=d^m$.
+The positive-power map is injective on nonnegative real
+numbers for $m>0$, so $c=d$. This proves uniqueness.
+\end{proof}
+
+\begin{corollary}\label{cor:native-tc-original-frame-factor-independence}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussCompatibleNormFactor_eq_of_frames}
+\leanok
+\uses{thm:native-tc-unique-positive-all-power-factor,def:native-tc-coherent-positive-norm-factor,thm:native-tc-coherent-all-power-section-norms}
+The actual native positive factors constructed using any two
+original opens and original frames around the same proper
+center of $x$ are equal, for the original ample $L$.
+\end{corollary}
+\begin{proof}
+Each actual original center-open frame defines a positive
+native transition valuation. The coherent all-degree theorem
+shows that each satisfies the same original all-degree,
+all-section norm identity. The preceding uniqueness theorem
+identifies them. Original total-model and original coefficient
+norms remain the same in both identities, so no frame matching
+condition is needed.
+\end{proof}

@@ -1,0 +1,109 @@
+\subsection{General original Gauss comparison helpers}
+
+\begin{lemma}[Upper bound from the original central fibre only]
+\label{lem:nf-general-gauss-usc-upper}
+\lean{EnvelopeProperty.eventually_flatNormFun_nonflatGaussPoint_lt}
+\leanok
+\uses{lem:nf-pieces,lem:nf-gauss-ray}
+Let $k$ be any field and let $F$ be an algebraically closed ultrametric
+normed field with its original $k$-algebra structure. Assume
+$\|a\|_F=1$ for every nonzero $a\in k$ and that $F$ has an element of
+norm greater than one. Let $p\in F[T]$ satisfy $p(0)\ne0$, put
+$Q=F[T,1/p]$, and retain the original evaluation point $\xi$ and
+Gauss points $\zeta_r$ in $\operatorname{Berk}_k Q$.
+Let $R$ be ANY commutative $Q$-algebra, finite free over $Q$, with
+its original compatible $k$-action. For any original function
+$U:\operatorname{Berk}_k R\to\overline{\mathbb R}$, assume only that
+$U$ is upper semicontinuous at EVERY point over $\xi$ and that
+$U(x)\ne+\infty$ at each such point. Then for EVERY
+$C\in\overline{\mathbb R}$ with $N_{R/Q}U(\xi)<C$,
+\[
+ N_{R/Q}U(\zeta_r)<C
+ \quad\text{for all sufficiently small }r\in\mathbb R_{\ge0}.
+\]
+Here the norm is the literal original finite sum with its completed
+local-fibre multiplicities. No FS presentation, local psh class,
+regularizability, completeness of $F$, domain or product decomposition
+of $R$, or nonempty-fibre premise is assumed.
+\end{lemma}
+\begin{proof}
+Use the existing genuine finite-fibre pieces near $\xi$. Their actual
+positive weights have the same total mass over each central point for
+all sufficiently small Gauss radii. Since the central values exclude
+$+\infty$ and their weighted sum is strictly less than $C$, choose
+real cuts $c_x>U(x)$ whose finite weighted sum is still strictly less
+than $C$. This also applies when some central values are $-\infty$;
+when the central fibre is empty the norm is the empty sum.
+Upper semicontinuity gives an original neighbourhood of each central
+point on which $U<c_x$. The existing shrinking and finite synchronization
+put each corresponding Gauss piece in that neighbourhood. Sum these
+inequalities with the SAME nonnegative original weights and use the
+proved mass equality. The resulting sum is at most the weighted sum
+of the chosen real cuts, hence strictly below $C$. No lower-bound or
+approximation theorem is used.
+\end{proof}
+
+\begin{lemma}[Whole order squeeze along positive radii]
+\label{lem:nf-general-order-squeeze}
+\lean{EnvelopeProperty.nonflat_eq_of_squeeze}
+\leanok
+Let $N,V:\mathbb R_{\ge0}\to\overline{\mathbb R}$ and
+$N_0,v_0\in\overline{\mathbb R}$. Assume that eventually as $r\to0$,
+$N(r)=V(r)$ whenever $r>0$, that eventually $N_0\le N(r)$ and
+$v_0\le V(r)$, and that for EVERY extended-real $C>N_0$
+respectively $C>v_0$ one eventually has $N(r)<C$ respectively
+$V(r)<C$. Then $v_0=N_0$. There is no geometric, function-class,
+finite-valuedness, countability, or field hypothesis.
+\end{lemma}
+\begin{proof}
+For every $C>N_0$, intersect the eventual upper bound for $N$, the
+lower bound for $V$, and equality on positive radii, in the punctured
+right neighbourhood filter of zero. This filter is nontrivial, so
+choose an actual positive radius in the intersection. It gives
+$v_0\le N(r)<C$, and the order-density criterion implies $v_0\le N_0$.
+Interchanging the roles gives $N_0\le v_0$. Antisymmetry proves the
+whole equality, including either infinite endpoint.
+\end{proof}
+
+\begin{lemma}[The entire rigid norm identity for every original function]
+\label{lem:nf-whole-rigid-weighted-norm}
+\lean{EnvelopeProperty.NonflatRigidEmbedding.lineWeights,EnvelopeProperty.NonflatRigidEmbedding.flatNormFun_line_eq_sum_rigidWeight}
+\leanok
+\uses{lem:nf-line-weights,def:nf-weights,algebra:finite-free-normalized-line-product,algebra:whole-normalized-line-product-map}
+Let $k$ be algebraically closed, let $A,B$ be original commutative
+domains over $k$, and let $\varphi:B\to A$ be finite and injective.
+Retain a nonzero principal-open presentation $B\simeq k[x_1,\ldots,x_n]_g$,
+an actual rigid datum $\tau:H(s)\hookrightarrow F$ for an original
+$s\in\operatorname{Berk}_k B$, with $F$ algebraically closed
+ultrametric normed and its original norm trivial on $k$, and the actual
+full good locus $h$ of $\varphi$ (including its original FREE and ETALE
+fields). Let $w$ be an actual direction, with a specified nonzero
+coordinate, admissible for $h$. Use the SAME resulting open line $Q$,
+normalized product $R'$, and maps $r,p$.
+For an original separating element $b\in F\otimes_k A$, let $M_z$
+be its actual characteristic-polynomial root multiplicities at the
+rigid fibre, and let $m_y=\sum_{r(z)=y}M_z$ be the existing rigid weights.
+The EXISTING whole line theorem gives
+$\sum_z M_z=\operatorname{genericDegree}(\varphi)$ and, for EVERY
+$W:\operatorname{Berk}_k(F\otimes_k A)\to\overline{\mathbb R}$,
+\[
+ N_{R'/Q}(W\circ p)(\xi)=\sum_zM_zW(z).
+\]
+Consequently for EVERY original $u:\operatorname{Berk}_k A\to\overline{\mathbb R}$,
+\[
+ N_{R'/Q}(u\circ r\circ p)(\xi)
+   =\sum_{\varphi^*y=s}m_yu(y).
+\]
+There is no psh, regularizability, USC, growth, countability, Wu or
+completeness hypothesis. Every coefficient, point map and local-fibre
+multiplicity is the original one.
+\end{lemma}
+\begin{proof}
+The existing whole line-weight theorem uses the genuine original finite-etale good locus and the separating element to give the displayed degree mass and the entire equality for every $W$. Specialize it to $W=u\circ r$ to obtain $\sum_zM_zu(r(z))$. The actual rigid fibre is finite,
+and every original $z$ restricts to a point $y$ of the original fibre
+over $s$. Regroup this actual finite sum by that restriction map.
+The existing definition of $m_y$ and finite distributivity for the
+nonnegative integer weights give exactly the displayed right side.
+This is the original whole-function identity for arbitrary extended-real
+values; no approximation or change of weights enters it.
+\end{proof}

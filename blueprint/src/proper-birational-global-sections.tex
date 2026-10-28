@@ -1,0 +1,129 @@
+\subsection{Genuine proper valuative control and original global-section descent}
+
+The full mathematical plan and both independent mathematical reviews preceded code. Its purpose is a substantive
+algebraic precursor to actual Stein/Zariski connectedness, not a claim of
+connected fibres or native connectedness. It preserves ORIGINAL section
+elements and entire coefficient maps. No field-image, global-section,
+connected-fibre or native-connectedness certificate is supplied.
+
+\begin{lemma}[Every original global-section value lies in every actual containing valuation ring]
+\label{scheme:actual-proper-global-section-valuation-membership}
+\leanok
+\lean{EnvelopeProperty.ProperBirationalSections.globalSectionMap,
+EnvelopeProperty.ProperBirationalSections.coefficientMap,
+EnvelopeProperty.ProperBirationalSections.globalSectionMap_comp_coefficientMap,
+EnvelopeProperty.ProperBirationalSections.globalSectionMap_mem_valuationSubring}
+Let $A$ be ANY commutative ring, $K$ ANY field with its ORIGINAL
+$A$-algebra map, $f:Y\to\operatorname{Spec}A$ ACTUALLY proper, and give an
+ACTUAL field-valued scheme point $q:\operatorname{Spec}K\to Y$ whose WHOLE
+composite with $f$ is $\operatorname{Spec}(A\to K)$. Define the genuine
+original-ring map
+\[
+ \operatorname{ev}_q:\Gamma(Y,\top)\longrightarrow K
+\]
+by the ACTUAL global section map of $q$ followed by the original
+$\Gamma\operatorname{Spec}$ isomorphism. For EVERY valuation subring
+$V\subset K$ containing the image of EVERY original element of $A$, and
+EVERY original global section $s$, prove
+$\operatorname{ev}_q(s)\in V$.
+No domain, reducedness, Noetherianity, rank-one or real norm condition is
+imposed on $A,Y,V$; no valuation lift is an input.
+\end{lemma}
+\begin{proof}
+The given original coefficient containment defines the ACTUAL codRestricted
+map $A\to V$. Its composition with the true $V\hookrightarrow K$ is the
+ORIGINAL $A\to K$ on EVERY element. This whole RingHom identity and the
+given whole triangle construct a genuine valuative square for $f$.
+The actual proper valuative criterion supplies a REAL
+$\ell:\operatorname{Spec}V\to Y$ with BOTH entire scheme triangles, in
+particular $q=\ell\circ\operatorname{Spec}(V\hookrightarrow K)$ in
+conventional function-composition notation.
+
+Apply genuine global-section functoriality and the actual
+$\Gamma\operatorname{Spec}$ naturality square. The original field element
+$\operatorname{ev}_q(s)$ is EXACTLY the inclusion into $K$ of the original
+element $(\Gamma\operatorname{Spec}V)(\ell^*s)\in V$.
+This ELEMENT identity proves the asserted membership for EVERY $s$.
+No equality of section values is inferred from norm bounds or support.
+\end{proof}
+
+\begin{theorem}[Normal original coefficients contain every actual generic global-section value]
+\label{scheme:actual-normal-proper-global-section-image}
+\leanok
+\lean{EnvelopeProperty.ProperBirationalSections.globalSectionMap_mem_range}
+\uses{scheme:actual-proper-global-section-valuation-membership}
+Now let $A$ be an ACTUAL integrally closed domain and $K$ its genuine
+fraction field, retaining the same proper $f$ and original $q$.
+For EVERY original $s\in\Gamma(Y,\top)$ there is an original $a\in A$
+whose image in $K$ is EXACTLY $\operatorname{ev}_q(s)$.
+The source $Y$ need not be reduced for this field-image conclusion.
+No normality or integrality of the source and no finite-type algebra
+presentation of its section ring is required.
+\end{theorem}
+\begin{proof}
+Let $R\subset K$ be the ACTUAL image subring of the original $A\to K$.
+The actual range-restricted coefficient map $A\to R$ is surjective and
+therefore integral. Its composite with the literal $R\hookrightarrow K$
+is the ORIGINAL $A\to K$ on EVERY element, defining a true scalar tower.
+Any original $z\in K$ integral over $R$ is therefore integral over $A$.
+Actual normality of $A$ in its SAME fraction field puts $z$ in the original
+coefficient image. This proves genuine integral closedness of $R$ in $K$
+without introducing another fraction-field identification.
+
+Mathlib's genuine valuation-subring intersection theorem identifies an
+integrally closed subring of a field with the intersection of ALL valuation
+subrings containing it. Equivalently, if the original
+$\operatorname{ev}_q(s)$ were outside $R$, the proved valuation-domination
+construction would provide an ACTUAL valuation subring containing $R$
+but excluding that element. This contradicts the preceding theorem.
+Thus the element lies in the ORIGINAL image $R$, giving a genuine $a\in A$.
+The argument does not identify an original section with its generic value
+when the source is nonreduced.
+\end{proof}
+
+\begin{theorem}[Actual reduced proper birational sources have exactly the original normal global sections]
+\label{scheme:actual-reduced-proper-birational-global-sections}
+\leanok
+\lean{EnvelopeProperty.ProperBirationalSections.globalSectionMap_injective_of_dense,
+EnvelopeProperty.ProperBirationalSections.coefficientMap_bijective_of_proper_birationalOver,
+EnvelopeProperty.ProperBirationalSections.coefficientEquivOfProperBirationalOver,
+EnvelopeProperty.ProperBirationalSections.coefficientEquivOfProperBirationalOver_apply}
+\uses{scheme:actual-normal-proper-global-section-image,scheme:actual-partial-iso-fraction-lift-dense,scheme:actual-partial-iso-fraction-lift}
+For ACTUAL integrally closed domain $A$, proper
+$f:Y\to\operatorname{Spec}A$, genuine original dense-open birational data
+over the base, and ACTUALLY reduced $Y$, the ORIGINAL coefficient RingHom
+\[
+ A\longrightarrow\Gamma(Y,\top)
+\]
+is bijective, giving a true ring equivalence whose forward map is EXACTLY
+that original coefficient map. Every original section is the pullback of
+its UNIQUE original element of $A$. No Noetherianity, finite presentation,
+global section-image or descent certificate is supplied.
+\end{theorem}
+\begin{proof}
+The genuine original partial isomorphism constructs an ACTUAL
+$q:\operatorname{Spec}\operatorname{Frac}A\to Y$ with the full coefficient
+triangle and true dense range. The field spectrum is actually a one-point
+space, so $q$ is quasi-compact: every inverse image is a finite subset.
+Actual density makes $q$ dominant; actual reducedness of the target $Y$
+then makes it scheme-theoretically dominant. The existing genuine
+scheme-theoretic dominance theorem therefore makes its WHOLE section map
+injective, in particular the global map $\operatorname{ev}_q$.
+
+Genuine functoriality proves that the composite
+$A\to\Gamma(Y,\top)\to K$ is EXACTLY the original injective fraction map,
+so the coefficient map is injective. For any ORIGINAL section $s$, the
+preceding image theorem gives an actual $a$ with the same generic field
+element. The just-derived genuine global-section injection forces equality
+of the ENTIRE original section with the original pullback of $a$.
+This proves actual surjectivity. Construct the true ring equivalence from
+that bijective ORIGINAL RingHom; its coefficient identity is built into
+the construction.
+
+Reducedness is necessary for this particular injection argument: generic
+restriction may kill nonzero nilpotent sections supported in exceptional
+geometry. This theorem does not silently replace the source by its reduction.
+It is a global-section descent producer, not a proof that actual scheme
+fibres are geometrically connected. The remaining Stein/connected-fibre
+and algebraic-to-native connectedness constructions stay explicit.
+\end{proof}

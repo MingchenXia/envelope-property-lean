@@ -1,0 +1,58 @@
+\section{A fixed finite prime family detects every boundary monomial}
+
+\begin{definition}[The fixed boundary primes]\label{def:boundary-minimal-primes}
+\lean{EnvelopeProperty.boundaryMinimalPrimes}
+\leanok
+For a finite family $p_i\in E$, take the union, over all $i$, of the
+primes minimal over $(p_i)$. This family is independent of every later
+choice of monomial exponents.
+\end{definition}
+
+\begin{lemma}[Finiteness of the actual fixed prime family]\label{lem:finite-boundary-minimal-primes}
+\lean{EnvelopeProperty.finite_boundaryMinimalPrimes}
+\leanok
+\uses{def:boundary-minimal-primes}
+If $E$ is Noetherian, the fixed boundary prime family is finite.
+\end{lemma}
+\begin{proof}
+Every ideal in a Noetherian ring has only finitely many minimal primes.
+The defining union has a finite index set, so is a finite union of
+finite sets.
+\end{proof}
+
+\begin{lemma}[Every monomial minimal prime is a fixed boundary prime]\label{lem:monomial-minimal-primes-boundary}
+\lean{EnvelopeProperty.minimalPrimes_prod_pow_subset_boundaryMinimalPrimes}
+\leanok
+\uses{def:boundary-minimal-primes}
+For arbitrary natural exponents $e_i$, every prime minimal over
+$(\prod_i p_i^{e_i})$ is minimal over $(p_i)$ for some $i$ with $e_i>0$.
+\end{lemma}
+\begin{proof}
+Write $g=\prod_i p_i^{e_i}$ and take a prime $P$ minimal over $(g)$.
+Since $g\in P$ and $P$ is prime, some active factor has $p_i\in P$
+and $e_i>0$. Otherwise every factor lies in the prime complement and
+so does the product, a contradiction. If $(p_i)\subseteq Q\subseteq P$
+with $Q$ prime, then $p_i\mid g$ makes $g\in Q$. Minimality of $P$ over
+$(g)$ gives $P\subseteq Q$, hence $P=Q$. Thus $P$ is minimal over $(p_i)$.
+\end{proof}
+
+\begin{theorem}[Fixed-family localization detection for every monomial]\label{thm:fixed-boundary-localization-detection}
+\lean{EnvelopeProperty.mem_span_prod_pow_iff_boundary_localizations}
+\leanok
+\uses{lem:monomial-minimal-primes-boundary,thm:regular-principal-dvr-detection,lem:finite-boundary-minimal-primes}
+Let $E$ be a regular domain and let every $p_i$ be nonzero. For arbitrary
+exponents $e_i$, an element $f\in E$ belongs to $(\prod_i p_i^{e_i})$
+if and only if it belongs to that principal ideal after localization
+at every prime in the fixed boundary family. Every such localization
+is a DVR, and the finite testing family is independent of $e$.
+\end{theorem}
+\begin{proof}
+Global divisibility persists in every localization. Conversely the
+product is nonzero. The regular-domain principal-ideal criterion tests
+membership using the actual DVR localizations at primes minimal over
+its principal ideal. The preceding lemma puts every one of those
+primes in the fixed boundary family, so the assumed tests imply
+membership in the original ring. Each boundary prime is minimal over
+a nonzero $(p_i)$; the same regular-domain theorem makes its localization
+a DVR. Finiteness follows from Noetherianity of the regular domain.
+\end{proof}

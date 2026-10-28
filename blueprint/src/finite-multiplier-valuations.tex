@@ -1,0 +1,55 @@
+\section{A single finite actual divisorial family for all multiplier exponents}
+
+\begin{theorem}[Finite actual divisorial determination for all rational exponents]\label{thm:sc0-finite-divisorial-multiplier-all-exponents}
+\lean{EnvelopeProperty.Char0.exists_finite_divisorialDVRs_forall_multiplier_exponents}
+\leanok
+\uses{thm:sc0-fixed-boundary-multiplier-detection,thm:sc0-finite-etale-boundary-divisorial-dvrs,thm:sc0-leaf-monomial-multiplier-membership,thm:sc0-valuative-multiplier-membership}
+Let $C\subset K$ be an arbitrary smooth affine domain over a
+characteristic-zero field $k$, with original fraction field $K$, and let
+$0\ne\mathfrak a\subset C$. There exists a finite set $S$ of actual
+original-source essentially finite-type divisorial DVR subalgebras of
+$K$ such that, for every $q\in\mathbb Q$ and every $f\in C$,
+\[
+ f\in\mathcal J_C(\mathfrak a^q)
+ \quad\Longleftrightarrow\quad
+ f\text{ satisfies its intrinsic original-source multiplier condition
+ at every }V\in S.
+\]
+The same internally produced finite family works for every rational $q$.
+No finite testing hypothesis, supplied resolution, coordinate family,
+canonical-image comparison or discrepancy estimate is required.
+\end{theorem}
+\begin{proof}
+Produce the actual simultaneous monomial Rees tree from the original
+smooth source and the actual nonzero ideal. Its actual leaf occurrences
+form a finite set. Each leaf has actual etale coordinates and actual
+monomial expressions for the extended original ideal and the genuine
+original-source relative Jacobian ideal. Its selected boundary
+coordinates are nonzero. Take every prime minimal over their principal
+ideals and its literal prime-localization image in $K$.
+
+The fixed boundary-family construction derives that each such image is
+an actual original-source divisorial DVR, with the same original
+fraction field and actual essential finite type. On each leaf there
+are only finitely many such primes, and the tree has only finitely many
+leaves. Their combined images therefore form a finite set $S$. None
+of these choices depends on $q$.
+
+Full multiplier membership implies its condition at every $V\in S$
+because its definition tests every actual original-source divisorial
+DVR. Conversely suppose all those selected conditions hold. On each
+actual leaf, the fixed-boundary multiplier detection theorem converts
+the corresponding selected conditions into membership of the actual
+rounded monomial ideal for the given $q$.
+
+Now take any actual divisorial DVR $W$ containing $C$. Actual valuation
+coverage of the Rees tree gives a leaf contained in $W$. Choose the
+finite DVR coordinates internally supplied by $W$ and identify their
+rank with the actual etale leaf rank using the original common field.
+Membership in that leaf's rounded monomial ideal gives the genuine
+original-source multiplier inequality at $W$ by the monomial multiplier
+bound, including its actual original-source Jacobian. The intrinsic
+contribution equals this coordinate computation. Since $W$ was arbitrary,
+$f$ belongs to the full multiplier ideal. The argument applies to every
+rational $q$ with the same set $S$, as required.
+\end{proof}

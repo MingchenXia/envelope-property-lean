@@ -1,0 +1,40 @@
+\section{The full actual canonical sheaf map on free affine charts}
+
+\begin{lemma}\label{sc0-affine-canonical-sheaf-image:structure}
+\lean{EnvelopeProperty.CanonicalGeometry.affineAlgebraMap_structuralSquare}
+\leanok
+Let $\phi:A\to B$ be an actual $k$-algebra homomorphism. The induced actual scheme morphism $g:\operatorname{Spec}B\to\operatorname{Spec}A$ satisfies $g f_A=f_B$ for the original structural maps.
+\end{lemma}
+\begin{proof}
+Contravariant functoriality of the actual spectrum functor identifies $g f_A$ with the spectrum of the composite $k\to A\to B$. The original algebra homomorphism law says that this composite is precisely the original structure map $k\to B$.
+\end{proof}
+
+\begin{definition}\label{sc0-affine-canonical-sheaf-image:map}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentRawBaseChangeMorphism,EnvelopeProperty.CanonicalGeometry.exteriorCotangentRawImage,EnvelopeProperty.CanonicalGeometry.range_exteriorCotangentRawBaseChangeMorphism,EnvelopeProperty.CanonicalGeometry.affineCanonicalSheafDifferential}
+\leanok
+\uses{sc0-affine-canonical-sheaf-image:structure,sc0-affine-exterior-sections:unit,sc0-exterior-pullback-sections:adjunction}
+For an arbitrary scheme morphism, its native scalar-extended raw map and intrinsic raw image use the existing original section-algebra map and all-original-functions Kähler image. The full range of this native map is that same intrinsic image. Now suppose the actual coordinate Kähler modules of $A$ and $B$ have actual bases. Express the actual sheaf-pullback differential morphism on global sections using the actual affine pullback comparison and the actual source and target sheafification-unit isomorphisms. This gives an actual map from the scalar extension of the original raw source exterior module to the original raw target exterior module.
+\end{definition}
+\begin{proof}
+The source affine exterior sheaf is quasicoherent because its actual affine comparison is an isomorphism to the associated coordinate exterior module. Thus its actual affine pullback comparison is defined. The preceding source and target unit-bijectivity theorem gives actual isomorphisms between the full raw and sheaf section modules. At the target transport the unit-bijectivity theorem along the preceding actual structural square. Compose actual extension of scalars of the source unit, the genuine affine pullback comparison, global sections of the genuine sheaf differential morphism, and the inverse target unit. No map or comparison compatibility is an additional premise. The raw native range equality is exactly the previously established full section-algebra range theorem, expressed in the original native module categories.
+\end{proof}
+
+\begin{theorem}\label{sc0-affine-canonical-sheaf-image:whole}
+\lean{EnvelopeProperty.CanonicalGeometry.affineCanonicalSheafDifferential_eq_rawBaseChange,EnvelopeProperty.CanonicalGeometry.range_affineCanonicalSheafDifferential}
+\leanok
+\uses{sc0-affine-canonical-sheaf-image:map,sc0-canonical-morphism-sections:image}
+This entire actual sheaf-derived map is the scalar extension of the original raw exterior differential component. Consequently its full range is the intrinsic image spanned by wedges of the differentials of all original source functions, for the same actual map on global section rings.
+\end{theorem}
+\begin{proof}
+On a tensor $1\otimes z$, the actual affine pullback comparison is the actual pullback-adjunction unit applied to the original source sheafification image of $z$. The entire sheaf adjunction identity and the source--target sheafification identity identify its differential image with the actual target unit applied to the raw differential component of $z$. Cancel the actual target unit with its genuine inverse. Scalar linearity proves the equality on every pure tensor, and spanning proves equality of the entire maps. The already proved whole raw section-map comparison and full-range theorem then identify the entire range with the intrinsic all-original-source-functions image.
+\end{proof}
+
+\begin{theorem}\label{sc0-affine-canonical-sheaf-image:standard-smooth}
+\lean{EnvelopeProperty.CanonicalGeometry.standardSmoothAffineCanonicalSheafDifferential,EnvelopeProperty.CanonicalGeometry.range_standardSmoothAffineCanonicalSheafDifferential}
+\leanok
+\uses{sc0-affine-canonical-sheaf-image:whole,sc0-affine-exterior-sections:standard-smooth}
+Let $A$ and $B$ be the original standard-smooth algebras over $k$, and $\phi:A\to B$ any actual $k$-algebra homomorphism. In every exterior degree, the entire actual sheaf differential map has the intrinsic all-original-source-functions image. No bases or sheaf-map comparison are additional premises.
+\end{theorem}
+\begin{proof}
+The original standard-smooth structures supply their actual standard differential bases. Apply the preceding genuine full sheaf-map construction and its entire range equality with these internally derived bases. The dimensions of the two standard-smooth algebras may differ and the exterior degree is arbitrary. There is no smoothness, flatness, properness, or immersion premise on the actual map $g$.
+\end{proof}

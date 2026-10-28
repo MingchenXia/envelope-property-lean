@@ -1,0 +1,124 @@
+\section{The actual rounded canonical module}
+
+\begin{lemma}[An actual line atlas gives native invertibility]
+\label{lem:canonical-line-atlas-native-invertible}
+\lean{EnvelopeProperty.CanonicalGeometry.LocalBundleFrame.pullbackIso,EnvelopeProperty.CanonicalGeometry.LineBundleAtlas.isInvertible}
+\leanok
+An actual open line atlas of an original module sheaf gives a covering by
+actual pullback frames, hence invertibility of that same module sheaf.
+\end{lemma}
+\begin{proof}
+For each atlas open, the equivalence from its over-site to the actual open
+subscheme carries the given whole frame to a restriction frame. Its unit
+comparison identifies the transported structure module with the original
+structure module of the open subscheme. The actual restriction--pullback
+isomorphism turns it into a pullback frame. The atlas's pointwise covering
+property says exactly that these opens have supremum the whole scheme.
+\end{proof}
+
+\begin{theorem}[Native invertibility of the original canonical sheaf]
+\label{thm:canonical-original-native-invertible}
+\uses{lem:canonical-line-atlas-native-invertible}
+\lean{EnvelopeProperty.CanonicalGeometry.canonicalLineSheaf_isInvertible}
+\leanok
+If $f:Y\to\operatorname{Spec}k$ is smooth of relative dimension $n$, its
+original sheafified exterior cotangent sheaf $\bigwedge^n\Omega_{Y/k}$ is
+an invertible module sheaf.
+\end{theorem}
+\begin{proof}
+The actual standard-smooth affine charts of $f$ supply bases of the
+original cotangent modules. Their top wedges give the actual line atlas
+of the original sheafified exterior cotangent presheaf. Apply the preceding
+lemma to this atlas. No alternative canonical object is chosen.
+\end{proof}
+
+\begin{lemma}[The original rounded ideal module]
+\label{lem:rounded-snc-original-module}
+\uses{thm:rounded-snc-original-ideal}
+\lean{EnvelopeProperty.Char0.RoundedCanonicalModule.idealModule,EnvelopeProperty.Char0.RoundedCanonicalModule.idealModule_affineSectionsEquiv,EnvelopeProperty.Char0.RoundedCanonicalModule.idealModule_isInvertible}
+\leanok
+The module sheaf of the original rounded ideal is actually invertible.
+On every original affine open its entire section module is linearly
+isomorphic to the original rounded affine ideal; on adapted charts that
+ideal is the original rounded coordinate monomial ideal.
+\end{lemma}
+\begin{proof}
+Use the genuine module sheaf of the whole rounded ideal. Its section
+comparison with the original affine ideal is the actual ideal-module
+affine equivalence. The already proved rounded-ideal invertibility gives
+regular local equations. Multiplication by each such equation is a
+linear isomorphism onto that same original ideal, so the actual affine
+module comparisons give local pullback frames. This proves invertibility
+of the original ideal module. The adapted-chart formula is the whole
+rounded ideal's formula through this exact section equivalence.
+\end{proof}
+
+\begin{lemma}[Actual homomorphisms as sections of a tensor-dual line]
+\label{lem:original-invertible-hom-section}
+\uses{thm:scheme-original-invertible-tensor-exact}
+\lean{EnvelopeProperty.SchemeInvertibleHomSection.equiv,EnvelopeProperty.SchemeInvertibleHomSection.recover,EnvelopeProperty.SchemeInvertibleHomSection.section_recover}
+\leanok
+For an original invertible module $A$ and any original module $B$, there
+is a genuine bijection
+\[
+ \operatorname{Hom}(A,B)\simeq
+ \operatorname{Hom}(\mathcal O,B\otimes A^\vee).
+\]
+Its inverse recovers the entire original homomorphism.
+\end{lemma}
+\begin{proof}
+Tensoring on the right by the actual $A$ is an equivalence with inverse
+tensoring on the right by the actual sheaf dual $A^\vee$. This equivalence
+is built from the actual evaluation isomorphism and the tensor
+associativity, unit and braiding comparisons. Its adjunction gives
+$\operatorname{Hom}(\mathcal O\otimes A,B)\simeq
+\operatorname{Hom}(\mathcal O,B\otimes A^\vee)$. Precompose the source
+identification with the actual left unitor. The inverse laws of these two
+bijections prove recovery on every whole original map.
+\end{proof}
+
+\begin{theorem}[The actual rounded relative canonical line]
+\label{thm:rounded-relative-canonical-original-module}
+\uses{thm:canonical-original-native-invertible,lem:rounded-snc-original-module}
+\lean{EnvelopeProperty.Char0.RoundedCanonicalModule.absolute,EnvelopeProperty.Char0.RoundedCanonicalModule.relative,EnvelopeProperty.Char0.RoundedCanonicalModule.relativeRounded,EnvelopeProperty.Char0.RoundedCanonicalModule.absolute_isInvertible,EnvelopeProperty.Char0.RoundedCanonicalModule.relative_isInvertible,EnvelopeProperty.Char0.RoundedCanonicalModule.relativeRounded_isInvertible}
+\leanok
+Let $g:Y\to X$ be arbitrary, with both $X$ and $Y$ smooth of the same
+relative dimension $n$ over $k$, and let $J$ be an actual SNC divisor ideal
+on $Y$, and let $q\in\mathbb Q_{\ge0}$. The genuine module
+\[
+ \omega_{Y/k}\otimes(g^*\omega_{X/k})^\vee
+       \otimes\mathcal O_Y(-\lfloor qF\rfloor),\qquad J=\mathcal O_Y(-F),
+\]
+is an invertible module sheaf on the WHOLE original $Y$.
+\end{theorem}
+\begin{proof}
+The two original canonical sheaves are invertible by smoothness. Pullback
+along the actual arbitrary $g$ preserves invertibility, as does the
+genuine sheaf dual. Tensor the resulting actual line with the original
+canonical line on $Y$ and the already constructed whole rounded ideal
+module. Each operation preserves actual invertibility. This argument
+requires no smoothness, flatness, properness or birationality of $g$.
+\end{proof}
+
+\begin{theorem}[The actual exterior differential as a relative canonical section]
+\label{thm:canonical-original-differential-section}
+\uses{thm:canonical-original-native-invertible,lem:original-invertible-hom-section}
+\lean{EnvelopeProperty.Char0.RoundedCanonicalModule.differentialSection,EnvelopeProperty.Char0.RoundedCanonicalModule.differentialSection_recover}
+\leanok
+Let $f:X\to\operatorname{Spec}k$ be smooth of pure relative dimension
+$n$, and let $g:Y\to X$ be any morphism, with $Y$ arbitrary. The actual
+exterior differential
+$g^*\bigwedge^n\Omega_{X/k}\to\bigwedge^n\Omega_{Y/k}$ defines a genuine
+section of the original relative canonical module
+$\omega_{Y/k}\otimes(g^*\omega_{X/k})^\vee$. This module is a line when
+$Y$ is also smooth of the same pure relative dimension. The inverse
+section--map comparison is exactly the entire original exterior differential map.
+\end{theorem}
+\begin{proof}
+Apply the preceding Hom--section bijection to the actual arbitrary-map
+exterior cotangent pullback morphism, using the original canonical sheaves
+as its actual source and target. Invertibility of the source follows
+from the original smooth canonical sheaf and arbitrary pullback. Recovery
+is the inverse law of that genuine bijection; consequently no Jacobian,
+section or image comparison is an extra premise here.
+\end{proof}

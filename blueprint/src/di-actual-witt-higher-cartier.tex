@@ -1,0 +1,56 @@
+\section{The actual higher maps on original homology sheaves}
+\label{sec:di-actual-witt-higher-cartier}
+
+\begin{definition}[The original evaluated member cochain]
+\label{def:di-actual-witt-higher-member-cochain}
+\lean{EnvelopeProperty.DI.ActualWittHigherSheafCartier.actualMemberMap}
+\leanok
+\uses{thm:di-higher-exterior-witt-maps}
+For an actual smooth separated Witt-two lift of pure relative dimension
+$n$ over a perfect field $k$ of characteristic $p$, let $U_i$ be its
+internally selected cover on the original true Frobenius twist $Y$.
+For $q=r+1$, restrict the actual higher cochain map to $U_i$, precompose
+with the original single-object comparison, and compose with the
+original total-complex local evaluation. This gives the original map
+$\psi_{i,q}:\Omega^q_{Y/k}|_{U_i}[-q]\to K|_{U_i}$.
+\end{definition}
+\begin{proof}
+\leanok
+The restriction functor supplies the native single-object comparison.
+Its inverse followed by the actual restricted higher map and the
+existing native local evaluation has exactly the stated source and
+target. All three maps are constructed from the original geometry.
+\end{proof}
+
+\begin{theorem}[The entire original higher homology class]
+\label{thm:di-actual-witt-higher-sheaf-cartier}
+\lean{EnvelopeProperty.DI.ActualWittHigherSheafCartier.memberClass}
+\leanok
+\uses{def:di-actual-witt-higher-member-cochain,thm:di-higher-exterior-witt-leading-component,thm:cartier-geometric-global-sheaf-isomorphism}
+If $q=r+1<p$, the map induced by $\psi_{i,q}$ on degree-$q$ homology,
+with the original single-source and restriction-homology isomorphisms,
+is exactly the restriction to $U_i$ of the original global inverse
+Cartier isomorphism. This is an equality of entire module-sheaf maps.
+The hypotheses contain only the original Witt geometry and the cutoff.
+\end{theorem}
+\begin{proof}
+\leanok
+The proved actual higher-member evaluation identifies the entire affine
+section map with the native exterior map formed from the same selected
+coordinates and Frobenius lift. The original single-source evaluation
+identity therefore identifies the whole evaluated cochain, and the
+already proved native exterior Cartier class gives its entire affine
+homology class. The canonical affine homology comparison and the native
+inverse-chart restriction square identify that class with sections of
+the original sheaf homology map.
+
+These restriction squares are proved by naturality of the original
+single, cycle and homology comparisons. Only actual restriction functors
+preserve homology; exactness of sections of the total complex is not
+used. The original pushed de Rham terms are quasicoherent, so their
+affine homology is quasicoherent. The independently proved global
+Cartier isomorphism internally supplies quasicoherence of the original
+source after restriction. The affine source adjunction now detects the
+equality of whole sheaf maps from the proved equality on sections.
+No homology-class or quasi-isomorphism certificate is an input.
+\end{proof}

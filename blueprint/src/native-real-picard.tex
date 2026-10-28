@@ -1,0 +1,40 @@
+\section{Real scalar extension of the same original Picard group}
+\label{sec:native-real-picard}
+
+\begin{theorem}[Actual original real line classes and finite sums]
+\label{thm:native-real-picard}
+\lean{EnvelopeProperty.NativeRealPicard.Space, EnvelopeProperty.NativeRealPicard.picardClass, EnvelopeProperty.NativeRealPicard.lineClass, EnvelopeProperty.NativeRealPicard.span_picardClass, EnvelopeProperty.NativeRealPicard.span_lineClass, EnvelopeProperty.NativeRealPicard.exists_finite_line_sum}
+\leanok
+\uses{thm:fc-original-projective-generated-line-quotients}
+\source{bj22-trivval:sec:tc}
+For every original scheme $X$, take the real scalar extension
+$\mathbf R\otimes_{\mathbf Z}\operatorname{Pic}(X)$ of its
+same actual native Picard group. The class of each actual original
+invertible line is represented by its same original native Picard
+class. Every element of this real Picard space is a finite real
+linear combination of such actual original invertible-line classes.
+No abstract class-realization, finite-dimensionality, or supplied
+finite-line-family certificate is assumed.
+\end{theorem}
+
+\begin{proof}
+The native Picard group is the group of units in the isomorphism
+quotient of the original module category. Pass to its actual
+associated additive group and tensor it over the integers with
+the real numbers. Send an original Picard class $a$ to $1\otimes a$,
+and an original invertible line to $1\otimes[L]$. The real span
+of these original Picard classes is the whole tensor product:
+zero and sums are in the span, and every pure tensor $r\otimes a$
+is $r(1\otimes a)$. Tensor-product induction proves the claim
+for every actual tensor, without assuming finite dimension.
+Every native Picard class has an actual original invertible-line
+representative, obtained from its same native isomorphism-quotient
+representative and the genuine unit property. Thus the real span
+of actual original line classes is likewise the entire tensor
+product. The actual finite-support linear-combination description
+of a span supplies a finite set of these same original invertible
+lines and real coefficients summing to the specified original
+element. This is a genuine existence theorem for the original
+lines, not a new class-realization assumption. Numerical
+quotienting and topology are subsequent constructions.
+\end{proof}

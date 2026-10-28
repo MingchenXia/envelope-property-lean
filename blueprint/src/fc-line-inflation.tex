@@ -1,0 +1,251 @@
+\subsection{Inflation on standard affinoids}\label{subsec:fc-line-inflation}
+
+\begin{definition}[Inflation with a fixed centre]\label{def:fc-centered-inflation}
+\uses{conv:fc-line, analytic:actual-polynomial-gauss-inflation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialTranslation, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation}
+\leanok
+Let $v$ be a real-valued ultrametric valuation on a commutative ring $F$, and
+let $x$ be a multiplicative seminorm on $F[T]$ extending $v$.
+For $a\in F$ put $t_a(x)(P)=x(P(T+a))$. Define
+$H_a(x,s)=t_a(H(t_{-a}(x),s))$, where
+$H(x,s)(P)$ is the Gauss seminorm of $P(T+S)$ in $S$, with coefficient
+seminorm $x$ and radius $s$.
+\end{definition}
+
+\begin{lemma}[Exact linear values and endpoints]\label{lem:fc-inflation-linear}
+\uses{def:fc-centered-inflation}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_fcCenteredInflation_prod, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_val_X_sub_C, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.fcCenteredInflation_eq_gauss}
+\leanok
+The map $(x,s)\mapsto H_a(x,s)$ is continuous, $H_a(x,0)=x$, and
+\[
+ |T-b|_{H_a(x,s)}=\max\{|T-b|_x,s\}.
+\]
+If $|T-a|_x\le s$, then $H_a(x,s)=\zeta_{a,s}$.
+\end{lemma}
+
+\begin{proof}
+Polynomial translation is an algebra automorphism, and every value of a Gauss
+seminorm is the maximum of finitely many continuous coefficient values times
+powers of the radius. This proves continuity. At radius zero, taking the
+constant coefficient of $P(T+S)$ gives $P(T)$; the two translations cancel.
+For $P=T-b$ the translated polynomial in $S$ has constant coefficient $T-b$
+and coefficient $1$ in degree one, giving the displayed maximum.
+If $|T-a|_x\le s$, translate $a$ to zero. Translation by the coefficient
+element $T$ fixes the radius-$s$ Gauss seminorm because its coefficient
+seminorm is at most $s$. Restriction back to $F[T]$ is therefore the
+radius-$s$ Gauss seminorm on $F[T]$. Translating back gives $\zeta_{a,s}$.
+\end{proof}
+
+\begin{lemma}[Linear values determine points]\label{lem:fc-linear-determination}
+\uses{conv:fc-line, analytic:actual-algclosed-disc-branch-cover}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_ext_linear}
+\leanok
+Over an algebraically closed field, two points of the analytic affine line
+with the same values on every $T-a$ are equal.
+\end{lemma}
+
+\begin{proof}
+Every polynomial is its leading coefficient times the product of its linear
+factors, with roots repeated according to multiplicity. The seminorms have
+the same values on constants because both extend the prescribed field
+valuation. Multiplicativity therefore gives equality on every polynomial.
+\end{proof}
+
+\begin{lemma}[Topology from linear coordinates]\label{lem:fc-linear-topology}
+\uses{lem:fc-linear-determination}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_continuous_iff_linear, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_continuous_centeredGauss_prod}
+\leanok
+Over an algebraically closed valued field, a map to the analytic affine line
+is continuous if and only if its evaluations on every $T-a$ are continuous.
+If the valuation is the norm of the field, $(a,r)\mapsto\zeta_{a,r}$ is jointly
+continuous.
+\end{lemma}
+
+\begin{proof}
+Continuity of every polynomial value implies continuity of the linear values.
+Conversely, factor each polynomial into its leading coefficient and finitely
+many linear factors. Its value is a fixed constant times a finite product of
+linear values, hence is continuous. For the Gauss points each linear value is
+$\max\{|a-b|,r\}$, which is continuous in $(a,r)$.
+\end{proof}
+
+\begin{lemma}[Strict residue discs]\label{lem:fc-strict-residue-disc}
+\uses{lem:fc-linear-determination, lem:fc-inflation-linear, analytic:actual-algclosed-disc-branch-cover}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_strict_residue_disc}
+\leanok
+If $x\in D(a,r)$ and $x\ne\zeta_{a,r}$, there is $b\in F$ with
+$|a-b|\le r$ and $|T-b|_x<r$.
+\end{lemma}
+
+\begin{proof}
+Suppose no such $b$ exists. For every $b$ the ultrametric inequality gives
+$|T-b|_x\le\max\{|T-a|_x,|a-b|\}\le\max\{r,|a-b|\}$.
+If $|a-b|\le r$, the supposition gives $|T-b|_x\ge r$.
+If $|a-b|>r$, write $a-b=(T-b)-(T-a)$: its value is at most
+$\max\{|T-b|_x,|T-a|_x\}$, and the second entry is strictly smaller
+than $|a-b|$, so $|T-b|_x\ge|a-b|$. Thus every $|T-b|_x$ equals
+$\max\{r,|a-b|\}=|T-b|_{\zeta_{a,r}}$. Linear determination gives
+$x=\zeta_{a,r}$, a contradiction.
+\end{proof}
+
+\begin{lemma}[Interior of a closed disc]\label{lem:fc-closed-disc-interior}
+\uses{lem:fc-strict-residue-disc}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_interior_closedDisc}
+\leanok
+The topological interior of $D(a,r)$ is $D(a,r)\setminus\{\zeta_{a,r}\}$.
+\end{lemma}
+
+\begin{proof}
+For a point $x\ne\zeta_{a,r}$ in the closed disc, the preceding lemma gives
+$b$ such that $x\in D^-(b,r)$ and $|a-b|\le r$. For every $y$ in this open
+disc, the ultrametric inequality gives
+$|T-a|_y\le\max\{|T-b|_y,|b-a|\}\le r$. Thus $x$ is interior.
+On the other hand, continuity of $s\mapsto\zeta_{a,s}$ implies that every
+neighbourhood of $\zeta_{a,r}$ contains $\zeta_{a,s}$ for some $s>r$.
+That point lies outside $D(a,r)$, so the Gauss point is not interior.
+\end{proof}
+
+\begin{lemma}[Interior of an open-disc complement]\label{lem:fc-disc-exterior-interior}
+\uses{lem:fc-strict-residue-disc}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_interior_discExterior}
+\leanok
+For $r>0$ the topological interior of $\{|T-a|\ge r\}$ is that set with
+$\zeta_{a,r}$ removed.
+\end{lemma}
+
+\begin{proof}
+Every point with $|T-a|>r$ belongs to the open set defined by that strict
+inequality. At a point $x\ne\zeta_{a,r}$ with $|T-a|_x=r$, choose a strict
+residue disc $D^-(b,r)$ as above. The inequalities
+$r=|T-a|_x\le\max\{|T-b|_x,|b-a|\}$ and $|T-b|_x<r$ imply
+$|a-b|\ge r$. For any $y\in D^-(b,r)$,
+$r\le|a-b|\le\max\{|T-a|_y,|T-b|_y\}$, so $|T-a|_y\ge r$.
+The residue disc therefore supplies an open neighbourhood in the complement.
+The Gauss point is approached by $\zeta_{a,s}$ with $s<r$; these lie in the
+removed open disc, proving that it is not interior.
+\end{proof}
+
+\begin{remark}[Degenerate radii and repeated boundary points]\label{rmk:fc-standard-degenerate}
+\uses{def:fc-standard-affinoid}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_closedDisc_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.no_holes_of_radius_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.holeGauss_eq_outer_of_radius_eq}
+\leanok
+A zero-radius outer disc has no positive-radius holes and consists of its
+evaluation point. If a hole has the same radius as the outer disc, its Gauss
+point equals the outer Gauss point. Boundary points are a finite set, so
+coincidences are retained only once. The formulae for compactness, paths and
+interiors also apply when there are no holes.
+\end{remark}
+
+\begin{lemma}[Compactness and paths in standard affinoids]\label{lem:fc-standard-inflation}
+\uses{def:fc-standard-affinoid, lem:fc-inflation-linear}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isCompact_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isPathConnected_carrier}
+\leanok
+Every standard affinoid is compact and path connected. For $x\in U$ and
+$0\le s\le r_0$, the point $H_{a_0}(x,s)$ lies in $U$, and the resulting
+path joins $x$ to $\zeta_{a_0,r_0}$.
+\end{lemma}
+
+\begin{proof}
+The closed disc $D(a_0,r_0)$ is the image under polynomial translation of
+the compact coordinate disc $D(0,r_0)$. Each condition
+$|T-a_j|\ge r_j$ is closed, so their intersection with that disc is compact.
+Under inflation the outer coordinate value is
+$\max\{|T-a_0|_x,s\}\le r_0$, and each hole coordinate value is
+$\max\{|T-a_j|_x,s\}\ge r_j$. Thus inflation stays in $U$.
+At radius zero it equals $x$ and at radius $r_0$ it equals the outer Gauss
+point. Parametrizing $s=t r_0$ for $0\le t\le1$ gives a continuous path.
+Reversing one such path and following another joins any two points of $U$.
+\end{proof}
+
+\begin{lemma}[The exact finite boundary]\label{lem:fc-standard-boundary}
+\uses{def:fc-standard-affinoid, lem:fc-closed-disc-interior, lem:fc-disc-exterior-interior}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.boundary_subset, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.interior_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.frontier_carrier}
+\leanok
+The specified finite Gauss boundary of a standard affinoid lies in the affinoid
+and equals its topological frontier. Its topological interior is
+$U\setminus\partial U$.
+\end{lemma}
+
+\begin{proof}
+The outer Gauss point belongs to every hole complement since its value on
+$T-a_j$ is at least $r_0\ge r_j$. The Gauss point of hole $j$ belongs to the
+outer disc by the centre and radius bounds. If it were in another open hole,
+then the rigid point $a_j$ would also be in that hole: its value on each
+$T-a_i$ is no greater than the value at $\zeta_{a_j,r_j}$. But $a_j$ belongs
+to its own open hole, contradicting disjointness. Thus all boundary points
+belong to $U$.
+Interior commutes with finite intersections. Apply the two preceding
+interior formulae to the outer disc and the finitely many hole complements;
+the result removes precisely their Gauss points. The set $U$ is closed because
+it is a finite intersection of closed coordinate inequalities, so its frontier
+is $U\setminus\operatorname{int}U=\partial U$.
+\end{proof}
+
+\begin{lemma}[Interior components approach the boundary]\label{lem:fc-standard-component-boundary}
+\uses{lem:fc-standard-inflation, lem:fc-standard-boundary}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.exists_boundary_mem_closure_component}
+\leanok
+For every $x\in U\setminus\partial U$, the closure of its connected
+component in $U\setminus\partial U$ contains a point of $\partial U$.
+\end{lemma}
+
+\begin{proof}
+Let $p\colon[0,1]\to U$ be the inflation path from $x$ to the outer Gauss
+point. The finite boundary is closed. Its inverse image under $p$ is a
+nonempty closed subset of the compact interval, since it contains $1$.
+It therefore has a least element $t$. Since $p(0)=x$ is not in the boundary,
+$t>0$. The connected set $p([0,t))$ contains $x$ and avoids the boundary,
+so it lies in the connected component of $x$ in $U\setminus\partial U$.
+Continuity gives $p(t)\in\overline{p([0,t))}$. This point belongs to the
+boundary and to the closure of the required component.
+\end{proof}
+
+\begin{corollary}[Paths in the entire analytic line]\label{cor:fc-line-paths}
+\uses{analytic:valued-ring-affine-line-contractible}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_joinedIn_line, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_isPathConnected_line, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_isConnected_line}
+\leanok
+The analytic affine line is path connected, hence connected.
+\end{corollary}
+
+\begin{proof}
+The whole polynomial inflation homotopy deforms a point $x$ to the Gauss
+point of radius $|T|_x$ with the same coefficient restriction. Shrinking that
+radius to zero then gives a contraction to the evaluation point at zero,
+because the coefficient restriction is the prescribed valuation. Following
+this contraction and reversing it joins any two points.
+\end{proof}
+
+\begin{lemma}[Retraction to the finite radial skeleton]\label{lem:fc-skeleton-retraction}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction_eq_self}
+\leanok
+\uses{lem:fc-inflation-linear, lem:fc-linear-determination, lem:fc-standard-boundary}
+The radial description of the skeleton is
+\[
+ \Sigma(U)=\{\zeta_{a_0,r_0}\}\cup
+ \bigcup_{j=1}^m\{\zeta_{a_j,s}:r_j\le s\le r_0\}.
+\]
+Set $s_U(x)=\min\bigl(\{r_0\}\cup\{|T-a_j|_x:1\le j\le m\}\bigr)$.
+The map $\tau_U(x)=H_{a_0}(x,s_U(x))$ is a continuous retraction
+$U\to\Sigma(U)$.
+\end{lemma}
+
+\begin{proof}
+The exact linear-value formula shows that $H_a(x,s)$ is independent of $a$:
+two choices have the same values on every linear polynomial and hence are
+equal. The radius $s_U$ is continuous, as the minimum of finitely many
+continuous functions. Thus $\tau_U$ is continuous and stays in $U$.
+The finite minimum is attained. If it equals the outer radius, the endpoint
+formula gives $\tau_U(x)=\zeta_{a_0,r_0}$. Otherwise choose $j$ with
+$s_U(x)=|T-a_j|_x$. This radius lies in $[r_j,r_0]$ because $x\in U$;
+centre independence and the endpoint formula give
+$\tau_U(x)=\zeta_{a_j,s_U(x)}$. This proves that its image lies in $\Sigma(U)$.
+Every displayed radial segment lies in $U$: the outer coordinate is at most
+$r_0$, and its value on every hole coordinate is no smaller than the value
+at $\zeta_{a_j,r_j}$, which belongs to $U$ by the boundary lemma.
+At a point $\zeta_{a_j,s}$ of such a segment every hole-coordinate value is
+at least $s$, while the $j$th equals $s$ and $r_0\ge s$. Hence
+$s_U(\zeta_{a_j,s})=s$. Inflating that Gauss point by radius $s$ fixes it,
+so $\tau_U$ fixes the segment. The same argument at the outer Gauss point
+uses that all its hole-coordinate values equal $r_0$; the minimum is $r_0$,
+and the endpoint formula fixes it. Therefore $\tau_U$ fixes all of $\Sigma(U)$.
+\end{proof}

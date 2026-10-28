@@ -1,0 +1,139 @@
+\subsection{Genuine integral maps of native valued scheme points}
+\label{subsec:native-integral-maps}
+
+\begin{theorem}[Properness is local on an actual open cover of the target]
+\label{topology:proper-map-locality}
+\lean{EnvelopeProperty.isProperMap_iff_restrictPreimage_of_openCover}
+\leanok
+For an actually continuous map $f:Z\to W$ of arbitrary topological
+spaces and any actual open cover $(U_i)$ of $W$, the map is proper if
+and only if every restricted map $f^{-1}(U_i)\to U_i$ is proper.
+No Hausdorff or local-compactness hypothesis is required.
+Continuity of the original whole map is explicit.
+\end{theorem}
+\begin{proof}
+Proper maps remain proper under restriction to a target subspace.
+Conversely, properness of all restricted maps makes them closed, and
+actual closed-map locality at the target gives closedness of the whole
+map. For each $w\in W$, choose a genuine covering open $U_i$ containing
+it. The restricted map has compact fiber over the actual subtype point
+$(w,w\in U_i)$. Its continuous inclusion into the original source has
+image precisely $f^{-1}\{w\}$: the subtype fiber equation implies the
+whole point equation, and any original fiber point lies in that chosen
+preimage because $w\in U_i$. This gives genuine compactness of every
+whole fiber. Together with the explicit original continuity and proved
+closedness, the actual closed-map-and-compact-fibers criterion gives
+properness. The argument does not infer properness merely from compact
+preimages of compact sets and uses no separation assumption.
+\end{proof}
+
+\begin{theorem}[Actual integral scheme maps induce proper native maps]
+\label{scheme:integral-native-proper-map}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.isProperMap_map_restrict_affine_of_isIntegralHom,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isProperMap_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isClosedMap_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isCompact_preimage_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.SchemeValuedPoint.isCompact_fibre_map_of_isIntegralHom}
+\leanok
+\uses{topology:proper-map-locality,spectrum:integral-proper-map,
+scheme:native-closed-immersion,scheme:canonical-native-affine-atlas}
+For an actual integral morphism $f:X\to Y$ of arbitrary schemes, its
+original native valued-point map is proper and closed. It has compact
+inverse images of compact target subsets and compact point fibers.
+Neither total scheme need be separated or proper; no coefficient
+seminorm is fixed or bounded. There is no additional finite-type,
+noetherian, field, completeness or local-compactness hypothesis.
+\end{theorem}
+\begin{proof}
+A genuine integral scheme morphism is affine. On each actual affine
+open $U$ of its target, its genuine preimage is affine, and the original
+section homomorphism
+$\Gamma(Y,U)\to\Gamma(X,f^{-1}U)$ is integral.
+Actual native section-evaluation naturality identifies the entire
+restricted native point map with seminorm pullback under that actual
+ring homomorphism, conjugated by the two real affine-open
+homeomorphisms. The chart identity compares all original sections,
+not merely chosen generators or prime supports.
+
+The independently constructed arbitrary-ring integral-spectrum
+properness theorem proves that this actual section-spectrum pullback
+is proper: its proof bounds each integral element by its real monic
+equation and lifts actual convergent ultrafilters through the closed
+evaluation embedding. Both genuine affine-open homeomorphisms are
+proper, so conjugation makes the whole restricted native map proper.
+
+The actual canonical affine support opens cover the target native
+space. Its original native map is genuinely continuous. The preceding
+proper-map locality theorem therefore proves global properness. Its
+true consequences give closedness and the two compactness assertions.
+An integral scheme morphism need not be finite type, so this is not an
+assertion that it is algebraically proper; the conclusion concerns the
+actual native point-space map.
+\end{proof}
+
+\begin{theorem}[Integral native maps above every prescribed base point]
+\label{scheme:relative-integral-native-proper-map}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isProperMap_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosedMap_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_preimage_map_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_fibre_map_of_isIntegralHom}
+\leanok
+\uses{scheme:integral-native-proper-map,scheme:relative-native-closed-immersion}
+For any commutative coefficient ring $R$, any prescribed real seminorm
+$v$ on $R$, and any genuine commuting integral scheme morphism over
+$\operatorname{Spec}R$, its native fixed-base map is proper and closed,
+with compact inverse images of compact sets and compact point fibers.
+No bound on $v$, proper structure morphism or separated total scheme
+is required.
+\end{theorem}
+\begin{proof}
+The genuine scheme diagram and the whole native composition identity
+identify the source fixed-base locus with the exact preimage of the
+target fixed-base locus. Restrict the proved proper absolute native map
+to that target subspace and transport the source by this actual subtype
+set equality. The transported function is exactly the original relative
+native map on every whole point. Hence it is proper. Apply the actual
+proper-map consequences for the remaining assertions. The exact
+fixed-base preimage equality is the general commuting-diagram lemma;
+no closed-immersion property or coefficient bound is used here.
+\end{proof}
+
+\begin{theorem}[Integral native maps across compatible prescribed coefficients]
+\label{scheme:integral-native-coefficient-change}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isProperMap_mapOverBase_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isClosedMap_mapOverBase_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_preimage_mapOverBase_of_isIntegralHom,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isCompact_fibre_mapOverBase_of_isIntegralHom}
+\leanok
+\uses{scheme:integral-native-proper-map,scheme:native-coefficient-restriction,
+scheme:relative-valued-points}
+Let $\varphi:R\to S$ be a homomorphism of arbitrary commutative rings,
+with compatible prescribed real seminorms $v,w$. If actual structure
+maps $f_X:X\to\operatorname{Spec}S$, $f_Y:Y\to\operatorname{Spec}R$
+and an actual integral morphism $g:X\to Y$ satisfy
+$f_Y\circ g=\operatorname{Spec}(\varphi)\circ f_X$, then the original
+whole coefficient-changing fixed-base native map is proper and closed,
+with compact inverse images of compact subsets and compact point
+fibers. No bound on either seminorm, properness of either structure map,
+separation, or finite-type hypothesis is required.
+\end{theorem}
+\begin{proof}
+The actual whole fixed-$w$ native locus in $X$ is closed: its original
+structure map is continuous, and the native affine coefficient base is
+Hausdorff by its independently proved seminorm homeomorphism. Thus its
+actual subtype inclusion is a proper closed embedding, even when $X$
+is nonseparated. Compose it with the proved proper absolute native map
+of $g$; the resulting map into the absolute native space of $Y$ is
+proper. By the genuine coefficient diagram this composition is exactly
+the whole fixed-base map followed by the target subtype inclusion.
+The fixed-base map is actually continuous, the target subtype inclusion
+is continuous and injective, and the true proper-map cancellation
+criterion therefore proves that the original fixed-base map is proper.
+This injective cancellation uses the actual proper-map criterion and
+requires no target Hausdorff hypothesis. Closedness and compactness of
+inverse images and fibers are genuine consequences of that properness.
+
+These are statements about actual maps and provided points. No scalar
+extension point existence, integral-map surjectivity or fiber bijection
+is asserted, and no proper-map or compactness certificate is assumed.
+\end{proof}

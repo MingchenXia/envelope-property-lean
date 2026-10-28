@@ -1,0 +1,47 @@
+\section{The actual affine ideal pullback has its entire original image}
+
+\begin{lemma}[The actual pullback module image is the entire geometric ideal]
+\label{lem:actual-affine-ideal-pullback-image}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.affinePullbackInclusionRange}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.affinePullbackInclusionRange_eq}
+\leanok
+For an arbitrary original affine morphism $f:X\to Y$ between actual
+affine schemes and an original ideal sheaf $I$, the image on original
+global sections of the actual pulled ideal inclusion is exactly the
+original geometric comap ideal $(I\mathcal O_X)(X)$. No flatness is
+required.
+\end{lemma}
+\begin{proof}
+The actual canonical ideal-module comparison maps the pulled module
+into the genuine geometric comap ideal. Its included section image
+is an ideal of the original ring $\Gamma(X,\mathcal O_X)$, by
+original module linearity. Hence this image is contained in the
+original comap ideal. Conversely, for every original
+$a\in I(Y)$, take its actual original ideal-module section and apply
+the genuine pullback adjunction unit. The canonical comparison sends
+this actual section to $f^*a$ by its proved unit identity. Thus the
+included image contains all images of the original ideal elements.
+As an ideal it contains their whole original ideal span, which is
+exactly the original geometric comap ideal on these affine schemes.
+This proves equality of the entire original ideals, including all
+nonradical structure.
+\end{proof}
+
+\begin{corollary}[Actual affine canonical ideal-module comparison is surjective]
+\label{cor:actual-affine-ideal-pullback-comparison-surjective}
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.affine_toModulesComapPullbackMap_appTop_surjective}
+\leanok
+\uses{lem:actual-affine-ideal-pullback-image}
+The actual canonical affine ideal-module comparison is surjective on
+the entire original global section modules, for arbitrary original
+$f$, including nonflat morphisms.
+\end{corollary}
+\begin{proof}
+The actual target global section module is the genuine original
+geometric comap ideal. Its underlying coefficient belongs to the
+image ideal just identified, so choose an original pulled module
+section with that same coefficient. The actual target inclusion is
+injective, hence equality of these original coefficients is equality
+of the original target sections. This gives the required original
+preimage for every section.
+\end{proof}

@@ -1,0 +1,24 @@
+\section{The original projection formula on every native pure tensor}
+
+\begin{lemma}[Native pure-tensor readback of the original PF]
+\label{lem:line-pf-native-pure-tensor-readback}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.lineProjectionFormulaObj_hom_tensorSection}
+\uses{lem:line-pf-native-hom-component}
+\leanok
+For the original scheme morphism $g:Y\to X$, original invertible line
+$L$, arbitrary original module $N$ on $Y$, and any original open $U$,
+the original projection-formula hom sends
+$b\otimes m$ to $b\otimes\eta_L(m)$ for every actual section
+$b\in\Gamma(g^{-1}U,N)$ and $m\in\Gamma(U,L)$.
+Every section and open remains literal, with no chosen field model,
+basis, frame or coefficient-matching hypothesis.
+\end{lemma}
+\begin{proof}
+Apply the preceding component formula.  The existing native pullback
+inverse-tensor comparison sends the native unit image of a pure tensor
+to the pure tensor of the two unit images.  Functoriality of the actual
+tensor section then applies the original counit to its first factor.
+The original adjunction right triangle identifies that factor with the
+same original $b$.  The second factor remains the native unit image of
+the original $m$.  This is exactly the claimed section equation.
+\end{proof}

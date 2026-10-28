@@ -1,0 +1,74 @@
+\section{Actual proper-center line frames in the original completed point field}
+
+\begin{definition}\label{def:fc-point-completed-line-frame}
+\lean{EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.completedFrame,EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.completedLocalFrame}
+\leanok
+\uses{cor:actual-line-model-norm-local-frame,scheme:actual-native-completed-residue-field,def:fc-point-laurent-line-evaluation}
+Let $p:X\to\operatorname{Spec}R$ be proper, let $x$ be an original
+relative valued point, and suppose the base valuation is bounded by
+one. Let $U$ be an original open neighborhood of its actual proper
+center, with an actual frame of the original line $L$ on $U$.
+The actual residue-field frame constructed from this neighborhood
+pulls back through the original residue-field embedding into $H(x)$
+to an actual frame of the same original completed-point pullback
+$h^*L$. Use this frame in the preceding original linear functional.
+\end{definition}
+\begin{proof}
+The original residue-field morphism factors through $U$ by the actual
+proper-center construction. Pull the given original frame along
+this morphism, obtaining the entire original residue-field frame.
+The original completed field point is the composite of this residue
+morphism with the spectrum of the actual residue-field embedding.
+The native composition and structure-unit comparisons therefore
+transport the residue frame to the stated completed-point frame.
+No completion-frame compatibility is assumed.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-point-completed-frame-model-norm}
+\lean{EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.completedFrame_functional,EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.completedLocalFrame_functional,EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.completedLocalFrame_nnnorm_eq_modelLineNorm}
+\leanok
+\uses{def:fc-point-completed-line-frame,cor:actual-line-model-norm-local-frame,lem:fc-original-line-section-fibre,scheme:actual-native-completed-residue-field}
+For every original global section $m$ of an original invertible line,
+the absolute value of its original completed-frame functional is
+exactly the true original proper-model line norm of the original
+residue-fibre section of $m$. This includes the zero section.
+\end{theorem}
+\begin{proof}
+Apply the actual residue frame to the native pullback-unit section
+of $m$, and denote its original scalar by $c\in\kappa_X(x)$.
+The proper-center local-frame theorem computes the true model
+norm as the original residue valuation of $c$. Pullback of the
+whole original scalar section morphism through the residue-field
+embedding gives precisely the embedded $c$ as the completed-frame
+functional. This follows from the genuine native pullback-unit,
+composition and scalar formulas, not from a supplied evaluation
+identity. The original residue embedding into $H(x)$ preserves its
+absolute value. These equalities prove the assertion for every
+original section, including $c=0$.
+\end{proof}
+
+\begin{corollary}\label{cor:fc-point-exists-completed-frame-model-norm}
+\lean{EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.exists_completedFrame_modelLineNorm,EnvelopeProperty.Berkovich.SchemePointCompletedLineFrame.exists_completedFrame_finite_family_modelNorm}
+\leanok
+\uses{thm:fc-point-completed-frame-model-norm,def:fc-point-completed-line-frame,thm:fc-point-laurent-line-gauss}
+Every original invertible line has an actual completed-point frame
+for which the preceding equality holds simultaneously for all
+original global sections. Consequently, at the actual original
+Laurent Gauss source point, every actual original Laurent-pulled
+line section has the weighted maximum of the true original model
+norms of its unique original coefficients. For a finite original
+section family, the same original finite coefficient and integer
+weight family is chosen before all original valued points and
+positive radii.
+\end{corollary}
+\begin{proof}
+The actual open frame cover of the invertible line contains its
+actual proper center in one member. Choose that original member
+and frame, and apply the preceding theorem to every original
+section. Substituting this equality into the genuine native
+product-frame Gauss coefficient formula gives the weighted
+original model norms. The original coefficient-pair construction
+depends only on the original section family; it precedes all
+original points, frames and radii. No boundedness of the Laurent
+Gauss base valuation is used.
+\end{proof}

@@ -1,0 +1,72 @@
+\subsection{Whole geometric kernel ideals and the actual module kernel of a morphism}
+
+\begin{lemma}[Whole kernel-ideal sections are exactly actual vanishing sections]
+\label{alggeom:actual-morphism-kernel-whole-local-membership}
+\lean{EnvelopeProperty.MorphismKernelIdealModuleComparison.isLocallyMem_iff_app_eq_zero}
+\leanok
+Let $f:Y\to X$ be ANY actual quasi-compact scheme morphism. On every original
+open $W\subset X$, a section belongs locally to the genuine geometric kernel
+ideal if and only if its image under the SAME entire section map $f^*$ is zero.
+No closed-immersion, Cartier, affine, reducedness, or finiteness premise is used.
+\end{lemma}
+\begin{proof}
+Local geometric kernel membership implies whole vanishing by the established
+actual kernel local-membership theorem, proved by affine refinement and the
+original sheaf uniqueness property. Conversely, suppose the whole image is
+zero. Restrict to any original affine subopen. Naturality of the actual scheme
+section map preserves that zero. For an actual quasi-compact morphism, the
+native geometric kernel ideal on this affine open is exactly the kernel of
+that actual section homomorphism. Thus all required affine restrictions belong
+to the geometric kernel ideal, which is precisely local membership.
+\end{proof}
+
+\begin{lemma}[The whole geometric inclusion has zero original quotient composite]
+\label{alggeom:actual-morphism-kernel-inclusion-zero}
+\lean{EnvelopeProperty.MorphismKernelIdealModuleComparison.inclusion_quotient_zero}
+\leanok
+\uses{alggeom:actual-morphism-kernel-whole-local-membership}
+The actual inclusion of the geometric kernel ideal module into the structure
+module followed by the original unit-to-pushforward-unit map is the zero
+morphism of actual module sheaves.
+\end{lemma}
+\begin{proof}
+Use extensionality of actual module sheaf morphisms and their original section
+linear maps. Each section of the actual geometric ideal module has exactly
+the local-membership condition of the preceding lemma, so its original whole
+image is zero on every original open.
+\end{proof}
+
+\begin{theorem}[The whole geometric kernel module is the actual native kernel]
+\label{alggeom:actual-morphism-geometric-native-kernel-iso}
+\lean{EnvelopeProperty.MorphismKernelIdealModuleComparison.kernelIdealModuleIso}
+\leanok
+\uses{alggeom:actual-morphism-kernel-whole-local-membership,alggeom:actual-morphism-kernel-inclusion-zero}
+For the same arbitrary actual quasi-compact morphism, the entire geometric
+kernel ideal module is canonically isomorphic to the actual native kernel of
+the original unit-to-pushforward-unit morphism.
+\end{theorem}
+\begin{proof}
+The preceding zero composite gives a genuine map from the geometric ideal
+module to the actual categorical kernel. In the opposite direction, send each
+actual kernel section to its original value under the native kernel inclusion.
+The kernel equation makes that value vanish under the original scheme section
+map; the whole local-membership equivalence puts it in the genuine geometric
+ideal module. Its additive and scalar laws are those of the actual inclusion,
+and naturality follows from the actual original module morphism naturality.
+Both maps retain the original inclusion into the structure module. Cancel that
+monomorphism on each side to prove the two composite identities. This constructs
+a whole module-sheaf isomorphism, rather than only affine section isomorphisms.
+\end{proof}
+
+\begin{lemma}[The original whole inclusion is retained literally]
+\label{alggeom:actual-morphism-kernel-iso-inclusion}
+\lean{EnvelopeProperty.MorphismKernelIdealModuleComparison.kernelIdealModuleIso_hom_inclusion}
+\leanok
+\uses{alggeom:actual-morphism-geometric-native-kernel-iso}
+The canonical isomorphism followed by the original native kernel inclusion
+is exactly the original whole geometric ideal-module inclusion.
+\end{lemma}
+\begin{proof}
+This is the actual categorical kernel-lift equation used to define the forward
+map of the preceding whole isomorphism.
+\end{proof}

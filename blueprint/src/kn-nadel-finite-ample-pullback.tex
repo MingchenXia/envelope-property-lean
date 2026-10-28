@@ -1,0 +1,151 @@
+\section{Coherent ample generation and the original whole finite pullback}
+
+\begin{theorem}[An original ample line eventually generates every original coherent twist]
+\label{thm:kn-nadel-ample-coherent-generation}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelAmpleCoherentGeneration.exists_eventual_generatingSections}
+Let $p:X\to\operatorname{Spec}R$ be the original scheme over a commutative
+ring, let $L$ be the original ample line, and let $M$ be any original
+finite-type quasicoherent module. For every sufficiently large original
+integer $m$, the whole original module $L^m\otimes M$ has a finite family
+of actual global generating sections. Neither integrality nor connectedness
+of the original $X$ is required.
+\end{theorem}
+\begin{proof}
+Choose the positive integer $r$, actual closed embedding
+$i:X\hookrightarrow\mathbf P^n_R$, and actual isomorphism
+$i^*\mathcal O(1)\simeq L^r$ in the original ample datum. For each of
+the finitely many residues $a=0,\ldots,r-1$, the original module
+$M\otimes L^a$ is finite-type quasicoherent: trivializing the original
+line $L^a$ identifies its actual restrictions with those of $M$.
+Closed-projective global generation therefore supplies a threshold $N_a$
+such that $(M\otimes L^a)\otimes i^*\mathcal O(d)$ has finite actual
+global generators for all $d\geq N_a$.
+
+Let $T$ be the maximum of these thresholds. If $m\geq Tr$, write
+$m=a+rd$ with $0\leq a<r$ and $d\geq T$. The actual original line
+comparison and its tensor powers identify $i^*\mathcal O(d)$ with
+$L^{rd}$. Associativity, the original power-addition isomorphism, and
+tensor symmetry thus give an actual whole isomorphism from the generated
+module to the same original $L^m\otimes M$. Transporting its actual finite
+generators along this isomorphism proves the assertion for every original
+$m\geq Tr$, including all residue classes.
+\end{proof}
+
+\begin{corollary}[Every original invertible twist is eventually very ample on an arbitrary source]
+\label{cor:kn-nadel-ample-eventual-very-ample-arbitrary}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelAmpleCoherentGenerationVeryAmple.exists_eventual_isVeryAmple}
+\uses{thm:kn-nadel-ample-coherent-generation,lem:kn-nadel-very-ample-generated-arbitrary}
+Over an original domain, let the original $L$ be ample and let $B$ be any
+original invertible line on an arbitrary original $X$. For all sufficiently
+large original $m$, the actual original $L^m\otimes B$ is very ample.
+No integrality or connectedness of $X$ is required.
+\end{corollary}
+\begin{proof}
+The original ample datum gives a positive $r$ for which the same original
+$L^r$ is very ample. The original $B$ is finite-type quasicoherent, so the
+coherent generation theorem supplies finite actual generators of
+$L^d\otimes B$ for all $d\geq N$. For $m\geq N+r$, take $d=m-r$.
+The whole-source very-ample-times-generated theorem makes
+$L^r\otimes(L^d\otimes B)$ very ample. Associativity and the actual
+power-addition isomorphism identify this entire original line with
+$L^{r+d}\otimes B=L^m\otimes B$. Transporting the actual embedding and
+whole hyperplane comparison proves the assertion.
+\end{proof}
+
+\begin{lemma}[Finite preservation constructs a very ample line on the whole source]
+\label{lem:kn-nadel-finite-source-very-ample}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmplePullbackProjective.exists_isVeryAmple_line}
+Let the original target over a commutative ring carry an original ample
+line, and let $\pi:W\to X$ be finite. There is an actual very ample line
+for the same original composite $W\to\operatorname{Spec}R$, retaining the
+whole original $W$.
+\end{lemma}
+\begin{proof}
+The original ample datum includes an actual positive-power closed
+projective embedding of $X$ over $R$. Apply finite preservation of actual
+projectivity to this literal original structure map and original finite
+$\pi$. Its proof internally produces a closed projective embedding of
+all of $W$, with the original composite as structure morphism. Its actual
+pullback of the hyperplane line is the asserted very ample line; the
+hyperplane comparison is its identity isomorphism.
+\end{proof}
+
+\begin{lemma}[The actual inverse twist cancels through the whole very-ample comparison]
+\label{lem:kn-nadel-very-ample-inverse-generated}
+\leanok
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmplePullbackTensor.isVeryAmple_of_inverse_twist_generated}
+\uses{lem:kn-nadel-very-ample-generated-arbitrary}
+Over a domain, suppose the original $H$ is very ample on any original
+scheme and the original invertible $B$ has an actual finite global
+generating family after tensoring with the actual original $H^{-1}$.
+Then this same original $B$ is very ample, retaining every component.
+\end{lemma}
+\begin{proof}
+The original inverse $H^{-1}$ and the original $B$ make their tensor
+invertible. The whole-source very-ample-times-generated theorem gives
+very ampleness of $H\otimes(H^{-1}\otimes B)$. The actual associativity
+isomorphism identifies this with $(H\otimes H^{-1})\otimes B$.
+Original invertible-line evaluation is an isomorphism
+$H\otimes H^{-1}\simeq\mathcal O$, and its tensor with the identity
+of the same original $B$, followed by the unit isomorphism, identifies
+the entire resulting line with the original $B$. Transporting the actual
+closed embedding and its hyperplane comparison proves the assertion.
+\end{proof}
+
+\begin{lemma}[The original finite pullback eventually generates every original coherent twist]
+\label{lem:kn-nadel-finite-pullback-coherent-generation}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmplePullbackGeneration.exists_eventual_generatingSections}
+\leanok
+\uses{thm:kn-nadel-ample-coherent-generation,lem:kn-nadel-finite-pushforward-coherent}
+For an original finite $\pi:W\to X$, original ample $L$ on $X$ over a
+commutative ring, and any original finite-type quasicoherent $M$ on $W$,
+the original $M\otimes(\pi^*L)^m$ has actual finite global generators for
+every sufficiently large original $m$.
+\end{lemma}
+\begin{proof}
+The actual original pushforward $Q=\pi_*M$ is finite-type quasicoherent.
+Coherent ample generation and symmetry produce actual finite generators
+of the original $Q\otimes L^m$ for all sufficiently large $m$. Pull that
+same generating family back along the original $\pi$. Actual monoidal
+pullback identifies its module with $\pi^*Q\otimes\pi^*L^m$.
+
+The actual affine pullback-pushforward counit $\pi^*Q\to M$ is surjective:
+on each whole affine inverse image it is multiplication
+$C\otimes_D V\to V$, and the original $1\otimes v$ maps to $v$.
+Tensoring this actual surjection by the invertible original $\pi^*L^m$
+preserves surjectivity, since tensoring by an invertible line is an
+equivalence. Composing these actual maps with the whole tensor-power
+pullback isomorphism gives an actual surjection from the pulled generated
+module onto the same original $M\otimes(\pi^*L)^m$. The images of the
+same original finite generating family generate this whole target.
+\end{proof}
+
+\begin{proposition}[The actual original finite pullback is ample on the whole source]
+\label{prop:kn-nadel-whole-finite-ample-pullback}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteAmplePullback.isAmple_pullback}
+\leanok
+\uses{lem:kn-nadel-finite-pullback-coherent-generation,lem:kn-nadel-finite-source-very-ample,lem:kn-nadel-very-ample-inverse-generated}
+Let $R$ be the original domain, in particular any original field, and let
+$p:X\to\operatorname{Spec}R$. Let $L$
+be an original ample line for $p$, and let $\pi:W\to X$ be finite.
+Then the actual original $\pi^*L$ is ample for the same original composite
+$\pi p$. No integrality, connectedness, or chosen component of $W$ is required.
+\end{proposition}
+\begin{proof}
+The proved finite-projective producer internally constructs a very ample
+line $H$ on the whole original $W$ over the original $R$. Its actual
+inverse $D=H^{-1}$ is finite-type quasicoherent. Apply the proved
+finite-pullback coherent generation lemma to this same original $D$.
+There is an original threshold $N$ such that
+$H^{-1}\otimes(\pi^*L)^m$ has actual finite global generators for every
+$m\geq N$. Take $m=N+1$, which is positive. The original $\pi^*L$ is
+invertible by actual pullback of the original invertible $L$, so its
+actual power $(\pi^*L)^m$ is invertible. The preceding inverse-twist
+generated lemma, applied to these same original generators, makes this
+entire original power very ample for $\pi p$. The actual positive-power
+ample criterion therefore proves that the original $\pi^*L$ is ample.
+Every map and comparison is on the same entire original $W$.
+\end{proof}

@@ -1,0 +1,63 @@
+\subsection{Maximum on arbitrary connected algebraic curves}
+
+\begin{lemma}[Closed rational sections of finite-type schemes]
+\label{lem:fc-closed-rational-section}
+\lean{EnvelopeProperty.exists_closed_rational_section_of_finiteType_nonempty}
+\leanok
+Every nonempty scheme locally of finite type over an algebraically closed
+field has an original rational section that is a closed immersion, without
+a separatedness hypothesis.
+\end{lemma}
+\begin{proof}
+Choose the actual closed finite-extension field point constructed by an
+affine maximal quotient and the Jacobson property. Its extension is the
+original base field because that field is algebraically closed. Precompose
+with the spectrum of the inverse base-field algebra isomorphism. This map
+is a closed immersion since its ring map is surjective. Composing the two
+closed immersions gives the required section and retains the exact original
+structure triangle.
+\end{proof}
+
+\begin{lemma}[Integral reduced support closures retain the curve dimension]
+\label{lem:fc-integral-closed-curve-support-lift}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_integral_closed_curve_support_lift}
+\leanok
+Every whole native point on a scheme of global dimension at most one lifts
+to an actual integral closed subscheme of global dimension at most one.
+\end{lemma}
+\begin{proof}
+Take the reduced vanishing-ideal subscheme of the singleton closure of its
+original support. The singleton closure is nonempty and irreducible, so this
+constructed closed subscheme is integral. A closed embedding does not increase
+global dimension. The original support belongs to its own singleton closure;
+the genuine closed-immersion native range theorem therefore lifts the whole
+original native point to this subscheme.
+\end{proof}
+
+\begin{theorem}[Maximum on every original connected finite-type curve]
+\label{thm:fc-connected-finite-type-curve-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.exists_closed_support_maximizer_of_isMaxOn_univ_curve,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_connected_curve}
+\leanok
+\uses{lem:fc-closed-rational-section,lem:fc-integral-closed-curve-support-lift,lem:fc-finite-type-closed-support-maximum}
+Over a complete algebraically closed ultrametric normed field, a native locally
+psh function on any connected finite-type scheme of global dimension at most
+one is constant if it attains its global maximum. This includes every smooth
+connected affine curve and also allows singular, reducible and nonreduced
+curves and the trivial base norm.
+\end{theorem}
+\begin{proof}
+Lift a maximizing point to the constructed integral reduced closure of its
+support. The integral curve maximum theorem makes the pulled-back function
+constant there. Choose a genuine closed rational section of this integral
+finite-type subscheme. Its image in the original scheme has closed support
+and the original maximum value.
+
+For an arbitrary original native point construct its integral reduced support
+closure and a closed rational section there. The image of this second section
+has closed support in the original scheme, so connected finite-type closed
+curve propagation gives it the same maximum value. The pulled-back function
+therefore attains its global maximum at this section. The integral curve
+maximum theorem equates this value with that of the lifted arbitrary point.
+The original closed-immersion projection recovers the entire original point,
+which proves the assertion without a smoothness or integrality input.
+\end{proof}

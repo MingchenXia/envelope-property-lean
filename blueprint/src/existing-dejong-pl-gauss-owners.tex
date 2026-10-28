@@ -1,0 +1,645 @@
+
+\begingroup
+
+\begin{definition}[Regular scheme]
+\label{def:regular-scheme}
+\lean{DeJongAlterations.IsRegularScheme}
+\leanok
+On a locally Noetherian scheme, regularity means that every local ring is
+regular. The stalkwise condition also makes sense without local
+Noetherianity; all varieties in the alteration theorem are Noetherian.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[Strict normal crossings]
+\label{def:snc}
+\source{dejong96-alterations:page-0006}
+\uses{def:regular-scheme}
+\lean{DeJongAlterations.IsStrictNormalCrossings}
+\leanok
+On a Noetherian scheme $S$, a divisor $D$ has strict normal crossings if it
+is reduced, $S$ is regular at all points of $D$, and the scheme-theoretic
+intersection of every nonempty finite family of distinct irreducible components
+is regular of codimension equal to the number of components. Each component
+carries its reduced induced structure; their intersection is defined by the
+sum of the component ideal sheaves, without taking its radical. Noetherianity
+makes the set of components finite. Effective Cartier divisors are expressed
+locally by a single non-zero-divisor, and pure codimension is measured by
+ambient local-ring dimensions at the generic points of every intersection
+component.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[Projectivity]
+\label{def:projective-over}
+\lean{DeJongAlterations.IsProjectiveOver}
+\leanok
+A morphism $p:X\to\operatorname{Spec}k$ is projective if it is the composite
+of a closed immersion $X\hookrightarrow\mathbb P^n_k$ and the structure
+morphism of $\mathbb P^n_k$, for some finite $n$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[Alteration with boundary]
+\label{def:alteration-output}
+\uses{def:projective-over,def:regular-scheme,def:snc}
+\lean{DeJongAlterations.AlterationWithBoundary}
+\leanok
+For a $k$-variety $X$ and a subset $Z$, an alteration with boundary consists
+of $k$-varieties $Y,\overline Y$, a $k$-alteration $f:Y\to X$, a $k$-open
+immersion $j:Y\hookrightarrow\overline Y$, and a reduced strict normal
+crossings divisor $D$ on the regular projective variety $\overline Y$, with
+support exactly $j(f^{-1}(Z))\cup(\overline Y\setminus j(Y))$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Open subschemes]
+\label{lem:regular-open}
+\uses{def:regular-scheme}
+\lean{DeJongAlterations.IsRegularScheme.of_isOpenImmersion}
+\leanok
+An open subscheme of a scheme with regular local rings has regular local rings.
+\end{lemma}
+\begin{proof}
+An open immersion induces an isomorphism from the local ring of the target
+at the image of a point to the local ring of the source at that point.
+Regularity of a local ring is invariant under ring isomorphisms.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Actual divisor components and their finiteness]
+\label{lem:divisor-components}
+\uses{def:snc}
+\lean{DeJongAlterations.divisorComponentOf,DeJongAlterations.divisorComponent_finite}
+\leanok
+Every irreducible component of the closed support of $D$ gives an ambient
+closed component in the component type used above. If the ambient space is
+Noetherian, this type is finite.
+\end{lemma}
+\begin{proof}
+The inclusion of the closed support is a closed embedding. It takes each
+closed irreducible component to a closed subset of the ambient space, and
+the defining witness records its origin. A subspace of a Noetherian space
+is Noetherian, so the support has finitely many irreducible components.
+Their map to the component type is surjective by its defining witness;
+thus that type is finite as well. In particular every subset of its
+components can be represented by a finite set.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{corollary}[Dimension under an actual dense open immersion]
+\label{cor:function-field-dimension-dense-open}
+\source{dejong96-alterations:page-0019}
+\lean{DeJongAlterations.Geometry.FunctionFieldDimension.topologicalKrullDim_eq_of_openImmersion,DeJongAlterations.Geometry.FunctionFieldDimension.topologicalKrullDim_le_one_of_dense_open}
+\leanok
+Let $Y$ be an integral scheme locally of finite type over $k$ and
+$j:X\to Y$ a dominant open immersion. Then $\dim X=\dim Y$.
+In particular $\dim X\leq1$ implies $\dim Y\leq1$.
+\end{corollary}
+\begin{proof}
+The actual open image is nonempty by dominance. Choose a nonempty
+affine neighborhood $U$ contained in that image. The scheme dimension
+theorem shows that $Y$ and every nonempty affine open of $Y$, in
+particular $U$, have the same dimension: both are the finite degree of
+the same canonical function field. The universal property of the open
+immersion lifts $U\to Y$ to an open immersion $U\to X$. Hence
+$\dim Y=\dim U\leq\dim X$. The original open immersion also gives
+$\dim X\leq\dim Y$, proving equality.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Alterations preserve dimension]
+\label{lem:sm-dj-dim-alteration}
+\source{dejong96-alterations:page-0012}
+\uses{cor:function-field-dimension-dense-open}
+\lean{DeJongAlterations.StableModification.DeJong.IsAlteration.toSurjective,DeJongAlterations.StableModification.DeJong.topologicalKrullDim_eq_of_isAlteration,DeJongAlterations.StableModification.DeJong.topologicalKrullDim_eq_of_isModification}
+\leanok
+Let $S$ be a scheme locally of finite type over a field and $f:X\to S$ an
+alteration. Then $\dim X=\dim S$. In particular modifications preserve the
+dimension.
+\end{lemma}
+\begin{proof}
+The morphism $f$ is proper and dominant, hence surjective. Choose a nonempty
+open $U\subseteq S$ such that $f^{-1}(U)\to U$ is finite. Then $f^{-1}(U)$ is
+nonempty by surjectivity, and $f^{-1}(U)$ and $U$ are integral, being nonempty
+open subschemes of integral schemes. The restriction $f^{-1}(U)\to U$ is finite
+and surjective, hence dominant, so its function field extension is finite and
+$\dim f^{-1}(U)=\dim U$, both dimensions being the transcendence degree of the
+function field over $k$. A nonempty open subscheme of an integral scheme of
+finite type over a field has the dimension of the whole scheme; applying this to
+$f^{-1}(U)\subseteq X$ ($X$ is of finite type over $k$ through $f$) and to
+$U\subseteq S$ gives $\dim X=\dim f^{-1}(U)=\dim U=\dim S$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Varieties have finite dimension]
+\label{lem:sm-dj-dim-finite}
+\uses{def:variety}
+\lean{DeJongAlterations.StableModification.DeJong.exists_nat_topologicalKrullDim_eq}
+\leanok
+The dimension of a variety over a field is a natural number.
+\end{lemma}
+\begin{proof}
+It equals the transcendence degree of its function field over the ground
+field, which is finite because the function field is finitely generated.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The actual dimension of a Cartier support component]
+\label{lem:actual-cartier-component-dimension}
+\lean{DeJongAlterations.Geometry.CartierBoundaryComponentDimension.component_affine_height,DeJongAlterations.Geometry.CartierBoundaryComponentDimension.component_dimension_add_one}
+\leanok
+Let $X$ be a variety over any field and let $D$ be an actual effective
+Cartier ideal. For every native support component with actual reduced
+vanishing-ideal closed subscheme $C$, one has $\dim C+1=\dim X$.
+\end{lemma}
+\begin{proof}
+Choose a nonempty affine open meeting the component and write $I$ for
+the component's actual vanishing ideal in its coordinate ring $A$.
+The inverse image of the closed irreducible component is irreducible;
+the ideal is radical, so $I$ is prime. The generic point of $V(I)$
+maps to the generic point of the original support component. Actual
+Cartier pure codimension gives ambient local dimension one there.
+The native affine open stalk isomorphism and prime-height formula
+give $\operatorname{ht}I=1$. The preceding exact affine dimension
+formula yields $\dim(A/I)+1=\dim A$. The spectrum of this literal
+quotient is an actual nonempty open chart of the actual reduced
+component subscheme. Nonempty affine opens have the original global
+finite-type variety dimensions, which gives the stated equality.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Dominant integral pullback preserves Cartier divisors]
+\label{thm:cartier-dominant-pullback}
+\source{dejong96-alterations:page-0018}
+\lean{DeJongAlterations.Geometry.CartierDominantPullback.isEffectiveCartierDivisor_comap}
+\leanok
+Let $f:X\to Y$ be a dominant morphism of integral schemes.
+If $D$ is an effective Cartier divisor on $Y$, then its actual
+scheme-theoretic pullback is an effective Cartier divisor on $X$.
+No finite-type, Noetherian, properness or flatness hypothesis is needed.
+\end{theorem}
+\begin{proof}
+At $f(x)$ choose an affine Cartier neighborhood $V$ with full ideal
+$(t)$, where $t$ is a non-zero-divisor. Choose a nonempty affine
+neighborhood $U$ of $x$ inside $f^{-1}(V)$. Both section rings are
+domains, and the preceding lemma shows that $t$ has nonzero image
+in $\Gamma(U)$. That image is a non-zero-divisor. The exact affine
+pullback lemma identifies the full pulled-back ideal on
+$\operatorname{Spec}\Gamma(U)$ with the principal ideal generated
+by this image. Its Cartier equation transports through the actual
+open immersion to an affine neighborhood of $x$ in $X$. This proves
+the required local statement at every point.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[An actual regular codimension-one component is Cartier]
+\label{thm:snc-regular-component-cartier}
+\lean{DeJongAlterations.Geometry.SNCSubdivisorComponent.isRegularRing_of_spec,DeJongAlterations.Geometry.SNCSubdivisorComponent.isRegularRing_quotient_of_specIdealSheaf,DeJongAlterations.Geometry.SNCSubdivisorComponent.isEffectiveCartierDivisor_vanishingIdeal,DeJongAlterations.Geometry.SNCSubdivisorComponent.component_le_support,DeJongAlterations.Geometry.SNCSubdivisorComponent.component_isEffectiveCartierDivisor}
+\leanok
+Let $X$ be locally Noetherian, and let $C\subset X$ be irreducible
+closed with pure codimension one. Suppose $X$ is regular along $C$
+and the actual reduced closed subscheme of $C$ is regular.
+Then its actual vanishing ideal is effective Cartier.
+\end{theorem}
+\begin{proof}
+At a point of $C$, the actual closed-immersion stalk map is a
+surjection between the two regular local rings. Its kernel is
+the extension of the actual affine prime defining $C$, which
+has height one by the affine-height lemma, and is therefore
+nonzero in the domain given by the ambient regular local ring.
+The kernel lemma constructs its regular principal equation.
+Spread this equation by the preceding lemma. At a point outside
+$C$, the restricted ideal is the unit ideal and has equation one.
+These actual affine equations prove the Cartier assertion.
+\leanok
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Dominance from an integral scheme over a Dedekind domain forces flatness]
+\label{thm:proper-flattening-dedekind-native-flat}
+\lean{DeJongAlterations.Geometry.ProperFlatteningDedekind.flat_of_dominant_to_spec}
+\leanok
+Let $R$ be a Dedekind domain and $f:X\to\operatorname{Spec}R$ the
+original dominant morphism from an integral scheme.  Then this same
+morphism $f$ is flat.  No finite-type, properness, or relative-dimension
+hypothesis on $f$ is required.
+\end{theorem}
+\begin{proof}
+Cover $X$ by its actual nonempty affine neighborhoods.  Every such open
+is integral, and its inclusion has nonempty open image in the irreducible
+scheme $X$, hence is dominant.  Its composition with the original $f$
+is therefore dominant.  Writing that actual affine map as
+$\operatorname{Spec}B\to\operatorname{Spec}R$, both rings are domains.
+The native dense-spectrum criterion says that its coefficient-map kernel
+is contained in the nilradical of $R$, which is zero.  Thus the actual
+map $R\to B$ is injective.  Consequently the original $R$-module $B$
+is torsion free: a nonzero base coefficient maps to a nonzero element
+of the domain $B$ and cannot annihilate a nonzero element of $B$.
+The torsion-free flatness theorem over a Dedekind domain makes this very
+$B$ flat over $R$.  The native affine criterion makes the actual affine
+restriction flat.  Source locality on the chosen actual affine cover
+proves native flatness of the original $f$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Unconditional actual alteration over an arbitrary field]
+\label{thm:sm-bridge-alteration-arbitrary-unconditional}
+\lean{DeJongAlterations.StableModificationBridge.AlterationUnconditional.deJongAlterationTheorem}
+\leanok
+For every field $k$, with no perfectness or geometric integrality
+assumption, the native actual \texttt{DeJongAlterationTheorem k}
+holds unconditionally. For every original variety $X$ and every
+prescribed proper closed subset $Z\subset X$, it produces an actual
+alteration $X'\to X$ and an open immersion $X'\hookrightarrow\overline X'$
+into a regular projective variety over $k$, with the actual image
+of the inverse image of $Z$, together with the compactification
+complement, equal to the support of an actual strict normal-crossings
+divisor.
+\end{theorem}
+\begin{proof}
+Apply the genuine whole original-field alteration descent theorem
+to the preceding actual theorem over the actual algebraic closure
+of $k$. That proved reduction chooses an actual dominating reduced
+component, descends the actual finite-field model and entire
+morphism, retains the same original boundary and all maps, and
+descends the smooth ambient variety and strict normal-crossings
+divisor to an actual finite field extension $E/k$. The resulting
+ambient variety is regular and projective over the original $k$,
+and the entire original prescribed inverse-image and compactification
+complement has the native strict normal-crossings support.
+It returns the same original native alteration statement over $k$.
+No geometric integrality premise on the original variety is added.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Whole stalk ideals and their actual pullback]
+\label{lem:node-fitting-ideal-sheaf-stalks}
+\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.exists_affineOpens_mem,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_ideal_comap,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_le_stalkIdeal,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_eq_of_le,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_eq_map_germ,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_comap,DeJongAlterations.Algebra.NodeFittingIdealSheaf.ext_stalkIdeal}
+\leanok
+The supremum of the images of $I(U)$ under original germ maps over all
+affine neighbourhoods $U$ of $x$ defines $I_x$. Every such single actual
+$U$ computes this whole ideal. For every actual $g:Z\to X$,
+$(g^*I)_z=I_{g(z)}\mathcal O_{Z,z}$ under the original stalk map.
+Equal whole stalk ideals imply equal native ideal sheaf data; equal
+inverse images on an actual open cover also imply equality.
+\end{lemma}
+\begin{proof}
+For nested affine neighbourhoods, full-ideal restriction and composition
+of the original germ maps give equal images. Any two have a common affine
+basic neighbourhood, so all images in the supremum equal any one of them.
+Apply the preceding affine pullback formula and the native germ--stalk-map
+triangle. Native affine ideal extensionality detects equality on germs,
+so equality on all stalks gives equality of whole chart ideals. An open
+immersion has an isomorphism on actual stalks, whose ideal-extension map
+is injective. Thus equal inverse images give equal stalk ideals on its
+image, and the cover contains every point.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Kernel of the actual closed-subscheme stalk map]
+\label{lem:node-fitting-ideal-sheaf-stalk-kernel}
+\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.ker_stalkMap_subschemeι}
+\leanok
+For any native ideal sheaf datum $I$ on any original scheme $X$, and any
+actual $z\in V(I)$, the kernel of the original native stalk map
+$\mathcal O_{X,\iota(z)}\to\mathcal O_{V(I),z}$ is exactly the whole
+original stalk ideal $I_{\iota(z)}$.
+\end{lemma}
+\begin{proof}
+Choose an actual affine neighbourhood $U$ of $\iota(z)$; its inverse
+image in the native closed subscheme is affine. Both actual stalks are
+the native localizations of those actual section rings at their actual
+point primes. The original map on sections is surjective and has whole
+kernel $I(U)$, by the native subscheme construction. The native
+prime-ideal naturality identifies the actual source prime with the
+contraction of the actual target prime. Surjectivity therefore makes the
+image of the source prime complement exactly the target prime complement.
+Native localization uniqueness and the actual germ--stalk-map triangle
+identify the original stalk map with the native map of these actual
+localizations. Its kernel is the image of the original whole section
+kernel under the original source germ map, by the native localization
+kernel theorem. The proved original stalk-ideal computation identifies
+this image with the whole $I_{\iota(z)}$. No abstract replacement ring,
+radical, Noetherian hypothesis or point-closedness is used.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Actual stalk quotient and original quotient-map triangle]
+\label{thm:node-fitting-ideal-sheaf-actual-stalk-quotient}
+\uses{lem:node-fitting-ideal-sheaf-stalk-kernel}
+\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv_mk}
+\leanok
+The actual original closed-subscheme stalk is canonically ring-isomorphic
+to $\mathcal O_{X,\iota(z)}/I_{\iota(z)}$, and the isomorphism sends every
+original quotient class $[a]$ to the original native inclusion stalk map
+applied to $a$.
+\end{theorem}
+\begin{proof}
+The actual closed immersion is natively surjective on the original
+stalks. Apply the native first isomorphism theorem to that same stalk
+map, after identifying its whole actual kernel by the preceding lemma.
+The quotient-by-equal-ideal map and the native quotient-kernel isomorphism
+both preserve the original quotient representatives, giving exactly the
+claimed full original map triangle.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Range of the fraction-chart inclusion]
+\label{lem:affine-blowup-fraction-chart-range}
+\uses{lem:affine-blowup-chart-over-base}
+\lean{DeJongAlterations.affineBlowupFractionChartInclusion_opensRange}
+\leanok
+For $0\ne g\in I$, the native open immersion
+$\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)$
+has open range exactly $D_+(gT)$.
+\end{lemma}
+\begin{proof}
+The chart inclusion is the spectrum of the homogeneous-chart ring
+isomorphism followed by the native basic-open immersion. The first
+map is an isomorphism, so precomposing by it leaves the range
+unchanged. The range of the basic-open immersion is its defining
+open $D_+(gT)$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The local equation is a non-zero-divisor]
+\label{lem:blowup-chart-equation-regular}
+\uses{def:affine-blowup-fraction-chart}
+\lean{DeJongAlterations.affineBlowupFractionChart_generator_isRegular}
+\leanok
+For any $g\ne0$, its image in $S$ is a non-zero-divisor.
+\end{lemma}
+\begin{proof}
+The ring $S$ is a subring of the field $K$, hence a domain. The
+composition $R\to S\to K$ is the injective fraction-field inclusion.
+Consequently the image of $g$ in $S$ is nonzero. Multiplication by
+a nonzero element of a domain is injective, on both sides, which is
+the required regularity.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The exceptional ideal on the actual fraction chart]
+\label{lem:blowup-exceptional-ideal-chart}
+\uses{lem:affine-blowup-chart-over-base}
+\lean{DeJongAlterations.affineBlowupExceptionalIdeal_comap_chart}
+\leanok
+Let $R$ be a domain and $0\ne g\in I$. On the actual chart
+$\operatorname{Spec}R[I/g]$, the pulled-back blowup ideal is exactly the
+ideal sheaf associated with $(g)$.
+\end{lemma}
+\begin{proof}
+Ideal-sheaf pullback composes. The actual chart inclusion followed by
+the blowup structure map is the spectrum map of $R\to R[I/g]$.
+The affine ideal-sheaf pullback theorem identifies the result with the
+extension of the original ideal, which is exactly $(g)$ by the checked
+chart ideal computation.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Surjectivity of the actual graded map]\label{thm:rees-polynomial-surjective}
+\lean{DeJongAlterations.Algebra.ReesPresentation.reesPolynomialMap_surjective}
+\leanok
+If the family $g$ generates $I$, the actual graded map is surjective.
+\end{theorem}
+\begin{proof}
+Write an arbitrary Rees polynomial as its finite sum
+$\sum_n a_nt^n$. Its membership in the Rees algebra says exactly that
+$a_n\in I^n$ for every $n$. Apply the preceding lemma to each coefficient
+in its finite support, obtaining homogeneous preimages $P_n$.
+The finite sum $\sum_nP_n$ maps to the original polynomial by additivity.
+Equality is equality in the actual Rees subalgebra of $R[t]$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[Coefficient maps of native projective space]
+\label{def:blowup-projective-coefficient-map}
+\leanok
+\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap_irrelevant,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveCoefficientMap}
+A ring homomorphism $R\to A$ induces the genuine coefficientwise graded
+polynomial homomorphism and hence a native scheme morphism
+$\mathbb P^m_A\to\mathbb P^m_R$.
+\end{definition}
+\begin{proof}
+Coefficientwise mapping preserves every homogeneous degree. The target
+irrelevant ideal is generated by its variables, each of which is the image
+of the corresponding source variable in the source irrelevant ideal.
+Thus the actual graded map satisfies the irrelevant-ideal containment
+needed for native Proj. Applying native Proj gives the specified morphism.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[The affine map from the actual ideal generators]
+\label{def:blowup-projective-affine-map}
+\leanok
+\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap_surjective,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_isClosedImmersion,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_structure,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap_structure}
+For a finite family $g_0,\ldots,g_m$ generating an actual ideal $I\subset A$,
+the degree-one Rees elements $g_iT$ define an actual native map from
+$\operatorname{Bl}_I(\operatorname{Spec}A)$ to $\mathbb P^m_R$.
+\end{definition}
+\begin{proof}
+The actual graded polynomial evaluation $A[Y_0,\ldots,Y_m]\to\mathcal R(I)$
+is surjective because the $g_i$ generate $I$. Its native Proj map is the
+actual closed immersion into $\mathbb P^m_A$. Compose with the preceding
+coefficient map $\mathbb P^m_A\to\mathbb P^m_R$. The structure square
+follows from the two original native structure identities.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The complete pulled-back chart ideal]
+\label{lem:blowup-projective-pulled-forms}
+\leanok
+\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.ideal_comap_affine,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.coordinateAffineOpen,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.coordinateIdeal_span,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.pulledForm,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.pulledForm_span}
+For an actual affine open $U\subset j^{-1}D_+(X_i)$, the restrictions of
+$F_a/X_i^{\deg F_a}$ generate the entire native pullback ideal on $U$.
+\end{lemma}
+\begin{proof}
+Native pullback on arbitrary affine source and target opens corresponds to
+extension of ideals along the actual map on sections: compose their canonical
+spectrum maps with the original morphism, use the actual commutative spectrum
+square, and apply the affine ideal-sheaf equivalence and its pullback formula.
+On a projective coordinate chart, the exact homogeneous-quotient kernel is the
+dehomogenized original ideal. The actual coordinate-to-section ring isomorphism
+therefore carries the span of the dehomogenized forms onto the whole chart ideal.
+Extending once more along the actual map on sections gives exactly the span of
+the restricted forms and the original pulled-back native ideal, including all
+nilpotent structure.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The actual subordinate blowup cover]
+\label{lem:blowup-projective-subordinate-cover}
+\leanok
+\uses{lem:blowup-projective-pulled-forms}
+\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.SubordinateAffineSite,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCover,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCover_locallyDirected}
+The native affine Rees charts above affine opens subordinate to the
+original projective coordinate opens form a locally directed open cover
+of the actual global blowup.
+\end{lemma}
+\begin{proof}
+For each point of the blowup, the image in projective space lies in a
+coordinate open. The affine-open basis supplies an affine neighborhood
+of its original base image contained in that inverse image. The exact
+native range formula for the Rees chart includes the original blowup
+point, proving coverage. Given a point of the intersection of two charts,
+the full native locally directed affine-site cover supplies a smaller chart
+mapping to both. Because it is contained in the first chart's base open,
+it inherits that chart's projective-coordinate containment. Thus it lies
+in the subordinate subcategory, and all transition identities are the
+original native affine Rees transition identities.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[The projective morphism from the native global blowup]
+\label{thm:blowup-projective-global-map}
+\source{dejong96-alterations:page-0018}
+\leanok
+\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate_le,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.formsChartMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.formsChartMap_compatible,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_restrict,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_structure,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.exists_projectiveBlowupMap}
+\uses{lem:blowup-projective-subordinate-cover}
+Let $j:X\hookrightarrow\mathbb P^n_R$ be an actual projective embedding and
+let an original ideal $D$ be represented by finite forms $F_a$ of one degree
+$d$. The genuine local generator maps glue to a native morphism
+$\operatorname{Bl}_D X\to\mathbb P^m_R$ over $R$.
+In particular, over a Noetherian $R$, the actual projective embedding and
+$D$ alone internally produce such a finite $m$ and morphism, without a
+supplied homogeneous representation.
+\end{theorem}
+\begin{proof}
+On the affine inverse image of $D_+(X_i)$, use the actual functions
+$F_a/X_i^d$ generating the whole original ideal. Construct the preceding
+affine projective map on its actual Rees blowup. On an overlap with the
+chart selected by $X_j$, each generator is multiplied by the same unit
+$(X_i/X_j)^d$. The preceding lemma gives equality of the actual scheme
+morphisms after restriction. Native scheme gluing on the genuine blowup
+cover supplies the global morphism, and the local structure identities
+glue to its original base identity.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Native closed immersion on each actual target chart]
+\label{lem:segre-native-chart-closed-immersion}
+\lean{DeJongAlterations.Geometry.Segre.coordinateChartIso,DeJongAlterations.Geometry.Segre.coordinateChartInclusion_structure,DeJongAlterations.Geometry.Segre.chartClosedImmersion,DeJongAlterations.Geometry.Segre.chartClosedImmersion_isClosedImmersion,DeJongAlterations.Geometry.Segre.chartToProjective,DeJongAlterations.Geometry.Segre.chartToProjective_structure}
+\leanok
+The actual affine scheme
+$\operatorname{Spec}(A_i\otimes_R B_j)$ has a closed
+immersion into the native chart $D_+(z_{ij})\subset
+\mathbf P_R^N$, induced by the displayed coordinate map.
+Its structure map agrees with the original $R$-coefficient map.
+\end{lemma}
+\begin{proof}
+The checked native projective chart isomorphism identifies
+$D_+(z_{ij})$ with $\operatorname{Spec}C_{ij}$.
+The actual surjective ring map of the preceding lemma
+therefore induces the claimed closed immersion.
+All algebra maps are $R$-algebra maps, so their coefficient
+triangles commute. The native Proj chart structure
+triangle identifies that coefficient triangle with the
+restriction of $\mathbf P_R^N\to\operatorname{Spec}R$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Actual native coordinate overlap transitions]
+\label{lem:segre-native-coordinate-overlap}
+\uses{lem:segre-native-chart-closed-immersion}
+\lean{DeJongAlterations.Algebra.Segre.CoordinateOverlapRing,DeJongAlterations.Algebra.Segre.overlapCoefficients,DeJongAlterations.Algebra.Segre.overlapAlgebra,DeJongAlterations.Algebra.Segre.overlapLeft,DeJongAlterations.Algebra.Segre.overlapRight,DeJongAlterations.Algebra.Segre.homogeneousChartRatioHom_coordinate,DeJongAlterations.Algebra.Segre.overlap_coordinate_cross,DeJongAlterations.Algebra.Segre.overlapLeft_pivot_isUnit}
+\leanok
+In the actual homogeneous localization at $x_i x_k$, the two
+constructed coordinate-chart restriction maps satisfy
+\[
+ (x_\ell/x_k)(x_k/x_i)=x_\ell/x_i.
+\]
+In particular the change-of-pivot coordinate $x_k/x_i$ is a unit
+on this actual overlap, with inverse $x_i/x_k$.
+\end{lemma}
+\begin{proof}
+The native homogeneous localization maps send $x_\ell/x_i$ to
+$(x_\ell x_k)/(x_i x_k)$ and $x_\ell/x_k$ to
+$(x_\ell x_i)/(x_i x_k)$. Their values embed injectively into the
+ordinary localization at $x_i x_k$. Cross-multiplication there proves
+the displayed identity on actual whole-ring elements. Set $\ell=i$
+to obtain the stated actual inverse. All maps preserve the original
+coefficient map, including over rings with nilpotents.
+\end{proof}
+
+\endgroup

@@ -1,0 +1,267 @@
+\section{Local positivity from the native-scheme pipeline: bridge and assembly}
+
+Throughout, $X=V(I)\subseteq\mathbb P^M$ is a projective subvariety over a field $k$ with homogeneous
+coordinate ring $S''=R_M/I$ (Convention~\ref{conv:wu-bj-global}), $X^\an$ is its graded model and
+$\PSH(X,\theta)$ is as in Definition~\ref{def:pg-subvariety-psh}. We write $X^{\mathrm{nat}}$ for the native
+closed subscheme of $\mathbb P^M$ defined by $I$ and $\iota\colon X^\an\to X^{\mathrm{nat},\an}$ for the
+homeomorphism between $X^\an$ and the valued points of $X^{\mathrm{nat}}$ over the trivial absolute value of $k$.
+This section proves the statement of \cite[Lemma~5.5]{FHX} (Lemma~\ref{lem:wu-local-positivity}) over
+algebraically closed fields by a route that differs from the proof in \cite{FHX}. There, a multiple of the locally
+convex function, which is PL, is written as the model function of a line bundle $\mathcal L$ on a normal test
+configuration \cite[Theorem~2.31]{BJ22}; by \cite[Definition~3.2 and Lemma~4.3]{BJ22} it suffices that $\mathcal L$ be
+nef on the central fibre, and this nefness is deduced from the positivity criterion of \cite{CLD12}; no auxiliary
+parameter occurs. Here the native pipeline produces such a test configuration together with an auxiliary
+linearized line $\mathcal H$ that is ample on the central fibre, and nefness of $\mathcal L$ on the central fibre is
+proved directly, without \cite{CLD12} (Theorems~\ref{thm:central-nef-tc-given-model}
+and~\ref{thm:central-nef-tc-native-product-ideal}). In place of \cite[Lemma~4.3]{BJ22} we use two steps that are not
+in \cite{FHX}: projective normality identifies the global sections of $\mathcal O(d)$ on the native variety with the
+forms of degree $d$, so that native Fubini--Study functions are Fubini--Study functions of $X^\an$
+(Lemma~\ref{lem:lpn-sections-forms}, Theorem~\ref{thm:lpn-native-fs-bridge}); and the potentials of the ample lines
+$\mathcal L^{\otimes b}\otimes\mathcal H$, rescaled by $1/b$, converge uniformly as $b\to\infty$, with converging
+classes and a bound on the potential of $\mathcal H$ independent of $b$ (Lemmas~\ref{lem:lpn-uniform-limit},
+\ref{lem:lpn-approximation} and~\ref{lem:lpn-potential-family}). The lemma is first proved conditionally on the
+output of the native pipeline (Definition~\ref{def:lpn-native-potential-family}, Theorem~\ref{thm:lpn-local-positivity}),
+which is then constructed (Theorem~\ref{thm:lpn-native-potential-family-exists}).
+
+\begin{lemma}[Uniform limits with converging classes]\label{lem:lpn-uniform-limit}
+\lean{EnvelopeProperty.FSSystem.isPSH_of_uniform_limit, EnvelopeProperty.ProjSubvariety.isPSH_of_uniform_limit}
+\leanok
+\uses{def:pg-psh, thm:pg-psh2, def:pg-subvariety-psh}
+\source{bj22-trivval:thm:PSH}
+Let $K$ be a compact Fubini--Study system, $(w_i)$ a family indexed by a nontrivial filter with
+$w_i\in\PSH(\theta_i)$, $\theta_i\to\theta_0$, and $u\colon K\to[-\infty,\infty]$ such that for every
+$\epsilon>0$ eventually $w_i\le u+\epsilon$ and $u\le w_i+\epsilon$ on $K$. Then $u\in\PSH(\theta_0)$. In particular
+this holds on $X^\an$.
+\end{lemma}
+
+\begin{proof}
+For $m\in\mathbb N$ put $\epsilon_m=2^{-m}$ and choose an index $i_m$ with $w_{i_m}\le u+\epsilon_m$,
+$u\le w_{i_m}+\epsilon_m$ and $|\theta_{i_m}-\theta_0|<\epsilon_m$; then $\theta_{i_m}\to\theta_0$. Since
+$w_{i_0}<\infty$, $u<\infty$. The functions $\psi_m=w_{i_m}+3\epsilon_m$ belong to $\PSH(\theta_{i_m})$ and
+decrease: $\psi_{m+1}\le u+\epsilon_{m+1}+3\epsilon_{m+1}\le w_{i_m}+\epsilon_m+4\epsilon_{m+1}=\psi_m$. Moreover
+$u\le\psi_m\le u+4\epsilon_m$, so $\inf_m\psi_m=u$. Finally $u(\star)\ge w_{i_0}(\star)-1>-\infty$. By PSH2
+(Theorem~\ref{thm:pg-psh2}(3)), $u\in\PSH(\theta_0)$.
+\end{proof}
+
+\begin{lemma}[Approximation criterion]\label{lem:lpn-approximation}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_of_forall_approx}
+\leanok
+\uses{lem:lpn-uniform-limit}
+Let $a\in\R$ and $\varphi\colon X^\an\to\R$. If for every $\epsilon>0$ there are $\theta\in\R$ with
+$|\theta-a|\le\epsilon$ and a real-valued $\psi\in\PSH(X,\theta)$ with $|\psi-\varphi|\le\epsilon$, then
+$\varphi\in\PSH(X,a)$.
+\end{lemma}
+
+\begin{proof}
+Apply the hypothesis with $\epsilon=1/(n+1)$ and Lemma~\ref{lem:lpn-uniform-limit} along $n\to\infty$.
+\end{proof}
+
+\begin{lemma}[Psh limits of rescaled twisted potentials as $b\to\infty$]\label{lem:lpn-potential-family}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_of_potential_family}
+\leanok
+\uses{lem:lpn-approximation, def:pg-subvariety-psh}
+Let $r\ge1$ be an integer, $a,e,e',c,K\in\R$ with $e=ra$, and let $\varphi,p_M,p_H\colon X^\an\to\R$ satisfy
+$p_M=r\varphi+c$ and $|p_H|\le K$. If for arbitrarily large integers $b\ge1$ the function $bp_M+p_H$ belongs to
+$\PSH(X,be+e')$, then $\varphi\in\PSH(X,a)$.
+\end{lemma}
+
+\begin{proof}
+Let $\epsilon>0$ and choose such a $b$ with $(|e'|+K+1)/(br)<\epsilon$. Then
+$\psi=(br)^{-1}(bp_M+p_H)-c/r$ belongs to $\PSH(X,(br)^{-1}(be+e'))$ by scaling and adding constants
+(Theorem~\ref{thm:pg-psh-basic}), $|(br)^{-1}(be+e')-a|=|e'|/(br)\le\epsilon$, and
+$\psi-\varphi=p_H/(br)$ has absolute value at most $K/(br)\le\epsilon$. Conclude by
+Lemma~\ref{lem:lpn-approximation}.
+\end{proof}
+
+\begin{remark}
+In \cite[Lemma~5.5]{FHX} the function $r\varphi$ is the model function of a line bundle $\mathcal L$ on a
+test configuration which is nef on the central fibre, and the conclusion is drawn from \cite[Lemma~4.3]{BJ22}.
+Here the same conclusion is reached through Lemma~\ref{lem:lpn-potential-family}: for an auxiliary line $H$
+ample on the central fibre, $\mathcal L^{b}\otimes H$ is ample on the central fibre for all $b\ge1$, its model
+function $b\,r\varphi+(\text{const})+p_H$ is a finite Fubini--Study function, and $p_H$ is bounded.
+\end{remark}
+
+\begin{lemma}[Global sections of twists of a projectively normal variety]\label{lem:lpn-sections-forms}
+\lean{EnvelopeProperty.ProjSubvariety.exists_form_eq_formSection}
+\leanok
+\uses{lem:gl-bridge-psh, lem:gl-sections}
+Assume $S''$ is integrally closed. Every global section of $\mathcal O(d)|_{X^{\mathrm{nat}}}$, $d\ge0$, is the
+restriction of a form of degree $d$.
+\end{lemma}
+
+\begin{proof}
+Choose $x_i\notin I$; the chart $x_i\ne0$ of $X^{\mathrm{nat}}$ is nonempty. Let $\mathcal X$ be the rank-one
+model of $X$ on its function field $k(X)$ with coordinate ring $S=k[(x_j/x_i)T]$ and consider its
+presentation $x_j\mapsto(x_j/x_i)T$. For a form $G$ of degree $n$ the image of $G$ is $G(x/x_i)\,T^n$, and
+$G(x/x_i)$ is the coefficient, in the chart $x_i\neq0$, of the restriction $s_G$ of $G$. A section of a line
+bundle on the integral scheme $X^{\mathrm{nat}}$ vanishes iff its coefficient vanishes, and iff its model norm
+vanishes at every valued point; the model norm of $s_G$ at $\iota(w)$ is $|G|_w$ (by
+the chart computation of homogeneous sections). Testing at the trivial point, $s_G=0$ iff $G\in I$. Hence a form lies in the
+kernel of the presentation iff it lies in $I$; both ideals being homogeneous, the kernel is $I$ and
+$S\cong S''$ is integrally closed. By Lemma~\ref{lem:gl-bridge-psh}(1), the sections of degree $d$ of
+$\mathcal X$ (Lemma~\ref{lem:gl-sections}) are the elements of $S_d$. The coefficient of a global section $s$ of
+$\mathcal O(d)$ is such a section, hence equals $F(x/x_i)$ for a form $F$ of degree $d$, which is the
+coefficient of $s_F$. Since a section is determined by its coefficient, $s=s_F$.
+\end{proof}
+
+\begin{theorem}[Native Fubini--Study functions are Fubini--Study functions on $X^\an$]\label{thm:lpn-native-fs-bridge}
+\lean{EnvelopeProperty.ProjSubvariety.isFiniteFS_of_nativeIsFinFS, EnvelopeProperty.ProjSubvariety.exists_form_globalSectionNorm_power, EnvelopeProperty.ProjSubvariety.globalSectionNorm_formSection}
+\leanok
+\uses{lem:lpn-sections-forms, def:native-line-whole-section-fs, def:wu-proj-functions}
+Assume $S''$ is integrally closed and let $N\ge0$, $c\in\Q$. Let $\psi$ be a native finite rational
+Fubini--Study function of class $c$ of $\mathcal O(N)|_{X^{\mathrm{nat}}}$, i.e.\ $\psi=m^{-1}\max_q(\log\|s_q\|+\lambda_q)$
+with $m\ge1$, $mc=\deg\in\mathbb N$, finitely many global sections $s_q$ of $\mathcal O(N)^{\otimes\deg}$,
+$\lambda_q\in\Q$, and no common zero at the valued points. Then $\psi\circ\iota$ is finite and is a finite
+Fubini--Study function of class $Nc$ on $X^\an$.
+\end{theorem}
+
+\begin{proof}
+$\mathcal O(N)^{\otimes\deg}\cong\mathcal O(N\deg)$, and model norms are preserved by isomorphisms of line bundles.
+By Lemma~\ref{lem:lpn-sections-forms} each $s_q$ corresponds to a form $F_q$ of degree $N\deg$ with
+$\|s_q\|_{\iota(w)}=|F_q|_w$. Thus $\psi\circ\iota=m^{-1}\max_q(\log|F_q|+\lambda_q)$ is the Fubini--Study function of
+the data $(m,N\deg,(F_q,\lambda_q))$ of class $N\deg/m=Nc$; the $F_q$ have no common zero on $X^\an$ because the
+$s_q$ have none at the valued points, and the weights are rational. Such a function is finite.
+\end{proof}
+
+\begin{definition}[Output of the native pipeline]\label{def:lpn-native-potential-family}
+\lean{EnvelopeProperty.ProjSubvariety.NativePotentialFSFamily}
+\leanok
+\uses{def:native-line-whole-section-fs}
+For $a\in\Q$ and $\varphi\colon X^\an\to\R$, a \emph{native potential family} consists of integers $r\ge1$,
+$d=ra$, $q\ge0$, reals $c,K$, and functions $p_M,p_H$ on the valued points of $X^{\mathrm{nat}}$ with
+$p_M\circ\iota=r\varphi+c$ and $|p_H\circ\iota|\le K$, such that for every integer $b\ge1$ the function $bp_M+p_H$ is
+a native finite rational Fubini--Study function of class $e$ of a line bundle isomorphic to $\mathcal O(N)$ with
+$Ne=bd+q$.
+\end{definition}
+
+\begin{theorem}[Native potential families give psh functions]\label{thm:lpn-native-potential-psh}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_of_nativePotentialFSFamily}
+\leanok
+\uses{def:lpn-native-potential-family, thm:lpn-native-fs-bridge, lem:lpn-potential-family}
+If $S''$ is integrally closed and $\varphi$ admits a native potential family for $a$, then $\varphi\in\PSH(X,a)$.
+\end{theorem}
+
+\begin{proof}
+Native finite Fubini--Study functions are invariant under isomorphisms of the line bundle. By
+Theorem~\ref{thm:lpn-native-fs-bridge}, for every $b\ge1$ the function $(bp_M+p_H)\circ\iota$ is a finite
+Fubini--Study function of class $Ne=bd+q$ on $X^\an$, hence belongs to $\PSH(X,bd+q)$. Apply
+Lemma~\ref{lem:lpn-potential-family} with $e=d=ra$ and $e'=q$.
+\end{proof}
+
+\begin{theorem}[FHX Lemma~5.5 from the native pipeline]\label{thm:lpn-local-positivity}
+\lean{EnvelopeProperty.LocalPositivity.of_nativePotentialFSFamily}
+\leanok
+\uses{thm:lpn-native-potential-psh}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+Let $k$ be algebraically closed. Suppose that for every projectively normal $X=V(I)\subseteq\mathbb P^M$, every
+$a\in\Q_{>0}$ and every locally $\mathcal O(a)$-convex $\varphi\colon X^\an\to\R$ (in the sense of
+\cite[Definition~5.3]{FHX}) there is a native potential family. Then the conclusion of
+Lemma~\ref{lem:wu-local-positivity} holds for all such $(X,a,\varphi)$.
+\end{theorem}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:lpn-native-potential-psh}.
+\end{proof}
+
+\begin{lemma}[Products of twists]\label{lem:lpn-twist-power-tensor}
+\lean{EnvelopeProperty.ProjSubvariety.nativeTwistPowerTensorIso, EnvelopeProperty.ProjSubvariety.nativeLinePowerIso}
+\leanok
+\uses{lem:coherent-projective-original-twist-addition}
+For integers $d,q,b,a\ge0$ and a coordinate $t$, $\mathcal O_t(d)^{\otimes b}\otimes\mathcal O_t(q)^{\otimes a}\cong
+\mathcal O_t(db+qa)$ on $X^{\mathrm{nat}}$.
+\end{lemma}
+
+\begin{proof}
+Pull-back along $X^{\mathrm{nat}}\hookrightarrow\mathbb P^M$ is monoidal and commutes with tensor powers, and on
+$\mathbb P^M$ the twists satisfy $\mathcal O_t(1)^{\otimes n}\cong\mathcal O_t(n)$ and
+$\mathcal O_t(m)\otimes\mathcal O_t(n)\cong\mathcal O_t(m+n)$ (Lemma~\ref{lem:coherent-projective-original-twist-addition}).
+\end{proof}
+
+\begin{lemma}[Finite Fubini--Study functions are bounded]\label{lem:lpn-finite-fs-bounded}
+\lean{EnvelopeProperty.ProjSubvariety.IsFiniteFS.exists_abs_le}
+\leanok
+\uses{def:wu-proj-functions}
+A finite Fubini--Study function on $X^\an$ is bounded.
+\end{lemma}
+
+\begin{proof}
+It is continuous (Definition~\ref{def:wu-proj-functions}) and $X^\an$ is compact.
+\end{proof}
+
+\begin{theorem}[Native potential families from a test configuration]\label{thm:lpn-native-potential-family-of-tc}
+\lean{EnvelopeProperty.ProjSubvariety.nativePotentialFSFamily_of_testConfiguration}
+\leanok
+\uses{def:lpn-native-potential-family, thm:native-tc-nef-fs-actual-potential-sum-finite-fs, thm:central-ample-original-exact-finite-fs, thm:lpn-native-fs-bridge, lem:lpn-finite-fs-bounded, lem:lpn-twist-power-tensor, thm:pl-native-twist-line-ample}
+Let $k$ be infinite and $S''$ integrally closed. Let $\mathcal C$ be a test configuration of $X^{\mathrm{nat}}$ with
+integral total space dominating $\mathbb A^1$, and let $\mathcal M$, $\mathcal H$ be $\mathbb G_m$-linearized
+invertible sheaves on $\mathcal C$ with fibre-one lines $\mathcal O_t(d)$ and $\mathcal O_t(q)$, $d,q\ge1$. Assume
+that $\mathcal M$ is nef and $\mathcal H$ is ample on the central fibre, and that the model potential of
+$\mathcal M$ at the Gauss points of radius $e^{-1}$ satisfies $p_{\mathcal M}\circ\iota=r\varphi+c$ with $d=ra$. Then
+$\varphi$ admits a native potential family for $a$.
+\end{theorem}
+
+\begin{proof}
+Put $p_M=p_{\mathcal M}$ and $p_H=p_{\mathcal H}$, the model potentials of $\mathcal M$ and $\mathcal H$. Since
+$\mathcal H$ is ample on the central fibre, $p_H$ is an exact finite rational Fubini--Study function of class $1$ of
+$\mathcal O_t(q)$ (Theorem~\ref{thm:central-ample-original-exact-finite-fs}); by
+Theorem~\ref{thm:lpn-native-fs-bridge}, $p_H\circ\iota$ is a finite Fubini--Study function on $X^\an$, hence bounded
+(Lemma~\ref{lem:lpn-finite-fs-bounded}): $|p_H\circ\iota|\le K$. Let $b\ge1$. The twists $\mathcal O_t(d)^{\otimes b}$ and
+$\mathcal O_t(q)$ are ample on $X^{\mathrm{nat}}$ (Theorem~\ref{thm:pl-native-twist-line-ample}), so by
+Theorem~\ref{thm:native-tc-nef-fs-actual-potential-sum-finite-fs} the function $bp_M+p_H$ is an exact finite rational
+Fubini--Study function of class $1$ of $\mathcal O_t(d)^{\otimes b}\otimes\mathcal O_t(q)$, which is isomorphic to
+$\mathcal O_t(db+q)$ (Lemma~\ref{lem:lpn-twist-power-tensor}); here $N=db+q$ and $e=1$ satisfy $Ne=bd+q$. Together with
+$p_M\circ\iota=r\varphi+c$ this is a native potential family (Definition~\ref{def:lpn-native-potential-family}).
+\end{proof}
+
+\begin{theorem}[Locally convex functions admit native potential families]\label{thm:lpn-native-potential-family-exists}
+\lean{EnvelopeProperty.ProjSubvariety.IsLocallyConvexAll.nativePotentialFSFamily}
+\leanok
+\uses{thm:lpn-native-potential-family-of-tc, thm:central-nef-tc-native-product-ideal, thm:pl-original-normalized-native-test-configuration, cor:pl-original-normalized-native-test-configuration-line-inputs, cor:pl-model-potential-convex-function, thm:pl-original-normalized-tc-tautological-central-ample, def:pl-original-normalized-tc-tautological-line-data}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+Let $k$ be perfect and infinite (for instance algebraically closed), $S''$ integrally closed, $a\in\Q_{>0}$ and
+$\varphi\colon X^\an\to\R$ locally $\mathcal O(a)$-convex in the sense of \cite[Definition~5.3]{FHX}. Then $\varphi$ admits a
+native potential family for $a$ (Definition~\ref{def:lpn-native-potential-family}).
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:central-nef-tc-native-product-ideal} there are $r\ge1$, $d=ra$, $B\in\mathbb Z$ and finitely generated
+homogeneous ideals $I',J'$ of $k[t][x_0,\dots,x_M]$, invariant under the scalings of $t$ and containing powers of $t$,
+such that on the normalized simultaneous blowup $\mathcal X$ of $X\times\mathbb A^1$ along $I',J'$ every valued point
+$y$ over the Gauss norm of radius $e^{-1}$ satisfies $r\varphi(y)=W(y)+B$ ($W$ the ratio weight), and the twisted ratio
+line $\mathcal M=q_X^*\mathcal O_0(d)\otimes I'\otimes J'^\vee$ is nef on the central fibre. By
+Theorem~\ref{thm:pl-original-normalized-native-test-configuration}, $\mathcal X$ is a test configuration of $X^{\mathrm{nat}}$;
+its total space is integral and dominates $\mathbb A^1$. By Corollary~\ref{cor:pl-original-normalized-native-test-configuration-line-inputs},
+$\mathcal M$ is linearized with fibre-one line $\mathcal O_0(d)$, and by Corollary~\ref{cor:pl-model-potential-convex-function}
+its model potential satisfies $p_{\mathcal M}\circ\iota=r\varphi-B$. By
+Theorem~\ref{thm:pl-original-normalized-tc-tautological-central-ample} there is $q\ge1$ such that the tautological twist
+$\mathcal H=q_X^*\mathcal O_0(q)\otimes\nu^*(I'J')$ is ample on the central fibre; it is linearized with fibre-one line
+$\mathcal O_0(q)$ (Definition~\ref{def:pl-original-normalized-tc-tautological-line-data}). Theorem~\ref{thm:lpn-native-potential-family-of-tc}
+with $c=-B$ concludes.
+\end{proof}
+
+\begin{theorem}[FHX Lemma~5.5 holds over algebraically closed fields]\label{thm:lpn-local-positivity-instance}
+\lean{EnvelopeProperty.LocalPositivity.instOfIsAlgClosed}
+\leanok
+\uses{thm:lpn-local-positivity, thm:lpn-native-potential-family-exists}
+\source{fhx-envelope-20261028:lem:local-PL-positivity}
+Let $k$ be algebraically closed. For every projectively normal $X=V(I)\subseteq\mathbb P^M$, every $a\in\Q_{>0}$ and
+every locally $\mathcal O(a)$-convex $\varphi\colon X^\an\to\R$, $\varphi\in\PSH(X,a)$.
+\end{theorem}
+
+\begin{proof}
+An algebraically closed field is perfect and infinite. Theorem~\ref{thm:lpn-native-potential-family-exists} gives the
+hypothesis of Theorem~\ref{thm:lpn-local-positivity}.
+\end{proof}
+
+\begin{theorem}[The main theorems without the local positivity hypothesis]\label{thm:lpn-main-unconditional}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_of_charP_unconditional, EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_of_charP_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable_unconditional, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_unconditional}
+\leanok
+\uses{thm:lpn-local-positivity-instance, thm:nn-main, thm:gl-main, cor:gl-characterization}
+\source{fhx-envelope-20261028:thm:intro-main}
+The statements of Theorem~\ref{thm:nn-main}, Theorem~\ref{thm:gl-main} and Corollary~\ref{cor:gl-characterization} hold
+without the hypothesis of Lemma~\ref{lem:wu-local-positivity} at the countable algebraically closed subfields of $k$.
+\end{theorem}
+
+\begin{proof}
+Such subfields are algebraically closed, so the hypothesis holds by Theorem~\ref{thm:lpn-local-positivity-instance}.
+\end{proof}

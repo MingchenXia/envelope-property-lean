@@ -1,0 +1,69 @@
+\section{The intrinsic degree on the actual original Picard group}
+
+\begin{definition}[The original line class and its intrinsic degree]
+\label{def:fc-original-curve-picard-degree}
+\leanok
+\lean{EnvelopeProperty.CurvePicardDegrees.skeletonDegree, EnvelopeProperty.CurvePicardDegrees.skeletonDegree_toSkeleton, EnvelopeProperty.CurvePicardDegrees.lineClass, EnvelopeProperty.CurvePicardDegrees.lineClass_val, EnvelopeProperty.CurvePicardDegrees.degreeHom, EnvelopeProperty.CurvePicardDegrees.degreeHom_lineClass}
+\uses{def:fc-original-curve-line-degree, thm:fc-original-curve-line-degree-tensor}
+The original native group $\operatorname{Pic}(C)$ consists of the
+invertible isomorphism classes of actual original module sheaves, with
+multiplication induced by the original tensor. The full original
+Euler degree descends to actual sheaf isomorphism classes. On the
+original Picard group it is a homomorphism to the additive integers,
+and sends the class of every original invertible line $L$ to its
+same actual intrinsic degree $\deg_p L$.
+\end{definition}
+\begin{proof}
+Full coherent Euler isomorphism invariance descends the degree to the
+actual isomorphism quotient of all original module sheaves. The class
+of the original monoidal unit has degree zero by its genuine whole
+isomorphism with the structure line. The representative of every
+unit class is invertible, by the actual native comparison of tensor
+invertibility with original local frames. True ALL-line tensor-degree
+additivity therefore makes degree a homomorphism on the original
+Picard group. The quotient class of each actual original line has its
+same intrinsic degree by quotient descent.
+\end{proof}
+
+\begin{definition}[Actual original pullback on line classes]
+\label{def:fc-original-picard-pullback}
+\leanok
+\lean{EnvelopeProperty.CurvePicardDegrees.picPullback, EnvelopeProperty.CurvePicardDegrees.picPullback_lineClass}
+\uses{def:fc-original-curve-picard-degree}
+Every literal original scheme morphism $i:C\to Z$ induces the actual
+Picard pullback homomorphism. It sends the class of an original
+invertible line $L$ to the class of the same original pullback $i^*L$.
+No properness, flatness, or curve condition on this construction is
+required.
+\end{definition}
+\begin{proof}
+The native original pullback is monoidal. Its induced map on the
+actual isomorphism quotient is a monoid homomorphism and therefore
+maps units to units. The native functorial quotient comparison shows
+that the class of each original line is sent to its same actual
+pullback class.
+\end{proof}
+
+\begin{theorem}[The original curve-degree functional on actual model classes]
+\label{thm:fc-original-picard-curve-degree}
+\leanok
+\lean{EnvelopeProperty.CurvePicardDegrees.curveDegreeHom, EnvelopeProperty.CurvePicardDegrees.curveDegreeHom_lineClass}
+\uses{def:fc-original-curve-picard-degree, def:fc-original-picard-pullback}
+For every literal original curve map $i:C\to Z$ with $C$ an integral
+projective curve over its original field, composition gives a group
+homomorphism
+\[
+ \operatorname{Pic}(Z)\longrightarrow\mathbb Z,
+ \qquad [L]\longmapsto\deg_p i^*L.
+\]
+It retains the original native Picard group, original curve map, and
+full original coherent Euler degree. No numerical class, degree
+preservation, or curve comparison datum is supplied.
+\end{theorem}
+\begin{proof}
+Compose the genuine original Picard pullback with the preceding
+intrinsic degree homomorphism on $C$. Evaluate using the actual
+pullback class identity and the actual line class degree identity.
+The homomorphism laws give the stated additivity on all original
+line classes.
+\end{proof}

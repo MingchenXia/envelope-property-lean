@@ -1,0 +1,109 @@
+\section{Integral maps of arbitrary seminorm spectra}\label{sec:integral-spectrum-maps}
+
+The compactness argument for integral morphisms only uses a monic equation,
+continuous evaluation functions, and compact coordinate bounds. In this section
+$A$ and $B$ are arbitrary commutative rings and $\varphi:A\to B$ is a unital
+ring homomorphism. No field, trivial valuation, finite generation, or
+completeness hypothesis is imposed.
+
+\begin{lemma}[A root bound for monic equations]\label{spectrum:integral-root-bound}
+\lean{EnvelopeProperty.Valuation.le_of_monic_eval₂_eq_zero}
+\leanok
+\source{fhx-envelope-20261028:lem:growth}
+Let $w:B\to\R_{\ge0}$ be a multiplicative ultrametric seminorm. Suppose
+$p\in A[T]$ is monic of degree $d$, $p(\varphi,b)=0$, and $r\ge1$ satisfies
+$w(\varphi(p_i))\le r$ for $i<d$. Then $w(b)\le r$.
+\end{lemma}
+\begin{proof}
+Suppose $w(b)>r$. The monic equation gives
+$b^d=-\sum_{i<d}\varphi(p_i)b^i$. For every $i<d$, the assumptions imply
+\[
+w(\varphi(p_i)b^i)\le r\,w(b)^i
+\le r^{d-i}w(b)^i < w(b)^d.
+\]
+Here $r\ge1$, $d-i\ge1$, and $w(b)>r$ justify the two comparisons.
+The ultrametric inequality bounds the seminorm of the finite sum strictly
+below $w(b)^d$, contradicting the displayed equation and multiplicativity.
+If $d=0$, the empty sum has seminorm zero while $w(b)^0=1$, so the same
+contradiction applies. This proves the bound.
+\end{proof}
+
+\begin{lemma}[Evaluation bounds on compact sets]\label{spectrum:compact-evaluation-bounds}
+\lean{EnvelopeProperty.Berkovich.Spectrum.exists_abs_le_of_isCompact,
+EnvelopeProperty.Berkovich.Spectrum.exists_forall_abs_le_of_isCompact}
+\leanok
+\uses{spectrum:topology}
+For a compact $K\subseteq\mathcal S(A)$, every evaluation $x\mapsto|a|_x$
+is bounded above on $K$. Given a finite set $E\subseteq A$, there is a
+single $M\in\R_{\ge0}$ such that $|a|_x\le M$ for all $x\in K$ and $a\in E$.
+\end{lemma}
+\begin{proof}
+Evaluation is continuous, so its image of $K$ is a compact subset of
+$\R_{\ge0}$ and consequently bounded above. Choose one upper bound for
+each element of $E$ and take their finite maximum, with empty maximum zero.
+\end{proof}
+
+\begin{lemma}[Bounds for integral elements over a compact set]\label{spectrum:integral-element-compact-bound}
+\lean{EnvelopeProperty.Berkovich.Spectrum.exists_abs_le_of_isIntegral}
+\leanok
+\uses{spectrum:integral-root-bound,spectrum:compact-evaluation-bounds,spectrum:pullback}
+Suppose $b\in B$ is integral over $\varphi$ and $K\subseteq\mathcal S(A)$ is
+compact. There is $M_b\in\R_{\ge0}$ such that $|b|_y\le M_b$ whenever
+$\varphi^*y\in K$.
+\end{lemma}
+\begin{proof}
+Choose a monic equation $p(\varphi,b)=0$. Its finitely many coefficients
+below the leading term have a common evaluation bound $M$ on $K$.
+For a point $y$ over $K$, their images have $y$-seminorm at most $M$,
+by the definition of pullback. Apply the root bound with $r=\max\{1,M\}$.
+\end{proof}
+
+\begin{theorem}[Compact inverse images under integral maps]\label{spectrum:integral-compact-preimage}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isCompact_preimage_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.Spectrum.isCompact_preimage_singleton_of_isIntegral}
+\leanok
+\uses{spectrum:integral-element-compact-bound,spectrum:compact-coordinate-bounds,spectrum:pullback}
+If $\varphi$ is integral and $K\subseteq\mathcal S(A)$ is compact, then
+$(\varphi^*)^{-1}(K)$ is compact in $\mathcal S(B)$. In particular, every
+fibre of $\varphi^*$ is compact.
+\end{theorem}
+\begin{proof}
+For each $b\in B$, the preceding lemma supplies a finite bound $M_b$ on
+the inverse image. This inverse image is contained in the compact set
+$\{y:|b|_y\le M_b\text{ for every }b\in B\}$.
+The spectrum is Hausdorff, so $K$ is closed. Its inverse image under the
+continuous pullback map is closed, hence compact as a closed subset of the
+coordinate-bounded compact set. A singleton is compact, giving the fibre assertion.
+\end{proof}
+
+\begin{corollary}[Prescribed-base compact inverse images]\label{spectrum:relative-integral-compact-preimage}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_preimage_comap_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_preimage_singleton_of_isIntegral}
+\leanok
+\uses{spectrum:integral-compact-preimage,spectrum:relative}
+Let $R$ be an arbitrary commutative ring with a fixed real-valued ultrametric
+seminorm $v$, and let $A,B$ be commutative $R$-algebras. If
+$\varphi:A\to B$ is an integral $R$-algebra homomorphism, then pullback
+$\mathcal S_v(B)\to\mathcal S_v(A)$ has compact inverse images of compact
+sets, and all its fibres are compact.
+\end{corollary}
+\begin{proof}
+The prescribed-base spectra are closed subspaces of the absolute spectra.
+Map a compact set $K\subseteq\mathcal S_v(A)$ into $\mathcal S(A)$; its
+image is compact. The absolute integral-map theorem gives a compact inverse
+image in $\mathcal S(B)$. Intersect this set with the closed prescribed-base
+locus. Under the subspace inclusion, this intersection is exactly the inverse
+image of $K$ under relative pullback, so it is compact. Again, apply this
+to a singleton for the fibre assertion.
+\end{proof}
+
+\begin{remark}\label{spectrum:integral-compact-preimage-scope}
+\uses{spectrum:integral-compact-preimage,spectrum:relative-integral-compact-preimage}
+The proofs permit empty spectra and empty fibres and do not assert that
+integral fibres are finite. They establish compact inverse images without a
+local compactness hypothesis on the target. General topological properness
+or closed-map conclusions are separate assertions requiring their applicable
+topological hypotheses. For the paper's affine analytifications over a trivially
+valued field, the root estimate is the reusable algebraic input to the
+integral-equation growth argument in FHX \texttt{lem:growth}(2).
+\end{remark}

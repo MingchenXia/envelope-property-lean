@@ -1,0 +1,95 @@
+\section{Native induced residue frames and actual tensor powers}
+
+\begin{lemma}\label{lem:actual-pulled-power-frame-naturality}
+\lean{EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.pullbackPowerFrame_naturality}
+\leanok
+\uses{lem:actual-power-pullback-naturality,lem:fc-actual-power-frame-iso-naturality,def:fc-actual-pulled-power-frame}
+For every actual scheme map and original module isomorphism, the
+genuine pulled power frame of the transported original frame is
+the actual pulled power isomorphism followed by the original
+pulled power frame, in every nonnegative degree.
+\end{lemma}
+\begin{proof}
+Expand the pulled power frame as the native power pullback
+comparison followed by the actual whole power frame. Naturality
+of the native comparison moves the pulled power isomorphism past
+that comparison. The whole power-frame naturality identity then
+combines the original isomorphism with the original frame. The
+result is exactly the pulled power frame of the transported
+original frame. Every equality is a whole original isomorphism.
+\end{proof}
+
+\begin{lemma}\label{lem:actual-factor-power-frame-composition}
+\lean{EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.factorPowerFrame_comp}
+\leanok
+\uses{thm:fc-actual-pulled-power-frame-factor-coherence,thm:actual-power-pullback-composition,lem:fc-actual-power-frame-iso-naturality}
+For an actual factorization $qb=tg$ and actual frame of $b^*M$,
+the native composition comparison for $tg$ followed by the factor
+transport of its pulled power frame equals the pullback of the
+power comparison for $g$, followed by the pulled power frame for
+$t$ of the actual transported degree-one frame.
+\end{lemma}
+\begin{proof}
+The actual factor power identity first replaces factor transport
+of the power frame by the power frame of the factor-transported
+degree-one frame. Expand that pulled power frame. Native
+composition coherence replaces the comparison for $tg$ by the
+two successive power pullback comparisons and the power of the
+native degree-one composition comparison. Whole power-frame
+naturality combines this last power with the degree-one frame.
+This is precisely the claimed entire frame identity.
+\end{proof}
+
+\begin{theorem}\label{thm:actual-induced-residue-power-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.inducedResidueFrame_postcomp,EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.inducedResidueFrame_pullbackPower,EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.inducedResidueFrame_power}
+\leanok
+\uses{lem:actual-factor-power-frame-composition,lem:actual-pulled-power-frame-naturality,def:fc-induced-native-residue-frame,lem:actual-power-iso-functoriality}
+Let $g:Y\to Z$ be any actual scheme map, $y$ an actual native
+valued point of $Y$, $\alpha:g^*M\simeq N$ an actual whole module
+isomorphism, and $e$ an actual residue frame of $M$ at $g(y)$.
+Raise $e$ through the genuine native power comparison, and
+transport it through the canonical power isomorphism
+$g^*(M^{\otimes n})\simeq N^{\otimes n}$ derived from $\alpha$.
+The resulting induced native residue frame is exactly the genuine
+pulled power frame of the induced degree-one residue frame.
+This holds for all $n\geq0$ without properness, boundedness or a
+frame-preservation premise.
+\end{theorem}
+\begin{proof}
+Induced frames are the inverse actual pulled module isomorphism
+followed by the genuine residue-module comparison and pullback
+of the original frame along the actual residue-field map. Thus
+postcomposing a module isomorphism postcomposes its induced frame
+by the inverse pulled isomorphism. Apply the preceding factor
+power lemma to the native residue-field square
+$\operatorname{Spec}\kappa(y)\to\operatorname{Spec}\kappa(g(y))$.
+The actual residue-module comparison is the native composition
+comparison followed by this factor comparison. Cancel the actual
+pulled power comparison for $g$. This proves the assertion when
+the original isomorphism is the identity. For general $\alpha$,
+the postcomposition identity separates its actual power from
+that canonical comparison. Pulled power-frame naturality for
+$\alpha^{-1}$ moves its inverse power into the original
+degree-one frame; functoriality identifies this inverse with the
+power of the inverse. The induced degree-one frame is exactly
+this composite by its definition, proving the stated equality.
+\end{proof}
+
+\begin{corollary}\label{cor:actual-induced-normalized-power-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeInducedPowerFrames.inducedResidueFrame_normalizedPower}
+\leanok
+\uses{thm:actual-induced-residue-power-frame,lem:actual-power-iso-functoriality}
+If $N=f^*L$ for any actual $f:Y\to X$, transport instead through
+the normalized original power isomorphism to $f^*(L^{\otimes n})$.
+Its induced native frame is the actual residue pullback of the
+power comparison for $f$, followed by the genuine pulled power
+frame of the same induced degree-one frame.
+\end{corollary}
+\begin{proof}
+The normalized original power isomorphism is the preceding one
+followed by the inverse genuine power pullback comparison for
+$f$. The induced-frame postcomposition identity turns this
+inverse into the direct residue pullback comparison. The
+preceding theorem identifies the remaining entire frame with
+the genuine power frame of the same degree-one induced frame.
+\end{proof}

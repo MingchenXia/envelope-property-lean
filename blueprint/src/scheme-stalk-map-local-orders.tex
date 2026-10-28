@@ -1,0 +1,39 @@
+\section{Same original stalk maps preserve true original weighted local orders}
+
+\begin{theorem}[Native original stalk order and residue-field action]
+\label{thm:fc-stalk-map-original-order-residue}
+\leanok
+\lean{EnvelopeProperty.SchemeStalkMapLocalOrders.ord_stalkMap, EnvelopeProperty.SchemeStalkMapLocalOrders.residueFieldAlgEquiv, EnvelopeProperty.SchemeStalkMapLocalOrders.residue_finrank_eq}
+Whenever the actual native stalk map of an original scheme map $g:Y\to X$
+at an original point $y$ is an isomorphism, it preserves true principal
+local ring order.  The same native residue-field map is an isomorphism over
+the same original structure field, hence preserves the actual original
+residue degree.
+\uses{thm:fc-original-principal-ring-iso-order}
+\end{theorem}
+\begin{proof}
+Use the actual native stalk-ring isomorphism in the true semilinear
+principal-quotient order theorem.  Its native residue map is an isomorphism;
+original global scalar evaluation naturality proves that it is linear over
+the actual original field.  No order, residue-field action, or residue-degree
+comparison is supplied.
+\end{proof}
+
+\begin{theorem}[Actual pulled original section weighted orders]
+\label{thm:fc-stalk-map-original-weighted-section-orders}
+\leanok
+\lean{EnvelopeProperty.SchemeStalkMapLocalOrders.weightedOrder_stalkMap, EnvelopeProperty.SchemeStalkMapLocalOrders.weightedOrder_germ_pullback}
+The true original local order multiplied by the original residue-field
+degree is preserved at that original point.  In particular every original
+regular section and its actual native pullback have exactly the same such
+weighted local order.
+\uses{thm:fc-stalk-map-original-order-residue}
+\end{theorem}
+\begin{proof}
+Multiply the internally proved actual local-order and original residue-degree
+equalities.  The literal native germ--stalk-map square identifies the image
+of the original section germ with the actual original pullback-section
+germ.  Only the actual native stalk isomorphism is the generic hypothesis;
+the localized-inverse and open-immersion consumers derive it internally.
+No weighted-degree or fibre correspondence is supplied.
+\end{proof}

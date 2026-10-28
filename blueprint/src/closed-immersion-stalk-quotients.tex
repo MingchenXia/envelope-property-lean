@@ -1,0 +1,43 @@
+\section{The original closed-subscheme stalk and native ambient order}
+
+\begin{definition}[The true original principal stalk quotient]
+\label{def:fc-closed-immersion-principal-stalk-quotient}
+\leanok
+\lean{EnvelopeProperty.ClosedImmersionStalkQuotients.principalStalkQuotientEquiv, EnvelopeProperty.ClosedImmersionStalkQuotients.principalStalkQuotientEquiv_mk}
+For the same actual closed immersion $g:D\hookrightarrow X$, an actual affine
+open $U\subset X$, and an actual original equation $c$ generating the original
+kernel ideal on $U$, the quotient of $\mathcal O_{X,g(y)}$ by the original germ
+of $c$ is identified with the same original stalk $\mathcal O_{D,y}$.
+The identification sends every quotient class of $a$ to the literal original
+stalk map $g_y^\#(a)$.
+\end{definition}
+
+\begin{theorem}[True stalk lengths and native original orders]
+\label{thm:fc-closed-immersion-stalk-order-length}
+\leanok
+\lean{EnvelopeProperty.ClosedImmersionStalkQuotients.stalkMap_ker_eq_map, EnvelopeProperty.ClosedImmersionStalkQuotients.principalStalkQuotient_length, EnvelopeProperty.ClosedImmersionStalkQuotients.ord_eq_closedStalk_length, EnvelopeProperty.ClosedImmersionStalkQuotients.residueFieldMap_isIso}
+\uses{def:fc-closed-immersion-principal-stalk-quotient, thm:fc-scheme-order-local-length}
+The kernel of the same original stalk map is the localization of the original
+affine kernel ideal. Thus the length of the principal ambient stalk quotient
+is exactly the length of the same closed-subscheme stalk over itself.
+If $X$ is integral and locally Noetherian, $g(y)$ has codimension one, and the
+original equation is nonzero, its native original function-field order at
+$g(y)$ equals this true closed-subscheme local length. Moreover the literal
+original residue-field map $\kappa(g(y))\to\kappa(y)$ is an isomorphism.
+\end{theorem}
+\begin{proof}
+On the actual inverse-image affine open, closed immersion gives surjectivity
+of the original section map. Both original germ maps are genuine prime
+localizations, and the actual prime ideals correspond under the original
+section map. Surjectivity maps the source prime-complement monoid onto the
+target one, so the actual localization-kernel theorem identifies the whole
+stalk kernel with the localization of the original affine kernel. For the
+actual principal ideal, the first isomorphism theorem gives the displayed
+whole quotient isomorphism, with its actual original element formula.
+Restricting scalars along the same surjective stalk map preserves module
+length, giving the exact length equality. The already proved native
+order--principal-stalk-length formula gives the original function-field
+order. Surjectivity of the same stalk map and of the actual residue quotient
+makes the original residue-field map surjective; its source is a field, so
+it is an isomorphism.
+\end{proof}

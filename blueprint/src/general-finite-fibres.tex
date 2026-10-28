@@ -1,0 +1,127 @@
+\section{Integral and finite fibres over completed residue fields}
+\label{sec:general-finite-fibres}
+
+\begin{theorem}[Extension of a complete ultrametric norm]
+\label{spectrum:complete-norm-extension}
+\lean{EnvelopeProperty.Valuation.le_one_of_trivial_of_isAlgebraic,
+EnvelopeProperty.Valuation.eq_one_of_trivial_of_isAlgebraic,
+EnvelopeProperty.Valuation.exists_extends_norm,
+EnvelopeProperty.Valuation.eq_of_extends_norm}
+\leanok
+Let $K$ be a complete ultrametric normed field and $L/K$ an algebraic
+field extension. There exists exactly one real-valued ultrametric
+valuation on $L$ restricting to the norm of $K$, including when
+that norm is trivial.
+\end{theorem}
+\begin{proof}
+For a nontrivial norm on $K$, the spectral norm on the algebraic
+extension is multiplicative and ultrametric and extends the base
+norm. The uniqueness theorem for extensions over a complete field
+identifies every extending field absolute value with this spectral
+norm. For a trivial base norm, apply a monic equation to bound the
+valuation of every algebraic element by one. Apply the same bound
+to the inverse of every nonzero element. Multiplicativity then
+forces every nonzero value to equal one. The trivial valuation
+therefore supplies the unique extension in this case.
+\end{proof}
+
+\begin{theorem}[Integral spectra over a complete normed field]
+\label{spectrum:integral-field-support-classification}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.isMaximal_supp_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.eq_of_supp_eq_of_isIntegral,
+EnvelopeProperty.Berkovich.RelativeSpectrum.integralSupport,
+EnvelopeProperty.Berkovich.RelativeSpectrum.integralSupport_surjective,
+EnvelopeProperty.Berkovich.RelativeSpectrum.integralSupport_bijective,
+EnvelopeProperty.Berkovich.RelativeSpectrum.integralMaximalSpectrumEquiv}
+\leanok
+\uses{spectrum:complete-norm-extension,spectrum:quotient-homeomorphism}
+If a commutative $K$-algebra $C$ is integral over a complete
+ultrametric normed field $K$, its spectrum with prescribed base norm
+is in bijection with $\operatorname{MaxSpec}(C)$ by its actual
+valuation support. No finiteness or Noetherian assumption is needed.
+\end{theorem}
+\begin{proof}
+Each valuation kernel is prime. Its contraction to $K$ is the zero
+prime, which is maximal; integrality makes the kernel maximal in
+$C$. For a maximal ideal $\mathfrak m$, the quotient field
+$C/\mathfrak m$ is algebraic over $K$. Extend the complete base norm
+to this actual field and pull back along the quotient map. This
+gives a prescribed-base seminorm with support precisely $\mathfrak m$.
+If two points have the same support, they descend to valuations on
+the same quotient field, both extending the base norm. Uniqueness
+of the norm extension identifies them on the whole quotient, hence
+on every original ring element. This proves bijectivity.
+\end{proof}
+
+\begin{theorem}[Completed tensor classification of integral fibres]
+\label{spectrum:integral-completed-fibres}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibrePoint_supp,
+EnvelopeProperty.Berkovich.Spectrum.isMaximal_ker_fibreHom,
+EnvelopeProperty.Berkovich.Spectrum.fibreToMaximalSpectrum,
+EnvelopeProperty.Berkovich.Spectrum.fibreToMaximalSpectrum_bijective,
+EnvelopeProperty.Berkovich.Spectrum.fibreEquivMaximalSpectrum,
+EnvelopeProperty.Berkovich.Spectrum.eq_of_ker_fibreHom_eq}
+\leanok
+\uses{spectrum:integral-field-support-classification,spectrum:fibre-equivalence}
+Let $A\to B$ be an integral homomorphism of arbitrary commutative
+rings and $x\in\mathcal S(A)$. The actual fibre over $x$ is in
+bijection with $\operatorname{MaxSpec}(\mathcal H(x)\otimes_A B)$.
+A fibre point maps to the kernel of its genuine tensor
+homomorphism $\mathcal H(x)\otimes_A B\to\mathcal H(y)$.
+\end{theorem}
+\begin{proof}
+The genuine tensor fibre equivalence identifies the fibre with the
+spectrum of $\mathcal H(x)\otimes_A B$ having the prescribed norm
+of $\mathcal H(x)$. This tensor algebra is integral over
+$\mathcal H(x)$ by integral base change. Its coefficient field is
+complete and ultrametric, so the preceding classification applies.
+The tensor valuation is the pullback of the norm on $\mathcal H(y)$;
+its support is therefore exactly the kernel of the actual tensor
+homomorphism. This identifies the resulting bijection as asserted.
+\end{proof}
+
+\begin{corollary}[Finite fibres]
+\label{spectrum:finite-completed-fibres}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.finite_normSpectrum,
+EnvelopeProperty.Berkovich.Spectrum.finite_fibre,
+EnvelopeProperty.Berkovich.Spectrum.finite_preimage_comap_singleton}
+\leanok
+\uses{spectrum:integral-completed-fibres}
+If $B$ is finite as an $A$-module, each seminorm fibre is a finite set.
+\end{corollary}
+\begin{proof}
+The tensor fibre algebra is finite dimensional over $\mathcal H(x)$,
+hence Artinian. The maximal spectrum of an Artinian ring is finite.
+The actual fibre bijection therefore gives finiteness of the fibre.
+The argument includes the zero tensor algebra and empty fibres.
+\end{proof}
+
+\begin{corollary}[Arbitrary prescribed-base fibres]
+\label{spectrum:relative-integral-completed-fibres}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.Fibre,
+EnvelopeProperty.Berkovich.RelativeSpectrum.fibreForgetEquiv,
+EnvelopeProperty.Berkovich.RelativeSpectrum.fibreEquivMaximalSpectrum,
+EnvelopeProperty.Berkovich.RelativeSpectrum.finite_fibre,
+EnvelopeProperty.Berkovich.RelativeSpectrum.finite_preimage_comap_singleton}
+\leanok
+\uses{spectrum:integral-completed-fibres,spectrum:finite-completed-fibres,spectrum:relative}
+For compatible scalar towers $R\to A\to B$ and any prescribed
+seminorm $v$ on $R$, an integral morphism's fibre over
+$x\in\mathcal S_v(A)$ has the same completed-tensor classification.
+For finite algebra homomorphisms these fibres are finite.
+\end{corollary}
+\begin{proof}
+Forgetting the prescribed base gives a point of the corresponding
+absolute fibre. Conversely an absolute point over $x$ automatically
+has the required base values: evaluate the scalar tower on every
+$r\in R$, use its equality over $x$, then use the defining base
+restriction of $x$. These are inverse maps on the entire seminorm.
+Compose with the absolute fibre classification. An arbitrary ring
+or algebra homomorphism is handled by its actual induced algebra
+structure, preserving the stated integral or finite hypothesis.
+\end{proof}
+
+No classification hypothesis is assumed. Integrality is used for
+the maximal-support bijection, and module finiteness is used only
+for fibre finiteness. These statements do not assert finite
+cardinality for general integral fibres.

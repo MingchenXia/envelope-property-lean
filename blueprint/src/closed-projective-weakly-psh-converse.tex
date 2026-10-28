@@ -1,0 +1,86 @@
+\subsection{A real closed-projective witness gives the unchanged original weakly-psh property}
+
+\begin{lemma}[Whole original affine chart pullback from an actual scheme witness]
+\label{paper:actual-native-witness-affine-chart-pullback}
+\leanok
+\lean{EnvelopeProperty.NativePSHWitness.affineProjection,
+EnvelopeProperty.NativePSHWitness.affineProjection_val,
+EnvelopeProperty.NativePSHWitness.affineChart_comp_scalarBase,
+EnvelopeProperty.NativePSHWitness.affineProjection_affineChart,
+EnvelopeProperty.NativePSHWitness.isLocallyPSHOn_comap_of_affineChart}
+\uses{scheme:native-regular-unit-local-psh,scheme:actual-affine-local-psh-comparison,paper:original-affine-local-psh-comparison}
+Let $k$ be a field, $A,C$ genuine commutative $k$-algebras, and
+$f:Y\to\operatorname{Spec}A$ any actual scheme map. Give $Y$ the ORIGINAL
+composite structure $f\gg\operatorname{Spec}(k\to A)$, and let its native
+projection to the old $\operatorname{Berk}(k,A)$ be the genuine fixed-base map
+of $f$ followed by the actual affine and old-point homeomorphisms.
+Suppose $u$ pulled through this entire native projection is intrinsically
+locally psh on the whole inverse image of $U$.
+For any real $\alpha:\operatorname{Spec}C\to Y$ and actual
+$k$-algebra homomorphism $\psi:A\to C$ with the WHOLE equation
+$\alpha\gg f=\operatorname{Spec}(\psi)$, the ORIGINAL function
+$u\circ\operatorname{Berk.comap}(\psi)$ satisfies the unchanged old local-psh
+class on its entire inverse image of $U$.
+\end{lemma}
+\begin{proof}
+The true $k$-algebra law on EVERY coefficient gives the WHOLE composite scheme
+triangle from $\operatorname{Spec}C$ to $\operatorname{Spec}k$. Thus actual
+fixed-trivial-$k$ native pullback through $\alpha$ is defined, and the genuine
+regular-unit pullback theorem preserves the original intrinsic local property.
+Native functoriality and the full original $\alpha/f/\psi$ equation identify
+the projected ENTIRE old point with the original $\operatorname{Berk.comap}$
+point. Verify this identity on EVERY original $A$ element using the actual
+affine whole-point comparison; no inference from supports or selected
+coordinate values occurs. Apply the genuine intrinsic-affine equivalence,
+then the unchanged trivial-field specialization. Their whole inverse laws
+identify the exact domain and original function, including every decreasing
+sequence and analytic neighborhood. No regularity, finite-type, domain,
+properness or chart-lift certificate is needed in this lower statement.
+\end{proof}
+
+\begin{theorem}[A genuine closed-projective birational witness implies the original weakly-psh property]
+\label{paper:actual-closed-projective-weakly-psh-converse}
+\leanok
+\lean{EnvelopeProperty.isWeaklyPSHOn_of_closedProjective_nativeWitness}
+\uses{paper:actual-native-witness-affine-chart-pullback,scheme:actual-closed-projective-rees-domination,paper:actual-finite-family-original-affine-cover}
+Let $A/k$ be a commutative domain algebra. Let $Y\hookrightarrow\mathbf P^n_A$
+be an ACTUAL closed immersion, $f:Y\to\operatorname{Spec}A$ its whole original
+coefficient projection, and let genuine Mathlib partial-isomorphism data with
+dense source and target opens be over this SAME $f$ and the identity of
+$\operatorname{Spec}A$. Suppose the ORIGINAL $u$ pulled through the entire
+fixed-trivial-$k$ native projection of $f$ is intrinsically locally psh over
+$U$. Then $u$ satisfies the UNCHANGED old $\mathrm{IsWeaklyPSHOn}(U,u)$.
+No reducedness of $Y$, Noetherianity or finite-type hypothesis on $A/k$ is
+required. Actual closed-projective structure and genuine over-base birational
+data are retained as geometric input, never replaced by a domination certificate.
+\end{theorem}
+\begin{proof}
+The genuine closed-projective Rees domination theorem constructs an ORIGINAL
+finite family $g_i\in A$, an actual nonzero selected coefficient, and a true
+map $\delta$ from its SAME original Rees scheme into $Y$. The ENTIRE triangle
+$\delta\gg f=\mu_g$ is proved by that construction.
+Let $s$ be the actual finite image of the original family. The selected
+coefficient is a genuine nonzero member, so it supplies the nonzero part of
+the unchanged old witness. For every original $a\in s$ with $a\ne0$, choose
+an actual original index $i$ with $g_i=a$. The proved whole fraction-adjoin
+equivalence gives the actual old chart $\operatorname{Spec}A[s/a]$ and its
+true map $\gamma_i$ to the SAME family Rees scheme. The ESSENTIAL $a\ne0$
+condition is retained; no false comparison to a zero-generator Rees chart is
+used. Its whole original coefficient triangle and the constructed domination
+triangle give
+$(\gamma_i\gg\delta)\gg f=\operatorname{Spec}(\mathrm{chartMap})$.
+Apply the preceding real affine-chart pullback theorem to this EXACT map and
+the ORIGINAL inherited $k$ action. Thus every original nonzero old chart has
+the unchanged local-psh pullback of $u$. The actual finite $s$ and these genuine
+chart properties are precisely the unchanged definition of weakly psh.
+There is no global identification of finite-family and finite-set Rees schemes,
+no new function class, and no analytic-potential inference.
+\end{proof}
+
+\begin{remark}[Exact remaining witness boundary]
+This proves the reverse implication only for actual CLOSED-PROJECTIVE witnesses
+with real dense-open inverse data. Constructing such a domination from an
+arbitrary proper birational witness is a separate genuine Chow-type producer.
+No classical harmonicity, subharmonicity or finite-surjective subharmonic descent
+is asserted here.
+\end{remark}

@@ -1,0 +1,75 @@
+\section{Evaluation of entire original Laurent-pulled module sections}
+
+\begin{definition}\label{def:fc-scheme-module-laurent-evaluation}
+\lean{EnvelopeProperty.SchemeModuleLaurentEvaluation.evaluate,EnvelopeProperty.SchemeModuleLaurentEvaluation.evaluate_coeff,EnvelopeProperty.SchemeModuleLaurentEvaluation.evaluate_monomial}
+\leanok
+\uses{thm:fc-scheme-module-laurent-coefficients,thm:fc-scheme-module-laurent-coefficient-formulas,thm:laurent-module-actual-evaluation}
+Let $R$ be a commutative ring, $p:X\to\operatorname{Spec}R$ compact
+and separated, and $M$ a quasicoherent module. Write $g:X_S\to X$
+and $q:X_S\to\operatorname{Spec}S$ for the actual base-change projections,
+where $S=R[T,T^{-1}]$. For any commutative ring $B$ that is an
+$R$-module and any $R$-linear map $\phi:\Gamma(X,M)\to B$, there is
+an evaluation function on the entire original pulled-module section
+space into $B[T,T^{-1}]$. If $(m_i)$ is the unique original coefficient
+family of $\sigma$, its evaluated polynomial has coefficient
+$\phi(m_i)$ at every integer $i$. In particular it sends
+$q^*(T^i)\eta_g(m)$ to $\phi(m)T^i$.
+\end{definition}
+\begin{proof}
+Send the original section through the inverse genuine whole H0
+base-change equivalence. Apply the preceding entire Laurent tensor
+evaluation to this actual tensor. The geometric coefficient map is
+exactly the original tensor coefficient map after that inverse, so
+the coefficient identity follows at every integer. The original
+monomial-unit section is the whole H0 image of $T^i\otimes m$;
+the two inverse identities and the tensor monomial formula give
+the stated evaluation. This constructs the evaluation from the
+original linear map; no section-expansion or compatibility premise
+is required.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-scheme-module-laurent-gauss-maximum}
+\lean{EnvelopeProperty.SchemeModuleLaurentEvaluation.laurentGauss_evaluate}
+\leanok
+\uses{def:fc-scheme-module-laurent-evaluation,thm:laurent-module-actual-gauss-maximum}
+For any valuation $w$ of $B$ and any positive radius $r$, the actual
+Laurent Gauss value of the evaluated original section is
+\[
+ \max_{i\in\operatorname{supp}(m_\bullet)}w(\phi(m_i))r^i.
+\]
+The support is that of the unique original module coefficients,
+including coefficients killed by $\phi$ and all negative integer
+weights. The empty maximum is zero.
+\end{theorem}
+\begin{proof}
+Apply the entire tensor Laurent Gauss formula to the original section's
+inverse H0 tensor. By construction its original tensor coefficients
+are precisely the geometric coefficients of the original section,
+and its evaluated polynomial is the section evaluation just defined.
+Substituting these two identities into that formula proves the stated
+maximum, including the zero section and coefficients killed by the
+original linear map.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-scheme-module-laurent-gauss-finite-family}
+\lean{EnvelopeProperty.SchemeModuleLaurentEvaluation.laurentGauss_finite_family}
+\leanok
+\uses{thm:fc-scheme-module-laurent-gauss-maximum,def:fc-scheme-module-laurent-finite-coefficient-family,thm:laurent-module-actual-finite-family}
+Every finite original family $G$ of sections of $g^*M$ determines the
+finite coefficient and integer-weight family constructed previously.
+This family is fixed before $\phi$, $w$ and $r$. For every such choice,
+the maximum over $G$ of the actual evaluated Laurent Gauss values is
+exactly the weighted maximum $\max w(\phi(m))r^i$ over that same
+original pair family $(m,i)$.
+\end{theorem}
+\begin{proof}
+Take the image of the original finite section family under the inverse
+whole H0 equivalence and apply the original tensor finite-family Gauss
+formula. A finite maximum over this image is exactly the maximum over
+the original section family, since the evaluation is the composition
+with that inverse. The tensor coefficient-pair family equals the
+previously constructed geometric pair family by the exact original
+coefficient-family identity. Substitution gives the asserted equality.
+The geometric pair family depends only on $G$, so the same family
+works for all linear maps, valuations and positive radii.
+\end{proof}

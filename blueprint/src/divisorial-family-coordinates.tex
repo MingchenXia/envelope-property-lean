@@ -1,0 +1,39 @@
+\section{Producing every divisorial coordinate input internally}
+
+\begin{lemma}[Actual finite DVR coordinates from essential finite type]\label{lem:sc0-actual-finite-dvr-coordinates}
+\lean{EnvelopeProperty.Char0.exists_finite_dvr_coordinates}
+\leanok
+An actual DVR essentially of finite type over a field has an actual
+uniformizer and a finite family of actual elements whose residues form a
+transcendence basis of its residue field.
+\end{lemma}
+\begin{proof}
+Choose an actual uniformizer of the DVR. Its residue field is essentially
+of finite type over the coefficient field and thus has finite transcendence
+degree. Choose a finite transcendence basis in that actual residue field
+and lift each of its finitely many elements through the actual surjective
+residue map. Index the finite basis by its actual finite cardinal. The
+residues of these lifts are exactly the chosen basis, transported by that
+finite index bijection, hence form the required transcendence basis.
+\end{proof}
+
+\begin{theorem}[The smooth-family divisorial chart has no coordinate assumptions]\label{thm:sc0-actual-smooth-family-divisorial-chart}
+\lean{EnvelopeProperty.Char0.exists_smooth_family_divisorial_chart}
+\leanok
+\uses{lem:sc0-actual-finite-dvr-coordinates,thm:sc0-smooth-family-dvr-chart}
+For an actual smooth affine domain over a characteristic-zero field,
+a finite family of nonzero original ideals, and any actual divisorial DVR
+in its actual function field containing the source, the actual uniformizer,
+finite residue coordinates, matching coordinate indices, contained literal
+Rees leaf, simultaneous original-family monomials and actual original-source
+DVR Jacobian factorization are all produced internally.
+\end{theorem}
+\begin{proof}
+Apply the preceding coordinate constructor to the actual divisorial DVR.
+Use its actual uniformizer and finite lifted residue-transcendence basis in
+the actual smooth-family DVR-chart theorem. That theorem produces every
+remaining tree, containment, dimension, coordinate and original-source
+Jacobian datum, retaining its exact simultaneous monomial identities.
+No coordinate choice or determinant ideal is supplied as an additional
+mathematical assumption.
+\end{proof}

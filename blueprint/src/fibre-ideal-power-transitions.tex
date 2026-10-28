@@ -1,0 +1,56 @@
+\section{The actual ideal-power transition and coefficient morphisms}
+
+\begin{lemma}[The original ideal-power inclusions on the whole scheme]
+\label{lem:fibre-ideal-power-module-inclusions}
+\uses{lem:fibre-infinitesimal-categorical-kernel,lem:fibre-infinitesimal-global-image-kernel}
+\lean{EnvelopeProperty.FibreIdealPowerTransitions.inclusion,EnvelopeProperty.FibreIdealPowerTransitions.inclusion_app,EnvelopeProperty.FibreIdealPowerTransitions.inclusion_inclusion,EnvelopeProperty.FibreIdealPowerTransitions.inclusion_self,EnvelopeProperty.FibreIdealPowerTransitions.inclusion_comp}
+\leanok
+For every $n\le m$ there is a canonical inclusion of the actual original
+ideal-power modules $(I\mathcal O_X)^m\to(I\mathcal O_X)^n$. Its
+underlying map on every open is inclusion of the same original
+functions. Composing with the original inclusion into $\mathcal O_X$
+gives the original $m$th-power inclusion. These maps are the identity
+at equal orders and compose according to the original order relation.
+\end{lemma}
+\begin{proof}
+On every affine open the $m$th power of the actual original coefficient
+image ideal is contained in its $n$th power. Thus every section of the
+original $m$th ideal module satisfies the local membership condition
+for the original $n$th ideal module. The inclusion followed by the
+order-$n$ projection is zero on every whole open. The proved categorical
+kernel property therefore constructs the desired morphism, leaving
+every underlying function unchanged. Its composite with inclusion
+recovers the original whole module inclusion. Both the equal-order
+and composition laws follow by canceling the original monomorphism
+into $\mathcal O_X$.
+\end{proof}
+
+\begin{lemma}[The original coefficient-power multiplication morphisms]
+\label{lem:fibre-ideal-power-coefficient-multiplication}
+\uses{lem:fibre-ideal-power-module-inclusions,lem:fibre-infinitesimal-global-image-filtration}
+\lean{EnvelopeProperty.FibreIdealPowerTransitions.coefficientEnd,EnvelopeProperty.FibreIdealPowerTransitions.coefficientEnd_app,EnvelopeProperty.FibreIdealPowerTransitions.multiply,EnvelopeProperty.FibreIdealPowerTransitions.multiply_app,EnvelopeProperty.FibreIdealPowerTransitions.multiply_inclusion,EnvelopeProperty.FibreIdealPowerTransitions.multiply_inclusion_square}
+\leanok
+Every actual coefficient $a\in I^e$ gives a morphism of original
+module sheaves $(I\mathcal O_X)^d\to(I\mathcal O_X)^{e+d}$ which on
+every original open is multiplication by the restriction of the
+original global coefficient $a$. It commutes with all original
+ideal-power inclusions whenever their source and target orders permit
+the same whole coefficient multiplication. Its composite into
+$\mathcal O_X$ is the original ideal-power inclusion followed by
+multiplication by that same coefficient.
+\end{lemma}
+\begin{proof}
+The restriction of the original global coefficient to any affine
+open lies in the $e$th power of the actual original coefficient image
+ideal, since extension commutes with ideal powers. Multiplying an
+original section locally in its $d$th power gives a section locally
+in its $(e+d)$th power. This is the local membership condition for the
+entire original target ideal module. Multiplication is additive and
+linear over the original structure ring, and commutes with every
+restriction because the original coefficient itself is a global
+section. It therefore defines the stated morphism of module sheaves.
+Its composite into $\mathcal O_X$ is the same multiplication on every
+whole section. The inclusion and multiplication squares have equal
+underlying original section functions; injectivity of the original
+ideal-module inclusion proves equality of the whole morphisms.
+\end{proof}

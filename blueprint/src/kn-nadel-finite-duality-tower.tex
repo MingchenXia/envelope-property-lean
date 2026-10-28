@@ -1,0 +1,104 @@
+\begin{lemma}[Canonical composition for the actual coefficient maps]
+\label{lem:kn-nadel-coextension-composition}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionCompositeAdjunction,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionCompIso,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionCompositeAdjunction_counit_apply,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionCompIso_counit,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionCompIso_hom_apply,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionIdIso,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionIdIso_hom_apply,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.coextensionIdIso_inv_apply}
+\leanok
+For actual ring homomorphisms $A\xrightarrow{f}B\xrightarrow{g}C$,
+construct a natural isomorphism
+\[
+ \operatorname{Coext}_g\operatorname{Coext}_f(M)
+ \simeq\operatorname{Coext}_{gf}(M),\qquad
+ F\longmapsto[c\mapsto F(c)(1_B)].
+\]
+It identifies the native composite counit with evaluation at $1_C$
+followed by evaluation at $1_B$.  Identity coextension is identified
+with the original module by evaluation at $1_A$.
+\end{lemma}
+\begin{proof}
+Compose the existing restriction/coextension adjunctions.  Transport
+the left adjoint along the native restriction-composition
+isomorphism, then use uniqueness of right adjoints.  This constructs
+the stated isomorphism for the original ring maps without choosing
+an unrelated Hom module.  Right-adjoint uniqueness preserves the
+counit, which here is evaluation at the two original units.
+Apply that counit equality to $c\cdot F$ and use the actual $C$-action
+to obtain the displayed formula at every $c$.  The same uniqueness
+argument for the identity restriction gives evaluation at $1_A$;
+its inverse sends $x$ to the functional $a\mapsto ax$.
+\end{proof}
+
+\begin{theorem}[The whole native dual frame for two original successive roots]
+\label{thm:kn-nadel-two-root-tower-duality}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDualityTower.root_nontrivial,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.twoRootStructure,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.twoRootIso,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.twoRootIso_hom_apply,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.twoRootIso_counit}
+\leanok
+For $a\in A$, $B=A[t]/(t^{n+1}-a)$, and an arbitrary original
+$b\in B$, let $C=B[u]/(u^{m+1}-b)$ with its actual composite
+coefficient map $f:A\to C$.  Produce a $C$-linear equivalence
+\[
+ C\simeq\operatorname{Coext}_f(A).
+\]
+It sends $x$ to $[y\mapsto\lambda_A(\lambda_B(yx))]$, and its native
+counit is exactly $\lambda_A\circ\lambda_B$.  Nontriviality of the
+intermediate ring is derived from its actual power basis; it is
+not an extra hypothesis.
+\end{theorem}
+\begin{proof}
+First the actual finite power basis identifies $B$ with a nonempty
+finite family of coefficients in $A$, proving that $B$ is nontrivial.
+Use the already proved actual one-root isomorphism
+$C\simeq\operatorname{Coext}_g(B)$.  Apply $\operatorname{Coext}_g$
+to the actual first-root isomorphism
+$B\simeq\operatorname{Coext}_f(A)$, then compose with the preceding
+canonical coextension-composition isomorphism.  This constructs the
+whole $C$-linear frame without supplying an identification as input.
+Evaluate it at the original $y$: the second-root frame gives
+$\lambda_B(yx)$, the flattening comparison evaluates the first-root
+frame at $1_B$, and that value is $\lambda_A(\lambda_B(yx))$.
+Evaluation at $1_C$ proves the asserted native counit formula.
+\uses{thm:kn-nadel-root-coextension-dual,lem:kn-nadel-coextension-composition}
+\end{proof}
+
+\begin{theorem}[Produce every finite independent-root frame over the original ring]
+\label{thm:kn-nadel-finite-root-tower-duality}
+\lean{EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootStage,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootRing,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootStructure,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootStep,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootStructure_succ,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootRing_nontrivial,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentTopCoefficient,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootIso,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootIso_hom_apply,EnvelopeProperty.Vanishing.NadelFiniteDualityTower.independentRootIso_counit}
+\leanok
+Given degrees $n_i+1>0$ and coefficients $a_i$ in the \emph{original}
+nontrivial commutative ring $A$, construct the actual stages
+$B_0=A$ and
+\[
+ B_{i+1}=B_i[t_i]/(t_i^{n_i+1}-f_i(a_i)),\qquad
+ f_{i+1}:A\longrightarrow B_i\longrightarrow B_{i+1}.
+\]
+For every finite $k$, internally construct
+$B_k\simeq\operatorname{Coext}_{f_k}(A)$ as a $B_k$-linear
+equivalence.  If $\Lambda_0=\mathrm{id}_A$ and
+$\Lambda_{i+1}=\Lambda_i\circ\lambda_{B_i}$, its whole functional
+formula is $x\mapsto[y\mapsto\Lambda_k(yx)]$, and its native
+counit is the same $\Lambda_k$.  All stage rings and homomorphisms
+are constructed from the original data, rather than supplied as
+comparison certificates.
+\end{theorem}
+\begin{proof}
+Construct each stage as an actual object under $A$, using the
+literal original coefficient map followed by the monic-root
+coefficient map.  Its new structure map is their actual composition.
+The power-basis argument proves nontriviality at every stage.
+The zero frame is inverse identity coextension.  At a successor
+step apply coextension to the previously constructed frame and
+compose with the new root frame and the canonical composition
+isomorphism, exactly as in the two-root calculation.  This is
+finite induction constructing the full frame internally.
+
+For $x,y$ in the new root algebra, the one-step frame evaluates at
+$y$ to the last coefficient of $yx$.  Flattening the nested
+functional evaluates the preceding frame at its original unit.
+By induction this is precisely the preceding composite coefficient
+applied to that last coefficient.  Thus the asserted whole
+multiplication formula holds at every step.  Evaluating at the
+final unit proves the actual counit formula.  This theorem covers
+the independent-root algebras needed for simultaneous adapted
+covers.  An identification with the actual polynomial coordinate
+power-map algebra, its smooth top differential module, and the
+coordinate-change and global gluing maps remain further producers;
+no such identification is an input or a conclusion here.
+\uses{thm:kn-nadel-root-coextension-dual,lem:kn-nadel-coextension-composition,thm:kn-nadel-two-root-tower-duality}
+\end{proof}

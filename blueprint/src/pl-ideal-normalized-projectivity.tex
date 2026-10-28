@@ -1,0 +1,35 @@
+\section{The same actual normalized PL model is polynomially projective over every original field}
+\begin{lemma}\label{lem:pl-native-product-projective-factorization}
+The original variety product $X\times\mathbb A^1$ has an actual finite polynomial projective factorization over the same original $k[t]$.
+\uses{def:pl-native-variety-product}
+\lean{EnvelopeProperty.ProjSubvariety.nativeProductStructure_isProjectiveFactorization}\leanok
+\end{lemma}
+\begin{proof}
+Base change the actual original closed projective embedding of the same original native variety along $k\to k[t]$. The genuine whole product scheme isomorphism preserves the original structure map, so composing this actual base-change embedding with that isomorphism proves the required factorization.
+\end{proof}
+\begin{lemma}\label{lem:pl-simultaneous-blowup-projective-factorization}
+The same original simultaneous ideal blowup is polynomially projective over the same original parameter base.
+\uses{lem:pl-native-product-projective-factorization}
+\lean{EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowupStructure_isProjectiveFactorization}\leanok
+\end{lemma}
+\begin{proof}Apply the genuine finite polynomial projectivity theorem for the same actual original ideal-sheaf blowup of the product ideal.\end{proof}
+\begin{lemma}\label{lem:pl-normalized-projection-finite-any-field}
+The same original normalization projection is finite over every original field, without perfectness.
+\uses{def:actual-original-normalized-simultaneous-model}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousIdealBlowupProjection_isFinite_anyField}\leanok
+\end{lemma}
+\begin{proof}
+Actual finite original Gauss logs make the same original blowup integral. Its actual original field structure is locally of finite type. The arbitrary-field native normalization finiteness theorem therefore applies to precisely the original normalization projection.
+\end{proof}
+\begin{theorem}\label{thm:pl-normalized-polynomial-projectivity}
+The same original normalized simultaneous PL model is polynomially projective over the original $k[t]$.
+\uses{lem:pl-simultaneous-blowup-projective-factorization,lem:pl-normalized-projection-finite-any-field}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousIdealBlowupStructure_isProjectiveFactorization}\leanok
+\end{theorem}
+\begin{proof}The actual finite normalization projection, followed by the original polynomial projective blowup structure, has a genuine finite polynomial projective factorization. The composite is exactly the accepted original normalized structure map.\end{proof}
+\begin{lemma}\label{lem:pl-normalized-proper-any-field}
+The same actual normalized model is proper over the original polynomial parameter base over every original field.
+\uses{thm:pl-normalized-polynomial-projectivity}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousIdealBlowupStructure_isProper_anyField}\leanok
+\end{lemma}
+\begin{proof}Apply actual properness of the genuine finite polynomial projective factorization.\end{proof}

@@ -1,0 +1,152 @@
+\section{Ordinary affine Cech homology and genuine native cohomology}
+
+Let $p:X\to\operatorname{Spec}R$ be the original morphism, with $X$
+separated. Fix an actual finite affine open cover $(U_i)_{i\in I}$ of
+$X$, and let $M$ be an original quasicoherent $\mathcal O_X$-module.
+Write $C_R(M)$ for the native all-tuple Cech complex of the actual
+$R$-linear section presheaf. Its underlying additive complex is
+identified with the existing native Cech complex of the underlying
+additive sheaf by the published section and forgetful comparisons.
+Write $C(M)$ for this underlying native additive Cech complex.
+The coefficient action on native sheaf cohomology is the independent
+original scalar action constructed in the preceding section.
+
+The existing genuine degree-one comparison and its actual original
+module naturality are supplied by
+\dcref{thm:scheme-module-cech-one-original-natural}; its native
+augmentation and degree-one isomorphism are not reconstructed here.
+
+Use the canonical original affine effacement from
+\dcref{def:scheme-canonical-affine-effacement}: its middle object is
+$E(M)=\prod_i(j_i)_*(M|_{U_i})$, its original map is the existing native
+$M.\mathrm{toCoverSheaf}$, and its quotient is the actual native
+cokernel $Q(M)$. The original short exact sequence, quasicoherence of
+its terms, all positive genuine cohomology vanishing of $E(M)$, and
+its entire functoriality are the separate producers of
+\dcref{thm:scheme-affine-effacement-short-exact,thm:scheme-affine-effacement-acyclic,thm:scheme-affine-effacement-naturality}.
+
+\begin{lemma}[Cech acyclicity and exactness for the actual effacement]
+\label{lem:scheme-module-cech-native-effacement-cech}
+\lean{EnvelopeProperty.SchemeModuleCechNativeCohomology.cechFunctor,EnvelopeProperty.SchemeModuleCechNativeCohomology.cechFunctor_preservesZeroMorphisms,EnvelopeProperty.SchemeModuleCechNativeCohomology.cechSequence_shortExact,EnvelopeProperty.SchemeModuleCechNativeCohomology.E_cech_isZero}
+\leanok
+\uses{thm:scheme-affine-effacement-short-exact,thm:scheme-affine-effacement-acyclic}
+For every $q>0$, the native Cech homology
+$H^q(C_R(E(M)))$ vanishes. The actual short exact effacement sequence
+remains short exact after applying the actual section Cech functor.
+\end{lemma}
+\begin{proof}
+Every finite tuple intersection of the actual cover is affine, by
+separatedness. Apply the existing affine-cover exactness criterion
+only to the actual middle object $E(M)$, whose genuine positive
+cohomology vanishing is already proved by the separate effacement
+producer. This yields vanishing of its positive Cech homology. This
+use of a vanishing equivalence does not identify arbitrary Cech
+homology groups with cohomology groups. The published native
+affine-section exactness theorem applies to the three quasicoherent
+terms of the original short exact sequence and gives degreewise short
+exactness of its actual Cech complexes.
+\end{proof}
+
+\begin{lemma}[The actual two connecting isomorphisms]
+\label{lem:scheme-module-cech-native-connectings}
+\lean{EnvelopeProperty.SchemeModuleCechNativeCohomology.nativeConnecting,EnvelopeProperty.SchemeModuleCechNativeCohomology.nativeConnecting_naturality,EnvelopeProperty.SchemeModuleCechNativeCohomology.nativeConnecting_bijective,EnvelopeProperty.SchemeModuleCechNativeCohomology.nativeConnectingEquiv,EnvelopeProperty.SchemeModuleCechNativeCohomology.nativeConnectingIso,EnvelopeProperty.SchemeModuleCechNativeCohomology.cechConnecting,EnvelopeProperty.SchemeModuleCechNativeCohomology.cechConnectingIso,EnvelopeProperty.SchemeModuleCechNativeCohomology.cechConnecting_naturality}
+\leanok
+\uses{lem:scheme-module-cech-native-effacement-cech,thm:scheme-affine-effacement-short-exact,thm:scheme-affine-effacement-acyclic,thm:scheme-affine-effacement-naturality}
+For each $q>0$, the actual long exact sequences give canonical additive
+isomorphisms
+\[
+ H^q(C_R(Q(M)))\xrightarrow{\delta_C}H^{q+1}(C_R(M)),\qquad
+ H^q(Q(M))\xrightarrow{\delta_H}H^{q+1}(M).
+\]
+Both entire connecting maps commute with the maps induced by every
+original module morphism.
+\end{lemma}
+\begin{proof}
+Use the native homology long exact sequence of the actual short exact
+sequence of Cech complexes, and the native Ext long exact sequence of
+the underlying additive-sheaf short exact sequence. The two adjacent
+middle-object groups vanish by the preceding lemma. Exactness
+therefore makes each displayed native connecting map injective and
+surjective, hence an additive isomorphism. Apply the native
+connecting-map naturality theorems to the actual morphism of the
+functorial effacement sequences. No connecting map or its naturality
+is an input assumption.
+\end{proof}
+
+\begin{lemma}[The canonical degree-zero comparison]
+\label{lem:scheme-module-cech-native-zero}
+\lean{EnvelopeProperty.SchemeModuleCechNativeCohomology.zeroComparison,EnvelopeProperty.SchemeModuleCechNativeCohomology.zeroComparison_naturality}
+\leanok
+\uses{thm:scheme-module-cech-one-original-natural}
+The degree-zero native Cech homology of an original module is
+canonically isomorphic to its genuine degree-zero sheaf cohomology.
+The entire comparison commutes with every original module morphism.
+\end{lemma}
+\begin{proof}
+Write $a:\Gamma(X,M)\to C^0(M)$ for the existing native Cech
+augmentation and $d:C^0(M)\to C^1(M)$ for the native differential.
+The existing augmentation exactness and monicity identify $a$ as a
+kernel of $d$. The native cycles inclusion $Z^0(C(M))\to C^0(M)$
+is another kernel of $d$. The unique isomorphism between these two
+kernels identifies global sections with degree-zero cycles and
+commutes with their inclusions into $C^0(M)$. There is no incoming
+differential in degree zero, so the native projection from cycles
+to degree-zero homology is an isomorphism. Composing gives
+$\Gamma(X,M)\simeq H^0(C(M))$. For an original morphism $f:M\to N$,
+postcompose the asserted cycles square with the monic cycles
+inclusion for $N$. The square becomes the existing entire
+augmentation naturality square, so it commutes. The native homology
+projection is natural, hence the homology square commutes as well.
+Finally compose with the existing natural identification of genuine
+$H^0(M)$ with the sections on the terminal open $X$.
+\end{proof}
+
+\begin{theorem}[The positive-degree comparison]
+\label{thm:scheme-module-cech-native-positive-comparison}
+\lean{EnvelopeProperty.SchemeModuleCechNativeCohomology.positiveComparison,EnvelopeProperty.SchemeModuleCechNativeCohomology.positiveComparison_naturality}
+\leanok
+\uses{thm:scheme-module-cech-one-original-natural,lem:scheme-module-cech-native-connectings}
+For every $q>0$, the native additive Cech homology $H^q(C(M))$ is
+canonically isomorphic to the actual small native $H^q(M)$. The
+entire comparison commutes with every original morphism of
+quasicoherent modules.
+\end{theorem}
+\begin{proof}
+The case $q=1$ is the existing natural affine-cover comparison.
+Suppose the assertion holds in degree $q\geq1$. The actual quotient
+$Q(M)$ is quasicoherent. Define the comparison for $M$ in degree
+$q+1$ as $\delta_H\circ\Phi_{q,Q(M)}\circ\delta_C^{-1}$.
+Every factor is an additive isomorphism by the induction hypothesis
+and the two actual connecting isomorphisms. For $f:M\to N$, invert
+the Cech connecting square, compose with the induction square for
+the actual morphism $Q(f)$, and then compose with the native
+connecting square. The resulting square is precisely the asserted
+whole naturality square in degree $q+1$.
+\end{proof}
+
+\begin{theorem}[Natural all-degree ordinary Cech comparison]
+\label{thm:scheme-module-cech-native-additive-comparison}
+\lean{EnvelopeProperty.SchemeModuleCechNativeCohomology.comparison,EnvelopeProperty.SchemeModuleCechNativeCohomology.comparison_naturality}
+\leanok
+\uses{lem:scheme-module-cech-native-zero,thm:scheme-module-cech-native-positive-comparison}
+For every $q\geq0$ there is a canonical additive equivalence between
+$H^q(C(M))$ and the actual small native $H^q(M)$. It commutes with the entire maps induced by every
+original morphism of quasicoherent modules.
+\end{theorem}
+\begin{proof}
+In degree zero use the existing native augmentation/global-sections
+and genuine degree-zero cohomology identifications, with their
+already proved naturality. In degree one use the existing comparison
+and the first lemma. Inductively, for $q>0$, define the comparison in
+degree $q+1$ by
+\[
+ \delta_H\circ \Phi_{q,Q(M)}\circ\delta_C^{-1}.
+\]
+The quotient $Q(M)$ is quasicoherent, so the inductive comparison
+applies to that actual quotient. All three factors are additive
+isomorphisms. Naturality follows by composing the two genuine
+connecting-map squares and the inductive square for the actual
+quotient morphism. This constructs group isomorphisms, rather than
+only implications about vanishing or exactness.
+\end{proof}
+

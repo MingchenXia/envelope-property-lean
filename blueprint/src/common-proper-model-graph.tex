@@ -1,0 +1,55 @@
+\section{The actual common proper model of a prescribed birational graph}
+\label{sec:common-proper-model-graph}
+
+\begin{theorem}[Common proper graph with both original structural diagrams]
+\label{thm:common-proper-model-graph}
+\lean{EnvelopeProperty.CommonProperModelGraph.graph, EnvelopeProperty.CommonProperModelGraph.graph_fst, EnvelopeProperty.CommonProperModelGraph.graph_snd, EnvelopeProperty.CommonProperModelGraph.model, EnvelopeProperty.CommonProperModelGraph.inclusion, EnvelopeProperty.CommonProperModelGraph.embedding, EnvelopeProperty.CommonProperModelGraph.firstProjection, EnvelopeProperty.CommonProperModelGraph.secondProjection, EnvelopeProperty.CommonProperModelGraph.embedding_isClosedImmersion, EnvelopeProperty.CommonProperModelGraph.inclusion_isOpenImmersion, EnvelopeProperty.CommonProperModelGraph.inclusion_isDominant, EnvelopeProperty.CommonProperModelGraph.inclusion_embedding, EnvelopeProperty.CommonProperModelGraph.inclusion_firstProjection, EnvelopeProperty.CommonProperModelGraph.inclusion_secondProjection, EnvelopeProperty.CommonProperModelGraph.structure_triangle, EnvelopeProperty.CommonProperModelGraph.firstProjection_isProper, EnvelopeProperty.CommonProperModelGraph.secondProjection_isProper, EnvelopeProperty.CommonProperModelGraph.model_isIntegral}
+\leanok
+\source{bj22-trivval:sec:tc, fhx-envelope-20261028:prop:ample-envelopes}
+Let $f:X\to S$ and $g:Y\to S$ be proper morphisms, with
+$X$ integral. Suppose a genuine partial isomorphism
+$e:U\xrightarrow{\sim}V$ between dense opens of $X$ and $Y$
+is compatible with the two structural maps. Assume the inclusion
+$U\hookrightarrow X$ is quasi-compact. Let
+\[
+ h:U\longrightarrow X\times_S Y,
+ \qquad h=(\iota_U,e\iota_V),
+ \qquad W=\operatorname{Im}_{\mathrm{sch}}(h).
+\]
+Then $W$ is integral and its actual two projections
+$p:W\to X$ and $q:W\to Y$ are proper and satisfy $pf=qg$.
+The canonical map $j:U\to W$ is a dense open immersion and
+\[
+ jp=\iota_U,\qquad jq=e\iota_V.
+\]
+Thus the same integral $W$ maps properly to both original
+models, with all original structural maps retained.
+\end{theorem}
+
+\begin{proof}
+The graph $h$ followed by the first product projection is the
+open immersion $\iota_U$. Since the second structural map is
+separated, the graph is an immersion. It is quasi-compact
+because its composite with the first projection is
+quasi-compact. The canonical factorization into its schematic
+image is therefore a dense open immersion $j$, and the image
+inclusion $i:W\hookrightarrow X\times_SY$ is a closed immersion.
+The nonempty open $U$ of the integral scheme $X$ is integral.
+The schematic image of a quasi-compact map from an integral
+scheme is integral: its structure sheaf is reduced by the
+schematically dominant image factor, and its underlying space
+is the irreducible closure of the image of $U$.
+
+Define $p=i\operatorname{pr}_X$ and
+$q=i\operatorname{pr}_Y$. Each product projection is a base
+change of one of the original proper maps, so both composites
+are proper. The product equation gives $pf=qg$. The two
+displayed identities follow from the actual image factorization
+$ji=h$ and the defining graph equations.
+
+\end{proof}
+
+This construction is the ordinary geometric common-domination
+step. For test configurations, equivariant actions, projectivity
+and normalization must be retained in subsequent comparisons;
+none of those extra conclusions is part of the present statement.

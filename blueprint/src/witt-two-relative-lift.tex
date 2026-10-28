@@ -1,0 +1,131 @@
+\section{Actual affine relative Frobenius lifts over the Witt base}
+\label{sec:witt-two-relative-lift}
+
+Let $A$ be an actual smooth algebra over $W=W_2(k)$.
+Let $W'$ be a canonically identified copy of $W$,
+regarded as a $W$-algebra through the actual Witt
+Frobenius $\sigma$, and put $A^{(\sigma)}=W'\otimes_W A$.
+Its structural ring is $W'$. Put
+$\overline A=k\otimes_W A$ for the original residue algebra.
+When $A$ and $\overline A$ are viewed over $W'$,
+their structural maps use the original canonical
+identification $W'\simeq W$, followed by the
+original algebra and reduction maps.
+
+\begin{definition}[The actual lifted coefficient twist]
+\label{def:witt-two-lifted-relative-twist}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.twistBaseAlgebra,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.twistBaseModule,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.TwistAlgebra,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.copyAlgebra,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.residueCopyAlgebra}
+The actual Witt automorphism defines the original
+base-change algebra $A^{(\sigma)}=W'\otimes_W A$.
+\uses{thm:witt-two-frobenius-equivalence}
+\end{definition}
+\begin{proof}
+Compose the actual Witt Frobenius with the
+canonical identification $W\simeq W'$. This is
+an actual ring homomorphism and hence gives the
+stated base action. The original tensor product
+of algebras for that action is precisely the
+specified base change, with its original left
+$W'$-algebra structure.
+\end{proof}
+
+\begin{lemma}[Original reduction is a square-zero quotient]
+\label{lem:witt-two-smooth-algebra-reduction}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.reductionMap,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.reduction_surjective,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.reduction_kernel_square_zero}
+The original residue map $r_A:A\to\overline A$,
+$a\mapsto1\otimes a$, is a surjective $W'$-algebra
+homomorphism whose actual kernel has square zero.
+\uses{thm:witt-two-residue-tensor-exact,lem:witt-two-prime-annihilator}
+\end{lemma}
+\begin{proof}
+The actual original tensor inclusion is a ring
+homomorphism. Its scalar square for $W'$ follows
+from the tensor balanced relation and the original
+Witt reduction, so it is the asserted algebra map.
+Its underlying original linear map is the proved
+surjective tensor projection. Smoothness makes
+$A$ flat over $W$, so its kernel is exactly $pA$
+by actual tensor exactness. Any two kernel elements
+are $pa$ and $pb$. Their product is $p^2ab=0$
+by the actual Witt square-zero identity and its
+image under the original structure ring map.
+Every generator of the product ideal therefore
+vanishes, proving that the whole kernel ideal
+has square zero.
+\end{proof}
+
+\begin{theorem}[The actual residue relative Frobenius map]
+\label{thm:witt-two-residue-relative-frobenius}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.residueFrobenius,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.residueFrobenius_tmul}
+There is an actual $W'$-algebra map
+$R:A^{(\sigma)}\to\overline A$ satisfying
+$R(w'\otimes a)=\rho(w')\,r_A(a)^p$
+for every original pure tensor, where $\rho(w')$
+uses the original identification $W'\simeq W$.
+\uses{def:witt-two-lifted-relative-twist,lem:witt-two-frobenius-reduction,lem:witt-two-smooth-algebra-reduction}
+\end{theorem}
+\begin{proof}
+Use the original residue coefficient map on $W'$
+and the actual $p$th-power map after $r_A$ on
+$A$. These are ring homomorphisms, including if
+$A$ or its residue is zero. They satisfy the
+original tensor balanced relation: for $w\in W$,
+the first sends $\sigma(w)$ to $\rho(w)^p$ by
+proved Witt compatibility; the second sends the
+original scalar $w$ to the same element, since
+$r_A(w)=\rho(w)$. Their values commute in the
+original commutative residue algebra. The actual
+universal property of the original algebra tensor
+product therefore gives the stated whole map.
+Its formula on every pure tensor is the product
+of these two original maps, which proves both
+the displayed value and the original $W'$-scalar
+compatibility.
+\end{proof}
+
+\begin{theorem}[An actual relative Frobenius lift on the same smooth affine algebra]
+\label{thm:witt-two-actual-affine-relative-lift}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.relativeLift,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.relativeLift_reduction}
+There is an actual $W'$-algebra map
+$\widetilde F:A^{(\sigma)}\to A$ whose composite
+with the same original reduction $r_A$ is exactly
+$R$ on the entire original twisted algebra.
+\uses{thm:witt-two-residue-relative-frobenius,lem:witt-two-smooth-algebra-reduction}
+\end{theorem}
+\begin{proof}
+The original smoothness of $A$ is preserved by
+actual scalar base change, so $A^{(\sigma)}$ is
+formally smooth over $W'$. The preceding original
+map $r_A$ is surjective with a square-zero kernel.
+Apply the infinitesimal lifting property of that
+same formally smooth algebra to the actual map
+$R$ and this actual original quotient map.
+It produces a $W'$-algebra homomorphism into the
+original lifted algebra $A$, with the asserted
+whole reduction identity. No lift or reduction
+matching map is supplied as a hypothesis.
+\end{proof}
+
+\begin{corollary}[Actual ordinary coordinate corrections of the constructed lift]
+\label{cor:witt-two-relative-lift-coordinate-correction}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.relativeLift_one_reduction,EnvelopeProperty.DeligneIllusie.WittTwoRelativeLift.relativeLift_coordinate_correction}
+For every original $a\in A$, the constructed lift satisfies
+$r_A(\widetilde F(1\otimes a))=r_A(a)^p$.
+There is an actual $b\in A$ such that
+$\widetilde F(1\otimes a)=a^p+pb$.
+\uses{thm:witt-two-actual-affine-relative-lift,thm:witt-two-residue-relative-frobenius,lem:witt-two-smooth-algebra-reduction}
+\end{corollary}
+\begin{proof}
+Evaluate the whole reduction identity on the original pure tensor
+$1\otimes a$. The pure-tensor relative Frobenius formula and
+preservation of one give exactly $r_A(a)^p$. Thus
+$\widetilde F(1\otimes a)-a^p$ lies in the actual reduction
+kernel. Actual prime exactness identifies this kernel with $pA$
+and supplies an original $b$ with this difference equal to $pb$.
+Adding $a^p$ gives the asserted identity in the original lifted ring.
+\end{proof}

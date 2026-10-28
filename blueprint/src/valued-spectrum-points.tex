@@ -1,0 +1,154 @@
+\subsection{Affine points as valued residue fields}
+\label{subsec:valued-spectrum-points}
+
+These are actual primes and actual valuations on their residue fields,
+over any commutative ring. The construction describes the affine point
+space and its evaluation topology. It does not identify a general scheme's
+analytification or construct an analytic structure sheaf.
+
+\begin{theorem}[Valued residue-field points]
+\label{spectrum:valued-point-equivalence}
+\lean{EnvelopeProperty.Berkovich.ValuedPoint,
+EnvelopeProperty.Berkovich.ValuedPoint.eval,
+EnvelopeProperty.Berkovich.ValuedPoint.toSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.toSpectrum_val_apply,
+EnvelopeProperty.Berkovich.ValuedPoint.eval_eq_zero_iff,
+EnvelopeProperty.Berkovich.ValuedPoint.support_toSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.ofSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.ofSpectrum_prime,
+EnvelopeProperty.Berkovich.ValuedPoint.eval_ofSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.toSpectrum_ofSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.toSpectrum_injective,
+EnvelopeProperty.Berkovich.ValuedPoint.ofSpectrum_toSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.spectrumEquiv}
+\leanok
+\uses{spectrum:support,spectrum:residue-field}
+For a commutative ring $A$, let a valued point be a pair consisting of
+$p\in\operatorname{Spec}(A)$ and a real multiplicative ultrametric valuation
+$\nu:\kappa(p)\to\mathbb R_{\ge0}$. Evaluation
+$|a|=\nu(a\bmod p)$ gives an actual seminorm point of $A$ with support $p$.
+This construction is a bijection with $\mathcal S(A)$; its inverse uses
+the actual support and induced residue-field valuation of a seminorm point.
+\end{theorem}
+\begin{proof}
+Pullback of $\nu$ along $A\to\kappa(p)$ is a multiplicative ultrametric
+seminorm. A valuation on a field vanishes precisely at zero, and the
+kernel of $A\to\kappa(p)$ is exactly $p$, proving the support statement.
+The induced residue-field valuation of a seminorm agrees with the original
+values on every $a\in A$, so evaluation after the proposed inverse
+recovers the entire seminorm. If two valued points give the same
+seminorm, their supports agree, hence their primes agree. Their valuations
+on the common residue field agree on all images of $A$; the residue-field
+fraction representation makes those valuations equal. Thus evaluation is
+injective and the other inverse identity follows as well.
+\end{proof}
+
+\begin{theorem}[Canonical evaluation topology]
+\label{spectrum:valued-point-topology}
+\lean{EnvelopeProperty.Berkovich.ValuedPoint.toFun,
+EnvelopeProperty.Berkovich.ValuedPoint.toFun_injective,
+EnvelopeProperty.Berkovich.ValuedPoint.isInducing_toFun,
+EnvelopeProperty.Berkovich.ValuedPoint.isEmbedding_toFun,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_toFun,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_eval,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_iff,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_toSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_ofSpectrum,
+EnvelopeProperty.Berkovich.ValuedPoint.spectrumHomeomorph,
+EnvelopeProperty.Berkovich.ValuedPoint.spectrumHomeomorph_apply,
+EnvelopeProperty.Berkovich.ValuedPoint.spectrumHomeomorph_symm_apply,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_prime}
+\leanok
+\uses{spectrum:valued-point-equivalence,spectrum:topology,spectrum:support}
+Give valued points the coarsest topology making every original-ring
+evaluation continuous. The proved point equivalence is a homeomorphism
+with $\mathcal S(A)$, and the valued-point space is Hausdorff. Projection
+to the actual prime is continuous for the Zariski topology.
+\end{theorem}
+\begin{proof}
+The topology is induced from the map to the product of all evaluation
+coordinates. Evaluation is injective by the preceding theorem, so this
+is an embedding into a Hausdorff product. A map to the valued-point
+space is continuous exactly when all its evaluations are continuous.
+Both directions of the equivalence preserve every evaluation, giving
+continuity in both directions and the asserted homeomorphism. The prime
+projection is the composite of this homeomorphism with the already proved
+continuous support map, because the evaluation support is exactly the prime.
+\end{proof}
+
+\begin{theorem}[Actual residue-field pullback]
+\label{spectrum:valued-point-pullback}
+\lean{EnvelopeProperty.Berkovich.ValuedPoint.comap,
+EnvelopeProperty.Berkovich.ValuedPoint.comap_prime,
+EnvelopeProperty.Berkovich.ValuedPoint.eval_comap,
+EnvelopeProperty.Berkovich.ValuedPoint.toSpectrum_comap,
+EnvelopeProperty.Berkovich.ValuedPoint.continuous_comap,
+EnvelopeProperty.Berkovich.ValuedPoint.comap_id,
+EnvelopeProperty.Berkovich.ValuedPoint.comap_comp}
+\leanok
+\uses{spectrum:valued-point-equivalence,spectrum:valued-point-topology,
+spectrum:residue-field-pullback}
+A ring homomorphism $\varphi:A\to B$ pulls a valued point $(q,\nu)$
+back to the prime $\varphi^{-1}(q)$ with valuation obtained by pulling
+$\nu$ back along the actual induced residue-field homomorphism.
+Its evaluations satisfy $|a|=|\varphi(a)|$, so this map is continuous
+and agrees with seminorm pullback under the homeomorphism. It obeys
+identity and composition laws on the whole points.
+\end{theorem}
+\begin{proof}
+The preimage of the prime is prime, and its residue field maps to
+$\kappa(q)$ by the residue-field universal property. Pull back the
+given valuation along this genuine field map. The residue-field map
+sends the image of each $a$ to the image of $\varphi(a)$, proving
+the evaluation identity. Continuous evaluation proves continuity,
+and equality on all ring elements proves compatibility with the
+seminorm equivalence. The identity and composition laws of original
+ring pullback, together with injectivity of evaluation, give the laws
+for the valued points.
+\end{proof}
+
+\begin{theorem}[Valued points with prescribed coefficients]
+\label{spectrum:relative-valued-points}
+\lean{EnvelopeProperty.Berkovich.ValuedPoint.relativeLocus,
+EnvelopeProperty.Berkovich.ValuedPoint.mem_relativeLocus,
+EnvelopeProperty.Berkovich.ValuedPoint.isClosed_relativeLocus,
+EnvelopeProperty.Berkovich.RelativeValuedPoint,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.spectrumHomeomorph,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.spectrumHomeomorph_apply_coe,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.spectrumHomeomorph_symm_apply_coe,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.isClosedEmbedding_subtypeVal,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.eval,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.eval_algebraMap,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.continuous_eval,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.prime_base,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.comap,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.comap_coe,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.eval_comap,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.spectrumHomeomorph_comap,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.continuous_comap,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.comap_id,
+EnvelopeProperty.Berkovich.RelativeValuedPoint.comap_comp}
+\leanok
+\uses{spectrum:valued-point-topology,spectrum:valued-point-pullback,spectrum:relative,
+spectrum:relative-support}
+For any commutative base ring $R$ carrying a prescribed real seminorm
+$v$, valued points of an $R$-algebra $A$ whose evaluations on all
+$R$ coefficients equal $v$ form a closed subspace. The valued-point
+homeomorphism restricts to a homeomorphism with $\mathcal S_v(A)$. Supports
+contract to the support of $v$. Actual residue-field pullback along an
+$R$-algebra map is continuous, preserves the prescribed coefficients, and
+agrees with relative seminorm pullback, including identity and composition laws.
+\end{theorem}
+\begin{proof}
+Prescribing each coefficient evaluation is a closed equality condition,
+so their intersection is closed. The absolute homeomorphism preserves
+every coefficient evaluation, hence identifies the two prescribed-base
+subspaces exactly. Restricting the genuine homeomorphism gives the
+relative homeomorphism. A coefficient has zero value exactly when its image
+lies in the valued-point prime, so this prime contracts to the support of $v$.
+An algebra map commutes with coefficient inclusion, and its genuine
+residue-field pullback therefore preserves every prescribed coefficient
+value. The absolute evaluation identity proves relative naturality, continuity,
+and both functorial laws. No existence over an arbitrary prime or base
+seminorm is assumed in this construction.
+\end{proof}

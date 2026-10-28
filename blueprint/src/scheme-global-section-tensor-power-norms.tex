@@ -1,0 +1,64 @@
+\section{Actual original global-section tensor powers and true model norms}
+\label{sec:scheme-global-section-tensor-power-norms}
+
+\begin{definition}[The actual original section power]
+\label{def:scheme-global-section-tensor-power}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.powerSectionHom,EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.powerSection,EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.sectionHom_powerSection}
+\leanok
+\uses{lem:scheme-original-global-section-hom,lem:fc-original-tensor-section-homs}
+For an actual original section $s\in\Gamma(X,M)$, form its original
+unit-to-module morphism. Its zeroth power is the original identity of the
+structure module. Its successor is the actual original tensor of the previous
+morphism with the same original section morphism, followed by the genuine
+comparison with the original explicit sheafified tensor. Evaluate this original
+unit morphism at one to obtain the actual entire section of $M^{\otimes n}$.
+The original section-unit equivalence returns exactly this recursive morphism.
+\end{definition}
+\begin{proof}
+A morphism out of the original structure module is determined by its entire
+top section at one: original presheaf naturality restricts this value to every
+open, and original module linearity determines every scalar input. The
+original whole section-unit correspondence therefore inverts evaluation at
+one on each recursively formed morphism.
+\end{proof}
+
+\begin{theorem}[True original section-power norms]
+\label{thm:scheme-global-section-tensor-power-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.modelHomNorm_tensorSectionHom,EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.modelHomNorm_powerSectionHom,EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.globalSectionNorm_powerSection}
+\leanok
+\uses{def:scheme-global-section-tensor-power,thm:scheme-global-section-model-norm-isometry,lem:actual-model-hom-norm-composition,lem:actual-model-tensor-hom-norm,lem:actual-line-fiber-section-model-norm}
+On any actual original proper model over a prescribed bounded base valuation,
+let $M$ be any invertible original module and $s$ any entire original global
+section. At every actual original native point, the true original proper-model
+norm of the actual $n$th section power is $\lVert s\rVert^n$. This includes
+zero norms and $n=0$.
+\end{theorem}
+\begin{proof}
+The original tensor section is the inverse original structure multiplication
+followed by the tensor of the two section morphisms. Genuine model morphism
+norms multiply under composition and under the actual tensor of whole
+morphisms. The original structure comparison is an isomorphism and has norm
+one. Induction, with the identity at degree zero, proves the claimed norm
+formula for every original section-unit power. The actual original fibre
+section of a unit-to-line morphism has norm equal to that morphism norm.
+The preceding exact original section-unit identity gives the stated formula
+for the entire original global-section power.
+\end{proof}
+
+\begin{theorem}[Original section powers in the actual exponent block]
+\label{thm:scheme-global-section-block-power-norm}
+\lean{EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.blockPowerSection,EnvelopeProperty.SchemeGlobalSectionTensorPowerNorms.globalSectionNorm_blockPowerSection}
+\leanok
+\uses{thm:scheme-global-section-tensor-power-norm,thm:scheme-global-section-model-norm-isometry,lem:bundle-tensor-power-multiplication}
+For every entire original $s\in\Gamma(X,M^{\otimes d})$, transport its actual
+$r$th section power through the genuine original whole module isomorphism
+$(M^{\otimes d})^{\otimes r}\simeq M^{\otimes dr}$. Its true original model
+norm is exactly $\lVert s\rVert^r$ at every actual original native point.
+\end{theorem}
+\begin{proof}
+Apply the preceding theorem to the original invertible module
+$M^{\otimes d}$. The actual whole original module isomorphism preserves the
+true model norm of every entire section by the genuine isometry theorem.
+Compose these two original norm identities. There is no norm, section-lifting
+or exponent-block comparison premise.
+\end{proof}

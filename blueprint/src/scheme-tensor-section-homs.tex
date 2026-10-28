@@ -1,0 +1,33 @@
+\begin{lemma}[Actual tensor products of original whole section morphisms]
+\label{lem:fc-original-tensor-section-homs}
+\lean{EnvelopeProperty.SchemeTensorSectionHoms.tensorSectionHom, EnvelopeProperty.SchemeTensorSectionHoms.tensorSectionHom_sectionHom, EnvelopeProperty.SchemeTensorSectionHoms.tensorSectionHom_comp, EnvelopeProperty.SchemeTensorSectionHoms.tensorSectionHom_isIso, EnvelopeProperty.SchemeTensorSectionHoms.tensorSectionHom_precomp_scalars, EnvelopeProperty.SchemeTensorSectionHoms.pullback_tensorSectionHom}
+\leanok
+Let $M,N$ be original sheaves of modules on a scheme $X$. The actual
+whole section morphisms $a:\mathcal O_X\to M$ and
+$b:\mathcal O_X\to N$ have a tensor section obtained by the canonical
+inverse multiplication $\mathcal O_X\to\mathcal O_X\otimes\mathcal O_X$
+followed by $a\otimes b$. It agrees with the actual pure tensor of their
+whole global sections, is an isomorphism when both original section
+morphisms are isomorphisms, and is natural under postcomposition and
+arbitrary original native pullback. Multiplying the two original
+sections by original whole scalars $r,s$ multiplies their tensor section
+by the actual original product $rs$.
+\end{lemma}
+\begin{proof}
+All constructions use the actual monoidal tensor and the canonical
+structure-line multiplication. Tensor functoriality gives the
+postcomposition identity. The inverse structure multiplication and the
+tensor of two isomorphisms are isomorphisms. Evaluation on the original
+unit global section gives the actual pure tensor section, because
+structure-line multiplication sends $1\otimes1$ to $1$ and the actual
+tensor morphism maps pure tensors to the tensors of their images.
+Tensoring multiplication by $r$ and by $s$ and applying the canonical
+structure multiplication gives multiplication by $rs$; conjugating
+through this same multiplication proves the scalar formula.
+For pullback, the genuine strong monoidal comparison is natural on both
+original sections and preserves the monoidal unit and its multiplication.
+The proved equality between the native structure-line pullback and
+this monoidal unit comparison identifies the pulled structure
+multiplication with the original one on the source. Its inverse and
+monoidal tensor naturality then give the asserted whole section identity.
+\end{proof}

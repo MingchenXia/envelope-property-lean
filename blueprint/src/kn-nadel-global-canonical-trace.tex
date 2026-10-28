@@ -1,0 +1,461 @@
+\section{The original canonical trace across the adapted-cover unit extension}
+
+Let $X$ be smooth of pure dimension $n$ over the original field $k$.
+The original canonical module means $\omega_X=\bigwedge^n\Omega^1_{X/k}$.
+All comparisons below use the actual canonical differential, the original
+scalar maps, and every factor of the original simultaneous root algebra.
+
+\begin{lemma}[Canonical affine sections after an actual etale map]
+\label{lem:kn-global-trace-canonical-affine-basechange}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.sectionsIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.sectionsIso_hom}
+\leanok
+\uses{thm:kn-canonical-smooth-etale}
+Let $X$ and $Z$ be affine and let $g:Z\to X$ be etale.  There is an
+isomorphism
+\[
+ \Gamma(Z,\mathcal O_Z)\otimes_{\Gamma(X,\mathcal O_X)}
+       \Gamma(X,\omega_X)\;\xrightarrow{\sim}\;
+       \Gamma(Z,\omega_Z).
+\]
+Its underlying map is the original affine pullback-sections comparison
+followed by the entire original canonical differential.  No global basis
+of $\Omega^1_{X/k}$ is an input.
+\end{lemma}
+\begin{proof}
+Smoothness makes $\omega_X$ invertible and hence quasicoherent.  The actual
+affine pullback-sections isomorphism identifies the displayed tensor
+product with $\Gamma(Z,g^*\omega_X)$.  The whole original canonical
+differential $g^*\omega_X\to\omega_Z$ is an isomorphism by the cited
+smooth-etale theorem.  Applying the section functor and composing the two
+isomorphisms proves the assertion.  The composition is the stated
+underlying map by the definitions of these two functors.
+\end{proof}
+
+\begin{lemma}[Every original section retains its actual differential]
+\label{lem:kn-global-trace-canonical-affine-unit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.sectionsIso_one_tmul,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.sectionsIso_tmul}
+\leanok
+\uses{lem:kn-global-trace-canonical-affine-basechange}
+The preceding map sends $s\otimes w$ to $s\,dg(w)$ for every original
+$s\in\Gamma(Z,\mathcal O_Z)$ and $w\in\Gamma(X,\omega_X)$, where $dg$ is
+the original adjoint canonical differential.
+\end{lemma}
+\begin{proof}
+On $1\otimes w$, the affine pullback-sections comparison is the actual
+pullback-pushforward unit applied to $w$.  The original adjunction triangle
+identifies its composite with the pulled canonical differential with the
+original adjoint differential.  This proves the assertion on $1\otimes w$.
+For arbitrary $s$, write $s\otimes w=s(1\otimes w)$ and use linearity over
+$\Gamma(Z,\mathcal O_Z)$.  Thus every original section, and not merely a
+chosen list of coordinate wedges, has the asserted value.
+\end{proof}
+
+\begin{lemma}[The same whole mixed chart has its actual canonical unit-cover comparison]
+\label{lem:kn-global-trace-mixed-canonical-basechange}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedRing,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.extendedMixedRing,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedStructure,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedUnitProjection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedStructure_smooth,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedUnitProjection_etale,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedSectionsIso}
+\leanok
+\uses{lem:kn-global-trace-canonical-affine-basechange,thm:kn-nadel-canonical-mixed-pure-trace}
+Let $A$ have original etale coordinates over $k$, let $B$ be the entire
+original mixed Kummer algebra with positive tame degrees, and let $S$ be
+the entire original unit-root cover.  Put $C=S\otimes_A B$.  The preceding
+canonical comparison exists for the actual map
+$\operatorname{Spec}C\to\operatorname{Spec}B$, with its original scalar
+maps, without a global differential basis on $B$.
+\end{lemma}
+\begin{proof}
+The original mixed-coordinate smoothness theorem proves that
+$\operatorname{Spec}B$ is smooth of the same original dimension $n$ from
+the given etale coordinates and positive tame degrees.  The entire
+unit-root cover $S/A$ is etale.  Base change therefore makes the original
+inclusion $B\to S\otimes_A B$ etale.  Both spectra are affine.  Applying
+the preceding comparison to these actual maps proves the assertion.  All
+original active and inactive factors remain present in $B$ and $S$.
+\end{proof}
+
+\begin{lemma}[The original affine ring scalars]
+\label{lem:kn-global-trace-native-spectrum}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeSectionsIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeSectionsIso_hom,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeSectionsIso_tmul}
+\leanok
+\uses{lem:kn-global-trace-canonical-affine-basechange,lem:kn-global-trace-canonical-affine-unit}
+Let $f:\operatorname{Spec} B\to\operatorname{Spec} k$ be smooth of pure
+relative dimension $n$, and let $\varphi:B\to C$ be an original ring map
+whose spectrum map is etale.  With the original $B$ and $C$ scalar
+structures on the native affine section modules there is an isomorphism
+\[
+ C\otimes_B\Gamma(\operatorname{Spec}B,\omega_f)
+ \simeq\Gamma(\operatorname{Spec}C,\omega_{\operatorname{Spec}(\varphi)\circ f}).
+\]
+Its entire underlying map is the published original-ring affine pullback
+comparison followed by the same canonical differential.  It sends every
+$c\otimes w$ to $c\,d\operatorname{Spec}(\varphi)(w)$ for the original
+adjoint differential and original sections.
+\end{lemma}
+\begin{proof}
+Use the published original-ring tensor equivalence for affine quasicoherent
+pullback.  Its formula on every pure tensor is the same original adjunction
+unit, with the given coefficient acting through the original $C$ action.
+Compose with the section functor applied to the original canonical
+differential isomorphism.  On $1\otimes w$, the preceding affine unit
+formula identifies the value with that same adjoint differential.  Linearity
+over the original ring $C$ proves the formula for every $c\otimes w$.
+This only retains the actual original scalar structures in the proved
+comparison; it introduces no new trace construction.
+\end{proof}
+
+\begin{lemma}[Original mixed canonical sections and original ring actions]
+\label{lem:kn-global-trace-native-mixed-sections}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalModule,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedRightHom,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.extendedMixedCanonicalModule,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedNativeSectionsIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalModuleOverBase,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedExtendedSectionsIso}
+\leanok
+For the same original $k,A,x,N,I,\sigma,u$ and whole original rings
+$B$, $S$ and $C=S\otimes_A B$, original etale coordinates and positive
+tame degrees produce
+\[
+ S\otimes_A\operatorname{Res}_{A\to B}\Gamma(\omega_B)
+ \simeq\operatorname{Res}_{S\to C}\Gamma(\omega_C).
+\]
+The source canonical module retains the original $B$ action before its
+restriction.  The original tensor-right ring map gives a native
+$C\otimes_B\Gamma(\omega_B)\simeq\Gamma(\omega_C)$, and the displayed
+isomorphism is the genuine whole scalar comparison composed with this
+native canonical comparison.  No global frame of $\Omega_{B/k}$ is input.
+\uses{lem:kn-global-trace-native-spectrum}
+\end{lemma}
+\begin{proof}
+Apply original mixed-source smoothness and the original etale tensor
+right projection to the preceding native comparison.  Restrict only
+through the original coefficient maps.  The module-category scalar
+extension uses the same actual scalar action as its ordinary tensor
+module; the published original algebra-restriction equivalence identifies
+them.  The remaining tensor cancellation is the original pushout
+comparison, instantiated on these actual canonical modules, as follows.
+Let $A\to B$ and $A\to S$ be commutative algebra maps and $M$ a
+$B$-module.  The actual scalar comparison
+\[
+ (S\otimes_A B)\otimes_B M\longrightarrow S\otimes_A M,
+ \qquad(s\otimes b)\otimes m\longmapsto s\otimes bm
+\]
+is the already proved $S$-linear equivalence from the original pushout
+comparison.  No map $B\to S$ is required.  This support is reused, not
+a new mathematical result in this chapter.
+Swap $S$ and $B$ in the inner tensor, then swap the outer factors.
+Apply the native cancellation $M\otimes_B(B\otimes_A S)\simeq
+M\otimes_A S$, and swap the remaining factors.  These are genuine
+additive equivalences, and their composite has the displayed formula.
+The formula shows $S$-linearity on pure tensors; tensor induction proves
+it for every element.  The inverse sends $s\otimes m$ to
+$(s\otimes1)\otimes m$, as follows from the native inverse formulas.
+\end{proof}
+
+\begin{lemma}[Actual affine-section transport of the same original pure counit]
+\label{lem:kn-global-trace-pure-affine-counit}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.baseCanonicalSectionsRawIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsRawIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.baseCanonicalSectionsRawIso_inv_unit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsRawIso_inv_unit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsCounit,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsCounit_raw,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCanonicalSectionsCounit_pulled_topform}
+\leanok
+Let $a:k[x_1,\ldots,x_n]\to A$ be the original formally etale coordinate
+map and let $P$ be the original whole pure root algebra with positive tame
+degrees.  Its actual original affine section comparisons $\beta_A,\beta_P$
+produce the map
+\[
+ \operatorname{Res}_{A\to P}\Gamma(\omega_P)\longrightarrow\Gamma(\omega_A)
+\]
+by transporting the same already proved pure canonical counit.  The inverse
+of each $\beta$ sends every original ordinary top form to its actual affine
+map followed by the same sheafification unit.  The transported counit
+satisfies, for every original $c\in P$ and ordinary base top form $w$,
+\[
+ T_P\!\left(c\,\beta_P^{-1}(d^{\mathrm{ord}}w)\right)
+       =\beta_A^{-1}\!\left(\operatorname{Tr}_{P/A}(c)w\right).
+\]
+This statement does not yet identify $d^{\mathrm{ord}}$ with the actual
+sheaf canonical differential; that further comparison remains separate.
+\uses{thm:kn-nadel-canonical-mixed-pure-trace}
+\end{lemma}
+\begin{proof}
+Compose the proved affine exterior sheaf comparison with the native tilde
+whole-section isomorphism, apply the original pure counit, and compose
+with the inverse base comparison.  On the principal open $D(1)$ the
+localized affine comparison sends the image of an original form to its
+same tilde section by the localized-module universal property.  Its
+original sheafification factorization therefore gives the asserted exact
+inverse formula on $D(1)=\operatorname{Spec}A$.  The inverse and forward
+pure affine comparisons cancel in the displayed composite, leaving the
+same original pure counit.  Its existing all-coefficient/all-top-form
+normalization proves the displayed formula.  These are genuine affine
+section transports of the existing trace construction.
+\end{proof}
+
+\begin{lemma}[The entire original unit extension and its same purification]
+\label{lem:kn-global-trace-actual-purification}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoordinateMap,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoordinateMap_etale,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitCoordinateMap_formallyEtale,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitPureCoefficient,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPureRing,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationIso}
+\leanok
+For the same original mixed data, put $S=\operatorname{UnitCover}(N,u)$.
+The original coordinate map followed by $A\to S$ is etale, hence formally
+etale, from original etale coordinates and positive tame degrees.  The
+original pure coefficient family commutes with this actual extension,
+and the actual produced purification is
+\[
+ C=S\otimes_A B\ \simeq_S
+ P=\operatorname{Ring}\bigl(N,\operatorname{pureCoefficient}(a_S,I,\sigma)\bigr).
+\]
+The whole original unit-root extension and all inactive root factors are
+retained; no purification isomorphism is supplied by the caller.
+\end{lemma}
+\begin{proof}
+Compose the original polynomial-coordinate map with the actual unit-cover
+coefficient map.  Both are etale by the original coordinate and positive
+tame unit-cover theorems, so their composite is etale and formally etale.
+For each active row the original pure coefficient is its original
+coordinate; for each inactive row it is one.  Map these equalities to
+$S$ to identify the complete original coefficient family with that of
+the pure presentation using $a_S$.  The already constructed entire mixed
+purification algebra isomorphism, transported through that actual family
+equality, gives precisely the asserted original $S$-algebra isomorphism.
+\end{proof}
+
+\begin{lemma}[Original base canonical sections on the same entire unit cover]
+\label{lem:kn-global-trace-actual-base-unit-sections}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.coordinateStructure_smooth,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitBaseStructure,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unitBaseSectionsIso}
+\leanok
+Original etale coordinates produce smoothness of the actual original
+base $\operatorname{Spec}A\to\operatorname{Spec}k$ of relative dimension
+$n$.  The same original unit cover has its actual original field
+structural square and a produced canonical-section isomorphism
+\[
+ S\otimes_A\Gamma(\omega_A)\simeq\Gamma(\omega_S),
+\]
+using the same original field structures and native canonical differential.
+\uses{lem:kn-global-trace-native-spectrum}
+\end{lemma}
+\begin{proof}
+The coordinate map gives an etale map to polynomial affine space.  Compose
+with the known smooth polynomial structural map; relative dimensions
+add as $0+n=n$.  Its actual algebra-map structural square identifies
+this composition with the original field structural map of $A$.
+The original unit-cover algebra map preserves that field structure,
+using the actual coefficient scalar tower.  Apply the native affine
+canonical comparison to the actual etale unit-cover projection, then
+transport through this produced structural square.  This constructs
+the stated original-ring isomorphism without a supplied frame or map.
+\end{proof}
+
+\begin{lemma}[Actual canonical sections along an original ring equivalence]
+\label{lem:kn-global-trace-native-equivalence-sections}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeEquivSectionsIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.nativeEquivSectionsIso_apply}
+\leanok
+Let $f:\operatorname{Spec}C\to\operatorname{Spec}k$ be smooth of relative
+dimension $n$, and let $e:C\simeq P$ be an original ring equivalence.
+The actual scalar-extension adjunction unit and native canonical
+differential produce
+\[
+ \Gamma(\omega_f)\simeq\operatorname{Res}_e\Gamma(\omega_{\operatorname{Spec}(e)\circ f}).
+\]
+Its value on every original canonical section is the same original
+adjoint canonical differential of $\operatorname{Spec}(e)$.
+\uses{lem:kn-global-trace-native-spectrum}
+\end{lemma}
+\begin{proof}
+The original ring equivalence is bijective, hence its actual spectrum
+map is etale.  Restriction of scalars through that same equivalence is
+an equivalence, so the actual scalar-extension adjunction unit is an
+isomorphism.  Compose it with restriction of the preceding native
+canonical-section isomorphism.  The unit sends an original section to
+$1\otimes w$; the proved pure-tensor readback of the native comparison
+identifies its image with the same actual adjoint differential.
+\end{proof}
+
+\begin{lemma}\label{lem:kn-global-trace-whole-pure-uniqueness}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureCoordinate_square,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureJacobian,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureGenerator_eq_exteriorImage,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureTopPullback_generator,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureJacobian_mul_coordinateProduct,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.pureFunctional_ext_of_topforms}
+\leanok
+For the entire original pure quotient over a flat etale-coordinate ring
+in characteristic zero, two linear canonical functionals with the same
+intrinsic normalization on every coefficient times a pulled base top
+form are equal.  All inactive root factors remain present.
+\end{lemma}
+\begin{proof}
+Let $d$ be the original coordinate exponent tuple.  The actual pure
+coordinate map intertwines the coordinate-power map with the original
+coefficient inclusion: apply the coefficient-preserving whole pure/split
+isomorphism, then use the proved active coordinate square and the actual
+inactive coefficient inclusion.  The differential of this same square,
+wedged in the original order, gives $d\tau(g_A)=Jg_P$ for the internally
+produced genuine top frames.
+
+The native polynomial identity $J\prod_jz_j=\tau^*(\prod_j(d_j+1)x_j)$
+therefore holds in the whole pure algebra.  The polynomial on the right
+is nonzero over the original characteristic-zero field and is regular
+after the actual flat coordinate change, including disconnected target
+rings.  Consequently its multiple of every original source top form is
+a coefficient times $d\tau(g_A)$.  The two normalizations agree there.
+Linearity identifies their difference multiplied by this regular scalar;
+the actual base top-frame equivalence reduces cancellation to regularity
+in the base ring.  They agree on every source form, as asserted.
+\uses{thm:kn-nadel-canonical-mixed-pure-trace}
+\end{proof}
+
+\begin{lemma}\label{lem:kn-global-trace-whole-pure-cross-chart}
+Given an actual coefficient-preserving algebra isomorphism between two
+entire pure presentations over the same original coordinate ring, the
+native exterior differential intertwines their produced canonical
+counits.  Each original degree tuple and each inactive root factor is
+retained separately.
+\end{lemma}
+\begin{proof}
+The algebra isomorphism fixes every original base coefficient.  Its
+actual exterior differential therefore commutes with every pulled base
+top form: check the genuine original coordinate wedge using the native
+Kahler formula on universal differentials, then use the original base
+top-frame equivalence and scalar linearity.  The transported second
+counit on the first source thus has the first intrinsic normalization,
+because the native algebra trace is invariant under the same actual
+coefficient-preserving algebra isomorphism.  The whole-pure uniqueness
+lemma identifies the two entire original maps.  This proves the square
+for the actual differential, without a supplied canonical-square premise.
+\uses{lem:kn-global-trace-whole-pure-uniqueness,thm:kn-nadel-canonical-mixed-pure-trace}
+\end{proof}
+
+\begin{lemma}[The actual extended mixed canonical counit]
+\label{lem:kn-global-trace-mixed-extended-counit}
+\uses{lem:kn-global-trace-mixed-canonical-basechange,thm:kn-nadel-canonical-mixed-pure-trace}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.extendedMixedStructure_smooth,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.extendedMixedStructure_eq,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationMap,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationMap_apply,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurification_structure,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationSectionsIso,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedExtendedCounit}
+\leanok
+For the entire original mixed algebra $B/A$, let $S/A$ be its actual
+unit-root cover and $C=S\otimes_A B$.  The original purification produces
+an $S$-linear isomorphism from actual canonical sections on $C$ to actual
+canonical sections on its whole pure presentation.  Composing this native
+canonical isomorphism, the internally produced pure canonical counit, and
+the inverse native canonical base-change isomorphism for $S/A$ produces
+\[
+ \widetilde T:S\otimes_A\Gamma(B,\omega_{B/k})
+       \longrightarrow S\otimes_A\Gamma(A,\omega_{A/k}).
+\]
+All coefficients, root factors, original coordinates, and original field
+structures are retained.  This construction has no incoming canonical
+comparison or trace certificate.  Intrinsic native normalization and
+faithful descent of this map remain subsequent obligations.
+\end{lemma}
+\begin{proof}
+The entire unit-root cover is etale, so the original smoothness gives
+smoothness of $C$ in the same relative dimension.  The tensor right
+inclusion preserves the original field map by its actual scalar tower.
+The produced purification is coefficient preserving over $S$; the field
+map is therefore also preserved.  It is harmless to use a proof-backed
+opaque representative of this same algebra equivalence: every value is
+proved equal to its original value.  No replacement algebra map is
+assumed.
+
+Apply the native canonical section isomorphism of the resulting literal
+ring equivalence.  Restriction of scalars along the original $S$ maps,
+using the equivalence's coefficient identity, makes this isomorphism
+$S$-linear.  Transport the target along its proved field structural
+square.  This yields the asserted purification on actual canonical
+sections, without choosing a differential frame.  The previously proved
+mixed base-change isomorphism identifies its source with
+$S\otimes_A\Gamma(B,\omega_{B/k})$.  The original etale coordinates induce
+etale coordinates on $S$ and the positive tame degrees remain tame there,
+so the actual pure counit applies.  Finally use the inverse unit-cover
+canonical base-change isomorphism.  Their composition is precisely
+$\widetilde T$.
+\end{proof}
+
+\begin{theorem}[Descent of the same original mixed canonical trace]
+\label{thm:kn-global-trace-mixed-descent}
+\uses{lem:kn-global-trace-mixed-canonical-basechange,lem:kn-global-trace-whole-pure-uniqueness,thm:kn-nadel-canonical-mixed-pure-trace,thm:kn-nadel-faithfully-flat-module-map-descent}
+\notready
+For the same original mixed algebra $B/A$, produce the canonical trace on
+actual canonical sections, with normalization
+$T(b\,d\tau(w))=\operatorname{Tr}_{B/A}(b)w$ on every original base top
+form.  No overlap equality, trace, differential frame or duality
+comparison is an input.
+\end{theorem}
+\begin{proof}
+The actual unit-root cover is faithfully flat and etale.  The preceding
+canonical section comparison and tensor associativity identify its
+extension of the original canonical sections with the actual canonical
+sections of $C$.  The actual coefficient-preserving purification
+isomorphism identifies this whole $C$ with its original pure model; its
+native exterior differential retains derivatives of every original unit.
+Transport the proved pure canonical counit through these actual maps.
+Its intrinsic normalization on every original top form is preserved by
+the proved differential formulas and the native trace base-change formula.
+
+Pass to the two literal inclusions into $S\otimes_A S$.  Both transported
+maps have this same intrinsic normalization for the whole algebra over
+that overlap.  Invert the original branch product.  The original mixed
+cover is etale there, so its actual canonical differential is an
+isomorphism, and the normalization determines the whole map.  The original
+branch product is regular and remains regular after the actual flat
+coefficient extensions.  The original target canonical module is
+invertible, hence multiplication by this element is injective there.
+Equality after localization therefore gives equality of the two regular
+maps before localization.  Actual faithfully-flat module descent now
+produces the original map and its whole scalar-extension formula.
+The trace in the normalization is $\operatorname{Tr}_{C/S}$, so its rank
+is the rank of the original $B/A$, without the auxiliary rank of $S/A$.
+\end{proof}
+
+\begin{theorem}[Canonical trace on the same original global adapted cover]
+\label{thm:kn-global-trace-original-adapted-cover}
+\notready
+Let the original smooth integral scheme $Y/k$ and its actual original
+auxiliary sections satisfy the proved SNC and empty-row conditions,
+with positive original root degrees.  For the actual entire normalized
+projection $\tau:W\to Y$ constructed from those sections, produce
+\[
+ T_\tau:\tau_*\omega_{W/k}\longrightarrow\omega_{Y/k}.
+\]
+The map has the intrinsic finite-locally-free trace normalization on every
+open, for every original coefficient $b$ and every original top form $w$:
+\[
+ T_\tau(b\,d\tau(w))=\operatorname{tr}_\tau(b)w.
+\]
+Here $\operatorname{tr}_\tau:\tau_*\mathcal O_W\to\mathcal O_Y$ is the
+actual sheaf trace, agreeing with the native finite-free algebra trace
+on each original adapted chart.  In particular
+$T_\tau d\tau=D\,\mathrm{id}$, where $D$ is the product of all actual
+original root degrees.  No canonical trace, overlap square, global
+cotangent basis, duality comparison, or retraction is an input.
+\end{theorem}
+\begin{proof}
+The original sections produce the genuine adapted affine neighborhoods.
+Use the canonical root-preserving normalized chart and its proved
+triangle over the original base, rather than choosing a comparison
+isomorphism as input.  Each whole ratio algebra is its actual mixed
+root algebra.  The preceding mixed descent theorem constructs its
+actual linear canonical trace on the same canonical sheaf sections.
+The native affine quasicoherent equivalence turns this into a morphism
+on the corresponding original affine open.
+
+On an affine refinement of an intersection of two such base opens,
+restrict both original whole finite-free algebras by their actual
+coefficient base change.  The two native algebra traces agree: each is
+the trace of multiplication in the same entire original restricted
+algebra, and the proved trace formulas commute with these coefficient
+changes and the actual original algebra identifications.  The two
+canonical maps have the same intrinsic normalization on every pulled
+base top form.  Adjoin the same whole unit-root cover used by either
+one of the presentations.  The original branch denominator is regular
+on this flat refinement.  Whole-pure uniqueness therefore equates the
+two canonical maps there.  Faithfulness and the original invertible
+canonical target give equality before that extension.  Affine
+refinements detect the entire overlap equality.  Native module-Hom
+sheaf gluing now constructs $T_\tau$ on the same entire $W\to Y$.
+
+For completeness, the normalization on arbitrary opens uses a sheaf
+trace, not a claim that every affine finite-projective section algebra
+has a global free basis.  Apply the actual line projection formula to
+form the genuine morphism
+\[
+ (\tau_*\mathcal O_W)\otimes\omega_Y
+ \simeq\tau_*\tau^*\omega_Y\xrightarrow{\tau_*d\tau}
+ \tau_*\omega_W\xrightarrow{T_\tau}\omega_Y.
+\]
+Cancel the original invertible $\omega_Y$ to obtain
+$\operatorname{tr}_\tau:\tau_*\mathcal O_W\to\mathcal O_Y$.
+On each adapted chart the already proved formula on every original
+coefficient and every original top form identifies it with the native
+finite-free trace of multiplication.  Thus it is the intrinsic
+finite-locally-free sheaf trace.  The same tensor identity gives the
+stated formula on all opens.  Taking $b=1$ and using the actual whole
+monic basis gives the constant degree $D$; the auxiliary unit-cover
+rank never occurs.
+\uses{thm:kn-global-trace-mixed-descent,lem:kn-nadel-global-normalized-geometric-properties,lem:kn-nadel-whole-cover-trace-degree}
+\end{proof}

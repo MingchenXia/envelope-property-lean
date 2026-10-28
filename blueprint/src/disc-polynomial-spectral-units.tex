@@ -1,0 +1,86 @@
+\subsection{Actual polynomial spectral units in a closed Gauss disc}
+
+This slice concerns the ACTUAL completed Gauss disc algebra $D_r$ over an
+arbitrary ultrametric normed field $K$, with $r>0$. The original coefficient
+ring $A$ may be any ultrametric seminormed commutative ring. It does not assert
+the full spectral-image universal property for arbitrary Banach targets.
+The one substantive target restriction is that the denominator image is an
+ORIGINAL polynomial in $D_r$; numerator images may be arbitrary completed
+functions. No unit, power-bound, tuple-bound or extension certificate is input.
+
+\begin{lemma}[Actual split roots detect strict constant dominance]
+\label{analytic:actual-disc-polynomial-root-dominance}
+\lean{EnvelopeProperty.gaussFun_X_sub_C,
+EnvelopeProperty.gaussFun_eq_leadingCoeff_mul_prod_roots,
+EnvelopeProperty.gaussFun_eq_coeff_zero_of_splits,
+EnvelopeProperty.gaussFun_tail_lt_coeff_zero_of_splits,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomial_tail_lt_of_split_extension,
+EnvelopeProperty.Berkovich.GaussCompletion.polynomial_tail_lt_of_no_disc_zero}
+\leanok
+\uses{analytic:actual-polynomial-gauss-completion,spectrum:complete-norm-extension}
+Let $p\in K[T]$ and $r>0$. If $p$ is nonzero at EVERY whole point of the true
+prescribed-$K$ closed disc of radius $r$, then $p(0)\ne0$ and
+\[
+ \|p-C(p(0))\|_r<|p(0)|.
+\]
+The hypothesis quantifies over the actual point space, not only rational
+$K$-points or original supports. No completeness, algebraic closedness,
+nontrivial norm or separability of $K$ is required.
+\end{lemma}
+\begin{proof}
+The actual evaluation-at-zero point lies in the original disc, so $p(0)\ne0$
+and $p\ne0$. Embed $K$ into its genuine complete field $\widehat K$, form the
+ACTUAL finite splitting field $L$ of the image of $p$, and extend the complete
+$\widehat K$ norm to $L$ using the checked algebraic norm-extension producer.
+The composite original map $K\to\widehat K\to L$ preserves EVERY coefficient
+value, with both actual coefficient triangles retained; no norm on an unrelated
+field is supplied. Every root $a$ in this splitting field defines the WHOLE
+original polynomial point by $q\mapsto |q(a)|$. If $|a|\le r$, its entire
+coefficient restriction is the original norm of $K$, its $T$ value is at most
+$r$, and $p$ has value zero, contrary to the hypothesis. Thus all the actual
+finitely many roots have absolute value STRICTLY greater than $r$.
+
+Choose a real nonnegative $s>r$ strictly below all root values; when the root
+multiset is empty choose any $s>r$. Factor the actual image of $p$ as its
+leading coefficient times the full multiset product of $T-a$. Genuine Gauss
+multiplicativity and the exact Gauss value $\max(s,|a|)=|a|$ give
+$\|p\|_s=|p(0)|$, preserving the original coefficients. For every $i>0$,
+\[
+ |p_i|r^i\le |p(0)|(r/s)^i<|p(0)|.
+\]
+The zero coefficient of $p-C(p(0))$ vanishes, and the actual finite coefficient
+maximum therefore gives the claimed STRICT inequality on the WHOLE tail.
+Zero polynomials and constant polynomials are covered by the same zero-point
+and empty-root arguments; no residue-only inference is used.
+\end{proof}
+
+\begin{theorem}[A polynomial has no spectral zero precisely when it is a genuine disc unit]
+\label{analytic:actual-disc-polynomial-spectral-unit}
+\lean{EnvelopeProperty.Berkovich.GaussCompletion.isUnit_polynomialMap_of_no_disc_zero,
+EnvelopeProperty.Berkovich.GaussCompletion.isUnit_polynomialMap_iff_no_disc_zero}
+\leanok
+\uses{analytic:actual-disc-polynomial-root-dominance,analytic:actual-gauss-completion-disc-homeomorphism,analytic:actual-gauss-disc-function-values}
+For EVERY original polynomial $p$, its actual image in $D_r$ is a UNIT if and
+only if $p$ has nonzero value at every actual prescribed-$K$ disc point.
+In the forward direction all actual spectral evaluations are retained; in the
+reverse direction an inverse is genuinely constructed in the SAME completed
+Gauss ring, not in a scalar extension or a field of rational functions.
+\end{theorem}
+\begin{proof}
+Actual point evaluations are multiplicative and send one to one, so a unit has
+nonzero value at EVERY point. Conversely the previous lemma gives $p_0\ne0$
+and $\|1-C(p_0^{-1})p\|_r<1$. The actual complete normed ring $D_r$ admits the
+convergent geometric series for this element. Its true unit $1-(1-C(p_0^{-1})p)$,
+multiplied by the actual constant unit $C(p_0)$, has value the ORIGINAL polynomial
+image $p$. This constructs a genuine unit in $D_r$ and proves its entire element
+identity. No maximum-modulus or spectral-invertibility theorem is assumed.
+\end{proof}
+
+
+\begin{remark}[Concrete next spectral-containment consumer]
+These are actual original-polynomial spectral-invertibility producers. The
+subsequent rational-containment function map still requires its own checked
+construction, using these genuine units and the actual all-function Gauss norm
+realization. No arbitrary Banach spectral-invertibility or full affinoid
+universal property is claimed.
+\end{remark}

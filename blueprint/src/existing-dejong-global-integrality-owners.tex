@@ -1,0 +1,1255 @@
+\begingroup
+
+All schemes and morphisms in this chapter are ordinary schemes and scheme
+morphisms. A variety over a field is integral, separated and of finite type;
+geometric integrality is not imposed, following \cite{deJong1996}, 2.9.
+
+\begin{definition}[Variety]
+\label{def:variety}
+\source{dejong96-alterations:page-0006}
+\lean{DeJongAlterations.IsVariety}
+\leanok
+A variety over a field $k$ is an integral scheme equipped with a separated,
+finite-type structure morphism to $\operatorname{Spec}k$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The generic point misses a proper support]
+\label{lem:integral-ideal-generic-outside}
+\uses{def:variety}
+\lean{DeJongAlterations.Geometry.IntegralIdeal.genericPoint_not_mem_support}
+\leanok
+Let $X$ be integral and let $\mathcal I$ be a quasi-coherent ideal sheaf
+with proper closed support. The generic point of $X$ is outside this support.
+\end{lemma}
+\begin{proof}
+If the generic point belonged to this closed set, every specialization
+of it would belong too. Every point of the integral scheme is such a
+specialization, making the support all of $X$, a contradiction.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Every nonempty affine coordinate ideal is nonzero]
+\label{lem:integral-ideal-affine-nonzero}
+\uses{lem:integral-ideal-generic-outside}
+\source{dejong96-alterations:page-0018}
+\lean{DeJongAlterations.Geometry.IntegralIdeal.ideal_ne_bot_of_support_ne_top}
+\leanok
+Under the preceding hypotheses, the actual coordinate ideal of
+$\mathcal I$ on every nonempty affine open $U$ is nonzero.
+\end{lemma}
+\begin{proof}
+The generic point lies in $U$, since every nonempty open of an integral
+scheme contains it. If the coordinate ideal were zero, its vanishing
+set on $U$ would be all of $U$. The exact affine description of ideal-sheaf
+support would then place the generic point in the support, contradicting
+the preceding lemma.
+\end{proof}
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Reduced projective spectrum of a domain]
+\label{lem:proj-domain-reduced}
+\lean{DeJongAlterations.Geometry.ProjIntegral.isReduced_proj}
+\leanok
+Let $A$ be a domain graded by the nonnegative integers. Then
+$\operatorname{Proj}A$ is reduced, including when it is empty.
+\end{lemma}
+\begin{proof}
+At a homogeneous prime $\mathfrak p$, the local ring of the projective
+spectrum is the degree-zero homogeneous localization, a subring of the
+ordinary localization $A_{\mathfrak p}$. That localization is a domain,
+so its subring is reduced. Reducedness of every stalk implies reducedness
+of the scheme.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Generic point of a projective spectrum]
+\label{lem:proj-domain-generic-point}
+\lean{DeJongAlterations.Geometry.ProjIntegral.zeroPoint,DeJongAlterations.Geometry.ProjIntegral.isGenericPoint_of_asHomogeneousIdeal_eq_bot}
+\leanok
+Let $A$ be a graded domain with nonzero irrelevant ideal. The homogeneous
+zero prime is a point of $\operatorname{Proj}A$ and is its generic point.
+\end{lemma}
+\begin{proof}
+The zero ideal is homogeneous and prime. The irrelevant ideal is not
+contained in zero because it is nonzero, so this prime is relevant.
+The specialization order on the projective spectrum is inclusion of
+homogeneous prime ideals. The zero ideal is contained in every such
+prime, hence the closure of this point is the whole projective spectrum.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{theorem}[Integral projective spectra]
+\label{thm:proj-domain-integral}
+\uses{lem:proj-domain-reduced,lem:proj-domain-generic-point}
+\lean{DeJongAlterations.Geometry.ProjIntegral.isIntegral_proj}
+\leanok
+The projective spectrum of a graded domain with nonzero irrelevant ideal
+is an integral scheme.
+\end{theorem}
+\begin{proof}
+The generic point makes the underlying space nonempty and irreducible.
+The preceding stalk argument makes the scheme reduced. An irreducible
+reduced scheme is integral.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[The Rees algebra and its degree pieces]
+\label{def:affine-rees-grading}
+\lean{DeJongAlterations.reesGrading}
+\leanok
+Let $R$ be a commutative ring and $I\subset R$ an ideal. Its Rees algebra is the actual
+subalgebra
+\[
+\mathcal R(I)=\left\{\sum_n a_nT^n\in R[T]\;\middle|\;a_n\in I^n\text{ for every }n\right\}.
+\]
+Define $\mathcal R(I)_n=\mathcal R(I)\cap RT^n$, so that
+$\mathcal R(I)_n=I^nT^n$ with its inherited $R$-module structure.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The genuine Rees grading]
+\label{lem:affine-rees-grading}
+\uses{def:affine-rees-grading}
+\lean{DeJongAlterations.reesGradedAlgebra,DeJongAlterations.reesGrading_proj}
+\leanok
+The degree pieces form an internal graded algebra structure on $\mathcal R(I)$.
+The degree-$n$ component of $p$ is exactly $a_nT^n$, where $a_n$ is the coefficient
+of $T^n$ in $p$.
+\end{lemma}
+\begin{proof}
+Each component is in the Rees algebra since $a_n\in I^n$ and its other coefficients
+vanish. Only finitely many components are nonzero, and their sum is $p$ by equality
+of polynomial coefficients. The decomposition is unique: the coefficient of $T^n$
+in a sum of homogeneous elements is the coefficient of the element in degree $n$.
+The unit has degree zero. If $aT^i$ and $bT^j$ belong to the respective pieces,
+their product is $abT^{i+j}$ and $ab\in I^iI^j=I^{i+j}$. This proves both the
+direct sum and multiplication requirements.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The degree-zero ring]
+\label{lem:affine-rees-degree-zero}
+\uses{lem:affine-rees-grading}
+\lean{DeJongAlterations.reesDegreeZeroEquiv}
+\leanok
+The map $R\to\mathcal R(I)_0$ sending $a$ to its constant polynomial is an isomorphism
+of rings.
+\end{lemma}
+\begin{proof}
+The equality $I^0=R$ shows that every constant is in the Rees algebra. A homogeneous
+element of degree zero has no coefficient except its constant coefficient, so
+the map is surjective. Equality of constant coefficients proves injectivity.
+Addition, multiplication and the identity agree with those of constant polynomials.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[Affine blowup]
+\label{def:affine-blowup}
+\uses{lem:affine-rees-grading,lem:affine-rees-degree-zero}
+\lean{DeJongAlterations.affineBlowup,DeJongAlterations.affineBlowupStructure}
+\leanok
+The affine blowup of $I$ is the scheme
+$\operatorname{Bl}_I(\operatorname{Spec}R)=\operatorname{Proj}\mathcal R(I)$ with its
+structure map to $\operatorname{Spec}R$ obtained by identifying the degree-zero ring with $R$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+\begin{corollary}[Integral affine blowups]
+\label{cor:affine-blowup-integral}
+\uses{thm:proj-domain-integral,def:affine-blowup}
+\lean{DeJongAlterations.Geometry.ProjIntegral.isIntegral_affineBlowup}
+\leanok
+If $R$ is a domain and $I\ne0$ is an ideal, its native affine blowup
+$\operatorname{Proj}\bigoplus_{n\ge0} I^nT^n$ is integral.
+No finite-generation hypothesis is needed for this assertion.
+\end{corollary}
+\begin{proof}
+The Rees algebra is a subring of the polynomial domain $R[T]$, so is a
+domain. A nonzero element $a\in I$ gives a nonzero homogeneous element
+$aT$ of degree one in the Rees algebra. Thus its irrelevant ideal is
+nonzero. Apply the integral-projective-spectrum theorem.
+\end{proof}
+\endgroup
+
+\begingroup
+
+Let $X$ be an integral scheme, let $D$ be native ideal-sheaf
+data on $X$, and suppose that its closed support is not all
+of $X$. Write $B=\operatorname{Bl}_D(X)$ for the actual
+relative gluing of the affine Rees projective spectra and
+$b:B\to X$ for its structure morphism. Finite generation is
+not assumed.
+
+\begin{lemma}[Integral native affine blowup pieces]
+\label{lem:global-blowup-integral-affine-pieces}
+\uses{lem:integral-ideal-affine-nonzero,cor:affine-blowup-integral}
+\lean{DeJongAlterations.Geometry.BlowupIntegral.chart_isIntegral}
+\leanok
+For every nonempty affine open $U\subset X$, the actual
+scheme $\operatorname{Bl}_{D(U)}(\operatorname{Spec}\mathcal O_X(U))$
+is integral.
+\end{lemma}
+\begin{proof}
+Integrality of $X$ makes $\mathcal O_X(U)$ a domain when
+$U$ is nonempty. The proper support hypothesis implies
+$D(U)\ne0$. The previously constructed native Rees blowup
+of a nonzero ideal in a domain is integral. Applying that
+result gives exactly the affine piece used in the gluing.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[The fraction chart]
+\label{def:affine-blowup-fraction-chart}
+\source{dejong96-alterations:page-0015,dejong96-alterations:page-0016}
+\lean{DeJongAlterations.affineBlowupFractionChart}
+\leanok
+Let $R$ be a domain with fraction field $K$, let $I\subset R$ be an ideal and
+let $0\ne g\in I$. Define $R[I/g]\subset K$ to be the $R$-subalgebra generated by
+$a/g$ for all $a\in I$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+The blowup used in Section~4.8 of \cite{deJong1996} is a modification.
+The argument below proves dominance directly for the actual affine blowup
+of a nonzero ideal in a domain, and proves surjectivity when the ideal is
+finitely generated.
+
+\begin{lemma}[The fraction-chart coefficient map is injective]
+\label{lem:affine-blowup-chart-coefficients-injective}
+\uses{def:affine-blowup-fraction-chart}
+\lean{DeJongAlterations.affineBlowupFractionChart_algebraMap_injective}
+\leanok
+For a domain $R$ and any $g\in R$, the coefficient map $R\to R[I/g]$ is
+injective.
+\end{lemma}
+\begin{proof}
+The composition with the inclusion $R[I/g]\hookrightarrow\operatorname{Frac}(R)$
+is the original injective coefficient map $R\to\operatorname{Frac}(R)$.
+Equality of two coefficients in the subalgebra therefore implies equality
+of their images in the fraction field, hence equality in $R$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Evaluation of the homogeneous chart]
+\label{lem:affine-blowup-chart-evaluation}
+\uses{lem:affine-rees-grading,def:affine-blowup-fraction-chart}
+\lean{DeJongAlterations.reesChartEvaluation,DeJongAlterations.reesChartEvaluation_mk,DeJongAlterations.reesChartEvaluation_injective}
+\leanok
+The polynomial evaluation $T\mapsto1/g$ induces an injective $R$-algebra map
+\[
+\mathcal R(I)_{(gT)}\longrightarrow K,
+\qquad \frac{aT^n}{(gT)^n}\longmapsto\frac a{g^n}.
+\]
+\end{lemma}
+\begin{proof}
+Evaluation is an $R$-algebra map on the Rees algebra, and sends $gT$ to $1$.
+It therefore extends to the ordinary localization at $gT$. Restrict this map
+to the homogeneous degree-zero localization. A homogeneous numerator in degree
+$n$ is uniquely $aT^n$, so its image is the displayed fraction. If that image
+is zero, the facts that $g\ne0$ and $R\hookrightarrow K$ is injective imply
+$a=0$. The original numerator and consequently its homogeneous fraction are
+zero. Applying this zero-kernel argument to the difference of two elements
+proves injectivity.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Fractions of powers of the ideal]
+\label{lem:affine-blowup-ideal-power-fraction}
+\uses{def:affine-blowup-fraction-chart}
+\lean{DeJongAlterations.idealPower_div_pow_mem_fractionChart}
+\leanok
+If $a\in I^n$, then $a/g^n\in R[I/g]$.
+\end{lemma}
+\begin{proof}
+For $n=0$ this is the inclusion of $R$ in the algebra. Suppose the assertion
+holds in degree $n$. Every element of $I^{n+1}=I I^n$ is a finite sum of products
+$bc$, with $b\in I$ and $c\in I^n$. The fraction associated with such a product
+is $(b/g)(c/g^n)$, which belongs to the algebra by its definition and the
+induction hypothesis. Addition of the products proves the assertion for the
+given element of $I^{n+1}$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The homogeneous coordinate ring is the fraction chart]
+\label{lem:affine-blowup-chart-ring}
+\uses{lem:affine-blowup-chart-evaluation,lem:affine-blowup-ideal-power-fraction}
+\lean{DeJongAlterations.reesChartFractionEquiv}
+\leanok
+Evaluation gives an isomorphism of $R$-algebras
+$\mathcal R(I)_{(gT)}\cong R[I/g]$.
+\end{lemma}
+\begin{proof}
+Every element of the homogeneous localization has the form
+$aT^n/(gT)^n$ with $a\in I^n$. The preceding power-fraction lemma shows that
+its image is in $R[I/g]$. Conversely the image contains $R$, and contains
+each generator $a/g$ as the image of $aT/(gT)$. Since it is a subalgebra, it
+contains the algebra generated by these elements. Its image is therefore
+exactly $R[I/g]$. The injectivity just proved identifies the rings.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{corollary}[The actual Proj chart]
+\label{cor:affine-blowup-chart-scheme}
+\uses{def:affine-blowup,lem:affine-blowup-chart-ring}
+\lean{DeJongAlterations.affineBlowupChartIso}
+\leanok
+The basic open $D_+(gT)$ of $\operatorname{Bl}_I(\operatorname{Spec}R)$ is
+isomorphic to $\operatorname{Spec}R[I/g]$.
+\end{corollary}
+\begin{proof}
+The affine-open description of the projective spectrum identifies $D_+(gT)$
+with $\operatorname{Spec}\mathcal R(I)_{(gT)}$. Compose this scheme isomorphism
+with the spectrum of the inverse of the preceding ring isomorphism.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The chart lies over the original affine scheme]
+\label{lem:affine-blowup-chart-over-base}
+\uses{cor:affine-blowup-chart-scheme,lem:affine-blowup-chart-ring}
+\lean{DeJongAlterations.affineBlowupChartInclusion_isOpenImmersion,DeJongAlterations.affineBlowupChartInclusion_structure}
+\leanok
+The map $\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)$ obtained from
+the chart identification is an open immersion. Its composition with the blowup's
+structure map is the morphism induced by the original inclusion $R\to R[I/g]$.
+\end{lemma}
+\begin{proof}
+The chart map is the composition of the spectrum of a ring isomorphism with
+the inclusion of the basic open $D_+(gT)$, so it is an open immersion. On
+degree-zero elements the ring isomorphism is evaluation of constants, which
+sends $a$ to the original coefficient $a\in R[I/g]$. The structure map of
+the projective spectrum is induced on this chart by these degree-zero elements.
+Thus the composite ring map from $R$ is exactly the coefficient inclusion,
+and contravariance of the spectrum gives the stated equality of morphisms.
+\end{proof}
+\endgroup
+
+\begingroup
+
+The blowup used in Section~4.8 of \cite{deJong1996} is a modification.
+The argument below proves dominance directly for the actual affine blowup
+of a nonzero ideal in a domain, and proves surjectivity when the ideal is
+finitely generated.
+
+\begin{lemma}[The chart is dominant over the base]
+\label{lem:affine-blowup-chart-dominant}
+\uses{lem:affine-blowup-chart-coefficients-injective,lem:affine-blowup-chart-over-base}
+\lean{DeJongAlterations.affineBlowupChartInclusion_comp_isDominant}
+\leanok
+If $0\ne g\in I$, then the composition
+$\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)
+\to\operatorname{Spec}R$ is dominant.
+\end{lemma}
+\begin{proof}
+The chart's compatibility with the structure map identifies the composition
+with the spectrum map of the coefficient inclusion $R\to R[I/g]$.
+For any ring map, the closure of its spectrum image is the zero locus of
+its kernel. The preceding injectivity lemma makes this kernel zero, whose
+zero locus is the entire spectrum. The composition thus has dense image.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowup used in Section~4.8 of \cite{deJong1996} is a modification.
+The argument below proves dominance directly for the actual affine blowup
+of a nonzero ideal in a domain, and proves surjectivity when the ideal is
+finitely generated.
+
+\begin{theorem}[A nonzero ideal has dominant blowup]
+\label{thm:affine-blowup-dominant}
+\uses{lem:affine-blowup-chart-dominant}
+\lean{DeJongAlterations.affineBlowupStructure_isDominant}
+\leanok
+Let $R$ be a domain and $I\ne0$ an ideal. The actual blowup structure map
+$\operatorname{Bl}_I(\operatorname{Spec}R)\to\operatorname{Spec}R$ is dominant.
+No finite generation assumption is required.
+\end{theorem}
+\begin{proof}
+Since $I$ is nonzero, choose an element $g\in I$ with $g\ne0$.
+The preceding lemma makes the composite through its actual chart dominant.
+The image of this composite is contained in the image of the blowup
+structure map. Taking closures shows that the latter image is dense as well.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{lemma}[Actual ideal transitions on affine opens]
+\label{lem:blowup-gluing-ideal-transitions}
+\source{dejong96-alterations:page-0018}
+\lean{DeJongAlterations.Geometry.BlowupGluing.coefficientMap,DeJongAlterations.Geometry.BlowupGluing.center_map,DeJongAlterations.Geometry.BlowupGluing.coefficientMap_id,DeJongAlterations.Geometry.BlowupGluing.coefficientMap_comp}
+\leanok
+For an affine principal-open inclusion $U\subset V$, let
+$r_{VU}:\Gamma(V,\mathcal O_X)\to\Gamma(U,\mathcal O_X)$ be the
+actual restriction map. Then
+$\mathcal I(V)\Gamma(U,\mathcal O_X)=\mathcal I(U)$.
+The restriction maps preserve identities and compose in the prescribed order.
+\end{lemma}
+\begin{proof}
+The compatibility of the native ideal sheaf with affine restriction
+gives the ideal equality. The identity and composition equalities are
+the corresponding equalities for the structure sheaf's restriction maps.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $R$ be a commutative ring, $I\subset R$ an ideal, and $s\in R$.
+Put $R_s=R[s^{-1}]$ and $I_s=IR_s$. No domain or finite-generation
+hypothesis is imposed, and $s=0$ is allowed.
+
+\begin{definition}[Coefficient map on Rees algebras]
+\label{def:rees-localization-map}
+\uses{lem:affine-rees-grading}
+\lean{DeJongAlterations.Algebra.ReesLocalization.reesMap,DeJongAlterations.Algebra.ReesLocalization.reesGradedMap,DeJongAlterations.Algebra.ReesLocalization.reesLocalizationAlgebra}
+\leanok
+A ring homomorphism $f:R\to S$ induces
+$\mathcal R_R(I)\to\mathcal R_S(IS)$ by coefficientwise polynomial
+mapping. It preserves every homogeneous degree. For the localization
+homomorphism $R\to R_s$, use this actual map to equip
+$\mathcal R_{R_s}(I_s)$ with its $\mathcal R_R(I)$-algebra structure.
+\end{definition}
+\begin{proof}
+The coefficient of degree $n$ of the image is $f(a_n)$, where
+$a_n\in I^n$. Since extension of ideals commutes with powers,
+$f(a_n)\in(IS)^n$. Hence the polynomial image belongs to the actual
+target Rees subalgebra. Polynomial mapping is a ring homomorphism.
+The image of a monomial $aT^n$ is $f(a)T^n$, which establishes
+compatibility with the native homogeneous pieces.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The actual Rees map defines a native Proj map]
+\label{lem:rees-coefficient-irrelevant}
+\uses{def:rees-localization-map}
+\lean{DeJongAlterations.reesGradedMap_irrelevant_le_map}
+\leanok
+For a ring homomorphism $f:R\to S$ and an ideal $I\subset R$, the
+irrelevant ideal of $\mathcal R_S(IS)$ lies in the extension of the
+irrelevant ideal of $\mathcal R_R(I)$ under the actual coefficient map.
+\end{lemma}
+\begin{proof}
+It suffices to treat a homogeneous element $bT^n$ with $n>0$ and
+$b\in(IS)^n=(I^n)S$. Membership in this extended ideal expresses $b$
+as a finite sum of $S$-multiples of images of elements $a\in I^n$.
+The corresponding $bT^n$ is the same sum of coefficient multiples of
+the images of $aT^n$. Each $aT^n$ is a genuine positive homogeneous
+Rees element, hence belongs to the original irrelevant ideal. Every
+summand and their sum therefore belong to its extended ideal. Taking
+all positive homogeneous components proves the containment.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{definition}[The actual induced blowup morphism]
+\label{def:affine-blowup-coefficient-map}
+\uses{lem:rees-coefficient-irrelevant}
+\lean{DeJongAlterations.affineBlowupMap}
+\leanok
+Coefficient extension defines the native morphism
+\[\operatorname{Bl}_{IS}(\operatorname{Spec}S)
+  \longrightarrow\operatorname{Bl}_I(\operatorname{Spec}R)\]
+induced by the actual graded coefficient map on Rees algebras.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+Let $A=\bigoplus_{n\geq0}A_n$ and $B=\bigoplus_{n\geq0}B_n$ be
+commutative graded rings. A graded homomorphism $f:A\to B$ with
+$B_+\subseteq f(A_+)B$ induces a morphism
+$\operatorname{Proj}(B)\to\operatorname{Proj}(A)$. The statements below
+identify its structural morphism to the spectrum of the degree-zero ring.
+They supply compatibility over the coefficient ring when a projective
+presentation is constructed from a homogeneous algebra presentation.
+
+\begin{definition}[Restriction to degree zero]
+\label{def:proj-degree-zero-map}
+\lean{DeJongAlterations.Geometry.ProjStructureMap.degreeZeroMap}
+\leanok
+For a graded ring homomorphism $f:A\to B$, its degree-zero restriction
+$f_0:A_0\to B_0$ sends an element $a$ to $f(a)$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+Let $A=\bigoplus_{n\geq0}A_n$ and $B=\bigoplus_{n\geq0}B_n$ be
+commutative graded rings. A graded homomorphism $f:A\to B$ with
+$B_+\subseteq f(A_+)B$ induces a morphism
+$\operatorname{Proj}(B)\to\operatorname{Proj}(A)$. The statements below
+identify its structural morphism to the spectrum of the degree-zero ring.
+They supply compatibility over the coefficient ring when a projective
+presentation is constructed from a homogeneous algebra presentation.
+
+\begin{lemma}[Constants in homogeneous localizations]
+\label{lem:proj-localization-degree-zero}
+\uses{def:proj-degree-zero-map}
+\lean{DeJongAlterations.Geometry.ProjStructureMap.awayMap_comp_fromZero}
+\leanok
+For $s\in A$, let $f_s:(A_s)_0\to(B_{f(s)})_0$ be the homogeneous
+localization homomorphism. If $\iota_A:A_0\to(A_s)_0$ and
+$\iota_B:B_0\to(B_{f(s)})_0$ send a constant to its fraction with
+denominator one, then $f_s\iota_A=\iota_B f_0$.
+\end{lemma}
+\begin{proof}
+Both homomorphisms send $a\in A_0$ to the class of $f(a)/1$. Indeed the
+homogeneous localization homomorphism sends the representative $a/1$ to
+$f(a)/f(1)$, and $f(1)=1$. Equality on every element proves equality of
+the ring homomorphisms.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $A=\bigoplus_{n\geq0}A_n$ and $B=\bigoplus_{n\geq0}B_n$ be
+commutative graded rings. A graded homomorphism $f:A\to B$ with
+$B_+\subseteq f(A_+)B$ induces a morphism
+$\operatorname{Proj}(B)\to\operatorname{Proj}(A)$. The statements below
+identify its structural morphism to the spectrum of the degree-zero ring.
+They supply compatibility over the coefficient ring when a projective
+presentation is constructed from a homogeneous algebra presentation.
+
+\begin{theorem}[Naturality of the projective structure morphism]
+\label{thm:proj-structure-map-naturality}
+\uses{lem:proj-localization-degree-zero}
+\lean{DeJongAlterations.Geometry.ProjStructureMap.map_toSpecZero}
+\leanok
+Suppose $B_+\subseteq f(A_+)B$. Let
+$\pi_A:\operatorname{Proj}(A)\to\operatorname{Spec}(A_0)$ and
+$\pi_B:\operatorname{Proj}(B)\to\operatorname{Spec}(B_0)$ be the native
+projective structure morphisms. Then
+\[
+\pi_A\circ\operatorname{Proj}(f)
+=\operatorname{Spec}(f_0)\circ\pi_B.
+\]
+\end{theorem}
+\begin{proof}
+The opens $D_+(f(s))$ for positive-degree homogeneous $s\in A$ cover
+$\operatorname{Proj}(B)$ by the irrelevant-ideal hypothesis. On this
+cover the morphism $\operatorname{Proj}(f)$ is the spectrum of
+$f_s:(A_s)_0\to(B_{f(s)})_0$, followed by the inclusion of $D_+(s)$.
+The restriction of $\pi_A$ to $D_+(s)$ is $\operatorname{Spec}(\iota_A)$,
+and the restriction of $\pi_B$ to $D_+(f(s))$ is
+$\operatorname{Spec}(\iota_B)$. The preceding lemma and contravariant
+functoriality of the spectrum identify the two composites on each member
+of the cover. Morphisms of schemes agreeing after precomposition by every
+member of an open cover are equal, proving the formula.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[The genuine coefficient structure square]
+\label{lem:affine-blowup-coefficient-square}
+\uses{def:affine-blowup-coefficient-map,thm:proj-structure-map-naturality}
+\lean{DeJongAlterations.reesGradedMap_degreeZero_constants,DeJongAlterations.affineBlowupMap_structure}
+\leanok
+The induced blowup morphism commutes with the native structure maps
+to $\operatorname{Spec}R$ and $\operatorname{Spec}S$ and the spectrum
+map of $f$. This concerns the specified coefficient map, not merely
+an abstract morphism between the schemes.
+\end{lemma}
+\begin{proof}
+The actual graded coefficient map sends the constant $r$ to the
+constant $f(r)$. Restricting to degree zero thus commutes with the
+canonical identifications of the two degree-zero Rees rings with
+$R$ and $S$. Naturality of the native projective structure morphism,
+followed by these coefficient identifications, gives the square.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\begin{lemma}[Functoriality with explicitly named ideals]
+\label{lem:affine-blowup-coefficient-functorial}
+\uses{def:affine-blowup-coefficient-map,lem:affine-blowup-coefficient-square}
+\lean{DeJongAlterations.reesGradedMapTo,DeJongAlterations.affineBlowupMapTo,DeJongAlterations.affineBlowupMapTo_structure,DeJongAlterations.affineBlowupMapTo_id,DeJongAlterations.affineBlowupMapTo_comp}
+\leanok
+If $f:R\to S$ carries $I$ to the extended ideal $J=IS$, denote the
+induced native blowup map with both ideals specified. These specified
+maps preserve identity and composition, and their structure squares
+are the actual coefficient squares.
+\end{lemma}
+\begin{proof}
+The coefficientwise polynomial map restricts to the genuine Rees algebra
+of the named ideal $J$. Identity coefficients give the identity polynomial
+map. For $R\xrightarrow{f}S\xrightarrow{g}T$, polynomial coefficient
+mapping satisfies $g(f(P))=(g\circ f)(P)$. Restriction to the Rees
+subalgebras therefore has these same identities, with the named source
+and target ideals fixed. Native Proj carries these exact graded-map
+identities to the contravariant identity and composition identities
+of the scheme morphisms. The degree-zero coefficient calculation is
+unchanged, so the specified maps have the same structure squares.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{definition}[The affine blowup diagram and its structure maps]
+\label{def:blowup-gluing-affine-diagram}
+\uses{lem:blowup-gluing-ideal-transitions,lem:affine-blowup-coefficient-functorial,lem:affine-blowup-coefficient-square}
+\lean{DeJongAlterations.Geometry.BlowupGluing.affineDiagram,DeJongAlterations.Geometry.BlowupGluing.structureNatTrans}
+\leanok
+On the small affine Zariski site of $X$, assign to $U$ the actual
+scheme $B_U=\operatorname{Proj}\mathcal R(\mathcal I(U))$.
+To a principal-open inclusion $U\subset V$, assign the native
+coefficient-induced morphism $B_U\to B_V$. These assignments define a
+functor. Its native affine structure maps form a natural transformation
+to the diagram $U\mapsto\operatorname{Spec}\Gamma(U,\mathcal O_X)$.
+\end{definition}
+\begin{proof}
+The ideal-transition lemma makes each coefficient-induced morphism
+well defined with the specified source and target. Identity and
+composition of coefficient maps induce identity and composition of
+the actual graded Rees maps and their native projective morphisms.
+Thus the assignments form a functor. The coefficient structure square
+for the native blowup morphism says precisely that its affine
+structure maps give the stated natural transformation.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{lemma}[Actual affine-site restrictions are localizations]
+\label{lem:blowup-gluing-coefficient-localization}
+\lean{DeJongAlterations.Geometry.BlowupGluing.coefficientMap_isLocalization}
+\leanok
+For every arrow $U\subset V$ of the small affine Zariski site, there
+is a section $s\in\Gamma(V,\mathcal O_X)$ such that its actual
+restriction map realizes $\Gamma(U,\mathcal O_X)$ as ordinary
+localization of $\Gamma(V,\mathcal O_X)$ at $s$.
+\end{lemma}
+\begin{proof}
+By the definition of arrows in this site, $U=D(s)$ for such a
+section $s$. The structure sheaf on an affine scheme identifies its
+sections on $D(s)$ with localization at $s$, with exactly the actual
+restriction map as coefficient map.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{lemma}[The actual Rees coefficient map preserves the base]\label{lem:rees-localization-structure}
+\uses{def:affine-blowup}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.reesGradedMap_degreeZero_constants,DeJongAlterations.Geometry.AffineBlowupBaseChange.reesGradedMap_projStructure}
+\leanok
+For every ring map $f:R\to S$, coefficientwise polynomial mapping gives
+a graded map $\mathcal R(I)\to\mathcal R(I\cdot S)$. On degree zero it
+is exactly $f$ under the actual coefficient-ring identifications.
+Whenever the native Proj map is defined, its composite with the original
+blowup structure map is the target blowup structure map followed by
+$\operatorname{Spec}f$.
+\end{lemma}
+\begin{proof}
+A constant polynomial $r$ is sent coefficientwise to the constant $f(r)$.
+This proves the identity of actual degree-zero ring maps. Naturality of
+the native projective structure map to the spectrum of the degree-zero
+ring, followed by these constant-ring identifications, gives the stated
+identity of scheme morphisms.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{definition}[The actual localization comparison]\label{def:affine-blowup-localization-map}
+\uses{lem:rees-localization-structure}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_structure}
+\leanok
+The actual graded coefficient-localization map defines a canonical morphism
+\[j:\operatorname{Bl}_{I_s}(\operatorname{Spec}R_s)
+ \longrightarrow\operatorname{Bl}_I(\operatorname{Spec}R).\]
+Writing $\pi_s$ and $\pi$ for the respective native structure maps, it
+satisfies $\pi\circ j=\operatorname{Spec}(R\to R_s)\circ\pi_s$
+as actual morphisms of schemes.
+\end{definition}
+\begin{proof}
+The target Rees ring is the ordinary localization of the original Rees
+ring at the degree-zero constant $s$. Every target positive homogeneous
+element has a source homogeneous numerator after multiplication by a power
+of this constant. Since this constant becomes a unit, the target irrelevant
+ideal is contained in the extension of the source irrelevant ideal.
+Thus the actual native Proj map exists. Its structure identity is the
+preceding lemma for the original localization homomorphism.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{theorem}[The exact localization image]\label{thm:affine-blowup-localization-open}
+\uses{def:affine-blowup-localization-map}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_isOpenImmersion,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_opensRange}
+\leanok
+The actual morphism $j$ is an open immersion with image exactly
+$\pi^{-1}(D(s))$.
+\end{theorem}
+\begin{proof}
+Ordinary localization at a degree-zero element gives an open immersion
+on native Proj. On each genuine homogeneous affine chart the induced
+homomorphism is localization at the same coefficient, so its spectrum
+map is an open immersion; these charts cover Proj. On points, contraction
+of homogeneous primes under localization is injective and has image the
+homogeneous primes not containing the constant $s$. Hence the image is
+$D_+(s)$. The native structure morphism pulls $D(s)$ back to this exact
+basic open, proving the asserted formula.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{theorem}[The actual restriction isomorphism over the localized base]\label{thm:affine-blowup-localization-iso}
+\uses{thm:affine-blowup-localization-open}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_ι,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_structure}
+\leanok
+There is a canonical isomorphism
+\[\operatorname{Bl}_{I_s}(\operatorname{Spec}R_s)\simeq\pi^{-1}(D(s))\]
+whose forward map, followed by the actual open inclusion, is $j$.
+After identifying $D(s)\simeq\operatorname{Spec}R_s$, this isomorphism
+preserves the actual structure morphisms to $\operatorname{Spec}R_s$.
+\end{theorem}
+\begin{proof}
+An open immersion identifies its source with its actual open image. Apply
+this to $j$ and use the exact image formula above to obtain the isomorphism.
+Its inclusion identity is the defining identity of the open-image
+isomorphism. To check the structure maps to the localized base, compose
+both with $\operatorname{Spec}R_s\to\operatorname{Spec}R$. This is the
+canonical principal-open inclusion under $D(s)\simeq\operatorname{Spec}R_s$
+and hence is a monomorphism. The two composites agree by the inclusion
+identity, the restriction pullback identity, and the structure identity
+for $j$. Cancelling that monomorphism proves compatibility over
+$\operatorname{Spec}R_s$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{corollary}[The genuine base-change square]\label{cor:affine-blowup-localization-pullback}
+\uses{thm:affine-blowup-localization-iso}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupLocalization}
+\leanok
+The actual square with upper map $j$, left vertical map $\pi_s$, right
+vertical map $\pi$, and lower map $\operatorname{Spec}(R\to R_s)$ is Cartesian.
+\end{corollary}
+\begin{proof}
+Restriction to $D(s)$ is the defining pullback of $\pi$ along its open
+inclusion. Replace the upper-left corner by the preceding actual blowup
+isomorphism and the lower-left corner by the canonical isomorphism
+$D(s)\simeq\operatorname{Spec}R_s$. The two compatibility identities from
+the theorem identify the transported arrows with exactly $j$ and $\pi_s$.
+Pullback squares are invariant under these corner isomorphisms, proving
+the assertion for the native morphisms.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $R\to S$ be an algebra of commutative rings, let $s\in R$,
+and suppose that the actual structure map exhibits $S$ as a
+localization of $R$ at the powers of $s$. Let $I$ be an
+arbitrary ideal of $R$. No domain, nonzero, or finite generation
+hypotheses are imposed.
+
+\begin{definition}[The actual Rees coefficient algebra]
+\label{def:rees-coefficient-localization-algebra}
+\uses{def:rees-localization-map}
+\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficientAlgebra}
+\leanok
+Equip $\mathcal R_S(IS)$ with its $\mathcal R_R(I)$-algebra
+structure induced by the actual coefficientwise polynomial map
+$\mathcal R_R(I)\to\mathcal R_S(IS)$.
+\end{definition}
+
+\endgroup
+
+\begingroup
+
+Let $R\to S$ be an algebra of commutative rings, let $s\in R$,
+and suppose that the actual structure map exhibits $S$ as a
+localization of $R$ at the powers of $s$. Let $I$ be an
+arbitrary ideal of $R$. No domain, nonzero, or finite generation
+hypotheses are imposed.
+
+\begin{lemma}[Actual Rees numerators over an arbitrary localization ring]
+\label{lem:rees-coefficient-localization-denominators}
+\uses{def:rees-coefficient-localization-algebra}
+\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_surj}
+\leanok
+For every $p\in\mathcal R_S(IS)$ there are $N\ge0$ and
+$q\in\mathcal R_R(I)$ with $p\,s^N=f(q)$.
+\end{lemma}
+\begin{proof}
+The coefficient $b_n$ of $p$ lies in $(IS)^n=(I^n)S$.
+The extended-ideal membership criterion for the actual localization
+$R\to S$ gives $a_n\in I^n$ and $k_n\ge0$ with
+$b_ns^{k_n}=f(a_n)$. Thus the degree-$n$ component multiplied
+by $s^{k_n}$ is the image of the actual Rees monomial $a_nT^n$.
+There are only finitely many nonzero polynomial components.
+Denominators of a finite sum can be combined using
+\[
+ (x+y)s^{k+\ell}=f(as^\ell+bs^k)
+ \quad\text{if }xs^k=f(a),\ ys^\ell=f(b).
+\]
+The zero sum uses numerator zero and exponent zero. Induction on
+the actual finite polynomial support proves the assertion.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $R\to S$ be an algebra of commutative rings, let $s\in R$,
+and suppose that the actual structure map exhibits $S$ as a
+localization of $R$ at the powers of $s$. Let $I$ be an
+arbitrary ideal of $R$. No domain, nonzero, or finite generation
+hypotheses are imposed.
+
+\begin{lemma}[Actual Rees equality over an arbitrary localization ring]
+\label{lem:rees-coefficient-localization-equality}
+\uses{def:rees-coefficient-localization-algebra}
+\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_exists_of_eq}
+\leanok
+If $q,q'\in\mathcal R_R(I)$ have equal images in
+$\mathcal R_S(IS)$, then $s^Nq=s^Nq'$ for some $N\ge0$.
+\end{lemma}
+\begin{proof}
+The polynomial algebra $S[T]$ is the actual coefficient
+localization of $R[T]$ at the constant polynomial $s$.
+Equality of the images of $q,q'$ in its Rees subalgebra
+therefore gives $s^Nq=s^Nq'$ in $R[T]$ by the ordinary
+localization equality criterion. The inclusion of the actual
+source Rees subalgebra into $R[T]$ is injective, so this is
+also equality of the original Rees elements.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $R\to S$ be an algebra of commutative rings, let $s\in R$,
+and suppose that the actual structure map exhibits $S$ as a
+localization of $R$ at the powers of $s$. Let $I$ be an
+arbitrary ideal of $R$. No domain, nonzero, or finite generation
+hypotheses are imposed.
+
+\begin{theorem}[Native Rees localization over any coefficient model]
+\label{thm:rees-coefficient-localization}
+\uses{lem:rees-coefficient-localization-denominators,lem:rees-coefficient-localization-equality}
+\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_isLocalization}
+\leanok
+With the actual coefficient algebra structure,
+$\mathcal R_S(IS)$ is the native localization of
+$\mathcal R_R(I)$ at its degree-zero constant $s$.
+\end{theorem}
+\begin{proof}
+The image of $s$ is a unit in $S$, so its further image in
+the target Rees ring is a unit. The denominator lemma supplies
+a source numerator for each target element after multiplication
+by a power of $s$. The equality lemma supplies the power-of-$s$
+equality criterion. These are the three defining conditions
+for the native localization structure. The proof uses the
+given coefficient algebra map throughout and requires no
+chosen isomorphism between $S$ and a canonical model.
+\end{proof}
+\endgroup
+
+\begingroup
+
+\source{dejong96-alterations:page-0018}
+This is the coefficient-localization compatibility needed to construct the
+actual blowup used in source 4.8.
+
+Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
+$s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
+include zero divisors and $s=0$, and require no finite generation.
+
+\begin{theorem}[Independence of the localization presentation]\label{thm:affine-blowup-general-localization}
+\uses{thm:affine-blowup-localization-open,cor:affine-blowup-localization-pullback,thm:rees-coefficient-localization}
+\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_isOpenImmersion_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_opensRange_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMap_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMapTo_of_isLocalization}
+\leanok
+Let $S$ be any $R$-algebra which is a localization of $R$ at the powers of
+$s$, and put $J=I\cdot S$. The actual coefficient-induced morphism
+$\operatorname{Bl}_J(\operatorname{Spec}S)\to\operatorname{Bl}_I(\operatorname{Spec}R)$
+is an open immersion with image $\pi^{-1}(D(s))$. Its actual coefficient
+structure square over $\operatorname{Spec}S\to\operatorname{Spec}R$ is Cartesian.
+In particular the statement applies directly to the section ring of a
+principal affine open, with its original restriction homomorphism. The same
+Cartesian statement holds when the extended ideal is named $J$ and identified
+by the equality $I\cdot S=J$, with the actual induced map to that named ideal.
+\end{theorem}
+\begin{proof}
+The coefficientwise map on Rees rings is ordinary localization at the
+constant $s$: clear a power of $s$ in each homogeneous coefficient and
+then use a common power for the finitely many coefficients. Equality is
+likewise detected after multiplication by a power of $s$; this remains
+valid with zero divisors. Thus the actual graded map satisfies the general
+Proj localization theorem, giving the asserted open immersion and exact
+image. The spectrum map $\operatorname{Spec}S\to\operatorname{Spec}R$ is
+an open immersion with image $D(s)$. The coefficient structure identity
+makes the square commute, and its upper open image is exactly the inverse
+image of the lower open image. The universal property of open subschemes
+therefore identifies this actual square with the restriction pullback
+square, proving that it is Cartesian. Substituting the actual equality of
+center ideals gives the version with a separately named ideal $J$.
+\end{proof}
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{lemma}[The affine blowup diagram is equifibered]
+\label{lem:blowup-gluing-equifibered}
+\uses{def:blowup-gluing-affine-diagram,lem:blowup-gluing-coefficient-localization,thm:affine-blowup-general-localization}
+\lean{DeJongAlterations.Geometry.BlowupGluing.structureNatTrans_equifibered}
+\leanok
+For every arrow $U\subset V$ of the small affine Zariski site, the
+square of actual affine blowup maps and actual affine structure maps
+is a pullback square.
+\end{lemma}
+\begin{proof}
+Such an arrow is a principal-open inclusion: $U=D(s)\subset V$ for a
+section $s\in\Gamma(V,\mathcal O_X)$. The actual restriction ring
+$\Gamma(U,\mathcal O_X)$ is ordinary localization of
+$\Gamma(V,\mathcal O_X)$ at $s$. The native ideal-transition equality
+identifies its centre ideal with the extension of $\mathcal I(V)$.
+The affine blowup coefficient-localization theorem therefore gives
+the asserted pullback square with exactly these four native maps.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{definition}[The global native blowup]
+\label{def:global-native-blowup}
+\source{dejong96-alterations:page-0018}
+\uses{def:blowup-gluing-affine-diagram,lem:blowup-gluing-equifibered}
+\lean{DeJongAlterations.Geometry.BlowupGluing.relativeGluingData,DeJongAlterations.Geometry.BlowupGluing.blowup,DeJongAlterations.Geometry.BlowupGluing.blowupStructure}
+\leanok
+Use the canonical affine isomorphisms
+$U\simeq\operatorname{Spec}\Gamma(U,\mathcal O_X)$ to view the affine
+structure maps as maps $B_U\to U$. They define a native relative
+gluing datum over the locally directed cover of $X$ by its small
+affine Zariski site. Define $\operatorname{Bl}_{\mathcal I}X$ to be
+its glued scheme, and let $\pi:\operatorname{Bl}_{\mathcal I}X\to X$
+be its native structure morphism.
+\end{definition}
+\begin{proof}
+The affine structure maps are natural by the affine-diagram lemma.
+Their squares are pullbacks by the equifibered lemma. Composing with
+the canonical affine isomorphisms preserves these pullback squares.
+The cover of $X$ by these affine opens is locally directed: at a
+point of the intersection of two affine opens, a common principal
+affine neighbourhood is contained in both. These are exactly the
+hypotheses of native relative gluing, which constructs the glued
+scheme and its morphism to $X$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+The blowing up of the ideal sheaf in \cite{deJong1996}, 4.8, is a
+scheme over the original scheme, with its affine Rees constructions
+identified on every affine restriction. We construct this scheme by
+gluing the actual affine Rees projective spectra. Throughout, $X$ is
+an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
+No gluing datum or local comparison isomorphism is supplied as an input.
+
+\begin{theorem}[The global blowup has the prescribed affine pullbacks]
+\label{thm:global-native-blowup-affine-pullback}
+\uses{def:global-native-blowup}
+\lean{DeJongAlterations.Geometry.BlowupGluing.blowupCover,DeJongAlterations.Geometry.BlowupGluing.chartInclusion,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_isOpenImmersion,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_structure,DeJongAlterations.Geometry.BlowupGluing.isPullback_chartOpen,DeJongAlterations.Geometry.BlowupGluing.isPullback_chart,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_opensRange}
+\leanok
+For every affine open $U\subset X$, the native chart inclusion
+$j_U:B_U\to\operatorname{Bl}_{\mathcal I}X$ is an open immersion,
+and the square
+\[
+\begin{array}{ccc}
+B_U&\xrightarrow{j_U}&\operatorname{Bl}_{\mathcal I}X\\
+\downarrow&&\downarrow\pi\\
+\operatorname{Spec}\Gamma(U,\mathcal O_X)&\longrightarrow&X
+\end{array}
+\]
+is a pullback, where the bottom map is the canonical affine chart
+map of $X$. The $j_U$ form an open cover and their images are exactly
+$\pi^{-1}(U)$.
+\end{theorem}
+\begin{proof}
+The native relative-gluing construction identifies each diagram
+object with the inverse image of its corresponding base open.
+Its canonical chart maps are open immersions and form an open cover
+of the glued scheme. The relative-gluing structure equation gives
+$j_U\pi=(B_U\to U)(U\hookrightarrow X)$, and its native pullback
+theorem identifies this square as a pullback over $U$. Transporting
+the lower-left vertex along the canonical affine isomorphism
+$U\simeq\operatorname{Spec}\Gamma(U,\mathcal O_X)$ gives the displayed
+square with the actual affine Rees structure map. The inverse-image
+identity supplied by relative gluing gives the asserted exact image.
+\end{proof}
+\endgroup
+
+\begingroup
+
+Let $X$ be an integral scheme, let $D$ be native ideal-sheaf
+data on $X$, and suppose that its closed support is not all
+of $X$. Write $B=\operatorname{Bl}_D(X)$ for the actual
+relative gluing of the affine Rees projective spectra and
+$b:B\to X$ for its structure morphism. Finite generation is
+not assumed.
+
+\begin{lemma}[Dominance of each nonempty chart over the base]
+\label{lem:global-blowup-integral-chart-dominant}
+\uses{lem:integral-ideal-affine-nonzero,thm:affine-blowup-dominant,thm:global-native-blowup-affine-pullback}
+\lean{DeJongAlterations.Geometry.BlowupIntegral.chartInclusion_comp_isDominant}
+\leanok
+For a nonempty affine open $U$, the actual chart inclusion
+$j_U:B_U\to B$ has dominant composite $b j_U:B_U\to X$.
+\end{lemma}
+\begin{proof}
+The native affine blowup structure map $B_U\to
+\operatorname{Spec}\mathcal O_X(U)$ is dominant because
+$D(U)$ is a nonzero ideal in a domain. The actual map from
+that spectrum into $X$ has image $U$. A nonempty open in
+an irreducible space is dense, so this second map is
+dominant. Their composite is dominant. The actual global
+structure-map triangle identifies it with $b j_U$.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $X$ be an integral scheme, let $D$ be native ideal-sheaf
+data on $X$, and suppose that its closed support is not all
+of $X$. Write $B=\operatorname{Bl}_D(X)$ for the actual
+relative gluing of the affine Rees projective spectra and
+$b:B\to X$ for its structure morphism. Finite generation is
+not assumed.
+
+\begin{lemma}[Intersecting nonempty affine blowup charts]
+\label{lem:global-blowup-integral-chart-intersections}
+\uses{lem:global-blowup-integral-chart-dominant,thm:global-native-blowup-affine-pullback}
+\lean{DeJongAlterations.Geometry.BlowupIntegral.chartInclusion_not_disjoint}
+\leanok
+For nonempty affine opens $U,V\subset X$, the open images
+of $j_U$ and $j_V$ in $B$ intersect.
+\end{lemma}
+\begin{proof}
+The dominant map $b j_U$ has image meeting the nonempty
+open $V$. Choose $p\in B_U$ whose image in $X$ lies in
+$V$. Then $j_U(p)$ belongs to the image of $j_U$ and
+to $b^{-1}(V)$. The exact affine-chart pullback and image
+formula identify $b^{-1}(V)$ with the open image of
+$j_V$. This gives an actual point of the intersection.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $X$ be an integral scheme, let $D$ be native ideal-sheaf
+data on $X$, and suppose that its closed support is not all
+of $X$. Write $B=\operatorname{Bl}_D(X)$ for the actual
+relative gluing of the affine Rees projective spectra and
+$b:B\to X$ for its structure morphism. Finite generation is
+not assumed.
+
+\begin{definition}[The cover by nonempty base affine pieces]
+\label{def:global-blowup-integral-nonempty-cover}
+\uses{def:global-native-blowup,thm:global-native-blowup-affine-pullback}
+\lean{DeJongAlterations.Geometry.BlowupIntegral.nonemptyAffineBlowupCover}
+\leanok
+Restrict the actual affine blowup cover to affine opens
+$U\subset X$ that are nonempty.
+\end{definition}
+\begin{proof}
+An arbitrary point of $B$ lies in an original affine blowup
+chart $B_U$. Its image under $b$ lies in $U$ by the actual
+chart image formula. Thus that particular $U$ is nonempty.
+The restricted family therefore still covers every point
+of $B$. All maps and objects are the same native affine
+blowups and open immersions as in the original cover.
+\end{proof}
+
+\endgroup
+
+\begingroup
+
+Let $X$ be an integral scheme, let $D$ be native ideal-sheaf
+data on $X$, and suppose that its closed support is not all
+of $X$. Write $B=\operatorname{Bl}_D(X)$ for the actual
+relative gluing of the affine Rees projective spectra and
+$b:B\to X$ for its structure morphism. Finite generation is
+not assumed.
+
+\begin{theorem}[Integrality of the global native blowup]
+\label{thm:global-native-blowup-integral}
+\uses{lem:global-blowup-integral-affine-pieces,lem:global-blowup-integral-chart-intersections,def:global-blowup-integral-nonempty-cover}
+\lean{DeJongAlterations.Geometry.BlowupIntegral.isIntegral_blowup}
+\leanok
+The actual global blowup $B=\operatorname{Bl}_D(X)$ is an
+integral scheme.
+\end{theorem}
+\begin{proof}
+Every member of the restricted cover is integral, hence
+reduced and irreducible. Reducedness descends through an
+open cover. Continuous images of irreducible spaces are
+irreducible, so each chart image is preirreducible.
+The chart images form an open cover and have pairwise
+nonempty intersections; the open-cover criterion for
+preirreducibility therefore makes $B$ preirreducible.
+
+The integral scheme $X$ has a point and an affine
+neighborhood $U$ of that point. This $U$ is nonempty,
+so $B_U$ is integral and therefore nonempty. Its chart
+inclusion supplies a point of $B$. Consequently $B$ is
+irreducible and reduced, which is precisely integrality.
+No geometry of $B$ was supplied as a hypothesis.
+\end{proof}
+\endgroup

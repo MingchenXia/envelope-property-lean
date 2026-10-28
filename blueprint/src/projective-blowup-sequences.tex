@@ -1,0 +1,55 @@
+\section{Polynomial projectivity of original blowup successions}
+
+\begin{lemma}[The literal polynomial coefficient projections agree]
+\label{lem:fc-projective-space-projections-agree}
+\leanok
+\lean{EnvelopeProperty.ProjectiveBlowupSequence.projectiveSpaceStructure_eq, EnvelopeProperty.ProjectiveBlowupSequence.isProjectiveOver_iff}
+The two original finite polynomial projective factorization predicates coincide,
+with the same finite coordinates, closed immersion and coefficient-ring projection.
+\end{lemma}
+\begin{proof}
+Both projective spaces are the native projective spectrum of the same homogeneous
+polynomial submodules.  Both degree-zero coefficient maps send $r$ to the same
+constant polynomial $C(r)$.  Extensionality of ring homomorphisms and the native
+spectrum functor therefore identify the entire original structure morphisms.
+The same closed immersion witnesses either predicate.
+\end{proof}
+
+\begin{theorem}[Original ideal-sheaf blowups preserve polynomial projectivity]
+\label{thm:fc-original-blowup-polynomial-projectivity}
+\leanok
+\lean{EnvelopeProperty.ProjectiveBlowupSequence.blowup_isProjectiveFactorization}
+\uses{lem:fc-projective-space-projections-agree,thm:fc-hironaka-dejong-global-blowup-comparison}
+Let $R$ be Noetherian and $X\to\operatorname{Spec}R$ admit an actual finite
+polynomial closed embedding.  For every original ideal sheaf on $X$, its actual
+native Hironaka blowup admits a finite polynomial closed embedding over the same $R$.
+\end{theorem}
+\begin{proof}
+The genuine global blowup projectivity construction first derives homogeneous
+same-degree generators for the original ideal on the original projective closed
+subscheme.  Its local Rees maps glue to a closed immersion of the whole blowup
+into the product of the original projective space and a finite projective space.
+Compose with the actual native scheme Segre closed immersion.  The two exact
+projection squares give the original composite to $\operatorname{Spec}R$.
+Use the preceding whole-blowup isomorphism, preserving the literal original
+projection, to precompose this closed immersion.  The coefficient projection
+comparison then gives the required original polynomial factorization.
+\end{proof}
+
+\begin{theorem}[Every finite original blowup succession preserves polynomial projectivity]
+\label{thm:fc-original-blowup-sequence-polynomial-projectivity}
+\leanok
+\lean{EnvelopeProperty.ProjectiveBlowupSequence.composite_isProjectiveFactorization}
+\uses{thm:fc-original-blowup-polynomial-projectivity}
+For every finite original ideal-sheaf blowup succession $S$ on an originally
+polynomially projective $X$ over a Noetherian ring $R$, the original composite
+$S_{\mathrm{last}}\to X\to\operatorname{Spec}R$ has a finite polynomial projective factorization.
+\end{theorem}
+\begin{proof}
+Induct on the actual original succession.  The empty succession has identity
+composite.  For a first blowup followed by a tail, the preceding theorem supplies
+the genuine first-stage projective embedding and the induction hypothesis applies
+to that actual tail over its original composite coefficient morphism.
+Associativity identifies the resulting structural morphism with the original
+whole succession composite.
+\end{proof}

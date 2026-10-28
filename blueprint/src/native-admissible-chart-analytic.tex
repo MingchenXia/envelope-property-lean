@@ -1,0 +1,79 @@
+\subsection{Whole original analytic points on arbitrary homogeneous charts}
+
+\begin{definition}[The original ambient fraction homomorphism]
+\label{projective:actual-admissible-ambient-fraction-hom}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleAmbientChartHom}
+\leanok
+\uses{projective:actual-original-admissible-chart-scheme-iso}
+Let $X$ be the original projective subvariety over a field, and let $F$ be
+homogeneous of degree $d$, nonzero modulo its original homogeneous ideal.
+There is a canonical ring homomorphism from the original ambient homogeneous
+localization $P_{(F)}$ to the original quotient-chart algebra $A_{X,F}$.
+It is the actual graded quotient map followed by the inverse of the actual
+quotient-chart/native-away algebra equivalence. No normality assumption is used.
+\end{definition}
+\begin{proof}
+Apply homogeneous localization to the original graded quotient map, then
+compose with the inverse ring homomorphism of the established whole algebra
+equivalence. Both maps retain the original coefficient actions.
+\end{proof}
+
+\begin{lemma}[Every original numerator is retained]
+\label{projective:actual-admissible-ambient-fraction-numerator}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleAmbientChartHom_mk}
+\leanok
+\uses{projective:actual-admissible-ambient-fraction-hom,projective:actual-admissible-native-homogeneous-fraction}
+For every $m\in\mathbb N$ and every original homogeneous $G$ of degree $md$,
+the ambient fraction $G/F^m$ maps to precisely the original quotient-chart
+class $\operatorname{quotChartMk}(m,G)$. This is equality of ring elements.
+\end{lemma}
+\begin{proof}
+The actual homogeneous localization quotient map sends the fraction to the
+fraction of the original quotient images. Apply injectivity of the established
+whole quotient-chart equivalence and its exact numerator formula. Cancel the
+inverse equivalence with the equivalence itself.
+\end{proof}
+
+\begin{lemma}[The whole original inclusion square]
+\label{projective:actual-admissible-ambient-native-square}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAdmissibleChartMap_inclusion}
+\leanok
+\uses{projective:actual-admissible-ambient-fraction-hom,projective:actual-original-admissible-chart-scheme-iso}
+For $d>0$, the actual map $\operatorname{Spec} A_{X,F}\to X$ followed by the
+original closed projective inclusion equals the spectrum of the preceding
+ambient fraction homomorphism followed by the actual open immersion
+$\operatorname{Spec} P_{(F)}\to\operatorname{Proj} P$.
+\end{lemma}
+\begin{proof}
+Unfold the actual chart map through the quotient Proj comparison. Its composite
+with the original inclusion is the genuine graded quotient Proj map. Use the
+native homogeneous-localization square for that map. Functoriality of spectrum
+identifies the composite of the two affine maps with the spectrum of their
+literal composed ring homomorphism, which is the preceding definition.
+\end{proof}
+
+\begin{theorem}[The original analytic chart inverse is the actual whole native point]
+\label{projective:actual-admissible-analytic-native-chart}
+\lean{EnvelopeProperty.ProjSubvariety.nativeAnalyticHomeomorph_chartInv}
+\leanok
+\uses{projective:actual-admissible-ambient-fraction-numerator,projective:actual-admissible-ambient-native-square,projective:actual-graded-native-canonical-away-seminorm}
+Let $z$ be any original affine seminorm point of $A_{X,F}$, with $F$ as above
+and $d>0$. Under the original projective analytic/native homeomorphism, the
+original chart inverse of $z$ is exactly the whole native point obtained by
+mapping the actual affine native point of $z$ through the original chart map.
+In particular, its original support and residue-field valuation are retained;
+no point-preservation premise or normality hypothesis is required.
+\end{theorem}
+\begin{proof}
+First compare the two actual ambient-away seminorms. Every element of the
+homogeneous-away algebra has an original homogeneous numerator $G/F^m$.
+The preceding numerator identity and the original chart evaluation formula
+give the same value $|G|/|F|^m$ on both sides. Extensionality therefore gives
+equality of the whole affine seminorms. The actual native-away chart theorem
+identifies the original normalized projective point with the image of that
+same affine seminorm point, including its canonical residue valuation.
+Apply the whole original inclusion square. The established projective
+analytic/native comparison commutes with the original closed inclusion, and
+mapping native points through a closed immersion is injective. Cancelling
+that map proves the claimed whole-point identity.
+\end{proof}

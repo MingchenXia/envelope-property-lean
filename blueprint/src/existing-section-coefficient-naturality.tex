@@ -1,0 +1,32 @@
+\begin{lemma}[Original section coefficient naturality]
+\label{scheme:actual-section-coefficient-naturality}
+\uses{scheme:relative-section-coefficients}
+\lean{EnvelopeProperty.SchemeImage.sectionBaseMap_comp_app}
+\leanok
+Let $R$ and $K$ be any commutative rings, let $\varphi:R\to K$ be an
+actual ring homomorphism, and let $g:X\to Y$, $f_X:X\to\operatorname{Spec}K$,
+$f_Y:Y\to\operatorname{Spec}R$ be original scheme morphisms satisfying
+$g f_Y=f_X\operatorname{Spec}(\varphi)$. For every actual open $U\subset Y$,
+the whole original coefficient maps satisfy
+\[
+ g^*\circ\operatorname{sectionBaseMap}(f_Y,U)
+ =\operatorname{sectionBaseMap}(f_X,g^{-1}U)\circ\varphi.
+\]
+There is no field, injectivity, flatness, finite-type or reducedness
+assumption.
+\end{lemma}
+\begin{proof}
+Fix $r\in R$ and regard it as the original global section on
+$\operatorname{Spec}R$ under the canonical affine global-section
+isomorphism. Pullback of that section along the actual commuting scheme
+triangle gives
+$g^*(f_Y^*(r))=f_X^*(\varphi(r))$, because the affine global-section
+isomorphism is natural with respect to the actual homomorphism $\varphi$.
+Restrict the equality to $g^{-1}U$. Naturality of the original sheaf
+pullback identifies restriction after the global pullback along $g$ with
+pullback along $g$ of the restriction to $U$. These are precisely the
+maps in the definition of the two named section coefficient maps. Thus
+the displayed equality holds on every $r$, hence as a whole ring-map
+identity. This is the existing generic naturality theorem, isolated from
+its later application to flat scheme images.
+\end{proof}

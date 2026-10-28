@@ -1,0 +1,91 @@
+\subsection{Actual finite-extension points of nonempty finite-type fibres}
+\label{subsec:finite-type-field-points}
+
+\begin{lemma}[The true affine coefficient map and maximal quotient]
+\label{scheme:actual-affine-finite-field-point}
+\lean{EnvelopeProperty.FiniteTypePoint.affineBaseMap,
+EnvelopeProperty.FiniteTypePoint.affineBaseMap_spec,
+EnvelopeProperty.FiniteTypePoint.affineBaseMap_finiteType,
+EnvelopeProperty.FiniteTypePoint.maximalQuotient_finite,
+EnvelopeProperty.FiniteTypePoint.maximalQuotientPoint,
+EnvelopeProperty.FiniteTypePoint.maximalQuotientPoint_base,
+EnvelopeProperty.FiniteTypePoint.maximalQuotientPoint_isClosedImmersion}
+\leanok
+Let $X\to\operatorname{Spec}K$ be locally of finite type over an
+arbitrary field, and let $U$ be a genuine affine open of $X$.
+The actual structure morphism gives a finite-type coefficient map
+$K\to\Gamma(X,U)$. Every maximal ideal $m$ of this original
+section ring yields a true finite extension $L=\Gamma(X,U)/m$
+of $K$ and a genuine closed immersion $\operatorname{Spec}L\to X$.
+The whole original coefficient triangle commutes. No separability,
+quasi-compactness, algebraic closure or prescribed field-point
+certificate is assumed.
+\end{lemma}
+\begin{proof}
+Apply the actual full faithfulness of $\operatorname{Spec}$ to the
+composite of the affine open immersion with the given structure
+morphism. This defines the entire coefficient ring homomorphism,
+and applying $\operatorname{Spec}$ recovers precisely that original
+composite. Open immersions and composites preserve local finite
+type, so the genuine affine finite-type criterion proves that the
+coefficient map is finite type. Its quotient by $m$ remains finite
+type. The actual maximal quotient is a field, hence Zariski's
+lemma makes it a finite $K$-module, including inseparable cases.
+
+The actual quotient spectrum followed by the original affine open
+immersion defines the point morphism. Functoriality of
+$\operatorname{Spec}$ proves its whole coefficient triangle.
+The quotient morphism is a closed immersion and the chart map is
+an open immersion, hence their composite is a genuine immersion.
+Its range is a singleton because the source is the spectrum of a
+field. Local finite type over a field makes $X$ genuinely
+Jacobson; a locally closed singleton in a Jacobson space is
+closed. The immersion with this closed range is therefore a real
+closed immersion into the original $X$.
+\end{proof}
+
+\begin{theorem}[A nonempty actual scheme has a closed finite-extension point]
+\label{scheme:actual-finite-field-point}
+\lean{EnvelopeProperty.FiniteTypePoint.exists_finite_field_point}
+\uses{scheme:actual-affine-finite-field-point}
+\leanok
+Every nonempty scheme locally of finite type over an arbitrary
+field $K$ has an actual finite extension $L/K$ and a genuine
+closed immersion $\operatorname{Spec}L\to X$ over $K$.
+\end{theorem}
+\begin{proof}
+Choose an original point of $X$ and a genuine affine open containing
+it. Actual evaluation of its section ring into the point's residue
+field makes that section ring nontrivial. It therefore has an
+actual maximal ideal. The preceding construction applied to that
+ideal gives the claimed field, finiteness and entire morphism.
+No closed point or extending field-valued point is supplied as a
+hypothesis.
+\end{proof}
+
+\begin{theorem}[Actual finite-extension lifts in genuine fibres]
+\label{scheme:actual-finite-field-fibre-lift}
+\lean{EnvelopeProperty.FiniteTypePoint.exists_finite_field_point_of_surjective,
+EnvelopeProperty.FiniteTypePoint.exists_finite_field_lift}
+\uses{scheme:actual-finite-field-point}
+\leanok
+Let $Y\to S$ be a surjective morphism locally of finite type and
+$x:\operatorname{Spec}K\to S$ any actual field-valued point.
+The actual pullback fibre over $x$ has a closed point defined over
+an actual finite extension $L/K$. Its composite into the original
+$Y$ has the whole required triangle over $S$.
+\end{theorem}
+\begin{proof}
+Surjectivity survives actual scheme base change, so the projection
+$Y\times_S\operatorname{Spec}K\to\operatorname{Spec}K$ is
+surjective. The genuine field spectrum is nonempty, hence so is
+this true pullback. Its projection is locally of finite type.
+Apply the preceding point theorem to this original fibre, then
+compose the constructed point with the other actual projection.
+The pullback equation and the proved whole coefficient triangle
+give the entire desired equality into $S$.
+This is the finite-generic-fibre point step used in FHX
+Lemma~5.21(3). Extension to a normalized curve, proper extension
+of the resulting generic map and analytic potential theory are
+separate producers.
+\end{proof}

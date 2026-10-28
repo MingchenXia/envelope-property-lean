@@ -1,0 +1,103 @@
+\section{Actual framed residue coefficients under arbitrary original scheme pullback}
+
+\begin{lemma}\label{lem:fc-native-unit-section-morphism}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.affinePullbackUnitTop_eq_sectionAtOne,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.affinePullbackUnitTop_naturality,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.affinePullbackUnitTop_comp,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedSection,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedSection_sectionHom}
+\leanok
+\uses{lem:fc-original-line-section-fibre,lem:fc-original-section-pullback-frame,scheme:existing-affine-module-pullback-sections}
+For every actual scheme map $g:Y\to Z$, original module $M$ and
+original whole section $\sigma\in\Gamma(Z,M)$, the native pullback-unit
+section is exactly the value at one of the genuine pullback of its
+original structure-line section morphism. For every actual
+isomorphism $\alpha:g^*M\simeq N$, define the actual transported
+whole section $\tau$ by applying $\alpha$ to that native unit section.
+Its original section morphism is precisely the genuine pulled section
+morphism followed by $\alpha$.
+\end{lemma}
+\begin{proof}
+Naturality of the native pullback adjunction unit for the original
+structure-line section morphism identifies its original unit image
+with that pulled morphism applied to the image of one. The genuine
+native structure-unit comparison identifies that image with one.
+Transport from the inverse image of the top open to the top open
+uses native presheaf naturality, so the actual native whole section
+is exactly the asserted value at one. The original section and
+structure-line-morphism equivalence is inverse to evaluation at one;
+applying it to the actual image under $\alpha$ gives the final whole
+section-morphism identity.
+\end{proof}
+
+\begin{definition}\label{def:fc-induced-native-residue-frame}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.inducedResidueFrame,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.inducedResidueFrame_compat,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.inducedResidueFrame_eq,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.inducedResidueFrame_hom}
+\leanok
+\uses{berkovich:actual-residue-module-pullback-iso,berkovich:actual-residue-module-pullback-frame}
+Fix any actual native valued point $y$ of $Y$ and any actual original
+residue frame $e_M$ for $M$ at $g(y)$. Pull $e_M$ through the actual
+residue-field map $\rho:\kappa_Z(g(y))\to\kappa_Y(y)$ and the genuine
+native structure-unit comparison. Precede this by the inverses of
+the actual residue-module pullback comparison and the actual
+residue pullback of $\alpha$. The result is an entire actual frame
+$e_N$ of the same original $N$-fibre at $y$. The whole composition
+of the residue-module comparison, pulled $\alpha$, and $e_N$ is
+exactly the actual residue-field pullback of $e_M$ with its genuine
+native structure-unit comparison.
+\end{definition}
+\begin{proof}
+All four maps are actual native module isomorphisms on the original
+residue-field spectrum, so their composite is the stated frame.
+Compose it with the original residue-module comparison and the
+pulled $\alpha$. The adjacent original isomorphisms and their
+inverses cancel by the native inverse identities. The remaining
+whole map is exactly the actual residue pullback of $e_M$ followed
+by the native unit comparison. No frame-preservation equality is
+assumed.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-native-framed-section-residue-transport}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.residueFrameCoefficient,EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedSection_coefficient}
+\leanok
+\uses{lem:fc-native-unit-section-morphism,def:fc-induced-native-residue-frame,lem:fc-original-line-section-frame-naturality,berkovich:actual-residue-section-hom-pullback}
+For every original whole section $\sigma$, form the actual transported
+section $\tau$ just defined. Pull these original sections to their
+actual native residue fibres and apply their actual frames. If
+$c_M\in\kappa_Z(g(y))$ and $c_N\in\kappa_Y(y)$ are the resulting
+original coefficients, then
+\[
+ c_N=\rho(c_M).
+\]
+The identity uses the derived entire original frame $e_N$ and holds
+for every original section, including zero. It assumes no section,
+coefficient, frame-preservation or residue-evaluation certificate.
+\end{theorem}
+\begin{proof}
+Use the first lemma to express each native residue-unit section as
+the value at one of its genuine pulled section morphism. Native
+pullback composition and the actual residue-field square identify
+the two routes for pulling the original structure-line morphism.
+After the actual pulled $\alpha$ is inserted, composing with the
+derived frame cancels $\alpha$ and the residue-module comparison,
+by the preceding whole-frame identity. The resulting whole map is
+the genuine pullback through $\rho$ of the original framed scalar
+endomorphism. Every original structure-line endomorphism is
+multiplication by its actual value on one. Native scalar pullback
+therefore gives multiplication by the actual pulled scalar.
+Evaluate this whole original identity at one and use naturality of
+the genuine affine section isomorphism for the actual residue-field
+map. This gives precisely $c_N=\rho(c_M)$.
+\end{proof}
+
+\begin{corollary}\label{cor:fc-native-framed-section-valuation-transport}
+\lean{EnvelopeProperty.Berkovich.SchemeFramedSectionPullback.transportedSection_valuation}
+\leanok
+\uses{thm:fc-native-framed-section-residue-transport,scheme:valued-points}
+The actual native valuation of $c_N$ at $y$ equals the actual native
+valuation of $c_M$ at the whole original mapped valued point $g(y)$.
+No properness, compactness, bounded base valuation or model norm is
+needed, and zero coefficients are included.
+\end{corollary}
+\begin{proof}
+Apply the original residue valuation at $y$ to the preceding exact
+coefficient identity. By definition the residue valuation of the
+whole native mapped point $g(y)$ is its original residue valuation
+composed with the actual residue-field map $\rho$. This is exactly
+the claimed equality, also at zero.
+\end{proof}

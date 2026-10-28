@@ -1,0 +1,142 @@
+\subsection{Directed local PL limits retain the actual curve maximum argument}
+
+\begin{lemma}[Actual curve-piece traces of directed local PL limits]
+\label{lem:fc-directed-pl-curve-piece-trace}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_curveRelativePieceNorm_of_isDecrConvexPLNetLimitOn,EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isLineSubharmonicOn_curveRelativePieceNorm_of_isLocallyNetPSHOn}
+\leanok
+A decreasing directed infimum of original regular-unit convex PL functions
+has subharmonic finite multiplicity-weighted norm on every actual selected
+finite-flat curve piece. The assertion is local on the original curve.
+\end{lemma}
+\begin{proof}
+Each original convex PL term has the proved source line-comparison norm.
+On each actual finite fibre, addition and multiplication by the original
+positive multiplicities commute with directed decreasing infima; no term
+reaches plus infinity. Thus the unchanged whole finite norm is the directed
+infimum of the original comparison norms. Source line subharmonicity is closed
+under such directed infima, using the finite actual boundary to choose a
+single common tail index for any strict comparison bound. For locally given
+presentations, refine around the finite central fibre into disjoint actual
+idempotent pieces, each contained in its own presentation neighborhood. Apply
+the global-presentation argument on each piece, sum their actual traces, and
+use the exact restriction and partition identities to recover the original
+whole piece norm. Source line locality gives the assertion.
+\end{proof}
+
+\begin{theorem}[Actual local maximum of directed locally PL limits]
+\label{thm:fc-directed-pl-curve-local-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLocallyNetPSHOn.eventually_eq_of_isLocalMax_finiteFree}
+\leanok
+\uses{lem:fc-directed-pl-curve-piece-trace}
+On a genuine finite-free algebraic curve over an algebraically closed field
+with a nontrivial valuation, a local maximum of a function locally given by
+decreasing directed original convex PL nets is locally constant.
+\end{theorem}
+\begin{proof}
+If the maximum is minus infinity, the maximum inequality gives the assertion.
+Otherwise write it as a finite real number $R$. Construct an actual single-point
+central idempotent piece inside a presentation neighborhood and the actual
+local sublevel neighborhood $u\le R$. Its unchanged finite norm is subharmonic
+by the preceding lemma, bounded above by the full original piece weight times
+$R$, and equals this bound at the central base point. The source line local
+maximum principle makes that norm constant nearby. Every original fibre
+multiplicity is positive and the full weight remains constant, so equality
+of the finite weighted sum forces every actual summand to equal $R$. The
+actual selected piece and base interior are neighborhoods, giving equality
+on an original neighborhood of the original maximizing point.
+\end{proof}
+
+\begin{lemma}[Every original valuation retains the directed local maximum]
+\label{lem:fc-directed-pl-all-valuations-local-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLocallyNetPSHOn.eventually_eq_of_isLocalMax_finiteFree_allValuations}
+\leanok
+\uses{thm:fc-directed-pl-curve-local-maximum}
+The preceding finite-free local maximum statement holds for every original
+field valuation, including the trivial valuation.
+\end{lemma}
+\begin{proof}
+Construct the actual nontrivially valued complete algebraically closed scalar
+extension of the prescribed original valuation. Scalar extension of the
+original finite-free algebra stays finite-free over the literal polynomial
+scalar extension, identified with the new polynomial ring. Pull each original
+regular-unit directed presentation through actual scalar restriction. Every
+native point above the original local maximizing point is then a local
+maximizer of the pulled-back function, so the preceding theorem gives a
+plateau near each such lift. The genuine whole native scalar restriction is
+closed and surjective. Closedness gives an original neighborhood whose whole
+inverse image lies in the union of these plateau neighborhoods. Surjectivity
+then lifts each point of this original neighborhood and proves the unchanged
+original equality there.
+\end{proof}
+
+\begin{theorem}[Actual integral scheme-curve directed maximum principle]
+\label{thm:fc-integral-curve-directed-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyNetPSHOn.eq_of_isMaxOn_univ_integral_curve}
+\leanok
+\uses{lem:fc-directed-pl-all-valuations-local-maximum}
+On an original integral scheme of finite type and global dimension at most
+one over a complete algebraically closed ultrametric normed field, a function
+locally given by decreasing directed original regular-unit convex PL nets is
+constant if it attains its global maximum.
+\end{theorem}
+\begin{proof}
+On each nonempty affine chart the original coordinate ring is a finite-type
+domain of dimension at most one. If it is a field, algebraic closedness makes
+the entire native point space a singleton. Otherwise actual finite curve
+normalization supplies a finite-free polynomial parameter. The preceding
+all-valuations theorem proves local maximum plateaus on this unchanged affine
+chart, and the genuine native affine open embedding transports them to the
+original scheme.
+
+The actual whole native integral curve is preconnected by its proved original
+geometric connectedness. Directed local PL limits are upper semicontinuous
+and never attain plus infinity, because these assertions hold for each
+original convex PL term and are retained by pointwise infima and locality.
+The set of points attaining the original global maximum is therefore closed.
+The local plateau statement makes it open. It contains the original maximizing
+point, so preconnectedness makes it the whole original native curve.
+\end{proof}
+
+\begin{theorem}[Proper directed native maximum over the original field]
+\label{thm:fc-proper-directed-native-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyNetPSHOn.eq_of_isMaxOn_univ_geometricallyConnected_proper}
+\leanok
+\uses{thm:fc-integral-curve-directed-maximum,lem:fc-native-complete-algebraic-closure-surjective,thm:fc-connected-proper-native-maximum}
+On an actual proper geometrically connected scheme over any complete
+ultrametric normed field, a function locally given by decreasing directed
+original regular-unit convex PL nets is constant if it attains a global
+maximum. No algebraic-closedness or nontrivial valuation hypothesis is added.
+\end{theorem}
+\begin{proof}
+Over an algebraically closed base, first apply the integral curve directed
+maximum principle to each actual closed integral curve of the genuine
+closed-intermediate finite-type curve chain. This propagates a maximum between
+all original closed supports. For an arbitrary support, take its actual
+integral reduced singleton closure and an actual original rational section.
+The integral proper coefficient theorem makes this closure geometrically
+connected; rationalize its original native point over the actual completed
+algebraic closure of its completed residue field. That rational lift and the
+scalar-changed original section have closed supports on an actually connected
+proper scalar-changed source. Closed-support propagation equates their values.
+First do this at the maximizing support, then at every other support, comparing
+the resulting original closed rational anchors by the same original curve
+chains. Thus the function is constant on the whole original native space.
+
+For an arbitrary complete base take its actual completed algebraic closure.
+The literal proper scheme pullback is connected by the original geometric
+connectedness. Every original point lifts through the proved whole native
+scalar restriction. Directed regular-unit presentations pull back term by
+term, and the lifted original maximizer is an actual global maximizer. The
+algebraically closed conclusion equates the two lifted values. Their exact
+original native projections recover the original values, proving the result.
+\end{proof}
+
+\begin{remark}[Directed comparison and the original sequence class]
+\label{rmk:fc-directed-maximum-original-class}
+The directed class is kept distinct from the original sequence-based locally
+psh definition. The proof uses its actual multiplicity-weighted curve norm
+comparisons and never extracts a cofinal sequence. These stronger comparison
+statements allow the original global psh directed approximants to prove fibre
+constancy directly, while the source's separate unrestricted sequential
+regularization statement remains a separate formalization obligation.
+\end{remark}

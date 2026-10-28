@@ -1,0 +1,204 @@
+\section{Uniform generation from the explicit Nadel input}
+\label{sec:c0n-uniform-generation}
+
+Fix a characteristic-zero field $k$, a finite-type $k$-algebra $R$, and
+an original integral scheme $Y$ with projective $\pi:Y\to\operatorname{Spec}R$.
+Its original composite $p:Y\to\operatorname{Spec}k$ is smooth of pure
+dimension $n$.  The canonical line below is always
+$\omega=\bigwedge^n\Omega^1_{Y/k}$, including when $R=k[t]$.
+The only unproved mathematical input is
+\nolinkurl{RelativeAmpleNadelVanishingInput k}; its scope is the actual
+relative ample ideal-power vanishing statement, not generation.
+
+\begin{lemma}[Whole isomorphisms transport original ordinary cohomology]
+\label{lem:c0n-uniform-cohomology-iso}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationRegularity.subsingleton_H_of_iso}
+\leanok
+An actual whole module isomorphism $M\simeq M'$ on the original $Y$
+transports vanishing of $H^q(Y,M')$ to vanishing of $H^q(Y,M)$.
+\end{lemma}
+\begin{proof}
+Apply the actual forgetful functor from original modules to additive
+sheaves, then the ordinary sheaf cohomology functor $H^q$.  The resulting
+isomorphism is bijective on the actual underlying groups; injectivity
+transfers the subsingleton property from its target to its source.
+\end{proof}
+
+\begin{lemma}[Regularity of the actual adjoint multiplier module gives generators]
+\label{lem:c0n-multiplier-regularity-consumer}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationRegularity.exists_generatingSections_of_regularity}
+\leanok
+Let $A$ be invertible and let $M=(\omega\otimes A)\otimes\mathcal J_p(I^c)$.
+If the original groups $H^q(Y,M\otimes j^*\mathcal O(-q))$ vanish for
+$0<q<N+1$, then $M$ has finite original generating sections.
+\end{lemma}
+\begin{proof}
+The whole original multiplier ideal module $J$ is quasi-coherent and
+finitely presented, hence finite type.  Put $T=\omega\otimes A$, genuinely
+invertible by pure smoothness and the given invertibility of $A$.
+The proved tensor-with-line theorem makes $J\otimes T$ quasi-coherent
+and finite type.  Actual symmetry identifies it with $M$; tensoring that
+isomorphism by each negative hyperplane twist and using the preceding
+lemma provides its exact regularity groups.  The native closed-projective
+regularity generation theorem produces its finite family.  Transport
+this actual family through the same whole symmetry isomorphism to $M$.
+\uses{lem:c0n-uniform-cohomology-iso}
+\end{proof}
+
+\begin{lemma}[Finite actual tensor generators]
+\label{lem:c0n-uniform-finite-tensor-generators}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationBuffer.exists_tensor_generatingSections}
+\leanok
+If $M$ and invertible $B$ have finite actual generating families, then
+$M\otimes B$ has one indexed by the Cartesian product of their indices.
+\end{lemma}
+\begin{proof}
+Use the native tensor evaluation of the original generator morphisms.
+The right tensor functor by $B$ is an equivalence and preserves the
+original generator epimorphism.  The second evaluation family generates
+$B$, so the pair evaluation is epimorphic.  Its index type is the
+Cartesian product of two finite types and therefore finite.
+\end{proof}
+
+\begin{lemma}[The whole original canonical cancellation isomorphism]
+\label{lem:c0n-uniform-canonical-cancellation-iso}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationBuffer.bufferCancellationIso}
+\leanok
+For every original invertible $W$ and modules $P,Q,L,J$, there is an
+actual whole isomorphism
+$(((W\otimes(P\otimes L))\otimes J)\otimes(Q\otimes W^{-1}))
+\simeq((P\otimes Q)\otimes L)\otimes J$.
+\end{lemma}
+\begin{proof}
+Original associators move $J$ to the last position.  Original symmetry
+moves $Q$ past $W$ and $L$ and places $W^{-1}$ next to $W$.
+The native invertible evaluation $W\otimes W^{-1}\simeq\mathcal O_Y$
+and the original right unitor cancel those two factors.  Associate the
+remaining factors in the displayed order.  Each step is an actual module
+isomorphism on the same original scheme.
+\end{proof}
+
+\begin{lemma}[Selecting one inverse-canonical buffer before all varying data]
+\label{lem:c0n-uniform-inverse-canonical-buffer}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationBuffer.exists_fixed_inverse_canonical_buffer}
+\leanok
+For the fixed original $p,\pi,H$, with $H$ relatively ample, there is
+$s\geq0$ and a finite generating family for $H^s\otimes\omega^{-1}$.
+No varying ideal, coefficient, line $L$, or multiplier index enters $s$.
+\end{lemma}
+\begin{proof}
+Pure smoothness of the actual total morphism proves native invertibility
+of $\omega$ and hence of its actual dual.  Apply the existing actual
+ample-line eventual generation theorem once with this fixed dual twist.
+Choose the bound it constructs, and use the theorem at that very bound.
+This is the sole Serre choice and depends only on the displayed fixed
+original data.
+\end{proof}
+
+\begin{proposition}[The original regularity groups vanish uniformly]
+\label{prop:c0n-ordinary-uniform-regularity}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGeneration.subsingleton_H_negativeTwist}
+\leanok
+Let $j:Y\hookrightarrow\mathbb P^N_R$ be the original closed embedding,
+$H=j^*\mathcal O(1)$ its actual hyperplane line, $L$ an invertible
+module, $a>0$, and $I$ an original ideal nonzero at the generic point.
+Assume $I\otimes L^a$ has a finite generating family.  Under the explicit
+Nadel input, for every $m\geq0$ and $0<q<N+1$, the actual module
+\[
+ M_m=(\omega\otimes(H^{N+1}\otimes L^m))
+               \otimes\mathcal J_p(I^{m/a})
+\]
+satisfies $H^q(Y,M_m\otimes j^*\mathcal O(-q))=0$.
+\end{proposition}
+\begin{proof}
+Put $A_q=H^{N+1-q}\otimes L^m$, $B=L^a$, $c=m/a$, $d=a$, $t=m$,
+and $C=H^{a(N+1-q)}$.  The inequalities imply $N+1-q>0$, so the
+actual positive hyperplane power $C$ is relatively ample.  All these
+lines are invertible.  The actual tensor-power comparisons give
+$A_q^a\simeq C\otimes B^m$, and $ac=m$ holds in $\mathbb Q$ because
+$a>0$.  Thus the stated Nadel input kills every positive cohomology
+of $(\omega\otimes A_q)\otimes\mathcal J_p(I^{m/a})$.
+The native negative hyperplane twist and tensor associativity, symmetry,
+and power cancellation construct an actual isomorphism from
+$M_m\otimes j^*\mathcal O(-q)$ to this module.  Applying the ordinary
+additive-sheaf cohomology functor to that isomorphism transfers the
+vanishing.  The multiplier ideal is the original whole ideal throughout.
+\uses{def:c0n-relative-ample-nadel-input,lem:c0n-uniform-cohomology-iso}
+\end{proof}
+
+\begin{proposition}[One canonical-hyperplane twist gives finite generators]
+\label{prop:c0n-uniform-canonical-generators}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGeneration.exists_generatingSections}
+\leanok
+In the preceding situation, $M_m$ has an actual finite generating family
+for every $m\geq0$.  The twist $\omega\otimes H^{N+1}$ is independent
+of $m$, of $a$, and of $I$.
+\end{proposition}
+\begin{proof}
+The original whole multiplier ideal is quasi-coherent and finitely
+presented on the smooth source.  Tensoring by the displayed invertible
+line preserves quasi-coherence and finite presentation, hence finite
+type.  Apply the proved
+\nolinkurl{ClosedProjectiveRegularityGeneration.exists_generatingSections_of_regularity}
+to the original closed embedding, original module $M_m$, and its
+actual negative coordinate hyperplane twists.  Its finitely many
+hypotheses are exactly the groups proved zero above.  If $N=0$ there
+are no such positive integers $q$, and the same native theorem still
+constructs the finite family.  No Serre threshold depending on $I,m$
+is chosen.
+\uses{prop:c0n-ordinary-uniform-regularity,lem:c0n-multiplier-regularity-consumer}
+\end{proof}
+
+\begin{lemma}[Removing the canonical buffer by actual finite tensor generators]
+\label{lem:c0n-remove-canonical-buffer}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGenerationBuffer.exists_generatingSections_remove_canonical}
+\leanok
+For any original ideal module $J$, invertible $L$, and natural numbers
+$b,s,m$, suppose the original modules
+$((\omega\otimes(H^b\otimes L^m))\otimes J)$ and
+$H^s\otimes\omega^{-1}$ have finite generating families.
+Then $(H^{b+s}\otimes L^m)\otimes J$ has an actual finite generating
+family.
+\end{lemma}
+\begin{proof}
+The second module is invertible.  The native tensor-generating-sections
+construction takes the Cartesian product of the two original finite
+index types and produces a finite family generating their actual tensor
+product.  Actual associators and symmetry move $\omega^{-1}$ next to
+$\omega$; the native invertible-line evaluation isomorphism cancels
+them.  Actual tensor-power addition identifies $H^b\otimes H^s$ with
+$H^{b+s}$.  Transport the resulting family through this whole module
+isomorphism.  This is a deduction about the actual module, with no
+assumption that its desired target is generated.
+\uses{lem:c0n-uniform-finite-tensor-generators,lem:c0n-uniform-canonical-cancellation-iso}
+\end{proof}
+
+\begin{proposition}[A single pure hyperplane buffer works for all indices]
+\label{prop:c0n-uniform-pure-hyperplane-generators}
+\lean{EnvelopeProperty.Char0.MultiplierUniformGeneration.exists_uniform_pure_power_generatingSections}
+\leanok
+For the fixed original $p,j$, there exists $s$ chosen before all $L,I,a,m$
+such that every family in the second proposition yields an actual finite
+generating family of
+\[
+ (H^{N+1+s}\otimes L^m)\otimes\mathcal J_p(I^{m/a}).
+\]
+In particular the pure hyperplane exponent is independent of $m$ and of
+the eventual stabilization index used for asymptotic multiplier ideals.
+\end{proposition}
+\begin{proof}
+The canonical line is genuinely invertible by pure smoothness of the
+original total morphism $p$.  The original hyperplane line is genuinely
+very ample over $R$, hence ample.  Apply the existing actual eventual
+generation theorem for an ample line with the fixed invertible twist
+$\omega^{-1}$, and choose its threshold $s$.  This constructs a finite
+family for $H^s\otimes\omega^{-1}$ before any $L,I,a,m$ is supplied.
+Combine that fixed family with the second proposition by the preceding
+actual tensor-and-evaluation lemma.  Only this one fixed Serre use enters;
+it is independent of all varying multiplier data.
+\uses{prop:c0n-uniform-canonical-generators,lem:c0n-remove-canonical-buffer,lem:c0n-uniform-inverse-canonical-buffer}
+\end{proof}
+
+These deductions do not identify scheme sections with homogeneous cone
+ideals or prove the final envelope statement.  The separate graded-weight
+and saturation comparisons retain those remaining responsibilities.

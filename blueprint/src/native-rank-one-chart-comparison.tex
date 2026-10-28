@@ -1,0 +1,47 @@
+\section{The actual original rank-one chart algebra}
+
+\begin{lemma}[Homogeneous rank-one polynomials and actual dehomogenization]
+\label{lem:fc-native-rank-one-homogeneous-polynomial}
+\leanok
+\lean{EnvelopeProperty.MultiModel.rankOne_homogeneous_eq_monomial, EnvelopeProperty.MultiModel.rankOne_dehom_eq_zero}
+\uses{lem:fc-native-model-total-components}
+A homogeneous degree-$d$ polynomial in the original single variable is
+its original degree-$d$ coefficient times that variable to degree $d$.
+Dehomogenization at an original nonzero coordinate is therefore injective
+on that homogeneous piece.
+\end{lemma}
+\begin{proof}
+Every original exponent in one variable is the single exponent at its
+unique index, with value equal to its total degree. Homogeneity makes
+every other coefficient zero. Dehomogenization of the remaining monomial
+is its coefficient divided by the original nonzero coordinate to the
+same degree, so it vanishes only if the coefficient vanishes.
+\end{proof}
+
+\begin{theorem}[Whole native homogeneous chart equals the original chart]
+\label{thm:fc-native-rank-one-chart-comparison}
+\leanok
+\lean{EnvelopeProperty.MultiModel.nativeRankOneChartInput, EnvelopeProperty.MultiModel.nativeRankOneChartInput_coordinate, EnvelopeProperty.MultiModel.nativeRankOneOrdinaryDehom, EnvelopeProperty.MultiModel.nativeRankOneChartDehom, EnvelopeProperty.MultiModel.nativeRankOneChartDehom_mk, EnvelopeProperty.MultiModel.nativeRankOneChartDehom_injective, EnvelopeProperty.MultiModel.nativeRankOneChartDehom_surjective, EnvelopeProperty.MultiModel.nativeRankOneChartEquiv, EnvelopeProperty.MultiModel.nativeRankOneOriginalChartIso, EnvelopeProperty.MultiModel.nativeRankOneChartEquiv_coefficients, EnvelopeProperty.MultiModel.nativeRankOneOriginalChartIso_structure}
+\uses{lem:fc-native-rank-one-model-charts, lem:fc-native-rank-one-homogeneous-polynomial, lem:gl-charts}
+The actual degree-zero homogeneous localization at an original nonzero
+coordinate is isomorphic as a whole ring to the SAME original chart
+algebra. The resulting actual native basic-open scheme is the spectrum
+of that original chart algebra.
+\end{theorem}
+\begin{proof}
+The original dehomogenization maps the chosen coordinate to one. Its
+actual ring homomorphism into the original chart algebra consequently
+extends to the ordinary localization, then restricts to its true
+degree-zero homogeneous subring. A homogeneous fraction maps to the
+original numerator's dehomogenization, since its denominator maps to
+one. If the fraction maps to zero, injectivity on its homogeneous
+numerator forces that numerator to be zero, so the original fraction
+vanishes. Conversely, every original chart element has the original
+same-degree numerator/coordinate-denominator presentation; the matching
+native homogeneous fraction maps to it. The resulting bijective actual
+ring homomorphism gives the whole-ring isomorphism, and contravariant
+Spec followed by the genuine native basic-open isomorphism gives the
+whole original chart scheme isomorphism.
+\end{proof}
+
+The literal original coefficient inclusion is preserved by the whole chart ring isomorphism. The inverse of the actual original chart scheme isomorphism, followed by the actual original coordinate-open inclusion and original structure morphism, is exactly the spectrum map of the SAME original chart coefficient inclusion. This follows from the native Proj homogeneous-chart structure triangle and the proved whole-ring coefficient identity.

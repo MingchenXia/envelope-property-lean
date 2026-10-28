@@ -1,0 +1,125 @@
+\subsection{Actual rational lifts of every finite fibre point}
+\label{subsec:rational-fibre-lifts}
+
+\begin{theorem}[Genuine algebraic field embeddings preserve the extending norm]
+\label{field:complete-ultrametric-algebraic-embedding}
+\lean{EnvelopeProperty.norm_algebraic_algHom,
+EnvelopeProperty.exists_isometric_algebraic_embedding}
+\leanok
+\uses{spectrum:complete-norm-extension}
+Let $K$ be a complete ultrametric normed field, $L/K$ an actual algebraic
+field extension with real valuation $v$ extending the norm of $K$, and
+$F$ an actual ultrametric normed $K$-algebra field. Every genuine
+$K$-algebra homomorphism $e:L\to F$ satisfies
+\[
+ |e(a)|_F=v(a)\qquad(a\in L).
+\]
+If $F$ is genuinely algebraically closed, an actual such embedding exists.
+Completeness of $F$, separability, characteristic zero, finite extension
+degree and nontriviality of the norm are unnecessary.
+\end{theorem}
+\begin{proof}
+Pull the actual norm valuation of $F$ back along the whole field algebra
+homomorphism. Its coefficient equality and genuine normed-algebra
+structure make this valuation extend the entire norm of $K$. The proved
+uniqueness theorem over the complete ultrametric base identifies it with
+$v$ on all of $L$. If $F$ is algebraically closed, Mathlib's genuine
+algebraic-field lift supplies an actual homomorphism, so applying the
+preceding equality yields the asserted norm-preserving embedding. Neither
+a norm-preserving map nor a point lift is assumed as a certificate.
+\end{proof}
+
+\begin{definition}[Actual finite-fibre residue embedding and tensor evaluator]
+\label{spectrum:finite-rigid-fibre-evaluation}
+\lean{EnvelopeProperty.Berkovich.Spectrum.finiteRigidResidueEmbedding,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidResidueEmbedding_val,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidOriginalHom,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidOriginalHom_val,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidOriginalHom_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidEval,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidEval_tmul,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidEval_surjective,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidEval_baseChangeMap}
+\leanok
+\uses{field:complete-ultrametric-algebraic-embedding,
+spectrum:rigid-complete-algebraic-closure-lift,spectrum:nonetale-fibre-multiplicities,
+spectrum:integral-completed-fibres,spectrum:base-change-algebra-naturality}
+Let $R,A,B$ be arbitrary commutative rings with the actual compatible
+algebra maps, and assume $B$ is finite over $A$. Give an actual
+prescribed-base point $x$ of $A$ and a whole point $y$ of $B$ restricting
+to $x$. Set $F=\widehat{\overline{H(x)}}$ by the actual field factory.
+Construct a genuine $F$-algebra homomorphism
+\[
+ e_y:F\otimes_RB\longrightarrow F
+\]
+that is surjective, preserves every original $B$ value as the norm of its
+actual image, and restricts to the original whole rigid-base evaluator
+on $F\otimes_RA$.
+\end{definition}
+\begin{proof}
+The genuine completed tensor map $H(x)\otimes_AB\to H(y)$ has prime
+kernel. Actual module finiteness makes its kernel maximal and makes
+its actual residue field $L$ finite over $H(x)$. The existing residual
+valuation is constructed by the genuine residue-field lift into $H(y)$;
+it preserves all completed coefficients and all original $B$ values.
+Thus $L/H(x)$ is genuinely algebraic with an actual valuation extending
+the complete base norm.
+
+The preceding algebraic-field embedding producer supplies an actual
+$H(x)$-algebra embedding $L\to F$ preserving this whole valuation.
+Compose the actual right tensor inclusion, the actual residue-field
+homomorphism and this field embedding to obtain a genuine original
+algebra homomorphism $B\to F$. It preserves all original $B$ norm values,
+and on every original base element it is exactly the fixed coefficient
+embedding $A\to H(x)\to F$, because the field embedding preserves its
+entire $H(x)$ coefficient action.
+
+The actual tensor universal property gives $e_y(c\otimes b)=c\,e_y(1\otimes b)$.
+It is surjective since $e_y(c\otimes1)=c$. On each pure base tensor the
+true original-base homomorphism equality identifies the composition with
+the fixed evaluator of $x_F$. Actual tensor induction proves this
+\emph{whole algebra homomorphism} equality on $F\otimes_RA$.
+No valuation-generator extensionality or target residue-field certificate
+is used.
+\end{proof}
+
+\begin{theorem}[Every original finite fibre point has an actual rational rigid lift]
+\label{spectrum:finite-rational-rigid-fibre-lift}
+\lean{EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift_val_tmul,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift_originalRestriction,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift_comap_baseChangeMap,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift_support,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLift_support_isMaximal,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLiftQuotientEquiv,
+EnvelopeProperty.Berkovich.Spectrum.finiteRigidLiftQuotientEquiv_mk}
+\leanok
+\uses{spectrum:finite-rigid-fibre-evaluation}
+For every original finite-fibre point $y$ as above, the actual constructed
+evaluator gives an $F$-rational point $y_F$ of the literal algebra
+$F\otimes_RB$, with the entire constructed norm of $F$ prescribed.
+It lies above the originally constructed rigid point $x_F$ and restricts
+to the whole original point $y$. Its support is genuinely maximal, and
+its actual residue quotient is $F$ as an $F$-algebra. No flatness, original
+freeness, reducedness, separability or coefficient-field hypothesis is
+needed.
+\end{theorem}
+\begin{proof}
+Pull back the actual norm valuation of $F$ through the preceding whole
+surjective tensor evaluator. Its genuine coefficient action gives the
+prescribed $F$ values. On every pure tensor the norm is
+$|c|_F|b(y)|$, so restriction through the actual original right inclusion
+recovers all of $y$. The whole evaluator/base-change diagram proves
+that the entire new relative point lies above the fixed original $x_F$.
+
+A field norm vanishes exactly at zero, so this support equals the actual
+evaluator kernel. Surjectivity to the genuine field $F$ makes it maximal.
+The real first isomorphism theorem gives the whole quotient $F$-algebra
+equivalence and retains every original tensor value. This proves actual
+rationality, not merely the existence of some absolute spectrum lift.
+
+This supplies the rational finite-fibre lifts in the choice of weights
+of Fang--Han--Xia Proposition~5.22. The subsequent passage through a line,
+curve reduction and normalization and the analytic potential arguments
+are separate producers and are not asserted here.
+\end{proof}

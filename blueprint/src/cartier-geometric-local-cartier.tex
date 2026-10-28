@@ -1,0 +1,134 @@
+\section{Cartier on the evaluated geometric chart complex}
+
+\begin{definition}[The native twist source on the geometric chart]
+\label{def:cartier-geometric-local-native-domain}
+\lean{EnvelopeProperty.Cartier.GeometricLocalCartier.nativeDomain,EnvelopeProperty.Cartier.GeometricLocalCartier.homologyTransferIso}
+\leanok
+\uses{def:cartier-geometric-chart-section-complex,lem:native-module-complex-every-cycle-class}
+Retain an original affine coordinate open $U$ and its original etale
+coordinates $v$ in the smooth scheme $X/k$. Write $W=U^{(p)}$, $A=\Gamma(Y,W)$,
+$T=k\otimes_{F_k,k}\Gamma(X,U)$ and $\sigma:A\simeq T$ for the actual
+geometric chart isomorphism. In degree $q$, let $D_W^q$ be the original
+native module $\bigwedge_T^q\Omega_{T/k}$ restricted along $\sigma$.
+Let $H_W^q=H^q(\Gamma(W,F_*\Omega^\bullet_{X/k}))$ be homology of the
+actual evaluated global complex. Scalar restriction preserves native
+homology; compose its inverse comparison with homology of the whole
+geometric complex exchange to define
+\[
+ E_v^q:\operatorname{Res}_{\sigma}H^q(K_v)\simeq H_W^q.
+\]
+\end{definition}
+
+\begin{lemma}[The original cotangent source on the geometric chart]
+\label{lem:cartier-geometric-local-cotangent-source}
+\lean{EnvelopeProperty.Cartier.GeometricLocalCartier.rawDomainIso,EnvelopeProperty.Cartier.GeometricLocalCartier.rawDomainIso_wedge,EnvelopeProperty.Cartier.GeometricLocalCartier.twistedUnitIso,EnvelopeProperty.Cartier.GeometricLocalCartier.twistedUnitIso_apply,EnvelopeProperty.Cartier.GeometricLocalCartier.domainIso}
+\leanok
+\uses{def:cartier-geometric-local-native-domain,lem:cartier-original-affine-section-unit,sc0-open-immersion-sheaf-units:original-chart}
+Let $g:Y\to\operatorname{Spec}k$ be the original second projection of
+the geometric twist. The coefficient-preserving isomorphism $\sigma$
+induces the original universal exterior map
+\[
+ \bigwedge_A^q\Omega_{A/k}\simeq D_W^q.
+\]
+The actual exterior sheafification unit on $W$ is an isomorphism.
+Consequently these same maps give an $A$-linear isomorphism
+$\Gamma(W,\Omega^q_{Y/k})\simeq D_W^q$ in every degree.
+\end{lemma}
+\begin{proof}
+The proved coefficient triangle says that $\sigma$ carries the
+original structural coefficient map of $W$ to the native coefficient
+inclusion in $T$. The universal cotangent map of this ring square
+and its inverse induce the stated exterior isomorphism, including
+the empty wedge. The original honest etale tuple on $U$ gives the
+proved native cotangent basis over $T$. Transport its scalar
+coefficients along $\sigma^{-1}$ and its vectors along the inverse
+universal cotangent map. This is a basis of the original cotangent
+module over $A$, since both transports are invertible. The actual
+open $W$ is affine. The affine exterior-unit theorem applied to this
+basis proves the original sheafification unit bijective. Its inverse
+followed by the universal exterior map is the required isomorphism
+on the original sheaf sections.
+\end{proof}
+
+\begin{theorem}[Local Cartier with the evaluated global target]
+\label{thm:cartier-geometric-local-native-cartier}
+\lean{EnvelopeProperty.Cartier.GeometricLocalCartier.nativeInverseCartierIso,EnvelopeProperty.Cartier.GeometricLocalCartier.nativeInverseCartierIso_apply,EnvelopeProperty.Cartier.GeometricLocalCartier.inverseCartierIso,EnvelopeProperty.Cartier.GeometricLocalCartier.inverseCartierIso_unit}
+\leanok
+\uses{def:cartier-geometric-local-native-domain,lem:cartier-geometric-local-cotangent-source,thm:cartier-geometric-chart-complex-exchange}
+For every $q\ge0$, the original native Cartier isomorphism followed by
+$E_v^q$ gives a genuine $A$-linear isomorphism
+\[
+ C_{v,W}^{-1}:\Gamma(W,\Omega^q_{Y/k})\simeq H_W^q.
+\]
+On the original sheafification unit of every original raw exterior form,
+its value is exactly $E_v^q$ applied to native Cartier of that form's
+original universal $\sigma$-image. The empty open and zero section ring are
+included. No Cartier isomorphism or comparison map is supplied as input.
+\end{theorem}
+\begin{proof}
+The original honest etale tuple supplies the proved native Cartier
+isomorphism over $T$, including its zero-algebra branch. Restriction
+along the actual ring isomorphism $\sigma$ preserves this isomorphism.
+Compose with $E_v^q$ and precompose with the preceding source isomorphism.
+Each factor is defined on the original native modules and original
+geometric sheaves, so the composite has the stated source, target
+and $A$-linearity. On an original unit section the inverse unit cancels
+the same unit, giving precisely the stated every-form formula.
+\end{proof}
+
+\begin{lemma}[Original cycles retain their geometric unit sections]
+\label{lem:cartier-geometric-local-cycle-unit}
+\lean{EnvelopeProperty.Cartier.GeometricLocalCartier.imageCycle,EnvelopeProperty.Cartier.GeometricLocalCartier.imageCycle_val,EnvelopeProperty.Cartier.GeometricLocalCartier.homologyTransferIso_cycleClass}
+\leanok
+\uses{def:cartier-geometric-local-native-domain,lem:cartier-geometric-chart-form-exchange}
+For every original native cycle $z$ in degree $q$, the image cycle in
+the evaluated geometric complex is exactly the original exterior
+sheafification unit of $z$, transported along $F^{-1}W=U$.
+The map $E_v^q$ sends the actual native class of $z$ to the actual
+homology class of this exact image cycle.
+\end{lemma}
+\begin{proof}
+Regard $z$ as the same cycle after scalar restriction. The actual
+whole geometric complex isomorphism carries it to a cycle, since it
+commutes with the consecutive differentials. Its degree component is
+the original unit-and-open-identification map by the whole exchange
+formula, proving the asserted value. The proved native homology
+comparison for scalar restriction preserves the class of this same
+cycle. The native homology functor applied to the actual complex map
+also preserves its cycle class. The two identities compose to the
+claimed class formula.
+\end{proof}
+
+\begin{theorem}[Independence of the original honest tuple]
+\label{thm:cartier-geometric-local-native-coordinate-independence}
+\lean{EnvelopeProperty.Cartier.GeometricLocalCartier.twistedUnitIso_chartChange,EnvelopeProperty.Cartier.GeometricLocalCartier.homologyTransferIso_chartChange,EnvelopeProperty.Cartier.GeometricLocalCartier.nativeInverseCartierIso_chartChange,EnvelopeProperty.Cartier.GeometricLocalCartier.inverseCartierIso_chartChange}
+\leanok
+\uses{thm:cartier-geometric-local-native-cartier,thm:cartier-geometric-chart-complex-transition}
+For any two original honest etale tuples $v,w$ of length $n$ on the
+same original affine open, the original source units agree and the
+homology transfer satisfies $\operatorname{Res}_{\sigma}H^q(c_{v,w})E_w^q=E_v^q$.
+Both the native-source Cartier maps and the maps on original geometric
+cotangent sections are independent of the tuple. In particular the
+entire local maps satisfy $C_{v,W}^{-1}=C_{w,W}^{-1}$ in every degree.
+\end{theorem}
+\begin{proof}
+Let $c_{v,w}:K_v\simeq K_w$ be the proved identity-component native
+comparison. The original native Cartier maps satisfy
+$C_v^{-1}H^q(c_{v,w})=C_w^{-1}$. Naturality of the native
+scalar-restriction homology comparison identifies the two ways of
+passing between the restricted native homology and homology of the
+restricted complexes. The whole geometric chart-change square gives
+$H^q(\operatorname{Res}_{\sigma}c_{v,w})\Phi_w=\Phi_v$.
+Compose these three actual squares. Both native composites start at the same $D_W^q$ and end at the same
+$H_W^q$, and the intermediate comparison isomorphisms cancel. The
+source universal exterior map depends only on $\sigma$, and the
+forward source unit is always the same original sheafification map.
+Thus the source isomorphism is also independent of the honest tuple.
+Precomposing the native equality gives the stated identity on all
+original geometric cotangent sections.
+\end{proof}
+
+The target here is homology of sections of the actual global complex.
+Restriction compatibility between different opens and passage from
+homology of sections to sections of the global homology sheaf require
+the corresponding localization, affine comparison and descent results.

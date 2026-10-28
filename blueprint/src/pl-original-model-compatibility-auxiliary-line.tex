@@ -1,0 +1,72 @@
+\section{The unchanged normalized tautological product line}
+
+\begin{lemma}[The same polynomial inclusion preserves the original parameter]
+\label{lem:pl-original-polynomial-inclusion-parameter-structure}
+\lean{EnvelopeProperty.ProjSubvariety.nativeProductPolynomialInclusion_over_originalParameter}
+\leanok
+The whole original product's polynomial projective closed inclusion,
+followed by the ordinary projective-space structure map, is precisely the
+unchanged original product parameter map.
+\end{lemma}
+\begin{proof}
+\leanok
+The ordinary projective-space structure and the native polynomial-Proj
+structure have the same original degree-zero coefficient inclusion.
+The inverse original polynomial-product isomorphism followed by that
+structure is the actual product parameter projection. Compose with the
+unchanged original closed product inclusion to obtain the assertion.
+\end{proof}
+
+\begin{definition}[The actual original normalized tautological product line]
+\label{def:pl-original-normalized-tautological-product-line}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalProductIdeal,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalTwistLine}
+\leanok
+Let $\mu:B\to X\times\mathbb A^1$ be the original blowup of $IJ$ and
+$\nu:N\to B$ its original normalization. Put
+$K_N=(IJ)\mathcal O_N$. For an original twist $\mathcal O_X(q)$, put
+$H_q=q_N^*\mathcal O_X(q)\otimes K_N$. This uses the actual product-ideal
+module, namely the finite pullback of the original blowup tautological
+ideal, rather than a replacement line with the same numerical class.
+\end{definition}
+
+\begin{theorem}[The actual tautological line has its whole group and fibre-one data]
+\label{thm:pl-original-normalized-tautological-product-line-action-fibre-one}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalProductIdeal_isInvertible,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalTwistLine_isInvertible,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalProductIdeal_invariant,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalProductNativeGmComparison,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalTwistNativeGmComparison,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalProductFibreOneIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTautologicalTwistFibreOneIso}
+\leanok
+\uses{def:pl-original-normalized-tautological-product-line,thm:pl-original-normalized-cartier-factor-linearizations,thm:pl-original-normalized-projection-action-invariant,thm:pl-original-normalized-fibre-one-variety}
+The unchanged ideal $K_N$ is Cartier, invariant under the constructed
+actual normalized action, and trivial on the entire actual fibre at $1$.
+Consequently $H_q$ is invertible, has an explicit whole group comparison,
+and restricts on the same original fibre at $1$ to the same original
+$\mathcal O_X(q)$ through its actual fibre-one isomorphism.
+\end{theorem}
+\begin{proof}
+\leanok
+The blowup tautological ideal $(IJ)\mathcal O_B$ is Cartier. Dominance and
+integrality of the original normalization preserve its Cartier property.
+Whole ideal comap respects multiplication, so
+$K_N=I_NJ_N$. The already proved entire ideal invariance of both factors
+therefore proves entire invariance of $K_N$. Its canonical
+inclusion-preserving Cartier group comparison applies. Both original
+ideals contain parameter powers, so their entire supports miss the
+noncentral open; the same holds for $K_N$. The original fibre at $1$
+factors through this open. Pulling its actual ideal inclusion
+trivialization back gives the stated fibre-one trivialization. Finally,
+tensor this actual line with the unchanged original twist pullback.
+Its whole group comparison is the tensor of the two original comparisons,
+and its fibre-one comparison follows by tensoring the actual ideal
+trivialization and using the exact original fibre-one projection formula.
+\end{proof}
+
+\begin{definition}[The tautological twist as a linearized line on the normalized test configuration]
+\label{def:pl-original-normalized-tc-tautological-line-data}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationTautologicalLineComparison,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationTautologicalFibreOneLineIso}
+\leanok
+\uses{thm:pl-original-normalized-tautological-product-line-action-fibre-one}
+Let $\mathcal C$ be the normalized simultaneous model regarded as a test
+configuration of $X$ (its action and fibre-one identification are the
+constructed ones). The $\mathbf G_m$-linearization of $H_q$ and the
+identification $H_q|_{\mathcal C_1}\simeq\mathcal O_X(q)$ of the preceding
+theorem are the line-action comparison and the fibre-one identification of
+$H_q$ required by the line API of test configurations.
+\end{definition}

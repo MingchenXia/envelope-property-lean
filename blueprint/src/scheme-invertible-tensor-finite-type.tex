@@ -1,0 +1,104 @@
+\section{Finite type of tensoring by the original invertible sheaf}
+
+\begin{lemma}[Actual affine frames of an original invertible sheaf]
+\label{lem:scheme-original-invertible-affine-frames}
+\lean{EnvelopeProperty.SchemeInvertibleTensorQuasicoherent.exists_affine_trivializing_cover}
+\leanok
+Let $X$ be any original scheme and $L$ an original invertible
+$\mathcal O_X$-module. There exist a family of actual affine opens
+$(U_a)_{a\in A}$ covering the same $X$ and whole original
+$\mathcal O_{U_a}$-module isomorphisms
+\[
+ e_a:L|_{U_a}\simeq\mathcal O_{U_a}.
+\]
+No separatedness, quasi-compactness, Noetherianity, or finite global
+cover hypothesis is required. The restrictions and structure sheaves
+are those of the original open subschemes.
+\end{lemma}
+\begin{proof}
+Invertibility of $L$ gives an actual open cover $(V_b)_{b\in B}$
+and original trivializations of the pullbacks of $L$ to these open
+subschemes. The canonical restriction--pullback comparison turns
+each into a whole restriction isomorphism
+$L|_{V_b}\simeq\mathcal O_{V_b}$.
+
+Index a new family by all pairs $(b,U)$ where $U$ is an actual affine
+open of $X$ contained in $V_b$, and assign to the pair this same $U$.
+For any original point $x\in X$, the first cover supplies $b$ with
+$x\in V_b$. The affine-open basis supplies an actual affine $U$
+with $x\in U\subseteq V_b$. Thus the new family covers the same
+original $X$.
+
+Restrict the chosen original isomorphism on $V_b$ along $U\subseteq V_b$.
+The actual composite-restriction and restricted-structure-sheaf
+isomorphisms identify its source with $L|_U$ and its target with
+$\mathcal O_U$. Their composite is $e_{(b,U)}$.
+Every map remains linear for the actual original $\mathcal O_U$
+action and is defined on the whole restricted module.
+The construction also applies when $X$ is empty: the same open-cover
+identity and the pointwise covering argument remain valid.
+\end{proof}
+
+\begin{theorem}[Tensoring by the original line preserves finite type]
+\label{lem:scheme-original-invertible-tensor-finite-type}
+\uses{lem:scheme-original-invertible-affine-frames,lem:scheme-original-invertible-tensor-quasicoherent}
+\lean{EnvelopeProperty.SchemeInvertibleTensorFiniteType.isFiniteType_tensorRight}
+\leanok
+Let $X$ be any original scheme, let $M$ be an original quasicoherent
+module sheaf of finite type, and let $L$ be an original invertible
+module sheaf. Then the same original tensor $M\otimes L$ is of
+finite type. In particular its finite local generating families are
+derived from the original hypotheses, rather than supplied for the
+tensor or for any family of twists. No Noetherian, separatedness,
+properness, or quasi-compactness hypothesis on $X$ is imposed.
+\end{theorem}
+\begin{proof}
+Choose the actual affine frame cover and isomorphisms $e_a$ from
+\ref{lem:scheme-original-invertible-affine-frames}. On each actual
+affine $U_a$, the affine section theorem for the original finite-type
+quasicoherent $M$ gives a finite family of global sections
+\[
+ (s_{a,j})_{j\in J_a}\quad\text{of }M|_{U_a}
+\]
+whose actual free evaluation map onto $M|_{U_a}$ is an epimorphism.
+Here the affine theorem uses the original module of sections:
+quasicoherence identifies the restriction with the associated
+module on $U_a$, finite type makes that module finitely generated,
+and a finite module-generating family gives precisely these
+original generating sections and their free evaluation map.
+
+The whole restriction-tensor comparison, the original line frame
+$e_a$, and the actual tensor unit give the module isomorphism
+\[
+ \rho_a:(M\otimes L)|_{U_a}
+       \simeq M|_{U_a}\otimes L|_{U_a}
+       \simeq M|_{U_a}\otimes\mathcal O_{U_a}
+       \simeq M|_{U_a}.
+\]
+This is the original frame comparison of
+\ref{lem:scheme-original-invertible-tensor-quasicoherent}.
+Define $t_{a,j}=\rho_a^{-1}(s_{a,j})$ as an actual section of
+$(M\otimes L)|_{U_a}$. The free evaluation map for this family is
+the original free evaluation for $(s_{a,j})$, followed by the
+isomorphism $\rho_a^{-1}$. It is therefore an epimorphism.
+Its index set is the same finite $J_a$, including the case when
+that generating family is empty.
+
+The canonical equivalence between modules on the open subscheme
+$U_a$ and modules over the original open-site restriction transports
+these entire generating families to the open-site restriction of
+the same $M\otimes L$. This equivalence preserves the original
+structure-sheaf module actions and free evaluation maps. Consequently
+the transported families remain epimorphic and have the same finite
+index sets $J_a$.
+
+As $U_a$ cover $X$, these families are actual local-generator data
+for the whole original $M\otimes L$. If an open occurs more than
+once, retain one of its original occurrences and its finite family;
+the resulting open family still covers, and no generating family
+or original module is changed. This gives local-generator data
+indexed by actual opens of the original site, with a finite family
+at every index. By the definition of finite type for sheaves of
+modules, it proves that this same $M\otimes L$ is of finite type.
+No finiteness premise for the target tensor was used.
+\end{proof}

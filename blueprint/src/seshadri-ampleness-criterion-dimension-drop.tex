@@ -1,0 +1,35 @@
+\begin{lemma}[A proper closed cut drops a finite dimension bound]
+\label{lem:seshadri-proper-closed-dimension-drop}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.properClosed_dimension_drop}
+\leanok
+Let $X$ be an irreducible topological space, let $Z\subsetneq X$ be
+closed, and suppose $\dim X\leq d+1$, where $d$ is a nonnegative integer.
+Then $\dim Z\leq d$.
+\end{lemma}
+\begin{proof}
+Take any strict chain $Z_0\subsetneq\cdots\subsetneq Z_m$ of nonempty
+irreducible closed subsets of $Z$. Since $Z$ is closed in $X$, their
+images are irreducible closed subsets of $X$, and the inclusions remain
+strict. Each image lies in the proper subset $Z$, so adjoining $X$ to
+the end gives a strict chain of length $m+1$ in $X$. Thus $m+1\leq d+1$,
+and $m\leq d$. Taking the supremum over the original chains proves the bound.
+If $Z$ is empty there are no such chains, and the assertion remains true.
+\end{proof}
+
+\begin{lemma}[The actual Cartier section has lower-dimensional support]
+\label{lem:seshadri-original-section-dimension-drop}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterion.sectionZero_dimension_drop}
+\uses{lem:seshadri-proper-closed-dimension-drop}
+\leanok
+Let $X$ be an integral scheme with $\dim X\leq d+1$, let $A$ be an
+invertible sheaf, and let $s\ne0$ be a global section of $A$.
+The actual zero scheme $D$ of $s$ satisfies $\dim D\leq d$.
+\end{lemma}
+\begin{proof}
+The nonzero section gives its actual invertible zero ideal. At the
+generic point of the integral scheme, its local equation is nonzero in
+the function field and hence a unit. Its actual support is therefore a
+proper closed subset of $X$. The underlying topological space of the
+actual zero scheme is this same closed subspace, so the preceding lemma
+applies. No assertion of reducedness or irreducibility of $D$ is used.
+\end{proof}

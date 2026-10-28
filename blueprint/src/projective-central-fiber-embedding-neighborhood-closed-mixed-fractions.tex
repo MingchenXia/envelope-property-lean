@@ -1,0 +1,34 @@
+\section{Entire actual mixed coordinate ratios}
+\begin{lemma}[Entire mixed coefficients are products of original ratios]
+\label{lem:central-embedding-entire-mixed-coefficient-product}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedFractions.coefficient_mixed}
+\leanok
+Over any commutative ring, the entire homogeneous coefficient
+$X_a^dX_b/X_i^{d+1}$ equals $(X_a/X_i)^d(X_b/X_i)$ as actual sections on the
+entire original $i$-th coordinate open.
+\end{lemma}
+\begin{proof}
+First prove the equality in the native homogeneous localization. After passing
+to its actual underlying localization, the native product and power formulas
+and equality criterion reduce this to polynomial cross multiplication.
+The actual multiplicative witness is $1$, and the identity follows from the
+commutative ring laws. Apply the original away-to-section ring morphism,
+which preserves the actual product and power. No domain, reducedness,
+pointwise equality or cancellation assumption is used.
+\end{proof}
+\begin{lemma}[The entire actual diagonal is the same positive power]
+\label{lem:central-embedding-entire-mixed-diagonal-positive-power}
+\uses{lem:central-embedding-entire-mixed-coefficient-product}
+\lean{EnvelopeProperty.ProjectiveCentralFiberEmbeddingNeighborhoodClosedMixedFractions.coefficient_diagonal}
+\leanok
+The entire actual diagonal coefficient $X_a^dX_a/X_i^{d+1}$ is exactly the
+$(d+1)$-st power of the actual original coordinate ratio $X_a/X_i$.
+\end{lemma}
+\begin{proof}
+Apply the proved entire mixed coefficient identity with the same index in
+both factors, then use the native successor-power identity.
+\end{proof}
+These whole section identities are inputs to the subsequent internally proved
+actual mixed-map chart formula and entire diagonal preimage computation.
+They do not assume or conclude that the mixed projective map is closed or
+that its original whole line is very ample.

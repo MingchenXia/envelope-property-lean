@@ -1,0 +1,65 @@
+\section{Original local line coefficients compute genuine model section norms}
+
+\begin{lemma}[The original global section has its genuine whole local scalar morphism]
+\label{lem:fc-original-local-section-scalar}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionEvaluation.pullbackSectionHom_restrict, EnvelopeProperty.SchemeLineSectionEvaluation.sectionHom_localScalar}
+\uses{lem:fc-original-line-section-frame-naturality}
+Restrict an actual original global module section to a genuine affine open
+and apply any actual original line frame.  The pullback of its original
+structure-line section morphism, followed by the actual pullback frame, is
+exactly multiplication by the actual original local frame coefficient.
+No scalar-compatibility certificate is supplied for this original section.
+\end{lemma}
+\begin{proof}
+The naturality square for the native restriction--pullback isomorphism
+identifies pullback of the original section map with its native restriction.
+The genuine structure-unit comparison supplies the source identity.
+The original global-section/unit-Hom equivalence commutes with restriction
+and with composition by the given frame.  Its coefficient is the original
+local trivialization top section.  The actual affine section transport and
+its inverse identify this with the original ambient local coefficient.
+\end{proof}
+
+\begin{lemma}[An actual original local scalar evaluates at the same original point]
+\label{lem:fc-original-local-section-residue-value}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.localGenericFactor_openTopSection}
+At the genuine proper center of a prescribed-base valued point, the actual
+local generic factor pulls each original local section to exactly its
+original residue-field evaluation.  This is an equality in the SAME actual
+original residue field.
+\end{lemma}
+\begin{proof}
+Transport the original section to the top open of its genuine open subscheme.
+This is exactly the actual open-inclusion section map.  Native section-map
+composition and the whole local-generic factor triangle identify the
+result with the original residue-field pullback.  The genuine native
+residue-field evaluation theorem identifies that pullback with the original
+scheme evaluation.  Quantify the open-containment proof before using the
+whole scheme triangle, so the identity retains the original local section.
+\end{proof}
+
+\begin{theorem}[The genuine original model norm is the original local coefficient value]
+\label{thm:fc-original-local-section-model-norm}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_fibreSection_eq_localScalar, EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_fibreSection_eq_localEval}
+\uses{lem:fc-original-line-section-fibre,lem:fc-original-local-section-residue-value}
+For a genuine invertible original module on the actual proper model, an
+actual original local frame at the genuine center computes the model norm
+of the SAME original global-section fibre as the original valued-point
+evaluation of its SAME original local coefficient.  An internal whole
+local scalar-morphism identity suffices, and the preceding section theorem
+derives that identity for actual original global module sections.
+\end{theorem}
+\begin{proof}
+The genuine local-frame model norm theorem computes the actual norm by the
+original residue valuation of the actual frame coefficient.  Apply the
+whole pullback scalar identity to one at the abstract scheme level, and
+then apply the residue valuation before specialization to the actual
+residue-field spectrum.  This gives the first formula with the actual
+pullback scalar.  The preceding original residue-field evaluation identity
+then gives the original local valued-point evaluation formula.  No norm
+comparison is an input to the resulting theorem: the frame norm formula
+comes from the proved proper valuative-frame construction.
+\end{proof}

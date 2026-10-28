@@ -1,0 +1,135 @@
+\section{Actual original module maps scale genuine line model norms}
+
+\begin{lemma}[Actual generic scalar of an original line morphism]
+\label{lem:scheme-line-actual-model-hom-scalar}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerHomCoefficient}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerFrameGenericIso_mapHom}
+\leanok
+\uses{lem:actual-unit-module-endomorphism-scalar,lem:scheme-line-actual-generic-frame-naturality}
+For an actual original whole module morphism
+$\alpha:\mathcal M\to\mathcal N$ and actual valuative frames $e,d$,
+the entire original generic-line map expressed in the actual generic
+frames is multiplication by the actual image in $\kappa(y)$ of the
+original center-ring scalar
+\[
+ r=\bigl(e^{-1}c_y^*(\alpha)d\bigr)(1)
+   \in\Gamma(\operatorname{Spec}V_y,\mathcal O).
+\]
+No injectivity or invertibility of $\alpha$ is required.
+\end{lemma}
+\begin{proof}
+The actual whole center-ring structure-module endomorphism
+$e^{-1}c_y^*(\alpha)d$ equals multiplication by its original value
+$r$ on 1. Precompose with $e$ to obtain
+$c_y^*(\alpha)d=e\,\operatorname{mul}(r)$ as whole original maps.
+The actual inverse generic-comparison naturality moves the original
+generic pullback of $\alpha$ past that native comparison. Pull back
+the displayed center equation and use genuine pullback functoriality.
+Finally actual structure-unit scalar pullback moves
+$\operatorname{mul}(r)$ past the genuine generic unit comparison,
+replacing it by multiplication by its original generic image. The
+result is the asserted equality of entire original generic-line maps.
+\end{proof}
+
+\begin{lemma}[The genuine original line morphism norm formula]
+\label{lem:scheme-line-actual-model-hom-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_mapHom}
+\leanok
+\uses{lem:scheme-line-actual-model-hom-scalar,def:scheme-line-actual-model-norm}
+For original invertible $\mathcal M,\mathcal N$, every actual whole
+module map $\alpha$, and every section $s$ of the actual original
+generic line of $\mathcal M$, the genuine model norms satisfy
+\[
+ \lVert\alpha_\eta(s)\rVert_{\mathcal N,y}
+  =\lvert r\rvert_y\,\lVert s\rVert_{\mathcal M,y},
+\]
+where $r$ is the actual original valuative scalar above, viewed in
+$V_y$ by the canonical affine global-section isomorphism.
+\end{lemma}
+\begin{proof}
+Frame independence computes both original model norms in the actual
+frames $e,d$. The preceding whole generic map identity identifies
+the target coefficient with the source coefficient times the actual
+generic image of $r$. The original affine global-section naturality
+square identifies that generic image with $V_y\hookrightarrow\kappa(y)$
+applied to the original center scalar. Apply the multiplication law
+of the original residue-field valuation and commute the two scalar
+factors. This proves the stated identity for the same original
+section $s$, including the zero section and zero morphism.
+\end{proof}
+
+\begin{lemma}[An actual original generic line has a norm-one section]
+\label{lem:scheme-line-actual-model-norm-one-section}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_modelLineNorm_eq_one}
+\leanok
+\uses{def:scheme-line-actual-model-norm}
+Every actual original invertible module sheaf has a section of its
+whole original residue-field pullback generic line with genuine
+model norm one.
+\end{lemma}
+\begin{proof}
+Take an actual derived valuative frame and its actual generic frame.
+Apply the latter's inverse to the original structure-module unit
+section. Its original frame coefficient is one by the two inverse
+identities, and the original residue-field valuation of one is one.
+Frame independence identifies this with its actual model norm.
+\end{proof}
+
+\begin{lemma}[The actual original line-morphism norm is independent of frames]
+\label{lem:scheme-line-actual-model-hom-norm-frame-independent}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerHomCoefficient_norm_independent}
+\leanok
+\uses{lem:scheme-line-actual-model-hom-norm,lem:scheme-line-actual-model-norm-one-section}
+The original residue valuation of the actual center coefficient of
+a whole original line morphism is independent of both actual
+valuative frames.
+\end{lemma}
+\begin{proof}
+Choose a section of the original source generic line with model norm
+one. Apply the genuine morphism norm formula using each pair of
+actual frames. In both formulas its left side is the same actual
+target model norm, while its right side is the respective center
+coefficient norm times one. Equating these two expressions proves
+equality of the coefficient norms for arbitrary actual frames.
+\end{proof}
+
+\begin{definition}[The genuine original proper-model morphism norm]
+\label{def:scheme-line-actual-model-hom-norm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_eq_frames}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_mapHom_eq}
+\leanok
+\uses{lem:scheme-line-actual-model-hom-norm-frame-independent}
+For an actual original whole module morphism between invertible
+sheaves, its model morphism norm is the original residue valuation
+of its actual center coefficient in any derived actual valuative
+frames. Every pair of original frames computes the same value, and
+on the entire original generic line
+$\lVert\alpha_\eta(s)\rVert=\lVert\alpha\rVert\lVert s\rVert$.
+\end{definition}
+\begin{proof}
+Actual invertibility supplies the two actual center frames, and the
+preceding frame independence identifies all possible choices.
+The genuine original line-morphism norm formula in the chosen
+frames proves the displayed identity for every original section.
+\end{proof}
+
+\begin{lemma}[Actual original model morphisms are contractive]
+\label{lem:scheme-line-actual-model-morphism-contractive}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelHomNorm_le_one}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_mapHom_le}
+\leanok
+\uses{def:scheme-line-actual-model-hom-norm}
+Every actual whole original module morphism between original model
+line sheaves has model morphism norm at most one and contracts the
+original generic-line model norms.
+\end{lemma}
+\begin{proof}
+Its actual center coefficient, identified by the genuine affine
+global-section isomorphism, belongs to the original residue-field
+valuation ring. By that ring's definition its original residue
+valuation is at most one. Multiply this inequality by the
+nonnegative actual source model norm and use the genuine norm
+formula. This proves the contraction inequality on every original
+generic-line section, including zero maps and zero sections.
+\end{proof}

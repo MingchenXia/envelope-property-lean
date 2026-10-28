@@ -1,0 +1,133 @@
+\subsection{Whole-scheme scalar extension on actual native points}
+
+\begin{lemma}[Literal scalar pullback and intrinsic psh pullback]
+\label{lem:fc-scheme-scalar-pullback}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.model, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.structureMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.projection_comp_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_coe, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.continuous_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isLocallyPSHOn_comp_nativeMap}
+\uses{lem:fc-affine-base-change-psh,lem:local-basic}
+Let $R\to S$ be an actual coefficient-ring map and let the prescribed
+real seminorms agree on $R$. For every actual scheme
+$X\to\operatorname{Spec}R$, its literal scheme pullback to
+$\operatorname{Spec}S$ has the actual continuous native scalar-restriction
+map. The entire original point is its image under the whole scheme
+projection. Pullback through this actual map preserves intrinsic local
+psh defined by genuine regular units on Zariski opens.
+\end{lemma}
+\begin{proof}
+Use the actual scheme pullback projections and their whole coefficient
+triangle. The compatible prescribed base points give the native map.
+Its whole original projection is continuous. Genuine regular units and
+their logarithms pull back along this actual scheme morphism; the
+intrinsic local-psh pullback theorem for a whole coefficient diagram
+therefore applies.
+\end{proof}
+
+\begin{lemma}[Whole actual affine tensor scheme comparison]
+\label{lem:fc-scheme-scalar-affine-tensor}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.affineTensorIso, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.affineTensorIso_hom_projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.affineTensorIso_hom_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.affineTensorHomeomorph, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.affineTensorHomeomorph_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isProperMap_nativeMap_affine}
+\uses{lem:fc-scheme-scalar-pullback,lem:fc-affine-base-change-psh}
+The literal scalar pullback of $\operatorname{Spec}A$ is actually
+isomorphic to $\operatorname{Spec}(S\otimes_RA)$, preserving both whole
+projections. On prescribed native points this is a homeomorphism and
+identifies the actual scalar map exactly with tensor scalar restriction.
+This native scalar map is proper for arbitrary rings and compatible
+seminorms, without boundedness, finite type or properness of the scheme.
+\end{lemma}
+\begin{proof}
+Actual scheme pullback symmetry followed by the genuine Spec tensor
+pushout comparison gives the isomorphism and both projection triangles.
+The entire new coefficient triangle restricts its native homeomorphism
+to the exact prescribed seminorm locus. The original projection triangle
+identifies the whole scalar-restriction map. The genuine affine tensor
+restriction is proper by its ultrafilter lifting theorem. Transport
+that actual proper map through these two homeomorphisms.
+\end{proof}
+
+\begin{lemma}[Actual affine-source scalar restriction and algebraic-completion lifts]
+\label{lem:fc-scheme-scalar-affine-source}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isProperMap_nativeMap_of_isAffine, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_algebraicCompletion_of_isAffine}
+\uses{lem:fc-scheme-scalar-affine-tensor,lem:fc-algebraic-completion-lift}
+For an arbitrary actual affine source scheme over $R$, its true native
+scalar restriction is proper. If the base is a complete ultrametric
+normed field and the new field is the completion of an algebraic normed
+extension, this actual native map is also surjective.
+\end{lemma}
+\begin{proof}
+The actual source structure map induces the entire coefficient action
+on its genuine global-section ring. The actual source isomorphism with
+Spec of this ring gives an actual isomorphism of scalar pullbacks,
+with full coefficient and original-source projection triangles. Thus
+the whole scalar map is conjugate to the actual affine tensor
+restriction. Use its proved properness and, in the algebraic-completion
+case, the constructed actual tensor point lifts.
+\end{proof}
+
+\begin{lemma}[True scalar-changed chart and whole native inverse image]
+\label{lem:fc-scheme-scalar-open-chart}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartMap_isOpenImmersion, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartMap_structure, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartMap_projection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartMap_range, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartNative_commutes, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.openChartNativeHomeomorph}
+\uses{lem:fc-scheme-scalar-pullback}
+Every actual original open immersion has a genuine scalar-changed open
+immersion into the literal whole scalar pullback. Its entire new
+coefficient and original projection triangles commute. Its image is
+exactly the original projection inverse image of the original chart.
+Consequently its native points are homeomorphic to the whole native
+inverse image of that original support-open, compatibly with the actual
+scalar maps on entire points.
+\end{lemma}
+\begin{proof}
+The genuine iterated-pullback isomorphism followed by the actual
+pullback chart projection constructs this morphism. The true pullback
+identities prove both whole triangles, and the genuine base-change
+open-range identity computes its entire image. Apply the actual native
+open-immersion homeomorphism and use this exact range equality. Native
+functoriality of the whole original projection triangle proves the
+asserted commutation.
+\end{proof}
+
+\begin{lemma}[Proper and closed scalar restriction on every actual scheme]
+\label{lem:fc-scheme-scalar-proper}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isProperMap_nativeMap_restrict_affine, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isProperMap_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isClosedMap_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isCompact_preimage_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isCompact_fibre_nativeMap}
+\uses{lem:fc-scheme-scalar-affine-source,lem:fc-scheme-scalar-open-chart}
+For every actual scheme over $R$, its native scalar restriction along
+arbitrary compatible prescribed coefficient seminorms is proper and
+closed. Compact native sets have compact inverse images, and every
+whole point fibre is compact. No separation, finite-type, boundedness
+or proper-model hypothesis occurs.
+\end{lemma}
+\begin{proof}
+On every actual affine support-open, the preceding true chart
+homeomorphism identifies the entire inverse image with the actual
+scalar-changed affine chart. Thus the restricted map is conjugate to
+the already proved proper scalar map of an actual affine source. The
+canonical original affine cover covers all actual native points.
+Genuine proper-map locality on this actual open target cover proves
+properness of the whole scalar map. Closedness and compact inverse
+images and fibres follow from this actual proper map.
+\end{proof}
+
+\begin{lemma}[Whole-scheme algebraic-completion scalar lifts]
+\label{lem:fc-scheme-scalar-algebraic-completion-lift}
+\leanok
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_algebraicCompletion}
+\uses{lem:fc-scheme-scalar-affine-source,lem:fc-scheme-scalar-open-chart}
+Let $F$ be a complete ultrametric normed field and $L/F$ an algebraic
+normed extension. For every actual $F$-scheme, native scalar restriction
+from its literal $\widehat L$-scheme pullback is surjective.
+\end{lemma}
+\begin{proof}
+Choose a genuine original affine chart through the support of the
+prescribed whole point. The actual native open-immersion homeomorphism
+lifts that whole point to the original chart. The constructed actual
+affine-source scalar lift gives a point of its literal completed
+scalar pullback. Map it through the genuine scalar-changed chart
+inclusion. The proved whole native projection commutation recovers
+exactly the original prescribed whole point.
+\end{proof}
+
+The general Gauss-extension, rational-lift and nontrivial complete
+algebraically closed scalar-extension producers remain separate from
+this checkpoint.

@@ -1,0 +1,130 @@
+\section{Uniform generation of the actual whole asymptotic multiplier family}
+
+Fix the original characteristic-zero field, original integral smooth
+scheme, original whole graded ideal sheaves and original projective
+embedding over a finite-type affine base. The only analytic vanishing
+input is the explicit relative ample Nadel proposition. Every multiplier
+ideal below is the original all-divisorial-DVR scheme ideal. In particular,
+no maximal constituent, stabilization index, global generator family for
+the asymptotic ideal, or envelope conclusion is supplied.
+\source{bj22-trivval:thm:contenvlisse,fhx-envelope-20261028:thm:smooth-EP}
+
+\begin{definition}[The original whole asymptotic adjoint module]
+\label{def:c0n-asymptotic-adjoint-module}
+\lean{EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.twistedModule}
+\leanok
+For the original field structure $p:Y\to\operatorname{Spec}k$, original
+integer $n$, original sequence $\mathfrak a_\bullet$ generically nonzero
+at each positive index, $m\in\mathbb N$ and original module $A$, set
+\[
+ \mathcal M_m(A)=
+ (\omega_{Y/k}\otimes A)\otimes
+ \mathcal J_Y(\|\mathfrak a_\bullet^m\|),
+ \qquad \omega_{Y/k}=\bigwedge^n\Omega^1_{Y/k}.
+\]
+The expression uses the actual module of the whole original asymptotic
+ideal sheaf, with this displayed parenthesization.
+\end{definition}
+
+\begin{lemma}[Whole asymptotic adjoint modules are attained internally at divisible original indices]
+\label{lem:c0n-asymptotic-adjoint-attainment}
+\lean{EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_divisible_twistedModule_eq,
+EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_constituent_twistedModule_eq,
+EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_constituent_twistedModule_eq_of_projective}
+\leanok
+\uses{def:c0n-asymptotic-adjoint-module,thm:sc0-original-global-asymptotic-stabilization}
+Assume the original smooth integral scheme is quasi-compact and the
+original sequence is graded. For each $m\geq0$, there is a positive
+original index $q_0$ such that at every positive original multiple $q$
+of $q_0$, the entire original module $\mathcal M_m(A)$ equals
+\[
+ (\omega_{Y/k}\otimes A)\otimes
+ \mathcal J_Y(\mathfrak a_q^{m/q}).
+\]
+In particular one such positive original constituent is produced. The
+index is allowed to depend on $m$; no eventual divisibility or desired
+module comparison is an input.
+\end{lemma}
+\begin{proof}
+Apply the proved whole global divisible-index stabilization theorem to
+the original sequence and its actual gradedness. Its proof constructs
+an attained member of the directed family in the Noetherian ideal-sheaf
+lattice; that is the entire original asymptotic ideal. Apply the actual
+ideal-to-module construction and tensor by the displayed fixed original
+module to this proved equality. For the last assertion take $q=q_0$,
+whose positivity and divisibility are part of that internally produced
+index. This works unchanged at $m=0$ because the original stabilization
+theorem quantifies over all natural $m$.
+\end{proof}
+
+\begin{theorem}[One original canonical-hyperplane twist generates the whole asymptotic family]
+\label{thm:c0n-asymptotic-uniform-canonical-generation}
+\lean{EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_generatingSections}
+\leanok
+\uses{lem:c0n-asymptotic-adjoint-attainment,prop:c0n-uniform-canonical-generators,def:c0n-relative-ample-nadel-input}
+Assume relative ample Nadel vanishing over $k$. Let the original integral
+$Y$ have a closed embedding $j:Y\hookrightarrow\mathbb P_R^N$ over a
+finite-type $k$-algebra $R$, with original $n$-smooth field structure $p$
+equal to its actual base composite. Let $H$ be its actual hyperplane
+pullback and $L$ an original invertible line. Suppose the original graded
+family satisfies that each actual
+$\mathfrak a_q\otimes L^q$ is finitely globally generated, and is
+nonzero at the generic point for every $q>0$. Then for every $m\geq0$
+\[
+ (\omega_{Y/k}\otimes(H^{N+1}\otimes L^m))\otimes
+      \mathcal J_Y(\|\mathfrak a_\bullet^m\|)
+\]
+has actual finite global generating sections. The fixed twist
+$\omega_{Y/k}\otimes H^{N+1}$ is chosen before $m$, and neither its
+exponent nor its line depends on the internally selected index $q$.
+\end{theorem}
+\begin{proof}
+The original closed projective embedding makes its original structure
+map proper over the affine base, hence its entire original scheme is
+quasi-compact. Apply the preceding lemma to construct a positive original
+$q$ realizing the whole asymptotic ideal for this $m$. Apply the proved
+ordinary uniform-generation theorem to this same original
+$\mathfrak a_q$, original $L$, positive index $q$, natural $m$ and its
+actual finite generating sections after tensoring by $L^q$. That theorem
+uses precisely the rational coefficient $m/q$ and produces finite
+generators with the same fixed hyperplane exponent $N+1$. Transport those
+actual sections along the proved equality of the whole original ideals,
+which identifies the entire displayed original modules. The chosen
+constituent may vary with $m$, while the ordinary theorem's fixed
+canonical-hyperplane twist does not. No fixed-family Serre threshold is
+mistaken for uniformity in $m$.
+\end{proof}
+
+\begin{corollary}[A fixed pure hyperplane twist generates all whole asymptotic ideals]
+\label{cor:c0n-asymptotic-uniform-hyperplane-generation}
+\lean{EnvelopeProperty.Char0.AsymptoticMultiplierUniformGeneration.exists_uniform_pure_power_generatingSections}
+\leanok
+\uses{lem:c0n-asymptotic-adjoint-attainment,prop:c0n-uniform-pure-hyperplane-generators}
+Under the same original geometry, there is a fixed integer $c$, independent
+of $m$, such that every actual
+$H^c\otimes L^m\otimes\mathcal J_Y(\|\mathfrak a_\bullet^m\|)$
+has finite global generating sections.
+\end{corollary}
+\begin{proof}
+The proved ordinary theorem chooses its genuine canonical-inverse Serre
+buffer once, before all original varying ideals, lines and multiplier
+indices. Let its fixed exponent be $b$. After receiving an original graded
+family, line and index $m$, internally choose a positive original $q$
+realizing the entire original asymptotic ideal as in the attainment lemma.
+The ordinary endpoint constructs actual finite generators of
+$H^{N+1+b}\otimes L^m\otimes\mathcal J_Y(\mathfrak a_q^{m/q})$.
+The actual equality of the entire original ideals transports this family
+to the entire displayed original asymptotic module. Thus the same
+$c=N+1+b$, chosen before the original family, line and $m$, works for all
+of them. The ordinary endpoint's proof constructs the fixed inverse
+canonical finite family by Serre generation, tensors it with its actual
+canonical family, cancels the original canonical evaluation, and uses
+the actual tensor-power addition isomorphism. No uniform Serre bound for
+the varying multiplier family is supplied or inferred.
+\end{proof}
+
+The actual direct-obstacle sequence must still supply its own genuine
+polarized homogeneous-section generators and graded nonzero ideals. A
+full-sections base ideal is not substituted for that original ideal.
+Those separate producers instantiate the results above; the only
+vanishing proposition is the displayed Nadel input.

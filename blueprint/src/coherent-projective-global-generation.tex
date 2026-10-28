@@ -1,0 +1,35 @@
+\section{Genuine eventual global generation on original projective space}
+
+\begin{theorem}[Ordinary eventual global generation by actual global sections]
+\label{thm:coherent-projective-serre-global-generation}
+\uses{lem:coherent-projective-original-twist-addition,thm:scheme-original-invertible-tensor-exact,thm:coherent-projective-nonnegative-twist-global-generation,lem:scheme-original-coproduct-generating-sections}
+\lean{EnvelopeProperty.CoherentProjectiveGlobalGeneration.exists_eventual_generatingSections,EnvelopeProperty.CoherentProjectiveGlobalGeneration.exists_eventual_free_epi,EnvelopeProperty.CoherentProjectiveGlobalGeneration.canonicalEvaluation,EnvelopeProperty.CoherentProjectiveGlobalGeneration.exists_eventual_canonicalEvaluation_epi}
+\leanok
+Let $R$ be any commutative ring and $M$ an original finite-type
+quasicoherent module on actual finite-coordinate polynomial projective
+space over $R$. Every sufficiently large original twist
+$M\otimes\mathcal O(d)$ is the quotient of a finite free structure-module
+sum by a morphism arising from its actual original global sections.
+In particular its entire canonical evaluation map from all original
+global sections is an epimorphism.
+\end{theorem}
+\begin{proof}
+Choose the genuine finite negative-twist quotient
+$\bigoplus_i\mathcal O(-a_i)\twoheadrightarrow M$, and let $A=\max_i a_i$
+(or zero for the empty source). For $d\ge A$, tensor this actual
+surjection by $\mathcal O(d)$ and use the original twist-addition
+isomorphisms. Its source becomes $\bigoplus_i\mathcal O(d-a_i)$.
+
+For each $e=d-a_i\ge0$, the degree-$e$ coordinate monomials give actual
+whole global sections of this same original $\mathcal O(e)$. On the
+$j$th standard coordinate open, the monomial $X_j^e$ has coefficient
+one in its original standard frame. Thus these finitely many global
+sections generate the whole original module on every standard open,
+so their finite free evaluation map is an epimorphism. Take the finite
+sum over $i$ and compose with the original tensor quotient. This gives
+the required finite free surjection to $M(d)$, with every component an
+actual global section of $M(d)$. The canonical evaluation from all
+global sections factors this finite free map through the corresponding
+inclusion of its finite list of sections. A morphism through which an
+epimorphism factors is itself an epimorphism, proving the final claim.
+\end{proof}

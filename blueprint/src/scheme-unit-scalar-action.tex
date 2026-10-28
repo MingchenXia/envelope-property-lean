@@ -1,0 +1,71 @@
+\section{Actual structure-unit actions and the whole original Hom-section map}
+\label{sec:scheme-unit-scalar-action}
+
+Let $X$ be the original scheme. Its original structure module is retained,
+with the genuine localized tensor product and its actual unit comparisons.
+
+\begin{definition}[The entire original unit action]
+\label{sc0-unit-scalar-action:actual-action}
+\lean{EnvelopeProperty.SchemeUnitScalarAction.unitAction}
+\leanok
+For an actual endomorphism $r:\mathcal O_X\to\mathcal O_X$ and any original
+module $M$, define $r_M:M\to M$ by conjugating $r\otimes1_M$ through the
+actual left-unit isomorphism $\mathcal O_X\otimes M\simeq M$.
+\end{definition}
+
+\begin{theorem}[Every original section on every original open]
+\label{sc0-unit-scalar-action:whole-sections}
+\lean{EnvelopeProperty.SchemeUnitScalarAction.unitAction_apply}
+\leanok
+For every actual open $U$ and every original $m\in M(U)$, the SAME action
+satisfies $r_M(m)=r(1)m$, with the original coefficient and section actions.
+\end{theorem}
+\begin{proof}
+The actual left unitor sends the original pure tensor $1\otimes m$ to $m$,
+so its actual inverse sends $m$ to that same tensor. Genuine tensor naturality
+sends it under $r\otimes1_M$ to the original $r(1)\otimes m$. The previously
+proved exact pure-tensor left-unitor formula gives the asserted coefficient
+multiplication. This proves the formula on every original section and open,
+without any frame, affineness or quasicoherence assumption.
+\end{proof}
+
+\begin{theorem}[Entire original Hom-section compatibility]
+\label{sc0-unit-scalar-action:whole-hom-section}
+\lean{EnvelopeProperty.SchemeUnitScalarAction.unitAction_equiv}
+\leanok
+If $A$ is an actual invertible original module and $\phi:A\to B$ any original
+map, its SAME actual Hom-section correspondence satisfies
+$\operatorname{sec}(\phi r_A)=\operatorname{sec}(\phi)r$ as an equality of
+ENTIRE original sheaf morphisms.
+\end{theorem}
+\begin{proof}
+Conjugate $r$ through the genuine structure-unit comparison to an actual native
+monoidal-unit endomorphism. The actual left unitor shows $r_A$ is exactly its
+native right-tensor action on $A$. Naturality in the source of the actual
+invertible tensor adjunction moves this unit endomorphism through the SAME
+original Hom correspondence. The genuine original structure-unit comparison
+cancels, retaining exactly the original $r$ and the original tensor-dual target
+comparison. No scalar-linearity or Hom-section matching certificate is supplied.
+\end{proof}
+
+\begin{definition}[An actual original global scalar]
+\label{sc0-unit-scalar-action:global-scalar}
+\lean{EnvelopeProperty.SchemeUnitScalarAction.globalScalarAction}
+\leanok
+For the original $a\in\Gamma(X,\mathcal O_X)$, use its actual original section
+morphism $\mathcal O_X\to\mathcal O_X$ as $r$ in the preceding construction.
+This defines an endomorphism of the ENTIRE original $M$.
+\end{definition}
+
+\begin{theorem}[The same original restricted coefficient]
+\label{sc0-unit-scalar-action:global-formula}
+\lean{EnvelopeProperty.SchemeUnitScalarAction.globalScalarAction_apply}
+\leanok
+On EVERY original open $U$ and EVERY original section $m$, this entire global
+endomorphism acts by $(a|_U)m$, using the SAME actual original restriction map.
+\end{theorem}
+\begin{proof}
+The actual original structure-section morphism takes $1$ on $U$ to precisely
+$a|_U$, by its original definition and $1$-scalar identity. Substitute this
+exact value into the whole-section formula above.
+\end{proof}

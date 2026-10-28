@@ -1,0 +1,43 @@
+\section{The algebra trace of the actual whole purification map}
+
+\begin{lemma}
+\label{lem:kn-nadel-mixed-purification-ring-map-trace}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationMap_trace}
+\leanok
+\uses{lem:kn-global-trace-actual-purification,lem:kn-global-trace-mixed-extended-counit}
+Let $C=S\otimes_A B$ be the entire original mixed tensor algebra and
+$e:C\simeq_S P$ the actual produced purification. The literal original
+purification ring map $f:C\to P$ satisfies, for every $z\in C$,
+\[
+ \operatorname{Tr}_{P/S}(f(z))=\operatorname{Tr}_{C/S}(z).
+\]
+\end{lemma}
+\begin{proof}
+The original ring-map producer uses an $S$-algebra equivalence
+propositionally equal to the produced $e$; its equality follows from
+the defining choice witness. Its ring-homomorphism component is the
+literal $f$, with the same values on every element. Conjugation of
+multiplication through this equivalence preserves the original linear
+trace. This proves the formula without assuming a trace normalization.
+\end{proof}
+
+\begin{lemma}
+\label{lem:kn-nadel-mixed-purification-ring-map-trace-tensor}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedPurificationMap_trace_tmul}
+\leanok
+\uses{lem:kn-nadel-mixed-purification-ring-map-trace,lem:kn-nadel-tensor-trace-normalization}
+Assume $A$ is nonzero and every original degree is positive. Then for
+every $s\in S$ and every original $c\in B$,
+\[
+ \operatorname{Tr}_{P/S}(f(s\otimes c))
+   =s\,\operatorname{im}_{A\to S}(\operatorname{Tr}_{B/A}(c)).
+\]
+All original factors remain in $B,S,C,P$ and the trace on the right is
+the unnormalized trace of the entire original $B/A$.
+\end{lemma}
+\begin{proof}
+The successive original monic-root construction supplies a finite free
+basis for the entire $B/A$. Its trace commutes with base change to
+$S$, and $S$-linearity gives the factor $s$. Apply the preceding
+identity for the actual purification ring map.
+\end{proof}

@@ -1,0 +1,33 @@
+\subsection{A finite ordered affine cover derived from projectivity}
+
+\begin{lemma}[Separatedness over an affine base]
+\label{lem:fc-projective-source-separated}
+\leanok
+\lean{EnvelopeProperty.ProjectiveAffineCover.separated}
+If $f:X\to\operatorname{Spec}R$ admits a closed immersion into a finite
+polynomial projective space over $R$, then $X$ is separated.
+\end{lemma}
+\begin{proof}
+The projective factorization makes $f$ proper, hence separated. The
+structure map of $X$ is the composite of $f$ with the structure map of
+the affine scheme $\operatorname{Spec}R$. Both maps are separated, and
+separatedness is stable under composition.
+\end{proof}
+
+\begin{lemma}[A genuine finite ordered affine cover]
+\label{lem:fc-projective-finite-ordered-affine-cover}
+\leanok
+\lean{EnvelopeProperty.ProjectiveAffineCover.exists_affine_openCover}
+Let $f:X\to\operatorname{Spec}R$ admit a projective factorization.
+There exist a finite linearly ordered index set $J$ in the same universe
+as $X$ and affine opens $U_j\subseteq X$ whose union is $X$.
+\end{lemma}
+\begin{proof}
+Choose the actual closed immersion $i:X\hookrightarrow\mathbb P^d_R$
+in the factorization. Take $J$ to be the universe lift of
+$\{0,\ldots,d\}$, with its inherited finite linear order, and set
+$U_j=i^{-1}(D_+(T_j))$. Each coordinate open of polynomial projective
+space is affine, and the preimage of an affine open under the affine
+morphism $i$ is affine. The coordinate opens cover projective space;
+preimage commutes with their union, so the $U_j$ cover $X$.
+\end{proof}

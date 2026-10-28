@@ -1,0 +1,57 @@
+\section{Whole Laurent Gauss valuations preserve every original coefficient map}
+
+\begin{definition}\label{def:laurent-coefficient-hom}
+\leanok
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentCoefficientHom}
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentCoefficientHom_C}
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentCoefficientHom_T}
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentCoefficientHom_toLaurent}
+For every original ring map $\varphi:A\to B$, let
+$\varphi[T,T^{-1}]:A[T,T^{-1}]\to B[T,T^{-1}]$ be the actual ring map
+sending every original coefficient $a$ to $\varphi(a)$ and retaining the
+original Laurent parameter $T$ and every integer power.
+\end{definition}
+\begin{proof}
+Use the actual Laurent localization universal property, evaluating the
+coefficient ring by $C\varphi$ and the parameter at the actual Laurent
+unit $T$ with inverse $T^{-1}$. Its defining formulas give the claimed
+values on every original coefficient and every integer power. On the
+entire polynomial subring it agrees with the original polynomial
+coefficient map followed by the original Laurent localization.
+\end{proof}
+
+\begin{theorem}\label{thm:laurent-gauss-coefficient-naturality}
+\leanok
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentGauss_comap_coefficients}
+Let $v,w$ be actual nonnegative real valuations on the original commutative
+rings $A,B$, and assume $w(\varphi(a))=v(a)$ for every original $a$.
+At every positive radius $r$, pullback of the actual Laurent Gauss
+valuation of $w$ through the proved coefficient map is exactly the actual
+Laurent Gauss valuation of $v$ on the entire original Laurent algebra.
+No injectivity, field, or norm-comparison certificate is assumed.
+\uses{def:laurent-coefficient-hom}
+\end{theorem}
+\begin{proof}
+Restriction of valuation spectra from the actual localization at the
+original polynomial parameter is injective. It is therefore enough to
+compare both valuations on every original polynomial. The proved whole
+polynomial comparison for the coefficient map reduces this to ordinary
+polynomial Gauss naturality and the given original coefficient values.
+That genuine whole-map equality on polynomials implies equality of the
+entire Laurent valuations, including every negative power.
+\end{proof}
+
+\begin{corollary}\label{cor:laurent-gauss-original-coefficient-maximum}
+\leanok
+\lean{EnvelopeProperty.Berkovich.Spectrum.laurentGauss_coefficients_eq_sup}
+For every original Laurent polynomial $f$, its image under that actual
+coefficient map has Gauss value
+$\max_{i\in\operatorname{supp}f}v(f_i)r^i$.
+\uses{thm:laurent-gauss-coefficient-naturality}
+\end{corollary}
+\begin{proof}
+The whole-map theorem identifies the image's value with the original
+Laurent Gauss value of $f$. Apply the actual original finite-coefficient
+maximum formula for that Laurent valuation. The maximum uses the original
+support, so coefficients that vanish under the map cause no extra premise.
+\end{proof}

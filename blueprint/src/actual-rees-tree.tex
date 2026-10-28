@@ -1,0 +1,58 @@
+\section{Actual affine covers recorded by finite Rees trees}
+
+\begin{definition}[Leaf occurrences]\label{def:sc0-rees-leaf-occurrences}
+\lean{EnvelopeProperty.ReesChartTree.LeafIndex,EnvelopeProperty.ReesChartTree.leafAlgebra}
+\leanok
+A leaf occurrence of a finite Rees tree records all branch indices on its path.
+The one-leaf tree has one occurrence. The occurrences at a node are the disjoint
+union, over its nonzero generator indices, of the occurrences of its children.
+Each occurrence has its corresponding leaf subalgebra; different occurrences may
+have the same subalgebra.
+\end{definition}
+
+\begin{lemma}[Finitely many actual leaf occurrences]\label{lem:sc0-finite-rees-leaf-occurrences}
+\lean{EnvelopeProperty.ReesChartTree.finite_leafIndex,EnvelopeProperty.ReesChartTree.nonempty_leafIndex,EnvelopeProperty.ReesChartTree.leafAlgebra_mem_leaves,EnvelopeProperty.ReesChartTree.exists_leafIndex_of_mem_leaves}
+\leanok
+\uses{def:sc0-rees-leaf-occurrences}
+The occurrences of a finite Rees tree form a finite nonempty set, and their
+corresponding subalgebras are exactly the leaf subalgebras of the tree.
+\end{lemma}
+\begin{proof}
+Induct on the tree. The assertion for a one-leaf tree follows from its single
+occurrence. At a node the generator index set is finite and nonempty by the
+nonzero-generator condition. Each child has finitely many nonempty occurrences
+by induction, so their disjoint union is finite and nonempty. The set of
+corresponding algebras is the union of the children's leaf sets, which is exactly
+the leaf set of the node.
+\end{proof}
+
+\begin{theorem}[An actual blowup sequence gives a finite Rees cover]\label{thm:sc0-actual-sequence-rees-cover}
+\lean{EnvelopeProperty.Char0.exists_actual_rees_cover,EnvelopeProperty.Char0.reesLeafAffineOpenCover,EnvelopeProperty.Char0.finite_reesLeafAffineOpenCover_index}
+\leanok
+\uses{lem:sc0-finite-rees-leaf-occurrences,lem:sc0-affine-centre-finite-generators,lem:sc0-global-affine-rees-cover,lem:sc0-rees-tail-open-iso,lem:sc0-sequence-last-pullback,lem:sc0-open-iso-source-point}
+Let $B$ be Noetherian, let $K$ be a field with a $B$-algebra structure, and let
+$C\subseteq K$ be a finitely generated $B$-subalgebra. An actual finite blowup
+sequence over $\operatorname{Spec}C$ which is an isomorphism over a nonempty open
+admits a finite Rees tree rooted at $C$ and an actual affine open cover of its
+final scheme indexed by the tree's leaf occurrences. The coordinate ring at each
+occurrence is its literal leaf subalgebra of $K$, and its composite to
+$\operatorname{Spec}C$ is induced by the original algebra inclusion.
+\end{theorem}
+\begin{proof}
+Induct on the sequence length, simultaneously for all such finitely generated
+subalgebras. The empty sequence gives the one-leaf tree and identity affine cover.
+For a nonempty sequence, its nonempty isomorphism open supplies a point in its
+final scheme. Project this point through the remaining sequence to obtain a point
+of the first blowup. Its centre therefore has a finite generating family with
+a nonzero member. The nonzero ratio charts of that first blowup form its actual
+finite affine open cover. Their rings are finitely generated $B$-subalgebras of
+$K$, hence Noetherian. Pull the tail sequence back to each chart. Its length is
+strictly smaller, and Lemma~\ref{lem:sc0-rees-tail-open-iso} gives it a nonempty
+isomorphism open. Apply induction and attach the resulting child trees at the
+first node. Compose the leaf open immersions with the actual final-stage lifts.
+These are open immersions by the cartesian final-stage squares. They cover:
+given a final point, its projection to the first blowup lies in one ratio chart;
+the cartesian square lifts that point to the pulled-back final scheme, where the
+inductive cover supplies a leaf occurrence. The cartesian commutativity and the
+ratio-chart projection identities give the asserted composite inclusion maps.
+\end{proof}

@@ -1,0 +1,82 @@
+\section{Actual ideal module comparison under open restriction}
+\begin{lemma}[Whole ideal membership under the actual open section isomorphism]
+\label{lem:actual-ideal-open-section-membership}
+\uses{lem:actual-ideal-module-whole-kernel}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.isLocallyMem_comap_iff_appIso_inv}
+For an actual open immersion $g:X\to Y$, a section of the true geometric
+ideal comap over any entire original open $W\subset X$ corresponds
+exactly, under the genuine original structure-ring section isomorphism,
+to an original ideal-module section over the entire image open $gW$.
+\end{lemma}
+\begin{proof}
+For each actual affine $U\subset W$, the genuine open-comap affine ideal
+formula is the inverse-image ideal under the original inverse section
+isomorphism. Its naturality computes restriction as the original target
+restriction. This proves the implication from original ideal membership
+to comap membership. Conversely, for every original affine $V\subset gW$,
+its true preimage is affine because $V$ lies in the open immersion's
+range. Its image equals the whole original $V$, and its preimage lies
+in $W$. Apply actual comap membership there and the genuine affine ideal
+formula. Transport to the original affine $V$ through the true ideal
+restriction map. Naturality of the actual section isomorphisms and the
+whole restriction-composition law give precisely the original target
+ideal membership. Thus the equivalence holds on arbitrary whole opens,
+without flatness, Cartier or finiteness assumptions. Its module-sheaf
+isomorphism and canonical-pullback gluing are subsequent constructions.
+\end{proof}
+
+\begin{lemma}[True whole ideal-module sheaf isomorphism under open restriction]
+\label{lem:actual-ideal-open-restriction-module-iso}
+\uses{lem:actual-ideal-open-section-membership}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.openRestrictionSectionsEquiv,AlgebraicGeometry.Scheme.IdealSheafData.openRestrictionModuleIso,AlgebraicGeometry.Scheme.IdealSheafData.openRestrictionModuleIso_app}
+The actual original ideal module restricted along an arbitrary open
+immersion is isomorphic to the actual module sheaf of its entire
+geometric ideal comap. On every whole original open its underlying
+included section map is precisely the original scheme section isomorphism.
+\end{lemma}
+\begin{proof}
+The original section isomorphism and its true inverse restrict to the
+actual original ideal sections by the preceding whole membership
+equivalence. Their genuine scalar actions are intertwined: the restricted
+module's action uses the original inverse ring comparison, so original
+multiplicativity and the true inverse identities give linearity over
+the original source section ring. Naturality is exactly the original
+section-isomorphism naturality on every original inclusion. Thus the
+section linear equivalences define an actual presheaf-module isomorphism;
+the genuine fully faithful inclusion of actual sheaves of modules lifts
+it to the original whole sheaf isomorphism. The explicit full section
+formula follows from this actual construction. No quasicoherence,
+Cartier, flatness or comparison premise is used.
+\end{proof}
+
+
+\begin{lemma}[Canonical whole ideal-module pullback isomorphism for an open immersion]
+\label{lem:actual-ideal-open-canonical-pullback-iso}
+\uses{lem:actual-ideal-open-restriction-module-iso,lem:actual-ideal-pullback-unit-sections}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.openRestrictionModuleIso_restrictAdjunction,AlgebraicGeometry.Scheme.IdealSheafData.openRestrictionModuleIso_comp_toModulesComapPullbackMap,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_isIso_of_isOpenImmersion,AlgebraicGeometry.Scheme.IdealSheafData.openPullbackModuleIso}
+For every original ideal and arbitrary actual open immersion, its genuine
+canonical module pullback comparison with the module of its geometric
+ideal comap is an isomorphism. Under the true restriction--pullback
+comparison it is the whole open-restriction isomorphism just constructed.
+\end{lemma}
+\begin{proof}
+Apply the actual restriction--pushforward adjunction to the constructed
+whole restriction isomorphism. Its adjoint on any original open first
+restricts the original ideal section to the whole image of its preimage,
+then applies the genuine original open section isomorphism. The actual
+scheme identity for these ring maps says that this composite is exactly
+the original whole scheme section map. Thus the adjoint is the canonical
+ideal-module pushforward map. The true uniqueness isomorphism between
+the restriction and pullback left adjoints identifies their units.
+Naturality of the original adjunction and the previously proved canonical
+pullback-unit identity therefore identifies the restriction isomorphism
+with that uniqueness isomorphism followed by the canonical pullback map.
+Injectivity of the actual adjunction hom equivalence proves the whole
+sheaf equality. Both the restriction isomorphism and the uniqueness
+comparison are isomorphisms, hence so is the actual canonical map.
+Taking its genuine inverse gives the stated canonical sheaf isomorphism.
+No Cartier, quasicoherence, flatness or finiteness premise occurs.
+\end{proof}

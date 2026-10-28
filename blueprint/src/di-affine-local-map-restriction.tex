@@ -1,0 +1,111 @@
+\section{Original affine local-map readback and restriction}
+
+Let $W$ be an original affine open in a scheme $Z$, and let $M,N$ be
+original module sheaves. Assume the restriction of $M$ to the actual
+$\operatorname{Spec}\Gamma(Z,W)$ is quasicoherent. All comparisons below
+are the native restriction functors, their original identity/composition
+isomorphisms, and the original affine associated-sheaf adjunction.
+
+\begin{definition}[The original affine map of a section morphism]
+\label{def:di-canonical-affine-local-map}
+\leanok
+\lean{EnvelopeProperty.DI.AffineLocalMapRestriction.specHomOfSections,EnvelopeProperty.DI.AffineLocalMapRestriction.specHomOfSections_zero,EnvelopeProperty.DI.AffineLocalMapRestriction.specHomOfSections_add,EnvelopeProperty.DI.AffineLocalMapRestriction.specHomOfSections_sub,EnvelopeProperty.DI.AffineLocalMapRestriction.affineSpecMap,EnvelopeProperty.DI.AffineLocalMapRestriction.chartRestrictionIso,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_zero,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_add,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_sub,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_postcompose}
+A genuine $\Gamma(Z,W)$-linear map on original sections determines a map
+$M|_W\to N|_W$: first conjugate by the original affine section units,
+then use the native associated-sheaf adjunction and its invertible source
+counit, and finally transport through the original affine-chart isomorphism.
+\end{definition}
+\begin{proof}
+The source's genuine quasicoherence makes its original associated-sheaf
+counit invertible. Compose its inverse with the native adjoint of the
+original section map. The native adjunction triangle gives exact readback
+on sections over the spectrum. Restriction along the original affine-chart
+isomorphism and the original restriction composition comparisons produces
+the stated map on the original open scheme. No morphism or comparison
+certificate is supplied besides the original section morphism. The same
+native additive adjunction preserves zero, addition and subtraction;
+source-counit naturality gives compatibility with original global
+postcomposition.
+\end{proof}
+
+\begin{lemma}[Whole original spectrum readback]
+\label{lem:di-affine-local-map-spec-readback}
+\leanok
+\lean{EnvelopeProperty.DI.AffineLocalMapRestriction.specHomOfSections_map,EnvelopeProperty.DI.AffineLocalMapRestriction.affineSpecMap_sections,EnvelopeProperty.DI.AffineLocalMapRestriction.moduleSections_naturality,EnvelopeProperty.DI.AffineLocalMapRestriction.chartRestriction_naturality,EnvelopeProperty.DI.AffineLocalMapRestriction.specReturn,EnvelopeProperty.DI.AffineLocalMapRestriction.specReadbackIso,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_spec_readback,EnvelopeProperty.DI.AffineLocalMapRestriction.sectionReadback,EnvelopeProperty.DI.AffineLocalMapRestriction.sectionReadback_affineLocalMap,EnvelopeProperty.DI.AffineLocalMapRestriction.specReadback_naturality}
+\uses{def:di-canonical-affine-local-map}
+Restricting this same local map back along the inverse original chart
+isomorphism, then conjugating by the original restriction identity and
+composition isomorphisms, returns exactly the original spectrum map.
+Consequently its native spectrum-section readback, conjugated by the
+original affine section units, is exactly the original section morphism.
+\end{lemma}
+\begin{proof}
+Write $F$ for restriction along the original chart isomorphism and $G$
+for restriction along its inverse. The original composition and identity
+comparisons give a natural isomorphism $FG\cong1$ on spectrum modules.
+The local map is the conjugate of $F$ applied to the spectrum map by the
+original chart restriction comparisons. Applying $G$ and conjugating by
+the corresponding comparisons cancels those same original isomorphisms.
+Naturality of $FG\cong1$ then gives exactly the original spectrum map.
+Apply the native section functor and the original affine section units;
+the previously established adjunction triangle readback gives precisely
+the supplied original section morphism.
+\end{proof}
+
+\begin{lemma}[An affine detects adjoints supported on a smaller open]
+\label{lem:di-affine-adjoint-section-faithfulness}
+\leanok
+\lean{EnvelopeProperty.DI.AffineLocalMapRestriction.specMap_ext,EnvelopeProperty.DI.AffineLocalMapRestriction.localMap_ext_of_adjoint_at_affine,EnvelopeProperty.DI.AffineLocalMapRestriction.localMap_ext_of_adjoint_sections}
+\uses{lem:di-affine-local-map-spec-readback}
+Let $V\subset W$ with $W$ affine. Suppose $M$ restricted to the original
+spectrum of $W$ is quasicoherent. Two maps $M|_V\to N|_V$ are equal if
+their original restriction-adjoints have equal section maps on $W$.
+No quasicoherence of the pushed target is required.
+\end{lemma}
+\begin{proof}
+The original affine section comparison turns equality on $W$ into equality
+of section maps after restriction to its original spectrum. The source
+counit is invertible by its genuine quasicoherence, so the native affine
+associated-sheaf adjunction makes this section functor faithful on maps
+from that source. Thus the two adjoints agree after spectrum restriction.
+The original inclusion of $V$ factors through that same spectrum by the
+canonical open inclusion and original chart isomorphism. The native
+restriction composition comparison therefore gives equality after
+restriction to $V$. Under the original restriction--pushforward adjunction,
+a map into the original pushforward from $V$ is determined by that
+restriction followed by its original counit. Injectivity of the original
+adjunction equivalence gives equality of the adjoints, and then equality
+of the two original local maps.
+\end{proof}
+
+\begin{lemma}[Restriction naturality from original section naturality]
+\label{lem:di-affine-local-map-restriction}
+\leanok
+\lean{EnvelopeProperty.DI.AffineLocalMapRestriction.sectionReadback_restrict,EnvelopeProperty.DI.AffineLocalMapRestriction.sectionReadback_comp,EnvelopeProperty.DI.AffineLocalMapRestriction.restrict_localAdjoint,EnvelopeProperty.DI.AffineLocalMapRestriction.localAdjoint_sections,EnvelopeProperty.DI.AffineLocalMapRestriction.affineLocalMap_restrict}
+\uses{lem:di-affine-local-map-spec-readback,lem:di-affine-adjoint-section-faithfulness}
+For original affine opens $V\subset W$, original linear section morphisms
+which commute with the actual original section restrictions induce the
+same actual restricted local sheaf map on $V$. No matching sheaf-map
+hypothesis is needed.
+\end{lemma}
+\begin{proof}
+Use the original restriction adjunction on the larger affine open.
+Naturality of the original inverse-chart comparisons makes readback of a
+restricted global map its original section map; cancellation of those same
+comparisons makes readback preserve composition. The original adjunction
+triangle therefore identifies a local map's same-open adjoint section map
+with its exact readback followed by the original target unit. Apply this
+formula to both affine constructions. Naturality of the original target
+unit and of the smaller-open adjoint reduces equality on the containing
+affine to the supplied section square, after composition with restriction
+of the original pushed target. That restriction is invertible: both cut
+opens are the same smaller open. Cancel it. The assumed square therefore
+makes the two adjoint section maps equal. The source is genuinely
+quasicoherent on that affine, so the proved affine adjoint faithfulness
+makes the whole original adjoints equal. The original adjunction then
+gives equality of the local maps on the smaller open. The original
+factor-map equation for native local restriction identifies the first of
+those local maps with the exact native restriction of the larger one.
+Thus only the original section square is used; no equality of the desired
+sheaf maps is assumed.
+\end{proof}

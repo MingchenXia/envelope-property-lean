@@ -1,0 +1,34 @@
+\section{The actual original-base scalar structures}
+
+\begin{lemma}[Section maps commute with the original affine base map]\label{lem:sc0-resolution-section-base-composition}
+\lean{EnvelopeProperty.Char0.sectionsHom_comp_specMap}
+\leanok
+For an actual scheme map $\pi:Y\to\operatorname{Spec}R$, a ring map
+$\sigma:k\to R$ and an open $U\subseteq Y$, the actual map
+$k\to\Gamma(Y,U)$ induced by the composite to $\operatorname{Spec}k$ is the
+composite of $\sigma$ with the actual original section map $R\to\Gamma(Y,U)$.
+\end{lemma}
+\begin{proof}
+The section map of a composite is the composite of the maps on sections. Under
+the canonical spectrum/global-section isomorphisms the section map of
+$\operatorname{Spec}\sigma$ is exactly $\sigma$, by naturality of those
+isomorphisms. Substitute these two identities in the original section map.
+\end{proof}
+
+\begin{lemma}[The actual resolution section and stalk maps form scalar towers]\label{lem:sc0-resolution-stalk-scalar-towers}
+\lean{EnvelopeProperty.Char0.resolutionStalkAlgebra,EnvelopeProperty.Char0.isScalarTower_resolutionStalkAlgebra,EnvelopeProperty.Char0.isScalarTower_base_resolutionSections,EnvelopeProperty.Char0.isScalarTower_base_resolutionStalk}
+\leanok
+\uses{lem:sc0-resolution-section-base-composition}
+Given $x\in U$, put the actual $R$-algebra structure on $\mathcal O_{Y,x}$ by
+composing the original section map with the actual germ map. The original
+$k$-algebra structures form the scalar towers
+$k\to R\to\Gamma(Y,U)$, $R\to\Gamma(Y,U)\to\mathcal O_{Y,x}$ and
+$k\to R\to\mathcal O_{Y,x}$.
+\end{lemma}
+\begin{proof}
+The first tower is the preceding section-map identity. The second is the
+definition of the actual stalk structure. For the third, the actual germ map
+composed with the scalar map on sections is the scalar map on the stalk.
+Combine this equality with the first tower and associativity of ring-map
+composition.
+\end{proof}

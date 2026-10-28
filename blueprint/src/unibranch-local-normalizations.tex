@@ -1,0 +1,181 @@
+\subsection{Standard structural unibranchness and genuine local normalization primes}
+\label{subsec:unibranch-local-normalizations}
+
+The local-ring definitions here are the PRIMARY definitions in the
+Stacks Project, More on Algebra, section ``Local irreducibility'',
+\texttt{definition-unibranch}, citing EGA~IV, Chapter~0 (23.2.1).
+The inspected source is \texttt{more-algebra.tex}, commit
+\texttt{6d6787f1e8c7bf2e5a90aa4c068075832160e329},
+lines 31124--31134. The distinct strict-henselization characterization
+\texttt{lemma-geometrically-unibranch}, lines 31453ff, is NOT
+asserted formalized. No definition below assumes normalization
+spectrum injectivity or a singleton native fibre.
+
+\begin{definition}[The actual reduced normalization and standard local-ring unibranchness]
+\label{algebra:actual-structural-unibranch-local-ring}
+\lean{EnvelopeProperty.LocalNormalization.Reduced,
+EnvelopeProperty.LocalNormalization.Ring,
+EnvelopeProperty.LocalNormalization.coefficientMap,
+EnvelopeProperty.LocalNormalization.reduced_inclusion_injective,
+EnvelopeProperty.IsUnibranchLocalRing,
+EnvelopeProperty.LocalNormalization.coefficientMap_isLocalHom,
+EnvelopeProperty.LocalNormalization.residueFieldMap,
+EnvelopeProperty.LocalNormalization.residueFieldMap_residue,
+EnvelopeProperty.IsGeometricallyUnibranchLocalRing}
+For an ACTUAL local commutative ring $R$, set
+$R_{\mathrm{red}}=R/\sqrt{(0)}$ and
+$N(R)=\overline{R_{\mathrm{red}}}^{\,\operatorname{Frac}(R_{\mathrm{red}})}$,
+the LITERAL integral closure in its actual fraction ring.
+The standard unibranch property says $R_{\mathrm{red}}$ is a
+domain and $N(R)$ is local. The geometric property additionally
+says that the ACTUAL induced map $\kappa(R)\to\kappa(N(R))$
+is purely inseparable. This residue map is constructed from the
+original coefficient map; no unrelated residue-field action,
+field identification or point-fibre condition is supplied.
+\leanok
+\end{definition}
+\begin{proof}
+Use the genuine nilradical quotient, its true fraction ring and
+existing literal integral closure. If the reduction is a domain,
+its coefficient map into its normalization is injective: equality
+there implies equality in its ACTUAL fraction field, whose
+original coefficient map is injective.
+
+The true quotient $R\to R_{\mathrm{red}}$ is surjective between
+local rings, hence local. The actual injective integral map
+$R_{\mathrm{red}}\to N(R)$ is local, by the proved integral
+unit-reflection theorem. Their whole composite is therefore
+local and induces its GENUINE residue-field map. The actual
+residue naturality identity preserves every original element.
+The additional pure-inseparability field is imposed on THIS
+map, exactly as in the cited standard structural definition.
+These are structural algebraic properties, not an assumed
+normalization homeomorphism or fibre certificate.
+\end{proof}
+
+\begin{theorem}[Whole coefficient change of integral closures]
+\label{algebra:actual-same-ambient-integral-closure-map}
+\lean{EnvelopeProperty.NormalizationLocalization.closureMap,
+EnvelopeProperty.NormalizationLocalization.closureMap_coe,
+EnvelopeProperty.NormalizationLocalization.closureEquivOfIntegralBase,
+EnvelopeProperty.NormalizationLocalization.closureEquivOfIntegralBase_coe}
+Let $A\to S\to K$ be an ACTUAL scalar tower of arbitrary
+commutative rings. Integral coefficient change constructs a
+whole $A$-algebra map
+$\overline A^{\,K}\to\overline S^{\,K}$, fixing EVERY
+original ambient element. If $S$ is integral over $A$, the SAME
+map is a genuine algebra equivalence. No field, domain,
+Noetherianity or injectivity hypothesis is required.
+\leanok
+\end{theorem}
+\begin{proof}
+An element integral over $A$ is integral over $S$ by mapping
+its actual monic polynomial coefficients through the original
+scalar tower. Thus the ambient identity restricts to a true
+algebra homomorphism of the two literal closures; all ring laws
+and coefficient identities hold on EVERY element. If $S/A$
+is integral, genuine transitivity proves the reverse inclusion
+of integral elements. The inverse is the actual ambient identity
+on those elements. Both whole inverse identities follow,
+without replacing either integral closure by a chosen isomorphic
+ring or assuming an equality of ideal supports.
+\end{proof}
+
+\begin{theorem}[Actual localization of the literal integral closure]
+\label{algebra:actual-integral-closure-localization}
+\lean{EnvelopeProperty.NormalizationLocalization.isLocalization_closure,
+EnvelopeProperty.NormalizationLocalization.localizationEquiv,
+EnvelopeProperty.NormalizationLocalization.localizationEquiv_algebraMap}
+\uses{algebra:actual-same-ambient-integral-closure-map}
+Suppose $S$ is the ACTUAL localization of $A$ at a submonoid $M$,
+and $A\to S\to K$ is the original scalar tower, still for
+arbitrary commutative rings. The constructed whole closure map
+makes $\overline S^{\,K}$ a GENUINE localization of
+$\overline A^{\,K}$ at the image of $M$. Consequently the
+literal quotient localization is canonically algebra-equivalent
+to that same-ambient integral closure. Every original closure
+element and every coefficient follows its ENTIRE actual map.
+\leanok
+\end{theorem}
+\begin{proof}
+Every $m\in M$ is a true unit in $S$, so its original image
+in $K$ is a unit. Thus $K$ itself is genuinely the localization
+of $K$ at those original coefficient images. Construct the
+closure action through the preceding ACTUAL identity-on-ambient
+map; its two coefficient towers commute on EVERY element.
+The checked theorem that integral closure commutes with actual
+localization now applies with these CONSTRUCTED closure actions
+and towers. It gives the true localization structure, not a
+localization certificate supplied by the caller. Uniqueness of
+actual localizations produces the displayed whole algebra
+equivalence and its original-element formula. This primitive
+needs neither an ambient field nor a domain or finite
+normalization; the actual domain/fraction-field case is included.
+\end{proof}
+
+\begin{theorem}[True local normalization derives original prime uniqueness]
+\label{algebra:actual-local-normalization-prime-uniqueness}
+\lean{EnvelopeProperty.prime_map_isMaximal_of_base_localization,
+EnvelopeProperty.prime_eq_of_isLocalRing_baseLocalization,
+EnvelopeProperty.NormalizationLocalization.primes_eq_of_local_normalization_isLocal}
+\uses{algebra:actual-integral-closure-localization}
+For an actual integral extension $A\to B$ and original prime
+$p$, every genuine prime $q$ of $B$ contracting to $p$ extends
+to a MAXIMAL prime after localizing $B$ at the image of
+$A\setminus p$. If this ACTUAL localization is a local ring,
+two original primes contracting to $p$ are equal.
+In particular, localness of the LITERAL local integral closure
+$\overline{A_p}^{\,K}$ derives prime uniqueness in the original
+$\overline A^{\,K}$. No fibre singleton, injectivity or
+residue-comparison certificate is an input.
+\leanok
+\end{theorem}
+\begin{proof}
+A prime contracting to $p$ is disjoint from the original mapped
+complement $A\setminus p$. Actual localization prime
+correspondence therefore extends it, and contraction recovers
+the ENTIRE original prime. The genuine localized coefficient
+map $A_p\to B_{A\setminus p}$ is integral. The whole original
+coefficient square shows the extended prime contracts to the
+actual maximal ideal of $A_p$. Integral maximality then makes
+the extended prime MAXIMAL. If that original localization is
+local, both extended primes are its UNIQUE actual maximal ideal.
+Contract through the genuine localization correspondence to get
+equality of the original primes. Apply the preceding actual
+closure-localization structure for the claimed literal
+normalization specialization. No Noetherian, domain, finite
+module or native-topology assumption enters this prime lemma.
+\end{proof}
+
+\begin{theorem}[Actual fraction-field choice preserves the literal normalization]
+\label{algebra:actual-normalization-fraction-field-choice}
+\lean{EnvelopeProperty.NormalizationLocalization.fractionFieldNormalizationEquiv,
+EnvelopeProperty.NormalizationLocalization.fractionFieldNormalizationEquiv_algebraMap}
+For ANY actual fraction ring $K$ of $A$ with its ORIGINAL
+coefficient action, there is a genuine $A$-algebra equivalence
+$\overline A^{\,\operatorname{Frac}A}\simeq_A\overline A^{\,K}$,
+preserving every original coefficient. In the domain case these
+are the genuine original fraction fields. No field identification
+is supplied or made by fiat.
+\leanok
+\end{theorem}
+\begin{proof}
+Both ambient fraction rings are actual localizations at the
+original non-zero-divisors. Localization uniqueness constructs
+the true coefficient-preserving ambient algebra equivalence.
+Its actual integral-closure functor restricts to the integral
+elements; the whole inverse laws hold on EVERY ambient element,
+so on every integral element. Its algebra law proves the exact
+original coefficient formula.
+\end{proof}
+
+\begin{remark}[Explicit next boundary]
+The standard structural local-ring definitions and all algebraic
+primitives above are proved. Transport from the literal
+reduction-based definition to actual domain local normalizations,
+the complete residue-localization square and the resulting
+scheme/native normalization homeomorphism remain subsequent
+producers. No such scheme or native theorem is claimed here.
+Strict-henselization equivalence and general nonintegral scheme
+normalization gluing remain explicitly separate work.
+\end{remark}

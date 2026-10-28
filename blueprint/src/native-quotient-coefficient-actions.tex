@@ -1,0 +1,74 @@
+\subsection{The original coefficient actions on coordinate sections}
+
+\begin{lemma}\label{lem:original-native-coordinate-coefficients}
+\lean{EnvelopeProperty.ProjBerk.nativeCoordinateSectionsIso_coefficients}
+\leanok
+\uses{projective:native-scheme-coordinate-sections,projective:native-structure-morphism,projective:native-relative-coordinate-chart,scheme:relative-section-coefficients}
+Let $R$ be any commutative ring, let $P=\mathbf P^n_R$ be the original
+native polynomial projective scheme, let $g:P\to\operatorname{Spec}R$
+be its original structure map, and let $U_j=D_+(x_j)$.
+For the existing whole coordinate-section isomorphism
+$e_j:B_j=R[u_i:i\ne j]\simeq\Gamma(P,U_j)$ and every $r\in R$,
+\[
+ e_j(C(r))=\operatorname{sectionBaseMap}(g,U_j)(r).
+\]
+The right side is the already defined coefficient map obtained by pulling
+back the original base global section and restricting to $U_j$.
+\end{lemma}
+\begin{proof}
+Let $h:U_j\simeq\operatorname{Spec}B_j$ be the existing actual coordinate
+scheme isomorphism and $u:U_j\to P$ its original open inclusion. The
+existing coefficient triangle is
+$h^{-1}u g=\operatorname{Spec}(C:R\to B_j)$.
+The existing description of $e_j$ is the composite of the inverse
+global-section isomorphism of $\operatorname{Spec}B_j$, pullback along
+$h$, and the actual identification of the open's global sections with
+$\Gamma(P,U_j)$. Apply global sections contravariantly to this coefficient
+triangle, and use the naturality of the global-section isomorphisms of
+affine spectra. It says that applying $e_j^{-1}$ to the original coefficient
+pullback gives exactly $C(r)$. Restricting the pullback along $g$ to $U_j$
+is the pullback along $u g$, by the original sheaf restriction naturality;
+this is exactly the definition of $\operatorname{sectionBaseMap}(g,U_j)$.
+Thus $e_j^{-1}(\operatorname{sectionBaseMap}(g,U_j)(r))=C(r)$.
+Applying the inverse equivalence $e_j$ proves the assertion. No equality
+of sections is deduced merely from equality at points.
+\end{proof}
+
+\begin{lemma}\label{lem:original-native-quotient-coordinate-algebra}
+\lean{EnvelopeProperty.ProjBerk.nativeQuotientCoordinateSectionsAlgEquiv}
+\leanok
+\uses{lem:original-native-coordinate-coefficients,lem:original-native-quotient-coordinate-sections,scheme:actual-section-coefficient-naturality,scheme:relative-section-coefficients}
+Let $J$ be any original homogeneous ideal, let $i:Z\to P$ be the actual
+inclusion of its original kernel closed subscheme, let $V_j=i^{-1}(U_j)$,
+and let $D_j\subset B_j$ be its original dehomogenized ideal.
+Give $\Gamma(Z,V_j)$ the already defined coefficient action
+$\operatorname{sectionBaseAlgebra}(i g,V_j)$, coming from its original
+structure morphism, and give $B_j/D_j$ its original quotient $R$-algebra
+structure. The previously constructed whole-ring isomorphism $\Phi_j$
+is an $R$-algebra isomorphism for precisely these actions.
+Its underlying ring equivalence is exactly the original $\Phi_j$.
+No new coefficient action, primeness, field, reducedness or relevance
+assumption is introduced.
+\end{lemma}
+\begin{proof}
+Use the existing whole section-coefficient naturality theorem with the
+actual inclusion $i$, the two actual structure morphisms, and the identity
+homomorphism of $R$. The coefficient triangle is the defining equality
+$i g=i g$. For every $r$, it gives
+\[
+ i^*(\operatorname{sectionBaseMap}(g,U_j)(r))
+   =\operatorname{sectionBaseMap}(i g,V_j)(r).
+\]
+The preceding lemma identifies the left input with $e_j(C(r))$.
+The existing every-original-polynomial formula for $\Phi_j$, applied to
+$p=C(r)$, now gives
+\[
+ \Phi_j(\operatorname{sectionBaseMap}(i g,V_j)(r))=[C(r)].
+\]
+The source coefficient map is exactly the algebra map of the existing
+named section action; the target coefficient map is exactly $r\mapsto[C(r)]$.
+Thus the already constructed original ring equivalence commutes with both
+original coefficient maps. Equip that same equivalence with this proved
+commutation law to obtain the claimed algebra isomorphism. Its inverse
+is the original ring inverse, so no carrier, operations or sections change.
+\end{proof}

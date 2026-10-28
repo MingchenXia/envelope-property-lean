@@ -1,0 +1,128 @@
+\section{Genuine original Fubini--Study families from total-space Laurent sections}
+
+\begin{definition}\label{def:native-tc-original-weighted-fs-data}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedFSData}
+\leanok
+Let $M,L$ be the original invertible modules of a test configuration,
+with the original action and fibre-one identification. For $n>0$, a
+finite original family $G\subset H^0(\mathcal X,M^{\otimes n})$ and
+$r>0$, form the actual original Fubini--Study datum of $L$ with
+degree and denominator both $n$, and terms
+\[
+ (a,i\log r),\qquad (a,i)\in T_G.
+\]
+Here $T_G$ is the original whole Laurent coefficient family chosen
+before all points and radii. This is a datum of the actual original
+line $L$, with rational class coefficient one and finite real weights.
+\uses{thm:native-tc-global-laurent-fixed-family}
+\end{definition}
+\begin{proof}
+The finite image of the actual coefficient/exponent family consists
+of entire original sections of $L^{\otimes n}$ and real weights.
+The positive denominator $n$ and degree $n$ satisfy the degree
+equation $n=n\cdot1$. No section realization or norm identity is an
+input to this construction.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-original-weighted-fs-evaluation}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.originalPowerSectionNorm_eq_globalSectionNorm,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedFSData_eval}
+\leanok
+At every actual original native point $x$, this entire datum has value
+\[
+ \frac1n\log\max_{(a,i)\in T_G}
+       \{\lVert a(x)\rVert_{L^{\otimes n}}r^i\}.
+\]
+The equality holds in the extended reals, including empty families,
+zero sections, common zeroes and negative Laurent exponents.
+\uses{def:native-tc-original-weighted-fs-data,def:native-tc-weighted-laurent-section-norm}
+\end{theorem}
+\begin{proof}
+The native pullback-unit value of an original whole section equals
+the fibre section of its actual original section morphism. Hence
+the coefficient norms used above are precisely the genuine global
+section norms used by the original Fubini--Study datum. Its terms
+are the finite image of $T_G$, so the datum's supremum is the
+supremum of the original pair values. The logarithm is monotone
+and takes zero to negative infinity, so it preserves the finite
+supremum, including its empty value. Multiplicativity gives
+$\log(\lVert a(x)\rVert r^i)=\log\lVert a(x)\rVert+i\log r$;
+$r^i$ is strictly positive for every integer $i$. This proves the
+identity without excluding any zero coefficient norm.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-original-weighted-fs-total-log}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_weightedFSData_totalLog_factor}
+\leanok
+For every fixed positive degree, actual point and $0<r\leq1$, one
+real number $A_{n,x,r}$, chosen before every finite original family,
+satisfies
+\[
+ \frac1n\log\max_{s\in G}\lVert s\rVert_{\mathcal X,r,x}
+ =A_{n,x,r}+\operatorname{FS}_{G,n,r}(x)
+\]
+for every finite $G$. The additive comparison is derived from the
+actual proper-model norm and actual Laurent coefficients.
+\uses{thm:native-tc-weighted-laurent-true-section-norms,cor:native-tc-weighted-laurent-finite-section-norms,thm:native-tc-original-weighted-fs-evaluation}
+\end{theorem}
+\begin{proof}
+Choose the genuine positive factor $c_{n,x,r}$ for all original
+families. Set $A_{n,x,r}=n^{-1}\log c_{n,x,r}$, a finite real number.
+Apply the extended logarithm to the already proved exact finite-family
+norm identity. The logarithm of the positive factor is its real
+logarithm; multiplication by the positive inverse degree distributes
+over its sum with the weighted maximum logarithm. Substitute the
+preceding actual Fubini--Study evaluation formula. The argument also
+applies when either maximum is zero.
+\end{proof}
+
+\begin{theorem}\label{thm:native-tc-original-weighted-fs-no-common-zero}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_weightedFSData_noCommonZero}
+\leanok
+If the original fibre-one line is ample, then for all sufficiently
+large positive $n$ one can choose a finite original total-space
+section family $G_n$, before all original native points, such that
+the actual weighted Fubini--Study datum above has no common zero
+on the entire original native point space.
+\uses{thm:native-tc-original-weighted-fs-evaluation,cor:native-tc-weighted-laurent-finite-section-norms,thm:native-test-configuration-actual-gauss-finite-norm-family}
+\end{theorem}
+\begin{proof}
+Original ampleness and eventual global generation supply one finite
+actual total-space family in each sufficiently large degree, whose
+true Gauss section-norm maximum is strictly positive at every original
+point. At each point, the genuine positive comparison factor times
+the original coefficient weighted maximum equals this true maximum.
+Thus the coefficient weighted maximum is nonzero. If every original
+coefficient section had zero norm there, every weighted term and their
+finite supremum would be zero, a contradiction. A term with nonzero
+true coefficient norm gives a term with the same section in the actual
+weighted datum, proving the no-common-zero assertion simultaneously
+on the entire original space.
+\end{proof}
+
+\begin{corollary}\label{cor:native-tc-original-rational-fs-families}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedFSRadius,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedFSRadius_properties,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.weightedFSData_isRational,EnvelopeProperty.NativeTestConfiguration.TestConfiguration.exists_eventual_weightedFSData_isFinFS}
+\leanok
+At the fixed original radius $r=e^{-1}$, the actual datum has rational
+weights for every original finite family. If $L$ is ample, then in
+every sufficiently large positive degree the preceding original family
+produces a genuine finite rational Fubini--Study function of the
+actual original line $L$ and class coefficient one, on the entire
+original native point space.
+\uses{def:native-tc-original-weighted-fs-data,thm:native-tc-original-weighted-fs-no-common-zero}
+\end{corollary}
+\begin{proof}
+The fixed radius is positive and at most one, and its real logarithm
+is $-1$. Hence the weight of every actual original coefficient with
+integer Laurent exponent $i$ is $-i$, the image of a rational number.
+Choose the preceding actual eventual family, before all original
+points. Its weighted datum has positive denominator, rational weights
+and no common native zero. These are exactly the defining properties
+of a finite rational Fubini--Study function of the original $L$.
+Its degree equation has coefficient one by construction, and its
+evaluation is the previously proved genuine whole original function.
+\end{proof}
+
+\begin{remark}
+Compatibility of $A_{n,x,r}$ across all degrees remains a separate step.
+No degree-independent metric or final envelope identity is asserted here.
+\end{remark}

@@ -1,0 +1,63 @@
+\section{Actual principalization trees for finite ideal families}
+
+\begin{lemma}[The actual nonzero family product and its ideal sheaf]\label{lem:sc0-nonzero-family-product-sheaf}
+\lean{EnvelopeProperty.Char0.nonzero_fintype_ideal_prod, EnvelopeProperty.Char0.specIdealSheaf_fintype_prod, EnvelopeProperty.Char0.comap_specIdealSheaf_fintype_prod}
+\leanok
+A finite product of nonzero ideals in the literal domain is nonzero. Its
+actual associated ideal sheaf is the product of the original associated
+ideal sheaves, and actual ideal-sheaf pullback preserves that finite product.
+\end{lemma}
+\begin{proof}
+Ideals in a domain have no zero divisors, so the finite product is nonzero,
+including the empty product. Normalize at the actual affine global sections
+and use the actual ideal-extension monoid homomorphism to identify the ideal
+sheaf product. Actual ideal-sheaf pullback preserves multiplication and the
+unit ideal, hence preserves the finite product.
+\end{proof}
+
+\begin{definition}[Actual monomial leaf data for the original family]\label{def:sc0-etale-family-monomial-leaf}
+\lean{EnvelopeProperty.Char0.EtaleFamilyMonomialLeaf}
+\leanok
+For actual literal subalgebras $C\subseteq D\subseteq K$, the leaf data
+consists of actual \'etale coordinates in $D$, a finite injective selection
+of boundary coordinates, exact monomial identities for every original ideal
+extended under the literal inclusion $C\hookrightarrow D$, and an exact
+monomial identity for the genuine all-original-$C$-functions Jacobian image
+ideal in the actual coordinate differential basis.
+\end{definition}
+
+\begin{definition}[An actual family monomial Rees cover]\label{def:sc0-family-monomial-rees-cover}
+\lean{EnvelopeProperty.Char0.FamilyMonomialReesCover}
+\leanok
+\uses{def:sc0-etale-family-monomial-leaf}
+The cover consists of a literal finite Rees tree, actual leaf open immersions
+covering the final scheme with the exact original inclusion triangles, and
+the preceding actual leaf data at every occurrence. This is existential
+output, not an assumption class.
+\end{definition}
+
+\begin{theorem}[Actual BP produces the simultaneous original-family tree]\label{thm:sc0-bp-family-monomial-tree}
+\lean{EnvelopeProperty.Char0.exists_family_monomial_rees_cover, EnvelopeProperty.Char0.exists_etaleSource_principalization_family_tree}
+\leanok
+\uses{lem:sc0-nonzero-family-product-sheaf,def:sc0-family-monomial-rees-cover,lem:sc0-finite-snc-family-jacobian-cover,thm:sc0-family-leaf-jacobian-monomials,cor:sc0-actual-rees-cover-subordinate}
+Actual source \'etale coordinates and a finite family of nonzero ideals
+produce the actual BP principalization sequence of their actual product,
+with its literal finite Rees cover and simultaneous monomial identities for
+every original family ideal and the genuine original-source Jacobian image
+ideal in the same actual leaf coordinates.
+\end{theorem}
+\begin{proof}
+Produce finite generation and pure smoothness from the actual source
+coordinate map. The actual family product is nonzero and supplies the actual
+BP input. Its actual SNC total transform, smooth final scheme and nonempty
+isomorphism open are produced by the checked BP theorems. The actual pulled-back
+family has exactly that actual product. Choose the genuine finite cover by
+simultaneous factor/Jacobian neighborhoods and apply the actual subordinate
+Rees-tree producer. The checked contained-family-leaf theorem supplies all
+factor monomials and the actual unit-monomial literal coordinate Jacobian.
+The original source coordinates identify its genuine all-functions image
+ideal with that determinant's principal ideal, and its actual unit factor
+does not change that ideal. The actual inclusion triangles identify every
+pulled-back factor ideal with extension of its original ring ideal under the
+literal source inclusion.
+\end{proof}

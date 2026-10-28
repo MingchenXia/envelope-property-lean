@@ -1,0 +1,23 @@
+\section{Transport and grading of the whole original base ideals}
+
+\begin{lemma}[Whole coefficient transport under an original line isomorphism]
+\label{lem:actual-base-ideal-iso-transport}
+For any original isomorphism $e:L\simeq M$ of invertible sheaves on any
+scheme, $\mathfrak b(L)=\mathfrak b(M)$. Evaluation against the original
+contravariant dual map is the evaluation of the same original functional
+on the original image section, on every open set.
+\uses{prop:actual-line-global-section-evaluation,prop:actual-invertible-sheaf-base-ideal-affine}
+\lean{EnvelopeProperty.InvertibleBaseIdealTransport.evaluation_dualMap,EnvelopeProperty.InvertibleBaseIdealTransport.sectionEvaluation_map,EnvelopeProperty.InvertibleBaseIdealTransport.baseIdeal_eq_of_iso}
+\leanok
+\end{lemma}
+\begin{proof}
+A local functional on $M$ precomposes with the restriction of $e$.
+Evaluating at a section of $L$ therefore evaluates the original functional
+at its image under $e$. This is the literal definition of the dual map,
+and naturality identifies the image of a restricted global section with
+the restriction of its original global image. To compare the two whole
+base ideals, transport each original global section along $e$ and each
+local functional along its inverse. Their evaluation coefficients agree.
+Since every affine coefficient ideal is the sum over all original global
+sections, this gives both inclusions on every affine open.
+\end{proof}

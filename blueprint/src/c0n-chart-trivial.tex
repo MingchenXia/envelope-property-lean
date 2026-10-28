@@ -1,0 +1,79 @@
+\section{The original trivial point is an actual parameter-adic chart test}
+
+\begin{definition}[The actual parameter-adic DVR of an original chart]
+\label{def:c0n-chart-parameter-adic-dvr}
+\uses{conv:sg-setting,def:c0n-chart-test-points}
+\lean{EnvelopeProperty.ProjSubvariety.chartTAdicDVR}
+\leanok
+For an original chart index $j$ with $x_j\notin I_X$, let
+$V_{j,t}$ be the localization of $A_j[t]$ at the original principal prime
+ideal $(t)$, embedded in its actual fraction field.
+This is a genuine birational DVR essentially of finite type over $k$.
+\end{definition}
+
+\begin{lemma}[Its whole original parameter order and torus law]
+\label{lem:c0n-chart-parameter-adic-orders}
+\uses{def:c0n-chart-parameter-adic-dvr}
+\lean{EnvelopeProperty.ProjSubvariety.chartTAdicDVR_ord_X_pow_mul,EnvelopeProperty.ProjSubvariety.chartTAdicDVR_ord,EnvelopeProperty.ProjSubvariety.chartTAdicDVR_ord_C,EnvelopeProperty.ProjSubvariety.chartTAdicDVR_torus}
+\leanok
+For $Q(0)\ne0$ one has $\operatorname{ord}_{V_{j,t}}(t^mQ)=m$.
+Thus the order of any nonzero whole polynomial is its least supported
+parameter exponent, every nonzero constant from $A_j$ has order zero,
+and
+\[
+ \operatorname{ord}_{V_{j,t}}\!\left(\sum_\ell f_\ell t^\ell\right)
+ =\min_\ell\bigl(\operatorname{ord}_{V_{j,t}}(f_\ell)+\ell\bigr).
+\]
+The equality includes the zero polynomial with order $+\infty$.
+\end{lemma}
+\begin{proof}
+Since $t$ is a prime element and $t$ does not divide a polynomial with
+nonzero constant term, the actual principal-prime localization formula
+computes the order of $t^mQ$ as $m$.
+Factor the lowest parameter power from a nonzero polynomial; the remaining
+factor has nonzero constant term, proving the least-supported-exponent
+formula.  A nonzero constant is the case $m=0$.
+For a nonzero polynomial all supported coefficients are nonzero constants
+in the valuation ring, so every term on the right has order exactly its
+parameter exponent.  Their minimum is the least supported exponent,
+which proves the torus law.  For zero the support is empty and both sides
+are $+\infty$.
+\end{proof}
+
+\begin{lemma}[The attached original chart point is the original trivial point]
+\label{lem:c0n-chart-parameter-adic-trivial-point}
+\uses{lem:c0n-chart-parameter-adic-orders,lem:sg-div-points}
+\lean{EnvelopeProperty.ProjSubvariety.chartDivPoint_chartTAdicDVR_eq_triv}
+\leanok
+The original chart divisorial point $v_{j,V_{j,t},1}$ equals the original
+trivial point of $X^{\mathrm{an}}$.
+\end{lemma}
+\begin{proof}
+It suffices to compare both points on homogeneous forms.
+A homogeneous form in $I_X$ has value zero at both points.
+If a homogeneous form is not in $I_X$, its original dehomogenization in
+$A_j$ is nonzero, since $x_j\notin I_X$ and the coordinate ring is a
+domain.  That constant has parameter-adic order zero, so the attached
+chart point gives the form value one, exactly as the original trivial
+point does.  Homogeneous forms determine the original projective
+seminorms, proving equality.
+\end{proof}
+
+\begin{theorem}[All envelope estimates may be supplied on actual chart DVRs]
+\label{thm:c0n-envelope-only-chart-estimates}
+\uses{thm:c0n-polynomial-chart-envelope-assembly,lem:c0n-chart-parameter-adic-trivial-point}
+\lean{EnvelopeProperty.ProjSubvariety.isPSH_envelope_of_polynomialConeIdealOnlyChartEstimates}
+\leanok
+In the polynomial chart envelope criterion it suffices to supply the raw
+estimate on all genuine original chart data $(j,V,b)$ with $b>0$ and the
+actual torus law.  The required estimate at the original trivial point
+is then derived internally from these same actual chart data.
+\end{theorem}
+\begin{proof}
+Choose an original chart with $x_j\notin I_X$, which exists for a
+projective subvariety.  Apply the supplied estimate to the actual chart
+DVR $V_{j,t}$, the positive integer $b=1$, and its proved torus law.
+Its attached point is the original trivial point by the preceding lemma,
+so this is exactly the required trivial-point estimate.
+The polynomial chart envelope theorem now applies.
+\end{proof}

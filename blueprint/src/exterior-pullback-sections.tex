@@ -1,0 +1,31 @@
+\section{Actual affine pullback sections of the exterior differential map}
+
+\begin{lemma}\label{sc0-exterior-pullback-sections:adjunction}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafPullbackMap_unit}
+\leanok
+\uses{sc0-exterior-cotangent-morphism:sheaf}
+For every actual scheme morphism $g:Y\to X$, the adjunction unit followed by the pushforward of the actual exterior pullback differential map is the previously constructed actual exterior differential map into the pushforward.
+\end{lemma}
+\begin{proof}
+The pullback differential map was defined as the inverse adjunction image of that very pushed map. The formula for the forward adjunction bijection is composition of the unit with the pushforward of the map. Its inverse law therefore gives the asserted equality of the entire actual sheaf morphisms.
+\end{proof}
+
+\begin{theorem}\label{sc0-exterior-pullback-sections:affine}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafPullbackMap_affine_one_tmul}
+\leanok
+\uses{sc0-exterior-pullback-sections:adjunction,sc0-exterior-cotangent-morphism:sheaf}
+Suppose $X$ and $Y$ are actual affine schemes and $f:X\to\operatorname{Spec}k$ is smooth of relative dimension $n$. For every original raw $n$-form $z$ on $X$, the actual affine pullback comparison sends $1\otimes\eta_X(z)$ to a section whose actual differential image is $\eta_Y(dg(z))$. Here $\eta$ are the genuine sheafification units and $dg$ is the actual entire raw exterior component.
+\end{theorem}
+\begin{proof}
+The smooth canonical atlas derives native invertibility of the actual source canonical sheaf and hence its quasicoherence; no quasicoherence certificate is supplied. The genuine affine pullback comparison is therefore available. Its actual pure-tensor formula sends $1\otimes s$ to the actual pullback-adjunction unit applied to $s$. Evaluate the preceding whole-sheaf adjunction identity at the original top open and at $s=\eta_X(z)$. Finally the actual source--target sheafification-unit identity of the exterior differential map identifies the result with $\eta_Y(dg(z))$. The inverse image of the top open is the actual top open, so these are the actual global sections of the two schemes.
+\end{proof}
+
+\begin{corollary}\label{sc0-exterior-pullback-sections:wedge}
+\lean{EnvelopeProperty.CanonicalGeometry.exteriorCotangentSheafPullbackMap_affine_one_tmul_wedge}
+\leanok
+\uses{sc0-exterior-pullback-sections:affine}
+Under the same ordinary affine and smoothness hypotheses, a pure exterior product is sent to the actual sheafified product of its original cotangent images.
+\end{corollary}
+\begin{proof}
+Apply the full raw-form formula to the original pure product. The raw component's proved wedge formula identifies its image with the product of the original cotangent images. Applying the actual target sheafification unit gives precisely the asserted actual section.
+\end{proof}

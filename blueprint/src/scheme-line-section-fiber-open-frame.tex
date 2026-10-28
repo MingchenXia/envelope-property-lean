@@ -1,0 +1,77 @@
+\section{The same section frames a genuine neighborhood of a nonzero fiber}
+Fix any original scheme $X$, any original point $x$, an original
+invertible module $M$, and an actual whole morphism
+$t:\mathcal O_X\to M$. Suppose its actual pullback along the canonical
+$i_x:\operatorname{Spec}\kappa(x)\to X$ is nonzero. No field base,
+projectivity, closedness of $x$, or integral ambient scheme is required.
+
+\begin{lemma}[A same-arrow singleton generating family]
+\label{lem:original-isomorphism-singleton-generators}
+\lean{EnvelopeProperty.SchemeLineSectionFiberOpenFrame.exists_singleton_generatingSections_of_isIso}
+\leanok
+For an actual isomorphism arrow $a:\mathcal O_Y\to N$, there is a finite
+singleton original generating family of $N$, every one of whose original
+whole generator morphisms is exactly this same $a$.
+\end{lemma}
+\begin{proof}
+Use the native free-section equivalence on a singleton to form its
+original free evaluation with constant family the section corresponding
+to the original $a$. The native unit/free equivalence identifies each
+actual basis inclusion followed by this evaluation with the same $a$.
+In particular the evaluation has an epic composite with a basis
+inclusion, so is epic. This is an original generating family with
+singleton index, hence finite and of cardinality one. No generator or
+comparison family is supplied as input.
+\end{proof}
+
+\begin{theorem}[A nonzero original fiber gives a same-section open frame]
+\label{thm:original-fiber-nonzero-open-section-isomorphism}
+\lean{EnvelopeProperty.SchemeLineSectionFiberOpenFrame.exists_open_isIso_of_pullbackSectionHom_ne_zero}
+\leanok
+There is an actual original open $U\subseteq X$ containing $x$ such that
+the actual pullback $t_U:\mathcal O_U\to M|_U$ of this same original
+$t$ is an isomorphism.
+\end{theorem}
+\begin{proof}
+Choose one original invertibility chart containing $x$ and retain its
+actual whole line frame. Restrict the same whole $t$ to that chart and
+take its original frame coefficient. The canonical original residue-field
+map factors through the chart. The existing whole frame-transport formula
+identifies the pullback of $t$ in this transported frame with the scalar
+endomorphism given by the pulled coefficient.
+
+If that pulled coefficient were zero, its scalar endomorphism would be
+zero. Cancellation of the actual transported frame would make the
+original residue pullback of $t$ zero, a contradiction. The canonical
+spectrum-section ring isomorphism identifies this original coefficient
+with a nonzero element of the actual field $\kappa(x)$, hence a unit.
+The basic open of this pulled coefficient is therefore the whole original
+residue spectrum. Native basic-open pullback shows that the original
+residue point lands in the coefficient's actual basic open inside the
+chosen original chart.
+
+On this actual coefficient basic open, the existing same-section basic
+open theorem already makes the pulled $t$ an isomorphism. Compose its
+original open immersion with the original chart inclusion and take the
+native open range in $X$. Its original point image is $x$. The native
+isomorphism onto this open range and the existing whole pullback-section
+factor comparison transport that same actual isomorphism to the original
+open inclusion. Thus the open and the isomorphism concern the original
+$t$, not a replacement section or an assumed matching frame.
+\end{proof}
+
+\begin{theorem}[A nonzero original fiber gives actual local singleton generation]
+\label{thm:original-fiber-nonzero-open-singleton-generation}
+\lean{EnvelopeProperty.SchemeLineSectionFiberOpenFrame.exists_open_singleton_generatingSections_of_pullbackSectionHom_ne_zero}
+\leanok
+There is an original open $U$ containing $x$ and an actual finite
+singleton generating family for the original $M|_U$, with every original
+whole generator map equal to $t_U$, and $t_U$ itself is an isomorphism.
+\uses{thm:original-fiber-nonzero-open-section-isomorphism,lem:original-isomorphism-singleton-generators}
+\end{theorem}
+\begin{proof}
+Apply the preceding actual open-isomorphism producer to the original
+fiber hypothesis, then apply the same-arrow singleton construction to
+that actual pulled arrow on that same open. Cardinality, finite type
+and the generator identity all follow internally for the actual family.
+\end{proof}

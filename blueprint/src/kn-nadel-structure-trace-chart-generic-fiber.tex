@@ -1,0 +1,42 @@
+\section{Every original chart has the same whole generic fiber}
+
+\begin{lemma}[The original chart coefficient field map retains the original generic point]
+\label{lem:kn-structure-trace-chart-generic-base}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericBaseMap,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericBaseMap_over_original}
+\leanok
+For a nonempty whole free chart $U$ on integral $X$, the actual germ
+map $\mathcal O_X(U)\to K$ gives a spectrum map into its base coefficient
+spectrum whose composite with the original base chart map is precisely
+the original $\gamma:\operatorname{Spec}K\to X$.
+\uses{def:kn-structure-trace-whole-free-chart}
+\end{lemma}
+\begin{proof}
+The generic point lies in every nonempty open of an integral scheme.
+The morphism to $X$ obtained by taking the spectrum of its germ on the
+given affine chart and then its actual affine chart inclusion is the
+definition of the generic-stalk morphism computed in that neighborhood.
+The independence of the original stalk morphism from the affine
+neighborhood therefore identifies this whole composite with $\gamma$.
+\end{proof}
+
+\begin{lemma}[The actual whole chart base change is the same original generic fiber]
+\label{lem:kn-structure-trace-chart-generic-iso}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericFiberIso,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericFiberIso_fst,EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.genericFiberIso_snd}
+\leanok
+Base-changing the actual entire chart spectrum over its original base
+coefficient spectrum to $K$ is canonically isomorphic to the entire
+original fiber $Y\times_X\operatorname{Spec}K$. The isomorphism preserves
+both actual projections, including the original map into $Y$ and the
+original $K$-structure map. No component or comparison identity is an
+incoming hypothesis.
+\uses{lem:kn-structure-trace-chart-generic-base,lem:kn-structure-trace-chart-cartesian}
+\end{lemma}
+\begin{proof}
+Paste the actual coefficient-field pullback square with the proved
+original cartesian square of the whole chart. The bottom composite is
+the same original $\gamma$ by the preceding lemma, so the pasted square
+is a pullback of the original projection and $\gamma$. Its universal
+isomorphism with their actual chosen pullback gives the asserted whole
+fiber isomorphism. The two projection identities are the defining
+projection identities of this universal pullback isomorphism.
+\end{proof}

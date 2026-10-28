@@ -1,0 +1,30 @@
+\begin{proposition}[Finite Cech gluing of a natural scalar-extension comparison]
+\label{prop:fc-finite-cech-flat-base-change}
+\lean{EnvelopeProperty.FiniteCechFlatBaseChange.tensorFunctor,EnvelopeProperty.FiniteCechFlatBaseChange.componentMap,EnvelopeProperty.FiniteCechFlatBaseChange.componentMap_restrict,EnvelopeProperty.FiniteCechFlatBaseChange.tensorEquiv,EnvelopeProperty.FiniteCechFlatBaseChange.tensorEquiv_tmul,EnvelopeProperty.FiniteCechFlatBaseChange.isIso_component}
+\leanok
+\uses{lem:fc-flat-kernel-base-change}
+Let $F$ be an actual sheaf of $R$-modules and $G$ an actual sheaf of
+$S$-modules on the same original topological space. Let
+$\psi:S\otimes_R F\to G$ be a natural transformation of the actual
+presheaves, where scalar extension is taken section by section. Fix an
+original open $W$. Suppose $S$ is flat over $R$, the original opens
+$U_i$ form an actual finite cover, and the actual components of $\psi$
+are isomorphisms on every $W\cap U_{i_0}$ and every
+$W\cap U_{i_0}\cap U_{i_1}$. Then its component on sections over that
+same $W$ is an isomorphism. Taking $W$ to be the whole space gives the
+whole global-section comparison. No Cech differential square is a premise.
+\end{proposition}
+\begin{proof}
+The native whole term equivalences identify degree zero and degree one
+with their original products of intersection sections. Finite tensor
+product distribution and the actual local isomorphisms give true whole
+term equivalences. On each pure tensor, their coordinates are precisely
+the original local components of $\psi$. Naturality of $\psi$ commutes
+with every original tuple-deletion restriction. Its linearity preserves
+the actual alternating sum, proving the entire first-differential square.
+The genuine sheaf condition identifies sections on the same $W$ with each actual
+first-differential kernel, with the true augmentation. Flat kernel
+preservation gives the whole equivalence. Composing with the actual
+augmentation and checking every tuple coordinate identifies this
+result with the original component $\psi$ on that same $W$.
+\end{proof}

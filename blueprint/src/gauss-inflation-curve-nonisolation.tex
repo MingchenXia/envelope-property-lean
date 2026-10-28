@@ -1,0 +1,103 @@
+\subsection{Actual Gauss inflation and absence of isolated points on the whole line and integral curves}
+\label{subsec:gauss-inflation-curve-nonisolation}
+
+\begin{lemma}[A nonconstant actual connected path excludes an open singleton]
+\label{topology:actual-connected-path-nonisolation}
+\leanok
+\lean{EnvelopeProperty.not_isOpen_singleton_of_continuous_connected}
+Let $f:Z\to W$ be an actual continuous map from a preconnected
+space to a $T_1$ space. If $z\in Z$ and some actual $z'\in Z$
+has $f(z')\ne f(z)$, then $f(z)$ is nonisolated. No injection,
+open map or separation stronger than $T_1$ is assumed.
+\end{lemma}
+\begin{proof}
+If the image singleton were open, its actual inverse image would
+be open. It is closed by $T_1$ and actual continuity, contains $z$,
+and misses $z'$. This contradicts preconnectedness: every nonempty
+clopen subset is the whole domain.
+\end{proof}
+
+\begin{definition}[An actual whole Gauss inflation of an original line point]
+\label{spectrum:actual-line-gauss-inflation}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.lineGaussInflation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.lineGaussInflation_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_lineGaussInflation,
+EnvelopeProperty.Berkovich.RelativeSpectrum.lineGaussInflation_zero,
+EnvelopeProperty.Berkovich.RelativeSpectrum.radius_le_lineGaussInflation_val_X}
+\uses{spectrum:centered-gauss-whole-ray}
+Let $R$ be ANY commutative ring, $\nu$ ANY prescribed real-valued
+valuation, and $x$ ANY actual point of the prescribed line spectrum
+of $R[T]$. Regard $x$ as the genuine coefficient valuation on the
+original ring $R[T]$. Form its actual translated Gauss seminorm on
+$R[T][S]$ centered at the ORIGINAL element $T$, then pull it back
+along the actual $R$-algebra map $R[T]\to R[T][S]$, $T\mapsto S$.
+This constructs a whole prescribed line point $I_x(r)$ for every
+$r\ge0$, continuously, with $I_x(0)=x$ and $r\le |T|_{I_x(r)}$.
+No residue-field identification, field, completeness, norm bound,
+support condition, point classification or path certificate is assumed.
+\end{definition}
+\begin{proof}
+Both ring maps are the existing genuine polynomial algebra maps;
+actual prescribed Gauss and pullback preserve EVERY original
+scalar. Joint Gauss continuity followed by true fixed pullback
+gives continuity in radius. At zero radius the centered Gauss
+seminorm is whole evaluation $S\mapsto T$. Its composite with
+$T\mapsto S$ is the IDENTITY on EVERY original polynomial,
+proved by polynomial algebra-map extensionality. Thus the point
+at radius zero is the ENTIRE original $x$.
+
+The actual translation sends the outer variable to $S+T$.
+Its coefficient of $S$ is the true unit. The genuine coefficient
+lower bound for Gauss seminorms therefore gives
+$r=|1|_x r\le |S+T|_{\mathrm{Gauss}(x,r)}=|T|_{I_x(r)}$.
+This uses no informal tensor or residue-point comparison.
+\end{proof}
+
+\begin{theorem}[The whole actual line has no isolated points]
+\label{spectrum:actual-all-line-points-nonisolation}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.not_isOpen_singleton_line,
+EnvelopeProperty.Berkovich.RelativeSpectrum.neBot_nhdsNE_line}
+\uses{topology:actual-connected-path-nonisolation,spectrum:actual-line-gauss-inflation,spectrum:topology,spectrum:relative}
+EVERY actual point of the prescribed line spectrum over ANY
+commutative ring and ANY real valuation is nonisolated. No
+nonzero-support, rationality or residue-degree hypothesis is required.
+\end{theorem}
+\begin{proof}
+The actual inflation path begins at $x$. At the genuine radius
+$r=|T|_x+1$, its proved coordinate lower bound implies
+$|T|_{I_x(r)}> |T|_x$, so this whole point differs from $x$.
+The radius domain $\mathbb R_{\ge0}$ is genuinely connected and
+the actual line spectrum is Hausdorff by the independently defined
+evaluation topology. Apply the actual connected-path lemma.
+The punctured-neighborhood identity yields filter nontriviality.
+This is an actual nonisolation argument for the ENTIRE point,
+without a support-density inference or classification of point types.
+\end{proof}
+
+\begin{theorem}[Every actual point of an integral affine curve is nonisolated]
+\label{scheme:actual-all-integral-affine-curve-points-nonisolation}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_affine_of_dimension_le_one,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.neBot_nhdsNE_affine_of_dimension_le_one,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_affine_of_dedekind}
+\uses{algebra:actual-finite-free-integral-curve-line-parameter,spectrum:actual-all-line-points-nonisolation,spectrum:actual-finite-free-open-map,scheme:relative-affine-valued-point-homeomorphism}
+Over ANY valued field, EVERY actual native point of a nonfield
+finite-type integral affine curve of genuine dimension at most
+one is nonisolated. In particular this applies to every actual
+nonfield finite-type Dedekind domain over any field. No closed
+support, perfectness, completeness or etale-chart hypothesis remains.
+\end{theorem}
+\begin{proof}
+Use the ACTUAL finite free polynomial parameter constructed from
+Noether normalization and genuine original prime heights. Its
+whole seminorm restriction is genuinely open. Every image point
+on the actual line is nonisolated by the preceding theorem; an
+open source singleton would have an open image singleton.
+The independently defined native affine homeomorphism retains
+the ENTIRE original point and transfers this contradiction.
+For Dedekind domains, the genuine dimension bound is derived
+from the actual nonzero-prime maximality property. No analytic
+potential or maximum-principle comparison is claimed.
+\end{proof}

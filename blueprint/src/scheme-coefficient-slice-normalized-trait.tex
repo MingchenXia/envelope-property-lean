@@ -1,0 +1,17 @@
+\section{The unchanged original fraction field in the actual normalized trait}
+\begin{theorem}\label{thm:coefficient-slice-normalized-trait-fraction}
+The actual lift of the original DVR trait to the original coefficient-slice normalization restricts, on its unchanged original fraction field, to the canonical actual normalized generic point.
+\uses{def:scheme-coefficient-slice-normalization}
+\lean{EnvelopeProperty.SchemeCoefficientSliceNormalizedTrait.fraction_centerLift}\leanok
+\end{theorem}
+\begin{proof}
+Both maps have the same original projection to the original coefficient slice: the actual DVR normalization lift retains its whole projection, and restricting the whole coefficient-slice trait to its fraction field gives the original image generic point. The canonical normalized generic point has that same projection by its defining normalization triangle. Every original stalk of the spectrum of the original fraction field is integrally closed, since it is the actual prime localization of that field. The genuine uniqueness theorem for dominant maps from normal schemes to the original normalization therefore identifies these two whole maps. The original fraction field is unchanged throughout.
+\end{proof}
+\begin{theorem}\label{thm:coefficient-slice-normalized-trait-dominant}
+The actual original DVR trait lift to the same original coefficient-slice normalization is dominant.
+\uses{thm:coefficient-slice-normalized-trait-fraction}
+\lean{EnvelopeProperty.SchemeCoefficientSliceNormalizedTrait.centerLift_isDominant}\leanok
+\end{theorem}
+\begin{proof}
+The preceding equality identifies its restriction to the original fraction field with the genuine dominant canonical normalized generic point. Dominance of that composite implies dominance of the original whole trait map.
+\end{proof}

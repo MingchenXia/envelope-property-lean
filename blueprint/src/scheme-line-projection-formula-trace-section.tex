@@ -1,0 +1,23 @@
+\section{Every local coefficient of the same inverse-PF trace}
+
+\begin{lemma}[All local coefficients of the original line trace]
+\label{lem:line-pf-unit-trace-native-local-coefficient}
+\lean{EnvelopeProperty.SchemeLineProjectionFormulaUnit.lineProjectionFormulaObj_unitTrace_app_smul_unit}
+\uses{lem:line-pf-native-pure-tensor-readback}
+\leanok
+For an arbitrary original scheme map $g:Y\to X$, an invertible original
+line $L$, and any actual morphism $\tau:g_*\mathcal O_Y\to\mathcal O_X$,
+the composite formed from the original left unitors, the inverse of the
+original line projection formula and $\tau\otimes\mathrm{id}_L$ sends
+$b\eta_L(m)$ to $\tau(b)m$ on every original open. Both local sections
+$b$ and $m$ are arbitrary.
+\end{lemma}
+\begin{proof}
+The original PF sends $b\otimes m$ to $b\otimes\eta_L(m)$ by the
+preceding native pure-tensor formula. The original actual structure
+left unitor sends this tensor to $b\eta_L(m)$. Composing that same PF
+and left unitor with their inverses cancels them. Tensor naturality
+then sends $b\otimes m$ to $\tau(b)\otimes m$, whose original left
+unitor is precisely $\tau(b)m$. No projection formula or scalar
+matching identity is assumed.
+\end{proof}

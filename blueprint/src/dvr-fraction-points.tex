@@ -1,0 +1,22 @@
+\section{The original fraction-field norm of an arbitrary DVR}
+
+\begin{theorem}[The actual DVR norm extends to its actual fraction field]
+\label{thm:actual-dvr-fraction-point}
+\lean{EnvelopeProperty.Berk.dvrFractionPoint, EnvelopeProperty.Berk.dvrFractionPoint_val_algebraMap, EnvelopeProperty.Berk.dvrFractionPoint_val_algebraMap_le_one, EnvelopeProperty.Berk.dvrFractionPoint_integers}
+\leanok
+Let $V$ be a DVR over the trivially valued field $k$, let $K$ be its actual
+fraction field, and let $c>0$. The original norm
+$|a|=\exp(-c\operatorname{ord}_V a)$ extends to the actual field $K$,
+with its original values on every element of $V$. Its ring of integers is
+exactly the original $V$.
+\end{theorem}
+\begin{proof}
+The original norm is nonzero on every nonzero element of $V$. Apply the
+actual localization extension to the original fraction field; its value on
+$a/b$ is $|a|/|b|$. Field coefficients remain trivial by the original scalar
+tower. Every original element of $V$ has norm at most one. Conversely suppose
+$x$ has norm at most one but is not in $V$. The valuation-ring property of
+the original DVR gives $x^{-1}=a\in V$. The element $a$ is a nonunit, since
+otherwise $x$ would also lie in $V$. Therefore its order is positive and
+$|a|<1$, whereas $|x|\le1$ and $xa=1$ imply $|a|\ge1$, a contradiction.
+\end{proof}

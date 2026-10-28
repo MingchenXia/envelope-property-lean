@@ -1,0 +1,38 @@
+\section{Actual principal indices are invariant under finite-colength submodules}
+
+\begin{theorem}[Whole nested original quotient lengths]
+\label{thm:fc-nested-quotient-length}
+\leanok
+\lean{EnvelopeProperty.FiniteColengthEndomorphismIndices.length_nested_quotient}
+For actual original submodules G contained in F contained in M,
+the true length of M/G is the true length of F/G plus the true
+length of M/F. All quotients, maps and exactness are the original
+module quotients and actual inclusion maps.
+\end{theorem}
+\begin{proof}
+Use the actual quotient inclusion and the actual factor quotient
+map. Their true kernels and ranges establish the original short
+exact sequence. Native module length additivity gives the formula,
+including infinite lengths.
+\end{proof}
+
+\begin{theorem}[The same injective endomorphism has the same finite-colength index]
+\label{thm:fc-finite-colength-endomorphism-index}
+\leanok
+\lean{EnvelopeProperty.FiniteColengthEndomorphismIndices.imageQuotientEquiv, EnvelopeProperty.FiniteColengthEndomorphismIndices.length_cokernel_eq_on_finite_colength_submodule}
+\uses{thm:fc-nested-quotient-length}
+Let an actual original injective endomorphism of M preserve an
+actual original submodule F whose quotient M/F has finite length.
+The true length of M/T(M) equals the true length of F/T(F).
+The quotient-length finiteness is an ordinary explicit algebraic
+scope condition here, not a supplied principal-index or geometric
+degree identity.
+\end{theorem}
+\begin{proof}
+Apply the preceding actual nested quotient formula to T(F) inside
+F and to T(F) inside T(M). Original injectivity identifies the
+whole quotient T(M)/T(F) with the SAME original quotient M/F.
+Cancel this genuinely finite length from the two true sums. No
+flatness, regularity, normality or finite freeness is required;
+this is the algebraic cancellation needed for nonflat curve maps.
+\end{proof}

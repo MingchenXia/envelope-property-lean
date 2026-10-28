@@ -1,0 +1,27 @@
+\section{Finiteness in each original ideal-power degree}
+
+\begin{lemma}[Finite cohomology of every original ideal power]
+\label{lem:fc-formal-functions-degree-finite}
+\leanok
+\lean{EnvelopeProperty.FormalFunctionsDegreeFinite.orderedIdealPowerCech_finite, EnvelopeProperty.FormalFunctionsDegreeFinite.originalIdealPowerCech_finite, EnvelopeProperty.FormalFunctionsDegreeFinite.degreeCech_finite}
+\uses{lem:fc-rees-cech-ideal-power-sections}
+Let $R$ be Noetherian and let $X\to\operatorname{Spec}R$ admit a
+projective factorization.  On every finite ordered affine cover of $X$,
+each cohomology group of each original ideal-power sheaf $I^d\mathcal O_X$
+is a finite $R$-module.  The same conclusion holds for every cohomology
+group of the literal degree-$d$ Rees Čech complex.
+\end{lemma}
+\begin{proof}
+A projective morphism is of finite type, so $X$ is locally Noetherian.
+Consequently each extended ideal-power sheaf is finitely presented and
+quasicoherent.  Projective coherent cohomology finiteness applies to
+these actual sheaves: in positive degree it gives finiteness for the
+unordered affine-cover Čech complex, and the canonical ordered-cover
+comparison gives the ordered result.  In degree zero the ordered Čech
+cohomology is the global-section module, whose finiteness follows from
+the degree-zero projective cohomology theorem.  The affine section
+isomorphism identifies the original base ring with the global sections
+of its spectrum, so restriction along this isomorphism preserves finite
+generation.  Finally the ideal-power Čech comparison identifies this
+same finite module with the literal original Rees-degree cohomology.
+\end{proof}

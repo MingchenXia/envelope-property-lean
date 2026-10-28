@@ -1,0 +1,84 @@
+\section{Actual affine chart isomorphisms transport divisorial estimates}
+
+\begin{definition}[The actual chart DVR in the original function field]
+\label{def:c0n-chart-dvr-transport}
+\lean{EnvelopeProperty.Char0.ChartDVRTransport.fieldEquiv,EnvelopeProperty.Char0.ChartDVRTransport.ring,EnvelopeProperty.Char0.ChartDVRTransport.ringEquiv}
+\leanok
+Let $A$ be an integral $k$-algebra, let $C\subset F$ be an actual
+$k$-subalgebra with fraction field $F$, and let $e:A\simeq C$ be an actual
+$k$-algebra isomorphism.  Extend $e$ to its canonical fraction-field
+isomorphism $E:\operatorname{Frac}(A)\simeq F$.
+For a genuine birational DVR $V$ of $A$, define $W=E(V)\subset F$.
+Its ring isomorphism from $V$ is the literal restriction of $E$.
+\end{definition}
+
+\begin{lemma}[All original DVR and map data are preserved]
+\label{lem:c0n-chart-dvr-transport-maps}
+\uses{def:c0n-chart-dvr-transport}
+\lean{EnvelopeProperty.Char0.ChartDVRTransport.fieldEquiv_algebraMap,EnvelopeProperty.Char0.ChartDVRTransport.isDVR,EnvelopeProperty.Char0.ChartDVRTransport.essFiniteType,EnvelopeProperty.Char0.ChartDVRTransport.isFractionRing,EnvelopeProperty.Char0.ChartDVRTransport.source_le,EnvelopeProperty.Char0.ChartDVRTransport.source_inclusion,EnvelopeProperty.Char0.ChartDVRTransport.order_source,EnvelopeProperty.Char0.ChartDVRTransport.ideal_map,EnvelopeProperty.Char0.ChartDVRTransport.ideal_order}
+\leanok
+The transported ring $W$ is a DVR essentially of finite type over the
+same original field, with fraction field $F$, and contains the entire
+original source $C$.  For every $a\in A$,
+\[
+ E(a)=e(a),\qquad
+ \operatorname{ord}_W(e(a))=\operatorname{ord}_V(a).
+\]
+For every ideal $I\subset A$, the actual extended ideal
+$(e_*I)\mathcal O_W$ is the image of $I\mathcal O_V$ under the restricted
+ring isomorphism $V\simeq W$.  In particular their entire ideal orders
+are equal, including the order $+\infty$ of the zero ideal.
+\end{lemma}
+\begin{proof}
+The fraction-field extension sends the fraction-field image of every
+original $a$ to the literal image of $e(a)$ in $F$.
+DVR structure and essential finite type are preserved by the actual
+$k$-algebra isomorphism $V\simeq W$.
+Every element of $F$ pulls back to a quotient of elements of $V$;
+applying $E$ expresses it as the corresponding quotient in $W$.
+Thus $F$ is the fraction field of $W$.
+For $c\in C$, write $c=e(a)$ and use $a\in V$ to see $c\in W$.
+The inclusion of $e(a)$ into $W$ equals the restricted map applied to
+$a\in V$, because both have the same literal image $E(a)$ in $F$.
+Normalized DVR valuations are invariant under ring isomorphisms, proving
+the element-order identity.  The two composite ring maps from $A$ to $W$
+therefore agree on every original element.  Functoriality of extension
+of ideals proves the asserted whole-ideal identity.  Invariance of the
+entire DVR ideal order under the restricted ring isomorphism gives the
+last assertion; no nonzero-ideal hypothesis is needed.
+\end{proof}
+
+\begin{theorem}[The actual original affine estimate in chart coordinates]
+\label{thm:c0n-scheme-estimate-chart-coordinates}
+\uses{lem:c0n-chart-dvr-transport-maps,cor:c0n-original-scheme-ereal-log-bound}
+\lean{EnvelopeProperty.Char0.exists_schemeAsymptoticMultiplierIdeal_chart_order_bound}
+\leanok
+Let $Y$ be smooth and integral over a characteristic-zero field, let
+$U$ be an original nonempty affine open, and let
+$\eta:\Gamma(U,\mathcal O_Y)\simeq A$ be an actual $k$-algebra isomorphism.
+Let $J_\bullet$ be an original graded ideal-sheaf sequence with nonzero
+positive-index generic stalks, and let $V$ be a genuine birational DVR
+of $A$.
+There is one $D\ge0$, independent of $m$ and of the original affine
+section, such that for every $m\in\mathbf N$ and $a>0$ some $q>0$ satisfies
+\[
+ -a\operatorname{ord}_V(\eta(s))\le
+ (m/q)\bigl(-a\operatorname{ord}_V(\eta_*J_q(U))\bigr)+aD
+\]
+for every original section $s$ of the whole original asymptotic
+multiplier ideal on $U$.
+\end{theorem}
+\begin{proof}
+Let $C$ be the actual image of $\Gamma(U,\mathcal O_Y)$ in the original
+function field and use the actual source isomorphism
+$A\xrightarrow{\eta^{-1}}\Gamma(U,\mathcal O_Y)\simeq C$.
+Transport $V$ by the preceding construction and put
+$D=2+\operatorname{ord}_W(\operatorname{Jac}_{C,W})$.
+The original affine scheme estimate supplies $q$ internally from its
+genuine asymptotic-order infimum.  The element and whole-ideal map
+identities of the preceding lemma rewrite its two orders into exactly
+the displayed chart orders.  The discrepancy $D$ depends only on the
+actual affine source and the transported valuation.  Zero sections keep
+infinite order and logarithmic value $-\infty$, so the statement includes
+them and also includes $m=0$.
+\end{proof}

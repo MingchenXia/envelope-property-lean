@@ -1,0 +1,57 @@
+\subsection{Annular ends in every residue branch}\label{subsec:fc-line-ends}
+
+\begin{lemma}[Convergence from linear coordinates]\label{lem:fc-linear-convergence}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_tendsto_iff_linear}
+\leanok
+\uses{lem:fc-linear-determination}
+A map along any filter converges to an actual analytic-line point if and
+only if every linear-coordinate value converges to that point's value.
+\end{lemma}
+
+\begin{proof}
+Analytic-line topology is the topology of polynomial evaluations. Factor
+each polynomial into its leading coefficient and its finitely many linear
+factors, counted with multiplicity. Convergence of the linear values and
+continuity of finite products give convergence of every polynomial value.
+Conversely, convergence of points implies convergence of every continuous
+linear evaluation.
+\end{proof}
+
+\begin{lemma}[Convergence of a whole branch end]\label{lem:fc-branch-end-convergence}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_tendsto_branchEnd}
+\leanok
+\uses{lem:fc-linear-convergence}
+As the value $|T-b|_y$ tends to $r$ from below, the actual point $y$ tends
+to $\zeta_{b,r}$. This assertion holds uniformly over all points with the
+specified coordinate values.
+\end{lemma}
+
+\begin{proof}
+Fix $c$ and put $d=|b-c|$. If $d<r$, then eventually $d<|T-b|_y$;
+the ultrametric equality for unequal summand values gives
+$|T-c|_y=|T-b|_y\to r$. If $d\ge r$, then $|T-b|_y<r\le d$ and the
+same equality gives $|T-c|_y=d$. In either case the limit is
+$\max\{d,r\}=|T-c|_{\zeta_{b,r}}$. Apply linear-coordinate convergence.
+\end{proof}
+
+\begin{theorem}[Every residue branch contains a terminal annulus]\label{thm:fc-residue-end-annulus}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_annulus_subset_nhds}
+\leanok
+\uses{lem:fc-branch-end-convergence, lem:fc-inflation-linear}
+Let $r>0$ and $|b-a|\le r$. Every neighbourhood $V$ of $\zeta_{a,r}$
+contains an actual annulus
+$\{y:\rho<|T-b|_y<r\}$ for some $0\le\rho<r$.
+In particular this holds for each standard-affinoid interior containing
+that Gauss point.
+\end{theorem}
+
+\begin{proof}
+The centre bound gives $\zeta_{b,r}=\zeta_{a,r}$. The preceding convergence
+assertion says that the inverse-image filter of the left neighbourhoods
+of $r$ under $y\mapsto|T-b|_y$ converges to this Gauss point.
+Consequently $V$ belongs to that inverse-image filter. The intervals
+$(\rho,r)$, $0\le\rho<r$, form a basis of left neighbourhoods at $r$,
+since $r>0$. The inverse image of one such interval therefore lies in $V$,
+which is the asserted annulus. For the last assertion, the interior is
+open and contains the point, so it is a neighbourhood.
+\end{proof}

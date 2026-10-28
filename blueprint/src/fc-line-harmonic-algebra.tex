@@ -1,0 +1,19 @@
+\subsection{The actual harmonic vector space}\label{subsec:fc-line-harmonic-algebra}
+
+\begin{lemma}[Real vector operations on actual harmonic functions]\label{lem:fc-harmonic-vector-space}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.const, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.add, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.smul, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.neg, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.IsHarmonic.sub, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.harmonicSubmodule}
+\leanok
+\uses{def:fc-actual-harmonic}
+Actual harmonic functions on $U$ form a real vector subspace of the functions
+$U\to\R$. Constants are harmonic; sums, differences and real scalar multiples
+of actual harmonic functions are harmonic.
+\end{lemma}
+
+\begin{proof}
+The constant $b$ has coefficients $(b,0)$. If two functions have coefficient
+witnesses $(c,\gamma)$ and $(d,\delta)$, their sum and difference have witnesses
+$(c+d,\gamma+\delta)$ and $(c-d,\gamma-\delta)$. Multiplication by a real
+scalar $a$ gives $(ac,a\gamma)$. The identities follow by distribution
+through the finite sum. They concern the actual functions and require no
+uniqueness of their coefficient witnesses.
+\end{proof}

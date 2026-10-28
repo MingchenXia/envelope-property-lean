@@ -1,0 +1,40 @@
+\section{The native original order is the actual stalk quotient length}
+
+\begin{theorem}[Actual local order and true quotient length]
+\label{thm:fc-scheme-order-local-length}
+\leanok
+\lean{EnvelopeProperty.SchemeOrderLocalLength.principal_stalk_quotient_finiteLength, EnvelopeProperty.SchemeOrderLocalLength.ord_germToFunctionField_eq_stalk_length}
+On an actual integral locally Noetherian scheme, let $x$ have actual
+codimension one and let $c$ be a nonzero section on an actual open
+neighborhood of $x$. Its actual stalk quotient by the principal ideal
+of its original germ has finite length. The native original order
+$\operatorname{ord}_x(c)$ in the actual original function field equals
+this actual length, regarded as an integer.
+\end{theorem}
+\begin{proof}
+The original germ map is injective by integrality, so the original germ
+is a nonzerodivisor in the actual original stalk domain. Its stalk
+has dimension at most one by the actual codimension-one hypothesis.
+The true Noetherian principal quotient length theorem therefore proves
+finite length. The original native function-field germ is the image
+of the same stalk germ under the actual fraction-field map. The native
+fraction-field order extends the actual stalk order, which is defined
+as precisely this actual principal quotient length. Finiteness makes
+its natural and integer values agree, giving the equality.
+\end{proof}
+
+\begin{theorem}[Actual local rational orders are differences of true lengths]
+\label{thm:fc-scheme-rational-order-local-length}
+\leanok
+\lean{EnvelopeProperty.SchemeOrderLocalLength.ord_div_germToFunctionField_eq_stalk_lengths}
+\uses{thm:fc-scheme-order-local-length}
+For two such nonzero actual sections $c,d$ on the same original open,
+the native order of their actual original function-field quotient is
+the difference of their actual principal stalk quotient lengths.
+\end{theorem}
+\begin{proof}
+The actual original function-field germ is injective, so both elements
+and their quotient are nonzero. Apply native order multiplicativity
+to $(c/d)d=c$, cancel in the integers, and substitute the preceding
+same-stalk length identities for $c$ and $d$.
+\end{proof}

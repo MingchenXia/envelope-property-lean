@@ -1,0 +1,11 @@
+\section{An actual smooth affine ambient neighborhood of the normalized center}
+\begin{theorem}\label{thm:normalized-center-ambient-smooth}
+Assume the original coefficient field $k$ has characteristic zero. Under the original normalized coefficient-slice hypotheses, the unchanged actual center belongs to the smooth locus of the actual normalized surface over the actual coefficient field $E$. There is an actual affine open neighborhood of that same center whose coefficient structure over $E$ is smooth.
+\uses{thm:normalized-coefficient-slice-center-dvr}
+\lean{EnvelopeProperty.SchemeNormalizedCenterSmooth.center_mem_smoothLocus,EnvelopeProperty.SchemeNormalizedCenterSmooth.exists_smooth_affine}\leanok
+\end{theorem}
+\begin{proof}
+The actual normalized coefficient slice is proper over $E[t]$, hence locally of finite type over $E$. Its center stalk is the actual DVR produced above. A local principal ideal domain is a regular local ring, so the same actual center is a regular point of the normalized surface. The original coefficient field $E$ is a field of characteristic zero, hence perfect. The finite-type regular-equals-smooth theorem over a perfect field therefore places the center in the actual coefficient smooth locus.
+
+That smooth locus is an open neighborhood of the original center. The coefficient morphism restricted to it is smooth: the smooth locus of that restriction is the inverse image of the original smooth locus, which is the entire restricted scheme. Choose an actual affine neighborhood of the same point inside that open subset. Its open immersion into the smooth locus is smooth, so its composite coefficient structure is smooth. This proves ambient smoothness over $E$. No smoothness over the parameter base $E[t]$, no reducedness of its special fibre, and no change to its original positive parameter multiplicity is inferred.
+\end{proof}

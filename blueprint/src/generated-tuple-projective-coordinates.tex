@@ -1,0 +1,40 @@
+\section{The original projective tuple map on a unit coordinate}
+
+\begin{definition}[The same original graded tuple evaluation]
+\label{def:fc-generated-tuple-graded-map}
+\leanok
+\lean{EnvelopeProperty.GeneratedTupleProjectiveCoordinates.tupleGradedMap, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.tupleGradedMap_X, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.tupleGradedMap_irrelevant, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.affineTupleMap_graded}
+For an actual unit-ideal tuple $(a_i)$ in the original domain $A$ and
+an actual coefficient map $R\to A$, compose the original polynomial
+coefficient map with the original degree-one Rees evaluation. This
+graded map sends every original $X_i$ to the same $a_iT$.
+\end{definition}
+\begin{proof}
+Both maps preserve the original grading. Their composite has the
+required irrelevant-ideal containment by composition of the genuine
+coefficient and surjective Rees-map containments. Evaluation on an
+original variable is the defining degree-one Rees evaluation.
+\end{proof}
+
+\begin{theorem}[Exact original coordinate chart of the same tuple morphism]
+\label{thm:fc-generated-tuple-unit-chart}
+\leanok
+\lean{EnvelopeProperty.GeneratedTupleProjectiveCoordinates.chartRingMap, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.affineTupleMap_coordinateChart, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.chartRingMap_coordinate, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.chartRingMap_C, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.chartRingMap_eq_eval, EnvelopeProperty.GeneratedTupleProjectiveCoordinates.affineTupleMap_eq_eval_chart}
+\uses{def:fc-generated-tuple-graded-map,thm:fc-original-unit-rees-chart-section,thm:fc-original-unit-rees-coordinate-ratio}
+If the original $a_i=1$, the actual original tuple morphism is
+the actual standard projective chart inclusion composed with the
+spectrum of polynomial evaluation $X_j/X_i\mapsto a_j$, with the
+original coefficient map. In particular this is a whole morphism
+identity for the same original Rees-constructed tuple morphism.
+\end{theorem}
+\begin{proof}
+The original homogeneous Rees denominator, namely the image of
+$X_i$, is precisely $T$. The genuine unit-blowup inverse is the
+actual homogeneous chart section from the preceding result. Compose
+with the native Proj chart square for the original composite graded
+map. On each original coordinate fraction its coefficient is
+$(a_jT)/T=a_j$; on original constants it is the original coefficient
+map. Polynomial-ring extensionality identifies the entire chart
+homomorphism with this evaluation. The original homogeneous-chart
+isomorphism then gives the stated whole projective morphism identity.
+\end{proof}

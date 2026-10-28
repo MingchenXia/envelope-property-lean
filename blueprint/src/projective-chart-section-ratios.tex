@@ -1,0 +1,23 @@
+\begin{lemma}[Original coordinate-section ratios on arbitrary polynomial chart maps]
+\label{lem:fc-original-projective-chart-section-ratios}
+\lean{EnvelopeProperty.ProjectiveChartSectionRatios.chartFactor, EnvelopeProperty.ProjectiveChartSectionRatios.coefficient_pullback, EnvelopeProperty.ProjectiveChartSectionRatios.sectionHom_isIso, EnvelopeProperty.ProjectiveChartSectionRatios.sectionHom_relation}
+\leanok
+\uses{thm:fc-original-homogeneous-form-section}
+Let $f:T\to\operatorname{Spec}R[x_j\mid j\ne i]$ be any actual scheme
+morphism to the original $i$th polynomial projective chart. The pullback
+of the original coordinate section $X_i$ of $\mathcal O(1)$ is an
+isomorphism. Every original section $X_j$ is its product with the actual
+whole global function $f^*(x_j/x_i)$.
+\end{lemma}
+\begin{proof}
+The homogeneous localization chart is canonically isomorphic to the
+original polynomial coordinate spectrum. Its whole original section
+isomorphism sends $x_j/x_i$ to the degree-zero fraction $X_j/X_i$.
+Naturality of the actual spectrum global-section isomorphism therefore
+identifies the coefficient pulled along $f$ with its original whole
+section-ring homomorphism applied to $x_j/x_i$. On the projective chart
+$X_i$ has coefficient one and hence is an isomorphism; $X_j$ has the
+original coefficient $X_j/X_i$ relative to that pivot. Whole native
+pullback preserves the pivot isomorphism and this original scalar
+relation, giving the asserted identity for every $T$.
+\end{proof}

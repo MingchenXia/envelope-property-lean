@@ -1,0 +1,65 @@
+\subsection{Native prescribed-base projective coordinate charts}
+\label{subsec:native-projective-point-charts}
+
+The projective scheme in this chapter is the actual total-degree polynomial
+Proj over an arbitrary commutative ring. Its structure morphism is derived
+from Mathlib's degree-zero structure morphism, followed by the genuine
+constant-polynomial homomorphism. There is no independently supplied chart
+certificate or unrelated coefficient action.
+
+\begin{definition}[Actual polynomial projective structure morphism]
+\label{projective:native-structure-morphism}
+\lean{EnvelopeProperty.ProjBerk.nativeStructureMap,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSchemeIso_hom_eq,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChartSchemeIso_eq,
+  EnvelopeProperty.ProjBerk.nativeHomogeneousChart_over_base,
+  EnvelopeProperty.ProjBerk.nativeCoordinateChart_over_base}
+\leanok
+\uses{projective:native-scheme-coordinate-sections}
+Let $P=R[X_0,\ldots,X_n]$ with its actual total-degree grading. The
+structure morphism $\operatorname{Proj}P\to\operatorname{Spec}R$ is the
+actual map to $\operatorname{Spec}P_0$ followed by the Spec map induced
+by $R\to P_0$, $r\mapsto C(r)$.
+\end{definition}
+\begin{proof}
+Constant polynomials form a genuine coefficient ring homomorphism into
+the degree-zero graded piece. Compose its contravariant Spec morphism
+with the actual Proj structure morphism. On each coordinate open, Mathlib's
+actual fraction-chart structure identity gives the coefficient inclusion
+into the homogeneous localization. The established whole chart algebra
+isomorphism sends this coefficient inclusion to the actual coefficient
+inclusion into $R[U_i:i\ne j]$. Thus the coordinate chart is a true scheme
+isomorphism over the specified original $\operatorname{Spec}R$.
+\end{proof}
+
+\begin{theorem}[Native projective coordinate chart on all valued points]
+\label{projective:native-relative-coordinate-chart}
+\lean{EnvelopeProperty.ProjBerk.nativeCoordinateInclusion,
+  EnvelopeProperty.ProjBerk.nativeCoordinateInclusion_isOpenImmersion,
+  EnvelopeProperty.ProjBerk.nativeCoordinateInclusion_opensRange,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSpectrumHomeomorph,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSpectrumHomeomorph_symm_coe,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSectionsIso_eq,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSectionsIso_cancel,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSpectrumHomeomorph_symm_val,
+  EnvelopeProperty.ProjBerk.nativeCoordinateSpectrumHomeomorph_val_apply}
+\leanok
+\uses{projective:native-structure-morphism,projective:native-scheme-coordinate-sections,scheme:relative-affine-valued-point-homeomorphism,scheme:relative-open-embedding}
+For any prescribed real seminorm $v$ on $R$, the native valued-point space
+of $\operatorname{Proj}P$ supported on $D_+(X_j)$, with its whole
+restriction to the original base equal to $v$, is homeomorphic to
+$\operatorname{RelativeSpectrum}_v R[U_i:i\ne j]$. Under this map every
+affine polynomial is evaluated as its actual local homogeneous-fraction
+section, including its genuine residue germ.
+\end{theorem}
+\begin{proof}
+Restrict the native valued points through the genuine open-subscheme
+homeomorphism. The actual scheme isomorphism of the coordinate chart to
+Spec induces a whole native-point homeomorphism; its original-base
+compatibility is precisely the previously proved structure diagram.
+The actual affine Spec/native-spectrum homeomorphism then gives the
+prescribed-base relative seminorm spectrum. The existing evaluation
+naturality and the actual section-ring fraction/germ equality prove the
+value identity on every affine polynomial, rather than merely on its
+coordinate generators.
+\end{proof}

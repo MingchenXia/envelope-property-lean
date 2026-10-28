@@ -1,0 +1,20 @@
+\section{The actual value of an adjointed structure-module section}
+
+\begin{lemma}\label{sc0-pushforward-unit-sections:map}
+\lean{AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_hom_homEquiv,AlgebraicGeometry.Scheme.Modules.pushforwardUnitSection_homEquiv}
+\leanok
+For an arbitrary actual scheme morphism $g:Y\to X$ and actual module section $s:\mathcal O_Y\to N$, adjointing the actual pullback-unit isomorphism followed by $s$ gives exactly the original structure-ring map $\mathcal O_X\to g_*\mathcal O_Y$ followed by the actual pushforward of $s$.
+\end{lemma}
+\begin{proof}
+The native pullback structure-module map is by definition adjoint to the native original ring-map-induced structure-module map. The existing pullback-unit isomorphism uses this same actual map. The actual adjunction's naturality in its target identifies composition with $s$ with composition by the actual pushforward of $s$. Its inverse law proves the first whole-map identity and then the second.
+\end{proof}
+
+\begin{theorem}\label{sc0-pushforward-unit-sections:value}
+\lean{AlgebraicGeometry.Scheme.Modules.pushforwardUnitSection_homEquiv_app}
+\leanok
+\uses{sc0-pushforward-unit-sections:map}
+For every original open $U\subseteq X$ and every original function $a\in\Gamma(U,\mathcal O_X)$, this actual adjointed map takes $a$ to $s_{g^{-1}U}(g^\#_U(a))$ in the whole original section module $\Gamma(g^{-1}U,N)$. No affine, smoothness, properness, flatness, finiteness or comparison certificate is required.
+\end{theorem}
+\begin{proof}
+Evaluate the preceding entire actual map equality on the original open and the original section. The native structure-module map evaluates to the SAME original structure-ring map, and actual module pushforward evaluates $s$ on precisely the original inverse-image open. Their actual composite therefore has the asserted value on every original function.
+\end{proof}

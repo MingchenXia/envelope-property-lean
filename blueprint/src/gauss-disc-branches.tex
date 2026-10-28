@@ -1,0 +1,156 @@
+\subsection{Genuine branches of the original closed disc at its actual Gauss point}
+
+This full mathematical plan precedes code. Use the ORIGINAL whole relative
+polynomial spectrum, its actual closed coordinate disc, and the genuine
+Gauss point. No analytic domain, branch, connected-component or disc-chart
+certificate is supplied. The independent algebraic proof permits ANY
+algebraically closed field with ANY real-valued ultrametric valuation;
+completeness and nontriviality are not hypotheses. Specializing to a normed
+field gives precisely the already constructed original closed disc and its
+actual completed-ring comparison.
+
+Primary context read: Berkovich (1990), Section 1.4.4 (printed page 18),
+original closed/open discs in the genuine polynomial point space, and
+Section 4.2 (printed pages 78--79), the open-disc branches of the projective
+line. The book's latter discussion assumes nontrivial norm and addresses
+more global analytic geometry. Our bounded closed-disc statement below is
+proved directly from actual split polynomial factorization and the already
+proved actual whole Gauss retraction, so the broader valuation hypotheses
+are genuine proved generality rather than an unsupported source citation.
+
+\begin{lemma}[Whole linear-value separation and the actual non-Gauss branch cover]
+\label{analytic:actual-algclosed-disc-branch-cover}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.discGaussPoint,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isOpen_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discGaussPoint_not_mem_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranch_subset_compl_gauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.eq_of_linear_values,
+EnvelopeProperty.Berkovich.RelativeSpectrum.exists_mem_discBranch_of_ne_gauss}
+\uses{spectrum:gauss-point,spectrum:relative,analytic:actual-disc-polynomial-root-dominance,spectrum:actual-translated-closed-disc}
+Let $K$ be an ACTUAL algebraically closed field, let $v:K\to\mathbb R_{\ge0}$
+be ANY original valuation, and let $r>0$. In the actual original point space
+\[
+ E_r=\{x\in\operatorname{Sp}_v(K[T]):|T(x)|\le r\},
+\]
+construct its true Gauss point $\eta_r$. For ANY original $a\in K$ with
+$v(a)\le r$ define the ACTUAL open subset
+\[
+ B_a=\{x\in E_r:|(T-a)(x)|<r\}.
+\]
+Every original point of $E_r\setminus\{\eta_r\}$ belongs to some actual
+$B_a$ with $v(a)\le r$, and no $B_a$ contains $\eta_r$. The entire polynomial
+point is determined by its values on ALL original linear polynomials $T-a$,
+together with its already prescribed values on EVERY original coefficient.
+No field-valued representative or point-classification certificate is used.
+\end{lemma}
+\begin{proof}
+For ANY original polynomial $p$, actual algebraic closedness makes $p$ split.
+Its genuine entire identity is
+$p=C(\operatorname{lc}p)\prod_{a\in\operatorname{roots}p}(T-C(a))$,
+with multiplicities. Whole valuation multiplicativity, the prescribed
+original coefficient values, and equality on EVERY original linear factor
+therefore imply equality of EVERY original polynomial value. This includes
+the zero polynomial and repeated roots and gives whole-point equality.
+
+Fix $x\in E_r$ outside the original Gauss point. If no stated branch contains
+$x$, then for EVERY original $a$ with $v(a)\le r$, true ultrametricity gives
+$|(T-a)(x)|\le\max(|T(x)|,v(a))\le r$ while the assumed lack of strict
+inequality forces equality with $r$. If instead $v(a)>r$, then
+$|T(x)|<v(a)$, so the actual unequal-term valuation identity gives
+$|(T-a)(x)|=v(a)$. In BOTH cases its value equals
+$\max(r,v(a))$, which is exactly the genuine Gauss linear value.
+The whole linear-value separation just proved then forces $x=\eta_r$,
+a contradiction. Thus the ACTUAL branch cover exists. At $\eta_r$,
+$|(T-a)(\eta_r)|=r$ for each permitted center, excluding that point.
+Every branch is open by actual evaluation continuity and strict inequality.
+\end{proof}
+
+\begin{theorem}[Actual translated strict discs and the genuine equal-or-disjoint branch law]
+\label{analytic:actual-actual-translated-disc-branches}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.discBranch_eq_of_val_sub_lt,
+EnvelopeProperty.Berkovich.RelativeSpectrum.val_sub_lt_of_mem_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.disjoint_discBranch_of_not_val_sub_lt,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranchCenteredHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranchHomeomorph,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranchHomeomorph_val_apply,
+EnvelopeProperty.Berkovich.RelativeSpectrum.contractibleSpace_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isConnected_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.discBranch_eq_iff}
+\uses{analytic:actual-algclosed-disc-branch-cover,analytic:actual-strict-fibre-disc-contraction,analytic:actual-centred-strict-fibre-discs,spectrum:actual-translated-closed-disc}
+For the SAME original closed disc and original centers $v(a),v(b)\le r$,
+construct a genuine homeomorphism from the ACTUAL strict fibre disc over the
+whole coefficient point $v$ to the actual branch $B_a$, preserving EVERY
+original polynomial value through $T\mapsto T+a$. Each original branch is
+therefore contractible and genuinely connected. Moreover
+\[
+ B_a=B_b\quad\Longleftrightarrow\quad v(a-b)<r;
+\]
+if the displayed strict inequality fails, the actual branches are disjoint.
+The translation, equal/disjoint law and contractibility construction need
+only an original valued commutative coefficient ring, not algebraic closedness;
+algebraic closedness is used solely for the preceding entire branch cover.
+\end{theorem}
+\begin{proof}
+Use the genuine polynomial algebra automorphism $T\mapsto T+a$ and its
+WHOLE induced point homeomorphism. The exact polynomial identity
+$(T+a)-a=T$ shows that the translated strict coordinate condition is exactly
+$|(T-a)(x)|<r$. The actual original coefficient value and ultrametricity give
+$|T(x)|\le\max(|(T-a)(x)|,v(a))\le r$, so the WHOLE translated point lies
+in the SAME original $E_r$. The real inverse polynomial automorphism and
+whole point inverse identities give both actual subtype inverse laws. No
+point is reconstructed from its coordinate alone. All original coefficient
+points over the base ring itself equal the original prescribed valuation,
+so the strict fibre condition is genuinely discharged, rather than supplied.
+
+The already proved actual polynomial retraction fixes every whole coefficient
+point and never increases the true coordinate radius. Its genuine restriction
+to the actual strict fibre disc contracts to the original radius-zero Gauss
+point. Transport this actual contraction by the constructed translation
+homeomorphism. The target point is the real evaluator at the ORIGINAL $a$;
+it has $(T-a)$ value zero, hence is an actual branch point because $r>0$.
+Thus every branch is genuinely nonempty and connected.
+
+If $v(a-b)<r$ and $x\in B_a$, apply the actual ultrametric inequality to
+$T-b=(T-a)+(a-b)$ to show $x\in B_b$. The symmetric identity gives the
+reverse inclusion. Conversely any whole point in BOTH branches evaluates
+$a-b=(T-b)-(T-a)$ with value strictly below $r$. Hence intersecting branches
+have the displayed center inequality and are equal; otherwise they are
+genuinely disjoint. Nonemptiness proves the asserted equality iff.
+\end{proof}
+
+\begin{theorem}[The original translated discs are the actual connected components of the punctured disc]
+\label{analytic:actual-gauss-punctured-disc-components}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.connectedComponentIn_compl_gauss_eq_discBranch,
+EnvelopeProperty.Berkovich.RelativeSpectrum.exists_connectedComponentIn_eq_discBranch}
+\uses{analytic:actual-algclosed-disc-branch-cover,analytic:actual-actual-translated-disc-branches}
+For the SAME algebraically closed valued field and $r>0$, the genuine
+connected components of the ACTUAL subspace $E_r\setminus\{\eta_r\}$
+are precisely the ORIGINAL subsets $B_a$ with $v(a)\le r$. More explicitly,
+for EVERY actual $x\in B_a$, its actual connected component within that
+punctured subspace is EXACTLY $B_a$. Each component has the preceding
+constructed actual contraction; no chosen component, connectedness or
+branch chart is assumed.
+\end{theorem}
+\begin{proof}
+The preceding actual branches cover the ENTIRE punctured disc, are open in
+the original disc, and are equal or disjoint. For a fixed original branch
+$B_a$, the union of all other genuinely disjoint original branches is also
+open; its union with $B_a$ is precisely the punctured disc. Both pieces are
+therefore a real separation into open subsets. The genuine preconnected
+component of a point $x\in B_a$ must stay in $B_a$, by preconnectedness
+and this actual open separation. Conversely $B_a$ is genuinely connected,
+contains $x$, and is a subset of the actual punctured disc. The maximality
+of the actual connected component gives the reverse inclusion. Hence the
+whole actual component set equals $B_a$. The actual branch cover then
+classifies every punctured-disc component.
+
+This constructs genuine original A1 branch topology. It does NOT identify
+arbitrary curve analytic domains, relative analytic boundary, residue-curve
+branch labels or degree weights; it does not construct graph balancing,
+a harmonic sheaf or Thuillier comparison. Those remain real subsequent
+source-facing constructions, not hypotheses encoded in these statements.
+\end{proof}

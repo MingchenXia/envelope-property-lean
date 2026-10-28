@@ -1,0 +1,156 @@
+\subsection{Actual native model maps across coefficient rings}
+\label{subsec:native-model-base-change}
+
+\begin{theorem}[Compatible coefficient restriction of whole native points]
+\label{scheme:native-coefficient-restriction}
+\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.map_basePoint,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mapOverBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mapOverBase_coe,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_mapOverBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.mapOverBase_id}
+\leanok
+\uses{scheme:relative-valued-point-functor,scheme:affine-valued-point-homeomorphism}
+Let $\varphi:R\to S$ be a homomorphism of arbitrary commutative rings,
+and let $v,w$ be real multiplicative seminorms on $R,S$ satisfying
+$w(\varphi(r))=v(r)$ for every $r\in R$. For actual structure maps
+$f_X:X\to\operatorname{Spec}S$ and
+$f_Y:Y\to\operatorname{Spec}R$ and an actual scheme morphism $g:X\to Y$
+with
+\[
+ f_Y\circ g=\operatorname{Spec}(\varphi)\circ f_X,
+\]
+the genuine native point map restricts to a continuous map from the
+whole prescribed-$w$ locus of $X$ to the whole prescribed-$v$ locus of
+$Y$. For the identity coefficient map this is the original commuting
+same-base native map. No boundedness, properness, field, finite-type or
+point-existence hypothesis is needed.
+\end{theorem}
+\begin{proof}
+Under the actual native affine homeomorphism, the native map of
+$\operatorname{Spec}(\varphi)$ is genuine seminorm pullback under
+$\varphi$. Compatibility on every original-ring element therefore sends
+the whole native affine base point of $w$ to that of $v$: injectivity of
+the actual affine homeomorphism proves equality of these entire points.
+The whole native composition law and the actual commuting scheme
+diagram show that the image of a source point over $w$ lies over $v$.
+Restrict the genuine native map to these subtypes; continuity follows
+from its actual continuity and the subtype topology. Its underlying map
+is the original native point map. Identity coefficient restriction has
+the same whole native point, hence agrees with the old same-base map.
+No existence or surjectivity of points under a scalar extension is
+asserted.
+\end{proof}
+
+\begin{theorem}[Genuine proper-center comparison across bounded bases]
+\label{scheme:proper-center-coefficient-change}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_val_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_maximalIdeal_comap_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isLocalHom_centerRingMap_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_fraction_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.residueBaseMap_naturality_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_base_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerLift_naturality_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.centerRingMap_closedPoint_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.center_map_overBase}
+\leanok
+\uses{scheme:native-coefficient-restriction,scheme:proper-native-center}
+In the preceding diagram suppose $f_X$ is proper over
+$\operatorname{Spec}S$ and $f_Y$ is proper over
+$\operatorname{Spec}R$. Assume explicitly
+\[
+ v(r)\le1\quad(r\in R),\qquad w(s)\le1\quad(s\in S).
+\]
+For every native point $y$ of $X$ above $w$, the actual residue-field
+pullback from its native image restricts to a local homomorphism of
+the genuine valuation rings, with exact maximal-ideal contraction and
+with all original coefficient maps compatible. The entire valuative
+lifts commute under this map. In particular the true proper-model
+centers satisfy
+\[
+ g(c_X(y))=c_Y(g(y)).
+\]
+The source is only required to be proper over its own coefficient ring
+$S$. No properness of $X$ over $R$, no properness of the intervening
+map $g$, and no noetherian or completeness hypothesis is imposed.
+These centers are distinct constructions from native kernel supports.
+\end{theorem}
+\begin{proof}
+The actual native residue-field embedding preserves every value by the
+native pullback definition, so it sends the target valuation ring into
+the source valuation ring. The strict-value description of genuine
+valuation-ring maximal ideals gives exact contraction; the ordinary
+local-ring criterion therefore proves that this is an actual local
+homomorphism. The whole fraction-field diagram is the original
+residue-field map together with the genuine valuation-ring inclusions.
+
+For each $r\in R$, use the actual scheme diagram on global sections,
+genuine residue evaluation naturality and the original-ring
+$\Gamma\operatorname{Spec}$ isomorphism naturality. They prove equality
+of the actual residue coefficient elements: the target coefficient
+pullback equals the source coefficient map evaluated at $\varphi(r)$.
+This is equality of elements, rather than only equality of their values.
+The two explicit coefficient bounds place both maps in their actual
+valuation rings, and subtype injectivity proves the corresponding whole
+valuation-ring coefficient diagram.
+
+Use the source valuation ring and its actual fraction field to form a
+true valuative square for $f_Y$, whose generic map is the genuine source
+residue point followed by $g$, and whose base coefficient map is the
+source valuation-ring map composed with $\varphi$. The source proper
+lift followed by $g$ and the target proper lift pulled back under the
+valuation-ring homomorphism both satisfy the two whole triangles: the
+source base triangle uses the actual structure diagram, and the target
+base triangle uses the proved coefficient equality. Separated valuative
+uniqueness of $f_Y$ identifies these entire scheme lifts. This comparison
+never uses properness of the source over $R$. Finally the proved local
+homomorphism sends the actual source closed point to the actual target
+closed point. Evaluating the full lift identity there proves the stated
+center identity.
+\end{proof}
+
+\begin{theorem}[Intrinsic model ideal pullback across coefficient rings]
+\label{scheme:model-ideal-coefficient-change}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.sectionSpectrum_comap_appLE_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealNorm_comap_overBase,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelIdealLog_comap_overBase}
+\leanok
+\uses{scheme:proper-center-coefficient-change,scheme:genuine-ideal-pullback-stalk,
+scheme:native-model-ideal-function,lem:general-ideal-pullback}
+Under the preceding properness and two bounded-base hypotheses,
+every actual ideal-sheaf datum $I$ on $Y$ satisfies
+\[
+ \|g^*I\|_X(y)=\|I\|_Y(g(y)),\qquad
+ \log\|g^*I\|_X(y)=\log\|I\|_Y(g(y)).
+\]
+Here $g^*I$ is Mathlib's genuine geometric ideal pullback and the model
+functions are the intrinsic true-center stalk norms. No finite
+generation, noetherianity, flatness or birationality is required.
+\end{theorem}
+\begin{proof}
+Actual native residue evaluation and restriction of sections identify
+the whole source section-spectrum pullback under the genuine local
+section homomorphism with the whole target section-spectrum point.
+This equality holds for every section, even though the two section
+rings have different derived coefficient actions.
+
+Choose a genuine affine neighborhood of the target model center. The
+proved true-center comparison puts the source center in its preimage;
+choose an actual affine refinement there. Both intrinsic model norms
+agree with their genuine affine ideal norms on these true center
+neighborhoods. The independently derived geometric pullback formula
+identifies the source ideal as the actual image of the target ideal
+under the local section map. The source proper center makes all its
+local section values bounded by one. The proved bounded ideal-image
+norm formula therefore gives the target norm at the pulled-back section
+point, and the whole section-spectrum equality gives the asserted
+native-image norm. Apply the actual extended logarithm, retaining zero
+norms and negative infinity.
+
+This supplies model-function compatibility for actual valuation-ring
+coefficient changes and commuting model maps. It assumes no affine
+image, center, stalk or norm equality as a certificate and claims no
+analytic structure-sheaf identification or general scalar-extension
+point surjectivity. The two coefficient bounds remain explicit;
+a nontrivially valued entire field is not thereby globally bounded.
+\end{proof}

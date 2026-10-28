@@ -1,0 +1,96 @@
+\section{Original geometric chart restrictions and honest coordinate covers}
+
+\begin{definition}[The actual twisted-open restriction maps]
+\label{def:cartier-geometric-twisted-open-restrictions}
+\leanok
+\uses{thm:cartier-original-entire-scheme-relative-frobenius}
+\lean{EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.twistedInclusion,EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.twistRestrictionMap}
+Let $f:X\to\operatorname{Spec}k$ be the original structure morphism
+in prime characteristic $p$. For an inclusion $i:U\subset V$ of
+original opens, the first projection $\pi_1:Y=X^{(p)}\to X$ gives
+the original inclusion $U^{(p)}\subset V^{(p)}$. The original
+section restriction $\Gamma(X,V)\to\Gamma(X,U)$ is a morphism of
+their original structural $k$-algebras. Its base change along field
+Frobenius defines the native twist restriction $T_V\to T_U$.
+\end{definition}
+
+\begin{lemma}[The original coefficient and source restriction squares]
+\label{lem:cartier-geometric-twisted-restriction-triangles}
+\leanok
+\uses{def:cartier-geometric-twisted-open-restrictions}
+\lean{EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.twistRestrictionMap_coefficient,EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.twistRestrictionMap_source,EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.coefficient_restrict,EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.source_restrict}
+The native twist restriction preserves the entire original coefficient
+inclusion, and its composite with the original source inclusion is
+the original section restriction followed by the smaller source
+inclusion. On the geometric side, the structural coefficient map
+and the first-projection section maps commute with the same original
+twisted-open restriction.
+\end{lemma}
+\begin{proof}
+The native twist map is the original base change of the structural
+section restriction. Its proved pushout coefficient and source
+triangles give the two native identities. Naturality of the
+original structural coefficient presheaf gives the geometric
+coefficient square. Naturality of the original first-projection
+scheme morphism gives the geometric source square.
+\end{proof}
+
+\begin{theorem}[Naturality of the original geometric section-ring isomorphism]
+\label{thm:cartier-geometric-original-sections-iso-naturality}
+\leanok
+\uses{lem:cartier-geometric-twisted-restriction-triangles}
+\lean{EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.sectionsIso_naturality}
+For every inclusion $U\subset V$ of original affine opens, the
+whole original section-ring isomorphisms satisfy
+\[
+ \Gamma(Y,V^{(p)})\longrightarrow\Gamma(Y,U^{(p)})
+   \xrightarrow{\sigma_U}T_U
+  =\Gamma(Y,V^{(p)})\xrightarrow{\sigma_V}T_V\longrightarrow T_U.
+\]
+No section-map matching, nonempty-open or target-characteristic
+condition is added.
+\end{theorem}
+\begin{proof}
+Precompose both maps with the inverse of $\sigma_V$. Their common
+source is the original native pushout $T_V$. It suffices to compare
+the two maps on its coefficient and source inclusions. On the
+coefficient inclusion, the proved original coefficient triangles
+for $\sigma_V$ and $\sigma_U$ reduce the equality to naturality of
+the original structural coefficient presheaf on $Y$. On the source
+inclusion, the proved original source triangles reduce it to
+naturality of the original first-projection section maps. The
+native twist restriction has precisely these coefficient and source
+triangles by its pushout construction. Pushout uniqueness gives the
+whole equality after precomposition, and invertibility of $\sigma_V$
+gives the asserted original section-ring equality. The proof uses
+entire maps and applies equally to zero section rings.
+\end{proof}
+
+\begin{theorem}[A derived honest-coordinate cover of the original geometric twist]
+\label{thm:cartier-geometric-original-twisted-etale-cover}
+\leanok
+\uses{def:cartier-geometric-twisted-open-restrictions,thm:cartier-smooth-original-etale-affine-cover}
+\lean{EnvelopeProperty.Cartier.GeometricTwistedChartRestrictions.exists_twisted_affine_etale_cover}
+If the original $f$ is smooth of relative dimension $n$, there is
+a family of original affine opens $U_x\subset X$, indexed by the
+original points $x\in X$, containing their respective points and
+carrying honest structural etale tuples of length $n$, such that
+the original affine twisted opens $U_x^{(p)}$ cover all of $Y$.
+The empty scheme is included.
+\end{theorem}
+\begin{proof}
+The actual smooth affine-coordinate cover supplies $U_x$, its
+pointwise membership, affineness and honest tuples. Each original
+twisted open is affine by the proved geometric twist chart theorem.
+For any original point $y\in Y$, the point $\pi_1(y)$ belongs to
+$U_{\pi_1(y)}$. Therefore $y$ belongs to its original inverse image
+$U_{\pi_1(y)}^{(p)}$. This proves that the twisted opens cover $Y$.
+The argument also applies when the index type has no points, since
+any point of $Y$ would still map to a point of $X$.
+\end{proof}
+
+These are the original ring and open-set comparison maps needed to
+compare the local Cartier maps on different opens. Equality of the
+whole local Cartier restriction squares and their descent to a
+global sheaf isomorphism require the corresponding native naturality,
+complex-restriction and affine homology comparisons.

@@ -1,0 +1,31 @@
+\begin{lemma}[The original projective integral global function ring]
+\label{lem:fc-original-projective-integral-global-functions}
+\lean{EnvelopeProperty.ProjectiveIntegralGlobalFunctions.sections_finite, EnvelopeProperty.ProjectiveIntegralGlobalFunctions.sections_isField}
+\leanok
+For the original integral projective $p:X\to\operatorname{Spec}k$, the
+entire actual ring $\Gamma(X,\mathcal O_X)$, with its original
+structure-map coefficient action, is a finite field extension of $k$.
+\end{lemma}
+\begin{proof}
+The original structure line is finite presentation and quasicoherent.
+Actual projective coherent finiteness gives finite-dimensional original
+field-linear global sections.  The actual whole structure-section
+isomorphism identifies these with $\Gamma(X,\mathcal O_X)$ preserving
+every original coefficient.  Original integrality makes this nonzero
+ring a domain.  A domain finite dimensional over a field is a field.
+\end{proof}
+
+\begin{lemma}[Nonzero original global functions are whole units]
+\label{lem:fc-original-projective-global-function-units}
+\lean{EnvelopeProperty.ProjectiveIntegralGlobalFunctions.section_isUnit, EnvelopeProperty.ProjectiveIntegralGlobalFunctions.unitEndomorphism_isIso}
+\leanok
+\uses{lem:fc-original-projective-integral-global-functions}
+Every nonzero original global function is an actual global unit.  Its
+original multiplication morphism is an automorphism of the whole
+original structure line.
+\end{lemma}
+\begin{proof}
+Use the preceding actual finite-dimensional domain to obtain an inverse
+in the same original global ring.  Multiplication by this original unit
+and its inverse gives the canonical whole structure-module automorphism.
+\end{proof}

@@ -1,0 +1,60 @@
+\section{Native homology of the original open restriction}
+\label{sec:scheme-open-restriction-homology}
+
+Let $j:U\to X$ be ANY original open immersion of schemes.
+The restriction functor below is the original native module
+restriction, with its actual original coefficient maps. No
+quasicoherence, affineness, finiteness, nonemptiness or exactness
+certificate is assumed.
+
+\begin{lemma}[The original restriction preserves native homology]
+\label{lem:scheme-open-restriction-preserves-homology}
+\leanok
+\lean{EnvelopeProperty.SchemeOpenRestrictionHomology.preservesHomology}
+The original restriction functor preserves genuine native
+homology of every original short complex.
+\end{lemma}
+\begin{proof}
+The original module restriction is the actual sheaf pushforward
+along the open-image functor with scalar restriction by the
+inverse actual open-immersion coefficient isomorphism. Its
+original section maps preserve addition. Native evaluation
+jointly reflects limits of presheaves of modules, and scalar
+restriction preserves limits. Passing through the faithful
+limit-reflecting sheaf forgetful functor therefore proves that
+this SAME native restriction preserves limits. The actual
+restriction--pushforward adjunction makes it a left adjoint,
+so it also preserves colimits. Its true finite-limit and
+finite-colimit preservation give native homology preservation.
+This argument includes empty schemes and empty opens.
+\end{proof}
+
+\begin{proposition}[The entire original complex and its native comparison]
+\label{prop:scheme-open-restriction-complex-homology}
+\leanok
+\lean{EnvelopeProperty.SchemeOpenRestrictionHomology.restrictedComplex,EnvelopeProperty.SchemeOpenRestrictionHomology.homologyIso}
+For every original cochain complex $K$ of module sheaves on $X$
+and every $q\geq0$, the actual native restricted complex has
+\[
+ H^q(j^*K)\simeq j^*H^q(K).
+\]
+Here $j^*$ denotes the original native open restriction, and
+both homology objects are the original native categorical ones.
+\uses{lem:scheme-open-restriction-preserves-homology}
+\end{proposition}
+\begin{proof}
+Apply the genuine native map-of-homological-complexes functor
+to the SAME original complex, using actual zero-map
+preservation. Apply its actual native short-complex homology
+comparison to the original row in degree $q$. The preceding
+lemma proves that this comparison is an isomorphism. Thus its
+kernel, boundary, projection and coefficient maps are those of
+the original restriction and original complex, rather than a
+chosen replacement complex or a supplied comparison.
+\end{proof}
+
+The next use is the SAME original global Frobenius de Rham
+complex. Its actual affine complex comparison and canonical
+Cartier sheaf descent still require their own full map proofs;
+this generic exactness statement does not assert them or any
+Deligne--Illusie splitting or vanishing theorem.

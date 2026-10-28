@@ -1,0 +1,67 @@
+\section{Actual original \'etale affine coordinate opens form a basis}
+\label{sec:smooth-etale-affine-basis}
+
+\begin{lemma}[Actual principal-open restriction preserves the original coordinates]
+\label{lem:cartier-original-principal-etale-coordinates}
+\lean{EnvelopeProperty.Cartier.SmoothEtaleAffineBasis.basicOpen_restriction_etale,EnvelopeProperty.Cartier.SmoothEtaleAffineBasis.etale_coordinates_basicOpen}
+\leanok
+Let $V$ be an actual original affine open of $X$, with a genuine
+\emph{\'etale} tuple of $n$ elements in the SAME original section
+$k$-algebra. For ANY original $a\in\Gamma(X,V)$, the actual
+restriction to the original basic open $D_V(a)$ is \emph{\'etale},
+and the restrictions of the SAME coordinate tuple are genuine
+\emph{\'etale} coordinates for its SAME original section algebra.
+Zero sections, empty basic opens and zero target algebras are included.
+\uses{lem:cartier-original-raw-section-restriction}
+\end{lemma}
+\begin{proof}
+The true original affine basic-open theorem identifies its actual
+section ring with localization of $\Gamma(X,V)$ at the SAME $a$,
+through the actual original restriction map. Native localization
+at one element is \emph{\'etale}. The original structural constants
+commute with this original restriction, so its actual scalar tower
+is derived. The polynomial evaluation on the restricted tuple is
+exactly the composition of the actual original evaluation and
+actual restriction: equality on every coefficient and variable
+proves equality of whole algebra maps. Stability of
+\emph{\'etale} maps under composition gives the result.
+\end{proof}
+
+\begin{theorem}[Every original neighborhood contains a true original coordinate chart]
+\label{thm:cartier-original-smooth-etale-subchart}
+\lean{EnvelopeProperty.Cartier.SmoothEtaleAffineBasis.coordinateOpens,EnvelopeProperty.Cartier.SmoothEtaleAffineBasis.exists_subchart}
+\leanok
+For an actual $f:X\to\operatorname{Spec}k$ smooth of relative
+dimension $n$, EVERY original $x\in W$, with $W$ ANY original
+open, lies in an actual affine $V\subseteq W$ whose SAME structural
+section algebra has a genuine \emph{\'etale} $n$-tuple. No cover,
+coordinate, neighborhood, nonempty or comparison certificate is input.
+\uses{lem:cartier-original-principal-etale-coordinates,thm:cartier-smooth-original-etale-affine-cover}
+\end{theorem}
+\begin{proof}
+Original smooth geometry first produces an actual affine coordinate
+neighborhood of $x$. The genuine affine basic-open basis supplies
+an original principal neighborhood of $x$ inside $W$. That basic
+open remains affine, and the preceding lemma transports the SAME
+actual coordinates by its original restriction. All neighborhoods
+and coordinate maps are internally constructed from the original
+smooth geometry.
+\end{proof}
+
+\begin{corollary}[The original coordinate-open family is a whole topological basis]
+\label{cor:cartier-original-smooth-etale-affine-basis}
+\lean{EnvelopeProperty.Cartier.SmoothEtaleAffineBasis.isBasis_coordinateOpens}
+\leanok
+The set of actual affine opens whose SAME structural section
+algebras admit \emph{\'etale} $n$-tuples is a basis of the original
+topology on $X$. The empty scheme is included internally.
+\uses{thm:cartier-original-smooth-etale-subchart}
+\end{corollary}
+\begin{proof}
+Apply the neighborhood characterization of a topological basis
+to the preceding actual subchart theorem, for EVERY original
+point of EVERY original open. On the empty scheme this condition
+is vacuous for the genuine reason that there are no original
+points; no nonempty assumption is added. Actual module-sheaf
+extension on this basis and whole Cartier descent remain next.
+\end{proof}

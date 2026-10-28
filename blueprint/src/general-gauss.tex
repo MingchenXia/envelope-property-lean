@@ -1,0 +1,120 @@
+\section{Gauss points over arbitrary seminorm spectra}\label{sec:general-gauss-points}
+
+Let $A$ be any commutative ring, $y\in\mathcal S(A)$, and $r\in\R_{\ge0}$.
+All constructions include $r=0$ and require no field or finite type hypothesis.
+For relative statements, $A$ is an algebra over a commutative ring $R$ with
+a prescribed real-valued ultrametric seminorm $v$.
+
+\begin{lemma}[Multiplicativity of the Gauss seminorm]\label{spectrum:gauss-valuation}
+\lean{EnvelopeProperty.gaussValuation, EnvelopeProperty.gaussFun_mul}
+\leanok
+\uses{spectrum:affine-seminorm}
+For a real-valued multiplicative ultrametric seminorm $w$ on $A$, the formula
+\[
+ N_r(F)=\max_i w(F_i)r^i,\qquad F=\sum_iF_iX^i\in A[X],
+\]
+defines a multiplicative ultrametric seminorm on $A[X]$.
+\end{lemma}
+\begin{proof}
+The values at zero and one follow from the formula. Applying the ultrametric
+inequality to each coefficient proves the ultrametric inequality for $N_r$.
+For each degree $n$, the coefficient of $FG$ is $\sum_{a+b=n}F_aG_b$;
+its weighted value is at most $\max_{a+b=n}w(F_a)r^a w(G_b)r^b$
+and thus at most $N_r(F)N_r(G)$. This proves the product upper bound.
+If either norm is zero, that upper bound proves multiplicativity immediately.
+Otherwise choose the least indices $i,j$ attaining the respective positive maxima.
+The term $F_iG_j$ in the coefficient of degree $i+j$ has weighted value
+$N_r(F)N_r(G)>0$, so $r^{i+j}>0$.
+For any other pair $a+b=i+j$, if $a<i$ then $w(F_a)r^a<N_r(F)$;
+if $a>i$ then $b<j$ and $w(G_b)r^b<N_r(G)$.
+Since the other factor is bounded by its positive maximum, each such term
+has strictly smaller weighted value. Dividing the comparison by the positive
+$r^{i+j}$ shows that $F_iG_j$ is the unique term of greatest seminorm in that
+coefficient. The ultrametric inequality, applied also after subtracting the
+other terms, implies that the seminorm of the coefficient equals
+$w(F_iG_j)$. Its weighted value is therefore $N_r(F)N_r(G)$.
+This gives the reverse product bound and proves multiplicativity.
+\end{proof}
+
+\begin{definition}[Projection and Gauss points]\label{spectrum:gauss-point}
+\lean{EnvelopeProperty.Berkovich.Spectrum.proj,
+EnvelopeProperty.Berkovich.Spectrum.gauss,
+EnvelopeProperty.Berkovich.RelativeSpectrum.proj,
+EnvelopeProperty.Berkovich.RelativeSpectrum.gauss}
+\leanok
+\uses{spectrum:gauss-valuation,spectrum:pullback,spectrum:relative}
+Restriction along $A\to A[X]$ gives a projection $p:\mathcal S(A[X])\to\mathcal S(A)$.
+The Gauss point $\eta_{y,r}$ has seminorm $|F|_{\eta_{y,r}}=\max_i|F_i|_y r^i$.
+It satisfies $p(\eta_{y,r})=y$ and $|X|_{\eta_{y,r}}=r$.
+If $y\in\mathcal S_v(A)$, then $\eta_{y,r}\in\mathcal S_v(A[X])$ with the same values
+on the prescribed base ring.
+\end{definition}
+\begin{proof}
+The preceding lemma defines the Gauss seminorm. The value of a constant polynomial
+$a$ is $|a|_y$ and the value of $X$ is $r$, proving the stated identities.
+In particular, the values of constants coming from $R$ remain $v(r')$ for $r'\in R$,
+so the construction preserves the relative locus.
+\end{proof}
+
+\begin{lemma}[The zero-radius Gauss point]\label{spectrum:gauss-zero-radius}
+\lean{EnvelopeProperty.Berkovich.Spectrum.gauss_zero_eq_comap,
+EnvelopeProperty.Berkovich.RelativeSpectrum.gauss_zero_eq_comap}
+\leanok
+\uses{spectrum:gauss-point}
+At radius zero, $\eta_{y,0}$ is pullback of $y$ along evaluation $A[X]\to A$, $X\mapsto0$.
+\end{lemma}
+\begin{proof}
+In the Gauss maximum at zero, the degree-zero term is $|F_0|_y$ and every
+positive-degree term is zero. Thus $|F|_{\eta_{y,0}}=|F(0)|_y$ for every $F$,
+which identifies the two seminorms. This identity also holds on each relative locus.
+\end{proof}
+
+\begin{lemma}[Maximality on a fibre disc]\label{spectrum:gauss-maximality}
+\lean{EnvelopeProperty.Berkovich.Spectrum.val_le_gauss_val,
+EnvelopeProperty.Berkovich.RelativeSpectrum.val_le_gauss_val}
+\leanok
+\uses{spectrum:gauss-point}
+If $p(z)=y$ and $|X|_z\le r$, then $|F|_z\le|F|_{\eta_{y,r}}$ for every polynomial $F$.
+This applies in both the absolute and relative spectra.
+\end{lemma}
+\begin{proof}
+Write $F=\sum_iF_iX^i$. The ultrametric inequality bounds its seminorm at $z$
+by $\max_i|F_i|_z|X|_z^i$. Since $p(z)=y$, the constant coefficient evaluations
+at $z$ equal those at $y$, and $|X|_z^i\le r^i$.
+The bound is consequently at most $\max_i|F_i|_y r^i$, as asserted.
+\end{proof}
+
+\begin{lemma}[Joint continuity]\label{spectrum:gauss-joint-continuity}
+\lean{EnvelopeProperty.Berkovich.Spectrum.continuous_gauss_prod,
+EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_gauss_prod}
+\leanok
+\uses{spectrum:gauss-point,spectrum:topology}
+The map $(y,r)\mapsto\eta_{y,r}$ is jointly continuous, including at radius zero,
+on both $\mathcal S(A)\times\R_{\ge0}$ and $\mathcal S_v(A)\times\R_{\ge0}$.
+\end{lemma}
+\begin{proof}
+For each fixed polynomial, its Gauss evaluation is the finite maximum of the
+functions $(y,r)\mapsto |F_i|_y r^i$. Each is continuous by continuity of
+evaluation, multiplication, and nonnegative integer powers. A finite maximum
+is continuous. The evaluation characterization of the spectrum topology proves
+joint continuity. The relative topology is the induced subspace topology, so
+the same argument proves the relative statement.
+\end{proof}
+
+\begin{theorem}[Compact closed fibre discs]\label{spectrum:gauss-compact-fibre-disc}
+\lean{EnvelopeProperty.Berkovich.Spectrum.isCompact_fibreDisc,
+EnvelopeProperty.Berkovich.RelativeSpectrum.isCompact_fibreDisc}
+\leanok
+\uses{spectrum:gauss-maximality,spectrum:compact-coordinate-bounds,spectrum:compact-relative-bounds}
+For every $y$ and every $r\ge0$, the closed fibre disc
+$\{z:p(z)=y,\ |X|_z\le r\}$ is compact in either spectrum.
+\end{theorem}
+\begin{proof}
+The fibre condition is closed because the projection is continuous and the
+base spectrum is Hausdorff. The radius condition is closed by continuity of
+evaluation at $X$. Maximality bounds the evaluation of every polynomial $F$
+on this disc by the finite number $|F|_{\eta_{y,r}}$.
+The compact coordinate-bound theorem therefore places the disc inside a
+compact set; its closedness makes it compact. In the relative case use the
+relative coordinate-bound theorem and the relative projection.
+\end{proof}

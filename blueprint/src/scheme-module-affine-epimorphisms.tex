@@ -1,0 +1,23 @@
+\section{Epimorphisms from actual affine global sections}
+
+\begin{lemma}[Actual affine surjectivity implies an epimorphism]
+\label{lem:actual-affine-module-epi-of-sections}
+\lean{EnvelopeProperty.SchemeModuleAffineEpimorphisms.spec_epi_of_appTop_surjective,EnvelopeProperty.SchemeModuleAffineEpimorphisms.epi_of_appTop_surjective}
+\leanok
+Let $X$ be any actual affine scheme, $M$ any original module sheaf and $N$
+an original quasicoherent module sheaf. If the actual original morphism
+$h:M\to N$ is surjective on actual global sections, then $h$ is an
+epimorphism. No quasicoherence assumption on $M$ is required.
+\end{lemma}
+\begin{proof}
+First let $X=\operatorname{Spec}R$. The genuine tilde counit
+$\widetilde{\Gamma(N)}\to N$ is an isomorphism by quasicoherence. If
+$g_1,g_2:N\to Q$ have the same composite with $h$, surjectivity on actual
+global sections shows that their actual global-section maps agree.
+Naturality of the genuine tilde counit then shows that $g_1$ and $g_2$
+agree after that isomorphism, hence agree. For a general original affine
+scheme, restrict along its actual canonical isomorphism with the spectrum
+of its actual global-section ring. Actual global sections and their maps
+are preserved under this restriction; the original restriction functor is
+an equivalence, so reflects epimorphisms.
+\end{proof}

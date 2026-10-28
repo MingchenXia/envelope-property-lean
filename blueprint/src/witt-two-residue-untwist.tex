@@ -1,0 +1,83 @@
+\section{Actual tensor untwisting and the original residue Frobenius action}
+\label{sec:witt-two-residue-untwist}
+
+Let $W=W_2(k)$, let $\sigma:W\simeq W'$ be the actual Witt-Frobenius
+coefficient equivalence into the copied ring, and let $A$ be any original
+$W$-algebra. Retain the actual twisted tensor $T=W'\otimes_W A$, its
+native residue presentation $C=k\otimes_W T$, and $B=k\otimes_W A$.
+
+\begin{theorem}[The actual twisted tensor has its genuine original algebra untwisting]
+\label{thm:witt-two-source-native-untwist}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.baseAlgEquiv,EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.sourceUntwist,EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.sourceUntwist_tmul,EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.sourceUntwist_one_tmul}
+The actual coefficient equivalence gives a genuine $W$-algebra equivalence
+$u:T\simeq A$. On every original pure tensor,
+$u(w\otimes a)=\sigma^{-1}(w)a$, and $u(1\otimes a)=a$.
+No smoothness or freeness hypothesis on $A$ is required.
+\uses{thm:witt-two-frobenius-equivalence}
+\end{theorem}
+\begin{proof}
+The actual structural map $W\to W'$ is the already proved genuine
+Witt coefficient ring equivalence. It is therefore a $W$-algebra
+equivalence, whose inverse is also an actual $W$-algebra map.
+Apply native tensor congruence to this inverse on the first original
+factor and the identity on the second. This gives an actual equivalence
+$W'\otimes_W A\simeq W\otimes_W A$. Compose with the genuine native
+left-unit algebra equivalence $W\otimes_W A\simeq A$.
+The original pure-tensor formulas of those two maps give the asserted
+value and its coefficient-one specialization, since the actual inverse
+coefficient equivalence sends one to one.
+\end{proof}
+
+\begin{theorem}[The genuine residue presentation is the original residue algebra]
+\label{thm:witt-two-native-residue-untwist}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.residueUntwist,EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.residueUntwist_tmul,EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.residueUntwist_one_coordinate}
+The same original tensor maps produce a genuine $k$-algebra equivalence
+$\bar u:C\simeq B$, sending every $\lambda\otimes t$ to
+$\lambda\otimes u(t)$. In particular it retains every original
+coefficient-one coordinate $1\otimes(1\otimes a)\mapsto1\otimes a$.
+\uses{thm:witt-two-source-native-untwist}
+\end{theorem}
+\begin{proof}
+Tensor the actual original $W$-algebra equivalence $u$ with the identity
+on the same residue field $k$. Native tensor congruence with that fixed
+left factor gives an actual $k$-algebra equivalence between the same
+two original residue tensors. Its original pure-tensor value formula
+is the stated formula. The preceding coefficient-one source identity
+gives the final coordinate value without any identification premise.
+\end{proof}
+
+\begin{theorem}[The same residue relative Frobenius has the genuine original pth-power action]
+\label{thm:witt-two-residue-frobenius-untwist}
+\leanok
+\lean{EnvelopeProperty.DeligneIllusie.WittTwoResidueUntwist.residueFrobenius_untwist}
+For every original $t\in T$, its actual residue relative Frobenius is
+exactly the $p$th power of its same untwisted original residue:
+\[
+ r(t)=\bigl(1\otimes u(t)\bigr)^p.
+\]
+This is equality of the actual original ring-map values, including zero
+algebras, not a supplied Frobenius comparison.
+\uses{thm:witt-two-native-residue-untwist,lem:witt-two-frobenius-reduction,thm:witt-two-residue-relative-frobenius}
+\end{theorem}
+\begin{proof}
+The actual relative Frobenius and the $p$th-power map of the untwisted
+residue are genuine original ring maps. Their values at zero agree;
+additivity reduces equality for sums to equality for their summands.
+It remains to check each original pure tensor $w\otimes a$.
+The actual relative Frobenius value is
+$\rho(w)(1\otimes a)^p$. The untwist value before taking a $p$th power
+is $\rho(\sigma^{-1}w)(1\otimes a)$. The proved original Witt/residue
+Frobenius identity gives
+$\rho(\sigma^{-1}w)^p=\rho(w)$, by applying it to that actual inverse
+coefficient and the genuine inverse identity. Multiplicativity of the
+original residue map and of the genuine Frobenius therefore gives
+exactly the same pure-tensor value. Original tensor additive generation
+proves equality for every $t$.
+\end{proof}
+
+This is the actual original algebra and coefficient transport needed to
+compare the constructed divided maps with native ordinary Frobenius modules.
+Native Kähler/exterior transport and scheme-relative twisting/gluing remain
+subsequent constructions.

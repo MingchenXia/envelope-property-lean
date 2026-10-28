@@ -1,0 +1,134 @@
+\section{Norms and multiplicities on arbitrary finite free etale fibres}
+\label{sec:general-etale-norms}
+
+Let $A\to B$ be a finite free etale homomorphism of commutative rings
+and let $x\in\mathcal S(A)$. No trivially valued coefficient field is
+assumed. The completed field $H(x)$ and the actual completed tensor
+fibre give the norm and multiplicity calculations below.
+
+\begin{lemma}[Scalar and polynomial norms commute with base change]
+\label{spectrum:algebra-norm-base-change}
+\lean{EnvelopeProperty.normForm,
+EnvelopeProperty.eval_map_normForm,
+EnvelopeProperty.algebraNorm_baseChange_tmul}
+\leanok
+\uses{spectrum:base-change-restriction}
+For every commutative $A$-algebra $K$ and $b\in B$,
+$N_{B/A}(b)$ maps to $N_{K\otimes_A B/K}(1\otimes b)$.
+The norm form of $\sum_j X_jb_j$ also commutes with every scalar
+extension and polynomial evaluation.
+\end{lemma}
+\begin{proof}
+Choose a finite free basis of $B$ over $A$. The multiplication matrix
+for $1\otimes b$ in the scalar-extended basis is obtained by mapping
+every coefficient of the original multiplication matrix. Determinants
+commute with ring homomorphisms, proving the scalar assertion.
+For the polynomial norm form, perform the same matrix calculation
+with the multiplication operator of $\sum_j X_j\otimes b_j$ and
+then apply polynomial evaluation to every matrix entry. This gives
+the actual polynomial base-change and evaluation assertion.
+\end{proof}
+
+\begin{lemma}[Scalar field norm and the unique extending seminorm]
+\label{spectrum:scalar-field-norm}
+\lean{EnvelopeProperty.valuation_algebraNorm_eq_pow,
+EnvelopeProperty.valuation_algebraNorm_eq_prod_of_algEquiv}
+\leanok
+\uses{spectrum:complete-norm-extension}
+If $L/H$ is a finite separable extension of a complete ultrametric
+normed field and $w$ is its unique extending seminorm, then
+$|N_{L/H}(b)|=w(b)^{[L:H]}$. This statement requires no infinitude
+hypothesis on $H$.
+\end{lemma}
+\begin{proof}
+Extend the norm of $H$ to its algebraic closure. The field norm is
+the product of the images of $b$ under all $H$-embeddings of $L$
+into this algebraic closure. Each embedding pulls the extended norm
+back to $w$, by genuine uniqueness of complete-field norm extensions.
+Multiplicativity therefore makes the product equal to $w(b)$ raised
+to the number of embeddings. Separability identifies that number
+with $[L:H]$. Norms of finite products are products of norms,
+so the same computation applies to a product of finite separable fields.
+\end{proof}
+
+\begin{theorem}[Etale fibre multiplicities]
+\label{spectrum:etale-fibre-multiplicities}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreMult,
+EnvelopeProperty.Berkovich.Spectrum.one_le_fibreMult,
+EnvelopeProperty.Berkovich.Spectrum.fibreEquivPi,
+EnvelopeProperty.Berkovich.Spectrum.sum_fibreMult}
+\leanok
+\uses{spectrum:integral-completed-fibres,spectrum:finite-completed-fibres}
+The finite etale tensor algebra $E_x=H(x)\otimes_A B$ is a reduced
+Artinian ring and is the product of its maximal quotient fields.
+For a point $y$ of the actual fibre, define
+$m_y=[E_x/\ker(E_x\to H(y)):H(x)]$.
+These residue degrees are positive, and
+$\sum_y m_y=\operatorname{rank}_A B$.
+\end{theorem}
+\begin{proof}
+Etale base change makes $E_x$ reduced; module finiteness makes it
+Artinian. The reduced Artinian decomposition identifies it with
+the product of its maximal quotients, which are finite separable
+extensions of $H(x)$. Every such quotient is a nonzero vector space,
+giving positivity. Vector-space dimension of the product is the
+sum of the quotient dimensions. Finite free base change identifies
+the dimension of $E_x$ with the rank of $B$ over $A$; the genuine
+maximal tensor support classification reindexes the sum by the
+actual seminorm fibre points.
+\end{proof}
+
+\begin{theorem}[Scalar norm identity at an arbitrary point]
+\label{spectrum:scalar-etale-norm}
+\lean{EnvelopeProperty.Berkovich.Spectrum.val_algebraNorm}
+\leanok
+\uses{spectrum:algebra-norm-base-change,spectrum:scalar-field-norm,
+spectrum:etale-fibre-multiplicities}
+For every $b\in B$,
+\[
+ |N_{B/A}(b)|_x=\prod_{y\text{ over }x}|b|_y^{m_y}.
+\]
+There is no infinitude hypothesis on the completed residue field.
+\end{theorem}
+\begin{proof}
+Base change replaces the left side by the norm of $1\otimes b$
+in $E_x$. Its reduced Artinian decomposition turns that norm into
+the product of the field norms of its components. The actual
+completed-field tensor maps give extending valuations on these
+quotient fields, taking value $|b|_y$ on the corresponding component.
+Apply the scalar field norm formula and then the genuine fibre
+bijection to reindex the finite product.
+\end{proof}
+
+\begin{theorem}[Weighted polynomial norm identity]
+\label{spectrum:weighted-etale-norm}
+\lean{EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_map_normForm,
+EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_normForm}
+\leanok
+\uses{spectrum:etale-fibre-multiplicities,spectrum:algebra-norm-base-change}
+Assume explicitly that $H(x)$ is infinite. Let
+$P=N(\sum_j X_jb_j)=\sum_\alpha c_\alpha X^\alpha$ and $r_j\ge0$.
+Then
+\[
+ \max_\alpha |c_\alpha|_x r^\alpha
+ =\prod_{y\text{ over }x}\left(\max_j |b_j|_y r_j\right)^{m_y}.
+\]
+\end{theorem}
+\begin{proof}
+After coefficient base change to $H(x)$, the norm form evaluates
+to the norm form of $E_x$ at every $H(x)$-point. Decompose $E_x$
+into its finite separable field factors. Over an algebraic closure,
+the field norm form equals the product of its conjugate linear forms:
+their evaluations agree, and infinitude of $H(x)$ proves equality
+of the entire polynomials. Weighted Gauss multiplicativity and
+complete-field norm uniqueness give each field-factor contribution
+as the maximum linear value raised to its residue degree. Reindex
+the product by the actual fibre. Coefficient seminorm preservation
+under $A\to H(x)$ returns the left side to the original coefficients.
+\end{proof}
+
+This evaluation-characterized producer retains the explicit infinitude
+hypothesis needed by its interpolation proof. The actual determinant
+norm-form producer in Section~\ref{subsec:general-weighted-norms} removes
+that hypothesis through genuine polynomial base change and tensor splitting. Nonetale algebras require local-length multiplicity factors,
+and no residue-degree-only norm formula is asserted for them.

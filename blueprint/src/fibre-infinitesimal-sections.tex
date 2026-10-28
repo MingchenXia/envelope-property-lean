@@ -1,0 +1,111 @@
+\section{Whole affine quotient sequences for the original infinitesimal models}
+
+\begin{lemma}[The original infinitesimal projection has the actual ideal-power kernel]
+\label{lem:fibre-infinitesimal-projection-kernel}
+\uses{lem:fibre-ideal-power-affine-sections}
+\lean{EnvelopeProperty.FibreInfinitesimalSections.projection_isClosedImmersion,EnvelopeProperty.FibreInfinitesimalSections.projection_ker,EnvelopeProperty.FibreInfinitesimalSections.affine_projection_ker,EnvelopeProperty.FibreInfinitesimalSections.affine_projection_surjective}
+\leanok
+For any $f:X\to\operatorname{Spec}R$, ideal $I\subset R$ and $n\ge0$,
+let $q_n:X_n=X\times_R\operatorname{Spec}(R/I^n)\to X$ be the literal
+original pullback. Then $q_n$ is a closed immersion with entire kernel
+ideal sheaf $(I\mathcal O_X)^n$. On every original affine open $U$,
+$q_n^\sharp:\Gamma(X,U)\to\Gamma(X_n,q_n^{-1}U)$ is surjective with
+kernel $(I\cdot\Gamma(X,U))^n$.
+\end{lemma}
+\begin{proof}
+The coefficient quotient map is surjective, hence its spectrum morphism
+is a closed immersion. Closed immersion and its kernel pull back along
+the actual defining square for $X_n$. The kernel of
+$\operatorname{Spec}(R/I^n)\to\operatorname{Spec}R$ is exactly the ideal
+sheaf of $I^n$. On every original affine open, its genuine comap is the
+image of $I^n$ under the original coefficient map. Image commutes with
+powers, identifying it with $(I\mathcal O_X)^n$ on every affine open,
+and therefore as ideal sheaves. A closed immersion is surjective on
+sections over every affine open. Its actual affine section kernel is
+the affine ideal of its kernel ideal sheaf, giving the assertion.
+\end{proof}
+
+\begin{lemma}[All original orders have the actual quotient-factor transitions]
+\label{lem:fibre-infinitesimal-affine-transitions}
+\uses{lem:fibre-infinitesimal-affine-quotient}
+\lean{EnvelopeProperty.FibreInfinitesimalSections.transition_preimage,EnvelopeProperty.FibreInfinitesimalSections.affineTransition,EnvelopeProperty.FibreInfinitesimalSections.affineTransition_projection,EnvelopeProperty.FibreInfinitesimalSections.affineQuotientEquiv_transition}
+\leanok
+For every $n\le m$, the genuine original transition $X_n\to X_m$
+identifies its inverse image of $q_m^{-1}U$ with the SAME original
+$q_n^{-1}U$. The resulting whole section map preserves every original
+projection section. Under the entire affine quotient isomorphisms, it
+is exactly the genuine quotient factor modulo the powers
+$(I\cdot\Gamma(X,U))^m\subseteq(I\cdot\Gamma(X,U))^n$.
+\end{lemma}
+\begin{proof}
+The actual transition composed with $q_m$ is $q_n$ as entire scheme
+morphisms. Taking inverse images gives the asserted equality of opens;
+the genuine section map therefore has exactly the stated source and
+target. Taking sections of that same morphism equality gives the whole
+projection-section identity. Every quotient element is represented by
+an original section. Both the actual transition and the genuine
+quotient factor send this representative to its original class at
+order $n$, proving their equality on the entire quotient ring.
+\end{proof}
+
+\begin{lemma}[Every entire infinitesimal affine section ring is its actual quotient]
+\label{lem:fibre-infinitesimal-affine-quotient}
+\uses{lem:fibre-infinitesimal-projection-kernel}
+\lean{EnvelopeProperty.FibreInfinitesimalSections.affineQuotientEquiv,EnvelopeProperty.FibreInfinitesimalSections.affineQuotientEquiv_mk,EnvelopeProperty.FibreInfinitesimalSections.affine_projection_eq_zero_iff}
+\leanok
+For every original affine $U$ and every $n\ge0$, there is a whole ring
+isomorphism
+\[
+ \Gamma(X,U)/(I\cdot\Gamma(X,U))^n
+ \simeq \Gamma(X_n,q_n^{-1}U)
+\]
+taking every original representative $s$ to its actual value
+$q_n^\sharp(s)$. In particular, that value vanishes exactly when $s$
+belongs to the actual original ideal power. All nilpotents and order
+zero are retained.
+\end{lemma}
+\begin{proof}
+Apply the surjective first isomorphism theorem to the genuine affine
+section map and substitute its exact ideal-power kernel from the
+preceding lemma. Both the kernel-quotient identification and the first
+isomorphism retain every original representative. The asserted
+vanishing criterion is exactly membership in this entire kernel.
+\end{proof}
+
+\begin{lemma}[The same genuine ideal-power section sequence is exact]
+\label{lem:fibre-infinitesimal-affine-exact}
+\uses{lem:fibre-ideal-power-affine-sections,lem:fibre-infinitesimal-affine-quotient}
+\lean{EnvelopeProperty.FibreInfinitesimalSections.affineSectionInclusion,EnvelopeProperty.FibreInfinitesimalSections.affineSectionInclusion_injective,EnvelopeProperty.FibreInfinitesimalSections.affineSection_exact}
+\leanok
+On every original affine open $U$, the inclusion of sections of the
+SAME genuine ideal-power module sheaf followed by $q_n^\sharp$ is an
+exact pair. The inclusion is injective and the second map is surjective.
+\end{lemma}
+\begin{proof}
+The original ideal-power section equivalence identifies its inclusion
+with the subtype inclusion of $(I\cdot\Gamma(X,U))^n$. This inclusion
+is injective. The exact kernel formula identifies its image with the
+kernel of $q_n^\sharp$, proving exactness. Surjectivity was established
+on the same affine open above.
+\end{proof}
+
+\begin{lemma}[Every original affine restriction is the actual quotient restriction]
+\label{lem:fibre-infinitesimal-affine-restrictions}
+\uses{lem:fibre-ideal-power-restrictions,lem:fibre-infinitesimal-affine-quotient}
+\lean{EnvelopeProperty.FibreInfinitesimalSections.affineRestriction,EnvelopeProperty.FibreInfinitesimalSections.affineRestriction_mk,EnvelopeProperty.FibreInfinitesimalSections.affineQuotientEquiv_restriction}
+\leanok
+For every inclusion of original affine opens $U\subseteq V$, the actual
+original function restriction induces the entire quotient-ring
+restriction modulo the same ideal power. The above whole quotient
+isomorphisms take this map to the genuine original section restriction
+on $q_n^{-1}U\subseteq q_n^{-1}V$.
+\end{lemma}
+\begin{proof}
+The genuine ideal sheaf restricts into itself, so the original function
+restriction carries the actual ideal power on $V$ into that on $U$.
+It therefore induces the asserted quotient homomorphism, taking the
+class of each $s$ to the class of its literal original restriction.
+Every quotient element has such a representative. On each representative,
+the comparison is the naturality identity for the genuine scheme
+morphism $q_n$, so it holds on the entire quotient ring.
+\end{proof}

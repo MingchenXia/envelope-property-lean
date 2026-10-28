@@ -1,0 +1,254 @@
+\section{The same geometric divided Frobenius induces the original Cartier map}
+
+The source is the original exterior cotangent sheaf on the actual
+Frobenius twist, and the primary target is the existing pushed de Rham
+complex of an actual smooth Witt lift of a declared pure relative
+dimension. The dimension is an explicit hypothesis of this standard
+Deligne--Illusie input. The arbitrary-smooth intrinsic complex gives a
+subsequent compatible target through its genuine local chart exchange. The affine Cartier theorem is used for the existing
+canonical divided differential of the same chosen lift; no new affine
+Cartier calculation is introduced.
+
+\begin{lemma}[A whole map out of a single complex retains its original cycle class]
+\label{lem:di-single-map-original-cycle-class}
+\uses{lem:native-module-complex-every-cycle-class}
+\lean{EnvelopeProperty.DI.LeadingCartierCycleTransport.singleClassMap, EnvelopeProperty.DI.LeadingCartierCycleTransport.singleClassMap_eq_liftCycles, EnvelopeProperty.DI.LeadingCartierCycleTransport.singleClassMap_cycleClass}
+\leanok
+Let $E$ be a nonnegative cochain complex of modules and
+$\phi:M\to E^q$ a whole morphism whose image is closed. The map on
+homology induced by the actual cochain map $M[-q]\to E$, after the
+canonical identification $H^q(M[-q])=M$, sends every $x\in M$ to the
+class of the original cycle $\phi(x)$ in this same $E$.
+\end{lemma}
+\begin{proof}
+The map $\phi$ factors uniquely through the actual cycles $Z^q(E)$.
+Naturality of cycles for the cochain map out of $M[-q]$ identifies its
+cycles map with this factor, preceded by the canonical cycles
+identification of the single complex. Naturality of the canonical
+projection from cycles to homology then identifies its induced class
+map with this cycle factor followed by $Z^q(E)\to H^q(E)$.
+For any original cycle with value $\phi(x)$, the cycle inclusion sends
+both the factor's value and that cycle to $\phi(x)$. The cycle inclusion
+is a monomorphism, so the two cycles agree. Applying the original
+homology projection proves the claimed exact class formula.
+\end{proof}
+
+\begin{lemma}[Canonical evaluation retains the original single-source homology map]
+\label{lem:di-single-source-canonical-evaluation}
+\uses{lem:di-single-map-original-cycle-class,thm:cartier-geometric-affine-homology-sections}
+\lean{EnvelopeProperty.DI.SingleEvaluationHomology.sectionComponent, EnvelopeProperty.DI.SingleEvaluationHomology.sectionComponent_closed, EnvelopeProperty.DI.SingleEvaluationHomology.singleClassMap_evaluation, EnvelopeProperty.DI.SingleEvaluationHomology.singleClassMap_evaluation_affine}
+\leanok
+Let $M[-q]\to K$ be an actual cochain map of original module sheaves,
+and let $W$ be an original open. Evaluate its degree-$q$ component,
+preceded by the original degree-$q$ single-source unit. The induced
+single-source class map of this actual section map, followed by the
+canonical comparison from homology of sections to sections of
+homology, equals evaluation of the original sheaf homology map,
+preceded by the original single-source homology identification.
+If $W$ is affine and the terms of $K$ are quasicoherent, this same
+comparison is the existing canonical affine homology-sections
+isomorphism. No source exactness or desired class equality is assumed.
+\end{lemma}
+\begin{proof}
+Evaluation preserves kernels and zero morphisms. Let $L$ be the unique
+cycle factor of the evaluated original degree map. Compose $L$ with
+the preserved-kernel comparison to evaluation of the original target
+cycles. This agrees with evaluation of the original single-source
+cycle identification followed by the original cycles map: composing
+both maps with evaluation of the cycle inclusion gives the identical
+original degree component. The preserved cycle inclusion is a
+monomorphism, so the two whole cycle maps agree.
+
+The canonical comparison from homology of sections takes the class of
+an original cycle to evaluation of its original homology class. Apply
+this identity to the preceding whole cycle equality. Naturality of the
+projection from cycles to homology and the original single-source
+cycles/homology identities give the asserted whole homology equality.
+On an affine open with quasicoherent target terms, the existing affine
+homology-sections isomorphism has precisely this canonical forward map,
+which proves the final assertion.
+\end{proof}
+
+\begin{theorem}[The whole original geometric degree-one class is Cartier]
+\label{thm:di-geometric-original-leading-cartier-one}
+\uses{lem:di-single-map-original-cycle-class,lem:di-single-source-canonical-evaluation,thm:cartier-geometric-affine-homology-sections,thm:cartier-geometric-local-native-cartier}
+\lean{EnvelopeProperty.DI.GeometricLeadingCartier.xiSections, EnvelopeProperty.DI.GeometricLeadingCartier.xiSections_apply, EnvelopeProperty.DI.GeometricLeadingCartier.xiSections_closed, EnvelopeProperty.DI.GeometricLeadingCartier.xiCochain, EnvelopeProperty.DI.GeometricLeadingCartier.xiCochain_f_one, EnvelopeProperty.DI.GeometricLeadingCartier.xiHomologyClass, EnvelopeProperty.DI.GeometricLeadingCartier.xiClassSections, EnvelopeProperty.DI.GeometricLeadingCartier.xiClassSections_eq_canonicalComparison, EnvelopeProperty.DI.GeometricLeadingCartier.xiClassSections_eq_inverseCartier}
+\leanok
+Let $f:X\to\operatorname{Spec}k$ be smooth of declared pure relative
+dimension $n$, and let $p$ be prime with $\operatorname{char}k=p$.
+On an original affine open $U$, put $B=\Gamma(U,\mathcal O_X)$ and let
+$T=B\otimes_{k,F_k}k$ be its genuine native twist, with the original
+geometric relative-Frobenius map $\beta:T\to B$. Fix an original etale
+tuple of length $n$ in $B$. Let $C\to k$ and $R\to T$ be actual
+reductions modulo $p$, and $S\to B$ an actual flat reduction modulo $p$.
+Require $S$ formally smooth over $C$, the original coefficient actions
+to equal these reduction actions, and an actual $C$-algebra lift
+$F:R\to S$ whose whole reduction square is $\beta$. These are original
+lifting data, not a Cartier-class conclusion. On a genuine affine chart
+of the actual smooth Witt lift they are the internally produced
+reductions and the same chosen lift.
+
+Let $\xi$ be the canonical divided differential of this same $F$.
+Transport its source by the original exterior source unit and the
+actual coefficient-preserving twist comparison, and its target by the
+original exterior target unit and canonical relative-Frobenius
+preimage comparison. The homology map of the actual resulting local
+representative, followed by the canonical affine homology-to-sections
+comparison for the same original global complex, is the original
+geometric inverse Cartier map on the whole original source module.
+No desired Cartier equality or quasi-isomorphism is supplied as an input.
+\end{theorem}
+\begin{proof}
+Let $T$ be the genuine native twist of the original residue chart
+coordinate ring. The same actual source and target reductions and the
+same chosen lift instantiate the canonical native divided one-form
+map. Its image is closed by the existing native closedness theorem.
+For an original geometric source section, apply the actual source unit
+inverse, then the coefficient-preserving native cotangent comparison.
+Call the resulting native cotangent element $\omega$.
+
+The literal geometric target-unit formula identifies the image under
+$\xi$ with the image of the original native cycle under the whole
+original chart complex isomorphism. Scalar restriction preserves this
+same cycle and its original class, and the actual complex isomorphism
+preserves its class by functoriality of homology. The preceding lemma
+therefore identifies the induced local homology map with the class of
+that same native divided one-form, transported by these exact original
+comparisons.
+
+The existing affine degree-one Cartier theorem identifies this native
+class with inverse Cartier applied to the degree-one exterior element
+corresponding to $\omega$. The source comparisons in this formula are
+exactly the original source exterior unit and the original twist
+cotangent comparison, so the source is the original geometric section.
+Finally apply the canonical affine homology-to-sections isomorphism.
+Its whole forward map is the original canonical evaluation comparison,
+so the target is the homology sheaf of the same intrinsic global
+complex. These are precisely the defining source, target and scalar
+comparisons of the original geometric inverse Cartier map. Equality
+holds for every source section, hence for the entire module morphism.
+\end{proof}
+
+\begin{corollary}[The same actual Witt chart map has the original geometric Cartier class]
+\label{cor:di-actual-witt-chart-leading-cartier}
+\uses{thm:di-geometric-original-leading-cartier-one,lem:di-single-source-canonical-evaluation,thm:cartier-geometric-global-original-chart-formula}
+\lean{EnvelopeProperty.DI.ActualWittLeadingCartier.sectionMap, EnvelopeProperty.DI.ActualWittLeadingCartier.xiSectionMap_eq, EnvelopeProperty.DI.ActualWittLeadingCartier.xiSectionMap_closed, EnvelopeProperty.DI.ActualWittLeadingCartier.representative, EnvelopeProperty.DI.ActualWittLeadingCartier.representative_f_one, EnvelopeProperty.DI.ActualWittLeadingCartier.classSections, EnvelopeProperty.DI.ActualWittLeadingCartier.classSections_eq_homologyRepresentative, EnvelopeProperty.DI.ActualWittLeadingCartier.classSections_eq_inverseCartier}
+\leanok
+Let $\widetilde X\to\operatorname{Spec}W_2(k)$ be an actual smooth lift
+of declared pure relative dimension $n$, with $k$ perfect of
+characteristic $p$. Fix an original affine lift chart, an honest residue
+etale tuple, and the same selected relative Frobenius lift $F$ on that
+chart. The original geometric section morphism $\Xi_F$ obtained from
+this actual lift, with its original source exterior unit and target
+exterior unit, induces the restriction of the original global
+geometric inverse Cartier map on the entire degree-one source.
+For an actual sheaf cochain representative with this original degree
+component, canonical evaluation identifies its sheaf homology map with
+this same section class map.
+\end{corollary}
+\begin{proof}
+Use the actual geometric residue-section equivalence of this original
+affine lift chart. The Witt coefficient reduction, its source reduction
+along this equivalence, and its flat target reduction are genuine
+reductions of the required kind. The whole lift-square identity for
+the same $F$ is the original residue Frobenius identity transported
+along this equivalence. The coefficient actions agree with these
+reductions by their definitions, and formal smoothness is inherited
+from the actual smooth Witt chart.
+
+The source degree-one exterior identification, the actual twist section
+comparison, the native divided differential, and the original target
+exterior unit in the preceding theorem are precisely the four
+successive factors defining $\Xi_F$. Their whole morphisms therefore
+agree. The preceding theorem computes the class of this same map as
+the original local geometric inverse Cartier map. The original global
+Cartier isomorphism has exactly this whole local component on the same
+honest chart, proving the first assertion. For an actual sheaf cochain
+representative, apply canonical single-source evaluation to its original
+degree component. It gives evaluation of the same original sheaf
+homology map, proving the second assertion without assuming any class
+equality or quasi-isomorphism.
+\end{proof}
+
+\begin{lemma}[Zero-source homology retains the same single-degree representative]
+\label{lem:di-zero-source-single-class}
+\uses{lem:di-single-map-original-cycle-class}
+\lean{EnvelopeProperty.DI.ZeroSourceHomology.homologySelfIso, EnvelopeProperty.DI.ZeroSourceHomology.component_closed, EnvelopeProperty.DI.ZeroSourceHomology.homologyMap_eq_singleClassMap}
+\leanok
+Let $G$ be a complex whose differentials vanish and let $\Phi:G\to E$
+be an actual whole cochain map. In degree $q$, identify $H^q(G)$ with
+$G^q$ by its original cycle inclusion and cycle-to-homology projection.
+The resulting homology map of $\Phi$ is exactly the homology map of the
+actual single-degree representative of the same component $\Phi^q$.
+\end{lemma}
+\begin{proof}
+Since the source differential vanishes, the original cycle inclusion
+$Z^q(G)\to G^q$ and the original projection $Z^q(G)\to H^q(G)$ are
+isomorphisms. The chain-map identity makes the image of $\Phi^q$
+closed. Naturality of the cycle inclusion identifies the original
+source cycle identification followed by the cycles map of $\Phi$
+with the unique factorization of $\Phi^q$ through $Z^q(E)$: compose
+both maps with its monomorphic cycle inclusion to obtain $\Phi^q$.
+Naturality of the cycle-to-homology projection then says that the
+normalized original homology map of $\Phi$ is this cycle factor
+followed by the original target homology projection. This is also the
+class map of its same single-degree representative, by the original
+single-source class identity.
+\end{proof}
+
+\begin{theorem}[The original local exterior representative has the original Cartier class]
+\label{thm:di-geometric-original-leading-cartier-exterior}
+\uses{thm:di-geometric-original-leading-cartier-one,lem:di-zero-source-single-class,thm:cartier-geometric-affine-homology-sections,thm:cartier-geometric-global-original-chart-formula}
+\lean{EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorSections, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorSections_apply, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorSections_sourceWedge, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorCochain, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorCochain_f, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorHomologyClass, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorClassSections, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorClassSections_eq_canonicalComparison, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorClassSections_eq_inverseCartier, EnvelopeProperty.DI.GeometricLeadingCartierExterior.exteriorClassSections_eq_globalInverseCartier}
+\leanok
+For every exterior degree $q$, the exterior map constructed from the
+same original $\xi$, evaluated through the same original source and
+target units, induces the original degree-$q$ geometric inverse Cartier
+map on the whole original source exterior module.
+\end{theorem}
+\begin{proof}
+On each original affine chart, the whole exterior source comparison
+sends every original wedge to the wedge of its actual native cotangent
+images. The whole target exterior comparison sends the exterior
+product of the same divided one-forms to its original geometric
+exterior product. The canonical native all-degree Cartier theorem
+therefore applies to the same exterior cochain map, with no new choice
+of lift or representative. It identifies the native induced homology
+map in degree $q$ with native inverse Cartier on that whole exterior
+module. Scalar-restriction homology, the whole original chart complex
+isomorphism, and the canonical affine homology-to-sections comparison
+preserve the same cycles and their classes. Applying these comparisons
+gives the stated whole original geometric map, in every degree,
+including degree zero and zero coordinate rings.
+\end{proof}
+
+\begin{corollary}[The same actual Witt exterior map has the original global Cartier class]
+\label{cor:di-actual-witt-exterior-leading-cartier}
+\uses{cor:di-actual-witt-chart-leading-cartier,thm:di-geometric-original-leading-cartier-exterior}
+\lean{EnvelopeProperty.DI.ActualWittExteriorCartier.exteriorSections, EnvelopeProperty.DI.ActualWittExteriorCartier.exteriorSections_sourceWedge, EnvelopeProperty.DI.ActualWittExteriorCartier.representative, EnvelopeProperty.DI.ActualWittExteriorCartier.representative_f, EnvelopeProperty.DI.ActualWittExteriorCartier.classSections, EnvelopeProperty.DI.ActualWittExteriorCartier.classSections_eq_homologyRepresentative, EnvelopeProperty.DI.ActualWittExteriorCartier.classSections_eq_inverseCartier, EnvelopeProperty.DI.ActualWittExteriorCartier.exteriorSections_one_eq_xiSectionMap}
+\leanok
+On an actual smooth Witt lift of declared pure dimension, the same
+actual residue-section equivalence, original reductions and selected
+lift produce the whole original exterior section map in every degree.
+It takes every original source wedge to the original target-unit image
+of the wedge of the same actual divided one-forms. Its degree-one map
+is the same original geometric $\Xi_F$. Its actual native homology,
+followed by the canonical original affine homology-sections map, is the
+whole component of the original global geometric Cartier isomorphism.
+\end{corollary}
+\begin{proof}
+Use exactly the internally produced reductions and whole lift square
+of the degree-one Witt chart comparison. The all-degree original-unit
+transport theorem applies to those same data. Its source-wedge formula
+is the native exterior formula for the same canonical divided
+one-forms; the actual residue-section construction defines these
+one-forms using precisely those same reductions and lift. In degree
+one the native exterior map followed by the native degree-one exterior
+identification is the original native divided differential. The
+original source and target units therefore give the same $\Xi_F$ on
+the whole original module. The native cochain representative has this
+same original component by its single-source construction, and its
+actual homology is the class map in the all-degree transport theorem.
+That theorem identifies the whole map with the original global
+Cartier component in every degree.
+\end{proof}

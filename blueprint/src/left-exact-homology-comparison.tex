@@ -1,0 +1,79 @@
+\section{Canonical homology comparison for left exact functors}
+\label{sec:left-exact-homology-comparison}
+
+Let $S=(S_1\to S_2\to S_3)$ be a short complex in an abelian
+category and let $F$ be a zero-preserving functor which preserves
+finite limits. Only preservation of kernels, not right exactness,
+is needed in the construction below.
+
+\begin{lemma}[The actual cycle comparison]
+\label{lem:left-exact-original-cycle-comparison}
+\leanok
+\lean{EnvelopeProperty.LeftExactHomologyComparison.cyclesIso,EnvelopeProperty.LeftExactHomologyComparison.cyclesIso_hom_iCycles,EnvelopeProperty.LeftExactHomologyComparison.toCycles_comparison}
+There is a canonical isomorphism
+$Z(FS)\simeq F(Z(S))$. Its composite with $F(Z(S)\to S_2)$
+is the actual inclusion of $Z(FS)$, and it carries the actual
+boundary map of $FS$ to the image under $F$ of the boundary map
+of $S$.
+\end{lemma}
+\begin{proof}
+The image under $F$ of the kernel fork defining $Z(S)$ is still
+a kernel fork, because $F$ preserves finite limits and zero
+morphisms. The uniqueness isomorphism between this fork and
+the chosen kernel fork defining $Z(FS)$ gives the comparison.
+Its inclusion identity is the defining identity of the unique
+map between limiting forks. Both boundary maps become $F(S_1
+\to S_2)$ after composition with this monomorphism, so the
+same uniqueness proves their equality.
+\end{proof}
+
+\begin{proposition}[Canonical comparison without an exactness hypothesis]
+\label{prop:left-exact-original-homology-comparison}
+\leanok
+\lean{EnvelopeProperty.LeftExactHomologyComparison.map,EnvelopeProperty.LeftExactHomologyComparison.homologyπ_map}
+There is a canonical map $H(FS)\to F(H(S))$. For every cycle,
+this map first applies the preceding cycle comparison and then
+the image under $F$ of the actual original homology projection.
+No assertion that this comparison is an isomorphism is made.
+\uses{lem:left-exact-original-cycle-comparison}
+\end{proposition}
+\begin{proof}
+Compose $Z(FS)\simeq F(Z(S))$ with the image of the original
+projection $Z(S)\to H(S)$. The original boundary map followed
+by this projection is zero. Applying $F$ preserves that equality
+and zero, and the boundary identity in the preceding lemma
+therefore shows that the composite kills every boundary of
+$FS$. The cokernel property of the actual homology projection
+gives a unique map out of $H(FS)$. The same property proves
+the stated formula on all cycles.
+\end{proof}
+
+\begin{proposition}[Naturality for original complex maps and functor maps]
+\label{prop:left-exact-original-homology-comparison-naturality}
+\leanok
+\lean{EnvelopeProperty.LeftExactHomologyComparison.naturality,EnvelopeProperty.LeftExactHomologyComparison.natTrans_naturality}
+The comparison commutes with every original short-complex
+morphism. For every natural transformation between two
+zero-preserving finite-limit-preserving functors, it also
+commutes with the actual induced short-complex map and the
+component of the natural transformation on original homology.
+\uses{prop:left-exact-original-homology-comparison}
+\end{proposition}
+\begin{proof}
+For complex morphisms the two candidate cycle maps agree after
+composition with the image of the target cycle inclusion, by
+the defining naturality square on middle terms. That inclusion
+is a monomorphism, so they agree. For a natural transformation
+the same cancellation uses its naturality square on the
+original cycle inclusion. Compose these equalities with the
+target original homology projection and use its naturality
+square. The actual homology projection of the source complex
+is an epimorphism; cancellation of this epimorphism proves
+both claimed homology squares.
+\end{proof}
+
+This comparison is intended for actual section functors in the
+global Cartier descent. Its construction neither assumes exact
+global sections nor proves that all affine section comparisons
+are isomorphisms. That further assertion must be derived from
+actual quasicoherent affine geometry.

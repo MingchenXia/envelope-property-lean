@@ -1,0 +1,45 @@
+\subsection{Actual Rees valuation indices exist for every nonzero proper finite ideal}
+
+\begin{lemma}[A genuine normalized chart has a nonunit denominator]
+\label{algebra:rees-index-nonunit-normalized-chart}
+\lean{EnvelopeProperty.ReesIndexExistence.exists_normalChart_nonunit}
+\leanok
+\uses{def:bj-rees}
+Let $B$ be a domain with actual fraction field $K$, and let $(g_i)$ be a finite
+family with nonzero proper span. There exists an actual index $j$ with $g_j\ne0$
+such that the image of $g_j$ in the SAME actual normalized Rees chart
+$\overline{B[g_i/g_j]}\subseteq K$ is not a unit. No normality, excellence,
+Noetherianity or valuation witness is supplied.
+\end{lemma}
+\begin{proof}
+Embed $B$ into its actual image subring of $K$. The original ideal maps to a
+proper ideal because this range restriction is bijective. The genuine valuation
+subring existence theorem gives a valuation subring $V\subseteq K$ containing
+that whole image and sending every original ideal element into the nonunits.
+Take $g_j$ of maximal value among the finite family for the actual ordered
+value group of $V$. Since some original generator is nonzero, $g_j\ne0$.
+The maximal-value inequalities put every actual ratio $g_i/g_j$ in $V$.
+Consequently the whole actual Rees chart lies in $V$. Since a valuation ring is
+integrally closed in its fraction field, its actual normalized chart lies in
+$V$ as well. The selected generator has value strictly less than one; it is
+therefore a nonunit in $V$. Were its image a unit in the actual normalized chart,
+the inclusion into $V$ would send that unit to a unit, a contradiction.
+\end{proof}
+
+\begin{theorem}[Every original nonzero proper finite ideal has an actual Rees index]
+\label{algebra:actual-rees-index-exists}
+\lean{EnvelopeProperty.ReesIndexExistence.exists_reesIndex_of_proper_span}
+\leanok
+\uses{algebra:rees-index-nonunit-normalized-chart,def:bj-rees}
+Under the preceding hypotheses the original type $\operatorname{ReesIndex} K g$
+is nonempty. Thus, when its actual normalized charts are Noetherian, the existing
+Rees-ring theorem gives an actual discrete valuation ring of the original
+fraction field. No Rees index or exceptional prime is assumed.
+\end{theorem}
+\begin{proof}
+Choose the actual chart given by the lemma. Its selected principal ideal is
+proper because its generator is a nonunit. Choose a genuine minimal prime of
+that original principal ideal. The selected index, actual minimal prime,
+nonzero generator and actual minimal-prime membership are precisely the fields
+of the original Rees index type.
+\end{proof}

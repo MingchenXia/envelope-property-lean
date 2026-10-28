@@ -1,0 +1,38 @@
+\subsection{Projective complete local models of every original field-valued fibre}
+
+\begin{theorem}[Every original field-valued fibre has its actual projective complete local model]
+\label{thm:fc-projective-completed-local-fibre-model}
+\leanok
+\lean{EnvelopeProperty.FibreProjectiveModels.exists_birational_presentation}
+\uses{lem:fc-projective-factorization-coefficient-base-change}
+Let $A$ be a normal domain of finite type over a field $F$, let
+$f:X\to\operatorname{Spec}A$ be projective and birational with $X$ reduced,
+and let $w:A\to K$ be an $F$-algebra map to any field extension $K/F$.
+There is a complete Noetherian local ring $B$, flat as an $A$-algebra,
+with residue homomorphism $\gamma:B\twoheadrightarrow K$ extending $w$,
+such that the actual pullback $X_B\to\operatorname{Spec}B$ has a projective
+factorization, its original coefficient map $B\to\Gamma(X_B,\mathcal O)$
+is bijective, and its literal order-one maximal-ideal fibre is isomorphic
+to the whole original fibre $X\times_A\operatorname{Spec}K$. This
+isomorphism preserves the entire original projection to $X$.
+\end{theorem}
+\begin{proof}
+Use the complete flat local lift of the actual field-valued map $w$.
+It is obtained by localizing the actual coefficient extension
+$A\otimes_F K$ at the kernel of its evaluation in $K$ and completing at
+its maximal ideal. The coefficient section of its residue field makes
+the completion Noetherian; localization and Noetherian completion give
+flatness over $A$. The actual completion evaluation is surjective with
+kernel its maximal ideal and its composite with $A\to B$ equals $w$.
+The proved coefficient-change construction supplies the projective
+factorization of the actual second projection $X_B\to\operatorname{Spec}B$.
+Projectivity of $f$ implies properness. Proper birationality over the
+normal domain $A$, with reduced source, identifies $\Gamma(X,\mathcal O)$
+with $A$. The genuine QCQS flat global-section base-change theorem then
+identifies $\Gamma(X_B,\mathcal O)$ with $B$ through the original
+coefficient homomorphism. Finally $B/\mathfrak m_B\simeq K$ and the
+exact coefficient triangle give the claimed isomorphism by pullback
+pasting. Each pasted square retains its first projection to $X$, which
+proves the stated projection identity. No normality or reducedness of
+$B$, $X_B$, or its closed fibre enters this argument.
+\end{proof}

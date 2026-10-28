@@ -1,0 +1,11 @@
+\section{Actual closed residual points where both the surface and the residual curve are smooth}
+\begin{theorem}\label{thm:normalized-residual-common-smooth-closed-points}
+Assume the original field has characteristic zero. In every nonempty open subset of the actual residual point closure $C$ of the normalized center, there is an actual closed point $z$ at which both $C$ and its original ambient normalized surface are smooth over the actual coefficient field $E$. Its image is a closed point of the original normalized surface, and its native residue field is finite over $E$.
+\uses{thm:normalized-center-ambient-smooth,thm:normalized-center-actual-residual-curve,lem:scheme-closed-point-residue-finite}
+\lean{EnvelopeProperty.SchemeNormalizedResidualSmoothPoints.exists_commonSmooth_closedPoint}\leanok
+\end{theorem}
+\begin{proof}
+The actual point closure $C$ is integral and locally of finite type over $E$. Its actual generic point maps to the original center: the schematically dense canonical residue-field point maps to the generic point of its image closure and its whole original projection maps to that same center. That center belongs to the ambient coefficient smooth locus by the preceding theorem. Since $E$ has characteristic zero and is perfect, the generic point of the integral finite-type $E$-scheme $C$ also belongs to the smooth locus of $C$.
+
+Given a nonempty open subset $W$ of $C$, its generic point belongs to $W$. Thus the intersection of $W$, the smooth locus of $C$, and the inverse image of the ambient smooth locus is a nonempty open subset. The finite-type $E$-scheme $C$ is Jacobson, so this open subset contains an actual closed point $z$. The actual inclusion $C\to N$ is a closed immersion, hence its image is closed in $N$. The closed-point finite-residue theorem gives the claimed finite degree of the native residue field over $E$. Neither the ambient parameter morphism nor its whole special fibre is asserted smooth or reduced.
+\end{proof}

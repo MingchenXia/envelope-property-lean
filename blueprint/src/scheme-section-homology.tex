@@ -1,0 +1,77 @@
+\section{Actual section homology and original restriction maps}
+\label{sec:scheme-section-homology}
+
+Let $K$ be any cochain complex of actual module sheaves on a
+scheme $X$. No quasicoherence, affineness, or exactness of
+global sections is assumed in this section.
+
+\begin{definition}[The actual section complex and canonical homology map]
+\label{def:scheme-original-section-homology}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionHomology.sectionComplex,EnvelopeProperty.SchemeSectionHomology.comparison,EnvelopeProperty.SchemeSectionHomology.comparison_cycle}
+For each original open $U$, evaluate every term and differential
+of $K$ on $U$. The resulting actual complex of
+$\mathcal O_X(U)$-modules has a canonical map
+$H^q(\Gamma(U,K))\to\Gamma(U,H^q(K))$ in every degree.
+On an actual native cycle it is the preserved-kernel comparison
+followed by the original sheaf homology projection evaluated
+on $U$.
+\uses{prop:left-exact-original-homology-comparison}
+\end{definition}
+\begin{proof}
+Evaluation on $U$ preserves finite limits: limits of sheaves of
+modules are computed by the limits of their underlying sheaves,
+and limits of sheaves are evaluated pointwise. Evaluation is
+additive and in particular preserves zero morphisms. Apply the
+canonical left exact comparison to the actual short complex
+of $K$ in degree $q$. Its cycle formula gives exactly the
+stated original evaluated homology projection.
+\end{proof}
+
+\begin{proposition}[Every original restriction map is the actual coefficient map]
+\label{prop:scheme-original-section-complex-restriction}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionHomology.restriction,EnvelopeProperty.SchemeSectionHomology.restrictionComplexMap,EnvelopeProperty.SchemeSectionHomology.restrictionComplexMap_f_apply}
+An inclusion $U\subseteq V$ gives the whole original cochain
+map from sections on $V$ to sections on $U$, with scalars
+restricted along the actual structural map
+$\mathcal O_X(V)\to\mathcal O_X(U)$. Every component sends
+every original section to its actual sheaf restriction.
+\end{proposition}
+\begin{proof}
+The restriction maps of the original presheaf of modules are
+linear into scalar restriction along this same structural ring
+map. Naturality of any original sheaf morphism says that its
+components commute with these restriction maps. Apply this to
+every original differential of $K$. These exact squares are
+the cochain-map identities, and the construction retains the
+whole original coefficient map in every degree.
+\end{proof}
+
+\begin{proposition}[The original section-homology map commutes with restriction]
+\label{prop:scheme-original-section-homology-restriction}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionHomology.comparison_restriction}
+The native homology map of that entire original restriction
+complex, followed by the canonical homology comparison for
+evaluation on $U$ with scalars restricted to
+$\mathcal O_X(V)$, equals the comparison on $V$ followed by
+the actual restriction of the original homology sheaf.
+\uses{def:scheme-original-section-homology,prop:scheme-original-section-complex-restriction,prop:left-exact-original-homology-comparison-naturality}
+\end{proposition}
+\begin{proof}
+The original restriction maps form a natural transformation
+from evaluation on $V$ to evaluation on $U$ followed by actual
+restriction of scalars. Both functors preserve finite limits
+and zero morphisms. Apply the proved natural-transformation
+square for the canonical homology comparison to the actual
+degree-$q$ short complex of $K$. Its induced short-complex map
+is exactly the one induced by the whole restriction cochain
+map, while its component on original homology is exactly the
+original homology-sheaf restriction. This proves the complete
+claimed square, not merely a square on selected representatives.
+\end{proof}
+
+No comparison in this section is asserted to be invertible.
+The affine quasicoherent isomorphism and the compatibility of
+the canonical Cartier maps still require their own proofs.

@@ -1,0 +1,39 @@
+\section{The whole module of an original quasicoherent image ideal}
+
+\begin{definition}[The original whole image factor]
+\label{def:fc-quasicoherent-image-module-factor}
+\leanok
+\lean{EnvelopeProperty.QuasicoherentImageModule.app_isLocallyMem, EnvelopeProperty.QuasicoherentImageModule.imageFactor, EnvelopeProperty.QuasicoherentImageModule.imageFactor_inclusion}
+For an actual quasicoherent original module $M$ and original morphism
+$\alpha:M\to\mathcal O_X$, take the actual geometric image ideal whose
+original affine ideals are the ENTIRE images of the original section
+maps. Every image section on any original open belongs to this ideal
+sheaf: restrict it to each original affine subopen and use the original
+naturality square. Thus $\alpha$ factors as a whole original module map
+$M\to I^{\sim}\hookrightarrow\mathcal O_X$, with its EXACT original
+whole inclusion retained.
+\end{definition}
+
+\begin{theorem}[A true monomorphism identifies the whole original image module]
+\label{thm:fc-quasicoherent-image-module-iso}
+\leanok
+\lean{EnvelopeProperty.QuasicoherentImageModule.imageFactor_surjective, EnvelopeProperty.QuasicoherentImageModule.imageFactor_isIso, EnvelopeProperty.QuasicoherentImageModule.imageFactorIso, EnvelopeProperty.QuasicoherentImageModule.imageFactorIso_hom_inclusion}
+\uses{def:fc-quasicoherent-image-module-factor}
+If the original $\alpha$ is monic, its actual whole image factor is an
+isomorphism $M\simeq I^{\sim}$ preserving the original inclusion. This
+is a general image theorem; it does not assume that an original line
+section's evaluation map is monic, which must be genuinely proved in
+that consumer.
+\end{theorem}
+\begin{proof}
+On any original affine open, ideal-module sections are exactly the same
+original affine image ideal. Thus the factor is surjective there, by an
+actual section preimage under $\alpha$. A true original monomorphism
+is injective on original section modules, so the factor is also injective
+on those affine opens. The original affine opens are a basis for the
+whole original topology. The underlying genuine sheaf morphism is
+therefore an isomorphism, by the basis isomorphism theorem. Consequently
+its original component maps are isomorphisms on every original open,
+which proves the WHOLE original module isomorphism. The original
+factorization equality supplies the exact inclusion identity.
+\end{proof}

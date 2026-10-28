@@ -1,0 +1,98 @@
+\section{Central nefness on an explicitly given normalized PL model}
+
+The production theorem~\ref{thm:intrinsic-original-convex-central-nef}
+chooses \emph{some} ideal sheaves $I,J$ on the product model.  The test
+configuration of
+Theorem~\ref{thm:pl-original-normalized-native-test-configuration} needs
+them in the form $I=\mathcal I(I')$, $J=\mathcal I(J')$ of the ideal sheaves
+of finitely generated homogeneous ideals $I',J'\subset k[t][x_0,\dots,x_n]$
+invariant under every coefficient extension of the parameter scaling
+$t\mapsto ct$ and containing powers of $t$.  Every step of the production
+chain uses only the ratio-weight identity of the chosen model, not the way
+its ideals were produced; we restate the chain for a given model and feed it
+the model of Lemma~\ref{local:actual-pl-all-product-point-monomial-models},
+which retains the homogeneous ideals.
+
+\begin{lemma}[Convexity of the original model weights of a given model]
+\label{lem:central-nef-tc-given-model-convexity}
+\lean{EnvelopeProperty.ProjSubvariety.IsLocallyConvexAll.originalModelMetric_isConvexPLOn_of_ratioWeight}
+\leanok
+\uses{local:actual-prescribed-class-intrinsic-convex-normal-model,local:actual-original-polarized-model-weight-isometry}
+Let $\varphi$ be locally $\mathcal O(a)$-convex, let $r,d>0$ with $d=ra$,
+$C\in\mathbb Z$, and let $I,J$ be ideal sheaves on the product model with
+finite Gauss logarithms such that on the normalized simultaneous blowup
+$r\varphi=w_{I,J}+C$, where $w_{I,J}$ is the canonical ratio weight.  Then for
+every reference index $j$ and every homogeneous form $F\notin I_X$ of degree
+$d$, the original polarized weight of $\mathcal O(d)\otimes(I\otimes
+J^\vee)$ is intrinsically convex on the admissible form-open of $F$.
+\end{lemma}
+\begin{proof}
+This is the proof of
+Lemma~\ref{local:actual-prescribed-class-intrinsic-convex-normal-model}
+followed by the isometry
+Lemma~\ref{local:actual-original-polarized-model-weight-isometry}: the
+polarized weight equals $r\varphi-C-\log|F|$ on the form-open, which is the
+convex admissible weight of $\varphi$ scaled by $r$ and shifted.  Only the
+given identity $r\varphi=w_{I,J}+C$ is used.
+\end{proof}
+
+\begin{theorem}[Convexity implies central nefness for a given model]
+\label{thm:central-nef-tc-given-model}
+\lean{EnvelopeProperty.NumericalSectionRegaugingUnitGauge.NativeRationalGaugeProp,EnvelopeProperty.NumericalSectionRegaugingUnitGauge.nativeRationalGauges_of_originalModelConvexity,EnvelopeProperty.NumericalGaussCurveLineDegree.CurveDegreeProp,EnvelopeProperty.NumericalGaussCurveLineDegree.curveDegree_nonneg_of_nativeRationalGauges,EnvelopeProperty.NumericalOriginalCurveDegree.OriginalCurveDegreeProp,EnvelopeProperty.NumericalOriginalCurveDegree.originalCurveDegree_nonneg_of_curveDegree,EnvelopeProperty.NumericalOriginalCentralNef.originalCentralNef_of_originalCurveDegree,EnvelopeProperty.NumericalOriginalCentralNef.originalCentralNef_of_ratioWeight}
+\leanok
+\uses{lem:central-nef-tc-given-model-convexity,thm:intrinsic-numerical-original-model-native-rational-gauge,thm:intrinsic-numerical-original-rational-section-regauging,thm:intrinsic-numerical-original-convex-gauss-curve-line-degree,thm:intrinsic-numerical-original-central-curve-degree,thm:intrinsic-original-convex-central-nef}
+Let $k$ be an infinite perfect field and $X$ projectively normal.  Under the
+hypotheses of Lemma~\ref{lem:central-nef-tc-given-model-convexity}, with
+$\rho:\mathcal N\to\operatorname{Spec}k[t]$ the normalized simultaneous
+blowup of $I,J$, $i_0:Z\to\mathcal N$ its central fibre and
+$p_0:Z\to\operatorname{Spec}k$, the class of $i_0^*M_j$,
+$M_j=q^*\mathcal O_X(d)\otimes(I_{\mathcal N}\otimes J_{\mathcal N}^\vee)$,
+lies in the nef cone of $p_0$ for every reference index $j$.
+\end{theorem}
+\begin{proof}
+Run the proofs of
+Theorems~\ref{thm:intrinsic-numerical-original-rational-section-regauging},
+\ref{thm:intrinsic-numerical-original-convex-gauss-curve-line-degree},
+\ref{thm:intrinsic-numerical-original-central-curve-degree} and
+\ref{thm:intrinsic-original-convex-central-nef} with the given model in place
+of the internally chosen one, starting from the convexity of
+Lemma~\ref{lem:central-nef-tc-given-model-convexity}.  Each of these proofs
+first obtains the model from the previous step and then argues for that
+model only: canonical regular-unit gauges of every nonzero generic section
+(Theorem~\ref{thm:intrinsic-numerical-original-model-native-rational-gauge}),
+then nonnegativity of the degree on every normal SNC central curve of a
+dominant proper integral model over $\mathcal N$, then on every original
+closed integral central curve of $\mathcal N$ via the regular paired surface
+and de Jong alteration, and finally the nef-cone criterion.  In Lean each
+step is a theorem whose hypothesis is the conclusion of the previous one for
+the same $I,J$ (the propositions \texttt{NativeRationalGaugeProp},
+\texttt{CurveDegreeProp}, \texttt{OriginalCurveDegreeProp}); the proofs are
+the production proofs verbatim.
+\end{proof}
+
+\begin{theorem}[Central nefness with exposed homogeneous ideals]
+\label{thm:central-nef-tc-native-product-ideal}
+\lean{EnvelopeProperty.NumericalOriginalCentralNef.exists_prescribedClass_originalCentralNef_nativeProductIdeal}
+\leanok
+\uses{thm:central-nef-tc-given-model,local:actual-pl-all-product-point-monomial-models}
+Let $k$ be an infinite perfect field, $X$ projectively normal, $a>0$ rational
+and $\varphi$ locally $\mathcal O(a)$-convex.  There are $r,d>0$ with $d=ra$,
+$B\in\mathbb Z$, finitely generated homogeneous ideals $I',J'$ invariant under
+every coefficient-extended parameter scaling, $A_1,A_2>0$ with
+$t^{A_1}\in I'$, $t^{A_2}\in J'$, and finiteness of the Gauss ideal logarithms
+of $I=\mathcal I(I')$, $J=\mathcal I(J')$ at all product points, such that
+$r\varphi=w_{I,J}+B$ at every point of the normalized simultaneous model and
+the central classes of all $M_j$ are nef.
+\end{theorem}
+\begin{proof}
+A locally convex function is PL, hence so is $\operatorname{den}(a)\varphi$.
+Lemma~\ref{local:actual-pl-all-product-point-monomial-models} gives
+$s>0$, $B$, and finitely generated homogeneous ideals $I',J'$ spanned by
+parameter monomials $t^e s$ with homogeneous $s$, containing powers of $t$,
+with finite logarithms and $s\operatorname{den}(a)\varphi =
+\log|I|-\log|J|+B$ at every product point.  Monomial spans are invariant
+under every parameter scaling.  Put $r=s\operatorname{den}(a)$ and
+$d=s\operatorname{num}(a)$, so $d=ra$; the canonical ratio weight of the
+normalized model is $\log|I|-\log|J|$ at the product point, so
+$r\varphi=w_{I,J}+B$.  Apply Theorem~\ref{thm:central-nef-tc-given-model}.
+\end{proof}

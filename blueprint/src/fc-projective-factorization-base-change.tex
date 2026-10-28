@@ -1,0 +1,36 @@
+\subsection{Actual projective factorizations after arbitrary coefficient change}
+
+\begin{lemma}[Projective factorization and arbitrary coefficient change]
+\label{lem:fc-projective-factorization-coefficient-base-change}
+\leanok
+\lean{EnvelopeProperty.ProjectiveFactorizationBaseChange.baseChange}
+Let $R\to S$ be any homomorphism of commutative rings. If $X\to\operatorname{Spec}R$
+factors through a closed immersion into $\mathbf P_R^d$, then its actual
+base change $X_S\to\operatorname{Spec}S$ factors through a closed immersion
+into $\mathbf P_S^d$.
+\end{lemma}
+\begin{proof}
+Base change the given closed immersion $X\hookrightarrow\mathbf P_R^d$
+along $\operatorname{Spec}S\to\operatorname{Spec}R$. The resulting map
+$X_S\to\mathbf P_R^d\times_R S$ is a closed immersion: its square with the
+original closed immersion is cartesian by the two original base-change
+squares and cancellation of the latter square. The genuine coefficient
+base-change isomorphism identifies $\mathbf P_R^d\times_R S$ with
+$\mathbf P_S^d$. Composing with this isomorphism preserves the closed
+immersion and its composite with the projective structure map is precisely
+the original second projection $X_S\to\operatorname{Spec}S$.
+\end{proof}
+
+\begin{lemma}[The actual finite Rees projection has a projective factorization]
+\label{lem:fc-finite-rees-projective-factorization}
+\leanok
+\lean{EnvelopeProperty.ReesPresentation.fcFiniteProjection_isProjectiveFactorization}
+For any finite original sequence of centre generators, the actual finite
+Rees projection has a projective factorization over its original coefficient
+ring.
+\end{lemma}
+\begin{proof}
+Its definition is the composite of the actual homogeneous-kernel quotient
+Proj closed immersion with the structure map of the same finite projective
+space. These two morphisms themselves give the required factorization.
+\end{proof}

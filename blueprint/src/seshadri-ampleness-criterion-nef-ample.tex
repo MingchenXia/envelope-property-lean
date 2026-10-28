@@ -1,0 +1,145 @@
+\section{Nef plus ample is ample}
+
+Throughout, $p:X\to\operatorname{Spec}k$ is projective, $X$ may be empty, reducible or
+nonreduced, and an invertible module $N$ is \emph{nef} if its numerical class lies in the nef
+cone, i.e.\ $\deg_C(N|_C)\ge0$ for every closed integral curve $C\subset X$
+(Theorem~\ref{thm:native-numerical-nef-cone}). This section proves Kleiman's theorem that
+nef plus ample is ample, following the proof of Lazarsfeld, \emph{Positivity in algebraic
+geometry I}, Theorem~1.4.9 and Corollary~1.4.10, via the Nakai criterion. Boucksom and
+Jonsson use it in this form (a nef class plus an ample class is ample) in the proof of their
+lemma on relatively nef classes of test configurations.
+
+\begin{lemma}[Positive powers of ample lines]
+\label{lem:nef-ample-positive-power-ample}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.positive_power_ample_general}
+\leanok
+\uses{thm:seshadri-original-strata-native-ampleness,thm:fc-original-ample-line-positive-powers,thm:seshadri-ample-top-intersection-positive}
+If $A$ is ample and $a>0$, then $A^{\otimes a}$ is ample.
+\end{lemma}
+\begin{proof}
+On the reduced closure $Z$ of each point of $X$, the restriction $A|_Z$ is ample and $Z$ is
+integral, so $(A|_Z)^{\otimes a}$ is ample. Pullback commutes with tensor powers, so the
+restriction of $A^{\otimes a}$ to every such $Z$ is ample, and strata ampleness
+(Theorem~\ref{thm:seshadri-original-strata-native-ampleness}) concludes.
+\end{proof}
+
+\begin{lemma}[Powers of nef lines]
+\label{lem:nef-ample-nef-power}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.lineClass_tensorPower_mem_nefCone}
+\leanok
+\uses{thm:native-numerical-nef-cone,lem:native-numerical-line-tensor-power}
+If $N$ is nef, then $N^{\otimes b}$ is nef for every $b\ge0$.
+\end{lemma}
+\begin{proof}
+The numerical class of $N^{\otimes b}$ is $b$ times that of $N$
+(Lemma~\ref{lem:native-numerical-line-tensor-power}), and the nef cone is stable under
+multiplication by nonnegative reals.
+\end{proof}
+
+\begin{theorem}[Nef plus ample is ample]
+\label{thm:native-nef-plus-ample}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_tensor_nef_of_dimension_le,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_tensor_nef}
+\leanok
+\uses{thm:seshadri-integral-ampleness-step,
+thm:seshadri-original-strata-native-ampleness,
+thm:seshadri-original-dimzero-ample,
+thm:seshadri-original-proper-closed-map-dimension-drop,
+thm:native-projective-scheme-finite-dimension-bound,
+thm:seshadri-ample-top-intersection-positive,
+lem:native-curve-nef-closed-restriction,
+thm:native-nef-ample-mixed-euler-nonnegative,
+lem:native-nef-ample-first-cut-positive,
+lem:native-nef-ample-second-cut-nonnegative,
+thm:nef-ample-no-positive-threshold,
+thm:nef-ample-polynomial-real-positivity,
+lem:nef-ample-positive-power-ample,
+lem:nef-ample-nef-power,
+lem:nef-ample-original-pencil-rational-scaling,
+lem:nef-ample-original-pencil-derivative-nonneg,
+lem:nef-ample-original-pencil-top-coefficient,
+lem:nef-ample-original-pencil-threshold-identity}
+\source{bj22-trivval:lem:relnef}
+Let $N$ be a nef invertible module and $A$ an ample module on $X$. Then $N\otimes A$ is
+ample.
+\end{theorem}
+\begin{proof}
+We prove, by induction on $d$, the assertion for all projective $X$ with $\dim X\le d$; a
+finite bound exists for every projective $X$
+(Theorem~\ref{thm:native-projective-scheme-finite-dimension-bound}). For a fixed bound it
+suffices to treat integral $X$: by strata ampleness
+(Theorem~\ref{thm:seshadri-original-strata-native-ampleness}) we may restrict to the reduced
+closure $Z$ of each point; $Z$ is integral with $\dim Z\le d$, $N|_Z$ is nef
+(Lemma~\ref{lem:native-curve-nef-closed-restriction}), $A|_Z$ is ample, and
+$(N\otimes A)|_Z\cong N|_Z\otimes A|_Z$.
+
+If $d=0$, every invertible module on an integral zero-dimensional projective scheme is ample
+(Theorem~\ref{thm:seshadri-original-dimzero-ample}). Assume the assertion for all projective
+schemes of dimension at most $d$, and let $X$ be integral with $\dim X\le d+1$. If
+$\dim X\le d$ we are done, so let $\dim X=d+1$.
+
+For integers $a>0$ and $b\ge0$ put $B_{a,b}=N^{\otimes b}\otimes A^{\otimes a}$. For every closed
+subscheme $i:Y\hookrightarrow X$ with $\dim Y\le d$, the restriction $i^*B_{a,b}$ is ample:
+indeed $i^*N^{\otimes b}\cong(i^*N)^{\otimes b}$ is nef (Lemmas
+\ref{lem:native-curve-nef-closed-restriction} and \ref{lem:nef-ample-nef-power}),
+$(i^*A)^{\otimes a}$ is ample (Lemma~\ref{lem:nef-ample-positive-power-ample}), and the induction
+hypothesis applies on $Y$.
+
+Consider the pencil polynomials (Definition~\ref{def:nef-ample-original-pencil-polynomial})
+\[
+ f=P_{d+1}(\varnothing;\mathcal O_X),\qquad h=P_d(N;\mathcal O_X),\qquad
+ g=P_d(A;\mathcal O_X),
+\]
+so that $f(t)=(N+tA)^{d+1}$, $h(t)=N\cdot(N+tA)^d$, $g(t)=A\cdot(N+tA)^d$ and $f=h+tg$
+(Lemma~\ref{lem:nef-ample-original-pencil-threshold-identity}). By the scaling lemma
+(Lemma~\ref{lem:nef-ample-original-pencil-rational-scaling}), for $t=a/b$ with $a,b>0$,
+\[
+ b^{d+1}f(t)=B_{a,b}^{d+1},\qquad b^dh(t)=N\cdot B_{a,b}^d,\qquad b^dg(t)=A\cdot B_{a,b}^d .
+\]
+
+\emph{Step 1: $f(t)>0$ at a positive rational $t=a/b$ implies that $B_{a,b}$ is ample and
+$h(t)\ge0$.} Then $B_{a,b}^{d+1}>0$; every non-surjective closed integral $Y\hookrightarrow X$
+has $\dim Y\le d$ (Theorem~\ref{thm:seshadri-original-proper-closed-map-dimension-drop}), so
+$B_{a,b}|_Y$ is ample, and the integral step of the Nakai criterion
+(Theorem~\ref{thm:seshadri-integral-ampleness-step}) shows that $B_{a,b}$ is ample. The
+mixed nonnegativity theorem (Theorem~\ref{thm:native-nef-ample-mixed-euler-nonnegative})
+gives $N\cdot B_{a,b}^d\ge0$, i.e.\ $h(t)\ge0$.
+
+\emph{Step 2: $g>0$ on $(0,\infty)$.} For positive rational $t=a/b$, the first cut lemma
+(Lemma~\ref{lem:native-nef-ample-first-cut-positive}), applied to $A$ and $B_{a,b}$, gives
+$g(t)>0$. If $d=e+1$, the second cut lemma
+(Lemma~\ref{lem:native-nef-ample-second-cut-nonnegative}) gives
+$A\cdot A\cdot B_{a,b}^{e}\ge0$, which by scaling is $b^eP_e(A,A;\mathcal O_X)(t)\ge0$; hence
+$g'(t)\ge0$ (Lemma~\ref{lem:nef-ample-original-pencil-derivative-nonneg}), and the same holds
+trivially if $d=0$. The real-positivity theorem
+(Theorem~\ref{thm:nef-ample-polynomial-real-positivity}) gives $g(t)>0$ for all real $t>0$.
+
+\emph{Step 3: $f$ is eventually positive.} Its coefficient of $t^{d+1}$ is
+$A^{d+1}>0$ (Lemma~\ref{lem:nef-ample-original-pencil-top-coefficient} and
+Theorem~\ref{thm:seshadri-ample-top-intersection-positive}), so $f$ has degree $d+1$ with
+positive leading coefficient.
+
+\emph{Step 4.} By Steps 1--3 and the no-positive-threshold theorem
+(Theorem~\ref{thm:nef-ample-no-positive-threshold}), $f(t)>0$ for all real $t>0$. In
+particular $f(1)>0$, so $B_{1,1}\cong N\otimes A$ is ample by Step 1.
+\end{proof}
+
+\begin{corollary}[Variants]
+\label{cor:native-nef-plus-ample-variants}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_ample_tensor_nef,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_tensorPower_tensor_tensorPower,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_tensorPower_tensor,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_tensor_tensorPower,
+EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.isAmple_pullback_tensor_nef}
+\leanok
+\uses{thm:native-nef-plus-ample,lem:nef-ample-positive-power-ample,lem:nef-ample-nef-power,thm:seshadri-ample-top-intersection-positive}
+Let $N$ be nef and $A$ ample. Then $A\otimes N$, $N^{\otimes b}\otimes A$ and
+$N^{\otimes b}\otimes A^{\otimes a}$ ($b\ge0$, $a>0$) are ample, and the restriction of
+$N\otimes A$ to every closed subscheme is ample.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:native-nef-plus-ample} to the nef line $N^{\otimes b}$
+(Lemma~\ref{lem:nef-ample-nef-power}) and the ample line $A^{\otimes a}$
+(Lemma~\ref{lem:nef-ample-positive-power-ample}); use the symmetry of the tensor product, and
+the fact that ampleness restricts to closed subschemes.
+\end{proof}

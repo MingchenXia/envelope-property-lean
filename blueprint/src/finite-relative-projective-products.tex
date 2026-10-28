@@ -1,0 +1,58 @@
+\section{Actual finite relative projective products retaining an original closed embedding}
+\label{sec:finite-relative-projective-products}
+
+\begin{theorem}[Whole finite original product and combined embedding]
+\label{thm:finite-relative-projective-products}
+\lean{EnvelopeProperty.FiniteRelativeProjectiveProducts.product, EnvelopeProperty.FiniteRelativeProjectiveProducts.projection, EnvelopeProperty.FiniteRelativeProjectiveProducts.lift, EnvelopeProperty.FiniteRelativeProjectiveProducts.lift_projection, EnvelopeProperty.FiniteRelativeProjectiveProducts.product_isProjectiveFactorization, EnvelopeProperty.FiniteRelativeProjectiveProducts.projection_isSeparated, EnvelopeProperty.FiniteRelativeProjectiveProducts.lift_isClosedImmersion}
+\leanok
+\uses{lem:projective-factorization-products, thm:native-projectivity-from-polynomial-factorization}
+\source{bj22-trivval:sec:tc}
+For every finite family of actual schemes over the same original
+affine coefficient base, form the actual finite relative product
+by iterated original scheme pullbacks, with empty product the
+same original base. It has whole original projections and the
+whole original combined map of every original family of maps
+over this same base; the composition with every whole projection
+is the corresponding unchanged original map. If each factor has
+an actual finite polynomial projective factorization, so does
+this same actual product, and each projection is separated.
+If one original constituent map is a closed immersion, the
+actual combined map into the same product is a closed immersion.
+No combined-product projectivity or combined-embedding certificate
+is supplied.
+\end{theorem}
+
+\begin{proof}
+For a family of length zero use the same original coefficient
+scheme with its identity morphism. For a family of length one
+more, take the actual original pullback of the first factor and
+the recursively constructed product of the remaining factors.
+Use its actual first projection for the new first projection
+and its actual second projection followed by each old projection
+for the remaining ones. The original pullback equality proves
+all whole coefficient triangles. Construct the combined map
+using the actual original pullback lift of the first given map
+and the old combined map. The two true pullback projection
+identities and induction prove every whole projection formula.
+
+For zero factors, the actual zero-dimensional polynomial
+projective space is isomorphic to the original coefficient
+scheme; its true inverse is an actual closed polynomial embedding
+of the identity structure morphism. At the inductive step, apply the
+proved actual product-projectivity theorem to the same first
+factor and remaining actual product. The actual structure
+morphism of the whole product is therefore proper and separated.
+The whole coefficient triangle for each projection makes its
+composite with the corresponding factor structure morphism
+separated; the native separated-composition criterion makes
+that same projection separated.
+
+Choose a constituent map which is an actual original closed
+immersion. The exact whole projection identity identifies it
+with the composite of the actual combined map and the separated
+projection. The genuine closed-immersion cancellation criterion
+therefore proves the actual combined map closed. These are
+whole original scheme maps and coefficient equalities, and no
+reducedness, integrality, normality, flatness or field assumption
+is used.
+\end{proof}

@@ -1,0 +1,48 @@
+\section{The original whole-cover degree and trace normalization}
+\label{sec:kn-nadel-whole-cover-degree}
+
+\begin{lemma}[Degree of the entire varying-root quotient]
+\label{lem:kn-nadel-whole-cover-degree}
+\lean{EnvelopeProperty.Vanishing.NadelWholeCoverDegree.degree,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.degree_pos,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.basisIndex_card,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.finrank_eq_degree}
+\leanok
+Let $R$ be a nonzero commutative ring, let $N_i>0$ be the original
+root degrees, and let $B=R[z_i]/(z_i^{N_i}-c_i)$ be the whole original
+quotient. Put $D=\prod_iN_i$. Its actual original monic basis has
+cardinality $D$, and $\operatorname{rank}_R B=D>0$.
+\end{lemma}
+\begin{proof}
+The actual simultaneous quotient is isomorphic over $R$ to the original
+successive monic-root tower. At the first stage the basis index is a
+singleton; adjoining the $i$-th root multiplies it by the entire set
+$\{0,\ldots,N_i-1\}$. Induction therefore gives cardinality
+$\prod_iN_i$. Transport the actual tower basis through the proved whole
+algebra isomorphism. The dimension theorem for bases over a nonzero
+commutative ring identifies its cardinality with the module rank.
+Every factor is positive, including the empty product $1$, so $D>0$.
+\uses{lem:kn-adapted-varying-finite}
+\end{proof}
+
+\begin{lemma}[Original trace after arbitrary coefficient extension]
+\label{lem:kn-nadel-whole-cover-trace-degree}
+\lean{EnvelopeProperty.Vanishing.NadelWholeCoverDegree.trace_algebraMap,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.trace_one,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.baseChange_trace_scalar,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.baseChange_trace_one,EnvelopeProperty.Vanishing.NadelWholeCoverDegree.degree_isUnit}
+\leanok
+For the preceding whole algebra,
+$\operatorname{Tr}_{B/R}(r)=Dr$ for every original scalar $r$.
+For any commutative $R$-algebra $S$, the entire algebra
+$C=S\otimes_RB$ satisfies
+$\operatorname{Tr}_{C/S}(s)=Ds$. In particular the two traces of $1$
+are the original degree $D$. If $R$ is an algebra over a
+characteristic-zero field, $D$ is a unit in $R$.
+\end{lemma}
+\begin{proof}
+In the genuine original basis, multiplication by $r$ is the diagonal
+matrix with every diagonal entry $r$. Its matrix trace is $Dr$.
+Base change carries that same basis to an $S$-basis of the whole
+$S\otimes_RB$, with the same original index set. Multiplication by
+$s$ consequently has trace $Ds$ in this basis as well. The latter
+trace is relative to $S$: it introduces no rank of $S$ over $R$.
+The positive integer $D$ is nonzero in the original characteristic-zero
+field, hence invertible there. Its image under the actual field algebra
+map is a unit in $R$.
+\uses{lem:kn-nadel-whole-cover-degree}
+\end{proof}

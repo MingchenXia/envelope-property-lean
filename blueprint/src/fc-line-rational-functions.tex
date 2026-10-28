@@ -1,0 +1,63 @@
+\subsection{Actual rational functions and finite-boundary maximum modulus}\label{subsec:fc-line-rational-functions}
+
+\begin{definition}[The actual rational algebra and its evaluations]\label{def:fc-line-rational-functions}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.denominatorPolynomial, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.denominatorPolynomial_ne_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.denominatorPolynomial_val_ne_zero, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.RationalFunctions, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalPoint, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalValue, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalValue_polynomial, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalValue_mk', EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.continuous_rationalValue, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalEvaluation, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalEvaluation_polynomial, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.nnnorm_rationalEvaluation}
+\leanok
+\uses{def:fc-standard-affinoid}
+Put $Q_U(T)=\prod_{j=1}^m(T-a_j)$ and
+$R_U=F[T,Q_U^{-1}]=F[T,(T-a_1)^{-1},\ldots,(T-a_m)^{-1}]$.
+Every point $x\in U$ defines its genuine multiplicative seminorm on $R_U$
+and a ring homomorphism $R_U\to\mathcal H(x)$ extending the original
+polynomial evaluation. These give the same value on every rational function.
+\end{definition}
+\begin{proof}
+Every hole coordinate has value at least its positive hole radius on $U$.
+Thus $|Q_U|_x$ is a finite product of positive values and is nonzero.
+Localization extends the original valuation and the map to the original
+completed residue field uniquely. Their values agree because both restrict
+to the original polynomial seminorm and a localization seminorm is determined
+by its restriction. In particular, on $P/Q_U^n$ both values are
+$|P|_x/|Q_U|_x^n$. This also proves continuity of every rational-function
+value on $U$, since its denominator is everywhere nonzero there.
+The empty product is one, so the construction includes no holes.
+\end{proof}
+
+\begin{lemma}[Positive rational maxima are locally constant]\label{lem:fc-positive-rational-local-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalRatio, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalRatio_eventually_eq_of_isLocalMax}
+\leanok
+\uses{def:fc-line-rational-functions}
+Let $P,Q\in F[T]$. At an actual point where $|P|,|Q|$ are nonzero, a local
+maximum of $|P|/|Q|$ is locally constant on an open neighborhood contained
+in that same nonvanishing locus.
+\end{lemma}
+\begin{proof}
+On the open locus where $PQ$ has nonzero value, the actual regular-section
+unit logarithm is $\log|P|-\log|Q|=\log(|P|/|Q|)$.
+Monotonicity of the real logarithm transfers the given local maximum to this
+actual rational-unit logarithm. The proved all-point rational-unit local
+maximum theorem gives an open neighborhood on which this same logarithm is
+constant and both factors remain nonzero. Injectivity of the logarithm on
+positive real numbers makes the original ratio constant there.
+\end{proof}
+
+\begin{theorem}[Finite-boundary maximum for actual rational functions]\label{thm:fc-rational-boundary-maximum}
+\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalRatio_exists_boundary_max, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.rationalValue_exists_boundary_max}
+\leanok
+\uses{def:fc-line-rational-functions, lem:fc-positive-rational-local-maximum, lem:fc-line-topology}
+For every $f\in R_U$ there is an actual $z\in\partial U$ such that
+$|f|_x\le |f|_z$ for every actual $x\in U$.
+\end{theorem}
+\begin{proof}
+Write $f=P/Q_U^n$. Its value is continuous on the compact connected set $U$,
+so it has a maximum $M$. If $M=0$, every value is zero and the outer Gauss
+boundary point realizes the maximum. Suppose $M>0$ and no boundary point
+realizes it. The maximum locus is nonempty and closed. Every point of it
+then lies in the topological interior of $U$. The maximum is positive, so
+both $P$ and $Q_U^n$ have nonzero value there. Interior containment makes it
+a local maximum on the actual affine line. The preceding lemma makes the
+original ratio constant on a neighborhood, so the maximum locus is open
+in $U$. Connectedness makes it all of $U$, contrary to the assumption that
+the original outer boundary point is not in it. Thus a boundary point
+realizes the maximum. This argument permits zero outer radius, coincident
+Gauss boundaries, touching holes and the empty hole family.
+\end{proof}

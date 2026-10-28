@@ -1,0 +1,355 @@
+\subsection{Actual reduced components and whole normalized line products}
+\label{subsec:normalized-line-products}
+
+\begin{definition}[The actual entire minimal-component index]
+\label{algebra:actual-minimal-component-index}
+\lean{EnvelopeProperty.ReducedComponents.Index,
+EnvelopeProperty.ReducedComponents.indexPrime,
+EnvelopeProperty.ReducedComponents.finiteIndex,
+EnvelopeProperty.ReducedComponents.Component}
+\leanok
+For an arbitrary commutative ring $R$ and its ORIGINAL ideal $I$, index
+components by the actual subtype $I.\mathrm{minimalPrimes}$. Every indexed
+ideal is genuinely prime, with actual quotient $R/P$. If $R$ is
+Noetherian, this entire index is finite. No component list is assumed.
+\end{definition}
+\begin{proof}
+Use the actual minimal-prime subtype and its prime-membership theorem.
+The genuine Noetherian minimal-prime finiteness theorem supplies finiteness
+of the subtype. The coordinate rings are the original prime quotients,
+including the possible empty component family for the unit ideal.
+\end{proof}
+
+\begin{theorem}[Whole reduced quotient embedding in the original components]
+\label{algebra:reduced-component-whole-embedding}
+\lean{EnvelopeProperty.ReducedComponents.ringMap,
+EnvelopeProperty.ReducedComponents.ringMap_apply,
+EnvelopeProperty.ReducedComponents.ker_ringMap,
+EnvelopeProperty.ReducedComponents.reducedEmbedding,
+EnvelopeProperty.ReducedComponents.reducedEmbedding_mk,
+EnvelopeProperty.ReducedComponents.reducedEmbedding_injective}
+\leanok
+\uses{algebra:actual-minimal-component-index}
+The entire original quotient map $R\to\prod_{P\in\operatorname{Min}(I)}R/P$
+has kernel exactly $\sqrt I$. Consequently the literal reduced quotient
+$R/\sqrt I$ genuinely embeds in this product. Every original element has
+its actual original quotient value in each component. No Noetherianity
+is needed for these whole-ring identities.
+\end{theorem}
+\begin{proof}
+Construct the full product homomorphism from the genuine quotient maps.
+Its actual kernel is the intersection of all indexed original prime
+ideals. The true minimal-prime intersection theorem identifies this
+intersection with $\sqrt I$. The actual quotient universal property
+gives the reduced homomorphism; its value formula follows on every
+original quotient class. Equality of the original whole kernel and the
+quotient ideal makes this induced map injective.
+\end{proof}
+
+\begin{theorem}[The original unreduced quotient and its exact nilradical kernel]
+\label{algebra:original-quotient-component-kernel}
+\lean{EnvelopeProperty.ReducedComponents.originalMap,
+EnvelopeProperty.ReducedComponents.originalMap_mk,
+EnvelopeProperty.ReducedComponents.originalMap_eq_reducedEmbedding_comp,
+EnvelopeProperty.ReducedComponents.ker_originalMap,
+EnvelopeProperty.ReducedComponents.ker_originalMap_eq_nilradical}
+\leanok
+\uses{algebra:reduced-component-whole-embedding}
+The actual map from the ORIGINAL quotient $R/I$ to all original components
+retains every quotient class and factors through the literal algebraic
+reduction $R/I\to R/\sqrt I$. Its exact whole kernel is the nilradical
+of $R/I$, equal to the image of $\sqrt I$. This reduction is an actual
+ring map, rather than replacement of any separately supplied model ideal.
+\end{theorem}
+\begin{proof}
+The original containment $I\subseteq\sqrt I$ descends the original
+product homomorphism to $R/I$. Quotient extensionality on every original
+class proves the full factorization through $R/\sqrt I$. The genuine
+quotient-lift kernel formula gives the image of the already computed
+radical kernel. A class $[r]$ is nilpotent exactly when some original
+power $r^n$ belongs to $I$. The actual radical membership criterion
+therefore identifies that kernel with the original quotient nilradical.
+\end{proof}
+
+\begin{theorem}[Actual finite component maps and whole prime lifts]
+\label{algebra:finite-component-quotient-covers}
+\lean{EnvelopeProperty.ReducedComponents.ringMap_finite,
+EnvelopeProperty.ReducedComponents.reducedEmbedding_finite,
+EnvelopeProperty.ReducedComponents.originalMap_finite,
+EnvelopeProperty.ReducedComponents.reducedEmbedding_comap_surjective,
+EnvelopeProperty.ReducedComponents.originalMap_comap_surjective}
+\leanok
+\uses{algebra:actual-minimal-component-index,algebra:original-quotient-component-kernel}
+For a Noetherian original $R$, the original, reduced and unreduced
+product maps are genuinely finite. Both quotient maps are surjective on
+their entire prime spectra, including the original unreduced quotient.
+Empty and unit-ideal cases are retained.
+\end{theorem}
+\begin{proof}
+Every genuine component quotient is a finite $R$-module. The actual
+finite component index makes their whole product a finite module for
+the original product coefficient action. Its complete quotient-map
+diagrams and finite restriction of scalars give finiteness of the two
+induced quotient maps. For the injective reduced embedding, genuine
+integral lying-over gives whole prime-surjectivity. For $R/I$, the
+exact nilradical kernel lies in every actual prime of that ORIGINAL
+quotient. Integral lying-over with this actual kernel containment
+therefore supplies a prime lift. No support-surjectivity witness is input.
+\end{proof}
+
+\begin{definition}[Actual product of genuine original component normalizations]
+\label{algebra:actual-component-normalization-product}
+\lean{EnvelopeProperty.ReducedComponents.NormalizationProduct,
+EnvelopeProperty.ReducedComponents.normalizationInclusion,
+EnvelopeProperty.ReducedComponents.normalizationInclusion_apply,
+EnvelopeProperty.ReducedComponents.normalizationInclusion_injective,
+EnvelopeProperty.ReducedComponents.normalizationMap,
+EnvelopeProperty.ReducedComponents.normalizationMap_apply,
+EnvelopeProperty.ReducedComponents.ker_normalizationMap,
+EnvelopeProperty.ReducedComponents.reducedNormalizationEmbedding,
+EnvelopeProperty.ReducedComponents.reducedNormalizationEmbedding_injective,
+EnvelopeProperty.ReducedComponents.originalNormalizationMap,
+EnvelopeProperty.ReducedComponents.originalNormalizationMap_mk,
+EnvelopeProperty.ReducedComponents.originalNormalizationMap_eq_reduced_comp,
+EnvelopeProperty.ReducedComponents.ker_originalNormalizationMap}
+\leanok
+\uses{algebra:actual-curve-normalization-ring,algebra:original-quotient-component-kernel}
+For every actual minimal component take its LITERAL integral closure
+$N_P\subseteq\operatorname{Frac}(R/P)$ and form $N=\prod_P N_P$.
+The actual original map $R\to N$ retains every original fraction-field
+value and has kernel $\sqrt I$. The literal reduced quotient embeds
+in $N$; the original quotient $R/I$ also maps to $N$, retaining every
+class and killing exactly its own nilradical. Its whole reduced-factor
+diagram commutes. No normalization-ring certificate is assumed.
+\end{definition}
+\begin{proof}
+Use each actual prime quotient's genuine fraction field and literal
+integral closure. Its inclusion is injective by the original fraction-field
+map. Taking these entire inclusions coordinatewise gives an injective
+product map. Compose it with the preceding whole original component
+quotient maps. Product inclusion injectivity reflects every zero value,
+so the already proved radical and nilradical kernels remain EXACT.
+Its composite with the genuine reduced embedding remains injective.
+The whole original quotient factorization follows by composition,
+preserving every original element in every literal normalization factor.
+\end{proof}
+
+\begin{theorem}[Genuine finite normalized product and original prime covers]
+\label{algebra:finite-original-normalized-component-covers}
+\lean{EnvelopeProperty.ReducedComponents.normalizationMap_finite,
+EnvelopeProperty.ReducedComponents.reducedNormalizationEmbedding_finite,
+EnvelopeProperty.ReducedComponents.originalNormalizationMap_finite,
+EnvelopeProperty.ReducedComponents.originalNormalizationMap_comap_surjective}
+\leanok
+\uses{algebra:actual-component-normalization-product,algebra:finite-free-curve-normalization}
+If $R$ is finite type over a perfect field, the entire normalized product
+map and its two quotient maps are finite. Every prime of the ORIGINAL
+unreduced quotient has a genuine normalized-component product lift.
+No domain hypothesis on the original ring $R$ is added.
+\end{theorem}
+\begin{proof}
+Finite type over the field makes the actual original ring Noetherian,
+so its true component index is finite. Every prime quotient is genuinely
+a finite-type domain over that same perfect field. True perfect-field
+finite normalization makes its literal normalization finite over it,
+including inseparable characteristic cases. Compose with the original
+prime quotient to make every factor finite over $R$, retaining that
+exact scalar tower. Their actual finite product is finite over $R$.
+The full quotient diagrams give finite maps from the two original
+quotients by actual restriction of scalars. The exact ORIGINAL nilradical
+kernel lies in every original quotient prime, so genuine integral
+lying-over yields the stated whole prime lifts.
+\end{proof}
+
+\begin{theorem}[Entire original coefficient structures]
+\label{algebra:normalized-component-original-coefficients}
+\lean{EnvelopeProperty.ReducedComponents.normalizationMapAlg,
+EnvelopeProperty.ReducedComponents.originalNormalizationMapAlg}
+\leanok
+\uses{algebra:actual-component-normalization-product}
+For any genuine commutative coefficient ring $K$ acting on $R$, both
+original maps to $N$ are actual $K$-algebra homomorphisms. The original
+quotient map preserves every whole $K$ coefficient; no valuation or
+finiteness assumption is needed.
+\end{theorem}
+\begin{proof}
+The entire original maps are the same underlying ring homomorphisms.
+On each coordinate their original scalar image first passes through
+the actual prime quotient and then its literal integral-closure inclusion.
+The genuine scalar-tower coefficient identity identifies this with the
+original $K$ coefficient map into that factor. Function extensionality
+gives the whole product coefficient identity. These true commuting
+coefficient identities supply the actual algebra homomorphisms.
+\end{proof}
+
+\begin{theorem}[Actual finite nonempty index of the original line preimage]
+\label{algebra:line-preimage-actual-components}
+\lean{EnvelopeProperty.AffineLine.linePreimageIdeal,
+EnvelopeProperty.AffineLine.linePreimageIndex_finite,
+EnvelopeProperty.AffineLine.linePreimageIdeal_ne_top,
+EnvelopeProperty.AffineLine.linePreimageIndex_nonempty}
+\leanok
+\uses{algebra:localized-line-original-preimage,algebra:actual-minimal-component-index}
+Let $\varphi:F[X_i,1/g]\to B$ be the actual ambient homomorphism and
+let $I$ be the ORIGINAL transverse-equation image. Finite coordinates
+and finite $\varphi$ make its entire component index genuinely finite.
+If the line polynomial $g(a+bT)$ is nonzero and $\varphi$ finite and
+injective, $I$ is proper and this actual index is nonempty. A selected
+component witness is not an input.
+\end{theorem}
+\begin{proof}
+The actual polynomial principal open is finite type over $F$. The
+whole scalar identity of $\varphi$ gives its true coefficient tower,
+so finite $\varphi$ makes $B$ finite type and hence Noetherian. Genuine
+minimal-prime finiteness gives the entire finite index.
+
+For nonemptiness, the nonzero line polynomial makes its true open-line
+ring a domain. The kernel of the actual surjective line map is therefore
+a genuine prime of the original ambient principal-open ring. Actual
+ambient injectivity gives a faithful coefficient action; finiteness
+gives integrality. Genuine lying-over constructs an original ambient
+prime whose contraction is that whole line kernel. The computed
+localized kernel and ideal-image composition put the entire ORIGINAL
+transverse image inside this prime, so it is proper. The actual
+minimal-prime existence theorem below that proper ideal makes its
+true component index nonempty. Neither domain of $B$ nor a chosen
+component is needed for this nonemptiness step.
+\end{proof}
+
+\begin{definition}[Whole open-line coefficient map into every actual normalized component]
+\label{algebra:whole-normalized-line-product-map}
+\lean{EnvelopeProperty.AffineLine.normalizedLineProductHom,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_principalLineHom,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_comp}
+\leanok
+\uses{algebra:normalized-line-component-ring,algebra:line-preimage-actual-components,
+algebra:actual-component-normalization-product}
+Take the product of the actual per-component normalized line homomorphisms
+to obtain a genuine full map $F[T,1/g(a+bT)]\to N$. Its complete
+coefficient diagram with the ORIGINAL ambient map commutes on every
+localized original element, not merely coordinates or supports.
+\end{definition}
+\begin{proof}
+At every actual component index, use its genuine minimal-prime membership
+in the already constructed normalized component map. The product of
+these actual algebra homomorphisms is a whole algebra homomorphism.
+The per-component complete original factorization evaluates each
+localized original element as the literal inclusion of its quotient
+value. Coordinatewise extensionality identifies this with the entire
+original normalization-product map, and ring-homomorphism extensionality
+gives the claimed full composite equality.
+\end{proof}
+
+\begin{theorem}[Actual finite free flat faithful normalized line product]
+\label{algebra:finite-free-normalized-line-product}
+\lean{EnvelopeProperty.AffineLine.normalizedLineProductHom_injective,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_finite,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_free,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_flat,
+EnvelopeProperty.AffineLine.normalizedLineProductHom_comap_surjective}
+\leanok
+\uses{algebra:whole-normalized-line-product-map,algebra:line-preimage-actual-components,
+algebra:normalized-line-component-ring}
+Over a perfect field and with finite coordinates, the whole line
+product map is finite whenever the actual ambient map is finite.
+For a domain $B$, $g\ne0$, $g(a+bT)\ne0$, and actual finite injective
+ambient map, it is injective, free for its exact induced line action,
+flat and surjective on the entire open-line prime spectrum. No
+equality with the original ambient rank or degree is asserted.
+\end{theorem}
+\begin{proof}
+The preceding actual index is finite. Every actual normalization factor
+is finite over the real line by perfect-field normalization and the
+whole component map. Give each factor its exact induced line algebra
+action; genuine finite-product module finiteness makes the whole product
+finite for the same entire homomorphism.
+
+The actual nonempty index supplies a real component. Its proved
+line-map injectivity reflects equality of any two original line elements
+whose whole product images coincide; thus the full product map is
+injective. Each actual factor's finite torsion-free principal-domain
+module is genuinely free for its exact coefficient map. The finite
+product of these true free modules is free for the entire product map.
+This derives flatness from actual freeness. Finiteness gives integrality,
+and the proved whole injectivity gives faithfulness, so actual integral
+lying-over proves whole prime-surjectivity. No component-list, free-module,
+flatness, injectivity or degree certificate is input.
+\end{proof}
+
+\begin{theorem}[Actual whole normalized-product schemes and the original quotient square]
+\label{scheme:whole-normalized-line-product}
+\lean{EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalMap,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalMap_isFinite,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalMap_surjective,
+EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap_isFinite,
+EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap_flat,
+EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap_surjective,
+EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap_square}
+\leanok
+\uses{algebra:finite-free-normalized-line-product,
+algebra:finite-original-normalized-component-covers}
+The actual scheme $\operatorname{Spec}N$ maps finitely and surjectively
+to the ORIGINAL unreduced finite preimage $\operatorname{Spec}(B/I)$.
+Its actual line map is finite and, under the preceding genuine domain,
+nonvanishing and injectivity hypotheses, flat and surjective. The whole
+original ambient square commutes through $B/I$, retaining every original
+$B$ element. These are actual scheme maps, not a scheme-product certificate.
+\end{theorem}
+\begin{proof}
+Apply genuine contravariant Spec to the entire original quotient and
+line product homomorphisms. The actual affine finite and flat criteria
+transfer the proved ring properties. Their whole underlying prime
+maps are the already proved surjective comaps. The complete ring
+composite identity and the original quotient value formula transfer
+by contravariant functoriality to the whole original ambient square.
+Thus the original unreduced preimage and its actual point maps are
+kept explicitly, rather than silently replaced by reduced support.
+\end{proof}
+
+\begin{theorem}[Proper-surjective whole native maps for every prescribed field valuation]
+\label{scheme:whole-normalized-product-native-lifts}
+\lean{EnvelopeProperty.AffineLine.normalizedLineProductSchemeMap_over_field,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalMap_over_field,
+EnvelopeProperty.AffineLine.normalizedLineProductNativeMap,
+EnvelopeProperty.AffineLine.continuous_normalizedLineProductNativeMap,
+EnvelopeProperty.AffineLine.isProperMap_normalizedLineProductNativeMap,
+EnvelopeProperty.AffineLine.normalizedLineProductNativeMap_surjective,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalNativeMap,
+EnvelopeProperty.AffineLine.continuous_normalizedLineProductOriginalNativeMap,
+EnvelopeProperty.AffineLine.isProperMap_normalizedLineProductOriginalNativeMap,
+EnvelopeProperty.AffineLine.normalizedLineProductOriginalNativeMap_surjective}
+\leanok
+\uses{scheme:whole-normalized-line-product,
+algebra:normalized-component-original-coefficients,
+scheme:relative-integral-native-proper-map,scheme:relative-integral-native-image}
+For ANY prescribed real-valued field seminorm $\nu_F$, both actual
+whole scheme maps preserve the entire original field base point and
+induce continuous whole native point maps. Genuine finiteness makes
+them proper. Every ORIGINAL unreduced preimage native point lifts;
+under the preceding actual line-domination hypotheses every native
+open-line point also lifts. All original quotient values and every
+possibly unbounded field scalar are retained. No fieldwide bound,
+completion or point-extension certificate is assumed.
+\end{theorem}
+\begin{proof}
+The genuine line algebra homomorphism and the preceding ORIGINAL
+quotient coefficient homomorphism preserve every field scalar. Their
+entire scheme structure triangles therefore define the true common-base
+native maps, retaining the WHOLE prescribed field point. Genuine native
+functoriality supplies continuity. The actual finite scheme maps are
+integral, so the general arbitrary-prescribed-base native integral-map
+properness theorem applies. Their already proved scheme surjectivity
+and the exact common-base native integral-image theorem give whole
+native point lifts. This invokes neither finite supports as a surrogate
+for valuations nor a different-prescribed-base extension theorem.
+\end{proof}
+
+This assembles an ACTUAL product of all genuine normalized components
+of the original finite line preimage, with literal algebraic reduction
+and whole original maps. It does not replace any independent model ideal
+by a radical, identify this product with an integral closure in a selected
+total quotient ring, prove full smoothness, or assert equality of its
+line rank with the original ambient degree. Those global identification,
+generic-degree comparison, proper-model and potential-theoretic producers
+remain separate.

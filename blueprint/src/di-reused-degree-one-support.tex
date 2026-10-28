@@ -1,0 +1,130 @@
+\section{Original degree-one descent support}
+\label{sec:di-reused-degree-one-support}
+
+\begin{definition}[The original sheaf Cech total target]
+\label{def:di-original-sheaf-cech-total-target}
+\lean{EnvelopeProperty.Cartier.DeligneIllusieLocalContinuationCechBicomplex.bicomplex,EnvelopeProperty.Cartier.DeligneIllusieLocalContinuationCechTotalAugmentation.totalComplex}
+\leanok
+For an original open $V$, put $F_V(N)=j_{V*}(N|_V)$. In degree $(a,b)$,
+take the native product of $F_{U_i}(K^a)$ over all $(b+1)$-tuples $i$.
+Its horizontal differential is induced by $d_K$ on each factor, and its
+vertical differential is the ordinary alternating sum of original
+restrictions to deleted-face intersections. Their signed native total is
+the already established sheaf Cech total.
+\end{definition}
+\begin{proof}
+\leanok
+The genuine restriction--pushforward factors form a presheaf in original
+module sheaves, since identity and composite section restrictions agree.
+Applying the native Cech functor gives the vertical complexes. Functoriality
+in $N$ sends each differential of $K$ to a morphism of those complexes,
+so the two differentials commute. The native signed total construction
+therefore gives the stated complex, with exactly these original factors.
+\end{proof}
+
+\begin{lemma}[The degree-one total cocycle]
+\label{lem:di-cech-degree-one-total-cycle}
+\lean{EnvelopeProperty.DI.CechDegreeOneDescent.degreeOneComponent_closed}
+\leanok
+\uses{def:di-original-sheaf-cech-total-target}
+Suppose $\xi:M\to B^{1,0}$ and $h:M\to B^{0,1}$ satisfy
+$d_K\xi=0$, $\delta\xi=d_Kh$, and $\delta h=0$.
+Their two genuine total inclusions give a map
+$z=\iota_{1,0}\xi+\iota_{0,1}h:M\to\operatorname{Tot}^1(B)$
+with $d_{\mathrm{Tot}}z=0$.
+\end{lemma}
+\begin{proof}
+\leanok
+The component formula for the native signed total differential gives
+three possible target components. In bidegree $(2,0)$ the composite is
+$d_K\xi$, hence zero. In bidegree $(1,1)$ it is
+$d_Kh-\delta\xi$, hence zero by the second equation. In bidegree $(0,2)$
+it is $\delta h$, hence zero. All other components are zero because the
+bicomplex is in the first quadrant. Thus their finite direct sum is zero.
+\end{proof}
+
+\begin{theorem}[The actual degree-one descent morphism]
+\label{thm:di-cech-degree-one-descent-map}
+\lean{EnvelopeProperty.DI.CechDegreeOneDescent.degreeOneMap,EnvelopeProperty.DI.CechDegreeOneDescent.descentMap}
+\leanok
+\uses{lem:di-cech-degree-one-total-cycle,def:di-cech-original-local-cochains}
+The same data define a genuine morphism of complexes
+$M[-1]\to\operatorname{Tot}(B)$, with degree-one component exactly $z$.
+Its two bidegree components are exactly the originally supplied $\xi$ and $h$.
+\end{theorem}
+\begin{proof}
+\leanok
+The source complex is $M$ in degree one and zero in every other degree,
+with zero differentials. Use $z$ in degree one and the zero map elsewhere.
+The only nontrivial chain-map identity is $d_{\mathrm{Tot}}z=0$, proved
+above. Projection after the total inclusion of a bidegree is the identity
+on that bidegree and zero on the other one, giving precisely $\xi$ and $h$.
+This construction assumes only the three displayed local cocycle equations,
+not a global morphism or a quasi-isomorphism.
+\end{proof}
+
+\begin{lemma}[Projection to the original zero Cech row]
+\label{lem:di-cech-total-zero-row-projection}
+\lean{EnvelopeProperty.DI.CechDegreeOneDescent.zeroRowProjection}
+\leanok
+\uses{def:di-original-sheaf-cech-total-target}
+Projection onto bidegree $(a,0)$ in total degree $a$ defines a morphism
+$\operatorname{Tot}(B)\to(B^{\bullet,0},d_K)$.
+\end{lemma}
+\begin{proof}
+\leanok
+A total differential can reach bidegree $(a+1,0)$ only from $(a,0)$:
+a vertical differential raises the second index, so cannot enter second
+index zero. The corresponding horizontal component is exactly $d_K$.
+Consequently degreewise projection commutes with every differential.
+\end{proof}
+
+\begin{definition}[The genuine cochains of original local module maps]
+\label{def:di-cech-original-local-cochains}
+\lean{EnvelopeProperty.DI.CechDegreeOneDescent.localAdjoint,EnvelopeProperty.DI.CechDegreeOneDescent.localRestrict,EnvelopeProperty.DI.CechDegreeOneDescent.localCochain,EnvelopeProperty.DI.CechDegreeOneDescent.localBoundary}
+\leanok
+\uses{def:di-original-sheaf-cech-total-target}
+For a tuple $i:\{0,\ldots,b\}\to I$, write $U_i=\bigcap_r U_{i(r)}$.
+A local morphism $M|_{U_i}\to K^a|_{U_i}$ is sent by the actual open
+restriction--pushforward adjunction to
+$M\to j_{i*}(K^a|_{U_i})$. The product of these adjoint morphisms is a
+genuine map $M\to B^{a,b}$; its projection at each tuple is exactly the
+adjoint of the original local morphism.
+\end{definition}
+\begin{proof}
+\leanok
+Compose the restriction-adjunction unit of $M$ with pushforward of the
+original local morphism. The native product universal property gives
+the unique map with these components. Projection of that product map
+recovers the stated adjoint by the defining product equation.
+\end{proof}
+
+\begin{theorem}[Original local formulas and native homology]
+\label{thm:di-cech-degree-one-original-local-homology}
+\lean{EnvelopeProperty.DI.CechDegreeOneDescent.descentMap_xi,EnvelopeProperty.DI.CechDegreeOneDescent.descentMap_homotopy,EnvelopeProperty.DI.CechDegreeOneDescent.descentMap_localRepresentative,EnvelopeProperty.DI.CechDegreeOneDescent.descentMap_homology_local}
+\leanok
+\uses{thm:di-cech-degree-one-descent-map,lem:di-cech-total-zero-row-projection,def:di-cech-original-local-cochains}
+For original local maps $\xi_i:M|_{U_i}\to K^1|_{U_i}$ and
+$h_{ij}:M|_{U_i\cap U_j}\to K^0|_{U_i\cap U_j}$ satisfying
+$d_K\xi_i=0$, $\xi_j-\xi_i=d_Kh_{ij}$ on pairwise intersections,
+and $h_{jk}-h_{ik}+h_{ij}=0$ on triple intersections, the resulting
+map $M[-1]\to\operatorname{Tot}(B)$ retains the original local
+$\xi_i$ and $h_{ij}$ as its two native total components. Composing its
+native homology map with zero-Cech-row projection and the $i$th factor
+map gives exactly the native homology map represented by $\xi_i$.
+\end{theorem}
+\begin{proof}
+\leanok
+Adjunction and genuine factor restrictions transport the three local
+equations to the component equations for the two product cochains.
+Product extensionality then gives $d_K\xi=0$, $\delta\xi=d_Kh$ and
+$\delta h=0$, with the alternating pair and triple signs displayed above.
+Apply the proved total-cycle construction. Zero-row projection kills
+$h$ and retains $\xi$, and the $i$th product projection retains precisely
+the adjoint of $\xi_i$. Thus the composite complex morphism equals the
+single-degree morphism defined by $\xi_i$, degree by degree. Native
+homology functoriality carries this exact complex-map equality to the
+asserted equality on homology. When local difference maps instead satisfy
+$\xi_i-\xi_j=d_KH_{ij}$, substitute $h_{ij}=-H_{ij}$; the actual total
+components are then $(\xi,-H)$, with no change of the original local maps.
+\end{proof}

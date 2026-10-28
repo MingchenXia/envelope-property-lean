@@ -1,0 +1,22 @@
+\begin{lemma}[Flat scalar extension of an actual commuting kernel square]
+\label{lem:fc-flat-kernel-base-change}
+\lean{EnvelopeProperty.FlatKernelBaseChange.kernelEquiv,EnvelopeProperty.FlatKernelBaseChange.kernelEquiv_tmul}
+\leanok
+Let $R\to S$ be an actual flat map of commutative rings, $d:M\to N$
+an original $R$-linear map, and $d':M'\to N'$ an original $S$-linear
+map. Suppose actual whole $S$-linear equivalences
+$e_0:S\otimes_R M\simeq M'$ and $e_1:S\otimes_R N\simeq N'$
+commute with these maps. Then the canonical original kernel map is an
+$S$-linear equivalence $S\otimes_R\ker d\simeq\ker d'$.
+Every $s\otimes x$ has underlying image $e_0(s\otimes x)$.
+\end{lemma}
+\begin{proof}
+Flatness gives the actual canonical equivalence from the tensor of the
+original kernel to the kernel of $1\otimes d$. The original commuting
+square restricts $e_0$ to these actual kernels. Its inverse restricts
+$e_0^{-1}$: the square and injectivity of $e_1$ show that the inverse
+image of every original $d'$-kernel element is killed by $1\otimes d$.
+The two restrictions are inverse because the original whole maps are
+inverse. Compose the two genuine equivalences. The native tensor-kernel
+map retains every pure tensor, which proves the stated formula.
+\end{proof}

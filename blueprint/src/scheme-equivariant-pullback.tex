@@ -1,0 +1,36 @@
+\section{The action on the same original scheme fibre product}
+\label{sec:scheme-equivariant-pullback}
+
+\begin{theorem}[The native fibre product with its original coefficients]
+\label{thm:scheme-equivariant-pullback}
+\lean{EnvelopeProperty.SchemeEquivariantPullback.object, EnvelopeProperty.SchemeEquivariantPullback.firstProjection, EnvelopeProperty.SchemeEquivariantPullback.secondProjection, EnvelopeProperty.SchemeEquivariantPullback.square, EnvelopeProperty.SchemeEquivariantPullback.modObj, EnvelopeProperty.SchemeEquivariantPullback.firstProjection_isModHom, EnvelopeProperty.SchemeEquivariantPullback.secondProjection_isModHom, EnvelopeProperty.SchemeEquivariantPullback.isModHom_of_comp}
+\leanok
+\uses{thm:pullback-cone-monoid-action}
+\source{bj22-trivval:sec:tc}
+Let $X,Y,S$ be schemes over the same original coefficient scheme $T$,
+and let $f:X\to S$, $g:Y\to S$ be original morphisms over $T$.
+Their \emph{same native scheme fibre product} $X\times_SY$,
+with its original coefficient map through $X$, is Cartesian
+in schemes over $T$. If a monoid scheme $G/T$ acts on all
+three original schemes and $f,g$ are equivariant, this same
+native scheme fibre product has a derived genuine action.
+Both original projections are equivariant; equivariance into
+this product is detected by these original projections.
+The action on $S$ may be nontrivial, as for the parameter line.
+\end{theorem}
+
+\begin{proof}
+Give the native scheme fibre product its coefficient map
+$\operatorname{pr}_XX\to T$. Its first projection is over $T$
+by definition. Its second projection is over $T$ by the
+original Cartesian equation and the two original coefficient
+triangles for $f,g$. The original whole native Cartesian square
+remains Cartesian in schemes over $T$: the forgetful functor
+creates connected limits, in particular Cartesian squares.
+Apply the preceding action construction to precisely this
+specified original cone. It derives the genuine action and
+both complete projection equations. Its projection detection
+statement also proves the last assertion. No comparison with
+a different chosen fibre product or a supplied product action
+is required.
+\end{proof}

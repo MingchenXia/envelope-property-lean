@@ -1,0 +1,112 @@
+\section{The actual Segre pullback retains whole original sections and model norms}
+\label{sec:projective-segre-pullback-sections}
+
+\begin{definition}[The original pair morphism and its Segre composite]
+\label{def:original-pair-segre-morphism}
+\lean{EnvelopeProperty.ProjectiveSegrePullbackSections.pair, EnvelopeProperty.ProjectiveSegrePullbackSections.morphism, EnvelopeProperty.ProjectiveSegrePullbackSections.morphism_structure}
+\leanok
+Let $f:X\to\mathbf P_R^m$ and $g:X\to\mathbf P_R^n$ be actual
+original morphisms over the same commutative ring $R$. Their true pair
+morphism is the map into the actual fiber product determined by $f,g$.
+Composing it with the actual Segre map gives an original morphism
+$s:X\to\mathbf P_R^{(m+1)(n+1)-1}$ over the unchanged original base.
+\end{definition}
+\begin{proof}
+The equality of the two original base composites supplies the universal
+fiber-product map. Its first and second projections are literally $f$
+and $g$. The genuine Segre map has the original first-factor structure
+composite, so its composite with this pair map has the original base map
+of $f$, which is also that of $g$.
+\end{proof}
+
+\begin{theorem}[The derived whole original line isomorphism]
+\label{thm:original-segre-pulled-line-iso}
+\lean{EnvelopeProperty.ProjectiveSegrePullbackSections.line, EnvelopeProperty.ProjectiveSegrePullbackSections.line_isInvertible, EnvelopeProperty.ProjectiveSegrePullbackSections.lineIso}
+\leanok
+\uses{def:original-pair-segre-morphism,thm:fc-original-segre-projective-twist}
+For these actual original maps there is a genuine whole module
+isomorphism
+\[
+ s^*\mathcal O(1)\simeq f^*\mathcal O(1)\otimes g^*\mathcal O(1).
+\]
+All three modules are the original invertible pullbacks on $X$.
+\end{theorem}
+\begin{proof}
+The whole original Segre line on the fiber product is the tensor of its
+actual factor lines. Pull this proved whole isomorphism back by the
+original pair morphism. The actual strong monoidal pullback comparison
+identifies its tensor pullback with the tensor of the two pullbacks.
+The true factorization comparisons for the pair projections identify
+these factors with the original pullbacks along $f$ and $g$. Finally the
+true composite pullback comparison identifies its source with the same
+original line pulled back along $s$. Composing these genuine whole
+isomorphisms gives the assertion. Original projective lines are
+invertible and true pullback preserves their invertibility.
+\end{proof}
+
+\begin{theorem}[Every actual original coordinate section is retained]
+\label{thm:original-segre-pulled-coordinate-section}
+\lean{EnvelopeProperty.ProjectiveSegrePullbackSections.coordinateSection, EnvelopeProperty.ProjectiveSegrePullbackSections.lineIso_coordinate}
+\leanok
+\uses{thm:original-segre-pulled-line-iso,thm:fc-original-segre-projective-twist,lem:fc-original-tensor-section-homs}
+Under this constructed whole isomorphism, the pullback of every original
+Segre coordinate $Z_{ij}$ is exactly the actual tensor section of the
+original pullbacks of $X_i$ and $Y_j$.
+\end{theorem}
+\begin{proof}
+On the actual fiber product, the proved original Segre line isomorphism
+takes $Z_{ij}$ to the tensor of the two original pulled coordinate
+sections. Apply the actual pair pullback to this equality. Actual
+pullback of unit-section morphisms preserves their composition with a
+module map. Its genuine monoidal comparison takes the pulled tensor
+section to the tensor of the two pulled sections. The actual composite
+and factor pullback identities identify these three sections with the
+original sections pulled back respectively along $s,f,g$. These are
+equalities of whole section morphisms, so no generation or coordinate
+matching premise is needed.
+\end{proof}
+
+\begin{theorem}[All original whole sections and finite weighted families are isometric]
+\label{thm:original-segre-whole-sections-model-isometry}
+\lean{EnvelopeProperty.ProjectiveSegrePullbackSections.wholeSectionsEquiv, EnvelopeProperty.ProjectiveSegrePullbackSections.wholeSectionsNorm, EnvelopeProperty.ProjectiveSegrePullbackSections.weightedNormEval}
+\leanok
+\uses{thm:original-segre-pulled-line-iso,thm:actual-module-iso-global-sections,thm:scheme-global-section-model-norm-isometry,thm:scheme-global-section-weighted-norm-isometry}
+The constructed whole line isomorphism induces a genuine equivalence on
+the entire original global section spaces. If the original $X$ is proper
+over $R$, then at every original valued point over any bounded base
+valuation, it preserves the actual proper-model norm of every original
+global section. It also preserves the finite weighted logarithmic
+evaluation of every original finite family, retaining the same positive
+denominator and all real weights, including empty or common-zero families.
+\end{theorem}
+\begin{proof}
+Apply global sections to the constructed whole module isomorphism and
+its actual inverse. The two compositions are identities on every whole
+section, so this is a genuine equivalence on the full spaces. At every
+original proper valued point, the proved whole-module isometry makes
+these same section maps norm-preserving. For a finite weighted family,
+map its actual sections through this equivalence and retain its weights.
+Every term of the finite logarithmic supremum is unchanged by the norm
+identity; taking the same finite supremum and multiplying by the same
+denominator inverse proves equality of the full weighted evaluations.
+This argument includes zero sections and empty families.
+\end{proof}
+
+\begin{theorem}[Actual coordinate norms multiply at every original native point]
+\label{thm:original-segre-coordinate-model-norm}
+\lean{EnvelopeProperty.ProjectiveSegrePullbackSections.coordinateNorm}
+\leanok
+\uses{thm:original-segre-pulled-coordinate-section,thm:scheme-global-section-tensor-norm,thm:scheme-global-section-model-norm-isometry}
+For proper original $X$, the actual proper-model norm of the original
+pulled $Z_{ij}$ section equals the product of the actual norms of the
+original pulled $X_i$ and $Y_j$ sections, at every original native valued
+point. Supports may be nongeneric and either factor norm may be zero.
+\end{theorem}
+\begin{proof}
+The constructed line isomorphism has actual model morphism norm one.
+The whole coordinate-section identity therefore identifies the original
+Segre coordinate norm with that of the actual tensor section. The true
+original tensor norm theorem identifies the latter with the product of
+the two original coordinate norms. Both norm theorems retain zero values,
+so no nonvanishing or generic-support restriction is required.
+\end{proof}

@@ -1,0 +1,113 @@
+\section{Original section rings inside the original scheme function field}
+
+\begin{definition}[The actual generic-germ algebra map]\label{def:sc0-scheme-sections-function-field-map}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldAlgHom}
+\leanok
+For an integral scheme $X$ with its original structure morphism
+$f:X\to\operatorname{Spec} k$ and a nonempty original open $U$, use
+the actual generic germ $\Gamma(X,U)\to K(X)$. This is a $k$-algebra
+map for the original section and generic-stalk algebra structures.
+\end{definition}
+\begin{proof}
+The generic point belongs to every nonempty open of the irreducible
+space. The actual germ is a ring map. Its composite with the original
+base-field section map is exactly the original base-field stalk map,
+by the proved structure-morphism germ compatibility, proving the
+algebra-map assertion.
+\end{proof}
+
+\begin{definition}[Literal section subalgebra]\label{def:sc0-scheme-sections-function-field-subalgebra}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldSubalgebra}
+\leanok
+\uses{def:sc0-scheme-sections-function-field-map}
+Let $C_U\subset K(X)$ be the actual range subalgebra of this generic germ.
+\end{definition}
+
+\begin{theorem}[The actual original section-ring equivalence]\label{thm:sc0-scheme-sections-function-field-equiv}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldEquiv}
+\leanok
+\uses{def:sc0-scheme-sections-function-field-subalgebra}
+The actual generic germ induces a $k$-algebra equivalence
+$\Gamma(X,U)\simeq C_U$.
+\end{theorem}
+\begin{proof}
+On an integral scheme the germ map from any nonempty open to any
+of its stalks is injective. In particular the actual generic germ is
+injective, and its range is exactly $C_U$ by definition. The actual
+injective-algebra-map range equivalence therefore gives the assertion.
+\end{proof}
+
+\begin{theorem}[The actual value of the equivalence]\label{thm:sc0-scheme-sections-function-field-equiv-apply}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldEquiv_apply}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-equiv}
+For every original section $s$, its image under this equivalence,
+viewed in $K(X)$, is its actual generic germ.
+\end{theorem}
+\begin{proof}
+The actual range equivalence is defined by the original algebra map.
+\end{proof}
+
+\begin{theorem}[Restriction gives literal field containment]\label{thm:sc0-scheme-sections-function-field-containment}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldSubalgebra_le}
+\leanok
+\uses{def:sc0-scheme-sections-function-field-subalgebra}
+If $U\subseteq V$ are nonempty original opens, then $C_V\subseteq C_U$
+as literal subalgebras of the same actual function field $K(X)$.
+\end{theorem}
+\begin{proof}
+Represent an arbitrary element of $C_V$ by an actual section over
+$V$. Restrict that section to $U$. Compatibility of restriction with
+the actual generic germ shows that its value in $K(X)$ is unchanged,
+so the element belongs to the actual range over $U$.
+\end{proof}
+
+\begin{theorem}[Actual restriction square]\label{thm:sc0-scheme-sections-function-field-restriction}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldEquiv_restriction}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-equiv,thm:sc0-scheme-sections-function-field-containment}
+The original section restriction from $V$ to $U$ corresponds under
+the actual equivalences to the literal inclusion $C_V\subseteq C_U$.
+\end{theorem}
+\begin{proof}
+View both sides in the actual function field. The preceding explicit
+value formula reduces their equality to actual generic-germ
+compatibility with the original scheme restriction.
+\end{proof}
+
+\begin{theorem}[The original function field remains the actual fraction field]\label{thm:sc0-scheme-sections-function-field-fraction}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldSubalgebra_isFractionRing}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-equiv}
+For an original nonempty affine open $U$, the actual $K(X)$ is the
+fraction field of the literal subalgebra $C_U\subset K(X)$.
+\end{theorem}
+\begin{proof}
+The actual generic stalk of an integral scheme is the fraction field
+of each nonempty affine section ring. Transport this proved
+localization property along the actual section-ring equivalence.
+The explicit value of that equivalence shows that its composite into
+the actual function field is precisely the original generic germ,
+so this is the canonical literal subalgebra algebra structure.
+\end{proof}
+
+\begin{theorem}[Actual principal localization for intrinsic basic opens]\label{thm:sc0-scheme-sections-function-field-basic-localization}
+\lean{AlgebraicGeometry.Scheme.Hom.sectionsFunctionFieldSubalgebra_isLocalization_basicOpen}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-restriction}
+For an actual nonempty basic open $D(s)$ of a nonempty affine $U$,
+the literal inclusion $C_U\subset C_{D(s)}$ is principal localization
+at the actual image of the original section $s$.
+\end{theorem}
+\begin{proof}
+The actual original restriction $\Gamma(X,U)\to\Gamma(X,D(s))$ is
+localization away from $s$. Use the actual equivalences on both
+section rings and the proved restriction square. The image of $s$
+is a unit because its original restriction is a unit. Every element
+of $C_{D(s)}$ is the actual image of an original localized section,
+which has an actual numerator and a denominator power of $s$;
+applying the target equivalence to this fraction equation gives
+the required numerator and denominator in $C_U$. Finally the literal
+inclusion is injective, so equality descends with denominator one.
+These are the three actual localization axioms.
+\end{proof}

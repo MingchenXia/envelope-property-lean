@@ -1,0 +1,143 @@
+\subsection{Affine charts of the normalized projective model}
+\label{subsec:projective-charts}
+
+Let $R=k[X_0,\ldots,X_n]$, with $k$ trivially valued, and fix an index $j$.
+Put $A_j=k[U_i:i\ne j]$. The projective model is the space of graded
+seminorms on $R$ normalized by $\max_i|X_i|=1$. The construction below
+identifies its coordinate opens with affine seminorm spaces. Identifying this
+atlas with the analytification of an arbitrary scheme and gluing coherent
+sheaves are further geometric constructions.
+
+\begin{definition}[Coordinate open and ratio map]
+\label{charts:ratio-map}
+\lean{EnvelopeProperty.ProjBerk.chartOpen,EnvelopeProperty.ProjBerk.chartRatioHom,
+EnvelopeProperty.ProjBerk.coordinateChartMap}
+\leanok
+\uses{def:pn-an,lem:principal-open}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich}
+Let $V_j=\{v:|X_j|_v\ne0\}$ in the normalized projective model.
+The homomorphism $\beta_j:A_j\to R[X_j^{-1}]$ sends $U_i$ to
+$X_i/X_j$. Extending $v$ to $R[X_j^{-1}]$ and restricting along
+$\beta_j$ defines a point $c_j(v)$ of $\operatorname{Berk}_k(A_j)$.
+\end{definition}
+
+\begin{lemma}[Coordinate opens and forward chart]
+\label{charts:forward-chart}
+\lean{EnvelopeProperty.ProjBerk.isOpen_chartOpen,
+EnvelopeProperty.ProjBerk.exists_mem_chartOpen,
+EnvelopeProperty.ProjBerk.continuous_coordinateChartMap,
+EnvelopeProperty.ProjBerk.coordinateChartMap_val_X}
+\leanok
+\uses{charts:ratio-map,lem:principal-open}
+Each $V_j$ is open, the $V_j$ cover the normalized projective model,
+and $c_j$ is continuous. For $i\ne j$,
+\[
+ |U_i|_{c_j(v)}=|X_i|_v/|X_j|_v.
+\]
+More generally, the value of $a\in A_j$ is its value after substituting
+the coordinate ratios in the localized seminorm.
+\end{lemma}
+\begin{proof}
+Evaluation on $X_j$ is continuous and the nonzero locus in
+$\R_{\ge0}$ is open. Normalization and finiteness of the coordinates
+give an index with $|X_j|=1$, proving that the opens cover.
+The principal-localization identification has continuous inverse,
+so localization of $v$ is continuous on $V_j$. Pullback along
+$\beta_j$ is continuous, proving continuity of $c_j$.
+The localization formula evaluates $X_i/X_j$ as the displayed ratio;
+the same pullback definition evaluates every polynomial in these ratios.
+\end{proof}
+
+\begin{lemma}[Homogeneous substitution]
+\label{charts:homogeneous-substitution}
+\lean{EnvelopeProperty.ProjBerk.chartHomogenize,
+EnvelopeProperty.ProjBerk.coordinateDehom,
+EnvelopeProperty.ProjBerk.chartHomogenize_homogeneousComponent,
+EnvelopeProperty.ProjBerk.chartHomogenize_coeff,
+EnvelopeProperty.ProjBerk.chartRatioHom_dehom_homogeneousComponent_mul_pow}
+\leanok
+\uses{charts:ratio-map}
+Define $H_j:R\to A_j[T]$ by $X_j\mapsto T$ and
+$X_i\mapsto U_iT$ for $i\ne j$, and define
+$D_j:R\to A_j$ by $X_j\mapsto1$, $X_i\mapsto U_i$.
+If $F_d$ is the homogeneous component of degree $d$ of $F$, then
+\[
+ H_j(F_d)=D_j(F_d)T^d,\qquad
+ \operatorname{coeff}_{T^d}H_j(F)=D_j(F_d).
+\]
+In $R[X_j^{-1}]$,
+$\beta_j(D_j(F_d))X_j^d=F_d$.
+These identities hold over an arbitrary commutative coefficient ring in
+place of $k$.
+\end{lemma}
+\begin{proof}
+For a monomial $a\prod_iX_i^{m_i}$ of total degree $d$,
+substitution gives
+$a\prod_{i\ne j}U_i^{m_i}T^{\sum_im_i}
+=a\prod_{i\ne j}U_i^{m_i}T^d$.
+Homogeneous polynomials are sums of precisely these monomials, giving
+the first identity. Summing over the finitely many homogeneous
+components and taking the coefficient of $T^d$ gives the second identity.
+Substitution of $X_i/X_j$
+into the dehomogenized monomial yields the original monomial multiplied
+by $X_j^{-d}$; multiplication by $X_j^d$ cancels this factor.
+Addition gives the identity for $F_d$.
+\end{proof}
+
+\begin{lemma}[Normalized inverse construction]
+\label{charts:normalized-inverse}
+\lean{EnvelopeProperty.ProjBerk.rawChartPoint_isGraded,
+EnvelopeProperty.ProjBerk.rawChartPoint_normalized,
+EnvelopeProperty.ProjBerk.coordinateChartInv,
+EnvelopeProperty.ProjBerk.continuous_coordinateChartInv,
+EnvelopeProperty.ProjBerk.rawChartPoint_val_homogeneousComponent}
+\leanok
+\uses{charts:homogeneous-substitution,lem:gauss-point}
+For $y\in\operatorname{Berk}_k(A_j)$, put
+\[
+ M(y)=\max\{1,\max_{i\ne j}|U_i|_y\},\qquad r(y)=M(y)^{-1}.
+\]
+Pullback along $H_j$ of the Gauss seminorm of radius $r(y)$ defines
+a normalized graded point $b_j(y)\in V_j$, continuously in $y$.
+For a homogeneous component $F_d$,
+$|F_d|_{b_j(y)}=|D_j(F_d)|_y r(y)^d$.
+\end{lemma}
+\begin{proof}
+Since $M(y)\ge1$, the radius is positive. The coefficient formula
+for $H_j(F)$ and the Gauss formula give
+$|F|_{b_j(y)}=\max_d|D_j(F_d)|_y r(y)^d$, proving gradedness
+and the displayed homogeneous component value. Its coordinate values
+are $r(y)$ for $X_j$ and $|U_i|_yr(y)$ for $i\ne j$. Their maximum
+is $M(y)r(y)=1$, proving normalization and membership in $V_j$.
+The finite maximum defining $M$ is continuous and positive, so its
+inverse $r$ is continuous. Joint continuity of the Gauss seminorm and
+continuous pullback prove continuity of the constructed point.
+\end{proof}
+
+\begin{theorem}[Inverse chart and homeomorphism]
+\label{charts:homeomorphism}
+\lean{EnvelopeProperty.ProjBerk.coordinateChartHomeomorph,
+EnvelopeProperty.ProjBerk.coordinateChartMap_coordinateChartInv,
+EnvelopeProperty.ProjBerk.coordinateChartInv_coordinateChartMap}
+\leanok
+\uses{charts:forward-chart,charts:homogeneous-substitution,charts:normalized-inverse,
+charts:localized-homogeneous-substitution,charts:localized-ratio-cancellation}
+The maps $c_j$ and $b_j$ are mutually inverse homeomorphisms.
+\end{theorem}
+\begin{proof}
+Its ratios have the original affine seminorm: localization sends $X_j$
+to an invertible element of value $r(y)$, and substituting $X_i/X_j$
+into $H_j$ cancels $T$, giving $U_i$. Hence $c_j(b_j(y))=y$ on
+every element of $A_j$.
+Conversely let $v\in V_j$. The ratio formula and normalization give
+$M(c_j(v))=|X_j|_v^{-1}$ and $r(c_j(v))=|X_j|_v$.
+The localization identity in the preceding lemma gives
+$|D_j(F_d)|_{c_j(v)}|X_j|_v^d=|F_d|_v$.
+The homogeneous evaluation formula therefore shows that
+$b_j(c_j(v))$ and $v$ agree on every homogeneous form. Both seminorms
+are graded, so their values on every polynomial are the maxima of their
+homogeneous component values and hence agree. This proves the other
+inverse identity. The two maps are continuous by the forward chart
+and normalized inverse construction lemmas.
+\end{proof}
+

@@ -1,0 +1,98 @@
+\section{Actual integral components containing the original closed subscheme}
+All closed ideals, subschemes and maps in this section are the original
+ones. The given scheme $C$ is integral, so both its nonemptiness and its
+reducedness are available internally. No selected component or desired
+factorization is an input. The constructions below do not yet assert
+that the chosen component is horizontal or has a specified dimension.
+
+\begin{lemma}[The actual image kernel of a reduced source is its vanishing ideal]
+\label{lem:pl-gauss-reduced-original-image-kernel}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionComponent.reduced_source_kernel_eq_vanishingIdeal}
+\leanok
+For any actual original morphism $c:C\to Y$ with reduced $C$, its
+whole kernel ideal sheaf equals the vanishing ideal of the actual
+closed subset $\overline{c(C)}$.
+\end{lemma}
+\begin{proof}
+The vanishing ideal of the whole original $C$ is its nilradical, hence
+zero because $C$ is reduced. Push this whole ideal along the actual
+map $c$. The original zero-ideal pushforward is precisely $c.\ker$.
+The genuine vanishing-ideal pushforward theorem identifies the same
+pushforward with the vanishing ideal of the closure of the actual
+image of the whole $C$. These are equal whole ideal sheaves, without
+assuming a radical-kernel or image-matching certificate.
+\end{proof}
+
+\begin{theorem}[An actual integral component contains the whole original C]
+\label{thm:pl-gauss-integral-component-through-original-closed-subscheme}
+\uses{lem:pl-gauss-reduced-original-image-kernel,lem:fc-scheme-curve-dimensions}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionComponent.exists_integral_component_through_closed_subscheme}
+\leanok
+Let $c:C\hookrightarrow Y$ be an actual original closed immersion with
+integral source. There is an actual irreducible component $Z$ of $Y$
+such that $c(C)\subseteq Z$. Give $Z$ its existing reduced closed
+subscheme $D$ and original closed immersion $e:D\hookrightarrow Y$.
+Then $D$ is integral and there is an actual CLOSED immersion
+$g:C\hookrightarrow D$ satisfying the WHOLE original triangle
+$e\circ g=c$.
+\end{theorem}
+\begin{proof}
+The whole original $C$ is nonempty and irreducible, and the actual map
+$c$ is continuous. Its actual image is therefore a nonempty
+irreducible subset of $Y$. Extend this subset to a maximal irreducible
+subset by the genuine topological irreducible-component theorem.
+Such a component is closed. Equip this particular actual closed set
+$Z$ with its existing vanishing-ideal subscheme $D$; the existing
+reduced-closed-subscheme theorem makes it integral.
+
+Since $Z$ is closed and contains the whole original image,
+$\overline{c(C)}\subseteq Z$. Vanishing ideals reverse this actual
+closed-set inclusion. The preceding whole image-kernel equality gives
+$\mathcal I_Z\subseteq c.\ker$. The genuine closed-immersion lift
+therefore constructs the actual $g:C\to D$ and its whole triangle.
+Its composite with the original closed immersion $e$ is the original
+closed immersion $c$, so closed-immersion cancellation makes $g$ a
+closed immersion. Thus the chosen actual integral component contains
+the entire original $C$ as a closed subscheme, including its original
+map, without any incoming component, ideal or triangle certificate.
+\end{proof}
+
+\begin{corollary}[The original polynomial cut has an actual integral component through C]
+\label{cor:pl-gauss-original-cut-integral-component}
+\uses{thm:pl-gauss-original-closed-cut-through-subscheme,thm:pl-gauss-integral-component-through-original-closed-subscheme}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionComponent.exists_eventually_original_integral_cut_component}
+\leanok
+Let $R$ be an actual commutative algebra over an infinite field $k$,
+let $i:Y\hookrightarrow\mathbf P^n_R$ and $c:C\hookrightarrow Y$
+be the original closed immersions, and assume $C$ integral. Let
+$(y_a)$ be a finite NONEMPTY family of actual points outside $c(C)$.
+For every sufficiently large degree, the preceding actual homogeneous
+cut has an actual integral reduced irreducible component $D$ and
+original CLOSED immersions $g:C\hookrightarrow D$ and
+$j:D\hookrightarrow Y$ such that $j\circ g=c$ and $j(D)$ avoids
+every original $y_a$. The actual map $j$ factors through the SAME
+constructed original polynomial cut, and that factor identifies $D$
+with a reduced irreducible component of that actual cut.
+\end{corollary}
+\begin{proof}
+Apply the proved original closed-cut producer. It internally gives,
+in each sufficiently large SAME degree, an actual homogeneous $F$,
+its actual ideal pullback cut $K$, and the actual closed immersion
+$c_K:C\hookrightarrow K$ with the whole original triangle. Apply
+the preceding component theorem to this particular $c_K$. It produces
+an actual integral reduced component $D$ of that SAME $K$ and a closed
+immersion $g:C\hookrightarrow D$. Compose its original component
+inclusion $e:D\hookrightarrow K$ with the original $K\hookrightarrow Y$
+to define $j$. Closed immersions compose. Associativity and the two
+proved whole triangles give $j\circ g=c$. Every actual image point
+of $D$ lies in the SAME original cut, which avoids every $y_a$, so
+its image avoids them as well. No horizontality, dimension, normality,
+whole-cut flatness or surface-family conclusion is asserted here.
+\end{proof}
+
+The next geometric step must identify this actual component on original
+affine charts with a minimal prime of the actual principal equation.
+Only then can the already proved parameter avoidance and exact component
+dimension be applied. Every horizontal component must be normalized
+before another cut, and the original tracked central curve and actual
+finite-dominant lift must be retained at every induction step.

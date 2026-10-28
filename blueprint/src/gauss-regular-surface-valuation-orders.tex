@@ -1,0 +1,140 @@
+\section{True eventual orders on the same original surface}
+
+Keep the original Noetherian local domain $S$, the original parameters
+$\mathfrak m=(\pi,z)$, the original prime property of $\pi$, and
+$z\notin(\pi)$. For every $N>0$ use the already constructed SAME actual DVR
+$V_N=(S[U]/(\pi U-z^N))_{\mathfrak mB_N}$ and its actual original coefficient
+map $j_N$. No valuation family, DVR, factorization, leading coefficient,
+desired order, or slope formula is supplied as an input.
+
+\begin{definition}[Actual original residual and vertical rings]
+\label{def:gauss-surface-original-residual-vertical-rings}
+\uses{def:gauss-regular-surface-weighted-chart}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationOrders.residualRing,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.residualCoefficientMap,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.residualParameter,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.verticalRing,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.verticalCoefficientMap,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.verticalParameter}
+\leanok
+Put $\overline S=S/(\pi)$ and $T=S_{(\pi)}$, with their actual original
+quotient and localization coefficient maps. Write $\bar z$ and $\pi_T$ for
+the actual images of the original $z$ and $\pi$. The ideal $(\pi)$ is prime
+by the original prime-element hypothesis, so these rings have their derived
+domain structures. They retain every original coefficient.
+\end{definition}
+\begin{proof}
+Use exactly the original principal ideal $(\pi)$, the actual ideal quotient,
+and the actual localization at its prime complement. The ideal is prime
+because $\pi$ is a nonzero prime element of the original domain. Quotients
+and localizations of the original Noetherian ring inherit Noetherianity.
+The original quotient is nontrivial and is local by the surjective quotient
+map from the original local ring. No substitute ring or chosen residue-field
+isomorphism is used.
+\end{proof}
+
+\begin{lemma}[The two internally derived original DVRs]
+\label{lem:gauss-surface-original-residual-vertical-dvrs}
+\uses{def:gauss-surface-original-residual-vertical-rings}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationOrders.residual_maximalIdeal,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.residual_isDVR,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.residualParameter_irreducible,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.vertical_maximalIdeal,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.vertical_isDVR,
+EnvelopeProperty.GaussRegularSurfaceValuationOrders.verticalParameter_irreducible}
+\leanok
+The SAME $\overline S$ and $T$ are actual DVRs. Their genuine maximal ideals
+are respectively $(\bar z)$ and $(\pi_T)$, so the stated original images
+are true uniformizers for their native additive valuations.
+\end{lemma}
+\begin{proof}
+The quotient map takes the original maximal ideal to the quotient maximal
+ideal. Apply it to the original equality $\mathfrak m=(\pi,z)$; its actual
+image of $\pi$ is zero, so this maximal ideal is precisely $(\bar z)$.
+The original condition $z\notin(\pi)$ says that $\bar z\ne0$. Thus the
+quotient local domain is not a field. Its Noetherianity and principal maximal
+ideal derive that this actual quotient is a DVR, with $\bar z$ a uniformizer.
+
+The actual maximal ideal in $T$ is the localization of the SAME $(\pi)$,
+hence is precisely $(\pi_T)$. The original nonzero $\pi$ stays nonzero by
+localization injectivity. Since $\pi_T$ belongs to that actual maximal ideal,
+this local domain is not a field either. The same Noetherian principal
+maximal-ideal criterion derives its DVR structure and the uniformizer claim.
+\end{proof}
+
+\begin{lemma}[Internally obtained original leading expansion]
+\label{lem:gauss-surface-original-leading-expansion}
+\uses{lem:gauss-surface-original-residual-vertical-dvrs}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationOrders.exists_leadingExpansion}
+\leanok
+\leavevmode\par
+For EVERY nonzero original $f\in S$, there are internally produced
+$a,b\in\mathbf N$ and original $f',u,g\in S$ satisfying
+\[
+ f=\pi^a f',\qquad \pi\nmid f',\qquad
+ f'=z^b u+\pi g,\qquad u\in S^\times.
+\]
+Their values are actual native orders:
+$\operatorname{ord}_T(f)=a$ and
+$\operatorname{ord}_{\overline S}(\overline{f'})=b$.
+No factorization or leading-order certificate is an input.
+\end{lemma}
+\begin{proof}
+Noetherianity of the ORIGINAL domain gives the ascending-chain condition on
+principal ideals, hence finite multiplicity of the original nonunit prime
+$\pi$ in the nonzero $f$. Take its actual finite maximal power to obtain
+$f=\pi^af'$ with $\pi\nmid f'$. This argument needs no UFD hypothesis.
+
+The true image $\overline{f'}$ is nonzero in the actual quotient DVR.
+Its native DVR factorization gives
+$\overline{f'}=\bar z^b\bar u$ for a genuine quotient unit $\bar u$.
+Lift this actual element through the original surjective quotient map.
+The map is a local homomorphism, so the original lift $u$ is itself a unit.
+The actual kernel is exactly $(\pi)$, and therefore
+$f'-z^bu=\pi g$ for an original $g\in S$.
+
+In the original vertical localization, $f'$ is a unit because it avoids
+the original ideal $(\pi)$. Its native order is zero, while the order of
+the actual $\pi_T$ is one; applying the true additive valuation to the
+original factorization gives $\operatorname{ord}_T(f)=a$.
+In the actual quotient, the displayed unit times $\bar z^b$ similarly has
+native order $b$. These are identities for the original rings and maps.
+\end{proof}
+
+\begin{theorem}[Actual eventual native orders for all original functions]
+\label{thm:gauss-surface-original-eventual-orders}
+\uses{lem:gauss-surface-original-leading-expansion,thm:gauss-regular-surface-original-dvr}
+\lean{EnvelopeProperty.GaussRegularSurfaceValuationOrders.exists_eventual_addVal}
+\leanok
+For EVERY nonzero original $f\in S$, internally choose the same $a,b$ as
+above. For every original $N>b$ with $N>0$, the native additive valuation of
+the SAME constructed original DVR satisfies
+\[
+ \operatorname{ord}_{V_N}(j_N(f))=aN+b,
+ \qquad \operatorname{ord}_T(f)=a.
+\]
+The threshold and both coefficients are derived, rather than supplied as
+an order comparison or valuation-family certificate.
+\end{theorem}
+\begin{proof}
+Obtain the actual original leading expansion just proved. Since $u$ is an
+original unit, its true image under every original coefficient map $j_N$ is
+a unit and has native order zero. The already constructed $V_N$ has native
+orders $\operatorname{ord}_{V_N}(z)=1$ and
+$\operatorname{ord}_{V_N}(\pi)=N$. Thus the actual first summand $z^bu$ has
+order $b$. The actual remainder $\pi g$ has order at least $N$, since the
+native order of the image of every element of $S$ is nonnegative.
+When $N>b$ these orders are strictly distinct. The genuine additive
+valuation equality for a sum of distinct values shows that
+$\operatorname{ord}_{V_N}(f')=b$. Apply multiplicativity to
+the ORIGINAL $f=\pi^af'$ to obtain $aN+b$. The vertical-order identity is
+the one internally proved for this same expansion, not a new identification.
+\end{proof}
+
+This first eventual-order checkpoint concerns actual original elements of
+$S$. Passing to all fractions in the SAME field, identifying the native
+leading-residue description under a canonical vertical-residue field map,
+normalizing by the actual $\operatorname{ord}_{V_N}(t)=eN+c$, obtaining fixed
+Gauss-valued points and their true convergence, and residual difference
+quotients are further statements. In particular, no assumption that
+$t$ is a unit times a pure power at every original centre is made here.

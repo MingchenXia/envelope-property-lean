@@ -1,0 +1,81 @@
+\section{Entire original Laurent coefficients of original pulled-module sections}
+
+\begin{theorem}\label{thm:fc-scheme-module-laurent-coefficients}
+\lean{EnvelopeProperty.SchemeModuleLaurentCoefficients.pulledSections,EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients}
+\leanok
+\uses{thm:fc-flat-module-global-sections,thm:laurent-module-actual-coefficients}
+Let $R$ be an original commutative ring, $p:X\to\operatorname{Spec}R$
+an original compact separated scheme, and $M$ any original
+quasicoherent module. Put $S=R[T,T^{-1}]$, $X_S=X\times_R\operatorname{Spec}S$
+and retain the original projections $g$ and $q$. There is a canonical
+bijection of the entire original section modules
+\[
+ \Gamma(X_S,g^*M)\simeq\mathbb Z\to_0\Gamma(X,M).
+\]
+The original coefficient module retains its literal original $R$ action;
+the pulled module retains its literal original $S$ action through $q$.
+No finite-dimensionality, freeness of $M$, chosen Laurent expansion,
+or global-section comparison is assumed.
+\end{theorem}
+\begin{proof}
+The original Laurent algebra has its actual integer-indexed monomial
+basis over $R$, and is therefore flat over $R$. Invert the preceding
+whole original flat module H0 equivalence with this actual algebra.
+Compose it with the already proved entire Laurent tensor-module
+coefficient equivalence. This gives the stated bijection on the
+literal original modules and determines every coefficient uniquely.
+The scalar actions are the same actual actions in those two original
+producers. Only the underlying bijection is asserted here; no further
+identification of scalar structures is needed.
+\end{proof}
+
+\begin{theorem}\label{thm:fc-scheme-module-laurent-coefficient-formulas}
+\lean{EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients_tensorEquiv,EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients_pure,EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients_monomial,EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients_symm_tensorEquiv,EnvelopeProperty.SchemeModuleLaurentCoefficients.coefficients_symm,EnvelopeProperty.SchemeModuleLaurentCoefficients.eq_sum_monomial}
+\leanok
+\uses{thm:fc-scheme-module-laurent-coefficients,thm:laurent-module-actual-coefficients}
+For every original Laurent polynomial $F$, every original section $m$
+and every integer $i$, the coefficients of
+$q^*(F)\eta_g(m)$ at $i$ are $F_i m$. In particular the whole coefficient
+family of $q^*(T^i)\eta_g(m)$ is the original singleton at $i$ with
+value $m$. Conversely every original finite coefficient family $c$
+reconstructs the original section
+\[
+ \sum_{i\in\operatorname{supp}(c)}q^*(T^i)\eta_g(c_i).
+\]
+Thus every original pulled-module section has this actual finite
+Laurent expansion, with its uniquely determined original coefficients.
+\end{theorem}
+\begin{proof}
+Apply the actual H0 pure-tensor formula to $F\otimes m$, then use the
+original Laurent tensor coefficient formula. Invertibility gives the
+monomial singleton and inverse assertions. The already proved tensor
+inverse is its actual finite sum of monomial pure tensors. The whole
+H0 map is linear, so it carries that finite sum to exactly the stated
+sum of original coefficient times original pullback-unit sections.
+Applying the two inverse identities gives the expansion of every
+original section. No expansion or coefficient compatibility is
+supplied as a premise.
+\end{proof}
+
+\begin{definition}\label{def:fc-scheme-module-laurent-finite-coefficient-family}
+\lean{EnvelopeProperty.SchemeModuleLaurentCoefficients.terms,EnvelopeProperty.SchemeModuleLaurentCoefficients.terms_eq_tensor_terms}
+\leanok
+\uses{thm:fc-scheme-module-laurent-coefficients,thm:laurent-module-actual-finite-family}
+For any original finite family $G$ of sections of $g^*M$ on $X_S$,
+form the union, over its original sections, of their actual coefficient
+supports. The pairs $(c_i,i)$ form one finite family of original
+sections of $M$ and original integer weights. This entire family is
+chosen from $G$ before any point, residue map, valuation or radius.
+It is exactly the finite pair family obtained by sending $G$ through
+the inverse original H0 map and applying the original Laurent tensor
+coefficient-family construction.
+\end{definition}
+\begin{proof}
+Each actual coefficient family is finitely supported. A finite union
+of their finite support images is finite. The two definitions agree
+because the geometric coefficient map is the original Laurent tensor
+coefficient map after the inverse whole H0 equivalence. Taking the
+image of $G$ under that inverse map and distributing the finite union
+proves the exact pair-family equality. The construction has no point,
+residue, valuation or radius input.
+\end{proof}

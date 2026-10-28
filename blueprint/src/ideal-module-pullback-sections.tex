@@ -1,0 +1,20 @@
+\section{Actual sections of the canonical ideal module pullback}
+\begin{lemma}[The original adjunction unit recovers the whole ideal section map]
+\label{lem:actual-ideal-pullback-unit-sections}
+\uses{lem:actual-ideal-module-pullback-map}
+\leanok
+\lean{AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_unit,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_unit_app,AlgebraicGeometry.Scheme.IdealSheafData.toModulesComapPullbackMap_unit_app_inclusion}
+For every actual scheme morphism and every original ideal module section,
+the canonical module pullback comparison sends the section supplied by
+the true adjunction unit to exactly its original scheme section image.
+This is an equality on every whole original preimage open.
+\end{lemma}
+\begin{proof}
+The canonical comparison was constructed as the inverse image of the
+actual section map under the genuine adjunction hom equivalence.
+Applying that equivalence back gives the true unit identity.
+Evaluate the whole module morphism identity on each original open and
+section. Including the resulting actual ideal section into the original
+structure module gives exactly the original ring section map. No
+flatness, affine cover or assumed base-change comparison is used.
+\end{proof}

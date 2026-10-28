@@ -1,0 +1,54 @@
+\subsection{Whole identification for reduced closed projective birational witnesses}
+
+\begin{lemma}[The constructed genuine fraction-field inverse is dense]
+\label{scheme:actual-partial-iso-fraction-lift-dense}
+\uses{scheme:actual-partial-iso-fraction-lift}
+\lean{EnvelopeProperty.PartialIso.denseRange_fractionLift}
+For any actual partial isomorphism from $Y$ to $\operatorname{Spec}A$ with
+$A$ a domain and any actual fraction field $K$, the CONSTRUCTED map
+$\operatorname{Spec}K\to Y$ has dense image. No supplied generic-density
+certificate or reducedness of $Y$ is required.
+\leanok
+\end{lemma}
+\begin{proof}
+The true fraction inclusion is injective, so the spectrum closure formula
+makes its image dense in $\operatorname{Spec}A$. It lies in the actual dense
+target open. Its whole lift into that target open is dense there: the open
+inclusion is inducing, and the closure of the image after that inclusion is
+the entire base, so the inducing closure criterion gives density in the open.
+The inverse actual scheme isomorphism maps this dense set to a dense subset
+of the source open. The source-open inclusion has dense range by the genuine
+partial-isomorphism data. Composition of continuous dense maps proves density
+of the ENTIRE constructed original fraction-field inverse into $Y$.
+\end{proof}
+
+\begin{theorem}[The constructed whole original Rees factor is an isomorphism for a reduced witness]
+\label{scheme:actual-reduced-projective-rees-isomorphism}
+\uses{scheme:actual-partial-iso-fraction-lift-dense,scheme:actual-closed-projective-rees-domination}
+\lean{EnvelopeProperty.ReesPresentation.exists_standardRees_iso}
+For ANY domain $A$, retain an ACTUAL closed embedding $\iota:Y\hookrightarrow\mathbf P^n_A$,
+its whole coefficient projection $f$, and genuine partial-isomorphism data
+over this SAME $f$ and the identity of $\operatorname{Spec}A$. If $Y$ is
+reduced, it is actually isomorphic over $\operatorname{Spec}A$ to a CONSTRUCTED
+same original finite Rees scheme, with an actual nonzero selected generator. The entire isomorphism followed by its original closed embedding
+is the real standard Rees immersion, and its coefficient projection is the
+whole original projection. No source/target isomorphism or point-bijection
+certificate is supplied.
+\leanok
+\end{theorem}
+\begin{proof}
+Use the proved original coordinate construction, whole generic comparison
+and reduced closed-factor producers of the checked domination construction.
+They construct the original family and actual factor map $\delta$. Its composite with the genuine closed immersion agrees
+with the actual generic inverse on the original generic Rees lift. Cancellation
+of that true closed immersion gives the whole generic inverse as a composite
+through $\delta$. The preceding lemma makes this generic inverse dense, so
+$\delta$ has dense image. It is an actual closed immersion by the proved
+factor theorem, hence its closed image is the whole target; thus it is
+scheme-surjective. A surjective closed immersion into a reduced scheme is a
+true isomorphism: its actual ideal-sheaf kernel has full support, hence is zero
+on that reduced target, and the closed-immersion isomorphism criterion applies.
+The resulting scheme isomorphism retains both already proved ENTIRE original
+triangles. This remains a theorem for an ACTUAL closed projective embedding;
+the arbitrary-proper Chow/projective-modification boundary remains separate.
+\end{proof}

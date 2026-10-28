@@ -1,0 +1,161 @@
+\section{Native cohomology of the actual normalized cyclic cover}
+
+Let $X$ be integral and let $g:R\to X$ be the original raw cyclic
+cover attached to the original invertible line $L$, degree $n>0$
+and section $s$.  Let
+$\phi:R_\eta\to R$ be its actual base-generic-fibre projection.
+The normalized cover used here is the native relative normalization
+$Z=\phi^{\mathrm{nor}}$, with the literal map
+$\pi=\phi.\mathrm{fromNormalization}\circ g:Z\to X$.
+The cohomology statements below concern its structure sheaf and
+actual pulled-back lines.
+
+\begin{lemma}[Affineness of the native normalized projection]
+\label{lem:kn-normalized-projection-affine}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.normalizationProjection_isAffine,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.normalizedProjection_isAffine}
+\leanok
+The composite of the native relative-normalization projection with
+an affine morphism is affine.  In particular the actual $\pi$ is
+affine for the original invertible $L$ and positive degree $n$.
+\end{lemma}
+\begin{proof}
+The native normalization projection is integral, hence affine.
+Affine morphisms are closed under composition.  For the actual
+cyclic cover the original raw projection is finite by its original
+local monic degree-$n$ equations, so it is affine.  The actual
+generic-fibre map is quasi-compact and quasi-separated by base
+change from the original generic-point map; these are precisely
+the witnesses defining its native normalization.  Applying the
+composite statement therefore gives the asserted actual map.
+\end{proof}
+
+\begin{lemma}[Quasicoherence of the actual structure pushforward]
+\label{lem:kn-normalized-structure-quasicoherent}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.normalizedPushforward_isQuasicoherent}
+\leanok
+\uses{lem:kn-normalized-projection-affine}
+The native module $\pi_*\mathcal O_Z$ is quasicoherent.
+\end{lemma}
+\begin{proof}
+The actual structure module on any scheme is invertible, hence
+quasicoherent.  Pushforward along the actual affine $\pi$ preserves
+quasicoherence, proving the assertion.
+\end{proof}
+
+\begin{lemma}[Native positive cohomology across the actual affine projection]
+\label{lem:kn-normalized-affine-cohomology}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_twist_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_pullback_line_iff,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_pullback_line_iff_compact,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_pushforward_compact}
+\leanok
+\uses{lem:kn-normalized-projection-affine}
+Suppose the original base is separated and has a finite affine open
+cover.  For a quasicoherent module $M$ on $Z$, positive native sheaf
+cohomology vanishes if and only if the same positive native
+cohomology of $\pi_*M$ vanishes.  For an invertible $T$ on $X$, the
+same statement identifies $M\otimes\pi^*T$ with $\pi_*M\otimes T$.
+In particular
+\[
+ H^q(Z,\pi^*T)=0
+ \quad\Longleftrightarrow\quad
+ H^q(X,\pi_*\mathcal O_Z\otimes T)=0\qquad(q>0).
+\]
+On a compact separated base the finite affine cover is obtained
+internally.
+\end{lemma}
+\begin{proof}
+The inverse images of the original affine opens and their finite
+intersections are affine because $\pi$ is affine.  Quasicoherence
+therefore makes positive cohomology vanish on these opens.  The
+native sheaf-cohomology/ordered-Cech comparison on the original
+cover identifies both positive groups with the same ordered Cech
+homology, since pushforward has exactly the original sections on
+these inverse images.  This proves the first equivalence.  The
+actual line projection formula identifies the twisted pushforward
+with $\pi_*M\otimes T$, giving the second equivalence.  The
+structure module is invertible and thus quasicoherent; cancel its
+native tensor-unit isomorphism to obtain the pulled-line statement.
+Compactness gives finitely many affine opens covering the base;
+choose a finite ordering and apply the same proof.
+\end{proof}
+
+For the weighted statements, let $X$ be smooth of relative
+dimension $d$ over a perfect field $k$, with $n$ a unit in $k$,
+and use an original SNC presentation of the zero ideal of $s$.
+These are hypotheses on the original base and section.
+
+\begin{definition}[The original normalized coefficient family]
+\label{def:kn-normalized-coefficients}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.sectionSnc,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.coefficient}
+\leanok
+Give the actual zero ideal $J$ of the same original section an
+original SNC presentation $J=\prod_j D_j^{a_j}$.  This presentation
+itself gives the whole SNC witness.  For $i\in\{0,\ldots,n-1\}$,
+take the original native coefficient module
+$E_i=L^{-i}\otimes\mathcal Hom(\mathcal O_X(-\lfloor(i/n)\operatorname{div}(s)\rfloor),
+\mathcal O_X)$, using that same zero ideal and intrinsic rounding.
+\end{definition}
+
+\begin{lemma}[Whole weighted cohomology and the actual summand retracts]
+\label{lem:kn-normalized-weighted-cohomology}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.weightedPushforwardIso,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.twistedWeightedPushforwardIso,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandInclusion,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandProjection,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandInclusion_projection,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_summand_of_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pushforward_twist_iff}
+\leanok
+\uses{def:kn-normalized-coefficients}
+The existing native normalized eigensheaf isomorphism from PR~215
+is an isomorphism of the whole original pushforward
+\[
+ \pi_*\mathcal O_Z\simeq\bigoplus_{i=0}^{n-1}E_i,
+ \qquad
+ E_i=L^{-i}\otimes
+ \mathcal Hom\bigl(\mathcal O_X(-\lfloor(i/n)\operatorname{div}(s)\rfloor),
+                   \mathcal O_X\bigr).
+\]
+For any invertible $T$, this gives a whole twisted isomorphism with
+$\bigoplus_i(E_i\otimes T)$.  Each actual summand is a retract, and
+in every native cohomological degree $q$ the whole twisted
+pushforward cohomology vanishes exactly when all the actual
+$H^q(X,E_i\otimes T)$ vanish.
+\end{lemma}
+\begin{proof}
+Apply the original tensor-by-$T$ functor to the existing actual
+normalized weighted isomorphism.  Tensoring by an invertible line
+is an equivalence, hence preserves the finite coproduct; this
+constructs the stated whole twisted isomorphism.  In the finite
+coproduct take the original inclusion of a chosen summand and the
+projection which is its identity and zero on the other summands.
+Their composite is the identity.  Conjugating these maps by the
+actual whole isomorphism gives a retraction on the actual twisted
+pushforward.  Applying the native underlying-sheaf and cohomology
+functors preserves this retraction, so zero whole cohomology forces
+zero cohomology of every original summand.  Conversely native
+cohomology is additive: the identity on a finite biproduct is the
+sum of its projection-inclusion composites.  If the cohomology of
+each summand is zero, its image under cohomology makes every such
+composite zero, hence makes the identity of the whole cohomology
+group zero.  The coproduct-biproduct isomorphism gives the result
+for the original finite coproduct.
+\end{proof}
+
+\begin{theorem}[The actual normalized cyclic positive-cohomology criterion]
+\label{thm:kn-normalized-positive-cohomology}
+\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_compact,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_positive_iff_compact}
+\leanok
+\uses{lem:kn-normalized-affine-cohomology,lem:kn-normalized-weighted-cohomology}
+For the actual original normalized cover and every $q>0$,
+\[
+ H^q(Z,\pi^*T)=0
+ \quad\Longleftrightarrow\quad
+ \forall i<n,\ H^q(X,E_i\otimes T)=0.
+\]
+The finite affine cover may be supplied explicitly, or obtained
+internally when the original separated base is compact.
+\end{theorem}
+\begin{proof}
+Compose the actual affine pulled-line comparison with the whole
+weighted-cohomology equivalence.  Every positive natural degree has
+the form $q_0+1$, so these comparisons cover precisely all asserted
+degrees.  On a compact base use the internally obtained finite
+affine cover in the first comparison.
+\end{proof}
+
+The displayed equivalence preserves the unknown cover cohomology;
+it supplies no vanishing theorem for that cover and no canonical
+finite-duality identification.

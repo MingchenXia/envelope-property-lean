@@ -1,0 +1,48 @@
+\section{Denominator ideals in the original function field}
+
+\begin{definition}[The denominator ideal and multiplication by the rational function]
+\label{def:fc-rational-denominator-ideals}
+\leanok
+\lean{EnvelopeProperty.RationalDenominatorIdeals.denominatorIdeal, EnvelopeProperty.RationalDenominatorIdeals.mem_denominatorIdeal_iff, EnvelopeProperty.RationalDenominatorIdeals.clearedNumerator, EnvelopeProperty.RationalDenominatorIdeals.algebraMap_clearedNumerator, EnvelopeProperty.RationalDenominatorIdeals.clearedNumeratorLinearMap, EnvelopeProperty.RationalDenominatorIdeals.reciprocalMap}
+Let $R$ be a domain with fraction field $K$. For the original $f\in K$, put
+\[
+ D_R(f)=\{a\in R: af\text{ is the image of an element of }R\}.
+\]
+This is an ideal: add the original numerators, and multiply a numerator by
+an original scalar. For each $a\in D_R(f)$, choose its numerator $b\in R$
+with $b=af$ in the same field $K$. Fraction-field injectivity makes this
+numerator unique and makes the resulting map $D_R(f)\to R$ genuinely
+$R$-linear. Its coefficient in $K$ is exactly multiplication by $f$.
+\end{definition}
+
+\begin{theorem}[Nonzero denominators, reciprocal multiplication and genuine localization]
+\label{thm:fc-rational-denominator-localization}
+\leanok
+\lean{EnvelopeProperty.RationalDenominatorIdeals.denominatorIdeal_ne_bot, EnvelopeProperty.RationalDenominatorIdeals.reciprocalEquiv, EnvelopeProperty.RationalDenominatorIdeals.reciprocalEquiv_coefficient, EnvelopeProperty.RationalDenominatorIdeals.denominatorIdeal_map}
+\uses{def:fc-rational-denominator-ideals}
+The ideal $D_R(f)$ is nonzero. For $f\ne0$, multiplication by this same
+original $f$ gives an $R$-linear isomorphism
+$D_R(f)\simeq D_R(f^{-1})$, with the literal coefficient identity in $K$.
+For an actual localization $S=M^{-1}R$ mapping compatibly to the same field,
+\[
+ D_R(f)S=D_S(f).
+\]
+The localization assertion itself only needs compatible commutative-ring
+maps and the actual localization; their injectivity is unnecessary.
+\end{theorem}
+\begin{proof}
+Fraction-field surjectivity writes $f$ with a nonzero original denominator,
+which belongs to $D_R(f)$. If $b=af$, then $bf^{-1}=a$ when $f\ne0$;
+these actual identities give multiplication by $f$ and its inverse between
+the reciprocal denominator ideals. Injectivity follows by cancellation
+in the same field, and clearing the numerator for $f^{-1}$ gives every
+preimage.
+
+An original denominator remains a denominator after localization, by the
+coefficient-map tower identity. Conversely let $s\in D_S(f)$ and choose
+$b\in S$ with $b=sf$ in $K$. Actual localization surjectivity gives
+$st=a$ and $bv=c$ for $a,c\in R$ and $t,v\in M$. In $K$,
+$ct=(av)f$, so $av\in D_R(f)$. The original equality
+$s(tv)=av$ in $S$ shows $s\in D_R(f)S$. This proves equality of the
+actual ideals without a localization comparison premise.
+\end{proof}

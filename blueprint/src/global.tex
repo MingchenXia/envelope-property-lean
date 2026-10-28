@@ -1,0 +1,1546 @@
+\section{The global theory: models, finite descent, ample envelopes, Siu division and the main theorem}\label{sec:global}
+
+This chapter is the route for Sections~2, 4, 6, 7 and~8 of \cite{FHX} (cited in the revision of 2026-10-28;
+outside Section~5 the earlier revisions \texttt{832e086} and \texttt{d64981e} agree verbatim), for the Main Theorem
+(\texttt{thm:intro-main}) and for the characterization \texttt{cor:intro-characterization}. The appendix
+(singular Yau--Tian--Donaldson) is out of scope. Nothing below depends on \cite[Theorem~6.21]{BJ22}
+(\texttt{thm:pshdiv}) or on its consequences (\cite[Corollaries~6.22, 6.41, Theorems~6.31, 6.35, 6.40]{BJ22}).
+
+\begin{itemize}
+\item \emph{Model} (\S\ref{subsec:gl-model}). A projective variety with $r$ globally generated line bundles
+$L_1,\dots,L_r$ whose product map is an embedding is modelled by a finitely generated $\N^r$-graded $k$-algebra
+$S\subseteq K[T_1,\dots,T_r]$ ($K$ the function field) with coordinates in the degrees $e_c$; the
+classes are $\theta\in\R^r$, read as $\sum_c\theta_c\,c_1(L_c)\in N^1(X)_\R$. Fubini--Study functions use
+the \emph{sections} $R_a$, $a\in\mathbf Z^r$ (rational functions of degree $a$ without poles), so that classes
+with negative coordinates are available. The \emph{model-nef cone} $N(\mathcal X)\subseteq\R^r$ is the closure of
+the cone of degrees carrying base point free sections; it is intrinsic to the model, need not be simplicial,
+and corresponds to the nef cone of $X$ (Remark~\ref{rmk:gl-model-comparison}). The psh theory of
+\S\ref{subsec:pg-fs-systems} extends verbatim to classes in $N(\mathcal X)$.
+\item \emph{No non-negligibility.} The direction ``envelope property $\Rightarrow$ convergence on $X^{\divv}$'' of
+\cite[Proposition~2.4]{FHX}, which needs \cite[Theorem~5.6]{BJ22} (divisorial points are nonnegligible) and
+\cite[Corollary~4.17]{BJ22} (finiteness on $X^{\divv}$), is never used: every step of \cite{FHX} that uses it is
+rewritten with usc regularizations of suprema, the divisorial comparison theorem, and the fact that usc
+regularization is local on open sets (Lemma~\ref{lem:gl-usc-local}).
+\item \emph{No energy theory, no test configurations.} Regularization by nets (built into the definition) replaces
+\cite[Corollary~12.18]{BJ22}; Step~2 of \cite[Theorem~6.1]{FHX} uses Fubini--Study envelopes and extension of
+scalars of divisorial valuation rings instead of base ideals of test configurations.
+\item \emph{Proved alterations and remaining inputs.} De Jong's scheme-theoretic theorem and
+its quotient-model form (Theorem~\ref{thm:gl-dejong}) are proved. The root public statements
+retain local positivity and the characteristic-zero smooth-envelope theorem as hypotheses; local
+positivity is proved over every algebraically closed field (Theorem~\ref{thm:lpn-local-positivity-instance}),
+and Theorem~\ref{thm:lpn-main-unconditional} states the main theorems without it. The global
+compatibility statements also accept fibre constancy explicitly; the root statements supply
+it from the proved fibre-constancy theorem. Frobenius descent and additive powers used here
+are proved tools in the model.
+\item \emph{Classes.} The main statements cover all model classes $\theta\in\R^r$.
+Chapter~\ref{sec:nonnef} handles the non-nef step through homogeneous decreasing limits and
+structured diagonal lemmas, without an extra PSH2 hypothesis.
+\end{itemize}
+
+\subsection{The model}\label{subsec:gl-model}
+
+\begin{convention}\label{conv:gl-setting}
+\lean{EnvelopeProperty.MultiModel.piece, EnvelopeProperty.MultiModel.mem_piece, EnvelopeProperty.MultiModel.ofPiece, EnvelopeProperty.MultiModel.homComp, EnvelopeProperty.MultiModel.coordElem, EnvelopeProperty.MultiModel.coordAlg, EnvelopeProperty.MultiModel.monSet, EnvelopeProperty.MultiModel.zMon}
+\leanok
+\uses{conv:pg-setting, def:berk}
+$k$ is algebraically closed with the trivial absolute value. $r\ge1$; $e_1,\dots,e_r$ is the standard basis of
+$\mathbf Z^r$, $\mathbf 1=\sum_ce_c$; vectors in $\mathbf Z^r,\Q^r,\R^r$ are ordered coordinatewise, $a\vee b$ is the
+coordinatewise maximum, and $a$ is \emph{positive} if all its coordinates are $>0$. For a field $K\supseteq k$,
+$K[T]=K[T_1,\dots,T_r]$ and $K[T^{\pm}]$ is the Laurent polynomial ring; $T^a=\prod_cT_c^{a_c}$; an element $fT^a$ ($f\in K$)
+is \emph{homogeneous of degree $a$}, and $p_a\in K$ denotes the coefficient of $T^a$ in $p$. A subalgebra of $K[T]$ is
+\emph{graded} if it contains the homogeneous components of its elements. Functions take values in $[-\infty,\infty)$;
+$f^\star$ is the usc regularization; nets are indexed by directed sets.
+\end{convention}
+
+\begin{definition}[Models]\label{def:gl-model}
+\lean{EnvelopeProperty.MultiModel, EnvelopeProperty.MultiModel.IsNormal, EnvelopeProperty.MultiModel.isNormal_iff, EnvelopeProperty.MultiModel.isFractionRing_S, EnvelopeProperty.MultiModel.fg_top_intermediateField}
+\leanok
+\uses{conv:gl-setting, conv:wu-graded}
+\source{fhx-envelope-20261028:subsec:conventions, fhx-envelope-20261028:subsec:prelim-berkovich}
+A \emph{model} of rank $r$ is a triple $\mathcal X=(K,S,z)$ consisting of a finitely generated field extension
+$K\supseteq k$, a finitely generated graded $k$-subalgebra $S\subseteq K[T]$, and \emph{coordinates}
+$z^{(c)}_j=f^{(c)}_jT^{e_c}\in S$ ($1\le c\le r$, $0\le j\le M_c$, $f^{(c)}_j\in K$), such that
+\begin{enumerate}
+\item[(M1)] for every $c$ some $f^{(c)}_j$ is nonzero;
+\item[(M2)] $S$ is integral over the subalgebra $k[z]$ generated by the coordinates;
+\item[(M3)] $K$ is generated as a field by the quotients $f/g$ with $f,g\in S_a\coloneqq\{h\in K:hT^a\in S\}$,
+$a\in\N^r$, $g\ne0$.
+\end{enumerate}
+$\mathcal X$ is \emph{normal} if $S$ is integrally closed. For $b\in\N^r$, $\mathrm{Mon}(b)$ is the set of multi-indices
+$\beta=(\beta^{(c)}_j)$ with $\sum_j\beta^{(c)}_j=b_c$ for all $c$; $z^\beta=\prod(z^{(c)}_j)^{\beta^{(c)}_j}=\tilde z^\beta T^b$ with
+$\tilde z^\beta\in K$.
+\end{definition}
+
+\begin{remark}[Examples]\label{rmk:gl-model-examples}
+\lean{EnvelopeProperty.MultiModel.quotModel, EnvelopeProperty.MultiModel.quotModelEquiv, EnvelopeProperty.MultiModel.ker_quotMap, EnvelopeProperty.MultiModel.normalizationIn, EnvelopeProperty.MultiModel.isNormal_normalizationIn, EnvelopeProperty.MultiModel.normalization, EnvelopeProperty.MultiModel.mem_normalization_S, EnvelopeProperty.MultiModel.finite_normalization, EnvelopeProperty.MultiModel.isGraded_normalizationInS}
+\leanok
+\uses{def:gl-model, conv:pg-setting, def:pg-blowup, lem:wu-graded-closure, thm:bj-normalization-finite}
+(1) \emph{Quotient models.} Let $R=k[x^{(c)}_j]$ be multigraded by $\deg x^{(c)}_j=e_c$ and $I\subseteq R$ a multihomogeneous
+prime ideal that is \emph{relevant} (for every $c$ some $x^{(c)}_{j_c}\notin I$). With $K$ the field of degree-zero fractions
+of $R/I$, the map $x^{(c)}_j\mapsto(\bar x^{(c)}_j/\bar x^{(c)}_{j_c})T^{e_c}$ has kernel $I$ (a multihomogeneous element
+$F$ of degree $a$ maps to $(\bar F/\prod_c(\bar x^{(c)}_{j_c})^{a_c})T^a$, and components of distinct degrees go to distinct
+monomials), so its image is a model $\mathcal X_I$ with $S\cong R/I$; $X=V(I)\subseteq\PP^{M_1}\times\dots\times\PP^{M_r}$. For
+$r=1$ this is $V(I)\subseteq\PP^M$ of Convention~\ref{conv:pg-setting} (normal iff projectively normal), and for $r=2$ and
+$I=I'$ the blowup of Definition~\ref{def:pg-blowup}.
+(2) \emph{Normalization.} The integral closure $S^\nu$ of $S$ in $K[T]$ (equal to its integral closure in
+$\operatorname{Frac}S=K(T)$, as $K[T]$ is normal) is graded (torus argument of Lemma~\ref{lem:wu-graded-closure}(1)) and finite over
+$S$ (Theorem~\ref{thm:bj-normalization-finite}); $\mathcal X^\nu=(K,S^\nu,z)$ is a normal model, the normalization.
+(3) \emph{Finite covers.} For a finite extension $E\supseteq K$, the integral closure $S_E$ of $S$ in $E[T]$ is graded and
+finite over $S$, and $(E,S_E,z)$ is a normal model, the normalization of $X$ in $E$.
+\end{remark}
+
+\begin{lemma}[Multigraded extension]\label{lem:gl-multigraded-extension}
+\lean{EnvelopeProperty.MultiModel.IsMultigradedNorm, EnvelopeProperty.MultiModel.multigradedFun, EnvelopeProperty.MultiModel.IsMultigradedNorm.valuation, EnvelopeProperty.MultiModel.IsMultigradedNorm.exists_dominant, EnvelopeProperty.MultiModel.ofMultigradedNorm, EnvelopeProperty.MultiModel.exists_multigradedExtension, EnvelopeProperty.MultiModel.ofMultigradedNorm_homNorm}
+\leanok
+\uses{def:gl-model, lem:bj-graded-extension, lem:pg-bigraded-extension}
+Let $N$ be a function on the homogeneous elements of $S$ with values in $\R_{\ge0}$ such that $N(0)=0$, $N(\lambda)=1$ for
+$\lambda\in k^\times$, $N(pq)=N(p)N(q)$, $N(p+q)\le\max(N(p),N(q))$ for $p,q$ of the same degree, and $\max_jN(z^{(c)}_j)=1$
+for every $c$. Then $|p|\coloneqq\max_aN(p_aT^a)$ is a multiplicative seminorm on $S$, trivial on $k$, with
+$|p|=\max_a|p_aT^a|$ and $\max_j|z^{(c)}_j|=1$.
+\end{lemma}
+
+\begin{proof}
+Order $\N^r$ lexicographically; this total order is compatible with addition. All properties except multiplicativity are
+immediate. Since $(pq)_\gamma T^\gamma=\sum_{\alpha+\beta=\gamma}p_\alpha q_\beta T^\gamma$, $N((pq)_\gamma T^\gamma)\le|p||q|$, which settles
+$|p||q|=0$. Otherwise let $\alpha_0$ (resp.\ $\beta_0$) be the largest degree with $N(p_{\alpha_0}T^{\alpha_0})=|p|$ (resp.\
+$N(q_{\beta_0}T^{\beta_0})=|q|$). In $(pq)_{\alpha_0+\beta_0}T^{\alpha_0+\beta_0}$ every term other than $p_{\alpha_0}q_{\beta_0}T^{\alpha_0+\beta_0}$ has
+$\alpha>\alpha_0$ or $\beta>\beta_0$, hence norm $<|p||q|$, so $N((pq)_{\alpha_0+\beta_0}T^{\alpha_0+\beta_0})=|p||q|$ and $|pq|=|p||q|$.
+\end{proof}
+
+\begin{definition}[Points]\label{def:gl-points}
+\lean{EnvelopeProperty.MultiModel.IsMultigraded, EnvelopeProperty.MultiModel.IsNormalized, EnvelopeProperty.MultiModel.an, EnvelopeProperty.MultiModel.triv, EnvelopeProperty.MultiModel.HasGenericSupport, EnvelopeProperty.MultiModel.valSet, EnvelopeProperty.MultiModel.fieldVal, EnvelopeProperty.MultiModel.fieldVal_div, EnvelopeProperty.MultiModel.eq_fieldVal}
+\leanok
+\uses{def:gl-model, def:berk}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich, bj22-trivval:sec:Berk}
+$\mathcal X^\an$ is the set of multiplicative seminorms $|\cdot|_v$ on $S$, trivial on $k$, that are \emph{multigraded},
+$|p|_v=\max_a|p_aT^a|_v$, and \emph{normalized}, $\max_j|z^{(c)}_j|_v=1$ for every $c$, with the topology induced from
+$(\Spec S)^\an$ (Definition~\ref{def:berk}). The \emph{trivial point} $\star$ has $|p|_\star=1$ for $p\ne0$. A point has
+\emph{generic support} if $|p|_v\ne0$ for all $p\ne0$; these points form $\mathcal X^{\mathrm{val}}$, and such a $v$ defines
+an absolute value $|f/g|_v=|fT^a|_v/|gT^a|_v$ on $K$, $f,g\in S_a$. This is well defined because every element of $K$ is such a
+single quotient ($K=\operatorname{Frac}A_j$ for any chart, Lemma~\ref{lem:gl-charts}(1)); in Lean it is obtained by extending $\iota_j(v)$ from $A_j$
+to $K$ and characterized by this formula.
+\end{definition}
+
+\begin{lemma}[Basic properties]\label{lem:gl-points-basic}
+\lean{EnvelopeProperty.MultiModel.IsNormalized.val_le_one, EnvelopeProperty.MultiModel.isCompact_an, EnvelopeProperty.MultiModel.instCompactSpaceAn, EnvelopeProperty.MultiModel.instT2SpaceAn, EnvelopeProperty.MultiModel.instSecondCountableTopologyAn, EnvelopeProperty.MultiModel.IsNormalized.exists_val_zMon_eq_one, EnvelopeProperty.MultiModel.IsNormalized.sup_monSet_val_zMon, EnvelopeProperty.MultiModel.continuous_iff_an}
+\leanok
+\uses{def:gl-points, lem:polydisc-compact, lem:gl-multigraded-extension}
+\begin{enumerate}
+\item $|p|_v\le1$ for all $p\in S$ and $v\in\mathcal X^\an$.
+\item $\mathcal X^\an$ is compact Hausdorff, $\star\in\mathcal X^\an$, and $\mathcal X^\an$ is second countable if $k$ is countable.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) It suffices to treat homogeneous $p$ of degree $a$. Since $S$ is graded and integral over the graded subalgebra $k[z]$,
+taking homogeneous components of an integral equation gives $p^n+\sum_{i=1}^nc_ip^{n-i}=0$ with $c_i\in k[z]$ homogeneous of degree
+$ia$ (as in Lemma~\ref{lem:wu-graded-closure}). Each $c_i$ is a $k$-combination of monomials in the $z^{(c)}_j$, so $|c_i|_v\le1$. If
+$|p|_v>1$, then $|c_ip^{n-i}|_v<|p|_v^n$ for all $i$, contradicting the ultrametric inequality. (2) By (1), $\mathcal X^\an$ lies in the
+compact polydisc $\{|g_\ell|\le1\}$ for generators $g_\ell$ of $S$ (Lemma~\ref{lem:polydisc-compact}); multigradedness and normalization
+are closed conditions on finitely many or countably many evaluations, so $\mathcal X^\an$ is compact; it is Hausdorff as a subspace of
+$(\Spec S)^\an$. $\star$ is a multiplicative seminorm since $S$ is a domain, multigraded since a nonzero element has a nonzero
+component, and normalized by (M1). If $k$ is countable, $S$ is countable and $(\Spec S)^\an$ is second countable.
+\end{proof}
+
+\begin{lemma}[Charts]\label{lem:gl-charts}
+\lean{EnvelopeProperty.MultiModel.chartAlg, EnvelopeProperty.MultiModel.mem_chartAlg_iff, EnvelopeProperty.MultiModel.fg_chartAlg, EnvelopeProperty.MultiModel.isFractionRing_chartAlg, EnvelopeProperty.MultiModel.isIntegrallyClosed_chartAlg, EnvelopeProperty.MultiModel.chartDomain, EnvelopeProperty.MultiModel.chartHomeomorph, EnvelopeProperty.MultiModel.chartHomeomorph_triv, EnvelopeProperty.MultiModel.exists_chartIndex, EnvelopeProperty.MultiModel.iUnion_chartUnitDomain}
+\leanok
+\uses{def:gl-points, lem:gl-multigraded-extension, lem:bj-chart, lem:wu-proj-chart, lem:pg-chart-normal, lem:principal-open}
+\source{fhx-envelope-20261028:sec:normal-local-regularization}
+Let $j=(j_1,\dots,j_r)$ with $f^{(c)}_{j_c}\ne0$ for all $c$, $f_j=\prod_cf^{(c)}_{j_c}$, $z_j=\prod_cz^{(c)}_{j_c}$ and, for $a\in\N^r$,
+$z_j^a=\prod_c(z^{(c)}_{j_c})^{a_c}$.
+\begin{enumerate}
+\item $A_j\coloneqq\{g/\tilde z_j^a:g\in S_a,\ a\in\N^r\}\subseteq K$ (where $z_j^a=\tilde z_j^aT^a$) is a finitely generated $k$-algebra with
+fraction field $K$, generated by the $g_\ell/\tilde z_j^{d_\ell}$ for homogeneous generators $g_\ell\in S_{d_\ell}$ of $S$; it contains the
+$f^{(c)}_i/f^{(c)}_{j_c}$, and it is integrally closed if $S$ is.
+\item $U_j=\{|z_j|\ne0\}\subseteq\mathcal X^\an$ is open, and $|g/\tilde z_j^a|_{\iota_j(v)}=|gT^a|_v/|z_j^a|_v$ defines a homeomorphism
+$\iota_j\colon U_j\to(\Spec A_j)^\an$ with $\iota_j(\star)=\vtriv$; the inverse sends $y$ to the point of
+Lemma~\ref{lem:gl-multigraded-extension} with $N(gT^a)=|g/\tilde z_j^a|_y\prod_c\mu_c(y)^{-a_c}$,
+$\mu_c(y)=\max_i|f^{(c)}_i/f^{(c)}_{j_c}|_y\ge1$.
+\item The sets $\{v:|z^{(c)}_{j_c}|_v=1\ \forall c\}\subseteq U_j$ cover $\mathcal X^\an$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) A degree-zero fraction $p/z_j^a$, $p\in S_a T^a$, expands $p$ in monomials of the generators $g_\ell T^{d_\ell}$; a monomial of degree $a$
+gives a product of the $g_\ell/\tilde z_j^{d_\ell}$. The fraction field is $K$ by (M3), since $f/g=(f/\tilde z_j^a)/(g/\tilde z_j^a)$.
+$f^{(c)}_i/f^{(c)}_{j_c}=z^{(c)}_i/z^{(c)}_{j_c}$. Normality: if $w\in K$ is integral over $A_j$, then $w$ is integral over $S[z_j^{-1}]$,
+which is integrally closed when $S$ is, so $wT^0\in S[z_j^{-1}]$ is a degree-zero element of $S[z_j^{-1}]$, i.e.\ $w\in A_j$ (the
+argument of Lemma~\ref{lem:pg-chart-normal}). (2) $\iota_j(v)$ is a multiplicative seminorm, trivial on $k$, continuous in $v$. For the inverse,
+$\mu_c(y)\ge1$ because $f^{(c)}_{j_c}/f^{(c)}_{j_c}=1$; $N$ satisfies the hypotheses of Lemma~\ref{lem:gl-multigraded-extension} ($N(z^{(c)}_i)=
+|f^{(c)}_i/f^{(c)}_{j_c}|_y/\mu_c(y)$), and the two constructions are mutually inverse and continuous, as in Lemma~\ref{lem:bj-chart}(2).
+$\iota_j(\star)$ is $1$ on nonzero elements. (3) For each $c$ choose $j_c$ with $|z^{(c)}_{j_c}|_v=1$.
+\end{proof}
+
+\begin{definition}[Sections]\label{def:gl-sections}
+\lean{EnvelopeProperty.MultiModel.addDeg, EnvelopeProperty.MultiModel.IsAdmissible, EnvelopeProperty.MultiModel.sections, EnvelopeProperty.MultiModel.secAbsAt, EnvelopeProperty.MultiModel.secAbs, EnvelopeProperty.MultiModel.logSecAbs}
+\leanok
+\uses{def:gl-model, def:gl-points}
+\source{fhx-envelope-20261028:eq:FS-function, bj22-trivval:defi:FS}
+For $a\in\mathbf Z^r$, $R_a=R_a(\mathcal X)$ is the set of $f\in K$ for which there is $b\in\N^r$ with $a+b\in\N^r$ and
+$f\tilde z^\beta\in S_{a+b}$ for all $\beta\in\mathrm{Mon}(b)$ (such $b$ is \emph{admissible} for $f$). For $f\in R_a$ and
+$v\in\mathcal X^\an$ put $|f|_v\coloneqq\max_{\beta\in\mathrm{Mon}(b)}|f\tilde z^\beta T^{a+b}|_v$ and $\log|f|(v)=\log|f|_v$.
+\end{definition}
+
+\begin{lemma}[Properties of sections]\label{lem:gl-sections}
+\lean{EnvelopeProperty.MultiModel.secAbs_eq, EnvelopeProperty.MultiModel.piece_le_sections, EnvelopeProperty.MultiModel.secAbs_of_mem_piece, EnvelopeProperty.MultiModel.mul_mem_sections, EnvelopeProperty.MultiModel.secAbs_mul, EnvelopeProperty.MultiModel.secAbs_add_le, EnvelopeProperty.MultiModel.secAbs_le_one, EnvelopeProperty.MultiModel.secAbs_triv, EnvelopeProperty.MultiModel.continuous_secAbs, EnvelopeProperty.MultiModel.secAbs_ne_zero, EnvelopeProperty.MultiModel.secAbs_eq_chartMap}
+\leanok
+\uses{def:gl-sections, lem:gl-points-basic, lem:gl-charts}
+\begin{enumerate}
+\item $|f|_v$ does not depend on the admissible $b$; for $a\in\N^r$, $S_a\subseteq R_a$ and $|f|_v=|fT^a|_v$.
+\item $R_aR_{a'}\subseteq R_{a+a'}$, $|ff'|_v=|f|_v|f'|_v$, $|f+f'|_v\le\max(|f|_v,|f'|_v)$ for $f,f'\in R_a$, and $|\lambda f|_v=|f|_v$ for
+$\lambda\in k^\times$.
+\item $|f|_v\le1$, $|f|_\star=1$ for $f\ne0$, $v\mapsto|f|_v$ is continuous, and $|f|_v\ne0$ for $f\ne0$ and $v\in\mathcal X^{\mathrm{val}}$.
+\item For a chart $j$ (Lemma~\ref{lem:gl-charts}), $f/\tilde z_j^a\in A_j$ (with $\tilde z_j^a\coloneqq\prod_c(f^{(c)}_{j_c})^{a_c}$) and
+$|f|_v=|f/\tilde z_j^a|_{\iota_j(v)}\,|z_j^a|_v$ for $v\in U_j$, the right side read with $|z_j^a|_v=\prod_c|z^{(c)}_{j_c}|_v^{a_c}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) If $b$ is admissible, so is every $b'\ge b$: $f\tilde z^{\beta+\gamma}=(f\tilde z^\beta)\tilde z^\gamma$. Every $\beta'\in\mathrm{Mon}(b')$ is $\beta+\gamma$
+with $\beta\in\mathrm{Mon}(b)$, $\gamma\in\mathrm{Mon}(b'-b)$, so by multiplicativity
+$\max_{\beta'}|f\tilde z^{\beta'}T^{a+b'}|=\max_\beta|f\tilde z^\beta T^{a+b}|\cdot\max_\gamma|z^\gamma|$, and $\max_\gamma|z^\gamma|=\prod_c(\max_j|z^{(c)}_j|)^{b'_c-b_c}=1$.
+Two admissible vectors are compared through their maximum. For $f\in S_a$ take $b=0$. (2) If $b,b'$ are admissible for $f,f'$ then
+$b+b'$ is admissible for $ff'$, and $\mathrm{Mon}(b+b')=\mathrm{Mon}(b)+\mathrm{Mon}(b')$ gives multiplicativity; the ultrametric inequality is
+termwise. (3) $|f|\le1$ by Lemma~\ref{lem:gl-points-basic}(1); at $\star$ every $f\tilde z^\beta T^{a+b}$ with $\tilde z^\beta\ne0$ has norm $1$, and some
+$\tilde z^\beta\ne0$ by (M1); a finite maximum of continuous functions is continuous; at a point with generic support every nonzero
+element of $S$ has nonzero norm. (4) $f\tilde z_j^b\in S_{a+b}$ for $\beta=bj$ (the monomial $z_j^b$), so $f/\tilde z_j^a=(f\tilde z_j^b)/\tilde z_j^{a+b}\in A_j$;
+for $v\in U_j$ normalize with the chart formula of Lemma~\ref{lem:gl-charts}(2).
+\end{proof}
+
+\begin{definition}[Classes and cones]\label{def:gl-cones}
+\lean{EnvelopeProperty.MultiModel.IsBasePointFree, EnvelopeProperty.MultiModel.semiampleCone, EnvelopeProperty.MultiModel.nefCone, EnvelopeProperty.ratClosure}
+\leanok
+\uses{def:gl-sections}
+The \emph{model-semiample cone} $C(\mathcal X)\subseteq\Q^r$ is the set of $a$ for which there are $m\ge1$ with $ma\in\mathbf Z^r$ and
+finitely many $f_t\in R_{ma}$ without common zero on $\mathcal X^\an$. The \emph{model-nef cone} $N(\mathcal X)\subseteq\R^r$ is the
+closure of $C(\mathcal X)$. A class $\theta$ is \emph{model-ample} if it is positive (all coordinates $>0$).
+\end{definition}
+
+\begin{lemma}[The cones]\label{lem:gl-cones}
+\lean{EnvelopeProperty.MultiModel.nonneg_mem_semiampleCone, EnvelopeProperty.MultiModel.isClosed_nefCone, EnvelopeProperty.MultiModel.IsBasePointFree.sup_secAbs_eq_one, EnvelopeProperty.Berk.span_eq_top_of_forall_exists_val_ne_zero, EnvelopeProperty.mem_of_lt_of_mem_ratClosure, EnvelopeProperty.exists_mem_ge_tendsto_of_mem_ratClosure}
+\leanok
+\uses{def:gl-cones, lem:gl-sections, lem:gl-charts}
+\begin{enumerate}
+\item $\Q^r_{\ge0}\subseteq C(\mathcal X)$, $C+C\subseteq C$, $\Q_{>0}C\subseteq C$ and $C+\Q^r_{\ge0}\subseteq C$; $N(\mathcal X)$ is a closed convex
+cone containing $\R^r_{\ge0}$.
+\item If $f_t\in R_{ma}$ have no common zero, then $\max_t|f_t|_v=1$ for every $v$.
+\item If $\theta\in N(\mathcal X)$ and $(a_\alpha)_{\alpha\in I}$ is a net in $\Q^r$ converging to $\theta$, there is a net $(a'_{\alpha,n})$ indexed by $I\times\N$
+(product order) with $a'_{\alpha,n}\in C(\mathcal X)$, $a'_{\alpha,n}\ge a_\alpha$ and $a'_{\alpha,n}\to\theta$. (Re-indexing is needed: for a constant one-point net
+$a=\theta$ with $\theta\in N(\mathcal X)\cap\Q^r$ outside $C(\mathcal X)$, e.g.\ a degree-$0$ non-torsion class on an elliptic curve, no net in $C$ indexed by $I$
+converges to $\theta$ while dominating $a$.)
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Monomials $\tilde z^\beta$, $\beta\in\mathrm{Mon}(ma)$, have no common zero (some $|z^{(c)}_j|=1$); products and powers of families without common
+zero have none; multiply by monomials. (2) Let $v\in U_j$ with $|z^{(c)}_{j_c}|_v=1$ (Lemma~\ref{lem:gl-charts}(3)). The elements
+$g_t=f_t/\tilde z_j^{ma}\in A_j$ have no common zero on $(\Spec A_j)^\an$ (Lemma~\ref{lem:gl-sections}(4)), so they generate the unit ideal (a
+prime containing them would give the trivial seminorm of $A_j/\mathfrak p$ as a common zero): $1=\sum c_tg_t$ with $c_t\in A_j$. Every element of
+$A_j$ has norm $\le1$ at $\iota_j(v)$ (it is $p/z_j^a$ with $|p|_v\le1$, $|z_j|_v=1$), so $1\le\max_t|g_t|_{\iota_j(v)}=\max_t|f_t|_v\le1$. (3) Choose rationals $q_n\in\Q^r$ with $q_n>\theta$ coordinatewise and $q_n\to\theta$. Every rational class $q>\theta$ lies in $C$: some $c\in C$ is so close to
+$\theta$ that $q-c\ge0$, and $C+\Q^r_{\ge0}\subseteq C$. Put $a'_{\alpha,n}=a_\alpha\vee q_n$ (coordinatewise maximum). Then $a'_{\alpha,n}>\theta$, so $a'_{\alpha,n}\in C$;
+$a'_{\alpha,n}\ge a_\alpha$; and $a'_{\alpha,n}\to\theta\vee\theta=\theta$ along $I\times\N$.
+\end{proof}
+
+\begin{definition}[Fubini--Study functions]\label{def:gl-fs}
+\lean{EnvelopeProperty.MultiModel.FSData, EnvelopeProperty.MultiModel.FSData.eval, EnvelopeProperty.MultiModel.IsFS, EnvelopeProperty.MultiModel.IsFinFS, EnvelopeProperty.MultiModel.IsHomFS}
+\leanok
+\uses{def:gl-sections}
+\source{fhx-envelope-20261028:eq:FS-function, bj22-trivval:defi:FS}
+For $a\in\Q^r$, $\mathcal H(\mathcal X,a)$ is the set of functions $m^{-1}\max_t\{\log|f_t|+\lambda_t\}$ with $m\in\mathbf Z_{>0}$,
+$ma\in\mathbf Z^r$, finitely many $f_t\in R_{ma}$ not all zero, and $\lambda_t\in\R$. $\mathcal H_{\mathrm{fin}}(\mathcal X,a)$ requires moreover
+$\lambda_t\in\Q$ and no common zero on $\mathcal X^\an$, and $\mathcal H_{\mathrm{hom}}(\mathcal X,a)$ requires all $\lambda_t=0$.
+\end{definition}
+
+\begin{definition}[Fubini--Study systems with a semiample cone]\label{def:gl-fs-system}
+\lean{EnvelopeProperty.FSSystemC, EnvelopeProperty.FSSystemC.coneClosure, EnvelopeProperty.FSSystemC.IsPSH, EnvelopeProperty.FSSystem.toFSSystemC, EnvelopeProperty.FSSystem.coneClosure_toFSSystemC}
+\leanok
+\uses{def:pg-fs-system}
+\source{bj22-trivval:defi:FS, bj22-trivval:prop:FS}
+Let $K$ be a compact space, $\star\in K$, and $C\subseteq\Q^r$ a convex cone with $\Q^r_{\ge0}\subseteq C$ and $C+\Q^r_{\ge0}\subseteq C$. A
+\emph{Fubini--Study system with semiample cone $C$} assigns to every $a\in\Q^r$ sets $\mathcal H_{\mathrm{fin}}(a)\subseteq\mathcal H(a)$ of
+continuous functions, $\mathcal H_{\mathrm{fin}}(a)$ real valued, satisfying (FS1), (FS2), (FS4) of Definition~\ref{def:pg-fs-system} for all
+$a,b\in\Q^r$, and (FS3), (FS5) for $a\in C$ (constants, maxima with constants, approximation by $\mathcal H_{\mathrm{fin}}$); for every $a$,
+$\mathcal H(a)$ is stable under finite maxima and addition of real constants. $\theta$-psh functions, $\theta\in\R^r$, are defined as in
+Definition~\ref{def:pg-psh}. The systems of Definition~\ref{def:pg-fs-system} are those with $C=\Q^r_{\ge0}$ and $\mathcal H(a)=\varnothing$ unless
+$a\ge0$.
+\end{definition}
+
+\begin{theorem}[Psh theory of a system]\label{thm:gl-fs-system-theory}
+\lean{EnvelopeProperty.FSSystemC.IsFS.isPSH, EnvelopeProperty.FSSystemC.IsPSH.le_apply_triv, EnvelopeProperty.FSSystemC.IsPSH.max, EnvelopeProperty.FSSystemC.IsPSH.add, EnvelopeProperty.FSSystemC.IsPSH.smul_rat, EnvelopeProperty.FSSystemC.IsPSH.mono_class, EnvelopeProperty.FSSystemC.isPSH_of_antitone, EnvelopeProperty.FSSystemC.IsPSH.smul, EnvelopeProperty.FSSystemC.isPSH_const, EnvelopeProperty.FSSystemC.IsPSH.exists_isFinFS_net, EnvelopeProperty.FSSystemC.isPSH_iff_exists_isFinFS, EnvelopeProperty.FSSystemC.IsPSH.exists_isFinFS_net_of_pos, EnvelopeProperty.FSSystemC.IsPSH.exists_isFinFS_seq_gt}
+\leanok
+\uses{def:gl-fs-system, prop:pg-maxprin, thm:pg-psh2, thm:pg-psh-basic, thm:pg-regularization, cor:pg-countable-regularization, lem:bj-psh-diagonal, rmk:bj-psh-diagonal-finite}
+\source{bj22-trivval:thm:psh12, bj22-trivval:thm:PSH, bj22-trivval:thm:pshample, bj22-trivval:prop:pshconvex}
+Let $\overline C\subseteq\R^r$ be the closure of $C$.
+\begin{enumerate}
+\item For every $\theta\in\R^r$: $\mathcal H(a)\subseteq\PSH(a)$; every $u\in\PSH(\theta)$ satisfies $u(\star)\in\R$, $u\le u(\star)$; $\PSH(\theta)$ is
+stable under finite maxima and real translates; $\PSH(\theta)+\PSH(\theta')\subseteq\PSH(\theta+\theta')$; $c\PSH(\theta)\subseteq\PSH(c\theta)$
+for $c\in\Q_{>0}$; $\PSH(\theta)\subseteq\PSH(\theta')$ for $\theta\le\theta'$.
+\item For $\theta\in\overline C$: PSH2 (Theorem~\ref{thm:pg-psh2}(3)) holds for nets $u_i\in\PSH(\theta_i)$, $\theta_i\to\theta$; real scaling
+$t\PSH(\theta)=\PSH(t\theta)$; $\PSH(\theta)$ contains the real constants; the regularization statements of
+Theorem~\ref{thm:pg-regularization} and Corollary~\ref{cor:pg-countable-regularization} hold, part~(2) for rational positive $\theta$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) These are the proofs of Proposition~\ref{prop:pg-maxprin} (without the conclusion $\theta\ge0$, which used $\mathcal H(a)=\varnothing$ for
+$a\not\ge0$) and of Theorem~\ref{thm:pg-psh-basic}(1),(2),(3): maxima and sums use a common index set and the classes $a_i\vee a'_j$,
+$a_i+a'_j$, and (FS2), (FS4); monotonicity uses $\mathcal H(a)\subseteq\mathcal H(a+(\theta'-\theta)_{\text{rounded up}})$ along the net. No constants
+and no diagonal lemma are needed. (2) Let $u_i\in\PSH(\theta_i)$ decrease, $\theta_i\to\theta\in\overline C$. For $n\in\N$ put $\tau_{i,n}=\theta_i\vee\theta+(n+1)^{-1}\mathbf 1$; then
+$\tau_{i,n}>\theta$, $\tau_{i,n}\to\theta$ along $I\times\N$, and $u_i\in\PSH(\tau_{i,n})$ by monotonicity (1). The classes of the approximating nets of
+$u_i$ in $\PSH(\tau_{i,n})$ converge to $\tau_{i,n}>\theta$, so they are eventually $>\theta$ and hence in $C$ (as in the proof of Lemma~\ref{lem:gl-cones}(3)).
+(Replacing the classes $a_{i,\alpha}$ of the original approximating nets does not work: they converge to $\theta_i$, which need not lie in $\overline C$.) The families $\mathcal H(a)$, $a\in C$, consist of continuous functions avoiding $+\infty$ and are stable
+under addition of constants and maxima with constants (FS3), so the diagonal lemma in the form of Remark~\ref{rmk:bj-psh-diagonal-finite}
+(\texttt{IsDecrNetLimit.of\_antitone}) applies and gives PSH2. The other statements are proved as in Theorems~\ref{thm:pg-psh-basic},
+\ref{thm:pg-regularization} and Corollary~\ref{cor:pg-countable-regularization}, after the same replacement of classes.
+\end{proof}
+
+\begin{lemma}[The system of a model]\label{lem:gl-fs-system}
+\lean{EnvelopeProperty.MultiModel.fsSystem, EnvelopeProperty.MultiModel.coneClosure_fsSystem, EnvelopeProperty.MultiModel.IsFinFS.mem_semiampleCone, EnvelopeProperty.MultiModel.isFS_const, EnvelopeProperty.MultiModel.IsFS.exists_antitone_isFinFS, EnvelopeProperty.MultiModel.isPSH_logSecAbs}
+\leanok
+\uses{def:gl-fs, def:gl-fs-system, lem:gl-sections, lem:gl-cones, lem:pg-subvariety-fs-system}
+$(\mathcal X^\an,\star)$ with $\mathcal H(\mathcal X,a)\supseteq\mathcal H_{\mathrm{fin}}(\mathcal X,a)$ is a Fubini--Study system with semiample
+cone $C(\mathcal X)$.
+\end{lemma}
+
+\begin{proof}
+As in Lemma~\ref{lem:pg-subvariety-fs-system}, with sections in place of forms. (FS1): $|f|\le1=|f|_\star$ for $0\ne f$ (Lemma~\ref{lem:gl-sections}(3)),
+so $\varphi\le\varphi(\star)=m^{-1}\max\{\lambda_t:f_t\ne0\}$. (FS2): for $b-a\ge0$, pass to a common $m$ with $m(b-a)\in\N^r$ and replace the family by
+$f_t\tilde z^\gamma$, $\gamma\in\mathrm{Mon}(m(b-a))$; since $\max_\gamma|\tilde z^\gamma|=1$ the function is unchanged, nonzero and base point freeness
+are preserved. (FS3) for $a\in C$: a constant $c$ is $m^{-1}\max_t\{\log|f_t|+mc\}$ for a base point free family (Lemma~\ref{lem:gl-cones}(2));
+maxima with constants are unions of families. (FS4): products $f_t^{m'}f'^{\,m}_u$ and powers. (FS5) for $a\in C$: rational weights
+$\lambda^{(n)}_t\downarrow\lambda_t$ and truncation $\max\{\cdot,-n\}$ with the constant's base point free family.
+\end{proof}
+
+\begin{definition}[Psh functions and the envelope property]\label{def:gl-psh}
+\lean{EnvelopeProperty.MultiModel.IsPSH, EnvelopeProperty.MultiModel.envelope, EnvelopeProperty.MultiModel.HasEnvelopeProperty, EnvelopeProperty.MultiModel.IsPSHHom}
+\leanok
+\uses{lem:gl-fs-system, thm:gl-fs-system-theory, def:pn-ep}
+\source{fhx-envelope-20261028:subsec:prelim-psh, bj22-trivval:defi:psh, bj22-trivval:sec:envprop}
+For $\theta\in\R^r$, $\PSH(\mathcal X,\theta)$ is the set of $\theta$-psh functions of the system of Lemma~\ref{lem:gl-fs-system}:
+usc functions $u\not\equiv-\infty$ that are limits of decreasing nets $\varphi_\alpha\in\mathcal H(\mathcal X,a_\alpha)$, $a_\alpha\to\theta$.
+$\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ is the subset of homogeneous functions (Definition~\ref{def:gl-scaling}). $\theta$ has the
+\emph{envelope property}, $\mathrm{EP}_{\mathcal X}(\theta)$, if $(\sup_iu_i)^\star\in\PSH(\mathcal X,\theta)$ for every nonempty family
+$(u_i)\subseteq\PSH(\mathcal X,\theta)$ bounded above. For $\phi\colon\mathcal X^\an\to\R$ bounded, $\mathrm P_\theta(\phi)=\sup\{\tau\in
+\PSH(\mathcal X,\theta):\tau\le\phi\}$.
+\end{definition}
+
+\begin{lemma}[Elementary rules for the envelope property]\label{lem:gl-ep-basic}
+\lean{EnvelopeProperty.MultiModel.HasEnvelopeProperty.of_tendsto, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_forall_rat_gt, EnvelopeProperty.MultiModel.hasEnvelopeProperty_smul_iff, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_forall_not_isPSH, EnvelopeProperty.FSSystemC.HasEnvelopeProperty.of_tendsto}
+\leanok
+\uses{def:gl-psh, thm:gl-fs-system-theory, lem:bj-envppty}
+\source{bj22-trivval:lem:envppty, fhx-envelope-20261028:thm:normal-ample-EP}
+\begin{enumerate}
+\item If $\theta\in N(\mathcal X)$ is the limit of classes $\theta_j\ge\theta$ with $\mathrm{EP}(\theta_j)$, then $\mathrm{EP}(\theta)$.
+\item For $\theta\in N(\mathcal X)$ and real $t>0$, $\mathrm{EP}(\theta)\iff\mathrm{EP}(t\theta)$.
+\item If $\PSH(\mathcal X,\theta)=\varnothing$, $\mathrm{EP}(\theta)$ holds.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) As Lemma~\ref{lem:bj-envppty}: $u=(\sup u_i)^\star\in\PSH(\theta_j)$ for all $j$ by monotonicity, and PSH2 at $\theta\in N(\mathcal X)$
+(Theorem~\ref{thm:gl-fs-system-theory}(2)) for the constant sequence. (2) $t\PSH(\theta)=\PSH(t\theta)$ and $(\sup tu_i)^\star=t(\sup u_i)^\star$. (3) There
+is no nonempty family.
+\end{proof}
+
+\begin{remark}[The model and $N^1(X)_\R$]\label{rmk:gl-model-comparison}
+\uses{def:gl-psh, def:gl-cones, rmk:pg-subvariety-psh-comparison, rmk:pg-blowup-psh-comparison}
+Let $X$ be an integral projective variety. Choose globally generated line bundles $L_1,\dots,L_r$ whose classes span $N^1(X)_\Q$, one of them
+very ample, and generating sections; their product map embeds $X$ as $V(I)\subseteq\prod_c\PP^{M_c}$, giving a quotient model
+(Remark~\ref{rmk:gl-model-examples}(1)) with $c_1\colon\R^r\to N^1(X)_\R$, $\theta\mapsto\sum_c\theta_cc_1(L_c)$, surjective. For this model the
+following are not formalized: (a)
+$\mathcal X^\an=X^\an$ (as Definition~\ref{def:pn-an}); (b) $R_a=H^0(X,\sum_ca_cL_c)$ (the ideal transform of $S$ with respect to the irrelevant
+ideal), so $\mathcal H(\mathcal X,a)=\mathcal H^{\mathrm{gf}}_\R(\sum_ca_cL_c)$; (c) $C(\mathcal X)$ consists of the rational vectors whose class is
+semiample, hence $N(\mathcal X)=c_1^{-1}(\mathrm{Nef}(X))$ (ample classes are dense in the nef cone, and $\theta+\delta\mathbf 1$ has ample class for
+$\theta\in c_1^{-1}\mathrm{Nef}$, $\delta>0$); (d) $\PSH(\mathcal X,\theta)=\PSH(X,c_1(\theta))$ of \cite[Definition~4.1]{BJ22}: approximants of
+\cite{BJ22} with classes $c_1(L_i)\to c_1(\theta)$ lie in $\mathcal H(\mathcal X,a)$ for every rational $a\ge\theta+\delta\mathbf1$ and $i\gg0$, since
+$c_1(a)-c_1(L_i)$ is then ample (openness of the ample cone, $c_1(\mathbf 1)$ ample); (e) a modification or a finite cover of $X$ is a model in the
+same coordinates (Remark~\ref{rmk:gl-model-examples}(2),(3)), so pulled-back classes need no new coordinates (this is
+\cite[Lemma~2.6]{FHX}, \texttt{lem:finite-class-promotion}, in the model). Internally, ampleness is used only through the sufficient condition
+``positive'', and nefness through $C(\mathcal X)$; the shape of the nef cone (simplicial or not, polyhedral or not) plays no role. Every
+$\theta\in N^1(X)_\R$ is $c_1(\theta)$ for some $\theta\in\R^r$, possibly with negative coordinates, so the formal statements for all
+$\theta\in\R^r$ (resp.\ $\theta\in N(\mathcal X)$) are the statements of \cite{FHX} for all real (resp.\ all nef) classes.
+The statements of \cite{FHX} for $X$ itself and every $\theta\in N^1(X)_\R$ are formalized in Section~\ref{sec:source-main}
+through a comparison that chooses no line bundles spanning $N^1(X)_\Q$: every class is $\pi(\theta_m)$ for a presentation
+of $X$ (Lemma~\ref{lem:pm-exists-presentation}), and the psh functions and the envelope property of $X$ are those of the
+presentation model (Theorem~\ref{thm:var-psh-comparison}, Corollary~\ref{cor:var-ep-comparison}); this gives
+Theorem~\ref{thm:var-main} and Corollary~\ref{cor:var-characterization}, with ``ample'' in~(3) meaning membership in the
+ample cone.
+\end{remark}
+
+\begin{definition}[Morphisms of models]\label{def:gl-maps}
+\lean{EnvelopeProperty.MultiModel.FiniteHom, EnvelopeProperty.MultiModel.FiniteHom.anMap, EnvelopeProperty.MultiModel.FiniteHom.finiteDimensional, EnvelopeProperty.MultiModel.ScalarRestriction, EnvelopeProperty.MultiModel.ScalarRestriction.anMap, EnvelopeProperty.MultiModel.FiniteHom.ofNormalization, EnvelopeProperty.MultiModel.FiniteHom.ofNormalizationIn}
+\leanok
+\uses{def:gl-model, def:gl-points, def:gl-sections}
+\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:subsec:prelim-finite-classes}
+A \emph{finite morphism} $h\colon\mathcal T\to\mathcal X$ of models of rank $r$ is an inclusion $K\subseteq E$ of finite degree $d$ together with
+$S\subseteq S_T\subseteq E[T]$, $S_T$ integral over $S$, with the same coordinates; $h^\an(w)=w|_S$. A \emph{scalar restriction} along
+$k_0\subseteq k$ ($k_0$ algebraically closed) is a model $\mathcal X_0=(K_0,S_0,z)$ over $k_0$ and $\mathcal X=(K,S,z)$ over $k$ with
+$S=k\cdot S_0\cong k\otimes_{k_0}S_0$ inside $K[T]$; $r(v)=v|_{S_0}$.
+\end{definition}
+
+\begin{lemma}[Pullbacks]\label{lem:gl-pullback}
+\lean{EnvelopeProperty.MultiModel.FiniteHom.continuous_anMap, EnvelopeProperty.MultiModel.FiniteHom.anMap_surjective, EnvelopeProperty.MultiModel.FiniteHom.finite_anMap_preimage, EnvelopeProperty.MultiModel.FiniteHom.eq_triv_of_anMap_eq_triv, EnvelopeProperty.MultiModel.FiniteHom.secAbs_anMap, EnvelopeProperty.MultiModel.FiniteHom.isFS_comp, EnvelopeProperty.MultiModel.FiniteHom.isPSH_comp, EnvelopeProperty.MultiModel.ScalarRestriction.continuous_anMap, EnvelopeProperty.MultiModel.ScalarRestriction.anMap_triv, EnvelopeProperty.MultiModel.ScalarRestriction.secAbs_anMap, EnvelopeProperty.MultiModel.ScalarRestriction.isFS_comp, EnvelopeProperty.MultiModel.ScalarRestriction.isPSH_comp}
+\leanok
+\uses{def:gl-maps, lem:gl-sections, def:gl-psh}
+\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:thm:PSH}
+For a finite morphism $h$: $h^\an$ is continuous, surjective and has finite fibres; $R_a(\mathcal X)\subseteq R_a(\mathcal T)$ with the same values,
+so $\varphi\circ h^\an\in\mathcal H(\mathcal T,a)$ for $\varphi\in\mathcal H(\mathcal X,a)$ and $u\circ h^\an\in\PSH(\mathcal T,\theta)$ for
+$u\in\PSH(\mathcal X,\theta)$; the only point of $\mathcal T^\an$ over $\star$ is $\star$. For a scalar restriction, $r$ is continuous,
+$r(\star)=\star$, values of sections are preserved ($R_a(\mathcal X_0)\subseteq R_a(\mathcal X)$), and FS and psh functions pull back; surjectivity,
+finiteness of fibres and uniqueness over $\star$ fail in general and are not needed.
+\end{lemma}
+
+\begin{proof}
+$h^\an(w)$ is multigraded and normalized, as $S\subseteq S_T$ is graded with the same coordinates. Surjectivity and finiteness of fibres: on a chart
+$j$, $A_j\subseteq B_j$ (the chart algebra of $\mathcal T$) is finite, and points of $(\Spec B_j)^\an$ over a point of $(\Spec A_j)^\an$ exist and are finite
+in number (integral extension of seminorms; fibres $\leftrightarrow$ maximal ideals of $\mathcal H(x)\otimes_{A_j}B_j$, Lemma~\ref{lem:finite-flat-norm}
+and \texttt{Berkovich/Finite}); charts correspond since coordinates agree. Admissible $b$ for $f\in R_a(\mathcal X)$ stay admissible in $S_T$, and
+$|f|_w=|f|_{h(w)}$. Pullbacks of decreasing nets are decreasing nets with the same classes, and $u\circ h^\an\not\equiv-\infty$ since
+$u(\star)>-\infty$ and $h(\star)=\star$. A point over $\star$ is $1$ on $S\setminus0$; an element of $S_T\setminus0$ satisfies an integral equation over $S$
+whose constant term may be taken nonzero, which forces norm $1$. For a scalar restriction only the value formula
+$|f|_{r(v)}=|f|_v$ and $r(\star)=\star$ are used. The other assertions fail: for $k_0=\overline{\Q}\subseteq k=\overline{\Q(t)}$ and
+$\mathcal X=\PP^1$, the divisorial point $e^{-\mathrm{ord}_{x=t}}$ is not $\star$ but restricts to $\star$ on $k_0[x]$, and so does the
+point at $x=s$ for every $s$ transcendental over $k_0$.
+\end{proof}
+
+\begin{lemma}[Change of model]\label{lem:gl-model-change}
+\lean{EnvelopeProperty.MultiModel.IsModelChange, EnvelopeProperty.MultiModel.IsModelChange.restrictHomeomorph, EnvelopeProperty.MultiModel.IsModelChange.hasSections, EnvelopeProperty.MultiModel.IsModelChange.sections_eq, EnvelopeProperty.MultiModel.IsModelChange.secAbs_restrictAn, EnvelopeProperty.MultiModel.IsModelChange.isPSH_comp_iff, EnvelopeProperty.MultiModel.IsModelChange.hasEnvelopeProperty_iff, EnvelopeProperty.MultiModel.IsModelChange.semiampleCone_eq, EnvelopeProperty.MultiModel.IsModelChange.nefCone_eq, EnvelopeProperty.MultiModel.isPSH_normalization_iff, EnvelopeProperty.MultiModel.hasEnvelopeProperty_normalization_iff}
+\leanok
+\uses{def:gl-model, lem:gl-charts, lem:gl-sections, def:gl-psh, lem:gl-points-basic}
+\source{fhx-envelope-20261028:prop:BJ-package}
+Let $\mathcal X=(K,S,z)$ and $\mathcal X'=(K,S',z')$ be models of rank $r$ with the same $K$ such that every coordinate of either model is
+integral over the coordinates of the other in the same degree, and $S\subseteq S'\subseteq S^\nu$. Suppose the chart algebras of $\mathcal X$ are
+integrally closed. Then restriction $v'\mapsto v'|_S$ is a homeomorphism $\mathcal X'^\an\to\mathcal X^\an$, $R_a(\mathcal X)=R_a(\mathcal X')$ with
+equal values, and $\PSH(\mathcal X,\theta)=\PSH(\mathcal X',\theta)$, $C(\mathcal X)=C(\mathcal X')$.
+\end{lemma}
+
+\begin{proof}
+Normalizations agree: $\max_j|z'^{(c)}_j|=1$ iff $\max_j|z^{(c)}_j|=1$, by the monic root estimate of Lemma~\ref{lem:gl-points-basic}(1) in both
+directions. An element of $S^\nu$ of degree $a$ divided by $\tilde z_j^a$ is integral over the integrally closed $A_j$, hence lies in $A_j$; so for each
+chart $f\tilde z_j^{c_j}\in S$ for some $c_j$. The homogeneous ideal $\{q\in S:fq\in S\}$ thus contains a power of every $z_j$; a prime containing all $z_j$
+contains a whole block of coordinates, so its radical contains the product of the block ideals $(z^{(c)}_0,\dots,z^{(c)}_{M_c})$, and it contains $\mathrm{Mon}(b)$ for
+$b\gg0$: $S^\nu_a\subseteq R_a(\mathcal X)$ (the same ``ideal argument'' is used repeatedly below). The two section spaces are defined
+with the monomials $\tilde z^\beta$ and $\tilde z'^\gamma$ respectively; by mutual integrality, a power of each coordinate of one model lies in
+the $S'$-ideal generated by the coordinates of the other model in the same block, so the ideal argument (with explicit exponents) gives
+both inclusions, $R(\mathcal X')=R(\mathcal X)$, and the values agree (a double maximum over $\beta$ and $\gamma$, both points being
+normalized for both coordinate systems). Then a point of $\mathcal X^\an$ extends to $S'$ by $|f|=\max_\beta|f\tilde z^\beta|$, uniquely and continuously; restriction is a
+continuous bijection of compact Hausdorff spaces. The Fubini--Study families, hence psh functions and the semiample cones, coincide.
+\end{proof}
+
+\begin{lemma}[Veronese and Segre--Veronese models]\label{lem:gl-veronese}
+\lean{EnvelopeProperty.MultiModel.veronese, EnvelopeProperty.MultiModel.veroneseHomeomorph, EnvelopeProperty.MultiModel.veroneseHomeomorph_triv, EnvelopeProperty.MultiModel.isNormal_veronese, EnvelopeProperty.MultiModel.mem_veronese_sections_iff, EnvelopeProperty.MultiModel.secAbs_veroneseAnMap, EnvelopeProperty.MultiModel.isFS_veronese_iff, EnvelopeProperty.MultiModel.isPSH_veronese_iff, EnvelopeProperty.MultiModel.hasEnvelopeProperty_veronese_iff, EnvelopeProperty.MultiModel.multiVeronese, EnvelopeProperty.MultiModel.multiVeroneseHomeomorph, EnvelopeProperty.MultiModel.isPSH_multiVeronese_iff, EnvelopeProperty.MultiModel.hasEnvelopeProperty_multiVeronese_iff, EnvelopeProperty.MultiModel.biVeronese}
+\leanok
+\uses{def:gl-model, lem:gl-multigraded-extension, def:gl-psh, thm:gl-fs-system-theory, lem:wu-veronese}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+Let $a\in\N^r$ be positive. The \emph{Segre--Veronese model} $\mathcal X_{(a)}$ of rank $1$ has $S_{(a)}=\bigoplus_nS_{na}U^n\subseteq K[U]$ and
+coordinates $\tilde z^\beta U$, $\beta\in\mathrm{Mon}(a)$. Restriction is a homeomorphism $\mathcal X^\an\to\mathcal X_{(a)}^\an$, preserving $\star$ and
+values of sections ($R_n(\mathcal X_{(a)})=R_{na}(\mathcal X)$), and $\PSH(\mathcal X_{(a)},t)=\PSH(\mathcal X,ta)$ for every real $t$. $\mathcal X_{(a)}$ is
+normal if $\mathcal X$ is. Hence $\mathrm{EP}_{\mathcal X}(ta)\iff\mathrm{EP}_{\mathcal X_{(a)}}(t)$.
+\end{lemma}
+
+\begin{proof}
+$S_{(a)}$ is integral over the coordinates (homogeneous integral equations of degrees in $\N a$ have coefficients in $k[z]_{\N a}$, spanned by products of
+monomials of degree $a$). A point of $\mathcal X^\an$ restricts to a point (normalization: $\max_\beta|z^\beta|=1$). Conversely, for $y\in\mathcal X_{(a)}^\an$
+and $p\in S_b$ homogeneous, choose $n$ with $na\ge b$ and put $N(pT^b)=\max_{\gamma\in\mathrm{Mon}(na-b)}|p\tilde z^\gamma U^n|_y$; this is independent of $n$
+(as in Lemma~\ref{lem:gl-sections}(1)) and satisfies the hypotheses of Lemma~\ref{lem:gl-multigraded-extension} (normalization:
+$N(z^{(c)}_j)=\max_\gamma|z^{(c)}_j\tilde z^\gamma U^n|_y$ and $\max_j$ of it is $\max_{\beta\in\mathrm{Mon}(na)}|z^\beta|=1$), and gives the inverse. FS
+functions of class $t\in\Q$ on $\mathcal X_{(a)}$ are those of class $ta$ on $\mathcal X$ (for data of class $q_0a$ on $\mathcal X$ with
+multiplier $m$, the degree $mq_0$ on $\mathcal X_{(a)}$ need not be an integer: replace $m$ by $a_0m$ and the sections $f$ by $f^{a_0}$, where
+$a_0$ is the denominator of $q_0$). Psh: an approximant of class $b_\alpha\to ta$ on $\mathcal X$ lies
+in $\mathcal H(\mathcal X,\lambda_\alpha a)$ with $\lambda_\alpha=\max_cb_{\alpha,c}/a_c\to t$ (FS2), which is a class of $\mathcal X_{(a)}$. Normality: the argument of
+Lemma~\ref{lem:wu-veronese} (second part), componentwise in $\N^r$.
+\end{proof}
+
+\begin{remark}[Bridges to the projective models already formalized]\label{rmk:gl-bridges}
+\uses{rmk:gl-model-examples, lem:gl-model-change, lem:gl-veronese, lem:gl-bridge-points, lem:gl-bridge-psh, def:pg-subvariety-psh, def:pg-blowup-psh, def:pn-psh}
+For $r=1$ and $S$ generated in degree $1$, a presentation $k[x_0,\dots,x_N]\to S$, $x_i\mapsto w_i$ (a basis of $S_1$), identifies $\mathcal X$ with the
+quotient model of the kernel, whose points are those of $V(I)\subseteq\PP^N$ (Lemma~\ref{lem:gl-bridge-points}); for $r=2$ the same holds for
+$\mathrm{BlowupCenter}$ models. The model sections $R_a$ contain the polynomial sections $S_a$ but can be larger (they are the sections of
+$\mathcal O(a)$ on $\operatorname{Proj}S$), so the identification of psh functions (Lemma~\ref{lem:gl-bridge-psh}) needs an argument: $R_a=S_a$
+when $S$ is integrally closed and generated in degree $1$, and otherwise integrality of $fT^a$ over $S$ and PSH2. By Lemma~\ref{lem:wu-veronese}
+every rank-$1$ model has a Veronese $S_{(e)}$ generated in degree $1$, and Lemma~\ref{lem:gl-veronese} applies.
+\end{remark}
+
+\begin{lemma}[Bridges: points]\label{lem:gl-bridge-points}
+\lean{EnvelopeProperty.MultiModel.DegOnePres.anHomeomorph, EnvelopeProperty.MultiModel.DegOnePres.anHomeomorph_val, EnvelopeProperty.MultiModel.DegOnePres.anHomeomorph_triv, EnvelopeProperty.MultiModel.DegOnePres.recoordHomeomorph, EnvelopeProperty.MultiModel.DegOnePres.isPSH_recoord_iff, EnvelopeProperty.MultiModel.DegOnePres.hasEnvelopeProperty_recoord_iff, EnvelopeProperty.MultiModel.biAnHomeomorph, EnvelopeProperty.MultiModel.blowupAnHomeomorph, EnvelopeProperty.MultiModel.blowupAnHomeomorph_triv, EnvelopeProperty.MultiModel.proj_blowupAnHomeomorph_val}
+\leanok
+\uses{rmk:gl-model-examples, lem:gl-model-change, lem:gl-points-basic, def:pg-subvariety-fs, def:pg-bigraded, def:pg-blowup}
+\begin{enumerate}
+\item Let $r=1$ and let $w_0,\dots,w_N\in S_1$ generate $S$, with kernel $I$ of $k[x_0,\dots,x_N]\to S$. Restriction along $x_i\mapsto w_iT$ is a
+homeomorphism $\tau\colon V(I)^\an\to\mathcal X^\an$ with $\tau(\star)=\star$ and $|F(w)|_{\tau(u)}=|F|_u$; changing the coordinates of $\mathcal X$ to
+$w$ does not change points, values of sections, psh functions or the envelope property.
+\item Let $r=2$ and $S=k[z]$, with kernel $I'$ of $k[x,y]\to S$. Restriction is a homeomorphism of $\mathcal X^\an$ onto $V(I')^\an\subseteq
+(\PP^M\times\PP^{M'})^\an$; if $I'$ is the ideal of a blowup $B$ (Definition~\ref{def:pg-blowup}), it is a homeomorphism $\vartheta\colon
+\mathcal X^\an\to B^\an$ with $\vartheta(\star)=\star$, compatible with $\mu$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+A point of $V(I)^\an$ is a multiplicative seminorm on $k[x]/I$ normalized by $\max_i|x_i|=1$; it is a seminorm on $S$, and normalization for the
+coordinates $z$ and for $w$ agree by the monic root estimate (Lemma~\ref{lem:gl-points-basic}(1)), as each set of coordinates is integral over the
+other in degree $1$. Continuity in both directions holds on generators. The second part is the same with bihomogeneous elements.
+\end{proof}
+
+\begin{lemma}[Bridges: sections and psh functions]\label{lem:gl-bridge-psh}
+\lean{EnvelopeProperty.MultiModel.isPSH_comp_blowupAnHomeomorph_iff, EnvelopeProperty.MultiModel.isPSH_iff_isPSH_comp_blowupAnHomeomorph_symm, EnvelopeProperty.MultiModel.isFS_comp_blowupAnHomeomorph, EnvelopeProperty.MultiModel.IsFS.exists_isFS_blowup, EnvelopeProperty.MultiModel.IsPSH.blowup_comp_symm, EnvelopeProperty.MultiModel.hasEnvelopeProperty_iff_blowup, EnvelopeProperty.MultiModel.IsAdmissible.pow_of_eq_coordAlg, EnvelopeProperty.ProjSubvariety.BlowupCenter.multiModel, EnvelopeProperty.ProjSubvariety.BlowupCenter.multiModel_biIdeal, EnvelopeProperty.ProjSubvariety.BlowupCenter.multiModelAnHomeomorph, EnvelopeProperty.ProjSubvariety.BlowupCenter.isPSH_multiModel_comp_iff, EnvelopeProperty.MultiModel.DegOnePres.sections_eq_piece_of_isProjNormal, EnvelopeProperty.MultiModel.DegOnePres.isPSH_comp_anHomeomorph_iff, EnvelopeProperty.MultiModel.DegOnePres.hasEnvelopeProperty_toProjSubvariety_iff, EnvelopeProperty.MultiModel.isIntegral_monomial_of_isAdmissible_of_le, EnvelopeProperty.MultiModel.sections_eq_piece_of_le_coordAlg}
+\leanok
+\uses{lem:gl-bridge-points, lem:gl-sections, def:gl-psh, def:pg-subvariety-psh, def:pg-blowup-psh, thm:pg-psh2, lem:gl-model-change}
+\begin{enumerate}
+\item In Lemma~\ref{lem:gl-bridge-points}(1), if $S$ is integrally closed (i.e.\ $V(I)$ is projectively normal), then $R_a=S_a$ for $a\ge0$,
+$\PSH(\mathcal X,t)\circ\tau=\PSH(V(I),t)$ for $t\ge0$, and $\mathrm{EP}_{\mathcal X}(t)\iff\mathrm{EP}_{V(I)}(t)$ for $t\ge0$. (For $a<0$, $R_a$ need not
+vanish: if $V(I)$ is a point, $S=k[w_0T]$ and $R_a=k\,w_0^a$ for every $a\in\Z$, so constants are $t$-psh on $\mathcal X$ for $t<0$ while
+$\PSH(V(I),t)=\varnothing$.)
+\item In Lemma~\ref{lem:gl-bridge-points}(2), $\PSH(\mathcal X,\theta)\circ\vartheta^{-1}=\PSH(B,\theta)$ for $\theta\in\R^2_{\ge0}$; for every $\theta$,
+$\PSH(B,\theta)\circ\vartheta\subseteq\PSH(\mathcal X,\theta)$ and $\PSH(\mathcal X,\theta)\circ\vartheta^{-1}\subseteq\PSH(B,\max(\theta,0))$. The model of a blowup
+$B$ is the quotient model of its ideal (Remark~\ref{rmk:gl-model-examples}(1)). The bound $\theta\ge0$ cannot be dropped: $\PSH(B,\theta)=\varnothing$
+unless $\theta\ge0$, while model sections exist in degrees outside $\N^2$ (for the blowup of $\PP^2$ at $[1:0:0]$, $x_1/x_0\in R_{(2,-1)}$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $f\in R_a$ with admissible $b$, and let $I_b\subseteq S$ be the ideal generated by $\tilde z^\beta T^b$, $\beta\in\mathrm{Mon}(b)$. If $S$ is
+generated by the coordinates (in (1), first change the coordinates to $w$, which does not change $R$, Lemma~\ref{lem:gl-bridge-points}(1)), $S_{a+b}\subseteq I_b$, so $fT^aI_b\subseteq I_b$ and $fT^a$ is integral over $S$ (determinant trick; $I_b$ is finitely
+generated and faithful). (1) If $S$ is integrally closed, $fT^a\in S_a$ for $a\ge0$. FS functions of classes $a<0$ are replaced by classes $\max(a,0)$; the FS families of nonnegative classes then coincide,
+hence the psh classes and the envelope property. (2) Directly from $fT^aI_b\subseteq I_b$, $(fT^a)^nI_b\subseteq I_b\subseteq S$: the admissible degree $b$ works for every power (no
+finiteness of $S[fT^a]$ is needed). Hence for a model FS function $\varphi=m^{-1}\log\max_j|f_j|$ of class $a$, and every
+$n$, $\varphi=(mn)^{-1}\log\max_{j,\beta}|f_j^n\tilde z^\beta T^{na+b}|$ is a Fubini--Study function on $B$ of class $a+b/(mn)$; by PSH2 on
+$B$ (Theorem~\ref{thm:pg-psh2}) $\varphi\in\PSH(B,a)$. A model FS function of a class $a\in\Q^2$ is one of class $a^+=\max(a,0)$ (multiply by the
+monomials of degree $a^+-a$, whose maximum is $1$), so a decreasing limit of model FS functions with classes $a_i\to\theta\ge0$ is a decreasing limit of
+functions in $\PSH(B,a_i^+)$ with $a_i^+\to\theta$, and lies in $\PSH(B,\theta)$ by PSH2. Conversely polynomial sections are model sections.
+\end{proof}
+
+\begin{definition}[Smooth models]\label{def:gl-smooth}
+\lean{EnvelopeProperty.MultiModel.IsSmooth, EnvelopeProperty.MultiModel.isSmooth_iff_of_isNormal}
+\leanok
+\uses{lem:gl-charts}
+A model is \emph{smooth} if every chart algebra $A_j$ of Lemma~\ref{lem:gl-charts} is a smooth $k$-algebra and integrally closed.
+\end{definition}
+
+\begin{theorem}[Smooth case; interface to the smooth chapter]\label{thm:gl-smooth-ep}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isSmooth}
+\leanok
+\uses{def:gl-smooth, def:gl-psh, thm:pn-ep, cor:sg-smooth-model}
+\source{fhx-envelope-20261028:thm:smooth-EP}
+Let $\mathcal Y$ be a smooth model of rank $1$ and $t\ge0$. Then $\mathrm{EP}_{\mathcal Y}(t)$.
+\end{theorem}
+
+\begin{proof}
+This is \cite[Theorem~3.1]{FHX} for the very ample class $\mathcal O(1)$ and its multiples, produced by the chapter on general smooth varieties
+(Corollary~\ref{cor:sg-smooth-model}; for $\mathcal Y=\PP^n$ it is Theorem~\ref{thm:pn-ep}). By Lemma~\ref{lem:gl-ep-basic}(1),(2) it suffices that $\mathrm{EP}(1)$ holds.
+\end{proof}
+
+\begin{corollary}[Smooth bigraded models]\label{cor:gl-smooth-ep-nef}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isSmooth_of_nonneg, EnvelopeProperty.MultiModel.IsSmooth.veronese, EnvelopeProperty.MultiModel.IsSmooth.normalization}
+\leanok
+\uses{thm:gl-smooth-ep, lem:gl-veronese, lem:gl-ep-basic, def:gl-smooth}
+Let $\mathcal Y$ be a smooth model of rank $r$ and $\theta\in\R^r_{\ge0}$. Then $\mathrm{EP}_{\mathcal Y}(\theta)$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:gl-ep-basic}(1) with rational positive $\theta_j\downarrow\theta$, and (2), it suffices to treat positive $a\in\N^r$. The chart algebras of
+$\mathcal Y_{(a)}$ at the coordinates $\tilde z^\beta U$ are the localizations of the chart algebras of $\mathcal Y$ at a chart $j$ in the support of $\beta$ (every
+block occurs in $\beta$ as $a$ is positive) at the element $\tilde z^\beta/\tilde z_j^a$, hence smooth and integrally closed. Apply
+Lemma~\ref{lem:gl-veronese}, Remark~\ref{rmk:gl-bridges} and Theorem~\ref{thm:gl-smooth-ep}.
+\end{proof}
+
+\subsection{Homogeneous functions}\label{subsec:gl-homogeneous}
+
+\begin{definition}[Scaling]\label{def:gl-scaling}
+\lean{EnvelopeProperty.MultiModel.rpow, EnvelopeProperty.MultiModel.rpowHomeomorph, EnvelopeProperty.MultiModel.scaleFun, EnvelopeProperty.MultiModel.IsScaleHomogeneous, EnvelopeProperty.MultiModel.homogenization, EnvelopeProperty.MultiModel.legendreSlice}
+\leanok
+\uses{def:gl-points}
+\source{fhx-envelope-20261028:eq:scaling-action, bj22-trivval:sec:homogpsh}
+For $t>0$ and $v\in\mathcal X^\an$, $|p|_{t\cdot v}=|p|_v^t$ defines $t\cdot v\in\mathcal X^\an$; on functions $(t\cdot u)(v)=t\,u(t^{-1}\cdot v)$; $u$ is
+\emph{homogeneous} if $t\cdot u=u$ for all $t>0$. The \emph{homogenization} is $\hat u=\inf_{t>0}t\cdot u$, and the \emph{Legendre slice} at
+$\lambda\in\R$ is $\hat u_\lambda=\widehat{u-\lambda}$.
+\end{definition}
+
+\begin{lemma}[Scaling]\label{lem:gl-scaling}
+\lean{EnvelopeProperty.MultiModel.continuous_rpow_prod, EnvelopeProperty.MultiModel.rpow_triv, EnvelopeProperty.MultiModel.logSecAbs_rpow, EnvelopeProperty.MultiModel.FSData.scaleFun_eval, EnvelopeProperty.MultiModel.isPSH_scaleFun_iff, EnvelopeProperty.MultiModel.isHomFS_iff, EnvelopeProperty.MultiModel.IsPSH.apply_triv_eq_zero, EnvelopeProperty.MultiModel.IsPSH.nonpos, EnvelopeProperty.MultiModel.homogenization_le, EnvelopeProperty.MultiModel.isScaleHomogeneous_homogenization, EnvelopeProperty.MultiModel.IsScaleHomogeneous.le_homogenization, EnvelopeProperty.MultiModel.homogenization_iInf, EnvelopeProperty.MultiModel.scaleFun_iSup, EnvelopeProperty.MultiModel.scaleFun_uscReg, EnvelopeProperty.MultiModel.IsScaleHomogeneous.uscReg_iSup}
+\leanok
+\uses{def:gl-scaling, def:gl-psh, thm:gl-fs-system-theory}
+\source{bj22-trivval:sec:homogpsh, bj22-trivval:lem:homogdec, bj22-trivval:lem:genpos, fhx-envelope-20261028:prop:BJ-package}
+(1) $(t,v)\mapsto t\cdot v$ is continuous, $\star$ is fixed, and $\log|f|(t\cdot v)=t\log|f|(v)$. (2) For $\varphi=m^{-1}\max_j\{\log|f_j|+\lambda_j\}$,
+$t\cdot\varphi=m^{-1}\max_j\{\log|f_j|+t\lambda_j\}$; hence $t\cdot\PSH(\theta)=\PSH(\theta)$ and homogeneous FS functions are those of
+$\mathcal H_{\mathrm{hom}}$. (3) Homogeneous psh functions vanish at $\star$ and are $\le0$. (4) If $u_i\downarrow u$ then $\hat u_i\downarrow\hat u$;
+$\hat u\le u$ is the largest homogeneous function below $u$. (5) Scaling commutes with pointwise suprema and usc regularization; in particular
+$(\sup_iu_i)^\star$ is homogeneous if all $u_i$ are.
+\end{lemma}
+
+\begin{proof}
+(1)--(2) are the formulas. A decreasing net of FS functions for $u$ gives one for $t\cdot u$ with the same classes. (3) $u(\star)=(t\cdot u)(\star)=tu(\star)$
+for all $t$, and $u(\star)\in\R$; then $u\le u(\star)=0$. (4) is \cite[Lemma~6.13]{BJ22}: $\hat u\le\hat u_i\le u_i$, so $\lim\hat u_i$ is homogeneous between
+$\hat u$ and $u$. (5) $v\mapsto t\cdot v$ is a homeomorphism.
+\end{proof}
+
+\begin{lemma}[A one-variable Legendre formula]\label{lem:gl-legendre}
+\lean{EnvelopeProperty.legendreMax, EnvelopeProperty.iInf_sup_add_mul_eq_legendreMax, EnvelopeProperty.legendre_weights_pos}
+\leanok
+\source{bj22-trivval:lem:legendre}
+Let $\lambda_1,\dots,\lambda_n\in\Q$ with $\max_i\lambda_i\ge0$ and $y\in[-\infty,\infty)^n$. Then
+\[
+\inf_{t>0}\max_i\{y_i+t\lambda_i\}=\max\Bigl\{\max_{\lambda_i\ge0}y_i,\ \max_{\lambda_i>0>\lambda_l}\frac{\lambda_iy_l-\lambda_ly_i}{\lambda_i-\lambda_l}\Bigr\},
+\]
+with $0\cdot(-\infty)=0$; the coefficients $\lambda_i/(\lambda_i-\lambda_l)$, $-\lambda_l/(\lambda_i-\lambda_l)$ are positive rationals with sum $1$.
+\end{lemma}
+
+\begin{proof}
+Let $h(t)=\max_i\{y_i+t\lambda_i\}$ (indices with $y_i=-\infty$ omitted; if all are omitted both sides are $-\infty$). The right side $\rho$ is $\le h(t)$ for
+every $t\ge0$: $y_i+t\lambda_i\ge y_i$ for $\lambda_i\ge0$, and for $\lambda_i>0>\lambda_l$ the convex combination with the displayed weights of $y_i+t\lambda_i$ and
+$y_l+t\lambda_l$ equals $(\lambda_iy_l-\lambda_ly_i)/(\lambda_i-\lambda_l)$. As $h$ is continuous on $[0,\infty)$, $\inf_{t>0}h=\inf_{t\ge0}h$. If all remaining $\lambda_i<0$,
+$h\to-\infty$ and $\rho=-\infty$ (every term involves an omitted index with positive weight). Otherwise $h$ is convex piecewise linear and eventually
+nondecreasing, so it attains its minimum at some $t^*\ge0$. If $t^*=0$, the right derivative $\max\{\lambda_i:i\text{ active at }0\}\ge0$, so an active $i$ has
+$\lambda_i\ge0$ and $h(0)=y_i\le\rho$. If $t^*>0$, the active set contains $i$ with $\lambda_i\ge0$ and $l$ with $\lambda_l\le0$; if one of them is $0$, $h(t^*)=y_\cdot\le\rho$;
+otherwise $\lambda_i>0>\lambda_l$ and $y_i+t^*\lambda_i=y_l+t^*\lambda_l=h(t^*)$, so $h(t^*)$ is the displayed convex combination.
+\end{proof}
+
+\begin{theorem}[Homogenization of Fubini--Study functions]\label{thm:gl-homog-fs}
+\lean{EnvelopeProperty.MultiModel.IsRatFS, EnvelopeProperty.MultiModel.IsRatFS.isHomFS_homogenization, EnvelopeProperty.MultiModel.IsFS.homogenization_eq_bot}
+\leanok
+\uses{lem:gl-legendre, lem:gl-scaling, def:gl-fs}
+\source{bj22-trivval:thm:homogFS}
+Let $\varphi=m^{-1}\max_t\{\log|f_t|+\lambda_t\}\in\mathcal H(\mathcal X,a)$ with $\lambda_t\in\Q$. If $\varphi(\star)\ge0$, then
+$\hat\varphi\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$; otherwise $\hat\varphi\equiv-\infty$.
+\end{theorem}
+
+\begin{proof}
+$\hat\varphi(v)=m^{-1}\inf_{s>0}\max_t\{\log|f_t|(v)+s\lambda_t\}$ by Lemma~\ref{lem:gl-scaling}(2). If $\varphi(\star)=m^{-1}\max\lambda_t<0$ the infimum is
+$-\infty$. Otherwise Lemma~\ref{lem:gl-legendre} (with $y_t=\log|f_t|(v)$, indices with $f_t=0$ omitted) writes $m\hat\varphi$ as a maximum of
+$\log|f_t|$ ($\lambda_t\ge0$) and of $w\log|f_t|+w'\log|f_l|$ with positive rational $w+w'=1$. With $b\in\mathbf Z_{>0}$ clearing denominators these are
+$b^{-1}\log|f_t^b|$ and $b^{-1}\log|f_t^{bw}f_l^{bw'}|$, with sections in $R_{bma}$ (Lemma~\ref{lem:gl-sections}(2)), so
+$\hat\varphi\in\mathcal H_{\mathrm{hom}}(\mathcal X,a)$, nonzero since some $\lambda_t\ge0$ gives a nonzero section.
+\end{proof}
+
+\begin{corollary}[Homogeneous psh functions]\label{cor:gl-pshhom}
+\lean{EnvelopeProperty.MultiModel.IsPSH.exists_isRatFS_net, EnvelopeProperty.MultiModel.IsPSH.exists_isHomFS_net, EnvelopeProperty.MultiModel.IsPSH.isPSHHom_homogenization, EnvelopeProperty.MultiModel.IsPSH.homogenization_eq_bot}
+\leanok
+\uses{thm:gl-homog-fs, lem:gl-scaling, def:gl-psh}
+\source{bj22-trivval:cor:pshhom, bj22-trivval:lem:genpos}
+Let $u\in\PSH(\mathcal X,\theta)$ with $u(\star)\ge0$. Then $\hat u\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$, and $\hat u$ is the limit of a decreasing net in
+$\mathcal H_{\mathrm{hom}}(\mathcal X,a_\alpha)$ with $a_\alpha\to\theta$. If $u(\star)<0$, $\hat u\equiv-\infty$.
+\end{corollary}
+
+\begin{proof}
+Let $\varphi_\alpha\in\mathcal H(a_\alpha)$ decrease to $u$. Replace real weights by rational ones: with dyadic roundings $\lambda^{(n)}\ge\lambda$ within $2^{-n}$,
+the functions $\varphi_{\alpha,n}+2^{1-n}$ form a decreasing net with limit $u$ for the order $(\alpha',n')\ge(\alpha,n)$ iff $\alpha'\ge\alpha$ and $n'\ge n+2$ or
+$(\alpha',n')=(\alpha,n)$ (since $\varphi_{\alpha,n}\in[\varphi_\alpha,\varphi_\alpha+2^{-n}]$); this uses no diagonal lemma. Then $\varphi_\alpha(\star)\ge u(\star)\ge0$, the
+$\hat\varphi_\alpha\in\mathcal H_{\mathrm{hom}}(a_\alpha)$ (Theorem~\ref{thm:gl-homog-fs}) decrease to $\hat u$ (Lemma~\ref{lem:gl-scaling}(4)), and
+$\hat u(\star)=0$, so $\hat u\in\PSH_{\mathrm{hom}}(\theta)$ by definition. If $u(\star)<0$, $\hat u\le\widehat{u(\star)}=-\infty$.
+\end{proof}
+
+\begin{lemma}[Convexity along rays]\label{lem:gl-action-convex}
+\lean{EnvelopeProperty.MultiModel.rayFun, EnvelopeProperty.MultiModel.IsPSH.scaleFun_le, EnvelopeProperty.MultiModel.IsPSH.scaleFun_convex, EnvelopeProperty.MultiModel.IsPSH.scaleFun_eq_bot_or_ne_bot, EnvelopeProperty.MultiModel.IsPSH.convexOn_rayFun}
+\leanok
+\uses{lem:gl-scaling, def:gl-psh}
+\source{bj22-trivval:lem:actionconvex, bj22-trivval:prop:pshconvex}
+For $u\in\PSH(\mathcal X,\theta)$ and $v\in\mathcal X^\an$, the function $g(t)=(t\cdot u)(v)$ on $(0,\infty)$ is either identically $-\infty$ or finite and
+convex, and $g(t)\le t\,u(\star)$.
+\end{lemma}
+
+\begin{proof}
+For an FS function, $g(t)=m^{-1}\max_j\{\log|f_j|(v)+t\lambda_j\}$ by Lemma~\ref{lem:gl-scaling}(2), with the terms with $|f_j|_v=0$ equal to
+$-\infty$ for all $t$; so $g$ is $\equiv-\infty$ or a finite maximum of affine functions. For $u=\lim\varphi_\alpha$ the functions $g_\alpha$ decrease to $g$, so $g$ is
+convex with values in $[-\infty,\infty)$ (the convexity inequality passes to the limit of a decreasing net). If $g(t_1)=-\infty$ and $t_0\ne t_1$, choose $t_2$ with $t_0$
+strictly between $t_1$ and $t_2$; then $g(t_0)\le\lambda g(t_1)+(1-\lambda)g(t_2)=-\infty$. So $g\equiv-\infty$ or $g$ is finite. The bound is
+$u(t^{-1}\cdot v)\le u(\star)$.
+\end{proof}
+
+\begin{theorem}[Homogeneous decomposition]\label{thm:gl-homog-decomposition}
+\lean{EnvelopeProperty.MultiModel.IsPSH.isPSHHom_legendreSlice, EnvelopeProperty.MultiModel.legendreSlice_antitone, EnvelopeProperty.MultiModel.legendreSlice_mono, EnvelopeProperty.MultiModel.IsPSH.eq_iSup_legendreSlice}
+\leanok
+\uses{lem:gl-action-convex, cor:gl-pshhom}
+\source{bj22-trivval:thm:homogpsh, bj22-trivval:sec:homogdecomp, fhx-envelope-20261028:eq:Legendre-reconstruction}
+Let $u\in\PSH(\mathcal X,\theta)$ and $b=u(\star)$. For $\lambda<b$, $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$; $\lambda\mapsto\hat u_\lambda$ is
+decreasing; $u\mapsto\hat u_\lambda$ is increasing; and $u=\sup_{\lambda<b}(\hat u_\lambda+\lambda)$ pointwise on $\mathcal X^\an$.
+\end{theorem}
+
+\begin{proof}
+$\hat u_\lambda=\widehat{u-\lambda}$ and $(u-\lambda)(\star)>0$, so Corollary~\ref{cor:gl-pshhom} applies; monotonicity in $\lambda$ and $u$ is clear from the definition.
+Fix $v$ and $g(t)=(t\cdot u)(v)$. If $g\equiv-\infty$, then $u(v)=-\infty$ and all $\hat u_\lambda(v)=-\infty$. Otherwise $g$ is finite convex on $(0,\infty)$
+(Lemma~\ref{lem:gl-action-convex}), hence continuous, and Fenchel duality on the open interval gives $g(1)=\sup_\lambda\{\lambda-g^*(\lambda)\}$ with
+$g^*(\lambda)=\sup_{t>0}\{t\lambda-g(t)\}=-\hat u_\lambda(v)$. For $\lambda>b$, $g^*(\lambda)\ge\sup_tt(\lambda-b)=\infty$; the concave function $\lambda\mapsto\hat u_\lambda(v)+\lambda$ satisfies
+$\hat u_b(v)+b\le\lim_{\lambda\uparrow b}(\hat u_\lambda(v)+\lambda)$, so the supremum may be taken over $\lambda<b$.
+\end{proof}
+
+\subsection{Divisorial points and the comparison theorem}\label{subsec:gl-comparison}
+
+\begin{definition}[Gauss extension and divisorial points]\label{def:gl-div}
+\lean{EnvelopeProperty.MultiModel.gaussPt, EnvelopeProperty.MultiModel.IsDivisorial, EnvelopeProperty.MultiModel.isDivisorial_of_val_eq}
+\leanok
+\uses{def:gl-points, def:pn-gauss, def:pn-div}
+\source{fhx-envelope-20261028:subsec:prelim-berkovich, bj22-trivval:sec:Gauss}
+For $v\in\mathcal X^\an$, $\sigma(v)$ is the seminorm $|\sum_\lambda p_\lambda t^\lambda|_{\sigma(v)}=\max_\lambda|p_\lambda|_ve^{-\lambda}$ on $S[t]$. $v$ is
+\emph{divisorial} if there are $c\in\Q_{>0}$ and a discrete valuation ring $S[t]\subseteq R'\subseteq\operatorname{Frac}(S[t])$, essentially of finite type
+over $k$, with $\log|g|_{\sigma(v)}=-c\operatorname{ord}_{R'}(g)$ for $g\in S[t]$. $\mathcal X^{\divv}$ is the set of divisorial points.
+\end{definition}
+
+\begin{lemma}[Divisorial points]\label{lem:gl-div-generic}
+\lean{EnvelopeProperty.MultiModel.isDivisorial_triv, EnvelopeProperty.MultiModel.IsDivisorial.hasGenericSupport, EnvelopeProperty.MultiModel.IsDivisorial.mem_valSet, EnvelopeProperty.MultiModel.IsDivisorial.secAbs_ne_zero, EnvelopeProperty.MultiModel.IsDivisorial.logSecAbs_ne_bot}
+\leanok
+\uses{def:gl-div, lem:gl-sections}
+$\star\in\mathcal X^{\divv}\subseteq\mathcal X^{\mathrm{val}}$; in particular every nonzero section has finite logarithm at every divisorial point.
+\end{lemma}
+
+\begin{proof}
+For $\star$ take $R'=S[t]_{(t)}$, a discrete valuation ring because $(t)$ is a principal prime of height one ($S[t]/(t)=S$ is a domain), with
+$\operatorname{ord}(\sum p_\lambda t^\lambda)=\min\{\lambda:p_\lambda\ne0\}$, and $c=1$. A divisorial point is nonzero on $S\setminus0$ because $\operatorname{ord}_{R'}$ is finite
+there; sections have finite logarithm at points of $\mathcal X^{\mathrm{val}}$ by Lemma~\ref{lem:gl-sections}(3).
+\end{proof}
+
+\begin{lemma}[Points attached to Rees valuations]\label{lem:gl-rees-points}
+\lean{EnvelopeProperty.MultiModel.chartDivPoint, EnvelopeProperty.MultiModel.chartDivPoint_val_ofPiece, EnvelopeProperty.MultiModel.isDivisorial_chartDivPoint, EnvelopeProperty.MultiModel.gaussPt_chartDivPoint_val, EnvelopeProperty.MultiModel.chartGaussDVR_ord_of_eq_monomial, EnvelopeProperty.MultiModel.reesDVR, EnvelopeProperty.MultiModel.reesDVR_torus, EnvelopeProperty.MultiModel.isDivisorial_reesPoint, EnvelopeProperty.BirationalDVR.ofMvGauss}
+\leanok
+\uses{lem:gl-charts, def:gl-div, def:bj-rees, lem:bj-rees-invariant, lem:bj-gauss-dvr, lem:gl-multigraded-extension}
+\source{bj22-trivval:defi:Rees, bj22-trivval:lem:Shilov}
+Let $j$ be a chart, $B=A_j[t]$, and $I\subseteq B$ generated by $g_\ell=h_\ell t^{e_\ell}$ ($0\ne h_\ell\in A_j$) with $t^N\in I$. For every
+$V\in\mathrm{RV}(I;g)$, $b=\operatorname{ord}_V(t)>0$, and $|pT^a|_{v_V}=\exp(-\operatorname{ord}_V(p/\tilde z_j^a)/b)$ ($p\in S_a$) defines a divisorial point
+$v_V\in U_j$ with $\log|g|_{\sigma(v_V)}=-\operatorname{ord}_V(g^{(j)})/b$, where $g^{(j)}\in B$ is the dehomogenization of $g\in S[t]$ homogeneous in $T$.
+\end{lemma}
+
+\begin{proof}
+The proof of Lemma~\ref{lem:bj-rees-invariant} uses only that $B=A[t]$ for a domain $A$ and that the generators are monomials in $t$ with $t^N\in I$;
+it gives $b>0$ and $\operatorname{ord}_V(\sum f_\lambda t^\lambda)=\min_\lambda(\operatorname{ord}_Vf_\lambda+\lambda b)$. The coordinate ratios lie in $A_j\subseteq V$ and equal $1$ at
+$j_c$, so Lemma~\ref{lem:gl-multigraded-extension} gives $v_V$, with $|z^{(c)}_{j_c}|=1$. Let $R'$ be the Gauss extension of $V$ in the $r$ variables
+$z^{(c)}_{j_c}$ (Lemma~\ref{lem:bj-gauss-dvr}, iterated), a discrete valuation ring essentially of finite type, with $K(T)(t)=\operatorname{Frac}(V)(z_j)$; it
+contains $S[t]$, since $pT^at^\lambda=(p/\tilde z_j^a)t^\lambda\cdot z_j^a$. For $g=\sum_{a,\lambda}p_{a,\lambda}T^at^\lambda$,
+$\operatorname{ord}_{R'}(g)=\min_{a,\lambda}(\operatorname{ord}_V(p_{a,\lambda}/\tilde z_j^a)+\lambda b)=-b\log|g|_{\sigma(v_V)}$; take $c=1/b$.
+\end{proof}
+
+\begin{lemma}[Shilov boundary]\label{lem:gl-shilov}
+\lean{EnvelopeProperty.MultiModel.IsFinFS.exists_finset_le_of_le, EnvelopeProperty.MultiModel.IsFinFS.exists_finset_iSup_sub_eq, EnvelopeProperty.MultiModel.IsFinFS.exists_shilovSup}
+\leanok
+\uses{lem:gl-rees-points, thm:bj-rees, lem:gl-cones, lem:gl-sections, lem:bj-shilov, lem:bj-finite-fs}
+\source{bj22-trivval:lem:Shilov, bj22-trivval:lem:supPL}
+For every $\psi\in\mathcal H_{\mathrm{fin}}(\mathcal X,b)$ there is a finite set $\Sigma\subseteq\mathcal X^{\divv}$ containing $\star$ such that
+$\sup_{\mathcal X^\an}(\varphi-\psi)=\max_\Sigma(\varphi-\psi)$ for every $a\in\Q^r$ and every $\varphi\in\mathcal H(\mathcal X,a)$ with rational weights.
+\end{lemma}
+
+\begin{proof}
+As Lemma~\ref{lem:bj-shilov}. After subtracting a rational constant and passing to powers, $\psi=m^{-1}\max_i(\log|f_i|+\lambda_i)$ with
+$f_i\in R_{mb}$ without common zero, $\lambda_i\in\mathbf Z_{\le0}$, $\max\lambda_i=0$. For each chart $j$, $g_i=f_i/\tilde z_j^{mb}\in A_j$ generate the unit
+ideal (proof of Lemma~\ref{lem:gl-cones}(2)), so $I^{(j)}=(g_it^{-\lambda_i})\subseteq A_j[t]$ contains $t^N$, $N=\max(-\lambda_i)$. Let $\Sigma$ consist of $\star$
+and the points $v_V$, $V\in\mathrm{RV}(I^{(j)})$, over all charts (Lemma~\ref{lem:gl-rees-points}). Write $\varphi=M^{-1}\max_\ell(\log|\sigma_\ell|+\mu_\ell)$ with
+$\sigma_\ell\in R_{Ma}$, $\mu_\ell\in\mathbf Z$, put $c=\max_\Sigma(\varphi-\psi)\in\Q$ (finite since $\varphi(\star)$ is finite and $\psi(\star)=0$), choose $r$ with
+$rMc\in\mathbf Z$, and $F_\ell=\sigma_\ell^{rm}t^{a_\ell}$ with $a_\ell=m(rMc-r\mu_\ell)\in\N$. At any $v$, $(\varphi-\psi)(v)\le c$ iff
+$\log|F_\ell|_{\sigma(v)}\le rM\max_i(\log|f_i|_v+\lambda_i)$ for all $\ell$. On a chart $j$ with $|z^{(c)}_{j_c}|_v=1$ this reads
+$|F^{(j)}_\ell|_w\le\max_i|g_it^{-\lambda_i}|_w^{rM}$ for the multiplicative seminorm $w=\sigma(\iota_j(v))$ on $A_j[t]$, which is $\le1$ on $A_j[t]$ and has
+$|t^N|_w>0$; at $v=v_V$ it reads $\operatorname{ord}_V(F^{(j)}_\ell)\ge rM\operatorname{ord}_V(I^{(j)})$. Theorem~\ref{thm:bj-rees} passes from the Rees points to all $v$.
+\end{proof}
+
+\begin{lemma}[PL functions]\label{lem:gl-pl}
+\lean{EnvelopeProperty.MultiModel.plSystem, EnvelopeProperty.MultiModel.IsPL, EnvelopeProperty.MultiModel.isPL_iff, EnvelopeProperty.MultiModel.separatesPoints_isPL, EnvelopeProperty.MultiModel.dense_setOf_isPL, EnvelopeProperty.MultiModel.exists_antitone_isPL_net, EnvelopeProperty.MultiModel.le_of_forall_isPL_gt, EnvelopeProperty.FSSystemC.toFSSystemNonneg}
+\leanok
+\uses{lem:gl-fs-system, lem:bj-pl-lattice, thm:bj-pl-dense, lem:bj-usc-pl}
+\source{bj22-trivval:lem:FSdense, bj22-trivval:thm:PLdense}
+Let $\mathrm{PL}(\mathcal X)$ be the set of differences of functions in $\bigcup_{a\in\Q^r_{\ge0}}\mathcal H_{\mathrm{fin}}(\mathcal X,a)$. It is a $\Q$-vector space
+of continuous real functions, contains $\Q$, is stable under finite maxima and minima, separates points, and is dense in $C^0(\mathcal X^\an)$. For every usc
+$h$, the set $\{\psi\in\mathrm{PL}:\psi>h\}$ is nonempty, directed downwards, with infimum $h$.
+\end{lemma}
+
+\begin{proof}
+As Lemmas~\ref{lem:bj-pl-lattice}, \ref{lem:bj-usc-pl} and Theorem~\ref{thm:bj-pl-dense}: common classes by (FS2) with coordinatewise maxima; points
+$v\ne w$ differ on a homogeneous $p\in S_a$ (both are multigraded), and $\max\{\log|p|,-N\}\in\mathcal H_{\mathrm{fin}}(a)$ separates them for $N$ large; the
+lattice Stone--Weierstrass theorem on the compact space $\mathcal X^\an$; Urysohn for the last claim.
+\end{proof}
+
+\begin{theorem}[Divisorial comparison]\label{thm:gl-comparison}
+\lean{EnvelopeProperty.MultiModel.IsPSH.le_of_forall_isDivisorial_le, EnvelopeProperty.MultiModel.IsPSH.eq_of_forall_isDivisorial_eq, EnvelopeProperty.MultiModel.IsPL.exists_finset_iSup_sub_eq, EnvelopeProperty.MultiModel.IsPSH.le_of_forall_isDivisorial_le_isPL}
+\leanok
+\uses{lem:gl-shilov, lem:gl-pl, cor:gl-pshhom, thm:bj-divisorial-comparison, lem:gl-div-generic}
+\source{bj22-trivval:thm:suppsh, bj22-trivval:cor:Hausdorff, fhx-envelope-20261028:prop:BJ-package}
+Let $\theta\in\R^r$, $u\in\PSH(\mathcal X,\theta)$ and $h$ usc. If $u\le h$ on $\mathcal X^{\divv}$, then $u\le h$. Two $\theta$-psh functions (possibly of
+different classes) that agree on $\mathcal X^{\divv}$ are equal.
+\end{theorem}
+
+\begin{proof}
+Let $u_\alpha\in\mathcal H(a_\alpha)$ with rational weights decrease to $u$ (proof of Corollary~\ref{cor:gl-pshhom}). Let $\psi=\psi_1-\psi_2\in\mathrm{PL}$ with
+$\psi>h$, and $\Sigma$ the set of Lemma~\ref{lem:gl-shilov} for $\psi_1$. Since $u_\alpha+\psi_2\in\mathcal H(a_\alpha+b_2)$,
+$(u-\psi)(v)\le(u_\alpha+\psi_2-\psi_1)(v)\le\max_\Sigma(u_\alpha-\psi)$, and as $\Sigma$ is finite the right side tends to $\max_\Sigma(u-\psi)\le0$. So $u\le\psi$ for all
+such $\psi$, and $u\le h$ by Lemma~\ref{lem:gl-pl}. For the last claim apply this in both directions.
+\end{proof}
+
+\begin{lemma}[Locality of usc regularization]\label{lem:gl-usc-local}
+\lean{EnvelopeProperty.uscReg_restrict_apply, EnvelopeProperty.uscReg_add_continuous, EnvelopeProperty.MultiModel.IsPSH.le_of_forall_mem_le, EnvelopeProperty.MultiModel.IsPSH.eq_of_forall_mem_eq}
+\leanok
+\uses{thm:gl-comparison, def:gl-points}
+Let $\Omega\subseteq\mathcal X^\an$ be open and $g$ bounded above. (1) $g^\star|_\Omega=(g|_\Omega)^\star$; if $g|_\Omega$ is usc, $g^\star=g$ on $\Omega$. (2) If
+$e\colon\Omega\to\R$ is continuous, $(g+e)^\star=g^\star+e$ on $\Omega$. (3) If $\Omega\supseteq\mathcal X^{\divv}$, $u\in\PSH(\mathcal X,\theta)$ and $h$ is usc
+with $u\le h$ on $\Omega$, then $u\le h$; psh functions agreeing on $\Omega$ are equal.
+\end{lemma}
+
+\begin{proof}
+(1), (2): $g^\star(x)=\limsup_{y\to x}g(y)$ and neighbourhoods of $x\in\Omega$ may be taken inside $\Omega$. (3) is Theorem~\ref{thm:gl-comparison}.
+\end{proof}
+
+\subsection{Ample classes}\label{subsec:gl-ample}
+
+\begin{proposition}[Envelopes of PL obstacles]\label{prop:gl-pl-envelope}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_iff_forall_isPL, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_forall_isPL, EnvelopeProperty.MultiModel.HasEnvelopeProperty.isPSH_envelope, EnvelopeProperty.MultiModel.HasEnvelopeProperty.isPSH_envelope_of_continuous, EnvelopeProperty.FSSystemC.hasEnvelopeProperty_iff_forall_isPL}
+\leanok
+\uses{lem:gl-pl, thm:gl-fs-system-theory, prop:bj-envelope-criterion, def:gl-psh}
+\source{fhx-envelope-20261028:prop:ample-envelopes, bj22-addendum:lem:contenv}
+For $\theta\in N(\mathcal X)$: $\mathrm{EP}(\theta)$ holds iff $\mathrm P_\theta(\phi)\in\PSH(\mathcal X,\theta)$ for every $\phi\in\mathrm{PL}(\mathcal X)$.
+\end{proposition}
+
+\begin{proof}
+As Proposition~\ref{prop:bj-envelope-criterion}: the family $\{\tau\le\phi\}$ contains the constant $\min\phi$ ($\theta\in N(\mathcal X)$,
+Theorem~\ref{thm:gl-fs-system-theory}(2)); conversely $(\sup u_i)^\star$ is the infimum of the downward directed net $\mathrm P_\theta(\psi)$, $\psi\in\mathrm{PL}$,
+$\psi>(\sup u_i)^\star$ (Lemma~\ref{lem:gl-pl}), and PSH2 at $\theta$ applies.
+\end{proof}
+
+\begin{lemma}[Fubini--Study envelopes]\label{lem:gl-fs-envelope}
+\lean{EnvelopeProperty.MultiModel.envelope_eq_iSup_isFinFS, EnvelopeProperty.MultiModel.envelope_coe_eq_iSup_isFinFS, EnvelopeProperty.FSSystemC.envelope_eq_iSup_isFinFS}
+\leanok
+\uses{thm:gl-fs-system-theory, lem:bj-fs-envelope}
+\source{bj22-addendum:lem:FSenv, bj22-trivval:lem:envlsc}
+Let $a\in\Q^r$ be positive and $\phi$ bounded and lsc. Then $\mathrm P_a(\phi)=\sup\{\psi\in\mathcal H_{\mathrm{fin}}(\mathcal X,a):\psi\le\phi\}$.
+\end{lemma}
+
+\begin{proof}
+As Lemma~\ref{lem:bj-fs-envelope}, with the regularization of Theorem~\ref{thm:gl-fs-system-theory}(2) ($\tau_\alpha\in\mathcal H_{\mathrm{fin}}(a_\alpha)$,
+$a_\alpha\ge a$, $a_\alpha\to a$) and the rescaling by rational $\lambda_\alpha\le\min_ca_c/a_{\alpha,c}$, $\lambda_\alpha\to1$, which puts $\lambda_\alpha\tau_\alpha$ in
+$\mathcal H_{\mathrm{fin}}(a)$ by (FS4), (FS2).
+\end{proof}
+
+\begin{remark}[Test configurations]\label{rmk:gl-test-configurations}
+\uses{prop:gl-pl-envelope, lem:gl-fs-envelope, prop:gl-ample-rational}
+\cite[Proposition~2.5(2)]{FHX} (base ideals of test configurations, \cite[Lemma~5.22]{BJ22}) is used in \cite{FHX} only in \S3 and in Step~2 of
+\cite[Theorem~6.1]{FHX}. Here Step~2 uses Lemma~\ref{lem:gl-fs-envelope} instead (Proposition~\ref{prop:gl-ample-rational}), so test configurations and
+\cite[Theorem~2.31]{BJ22} are not needed in this chapter.
+\end{remark}
+
+\begin{definition}[Fibres of finite morphisms]\label{def:gl-finite-fibres}
+\lean{EnvelopeProperty.MultiModel.fieldPoint, EnvelopeProperty.MultiModel.fibreDeg, EnvelopeProperty.MultiModel.FiniteHom.fibre, EnvelopeProperty.MultiModel.FiniteHom.fibreDeg_eq_finrank}
+\leanok
+\uses{def:gl-maps, lem:gl-pullback}
+\source{fhx-envelope-20261028:sec:finite-descent}
+Let $h\colon\mathcal T\to\mathcal X$ be a finite morphism of degree $d$ (Definition~\ref{def:gl-maps}) and $v\in\mathcal X^{\mathrm{val}}$, an absolute value on
+$K$ (Definition~\ref{def:gl-points}) with completion $\mathcal H(v)$. Write $E\otimes_K\mathcal H(v)=\prod_wB_w$ (local Artinian factors) and
+$d(w/v)=\dim_{\mathcal H(v)}B_w$.
+\end{definition}
+
+\begin{lemma}[Fibres over generic points]\label{lem:gl-finite-fibres}
+\lean{EnvelopeProperty.MultiModel.FiniteHom.fibreEquiv, EnvelopeProperty.MultiModel.FiniteHom.fibreEquivFactors, EnvelopeProperty.MultiModel.FiniteHom.hasGenericSupport_of_anMap, EnvelopeProperty.MultiModel.FiniteHom.sum_fibreDeg, EnvelopeProperty.MultiModel.FiniteHom.fibre_triv, EnvelopeProperty.MultiModel.FiniteHom.exists_fieldPoint_eq, EnvelopeProperty.MultiModel.FiniteHom.eq_of_fieldPoint_eq, EnvelopeProperty.MultiModel.one_le_fibreDeg}
+\leanok
+\uses{def:gl-finite-fibres, lem:finite-flat-norm, lem:gl-charts, lem:gl-pullback}
+\source{fhx-envelope-20261028:sec:finite-descent}
+In Definition~\ref{def:gl-finite-fibres} the factors $B_w$ correspond bijectively to the points $w\in\mathcal T^\an$ with $h(w)=v$, these have generic support,
+and $\sum_{w\mid v}d(w/v)=d$. The only point over $\star$ is $\star$.
+\end{lemma}
+
+\begin{proof}
+On a chart $j$ with $|z_j|_v=1$, the chart algebra $B_j$ of $\mathcal T$ is finite over $A_j$ with $B_j\otimes_{A_j}K=E$ (localization), so
+$B_j\otimes_{A_j}\mathcal H(v)=E\otimes_K\mathcal H(v)$; its maximal ideals are the points of $(\Spec B_j)^\an$ over $\iota_j(v)$ (\texttt{Berkovich/Finite},
+Lemma~\ref{lem:finite-flat-norm}), and they have trivial kernel on $B_j$ because $E\otimes_K\mathcal H(v)$ is a $K$-algebra. Charts correspond since the
+coordinates agree. $\sum d(w/v)=\dim_{\mathcal H(v)}E\otimes_K\mathcal H(v)=d$. The last claim is Lemma~\ref{lem:gl-pullback}.
+\end{proof}
+
+\begin{proposition}[Weighted coefficient norms]\label{prop:gl-weighted-norm}
+\lean{EnvelopeProperty.MultiModel.FiniteHom.coeff_normForm_mem_sections, EnvelopeProperty.MultiModel.FiniteHom.avFSData, EnvelopeProperty.MultiModel.FiniteHom.isFS_avFSData, EnvelopeProperty.MultiModel.FiniteHom.eval_avFSData, EnvelopeProperty.MultiModel.FiniteHom.eval_avFSData_le, EnvelopeProperty.MultiModel.FiniteHom.eval_avFSData_eq, EnvelopeProperty.MultiModel.FiniteHom.eval_avFSData_triv, EnvelopeProperty.coeff_normForm_mem_of_isIntegral}
+\leanok
+\uses{lem:gl-finite-fibres, lem:gl-sections, thm:gl-comparison, lem:finite-flat-norm}
+\source{fhx-envelope-20261028:prop:weighted-coefficient-norm, fhx-envelope-20261028:eq:divisorial-field-average}
+Let $h\colon\mathcal T\to\mathcal X$ be finite of degree $d$ with $\mathcal X$ normal, $a\in\Q^r$, and
+$\varphi=m^{-1}\max_j\{\log|s_j|+\lambda_j\}\in\mathcal H(\mathcal T,a)$, $s_j\in R_{ma}(\mathcal T)\subseteq E$. Write
+$\Norm_{E(\mathbf T)/K(\mathbf T)}(\sum_j\mathbf T_js_j)=\sum_{|I|=d}c_I\mathbf T^I$. Then $c_I\in R_{dma}(\mathcal X)$, not all zero, and
+\[
+\mathrm{Av}_h(\varphi)\coloneqq(md)^{-1}\max_I\Bigl\{\log|c_I|+\sum_jI_j\lambda_j\Bigr\}\in\mathcal H(\mathcal X,a)
+\]
+satisfies $\mathrm{Av}_h(\varphi)(v)=d^{-1}\sum_{w\mid v}d(w/v)\varphi(w)$ for every $v\in\mathcal X^{\mathrm{val}}$. It does not depend on the presentation, and
+$\varphi\le\varphi'$ on $\mathcal T^\an$ implies $\mathrm{Av}_h(\varphi)\le\mathrm{Av}_h(\varphi')$ on $\mathcal X^\an$, for $\varphi'$ of any class.
+\end{proposition}
+
+\begin{proof}
+Let $b$ be admissible for all $s_j$ and $\beta\in\mathrm{Mon}(b)$. The linear form $\sum_j\mathbf T_js_j\tilde z^\beta T^{ma+b}$ has coefficients in $S_T$, hence is
+integral over $S[\mathbf T]$; its norm from $E(T)(\mathbf T)$ to $K(T)(\mathbf T)$ is integral over $S[\mathbf T]$ and lies in $\operatorname{Frac}(S)(\mathbf T)$
+($\operatorname{Frac}S=K(T)$ by (M3) and the coordinates), so it lies in $S[\mathbf T]$, $S$ being normal. It equals
+$(\tilde z^\beta T^{ma+b})^d\sum_Ic_I\mathbf T^I$ (the norm of an element of the base field is its $d$-th power), so $c_I\tilde z^{d\beta}\in S_{d(ma+b)}$ for every
+$\beta\in\mathrm{Mon}(b)$. The monomials $z^{d\beta}$ generate an ideal of $S$ containing $\mathrm{Mon}(b')$ for $b'\gg0$ (pigeonhole in each block), so $c_I\in
+R_{dma}$. Some $c_I\ne0$ since the norm of a nonzero element is nonzero. Let $v\in\mathcal X^{\mathrm{val}}$, choose a chart with $|z_j|_v=1$; by
+Lemma~\ref{lem:gl-sections}(4) everything is read on $A_j\subseteq B_j$ with $s_j/\tilde z_j^{ma}\in B_j$, and the identity
+$\max_I\{\log|c_I|_v+\sum I_j\lambda_j\}=\sum_wd(w/v)\max_j\{\log|s_j|_w+\lambda_j\}$ is the norm identity for the weighted Gauss norm over
+$E\otimes_K\mathcal H(v)$ (determinant on a local Artinian factor of length $\ell$ is the $\ell$-th power of the residue of the linear form, after extending
+$\mathcal H(v)$ to a complete algebraically closed field; Lemma~\ref{lem:finite-flat-norm}, \texttt{Berkovich/NormIdentityGeneral}). Two presentations, or
+$\varphi\le\varphi'$, give FS functions with equal (resp.\ ordered) values on $\mathcal X^{\mathrm{val}}\supseteq\mathcal X^{\divv}$; Theorem~\ref{thm:gl-comparison}
+concludes, the functions being psh and continuous.
+\end{proof}
+
+\begin{theorem}[Finite descent]\label{thm:gl-finite-descent}
+\lean{EnvelopeProperty.MultiModel.FiniteHom.hasEnvelopeProperty}
+\leanok
+\uses{prop:gl-weighted-norm, lem:gl-finite-fibres, thm:gl-comparison, def:gl-psh, lem:gl-pullback}
+\source{fhx-envelope-20261028:thm:finite-normal-descent}
+Let $h\colon\mathcal T\to\mathcal X$ be finite with $\mathcal X$ normal, and $\theta\in\R^r$. If $\mathrm{EP}_{\mathcal T}(\theta)$, then
+$\mathrm{EP}_{\mathcal X}(\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $(\varphi_i)$ be a nonempty family in $\PSH(\mathcal X,\theta)$ bounded above, $g=\sup_i\varphi_i$. The $\varphi_i\circ h\in\PSH(\mathcal T,\theta)$
+(Lemma~\ref{lem:gl-pullback}), so $F\coloneqq(g\circ h)^\star\in\PSH(\mathcal T,\theta)$. Let $F_\alpha\in\mathcal H(\mathcal T,a_\alpha)$ decrease to $F$,
+$a_\alpha\to\theta$. By Proposition~\ref{prop:gl-weighted-norm}, $G_\alpha=\mathrm{Av}_h(F_\alpha)\in\mathcal H(\mathcal X,a_\alpha)$ decrease on $\mathcal X^\an$, and
+$G_\alpha(\star)=F_\alpha(\star)\to F(\star)\in\R$ (Lemma~\ref{lem:gl-finite-fibres}); so $G=\lim G_\alpha\in\PSH(\mathcal X,\theta)$ by definition. For $v\in\mathcal
+X^{\mathrm{val}}$, finite sums of decreasing nets commute with limits, so $G(v)=d^{-1}\sum_{w\mid v}d(w/v)F(w)$. Since $g\circ h\le F\le g^\star\circ h$ (the
+latter is usc and $\ge g\circ h$) and $h(w)=v$, $\varphi_i(v)\le g(v)\le G(v)\le g^\star(v)$ on $\mathcal X^{\mathrm{val}}$. By Theorem~\ref{thm:gl-comparison},
+$\varphi_i\le G$ everywhere, so $g^\star\le G$, and $G\le g^\star$ everywhere. Thus $g^\star=G$ is $\theta$-psh.
+\end{proof}
+
+\begin{theorem}[Alterations]\label{thm:gl-dejong}
+\lean{EnvelopeProperty.deJongAlterations, EnvelopeProperty.ProjSubvariety.alteration}
+\leanok
+\uses{rmk:gl-model-examples, def:gl-smooth}
+\source{fhx-envelope-20261028:thm:normal-ample-EP, dejong96-alterations:page-0017}
+Let $X=V(I)\subseteq\PP^N$ be a projective variety over $k$. There are $N'$ and a bihomogeneous prime $I_Y\subseteq k[x_0,\dots,x_N,y_0,\dots,y_{N'}]$, relevant
+for both gradings, with $I_Y\cap k[x]=I$, such that the degree-zero fraction field $k(Y)$ of $S_Y=k[x,y]/I_Y$ is finite over $k(X)$ and the quotient
+model $\mathcal Y$ of $I_Y$ (Remark~\ref{rmk:gl-model-examples}(1), rank $2$) is smooth (Definition~\ref{def:gl-smooth}).
+\end{theorem}
+
+\begin{proof}
+Apply de Jong's Theorem~4.1 to the integral projective scheme
+$X^s=\operatorname{Proj}(k[x]/I)$ and the proper closed subset $\emptyset$.
+It gives a proper dominant generically finite map $f:Y\to X^s$ and an open
+immersion $j:Y\to\overline Y$ into an integral regular projective scheme.
+Since $X^s$ is proper over $k$, so is $Y$. As $\overline Y$ is separated over
+$k$, the map $j$ is proper. Its image is therefore nonempty, open and closed
+in the irreducible $\overline Y$, hence is all of $\overline Y$. Thus $j$ is
+an isomorphism and $Y$ is regular and projective. The algebraically closed
+field $k$ is perfect, so $Y$ is smooth over $k$.
+
+Choose a projective embedding $\iota:Y\hookrightarrow\PP^{N'}$ and put
+$L=k(Y)$. The two morphisms $Y\to\PP^N$ and $\iota$ give homogeneous generic
+coordinates $a_i,b_m\in L$, with $a_{i_0}=b_{m_0}=1$ after normalization.
+Let $I_Y$ be the kernel of the map
+$k[x,y]\to L[T,S]$ sending $x_i$ to $a_iT$ and $y_m$ to $b_mS$.
+This is a bihomogeneous prime ideal. The normalized coordinates show relevance
+at $(i_0,m_0)$. Dominance of $f$ identifies the kernel in the $x$ block with
+$I$, so $I_Y\cap k[x]=I$. The ratios of the $b_m$ generate $L$ as a field,
+since $\iota$ is a closed immersion; the field generated by the $a_i$ is the
+image of $k(X^s)$ in $L$. Consequently the degree-zero fraction field of the
+quotient is $L$, finite over its $x$-ratio subfield by generic finiteness of $f$.
+For any pair of nonvanishing generic coordinates, its chart algebra is
+$k[a_i/a_j,b_m/b_n]$. This is the coordinate algebra of the affine open
+$f^{-1}(D_+(x_j))\cap\iota^{-1}(D_+(y_n))$ in $Y$: the closed graph of $(f,\iota)$ meets the product of the two
+standard affine charts in this affine scheme. These affine
+algebras are smooth over $k$, and are integrally closed because $Y$ is regular
+and integral. They give exactly the asserted smooth quotient model.
+\end{proof}
+
+\begin{remark}\label{rmk:gl-dejong}
+\uses{thm:gl-dejong}
+This is the sentence ``Choose an alteration $Y\to X$ with $Y$ smooth and projective \cite[Theorem~4.1]{deJong}'' of Step~1 of the proof of
+\cite[Theorem~6.1]{FHX}, in the model: a projective $Y$ over $X$ embeds in $X\times\PP^{N'}$; $I_Y\cap k[x]=I$ says that $Y\to X$ is dominant, hence
+surjective; finiteness of $k(Y)/k(X)$ says that it is generically finite. De Jong's theorem \cite[Theorem~4.1]{deJong} gives an alteration $\varphi_1\colon X_1\to X$
+and an open immersion $j_1\colon X_1\to\bar X_1$ into a projective variety $\bar X_1$ that is a regular scheme (with a strict normal crossings divisor
+containing $j_1(\varphi_1^{-1}(Z))$ and the boundary, not used here). For projective $X$ the map $\varphi_1$ is proper, so $j_1$ is also proper and
+$X_1=\bar X_1$. Over the perfect field $k$, $\bar X_1$ is smooth \cite[Remark~4.2, 2.10]{deJong}, and regular rings are normal
+(\cite[Tag~0567]{Stacks}). This is why Definition~\ref{def:gl-smooth} includes normality of the charts, which Mathlib does not prove for smooth algebras.
+The model form is weaker than the source: it drops $Z$, the normal crossings divisor and generic \'etaleness. Checked against the source
+(printed page 66). The scheme-theoretic alteration theorem and the conversion to these quotient models are both proved.
+\end{remark}
+
+\begin{definition}[Stein factorization in the model]\label{def:gl-stein}
+\lean{EnvelopeProperty.ProjSubvariety.Alteration.baseModel, EnvelopeProperty.ProjSubvariety.Alteration.basePres, EnvelopeProperty.ProjSubvariety.Alteration.steinModel, EnvelopeProperty.ProjSubvariety.Alteration.steinHom}
+\leanok
+\uses{thm:gl-dejong, rmk:gl-model-examples, def:gl-maps}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+In Theorem~\ref{thm:gl-dejong}, write $S_X\subseteq k(X)[T_1]$ and $S_Y\subseteq k(Y)[T_1,T_2]$ for the two quotient models (the $x$-coordinates of degree $e_1$,
+the $y$-coordinates of degree $e_2$), so that $S_X\subseteq k(Y)[T_1]\subseteq k(Y)[T_1,T_2]$. Let $S_T$ be the integral closure of $S_X$ in $k(Y)[T_1]$,
+$\mathcal T=(k(Y),S_T,x)$, and $h\colon\mathcal T\to\mathcal X$ the finite morphism (Remark~\ref{rmk:gl-model-examples}(3)).
+\end{definition}
+
+\begin{lemma}[Stein factorization]\label{lem:gl-stein}
+\lean{EnvelopeProperty.ProjSubvariety.Alteration.isNormal_steinModel, EnvelopeProperty.ProjSubvariety.Alteration.isNormal_baseModel, EnvelopeProperty.ProjSubvariety.Alteration.hasEnvelopeProperty_iff_baseModel, EnvelopeProperty.ProjSubvariety.Alteration.steinBeta, EnvelopeProperty.ProjSubvariety.Alteration.steinHom_anMap_steinBeta, EnvelopeProperty.ProjSubvariety.Alteration.isPSH_comp_steinBeta, EnvelopeProperty.ProjSubvariety.Alteration.steinBeta_surjective, EnvelopeProperty.ProjSubvariety.Alteration.SteinBlowup, EnvelopeProperty.ProjSubvariety.Alteration.nonempty_steinBlowup, EnvelopeProperty.ProjSubvariety.Alteration.isPSH_steinTheta_iff, EnvelopeProperty.ProjSubvariety.Alteration.proj_steinTheta}
+\leanok
+\uses{def:gl-stein, lem:gl-model-change, lem:gl-veronese, rmk:gl-bridges, def:pg-blowup, lem:pg-blowup-basic, lem:pg-blowup-surjective, lem:wu-veronese, lem:wu-graded-closure, thm:bj-normalization-finite}
+\source{fhx-envelope-20261028:thm:normal-ample-EP, fhx-envelope-20261028:cor:normal-weak-global}
+In Definition~\ref{def:gl-stein}, assume $X$ projectively normal.
+\begin{enumerate}
+\item $\mathcal T$ is a normal model of rank $1$, finite over $\mathcal X$ of degree $[k(Y):k(X)]$, and $k(Y)$ is its function field.
+\item $S_T\subseteq S_Y^\nu$, and $\beta(y)\coloneqq\tilde y|_{S_T}$, where $\tilde y$ is the unique extension of $y\in\mathcal Y^\an$ to $S_Y^\nu$
+(Lemma~\ref{lem:gl-model-change}), is a continuous surjection $\mathcal Y^\an\to\mathcal T^\an$ with $h\circ\beta$ equal to the restriction to $S_X$; FS
+functions of class $a$ on $\mathcal T$ pull back to FS functions of class $(a,0)$ on $\mathcal Y$.
+\item There are $e\ge1$, a projectively normal $T'=V(I_{T'})\subseteq\PP^{N_T}$ presenting the Veronese $(S_T)_{(e)}$, forms $G_0,\dots,G_{N'}$ of one
+degree on $T'$ with $\bar y_m/\bar y_0=G_m/G_0$ in $k(Y)$, and for the blowup $B$ of $T'$ along $(G_m)$ (Definition~\ref{def:pg-blowup}) homeomorphisms
+$\tau\colon\mathcal T^\an\to T'^\an$ and $\vartheta\colon\mathcal Y^\an\to B^\an$ with $\mu\circ\vartheta=\tau\circ\beta$, $\PSH(\mathcal T,et)=\PSH(T',t)\circ\tau$ and
+$\PSH(\mathcal Y,(et,s))=\PSH(B,(t,s))\circ\vartheta$ for $t,s\ge0$ (the bridges of Lemma~\ref{lem:gl-bridge-psh} hold for nonnegative classes; FHX uses $t=1/e$, $s=0$).
+Projective normality of $X$ is not used in (1)--(3) ($T'$ is projectively normal because $\mathcal T$ is normal); it is used downstream, for finite descent and the bridge for $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $S_T$ is graded (Lemma~\ref{lem:wu-graded-closure}(1) for $A=k(Y)$), finite over $S_X$ (Theorem~\ref{thm:bj-normalization-finite} for $S_X[\gamma_1,\dots]$,
+$\gamma_i$ integral generators of $k(Y)$ over $k(X)$ times powers of $x_0T_1$), integrally closed by construction, integral over the coordinates; its function field
+is $k(Y)$, since every $u\in k(Y)$ is $\alpha/\gamma$ with $\alpha$ integral over $A_0=(S_X)_{(x_0)}$ and $0\ne\gamma\in A_0$, and $\alpha(x_0T_1)^M\in S_T$ for $M\gg0$.
+(2) Elements of $S_T$ are integral over $S_X\subseteq S_Y$ and lie in $\operatorname{Frac}S_Y=k(Y)(T_1,T_2)$. The chart algebras of $\mathcal Y$ are integrally
+closed (smoothness, Definition~\ref{def:gl-smooth}), so Lemma~\ref{lem:gl-model-change} gives the unique extension; $\beta(y)$ is graded (elements of $S_T$ have
+degree $(\ast,0)$) and normalized (the coordinates $x$ are those of $\mathcal Y$). Surjectivity follows from (3): $\beta=\tau^{-1}\circ\mu\circ\vartheta$ and $\mu$ is
+surjective (Lemma~\ref{lem:pg-blowup-surjective}). Pullback of FS functions: a section of degree $a$ of $\mathcal T$ is an element of $S_Y^\nu$ of degree $(a,0)$, a section of $\mathcal Y$ by Lemma~\ref{lem:gl-model-change}. (3)
+$(S_T)_0=k$, so Lemma~\ref{lem:wu-veronese} gives $e$ with $(S_T)_{(e)}$ generated in degree $1$ and integrally closed; present it as $T'$ (Remark~\ref{rmk:gl-bridges}),
+giving $\tau$ (Lemmas~\ref{lem:gl-veronese}, \ref{lem:gl-model-change}). Since $k(T)=k(Y)$, the ratios $\bar y_m/\bar y_0$ are $G_m/G_0$ for elements $G_m$ of one degree
+$d$ of $(S_T)_{(e)}$ (common denominator), lifted to forms. The bigraded ring of $B$ maps to $S_Y^\nu$ by $x'_i\mapsto$ the degree-$e$ generators of $S_T$ and
+$y_m\mapsto\bar y_m$; a bihomogeneous $F$ of bidegree $(a,b)$ maps to $(\bar y_0/G_0)^bF(x',G)$, so the kernel is the ideal $I'$ of Definition~\ref{def:pg-blowup}
+(Lemma~\ref{lem:pg-blowup-basic}(1)). The image contains the $(e,1)$-Veronese of $S_Y$ and lies in its normalization, so Lemmas~\ref{lem:gl-veronese} (with the degree
+rescaling $(e,1)$, proved in the same way) and~\ref{lem:gl-model-change} give $\vartheta$ and the correspondence of psh classes (Lemma~\ref{lem:gl-model-change} needs the sections
+of the larger model to be sections of $\mathcal Y_{(e,1)}$; this follows from the ideal argument on the smooth, hence normal, $\mathcal Y$, without checking that the charts of
+$\mathcal Y_{(e,1)}$ are integrally closed); $\mu\circ\vartheta=\tau\circ\beta$ holds on
+generators.
+\end{proof}
+
+\begin{theorem}[Fibre constancy]\label{thm:gl-fibre-constancy}
+\lean{EnvelopeProperty.blowupFibreConstancy_proved, EnvelopeProperty.ProjSubvariety.BlowupCenter.fc_const_on_fibre, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.apply_eq_of_proj_eq, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.factorsThrough_proj, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.exists_eq_comp_proj}
+\leanok
+\uses{def:pg-blowup, def:pg-blowup-psh, lem:pg-blowup-basic,thm:fc-zariski,thm:fc-analytic-constancy-completed-geometrically-connected}
+\source{fhx-envelope-20261028:thm:normal-ample-EP, fhx-envelope-20261028:lem:local-basic, fhx-envelope-20261028:lem:global-to-local, gr25-classically-psh:thm:maximum.principle}
+Let $T'\subseteq\PP^{N_T}$ be projectively normal, $B$ a blowup of $T'$ as in Definition~\ref{def:pg-blowup}, $a\in\Q_{>0}$, and
+$\Phi\in\PSH(B,(a,0))$. Then $\Phi$ is constant on every fibre of $\mu\colon B^\an\to T'^\an$.
+\end{theorem}
+
+\begin{remark}\label{rmk:gl-fibre-constancy}
+\uses{thm:gl-fibre-constancy, cor:normal-weak-global}
+This is the claim ``$\Phi$ is constant on every fibre of $\beta^\an$'' in Step~1 of the proof of \cite[Theorem~6.1]{FHX}. Its proof there: the fibre over $t$ is
+the analytification of the proper $\mathcal H(t)$-scheme $Y\times_T\Spec\mathcal H(t)$, connected because $\beta$ has geometrically connected fibres, hence
+compact, connected and without boundary (\cite[\S\S3.4--3.5]{Berkovich90}); $\Phi-m^{-1}\log|\beta^*s|$ is locally psh (\cite[Lemma~5.4(2)]{FHX}) and
+its restriction to the fibre is classically psh (\cite[Lemma~5.2(2),(4)]{FHX}); $m^{-1}\log|\beta^*s|$ is constant on the fibre; the maximum set is closed by
+upper semicontinuity and open by the local maximum principle \cite[Theorem~6.1]{GR25} (\texttt{thm:maximum.principle}: a classically psh function with a
+local maximum at an interior point is locally constant there). \cite{FHX} applies it to the birational part $\beta$ of the Stein factorization of an alteration;
+the statement above, for every blowup of a projectively normal variety, is justified by the same argument, as $\mu_*\mathcal O=\mathcal O_{T'}$ (Zariski's main
+theorem) gives geometrically connected fibres. The checked native proof now derives every
+geometric input from actual projective formal functions and the original whole coefficient
+map, preserving the nonreduced closed fibre. Genuine decreasing finite-Fubini--Study nets,
+whole native fibre comparisons and the proper maximum principle derive the analytic
+constancy without countability. The original compatibility class is provided by an actual
+instance and is no longer an unproved mathematical input. The intrinsic BJ/model and
+sequence/classical comparisons remain separate obligations.
+\end{remark}
+
+\begin{proposition}[Ample envelopes over countable fields; Step~1]\label{prop:gl-ample-countable}
+\lean{EnvelopeProperty.ProjSubvariety.Alteration.hasEnvelopeProperty_steinModel, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_countable, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield}
+\leanok
+\uses{thm:gl-dejong, lem:gl-stein, thm:gl-fibre-constancy, cor:gl-smooth-ep-nef, thm:pg-psh-descent, thm:gl-finite-descent, lem:gl-pullback, lem:gl-ep-basic}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+Let $k$ be countable, and assume the hypotheses of Theorem~\ref{thm:pg-psh-descent} (the imports of Theorem~\ref{thm:normal-local-regularization}) and
+Theorems~\ref{thm:gl-dejong}, \ref{thm:gl-fibre-constancy}, \ref{thm:gl-smooth-ep}. If $X\subseteq\PP^N$ is projectively normal, then $\mathrm{EP}_X(1)$.
+\end{proposition}
+
+\begin{proof}
+Take $\mathcal Y,\mathcal T,h,\beta,T',B,\tau,\vartheta,e$ from Theorem~\ref{thm:gl-dejong} and Lemma~\ref{lem:gl-stein}. We show $\mathrm{EP}_{\mathcal T}(1)$; then
+$\mathrm{EP}_X(1)$ by Theorem~\ref{thm:gl-finite-descent}. Let $(\varphi_i)$ be a nonempty family in $\PSH(\mathcal T,1)$ bounded above and $g=\sup_i\varphi_i$. By
+Lemma~\ref{lem:gl-stein}(2), $\varphi_i\circ\beta\in\PSH(\mathcal Y,(1,0))$, so $\Phi\coloneqq(g\circ\beta)^\star\in\PSH(\mathcal Y,(1,0))$ by
+Corollary~\ref{cor:gl-smooth-ep-nef}. By Lemma~\ref{lem:gl-stein}(3), $\Phi\circ\vartheta^{-1}\in\PSH(B,(1/e,0))$, which is constant on the fibres of $\mu$
+(Theorem~\ref{thm:gl-fibre-constancy}); as $\mu\circ\vartheta=\tau\circ\beta$, $\Phi$ is constant on the fibres of $\beta$, and $\beta$ is surjective, so $\Phi=\varphi\circ\beta$
+for a function $\varphi$ on $\mathcal T^\an$. Then $(\varphi\circ\tau^{-1})\circ\mu=\Phi\circ\vartheta^{-1}\in\PSH(B,(1/e,0))$, and Theorem~\ref{thm:pg-psh-descent} (with
+$a=1/e$) gives $\varphi\circ\tau^{-1}\in\PSH(T',1/e)$, i.e.\ $\varphi\in\PSH(\mathcal T,1)$. Finally $\varphi=g^\star$: from $\Phi\ge g\circ\beta$, $\varphi\ge g$, hence $\varphi\ge
+g^\star$ ($\varphi$ is usc); from $\Phi\le g^\star\circ\beta$ (usc and $\ge g\circ\beta$) and surjectivity, $\varphi\le g^\star$.
+\end{proof}
+
+\begin{lemma}[Descent to a countable field]\label{lem:gl-field-descent}
+\lean{EnvelopeProperty.ProjSubvariety.exists_descendField, EnvelopeProperty.ProjSubvariety.IsProjNormal.descendField, EnvelopeProperty.ProjSubvariety.exists_restrictField_eq_of_isDivisorial, EnvelopeProperty.ProjSubvariety.descendField, EnvelopeProperty.ProjSubvariety.restrictField, EnvelopeProperty.ProjSubvariety.IsPSH.comp_restrictField, EnvelopeProperty.exists_isAlgClosed_countable_subfield}
+\leanok
+\uses{def:gl-maps, lem:c0-base-change-dvr, cor:c0-base-change-orders, lem:c0-tensor-domain, def:gl-div}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+Let $X=V(I)\subseteq\PP^N_k$ and let $\Phi$ be a countable set of forms. There is a countable algebraically closed $k_0\subseteq k$ such that
+$I_0=I\cap k_0[x]$ generates $I$, $\Phi\subseteq k_0[x]$, and $S=S_0\otimes_{k_0}k$. If $S$ is integrally closed, so is $S_0$. For every
+$v_0\in X_0^{\divv}$ and $k_0$-linearly independent $c_1,\dots,c_n\in k$ there is $v\in X^\an$ with $r(v)=v_0$ and
+$|\sum_\beta c_\beta p_\beta|_v=\max_\beta|p_\beta|_{v_0}$ for all $p_\beta\in S_0$.
+\end{lemma}
+
+\begin{proof}
+Let $k_0$ be the algebraic closure in $k$ of the field generated by the coefficients of finitely many generators of $I$ and of $\Phi$; it is countable. $I_0k[x]=I$
+and $I_0$ is prime ($k[x]$ is faithfully flat over $k_0[x]$). Normality descends: for $z=\alpha/\gamma\in\operatorname{Frac}S_0$ integral over $S_0$, $z\in S$, i.e.\
+$\alpha\in\gamma S\cap S_0=\gamma S_0$ by faithful flatness. Let $R'_0\supseteq S_0[t]$ and $c$ be the data of $v_0$ (Definition~\ref{def:gl-div}) and
+$R'=(R'_0\otimes_{k_0}k)_{\mathfrak m\otimes k}$ (Lemma~\ref{lem:c0-base-change-dvr}), a discrete valuation ring containing $S[t]$ with
+$\operatorname{ord}_{R'}(\sum c_\beta\otimes g_\beta)=\min_\beta\operatorname{ord}_{R'_0}(g_\beta)$ (Corollary~\ref{cor:c0-base-change-orders}). Put
+$|p|_v=e^{-c\operatorname{ord}_{R'}(p)}$ for $p\in S$; it is multiplicative, trivial on $k$, graded (components are computed coefficientwise in a $k_0$-basis),
+normalized ($x_i\in S_0$), restricts to $v_0$, and has the displayed values.
+\end{proof}
+
+\begin{proposition}[Ample envelopes; Step~2]\label{prop:gl-ample-rational}
+\lean{EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_countable, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_forall_countable, EnvelopeProperty.ProjSubvariety.envelope_comp_restrictField}
+\leanok
+\uses{prop:gl-ample-countable, lem:gl-field-descent, prop:gl-pl-envelope, lem:gl-fs-envelope, thm:gl-comparison, lem:gl-pullback}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+Under the hypotheses of Proposition~\ref{prop:gl-ample-countable} for every countable algebraically closed subfield (and $k$ arbitrary), if $X\subseteq\PP^N$ is
+projectively normal then $\mathrm{EP}_X(1)$.
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:gl-pl-envelope} it suffices that $\mathrm P_1(\phi)$ is psh for $\phi\in\mathrm{PL}(X)$. Choose $k_0$ (Lemma~\ref{lem:gl-field-descent}) for the
+forms defining $\phi$, so that $\phi=\phi_0\circ r$ with $\phi_0$ continuous on $X_0^\an$: write $\phi$ as a difference of FS functions $\phi_1-\phi_2$, bounded
+below by $-C_1$, $-C_2$, and put $\phi_0=\max(\phi_{1,0},-C_1)-\max(\phi_{2,0},-C_2)$ with the descended FS functions $\phi_{i,0}$ (it is not
+needed that $\phi_0$ is PL, i.e.\ that base point freeness descends); $X_0$ is projectively normal and $\mathrm{EP}_{X_0}(1)$ holds by
+Proposition~\ref{prop:gl-ample-countable}, so $\mathrm P_1(\phi_0)\in\PSH(X_0,1)$ (envelopes of continuous obstacles), and $\mathrm P_1(\phi_0)\circ r\in\PSH(X,1)$
+(Lemma~\ref{lem:gl-pullback}) is $\le\phi$, hence $\le\mathrm P_1(\phi)$. Conversely let $\psi=m^{-1}\max_t\{\log|s_t|+\lambda_t\}\in\mathcal H_{\mathrm{fin}}(X,1)$ with
+$\psi\le\phi$; write $s_t=\sum_\beta c_\beta s_{t\beta}$ with $s_{t\beta}\in(S_0)_m$ and $c_\beta\in k$ linearly independent over $k_0$, and
+$\psi_0=m^{-1}\max_{t,\beta}\{\log|s_{t\beta}|+\lambda_t\}\in\mathcal H(X_0,1)$. Then $\psi\le\psi_0\circ r$ (ultrametric inequality). For $v_0\in X_0^{\divv}$ the point $v$ of
+Lemma~\ref{lem:gl-field-descent} gives $\psi_0(v_0)=\psi(v)\le\phi(v)=\phi_0(v_0)$; by Theorem~\ref{thm:gl-comparison} on $X_0$, $\psi_0\le\phi_0$, so
+$\psi_0\le\mathrm P_1(\phi_0)$ and $\psi\le\mathrm P_1(\phi_0)\circ r$. By Lemma~\ref{lem:gl-fs-envelope}, $\mathrm P_1(\phi)=\mathrm P_1(\phi_0)\circ r$, which is psh.
+\end{proof}
+
+\begin{theorem}[Ample classes on normal varieties]\label{thm:gl-normal-ample-ep}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_pos, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_pos_of_forall_countable, EnvelopeProperty.MultiModel.hasEnvelopeProperty_one_of_isNormal_of_forall_countable, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_rank_zero, EnvelopeProperty.MultiModel.eq_triv_of_rank_zero, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_pos_of_forall_subfield}
+\leanok
+\uses{prop:gl-ample-rational, lem:gl-veronese, rmk:gl-bridges, lem:gl-ep-basic, lem:wu-veronese}
+\source{fhx-envelope-20261028:thm:normal-ample-EP}
+Under the hypotheses of Proposition~\ref{prop:gl-ample-rational}, $\mathrm{EP}_{\mathcal X}(\theta)$ holds for every normal model $\mathcal X$ and every positive
+$\theta\in\R^r$.
+\end{theorem}
+
+\begin{proof}
+Step~3 of \cite{FHX}: by Lemma~\ref{lem:gl-ep-basic}(1) with rational positive $\theta_j\downarrow\theta$, and (2), it suffices to treat positive $a\in\N^r$. The model
+$\mathcal X_{(a)}$ is normal of rank~$1$ with degree-zero part $k$ (elements of $S_0$ are algebraic over $k$, and $k$ is algebraically closed in $K$); a
+Veronese of it is generated in degree $1$ and integrally closed (Lemma~\ref{lem:wu-veronese}), i.e.\ a projectively normal $V(I)$
+(Remark~\ref{rmk:gl-bridges}). Proposition~\ref{prop:gl-ample-rational} and Lemma~\ref{lem:gl-veronese} conclude: $\mathrm{EP}_{V(I)}(1)$ gives
+$\mathrm{EP}$ of the Veronese $(\mathcal X_{(a)})_{(e)}$ at $1$, hence $\mathrm{EP}_{\mathcal X_{(a)}}(e)$, hence $\mathrm{EP}_{\mathcal X_{(a)}}(1)$ by
+Lemma~\ref{lem:gl-ep-basic}(2). For $r=0$ there is nothing to prove: $S=S_0=k$, so $\mathcal X^\an=\{\star\}$ and every bounded family has a constant, hence psh,
+regularized supremum. The ambient dimension $N$ of $V(I)$ depends on $a$, so the hypothesis of Proposition~\ref{prop:gl-ample-rational} is used for all $N$.
+\end{proof}
+
+\subsection{Homogeneous division and arbitrary classes}\label{subsec:gl-siu}
+
+\begin{lemma}[Points attached to prime divisors]\label{lem:gl-divisor-points}
+\lean{EnvelopeProperty.MultiModel.primeDivPoint, EnvelopeProperty.MultiModel.divisorVal, EnvelopeProperty.MultiModel.primeOrd, EnvelopeProperty.MultiModel.secAbs_primeDivPoint, EnvelopeProperty.MultiModel.divisorVal_laurentMono_le_one, EnvelopeProperty.MultiModel.primeDivPoint_mem_valSet, EnvelopeProperty.MultiModel.hasGenericSupport_primeDivPoint, EnvelopeProperty.MultiModel.isDVR_localization_of_height_eq_one, EnvelopeProperty.MultiModel.isDVR_localization_iff_height_eq_one, EnvelopeProperty.laurentMono}
+\leanok
+\uses{def:gl-points, lem:gl-multigraded-extension, lem:gl-sections, lem:bj-dvr-minimal, lem:pg-div-points}
+\source{fhx-envelope-20261028:lem:fixed-coefficient-division, bj22-trivval:lem:FShomdiv}
+Let $\mathcal X$ be normal and $P$ a height-one multihomogeneous prime of $S$ that is \emph{relevant} (no block of coordinates lies in $P$). Then $S_P$ is a
+discrete valuation ring with valuation $\operatorname{ord}_P$ on $K(T)$; $\operatorname{ord}_P(fT^a)\ge0$ for $f\in R_a$; and $|gT^a|_{v_P}=\exp(-\operatorname{ord}_P(gT^a))$,
+$g\in S_a$, defines $v_P\in\mathcal X^{\mathrm{val}}$ with $|f|_{v_P}=\exp(-\operatorname{ord}_P(fT^a))$ for $f\in R_a$.
+\end{lemma}
+
+\begin{proof}
+$P$ is minimal over each of its nonzero elements, so $S_P$ is a discrete valuation ring (Lemma~\ref{lem:bj-dvr-minimal}). In each block a coordinate
+$z^{(c)}_{i_c}\notin P$ has order $0$ and all coordinates have order $\ge0$, so the hypotheses of Lemma~\ref{lem:gl-multigraded-extension} hold (as in
+Lemma~\ref{lem:pg-div-points}). For $f\in R_a$ and the monomial $z^\beta$ of degree $b$ in the $z^{(c)}_{i_c}$, $\operatorname{ord}_P(fT^a)=
+\operatorname{ord}_P(f\tilde z^\beta T^{a+b})\ge0$, and $|f|_{v_P}=\max_\beta\exp(-\operatorname{ord}_P(fT^a)-\operatorname{ord}_P(z^\beta))=\exp(-\operatorname{ord}_P(fT^a))$.
+\end{proof}
+
+\begin{lemma}[Sections on normal models]\label{lem:gl-section-criterion}
+\lean{EnvelopeProperty.MultiModel.mem_sections_of_forall_divisorVal_le_one, EnvelopeProperty.MultiModel.mem_sections_of_forall_height_eq_one, EnvelopeProperty.MultiModel.isMultihomogeneousIdeal_of_mem_minimalPrimes, EnvelopeProperty.MultiModel.isPrime_homCore}
+\leanok
+\uses{lem:gl-divisor-points, lem:bj-dvr-minimal, def:gl-sections}
+\source{bj22-trivval:lem:FShomdiv, fhx-envelope-20261028:lem:fixed-coefficient-division}
+Let $\mathcal X$ be normal, $a\in\mathbf Z^r$ and $f\in K$. If $\operatorname{ord}_P(fT^a)\ge0$ for every relevant height-one multihomogeneous prime $P$, then
+$f\in R_a$.
+\end{lemma}
+
+\begin{proof}
+Only finitely many height-one primes $Q$ of the Noetherian normal domain $S$ have $\operatorname{ord}_Q(fT^a)<0$. Choose $b\in\N^r$ with $a+b\ge0$ and
+$b_c\ge-\operatorname{ord}_Q(fT^a)$ for every such $Q$ containing all coordinates of the block $c$. For $\beta\in\mathrm{Mon}(b)$, $p=f\tilde z^\beta T^{a+b}$ is
+homogeneous in $\operatorname{Frac}S$, so $p=A/B$ with $A,B\in S$ homogeneous (take the extremal homogeneous component of a denominator). The minimal primes $Q$ of
+$BS$ are homogeneous of height one, and $\operatorname{ord}_Q(p)=\operatorname{ord}_Q(fT^a)+\operatorname{ord}_Q(z^\beta)\ge0$: for relevant $Q$ by hypothesis, for
+irrelevant $Q$ (containing a whole block $c$) because $\operatorname{ord}_Q(z^\beta)\ge b_c$. Lemma~\ref{lem:bj-dvr-minimal} gives $A\in BS$, i.e.\ $p\in S$.
+\end{proof}
+
+\begin{lemma}[Division with a fixed coefficient]\label{lem:gl-fixed-coefficient-division}
+\lean{EnvelopeProperty.MultiModel.IsPSHHom.exists_eq_add_of_le_logSecAbs, EnvelopeProperty.MultiModel.FSData.fixedDiv, EnvelopeProperty.MultiModel.FSData.eval_fixedDiv}
+\leanok
+\uses{lem:gl-divisor-points, lem:gl-section-criterion, cor:gl-pshhom, thm:gl-comparison, lem:gl-div-generic, lem:gl-sections}
+\source{fhx-envelope-20261028:lem:fixed-coefficient-division}
+Let $\mathcal X$ be normal, $\eta\in\R^r$, $e\in\Q^r$ and $0\ne s_E\in R_{me}$ with $me\in\mathbf Z^r$; put $e_E=m^{-1}\log|s_E|$. If
+$\psi\in\PSH_{\mathrm{hom}}(\mathcal X,\eta)$ and $\psi\le e_E$, then for every rational $0<t<1$ there is $q_t\in\PSH_{\mathrm{hom}}(\mathcal X,\eta-te)$ with
+$\psi=te_E+q_t$.
+\end{lemma}
+
+\begin{proof}
+Let $P_1,\dots,P_s$ be the relevant height-one multihomogeneous primes with $\alpha_\ell\coloneqq m^{-1}\operatorname{ord}_{P_\ell}(s_ET^{me})>0$; at all other relevant ones
+the order is $0$ (Lemma~\ref{lem:gl-divisor-points}). By Corollary~\ref{cor:gl-pshhom}, $\psi$ is the limit of a decreasing net $\psi_\alpha\in\mathcal
+H_{\mathrm{hom}}(a_\alpha)$, $a_\alpha\to\eta$. Since $\psi_\alpha(v_{P_\ell})\downarrow\psi(v_{P_\ell})\le e_E(v_{P_\ell})=-\alpha_\ell<-t\alpha_\ell$, for $\alpha$ large
+$\psi_\alpha(v_{P_\ell})\le-t\alpha_\ell$ for all $\ell$. Write $\psi_\alpha=M^{-1}\max_i\log|\sigma_i|$ with $\sigma_i\in R_{Ma_\alpha}$ and $Mt/m\in\mathbf Z$. Then
+$\operatorname{ord}_{P_\ell}(\sigma_iT^{Ma_\alpha})\ge Mt\alpha_\ell=(Mt/m)\operatorname{ord}_{P_\ell}(s_ET^{me})$, so $\sigma_i/s_E^{Mt/m}$ has nonnegative order at every relevant
+$P$, and lies in $R_{Ma_\alpha-Mte}$ by Lemma~\ref{lem:gl-section-criterion}. By multiplicativity (Lemma~\ref{lem:gl-sections}(2)) $\psi_\alpha=te_E+q_\alpha$ on
+$\mathcal X^\an$ with $q_\alpha=M^{-1}\max_i\log|\sigma_i/s_E^{Mt/m}|\in\mathcal H_{\mathrm{hom}}(a_\alpha-te)$. On $\Omega=\{e_E>-\infty\}\supseteq\mathcal X^{\divv}$
+(Lemma~\ref{lem:gl-div-generic}) the $q_\alpha=\psi_\alpha-te_E$ decrease, hence they decrease everywhere (Theorem~\ref{thm:gl-comparison}); $q_\alpha(\star)=0$, so
+$q_t=\lim q_\alpha\in\PSH_{\mathrm{hom}}(\eta-te)$ by definition (no PSH2 is needed: the $q_\alpha$ are Fubini--Study functions). In the limit $\psi=te_E+q_t$ on
+$\Omega$, and off $\Omega$ both sides are $-\infty$ ($\psi\le e_E$).
+\end{proof}
+
+\begin{theorem}[Homogeneous Siu division]\label{thm:gl-homogeneous-siu}
+\lean{EnvelopeProperty.MultiModel.IsPSHHom.exists_isPSHHom_eq_add_of_le_logSecAbs}
+\leanok
+\uses{lem:gl-fixed-coefficient-division, thm:gl-normal-ample-ep, lem:gl-usc-local, thm:gl-comparison, lem:gl-scaling, thm:gl-fs-system-theory, lem:gl-div-generic}
+\source{fhx-envelope-20261028:thm:homogeneous-Siu, fhx-envelope-20261028:rem:BJ-6-21}
+Assume the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep}. Let $\mathcal X$ be normal, $\theta\in N(\mathcal X)$, and $s_E$, $e$, $e_E$ as in
+Lemma~\ref{lem:gl-fixed-coefficient-division}. If $\psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta+e)$ and $\psi\le e_E$, then $\psi=e_E+\varphi$ with
+$\varphi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $\Omega=\{e_E>-\infty\}$ (open) and $u=\psi-e_E$ on $\Omega$, usc and $\le0$ there. Choose $N\in\N$, $N\ge1$, with $\theta+N\mathbf1$ positive, put $A=N\mathbf 1$, and for
+$\beta\in\mathrm{Mon}(A)$ let $e_\beta=\log|\tilde z^\beta|\in\mathcal H_{\mathrm{hom}}(A)$ and $\Omega_\beta=\{e_\beta>-\infty\}$; $\max_\beta e_\beta=0$. Let
+$V=\Omega\cap\bigcap_\beta\Omega_\beta\supseteq\mathcal X^{\divv}$ (Lemma~\ref{lem:gl-div-generic}). Fix $\beta$ and rational $0<\epsilon<1$, and choose $t_0<1$ with
+$(1-t_0)e\le\epsilon A$.
+
+For rational $t\in[t_0,1)$, Lemma~\ref{lem:gl-fixed-coefficient-division} applied to $\psi+e_\beta\in\PSH_{\mathrm{hom}}(\theta+e+A)$ (which is $\le e_E$) gives
+$q_t\in\PSH_{\mathrm{hom}}(\theta+A+(1-t)e)\subseteq\PSH_{\mathrm{hom}}(\theta+(1+\epsilon)A)$ with $\psi+e_\beta=te_E+q_t$, i.e.\ $q_t=u+e_\beta+(1-t)e_E$ on $\Omega$. On
+$\Omega$, $q_t\le e_\beta$; by Lemma~\ref{lem:gl-usc-local}(3), $q_t\le e_\beta$ everywhere. Let $g=\sup_tq_t\le e_\beta$. By Theorem~\ref{thm:gl-normal-ample-ep} at the
+positive class $\theta+(1+\epsilon)A$, $\chi_\beta\coloneqq g^\star\in\PSH(\theta+(1+\epsilon)A)$; it is homogeneous (Lemma~\ref{lem:gl-scaling}(5)) and $\le e_\beta$ ($e_\beta$ is
+continuous). On $\Omega$, $g=u+e_\beta$ (let $t\uparrow1$), which is usc on $\Omega$, so $\chi_\beta=u+e_\beta$ on $\Omega$ (Lemma~\ref{lem:gl-usc-local}(1)).
+
+Lemma~\ref{lem:gl-fixed-coefficient-division} applied to $\chi_\beta$, the section $\tilde z^\beta$ of degree $A$ and $t=1-\epsilon$ gives
+$q'_\beta\in\PSH_{\mathrm{hom}}(\theta+2\epsilon A)$ with $\chi_\beta=(1-\epsilon)e_\beta+q'_\beta$, so $q'_\beta=u+\epsilon e_\beta$ on $V$. Then
+$\varphi_\epsilon=\max_\beta q'_\beta\in\PSH_{\mathrm{hom}}(\theta+2\epsilon A)$ equals $u+\epsilon\max_\beta e_\beta=u$ on $V$. By Lemma~\ref{lem:gl-usc-local}(3) the
+$\varphi_\epsilon$ do not depend on $\epsilon$; call them $\varphi$. PSH2 at $\theta\in N(\mathcal X)$ (Theorem~\ref{thm:gl-fs-system-theory}(2), constant sequence,
+classes $\theta+2\epsilon A\to\theta$) gives $\varphi\in\PSH_{\mathrm{hom}}(\theta)$. Finally $e_E+\varphi$ and $\psi$ are $(\theta+e)$-psh and agree on $V$, hence everywhere.
+\end{proof}
+
+\begin{proposition}[Envelopes from homogeneous slices]\label{prop:gl-homogeneous-slices}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isPSHHom_uscReg_iSup}
+\leanok
+\uses{thm:gl-homog-decomposition, thm:gl-fs-system-theory, lem:gl-scaling}
+\source{fhx-envelope-20261028:prop:homogeneous-slices, fhx-envelope-20261028:eq:Legendre-reconstruction}
+Let $\theta\in N(\mathcal X)$. Suppose that $(\sup_i\psi_i)^\star\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ for every nonempty increasing net $(\psi_i)$ in
+$\PSH_{\mathrm{hom}}(\mathcal X,\theta)$. Then $\mathrm{EP}_{\mathcal X}(\theta)$.
+\end{proposition}
+
+\begin{proof}
+Let $(\varphi_i)$ be a nonempty family in $\PSH(\theta)$ bounded above; replacing it by its finite maxima we may assume it is an increasing net, and after subtracting a
+constant that $b_i=\varphi_i(\star)$ increases to $0$. Let $f=\sup_i\varphi_i$. For $\lambda<0$ let $I_\lambda=\{i:b_i>\lambda\}$ (cofinal), $\psi_{i,\lambda}=(\hat\varphi_i)_\lambda
+\in\PSH_{\mathrm{hom}}(\theta)$ for $i\in I_\lambda$ (Theorem~\ref{thm:gl-homog-decomposition}), increasing in $i$, $g_\lambda=\sup_{i\in I_\lambda}\psi_{i,\lambda}$ and
+$\psi_\lambda=g_\lambda^\star\in\PSH_{\mathrm{hom}}(\theta)$ (hypothesis). The $\psi_\lambda$ decrease in $\lambda$ (slices decrease in $\lambda$, $I_{\lambda'}\subseteq I_\lambda$ for
+$\lambda\le\lambda'$). Let $\Psi=(\sup_n\psi_{-n})^\star\in\PSH_{\mathrm{hom}}(\theta)$ (hypothesis); $\Psi\ge\psi_\lambda$ for all $\lambda<0$. By
+Theorem~\ref{thm:gl-homog-decomposition}, $f=\sup_i\sup_{\lambda<b_i}(\psi_{i,\lambda}+\lambda)=\sup_{\lambda<0}(g_\lambda+\lambda)$ pointwise.
+
+For $n\ge1$ let $h_n=2^{-n}$, $A_n=\{-n+\ell h_n:0\le\ell<n2^n\}$ and $U_n=\max\{\Psi-n,\max_{a\in A_n}(\psi_a+a+h_n)\}\in\PSH(\theta)$, with $U_n(\star)=0$. As in
+\cite{FHX}, $U_{n+1}\le U_n$ everywhere: for $a'\in A_{n+1}$ in $[a,a+h_n)$, $a\in A_n$, $\psi_{a'}+a'+h_{n+1}\le\psi_a+a+h_n$; for $a'\in[-n-1,-n)$,
+$\psi_{a'}+a'+h_{n+1}\le\Psi-n$. By PSH2 at $\theta$, $U=\lim U_n\in\PSH(\theta)$. Lower bound: for $\lambda<-n$, $\psi_\lambda+\lambda\le\Psi-n$, and for $\lambda\in[a,a+h_n)$,
+$\psi_\lambda+\lambda\le\psi_a+a+h_n$; so $f\le\sup_\lambda(\psi_\lambda+\lambda)\le U_n$, and $f^\star\le U$. Upper bound: $\psi_\lambda+\lambda=(g_\lambda+\lambda)^\star\le f^\star$, so
+$U_n\le\max\{\Psi-n,f^\star+h_n\}$, and $U\le f^\star$ ($\Psi<\infty$). Hence $f^\star=U\in\PSH(\theta)$.
+\end{proof}
+
+\begin{corollary}[Arbitrary nef classes on normal varieties]\label{cor:gl-normal-ep}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal}
+\leanok
+\uses{prop:gl-homogeneous-slices, thm:gl-homogeneous-siu, thm:gl-normal-ample-ep, lem:gl-usc-local, lem:gl-scaling}
+\source{fhx-envelope-20261028:cor:normal-EP}
+Under the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep}, $\mathrm{EP}_{\mathcal X}(\theta)$ holds for every normal model $\mathcal X$ and every $\theta\in N(\mathcal X)$.
+\end{corollary}
+
+\begin{proof}
+We verify the hypothesis of Proposition~\ref{prop:gl-homogeneous-slices}. Let $(\psi_i)$ be an increasing net in $\PSH_{\mathrm{hom}}(\theta)$. Choose $N$ with
+$\eta=\theta+N\mathbf1$ positive, a monomial $s_E=\tilde z^{\beta_0}$ of degree $e=N\mathbf 1$, $e_E=\log|s_E|$, $\Omega=\{e_E>-\infty\}$. The $\psi_i+e_E\in
+\PSH_{\mathrm{hom}}(\eta)$ increase and are $\le e_E\le0$; by Theorem~\ref{thm:gl-normal-ample-ep}, $\chi=(\sup_i(\psi_i+e_E))^\star\in\PSH_{\mathrm{hom}}(\eta)$, and
+$\chi\le e_E$. Theorem~\ref{thm:gl-homogeneous-siu} gives $\chi=e_E+\psi$ with $\psi\in\PSH_{\mathrm{hom}}(\theta)$. On $\Omega$, $\chi=(\sup_i\psi_i)^\star+e_E$
+(Lemma~\ref{lem:gl-usc-local}(2)), so $\psi=G\coloneqq(\sup_i\psi_i)^\star$ on $\Omega\supseteq\mathcal X^{\divv}$. Then $\psi_i\le\psi$ on $\Omega$, hence everywhere, so
+$G\le\psi$; and $\psi\le G$ everywhere since $G$ is usc and they agree on $\Omega$ (Lemma~\ref{lem:gl-usc-local}(3)). So $G=\psi$.
+\end{proof}
+
+\begin{remark}[Deviations in \S7]\label{rmk:gl-siu-source}
+\uses{thm:gl-homogeneous-siu, prop:gl-homogeneous-slices, cor:gl-normal-ep}
+\cite{FHX} uses ``divisorial values'' and the direction envelope property $\Rightarrow$ convergence on $X^{\divv}$ of \cite[Proposition~2.4]{FHX}, which rests on
+\cite[Theorem~5.6]{BJ22}, and the finiteness of psh functions on $X^{\divv}$ (\cite[Corollary~4.17]{BJ22}). Here the increasing limits are taken as usc regularizations,
+and divisorial values are replaced by values on the open sets $\Omega$, $V$, where the usc regularization of a supremum of functions that are usc on the open set
+does nothing (Lemma~\ref{lem:gl-usc-local}); the comparison theorem transports equalities from $V\supseteq\mathcal X^{\divv}$ to $\mathcal X^\an$. The hypothesis
+of Proposition~\ref{prop:gl-homogeneous-slices} is accordingly the usc form. As in \cite[Remark~7.3]{FHX} (\texttt{rem:BJ-6-21}), the division is only performed with a
+fixed coefficient, so \cite[Theorem~6.21]{BJ22} is not used. The restriction $\theta\in N(\mathcal X)$ comes from PSH2 (Remark~\ref{rmk:gl-nonnef}).
+\end{remark}
+
+\subsection{Normalization and the main theorem}\label{subsec:gl-main}
+
+\begin{definition}[Unibranch models]\label{def:gl-unibranch}
+\lean{EnvelopeProperty.MultiModel.IsUnibranch, EnvelopeProperty.MultiModel.FiniteHom.IsMaxSpecInjective, EnvelopeProperty.MultiModel.isUnibranch_iff, EnvelopeProperty.MultiModel.isUnibranch_iff_anMap_injective, EnvelopeProperty.MultiModel.isUnibranch_tfae, EnvelopeProperty.MultiModel.isUnibranch_of_isNormal}
+\leanok
+\uses{rmk:gl-model-examples, lem:gl-charts}
+\source{fhx-envelope-20261028:lem:unibranch-universal, bj22-trivval:sec:envprop}
+Let $\mathcal X$ be a model and $\mathcal X^\nu$ its normalization (Remark~\ref{rmk:gl-model-examples}(2)), with chart algebras $A_j\subseteq B_j$ ($B_j$ finite over
+$A_j$, same fraction field). $\mathcal X$ is \emph{unibranch} if for every chart $j$ the map $\operatorname{MaxSpec}B_j\to\operatorname{MaxSpec}A_j$ is injective.
+\end{definition}
+
+\begin{lemma}[Radicial extensions]\label{lem:gl-radicial}
+\lean{EnvelopeProperty.mem_nilradical_of_forall_algHom_eq_zero, EnvelopeProperty.algHom_eq_of_maxSpec_injective, EnvelopeProperty.ker_lmul'_le_nilradical, EnvelopeProperty.ringHom_ext_of_maxSpec_injective, EnvelopeProperty.injective_comap_of_maxSpec_injective, EnvelopeProperty.bijective_comap_of_maxSpec_injective, EnvelopeProperty.isPurelyInseparable_residueField_of_maxSpec_injective, EnvelopeProperty.isPurelyInseparable_residueField_under, EnvelopeProperty.bijective_algebraMap_residueField_of_maxSpec_injective}
+\leanok
+\source{fhx-envelope-20261028:lem:unibranch-universal}
+Let $A\subseteq B$ be finitely generated $k$-algebras, $B$ finite over $A$, with $\operatorname{MaxSpec}B\to\operatorname{MaxSpec}A$ injective. Then the kernel $J$ of
+$B\otimes_AB\to B$ is nil; $\Spec B\to\Spec A$ is bijective; and every residue field extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is purely inseparable (trivial
+if $\operatorname{char}k=0$).
+\end{lemma}
+
+\begin{proof}
+A $k$-point of the finitely generated $k$-algebra $B\otimes_AB$ is a pair of $k$-points of $B$ over one $k$-point of $A$, equal by hypothesis, so it kills every
+$b\otimes1-1\otimes b$, which generate $J$. Thus $J$ lies in every maximal ideal, hence in the nilradical ($B\otimes_AB$ is a Jacobson ring; this is the
+Nullstellensatz argument of the proof of \cite[Lemma~8.1]{FHX}). Surjectivity of $\Spec B\to\Spec A$ is lying over. If $\mathfrak q,\mathfrak q'$ lie over $\mathfrak p$,
+choose a field $L$ and a map $\kappa(\mathfrak q)\otimes_{\kappa(\mathfrak p)}\kappa(\mathfrak q')\to L$; the composite $B\otimes_AB\to L$ kills the nil ideal $J$, so the two maps
+$B\to L$ agree, whence $\mathfrak q=\mathfrak q'$, and, taking $\mathfrak q=\mathfrak q'$, any two $\kappa(\mathfrak p)$-embeddings of $\kappa(\mathfrak q)$ into $L$ agree; for the
+finite extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ this is pure inseparability.
+\end{proof}
+
+\begin{lemma}[The normalization of a unibranch model]\label{lem:gl-unibranch-universal}
+\lean{EnvelopeProperty.MultiModel.IsUnibranch.anHomeomorph, EnvelopeProperty.MultiModel.FiniteHom.anMap_injective_of_isMaxSpecInjective, EnvelopeProperty.Berk.comap_injective_of_maxSpec_injective, EnvelopeProperty.MultiModel.IsUnibranch.isRadicialIntegral, EnvelopeProperty.MultiModel.IsUnibranch.isSubintegralTower, EnvelopeProperty.MultiModel.IsUnibranch.exists_pow_pow_mem_chartAlg, EnvelopeProperty.MultiModel.IsUnibranch.exists_addPow_mem_chartAlg, EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp}
+\leanok
+\uses{def:gl-unibranch, lem:gl-radicial, lem:gl-pullback, lem:gl-charts}
+\source{fhx-envelope-20261028:lem:unibranch-universal}
+If $\mathcal X$ is unibranch, $\nu^\an\colon(\mathcal X^\nu)^\an\to\mathcal X^\an$ is a homeomorphism, every chart extension $A_j\subseteq B_j$ satisfies the conclusions
+of Lemma~\ref{lem:gl-radicial}, and in characteristic $0$ it is subintegral (integral, bijective on spectra, isomorphisms on residue fields).
+\end{lemma}
+
+\begin{proof}
+$\nu^\an$ is continuous and surjective (Lemma~\ref{lem:gl-pullback}). Let $v\in\mathcal X^\an$ and $j$ a chart with $|z_j|_v=1$. Points over $v$ correspond to points of
+$(\Spec B_j)^\an$ over $\iota_j(v)$, i.e.\ to a prime $\mathfrak q$ over the support $\mathfrak p$ of $\iota_j(v)$, unique by Lemma~\ref{lem:gl-radicial}, together with an
+absolute value on $\kappa(\mathfrak q)$ extending the one on $\kappa(\mathfrak p)$, unique because $x^{p^n}\in\kappa(\mathfrak p)$ for $x\in\kappa(\mathfrak q)$ (or $\kappa(\mathfrak
+q)=\kappa(\mathfrak p)$). A continuous bijection of compact Hausdorff spaces is a homeomorphism.
+\end{proof}
+
+\begin{definition}[Radicial integral extensions]\label{def:gl-radicial-integral}
+\lean{EnvelopeProperty.Algebra.IsRadicialIntegral, EnvelopeProperty.Algebra.IsRadicialIntegral.of_maxSpec_injective, EnvelopeProperty.Algebra.IsRadicialIntegral.subalgebra, EnvelopeProperty.Algebra.IsRadicialIntegral.over_subalgebra, EnvelopeProperty.Algebra.IsRadicialIntegral.isPurelyInseparable_of_liesOver}
+\leanok
+\uses{lem:gl-radicial}
+An extension $A\to B$ of rings is \emph{radicial integral} if it is injective and integral, $\Spec B\to\Spec A$ is bijective, and every residue field
+extension $\kappa(\mathfrak q)/\kappa(\mathfrak q\cap A)$ is purely inseparable. By Lemma~\ref{lem:gl-radicial} this holds for a finite extension $A\subseteq B$ of
+finitely generated $k$-algebras with $\operatorname{MaxSpec}B\to\operatorname{MaxSpec}A$ injective. If $A\to B$ is radicial integral and $S$ is an intermediate
+$A$-subalgebra, then $A\to S$ and $S\to B$ are radicial integral (lying over for the integral extension $S\subseteq B$, and pure inseparability in towers).
+For injective maps this is the ring-level form of a universal homeomorphism (Stacks \texttt{04DF}, \texttt{01S4}); that equivalence is not formalized
+and not needed.
+\end{definition}
+
+\begin{lemma}[Structure of radicial integral extensions]\label{lem:gl-radicial-structure}
+\lean{EnvelopeProperty.exists_sq_cube_of_pow_mem_of_pow_succ_mem, EnvelopeProperty.pow_mem_of_sq_mem_of_cube_mem, EnvelopeProperty.exists_mul_not_mem_and_mul_pow_mem, EnvelopeProperty.exists_not_mem_and_mul_pow_mem_of_localization, EnvelopeProperty.exists_sq_cube_or_prime_of_finite, EnvelopeProperty.Algebra.IsRadicialIntegral.exists_sq_cube_or_prime}
+\leanok
+\uses{def:gl-radicial-integral}
+\source{stacks-universal-homeomorphisms:tag-0CNC}
+Let $A\subseteq B$ be radicial integral with $A\ne B$. There is $b\in B\setminus A$ with $b^2,b^3\in A$, or a prime $\ell$ with $\ell b\in A$ and $b^\ell\in A$.
+\end{lemma}
+
+\begin{proof}
+This is Stacks \texttt{0CNC}, proved at ring level. Pick $b_0\notin A$; replacing $B$ by $A[b_0]$ (Definition~\ref{def:gl-radicial-integral}) makes $B$ finite over
+$A$. Let $I=\{a\in A:aB\subseteq A\}$, a proper ideal, and $\mathfrak p$ a minimal prime over $I$. Statements about $A_{\mathfrak p}\subseteq B_{\mathfrak p}$ are read
+elementwise ("$ty\in A$ for some $t\notin\mathfrak p$"); this is Stacks \texttt{0CN9}, whose proof Stacks omits. If the unique prime of $B$ over $\mathfrak p$ is not
+contained in $A_{\mathfrak p}$, prime avoidance and minimality of $\mathfrak p$ give $f\notin A$ with $f^n,f^{n+1}\in A$, and Stacks \texttt{0CNA} gives $b'\notin A$ with
+$b'^2,b'^3\in A$. Otherwise the residue extension at $\mathfrak p$ is nontrivial and purely inseparable of characteristic $\ell$, and a lift of an element outside the
+base field with $\ell$-th power inside gives $b$ with $\ell b,b^\ell\in A$.
+\end{proof}
+
+\begin{theorem}[Frobenius descent]\label{thm:gl-frobenius-descent}
+\lean{EnvelopeProperty.Algebra.IsRadicialIntegral.exists_pow_pow_mem, EnvelopeProperty.Algebra.IsRadicialIntegral.isPRadical, EnvelopeProperty.exists_pow_pow_mem_of_maxSpec_injective}
+\leanok
+\uses{lem:gl-radicial, def:gl-radicial-integral, lem:gl-radicial-structure}
+\source{fhx-envelope-20261028:thm:normalization-reflection, stacks-universal-homeomorphisms:tag-0CNF}
+Let $\operatorname{char}k=p>0$ and $A\subseteq B$ a finite extension of finitely generated $k$-algebras such that $\Spec B\to\Spec A$ is bijective with purely
+inseparable residue field extensions. Then every $b\in B$ has $b^{p^n}\in A$ for some $n$.
+\end{theorem}
+
+\begin{proof}
+More generally let $A\subseteq B$ be radicial integral with $\operatorname{char}A=p$. The set $B'$ of $b\in B$ with $b^{p^n}\in A$ for some $n$ is an $A$-subalgebra
+(additivity of Frobenius). If $B'\ne B$, Lemma~\ref{lem:gl-radicial-structure} applied to the radicial integral extension $B'\subseteq B$ gives $b\notin B'$ with
+$b^2,b^3\in B'$, so $b^{p}\in B'$ and $b\in B'$; or a prime $\ell$ with $\ell b,b^\ell\in B'$, where $\ell=p$ gives $b^p\in B'$ and $\ell\ne p$ gives $b\in B'$ since $\ell$
+is a unit. Both contradict $b\notin B'$. Stacks \texttt{0CNF}; the step that $B'\subseteq B$ is again radicial integral is left implicit there.
+\end{proof}
+
+\begin{remark}\label{rmk:gl-frobenius-descent}
+\uses{thm:gl-frobenius-descent}
+\cite{FHX} (proof of Theorem~8.3, positive characteristic): ``Since $\nu$ is a universal homeomorphism (Lemma~8.1), each generator has a $p$-power in $A_U$ by
+[Stacks, Tag~0CNF]''. Stacks Lemma~29.47.9 (\texttt{0CNF}): for a ring map $A\to B$ inducing an isomorphism $A[1/p]\to B[1/p]$ (automatic in characteristic $p$),
+$\Spec B\to\Spec A$ is a universal homeomorphism if and only if the kernel is locally nilpotent and every $b\in B$ has a $p$-power multiple and a $p$-power power in
+the image of $A$; an integral, radicial, surjective morphism is a universal homeomorphism (Stacks \texttt{04DF}, \texttt{01S4}). Its proof uses the structure lemma
+Stacks \texttt{0CNC} (an element outside a proper intermediate subalgebra with $b^2,b^3$ inside, or $\ell b,b^\ell$ inside for a prime $\ell$). They are formalized at ring level, not
+imported; in characteristic $p$ no universal homeomorphisms or scheme theory are needed, the finite generation hypothesis is not used, and the conclusion is
+Mathlib's \texttt{IsPRadical}.
+\end{remark}
+
+\begin{definition}[Subintegral towers]\label{def:gl-subintegral-tower}
+\lean{EnvelopeProperty.IsSubintegralChain, EnvelopeProperty.Algebra.IsSubintegralTower, EnvelopeProperty.IsSubintegralChain.append, EnvelopeProperty.Algebra.isSubintegralTower_iff_forall_mem}
+\leanok
+\source{roberts-singh93-subintegrality:page-0010, stacks-universal-homeomorphisms:tag-0CND}
+A finite sequence $e_1,\dots,e_n\in B$ is a \emph{subintegral chain} over $A$ if $e_i^2,e_i^3\in A[e_1,\dots,e_{i-1}]$ for every $i$. The extension $A\to B$ is
+a \emph{subintegral tower} if every finite subset of $B$ lies in $A[e_1,\dots,e_n]$ for some subintegral chain; equivalently every element does
+(chains concatenate). This is the definition of a subintegral extension of \cite[\S4]{RobertsSingh} and the form of Stacks \texttt{0CND}(2) over $\Q$.
+\end{definition}
+
+\begin{lemma}[Radicial integral extensions of $\Q$-algebras are subintegral]\label{lem:gl-subintegral-tower}
+\lean{EnvelopeProperty.Algebra.IsRadicialIntegral.exists_sq_cube_of_algebraRat, EnvelopeProperty.Algebra.IsRadicialIntegral.isSubintegralTower, EnvelopeProperty.isSubintegralTower_of_maxSpec_injective}
+\leanok
+\uses{lem:gl-radicial-structure, def:gl-subintegral-tower, def:gl-radicial-integral}
+\source{stacks-universal-homeomorphisms:tag-0CND}
+A radicial integral extension $A\subseteq B$ of $\Q$-algebras is a subintegral tower. In particular, for $\operatorname{char}k=0$, a finite extension $A\subseteq B$ of
+finitely generated $k$-algebras with $\operatorname{MaxSpec}B\to\operatorname{MaxSpec}A$ injective is a subintegral tower.
+\end{lemma}
+
+\begin{proof}
+Over $\Q$ every prime $\ell$ is a unit, so Lemma~\ref{lem:gl-radicial-structure} gives $b\notin A$ with $b^2,b^3\in A$ whenever $A\ne B$ (Stacks \texttt{0CNB}). The
+union $B'$ of all $A[e_1,\dots,e_n]$ over subintegral chains is a subalgebra, since chains concatenate. If $B'\ne B$, the radicial integral extension $B'\subseteq B$
+contains $b\notin B'$ with $b^2,b^3\in B'$; then $b^2,b^3$ lie in some $A[e]$ for a chain $e$, and $(e,b)$ is a chain, so $b\in B'$, a contradiction. This replaces
+the transfinite recursion of Stacks \texttt{0CND}.
+\end{proof}
+
+\begin{theorem}[Additive powers]\label{thm:gl-additive-powers}
+\lean{EnvelopeProperty.Algebra.IsSubintegralTower.exists_addPow_mem_range, EnvelopeProperty.Algebra.IsSubintegralTower.isAddPowSubintegral, EnvelopeProperty.IsSubintegralChain.isAddPowSubintegral, EnvelopeProperty.IsAddPowSubintegral, EnvelopeProperty.addPowSubintegralClosure, EnvelopeProperty.IsAddPowSubintegral.add, EnvelopeProperty.IsAddPowSubintegral.mul, EnvelopeProperty.IsAddPowSubintegral.of_sq_of_cube, EnvelopeProperty.IsAddPowSubintegral.of_mem_adjoin_insert, EnvelopeProperty.IsAddPowSubintegral.exists_le, EnvelopeProperty.isAddPowSubintegral_of_tower, EnvelopeProperty.AddPow.hasExactSystem_of_eventually}
+\leanok
+\uses{lem:gl-radicial, def:gl-subintegral-tower}
+\source{fhx-envelope-20261028:lem:normalization-local-sandwich, roberts-singh93-subintegrality:page-0020}
+Let $A\subseteq B$ be a subintegral extension of $\Q$-algebras (a directed union of finite towers $A=A_0\subseteq A_1\subseteq\dots\subseteq A_n$
+with $A_{i+1}=A_i[e_i]$ and $e_i^2,e_i^3\in A_i$; \cite[\S4]{RobertsSingh}, \cite[Tag~0CND]{Stacks}) and $b\in B$. There are integers $N\ge d\ge0$ and $c_1,\dots,c_d\in B$ such that
+$a_m=b^m+\sum_{i=1}^d\binom mic_ib^{m-i}\in A$ for every $m\ge N$.
+\end{theorem}
+
+\begin{proof}
+Call $b$ \emph{subintegral over $A$} if such $N$, $d$, $c_i$ exist. These elements form a subalgebra containing $A$, and $b$ is subintegral as soon as
+$b^2$ and $b^3$ are (Roberts--Singh (4.8), (4.13)); by induction along a chain (Definition~\ref{def:gl-subintegral-tower}) every element of $B$ is then
+subintegral, and $N\ge d$ after enlarging $N$. The Lean proof does not use Roberts--Singh's route through their Theorem~3.8. It turns a relation valid
+only for $m\ge R$ into one valid for all $m\ge0$ with exponent $0$ by multiplying the $m$-th relation by $\pi(m)$, $\pi(X)=\prod_{j=1}^{R-1}(1-X/j)$
+(``cut-off''). Sums use the product $C(T)e^{bT}$ of exponential generating functions, products the cut-off applied to $\binom mk\binom ml$, and the
+square-and-cube step Lagrange interpolation over $\Q$ of $\binom ti\binom{(r-2t)/3}j$ along $2n+3m=r$ followed by the cut-off.
+\end{proof}
+
+\begin{remark}\label{rmk:gl-additive-powers}
+\uses{thm:gl-additive-powers}
+This is the first assertion of \cite[Lemma~8.2]{FHX}, which cites \cite[Theorem~4.17, Proposition~4.2, Corollary~4.3]{RobertsSingh} ; the first assertion is exactly that every
+element of $B$ is subintegral over $A$ in the sense of \cite[p.~258]{RobertsSingh}, i.e.\ the implication (ii)$\Rightarrow$(i) of
+\cite[Theorem~4.17]{RobertsSingh}. \cite[\S8]{FHX} calls
+$A\subseteq B$ subintegral if it is integral, $\Spec B\to\Spec A$ is bijective and the residue field maps are isomorphisms, and states its equivalence
+with the tower form (every finite subset of $B$ lies in a finite tower of steps $A'[e]$ with $e^2,e^3\in A'$, Stacks \texttt{0CND}); revision
+\texttt{832e086} does not define the term. The tower form is the one Roberts--Singh use and the one Stacks \texttt{0CND} produces from a universal
+homeomorphism in characteristic $0$, which is how \cite[Theorem~8.3]{FHX} obtains it. For an elementary step
+$B=A[e]$ with $e^2,e^3\in A$ and $b=\alpha+\beta e$ one can take $d=1$, $c_1=-\beta e$: all terms of $b^m$ and of $m\beta eb^{m-1}$ except $m\alpha^{m-1}\beta e$ involve $e^i$,
+$i\ge2$. A finite subintegral extension is a finite tower of such steps (Stacks \texttt{0CND}), but composing additive powers along a tower is the content of the cited
+results; Lean follows the elementary route described in the proof above, and the theorem is not an explicit hypothesis. With Lemma~\ref{lem:gl-subintegral-tower} it gives the characteristic-$0$ input of \cite[Theorem~8.3]{FHX}
+without imports.
+\end{remark}
+
+\begin{lemma}[Lagrange interpolation]\label{lem:gl-lagrange}
+\lean{EnvelopeProperty.pow_mem_span_addPow, EnvelopeProperty.addPow_mem_span_pow, EnvelopeProperty.AddPow.eval_eq_sum_lagrange}
+\leanok
+\source{fhx-envelope-20261028:lem:normalization-local-sandwich}
+Let $B$ be a $\Q$-algebra, $b\in B$, $d\ge0$ and $c_1,\dots,c_d\in B$, and put $a_m=b^m+\sum_{i=1}^{\min\{d,m\}}\binom mic_ib^{m-i}$ for $m\ge0$. Then
+$b^{n+2d}\in(a_{n+d},\dots,a_{n+2d})B$ for every $n\ge0$, and $a_m\in b^{m-d}B$ for $m\ge d$. This is the second assertion of
+\cite[Lemma~8.2]{FHX} (revision \texttt{832e086} states it for $n\ge N-d$ only).
+\end{lemma}
+
+\begin{proof}
+Fix $m=n+d\ge d$, $c_0=1$ and $P(T)=\sum_{i=0}^d\binom Tic_ib^{m+d-i}\in B[T]$, of degree $\le d$. Then $P(m+r)=b^{d-r}a_{m+r}$ for $0\le r\le d$ and $P(0)=b^{m+d}$.
+Lagrange interpolation over $\Q$ writes $P(0)$ as a $\Q$-combination of $P(m),\dots,P(m+d)$. The last claim is visible from the formula.
+\end{proof}
+
+\begin{theorem}[Psh functions descend through the normalization]\label{thm:gl-normalization-reflection}
+\lean{EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp_symm_of_charP, EnvelopeProperty.MultiModel.IsUnibranch.exists_pow_pow_mem_sections, EnvelopeProperty.MultiModel.IsUnibranch.isFS_comp_symm_of_charP, EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp_symm, EnvelopeProperty.MultiModel.IsUnibranch.isPSH_comp_iff, EnvelopeProperty.MultiModel.IsUnibranch.hasEnvelopeProperty_of_normalization, EnvelopeProperty.MultiModel.IsUnibranch.hasEnvelopeProperty_normalization_iff}
+\leanok
+\uses{lem:gl-unibranch-universal, thm:gl-frobenius-descent, thm:gl-additive-powers, lem:gl-lagrange, lem:gl-sections, lem:gl-cones, thm:gl-fs-system-theory, def:gl-psh}
+\source{fhx-envelope-20261028:thm:normalization-reflection, fhx-envelope-20261028:eq:normalization-global-sandwich}
+Let $\mathcal X$ be unibranch, $\mathcal Y=\mathcal X^\nu$, and identify $\mathcal Y^\an$ with $\mathcal X^\an$ by $\nu^\an$. In characteristic $p$ (assuming
+Theorem~\ref{thm:gl-frobenius-descent}), $\PSH(\mathcal Y,\theta)\subseteq\PSH(\mathcal X,\theta)$ for every $\theta\in\R^r$; in characteristic $0$ (assuming
+Theorem~\ref{thm:gl-additive-powers}), for every $\theta\in N(\mathcal X)$, and for every $\theta\in\R^r$ by Theorem~\ref{thm:nn-normalization-reflection}
+(one Lean statement, for every $\theta$). Both Theorems~\ref{thm:gl-frobenius-descent} and~\ref{thm:gl-additive-powers} are proved, so
+there is no hypothesis.
+\end{theorem}
+
+\begin{proof}
+\emph{Characteristic $p$.} $S^\nu$ is generated over $S$ by finitely many homogeneous $b_\ell$; on each chart $b_\ell/\tilde z_j^{\deg b_\ell}\in B_j$ has a $p$-power in $A_j$
+(Theorem~\ref{thm:gl-frobenius-descent} and Lemma~\ref{lem:gl-unibranch-universal}); take one power $q$ for all $\ell,j$. Then $b_\ell^q\tilde z_j^{N\mathbf1}\in S$ for all $j$ and
+$N\gg0$, so $b_\ell^q\in R(\mathcal X)$ (the monomials $z_j^{N\mathbf1}$ generate an ideal containing $\mathrm{Mon}(b')$, $b'\gg0$). Since Frobenius is additive and
+$R(\mathcal X)$ is a ring, $p^q\in R(\mathcal X)$ for every $p\in S^\nu$, and for a section $f\in R_{ma}(\mathcal Y)$ the elements $f^q\tilde z^{q\beta}$ ($\beta\in\mathrm{Mon}(b)$) lie
+in $R(\mathcal X)$, whence $f^q\in R_{qma}(\mathcal X)$ by the same ideal argument. If $\psi_\alpha=m^{-1}\max_t\{\log|f_t|+\lambda_t\}\in\mathcal H(\mathcal Y,a_\alpha)$
+decrease to $\psi$, then $\psi_\alpha=(qm)^{-1}\max_t\{\log|f_t^q|+q\lambda_t\}\in\mathcal H(\mathcal X,a_\alpha)$, so $\psi\in\PSH(\mathcal X,\theta)$ by definition.
+
+\emph{Characteristic $0$.} Claim: for $a\in\mathbf Z^r$ and $0\ne s\in R_a(\mathcal Y)$, $u=\log|s|\in\PSH(\mathcal X,a)$. For each chart $j$ let $f_j=s/\tilde z_j^a\in B_j$
+(Lemma~\ref{lem:gl-sections}(4)); $A_j\subseteq B_j$ is subintegral (Lemma~\ref{lem:gl-unibranch-universal}); Theorem~\ref{thm:gl-additive-powers} gives $c_{ji}$, $a_{jm}$,
+with $d,N$ common to the finitely many $j$. Fix $R$ such that (i) $\hat c_{ji}\coloneqq c_{ji}\tilde z_j^{R\mathbf1+ia}\in R_{ia+R\mathbf1}(\mathcal Y)$ for all $i\le d$; (ii) $\tilde
+z_j^{R\mathbf1}$ kills the $z_j$-power torsion of the finite $S$-module $S^\nu/S$ (Noetherianity); (iii) $R\mathbf1+ia\ge0$ for $0\le i\le d$. For $m\ge N$,
+$\tilde a_{jm}=\tilde z_j^{R\mathbf1}s^m+\sum_i\binom mi\hat c_{ji}s^{m-i}\in R_{ma+R\mathbf1}(\mathcal Y)$ satisfies $\tilde a_{jm}/\tilde z_j^{ma+R\mathbf1}=a_{jm}\in A_j$,
+so by (ii) $t_{jm}\coloneqq\tilde z_j^{R\mathbf1}\tilde a_{jm}\in R_{ma+2R\mathbf1}(\mathcal X)$. For $n\ge\max\{1,N-d\}$ let $\mathcal S_n$ be the set of products of
+$t_{jm}$ ($n+d\le m\le n+2d$) with monomials of degree $R\mathbf1+(n+2d-m)a$ (by (iii)), sections of $\mathcal X$ of degree $(n+2d)a+3R\mathbf1$. For $v\in\mathcal X^\an$:
+every $t\in\mathcal S_n$ is $s^n$ times a section of $\mathcal Y$, so $\log|t|(v)\le n\,u(v)$; and for a chart with $|z^{(c)}_{j_c}|_v=1$,
+Lemma~\ref{lem:gl-lagrange} gives $f_j^{n+2d}\in(a_{j,n+d},\dots,a_{j,n+2d})B_j$, and elements of $B_j$ have norm $\le1$ at $v$, so
+$(n+2d)u(v)\le\max_m\log|a_{jm}|(v)\le\max_{t\in\mathcal S_n}\log|t|(v)$. At $\star$ the upper bound is $0$, so $\mathcal S_n$ contains a nonzero section, and
+$F_n=(n+2d)^{-1}\max_{t\in\mathcal S_n}\log|t|\in\mathcal H_{\mathrm{hom}}(\mathcal X,a+\tfrac{3R}{n+2d}\mathbf 1)$ satisfies $u\le F_n\le\tfrac n{n+2d}u$. With $n_0>2d$,
+$n_0\ge N-d$, $n_l=2^ln_0$ and $G_l=(1-2d/n_l)F_{n_l}$ one gets, as in \cite{FHX}, $G_{l+1}\le\tfrac{n_l-d}{n_l+d}u\le\tfrac{n_l-2d}{n_l}u\le G_l$; the $G_l$ are FS functions
+decreasing to $u$ with classes tending to $a$ and $G_l(\star)=0$, so $u\in\PSH(\mathcal X,a)$ by definition.
+
+For $\psi\in\PSH(\mathcal Y,\theta)$, $\theta\in N(\mathcal X)$, let $\psi_\alpha=m^{-1}\max_t\{\log|s_t|+\lambda_t\}\in\mathcal H(\mathcal Y,a_\alpha)$ decrease to $\psi$. By the claim
+and Theorem~\ref{thm:gl-fs-system-theory}(1) (maxima and translates), $\psi_\alpha\in\PSH(\mathcal X,a_\alpha)$; PSH2 at $\theta\in N(\mathcal X)$
+(Theorem~\ref{thm:gl-fs-system-theory}(2)) gives $\psi\in\PSH(\mathcal X,\theta)$.
+\end{proof}
+
+\begin{theorem}[Main theorem]\label{thm:gl-main}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch}
+\leanok
+\uses{lem:gl-unibranch-universal, cor:gl-normal-ep, thm:gl-normalization-reflection, lem:gl-pullback, lem:gl-cones}
+\source{fhx-envelope-20261028:thm:intro-main}
+Assume the hypotheses of Theorem~\ref{thm:gl-normal-ample-ep} (over the countable algebraically closed subfields of $k$; Theorems~\ref{thm:gl-frobenius-descent} and~\ref{thm:gl-additive-powers} are proved). Let $\mathcal X$ be a unibranch model (for instance the quotient model of an integral unibranch
+$X\subseteq\PP^{M_1}\times\dots\times\PP^{M_r}$) and $\theta\in\R^r$ (Theorem~\ref{thm:nn-main}). Every nonempty family $(\varphi_i)\subseteq\PSH(\mathcal X,\theta)$ bounded above
+satisfies $(\sup_i\varphi_i)^\star\in\PSH(\mathcal X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal Y=\mathcal X^\nu$, a normal model with $C(\mathcal X)\subseteq C(\mathcal Y)$ (sections pull back with the same values), so $\theta\in N(\mathcal Y)$. Identify
+$\mathcal Y^\an=\mathcal X^\an$ by the homeomorphism $\nu^\an$ (Lemma~\ref{lem:gl-unibranch-universal}), which commutes with suprema and usc regularization. The
+$\varphi_i\in\PSH(\mathcal Y,\theta)$ (Lemma~\ref{lem:gl-pullback}), so $(\sup\varphi_i)^\star\in\PSH(\mathcal Y,\theta)$ (Corollary~\ref{cor:gl-normal-ep}), hence
+$\in\PSH(\mathcal X,\theta)$ (Theorem~\ref{thm:gl-normalization-reflection}).
+\end{proof}
+
+\begin{proposition}[Descent through the normalization under the envelope property]\label{prop:gl-conductor-descent}
+\lean{EnvelopeProperty.MultiModel.HasEnvelopeProperty.exists_isPSH_comp_anMap_eq, EnvelopeProperty.MultiModel.exists_isConductorElem, EnvelopeProperty.MultiModel.IsConductorElem, EnvelopeProperty.MultiModel.IsConductorElem.eval_twistData, EnvelopeProperty.MultiModel.IsConductorElem.eq_of_anMap_eq_of_secAbs_ne_zero, EnvelopeProperty.MultiModel.HasEnvelopeProperty.anMap_ofNormalization_injective}
+\leanok
+\uses{lem:gl-pullback, lem:gl-usc-local, thm:gl-comparison, thm:gl-fs-system-theory, lem:gl-ep-basic, lem:gl-div-generic, rmk:gl-model-examples, lem:gl-sections}
+\source{bj22-trivval:lem:descentpsh2, bj22-trivval:thm:descentpsh}
+Let $\mathcal X$ be a model, $\mathcal Y=\mathcal X^\nu$, $\omega\in\R^r$ positive with $\mathrm{EP}_{\mathcal X}(\omega)$, and $\psi\in\PSH(\mathcal Y,\omega)$. There is
+$\varphi\in\PSH(\mathcal X,\omega)$ with $\varphi\circ\nu^\an=\psi$.
+\end{proposition}
+
+\begin{proof}
+$S^\nu$ is a finite $S$-module in the same fraction field, so the conductor $\{c\in S:cS^\nu\subseteq S\}$ contains a nonzero homogeneous $\tau$ of some degree $e\in\N^r$;
+then $\tau R_b(\mathcal Y)\subseteq R_{b+e}(\mathcal X)$. Put $\ell=\log|\tau|\le0$ and $\Omega=\{\ell>-\infty\}\subseteq\mathcal X^\an$. Since $S[\tau^{-1}]=S^\nu[\tau^{-1}]$, $\nu^\an$
+restricts to a homeomorphism $\nu^{-1}(\Omega)\to\Omega$. Let $\psi_\alpha\in\mathcal H(\mathcal Y,a_\alpha)$ decrease to $\psi$. For $\epsilon=1/M$, writing
+$\psi_\alpha=(mM)^{-1}\max_t\log|s_t^M|+\dots$, the functions $\psi_\alpha+\epsilon\,\ell\circ\nu$ are pullbacks of FS functions $\varphi_{\alpha,\epsilon}\in\mathcal H(\mathcal X,
+a_\alpha+\epsilon e)$ (use $s_t^M\tau^m$), decreasing on $\mathcal X^\an$ because $\nu^\an$ is surjective; so $\varphi_\epsilon=\lim_\alpha\varphi_{\alpha,\epsilon}\in\PSH(\mathcal
+X,\omega+\epsilon e)$ and $\varphi_\epsilon\circ\nu=\psi+\epsilon\ell\circ\nu$. Fix $\delta>0$; for $\epsilon$ small, $\omega+\epsilon e\le(1+\delta)\omega$, the $\varphi_\epsilon$ increase as
+$\epsilon\downarrow0$ and are bounded above, and $\mathrm{EP}((1+\delta)\omega)$ (Lemma~\ref{lem:gl-ep-basic}(2)) gives $\varphi^{(\delta)}=(\sup_\epsilon\varphi_\epsilon)^\star\in
+\PSH((1+\delta)\omega)$. On $\Omega$, $\sup_\epsilon\varphi_\epsilon=\psi\circ(\nu|)^{-1}$, which is usc there, so $\varphi^{(\delta)}=\psi\circ(\nu|)^{-1}$ on $\Omega$
+(Lemma~\ref{lem:gl-usc-local}(1)); as $\Omega\supseteq\mathcal X^{\divv}$, $\varphi^{(\delta)}$ is independent of $\delta$, and PSH2 at $\omega$ gives
+$\varphi\in\PSH(\mathcal X,\omega)$. $\varphi\circ\nu$ and $\psi$ are $\omega$-psh on $\mathcal Y$ and agree on $\nu^{-1}(\Omega)\supseteq\mathcal Y^{\divv}$, hence
+everywhere.
+\end{proof}
+
+\begin{corollary}[Characterization of unibranch varieties]\label{cor:gl-characterization}
+\lean{EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty, EnvelopeProperty.MultiModel.isUnibranch_of_exists_hasEnvelopeProperty, EnvelopeProperty.MultiModel.HasEnvelopeProperty.isUnibranch}
+\leanok
+\uses{thm:gl-main, prop:gl-conductor-descent, lem:gl-pl, def:gl-unibranch, lem:gl-pullback, lem:gl-charts}
+\source{fhx-envelope-20261028:cor:intro-characterization, bj22-trivval:thm:unibranch}
+Under the hypotheses of Theorem~\ref{thm:gl-main}, for a model $\mathcal X$ the following are equivalent: (1) $\mathcal X$ is unibranch; (2)
+$\mathrm{EP}_{\mathcal X}(\theta)$ for every $\theta\in\R^r$ (Corollary~\ref{cor:nn-characterization}); (3) $\mathrm{EP}_{\mathcal X}(\omega)$ for some positive $\omega$. The implication
+(3)$\Rightarrow$(1) uses none of the imported statements.
+\end{corollary}
+
+\begin{proof}
+(1)$\Rightarrow$(2) is Theorem~\ref{thm:gl-main}; (2)$\Rightarrow$(3) take $\omega=\mathbf1$. (3)$\Rightarrow$(1) (\cite[Theorem~5.12]{BJ22}): FS functions on $\mathcal Y=\mathcal
+X^\nu$ of classes $a\le\omega$ separate the points of $\mathcal Y^\an$ (two multigraded points differ on a homogeneous $p\in S^\nu_b$, and $n^{-1}\max\{\log|p|,-C\}\in
+\mathcal H(\mathcal Y,b/n)$ with $b/n\le\omega$), and they are $\omega$-psh, hence of the form $\varphi\circ\nu^\an$ (Proposition~\ref{prop:gl-conductor-descent}). So
+$\nu^\an$ is injective. Two maximal ideals of $B_j$ over one maximal ideal of $A_j$ give two rigid points of $U_j\subseteq\mathcal Y^\an$ ($|b|=1$ if $b\notin\mathfrak m$, $0$
+otherwise, extended by Lemma~\ref{lem:gl-charts}) with the same image; so they coincide.
+\end{proof}
+
+\begin{remark}[Classes outside the model-nef cone]\label{rmk:gl-nonnef}
+\uses{thm:gl-fs-system-theory, thm:gl-homogeneous-siu, prop:gl-homogeneous-slices, thm:gl-normalization-reflection, rmk:bj-psh-diagonal-finite}
+PSH2 (\cite[Theorem~4.5]{BJ22}) is proved in \cite{BJ22} through \cite[Lemma~4.6]{BJ22} for the families $\mathcal H^{\mathrm{gf}}_\R(L)$, $L\in\Pic(X)_\Q$. Its proof has a gap for
+families taking the value $-\infty$ (Remark~\ref{rmk:bj-psh-diagonal-finite}). The repairs used in this project need the family to be stable under $\max(\cdot,c)$ or to be
+approximable by finite-valued members; both hold when $L$ is semiample and fail otherwise (constants are Fubini--Study functions of $L$ only if a multiple of $L$ is
+globally generated). For $\theta\in N(\mathcal X)$ approximating classes can be raised into the semiample cone (Lemma~\ref{lem:gl-cones}(3)); for a psef class outside
+$N(\mathcal X)$ they cannot. PSH2 at such a class is used in revision \texttt{832e086} of \cite{FHX} in the last step of the proof of Theorem~7.2, for the
+limit $U$ in Proposition~7.4 (Proposition~7.5 of the revision of 2026-10-28), and in the characteristic-zero part of Theorem~8.3 (the definition-level limits in
+Lemma~7.1, \cite[Corollary~6.17]{BJ22} and the characteristic-$p$ part of Theorem~8.3 are limits of Fubini--Study functions and need no PSH2); the revision of
+2026-10-28 replaces these uses by \cite[Lemmas~2.3 and~7.4]{FHX} and by limits of Fubini--Study functions (Remark~\ref{rmk:nn-sources}). The version of Theorem~\ref{thm:gl-main} for all $\theta\in\R^r$ is obtained, with the same proofs, under the explicit
+hypothesis
+\begin{center}(\textsc{PSH2}$_{\mathcal X}$) \emph{for every $\theta\in\R^r$, a decreasing net $u_i\in\PSH(\mathcal X,\theta_i)$, $\theta_i\to\theta$, with $u=\lim u_i\not\equiv-\infty$ has
+$u\in\PSH(\mathcal X,\theta)$,}\end{center}
+for $\mathcal X$ and $\mathcal X^\nu$; this is \cite[Theorem~4.5]{BJ22} in the model. The Main Theorem covers all
+classes. Chapter~\ref{sec:nonnef} shows that no hypothesis is needed: the three uses of PSH2 at non-nef classes in revision \texttt{832e086} are
+repaired by homogeneous PSH2 and two structured diagonal lemmas, and the Main Theorem and Corollary~1.2 hold for every $\theta\in\R^r$
+(Theorem~\ref{thm:nn-main}); the restriction $\theta\in N(\mathcal X)$ will be dropped from Theorems~\ref{thm:gl-homogeneous-siu},
+\ref{thm:gl-normalization-reflection}, \ref{thm:gl-main}, Proposition~\ref{prop:gl-homogeneous-slices} and Corollaries~\ref{cor:gl-normal-ep},
+\ref{cor:gl-characterization} when they are formalized.
+\end{remark}
+
+\begin{remark}[Trust boundary]\label{rmk:gl-trust-boundary}
+\uses{thm:gl-main, cor:gl-characterization, thm:nn-main, cor:nn-characterization, thm:gl-dejong, thm:gl-fibre-constancy, thm:pg-psh-descent, thm:gl-smooth-ep, thm:import-sg-ep-char0, thm:kn-smooth-envelope-char-zero, thm:fu-variety-main, thm:fu-quot-main}
+Theorems~\ref{thm:gl-main} and~\ref{thm:nn-main} (every $\theta\in\R^r$) and Corollaries~\ref{cor:gl-characterization} and~\ref{cor:nn-characterization}
+use the proved alteration theorem above. The global compatibility statements retain three explicit hypotheses, each assumed only at the countable algebraically closed subfields of $k$: Lemma~5.5 of \cite{FHX}
+(\texttt{LocalPositivity}, which gives Wu's regularization and Proposition~5.22 of \cite{FHX} in the form used by Corollary~\ref{thm:pg-psh-descent},
+Chapter~\ref{sec:nf-route}); fibre constancy (Theorem~\ref{thm:gl-fibre-constancy}, supplied internally in the root public statements by
+the proved fibre-constancy result in Chapter~\ref{sec:fc}); and Theorem~\ref{thm:import-sg-ep-char0} in characteristic~$0$ only. In characteristic~$p$
+the last one is vacuous; in characteristic~$0$ it holds by Theorem~\ref{thm:kn-smooth-envelope-char-zero}, from relative ample Nadel
+vanishing (Theorem~\ref{thm:kn-relative-ample-nadel-vanishing}). The implications (2)$\Rightarrow$(1) and (3)$\Rightarrow$(1) of the characterizations use none of them. Frobenius descent and additive
+powers (Theorems~\ref{thm:gl-frobenius-descent}, \ref{thm:gl-additive-powers}) and PSH2 at non-nef classes (Chapter~\ref{sec:nonnef}) are proved, not assumed.
+Nothing uses \cite[Theorems~5.6, 6.21, Lemma~4.6, Corollaries~4.17, 12.18]{BJ22}, test configurations, or the energy theory of \cite{BJ22}. The comparisons of
+the model with arbitrary line bundles and $N^1$ (Remark~\ref{rmk:gl-model-comparison}) remain separate from the proved scheme-to-model alteration comparison in Remark~\ref{rmk:gl-dejong};
+the statements for an integral projective variety and all of $N^1(X)_\R$ are Theorem~\ref{thm:var-main} and Corollary~\ref{cor:var-characterization}.
+Lemma~5.5 of \cite{FHX} is proved over every algebraically closed field (Theorem~\ref{thm:lpn-local-positivity-instance}); its proof uses test
+configurations of $X\times\mathbb A^1$, and Theorem~\ref{thm:lpn-main-unconditional} removes it from the hypotheses.
+With both inputs proved, Theorems~\ref{thm:fu-variety-main} and~\ref{thm:fu-quot-main} and Corollaries~\ref{cor:fu-variety-characterization}
+and~\ref{cor:fu-quot-characterization} state the main results of \cite{FHX} without hypotheses.
+\end{remark}

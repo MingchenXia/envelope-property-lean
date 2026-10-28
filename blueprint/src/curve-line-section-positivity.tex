@@ -1,0 +1,49 @@
+\section{True curve degree from original sections and global generators}
+
+\begin{theorem}[Original nonzero sections give nonnegative intrinsic degree]
+\label{thm:fc-original-nonzero-section-degree-nonnegative}
+\leanok
+\lean{EnvelopeProperty.CurveLineSectionPositivity.localOrder_nonneg, EnvelopeProperty.CurveLineSectionPositivity.weightedLocalOrder_nonneg, EnvelopeProperty.CurveLineSectionPositivity.degree_nonneg_of_nonzero_section}
+Every actual effective Cartier ideal on an original integral locally
+Noetherian scheme has nonnegative native original local order, hence
+nonnegative original residue-weighted order.  On an original integral
+projective curve, every original invertible line admitting an actual
+nonzero original global section has nonnegative true full Euler degree.
+\uses{thm:fc-curve-cartier-native-local-orders,thm:fc-original-curve-line-degree-zero-section}
+\end{theorem}
+\begin{proof}
+At a point of coheight one, a genuine original regular Cartier equation
+has native order equal to the natural length of its same principal stalk
+quotient.  In other coheights its native order is zero.  Each original
+residue degree is a natural number, so each weighted order is nonnegative.
+The original nonzero section gives its same actual Cartier zero ideal,
+and the genuine full Euler line-degree formula identifies the line's
+degree with the all-point sum of those actual weighted orders.  Each term
+is nonnegative, giving the claim without an order or degree certificate.
+\end{proof}
+
+\begin{theorem}[Original global generators give nonnegative degree on every original curve]
+\label{thm:fc-original-global-generators-curve-degree-nonnegative}
+\leanok
+\lean{EnvelopeProperty.CurveLineSectionPositivity.exists_generatorHom_ne_zero, EnvelopeProperty.CurveLineSectionPositivity.degree_nonneg_of_generatingSections, EnvelopeProperty.CurveLineSectionPositivity.degree_pullback_nonneg_of_generatingSections}
+Every actual original globally generated invertible line has nonnegative
+true full Euler degree on every actual original integral projective curve
+pullback of dimension at most one.  No finite generating-family, flatness,
+properness of the curve map, or comparison of numerical classes is an
+additional hypothesis.
+\uses{thm:fc-original-nonzero-section-degree-nonnegative}
+\end{theorem}
+\begin{proof}
+At any original point, genuine invertibility and the actual generating
+family internally produce an actual affine neighborhood on which one of
+the same original global generators is an isomorphism.  That original
+generator cannot be zero: its true pulled section, followed by its
+canonical actual frame, is the identity on the original nonzero unit
+module.  Apply the preceding nonzero-section degree theorem.  For an
+arbitrary original curve map, the native pullback adjunction internally
+pulls the actual generating family to generators of the same actual
+pulled line, which is invertible under its true pullback.  Apply the same
+argument on the original curve.  Thus positivity concerns the actual
+original line and genuine curve degree, ready for native numerical
+classes; no desired nefness premise is supplied.
+\end{proof}

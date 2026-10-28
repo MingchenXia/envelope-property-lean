@@ -1,0 +1,44 @@
+\section{Linearizations of powers and tensor products}
+\label{sec:native-tc-nef-fs-tensor-comparisons}
+
+Fix a test configuration $\pi\colon\mathcal X\to\mathbf A^1$ of $X$ with its
+$\mathbf G_m$-action $\mathrm{act}\colon\mathbf G_m\times\mathcal X\to\mathcal X$, the
+projection $\mathrm{pr}\colon\mathbf G_m\times\mathcal X\to\mathcal X$, the inclusion
+$i_1\colon\mathcal X_1\to\mathcal X$ of the fibre over $1$ and the identification
+$\phi_1\colon\mathcal X_1\simeq X$.  A \emph{linearized line} is a module $M$ on
+$\mathcal X$ with an isomorphism $\alpha\colon\mathrm{act}^*M\simeq\mathrm{pr}^*M$ and an
+isomorphism $e\colon i_1^*M\simeq\phi_1^*L$ with a module $L$ on $X$.
+
+\begin{lemma}[Linearizations of powers and tensor products]
+\label{lem:native-tc-nef-fs-whole-tensor-comparisons}
+\leanok
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.powerLineActionComparison,
+EnvelopeProperty.NativeTestConfiguration.TestConfiguration.tensorLineActionComparison,
+EnvelopeProperty.NativeTestConfiguration.TestConfiguration.powerFibreOneComparison,
+EnvelopeProperty.NativeTestConfiguration.TestConfiguration.tensorFibreOneComparison,
+EnvelopeProperty.NativeTestConfiguration.TestConfiguration.powerTensorLineActionComparison,
+EnvelopeProperty.NativeTestConfiguration.TestConfiguration.powerTensorFibreOneComparison}
+\uses{thm:native-test-configuration-line-trivialization}
+\source{bj22-trivval:sec:tc}
+Let $(M,\alpha,e)$ and $(H,\beta,f)$ be linearized lines with generic lines $L$ and $K$.
+For every $n\ge0$ the power $M^{\otimes n}$ carries the linearization
+$\alpha_n\colon\mathrm{act}^*M^{\otimes n}\simeq(\mathrm{act}^*M)^{\otimes n}
+\xrightarrow{\alpha^{\otimes n}}(\mathrm{pr}^*M)^{\otimes n}\simeq\mathrm{pr}^*M^{\otimes n}$
+and the fibre-one identification $e_n$ defined in the same way from $e$, with generic line
+$L^{\otimes n}$.  The tensor product $M\otimes H$ carries the linearization
+$\mathrm{act}^*(M\otimes H)\simeq\mathrm{act}^*M\otimes\mathrm{act}^*H
+\xrightarrow{\alpha\otimes\beta}\mathrm{pr}^*M\otimes\mathrm{pr}^*H\simeq\mathrm{pr}^*(M\otimes H)$
+and the analogous fibre-one identification with $L\otimes K$.  Combining both, for all
+natural $a,b$ the line $M^{\otimes b}\otimes H^{\otimes a}$ is a linearized line with
+generic line $L^{\otimes b}\otimes K^{\otimes a}$.
+\end{lemma}
+
+\begin{proof}
+Pullback of modules along a morphism of schemes is a strong monoidal functor.  Its
+comparison with tensor powers, $g^*(M^{\otimes n})\simeq(g^*M)^{\otimes n}$, is built by
+induction on $n$ from the tensorator, and the tensor power of an isomorphism is an
+isomorphism.  Composing the three isomorphisms displayed in the statement gives
+$\alpha_n$, $e_n$, and the tensor linearization and fibre-one identification.  All of
+them are isomorphisms of module sheaves on the action scheme $\mathbf G_m\times\mathcal X$
+or on $\mathcal X_1$, for the given maps $\mathrm{act}$, $\mathrm{pr}$, $i_1$, $\phi_1$.
+\end{proof}

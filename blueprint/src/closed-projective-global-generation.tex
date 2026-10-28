@@ -1,0 +1,67 @@
+\section{Global generation on original closed projective schemes}
+
+\begin{lemma}[Actual embedded pushforward and its actual counit]
+\label{lem:actual-embedded-module-pushforward-faithful}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalGeneration.pushforward_faithful_of_isInducing,EnvelopeProperty.ClosedProjectiveGlobalGeneration.counit_epi_of_isInducing}
+\leanok
+Let $f:X\to Y$ be an original scheme morphism inducing the topology on $X$.
+Its actual module-sheaf pushforward is faithful, and the actual adjunction
+counit $f^*f_*M\to M$ is an epimorphism for every original module $M$.
+\end{lemma}
+\begin{proof}
+Every open of $X$ is the inverse image of an open of $Y$. Equality after
+pushforward therefore gives equality of the original module morphisms on
+every open of $X$. Thus the pushforward is faithful. For any adjunction,
+a faithful right adjoint makes the actual counit epic: applying the right
+adjoint to two morphisms equal after the counit and then using the actual
+unit and triangle identity proves equality after the right adjoint;
+faithfulness gives their equality.
+\end{proof}
+
+\begin{lemma}[Actual finite generating families under pullback and quotient]
+\label{lem:actual-module-pullback-quotient-generators}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalGeneration.pullback_generatingSections,EnvelopeProperty.ClosedProjectiveGlobalGeneration.pullback_generatingSections_isFiniteType}
+\leanok
+For every original scheme morphism $f:X\to Y$ and actual generating family
+$G$ of an original module $N$ on $Y$, the actual pullback $f^*N$ has a
+canonical generating family. Its index set is exactly that of $G$, so finite
+families stay finite.
+\end{lemma}
+\begin{proof}
+Pull back the genuine free evaluation epimorphism of $G$. The original
+pullback functor is a left adjoint, hence preserves colimits and epimorphisms,
+and its genuine unit comparison identifies the pullback of the original
+free module with the free module on the same indices. Their composite is
+an actual free evaluation epimorphism. The index set is unchanged.
+\end{proof}
+
+\begin{theorem}[Serre global generation on the same closed projective scheme]
+\label{thm:actual-closed-projective-global-generation}
+\lean{EnvelopeProperty.ClosedProjectiveGlobalGeneration.exists_eventual_generatingSections}
+\leanok
+\uses{lem:actual-embedded-module-pushforward-faithful,lem:actual-module-pullback-quotient-generators,thm:coherent-projective-serre-global-generation}
+Let $R$ be any commutative ring, $P=\mathbb P_R^{\sigma-1}$ for a finite
+coordinate set $\sigma$ with chosen coordinate $j$, and let $i:X\hookrightarrow P$
+be an actual closed immersion. For every original finite-type quasicoherent
+module $M$ on $X$, there is an integer $N$ such that, for every $d\ge N$,
+the SAME original module $M\otimes i^*\mathcal O_P(d)$ has actual finite
+global generating sections. There is no Noetherian, field, normality,
+projective-presentation or generation hypothesis beyond those stated.
+\end{theorem}
+\begin{proof}
+The original closed immersion is affine, so its actual pushforward $i_*M$
+is quasicoherent. It is finite type: on an original affine open $U$ of $P$,
+the original inverse-image scheme is affine, its section ring is a quotient
+of $\mathcal O_P(U)$, and finite generation over that quotient is finite
+generation over $\mathcal O_P(U)$. Apply the actual polynomial-projective
+Serre theorem to this SAME $i_*M$. For every $d\ge N$, pull back its actual
+finite generating family for $i_*M\otimes\mathcal O_P(d)$. The true monoidal
+pullback isomorphism gives a generating family of
+$i^*i_*M\otimes i^*\mathcal O_P(d)$. The actual adjunction counit is epic by
+the first lemma. Tensoring it by the actual invertible $i^*\mathcal O_P(d)$
+remains epic, since tensoring by a line bundle is an equivalence. Its images
+of the pulled-back generators therefore generate the SAME original
+$M\otimes i^*\mathcal O_P(d)$. All these families have the original finite
+index set. This argument uses actual whole morphisms and does not require
+an assumed projection formula.
+\end{proof}

@@ -1,0 +1,81 @@
+\section{The original finite source and the degree-zero DI summand}
+\label{sec:di-finite-source-assembly}
+
+Throughout, $f:X\to\operatorname{Spec}k$ is smooth of pure relative
+dimension $n$, $k$ has characteristic $p$, $Y=X^{(p)}$, and
+$K=F_{X/k*}\Omega^\bullet_{X/k}$ is the original natural-degree complex.
+The Cartier isomorphism used here is the actual global isomorphism already
+constructed on these sheaves. No new choice of homology object is made.
+
+\begin{definition}[The original degree-zero summand]
+\label{def:di-actual-zero-summand}
+\lean{EnvelopeProperty.DI.FiniteSourceAssembly.zeroComponent,EnvelopeProperty.DI.FiniteSourceAssembly.zeroComponent_closed,EnvelopeProperty.DI.FiniteSourceAssembly.zeroCochainMap,EnvelopeProperty.DI.FiniteSourceAssembly.zeroCochainMap_f_zero,EnvelopeProperty.DI.FiniteSourceAssembly.zeroTotalMap}
+\leanok
+\uses{thm:cartier-geometric-global-sheaf-isomorphism}
+There are no incoming boundaries in degree zero of $K$. Thus the canonical
+quotient $\pi:Z^0K\to H^0K$ is an isomorphism. Define
+\[
+ a_0:\Omega^0_{Y/k}\xrightarrow{C^{-1}}H^0K
+       \xrightarrow{\pi^{-1}}Z^0K\hookrightarrow K^0.
+\]
+This gives a cochain map from the single complex in degree zero to $K$.
+For any family of opens $\mathcal U$, compose with the original total
+\v Cech augmentation to obtain its degree-zero map into
+$\operatorname{Tot}\check C(\mathcal U,K)$.
+\end{definition}
+\begin{proof}
+The composite of the cycle inclusion with the outgoing differential is
+zero, so $a_0$ is closed. The universal construction of maps from a single
+complex gives the stated cochain map, whose degree-zero component is
+exactly the original single-object identification followed by $a_0$.
+Composition with the existing augmentation preserves the cochain equation.
+\end{proof}
+
+\begin{lemma}[The actual degree-zero Cartier class]
+\label{lem:di-actual-zero-cartier-class}
+\lean{EnvelopeProperty.DI.FiniteSourceAssembly.zeroCochainMap_class}
+\leanok
+\uses{def:di-actual-zero-summand}
+The map induced by the constructed degree-zero cochain map on homology,
+using the canonical homology identification of its original single
+complex, is exactly the entire global inverse Cartier map in degree zero.
+\end{lemma}
+\begin{proof}
+The map on cycles is the original single-cycle identification followed by
+$C^{-1}\pi^{-1}$. Naturality of the original quotient from cycles to
+homology therefore identifies its homology class with
+$C^{-1}\pi^{-1}\pi=C^{-1}$. This is an equality of the entire sheaf maps,
+before evaluation on any open.
+\end{proof}
+
+\begin{lemma}[The finite source is already below the cutoff]
+\label{lem:di-finite-source-good-truncation}
+\lean{EnvelopeProperty.DI.FiniteSourceAssembly.source_extend_isStrictlyLE,EnvelopeProperty.DI.FiniteSourceAssembly.sourceTruncationIso,EnvelopeProperty.DI.FiniteSourceAssembly.truncatedMap,EnvelopeProperty.DI.FiniteSourceAssembly.truncatedMap_inclusion}
+\leanok
+For any abelian category and original objects $(M_q)_{q<p}$, put
+$S=\bigoplus_{q<p}M_q[-q]$, first as a natural-degree complex and then
+extended by zero to integer degrees. The original good-truncation
+inclusion $\tau_{<p}S\to S$ is an isomorphism. Any cochain map $a:S\to T$
+has the canonical factorization
+\[
+ S\xrightarrow{\iota_S^{-1}}\tau_{<p}S
+   \xrightarrow{\tau_{<p}a}\tau_{<p}T,
+\]
+whose composite with the original inclusion into $T$ is exactly $a$.
+This assertion includes $p=0$ and assumes no invertibility or
+quasi-isomorphism property of $a$.
+\end{lemma}
+\begin{proof}
+Every summand of $S$ is zero in each degree $q\ge p$, so the existing
+finite-source term computation makes the original coproduct zero there.
+Extension by zero retains these terms and adds only zero negative terms.
+Consequently $S$ is strictly supported in degrees at most $p-1$, and the
+native good-truncation inclusion is invertible. Its naturality square for
+$a$, composed with its inverse on the source, gives the entire asserted
+factorization identity.
+\end{proof}
+
+These constructions supply the zero summand and the source truncation for
+the final finite-source assembly. They do not assert that the positive
+summands, their Cartier comparison, or the global DI decomposition have
+already been constructed.

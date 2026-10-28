@@ -1,0 +1,49 @@
+\section{Actual affine-chart generation of the whole native function field}
+\label{sec:affine-function-field-generation}
+
+\begin{theorem}[All original affine functions generate the entire original function field]
+\label{thm:affine-function-field-generation}
+\lean{EnvelopeProperty.AffineFunctionFieldGeneration.adjoin_sectionGerms_eq_top, EnvelopeProperty.AffineFunctionFieldGeneration.exists_finite_sectionGerms, EnvelopeProperty.AffineFunctionFieldGeneration.closedImmersion_adjoin_eq_top}
+\leanok
+\uses{thm:sc0-scheme-sections-function-field-fraction,def:sc0-scheme-sections-function-field-map}
+\source{bj22-trivval:sec:tc}
+Let $X$ be integral over the original field $k$ and let $U$ be
+an original nonempty affine open. The actual germs of
+$\Gamma(U,\mathcal O_X)$ generate all of $K(X)$ over $k$.
+If the structure morphism is locally of finite type, one
+can internally choose finitely many actual original sections
+whose germs already generate all of $K(X)$. If $X$ is actually
+closed in $Y$ and $V\subset Y$ is affine with nonempty inverse
+image, all original functions on $V$, pulled back along this
+same closed immersion and then taken to the actual generic
+stalk of $X$, generate all of $K(X)$ as well.
+\end{theorem}
+
+\begin{proof}
+The actual function field is the fraction field of the
+original nonempty affine section ring. Thus every element of
+$K(X)$ is the quotient of the actual germs of two original
+sections. Any intermediate field containing all those germs
+contains all these quotients and hence is all of $K(X)$.
+
+Under local finite type, the original affine section algebra
+is finitely generated over $k$. Choose a finite algebra
+generating set $s$. Let $F$ be the intermediate field generated
+by their actual germs. Algebra induction shows that the germ
+of every original section belongs to $F$: the generators do
+by definition, scalar coefficients do because the actual germ
+is a $k$-algebra homomorphism, and addition and multiplication
+preserve membership. The preceding fraction-field argument
+gives $F=K(X)$.
+
+For the closed immersion, the inverse image of the original
+affine open is affine, and its whole section-ring map from
+the ambient affine section ring is surjective. Every section
+on that inverse image is therefore the pullback of an actual
+original ambient section. Their actual generic germs contain
+all germs of the inverse-image section ring; applying the
+first assertion to that nonempty affine open proves the claim.
+These are statements about the entire original native function
+field, independently of the further finite multiprojective
+coordinate comparison.
+\end{proof}

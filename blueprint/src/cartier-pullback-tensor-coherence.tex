@@ -1,0 +1,25 @@
+\section{Coherence of the actual canonical tensor pullback}
+
+\begin{lemma}[The actual inverse tensorator respects genuine composite pullback]
+\label{lem:cartier-actual-pullback-inverse-tensorator-composition}
+\lean{AlgebraicGeometry.Scheme.Modules.pullbackComp_inverse_tensorator}
+\leanok
+For actual scheme morphisms $f:X\to Y$ and $g:Y\to Z$, the genuine
+inverse tensorator of pullback along $f\circ g$ agrees with the two
+successive original inverse tensorators, under the true native
+pullback-composition comparisons on the two original module factors.
+\end{lemma}
+\begin{proof}
+The genuine composition comparison for the actual pullback functors
+is monoidal. Its tensor identity says that the tensorator of successive
+pullback followed by that composition comparison on the original tensor
+is the tensor of the two original factor comparisons followed by the
+tensorator of composite pullback. Precompose the claimed identity with
+the tensorator of successive pullback. The left composite cancels
+successively its two inverse tensorators. On the right, use exactly
+that monoidal tensor identity and then cancel the true composite
+pullback tensorator with its inverse. The resulting two morphisms are
+the same tensor of the original factor comparisons. Cancellation of
+the original invertible successive-pullback tensorator proves the
+claimed identity. No tensor comparison or coherence is assumed.
+\end{proof}

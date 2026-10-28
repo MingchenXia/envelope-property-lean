@@ -1,0 +1,238 @@
+\section{Cohomology of the schematic Rees family}
+
+\begin{lemma}[Homology commutes with direct sums of modules]
+\label{lem:fc-formal-functions-direct-sum}
+\lean{EnvelopeProperty.FormalFunctionsDirectSum.homologyIso}
+\leanok
+Let $R$ be a ring and $(A_d\xrightarrow{f_d}B_d\xrightarrow{g_d}C_d)_{d\geq0}$
+a family of complexes of $R$-modules. The natural map
+\[
+ \bigoplus_d \ker(g_d)/\operatorname{im}(f_d)
+ \longrightarrow
+ \ker(\bigoplus_d g_d)/\operatorname{im}(\bigoplus_d f_d)
+\]
+is an isomorphism.
+\end{lemma}
+\begin{proof}
+A direct-sum element is killed by $\bigoplus_d g_d$ exactly when each of its
+finitely many nonzero coordinates is killed by $g_d$. Thus its kernel is the
+direct sum of the individual kernels. Its image is the direct sum of the
+individual images: one inclusion follows by evaluating every coordinate;
+for the reverse inclusion choose a preimage in each of the finitely many
+nonzero coordinates and take their direct sum. Coordinatewise quotient maps
+are surjective, and their direct-sum kernel is exactly the direct sum of the
+individual images. Passing to quotients gives the stated isomorphism. These
+maps are the maps induced by the original inclusions of summands.
+\end{proof}
+
+\begin{lemma}[Cohomology decomposition of the actual Rees Cech complex]
+\label{lem:fc-rees-cech-degree-homology}
+\uses{lem:fc-formal-functions-direct-sum, lem:fc-rees-cech-degree-complex}
+\lean{EnvelopeProperty.FcReesCechDegreeHomology.orderedHomologyIso}
+\leanok
+Let $X$ be separated over $\operatorname{Spec}R$, let $I\subset R$, and fix
+a finite ordered family of affine opens of $X$. For the actual schematic
+Rees family, the ordered Cech complex of its structure sheaf, restricted to
+$R$, has cohomology canonically isomorphic to the direct sum of the
+cohomologies of the original ideal-power degree complexes.
+\end{lemma}
+\begin{proof}
+On each original affine intersection the actual Rees-family sections are
+$\bigoplus_{d\geq0}(I\mathcal O_X)^d$. The actual restriction maps preserve
+each degree and restrict to the original ideal-power restriction maps.
+Because the original affine family is finite, taking the Cech term commutes
+with this direct sum. The resulting cochain isomorphism commutes with every
+alternating differential. Apply the preceding lemma to the incoming and
+outgoing differentials at each cohomological degree.
+\end{proof}
+
+\begin{remark}
+The direct-sum comparison is $R$-linear. Finite generation over the Rees
+algebra also requires retaining its genuine action, which sends degree $d$
+to degree $d+e$ under multiplication by an element of $I^e$. Proper
+cohomology finiteness and this action are required before applying stable
+filtrations or algebraizing compatible infinitesimal sections. Neither is
+an assumption of the eventual formal-functions theorem.
+\end{remark}
+
+\begin{lemma}[Actual homogeneous Rees multiplication]
+\label{lem:fc-formal-functions-rees-multiplication}
+\lean{EnvelopeProperty.FormalFunctionsReesMultiplication.powerEquiv_monomial_mul, EnvelopeProperty.FormalFunctionsReesMultiplication.powerRestriction_multiply}
+\leanok
+Let $R\to A$ be a homomorphism of commutative rings, $I\subset R$, and
+$J=IA$. For $a\in I^e$, multiplication by its image defines the original
+$R$-linear map $J^d\to J^{e+d}$. Under the genuine Rees coefficient
+isomorphism, multiplication of the actual monomials $aT^e$ and $xT^d$
+is exactly inclusion of $ax$ in degree $e+d$. For an $R$-algebra map
+$A\to B$, these maps commute with the actual ideal-power restriction.
+\end{lemma}
+\begin{proof}
+The image of $a$ belongs to $J^e$ because ideal extension commutes with
+powers. Multiplication of this element with $x\in J^d$ belongs to
+$J^eJ^d=J^{e+d}$, and distributivity and commutativity prove $R$-linearity.
+Multiplication of the actual polynomials gives
+$(aT^e)(xT^d)=(ax)T^{e+d}$; its only nonzero coefficient is $ax$ in the
+stated degree. Applying the algebra homomorphism to $ax$ gives the
+product of its two original images, and its scalar compatibility retains
+the same original image of $a$. This proves the full restriction square.
+\end{proof}
+
+\begin{lemma}[Original homogeneous multiplication on ideal-power Cech cohomology]
+\label{lem:fc-rees-cech-homogeneous-multiplication}
+\uses{lem:fc-formal-functions-rees-multiplication, lem:fc-rees-cech-degree-complex}
+\lean{EnvelopeProperty.FcReesCechHomogeneousMultiplication.degreeMultiply, EnvelopeProperty.FcReesCechHomogeneousMultiplication.homologyMultiply}
+\leanok
+For $a\in I^e$, literal multiplication by the image of $a$ on every
+original affine intersection defines a cochain map from the genuine
+degree-$d$ ideal-power complex to the degree-$(e+d)$ complex, and hence
+an $R$-linear map on each of their cohomologies.
+\end{lemma}
+\begin{proof}
+At every ordered intersection multiply a section by the restriction of $a$.
+The preceding restriction square shows that each face restriction commutes
+with this multiplication. Therefore each finite alternating sum of face
+restrictions commutes with multiplication. This gives the cochain map.
+It carries cycles to cycles and boundaries to boundaries, so its induced
+map on the original quotient of cycles by boundaries is well defined and
+$R$-linear. Its action at every intersection is the actual multiplication
+of homogeneous Rees polynomials established in the preceding lemma.
+\end{proof}
+
+\begin{lemma}[Summand inclusions in the homology comparison]
+\label{lem:fc-formal-functions-direct-sum-inclusions}
+\uses{lem:fc-formal-functions-direct-sum}
+\lean{EnvelopeProperty.FormalFunctionsDirectSumNaturality.inclusion_homology}
+\leanok
+For every family of module short complexes, the canonical homology
+isomorphism from the direct-sum complex to the direct sum of homologies
+carries the homology map of each original summand inclusion to the
+corresponding direct-sum inclusion of its original homology.
+\end{lemma}
+\begin{proof}
+Include a cycle in one original summand. Its image is the same cycle
+in that coordinate and zero in all other coordinates. The coordinatewise
+quotient map therefore gives its original homology class in that summand
+and zero elsewhere. Every homology class is represented by a cycle, so
+this proves the claimed equality on every original homology class.
+\end{proof}
+
+\begin{lemma}[Projectivity of the actual schematic Rees family]
+\label{lem:fc-formal-functions-projective-family}
+\uses{lem:fc-rees-formal-family, lem:fc-rees-formal-restriction}
+\lean{EnvelopeProperty.FormalFunctionsProjectiveFamily.family_isProjectiveFactorization}
+\leanok
+If $X\to\operatorname{Spec}R$ has an actual closed embedding into a finite
+dimensional polynomial projective space over $R$, its actual schematic
+Rees family has a closed embedding into the same dimensional polynomial
+projective space over $\operatorname{Rees}_R(I)$, over that same coefficient
+spectrum.
+\end{lemma}
+\begin{proof}
+Base change the original closed embedding along
+$\operatorname{Spec}\operatorname{Rees}_R(I)\to\operatorname{Spec}R$.
+The resulting map is a closed embedding because it is an actual pullback
+of the original one. The genuine polynomial-projective base-change
+isomorphism identifies its target with polynomial projective space over
+$\operatorname{Rees}_R(I)$, preserving the entire coefficient projection.
+Compose the resulting closed embedding with the actual closed schematic
+image inclusion defining the Rees family. Both the closed-embedding
+property and the coefficient projection identity are preserved by
+composition. This constructs the required projective factorization.
+\end{proof}
+
+\begin{lemma}[Finite cohomology of the actual Rees family]
+\label{lem:fc-formal-functions-rees-cohomology-finite}
+\uses{lem:fc-formal-functions-projective-family, lem:fc-rees-cech-chart-sections}
+\lean{EnvelopeProperty.FormalFunctionsReesCohomologyFinite.orderedReesCech_finite, EnvelopeProperty.FormalFunctionsReesCohomologyFinite.chartReesCech_finite}
+\leanok
+Suppose $R$ is Noetherian and $X\to\operatorname{Spec}R$ has an actual
+finite-dimensional closed projective embedding. For every finite ordered
+affine open cover of $X$, every cohomology module of the actual ordered
+structure-sheaf Cech complex of its schematic Rees family is finite over
+$\Gamma(\operatorname{Spec}\operatorname{Rees}_R(I),\mathcal O)$.
+\end{lemma}
+\begin{proof}
+The Rees algebra is Noetherian, and the preceding lemma constructs the
+actual family projective embedding. Its structure module is finite type
+and quasicoherent. The projection from the actual family to $X$ is affine,
+so the inverse images of the given affine opens are affine and cover the
+whole actual family. Projective coherent-cohomology finiteness on the
+standard coordinate cover, followed by the actual affine-cover Cech
+comparison, gives finite native Cech cohomology in each positive degree
+on this same pulled-back cover. The native and ordered complexes are
+homotopy equivalent, so their original cohomology modules are isomorphic.
+In degree zero the sheaf gluing comparison identifies ordered Cech
+cohomology with global sections, finite by projective coherent-cohomology
+finiteness. Finally the actual Rees chart complex isomorphism preserves
+the original coefficient action and transports these finite modules.
+\end{proof}
+
+\begin{lemma}[Original ideal-power summands on actual Rees cohomology]
+\label{lem:fc-rees-cech-degree-inclusions}
+\uses{lem:fc-rees-cech-degree-homology, lem:fc-formal-functions-direct-sum-inclusions}
+\lean{EnvelopeProperty.FcReesCechDegreeInclusions.homologyInclusion}
+\leanok
+The literal inclusion of degree-$d$ ideal-power cochains in the actual
+direct-sum Rees degree complex is a cochain map. On cohomology, the genuine
+Rees degree decomposition carries this map to the literal inclusion of
+the original degree-$d$ ideal-power cohomology summand.
+\end{lemma}
+\begin{proof}
+The whole Rees degree differential acts coordinatewise by the genuine
+ideal-power differential. It therefore commutes with inclusion of any
+one degree, including its zero coordinates in every other degree. This
+constructs the cochain map. Its associated homology three-term map is
+the literal summand inclusion in the direct sum of the original homology
+three-term complexes. The preceding direct-sum homology inclusion theorem
+therefore identifies its induced homology map with the stated original
+summand inclusion.
+\end{proof}
+
+\begin{lemma}[The actual finite Rees cohomology module]
+\label{lem:fc-rees-cech-homology-module}
+\uses{lem:fc-rees-cech-degree-homology, lem:fc-formal-functions-rees-cohomology-finite}
+\lean{EnvelopeProperty.FcReesCechHomologyModule.finiteReesHomology, EnvelopeProperty.FcReesCechHomologyModule.reesModule_smul, EnvelopeProperty.FcReesCechHomologyModule.reesModule_originalScalar, EnvelopeProperty.FcReesCechHomologyModule.originalScalarTower}
+\leanok
+The direct sum of original ideal-power cohomology modules carries the
+actual Rees coefficient action transported through the genuine original
+cohomology comparison. For a Noetherian original base, an original closed
+projective embedding and an original finite affine cover, this is a finite
+module over the actual Rees algebra. Its scalar action on every class is
+precisely the original Rees scalar action conjugated by that comparison.
+\end{lemma}
+\begin{proof}
+Restriction of scalars preserves kernels and cokernels of module maps,
+so the genuine original Rees Cech homology restricted to $R$ identifies
+with the cohomology of the restricted original complex. Compose this
+isomorphism with the genuine degree homology decomposition. Transfer the
+original Rees coefficient action along the resulting additive equivalence;
+the additive groups and original $R$-module structures are retained.
+The equivalence is linear for the transferred action by its definition.
+The preceding actual finite-cohomology theorem therefore makes this
+module finite over the original Rees-base global functions. The actual
+affine section ring isomorphism identifies those global functions with
+the actual Rees ring, so restriction along its inverse preserves finite
+generation. This gives the stated finite Rees module and its exact action
+on every original class. Compatibility of this action with polynomial
+degrees is a further statement, not an assumption in this construction.
+\end{proof}
+
+\begin{lemma}[Actual coherent ideal-power Cech comparison]
+\label{lem:fc-rees-cech-ideal-power-complex}
+\uses{lem:fc-rees-cech-ideal-power-sections, lem:fc-rees-cech-degree-complex}
+\notready
+The actual ordered Cech complex of the original coherent ideal-power
+module sheaf, restricted to the original coefficient ring, is isomorphic
+to the genuine original ideal-power degree complex. Each original affine
+intersection, original face restriction and alternating differential is
+preserved.
+\end{lemma}
+\begin{proof}
+Every ordered affine intersection is affine because the original scheme
+is separated. Apply the preceding whole section equivalence at each
+intersection and take products. Naturality identifies every ordered
+face restriction with the same original chart ideal-power restriction.
+Taking finite alternating sums identifies the differentials. The termwise
+isomorphisms therefore form a cochain isomorphism with the stated
+original terms and differential.
+\end{proof}

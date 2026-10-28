@@ -1,0 +1,58 @@
+\section{Deriving fibre constancy inside the main theorem interface}
+
+The original global model compatibility theorems accept an explicit fibre
+constancy argument. The source-facing quotient-model results now construct
+that argument from the proved original fibre theorem. This removes a proved
+premise from their public signatures. It does not discharge the two remaining
+project-owned inputs, local positivity and the smooth characteristic-zero
+envelope theorem. Alterations remain the sole user-deferred external input.
+
+\begin{theorem}[Original quotient-model envelope property with proved fibres]
+\label{thm:proved-fibres-quotient-main}
+\uses{thm:gl-main,cor:fc-original-blowup-fibre-constancy-class}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch,EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch}
+\leanok
+Let $k$ be algebraically closed and let $X$ be the original relevant prime
+multiprojective quotient model. Assume local positivity, alterations and the
+smooth characteristic-zero envelope theorem over its countable algebraically
+closed coefficient subfields. If $X$ is unibranch, every real vector class has
+the envelope property, and the upper regularization of every nonempty uniformly
+bounded-above family of original psh functions is psh. No fibre-constancy input
+is required.
+\end{theorem}
+\begin{proof}
+For each original coefficient subfield, apply the proved fibre-constancy
+instance, whose only premises are that the field is algebraically closed.
+Insert those proofs into the original global envelope and family theorems.
+All original quotient-model data and real classes are unchanged.
+\end{proof}
+
+\begin{theorem}[Positive characteristic with proved fibres]
+\label{thm:proved-fibres-quotient-charp}
+\uses{thm:proved-fibres-quotient-main}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_of_charP}
+\leanok
+In prime characteristic the same original conclusion requires only local
+positivity and alterations over the countable algebraically closed coefficient
+subfields. The characteristic-zero and fibre-constancy inputs are absent.
+\end{theorem}
+\begin{proof}
+Use the original positive-characteristic global theorem with the internally
+proved fibre-constancy instance.
+\end{proof}
+
+\begin{corollary}[Original quotient-model characterization with proved fibres]
+\label{cor:proved-fibres-quotient-characterization}
+\uses{cor:gl-characterization,cor:fc-original-blowup-fibre-constancy-class}
+\lean{EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae}
+\leanok
+Under the three inputs of Theorem~\ref{thm:proved-fibres-quotient-main}, original
+unibranchness, local unibranchness, geometric local unibranchness, the envelope
+property at every real vector class and the envelope property at some positive
+vector class are equivalent. Fibre constancy is internally proved.
+\end{corollary}
+\begin{proof}
+Supply the same proved fibre instance to the existing characterization.
+This retains its positive-vector scope; arbitrary intrinsic ample-class
+comparison is a separate obligation.
+\end{proof}

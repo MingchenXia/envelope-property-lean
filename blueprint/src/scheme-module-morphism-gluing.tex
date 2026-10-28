@@ -1,0 +1,49 @@
+\section{Gluing the original whole module morphisms and isomorphisms}
+
+\begin{theorem}[Compatible original module maps glue uniquely]
+\label{thm:scheme-original-module-morphism-gluing}
+\uses{thm:module-hom-original-linearity-descent}
+\lean{EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomSections,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestriction,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestriction_app,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomTypePresheaf,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomTypePresheaf_isSheaf,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomTypeSheaf,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomTopEquiv,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomTopEquiv_restrict,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHom_existsUnique,EnvelopeProperty.SchemeModuleMorphismGluing.bundleGlueHom,EnvelopeProperty.SchemeModuleMorphismGluing.bundleGlueHom_restrict,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHom_ext,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestriction_id,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestriction_comp}
+\leanok
+On any actual open cover of a scheme, original morphisms between the
+restrictions of two original module sheaves glue uniquely when their
+literal restrictions agree on every overlap. The resulting whole
+morphism has exactly the prescribed original local restrictions.
+\end{theorem}
+\begin{proof}
+The derived sheaf of original local module morphisms identifies its
+sections on each member of the cover with exactly the supplied local
+module maps. Their original overlap equalities are its sheaf
+compatibility equations. Sheaf gluing therefore gives one unique
+section on the entire scheme. A morphism on the over-site of the
+largest open yields its global module morphism by evaluating on each
+original subordinate open. Conversely each global morphism restricts
+to the over-site of the largest open. Both operations are inverse on
+every original component. Transporting the unique glued section
+through these operations proves the assertion, including its exact
+local restrictions. The same separatedness says that whole original
+module morphisms equal on the cover are equal globally.
+\end{proof}
+
+\begin{theorem}[Compatible original local isomorphisms glue]
+\label{thm:scheme-original-module-isomorphism-gluing}
+\uses{thm:scheme-original-module-morphism-gluing}
+\lean{EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestrictionIso,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestrictionIso_hom,EnvelopeProperty.SchemeModuleMorphismGluing.bundleHomRestrictionIso_inv,EnvelopeProperty.SchemeModuleMorphismGluing.bundleLocalIso_inv_compatible,EnvelopeProperty.SchemeModuleMorphismGluing.bundleGlueIso,EnvelopeProperty.SchemeModuleMorphismGluing.bundleGlueIso_restrict}
+\leanok
+Compatible actual isomorphisms between the restrictions of two original
+module sheaves on an actual open cover give an actual whole module
+isomorphism with those same original restrictions.
+\end{theorem}
+\begin{proof}
+Restriction preserves identities and composition, so it takes each
+original local isomorphism to the isomorphism with its restricted
+original homomorphism and inverse. Equality of the homomorphisms of
+two isomorphisms implies equality of the isomorphisms, hence equality
+of their inverses. Thus the original local inverse maps also agree on
+every overlap. Glue the original local homomorphisms and glue those
+original local inverses separately. Their composites restrict on each
+cover member to the composites of the local isomorphisms with their
+inverses, which are identities. Uniqueness of the glued morphisms
+makes both whole composites the identity. The resulting whole
+isomorphism has exactly the original local homomorphisms and inverses.
+\end{proof}

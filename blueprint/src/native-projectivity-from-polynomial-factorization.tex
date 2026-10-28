@@ -1,0 +1,42 @@
+\section{Finite polynomial factorizations give original native projectivity}
+\label{sec:native-projectivity-from-polynomial-factorization}
+
+\begin{theorem}[Original projectivity over an affine coefficient spectrum]
+\label{thm:native-projectivity-from-polynomial-factorization}
+\lean{EnvelopeProperty.NativeProjectivityFromPolynomialFactorization.polynomialProjection_isProjective, EnvelopeProperty.NativeProjectivityFromPolynomialFactorization.of_isProjectiveFactorization, EnvelopeProperty.NativeProjectivityFromPolynomialFactorization.iff_isProjectiveFactorization}
+\leanok
+\uses{thm:symmetric-polynomial-basis-comparison, thm:polynomial-projective-coefficient-isomorphism}
+\source{bj22-trivval:sec:tc}
+For every commutative ring $R$, every original finite polynomial
+projective projection is projective in the original native
+finite-quasicoherent-projective-bundle sense. Consequently an original
+morphism to $\operatorname{Spec}R$ is native projective if and only if
+it admits a finite polynomial closed factorization, over that same
+original ring. No alternate base or supplied comparison certificate
+is used.
+\end{theorem}
+
+\begin{proof}
+Let $Y=\operatorname{Spec}R$, and let $E$ be the actual finite free
+sheaf with $n+1$ generators on $Y$. Its original global sections are
+free of rank $n+1$ over $\Gamma(Y,\mathcal O_Y)$: evaluation preserves
+the finite biproduct defining the free sheaf, and the evaluated unit
+sheaf is exactly that original coefficient ring. Transport the
+standard product basis along this actual biproduct isomorphism.
+The preceding basis theorem identifies the entire original symmetric
+projective bundle of these sections with the polynomial projective
+space over $\Gamma(Y,\mathcal O_Y)$. The whole affine projective-bundle
+comparison identifies this with the entire original $E$-bundle.
+Finally apply the actual original isomorphism
+$\Gamma(\operatorname{Spec}R,\mathcal O)\simeq R$ to the coefficients.
+Its spectrum is exactly the canonical affine comparison map; both
+whole coefficient diagrams therefore show that the constructed
+isomorphism retains the original projection to the same
+$\operatorname{Spec}R$. This proves native projectivity of the
+polynomial projection using $E$ itself. Compose any original closed
+immersion into that polynomial space with the constructed actual
+bundle isomorphism. Closed immersions compose, proving native
+projectivity of the original morphism. The reverse implication is
+the already proved actual finite polynomial presentation of every
+finite quasicoherent projective bundle over an affine scheme.
+\end{proof}

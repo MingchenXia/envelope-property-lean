@@ -1,0 +1,51 @@
+\section{The actual canonical ratio section is a frame off both supports}
+
+\begin{lemma}[An invertible pulled functional has an invertible transpose]
+\label{lem:original-pulled-transpose-frame}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.pulledDualTranspose_isIso_of_functional_isIso}
+\uses{lem:original-pl-ratio-pulled-functional-transport}
+\leanok
+Let $M$ be an invertible module on $N$, let
+$a:M\to\mathcal O_N$ be an original functional, and let $f:T\to N$.
+If the pulled functional $f^*M\to\mathcal O_T$ is an isomorphism,
+then the pulled original evaluation transpose
+$\mathcal O_T\to f^*(M^\vee)$ is an isomorphism.
+\end{lemma}
+\begin{proof}
+Tensor the pulled transpose by $f^*M$ and compose with the actual
+pulled evaluation isomorphism. The pulled transpose pairing identity
+expresses this composite as the canonical right-unit comparison,
+followed by the pulled functional and the canonical structure-sheaf
+unit comparison. Every factor is an isomorphism. Cancel the actual
+evaluation isomorphism, so tensoring the transpose by $f^*M$ gives
+an isomorphism. Tensoring by this invertible module is fully faithful,
+and therefore reflects isomorphisms. Hence the transpose itself is
+an isomorphism.
+\end{proof}
+
+\begin{theorem}[The canonical ratio is its own actual frame]
+\label{thm:original-canonical-ratio-section-frame}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.canonicalPulledRatioSection_isIso, EnvelopeProperty.PLOriginalModelCompatibility.RatioSectionTransport.localSection_isIso}
+\uses{lem:original-pulled-transpose-frame,thm:original-pl-canonical-ratio-section-transport}
+\leanok
+For original ideals $I,J$ with $J$ invertible, suppose both actual
+pulled inclusions $f^*I\to\mathcal O_T$ and
+$f^*J\to\mathcal O_T$ are isomorphisms. Then the original canonical
+ratio section $\mathcal O_T\to f^*(I\otimes J^\vee)$ is an
+isomorphism. In particular the actual original local ratio section
+is a frame on every open disjoint from both ideal supports.
+\end{theorem}
+\begin{proof}
+The numerator part is the inverse of the actual pulled numerator
+inclusion and hence is an isomorphism. The preceding lemma shows
+that the denominator part, the pullback of the original denominator
+functional's evaluation transpose, is an isomorphism as well.
+The tensor of these section maps, preceded by the canonical
+structure-sheaf multiplication inverse, is therefore an isomorphism.
+The actual coherent-to-explicit tensor comparison and canonical
+pullback tensor comparison are isomorphisms, so composing with
+them gives the stated canonical ratio section isomorphism. Off
+both supports the two pulled inclusions are the actual canonical
+open inclusion frames. The previously proved equality with the
+original local ratio section gives the last assertion.
+\end{proof}

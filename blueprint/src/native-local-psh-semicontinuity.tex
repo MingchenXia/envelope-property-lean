@@ -1,0 +1,76 @@
+\subsection{Actual regular-unit presentations and upper semicontinuity}
+
+\begin{lemma}[Genuine section-unit logarithms and convex PL continuity]
+\label{scheme:actual-native-unit-convex-pl-continuity}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.continuous_unitTropAffine,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.ne_top,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.ne_bot,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.continuousAt,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsConvexPLOn.continuousOn}
+\uses{scheme:native-regular-unit-local-psh,scheme:valued-point-topology}
+Let $X$ be ANY actual scheme over an arbitrary commutative coefficient ring,
+and fix ANY original coefficient valuation. On the genuine native locus where
+a real scheme open $V$ contains the original support, evaluation of every
+original section of $\Gamma(X,V)$ is continuous. Every actual unit has nonzero
+value there. Consequently every finite rational affine expression in the true
+unit logarithms is continuous on that actual locus. Every intrinsically convex
+PL function is real-valued and continuous at every point of its full original
+domain, and hence continuous on that domain.
+No field, boundedness, separation of the point space, Noetherianity, finite
+type, completion or analytic structure sheaf is assumed.
+\end{lemma}
+\begin{proof}
+Restrict the original whole native section evaluation map to the ACTUAL
+support-open subtype; its continuity is part of the genuine native evaluation
+topology. Restriction further to a fixed coefficient locus and to any actual
+neighborhood is continuous by true subtype inclusions. An actual unit and its
+inverse evaluate multiplicatively to one, so its norm is genuinely nonzero.
+Its original real logarithm is therefore continuous everywhere on that actual
+locus. Finite rational linear combinations and actual finite nonempty maxima
+of these continuous real functions are continuous.
+
+At any original point in the convex PL domain, take its REAL defining open
+neighborhood, ORIGINAL section units and actual rational finite maximum.
+The original function equals that genuine finite real maximum throughout this
+neighborhood. Thus it is neither positive nor negative infinity there.
+Continuity of the true restriction and openness of the original neighborhood
+imply continuity at the original point in the whole prescribed native space.
+This is continuity of the SAME original function, never a replacement by an
+abstract continuous representative or an inferred seminorm on generators.
+\end{proof}
+
+\begin{theorem}[The actual decreasing and local classes are upper semicontinuous and never positive infinity]
+\label{scheme:actual-native-local-psh-upper-semicontinuity}
+\leanok
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.ne_top,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsDecrConvexPLLimitOn.upperSemicontinuousOn,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.ne_top,
+EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.upperSemicontinuousOn}
+\uses{scheme:actual-native-unit-convex-pl-continuity}
+Every genuine decreasing limit of intrinsic convex PL functions is upper
+semicontinuous on its actual original domain, and never equals positive
+infinity there. The same holds for every intrinsically locally psh function.
+Negative infinity is allowed, including an entire component on which the
+function is identically negative infinity. No classical subharmonicity or
+maximum principle is inferred.
+\end{theorem}
+\begin{proof}
+At an original point $x$ of a genuine limit domain, the value is the actual
+infimum of its original convex PL sequence. It is bounded above by the first
+term, which is a finite real value by the preceding lemma; hence it is never
+positive infinity. If the actual infimum at $x$ is strictly below a threshold
+$c$, some original sequence term is strictly below $c$ at $x$. Its genuine
+continuity gives a real neighborhood on which that same term stays below $c$.
+On the original domain the original infimum is bounded above by that term,
+so this neighborhood proves the true upper semicontinuity condition. This
+argument uses the original infimum, works at negative infinity, and does not
+silently replace decreasing convergence by uniform convergence.
+
+For an intrinsically locally psh function take its actual defining open
+neighborhood and the genuine decreasing sequence there. The first-term bound
+and the preceding threshold argument apply on that SAME open neighborhood.
+Because it is a genuine neighborhood of the original point, the resulting
+local upper bound gives upper semicontinuity of the original function on its
+entire domain. No intersection of countably many neighborhoods is required.
+\end{proof}

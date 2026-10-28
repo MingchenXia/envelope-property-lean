@@ -1,0 +1,47 @@
+\section{Actual section localization from the two original Cech terms}
+
+\begin{lemma}[Actual Cech kernel restriction localizes]
+\label{lem:sheaf-cech-kernel-localization}
+\leanok
+\lean{EnvelopeProperty.SchemeModuleCechLocalizationCriterion.kernelRestriction_isLocalizedModule}
+Let $F$ be an original module-valued sheaf over a commutative
+ring $A$, let $U_i$ be any original family of opens, and fix
+an actual inclusion $V\subseteq W$. Suppose the SAME actual
+restrictions on Cech terms zero and one are localizations at
+an original multiplicative set $S\subseteq A$. Then their
+actual restriction on the SAME evaluated first kernels is
+an $S$-localization. No extra localized-ring action or
+differential-comparison certificate is supplied.
+\uses{lem:localized-module-kernel-square,lem:sheaf-cech-kernel-restriction-square}
+\end{lemma}
+\begin{proof}
+Construct the canonical $S^{-1}A$ actions and scalar towers
+on the two target terms from their original localization
+properties. The original differential square has already
+been proved by the actual sheaf naturality. Apply the actual
+commuting-kernel localization theorem with these derived
+actions. The resulting map is literally the original kernel
+restriction.
+\end{proof}
+
+\begin{proposition}[Original whole sections localize from actual term localizations]
+\label{prop:scheme-module-cech-localization-criterion}
+\leanok
+\lean{EnvelopeProperty.SchemeModuleCechLocalizationCriterion.sectionRestriction_isLocalizedModule}
+For any original scheme module and an actual open cover,
+if the actual restrictions on Cech terms zero and one are
+$S$-localizations, the WHOLE original module-section
+restriction from $W$ to $V$ is an $S$-localization, retaining
+the original base coefficient action.
+\uses{lem:sheaf-cech-kernel-localization,prop:scheme-section-kernel-restriction}
+\end{proposition}
+\begin{proof}
+The complete actual section-to-kernel naturality identifies
+the original restriction with the preceding actual kernel
+restriction through true whole original linear isomorphisms.
+Localization is preserved and reflected by these bijective
+linear maps. This is an actual Cech localization criterion;
+the geometric affine cover/overlap term localizations must
+still be derived before claiming principal-open localization
+on a quasicompact separated scheme.
+\end{proof}

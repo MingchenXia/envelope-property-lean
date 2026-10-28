@@ -1,0 +1,150 @@
+\section{Actual relative exceptional positivity}
+\label{sec:kn-relative-nadel-exceptional-ample}
+
+\begin{theorem}[An original blowup exceptional ideal becomes relatively very ample]
+\label{thm:kn-relative-nadel-exceptional-very-ample}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelCoverExceptionalAmple.exists_positive_isVeryAmple_exceptional_tensor_pullback}
+\leanok
+\uses{lem:kn-nadel-nef-big-same-global-pair-closed,lem:kn-nadel-nef-big-global-controlled-generators,thm:kn-arithmetic-original-line-generated,thm:original-segre-pulled-line-iso,lem:positive-power-projective-block}
+Let $k$ be a field, let $R$ be any $k$-algebra, and retain the actual
+factorization $X\xrightarrow\pi\operatorname{Spec}R\to\operatorname{Spec}k$.
+Suppose $X$ is locally Noetherian.  If $C$ is an actual ample line over
+the same $R$ and $D$ is any coherent ideal, then some original positive
+power $C^r$ makes
+\[
+ \mathcal O_{\operatorname{Bl}_D X}(-E)\otimes\mu^*C^r
+\]
+very ample over the original $R$, where $\mu$ is the actual blowup and
+$E$ its actual exceptional divisor.
+\end{theorem}
+\begin{proof}
+Choose the positive power $C^a$ and actual closed embedding
+$j:X\hookrightarrow\mathbb P^m_R$ in the original ample datum.  Serre
+generation applied to the original ideal on that embedding supplies a
+finite family generating $D\otimes j^*\mathcal O(N)$ for some $N$.
+Pull these actual generators to the blowup and use the original image
+ideal comparison.  They generate the invertible line
+$\mathcal O(-E)\otimes\mu^*j^*\mathcal O(N)$ and produce an actual
+map $q:\operatorname{Bl}_D X\to\mathbb P^s_k$.  Its pair with the
+original blowup map is closed: on each original affine frame of the
+twisting line, it is the closed projective presentation of the original
+Rees algebra by its actual generators.  These affine presentations glue
+with their literal generator coefficients.
+
+The original coefficient square identifies
+$X\times_R\mathbb P^s_R$ with $X\times_k\mathbb P^s_k$.
+Transport the preceding actual closed pair through this isomorphism.
+Its second component is the actual coefficient lift $q_R$ of $q$.
+The original coefficient pullback comparison for $\mathcal O(1)$
+identifies $q_R^*\mathcal O(1)$ with the same original generated line.
+The closed embedding $j$ induces a closed embedding of these projective
+products, so the pair $(\mu^*j,q_R)$ is closed into
+$\mathbb P^m_R\times_R\mathbb P^s_R$.  Compose with the Segre closed
+embedding.  Its whole $\mathcal O(1)$ pullback is
+\[
+ \mu^*C^a\otimes\mathcal O(-E)\otimes\mu^*C^{aN}
+ \simeq\mathcal O(-E)\otimes\mu^*C^{a+aN}.
+\]
+The exponent $a+aN$ is positive.  This constructs the claimed actual
+closed embedding and whole line comparison over the original $R$.
+\end{proof}
+
+\begin{lemma}[Positive exceptional weights along the original relative sequence]
+\label{lem:kn-relative-nadel-weighted-exceptional-ample}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelCoverWeightedAmple.exists_positive_weights_isAmple}
+\leanok
+\uses{thm:kn-relative-nadel-exceptional-very-ample}
+Assume in addition that $X$ is of finite type over the original field.
+For every original finite blowup sequence $\mu:Y\to X$ over the preceding
+coefficient square and every original relatively ample $C$, there are
+positive integer weights $w_i$ and $r>0$ such that
+$\bigotimes_i\mathcal O_Y(-w_iE_i)\otimes\mu^*C^r$ is ample over the
+same original $R$.
+\end{lemma}
+\begin{proof}
+Induct on the actual finite sequence.  For the empty sequence take
+$r=1$ and the empty product.  At the first blowup the preceding theorem
+gives an ample line $C_1=\mathcal O(-E_0)\otimes\mu_0^*C^a$ for $a>0$.
+Apply the induction hypothesis to the remaining sequence with seed
+$C_1$.  If its seed exponent is $s>0$, expand $C_1^s$ and pull it through
+the remaining sequence.  The resulting first exceptional weight is
+$s$, all remaining weights are positive by induction, and the original
+seed exponent is $as>0$.  The actual pullback, tensor and ideal-product
+comparisons identify the expanded line with precisely the stated
+weighted exceptional ideal tensored by the original pulled power.
+\end{proof}
+
+\begin{lemma}[An actual ample rounded numerator on the original relative principalization]
+\label{lem:kn-relative-nadel-ample-numerator}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelCoverNumeratorAmple.exists_ample_perturbed_numerator}
+\leanok
+\uses{lem:kn-relative-nadel-weighted-exceptional-ample}
+In the original relative Nadel setting, retain the actual identity
+$M^d\simeq C\otimes B^t$, $dc=t$, $d>0$, with $C$ ample over the original
+$R$, and a finite generating family of $I\otimes B$.  On the actual
+original principalization $\mu:Y\to X$, write $J=I\mathcal O_Y$.
+For every lower bound, there are positive exceptional weights, an
+integer $N$ at least that bound and divisible by $\operatorname{den}(c)$,
+and $a$ with $a/N=c$, such that
+$K=J^a\prod_i\mathcal O_Y(-w_iE_i)$ is an SNC ideal,
+$\lfloor K/N\rfloor=\lfloor cJ\rfloor$ as whole intrinsic ideal sheaves,
+and $\mu^*M^N\otimes K$ is ample over the same original $R$.
+\end{lemma}
+\begin{proof}
+Every exceptional divisor of the original principalization lies over the
+support of the original ideal.  Its pulled weighted product is Cartier
+and supported on the total transform.  The SNC components of that
+transform therefore give a single finite component family expressing
+both $J$ and the weighted exceptional product as monomials.  Choose a
+multiple $N$ of the denominator of $c$ so large that every exceptional
+coefficient divided by $N$ is smaller than the distance to the next
+integer in the corresponding rational coefficient of $cJ$.  Explicitly,
+if $c=u/v$, choose $N=vT$ with $T$ larger than every exceptional
+coefficient and the prescribed lower bound, and put $a=uT$.
+Then componentwise Euclidean division proves
+$\lfloor(a b_i+e_i)/N\rfloor=\lfloor c b_i\rfloor$; hence the entire
+intrinsic rounded ideals agree.
+
+Choose the positive weights from the preceding lemma.  Taking the
+$d$-th power of the original numerator and using the original cleared
+identity gives the actual whole line comparison
+\[
+ (\mu^*M^N\otimes K)^d\simeq
+ (E_w^d\otimes\mu^*C^N)\otimes
+ (J\otimes\mu^*B)^{ad}.
+\]
+The first factor is ample for all sufficiently large $N$: factor off
+the fixed ample power supplied by the preceding lemma, and use eventual
+generation of original powers of $C$ to tensor by their actual pulled
+generating families.  The second factor has a finite actual generating
+family, obtained by pulling the given generators of $I\otimes B$ and
+taking tensor products.  Tensoring an ample line by this finitely
+generated invertible line preserves ampleness.  Thus the displayed
+$d$-th power is ample.  The original numerator is invertible and
+$d>0$, so its own actual positive-power ample criterion follows.
+\end{proof}
+
+\begin{theorem}[The original relative source produces its entire ample rounded cover]
+\label{thm:kn-relative-nadel-numerator-cover}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelCoverNumeratorProduced.exists_original_numerator_cover}
+\leanok
+\uses{lem:kn-relative-nadel-ample-numerator,thm:kn-relative-nadel-rational-cover-ample}
+The original relative Nadel inputs internally produce their actual
+principalization, a perturbed SNC numerator with the same whole original
+intrinsic rounded ideal, and actual original auxiliary sections.  The
+entire normalization of their original root-cover product is finite over
+the principalization and smooth of the same original dimension over $k$.
+Its actual original rounded root line is ample over the same original $R$.
+\end{theorem}
+\begin{proof}
+Apply the preceding ample-numerator lemma to the original cleared power
+identity and the original finite generating family.  Let $N$ and $K$
+be its actual positive denominator and SNC numerator, and set $q'=1/N$.
+The original numerator line gives exactly the positive cleared ample
+line for $(\mu^*M,K,q')$, since $q'$ has numerator one and denominator
+$N$.  Apply the actual rational SNC cover theorem to those same objects.
+It produces all original auxiliary sections, their whole finite smooth
+normalized cover and actual rounded root-line ampleness over the original
+$R$.  Keep the earlier whole rounded-ideal equality and every original
+coefficient identity alongside these actual produced objects.
+\end{proof}

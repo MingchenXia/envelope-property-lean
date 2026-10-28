@@ -1,0 +1,32 @@
+\section{Finite Euler sums and the genuine long exact sequence}
+
+\begin{definition}[The actual finite cohomology sum]
+\label{def:fc-cohomology-finite-euler}
+\leanok
+\lean{EnvelopeProperty.CohomologyFiniteEuler.partialEuler}
+For a nonnegative cochain complex $C$ over $k$, define
+$\chi_{<N}(C)=\sum_{i<N}(-1)^i\dim_k H^i(C)$.
+\end{definition}
+
+\begin{theorem}[Finite Euler additivity]
+\label{thm:fc-cohomology-finite-euler}
+\leanok
+\lean{EnvelopeProperty.CohomologyFiniteEuler.partialEuler_add}
+\uses{def:fc-cohomology-finite-euler}
+An actual short exact sequence $0\to A\to B\to C\to0$ of complexes
+with finite-dimensional actual cohomology satisfies
+$\chi_{<N+1}(B)=\chi_{<N+1}(A)+\chi_{<N+1}(C)$ if the actual group
+$H^{N+1}(A)$ vanishes.
+\end{theorem}
+\begin{proof}
+Write $r_i$ for the dimension of the actual image of the connecting
+map $H^i(C)\to H^{i+1}(A)$. Rank-nullity and exactness at the three
+terms in degree zero give
+$\dim H^0(A)-\dim H^0(B)+\dim H^0(C)=r_0$.
+In every positive degree $i$, the same calculation gives
+$\dim H^i(A)-\dim H^i(B)+\dim H^i(C)=r_{i-1}+r_i$.
+Multiply by $(-1)^i$ and sum. The actual image dimensions telescope,
+leaving $(-1)^N r_N$. The prescribed actual vanishing makes that
+last connecting map zero and hence its actual image zero. Rearrange
+the resulting finite sum to obtain the formula.
+\end{proof}

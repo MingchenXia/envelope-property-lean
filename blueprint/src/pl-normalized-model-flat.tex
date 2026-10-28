@@ -1,0 +1,73 @@
+\section{Flatness of the original normalized simultaneous model}
+
+Let $k$ be a field, let $X$ be the original projective variety, and let
+$I,J$ be ideal sheaves on its actual product with the polynomial line.
+Assume that their model ideal logarithms are finite at every original
+variety Gauss point. Write $B$ for the actual simultaneous blowup and
+$\pi:N\to B$ for its actual generic-field normalization, with the original
+composite structure map $g:N\to\operatorname{Spec}k[t]$.
+
+\begin{lemma}[Surjectivity of the original normalized-model projection]
+\label{local:original-normalized-pl-projection-surjective}
+\uses{def:actual-original-normalized-simultaneous-model,thm:actual-original-pl-simultaneous-blowup-integral,scheme:actual-integral-normalization-surjective}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousProjection_surjective}
+\leanok
+The same actual projection $\pi:N\to B$ is surjective over any field $k$.
+\end{lemma}
+\begin{proof}
+At the original trivial analytic point of $X$, the two assumed finite
+logarithms prove integrality of the same simultaneous blowup $B$.
+Apply the surjectivity theorem for the actual generic-field normalization
+of this integral scheme. More explicitly, every point of $B$ lies in a
+nonempty actual affine open with domain of sections $A$; lying-over for
+the injective integral inclusion of $A$ into its integral closure in the
+original function field gives a point of that same normalization above it.
+The actual normalization chart triangle identifies its image with the
+original point. These are precisely $N$ and $\pi$ in the stated construction.
+\end{proof}
+
+\begin{theorem}[Dominance of the original normalized model over any field]
+\label{local:original-normalized-pl-model-dominant-any-field}
+\uses{local:original-normalized-pl-projection-surjective,lem:pl-blowup-gauss-lift,berkovich:actual-gauss-point-dominance,def:actual-original-normalized-simultaneous-model}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousStructure_isDominant_anyField}
+\leanok
+The original map $g:N\to\operatorname{Spec}k[t]$ is dominant over any field
+$k$. No projective normality assumption on $X$ is required.
+\end{theorem}
+\begin{proof}
+Use the original trivial analytic point of $X$. The finite ideal logarithms
+lift its actual positive-radius Gauss point through the original blowup's
+off-centre isomorphism. Its whole prescribed polynomial-base point remains
+the original Gauss point. That valuation has zero support: a nonzero
+polynomial has a nonzero coefficient, whose contribution to its Gauss
+value is strictly positive because the radius is positive. Thus the actual
+support of the lifted point maps to the generic point of
+$\operatorname{Spec}k[t]$. Its closure is the whole base, so the original
+structure map of $B$ is dominant. The preceding surjectivity makes
+$\pi$ dominant as well. Composition of these actual dominant maps proves
+dominance of their same original composite $g$.
+\end{proof}
+
+\begin{theorem}[Flatness of the original normalized model over any field]
+\label{local:original-normalized-pl-model-flat-any-field}
+\uses{local:original-normalized-pl-model-dominant-any-field,thm:actual-original-normalized-simultaneous-model-normal,thm:proper-flattening-dedekind-native-flat}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousStructure_isFlat_anyField}
+\leanok
+The same actual original map $g:N\to\operatorname{Spec}k[t]$ is flat over
+any field $k$. Its only model hypotheses are the stated finite original
+Gauss ideal logarithms.
+\end{theorem}
+\begin{proof}
+The constructed normalization $N$ is integral, the preceding theorem
+proves actual dominance of $g$, and $k[t]$ is a Dedekind domain. Apply
+the dominance-to-flatness theorem over a Dedekind domain to this very
+map. Its coefficient argument applies on each nonempty original affine
+open $U$ of $N$: its inclusion is dominant because $N$ is irreducible,
+so the actual ring map $k[t]\to\Gamma(N,U)$ has kernel contained in the
+zero nilradical of $k[t]$. This map is injective. Since $\Gamma(N,U)$ is
+a domain, its actual $k[t]$-module is torsion free, hence flat over the
+Dedekind domain $k[t]$. The affine flatness criterion and source locality
+give flatness of the original $g$. Thus no general assertion that
+normalization preserves flatness, and no replacement of the original
+model or coefficient action, enters the argument.
+\end{proof}

@@ -1,0 +1,204 @@
+\subsection{Rootable actions and the same original Rees components}
+
+\begin{lemma}[A rootable group fixes the original minimal primes]
+\label{algebra:rootable-action-fixes-minimal-primes}
+\lean{EnvelopeProperty.minimalPrime_comap_eq_self_of_rootable_action}
+\leanok
+Let $E$ be ANY Noetherian commutative ring and $G$ a group for which
+every positive integer power map is surjective. Let
+$\rho:G\to\operatorname{Aut}_{\mathrm{ring}}(E)$ be a group
+homomorphism, and let $I\subseteq E$ be an original ideal satisfying
+$\rho(s)^{-1}(I)=I$ for every $s\in G$.
+Then EVERY original minimal prime $P$ over $I$ satisfies
+\[
+ \rho(s)^{-1}(P)=P\qquad(s\in G).
+\]
+There is no domain, reducedness, field, commutativity of $G$, finite
+normalization, or fixed-prime hypothesis.
+\end{lemma}
+\begin{proof}
+Let $M$ be the set of original minimal primes over $I$. It is finite
+by Noetherianity. Surjectivity of each original ring automorphism and
+the supplied equality for $I$ show that inverse image maps $M$ into
+itself. Define
+\[
+ \pi(s)(P)=\rho(s^{-1})^{-1}(P).
+\]
+The inverse permutation is $\pi(s^{-1})$. The inverse in this formula
+is essential: inverse image reverses composition, so the group and
+automorphism laws give $\pi(st)=\pi(s)\pi(t)$ with the ordinary
+composition law on permutations. Thus $\pi$ is a genuine group
+homomorphism to the finite group $\operatorname{Perm}(M)$.
+
+Set $N=|\operatorname{Perm}(M)|$. This is a positive integer even
+when $M$ is empty. Given $s\in G$, choose an actual $z\in G$ with
+$z^N=s$. The existing finite-group power theorem gives
+$\pi(s)=\pi(z)^N=1$. Therefore $\pi$ is trivial. Apply this to
+$s^{-1}$ and the original $P$ to obtain exactly the asserted inverse
+image equality. No representative of a minimal prime or quotient of
+the original ring is substituted.
+\end{proof}
+
+\begin{theorem}[Every original multigraded Rees component has no smaller order]
+\label{algebra:actual-multigraded-rees-component-divisibility}
+\lean{EnvelopeProperty.MultiModel.algebraMap_dvd_monomial_homComp_reesValuationRing}
+\leanok
+\uses{def:gl-model,def:bj-rees,algebra:rootable-action-fixes-minimal-primes,lem:actual-multigraded-torus-component-extraction,lem:actual-original-rees-component-inputs}
+Let $k$ be algebraically closed and let $X$ be an ORIGINAL integral
+multiprojective model over $k$, with original coefficient field $K$
+and original finitely generated multigraded subalgebra
+$S\subseteq K[Z_1,\ldots,Z_r]$.
+Write $\operatorname{homComp}_a(p)$ for its existing original component
+of multidegree $a\in\mathbb N^r$, as an element of the SAME $S$.
+Retain $B=S[t]$ and its SAME original fraction field $L$.
+
+Let $\iota$ be any finite index type. For each $i$, take actual
+$a_i\in\mathbb N^r$, $n_i\in\mathbb N$, and $f_i\in K$ with
+$f_i\in X.\operatorname{piece}(a_i)$, and define the actual original family
+\[
+ g_i=t^{n_i}\,X.\operatorname{ofPiece}(f_i)\in B.
+\]
+For EVERY actual original Rees index $x$ of this family, put
+$V_x=\operatorname{reesValuationRing}(L,g,x)$ and retain the original
+inclusion $\eta_x:B\to V_x$.
+Then EVERY $F\in B$, $n\in\mathbb N$ and $a\in\mathbb N^r$ satisfy
+\[
+ \eta_x(F)\mid
+ \eta_x\bigl(t^n\operatorname{homComp}_a(F_n)\bigr),
+ \qquad F_n=\operatorname{coeff}_n(F).
+ \tag{1}
+\]
+Equivalently the original normalized DVR order of every such joint
+component is at least that of $F$. Neither scale stability of $V_x$,
+component divisibility, a competing-point family, nor a separator is
+an input. No normality of $S$, projective section-surjectivity,
+positivity of the order of $t$, or generation of a unit ideal is assumed.
+\end{theorem}
+\begin{proof}
+The original model makes $S$ a domain and a finite-type $k$-algebra.
+The SAME is true of $B=S[t]$. Algebraic closedness supplies perfectness,
+so the existing original finite-normalization theorem makes every
+normalized Rees chart Noetherian. Its original minimal-prime
+localizations are therefore the existing genuine DVRs. All original
+coefficient actions and fraction-field inclusions are retained.
+
+Fix one coordinate block $c$ and $u\in k^\times$. Use the EXISTING
+ambient endomorphism $Z_c\mapsto uZ_c$, fixing all other variables
+and every coefficient in $K$. It preserves the original $S$:
+this is the existing scale-stability of the original image subalgebra,
+with coefficient extension $K\to K$ and its existing equality with
+$S$. Scaling by $u^{-1}$ is its inverse, as is checked on each original
+coefficient. The two restrictions are genuine inverse automorphisms of
+the SAME $S$, preserve its original $k$ action, and satisfy the group
+law on every original coefficient. Apply the existing polynomial
+map-equivalence to the coefficients of $B$, fixing $t$. Denote the
+resulting automorphism by $\sigma_c(u)$. The existing monomial scaling
+formula gives the WHOLE original identity
+\[
+ \sigma_c(u)(g_i)=u^{a_i(c)}g_i.
+ \tag{2}
+\]
+These are units coming from the original $k$ action.
+
+Extend $\sigma_c(u)$ to the SAME fraction field $L$ by the existing
+fraction-field ring-equivalence construction. Its entire value on
+each original $b\in B$ is the image of $\sigma_c(u)b$. Uniqueness of
+fraction-field maps proves its group law. On the actual chart selected
+by $j$, the ratio $g_i/g_j$ is sent to
+$u^{a_i(c)-a_j(c)}g_i/g_j$. Hence the actual fraction-adjoin chart
+$D_j$ is stable. Its integral closure $E_j$ is stable as well: map the
+original monic integral equation using the restricted chart
+automorphism and the exact fraction-field square. Applying the inverse
+gives a genuine automorphism of the SAME $E_j$.
+
+By (2), this action preserves the actual principal ideal $g_jE_j$.
+The group $k^\times$ is rootable in every positive integer degree:
+an actual root in the algebraically closed field is nonzero because
+its positive power is the supplied unit. Apply the preceding lemma
+to the original $E_j$ and $g_jE_j$. It fixes EVERY original minimal
+prime, rather than merely permuting the finite family. In particular
+it fixes the actual prime in $x$.
+
+The defining original fraction formula for $V_x=(E_j)_P$ now gives
+its stability: transform the numerator and denominator of each
+$b/s$, with $s\notin P$. The transformed denominator is still outside
+the SAME $P$. Scaling by $u^{-1}$ proves the inverse. This constructs
+a ring automorphism of the literal original $V_x$, commuting with the
+original inclusion from $B$ and the just constructed automorphism of
+$B$. The existing DVR automorphism theorem preserves its normalized
+order, including zero. Consequently, for EVERY original $H\in B$,
+\[
+ \eta_x(H)\mid\eta_x(\sigma_c(u)H).
+ \tag{3}
+\]
+This proves the actual threshold stability; it is not supplied as a
+certificate.
+
+Fix $F,n,a$ as in (1). The EXISTING parameter-component theorem,
+applied to the given actual $t$-monomial family, gives
+\[
+ \eta_x(F)\mid\eta_x(t^nF_n).
+ \tag{4}
+\]
+In the ORIGINAL ambient polynomial algebra $K[Z_1,\ldots,Z_r]$,
+define the $k$-submodule
+\[
+ N=\{p\in S:\ \eta_x(F)\mid\eta_x(t^np)\}.
+\]
+It is a genuine submodule of that ambient algebra: membership in $S$
+and divisibility are each closed under zero, addition and the original
+$k$ scalar action; the polynomial monomial map is additive and
+$k$-linear. Formula (4) says that the actual original coefficient
+$F_n$ belongs to $N$.
+
+If $p\in N$, let $H=t^np$. Apply the actual automorphism of $V_x$
+to the ORIGINAL divisibility $\eta_x(F)\mid\eta_x(H)$. This gives
+$\sigma_c(u)(\eta_x(F))\mid\sigma_c(u)(\eta_x(H))$ in that SAME ring.
+Formula (3) applied to $F$ gives
+$\eta_x(F)\mid\sigma_c(u)(\eta_x(F))$. Transitivity and the exact
+coefficient square therefore give
+$\eta_x(F)\mid\eta_x(\sigma_c(u)H)$.
+Since $\sigma_c(u)(t^np)=t^n\sigma_c(u)p$, this is exactly the
+required divisibility of the scaled monomial. Thus $N$ is stable under
+every nonzero scaling of each original variable. The EXISTING
+multigraded Vandermonde extraction theorem applies to this actual
+submodule, over the infinite field $k$. It puts the actual ambient
+component $\operatorname{monomial}(a,(F_n)_a)$ in $N$.
+Its literal original subtype is exactly
+$\operatorname{homComp}_a(F_n)$. This is (1).
+All finite supports, zero coefficients and $r=0$ are covered by the
+same original submodule and component identities. No new
+Vandermonde inversion or analytic point construction is used.
+\end{proof}
+
+\begin{remark}
+The divisibility theorem concerns EVERY competing ring of the SAME
+original cone flag, not only the prescribed divisor. For a jointly
+homogeneous cone flag supplied by an original divisorial point, it
+provides the missing component comparison in all its competing rings.
+The existing original parameter-positivity theorem can then be used
+when that flag contains a power of $t$. Constructing the resulting
+finite family as actual normalized multigraded analytic points, with
+their entire original Gauss identities, is still a separate step.
+
+A native polynomial chart boundary arising from a finite
+Fubini--Study family in ONE fixed integer section class already has
+other available constructions: simultaneous unit linear coordinates,
+whole original Rees-ring transport across actual chart overlaps,
+actual common homogeneous representatives, integer-class denominator
+units, and degree raising preserving every value on a finite set.
+Those constructions do not assert component divisibility in arbitrary
+competing cone rings, and the present theorem does not reconstruct
+any of them.
+
+To use those native constructions for an arbitrary original cone
+flag, one must still derive the actual cone-to-native boundary
+comparison, retain and deduplicate the WHOLE original valuation rings,
+and prove that all original normalized Gauss values and strict
+separator thresholds correspond. Quantitative transfer to a prescribed
+polarized degree is also separate. No finite-FS boundary, homogeneous
+separator, common normalization, section-surjectivity or degree bound
+is supplied as an assumption or a conclusion here. In particular no
+global PL barrier, nonnegligibility or envelope-criterion converse is
+asserted.
+\end{remark}

@@ -1,0 +1,52 @@
+\section{Native section-homology restriction with actual scalar comparison}
+\label{sec:scheme-section-homology-restriction}
+
+\begin{definition}[Actual native homology restriction]
+\label{def:scheme-original-native-section-homology-restriction}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionHomologyRestriction.restrictionHomologyMap}
+For any original module complex $K$ and inclusion $U\subseteq V$,
+there is an actual native homology map
+$H^q(\Gamma(V,K))\to H^q(\Gamma(U,K))$, linear after restricting
+the target scalars along the original structural ring map.
+It is the native homology functor on the original entire
+restriction cochain map, followed by genuine preservation
+of native homology under this actual restriction of scalars.
+\uses{prop:scheme-original-section-complex-restriction}
+\end{definition}
+\begin{proof}
+Apply the native homology functor to the actual whole
+restriction cochain map. Its target is the native homology
+of the target section complex with scalars restricted along
+the original structural map. The exact scalar-restriction
+functor gives its genuine native comparison isomorphism
+to restricted scalars of the target homology module.
+Their composite is the stated whole original map.
+\end{proof}
+
+\begin{proposition}[The canonical comparison retains the original homology-sheaf restriction]
+\label{prop:scheme-original-native-section-homology-restriction}
+\leanok
+\lean{EnvelopeProperty.SchemeSectionHomologyRestriction.comparison_restriction}
+The actual native homology restriction followed by scalar
+restriction of the canonical section-homology comparison on
+$U$ equals the canonical comparison on $V$ followed by the
+actual original restriction of $H^q(K)$.
+\uses{def:scheme-original-native-section-homology-restriction,prop:scheme-original-section-homology-restriction,lem:left-exact-original-homology-composition,lem:left-exact-original-homology-preservation-agreement}
+\end{proposition}
+\begin{proof}
+The original section-homology restriction square is already
+proved for the composite of evaluation on $U$ and actual
+restriction of scalars. The canonical comparison for this
+composite equals the canonical comparison for scalar
+restriction followed by scalar restriction of the
+comparison for evaluation. Scalar restriction genuinely
+preserves native homology, so its canonical comparison is
+exactly the proved native preservation isomorphism.
+Substitution into that whole original square yields precisely
+the asserted equality, including every original coefficient.
+\end{proof}
+
+No affine or quasicoherent hypotheses are needed for this
+square. Invertibility of canonical comparisons, when needed,
+is supplied by proved affine geometry rather than assumed here.

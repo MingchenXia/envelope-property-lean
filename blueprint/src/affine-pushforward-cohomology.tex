@@ -1,0 +1,84 @@
+\section{Actual cohomology comparison for affine covers}
+
+\begin{lemma}[Original positive cohomology and the ordered affine complex]
+\label{lem:affine-pushforward-ordered-vanishing}
+\lean{EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_iff_ordered_zero}
+\leanok
+Let $X$ be a separated scheme, $M$ a quasicoherent module, $p:X\to S$
+an actual morphism, and $(U_i)$ a finite linearly ordered affine open
+cover. For $q\ge0$, the actual group $H^{q+1}(X,M)$ is zero if and
+only if degree $q+1$ homology of the original ordered base-linear
+\v Cech complex is zero.
+\end{lemma}
+\begin{proof}
+Every nonempty finite intersection in this affine cover is affine by
+separatedness. Quasicoherent affine acyclicity therefore applies to
+every original intersection. The native acyclic-cover comparison
+identifies vanishing of actual positive sheaf cohomology with
+exactness of the original \v Cech complex in this degree. Its native
+base-linear version preserves this exactness. The actual ordered and
+unordered base-linear complexes have the native homology isomorphism,
+so exactness is equivalent to zero homology of the ordered complex.
+This is the general version of the actual comparison used for closed
+projective models; no cohomology-vanishing certificate is assumed.
+\end{proof}
+
+\begin{theorem}[Actual affine pushforward preserves positive vanishing]
+\label{thm:affine-pushforward-cohomology-vanishing}
+\uses{lem:affine-pushforward-ordered-vanishing}
+\lean{EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_iff_pushforward}
+\leanok
+Let $f:X\to Y$ be affine, $Y$ separated, and $M$ quasicoherent.
+For an original finite ordered affine open cover of $Y$ and every
+$q\ge0$, the actual $H^{q+1}(X,M)$ vanishes if and only if the actual
+$H^{q+1}(Y,f_*M)$ vanishes. There is no Noetherian, finite-type,
+field, flatness or finiteness assumption on $f$ beyond affineness.
+\end{theorem}
+\begin{proof}
+An affine morphism is separated; composition with the separated
+structure morphism of $Y$ makes $X$ separated. Inverse images of the
+original affine opens are affine and cover $X$. The actual $f_*M$
+is quasicoherent. Apply the preceding comparison to both original
+covers. The native ordered base-linear pushforward isomorphism
+identifies the two whole complexes, with their original restrictions
+and differentials. Its homology isomorphism identifies zero homology
+in either direction, giving exactly the asserted vanishing equivalence.
+\end{proof}
+
+\begin{theorem}[Original invertible twists under affine pushforward]
+\label{thm:affine-pushforward-twisted-cohomology}
+\uses{thm:affine-pushforward-cohomology-vanishing,thm:fc-original-scheme-line-projection-formula}
+\lean{EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_twist_iff_pushforward}
+\leanok
+In the same geometric setting, let $L$ be an actual invertible module
+on $Y$. Then the actual positive cohomology of $M\otimes f^*L$ on $X$
+vanishes if and only if that of $f_*M\otimes L$ on $Y$ vanishes.
+\end{theorem}
+\begin{proof}
+The actual pullback of $L$ is invertible, so tensoring the original
+quasicoherent $M$ with it remains quasicoherent. Apply the preceding
+affine comparison to this tensor product. The already proved genuine
+line projection formula identifies its original pushforward with
+$f_*M\otimes L$. Applying actual sheaf cohomology to this isomorphism
+preserves and reflects vanishing. No projection formula is an extra
+hypothesis.
+\end{proof}
+
+\begin{lemma}[Actual cohomology descends through a split inclusion]
+\label{lem:actual-cohomology-retract-vanishing}
+\lean{EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_of_retract}
+\leanok
+For actual modules $M,N$ on the same scheme, maps $i:M\to N$,
+$r:N\to M$ with $r\circ i=1_M$, and every $q\ge0$, vanishing of
+actual $H^q(N)$ implies vanishing of actual $H^q(M)$. No
+quasicoherence or geometry hypothesis is needed.
+\end{lemma}
+\begin{proof}
+The composite of the module-to-abelian-sheaf functor and actual
+$H^q$ sends the retraction identity to the identity of $H^q(M)$.
+Since $H^q(N)$ is zero, the first mapped arrow is zero, so this
+identity is zero. An abelian group with zero identity is the zero
+group. Degree zero is included. This is a general functorial support
+lemma; a cyclic-cover application must first construct the retraction
+of its actual original structural unit.
+\end{proof}

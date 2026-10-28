@@ -1,0 +1,78 @@
+\section{The original normalized PL model as an actual test configuration}
+
+\begin{theorem}[The same normalized simultaneous model is a test configuration]
+\label{thm:pl-original-normalized-native-test-configuration}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfiguration}
+\leanok
+\dcref{thm:wu-bj-testconfig}
+\uses{def:native-test-configuration-data,thm:pl-original-normalized-simultaneous-gm-action,thm:pl-original-normalized-fibre-one-variety,thm:pl-original-normalized-parameter-equivariance,local:original-normalized-pl-model-flat-any-field,thm:pl-normalized-polynomial-projectivity}
+Let $X$ be the original projectively normal variety, and let $I,J$ be the
+original coefficient-unit-invariant homogeneous ideals containing powers
+of the parameter and having finite Gauss ideal logarithms. The actual
+normalization $N$ of their original simultaneous blowup, with its unchanged
+original projection $\pi:N\to\mathbb A^1$, is a test configuration of $X$.
+Its action is the constructed actual normalized action, and its fibre-one
+isomorphism is the actual original fibre inclusion followed by the same
+original projection to $X$.
+\end{theorem}
+\begin{proof}
+The original simultaneous blowup is integral because it contains a lift of
+the original finite-log Gauss point, and its normalization is integral.
+The normalized projection is dominant over the original parameter line:
+the original positive-radius Gauss point gives dominance of the blowup
+projection, and the original normalization projection is surjective.
+An integral scheme dominant over the spectrum of the Dedekind domain $k[t]$
+is flat there. The original variety product is projective over $k[t]$,
+the simultaneous blowup is projective, and normalization is finite, so the
+same composite is projective. The constructed categorical normalized
+multiplicative-group action has its full unit and associativity laws.
+The original coefficient-family projection triangle identifies the
+parameter morphism with scaling by the universal Laurent unit, so the
+original blowup parameter map is equivariant for the actual standard
+parameter action. Whole equivariance of normalization gives the same
+property for $\pi$. Finally, the preceding fibre-one theorem gives its
+actual isomorphism over $k$ with $X$. These are precisely the defining
+test-configuration data.
+\end{proof}
+
+\begin{theorem}[The actual test-configuration open projection is the original one]
+\label{thm:pl-original-normalized-native-test-configuration-original-projection}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitOpenOriginalProjection_eq_of_invariant,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfiguration_originalProjection}
+\leanok
+\uses{thm:pl-original-normalized-native-test-configuration,thm:pl-original-normalized-projection-action-invariant}
+The whole product trivialization of the noncentral open derived from this
+actual test configuration has original-variety projection equal to the
+noncentral-open inclusion followed by the unchanged original normalized
+model projection $q:N\to X$.
+\end{theorem}
+\begin{proof}
+Write $\ell:U\to G\times N$ for the actual action lift of the open inclusion,
+and $v:U\to N_1$ for its actual fibre-one projection. The action-fibre
+diagrams give $a\ell=i_U$ and $p\ell=i_1v$. The actual fibre-one
+identification is $qi_1$. Hence the original-variety projection of the
+derived trivialization is $qi_1v=qp\ell=qa\ell=qi_U$, where the middle
+equality is the proved invariance $qa=qp$ on the entire group product.
+\end{proof}
+
+\begin{corollary}[The original polarized line supplies the actual native line inputs]
+\label{cor:pl-original-normalized-native-test-configuration-line-inputs}
+\lean{EnvelopeProperty.ProjSubvariety.normalizedSimultaneousTwistedRatioLine_isInvertible,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationLineComparison,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationFibreOneLineIso,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeTestConfigurationUnitOpenLineIso}
+\leanok
+\uses{thm:pl-original-normalized-native-test-configuration,thm:pl-original-normalized-twisted-ratio-group-comparison,thm:pl-original-normalized-fibre-one-line}
+For this same test configuration the original line
+$q^*\mathcal O_X(n)\otimes(I_N\otimes J_N^\vee)$ is invertible and has an
+explicit comparison of its pullbacks along the entire original action and
+projection, and an explicit fibre-one identification with the original
+$\mathcal O_X(n)$. Thus the original native line constructions accept this
+same model and this same line without an additional assumed comparison.
+\end{corollary}
+\begin{proof}
+Both actual normalized ideal factors are Cartier, so their tensor-dual
+ratio and its tensor product with the original twist pullback are
+invertible. The whole group comparison is the preceding tensor comparison.
+The actual fibre inclusion lies in the entire noncentral open, where
+both parameter-power ideals are the unit ideal. Pulling back the constructed
+ratio trivialization therefore gives the original fibre-one line
+identification. Its target projection is the actual fibre-one isomorphism
+by the defining projection formula of that isomorphism.
+\end{proof}

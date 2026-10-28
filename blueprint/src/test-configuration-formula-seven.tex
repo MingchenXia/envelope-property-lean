@@ -1,0 +1,147 @@
+\section{Tensor powers in the original test-configuration section module}
+
+The polarization in a test configuration includes an isomorphism of its
+restriction away from the central fibre with the pullback of the original
+line bundle.  The following constructions use that degree-one isomorphism;
+no comparison in higher degree, of section norms, or of metrics is assumed.
+They supply the tensor-power step in the section argument behind
+\cite[Lemma~5.22]{BJ22} and
+\source{fhx-envelope-20261028:prop:ample-envelopes,bj22-trivval:lem:envline}.
+
+\begin{lemma}[Canonical tensor-power transport]
+\label{lem:tc-seven-canonical-power-transport}
+\source{fhx-envelope-20261028:prop:ample-envelopes,bj22-trivval:lem:envline}
+Let $f:Y\to X$ be a scheme morphism and $M$ a sheaf of
+$\mathcal O_X$-modules.  For every $m\geq0$ there is a canonical
+isomorphism
+\[
+ f^*(M^{\otimes m})\simeq(f^*M)^{\otimes m}.
+\]
+For any isomorphism $e:A\simeq B$ of module sheaves on one scheme,
+its tensor powers $e^{\otimes m}$ induce linear bijections on
+sections over every open.  These bijections commute with restriction
+and carry $s\otimes t$ in degree $m+1$ to
+$e^{\otimes m}(s)\otimes e(t)$.
+\lean{EnvelopeProperty.TestConfigurationSectionTransport.sectionsEquiv,EnvelopeProperty.TestConfigurationSectionTransport.tensorPowerPullbackIso,EnvelopeProperty.TestConfigurationSectionTransport.tensorPowerIso,EnvelopeProperty.TestConfigurationSectionTransport.bundleTensorIso_tensorSection,EnvelopeProperty.TestConfigurationSectionTransport.powerSectionsEquiv,EnvelopeProperty.TestConfigurationSectionTransport.powerSectionsEquiv_restrict,EnvelopeProperty.TestConfigurationSectionTransport.powerSectionsEquiv_mul}
+\leanok
+\end{lemma}
+\begin{proof}
+The zeroth tensor power is the structure sheaf, so the canonical unit
+isomorphism for pullback gives the assertion in degree zero.  In degree
+$m+1$, first use the canonical isomorphism
+$f^*(M^{\otimes m}\otimes M)\simeq
+f^*(M^{\otimes m})\otimes f^*M$, then tensor the inductively
+constructed isomorphism with the identity of $f^*M$.
+All tensor products here are the sheafifications of the actual
+objectwise tensor presheaves.
+
+For $e$, start with the identity of the structure sheaf in degree zero
+and recursively tensor $e^{\otimes m}$ with $e$.  Evaluation of the
+resulting sheaf isomorphism and its inverse on an open gives mutually
+inverse linear maps.  Naturality of the sheaf morphism proves
+compatibility with restriction.  To check multiplication, represent
+the section product by its actual pure tensor in the tensor
+presheaf.  Naturality of the sheafification unit sends this pure
+tensor to the pure tensor of the two images, which proves the stated
+identity.
+\end{proof}
+
+\begin{corollary}[All original polarization powers on the original open]
+\label{cor:tc-seven-original-power-identification}
+\source{fhx-envelope-20261028:prop:ample-envelopes,bj22-trivval:lem:envline}
+Let $j:U\to\mathcal X$ and $p:U\to X$ be scheme morphisms and let
+$e:j^*\mathcal L\simeq p^*L$ be the original degree-one
+polarization isomorphism.  For every $m\geq0$ this data canonically
+identifies
+\[
+ j^*(\mathcal L^{\otimes m})\simeq p^*(L^{\otimes m}),
+\]
+and hence identifies their whole section modules over every open of
+$U$.  Here $\mathcal L^{\otimes m}$ and $L^{\otimes m}$ are the
+original tensor powers, including degree zero.
+\uses{lem:tc-seven-canonical-power-transport}
+\lean{EnvelopeProperty.TestConfigurationSectionTransport.polarizationPowerIso,EnvelopeProperty.TestConfigurationSectionTransport.polarizationPowerSectionsEquiv}
+\leanok
+\end{corollary}
+\begin{proof}
+Compose the canonical pullback comparison for $j$ with
+$e^{\otimes m}$ and the inverse canonical pullback comparison for
+$p$.  Evaluation of this isomorphism on an arbitrary open gives the
+asserted linear bijection.  Each of the three factors is constructed
+from the indicated morphisms and the single original isomorphism $e$.
+\end{proof}
+
+\begin{lemma}[Clearing the original parameter in every degree]
+\label{lem:tc-seven-power-section-denominators}
+\source{fhx-envelope-20261028:prop:ample-envelopes,bj22-trivval:lem:envline}
+Let $\pi:\mathcal X\to\mathbf A^1_k$ be the original projective
+test-configuration morphism, let $\mathcal L$ be an invertible module
+sheaf, and write $U=\pi^{-1}D(t)$.  For every $m\geq0$, actual
+restriction of the whole section module of $\mathcal L^{\otimes m}$
+to $U$ is localization at the same original base parameter $t$.
+In particular, for every $s\in H^0(U,\mathcal L^{\otimes m})$
+there are $n\geq0$ and
+$\widetilde s\in H^0(\mathcal X,\mathcal L^{\otimes m})$ such that
+$t^n s=\widetilde s|_U$.
+\uses{thm:scheme-module-whole-principal-localization}
+\lean{EnvelopeProperty.TestConfigurationSectionTransport.TestConfiguration.parameterSection,EnvelopeProperty.TestConfigurationSectionTransport.TestConfiguration.powerRestriction_isLocalizedModule,EnvelopeProperty.TestConfigurationSectionTransport.TestConfiguration.exists_power_section_extension,EnvelopeProperty.TestConfigurationSectionTransport.TestConfiguration.exists_unitOpen_power_section_extension}
+\leanok
+\end{lemma}
+\begin{proof}
+Projectivity over the affine line makes $\mathcal X$ quasi-compact
+and separated.  Every tensor power of an invertible sheaf is
+invertible and therefore quasi-coherent.  The whole principal-open
+localization theorem applies to this same sheaf and same parameter.
+Its surjectivity condition says that every section is the
+restriction of an original global section after multiplication by
+an element of the submonoid generated by $t$.  Each such element is
+$t^n$ for some natural number $n$, which proves the final assertion.
+\end{proof}
+
+\begin{lemma}[True model norms of the original generic tensor powers]
+\label{lem:tc-seven-generic-power-norm}
+\source{fhx-envelope-20261028:prop:ample-envelopes,bj22-trivval:lem:envline}
+Let $\mathcal X$ be proper over a ring with a bounded valuation and
+let $y$ be an original relative scheme-valued point.  Let $M$ be an
+invertible module sheaf and let $s$ be any section of its original
+residue-field fibre.  Define $s^{[0]}$ to be the canonical unit
+section of the fibre of $\mathcal O_{\mathcal X}$, and define
+$s^{[m+1]}$ by the actual native tensorator from
+$s^{[m]}\otimes s$.  Then $s^{[m]}$ is a section of the actual
+original fibre of $M^{\otimes m}$ and
+\[
+ \lVert s^{[m]}\rVert_{M^{\otimes m},y}
+   =\lVert s\rVert_{M,y}^{m}
+ \quad(m\geq0).
+\]
+The formula includes the zero section and degree zero, with $0^0=1$.
+\uses{thm:actual-model-line-tensor-norm}
+\lean{EnvelopeProperty.TestConfigurationSectionTransport.ModelNorm.genericPowerSection,EnvelopeProperty.TestConfigurationSectionTransport.ModelNorm.modelLineNorm_genericPowerSection}
+\leanok
+\end{lemma}
+\begin{proof}
+The canonical unit comparison takes $s^{[0]}$ to $1$ in the
+original residue field.  Its true model norm is therefore the
+valuation of $1$, namely $1$, which equals the zeroth power on the
+right.  In degree $m+1$, multiplicativity of the true model norm for
+the actual native tensor section gives
+\[
+ \lVert s^{[m+1]}\rVert
+  =\lVert s^{[m]}\rVert\,\lVert s\rVert
+  =\lVert s\rVert^m\,\lVert s\rVert
+  =\lVert s\rVert^{m+1}.
+\]
+Induction proves the assertion.  The argument uses no division or
+logarithm and therefore also applies when $s=0$.
+\end{proof}
+
+\begin{remark}
+These statements identify genuine tensor powers and clear their original
+section denominators.  To deduce the literal formula in
+\source{fhx-envelope-20261028:prop:ample-envelopes}, one still needs
+the Laurent expansion of sections on $X\times\mathbf G_m$ with
+coefficients in $H^0(X,L^{\otimes m})$, the comparison of its actual
+Gauss norm with the original model metric, the common-model
+competitor comparison, eventual verticality, and the pointwise Fekete
+limit.  None of these is asserted by the preceding lemmas.
+\end{remark}

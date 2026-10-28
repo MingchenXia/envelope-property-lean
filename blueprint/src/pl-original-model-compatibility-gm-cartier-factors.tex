@@ -1,0 +1,47 @@
+\section{The original invariant Cartier factors on the normalized PL model}
+
+\begin{lemma}[Original equivariant pullback preserves whole invariant ideals]
+\label{lem:pl-original-equivariant-ideal-pullback}
+\lean{EnvelopeProperty.PLOriginalModelCompatibility.invariantIdeal_comap}
+\leanok
+If $f:A\to B$ is an equivariant morphism of original group schemes with
+actions and $K\subset O_B$ is an invariant original ideal sheaf, its entire
+original ideal pullback $f^{-1}K\,O_A$ is invariant on $A$.
+\end{lemma}
+\begin{proof}
+Write $a_A,a_B$ for the two whole action maps and $p_A,p_B$ for the whole
+second projections. Equivariance gives
+$f\circ a_A=a_B\circ(1\times f)$, and the product projection square gives
+$f\circ p_A=p_B\circ(1\times f)$. Functoriality of entire ideal comap and
+$a_B^{-1}K=p_B^{-1}K$ therefore give
+$a_A^{-1}(f^{-1}K)=p_A^{-1}(f^{-1}K)$ as original ideal sheaves, including
+their nonradical scheme structure.
+\end{proof}
+
+\begin{theorem}[Canonical original normalized Cartier factor linearizations]
+\label{thm:pl-original-normalized-cartier-factor-linearizations}
+\lean{EnvelopeProperty.ProjSubvariety.simultaneousNativeCoordinateIso_isModHom,EnvelopeProperty.ProjSubvariety.simultaneousNativeCartierFactor_invariant,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousNativeCartierFactor_invariant,EnvelopeProperty.ProjSubvariety.normalizedSimultaneousRatioNativeGmLinearization}
+\leanok
+\uses{lem:pl-original-equivariant-ideal-pullback,thm:pl-original-normalized-simultaneous-gm-action}
+For the same original two parameter-invariant ideals $I,J$, the original
+Cartier factors on the actual normalized simultaneous blowup are invariant
+for its constructed actual action. Their original ideal modules carry the
+canonical whole action comparisons; their tensor-dual ratio carries its
+canonical whole linearization, satisfying the unit and multiplication cocycle.
+\end{theorem}
+\begin{proof}
+The whole original coordinate isomorphism compares the comap of each original
+simultaneous-model Cartier factor with the previously constructed Cartier
+factor on the homogeneous-coordinate blowup. The coordinate isomorphism is
+equivariant by construction of the transported original action. Apply the
+preceding lemma along its inverse to derive invariance of the same actual
+original simultaneous-model factor. Apply that lemma again along the actual
+equivariant normalization projection to obtain invariance of the original
+normalized factor, with no flatness assumption on normalization. Its Cartier
+property follows from dominance and original integrality. The group action
+and the second projection are flat over the original field. Canonical flat
+Cartier module pullback therefore produces the whole inclusion-preserving
+factor-module comparison. Tensor pullback and duality give the ratio
+comparison. Its unit identity and whole multiplication cocycle follow from
+the corresponding canonical factor identities and tensor-dual coherence.
+\end{proof}

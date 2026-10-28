@@ -1,0 +1,66 @@
+\section{Actual ring maps induced by leaf open immersions}
+
+\begin{definition}[The actual affine chart ring map]\label{def:sc0-affine-open-chart-ring-map}
+\lean{EnvelopeProperty.Char0.affineOpenChartRingHom}
+\leanok
+An actual map $\alpha:\operatorname{Spec}A\to Y$ whose image lies in an
+actual affine open $U$ factors uniquely through the actual chart
+$\operatorname{Spec}\Gamma(U)\to Y$. Taking the actual inverse of the fully
+faithful spectrum functor gives its actual ring map $\Gamma(U)\to A$.
+\end{definition}
+
+\begin{lemma}[Actual triangle and \'etaleness]\label{lem:sc0-affine-open-chart-ring-map-etale}
+\lean{EnvelopeProperty.Char0.etale_affineOpenChartRingHom}
+\leanok
+\uses{def:sc0-affine-open-chart-ring-map}
+The spectrum of that ring map followed by the actual original chart map is
+$\alpha$. If $\alpha$ is an open immersion, the ring map is actually \'etale.
+\end{lemma}
+\begin{proof}
+The spectrum triangle is the actual universal-property factorization through
+the open immersion. As the original chart map is an open immersion, this
+factor is an open immersion whenever its composite $\alpha$ is one. An actual
+open immersion is \'etale; the spectrum criterion gives the actual ring
+\'etaleness.
+\end{proof}
+
+\begin{lemma}[Actual compatibility with the original base]\label{lem:sc0-affine-open-chart-base-compatibility}
+\lean{EnvelopeProperty.Char0.affineOpenChartRingHom_comp_sectionsHom}
+\leanok
+\uses{lem:sc0-affine-open-chart-ring-map-etale}
+An actual commuting leaf triangle to $\operatorname{Spec}R$ makes the
+constructed map $\Gamma(U)\to A$ commute with the actual original section
+map $R\to\Gamma(U)$.
+\end{lemma}
+\begin{proof}
+Apply faithfulness of the spectrum functor to the original triangle and the
+actual affine chart triangle. The canonical spectrum formula for the
+original section map identifies their composites.
+\end{proof}
+
+\begin{lemma}[Actual image coordinates remain \'etale]\label{lem:sc0-etale-image-coordinates}
+\lean{EnvelopeProperty.Char0.etale_aeval_algebraMap}
+\leanok
+Actual \'etale coordinates on $A_0$ pull through an actual \'etale compatible
+ring map $A_0\to A$ to actual \'etale coordinates on $A$.
+\end{lemma}
+\begin{proof}
+The actual coordinate-evaluation map to $A$ is the composite of the original
+coordinate-evaluation map and the actual refining ring map. \'Etale ring maps
+are stable under composition.
+\end{proof}
+
+\begin{lemma}[Contained principal opens give actual units]\label{lem:sc0-affine-open-chart-principal-unit}
+\lean{EnvelopeProperty.Char0.isUnit_affineOpenChartRingHom_of_range_basicOpen}
+\leanok
+\uses{lem:sc0-affine-open-chart-ring-map-etale}
+If the image of $\alpha$ is contained in $D_U(s)$, the actual image of $s$ in
+$A$ is a unit.
+\end{lemma}
+\begin{proof}
+The original affine chart identifies the preimage of $D_U(s)$ with $D(s)$.
+The actual spectrum triangle therefore puts the entire image of
+$\operatorname{Spec}A$ inside $D(s)$. The preimage formula for a spectrum map
+says $D(\alpha^*s)=\operatorname{Spec}A$. Hence no prime contains
+$\alpha^*s$, so its principal ideal is the unit ideal and it is an actual unit.
+\end{proof}

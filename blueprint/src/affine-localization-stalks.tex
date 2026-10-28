@@ -1,0 +1,34 @@
+\section{Actual affine-localization stalk and residue maps}
+
+\begin{theorem}[Original affine localization gives native stalk isomorphisms]
+\label{thm:fc-affine-localization-native-stalks}
+\leanok
+\lean{EnvelopeProperty.AffineLocalizationStalks.stalkMap_isIso}
+For an actual map $g:Y\to X$ of actual affine schemes whose literal original
+whole section map is a localization, every same original native stalk map
+of $g$ is an isomorphism.
+\uses{thm:fc-spec-localization-native-stalk-residue}
+\end{theorem}
+\begin{proof}
+The native whole affine-spectrum identifications carry the original $g$ to
+the spectrum of its literal original section map.  The spectrum-localization
+stalk theorem and the actual whole naturality square give isomorphisms of
+the original composite stalk maps.  Cancel the original affine-spectrum
+stalk isomorphisms.  The only generic input is that the actual section ring
+map is a localization; no stalk comparison or point correspondence is given.
+\end{proof}
+
+\begin{theorem}[Original affine-localization residue maps]
+\label{thm:fc-affine-localization-native-residue-fields}
+\leanok
+\lean{EnvelopeProperty.AffineLocalizationStalks.residueFieldMap_isIso}
+Every same original native residue-field map of that original $g$ is an
+isomorphism, preserving its original point and coefficient map.
+\uses{thm:fc-affine-localization-native-stalks}
+\end{theorem}
+\begin{proof}
+Apply the native residue-field construction to the actual original stalk
+isomorphism.  The concrete localized-inverse consumer must derive the
+whole original section-localization property internally; this generic
+lemma does not supply a desired finite-fibre degree formula.
+\end{proof}

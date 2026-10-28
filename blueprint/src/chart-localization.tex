@@ -1,0 +1,53 @@
+\subsection{Localized homogeneous substitution}\label{subsec:chart-localization}
+
+Let $R$ be any commutative ring. Set
+\[
+ S=R[X_0,\ldots,X_n],\qquad A_j=R[U_i:i\ne j].
+\]
+Write $H_j:S\to A_j[T]$ for the substitution
+$X_j\mapsto T$, $X_i\mapsto U_iT$ and $\beta_j:A_j\to S[X_j^{-1}]$
+for $U_i\mapsto X_i/X_j$. No domain or nonzero-ring hypothesis is imposed.
+
+\begin{lemma}[Localization of the homogeneous substitution]
+\label{charts:localized-homogeneous-substitution}
+\lean{EnvelopeProperty.ProjBerk.chartHomogenizeLocalization,
+EnvelopeProperty.ProjBerk.chartHomogenizeLocalization_algebraMap}
+\leanok
+\uses{charts:homogeneous-substitution}
+The substitution $H_j$ extends to an $R$-algebra homomorphism
+\[
+ \gamma_j:S[X_j^{-1}]\longrightarrow A_j[T,T^{-1}].
+\]
+For every polynomial $F\in S$, its image is the image of $H_j(F)$ in
+$A_j[T,T^{-1}]$.
+\end{lemma}
+\begin{proof}
+Compose $H_j$ with the localization map $A_j[T]\to A_j[T,T^{-1}]$.
+The resulting homomorphism sends $X_j$ to the unit $T$.
+The universal property of localization therefore gives a unique extension
+to $S[X_j^{-1}]$ which is an $R$-algebra homomorphism.
+Its composition with $S\to S[X_j^{-1}]$ is the chosen substitution,
+proving the displayed compatibility for every polynomial.
+\end{proof}
+
+\begin{lemma}[Cancellation of affine coordinate ratios]
+\label{charts:localized-ratio-cancellation}
+\lean{EnvelopeProperty.ProjBerk.chartHomogenizeLocalization_chartRatioHom,
+EnvelopeProperty.ProjBerk.chartHomogenizeLocalization_comp_chartRatioHom}
+\leanok
+\uses{charts:localized-homogeneous-substitution,charts:homogeneous-substitution}
+The composite $\gamma_j\circ\beta_j$ equals the coefficient inclusion
+$A_j\to A_j[T,T^{-1}]$, as a homomorphism of $R$-algebras.
+Consequently $\gamma_j(\beta_j(a))=a$ in the coefficient subring for every
+$a\in A_j$.
+\end{lemma}
+\begin{proof}
+For every $i\ne j$, the localization identity
+$\beta_j(U_i)X_j=X_i$ maps under $\gamma_j$ to
+$\gamma_j(\beta_j(U_i))T=U_iT$.
+Since $T$ is a unit, cancellation gives $\gamma_j(\beta_j(U_i))=U_i$.
+Both homomorphisms preserve all coefficients from $R$ and agree on every
+polynomial generator $U_i$. By the universal property of the polynomial
+algebra they agree on every element of $A_j$, proving the asserted identity
+of algebra homomorphisms.
+\end{proof}

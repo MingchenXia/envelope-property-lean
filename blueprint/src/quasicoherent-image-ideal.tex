@@ -1,0 +1,59 @@
+\section{The actual ideal image of a quasi-coherent module morphism}
+Let $X$ be any scheme. Write $\mathcal O_X$ for its original structure module.
+Let $M$ be an actual quasi-coherent $\mathcal O_X$-module and let
+$\varphi:M\to\mathcal O_X$ be an actual module-sheaf morphism.
+For an affine open $U$, define
+\[
+ I_\varphi(U)=\operatorname{im}(\Gamma(U,\varphi))\subseteq\Gamma(U,\mathcal O_X).
+\]
+The module structure on the codomain is the original ring acting on itself;
+thus this linear image is literally an ideal of the original section ring.
+There are no field, finiteness, reducedness, separation, or nonemptiness hypotheses.
+
+\begin{lemma}[The original affine section image localizes]
+\label{lem:quasicoherent-image-ideal-localization}
+\leanok
+\lean{EnvelopeProperty.QuasicoherentImageIdeal.image_localization}
+\uses{prop:actual-module-image-ideal-sheaf}
+For every affine $U$ and original $f\in\Gamma(U,\mathcal O_X)$, with
+$r:\Gamma(U,\mathcal O_X)\to\Gamma(D_U(f),\mathcal O_X)$ the actual restriction,
+\[
+ r(I_\varphi(U))\,\Gamma(D_U(f),\mathcal O_X)=I_\varphi(D_U(f)).
+\]
+\end{lemma}
+\begin{proof}
+Apply the existing whole basic-open image-localization theorem
+attached to Proposition~\ref{prop:actual-module-image-ideal-sheaf},
+with the SAME original $X$, $M$, $\varphi$, affine $U$ and function $f$.
+Its affine ideal is defined to be the range of the original section map.
+Unfolding that definition gives exactly the displayed equality, with
+no transport of the original ring, module, morphism or affine open.
+\end{proof}
+
+\begin{theorem}[The genuine ideal sheaf image]
+\label{thm:quasicoherent-image-ideal}
+\leanok
+\lean{EnvelopeProperty.QuasicoherentImageIdeal.imageIdeal,EnvelopeProperty.QuasicoherentImageIdeal.mem_imageIdeal}
+\uses{lem:quasicoherent-image-ideal-localization}
+The actual ideals $I_\varphi(U)$ form an original $X.\mathrm{IdealSheafData}$,
+whose affine ideal at every original affine $U$ is exactly
+$\operatorname{im}(\Gamma(U,\varphi))$. In particular, membership means
+existence of an actual section $m\in\Gamma(U,M)$ mapping to the given
+original regular function.
+\end{theorem}
+\begin{proof}
+Use these original affine image ideals as the ideal fields in the existing
+ideal-sheaf-data constructor. Its required basic-open equality is precisely
+Lemma~\ref{lem:quasicoherent-image-ideal-localization}. Use the constructor's
+default intersection of actual affine zero loci for its support; there is no
+additional support identification hypothesis. The affine formula is the
+construction itself, and membership is the definition of the linear-map range.
+\end{proof}
+
+This is a lower geometric producer, not a relative-canonical discrepancy theorem.
+Applied subsequently to the genuine evaluation map from the dual of an existing
+line sheaf, it will give the actual zero ideal of an original section.
+Deriving Cartier regularity from nonzero sections on an integral scheme,
+deriving nonvanishing of the original canonical differential for birational maps,
+and comparing its divisor with intrinsic DVR discrepancy remain separate obligations.
+Uniform multiplier global generation is not claimed here.

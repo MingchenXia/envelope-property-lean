@@ -1,0 +1,44 @@
+\section{Original global line sections and their genuine fibre coefficients}
+
+\begin{lemma}[Whole pullback sections preserve actual local frame coefficients]
+\label{lem:fc-original-line-section-frame-naturality}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionEvaluation.pullbackSectionHom, EnvelopeProperty.SchemeLineSectionEvaluation.frameViaFactor_sectionHom, EnvelopeProperty.SchemeLineSectionEvaluation.frameViaFactor_sectionHom_scalar}
+Let $B\xrightarrow{g}C\xrightarrow{b}D$ have the actual composite $f$, and let
+$e:b^*M\simeq\mathcal O_C$ be an actual whole local frame.  Pulling back an
+original whole morphism $\alpha:\mathcal O_D\to M$ and then applying the
+transported frame is exactly the genuine pullback of its original coefficient
+morphism on $C$.  In particular, if that whole coefficient morphism is
+multiplication by an actual section $r$, the resulting whole coefficient
+morphism is multiplication by the actual section $g^*r$.
+\end{lemma}
+\begin{proof}
+Use the original pullback composition and equality isomorphisms to compare
+$g^*b^*M$ with $f^*M$.  Their naturality square for the same original
+$\alpha$ commutes.  The original composition and equality coherence laws for
+the structure-unit isomorphism identify the source-unit comparison.
+Cancel these genuine isomorphisms to obtain the claimed whole module
+morphism identity.  Genuine native pullback of a structure-line scalar
+endomorphism then gives multiplication by $g^*r$.
+\end{proof}
+
+\begin{lemma}[Actual fibre section and exact scalar evaluation]
+\label{lem:fc-original-line-section-fibre}
+\leanok
+\lean{EnvelopeProperty.SchemeLineSectionEvaluation.sectionAtOne, EnvelopeProperty.SchemeLineSectionEvaluation.frameViaFactor_sectionHom_scalar_apply, EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.fibreSection}
+\uses{lem:fc-original-line-section-frame-naturality}
+Every original whole structure-line morphism has its genuine original
+section on the residue-field pullback module.  The actual transported
+frame applied to the value at one of a pulled-back original section returns
+precisely the original pullback scalar $g^*r$ from the preceding whole
+coefficient identity.
+\end{lemma}
+\begin{proof}
+Define the section by pulling back the original whole morphism through the
+actual residue-field morphism, inserting the genuine native structure-unit
+isomorphism, and applying it to the original unit section.  This lives in
+the sections of the same original pulled-back module.  Apply the preceding
+whole module-morphism identity to one.  Native composition on sections
+and the original structure sheaf identity restriction show that the scalar
+endomorphism sends one to exactly $g^*r$.
+\end{proof}

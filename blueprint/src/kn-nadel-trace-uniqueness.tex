@@ -1,0 +1,50 @@
+\section{Intrinsic normalization determines the polynomial canonical trace}
+
+\begin{definition}\label{def:kn-nadel-trace-branch-polynomial}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.branchPolynomial,EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.coordinateProduct}
+\leanok
+For the actual coordinate map $\varphi:x_i\mapsto y_i^{N_i}$ with
+$N_i=d_i+1$, put $D=\prod_iN_ix_i$ in the original base polynomial ring
+and $T=\prod_i y_i$ in the original target polynomial ring.  Both rings
+retain their actual coefficient structure.
+\end{definition}
+
+\begin{lemma}\label{lem:kn-nadel-trace-jacobian-denominator}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.jacobian_mul_coordinateProduct,EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.branchPolynomial_ne_zero}
+\leanok
+\uses{def:kn-nadel-trace-branch-polynomial}
+For the actual differential Jacobian $J=\prod_iN_iy_i^{d_i}$,
+$JT=\varphi(D)$.  Over a characteristic-zero integral domain $D\ne0$.
+This also holds for the empty coordinate set, with all products equal to one.
+\end{lemma}
+\begin{proof}
+Distribute the two finite products and use
+$y_i^{d_i}y_i=y_i^{N_i}$.  The original coefficient map preserves
+every $N_i$.  Each $N_i$ is nonzero in characteristic zero, each original
+polynomial variable is nonzero, and the base polynomial ring is a domain.
+The finite product is therefore nonzero.
+\end{proof}
+
+\begin{theorem}\label{thm:kn-nadel-polynomial-trace-uniqueness}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.functional_ext_of_trace,EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.eq_coefficientMap_of_trace,EnvelopeProperty.Vanishing.NadelKummerTraceUniqueness.coextensionFrame_eq_of_trace}
+\leanok
+\uses{lem:kn-nadel-trace-jacobian-denominator,thm:kn-nadel-polynomial-trace-jacobian}
+Over a characteristic-zero integral domain, at most one actual
+$A$-linear map $\lambda:B\to A$ satisfies
+$\lambda(Jb)=\operatorname{Tr}_{B/A}(b)$ for every $b$ in the actual
+coordinate-power algebra.  This map exists: it is the already proved
+native top-coefficient counit.  Consequently its native coextension frame
+is uniquely determined by this intrinsic trace normalization.
+\end{theorem}
+\begin{proof}
+For two candidates, evaluate the required equality at $Tb$.  Since
+$JTb=\varphi(D)b$, actual $A$-linearity gives
+$D\lambda_1(b)=D\lambda_2(b)$.  The preceding nonzero polynomial
+cancels in the original base domain, so the two maps agree everywhere.
+The proved whole trace--Jacobian formula gives the required identity for
+the actual top-coefficient map.  The native restriction--coextension
+adjunction constructs its frame functorially, so equality of these actual
+coefficient maps implies equality of their whole coextension frames.
+The argument introduces no canonical-duality, coordinate-compatibility or
+vanishing certificate.
+\end{proof}

@@ -1,0 +1,98 @@
+\section{Characteristic-free simultaneous Cartier ideal models}
+
+\begin{lemma}[Simultaneous principalization on the actual product]
+\label{lem:pl-product-blowup-cartier}
+\uses{lem:pl-native-variety-ideal-log}
+\lean{EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowup,EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowupProjection,EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowupProjection_isProper,EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowup_isInvertible,EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowupProjection_isIso_off_centre}
+\leanok
+Let $I,J$ be genuine ideal sheaves on the actual $X\times\mathbf A^1$ model.
+Blowing up their product gives a proper morphism $\pi:Z\to X\times\mathbf A^1$
+such that both $I\mathcal O_Z$ and $J\mathcal O_Z$ are invertible ideals,
+hence effective Cartier ideals.  The morphism is an isomorphism over the
+complement of the support of $IJ$.
+\end{lemma}
+\begin{proof}
+Take $Z=\operatorname{Bl}_{IJ}(X\times\mathbf A^1)$ with its actual blowup
+projection.  The base is locally Noetherian because it is proper of finite
+type over the Noetherian ring $k[t]$, so the blowup projection is proper.
+The inverse image of the centre ideal $IJ$ is invertible by the blowup
+construction.  Geometric ideal pullback commutes with multiplication;
+therefore $(I\mathcal O_Z)(J\mathcal O_Z)$ is invertible.  The factors of
+an invertible ideal sheaf are invertible: affine locally this is the
+regular-generator argument for factors of a product, and the affine
+criterion glues the result.  Over the complement of the centre the centre
+ideal is the unit ideal, whose blowup is an isomorphism.
+\end{proof}
+
+\begin{lemma}[Cartier equations compute the intrinsic model logarithm]
+\label{lem:pl-cartier-model-log}
+\uses{lem:pl-product-blowup-cartier}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_regular_generator_modelIdealLog}
+\leanok
+On a proper model over a bounded coefficient valuation, the intrinsic
+model logarithm of an invertible ideal is the logarithm of the value of
+an actual regular local defining equation at every valued point.
+\end{lemma}
+\begin{proof}
+At the proper centre of the valued point, invertibility supplies an
+affine neighbourhood $U$ and a nonzerodivisor $g\in\Gamma(U,\mathcal O)$
+with $I(U)=(g)$.  The intrinsic stalk ideal norm equals the ideal norm on
+this affine centre neighbourhood.  Boundedness identifies the norm of
+the principal ideal $(g)$ with $|g|$.  Taking logarithms gives the claimed
+identity, including the possible zero value of $g$ at the support.
+\end{proof}
+
+\begin{lemma}[Gauss lifting through the constructed blowup]
+\label{lem:pl-blowup-gauss-lift}
+\uses{lem:pl-product-blowup-cartier,lem:pl-native-variety-gauss-lift}
+\lean{EnvelopeProperty.ProjSubvariety.nativeProductGaussPoint_notMem_productSupport,EnvelopeProperty.ProjSubvariety.simultaneousIdealBlowupGaussPoint,EnvelopeProperty.ProjSubvariety.map_simultaneousIdealBlowupGaussPoint,EnvelopeProperty.ProjSubvariety.modelIdealLog_simultaneousIdealBlowup_comap,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.liftThroughOpenIso,EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_liftThroughOpenIso}
+\leanok
+For ideals $I,J$ whose intrinsic logarithms at the actual variety Gauss
+points are finite, those Gauss points lift through the constructed
+blowup, preserving the entire valued point.  The intrinsic logarithms
+of the two pulled-back Cartier ideals equal the original logarithms.
+\end{lemma}
+\begin{proof}
+The ideal logarithm is negative infinity exactly when the native support
+belongs to the ideal's closed support.  Finiteness therefore puts each
+Gauss point outside both closed supports, hence outside the support of
+$IJ$, which is their union.  Restrict the point to this open complement,
+apply the inverse of the actual blowup isomorphism there, and include it
+in the whole blowup.  Its full image is the original valued point by the
+two inverse identities.  Geometric ideal pullback preserves the whole
+intrinsic model norm at this point, and therefore preserves its logarithm.
+\end{proof}
+
+\begin{proposition}[Cartier ideal functions for every PL function]
+\label{prop:pl-native-cartier-ideal-models}
+\uses{lem:pl-native-variety-ideal-log,lem:pl-product-blowup-cartier,lem:pl-cartier-model-log,lem:pl-blowup-gauss-lift}
+\lean{EnvelopeProperty.ProjSubvariety.IsPL.exists_simultaneousCartierIdeal_models}
+\leanok
+Every rational PL function on $X^{\rm an}$ is, after multiplication by
+an integer $r>0$, the difference of the intrinsic functions of two
+constructed effective Cartier ideals on a constructed proper blowup of
+the actual $X\times\mathbf A^1$ model, up to an integral constant.
+\end{proposition}
+\begin{proof}
+Construct the two actual ideal sheaves from the PL function on the actual
+variety product.  Their logarithms are finite at the actual Gauss points.
+Blow up their product and pull back the two ideals; both pulled-back
+ideals are invertible.  Lift each Gauss point through the constructed
+off-centre isomorphism.  The entire logarithms are unchanged under
+geometric ideal pullback, so the original exact difference formula holds
+on the blowup.  The preceding regular-equation lemma identifies each
+intrinsic ideal function with the function of its actual local Cartier
+equation.
+\end{proof}
+
+\begin{remark}[Remaining test-configuration geometry]
+\label{rmk:pl-cartier-remaining-testconfig}
+\uses{lem:pl-blowup-gauss-lift,thm:wu-bj-testconfig,thm:wu-cld-nef,thm:wu-bj-nef-psh}
+The blowup and the two Cartier ideals are constructed in arbitrary
+characteristic.  To obtain the full test-configuration statement one
+must retain the central-support and equivariance data, identify the
+isomorphism over the whole nonzero-parameter locus, normalize the
+projective modification, and construct its polarized model line bundle.
+The curve-degree and relative-nef approximation steps of local positivity
+remain separate mathematical obligations.
+\end{remark}

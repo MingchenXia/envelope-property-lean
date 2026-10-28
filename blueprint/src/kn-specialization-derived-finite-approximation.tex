@@ -1,0 +1,64 @@
+\section{Finite free approximations to actual chain homology}
+
+\begin{theorem}[Finite free triples computing each original fibre homology]
+\label{thm:kn-derived-finite-free-triples}
+\uses{lem:kn-derived-free-replacement-step,lem:kn-derived-free-replacement-lower,lem:kn-derived-free-replacement-upper}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedFiniteApproximation.exists_finite_free_triple}
+\leanok
+Let $C_\bullet$ be an actual chain complex in nonnegative degrees over
+a Noetherian ring $R$, with flat terms and finite native homology in
+every degree.  For each degree $q$, finite free modules and actual
+maps between them can be constructed whose native middle homology,
+after every $R$-algebra base change, is isomorphic to the native
+degree-$q$ homology of the actual scalar-extended original complex.
+No comparison or finite-free model is supplied as an input.
+\end{theorem}
+\begin{proof}
+Start with the original degree-zero module and the zero outgoing
+term.  Repeatedly apply the constructed finite-free replacement step.
+At every stage the new predecessor is flat.  Its incoming map is
+the original next differential with zero free component.  Purity of
+the actual relation sequence identifies its kernel after every scalar
+extension with the kernel of that original next differential.
+The lower homology comparison and this kernel identification prove
+that the next frontier has the independently finite original native
+homology.  This constructs the frontier recursively, without taking
+a frontier or its cohomology comparison as an external input.
+
+At the requested degree, replace the flat frontier by its constructed
+finite free middle term.  One further step supplies a finite free
+incoming term.  The upper comparison shows that this last change
+retains the requested native homology.  The outgoing term was already
+finite free from the preceding stage.  Composing the actual native
+homology isomorphisms gives the asserted arbitrary-scalar comparison.
+\end{proof}
+
+\begin{corollary}[Actual chain homology specializes on a principal open]
+\label{cor:kn-derived-chain-homology-specialization}
+\uses{thm:kn-derived-finite-free-triples,cor:kn-specialization-original-free-native-homology}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedFiniteApproximation.exists_chain_homology_zero_neighborhood,EnvelopeProperty.Vanishing.SpecializationDerivedFiniteApproximation.generic_chain_homology_isZero_of_closed_fibre}
+\leanok
+If the native degree-$q$ homology of the actual scalar-extended
+complex vanishes at an original maximal ideal $\mathfrak p$, there
+is $r\notin\mathfrak p$ such that it vanishes after every field
+extension of coefficients in which $r$ is nonzero.  Over a domain,
+it therefore vanishes over the original fraction field.
+\end{corollary}
+\begin{proof}
+Construct the finite free triple, transfer the original residue
+homology vanishing along its proved isomorphism, and apply finite
+free homology specialization with the standard original bases.
+Transfer the resulting zero groups back along the constructed
+isomorphisms.  A nonzero element of the domain remains nonzero
+in its actual fraction field.
+\end{proof}
+
+\begin{remark}[Relation to ordered section complexes]
+\label{rmk:kn-derived-finite-free-triples-geometric-boundary}
+The original-bound reversal and positive-degree natural-cochain
+comparison are constructed in
+Lemma~\ref{lem:kn-derived-cochain-reversal} and
+Theorem~\ref{thm:kn-derived-natural-cochain-specialization}.
+The actual geometric fibre cohomology interpretation is proved
+separately in Lemma~\ref{lem:kn-derived-geometric-fibre-cohomology}.
+\end{remark}

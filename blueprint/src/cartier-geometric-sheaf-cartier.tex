@@ -1,0 +1,120 @@
+\section{The original global geometric Cartier sheaf isomorphism}
+
+Let $f:X\to\operatorname{Spec}k$ be smooth of relative dimension $n$
+in prime characteristic $p$, let $Y=X^{(p)}$, and let $K$ be the
+original geometric relative Frobenius de Rham complex. All source
+sheaves below are the original exterior cotangent sheaves on $Y$.
+
+\begin{definition}[The Cartier isomorphism on each actual principal basis open]
+\label{def:cartier-geometric-principal-basis-isomorphism}
+\uses{thm:cartier-geometric-local-global-homology-sections}
+\lean{EnvelopeProperty.Cartier.GeometricSheafCartier.basisIso}
+\leanok
+For every actual principal basis open $W\subset Y$, there is an
+isomorphism between actual exterior cotangent-sheaf sections on
+$W$ and actual sections of the same original global $H^q(K)$ on
+$W$. It is the original local Cartier isomorphism on the actual
+relative inverse-image affine open, transported by the proved
+equality of its twisted open with $W$.
+\end{definition}
+\begin{proof}
+The existing original basis supplies affineness of
+$U=F_{X/k}^{-1}W$ and an honest etale tuple of length $n$ for its
+original structural section algebra. The proved original open
+identity gives $U^{(p)}=W$. Apply the established local Cartier
+isomorphism to this very affine open and tuple, then transport the
+entire original module isomorphism along that equality of opens.
+The transport preserves the actual structural section-ring action.
+No chosen comparison or Cartier matching data are supplied.
+\end{proof}
+
+\begin{theorem}[Entire principal-basis Cartier maps agree under restriction]
+\label{thm:cartier-geometric-principal-basis-naturality}
+\uses{def:cartier-geometric-principal-basis-isomorphism,thm:cartier-geometric-global-homology-cartier-restriction}
+\lean{EnvelopeProperty.Cartier.GeometricSheafCartier.basisIso_restrict}
+\leanok
+Every inclusion between original principal basis opens commutes
+with the entire original Cartier isomorphisms, on every actual
+source section and in every degree.
+\end{theorem}
+\begin{proof}
+Pull back the original inclusion by relative Frobenius. The two
+resulting source opens are the very affine opens used to define
+the two local Cartier maps. Their honest tuples are supplied by
+the original basis construction. Apply the established entire
+local Cartier restriction theorem to this inclusion. Transport
+both endpoint maps along their proved twisted-open equalities.
+After these equalities are eliminated, the transported inclusion
+and the original one are parallel arrows in the category of
+opens; they are equal because those hom sets are subsingletons.
+The transported theorem is therefore the asserted entire square.
+\end{proof}
+
+\begin{definition}[Original global Cartier maps in both directions]
+\label{def:cartier-geometric-global-sheaf-maps}
+\uses{thm:cartier-geometric-principal-basis-naturality}
+\lean{EnvelopeProperty.Cartier.GeometricSheafCartier.inverseCartierHom,EnvelopeProperty.Cartier.GeometricSheafCartier.cartierHom,EnvelopeProperty.Cartier.GeometricSheafCartier.inverseCartierHom_app_basis,EnvelopeProperty.Cartier.GeometricSheafCartier.cartierHom_app_basis}
+\leanok
+There are actual original module-sheaf morphisms in both directions
+between $\Omega^q_{Y/k}$ and $H^q(K)$. On every original principal
+basis open their components are respectively the original basis
+Cartier isomorphism and its inverse.
+\end{definition}
+\begin{proof}
+The preceding theorem makes the original forward basis components
+an additive natural transformation. Each is linear over the actual
+original section ring, since it is the forward map of the derived
+module isomorphism. For inverse components, apply the smaller
+inverse to the forward restriction identity evaluated at the
+larger inverse image of an arbitrary target section. The two
+inverse identities reduce this to inverse restriction naturality.
+These inverse components are likewise actual linear maps. Apply
+the existing genuine module-sheaf basis extension separately to
+the two natural transformations. Its component identity retains
+exactly the original basis maps on every section.
+\end{proof}
+
+\begin{theorem}[Actual global geometric Cartier isomorphism]
+\label{thm:cartier-geometric-global-sheaf-isomorphism}
+\uses{def:cartier-geometric-global-sheaf-maps}
+\lean{EnvelopeProperty.Cartier.GeometricSheafCartier.inverseCartierIso}
+\leanok
+In every degree there is an actual original module-sheaf
+isomorphism
+\[\Omega^q_{Y/k}\simeq H^q(K).\]
+Its forward and inverse maps are the original two extended maps.
+\end{theorem}
+\begin{proof}
+Evaluate either composite on an arbitrary original basis open and
+section. The two proved extension component formulas identify it
+with the corresponding composite of the original basis
+isomorphism and its inverse. That composite fixes every section.
+The existing basis determination theorem for actual module-sheaf
+morphisms therefore identifies each global composite with the
+identity morphism. These two identities give the asserted global
+isomorphism.
+\end{proof}
+
+\begin{theorem}[Original affine-chart and unit formulas for global Cartier]
+\label{thm:cartier-geometric-global-original-chart-formula}
+\uses{thm:cartier-geometric-global-sheaf-isomorphism,thm:cartier-geometric-local-global-homology-sections}
+\lean{EnvelopeProperty.Cartier.GeometricSheafCartier.inverseCartierIso_app_twistedOpen,EnvelopeProperty.Cartier.GeometricSheafCartier.inverseCartierIso_unit}
+\leanok
+On every original affine coordinate open, the entire global
+Cartier component is exactly the original local Cartier map into
+sections of the same global homology sheaf. Every original source
+unit form therefore retains its exact original native Cartier,
+whole-complex transfer, and affine homology-section composition.
+\end{theorem}
+\begin{proof}
+The twisted coordinate open is itself in the original principal
+basis, using the unit principal section. Its relative inverse
+image is the original affine open. Transport of the selected
+basis tuple to that same open gives an honest tuple there. The
+proved entire honest-tuple independence theorem identifies its
+local Cartier map with the map for any original honest tuple on
+that open. The basis extension formula now identifies the entire
+global component with this very local map. Apply the established
+original-unit formula for the local map to obtain the exact
+asserted unit image under the global isomorphism.
+\end{proof}

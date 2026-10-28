@@ -1,0 +1,118 @@
+\section{Exact dimensions and horizontal components of original cuts}
+All rings, ideals, localizations and quotient maps below are the actual
+original ones. Dimension is Krull dimension. These statements supply
+the local dimension and horizontal-component arguments for a subsequent
+scheme cut; no selected component, dimension equality or family is an input.
+
+\begin{lemma}[The whole nonzero principal quotient drops dimension by one]
+\label{lem:pl-gauss-affine-principal-quotient-dimension}
+\uses{algebra:affine-domain-maximal-height}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionDimension.principal_quotient_dimension_add_one}
+\leanok
+Let $A$ be an actual finite-type domain over a field $k$, and let
+$0\ne f\in A$ generate a proper ideal. Then
+\[
+ \dim A/(f)+1=\dim A.
+\]
+\end{lemma}
+\begin{proof}
+Since $f$ is a nonzero divisor, the genuine principal-quotient dimension
+inequality gives $\dim A/(f)+1\le\dim A$. Choose an actual maximal
+ideal $M$ containing the proper ideal $(f)$. Its height equals $\dim A$
+by the original finite-type domain maximal-height theorem. The genuine
+height inequality for a prime containing $f$ gives
+$\operatorname{ht}M\le\dim A/(f)+1$. Substituting this actual maximal
+height gives the reverse inequality, proving equality.
+\end{proof}
+
+\begin{lemma}[A chosen original minimal prime is isolated on a principal open]
+\label{lem:pl-gauss-minimal-prime-isolated-away}
+\uses{thm:actual-finite-prime-separator}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionDimension.exists_away_radical_map_eq}
+\leanok
+Let $A$ be Noetherian, $I$ an actual ideal, and $P$ an actual minimal
+prime over $I$. There is an actual $g\notin P$ such that, for the
+unchanged map $\phi:A\to A_g$,
+\[
+ \sqrt{IA_g}=PA_g.
+\]
+\end{lemma}
+\begin{proof}
+The actual minimal primes over $I$ form a finite set. Distinct such
+primes cannot contain one another: minimality would force equality.
+The original finite prime separator therefore constructs an actual
+$g\notin P$ lying in every other minimal prime. The powers of $g$ are
+disjoint from $P$, so its actual image $PA_g$ is prime and contracts to
+$P$. Localization carries precisely the minimal primes over $I$ that
+avoid $g$ to the minimal primes over $IA_g$. Every other original
+minimal prime contains $g$ and is excluded; thus the complete set of
+minimal primes over $IA_g$ is the singleton $\{PA_g\}$. The radical
+of an ideal is the intersection of all its minimal primes. The asserted
+equality follows from this actual singleton, without replacing a
+supplied component or assuming its localization is irreducible.
+\end{proof}
+
+\begin{theorem}[Every original hypersurface component has the exact dimension]
+\label{thm:pl-gauss-affine-principal-component-dimension}
+\uses{lem:pl-gauss-affine-principal-quotient-dimension,lem:pl-gauss-minimal-prime-isolated-away,algebra:affine-domain-dimension-comparison}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionDimension.principal_component_dimension_add_one}
+\leanok
+Let $A$ be an actual finite-type domain over a field $k$, let $f\ne0$,
+and let $P$ be ANY actual minimal prime over $(f)$. Then
+\[
+ \dim A/P+1=\dim A.
+\]
+There is no incoming height, equidimensionality or dimension certificate.
+\end{theorem}
+\begin{proof}
+Use the preceding lemma to construct $g\notin P$ with
+$\sqrt{(f)A_g}=PA_g$. In particular $g\ne0$. The genuine nonzero
+principal localization $A_g$ is a finite-type domain over $k$ and has
+the entire original dimension $\dim A$. Its image of $f$ remains
+nonzero, since the localization map is injective. It is not a unit,
+since it belongs to the proper actual prime $PA_g$. The first lemma
+therefore gives
+$\dim A_g/(f)+1=\dim A_g$. The radical equality says that the two
+actual closed prime spectra of $A_g/(f)$ and $A_g/PA_g$ are the same
+ordered prime space, so these quotient rings have the same dimension.
+
+The unchanged quotient of the original localization map makes
+$A_g/PA_g$ a genuine localization of the actual domain $A/P$ at the
+nonzero image of $g$. The canonical localization universal property
+identifies it with $(A/P)_{\bar g}$. Nonzero principal localization of
+the original finite-type field domain $A/P$ preserves its whole
+dimension. Substitute both true dimension identifications in the
+preceding equality to obtain $\dim A/P+1=\dim A$. No assertion that
+all localizations preserve dimension or that a principal ideal is
+prime is used.
+\end{proof}
+
+\begin{lemma}[Avoiding central components excludes vertical cut components]
+\label{lem:pl-gauss-central-parameter-avoids-cut-components}
+\lean{EnvelopeProperty.PLGaussVerticalCurveSurfaceSelectionDimension.parameter_notMem_cut_minimalPrime}
+\leanok
+Let $A$ be a Noetherian domain, let $t\ne0$, and suppose the actual
+element $f$ belongs to NONE of the actual minimal primes over $(t)$.
+Then $t$ belongs to NONE of the actual minimal primes over $(f)$.
+\end{lemma}
+\begin{proof}
+Fix an actual $P$ minimal over $(f)$. The principal height theorem gives
+$\operatorname{ht}P\le1$. If $t\in P$, then $(t)\subseteq P$.
+Since $t$ is a nonzero divisor, the principal ideal $(t)$ has height
+at least one. Thus $\operatorname{ht}P\le\operatorname{ht}(t)$.
+A prime containing an ideal whose height is at least the prime's
+height is minimal over that ideal, so $P$ is an actual minimal prime
+over $(t)$. But $f\in P$, contrary to the assumed avoidance. This
+proves the assertion directly from the actual principal ideals. It
+does not assume that the entire Cartier cut is flat or that the central
+fibre is reduced, regular or Cohen--Macaulay.
+\end{proof}
+
+For a later induction one must still identify these original affine
+component ideals with the actual scheme components containing the
+prescribed central curve, retain its original closed inclusion, choose
+the actual horizontal component and normalize it, and track the actual
+finite dominant lifted central curve and line pullback triangles.
+Every selected component is normalized before the next induction step.
+The local component producers above do not assert that this global
+surface-selection induction has already been assembled.

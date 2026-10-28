@@ -1,0 +1,71 @@
+\section{Normality of the actual original projective variety}
+
+\begin{definition}[The whole actual homogeneous quotient chart]
+\label{def:actual-original-quotient-away-ring}
+\lean{EnvelopeProperty.ProjSubvariety.nativeQuotientAway}
+\lean{EnvelopeProperty.ProjSubvariety.quotChartNativeAwayEquiv}
+\leanok
+\uses{lem:pg-chart-normal,thm:fc-original-variety-quotient-native-comparison}
+For the original homogeneous prime ideal $I$ and an original homogeneous
+form $\sigma\notin I$ of degree $d$, the original quotient chart algebra
+$A_\sigma/I_{(\sigma)}$ is isomorphic, as an entire original algebra, to
+the actual homogeneous away ring of the actual grading on $S=k[x]/I$.
+\end{definition}
+\begin{proof}
+Embed both entire rings into the same original localization $S[\bar\sigma^{-1}]$.
+The original quotient-chart lift is injective because the localization of the
+domain $S$ is injective and the polynomial map has exactly kernel $I$.
+The actual homogeneous-away value map is injective by its quotient definition.
+Both images consist precisely of homogeneous fractions
+$\bar\tau/\bar\sigma^m$ with $\deg\tau=md$. For one inclusion use the proved
+whole original quotient-chart image criterion. For the other, represent an
+actual homogeneous-away element by a same-degree numerator and denominator,
+and lift its numerator through the actual surjective original graded quotient
+component map in that same degree. The localization fraction identity after
+multiplication by the unit $\bar\sigma^m$ identifies the two whole images.
+The two injective maps into this identical whole image give the asserted
+actual algebra isomorphism. Original coefficient maps are preserved.
+\end{proof}
+
+\begin{theorem}[Actual native chart normality]
+\label{thm:actual-native-projective-quotient-chart-normal}
+\lean{EnvelopeProperty.ProjSubvariety.nativeQuotientAway_isIntegrallyClosed}
+\leanok
+\uses{def:actual-original-quotient-away-ring,lem:pg-chart-normal}
+If the original homogeneous coordinate ring $S$ is integrally closed, every
+same original actual native homogeneous-away ring for $\sigma\notin I$
+is integrally closed.
+\end{theorem}
+\begin{proof}
+The original projective-normality theorem makes the same original
+$A_\sigma/I_{(\sigma)}$ integrally closed. Transport integral closedness
+through the whole actual algebra isomorphism just constructed.
+\end{proof}
+
+\begin{theorem}[Every actual original projective local ring is normal]
+\label{thm:actual-original-projective-variety-normal-stalks}
+\lean{EnvelopeProperty.ProjSubvariety.nativeScheme_stalk_isIntegrallyClosed}
+\lean{EnvelopeProperty.ProjSubvariety.originalNativeScheme_stalk_isIntegrallyClosed}
+\lean{EnvelopeProperty.ProjSubvariety.originalNativeScheme_isGeometricallyUnibranch}
+\leanok
+\uses{thm:actual-native-projective-quotient-chart-normal,thm:fc-original-variety-quotient-native-comparison}
+For a projectively normal original variety, every stalk of its actual quotient
+Proj is integrally closed, and every stalk of the existing original closed
+subscheme variety is integrally closed. The latter variety satisfies the
+standard geometric-unibranch structural class.
+\end{theorem}
+\begin{proof}
+Choose a true original affine-cover chart of the actual quotient Proj containing
+the original point. Its indexing homogeneous element has an actual same-degree
+polynomial lift. Membership in that chart forces the element to be nonzero,
+so this polynomial lift is outside $I$. The preceding whole ring comparison
+and normality theorem make this same actual affine chart ring a normal domain.
+Its localization at the actual corresponding original prime is integrally
+closed. Use the actual spectrum-stalk isomorphism and the actual
+open-immersion stalk isomorphism to transport this fact to the same original
+Proj stalk. The genuine whole quotient-Proj comparison with the existing
+original closed subscheme transports it to every original variety stalk.
+Those stalks are domains by the proved original integrality theorem; their
+actual normality therefore derives the standard geometric-unibranch class.
+No smoothness of the original variety is assumed.
+\end{proof}

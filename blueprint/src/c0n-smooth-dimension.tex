@@ -1,0 +1,63 @@
+\section{The original smooth integral scheme has a produced pure dimension}
+\label{sec:c0n-smooth-dimension}
+
+The native relative-dimension constancy theorem already proves the needed
+mathematics. This continuation reuses that actual theorem on the SAME
+original scheme and structure map. No dimension or pure-dimension
+certificate is an additional input. Global finite type or projectivity is
+not needed for this bridge.
+
+\begin{lemma}[Original smooth integral geometry internally gives one relative dimension]
+\label{lem:c0n-smooth-integral-pure-dimension}
+\leanok
+\lean{EnvelopeProperty.Char0.SmoothPureDimension.exists_smoothOfRelativeDimension,EnvelopeProperty.Char0.SmoothPureDimension.exists_smoothOfRelativeDimension_charZero}
+Let $k$ be a perfect field, $X$ the original integral scheme, and
+$p:X\to\operatorname{Spec}k$ the original smooth structure map. Then
+\[
+ \exists n\in\mathbb N,\quad
+ \operatorname{SmoothOfRelativeDimension}(n,p).
+\]
+In particular this conclusion follows from the original characteristic-zero
+field and the same original integral smooth scheme, without a new
+perfectness or dimension hypothesis.
+\end{lemma}
+\begin{proof}
+Integral schemes have nonempty irreducible underlying spaces. Irreducibility
+gives preconnectedness. Apply the EXISTING native theorem
+\nolinkurl{exists_smoothOfRelativeDimension_of_preconnectedSpace} to the
+SAME original $p$.
+
+Its actual proof chooses an original standard-smooth affine neighbourhood
+at a point. Its genuine presentation gives a finite relative dimension
+$n$. The native dimension count
+$x\mapsto\dim\mathcal O_{X,x}+\operatorname{trdeg}_k\kappa(x)$ is locally
+constant by actual standard-smooth affine charts and the native smooth
+local-ring dimension formula. Preconnectedness makes this SAME count
+constant. Every actual original standard-smooth chart therefore has the
+chosen dimension $n$, and the native source-local smooth-dimension theorem
+gives the conclusion for the original whole scheme and original map.
+All this mathematics is imported from the proved native theorem, rather
+than replaced by a dimension certificate. In characteristic zero the
+original field already has its native perfect-field instance.
+\end{proof}
+
+\begin{definition}[A dimension chosen from the proved original geometric producer]
+\label{def:c0n-produced-smooth-dimension}
+\leanok
+\lean{EnvelopeProperty.Char0.SmoothPureDimension.dimension,EnvelopeProperty.Char0.SmoothPureDimension.smooth_dimension}
+For the SAME perfect-field smooth integral original $p$, choose
+$\operatorname{dimension}(p)$ from the preceding proved existence.
+Then the SAME original structure map actually satisfies
+\[
+ \operatorname{SmoothOfRelativeDimension}(\operatorname{dimension}(p),p).
+\]
+\end{definition}
+\begin{proof}
+Take the natural witness from the preceding actual existence theorem and
+use that theorem's proof of its native relative-dimension property. No
+new global instance, assumed witness, or expected pure-dimension property
+is introduced. Consumers may either destruct the existence theorem or use
+this produced dimension together with its proved native property on their
+actual original scheme or actual polynomial family.
+\uses{lem:c0n-smooth-integral-pure-dimension}
+\end{proof}

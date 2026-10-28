@@ -1,0 +1,33 @@
+\section{Strict positivity between rational pencil parameters}
+
+\begin{lemma}[Derivative tests on a dense rational set]
+\label{lem:nef-ample-polynomial-rational-derivative-nonnegative}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.polynomial_derivative_nonneg_of_positive_rational_tests}
+\leanok
+Let $g\in\mathbb R[T]$. If $g'(q)\geq0$ for every positive rational
+$q$, then $g'(t)\geq0$ for every positive real $t$.
+\end{lemma}
+\begin{proof}
+If $g'(t)<0$ for a positive real $t$, continuity of the polynomial
+$g'$ gives an open neighborhood of $t$ consisting of positive points
+where $g'$ is negative. This neighborhood contains a rational number,
+contradicting the stated rational tests.
+\end{proof}
+
+\begin{theorem}[Strict positivity at every positive real parameter]
+\label{thm:nef-ample-polynomial-real-positivity}
+\lean{EnvelopeProperty.SeshadriAmplenessCriterionNefAmple.polynomial_pos_of_positive_rational_tests_and_derivative_nonneg}
+\leanok
+\uses{lem:nef-ample-polynomial-rational-derivative-nonnegative}
+Let $g\in\mathbb R[T]$. Suppose that $g(q)>0$ and $g'(q)\geq0$
+for every positive rational $q$. Then $g(t)>0$ for every positive
+real $t$.
+\end{theorem}
+\begin{proof}
+The preceding lemma makes $g'$ nonnegative throughout $(0,\infty)$.
+The mean value theorem therefore makes $g$ nondecreasing on this interval.
+For any $t>0$, choose a rational $q$ with $0<q<t$. The hypotheses and
+monotonicity give $0<g(q)\leq g(t)$, as required. This step uses the
+derivative hypothesis: positivity on the rational points by itself would
+not exclude a zero at an irrational parameter.
+\end{proof}

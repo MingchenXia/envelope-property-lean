@@ -1,0 +1,174 @@
+\section{Intrinsic trace normalization after actual flat base change}
+\label{sec:kn-nadel-kummer-trace-base-change-uniqueness}
+
+All rings and maps in this section retain the original coordinate-power
+action.  Put $A=R[x_1,\ldots,x_n]$, $B=R[t_1,\ldots,t_n]$,
+$\varphi(x_j)=t_j^{d_j+1}$ and $C=S\otimes_{A}B$ for the actual map
+$a:A\to S$.  Write $\ell:S\to C$ and $r:B\to C$ for its actual
+tensor inclusions.  The already constructed $C$-linear dual frame and
+canonical counit are used without modification.
+
+\begin{lemma}[Native trace normalization on the whole tensor algebra]
+\label{lem:kn-nadel-tensor-trace-normalization}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.trace_one_tmul,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.trace_tmul,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.trace_eq_extended_coefficient,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.baseChangeTrace,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coefficientFunctional,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coefficientFunctional_apply,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.baseChangeTrace_tensor,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.baseChangeTrace_eq_coefficient_jacobian}
+\leanok
+For arbitrary $a$ and nonzero $R$, the native algebra trace satisfies
+\[
+ \operatorname{Tr}_{C/S}(s\otimes b)
+   =s\,a(\operatorname{Tr}_{B/A}(b)).
+\]
+If $\Lambda_C$ is the previously constructed extended top coefficient and
+$J=\prod_j(d_j+1)t_j^{d_j}$, then for every $c\in C$,
+\[
+ \operatorname{Tr}_{C/S}(c)=\Lambda_C(r(J)c).
+\]
+No flatness of $S/A$ is needed for these formulas.
+\end{lemma}
+\begin{proof}
+Multiplication by $1\otimes b$ on the actual tensor algebra is the
+scalar extension of multiplication by $b$ on $B$.  Native linear trace
+commutes with scalar extension of a finite free module.  The actual
+power-map basis supplies finite freeness, so this gives the formula
+for $1\otimes b$; $S$-linearity gives it for every pure tensor.
+On $s\otimes b$, the second formula is the already proved original
+identity $\operatorname{Tr}_{B/A}(b)=\Lambda_B(Jb)$, followed by the
+actual extended-coefficient evaluation.  Both sides are additive,
+and actual tensor induction proves equality on all of $C$.
+\uses{thm:kn-nadel-power-dual-arbitrary-base-change,lem:kn-nadel-kummer-power-map-basis,thm:kn-nadel-polynomial-trace-jacobian}
+\end{proof}
+
+\begin{theorem}[Uniqueness after flat base change]
+\label{thm:kn-nadel-flat-tensor-trace-uniqueness}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.jacobian_mul_coordinateProduct_baseChange,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.branchPolynomial_baseChange_regular,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.functional_ext_of_trace,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.eq_coefficientFunctional_of_trace,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coextensionFrame_eq_of_trace}
+\leanok
+Suppose $R$ is a characteristic-zero domain and $a$ is flat; $S$ need
+not be connected or nonzero.  Set $D=\prod_j(d_j+1)x_j$ and
+$T=\prod_jt_j$.  The element $a(D)$ acts injectively on $S$, and
+\[
+ r(J)r(T)=\ell(a(D)).
+\]
+Two actual $S$-linear functionals $\lambda_i:C\to S$ satisfying
+$\lambda_i(r(J)c)=\operatorname{Tr}_{C/S}(c)$ for all $c$ agree on
+the whole actual tensor algebra.  In particular each such functional
+equals the constructed $\Lambda_C$; its native coextension frame is
+the previously constructed actual frame.
+\end{theorem}
+\begin{proof}
+Each factor of $D$ is nonzero in the original polynomial domain, so
+$D$ is regular.  The native regular-element theorem for flat scalar
+extension proves that $a(D)$ acts injectively on $S$, without choosing
+a component or assuming injectivity of $a$.  Apply the actual right
+inclusion to $JT=\varphi(D)$ and use the proved whole tensor coefficient
+square to obtain the displayed identity.
+
+Evaluate both normalization identities at $r(T)c$.  Their right sides
+are the same intrinsic trace, while their left sides are
+$a(D)\lambda_i(c)$ by the displayed identity and actual $S$-linearity.
+Injectivity of multiplication by $a(D)$ gives equality at every $c$.
+The preceding lemma proves the normalization of the actual constructed
+coefficient functional internally.  Substitution in native adjunction
+proves equality of the whole final-algebra-linear frames.
+\uses{lem:kn-nadel-tensor-trace-normalization,thm:kn-nadel-power-dual-arbitrary-base-change,lem:kn-nadel-trace-jacobian-denominator}
+\end{proof}
+
+\begin{theorem}[Trace normalization for every actual base top form]
+\label{thm:kn-nadel-etale-all-topforms-trace-normalization}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalDifferentialPullback,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalDifferentialPullback_D,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalPullback,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalPullback_generator,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCounit_pulled_generator,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCounit_pulled_topform}
+\leanok
+Let $R$ be a nonzero commutative ring and suppose $a$ is formally etale.
+Flatness and characteristic zero are not needed for this statement.  Let
+$\omega_S=\bigwedge^n_S\Omega_{S/R}$ and
+$\omega_C=\bigwedge^n_C\Omega_{C/R}$ with the actual original small
+coefficient structures.  The genuine native exterior differential
+map $P:\omega_S\to\omega_C$ through $\ell$ sends the actual base
+wedge to $r(J)$ times the actual target wedge.  The already constructed
+canonical counit $\tau:\omega_C\to\omega_S$ satisfies, for every
+$c\in C$ and every $w\in\omega_S$,
+\[
+ \tau(c\,P(w))=\operatorname{Tr}_{C/S}(c)\,w.
+\]
+Thus normalization on one coordinate generator extends to all actual
+base top forms by a proved whole-map identity.
+\end{theorem}
+\begin{proof}
+The original small coefficient square constructs the genuine scalar
+tower $R\to S\to C$.  Use its native K\"ahler morphism and the native
+exterior universal property to construct $P$.  On the actual base
+differential wedge its image is the wedge of $D_C(\ell(a(x_j)))$.
+The whole tensor square identifies these functions with
+$r(t_j^{d_j+1})$.  The original Jacobian differential identity, carried
+through the genuine target exterior map, therefore gives
+$P(dx_S)=r(J)dt_C$.
+
+The actual counit coefficient formula and the first lemma now give
+the assertion for $w=dx_S$.  The genuine etale top-form basis writes
+every actual $w$ uniquely as $s\,dx_S$.  Semilinearity of $P$,
+$S$-linearity of $\tau$, and commutativity of $S$ prove the displayed
+formula for every $w$.  No coordinate-change or trace-normalization
+comparison is supplied as input.
+\uses{lem:kn-nadel-tensor-trace-normalization,thm:kn-nadel-etale-exterior-counit-square}
+\end{proof}
+
+\begin{theorem}[Uniqueness of the actual canonical counit]
+\label{thm:kn-nadel-etale-canonical-counit-uniqueness}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCandidateCoefficient,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCandidateCoefficient_apply,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCounit_eq_of_generator,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCounit_eq_of_topforms}
+\leanok
+For a flat formally etale $a$ as above, every actual $S$-linear
+$\sigma:\omega_C\to\omega_S$ satisfying
+$\sigma(cP(w))=\operatorname{Tr}_{C/S}(c)w$ for all actual $c,w$
+equals the constructed whole canonical counit.  The same conclusion
+holds if the normalization is only given on the actual base wedge.
+\end{theorem}
+\begin{proof}
+Compose $c\mapsto\sigma(c\,dt_C)$ with the actual coefficient
+trivialization of $\omega_S$.  The result is an actual $S$-linear
+functional on $C$.  The proved generator formula for $P$ converts its
+normalization into the hypothesis of the flat uniqueness theorem.
+It therefore equals the already constructed $\Lambda_C$.  Every
+target top form has a unique coefficient in the actual target
+top-form basis, so equality of these whole coefficient functionals
+proves equality of $\sigma$ and the actual counit on every form.
+\uses{thm:kn-nadel-flat-tensor-trace-uniqueness,thm:kn-nadel-etale-all-topforms-trace-normalization}
+\end{proof}
+
+\begin{theorem}[Invariance under actual coefficient-preserving coordinate automorphisms]
+\label{thm:kn-nadel-coordinate-automorphism-counit}
+\lean{EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.algebraDifferentialMap,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.algebraDifferentialMap_D,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.algebraExteriorMap,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.algebraExteriorMap_differential_wedge,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coordinateExteriorMap,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coordinateExteriorMorphism,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.baseChangeTrace_coordinate,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coordinateExteriorMap_pulled_generator,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.coordinateExteriorMap_pulled_topform,EnvelopeProperty.Vanishing.NadelKummerTraceBaseChangeUniqueness.canonicalCounit_coordinate}
+\leanok
+For a flat formally etale $a$ over a characteristic-zero domain, let
+$e:C\simeq_S C$ be any actual $S$-algebra automorphism.  Its genuine
+native K\"ahler exterior map $E:\omega_C\to\omega_C$ fixes the
+genuine pullback $P(w)$ of every actual $w\in\omega_S$, and
+\[
+ \tau(E(v))=\tau(v)\qquad(v\in\omega_C).
+\]
+The coordinate map is actual algebra data; no canonical-form comparison
+or counit invariance is an input.
+\end{theorem}
+\begin{proof}
+Use the actual small coefficient tower to restrict $e$ to an original
+$R$-algebra map.  Its native K\"ahler morphism sends $D_C(c)$ to
+$D_C(e(c))$, and its exterior map is semilinear through $e$.  Since
+$e(\ell(s))=\ell(s)$ for every actual $s$, the actual differential
+wedge of the base coordinate images is fixed.  The genuine base
+top-form basis, semilinearity, and $e$ fixing the whole coefficient
+ring then imply $E(P(w))=P(w)$ for every actual base form.
+
+The same map $E$ is $S$-linear after actual restriction of scalars,
+so $\tau\circ E$ is an actual candidate counit.  Its value on
+$cP(w)$ is $\tau(e(c)P(w))=\operatorname{Tr}_{C/S}(e(c))w$ by the
+proved all-top-form normalization.  Native algebra trace is invariant
+under the actual algebra automorphism, so this is
+$\operatorname{Tr}_{C/S}(c)w$.  Apply the preceding whole-counit
+uniqueness theorem.  No coordinate normalization diagram was assumed.
+\uses{thm:kn-nadel-etale-all-topforms-trace-normalization,thm:kn-nadel-etale-canonical-counit-uniqueness}
+\end{proof}
+
+This intrinsic normalization is a uniqueness producer, not a new
+permanent hypothesis in a vanishing theorem.  To compare genuinely
+different charts presenting different finite algebras, their actual
+overlap identifications must still be produced.  The theorem above
+proves invariance for arbitrary actual automorphisms of the same finite
+algebra, without supplying a canonical comparison.  Global canonical
+sheaf gluing, local vanishing, and
+Nadel vanishing are not inferred from a supplied comparison record.

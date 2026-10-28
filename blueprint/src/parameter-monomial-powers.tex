@@ -1,0 +1,39 @@
+\subsection{Actual finite parameter-monomial generators through ideal powers}
+
+\begin{lemma}[Whole multiplication of original parameter monomials]
+\label{local:actual-parameter-monomial-multiplication}
+\lean{EnvelopeProperty.parameterMonomial_mul}
+\leanok
+For an arbitrary commutative ring $R$, any original forms $F,G$ in any
+variable set and exponents $e,f\in\mathbb N$, the actual monomials
+$m(F,e)=C_*F\,C(t^e)$ satisfy
+$m(F,e)m(G,f)=m(FG,e+f)$ in the SAME whole original polynomial ring.
+\end{lemma}
+\begin{proof}
+Apply multiplicativity of the two actual coefficient maps and the
+original power-addition identity, and commute the four original factors.
+\end{proof}
+
+\begin{theorem}[Every original ideal power retains finite monomial generators]
+\label{local:actual-finite-parameter-monomial-powers}
+\lean{EnvelopeProperty.exists_parameterMonomial_span_pow}
+\leanok
+\uses{local:actual-parameter-monomial-multiplication}
+Let $S$ be any finite set of pairs $(F,e)$ over $R$, each $F$ homogeneous
+of some actual total degree, which may vary with the pair. For every
+$m\in\mathbb N$, there exists a finite set $T$ of pairs with homogeneous
+base forms such that the $m$th power of the WHOLE original ideal spanned
+by $m(F,e)$ for $(F,e)\in S$ is exactly the whole ideal spanned by the
+original parameter monomials indexed by $T$. No radical, saturation,
+normalization or integral closure replaces either ideal.
+\end{theorem}
+\begin{proof}
+Induct on $m$. At zero take the singleton $(1,0)$, whose monomial is the
+unit. At the successor step let $T_0$ be the actual preceding finite
+family. Take the image of the actual finite Cartesian product $T_0\times S$
+under $((F,e),(G,f))\mapsto(FG,e+f)$. Original homogeneous forms multiply
+to homogeneous forms with the sum of their actual degrees. The native
+identity that the product of two ideal spans is the span of their actual
+pairwise products, together with the preceding whole multiplication
+identity, proves the claimed exact equality in both directions.
+\end{proof}

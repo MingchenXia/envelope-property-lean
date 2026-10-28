@@ -1,0 +1,41 @@
+\section{Actual structure-module automorphisms are original units}
+
+\begin{lemma}[Every actual structure-module endomorphism is an original scalar]
+\label{lem:actual-unit-module-endomorphism-scalar}
+\lean{AlgebraicGeometry.Scheme.Modules.unitHom_eq_globalScalar}
+\leanok
+For every actual original scheme $X$ and every whole original
+structure-module endomorphism $a$, the original map $a$ is
+multiplication on the entire sheaf by the original global section
+$a(1)$. No invertibility is required.
+\end{lemma}
+\begin{proof}
+Naturality for restriction from the original top open to every
+original smaller open identifies the local value $a(1)$ with the
+restriction of its original global value. Original module linearity
+then gives $a(r)=r a(1)$ on each such open. These are the literal
+components of the actual scalar endomorphism determined by the
+global section, hence the two whole module maps are equal.
+\end{proof}
+
+\begin{lemma}[An actual whole structure-module automorphism is a unit scalar]
+\label{lem:actual-unit-module-automorphism-scalar}
+\uses{lem:actual-unit-module-endomorphism-scalar}
+\lean{AlgebraicGeometry.Scheme.Modules.unitIso_eq_globalUnit}
+\leanok
+For every original scheme $X$ and actual structure-module
+isomorphism $e:\mathcal O_X\simeq\mathcal O_X$, there is an original
+global unit $u\in\Gamma(X,\mathcal O_X)^\times$ such that $e$ is
+multiplication by that unit on the entire original module sheaf.
+\end{lemma}
+\begin{proof}
+Let $r=e(1)$ on the original top open. Naturality restricts $r$ to
+$e(1)$ on every original smaller open. Original module linearity
+therefore says that on each such open $e(a)=a r$. The actual global
+section map of an isomorphism is bijective. Consequently
+multiplication by $r$ on the original global section ring is
+bijective, so $r$ is a unit. The genuine scalar automorphism of this
+unit has the same maps on every original subordinate open by the
+preceding formula; hence it equals the original $e$ as an actual
+module-sheaf isomorphism.
+\end{proof}

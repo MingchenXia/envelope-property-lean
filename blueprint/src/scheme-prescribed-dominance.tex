@@ -1,0 +1,34 @@
+\subsection{Actual dominance derived from an original prescribed-base point}
+
+\begin{lemma}[A faithful prescribed point forces actual dominance]
+\label{berkovich:actual-prescribed-point-dominance}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDominant_of_prescribedPoint}
+\leanok
+If an actual scheme over an original domain has an actual relative native point
+whose prescribed coefficient valuation has zero support ideal, its original
+structure map is dominant. No dominance or generic-support certificate is supplied.
+\end{lemma}
+\begin{proof}
+The genuine original affine-point equivalence identifies the base point's
+actual prime with the original valuation support ideal, hence with the generic
+prime. The actual relative point equality therefore puts the actual affine
+base generic point in the original structure map's range. Its singleton has
+closure the whole original affine spectrum. Thus the original range is dense,
+which is precisely actual scheme dominance.
+\end{proof}
+
+\begin{lemma}[An actual positive-radius trivial Gauss point forces dominance]
+\label{berkovich:actual-gauss-point-dominance}
+\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isDominant_of_gaussPoint}
+\leanok
+\uses{berkovich:actual-prescribed-point-dominance}
+Over an original polynomial ring over any field, existence of an actual native
+point over the original trivial-coefficient Gauss valuation of any positive
+radius derives dominance of the SAME original structure morphism.
+\end{lemma}
+\begin{proof}
+Every nonzero original polynomial has a nonzero original coefficient.
+The corresponding weighted term is strictly positive at positive radius,
+and is bounded above by the original Gauss value. Thus the actual Gauss
+valuation has zero support. Apply the preceding whole native-point theorem.
+\end{proof}

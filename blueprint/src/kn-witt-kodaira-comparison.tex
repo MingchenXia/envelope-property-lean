@@ -1,0 +1,61 @@
+\section{The original residue fibre and line in Witt Kodaira vanishing}
+
+\begin{definition}\label{def:kn-inverse-pullback-line}
+\lean{EnvelopeProperty.Vanishing.WittKodairaComparison.inversePullbackLineIso,EnvelopeProperty.Vanishing.WittKodairaComparison.canonicalOriginalLineIso}
+\leanok
+For an actual scheme isomorphism $e:Y\simeq Z$ and the original module $L$
+on $Y$, native pullback composition, $e e^{-1}=1_Y$, and native identity
+pullback give $e^*(e^{-1})^*L\simeq L$.
+\end{definition}
+
+\begin{lemma}\label{lem:kn-witt-original-fibre-kodaira}
+\lean{EnvelopeProperty.Vanishing.WittKodairaComparison.kodaira_of_specialFibreIso,EnvelopeProperty.Vanishing.WittKodairaComparison.kodaira_tensorObj_of_specialFibreIso}
+\leanok
+\uses{def:kn-inverse-pullback-line,cor:kn-kodaira-witt-lift,lem:kn-scheme-iso-positive-cohomology,lem:kn-scheme-iso-ample-pullback}
+Let $\widetilde f:\widetilde X\to\operatorname{Spec}W_2(k)$ be the original
+separated smooth model of relative dimension $n<p$, and let its literal DI
+special fibre be $f_0:Z\to\operatorname{Spec}k$. Let $e:Y\simeq Z$ retain
+the original triangle $e f_0=f_Y$, and let $L$ be the original ample line on
+$Y$. The fixed $(p,k)$ global Witt DI input gives
+$H^{q+1}(Y,\omega_{Y/k}\otimes L)=0$ for every $q\geq0$.
+\end{lemma}
+\begin{proof}
+Set $L_0=(e^{-1})^*L$. The inverse triangle follows by composing the
+original triangle with $e^{-1}$. The original positive-power projective
+embedding criterion for ampleness pulls back along $e^{-1}$, so $L_0$ is
+ample for the literal $f_0$. Apply proved Witt Kodaira vanishing to the
+original model, dimension bound, fixed DI input, and this actual $L_0$.
+The literal special fibre is smooth of the same relative dimension by
+native smooth base change. Its canonical exterior sheaf is quasicoherent;
+tensoring it with the actual invertible $L_0$ preserves quasicoherence.
+The original projective factorization supplied by ampleness and the native
+positive-cohomology comparison for the actual isomorphism $e$ transport the
+vanishing to $e^*(\omega_{Z/k}\otimes L_0)$ on $Y$. Actual canonical pullback,
+the original structure triangle, and the native monoidal comparison identify
+this with $\omega_{Y/k}\otimes e^*L_0$. The inverse-pullback isomorphism of
+the definition identifies the latter line with the original $L$. Functoriality
+of native cohomology under this actual module isomorphism gives the claim.
+The native comparison between monoidal tensor and sheafified tensor gives
+the same statement with the explicit coherent tensor object.
+\end{proof}
+
+\begin{corollary}\label{cor:kn-actual-witt-stage-kodaira}
+\lean{EnvelopeProperty.Vanishing.WittKodairaComparison.kodaira_on_residueFamily,EnvelopeProperty.Vanishing.WittKodairaComparison.kodaira_tensorObj_on_residueFamily,EnvelopeProperty.Vanishing.WittKodairaComparison.kodaira_on_residueFamily_of_bound}
+\leanok
+\uses{lem:kn-witt-original-fibre-kodaira,thm:kn-arithmetic-original-dimension-witt}
+For the actual arithmetic produced stage $D$, the original ample residue
+line $L$ satisfies positive Kodaira vanishing, using the fixed DI input for
+its actual prime and actual finite residue field. The relative dimension
+and bound are those of the produced smooth stage.
+\end{corollary}
+\begin{proof}
+Use the actual $D$-Witt projection and the actual comparison
+$D.\mathrm{residueFamily}\simeq\mathrm{DI.specialFibre}(D.\mathrm{wittProjection})$.
+Its original structure triangle is already proved from the original
+reduction square and native pullback symmetry. The constructed projective
+factorization of the Witt projection makes it proper and hence separated.
+The actual finite residue field is perfect. The produced relative-dimension
+instance and prime bound discharge precisely the hypotheses of the lemma.
+If $n\leq\mathrm{bound}$, the stored strict bound
+$\mathrm{bound}<D.\mathrm{prime}$ supplies $n<D.\mathrm{prime}$ internally.
+\end{proof}

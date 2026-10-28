@@ -1,0 +1,30 @@
+\section{The native pushed canonical differential on the actual whole chart}
+
+\begin{lemma}[Actual whole-chart comparison of the original differential]
+\label{lem:kn-canonical-whole-chart-pushed-differential-square}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalStructureTrace.WholeFreeChart.exists_pushedCanonicalDifferential_chart_comparison}
+\leanok
+Let $C$ be an actual whole chart of the original morphism $\pi:Y\to X$,
+with scalar map $\beta:B\to A$, base open immersion $a:A\to X$ and
+whole source open immersion $v:B\to Y$. For every original structural
+map $f:X\to\operatorname{Spec}k$ and exterior degree $n$, there are
+internally produced isomorphisms
+$e_A:a^*\pi_*\pi^*\omega_X\simeq\beta_*\beta^*\omega_A$ and
+$e_B:a^*\pi_*\omega_Y\simeq\beta_*\omega_B$
+under which the restriction of the original pushed differential satisfies
+$a^*(\pi_*\delta)e_B=e_A(\beta_*\delta_\beta)$.
+Here the displayed restrictions are the native open-restriction functors;
+the canonical objects are the original exterior cotangent sheaves.
+\uses{lem:kn-blowup-canonical-etale-square,lem:kn-structure-trace-chart-cartesian}
+\end{lemma}
+\begin{proof}
+Both horizontal open-immersion canonical differentials are isomorphisms.
+Apply the already proved native compatible-lines theorem to the chart's
+actual original square. The native whole-module open base-change
+isomorphism, followed by the native restriction--pullback isomorphism
+on the actual whole source chart, supplies a natural comparison of the
+two whole-pushforward functors. Its naturality at the original differential
+and the image of the proved compatible-lines square give the asserted
+square after composing the original isomorphisms. No comparison isomorphism
+or desired commuting square is an incoming hypothesis.
+\end{proof}

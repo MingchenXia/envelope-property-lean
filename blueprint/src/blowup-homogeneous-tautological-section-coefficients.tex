@@ -1,0 +1,42 @@
+\section{The original homogeneous section as a whole scalar morphism}
+
+This coefficient provider is separate from the later ideal-tensor lift.
+The following complete coefficient node is verified by the frozen native checks.
+
+\begin{lemma}[The actual homogeneous section has its original whole scalar morphism]
+\label{lem:resume-original-homogeneous-whole-scalar}
+\uses{lem:fc-original-homogeneous-form-frame-coefficient,lem:fc-original-local-section-scalar,lem:scheme-original-global-section-hom,lem:blowup-projective-pulled-forms}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.homogeneous_localScalar}
+\leanok
+Let $R$ be any commutative ring, let $F\in R[X_0,\ldots,X_n]$ be
+homogeneous of its original degree $d\in\mathbb N$, and let $U_i=D_+(X_i)$
+be its original native projective coordinate open.  Pull back the existing
+whole section morphism of $F$ in the native $\mathcal O(d)$, with pivot
+$0$, along $U_i\hookrightarrow\mathbf P_R^n$.  Composing with the
+existing genuine native $X_i^d$ frame is exactly the whole structure-line
+endomorphism given by the original entire homogeneous coefficient
+$F/X_i^d$, transported by the original affine top-section isomorphism.
+The native positive-power line, frame, scheme sections and scalar actions
+are retained.  No coefficient comparison is an input.  The formula includes
+zero forms and degree zero.
+\end{lemma}
+\begin{proof}
+Write $M$ for that same native positive-power line, $e_i$ for its existing
+restriction frame and $s_F$ for its existing whole homogeneous section.
+The original homogeneous-section frame theorem computes the coefficient
+of $s_F$ in the corresponding genuine over-site frame as exactly the
+entire original homogeneous fraction $F/X_i^d$.  The existing comparison
+between the restriction frame and its over-site frame therefore gives the
+same value for the original restriction-frame coefficient.
+
+Apply the original whole local-section scalar theorem to $M,e_i,s_F$.
+It identifies the original section morphism pulled to $U_i$, followed by
+the actual pullback of $e_i$, with multiplication by the affine top-section
+image of precisely that original restriction-frame coefficient.  Substitute
+the coefficient equality just proved.  The section morphism here is
+definitionally the existing original homogeneous section morphism; the
+frame is the same existing native positive-power trivialization.  Thus the
+equality is an equality of whole original module morphisms with their same
+actions.  Neither step divides by the form or assumes positive degree, so
+the same argument covers $F=0$ and $d=0$.
+\end{proof}

@@ -1,0 +1,71 @@
+\subsection{Actual integral projections and the native projective-line dimension}
+
+\begin{lemma}[Actual injective integral maps retain original prime-chain dimension]
+\label{lem:actual-injective-integral-ring-dimension-bound}
+\lean{EnvelopeProperty.IntegralSchemeDimension.ringKrullDim_le_of_isIntegral_of_injective}
+\leanok
+An actual injective integral ring homomorphism retains the original
+Krull dimension as a lower bound for the target ring's dimension.
+\end{lemma}
+\begin{proof}
+Take any actual finite strict chain of prime ideals in the original
+ring. Injectivity and lying over produce a genuine target prime over
+its first term. Going up lifts the entire original strict chain to
+an equally long strict chain of target primes. Its length is bounded
+by the target's Krull dimension. Taking the supremum of all original
+prime-chain lengths proves the assertion.
+\end{proof}
+
+\begin{lemma}[Actual local chart bounds give whole original scheme dimension]
+\label{lem:actual-open-cover-scheme-dimension-bound}
+\lean{EnvelopeProperty.IntegralSchemeDimension.topologicalKrullDim_le_of_openCover}
+\leanok
+If every member of an actual scheme open cover has topological Krull
+dimension at most $d$, the same bound holds for the original whole scheme.
+\end{lemma}
+\begin{proof}
+For a sober scheme, its irreducible closed sets correspond in order
+to its actual points with the specialization order. Its dimension is
+the supremum of the coheights of these original points. Every point
+lifts to an actual member of the original open cover. An open
+immersion preserves its actual coheight, so the bound on the chosen
+member bounds this point's coheight. Taking the supremum proves the
+claim without separation or Noetherian hypotheses.
+\end{proof}
+
+\begin{lemma}[A genuine integral projection does not increase original dimension]
+\label{lem:actual-integral-projection-dimension-bound}
+\uses{lem:actual-open-cover-scheme-dimension-bound}
+\lean{EnvelopeProperty.IntegralSchemeDimension.topologicalKrullDim_le_of_isIntegralHom}
+\leanok
+For an actual integral scheme morphism $p:Y\to X$, if the original
+$X$ has topological Krull dimension at most $d$, then so does the
+original $Y$.
+\end{lemma}
+\begin{proof}
+At an original point of $Y$, choose an actual affine neighborhood of
+its image in $X$. Integrality gives an actual affine inverse image.
+The actual whole projection section map is integral. Incomparability
+therefore makes contraction strictly monotone on its original prime
+ideals, bounding the inverse-image affine ring's dimension by the
+original affine ring's dimension. That original affine scheme is an
+open subspace of $X$, hence has dimension at most $d$. Actual affine
+stalk and specialization identifications bound the chosen original
+point's coheight. Their supremum gives the asserted bound.
+\end{proof}
+
+\begin{lemma}[The actual native projective line has dimension at most one]
+\label{lem:actual-native-projective-line-dimension-bound}
+\uses{lem:actual-open-cover-scheme-dimension-bound}
+\lean{EnvelopeProperty.IntegralSchemeDimension.projectiveLine_dimension_le}
+\leanok
+The original native projective line over any original field has
+topological Krull dimension at most one.
+\end{lemma}
+\begin{proof}
+Use its actual standard homogeneous-coordinate affine cover. Each
+original coordinate ring is a polynomial ring in exactly one
+variable over the SAME field, of Krull dimension one. The preceding
+actual open-cover bound proves the assertion for the whole original
+projective line.
+\end{proof}

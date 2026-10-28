@@ -1,0 +1,30 @@
+\section{Naturality of actual whole tensor pullback}
+
+\begin{lemma}[Canonical explicit tensor pullback is natural]
+\label{lem:cartier-original-tensor-pullback-naturality}
+\lean{AlgebraicGeometry.Scheme.Modules.canonicalTensorPullbackIso_natural}
+\leanok
+\uses{lem:cartier-actual-evaluation-dual-transport}
+For an arbitrary original morphism $f:X\to Y$ and actual module
+isomorphisms $e:\mathcal M\simeq\mathcal M'$ and
+$e':\mathcal N\simeq\mathcal N'$, the genuine whole explicit
+sheafified tensor comparison $K_f$ satisfies
+\[
+ f^*(e\otimes e')\,K_f(\mathcal M',\mathcal N')
+ =K_f(\mathcal M,\mathcal N)(f^*e\otimes f^*e').
+\]
+Every tensor and pullback in this identity is on the original module
+sheaves; no arbitrary comparison is chosen.
+\end{lemma}
+\begin{proof}
+Let $k$ be the genuine coherent-to-explicit tensor comparison on the
+original source and $k_X$ the same comparison after pullback. By its
+actual naturality, $(e\otimes e')k'^{-1}=k^{-1}(e\otimes_{\rm coh}e')$.
+The canonical whole pullback comparison is
+$f^*(k^{-1})\mu_f^{-1}k_X$. Thus its composite with $f^*(e\otimes e')$
+is $f^*(k^{-1})f^*(e\otimes_{\rm coh}e')\mu_f^{-1}k'_X$.
+Naturality of the inverse monoidal tensorator changes the middle part
+to $\mu_f^{-1}(f^*e\otimes_{\rm coh}f^*e')$. Naturality of the actual
+coherent-to-explicit comparison changes its last two factors to
+$k_X(f^*e\otimes f^*e')$. This is the desired whole right side.
+\end{proof}

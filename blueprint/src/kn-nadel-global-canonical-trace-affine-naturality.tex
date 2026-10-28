@@ -1,0 +1,40 @@
+\section{Actual coordinate wedges in the original affine canonical map}
+
+\begin{lemma}[Native canonical pullback on every original coordinate wedge]
+\label{lem:kn-global-trace-native-coordinate-wedge}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalPullbackMap,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineCanonicalCoordinateSection,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.affineAlgebraCanonicalPullbackMap_coordinate_wedge}
+\leanok
+Let $A,B$ be original algebras over the field $k$, let $f_A$ be smooth
+of pure relative dimension $n$, and let $\varphi:A\to B$ be an original
+$k$-algebra map.  The native original canonical differential, transported
+through its produced field-structure square, defines
+\[
+ d_\varphi:\Gamma(\omega_A)\to
+       \operatorname{Res}_{\varphi}\Gamma(\omega_B).
+\]
+For every original tuple $a_1,\ldots,a_n\in A$, its value on the original
+sheafification unit of $da_1\wedge\cdots\wedge da_n$ is the original unit
+of $d\varphi(a_1)\wedge\cdots\wedge d\varphi(a_n)$.
+No etaleness, chosen differential comparison, or desired wedge formula
+is an input.
+\uses{lem:kn-global-trace-native-branch-differential,
+lem:kn-global-trace-native-ordinary-unit}
+\end{lemma}
+\begin{proof}
+Compose the actual native canonical pullback with the transport along the
+proved structural square for $\varphi$.  The actual affine exterior map carries each wedge of ordinary
+differentials to the wedge of its native presheaf differentials.  Its
+sheafification unit is the named native coordinate section.  The proved
+actual sheaf exterior differential sends this section to the sheaf wedge
+of the actual cotangent images, so no comparison of a target frame is
+needed.  Each cotangent image is the differential of its actual
+regular-function image.  Naturality of the
+original spectrum--sections isomorphism identifies that image with the
+original coefficient $\varphi(a)$.  Finally, transport through the
+structural square preserves the differential of each unchanged coefficient;
+eliminating the equality of the structural maps and using the global
+section functor's identity law proves this statement.  The internally
+cached transport is proved equal to the literal original global-section
+map of that same field-structure equality.  Taking wedges and their same sheafification units gives
+the assertion on the original tuple.
+\end{proof}

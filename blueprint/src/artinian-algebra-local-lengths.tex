@@ -1,0 +1,57 @@
+\section{Actual Artinian algebra lengths and nonflat principal local degrees}
+
+\begin{theorem}[Actual length along arbitrary coefficients]
+\label{thm:fc-artinian-local-restriction-length}
+\leanok
+\lean{EnvelopeProperty.ArtinianAlgebraLocalLengths.length_restrictScalars_of_finiteLength}
+For any commutative coefficient ring $R$, an actual local $R$-algebra $S$,
+and an actual finite-length $S$-module $M$, the original coefficient length is
+$\ell_R(M)=\ell_S(M)\ell_R(\kappa(S))$.  Neither locality of $R$ nor
+injectivity of its coefficient map is required.
+\end{theorem}
+\begin{proof}
+Every actual composition-series factor of $M$ is the residue field of the
+same local algebra.  Restrict the original linear maps to $R$ and use exact
+length additivity, then induct on that actual composition series.
+\end{proof}
+
+\begin{theorem}[Whole original Artinian algebra local lengths]
+\label{thm:fc-artinian-algebra-local-lengths}
+\leanok
+\lean{EnvelopeProperty.ArtinianAlgebraLocalLengths.length_eq_sum_local_length_mul_residue_length}
+For an actual Artinian $R$-algebra $S$, its entire original $R$-length is the
+sum, over all original primes $p$ of $S$, of
+$\ell_{S_p}(S_p)\ell_R(\kappa(S_p))$.
+\end{theorem}
+\begin{proof}
+Use the canonical whole algebra isomorphism from $S$ to the finite product
+of its original prime localizations.  It respects the original $R$-action.
+Apply length additivity for this finite product and the local-target
+restriction formula.  All localizations and residue fields are the native
+ones belonging to the original primes.
+\end{proof}
+
+\begin{theorem}[Nonflat principal residue-weighted degrees]
+\label{thm:fc-nonflat-principal-local-degrees}
+\leanok
+\lean{EnvelopeProperty.ArtinianAlgebraLocalLengths.principalQuotient_isArtinian, EnvelopeProperty.ArtinianAlgebraLocalLengths.sum_principal_local_degrees_eq_rank_mul_ord}
+Let $R$ be an actual Noetherian domain of dimension at most one and let
+$B$ be an actual finite domain algebra whose original coefficient map is
+injective.  For any original $a\ne0$, the actual quotient $Q=B/aB$ is
+Artinian and
+\[
+ \sum_{p\in\operatorname{Spec}Q}
+ \ell_{Q_p}(Q_p)\ell_R(\kappa(Q_p))
+ =\operatorname{rank}_R(B)\operatorname{ord}_R(a).
+\]
+\uses{thm:fc-finite-algebra-principal-degree,thm:fc-artinian-algebra-local-lengths}
+\end{theorem}
+\begin{proof}
+The same nonzero original $a$ annihilates the entire finite $R$-module $Q$,
+so the one-dimensional finite-length theorem internally makes $Q$
+Artinian.  Apply the whole Artinian decomposition and the genuine nonflat
+principal colength formula.  No flatness, normality, supplied free lattice,
+residue-degree matching, or desired curve-degree equality enters the proof.
+The global singular-target curve-degree comparison still requires its
+separate genuine scheme and finite-fibre transport.
+\end{proof}

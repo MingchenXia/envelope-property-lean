@@ -1,0 +1,56 @@
+\section{The original projective ordered section complex}
+
+\begin{lemma}[A bounded flat original section complex with finite homology]
+\label{lem:kn-derived-projective-coordinate-complex}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedCech.exists_coordinate_complex}
+\leanok
+Let $f:X\to\operatorname{Spec}R$ be an actual flat morphism with a
+projective factorization, where $R$ is Noetherian, and let $M$ be an
+actual invertible module on $X$.  There is an original projective
+coordinate cover whose actual ordered base-linear \v{C}ech complex
+is bounded, has flat terms, and has finite native homology in every
+degree.  The coefficient ring in this native construction is exactly
+$\Gamma(\operatorname{Spec}R,\mathcal O)$ with its action induced by $f$.
+\end{lemma}
+\begin{proof}
+Use the existing projective-factorization finiteness producer to choose
+the original closed embedding and its ordered coordinate cover.  A
+closed embedding makes every coordinate preimage affine.  Projectivity
+also derives separatedness.  An invertible module is locally free and
+finitely presented; flatness of the family makes its sections on every
+affine intersection flat over the original affine base.  Finite
+products retain flatness.  Ordered tuples above the cover cardinality
+are empty, so the actual terms there vanish.  Finiteness of every
+native homology module is the independently proved projective
+coherent-finiteness theorem.
+\end{proof}
+
+\begin{corollary}[The actual coordinate tensor homology specializes]
+\label{cor:kn-derived-projective-coordinate-tensor-specialization}
+\uses{lem:kn-derived-projective-coordinate-complex,thm:kn-derived-natural-cochain-specialization}
+\lean{EnvelopeProperty.Vanishing.SpecializationDerivedCech.exists_coordinate_tensor_specialization}
+\leanok
+On the produced original coordinate cover, positive-degree native
+homology vanishing of the actual residue tensor section complex
+persists on a produced principal open for every field-valued point.
+The coefficient ring and maps remain those of the native original
+affine base.  No geometric fibre cohomology comparison is supplied.
+\end{corollary}
+\begin{proof}
+Apply the constructed natural-cochain specialization producer to
+the actual bounded flat section complex with its independently
+finite native homology.  Beyond the cover bound the original
+middle term itself is zero, so its actual tensor homology is zero.
+\end{proof}
+
+\begin{remark}[Scope of the geometric producer]
+\label{rmk:kn-derived-projective-coordinate-complex-scope}
+This constructs the actual section complex, its algebraic
+finiteness and flatness properties, and its actual tensor-homology
+specialization.  The canonical original-$R$ coefficient action is
+retained in Lemma~\ref{lem:kn-derived-original-scalar-coefficients}.
+The actual nonflat ordered-complex comparison and its fibre
+cohomology interpretation are proved in
+Theorem~\ref{thm:kn-geometric-cech-base-change} and
+Lemma~\ref{lem:kn-derived-geometric-fibre-cohomology}.
+\end{remark}

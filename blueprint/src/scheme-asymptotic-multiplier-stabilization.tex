@@ -1,0 +1,51 @@
+\section{Actual global stabilization of the original asymptotic ideals}
+
+\begin{theorem}[Original divisibility increases the whole global constituents]\label{thm:sc0-original-global-multiplier-divisibility}
+\lean{EnvelopeProperty.Char0.schemeMultiplierIdealSheaf_le_of_dvd}
+\leanok
+\uses{def:sc0-original-global-multiplier-ideal-sheaf}
+For the original graded ideal-sheaf sequence $J_\bullet$, with
+nonzero actual generic stalk in every positive degree, divisibility
+of positive original indices $q\mid q'$ gives
+$\mathcal J_X(J_q^{m/q})\subseteq\mathcal J_X(J_{q'}^{m/q'})$.
+\end{theorem}
+\begin{proof}
+Check the actual global inclusion on every original affine open.
+For a nonempty affine open, its actual generic-germ equivalence
+maps the original graded ideal sequence to an actual graded
+sequence of ideals in the literal section subalgebra: ideal maps
+preserve products and inclusions. Its nonzero ideals follow from
+the original generic stalks. The proved affine full multiplier
+divisibility theorem applies and taking comap gives precisely the
+claimed original affine inclusion. For an empty affine open both
+actual values are the unit ideal. Thus the inclusion holds on all
+actual original affine components.
+\end{proof}
+
+\begin{theorem}[The whole global original asymptotic ideal stabilizes]\label{thm:sc0-original-global-asymptotic-stabilization}
+\lean{EnvelopeProperty.Char0.exists_schemeAsymptoticMultiplierIdealSheaf_eq}
+\leanok
+\uses{thm:sc0-original-global-multiplier-divisibility,thm:sc0-directed-original-ideal-sheaf-attainment,def:sc0-original-global-asymptotic-multiplier-ideal}
+If the original smooth integral scheme is quasi-compact, then for
+each $m$ there is an actual positive original index $q_0$ such that
+the whole actual $\mathfrak b_m$ equals
+$\mathcal J_X(J_q^{m/q})$ for every positive original $q$ divisible
+by $q_0$.
+\end{theorem}
+\begin{proof}
+Index the same original constituents by positive natural numbers.
+For two such indices, their product is a positive common multiple;
+the preceding actual divisibility inclusions prove this is a
+directed family of the original ideal sheaves. Original smoothness
+proves local Noetherianity, so the actual global directed-attainment
+theorem on the original quasi-compact scheme gives an actual
+constituent at $q_0$ equal to the whole supremum. The positive-index
+supremum is exactly the original defining supremum: every original
+positive natural index appears, and no new constituent is inserted.
+
+For any positive multiple $q$ of $q_0$, divisibility puts the
+$q_0$-constituent inside the $q$-constituent; the latter always lies
+in the defining supremum. Since the $q_0$-constituent is already
+that whole supremum, these inclusions prove the required equality
+of actual global ideal sheaves.
+\end{proof}

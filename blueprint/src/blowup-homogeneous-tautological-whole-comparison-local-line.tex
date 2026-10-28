@@ -1,0 +1,26 @@
+\begin{definition}[The original whole line comparison on a fraction chart]
+\label{def:whole-original-fraction-line-comparison}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalFractionWholeLineIso}
+\leanok
+\uses{prop:whole-original-form-fraction-ratios,prop:whole-original-fraction-projective-pivot-basis,prop:whole-original-affine-blowup-fraction-basis}
+Let $F_0,\ldots,F_m$ be the prescribed original homogeneous ideal generators, all of degree $d$. On a subordinate domain affine open $U$, let $q$ be their original Rees projective morphism with its original coefficient map, and let $\mu$ be the original affine blowup structure map to $X$. On the actual original fraction chart $c$ with nonzero pivot $F_p|_U$, there is an actual whole module isomorphism
+\[
+ c^*(q^*\mathcal O(1))\simeq
+ c^*\bigl(\mu^*j^*\mathcal O(d)\otimes(D\mathcal O_{\mathrm{Bl}})\bigr).
+\]
+Its construction uses only the original finite generators and the actual native chart; no comparison certificate is an input.
+\end{definition}
+\begin{proof}
+The original projective pivot coordinate pulled by $cq$ is a basis, and the original ideal-valued lift of $F_p$ pulled by $c$ is a basis. Compose the inverse of the first basis with the second basis. Precompose with the canonical composition comparison from $c^*q^*\mathcal O(1)$ to $(cq)^*\mathcal O(1)$. This gives the claimed whole module isomorphism on the actual entire native fraction spectrum.
+\end{proof}
+
+\begin{proposition}[Preservation of every original section]
+\label{prop:whole-original-fraction-line-sections}
+\lean{EnvelopeProperty.BlowupHomogeneousTautologicalLine.originalFractionWholeLineIso_section}
+\leanok
+\uses{def:whole-original-fraction-line-comparison,prop:whole-original-fraction-projective-coordinate-ratios,prop:whole-original-form-fraction-ratios}
+The original fraction whole line comparison sends the pullback of every original projective coordinate section $\sigma_j$ to the pullback of the original ideal-valued lift of $F_j$.
+\end{proposition}
+\begin{proof}
+Both families have the same actual coefficient $F_j/F_p$ relative to their original pivot bases. The comparison sends the pivot basis to the pivot basis by construction, so composition and associativity give preservation of every section on the whole fraction spectrum. The canonical composition comparison carries the iterated pullback of each original coordinate section to its composite pullback; its naturality therefore gives the asserted statement for the original iterated whole modules.
+\end{proof}

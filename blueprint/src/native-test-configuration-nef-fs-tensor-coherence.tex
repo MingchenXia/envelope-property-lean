@@ -1,0 +1,49 @@
+\section{Whole tensor coherence for the original model comparisons}
+
+Fix the original test configuration and original lines $M,H$ with whole
+action comparisons $\alpha,\gamma$ and fibre-one comparisons with original
+lines $L,K$.  The tensor action and fibre-one comparisons are the actual
+inverse pullback tensorator, tensor of the two given comparisons, and
+target pullback tensorator, in that order.
+
+\begin{lemma}[Actual whole tensor comparison on the unit open]
+\label{lem:native-tc-nef-fs-unit-open-tensor-coherence}
+\leanok
+\uses{lem:native-tc-nef-fs-whole-tensor-comparisons, thm:native-test-configuration-line-trivialization, lem:cartier-actual-pullback-inverse-tensorator-composition}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.unitOpenLineIso_tensor_comparisons}
+The resulting whole unit-open isomorphism of $M\otimes H$ with the
+pullback of $L\otimes K$ is the tensor of the two original whole unit-open
+isomorphisms, conjugated by the actual source and target pullback
+tensorators.
+\end{lemma}
+\begin{proof}
+A monoidal natural isomorphism commutes with inverse tensorators: multiply
+its monoidal tensor square on the left and right by the inverse
+tensorators.  The inverse tensorator of a composite strong monoidal
+functor is the mapped inner inverse tensorator followed by the outer
+inverse tensorator.  Finally, inverse tensorators are natural for the
+two original line isomorphisms.  Apply these three elementary identities
+to the nine factors defining each original whole unit-open comparison.
+Actual pullback composition is monoidal, while pullback congruence for
+equal original scheme maps is monoidal by substitution of that equality.
+Composing the nine squares and functoriality of the actual tensor product
+give the stated whole original isomorphism.  No equality is asserted
+only after evaluation, and no action is replaced by a character twist.
+\end{proof}
+
+\begin{lemma}[Actual whole tensor comparison on the product]
+\label{lem:native-tc-nef-fs-product-tensor-coherence}
+\leanok
+\uses{lem:native-tc-nef-fs-unit-open-tensor-coherence, def:native-tc-product-original-line-iso}
+\lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.productTotalLineIso_tensor_comparisons}
+The product line isomorphism of the original tensor data is the actual
+tensor of the two original product line isomorphisms, with the original
+product-map and original-reference-map pullback tensorators.
+\end{lemma}
+\begin{proof}
+Apply the same three identities to the inverse product pullback
+composition, the pullback of the whole unit-open comparison, the target
+pullback composition and the final original-projection map congruence.
+Insert the preceding whole unit-open tensor identity and compose the
+four squares.
+\end{proof}

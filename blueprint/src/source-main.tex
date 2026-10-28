@@ -1,0 +1,258 @@
+\section{The main theorems for projective varieties}
+\label{sec:source-main}
+
+Throughout, $k$ is a field with the trivial absolute value, $p\colon X\to\operatorname{Spec}k$
+is projective and $X$ is integral. We use the notation of
+Section~\ref{sec:source-numerical-psh}: $N^1(X)_\R$, $\operatorname{Amp}(X)$, $X^{\mathrm{an}}$,
+$\PSH(X,\theta)$ (Definition~\ref{def:var-psh}) and $\mathrm{EP}_X(\theta)$
+(Definition~\ref{def:var-ep}); of Section~\ref{sec:source-presentation-models}: a presentation
+$q_c\colon X\to\PP^{d_c}$, $c=0,\dots,r$, with factor lines $F_c=q_c^*\mathcal O(1)$, coefficient
+map $\pi\colon\R^{r+1}\to N^1(X)_\R$, $\pi(\theta_m)=\sum_c\theta_{m,c}[F_c]$, model
+$\mathcal P$ and homeomorphism $H\colon X^{\mathrm{an}}\to\mathcal P^{\mathrm{an}}$; and of
+Section~\ref{sec:var-unibranch}: $X$ is unibranch if its normalization is bijective
+(Definition~\ref{def:var-unibranch}), equivalently if every local ring $\mathcal O_{X,x}$ is
+unibranch, which is the definition of \cite[\S1.1]{FHX}
+(Lemma~\ref{lem:var-unibranch-stalks}).
+
+The chapter proves Theorem~1.1 and Corollary~1.2 of Fang--Han--Xia \cite{FHX} for $X$ itself.
+The route: every class has a presentation, psh functions and the envelope property of $X$ are
+those of the model of the presentation (Theorem~\ref{thm:var-psh-comparison}), and the model
+theorems of Section~\ref{subsec:gl-main} apply to the model. The comparison of psh functions is
+the formal content of the remark that the model statements imply those of Fang--Han--Xia
+(Remark~\ref{rmk:gl-model-comparison}); it does not choose line bundles spanning $N^1(X)_\Q$.
+
+\subsection{Psh functions of a presentation model}
+
+A \emph{Fubini--Study system} on a space $B$ (Definition~\ref{def:gl-fs-system}) has classes
+$a\in\Q^s$, Fubini--Study functions of class $a$ and $\theta$-psh functions for
+$\theta\in\R^s$: usc functions $u\not\equiv-\infty$ that are limits of decreasing nets of
+Fubini--Study functions of classes $a_i\to\theta$.
+
+\begin{lemma}[Psh functions through a Fubini--Study dictionary]
+\label{lem:var-psh-comparison-dictionary}
+\lean{EnvelopeProperty.Variety.isPSH_iff_of_fsDictionary,
+EnvelopeProperty.Variety.hasEnvelopeProperty_iff_of_fsDictionary}
+\leanok
+\uses{def:var-psh, def:var-ep, def:gl-fs-system, lem:var-ample-convergence-line-family,
+lem:var-ample-convergence-openness, thm:native-numerical-ample-family-openness,
+lem:var-ep-transport}
+\source{bj22-trivval:defi:psh, bj22-trivval:lem:PSH}
+Let $F$ be a Fubini--Study system on a topological space $B$, $e\colon X^{\mathrm{an}}\to B$ a
+homeomorphism, $L_1,\dots,L_s$ invertible sheaves with coefficient map
+$\pi(a)=\sum_ca_c[L_c]$, and $w\in\R^s$ with $\pi(w)$ ample. Assume:
+\begin{enumerate}
+\item[(A)] every $F$-Fubini--Study function $\psi$ of class $a\in\Q^s$ satisfies
+  $\psi\circ e=\varphi_D$ for a Fubini--Study datum $D$ on $X$ with sections not all zero and
+  class $[D]=\pi(a)$;
+\item[(B)] if $D$ is a Fubini--Study datum on $X$ with sections not all zero and
+  $\pi(a)-[D]$ is ample, then $\varphi_D\circ e^{-1}$ is an $F$-Fubini--Study function of class
+  $a$.
+\end{enumerate}
+Then for every $\theta_m\in\R^s$ and $\varphi\colon X^{\mathrm{an}}\to[-\infty,\infty]$,
+$\varphi\in\PSH(X,\pi(\theta_m))$ if and only if $\varphi\circ e^{-1}$ is $\theta_m$-psh for
+$F$. Consequently $\mathrm{EP}_X(\pi(\theta_m))$ holds if and only if the envelope property of
+$F$ holds at $\theta_m$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\varphi\circ e^{-1}$ is $\theta_m$-psh for $F$: it is the limit of a decreasing net
+$f_i$ of Fubini--Study functions of classes $a_i\to\theta_m$. By (A), $f_i\circ e=\varphi_{D_i}$
+with $[D_i]=\pi(a_i)$, and $\pi(a_i)\to\pi(\theta_m)$ in the order of the ample cone
+(Lemma~\ref{lem:var-ample-convergence-line-family}). The net $\varphi_{D_i}$ decreases to
+$\varphi$, and $\varphi=(\varphi\circ e^{-1})\circ e$ is usc and not identically $-\infty$.
+Hence $\varphi\in\PSH(X,\pi(\theta_m))$.
+
+Conversely let $\varphi\in\PSH(X,\theta)$, $\theta=\pi(\theta_m)$: $\varphi$ is the limit of a
+decreasing net $\varphi_{D_j}$, $j\in J$, of nonzero Fubini--Study data with classes
+$c_j=[D_j]\to\theta$. For $N\in\N$ put $\varepsilon_N=1/(N+1)$ and
+$\eta_N=\varepsilon_N\pi(w)$, an ample class. By
+Lemma~\ref{lem:var-ample-convergence-openness} there is $j_N\in J$ with $\theta+\eta_N-c_j$
+ample for all $j\ge j_N$. By Theorem~\ref{thm:native-numerical-ample-family-openness} there is
+$\rho_N>0$ such that $\eta_N+\pi(x)$ is ample whenever $|x_c|<\rho_N$ for all $c$. Choose
+$b_N\in\Q^s$ with $|b_{N,c}-(\theta_{m,c}+2\varepsilon_Nw_c)|<\min(\rho_N,\varepsilon_N)$ for
+all $c$. Then for $j\ge j_N$,
+\[
+ \pi(b_N)-c_j=\bigl(\eta_N+\pi(b_N-\theta_m-2\varepsilon_Nw)\bigr)+\bigl(\theta+\eta_N-c_j\bigr)
+\]
+is ample, and $|b_{N,c}-\theta_{m,c}|\le(1+2|w_c|)\varepsilon_N$, so $b_N\to\theta_m$. The set
+$J'=\{(j,N)\in J\times\N : j_N\le j\}$ with the product order is nonempty and directed: given
+$(j,N),(j',N')\in J'$, put $N''=\max(N,N')$ and choose $j''\ge j,j',j_{N''}$. For
+$x=(j,N)\in J'$ the function $f_x=\varphi_{D_j}\circ e^{-1}$ is an $F$-Fubini--Study function of
+class $b_N$ by (B). The net $(f_x)_{x\in J'}$ is decreasing, $b_N\to\theta_m$ along $J'$ (the
+projection $J'\to\N$ tends to infinity, since $(j_N,N)\in J'$), and
+$\inf_{x\in J'}f_x=\inf_{j\in J}\varphi_{D_j}\circ e^{-1}=\varphi\circ e^{-1}$: every $j\in J$ is
+dominated by some $j''$ with $(j'',0)\in J'$, and the net is decreasing. Since
+$\varphi\circ e^{-1}$ is the infimum of continuous functions it is usc, and it is not
+identically $-\infty$. Hence it is $\theta_m$-psh for $F$.
+
+The statement on the envelope property follows by transport along $e$
+(Lemma~\ref{lem:var-ep-transport}).
+\end{proof}
+
+\begin{lemma}[The dictionary of a presentation]
+\label{lem:var-presentation-fs-transfer}
+\lean{EnvelopeProperty.Variety.lineFamilyMap_presentation_single_mem_ampleCone,
+EnvelopeProperty.Variety.exists_fsData_of_isFS_presentation,
+EnvelopeProperty.Variety.isFS_presentation_of_sub_mem_ampleCone}
+\leanok
+\uses{thm:pm-fs-dictionary, lem:pm-fs-class, lem:pm-line-class,
+lem:pm-exists-positive-presentation, lem:var-class-promotion}
+\source{fhx-envelope-20261028:lem:finite-class-promotion}
+For a presentation of $X$, the Fubini--Study system of its model $\mathcal P$, the homeomorphism
+$H$, the factor lines $F_c$ and $w=e_0$ satisfy the hypotheses of
+Lemma~\ref{lem:var-psh-comparison-dictionary}.
+\end{lemma}
+
+\begin{proof}
+$\pi(e_0)=[F_0]$ is ample (Lemma~\ref{lem:pm-exists-positive-presentation}). Condition (A) is
+Theorem~\ref{thm:pm-fs-dictionary} together with Lemma~\ref{lem:pm-fs-class}. For (B), let $D$
+be a nonzero datum and $a\in\Q^{r+1}$ with $\pi(a)-[D]$ ample. Choose $n>0$ with
+$z=na\in\Z^{r+1}$. By Lemma~\ref{lem:pm-line-class}, $n^{-1}[L(z)]=\pi(a)$, so
+$n^{-1}[L(z)]-[D]$ is ample, and finite class promotion
+(Lemma~\ref{lem:var-class-promotion}) gives $t>0$ and a nonzero datum $E$ with
+$\varphi_E=\varphi_D$, line $L(z)^{\otimes t}\cong L(tz)$ (Lemma~\ref{lem:pm-line-class}) and
+denominator $nt$. Since $tz=(nt)a$, Theorem~\ref{thm:pm-fs-dictionary} shows that
+$\varphi_E\circ H^{-1}=\varphi_D\circ H^{-1}$ is a model Fubini--Study function of class $a$.
+\end{proof}
+
+\begin{theorem}[Psh functions of a variety and of a presentation model]
+\label{thm:var-psh-comparison}
+\lean{EnvelopeProperty.Variety.isPSH_iff_presentation,
+EnvelopeProperty.Variety.isPSH_presentation_iff_of_eq}
+\leanok
+\uses{lem:var-psh-comparison-dictionary, lem:var-presentation-fs-transfer, def:gl-psh}
+\source{bj22-trivval:defi:psh, fhx-envelope-20261028:lem:finite-class-promotion}
+For a presentation of $X$ with model $\mathcal P$, every $\theta_m\in\R^{r+1}$ and every
+$\varphi\colon X^{\mathrm{an}}\to[-\infty,\infty]$,
+\[
+ \varphi\in\PSH\Bigl(X,\sum_c\theta_{m,c}[F_c]\Bigr)
+ \iff\varphi\circ H^{-1}\in\PSH(\mathcal P,\theta_m).
+\]
+In particular $\PSH(\mathcal P,\theta_m)$ depends only on the class $\pi(\theta_m)$.
+\end{theorem}
+
+\begin{proof}
+Lemmas~\ref{lem:var-psh-comparison-dictionary} and~\ref{lem:var-presentation-fs-transfer}. For
+the last assertion write $u=(u\circ H)\circ H^{-1}$.
+\end{proof}
+
+\begin{corollary}[The envelope property of a variety and of a presentation model]
+\label{cor:var-ep-comparison}
+\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_iff_presentation,
+EnvelopeProperty.Variety.hasEnvelopeProperty_presentation_iff_of_eq}
+\leanok
+\uses{thm:var-psh-comparison, lem:var-psh-comparison-dictionary, lem:var-ep-transport}
+For a presentation of $X$ with model $\mathcal P$ and $\theta_m\in\R^{r+1}$,
+$\mathrm{EP}_X(\pi(\theta_m))$ holds if and only if $\mathrm{EP}_{\mathcal P}(\theta_m)$ holds.
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:var-psh-comparison-dictionary} with Lemma~\ref{lem:var-presentation-fs-transfer}.
+\end{proof}
+
+\subsection{The main theorem and the characterization}
+
+The hypotheses of the model main theorem (Theorem~\ref{thm:nn-main}) are FHX Lemma~5.5
+(\texttt{LocalPositivity}, Lemma~\ref{lem:wu-local-positivity}) at the countable algebraically
+closed subfields $k_0$ of $k$ and, in characteristic $0$, FHX Theorem~3.1
+(\texttt{SmoothEnvelopeCharZero}, Theorem~\ref{thm:import-sg-ep-char0}) at those $k_0$; fibre
+constancy and de Jong's alterations are proved. The statements below carry exactly these
+hypotheses.
+
+\begin{theorem}[Fang--Han--Xia, Theorem~1.1]
+\label{thm:var-main}
+\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch,
+EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch,
+EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch_of_charP,
+EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch_of_charP}
+\leanok
+\uses{thm:nn-main, cor:var-ep-comparison, lem:pm-exists-presentation,
+thm:var-unibranch-presentation, lem:var-ep-family}
+\source{fhx-envelope-20261028:thm:intro-main}
+Let $k$ be algebraically closed and $X$ an integral unibranch projective variety over $k$, and
+assume the hypotheses of Theorem~\ref{thm:nn-main} (in characteristic $\ell>0$ only FHX
+Lemma~5.5). Then $\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$: every nonempty
+family $(\varphi_i)\subseteq\PSH(X,\theta)$ bounded above satisfies
+$(\sup_i\varphi_i)^\star\in\PSH(X,\theta)$.
+\end{theorem}
+
+\begin{proof}
+Let $\theta\in N^1(X)_\R$. By Lemma~\ref{lem:pm-exists-presentation} there is a presentation of
+$X$ and $\theta_m\in\R^{r+1}$ with $\theta=\pi(\theta_m)$. Its model $\mathcal P$ is unibranch
+(Theorem~\ref{thm:var-unibranch-presentation}), so $\mathrm{EP}_{\mathcal P}(\theta_m)$ holds
+(Theorem~\ref{thm:nn-main}), hence $\mathrm{EP}_X(\theta)$
+(Corollary~\ref{cor:var-ep-comparison}). The family form is
+Lemma~\ref{lem:var-ep-family}. In characteristic $\ell>0$ the characteristic-$0$ hypothesis
+holds vacuously, since every subfield $k_0$ of $k$ has characteristic $\ell$.
+\end{proof}
+
+\begin{theorem}[Boucksom--Jonsson, Theorem~5.12]
+\label{thm:var-unibranch-of-ep}
+\lean{EnvelopeProperty.Variety.isUnibranch_of_hasEnvelopeProperty,
+EnvelopeProperty.Variety.isUnibranch_of_forall_hasEnvelopeProperty,
+EnvelopeProperty.Variety.exists_mem_ampleCone}
+\leanok
+\uses{lem:pm-exists-positive-presentation, cor:var-ep-comparison, cor:gl-characterization,
+thm:var-unibranch-presentation, lem:native-projectivity-geometric-ample-line}
+\source{bj22-trivval:thm:unibranch, fhx-envelope-20261028:cor:intro-characterization}
+Let $k$ be algebraically closed. If $\mathrm{EP}_X(\omega)$ holds for some
+$\omega\in\operatorname{Amp}(X)$, then $X$ is unibranch. In particular, if
+$\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$, then $X$ is unibranch. No
+further hypothesis is needed.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:pm-exists-positive-presentation}, $\omega=\pi(\omega_m)$ for a presentation
+with all $\omega_{m,c}>0$. By Corollary~\ref{cor:var-ep-comparison},
+$\mathrm{EP}_{\mathcal P}(\omega_m)$ holds; by the implication (3)$\Rightarrow$(1) of
+Corollary~\ref{cor:gl-characterization} (which uses no hypothesis) the model $\mathcal P$ is
+unibranch, and so is $X$ (Theorem~\ref{thm:var-unibranch-presentation}). For the second
+statement, $X$ has an ample invertible sheaf $A$
+(Lemma~\ref{lem:native-projectivity-geometric-ample-line}), and $[A]\in\operatorname{Amp}(X)$.
+\end{proof}
+
+\begin{corollary}[Fang--Han--Xia, Corollary~1.2]
+\label{cor:var-characterization}
+\lean{EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty,
+EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_charP,
+EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_imp}
+\leanok
+\uses{thm:var-main, thm:var-unibranch-of-ep, thm:var-unibranch-tfae}
+\source{fhx-envelope-20261028:cor:intro-characterization}
+Let $k$ be algebraically closed and $X$ an integral projective variety over $k$, and assume the
+hypotheses of Theorem~\ref{thm:var-main}. The following are equivalent:
+\begin{enumerate}
+\item $X$ is unibranch;
+\item[(1$'$)] every local ring $\mathcal O_{X,x}$ is unibranch;
+\item[(1$''$)] every local ring $\mathcal O_{X,x}$ is geometrically unibranch;
+\item[(2)] $\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$;
+\item[(3)] $\mathrm{EP}_X(\omega)$ holds for some ample class $\omega\in\operatorname{Amp}(X)$.
+\end{enumerate}
+The hypotheses are used only for (1)$\Rightarrow$(2). Condition (1$'$) is unibranchness in the
+sense of \cite[\S1.1]{FHX}; (1$'$), (2) and (3) are the three conditions of the source.
+\end{corollary}
+
+\begin{proof}
+(1)$\Leftrightarrow$(1$'$)$\Leftrightarrow$(1$''$) is Theorem~\ref{thm:var-unibranch-tfae};
+(1)$\Rightarrow$(2) is Theorem~\ref{thm:var-main}; (2)$\Rightarrow$(3) holds since
+$\operatorname{Amp}(X)$ is nonempty (Theorem~\ref{thm:var-unibranch-of-ep}); (3)$\Rightarrow$(1)
+is Theorem~\ref{thm:var-unibranch-of-ep}.
+\end{proof}
+
+\begin{remark}[Fidelity]
+\label{rmk:var-main-fidelity}
+\uses{thm:var-main, cor:var-characterization, rmk:var-psh-source}
+The objects of Theorem~\ref{thm:var-main} and Corollary~\ref{cor:var-characterization} are
+those of Fang--Han--Xia: an integral scheme with a projective structure morphism, the space
+$N^1(X)_\R$ of numerical classes, Boucksom--Jonsson's psh functions on the Berkovich
+analytification and unibranchness. \cite[\S1.1]{FHX} defines unibranchness stalk-wise (every
+local ring has one branch); Theorem~\ref{thm:var-main} uses the equivalent normalization-bijective
+form (Lemma~\ref{lem:var-unibranch-stalks}), and the stalk-wise form is
+Theorem~\ref{thm:fu-variety-main-stalks} and condition (1$'$) of
+Corollary~\ref{cor:var-characterization}. ``Ample'' in (3) is membership in
+$\operatorname{Amp}(X)$. The single difference concerns the topology in which the
+classes $c_1(L_i)$ of Boucksom--Jonsson's Definition~4.1 converge: convergence in the order of
+the ample cone (Definition~\ref{def:var-ample-convergence}). It is Boucksom--Jonsson's
+convergence when $N^1(X)_\R$ is finite dimensional (Theorem~\ref{thm:var-ample-convergence-fd},
+Corollary~\ref{cor:var-psh-curve-weak-fd}); finite dimensionality of $N^1(X)_\R$ is not used.
+\end{remark}

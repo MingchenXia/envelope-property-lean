@@ -1,0 +1,366 @@
+\section{Forced poles from original section orders}
+
+The section-order formulation expands the forced-pole observation in
+\cref{rmk:nn-negative-part} within the setting of \cite{BJ22}.
+Fix the original model $\mathcal X$ of \cref{def:gl-model}, with its original
+analytic space, trivial point $\star$, section spaces $R_d$, and scaling
+action $t\cdot v$.  Write $E=E(\mathcal X)$ for the rational effective cone
+of \cref{def:nn-effective-cone}, and let
+$\iota:\mathbb Q^r\to\mathbb R^r$ be the coordinatewise inclusion.
+The section infimum below belongs to $[0,+\infty]$.  We retain this full
+range, including orders at points whose support kills every relevant
+section.  In the additive estimates, $-\infty+s=-\infty$ for nonnegative
+extended $s$.  Their subtraction forms have a finite value at $\star$,
+so the right-hand sides are unambiguous.
+
+\begin{definition}[The original normalized section order]
+\label{def:fp-section-order}
+\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder}
+\leanok
+\uses{lem:gl-sections,def:nn-effective-cone}
+For $v\in\mathcal X^\an$ and $a\in\mathbb Q^r$, define
+\[
+ \sigma_v(a)=\inf\left\{-\frac1m\log|f|_v:
+ m\ge1,\ d\in\mathbb Z^r,\ d=ma,\ 0\ne f\in R_d\right\}.
+\]
+The infimum of an empty set is $+\infty$.
+\end{definition}
+
+\paragraph{Divisorial terminology.}
+For $v=\operatorname{ord}_D$ on a normal model, this normalized section
+infimum is the expression called the asymptotic order along $D$.
+The assertions below use the displayed original section infimum throughout;
+they require no identification with a separate numerical-class space.
+
+\begin{lemma}[Nonnegativity of the original section order]
+\label{lem:fp-section-order-nonneg}
+\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_nonneg}
+\leanok
+\uses{def:fp-section-order,lem:gl-sections}
+One has $0\le\sigma_v(a)$ for every $v$ and $a$.
+\end{lemma}
+\begin{proof}
+Every original section satisfies $\log|f|_v\le0$.  Multiplication by
+the positive number $m^{-1}$ and negation therefore give
+$-m^{-1}\log|f|_v\ge0$.  This remains true when $\log|f|_v=-\infty$.
+The infimum of nonnegative extended numbers is nonnegative, including
+the empty infimum $+\infty$.
+\end{proof}
+
+\begin{lemma}[Every actual section bounds the infimum]
+\label{lem:fp-section-order-witness}
+\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_le}
+\leanok
+\uses{def:fp-section-order}
+If $m\ge1$, $d=ma$, and $0\ne f\in R_d$, then
+$\sigma_v(a)\le-m^{-1}\log|f|_v$.
+\end{lemma}
+\begin{proof}
+The given original section, degree and positive integer are an element
+of the set whose infimum defines $\sigma_v(a)$.
+\end{proof}
+
+\begin{lemma}[Classes with no original section]
+\label{lem:fp-section-order-noneffective}
+\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_eq_top_of_not_mem_effectiveCone}
+\leanok
+\uses{def:fp-section-order,def:nn-effective-cone}
+If $a\notin E$, then $\sigma_v(a)=+\infty$.
+\end{lemma}
+\begin{proof}
+An admissible section witness in the displayed infimum would be exactly
+a witness that $a\in E$.  There are no such witnesses, so the defining
+infimum is empty.
+\end{proof}
+
+\begin{lemma}[The original finite-family ray estimate]
+\label{lem:fp-fs-data-ray}
+\lean{EnvelopeProperty.MultiModel.FSData.eval_rpow_le_sub_sectionVanishingOrder}
+\leanok
+\uses{lem:fp-section-order-witness,def:gl-fs,lem:gl-scaling,lem:gl-sections}
+Let $m>0$, $d=ma$, and let $T$ be a finite family of original sections
+$f_j\in R_d$ with real weights $\lambda_j$.  Set
+$\varphi=m^{-1}\max_j(\log|f_j|+\lambda_j)$, allowing the empty
+family and zero sections.  For $t>0$,
+\[
+ \varphi(t\cdot v)\le\varphi(\star)-t\sigma_v(a).
+\]
+\end{lemma}
+\begin{proof}
+Consider one term in the actual finite section family.  A zero section
+contributes $-\infty$, which satisfies the required upper bound.  For
+$f_j\ne0$, the original section witness gives
+$m^{-1}\log|f_j|_v\le-\sigma_v(a)$.  At the trivial point its
+normalized weight satisfies
+$m^{-1}\lambda_j\le\varphi(\star)$.  Scaling therefore gives
+\[
+ \frac1m\bigl(t\log|f_j|_v+\lambda_j\bigr)
+ =\frac{\lambda_j}{m}+t\frac{\log|f_j|_v}{m}
+ \le\varphi(\star)+t(-\sigma_v(a))
+ =\varphi(\star)-t\sigma_v(a).
+\]
+These order and scalar identities hold on the full extended range:
+the normalized weight is finite and the logarithm is nonpositive.
+Taking the finite maximum commutes with multiplication by $m^{-1}>0$
+and proves the assertion, including the empty family.  In particular,
+if $\sigma_v(a)=+\infty$, every admissible nonzero section has
+logarithm $-\infty$ at $v$, as the bound by its order also shows.
+\end{proof}
+
+\begin{lemma}[The full Fubini--Study ray estimate]
+\label{lem:fp-fs-ray}
+\lean{EnvelopeProperty.MultiModel.IsFS.apply_rpow_le_sub_sectionVanishingOrder}
+\leanok
+\uses{lem:fp-fs-data-ray,def:gl-fs}
+For every original $\varphi\in\mathcal H(\mathcal X,a)$ and $t>0$,
+$\varphi(t\cdot v)\le\varphi(\star)-t\sigma_v(a)$.
+\end{lemma}
+\begin{proof}
+Use the actual finite section presentation supplied by membership in
+$\mathcal H(\mathcal X,a)$ and apply the preceding estimate to that
+same presentation.
+\end{proof}
+
+\begin{lemma}[The additive Fubini--Study ray estimate]
+\label{lem:fp-fs-additive-ray}
+\lean{EnvelopeProperty.MultiModel.IsFS.add_sectionVanishingOrder_le_apply_triv}
+\leanok
+\uses{lem:fp-fs-ray,thm:gl-fs-system-theory}
+For every original $\varphi\in\mathcal H(\mathcal X,a)$ and $t>0$,
+$\varphi(t\cdot v)+t\sigma_v(a)\le\varphi(\star)$.
+\end{lemma}
+\begin{proof}
+The original Fubini--Study function is finite at $\star$.  For a finite
+number $b$, the inequalities $x\le b-y$ and $x+y\le b$ are equivalent
+with the extended convention specified above.  Apply this with
+$b=\varphi(\star)$ and $y=t\sigma_v(a)$.
+\end{proof}
+
+\begin{definition}[Relaxation along the original effective classes]
+\label{def:fp-relaxed-order}
+\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder}
+\leanok
+\uses{def:fp-section-order,def:nn-effective-cone}
+For $\theta\in\mathbb R^r$, let $\mathcal F_\theta$ be the filter
+on $\mathbb Q^r$ generated by
+$\{a\in E:\iota(a)\in U\}$ as $U$ runs through the neighborhoods
+of $\theta$.  Define
+\[
+ \sigma^-_v(\theta)=\liminf_{\mathcal F_\theta}\sigma_v.
+\]
+Thus the limit is taken through the original effective rational classes.
+\end{definition}
+
+\begin{lemma}[The relaxed order is nonnegative]
+\label{lem:fp-relaxed-nonneg}
+\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder_nonneg}
+\leanok
+\uses{def:fp-relaxed-order,lem:fp-section-order-nonneg}
+One has $0\le\sigma^-_v(\theta)$ for every $v$ and $\theta$.
+\end{lemma}
+\begin{proof}
+Zero is an eventual lower bound for the original section order on every
+filter, because it is a pointwise lower bound.  It is therefore at most
+the defining lower limit.
+\end{proof}
+
+\begin{lemma}[Comparison along actual effective class families]
+\label{lem:fp-relaxed-liminf-net}
+\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder_le_liminf}
+\leanok
+\uses{def:fp-relaxed-order}
+Let $(a_i)$ be a filtered family of rational classes with
+$\iota(a_i)\to\theta$ and with $a_i\in E$ eventually.  Then
+$\sigma^-_v(\theta)\le\liminf_i\sigma_v(a_i)$.
+\end{lemma}
+\begin{proof}
+The family is eventually in every generator of $\mathcal F_\theta$,
+by class convergence and eventual effectivity.  Hence every eventual
+lower bound for $\sigma_v$ with respect to $\mathcal F_\theta$ is an
+eventual lower bound for $\sigma_v(a_i)$.  Taking the supremum of
+these lower bounds gives the asserted inequality.
+\end{proof}
+
+\begin{lemma}[Positive relaxed order forces eventual positive section order]
+\label{lem:fp-eventually-positive-orders}
+\lean{EnvelopeProperty.MultiModel.eventually_pos_sectionVanishingOrder_of_pos_relaxed}
+\leanok
+\uses{lem:fp-relaxed-liminf-net}
+Under the preceding convergence and effectivity hypotheses, if
+$\sigma^-_v(\theta)>0$, then $\sigma_v(a_i)>0$ eventually.
+\end{lemma}
+\begin{proof}
+Choose a finite real $c$ with $0<c<\sigma^-_v(\theta)$; this is
+possible also when the relaxed order is $+\infty$.  The preceding
+comparison gives $c<\liminf_i\sigma_v(a_i)$.  The defining lower-limit
+property supplies an eventual lower bound strictly larger than zero,
+so $\sigma_v(a_i)>0$ eventually.
+\end{proof}
+
+\begin{theorem}[The full additive ray bound for original psh functions]
+\label{thm:fp-psh-additive-ray}
+\lean{EnvelopeProperty.MultiModel.IsPSH.add_relaxedSectionVanishingOrder_le_apply_triv}
+\leanok
+\uses{lem:fp-fs-additive-ray,lem:fp-relaxed-liminf-net,lem:fp-relaxed-nonneg,def:gl-psh,thm:gl-fs-system-theory,def:nn-effective-cone}
+For every original $u\in\operatorname{PSH}(\mathcal X,\theta)$,
+$v\in\mathcal X^\an$ and $t>0$,
+\[
+ u(t\cdot v)+t\sigma^-_v(\theta)\le u(\star).
+\]
+\end{theorem}
+\begin{proof}
+Take the same decreasing Fubini--Study net from the original definition:
+$u_i\in\mathcal H(a_i)$, $\iota(a_i)\to\theta$ and $u_i\downarrow u$
+pointwise.  Each $a_i$ is effective, as witnessed by a nonzero section
+in the actual presentation of $u_i$.  The class comparison therefore
+gives $\sigma^-_v(\theta)\le\liminf_i\sigma_v(a_i)$.
+The pointwise decreasing limits at $t\cdot v$ and $\star$ give
+\[
+\begin{split}
+ u(t\cdot v)+t\sigma^-_v(\theta)
+ &\le \liminf_i u_i(t\cdot v)+\liminf_i t\sigma_v(a_i)\\
+ &\le \liminf_i\bigl(u_i(t\cdot v)+t\sigma_v(a_i)\bigr)\\
+ &\le \liminf_i u_i(\star)=u(\star).
+\end{split}
+\]
+Here multiplication by the fixed finite positive $t$ commutes with
+the lower limit, and the lower limit of a sum is at least the sum
+of the lower limits under the stated extended convention.  The last
+inequality is the actual additive Fubini--Study bound at every index.
+\end{proof}
+
+\begin{theorem}[Forced poles along every original scaling ray]
+\label{thm:fp-psh-ray}
+\lean{EnvelopeProperty.MultiModel.IsPSH.apply_rpow_le_sub_relaxedSectionVanishingOrder}
+\leanok
+\uses{thm:fp-psh-additive-ray,thm:gl-fs-system-theory}
+Every original $u\in\operatorname{PSH}(\mathcal X,\theta)$ satisfies
+\[
+ u(t\cdot v)\le u(\star)-t\sigma^-_v(\theta)\qquad(t>0).
+\]
+\end{theorem}
+\begin{proof}
+The original psh maximum principle makes $u(\star)$ finite.
+Convert the preceding additive bound using this finite value.
+No finiteness of the section order is needed; if it is $+\infty$,
+the right-hand side is $-\infty$ and forces that actual value on the ray.
+\end{proof}
+
+\begin{lemma}[A positive linear ray bound goes below every real constant]
+\label{lem:fp-positive-ray-decay}
+\lean{EnvelopeProperty.exists_lt_of_pos_linear_ray_bound}
+\leanok
+Let $\rho:(0,\infty)\to Y$, $\psi:Y\to[-\infty,+\infty]$,
+$b\in\mathbb R$ and $s\in(0,+\infty]$.  If
+$\psi(\rho(t))\le b-ts$ for every $t>0$, then for every real $C$
+there is $t>0$ with $\psi(\rho(t))<C$.
+\end{lemma}
+\begin{proof}
+Choose a real $c$ with $0<c<s$, and put
+$t=(|b-C|+1)/c$.  Then $t>0$ and $tc=|b-C|+1>b-C$, so
+$\psi(\rho(t))\le b-ts\le b-tc<C$.  This choice is valid when
+$s=+\infty$ as well.
+\end{proof}
+
+\begin{lemma}[A continuous compact-space function unbounded below has a pole]
+\label{lem:fp-compact-continuous-pole}
+\lean{EnvelopeProperty.exists_eq_bot_of_continuous_of_forall_exists_lt}
+\leanok
+Let $Y$ be compact and $\psi:Y\to[-\infty,+\infty]$ continuous.
+If for every real $C$ there is $y$ with $\psi(y)<C$, then
+$\psi(y_0)=-\infty$ for some actual $y_0\in Y$.
+\end{lemma}
+\begin{proof}
+The hypothesis with $C=0$ makes the range nonempty.  Its compactness
+supplies an attained minimum $m=\psi(y_0)$.  If $m\ne-\infty$,
+choose a finite real $C<m$; such a $C$ exists also when $m=+\infty$.
+The hypothesis supplies $z$ with $\psi(z)<C<m$, contradicting the
+minimality of $m$.  Consequently the attained minimum is $-\infty$.
+\end{proof}
+
+\begin{corollary}[Positive section order gives Fubini--Study ray decay]
+\label{cor:fp-fs-ray-decay}
+\lean{EnvelopeProperty.MultiModel.IsFS.exists_rpow_lt_of_pos_sectionVanishingOrder}
+\leanok
+\uses{lem:fp-fs-ray,lem:fp-positive-ray-decay,thm:gl-fs-system-theory}
+If $\varphi\in\mathcal H(a)$ and $\sigma_v(a)>0$, then for every
+real $C$ there is $t>0$ with $\varphi(t\cdot v)<C$.
+\end{corollary}
+\begin{proof}
+Use the actual finite value $b=\varphi(\star)$ and the preceding
+Fubini--Study bound in the positive-ray lemma.
+\end{proof}
+
+\begin{corollary}[Positive section order gives an actual Fubini--Study pole]
+\label{cor:fp-fs-pole}
+\lean{EnvelopeProperty.MultiModel.IsFS.exists_eq_bot_of_pos_sectionVanishingOrder}
+\leanok
+\uses{cor:fp-fs-ray-decay,lem:fp-compact-continuous-pole,lem:gl-points-basic,def:gl-fs}
+If $\varphi\in\mathcal H(a)$ and $\sigma_v(a)>0$, then
+$\varphi(w)=-\infty$ for some $w\in\mathcal X^\an$.
+\end{corollary}
+\begin{proof}
+The preceding corollary gives points of $\mathcal X^\an$ below every
+real level.  The actual Fubini--Study function is continuous and the
+original analytic space is compact.  Apply the compact-space pole lemma.
+\end{proof}
+
+\begin{corollary}[Positive relaxed order gives psh ray decay]
+\label{cor:fp-psh-ray-decay}
+\lean{EnvelopeProperty.MultiModel.IsPSH.exists_rpow_lt_of_pos_relaxedSectionVanishingOrder}
+\leanok
+\uses{thm:fp-psh-ray,lem:fp-positive-ray-decay,thm:gl-fs-system-theory}
+If $u\in\operatorname{PSH}(\theta)$ and $\sigma^-_v(\theta)>0$,
+then for every real $C$ there is $t>0$ with $u(t\cdot v)<C$.
+\end{corollary}
+\begin{proof}
+The value $u(\star)$ is finite.  Substitute the actual psh ray bound
+and the positive computed relaxed order into the positive-ray lemma.
+\end{proof}
+
+\begin{corollary}[No real global lower bound]
+\label{cor:fp-no-real-lower-bound}
+\lean{EnvelopeProperty.MultiModel.IsPSH.not_exists_real_lower_bound_of_pos_relaxedSectionVanishingOrder}
+\leanok
+\uses{cor:fp-psh-ray-decay}
+If $u\in\operatorname{PSH}(\theta)$ and $\sigma^-_v(\theta)>0$,
+there is no real $B$ such that $B\le u(w)$ for every
+$w\in\mathcal X^\an$.
+\end{corollary}
+\begin{proof}
+Such a $B$ would contradict the ray value strictly below $B$ supplied
+by the preceding corollary.
+\end{proof}
+
+\begin{corollary}[No real constant is psh]
+\label{cor:fp-no-constant-psh}
+\lean{EnvelopeProperty.MultiModel.not_isPSH_const_of_pos_relaxedSectionVanishingOrder}
+\leanok
+\uses{cor:fp-no-real-lower-bound}
+If $\sigma^-_v(\theta)>0$, then the constant function with any real
+value $c$ is not in $\operatorname{PSH}(\theta)$.
+\end{corollary}
+\begin{proof}
+That constant has the real global lower bound $c$, contradicting the
+preceding corollary if it were psh.
+\end{proof}
+
+\begin{corollary}[Actual poles in every sufficiently late original approximant]
+\label{cor:fp-eventual-approximant-poles}
+\lean{EnvelopeProperty.MultiModel.eventually_exists_eq_bot_of_pos_relaxedSectionVanishingOrder}
+\leanok
+\uses{lem:fp-eventually-positive-orders,cor:fp-fs-pole,def:gl-fs,def:nn-effective-cone}
+Let $(a_i,\varphi_i)$ be any filtered family of original Fubini--Study
+functions $\varphi_i\in\mathcal H(a_i)$ with
+$\iota(a_i)\to\theta$.  If $\sigma^-_v(\theta)>0$, then eventually
+there is an actual $w_i\in\mathcal X^\an$ with
+$\varphi_i(w_i)=-\infty$.  In particular this holds for the original
+decreasing net defining any $\theta$-psh function.
+\end{corollary}
+\begin{proof}
+Each original Fubini--Study presentation contains a nonzero section,
+so all $a_i$ are effective.  Class convergence and the positive relaxed
+order force $\sigma_v(a_i)>0$ eventually.  At every such index,
+the actual pole corollary supplies $w_i$.  This argument uses the
+original class family and its original functions throughout.
+\end{proof}

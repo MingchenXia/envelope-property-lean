@@ -1,0 +1,42 @@
+\section{The genuine multiplicative-group scheme}
+
+\begin{definition}[The actual Laurent multiplicative-group object]
+\label{def:native-multiplicative-group}
+\lean{EnvelopeProperty.ProjBerk.nativeMultiplicativeGroup,EnvelopeProperty.ProjBerk.nativeMultiplicativeGroup_isGrpObj,EnvelopeProperty.ProjBerk.nativeLaurentTensorEquiv,EnvelopeProperty.ProjBerk.nativeMultiplicativeGroupProductIso}
+\leanok
+The actual scheme $\operatorname{Spec}R[z,z^{-1}]$ over
+$\operatorname{Spec}R$ is a genuine group object, supplied by its actual
+Laurent Hopf algebra.  The actual iterated Laurent scheme is isomorphic
+to the whole product of two copies of this group scheme.
+\end{definition}
+\begin{proof}
+The Laurent group algebra has the actual Hopf structure
+$\Delta(z)=z\otimes z$, $\epsilon(z)=1$, and $S(z)=z^{-1}$.
+The established Hopf-algebra-to-affine-group-scheme functor gives all
+actual group-object axioms.  The genuine scalar tensor equivalence
+$R[z,z^{-1}]\otimes_R R[w,w^{-1}]
+\simeq R[z,z^{-1}][w,w^{-1}]$, followed by the actual affine scheme
+tensor pullback comparison, gives the whole group-product isomorphism.
+\end{proof}
+
+\begin{lemma}[The actual group laws are the original Laurent coordinate maps]
+\label{lem:native-multiplicative-group-coordinate-laws}
+\uses{def:native-multiplicative-group,lem:native-laurent-action-coordinate-laws}
+\lean{EnvelopeProperty.ProjBerk.parameterLaurentUnit_zpow,EnvelopeProperty.ProjBerk.parameterLaurentProductUnit_zpow,EnvelopeProperty.ProjBerk.nativeLaurentCounit_eq_eval,EnvelopeProperty.ProjBerk.nativeLaurentComul_eq_multiplication,EnvelopeProperty.ProjBerk.nativeMultiplicativeGroup_one,EnvelopeProperty.ProjBerk.nativeMultiplicativeGroup_mul}
+\leanok
+The actual group-object unit is the genuine Laurent evaluation at $1$.
+Under the whole double-Laurent product isomorphism, its actual
+multiplication is precisely the previously constructed Laurent
+coefficient map $z\mapsto wz$.
+\end{lemma}
+\begin{proof}
+Both unit ring maps fix original coefficients and send every Laurent
+power to $1$, so Laurent polynomial induction identifies the counit
+with the actual evaluation homomorphism.  The comultiplication sends
+each Laurent monomial $az^m$ to $a(z^m\otimes z^m)$.
+The genuine tensor equivalence sends this to
+$a\,z^m w^m$, exactly the actual Laurent evaluation at the product unit.
+Laurent polynomial induction identifies the entire ring maps.
+Contravariance of Spec and cancellation of the two inverse actual
+tensor-pullback comparisons give the full group-object identities.
+\end{proof}

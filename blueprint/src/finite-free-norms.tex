@@ -1,0 +1,228 @@
+\subsection{Finite free norm identities with genuine nonetale multiplicities}
+\label{subsec:finite-free-norms}
+
+These statements apply to arbitrary commutative-ring algebras that are finite
+free over their base. Nilpotent layers contribute genuine local lengths;
+inseparable residue extensions contribute their full degrees. The coefficient
+seminorm may be arbitrary. A finite projective determinant and transport of
+regularizable decreasing limits remain separate foundations for the complete
+finite flat statement in FHX \texttt{lem:finite-flat-norm}.
+
+\begin{theorem}[Weighted local norm over every complete field]
+\label{spectrum:nonetale-local-weighted-norm}
+\lean{EnvelopeProperty.wgaussValuation_normForm_local_of_algClosureSplit,
+EnvelopeProperty.wgaussValuation_normForm_of_local}
+\leanok
+\uses{algebra:finite-artinian-local-factors,spectrum:algclosed-local-norm-form,
+spectrum:whole-norm-form-base-change,spectrum:local-algebra-norm-length,
+spectrum:complete-norm-extension}
+Let $H$ be a complete ultrametric normed field and $E$ any finite-dimensional
+commutative local $H$-algebra. If $w$ on $\kappa(E)$ extends the norm of $H$,
+then, for finite families $b_j\in E$ and weights $r_j\geq0$,
+\[
+ \left\|N_{E/H}\Bigl(\sum_jX_jb_j\Bigr)\right\|_r
+ =\left(\max_jw(\overline b_j)r_j\right)^{\ell_E(E)[\kappa(E):H]}.
+\]
+No separability, reducedness or infinitude is required.
+\end{theorem}
+\begin{proof}
+Choose an extending valuation on an algebraic closure $\Omega$ of $H$.
+The actual Artinian localization product of $\Omega\otimes_HE$ consists
+of finite local $\Omega$-algebras $L_i$. Whole-polynomial determinant base
+change and the genuine product isomorphism identify the original norm form
+with the product of these local norm forms. The algebraically closed local
+calculation writes each as a power of the linear polynomial obtained from
+its actual residue scalar, with exponent $\ell_{L_i}(L_i)$.
+
+Restrict a factor's residue scalar along $E\to\Omega\otimes_HE$ to obtain
+an actual homomorphism $E\to\Omega$. Its kernel is maximal, since $E$ is
+finite over $H$ and its image is a finite-dimensional domain over $H$.
+Locality identifies that kernel with the unique maximal ideal of $E$.
+Thus it descends to a genuine $H$-embedding $\kappa(E)\to\Omega$.
+Complete-field norm uniqueness identifies all its scalar values with $w$.
+Every local linear factor consequently has weighted norm
+$\max_jw(\overline b_j)r_j$. The sum of the factor lengths equals
+$\dim_H E$: each $\Omega$-local factor has residue degree one, and dimension
+is preserved by tensor base change and the actual product. The genuine
+local dimension identity gives $\dim_HE=\ell_E(E)[\kappa(E):H]$.
+Weighted Gauss multiplicativity completes the argument. The modular helper
+accepts the real local-factor isomorphism; the unconditional theorem supplies
+it from the constructed Artinian decomposition. No interpolation is used.
+\end{proof}
+
+\begin{theorem}[Weighted norm of an arbitrary finite algebra]
+\label{spectrum:nonetale-finite-weighted-norm}
+\lean{EnvelopeProperty.wgaussValuation_normForm_of_localAlgEquiv,
+EnvelopeProperty.wgaussValuation_normForm_of_finite}
+\leanok
+\uses{spectrum:nonetale-local-weighted-norm,algebra:finite-artinian-local-factors,
+spectrum:whole-norm-form-base-change}
+Let $E$ be any finite-dimensional commutative algebra over a complete
+ultrametric field $H$. For every maximal ideal $m$, prescribe a valuation
+$w_m$ on $\kappa(m)$ extending the norm of $H$. Then
+\[
+ \left\|N_{E/H}\Bigl(\sum_jX_jb_j\Bigr)\right\|_r
+ =\prod_{m\in\operatorname{Max}(E)}
+ \left(\max_jw_m(b_j)r_j\right)^{\ell_{E_m}(E_m)[\kappa(m):H]}.
+\]
+\end{theorem}
+\begin{proof}
+The actual algebra isomorphism $E\simeq\prod_mE_m$ factors its entire norm
+polynomial into the local norm polynomials. Every localization is genuinely
+finite over $H$, and its actual local residue field is $\kappa(m)$.
+Apply the preceding local calculation and weighted multiplicativity.
+The helper proves the same statement for any supplied genuine product of
+finite local algebras; the final theorem supplies the canonical localization
+product. The zero algebra gives the empty product, as its determinant norm
+is one in rank zero.
+\end{proof}
+
+\begin{definition}[Intrinsic completed-fibre lengths and residual valuations]
+\label{spectrum:nonetale-fibre-length}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreLocalLengthENat,
+EnvelopeProperty.Berkovich.Spectrum.fibreLocalLength,
+EnvelopeProperty.Berkovich.Spectrum.fibreNormMult,
+EnvelopeProperty.Berkovich.Spectrum.fibreLocalLength_eq,
+EnvelopeProperty.Berkovich.Spectrum.fibreResidualHom,
+EnvelopeProperty.Berkovich.Spectrum.fibreResidualHom_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.fibreResidualValuation,
+EnvelopeProperty.Berkovich.Spectrum.fibreResidualValuation_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.fibreResidualValuation_one_tmul}
+\leanok
+\uses{spectrum:fibre-tensor-evaluation,spectrum:etale-fibre-multiplicities}
+For $A\to B$, $y\in\mathcal S(B)$ over $x$, let
+$E_x=H(x)\otimes_AB$ and let $p_y$ be the actual kernel of $E_x\to H(y)$.
+The intrinsic extended local length is $\ell_{(E_x)_{p_y}}((E_x)_{p_y})$.
+Its natural version uses $\operatorname{ENat.toNat}$, and the natural raw
+multiplicity is that number times the existing actual residue degree.
+The genuine residue-field lift $\kappa(p_y)\to H(y)$ defines a valuation
+extending the norm of $H(x)$ and taking value $|b|_y$ on $1\otimes b$.
+For an arbitrary nonfinite map no geometric norm multiplicity or finite
+length is asserted by these definitions.
+\end{definition}
+\begin{proof}
+The tensor map is a real ring homomorphism to the field $H(y)$, so its
+kernel is prime and defines an actual support localization. Outside this
+kernel the map is nonzero, hence has unit image. The universal residue-field
+lift therefore exists and agrees with the tensor map on every original
+element. Pull back the norm valuation of $H(y)$. The genuine isometric map
+$H(x)\to H(y)$ proves its coefficient compatibility, and the whole tensor
+formula on $1\otimes b$ proves its value at every $b$. Naming a different
+but equal restricted base point preserves the actual local length.
+\end{proof}
+
+\begin{theorem}[Finite local multiplicities, positivity and rank]
+\label{spectrum:nonetale-fibre-multiplicities}
+\lean{EnvelopeProperty.Berkovich.Spectrum.fibreNormMult_eq,
+EnvelopeProperty.Berkovich.Spectrum.fibreNormMult_eq_localFinrank,
+EnvelopeProperty.Berkovich.Spectrum.fibreLocalLengthENat_ne_top,
+EnvelopeProperty.Berkovich.Spectrum.one_le_fibreNormMult,
+EnvelopeProperty.Berkovich.Spectrum.sum_fibreNormMult}
+\leanok
+\uses{spectrum:nonetale-fibre-length,spectrum:finite-completed-fibres,
+spectrum:local-algebra-norm-length,algebra:finite-artinian-local-factors}
+For a finite algebra $B/A$, the intrinsic local lengths at actual fibre
+points are finite. The genuine norm multiplicity is
+\[
+ m_y=\ell_{(E_x)_{p_y}}((E_x)_{p_y})[\kappa(p_y):H(x)]
+     =\dim_{H(x)}(E_x)_{p_y}\geq1.
+\]
+If $B/A$ is finite free, then $\sum_{y\text{ over }x}m_y=\operatorname{rank}_AB$.
+\end{theorem}
+\begin{proof}
+Integrality makes $p_y$ maximal. Its quotient is a field and is genuinely
+isomorphic to its residue field, giving the stated degree. For a finite
+algebra, each localization factor is finite-dimensional over $H(x)$.
+It is Artinian and Noetherian as a module over itself, so its extended length
+is finite. The local dimension identity identifies the multiplicity with
+its dimension. This localization at a prime is nontrivial, giving positivity.
+The actual maximal-kernel fibre equivalence reindexes all local factors by
+all points over $x$. Sum their dimensions using the real Artinian product,
+and use finite free scalar-extension rank to obtain the original rank.
+\end{proof}
+
+\begin{theorem}[Scalar finite free norm at every seminorm point]
+\label{spectrum:finite-free-scalar-norm}
+\lean{EnvelopeProperty.Berkovich.Spectrum.val_algebraNorm_of_finiteFree}
+\leanok
+\uses{spectrum:nonetale-fibre-multiplicities,spectrum:nonetale-local-valued-norm,
+spectrum:algebra-norm-base-change}
+For $B/A$ finite free, $x\in\mathcal S(A)$ and $b\in B$,
+\[
+ |N_{B/A}(b)|_x=\prod_{y\text{ over }x}|b|_y^{m_y}.
+\]
+\end{theorem}
+\begin{proof}
+Actual determinant base change evaluates the original norm in $H(x)$
+as the norm of $1\otimes b$ in $E_x$. The genuine Artinian localization
+product factors that norm. For every maximal factor, use the actual
+residue-field map to the completed field of its corresponding fibre point.
+Its pulled-back valuation extends the norm of $H(x)$ and takes the value
+$|b|_y$. The complete-field scalar local norm calculation retains the true
+local length and full residue degree, including inseparable extensions.
+Reindex through the genuine maximal-kernel fibre bijection and identify each
+exponent with $m_y$. No etaleness or reducedness is required.
+\end{proof}
+
+\begin{theorem}[Whole weighted finite free norm at every seminorm point]
+\label{spectrum:finite-free-weighted-norm}
+\lean{EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_map_normForm_of_finiteFree,
+EnvelopeProperty.Berkovich.Spectrum.wgaussValuation_normForm_of_finiteFree}
+\leanok
+\uses{spectrum:nonetale-finite-weighted-norm,spectrum:nonetale-fibre-multiplicities,
+spectrum:whole-norm-form-base-change}
+Write the whole determinant norm form as
+\[
+N_{B/A}\Bigl(\sum_jX_jb_j\Bigr)=\sum_\alpha c_\alpha X^\alpha.
+\]
+For every $x\in\mathcal S(A)$ and weights $r_j\geq0$,
+\[
+ \max_\alpha |c_\alpha|_x r^\alpha
+ =\prod_{y\text{ over }x}\left(\max_j|b_j|_y r_j\right)^{m_y}.
+\]
+The original coefficient formula holds without separability, etaleness,
+reducedness or infinitude assumptions.
+\end{theorem}
+\begin{proof}
+Whole-polynomial determinant base change identifies the image of the original
+norm form in $H(x)[X]$ with the actual norm form of $E_x$.
+Use the unconditional finite-algebra weighted theorem with the real residual
+valuations of the maximal factors. Each value on $1\otimes b_j$ is
+$|b_j|_y$, and each local-length times residue-degree exponent is $m_y$.
+Reindex all factors by the actual fibre bijection. Coefficient valuation
+preservation along $A\to H(x)$ returns the original weighted coefficient
+formula. This is an identity for the actual determinant polynomial; it does
+not use evaluation interpolation on $H(x)$.
+\end{proof}
+
+\begin{theorem}[Nonetale norm products under actual base change]
+\label{spectrum:finite-free-norm-products-base-change}
+\lean{EnvelopeProperty.Berkovich.Spectrum.weightedFibreNormProduct_baseChange,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreNormProduct_baseChange,
+EnvelopeProperty.Berkovich.Spectrum.weightedFibreNormProduct_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreNormProduct_scalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.weightedFibreNormProduct_relativeScalarExtension,
+EnvelopeProperty.Berkovich.Spectrum.scalarFibreNormProduct_relativeScalarExtension}
+\leanok
+\uses{spectrum:finite-free-weighted-norm,spectrum:finite-free-scalar-norm,
+spectrum:whole-norm-form-base-change,spectrum:scalar-extension-algebra-cancellation}
+For an arbitrary coefficient algebra $C/A$ and $x'\in\mathcal S(C)$, the
+weighted and scalar norm products for $C\otimes_AB/C$ at $x'$ equal those
+for $B/A$ at the restricted point. Each fibre uses its own genuine local
+length times residue degree. The same comparison holds for the actual
+scalar-extended map $S\otimes_R A\to S\otimes_R B$, and for compatible
+prescribed coefficient valuations under their true restriction map.
+\end{theorem}
+\begin{proof}
+Replace both weighted products by their actual determinant norm polynomial
+values. Whole-polynomial coefficient base change and preservation of the
+coefficient seminorm identify those values. For scalar products, replace
+each with its actual scalar norm and apply determinant scalar base change.
+For $S\otimes_R A\to S\otimes_R B$, use the constructed tensor cancellation
+isomorphism and its real whole norm-form compatibility; its finite free
+instances follow from the actual transported scalar-extended module.
+The prescribed-base versions use the true compatible restriction map and
+the same absolute formulas. Fibres need not be in bijection, and no such
+bijection is assumed. These are finite free polynomial norm comparisons,
+not a claim about all function classes or transport of decreasing limits.
+\end{proof}

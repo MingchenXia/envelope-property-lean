@@ -1,0 +1,149 @@
+\section{The same twisted generator map on an entire affine base blowup}
+
+The affine exceptional-line embedding uses ideal generators on the original
+base.  The global construction instead starts with generators of an ideal
+tensored by a line.  The comparison below retains the projective map of
+these actual twisted generators, rather than choosing a replacement map.
+
+\begin{lemma}[The actual twisted generator map over a framed affine base]
+\label{lem:kn-nadel-nef-big-framed-affine-pair-closed}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.affineFramedMap,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.affineFramedMap_eq,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.affineFramedMap_isClosedImmersion}
+\leanok
+\uses{lem:kn-nadel-nef-big-global-frame-untwist,lem:kn-nadel-nef-big-affine-ideal-generators,lem:kn-nadel-nef-big-exceptional-projective-closed}
+Let $I$ be an ideal of a commutative ring $A$, let $B$ be an invertible
+line on $X=\operatorname{Spec}A$ with an actual frame
+$e:B\simeq\mathcal O_X$, and let $G$ be an actual finite generating
+family of $\widetilde I\otimes B$.  Put
+$\pi:V=\operatorname{Bl}_I X\to X$ and $J=I\mathcal O_V$.
+Pull $G$ back and apply the canonical ideal-comap epimorphism, giving the
+same actual generating family of $J\otimes\pi^*B$.  Its original
+projective map $q:V\to\mathbf P_A^s$ is a closed immersion.
+\end{lemma}
+\begin{proof}
+Compose each original generator with the actual untwisting
+$\widetilde I\otimes B\simeq\widetilde I$.  The resulting family still
+generates the whole ideal module.  The whole affine ideal-section theorem
+therefore says that its original coefficients $g_i\in I$ generate the
+entire original ideal $I$, with the same original index set.  The genuine
+spectrum section-ring isomorphism is used in recovering these elements
+of $A$; no new ideal or generator-spanning condition is chosen.
+
+Let $G_I$ be the actual exceptional generating family of these same
+$g_i$.  The whole ideal-comap untwisting square identifies each basis map
+of the original transported $G$, followed by the actual target
+untwisting, with the actual exceptional section of $g_i$.  On the original
+Rees chart $A[I/a]$, compose that whole identity with the actual inverse
+pivot frame.  Each coefficient of the original $q$ is then exactly
+$g_i/a$, and its added padding coefficient is zero.  Thus its affine
+projective tuple equals the entire original tuple of the actual
+exceptional map of $G_I$, with the same coefficient homomorphism and
+same indices.  The actual chart cover detects equality of the two whole
+scheme morphisms.  The previously proved exceptional map of $G_I$ is a
+closed immersion, so the same is true of the original $q$.
+\end{proof}
+
+\begin{lemma}[The actual global generated pair is proper]
+\label{lem:kn-nadel-nef-big-same-global-pair-proper}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalMap,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalMap_structure,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalPair,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalPair_fst,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalPair_snd,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairClosed.globalPair_isProper}
+\leanok
+Let $X$ be projective over the original field, $D$ an original coherent
+ideal, $B$ an original invertible line, and $G$ an actual finite
+generating family of $D\otimes B$.  On the actual blowup $\pi:Y\to X$,
+form the original generated-line map $q$ of its canonical transported
+family of $D\mathcal O_Y\otimes\pi^*B$.  Its original structure triangle
+constructs the actual pair $(\pi,q)$ into $X\times_k\mathbf P_k^s$.
+Both projections of this pair are the specified original maps, and the
+whole pair is proper.
+\end{lemma}
+\begin{proof}
+The original generated-line construction proves the structure triangle,
+so the original fibre-product universal property gives the pair and both
+projection identities.  The actual blowup remains projective over the
+original field by the proved projective blowup theorem.  Its composition
+with $X\to\operatorname{Spec}k$ is therefore proper.  Since the original
+structure map of $X$ is separated, its actual blowup projection is proper.
+The first projection $X\times_k\mathbf P_k^s\to X$ is separated, as a
+base change of the original separated projective-space structure map.
+The pair composed with this first projection is exactly the proper
+blowup projection.  Properness of a composite with a separated target
+morphism implies properness of the original morphism, giving the claim.
+\end{proof}
+
+\begin{lemma}[The same original generated pair is a closed immersion]
+\label{lem:kn-nadel-nef-big-same-global-pair-closed}
+\lean{EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpenComposition.basePair_isClosedImmersion,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpenComposition.globalPair_isClosedImmersion,EnvelopeProperty.Vanishing.NadelNefBigGlobalPairBaseOpenComposition.globalPair_mono}
+\leanok
+\uses{lem:kn-nadel-nef-big-framed-affine-pair-closed,lem:kn-nadel-nef-big-same-pair-base-open,lem:kn-nadel-nef-big-global-frame-untwist}
+Let $X$ be an arbitrary scheme over the original field $k$, let $D$ be
+an original ideal, let $B$ be an original invertible line, and let $G$ be
+an actual finite generating family of $D\otimes B$.  Put
+$\pi:Y=\operatorname{Bl}_D X\to X$ and let $q$ be the original generated-line
+map of the same canonically transported family of
+$D\mathcal O_Y\otimes\pi^*B$.  The original pair
+$(\pi,q):Y\to X\times_k\mathbf P_k^s$ is a closed immersion, hence a
+monomorphism.  Its actual base change to every original affine base open
+on which $B$ has its actual frame is a closed immersion on the entire
+original affine-base blowup.
+\end{lemma}
+\begin{proof}
+On an original affine open $U$, canonically restrict the original source
+family $G$ and use the literal original ideal-comap equality to identify
+its ideal with the ideal of $D(U)$ on $\operatorname{Spec}\Gamma(X,U)$.
+The actual pullback-composition and ideal-comap maps construct a whole
+isomorphism between the original global transported line restricted to
+$Y_U$ and the line of the same affine source family.  The whole identity
+on every original basis map is proved before specializing the arbitrary
+base scheme to the section-ring spectrum.  Propositional elimination of
+the original ideal equality then seals the whole isomorphism together
+with that identity.  No comparison, coefficient equality or closedness
+result is supplied by a caller.
+
+On each original Rees pivot chart, pull this actual basis identity back
+and compose with the actual original pivot frame.  The resulting whole
+frame identity preserves each projective coefficient, including its
+original index and the added zero coefficient.  The actual structure
+triangle preserves the original coefficient homomorphism as well.
+Consequently the restriction of the same original $q$ is the original
+framed-affine map followed by the original projective coefficient map.
+The actual pivot cover detects equality on the entire affine-base
+blowup.  The canonical Cartesian projective coefficient square, using
+both its original structure and coefficient projections, identifies the
+actual base-changed pair with this same framed-affine map.  The proved
+whole framed-affine theorem therefore makes the base-changed pair closed.
+
+Invertibility of the original $B$ internally supplies a cover of $X$ by
+original framed affine opens.  Pull this cover back to the original
+target $X\times_k\mathbf P_k^s$.  The actual Cartesian blowup squares
+identify each restriction of the original pair with the preceding
+closed map.  Closed immersion is local on this target cover, proving
+closedness of the original whole pair.  Its monomorphism follows from
+closedness.  Projectivity, compactness and integrality of $X$ are not
+needed for this conclusion.
+\end{proof}
+
+In particular this applies to the actual Serre families of
+$D\otimes H^d$ supplied by the controlled-generators theorem on the
+original projective base, without choosing a replacement projective map.
+
+\begin{corollary}[The same global exceptional line has a positive twist]
+\label{cor:kn-nadel-nef-big-same-global-twist-very-ample}
+\notready
+\uses{lem:kn-nadel-nef-big-same-global-pair-closed}
+For some original positive $N$, the whole line
+$(D\mathcal O_Y)\otimes\pi^*H^N$ is very ample over the original field.
+\end{corollary}
+\begin{proof}
+Compose the first factor of the preceding pair with the original
+projective embedding of $X$, then use the actual Segre embedding.
+Its hyperplane line is the tensor product of the original first-factor
+hyperplane and the same generated-line hyperplane.  These are
+$\pi^*H$ and $(D\mathcal O_Y)\otimes\pi^*H^d$, respectively, by their
+original whole hyperplane comparisons.  Tensor symmetry and the actual
+power-addition isomorphism identify their product with
+$(D\mathcal O_Y)\otimes\pi^*H^{d+1}$.  The composite is closed and
+$d+1>0$, giving the assertion without a positivity certificate.
+\end{proof}
+
+These statements concern the actual global Rees map and its exceptional
+line.  They neither define numerical bigness nor establish the numerical
+Kodaira lemma, nef-plus-ample ampleness, or Kawamata--Viehweg vanishing.

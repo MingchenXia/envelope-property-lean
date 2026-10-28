@@ -1,0 +1,253 @@
+\section{The canonical trace of adapted covers}
+\label{sec:kn-nadel-canonical-trace-chain}
+
+Throughout, $k$ is a field of characteristic zero, $X$ is an integral scheme
+with $f:X\to\operatorname{Spec}k$ smooth of relative dimension $n$, and
+$\omega_X=\Omega^n_{X/k}$. Let $(F,L,m,\sigma)$ be an adapted SNC datum whose
+auxiliary family is SNC and whose rows generate, and let
+$\pi:Y'\to X$ be its normalized adapted Kummer cover, of degree $D$, with
+$\omega_{Y'}=\Omega^n_{Y'/k}$ and canonical differential
+$d\pi:\pi^*\omega_X\to\omega_{Y'}$. Write $\eta:\omega_X\to\pi_*\pi^*\omega_X$
+for the unit of $\pi^*\dashv\pi_*$, $\gamma:\operatorname{Spec}K(X)\to X$ for
+the generic point, $\iota:\omega_X\hookrightarrow\gamma_*\gamma^*\omega_X$ for
+the generic inclusion (\cref{def:kn-canonical-actual-generic-inclusion}),
+$\operatorname{Tr}_{\mathrm{rat}}:\pi_*\omega_{Y'}\to\gamma_*\gamma^*\omega_X$
+for the rational canonical trace
+(\cref{def:kn-canonical-original-rational-trace}) and
+$T_\pi:\pi_*\pi^*\omega_X\to\omega_X$ for the regular pulled-line trace, the
+structure-sheaf trace of the finite flat cover $\pi$ tensored with $\omega_X$
+(\cref{def:nadel-regular-pulled-canonical-trace}).
+
+The chapter constructs the trace of differential forms
+$T:\pi_*\omega_{Y'}\to\omega_X$ with $\eta\circ\pi_*(d\pi)\circ T=D$ (composition
+written left to right), the input of the covering trick in the relative Nadel
+assembly (\cref{def:kn-relative-nadel-cover-trace-input}). The construction is
+local on the Kummer charts of the cover; its single algebraic input is the
+normalization of the mixed canonical candidate on a mixed Kummer chart
+(\cref{def:kn-mixed-canonical-candidate-normalization}), an Euler-lemma
+computation on an explicit finite free algebra. Every result below is proved
+assuming that normalization.
+
+The trace of differential forms along a finite cover of smooth varieties, and
+its regularity on cyclic covers, is classical (Esnault--Viehweg, \S3, the
+cyclic covers and their affine calculations). The proof here differs in that
+regularity is not deduced from the eigensheaf decomposition of the cover: the
+trace is the unique regular factor of the rational trace, and its existence is
+checked on charts, where the cover is a mixed Kummer cover over \'etale
+coordinates.
+
+\begin{definition}[Normalization of the mixed canonical candidate]
+\label{def:kn-mixed-canonical-candidate-normalization}
+\uses{lem:kn-global-trace-mixed-canonical-candidate,lem:kn-nadel-mixed-original-native-canonical-input}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.MixedCanonicalCandidateNormalization}
+\leanok
+Let $A$ be a nonzero $k$-algebra with \'etale coordinates
+$x_1,\dots,x_n\in A$, let $N_1,\dots,N_q$ be positive integers invertible in
+$A$, let $I\subseteq\{1,\dots,q\}$ with an injection
+$\sigma:I\hookrightarrow\{1,\dots,n\}$, and let $u_1,\dots,u_q\in A^\times$.
+Let $B=A[t_1,\dots,t_q]/(t_i^{N_i}-d_i)$ with $d_i=u_ix_{\sigma(i)}$ for
+$i\in I$ and $d_i=u_i$ for $i\notin I$, let $\beta^*:\Omega^n_{A/k}\to\Omega^n_{B/k}$
+be the pullback of forms, and let $\tau:\Omega^n_{B/k}\to\Omega^n_{A/k}$ be the
+mixed canonical candidate, the $A$-linear map obtained by adjoining
+$N_i$-th roots of the units $u_i$ and applying the pure Kummer trace
+(\cref{lem:kn-global-trace-mixed-canonical-candidate}). The
+\emph{normalization of the mixed canonical candidate} over $k$ is the
+proposition that, for all such data,
+\[
+ \tau\bigl(b\cdot\beta^*w\bigr)=\operatorname{Tr}_{B/A}(b)\cdot w
+ \qquad(b\in B,\ w\in\Omega^n_{A/k}).
+\]
+\end{definition}
+
+\begin{lemma}[The mixed sheaf candidate normalizes the affine line trace]
+\label{lem:kn-mixed-sheaf-candidate-differential}
+\uses{def:kn-mixed-canonical-candidate-normalization,lem:kn-canonical-mixed-native-sheaf-candidate,thm:kn-affine-line-normalization-criterion}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalSheafCandidate_native,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.mixedCanonicalSheafCandidate_differential}
+\leanok
+Assume the normalization of the mixed canonical candidate. In the notation of
+\cref{def:kn-mixed-canonical-candidate-normalization}, let
+$\beta:\operatorname{Spec}B\to\operatorname{Spec}A$, let
+$\tilde\tau:\beta_*\Omega^n_{\operatorname{Spec}B/k}\to\Omega^n_{\operatorname{Spec}A/k}$
+be the sheaf morphism with global sections $\tau$, and let
+$T_\beta:\beta_*\beta^*\Omega^n_{\operatorname{Spec}A/k}\to\Omega^n_{\operatorname{Spec}A/k}$
+be the affine pulled-line trace. Then $\tilde\tau(b\cdot\beta^*w)=\operatorname{Tr}_{B/A}(b)\cdot w$
+on global sections, and $\beta_*(d\beta)\circ\tilde\tau=T_\beta$.
+\end{lemma}
+\begin{proof}
+The global sections of $\tilde\tau$ are $\tau$, read through the identification
+of the global sections of $\beta_*\Omega^n_B$ with $\Omega^n_{B/k}$
+(\cref{lem:kn-canonical-mixed-native-sheaf-candidate}); evaluating at
+$b\cdot\beta^*w$ and applying the normalization gives the first claim. The
+algebra $B$ is finite free over $A$ and $\operatorname{Spec}A$ is smooth of
+relative dimension $n$ over $k$ because the coordinates are \'etale. The first
+claim is exactly the hypothesis of the affine normalization criterion
+(\cref{thm:kn-affine-line-normalization-criterion}) for $\tilde\tau$, which gives
+$\beta_*(d\beta)\circ\tilde\tau=T_\beta$.
+\end{proof}
+
+\begin{lemma}[Ratio-chart normalization]
+\label{lem:kn-ratio-sheaf-candidate-differential}
+\uses{lem:kn-mixed-sheaf-candidate-differential,def:kn-canonical-whole-ratio-native-sheaf-candidate,def:kn-mixed-canonical-candidate-normalization,thm:kn-affine-line-normalization-criterion}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.ratioCanonicalSheafCandidate_differential}
+\leanok
+Assume the normalization of the mixed canonical candidate. Let $U\subseteq X$
+be an affine open with \'etale coordinates, let $B_r$ be the ratio algebra of
+the cover over $U$, with $p:\operatorname{Spec}B_r\to U$, and let
+$\tau_r:p_*\omega_{\operatorname{Spec}B_r}\to\omega_U$ be the ratio canonical
+candidate (\cref{def:kn-canonical-whole-ratio-native-sheaf-candidate}). Then
+$p_*(dp)\circ\tau_r=T_p$, the affine pulled-line trace of $\omega_U$ along $p$.
+\end{lemma}
+\begin{proof}
+Both sides are morphisms out of $p_*p^*\omega_U$, and such a morphism is
+determined by its values on the global sections $b\cdot p^*w$
+($b\in B_r$, $w\in\Omega^n_{\Gamma(U)/k}$), by the affine values criterion
+(\cref{thm:kn-affine-line-normalization-criterion}). The differential $dp$
+sends $p^*w$ to the geometric pullback of $w$ along $p$, and $T_p$ sends
+$b\cdot p^*w$ to $\operatorname{Tr}_{B_r/\Gamma(U)}(b)\cdot w$. It remains to see
+that $\tau_r$ sends $b\cdot(\text{geometric pullback of }w)$ to
+$\operatorname{Tr}_{B_r/\Gamma(U)}(b)\cdot w$. The ratio coefficients of $B_r$ are
+the mixed coefficients $u_iv_{\tau(i)}$ (active branches through the centre)
+and $u_i$ (inactive branches) of a mixed Kummer chart, so $B_r$ is a mixed
+Kummer algebra and $\tau_r$ is the mixed sheaf candidate, transported along
+this equality of coefficients and along the equality of structure maps
+$U\hookrightarrow X\to\operatorname{Spec}k$ and
+$U\cong\operatorname{Spec}\Gamma(U)\to\operatorname{Spec}k$. Under the second
+transport the geometric pullback of $w$ becomes its algebraic pullback
+$\beta^*w$ along $\Gamma(U)\to B_r$, and on $b\cdot\beta^*w$ the mixed candidate
+takes the value $\operatorname{Tr}(b)\cdot w$ by the assumed normalization
+(\cref{def:kn-mixed-canonical-candidate-normalization}).
+\end{proof}
+
+\begin{lemma}[Point normalization]
+\label{lem:kn-original-point-candidate-differential}
+\uses{lem:kn-ratio-sheaf-candidate-differential,def:kn-canonical-every-point-whole-candidate,def:kn-canonical-every-point-original-pushforward-candidate,thm:kn-native-chart-differential-square,lem:kn-regular-pulled-canonical-fixed-chart-restriction}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.producedOriginalCanonicalCandidate_differential}
+\leanok
+Assume the normalization of the mixed canonical candidate. Let $x\in X$, let
+$U\ni x$ be the base of its whole free chart, and let
+$\theta_x:(\pi_*\omega_{Y'})|_U\to\omega_X|_U$ be the point candidate
+(\cref{def:kn-canonical-every-point-original-pushforward-candidate}). Then
+\[
+ (\pi_*d\pi)|_U\circ\theta_x=(T_\pi)|_U .
+\]
+\end{lemma}
+\begin{proof}
+Write $p:\operatorname{Spec}B_r\to U$ for the chart, $e_S:(\pi_*\omega_{Y'})|_U\cong p_*\omega_{\operatorname{Spec}B_r}$,
+$e_P:(\pi_*\pi^*\omega_X)|_U\cong p_*p^*\omega_U$ and $e_B:\omega_X|_U\cong\omega_U$
+for the fixed chart comparisons, so that $\theta_x=e_S\circ\tau_r\circ e_B^{-1}$.
+Three squares commute: $(\pi_*d\pi)|_U\circ e_S=e_P\circ p_*(dp)$
+(\cref{thm:kn-native-chart-differential-square});
+$p_*(dp)\circ\tau_r=T_p$ (\cref{lem:kn-ratio-sheaf-candidate-differential});
+and $(T_\pi)|_U\circ e_B=e_P\circ T_p$
+(\cref{lem:kn-regular-pulled-canonical-fixed-chart-restriction}). Hence
+\[
+ (\pi_*d\pi)|_U\circ e_S\circ\tau_r\circ e_B^{-1}
+ =e_P\circ p_*(dp)\circ\tau_r\circ e_B^{-1}
+ =e_P\circ T_p\circ e_B^{-1}
+ =(T_\pi)|_U\circ e_B\circ e_B^{-1}=(T_\pi)|_U .\qedhere
+\]
+\end{proof}
+
+\begin{lemma}[Regular local factors of the rational trace]
+\label{lem:kn-original-point-candidate-regular-factor}
+\uses{lem:kn-original-point-candidate-differential,lem:kn-canonical-restricted-original-differential-cancellation,thm:kn-original-regular-pulled-canonical-rational-restriction,thm:kn-canonical-original-rational-differential-compatibility}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.producedOriginalCanonicalCandidate_regularFactor}
+\leanok
+Assume the normalization of the mixed canonical candidate. For every $x\in X$,
+with chart base $U\ni x$, $\theta_x\circ\iota|_U=(\operatorname{Tr}_{\mathrm{rat}})|_U$.
+\end{lemma}
+\begin{proof}
+Maps from $(\pi_*\omega_{Y'})|_U$ to a restriction of a $\gamma_*$-module are
+determined by their composite with $(\pi_*d\pi)|_U$
+(\cref{lem:kn-canonical-restricted-original-differential-cancellation}). Now
+\[
+ (\pi_*d\pi)|_U\circ\theta_x\circ\iota|_U=(T_\pi\circ\iota)|_U
+ =(\pi_*d\pi\circ\operatorname{Tr}_{\mathrm{rat}})|_U
+\]
+by \cref{lem:kn-original-point-candidate-differential}, by the rational
+restriction $T_\pi\circ\iota=\pi_*(d\pi)\circ\operatorname{Tr}_{\mathrm{rat}}$
+of the pulled-line trace, which combines
+\cref{thm:kn-original-regular-pulled-canonical-rational-restriction} and
+\cref{thm:kn-canonical-original-rational-differential-compatibility}, and by
+functoriality of restriction.
+\end{proof}
+
+\begin{theorem}[The canonical trace of an adapted cover]
+\label{thm:kn-original-canonical-trace}
+\uses{lem:kn-original-point-candidate-regular-factor,lem:kn-canonical-every-point-whole-candidate-cover,lem:kn-canonical-actual-generic-inclusion-mono,sc0-scheme-module-open-cover-factorization:whole-map}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.existsUnique_originalCanonicalTrace,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalCanonicalTrace,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalCanonicalTrace_factor,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.originalCanonicalTrace_unique}
+\leanok
+Assume the normalization of the mixed canonical candidate. There is a unique
+$T:\pi_*\omega_{Y'}\to\omega_X$ with $T\circ\iota=\operatorname{Tr}_{\mathrm{rat}}$;
+it is the \emph{canonical trace} of $\pi$.
+\end{theorem}
+\begin{proof}
+Uniqueness holds because $\iota$ is a monomorphism
+(\cref{lem:kn-canonical-actual-generic-inclusion-mono}). For existence, the
+chart bases $U_x\ni x$ form an open cover of $X$ by affine opens
+(\cref{lem:kn-canonical-every-point-whole-candidate-cover}). Restriction to
+$U_x$ agrees with pullback along the open immersion $U_x\hookrightarrow X$, so
+by \cref{lem:kn-original-point-candidate-regular-factor} each pullback of
+$\operatorname{Tr}_{\mathrm{rat}}$ factors through the pullback of the
+monomorphism $\iota$. A morphism into the target of a monomorphism factors
+through it as soon as it does so on an open cover
+(\cref{sc0-scheme-module-open-cover-factorization:whole-map}).
+\end{proof}
+
+\begin{theorem}[Degree identity of the canonical trace]
+\label{thm:kn-original-canonical-trace-degree}
+\uses{thm:kn-original-canonical-trace,thm:kn-original-regular-pulled-canonical-rational-restriction,thm:kn-canonical-original-rational-differential-compatibility,lem:kn-canonical-regular-pulled-line-native-unit-degree}
+\lean{EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.differential_comp_originalCanonicalTrace,EnvelopeProperty.Vanishing.NadelGlobalCanonicalTrace.unit_comp_originalCanonicalTrace}
+\leanok
+Assume the normalization of the mixed canonical candidate. The canonical trace
+satisfies $\pi_*(d\pi)\circ T=T_\pi$ and
+$\eta\circ\pi_*(d\pi)\circ T=D\cdot\mathrm{id}_{\omega_X}$.
+\end{theorem}
+\begin{proof}
+After composing with the monomorphism $\iota$ both sides of the first identity
+become $\pi_*(d\pi)\circ\operatorname{Tr}_{\mathrm{rat}}$: the left side by
+\cref{thm:kn-original-canonical-trace}, the right side by
+\cref{thm:kn-original-regular-pulled-canonical-rational-restriction} and
+\cref{thm:kn-canonical-original-rational-differential-compatibility}. The second
+identity follows from the first and $\eta\circ T_\pi=D\cdot\mathrm{id}$
+(\cref{lem:kn-canonical-regular-pulled-line-native-unit-degree}).
+\end{proof}
+
+\begin{corollary}[The canonical trace input from the mixed normalization]
+\label{cor:kn-cover-trace-input-of-mixed-normalization}
+\uses{thm:kn-original-canonical-trace-degree,def:kn-relative-nadel-cover-trace-input,def:kn-mixed-canonical-candidate-normalization}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.coverCanonicalTraceInput_of_mixedCanonicalCandidateNormalization}
+\leanok
+If $k$ has characteristic zero and the normalization of the mixed canonical
+candidate holds over $k$, then the canonical trace input
+(\cref{def:kn-relative-nadel-cover-trace-input}) holds over $k$.
+\end{corollary}
+\begin{proof}
+A field of characteristic zero is perfect, and the common root degree
+$N=\operatorname{den}(a)$ is positive and invertible in $k$. The canonical trace
+of the adapted cover with all root degrees equal to $N$ satisfies the required
+degree identity by \cref{thm:kn-original-canonical-trace-degree}.
+\end{proof}
+
+\begin{theorem}[The canonical trace input in characteristic zero]
+\label{thm:kn-cover-canonical-trace-input}
+\uses{cor:kn-cover-trace-input-of-mixed-normalization,thm:kn-nadel-mixed-candidate-normalization}
+\source{esnault-viehweg-vanishing}
+\lean{EnvelopeProperty.Vanishing.RelativeNadelAssembly.coverCanonicalTraceInput}
+\leanok
+Let $k$ be a field of characteristic zero. Then the canonical trace input
+(\cref{def:kn-relative-nadel-cover-trace-input}) holds over $k$: every
+normalized adapted Kummer cover $\pi:Y'\to Y$ of a smooth integral $k$-scheme
+carries $T:\pi_*\omega_{Y'}\to\omega_Y$ with
+$\eta\circ\pi_*(d\pi)\circ T=\deg\pi\cdot\mathrm{id}$.
+\end{theorem}
+\begin{proof}
+The normalization of the mixed canonical candidate holds over every field of
+characteristic zero (\cref{thm:kn-nadel-mixed-candidate-normalization}): after
+adjoining $N_i$-th roots of the units $u_i$, an \'etale extension of $A$, the
+mixed Kummer chart becomes the pure Kummer chart, where Euler's lemma computes the
+candidate on $b\cdot\beta^*w$ as $\operatorname{Tr}_{B/A}(b)\cdot w$. Now apply
+\cref{cor:kn-cover-trace-input-of-mixed-normalization}.
+\end{proof}

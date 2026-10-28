@@ -1,0 +1,52 @@
+\section{Actual polynomially projective strong resolution}
+
+\begin{lemma}[A nonempty original blowup remains integral]
+\label{lem:fc-nonempty-original-blowup-integral}
+\leanok
+\lean{EnvelopeProperty.ProjectiveStrongResolution.isIntegral_blowup_of_nonempty}
+\uses{thm:fc-hironaka-dejong-global-blowup-comparison}
+For an integral original scheme, every nonempty original ideal-sheaf blowup is integral.
+\end{lemma}
+\begin{proof}
+If the centre had full support, reducedness of the integral base would force
+its ideal sheaf to be zero.  The actual blowup of the zero ideal is empty,
+contradicting nonemptiness.  Thus the centre has proper support.  The genuine
+small-site native blowup integrality theorem applies to this actual ideal
+sheaf.  Transport its integrality through the whole original blowup isomorphism.
+\end{proof}
+
+\begin{lemma}[A nonempty last stage remains integral]
+\label{lem:fc-nonempty-original-blowup-sequence-integral}
+\leanok
+\lean{EnvelopeProperty.ProjectiveStrongResolution.isIntegral_last}
+\uses{lem:fc-nonempty-original-blowup-integral}
+For a finite original blowup succession starting from an integral original
+scheme, a nonempty final stage is integral.
+\end{lemma}
+\begin{proof}
+Induct on the actual succession.  In the successor case, the actual map from
+the final stage to the first blowup proves that first blowup nonempty.  The
+preceding lemma makes the first blowup integral; the induction hypothesis
+then proves the actual final stage integral.
+\end{proof}
+
+\begin{theorem}[Actual integral smooth projective strong resolution]
+\label{thm:fc-polynomial-projective-strong-resolution}
+\leanok
+\lean{EnvelopeProperty.ProjectiveStrongResolution.exists_projective_strong_resolution}
+\uses{thm:fc-original-blowup-sequence-polynomial-projectivity,lem:fc-nonempty-original-blowup-sequence-integral}
+For an integral algebraic scheme over a characteristic-zero field with an
+actual original finite polynomial projective embedding, there exists an
+actual original strong-resolution succession whose final original scheme
+is integral and has a finite polynomial projective embedding over that same field.
+\end{theorem}
+\begin{proof}
+Apply the genuine native strong-resolution existence theorem to the original
+integral algebraic scheme.  Its resolution is smooth over the original field
+and is an isomorphism over a dense original open of the original target.
+That open is nonempty because the target is integral.  Its inverse image is
+isomorphic to it and hence nonempty, so the actual whole final stage is
+nonempty.  The preceding integrality lemma and the genuine polynomial
+projectivity theorem for original finite blowup successions supply integrality
+and an actual finite polynomial closed embedding of that final stage.
+\end{proof}

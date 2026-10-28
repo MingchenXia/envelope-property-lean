@@ -1,0 +1,43 @@
+\section{Normal actual polynomial products of original normal integral schemes}
+
+\begin{theorem}[All actual polynomial-product local rings are domains]
+\label{thm:actual-polynomial-product-domain-stalks}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.polynomialBaseChange_stalk_isDomain}
+\leanok
+\uses{thm:actual-affine-polynomial-base-change-stalk-normal}
+For an original integral scheme $X\to\operatorname{Spec}R$, every same original
+local ring of $X\times_R\operatorname{Spec}R[t]$ is a domain.
+\end{theorem}
+\begin{proof}
+For an actual original product point choose an actual nonempty affine open
+$U$ about its original first projection. This open scheme is integral. Its
+actual polynomial base change is affine, and its true global ring is a
+polynomial ring over the original domain of $U$. The preceding affine result
+therefore makes every one of its actual stalks a domain. The actual pullback
+pasting isomorphism identifies that local polynomial base change with the
+pullback of $U$ along the original first projection. Its canonical map into
+the whole original product is an open immersion and covers our original point,
+by the true pullback range identity. Its actual stalk isomorphism transfers
+the proved domain property to the same original whole-product local ring.
+\end{proof}
+
+\begin{theorem}[All actual polynomial-product local rings are normal]
+\label{thm:actual-polynomial-product-normal-stalks}
+\lean{EnvelopeProperty.PolynomialSchemeBaseChangeNormal.polynomialBaseChange_stalk_isIntegrallyClosed}
+\leanok
+\uses{thm:actual-polynomial-product-domain-stalks,thm:actual-affine-polynomial-base-change-stalk-normal,lem:actual-normal-affine-open-section-ring}
+If every actual original stalk of the original integral scheme $X$ is
+integrally closed, every actual stalk of the same original polynomial product
+is integrally closed. No smoothness of $X$ is required.
+\end{theorem}
+\begin{proof}
+Choose the actual original nonempty affine neighborhood $U$ as above. Its
+actual original stalks are normal via the true open-immersion stalk maps.
+The local-to-global normality theorem for original affine rings therefore
+makes $\Gamma(U,\mathcal O_U)$ integrally closed. Polynomial normality and
+the actual affine polynomial-base-change comparison make every original
+stalk of its true polynomial product integrally closed. Use the same genuine
+pullback pasting isomorphism and open-immersion stalk isomorphism to transport
+this to the original whole-product point. All schemes, local rings, chart
+maps and point lifts used here are the actual original native ones.
+\end{proof}

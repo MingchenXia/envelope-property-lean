@@ -1,0 +1,47 @@
+\section{Native affine ideal identities and actual transformed ideals}
+
+\begin{lemma}[Normalization of an actual affine ideal]\label{lem:sc0-normalized-spec-ideal}
+\lean{EnvelopeProperty.Char0.idealOfSpecSheaf_specIdealSheaf}
+\leanok
+The normalized ring ideal of the actual ideal sheaf associated to $I\subseteq R$
+on $\operatorname{Spec}R$ is exactly $I$.
+\end{lemma}
+\begin{proof}
+The associated ideal sheaf has global ideal the image of $I$ under the canonical
+isomorphism $R\to\Gamma(\operatorname{Spec}R,\mathcal O)$. Normalization maps it
+back by the inverse isomorphism, so their composite gives the original ideal.
+\end{proof}
+
+\begin{corollary}[The native monomial identity supplies actual boundary \'etaleness]\label{cor:sc0-native-monomial-boundary-etale}
+\lean{EnvelopeProperty.Char0.etale_native_boundary_of_monomial_transform}
+\leanok
+\uses{lem:sc0-native-affine-transform-ideal,lem:sc0-monomial-transform-boundary-etale}
+Suppose $\pi$ is isomorphic off the support of $J$. If on an actual affine open
+$U\subseteq Y$ its native total-transform ideal is $(\prod_i p_i^{e_i})$, then
+the actual original section map induces an \'etale map
+$R\to\Gamma(Y,U)[1/\prod_i p_i]$.
+\end{corollary}
+\begin{proof}
+The canonical affine spectrum chart has its actual original-section projection
+triangle. The preceding lemma turns the native monomial ideal identity into its
+normalized transformed-ideal identity. Apply the actual boundary-complement
+\'etaleness producer to these two facts.
+\end{proof}
+
+\begin{lemma}[The actual affine chart computes the normalized transformed ideal]\label{lem:sc0-native-affine-transform-ideal}
+\lean{EnvelopeProperty.Char0.idealOfSpecSheaf_comap_fromSpec,EnvelopeProperty.Char0.idealOfSpecSheaf_comap_fromSpec_comp,EnvelopeProperty.Char0.fromSpec_comp_eq_specMap_sectionsHom,EnvelopeProperty.Char0.idealOfSpecSheaf_comap_specMap_sectionsHom}
+\leanok
+\uses{lem:sc0-normalized-spec-ideal}
+Let $\pi:Y\to\operatorname{Spec}R$, let $J$ be an actual ideal sheaf on the base,
+and let $U$ be an actual affine open of $Y$. For the canonical chart
+$\operatorname{Spec}\Gamma(Y,U)\to Y$, the normalized ideal of its pullback of
+$\pi^*J$ is exactly the native ideal $(\pi^*J)(U)$. Consequently every native
+monomial ideal identity from the adapted affine chart construction supplies the
+normalized transformed-ideal identity used for the boundary-open construction.
+\end{lemma}
+\begin{proof}
+Pullback along the canonical spectrum chart identifies an actual ideal sheaf
+with the ideal sheaf associated to its native ideal on $U$. Normalize this
+associated sheaf by the preceding lemma and use functoriality of ideal-sheaf
+pullback under the chart's actual projection triangle.
+\end{proof}

@@ -1,0 +1,137 @@
+\subsection{Actual complete algebraic closures and rational lifted points}
+\label{subsec:complete-algebraic-closures}
+
+\begin{theorem}[Algebraic closedness from a genuinely dense subfield]
+\label{spectrum:algebraic-closed-dense-completion}
+\lean{EnvelopeProperty.isAlgClosed_of_denseRange_nontrivial,
+EnvelopeProperty.isAlgClosed_of_denseRange,
+EnvelopeProperty.UniformSpace.Completion.isAlgClosed_ultrametric}
+\leanok
+Let $K$ be an algebraically closed field, $L$ a complete ultrametric
+normed field, and $K\to L$ an actual dense field homomorphism. Then $L$
+is algebraically closed. Consequently the actual norm completion of any
+ultrametric algebraically closed normed field is algebraically closed.
+These statements impose neither characteristic zero nor nontriviality
+of the norm.
+\end{theorem}
+\begin{proof}
+First suppose the norm on $L$ is nontrivial. For a monic irreducible
+$f\in L[T]$, choose an actual root $a$ in its finite splitting field,
+endowed with the genuine spectral extension norm of the complete base.
+The base field embeds isometrically into this normed splitting field,
+so its image is closed by completeness.
+
+Given any $\delta>0$, approximate the coefficients of $f$ by an actual
+monic polynomial $g\in K[T]$ of the same positive degree, with error less
+than
+\[
+ \frac{(\delta/\max\{|a|,1\})^{\deg f}}{\deg f+1}.
+\]
+The proved root-continuity estimate supplies a root of $g$ at distance
+less than $\delta$ from $a$. Since $K$ is genuinely algebraically closed,
+$g$ splits over $K$ and that root lies in the base-field image. Thus $a$
+is in its closure and hence in the image itself. Pulling back the root
+of $f$ proves algebraic closedness. This proof uses no separability or
+Krasner lemma, so it also works in positive characteristic.
+
+If the norm is trivial, its topology is discrete; density then makes the
+actual coefficient homomorphism surjective. Its genuine field isomorphism
+transfers roots. The completion corollary uses the actual dense canonical
+completion homomorphism, the complete normed-field structure and the
+proved preservation of ultrametricity.
+\end{proof}
+
+\begin{definition}[The actual complete algebraically closed valued extension]
+\label{spectrum:complete-valued-algebraic-closure}
+\lean{EnvelopeProperty.algebraicClosureValuation,
+EnvelopeProperty.algebraicClosureValuation_algebraMap,
+EnvelopeProperty.ValuedAlgebraicClosure,
+EnvelopeProperty.valuedAlgebraicClosure_isAlgClosed,
+EnvelopeProperty.valuedAlgebraicClosure_isUltrametricDist,
+EnvelopeProperty.valuedAlgebraicClosure_norm_algebraMap,
+EnvelopeProperty.valuedAlgebraicClosure_normedAlgebra,
+EnvelopeProperty.CompleteAlgebraicClosure,
+EnvelopeProperty.completeAlgebraicClosure_isAlgClosed,
+EnvelopeProperty.completeAlgebraicClosure_norm_algebraMap}
+\leanok
+\uses{spectrum:complete-norm-extension,spectrum:algebraic-closed-dense-completion}
+For every complete ultrametric normed field $K$, construct an actual
+complete algebraically closed ultrametric normed field
+\[
+ F=\widehat{\overline K},
+\]
+whose actual coefficient embedding satisfies $|c|_F=|c|_K$ for all
+$c\in K$. The construction includes trivial norms and arbitrary
+characteristic and is independent of any analytic point space.
+\end{definition}
+\begin{proof}
+The genuine extension theorem supplies a real-valued ultrametric
+valuation on the actual algebraic closure of $K$ extending the entire
+original norm. Choose that valuation and use its actual absolute value
+to form the WithAbs normed field. Its genuine ring isomorphism to the
+algebraic closure transfers algebraic closedness; the valuation inequality
+proves ultrametricity. Its coefficient norm equality proves the actual
+normed-algebra structure over $K$.
+
+Take its actual uniform norm completion. Mathlib supplies the complete
+normed-field structure and the inherited coefficient algebra. The preceding
+algebraic-closed-completion theorem and ultrametric completion producer
+give the claimed field properties. The canonical completion embedding
+preserves norms, so the original coefficient embedding into $F$ still
+preserves every original norm value. No extension field satisfying the
+target properties is assumed as a certificate.
+\end{proof}
+
+\begin{theorem}[Actual rational rigid lift over the completed residue field]
+\label{spectrum:rigid-complete-algebraic-closure-lift}
+\lean{EnvelopeProperty.Berkovich.Spectrum.RigidField,
+EnvelopeProperty.Berkovich.Spectrum.rigidLiftEval,
+EnvelopeProperty.Berkovich.Spectrum.rigidLiftEval_tmul,
+EnvelopeProperty.Berkovich.Spectrum.rigidLiftEval_surjective,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift_val_tmul,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift_comap,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift_support,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift_support_isMaximal,
+EnvelopeProperty.Berkovich.Spectrum.rigidField_val_algebraMap,
+EnvelopeProperty.Berkovich.Spectrum.rigidLift_baseChangeRestriction,
+EnvelopeProperty.Berkovich.Spectrum.rigidLiftQuotientEquiv,
+EnvelopeProperty.Berkovich.Spectrum.rigidLiftQuotientEquiv_mk}
+\leanok
+\uses{spectrum:complete-valued-algebraic-closure,
+spectrum:completed-residue-field,spectrum:relative-completed-residue-field,
+spectrum:base-change-restriction}
+For arbitrary commutative rings $R,A$, an $R$-algebra structure on $A$,
+and an actual prescribed-base point $x$ of $A$, set
+$F=\widehat{\overline{H(x)}}$ by the genuine construction above. There is
+an actual $F$-rational point $x_F$ of $F\otimes_RA$, with the entire norm
+of $F$ prescribed, which restricts to the whole original point $x$.
+The residue quotient at its support is genuinely $F$; its support is
+therefore maximal. No finite-type, coefficient-field or trivial-base
+hypothesis is required.
+\end{theorem}
+\begin{proof}
+The existing completed residue-field map sends $a\in A$ to an element
+of $H(x)$ with norm $|a(x)|$. The actual compatible coefficient action
+and tensor universal property give an $F$-algebra homomorphism
+\[
+ e_x:F\otimes_RA\longrightarrow F,
+ \qquad c\otimes a\longmapsto c\,\iota(x(a)),
+\]
+where $x(a)$ denotes the actual completed-residue-field image and $\iota$
+the constructed isometric field embedding. It is surjective, since
+$e_x(c\otimes1)=c$.
+Pull back the actual norm valuation of $F$ through this entire tensor
+homomorphism. The coefficient inclusion is fixed, and on every pure
+tensor the value is $|c|_F|a(x)|$. Thus the right restriction is exactly
+the whole original point, including its prescribed coefficient values.
+The norm of a field vanishes precisely at zero, so the support equals
+$\ker e_x$. Surjectivity to the genuine field $F$ makes this kernel
+maximal, and the actual first isomorphism theorem gives the asserted
+whole residue-quotient $F$-algebra equivalence.
+
+This constructs the complete algebraically closed extension and the
+rational rigid point used in the choice of weights in Fang--Han--Xia
+Proposition~5.22. The subsequent line, curve, reduction and normalization
+arguments are separate producers and are not asserted here.
+\end{proof}

@@ -1,0 +1,21 @@
+\begin{definition}[Whole comparison from an actual open immersion cover]
+\label{def:whole-module-open-immersion-cover-gluing}
+\lean{EnvelopeProperty.SchemeModuleOpenImages.glueOfOpenImmersionSections}
+\leanok
+\uses{prop:whole-module-open-image-sections,thm:fc-line-section-factorization,thm:fc-section-preserving-global-gluing}
+Let $c_a:W_a\to B$ be open immersions whose actual open images cover $B$. Let $M,N$ be modules on $B$, with sections $\alpha_j$ of $M$ and $\beta_j$ of $N$. Suppose each $c_a^*M\simeq c_a^*N$ carries every pulled $\alpha_j$ to the same pulled $\beta_j$, and the pulled $\beta_{p(a)}$ is a basis on $W_a$. These data construct a whole module isomorphism $M\simeq N$; equality of overlap comparisons is derived internally.
+\end{definition}
+\begin{proof}
+Transport each whole comparison to the canonical open image of $c_a$. Factor pullback retains the pivot basis there, and the canonical comparison naturality retains every specified section. Apply section-preserving whole module gluing on these actual images: on an overlap both comparisons preserve the first chart's original pivot, whose restriction remains a basis, and cancellation proves equality. Thus the morphisms and their inverses glue to the claimed whole isomorphism. The construction also applies to an empty cover of an empty scheme.
+\end{proof}
+
+\begin{proposition}[Preservation on the whole covered scheme]
+\label{prop:whole-module-open-immersion-cover-sections}
+\lean{EnvelopeProperty.SchemeModuleOpenImages.glueOfOpenImmersionSections_section}
+\leanok
+\uses{def:whole-module-open-immersion-cover-gluing,thm:fc-section-preserving-global-gluing}
+The constructed whole comparison sends each original $\alpha_j$ to the same original $\beta_j$ on all of $B$.
+\end{proposition}
+\begin{proof}
+On every actual open image, the restriction of the glued isomorphism is the transported section-preserving comparison. The two whole section morphisms therefore agree on the covering open images, so sheaf morphism extensionality gives their equality on $B$.
+\end{proof}

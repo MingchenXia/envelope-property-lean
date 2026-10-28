@@ -1,0 +1,34 @@
+\section{Whole symmetric projective bundles for actual bases}
+\label{sec:symmetric-polynomial-basis-comparison}
+
+\begin{theorem}[Actual basis comparison]
+\label{thm:symmetric-polynomial-basis-comparison}
+\lean{EnvelopeProperty.SymmetricPolynomialBasisComparison.toPolynomial, EnvelopeProperty.SymmetricPolynomialBasisComparison.toSymmetric, EnvelopeProperty.SymmetricPolynomialBasisComparison.iso, EnvelopeProperty.SymmetricPolynomialBasisComparison.iso_structure}
+\leanok
+\uses{thm:fc-symmetric-projective-embedding}
+Let $M$ be a module over any commutative ring $R$, with an actual
+basis indexed by a set $I$. Then the entire native projective bundle
+$\operatorname{Proj}(\operatorname{Sym}_R M)$ is canonically isomorphic
+to the entire projective spectrum of the original polynomial ring
+$R[x_i:i\in I]$. The isomorphism preserves the entire original
+structural morphism to $\operatorname{Spec}R$.
+\end{theorem}
+
+\begin{proof}
+The actual algebra isomorphism sends the original basis vectors to
+the original polynomial variables and its inverse sends those variables
+to the original symmetric generators. Both maps preserve every
+homogeneous degree. For the inverse this is the polynomial presentation
+lemma. For the forward map, expand each original vector using the actual
+basis: its image is homogeneous of degree one. The degree-$d$ symmetric
+component is the $d$th power of the degree-one submodule, so its image
+lies in the actual degree-$d$ polynomial component. Both original maps
+are surjective, and hence satisfy the true irrelevant-ideal condition.
+Their two genuine native projective-spectrum maps are inverse by
+functoriality and the two original algebra inverse identities. Finally
+the original polynomial presentation comparison already retains the
+entire coefficient projection. Apply this equality to the inverse
+isomorphism and cancel that actual isomorphism. No integrality,
+Noetherianity, finite presentation, or supplied projective isomorphism
+is required.
+\end{proof}

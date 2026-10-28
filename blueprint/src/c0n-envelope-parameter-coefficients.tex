@@ -1,0 +1,59 @@
+\section{Homogeneous relative sections and parameter coefficients}
+
+\begin{lemma}[The original parameter exchange is the native whole coefficient interchange]
+\label{lem:c0n-original-parameter-native-swap}
+\uses{lem:c0n-obstacle-parameter-swap,polynomial:coefficient-variable-interchange}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.parameterEquiv_symm_eq_polynomialCoefficientSwap}
+\leanok
+The inverse of the original parameter exchange is the existing whole
+coefficient interchange
+$k[t][x_0,\ldots,x_M]\simeq k[x_0,\ldots,x_M][t]$.
+\end{lemma}
+\begin{proof}
+Both maps are the composite of the inverse optional-variable polynomial
+presentation over $k[t]$ and the forward optional-variable presentation
+over $k[x_0,\ldots,x_M]$, in that order.  Thus they are the same algebra
+isomorphism.
+\end{proof}
+
+\begin{lemma}[The original parameter exchange preserves every coefficient]
+\label{lem:c0n-original-parameter-coefficients}
+\uses{lem:c0n-obstacle-parameter-swap}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.parameterEquiv_coeff_coeff}
+\leanok
+Let $\eta:k[x_0,\ldots,x_M][t]\simeq k[t][x_0,\ldots,x_M]$
+be the original parameter exchange.  For every polynomial $F$, every
+multi-index $\alpha$, and every $\ell\in\mathbf N$,
+\[
+ [t^\ell][x^\alpha]\eta(F)=[x^\alpha][t^\ell]F.
+\]
+\end{lemma}
+\begin{proof}
+Both sides are additive in $F$.  It therefore suffices to take
+$F=s(x)t^n$.  Parameter exchange sends this to
+$\eta(F)=s(x)t^n$, with $t^n$ regarded as a coefficient.
+The coefficient of $x^\alpha$ is $([x^\alpha]s)t^n$.
+Its $t^\ell$ coefficient is $[x^\alpha]s$ if $\ell=n$ and zero otherwise,
+which is also the $x^\alpha$ coefficient of $[t^\ell]F$.
+\end{proof}
+
+\begin{lemma}[Relative homogeneous sections have homogeneous parameter coefficients]
+\label{lem:c0n-relative-homogeneous-parameter-coefficients}
+\uses{lem:c0n-original-parameter-native-swap,polynomial:coefficient-variable-interchange}
+\lean{EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.parameterEquiv_coeff_isHomogeneous,EnvelopeProperty.ProjSubvariety.MultiplierBaseIdeals.parameterEquiv_symm_coeff_isHomogeneous}
+\leanok
+If $\eta(F)$ is homogeneous of $x$-degree $e$, then every coefficient
+$[t^\ell]F$ is homogeneous of the same degree $e$.
+Equivalently, any homogeneous relative polynomial
+$P\in k[t][x_0,\ldots,x_M]$ gives a polynomial $F=\eta^{-1}(P)$
+whose every $t$-coefficient has the original $x$-degree $e$.
+\end{lemma}
+\begin{proof}
+The native whole coefficient interchange commutes with the actual
+$e$th homogeneous-component operator and with taking every $t$-coefficient.
+For homogeneous $P$ the $e$th homogeneous component is $P$ itself.
+Consequently each $t$-coefficient of $\eta^{-1}(P)$ equals its own
+$e$th homogeneous component, so it is homogeneous of degree $e$.
+Apply this result to $P=\eta(F)$ and use
+$\eta^{-1}(\eta(F))=F$ to obtain the first formulation.
+\end{proof}

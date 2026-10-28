@@ -1,0 +1,29 @@
+\section{Whole polynomial projective comparison under coefficient isomorphisms}
+\label{sec:polynomial-projective-coefficient-isomorphism}
+
+\begin{theorem}[Whole coefficient isomorphism]
+\label{thm:polynomial-projective-coefficient-isomorphism}
+\lean{EnvelopeProperty.PolynomialProjectiveCoefficientIso.gradedMap, EnvelopeProperty.PolynomialProjectiveCoefficientIso.iso, EnvelopeProperty.PolynomialProjectiveCoefficientIso.iso_structure}
+\leanok
+\uses{thm:fc-symmetric-projective-embedding}
+Any actual isomorphism $R\simeq S$ of commutative coefficient rings
+induces an isomorphism of the entire original polynomial projective
+schemes with the same variables. The whole original structural
+morphisms commute with the spectrum of that same coefficient
+isomorphism.
+\end{theorem}
+
+\begin{proof}
+Apply the original coefficient isomorphism to every coefficient of
+the original polynomial. The actual inverse coefficient map gives
+its inverse on the entire polynomial ring. Both maps preserve every
+homogeneous degree because they change no exponents. Surjectivity
+gives the actual irrelevant-ideal inequalities. Native projective
+functoriality and the original ring inverse identities then give
+both whole scheme inverse identities. The degree-zero restriction
+of the polynomial map sends the constant polynomial $r$ to the
+constant polynomial given by the same coefficient isomorphism.
+The resulting degree-zero square, followed by the original
+projective-to-degree-zero structural map, proves the claimed
+whole coefficient diagram.
+\end{proof}
