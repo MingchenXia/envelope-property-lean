@@ -84,7 +84,7 @@ and real numbers $a_i$ with $\theta=\sum_{i<n}a_i([F_{i+2}]-[F_1])$. Take $q_c$ 
 of $f$ and $\theta_m=(0,-\sum_ia_i,a_0,\dots,a_{n-1})$.
 \end{proof}
 
-\begin{lemma}[Ample classes have positive presentations]
+\begin{lemma}[Ample classes have positive presentations {\cite[Corollary~1.1]{FHX}}]
 \label{lem:pm-exists-positive-presentation}
 \leanok
 \lean{EnvelopeProperty.Variety.exists_presentation_with_first_factor,
@@ -93,7 +93,6 @@ EnvelopeProperty.Variety.isAmple_presentationFactorLine_zero}
 \uses{def:pm-presentation, thm:native-numerical-ample-family-openness,
 thm:native-numerical-positive-ample-sums, lem:fc-original-very-ample-is-ample,
 lem:fc-original-ample-line-twist-generation, thm:generated-line-family-closed-projection}
-\source{fhx-envelope-20261028:cor:intro-characterization}
 Every class $\omega$ in the ample cone has a presentation with all coordinates $\omega_{m,c}>0$.
 The first factor line of every presentation is ample.
 \end{lemma}
@@ -260,13 +259,12 @@ and the product is one.
 
 \subsection{The Fubini--Study dictionary}
 
-\begin{theorem}[Fubini--Study functions of a presentation model]
+\begin{theorem}[Fubini--Study functions of a presentation model {\cite[Definition~2.18]{BJ22}}]
 \label{thm:pm-fs-dictionary}
 \leanok
 \lean{EnvelopeProperty.Variety.isFS_iff_presentation}
 \uses{lem:pm-signed-sections, lem:pm-signed-norms, def:gl-fs,
 def:native-numerical-whole-section-fs-data}
-\source{bj22-trivval:defi:FS}
 Let $a\in\Q^{r+1}$ and $\psi\colon\mathcal P^{\mathrm{an}}\to[-\infty,\infty)$. Then $\psi$ is a
 Fubini--Study function of class $a$ on $\mathcal P$ if and only if there are an integer $m>0$
 with $ma\in\Z^{r+1}$, an invertible sheaf $M\cong L(ma)$ and finitely many global sections

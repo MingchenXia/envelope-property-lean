@@ -64,7 +64,7 @@ from a single monomial root to independent coordinate roots.
 \begin{lemma}[Actual roots of the original coordinate equations]
 \label{lem:kn-nadel-kummer-original-roots}
 \leanok
-\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.chart_coordinateRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.originalProjection_over}
+\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot,EnvelopeProperty.Vanishing.NadelKummerCover.coordinateRoot_pow}
 \uses{def:kn-nadel-kummer-local-pullback}
 Let $y_j=b^*t_j$ be the actual coordinate section on $C(g,m)$.
 Then $y_j^{m_j}=a^*g^*t_j$.  For the original chart coordinates $v_j$,
@@ -84,7 +84,6 @@ with the original coefficient projection proves the structure identity.
 \begin{lemma}[The genuine finite surjective local covering projection]
 \label{lem:kn-nadel-kummer-finite-surjective}
 \leanok
-\lean{EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_integral,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_finiteType,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_finite,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerHom_injective,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_finite,EnvelopeProperty.Vanishing.NadelKummerCover.coordinatePowerMap_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.chartProjection_surjective}
 \uses{def:kn-nadel-kummer-local-pullback}
 If every $m_j>0$, the original coordinate-power morphism $q_m$ and
 the actual first pullback projection $a:C(g,m)\to U$ are finite and
@@ -122,7 +121,6 @@ local results above.
 \begin{lemma}[Actual SNC geometry produces the local smooth finite cover]
 \label{lem:kn-nadel-kummer-snc-cover}
 \leanok
-\lean{EnvelopeProperty.Vanishing.NadelKummerCover.chartPullback_isAffine,EnvelopeProperty.Vanishing.NadelKummerCover.originalProjection_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.exists_smooth_snc_pullback_at_closed,EnvelopeProperty.Vanishing.NadelKummerCover.exists_smooth_snc_cover_at_closed}
 \uses{lem:kn-nadel-kummer-pullback-smooth,lem:kn-nadel-kummer-finite-surjective,lem:kn-nadel-kummer-original-roots}
 For the original smooth $d$-dimensional scheme and original SNC family,
 at each original closed point the native SNC chart gives an actual
@@ -149,7 +147,6 @@ is used.
 \begin{lemma}[The existing actual tame unit-root cover retains smoothness]
 \label{lem:kn-nadel-kummer-unit-root-layer}
 \leanok
-\lean{EnvelopeProperty.Vanishing.NadelKummerCover.unitRoot_degree_isUnit,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootProjection_etale,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootStructureMap_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootChartProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootChartProjection_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.unitRootSection_pow,EnvelopeProperty.Vanishing.NadelKummerCover.unitRoot_coordinateRoot_pow}
 \uses{lem:kn-nadel-kummer-pullback-smooth,lem:kn-nadel-kummer-finite-surjective,lem:kn-nadel-kummer-original-roots}
 On $C(g,m)$ let $u$ be an actual global unit and let $N>0$ be
 invertible in the original coefficient ring.  The original native
@@ -179,7 +176,6 @@ already proved original coordinate-root equation.
 \begin{lemma}[An actual map into the original raw cyclic equation]
 \label{lem:kn-nadel-kummer-original-cyclic-map}
 \leanok
-\lean{EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicCoefficient,EnvelopeProperty.Vanishing.NadelKummerCover.originalUnitPullback,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedStructure_smooth,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedProjection_finite,EnvelopeProperty.Vanishing.NadelKummerCover.cyclicAdaptedProjection_surjective,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRoot,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRoot_pow,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom_root,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootHom_comp,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootSpecMap,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicRootSpecMap_over,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMap,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMap_projection,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMapOfCoefficient,EnvelopeProperty.Vanishing.NadelKummerCover.originalCyclicMapOfCoefficient_projection}
 \uses{lem:kn-nadel-kummer-original-roots,lem:kn-nadel-kummer-unit-root-layer}
 Use the common positive exponent $N$ on each original coordinate.
 For the original unit $u$ and original multiplicities $a_j$, set
@@ -238,8 +234,7 @@ root, at every later stage, to the same specified $r_i$.
 \begin{proof}
 Compose the actual successive coefficient maps to obtain the
 transitions; induction proves their original coefficient triangle.
-Start the evaluation at $f$ on $B_0$.  At step $i$, the previously
-constructed coefficient triangle identifies the image of the new
+Start the evaluation at $f$ on $B_0$.  At step $i$, the constructed coefficient triangle identifies the image of the new
 polynomial coefficient with $f(c_i)$.  Thus the displayed actual
 power equality makes $r_i$ a root of that exact polynomial.
 The actual AdjoinRoot universal property constructs the next whole

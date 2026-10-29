@@ -7,12 +7,11 @@ ideal functions with the intrinsic ideal calculus on affine seminorm spectra.
 They concern the existing normalized model; they do not identify it with a
 canonical projective analytification or construct coherent ideal sheaf gluing.
 
-\begin{lemma}[Bounded Gauss extension]
+\begin{lemma}[Bounded Gauss extension {\cite[\S2.1]{FHX}}]
 \label{projective:bounded-gauss-extension}
 \lean{EnvelopeProperty.ProjBerk.gaussExt_isBounded}
 \leanok
 \uses{def:bounded-ideal-norm,def:pn-gauss}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For a normalized graded seminorm $v$ on
 $R=k[x_0,\ldots,x_n]$, its Gauss extension $\sigma(v)$ is bounded on
 $R[t]$: $|F|_{\sigma(v)}\le1$ for every $F\in R[t]$.
@@ -25,7 +24,7 @@ $|F|_{\sigma(v)}=\max_j |F_j|_v\exp(-j)\le1$.
 This is precisely boundedness on the coefficient ring $R[t]$.
 \end{proof}
 
-\begin{theorem}[Correspondence of projective ideal functions]
+\begin{theorem}[Correspondence of projective ideal functions {\cite[\S2.1]{FHX}}]
 \label{projective:ideal-spectrum-bridge}
 \lean{EnvelopeProperty.ProjBerk.phiNorm_eq_idealNorm,
 EnvelopeProperty.ProjBerk.phiIdeal_eq_idealLog,
@@ -34,7 +33,6 @@ EnvelopeProperty.ProjBerk.phiIdeal_eq_spectrumIdealLog}
 \leanok
 \uses{projective:bounded-gauss-extension,def:bounded-ideal-norm,
 def:general-ideal-norm,spectrum:trivial-field-bridge}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For every ideal $I\subseteq R[t]$ and every normalized model point $v$,
 \[
  \phi_I^{\mathrm{mult}}(v)=|I|_{\sigma(v)},\qquad

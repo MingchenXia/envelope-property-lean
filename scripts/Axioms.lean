@@ -1,85 +1,34 @@
 /-
-Axiom audit of the release (generated from the release roots by the release tooling).
-From the `EnvelopeProperty/` directory:
+Axiom audit. From the repository root:
 
-    lake env lean ../scripts/Axioms.lean
+    lake env lean scripts/Axioms.lean
 
 Every theorem below must depend exactly on `[propext, Classical.choice, Quot.sound]`
-(the standard axioms of Lean and Mathlib): no `sorryAx`, no project axiom. The list is every
-non-private theorem declared in the release roots.
+(the standard axioms of Lean and Mathlib): no `sorryAx`, no other axiom. The list is every
+non-private theorem of `EnvelopeProperty/MainTheorem.lean`, of the errata certificates and of
+the two further files listed in the README.
 -/
-import EnvelopeProperty.MainTheoremFullyUnconditional
 import EnvelopeProperty.MainTheorem
-import EnvelopeProperty.Global.MainTheorem
-import EnvelopeProperty.MainTheoremUnconditional
-import EnvelopeProperty.Source.MainTheorem
-import EnvelopeProperty.Source.Characterization
 import EnvelopeProperty.Global.Lemma46Counterexample
 import EnvelopeProperty.Global.PSH2HomogeneousMajorant
 import EnvelopeProperty.Projective.Remark73ProjectiveLine
-import EnvelopeProperty.Global.EPDecreasingLimits
 import EnvelopeProperty.Global.HomogeneousCarrierLimit
 import EnvelopeProperty.Source.FiniteDimensionalTopology
 
--- EnvelopeProperty.MainTheoremFullyUnconditional
-#print axioms EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae_fully_unconditional
-#print axioms EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch_fully_unconditional
-#print axioms EnvelopeProperty.Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk_fully_unconditional
-#print axioms EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk_fully_unconditional
-#print axioms EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_fully_unconditional
-
 -- EnvelopeProperty.MainTheorem
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch
-#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_of_charP
-#print axioms EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae
-#print axioms EnvelopeProperty.MultiModel.isUnibranch_quotModel_of_hasEnvelopeProperty
-
--- EnvelopeProperty.Global.MainTheorem
-#print axioms EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_one_of_isNormal_of_forall_subfield
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_pos_of_forall_subfield
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_subfield
-#print axioms EnvelopeProperty.MultiModel.IsUnibranch.hasEnvelopeProperty_of_forall_subfield
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable
+#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal
 #print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch
 #print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch
-#print axioms EnvelopeProperty.MultiModel.smoothEnvelopeCharZero_of_charP
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_of_charP
-
--- EnvelopeProperty.MainTheoremUnconditional
-#print axioms EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_unconditional
-#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_of_charP_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_unconditional
-#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch_unconditional
-#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_of_charP_unconditional
-#print axioms EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae_unconditional
-
--- EnvelopeProperty.Source.MainTheorem
+#print axioms EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch
+#print axioms EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty
+#print axioms EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch
+#print axioms EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch
+#print axioms EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae
 #print axioms EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch
 #print axioms EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch
-#print axioms EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch_of_charP
-#print axioms EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch_of_charP
-
--- EnvelopeProperty.Source.Characterization
-#print axioms EnvelopeProperty.Variety.isUnibranch_of_hasEnvelopeProperty
-#print axioms EnvelopeProperty.Variety.exists_mem_ampleCone
-#print axioms EnvelopeProperty.Variety.isUnibranch_of_forall_hasEnvelopeProperty
-#print axioms EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_imp
+#print axioms EnvelopeProperty.Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk
+#print axioms EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk
 #print axioms EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty
-#print axioms EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_charP
 
 -- EnvelopeProperty.Global.Lemma46Counterexample
 #print axioms EnvelopeProperty.bj22DecrLimits_subset_iterated
@@ -164,18 +113,6 @@ import EnvelopeProperty.Source.FiniteDimensionalTopology
 #print axioms EnvelopeProperty.ProjBerk.logAbs_X_zero_ordPoint
 #print axioms EnvelopeProperty.ProjBerk.strictMono_bj621PsiShift_ordPoint
 #print axioms EnvelopeProperty.ProjBerk.bj621_counterexample
-
--- EnvelopeProperty.Global.EPDecreasingLimits
-#print axioms EnvelopeProperty.MultiModel.iInf_psh_ne_top
-#print axioms EnvelopeProperty.MultiModel.iInf_psh_le_triv
-#print axioms EnvelopeProperty.MultiModel.iInf_psh_triv_ne_bot
-#print axioms EnvelopeProperty.MultiModel.scaleFun_iInf_psh_convex
-#print axioms EnvelopeProperty.MultiModel.scaleFun_iInf_psh_ne_bot
-#print axioms EnvelopeProperty.MultiModel.convexOn_rayFun_iInf_psh
-#print axioms EnvelopeProperty.MultiModel.iInf_psh_eq_iSup_legendreSlice
-#print axioms EnvelopeProperty.MultiModel.legendreSlice_iInf
-#print axioms EnvelopeProperty.MultiModel.isPSH_of_antitone_of_hasEnvelopeProperty
-#print axioms EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch
 
 -- EnvelopeProperty.Global.HomogeneousCarrierLimit
 #print axioms EnvelopeProperty.MultiModel.IsScaleHomogeneous.homogenization_add_coe_le

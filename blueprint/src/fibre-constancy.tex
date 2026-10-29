@@ -92,7 +92,7 @@ $\widehat L\otimes_KA$ retains every original $A$ value and every completed coef
 
 \begin{lemma}[Extension of scalars]\label{lem:fc-base-change}
 \leanok
-\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.continuous_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isClosedMap_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isLocallyPSHOn_comp_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_algebraicCompletion, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_gauss, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalScalarLift_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_nativeProjection, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_nontrivialScalarField}
+\lean{EnvelopeProperty.Berkovich.SchemeScalarBaseChange.continuous_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isClosedMap_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.isLocallyPSHOn_comp_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_algebraicCompletion, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.nativeMap_surjective_gauss, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcRationalScalarLift_nativeMap, EnvelopeProperty.Berkovich.SchemeScalarBaseChange.fcScalarChangeRationalSection_nativeProjection}
 \uses{conv:fc-setting, lem:fc-scheme-scalar-pullback, lem:fc-scheme-scalar-proper, lem:fc-scheme-scalar-algebraic-completion-lift, lem:fc-scheme-gauss-scalar-lift, lem:fc-scheme-rational-point-lift, lem:fc-scheme-rational-section-base-change, lem:fc-scheme-nontrivial-complete-scalar-lift}
 Let $X$ be an $F$-scheme of finite type and $F'/F$ a complete extension.
 \begin{enumerate}
@@ -169,8 +169,7 @@ a point is closed in a compact space.
 \end{proof}
 
 \begin{lemma}[Actual Segre polynomial restriction]\label{lem:fc-segre-polynomials}
-\leanok
-\lean{EnvelopeProperty.BiProjBerk.segreHom, EnvelopeProperty.BiProjBerk.segreHom_X, EnvelopeProperty.BiProjBerk.segreHom_monomial_isWeightedHomogeneous, EnvelopeProperty.BiProjBerk.weightedHomogeneousComponent_segreHom, EnvelopeProperty.BiProjBerk.segreHom_isWeightedHomogeneous, EnvelopeProperty.BiProjBerk.segreMinor, EnvelopeProperty.BiProjBerk.segreMinor_isHomogeneous, EnvelopeProperty.BiProjBerk.segreHom_minor, EnvelopeProperty.BiProjBerk.segre, EnvelopeProperty.BiProjBerk.segre_val, EnvelopeProperty.BiProjBerk.segre_val_minor, EnvelopeProperty.BiProjBerk.continuous_segre, EnvelopeProperty.BiProjBerk.segreDimension, EnvelopeProperty.BiProjBerk.segreIndexEquiv, EnvelopeProperty.BiProjBerk.segreMap, EnvelopeProperty.BiProjBerk.continuous_segreMap}
+
 \uses{lem:pg-bigraded-extension}
 Put $D=(M+1)(M'+1)-1$, order the pairs $(i,j)$ as the $D+1$ homogeneous coordinates, and define
 $\sigma^*\colon k[z_{ij}]\to k[x_i,y_j]$ by $z_{ij}\mapsto x_i y_j$.
@@ -191,7 +190,6 @@ The quadratic minors pull back to the zero polynomial.
 
 \begin{lemma}[Recovery from Segre coordinates]\label{lem:fc-segre-embedding}
 \leanok
-\lean{EnvelopeProperty.BiProjBerk.segreRecoveryHom, EnvelopeProperty.BiProjBerk.segreRecoveryHom_X_inl, EnvelopeProperty.BiProjBerk.segreRecoveryHom_X_inr, EnvelopeProperty.BiProjBerk.segreHom_recovery_monomial, EnvelopeProperty.BiProjBerk.segreHom_recovery, EnvelopeProperty.BiProjBerk.segre_val_recovery, EnvelopeProperty.BiProjBerk.segre_injective, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segre, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segreMap}
 \uses{lem:fc-segre-polynomials}
 The actual map $a$ of Lemma~\ref{lem:fc-segre-polynomials} is a closed topological embedding.
 For a chosen pair $(i,j)$ let $\rho_{ij}\colon k[x,y]\to k[z]$ send $x_l$ to $z_{lj}$ and $y_m$ to $z_{im}$.
@@ -211,7 +209,6 @@ point space is a closed embedding.
 
 \begin{lemma}[The actual native Segre point map]\label{lem:fc-segre-native}
 \leanok
-\lean{EnvelopeProperty.BiProjBerk.segreNative, EnvelopeProperty.BiProjBerk.continuous_segreNative, EnvelopeProperty.BiProjBerk.isClosedEmbedding_segreNative, EnvelopeProperty.BiProjBerk.segreMap_val_X_eq_one, EnvelopeProperty.BiProjBerk.segreNative_eval_form}
 \uses{lem:fc-segre-embedding}
 Composing $a$ with the actual native polynomial Proj homeomorphism gives a closed embedding from the bigraded
 point space into the native valued points of the genuine scheme $\operatorname{Proj}k[z_{ij}]$, prescribing the
@@ -774,7 +771,7 @@ actual prime quotient of $A$ of Krull dimension one, as required by the curve-st
 
 \begin{lemma}[Connected affine component reduction]\label{lem:fc-connected-affine-curve-chains}
 \leanok
-\lean{EnvelopeProperty.FcConnectedAffineCurveChains.curveStep_comap_of_surjective, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_comap_of_surjective, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_common_prime, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_preconnected, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_isClosed, EnvelopeProperty.FcConnectedAffineCurveChains.curveChain_of_rationalPoints}
+\lean{EnvelopeProperty.FcAffineCurveChains.curveChain_of_isClosed}
 \uses{lem:fc-affine-integral-curve-chains}
 Let $F$ be algebraically closed and $A$ any finite-type $F$-algebra with connected spectrum.
 Any two closed points of $\Spec A$ are joined by genuine irreducible closed curves in that original spectrum.
@@ -952,7 +949,6 @@ The remaining proper formal-functions/idempotent algebraization step is not assu
 
 \begin{lemma}[Actual kernels commute with finite-module completion]\label{lem:fc-adic-completion-kernel}
 \leanok
-\lean{EnvelopeProperty.FcAdicCompletionKernel.map_kernel_subtype_mem, EnvelopeProperty.FcAdicCompletionKernel.completedKernelInclusion, EnvelopeProperty.FcAdicCompletionKernel.completedKernelInclusion_bijective, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv_apply_val, EnvelopeProperty.FcAdicCompletionKernel.completionKernelEquiv_of_val, EnvelopeProperty.FcAdicCompletionKernel.map_exact}
 Let $R$ be noetherian, $I$ an actual ideal and $f\colon M\to N$ an actual linear map of finite
 $R$-modules. The ACTUAL completed kernel inclusion constructs an $\widehat R$-linear equivalence
 $\widehat{\ker f}\simeq\ker(\widehat f)$, retaining the WHOLE completed inclusion and every original
@@ -1180,11 +1176,10 @@ The differential and cohomological comparison of the actual ordered Cech complex
 still remain to be derived.
 \end{proof}
 
-\begin{theorem}[Connected fibres]\label{thm:fc-zariski}
+\begin{theorem}[Connected fibres {\cite[Theorem~6.1]{FHX}}]\label{thm:fc-zariski}
 \lean{EnvelopeProperty.ProjectiveGeometricConnectedness.geometricallyConnected,EnvelopeProperty.ProjSubvariety.BlowupCenter.fcNativeRees_geometricallyConnected}
 \leanok
 \uses{def:pg-blowup, lem:fc-proper-birational-flat-sections, lem:fc-flat-local-field-lift}
-\source{fhx-envelope-20261028:thm:normal-ample-EP}
 If $T'$ is normal, every scheme-theoretic fibre $B_\xi$ of $B\to T'$ is geometrically connected.
 More generally, a reduced projective birational scheme over the spectrum of a finite-type
 normal domain has geometrically connected fibres.
@@ -1203,11 +1198,9 @@ follows. Normality of the completion and equality of closed-fibre global section
 residue field are not used.
 \end{proof}
 
-\begin{theorem}[Maximum principle on curves]\label{thm:fc-curve-mp}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.IsLocallyPSHOn.eq_of_isMaxOn_univ_connected_curve}
+\begin{theorem}[Maximum principle on curves {\cite[Proposition~3.5]{GR25}, \cite[Lemma~5.2]{FHX}}]\label{thm:fc-curve-mp}
 \leanok
 \uses{thm:fc-connected-finite-type-curve-maximum}
-\source{gr25-classically-psh:prop:subharmonic.properties, fhx-envelope-20261028:lem:local-basic}
 Let $F$ be a complete algebraically closed ultrametric normed field and $D$ a connected finite-type $F$-scheme of global dimension at most one. A native locally psh function on $D^\an$ attaining its supremum is constant. This strengthens the smooth connected affine-curve case and includes the trivial base norm.
 \end{theorem}
 
@@ -1264,11 +1257,10 @@ $D^-(a_j,r_j)$ pairwise disjoint. Its boundary is $\partial U=\{\zeta_{a_j,r_j}\
 the union of the segments $[\zeta_{a_j,r_j},\zeta_{a_0,r_0}]$.
 \end{definition}
 
-\begin{lemma}[Topology of the line]\label{lem:fc-line-topology}
+\begin{lemma}[Topology of the line {\cite[Appendix~A]{GR25}}]\label{lem:fc-line-topology}
 \lean{EnvelopeProperty.Berkovich.RelativeSpectrum.fc_gauss_or_nested_discs, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_continuous_centeredGauss_prod, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isCompact_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.isConnected_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.interior_carrier, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.exists_boundary_mem_closure_component, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction, EnvelopeProperty.Berkovich.RelativeSpectrum.FCStandardAffinoid.radialRetraction_eq_self, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_nhds_hasBasis_standardAffinoid, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_exists_annulus_subset_nhds, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_denseRange_rigid_norm, EnvelopeProperty.Berkovich.RelativeSpectrum.fc_isConnected_line}
 \leanok
 \uses{def:fc-standard-affinoid, thm:fc-nested-disc-classification, lem:fc-linear-topology, lem:fc-standard-inflation, lem:fc-standard-boundary, lem:fc-standard-component-boundary, thm:fc-radial-retraction, thm:fc-residue-end-annulus, cor:fc-line-paths, thm:fc-rigid-density, thm:fc-standard-affinoid-basis}
-\source{gr25-classically-psh:topology of unit disc}
 \begin{enumerate}
 \item Points are $\zeta_{a,r}$ ($r\ge0$) or limits of Gauss points of nested classical discs with empty classical intersection; $(a,r)\mapsto\zeta_{a,r}$ is
 continuous.
@@ -1353,11 +1345,10 @@ remaining boundary value. This is the actual Dirichlet construction, without the
 incorrect dimension count $m+1$ when boundary points coincide.
 \end{proof}
 
-\begin{definition}[Subharmonic functions on the line]\label{def:fc-line-subharmonic}
+\begin{definition}[Subharmonic functions on the line {\cite[3.3]{GR25}}]\label{def:fc-line-subharmonic}
 \lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn}
 \leanok
 \uses{def:fc-harmonic,def:fc-actual-line-subharmonic}
-\source{gr25-classically-psh:sec:thuillier.subharmonic}
 Let $\Omega\subseteq(\A^1)^\an$ be open. An usc $v\colon\Omega\to[-\infty,\infty)$ is \emph{subharmonic} if, for every standard
 $U\subseteq\Omega$ and every harmonic $h$ on $U$, $v\le h$ on $\partial U$ implies $v\le h$ on $U$.
 \end{definition}
@@ -1397,11 +1388,10 @@ case and maxima with constants. The directed infimum as $\delta$ decreases to ze
 is exactly $\log|f|$, including negative infinity at zeros.
 \end{proof}
 
-\begin{lemma}[Strong maximum principle]\label{lem:fc-line-mp}
+\begin{lemma}[Strong maximum principle {\cite[Proposition~3.5]{GR25}}]\label{lem:fc-line-mp}
 \lean{EnvelopeProperty.Berkovich.RelativeSpectrum.IsLineSubharmonicOn.eventually_eq_of_isLocalMax_norm}
 \leanok
 \uses{thm:fc-line-subharmonic-strong-maximum}
-\source{gr25-classically-psh:prop:subharmonic.properties}
 Under the standing nontrivially valued algebraically closed field convention,
 if $v$ is subharmonic on the open $\Omega$ and has a local maximum $R$ at $x$,
 then $v\equiv R$ on an actual neighbourhood of $x$.
@@ -1485,10 +1475,9 @@ zeros on $W$ (Lemma~\ref{lem:fc-line-functions}(2)). Then Lemma~\ref{lem:fc-line
 
 \subsection{Subharmonic and classically psh functions}\label{subsec:fc-gr25}
 
-\begin{definition}[Subharmonic functions on curves]\label{def:fc-subharmonic}
+\begin{definition}[Subharmonic functions on curves {\cite[Definition~3.4]{GR25}}]\label{def:fc-subharmonic}
 \notready
 \uses{conv:fc-setting, lem:fc-pieces, def:fc-line-subharmonic}
-\source{gr25-classically-psh:def:subharmonicity}
 Let $C$ be a curve over a complete field $F$, $U\subseteq C^\an$ open, and $u\colon U\to[-\infty,\infty)$ usc. A \emph{test datum} is
 $(F',D,g,p,z,W,V)$, where:
 \begin{itemize}
@@ -1502,19 +1491,17 @@ $u$ is \emph{subharmonic} if, for every test datum, $\Norm_V(u\circ\pi\circ g)$ 
 $\equiv-\infty$ there.
 \end{definition}
 
-\begin{definition}[Classically psh functions]\label{def:fc-classically-psh}
+\begin{definition}[Classically psh functions {\cite[Definition~4.1]{GR25}}]\label{def:fc-classically-psh}
 \notready
 \uses{def:fc-subharmonic}
-\source{gr25-classically-psh:def:classically.psh}
 Let $X$ be an $F$-scheme of finite type and $U\subseteq X^\an$ open. An usc $u$ is \emph{classically psh} if $u\circ\pi\circ g$ is
 subharmonic on $(\pi g)^{-1}(U)$ for every complete, algebraically closed, nontrivially valued $F'/F$ and every morphism
 $g\colon D\to X_{F'}$ from a smooth connected affine $F'$-curve.
 \end{definition}
 
-\begin{proposition}[Properties of subharmonic functions]\label{prop:fc-subharmonic-properties}
+\begin{proposition}[Properties of subharmonic functions {\cite[Proposition~3.5]{GR25}}]\label{prop:fc-subharmonic-properties}
 \notready
 \uses{def:fc-subharmonic, lem:fc-line-sh-basic, lem:fc-line-local, lem:fc-line-mp, lem:fc-pieces}
-\source{gr25-classically-psh:prop:subharmonic.properties, fhx-envelope-20261028:lem:curves}
 \begin{enumerate}
 \item (Locality) Subharmonicity is local on $C^\an$.
 \item Sums, nonnegative multiples and decreasing nets of subharmonic functions are subharmonic; so is $\log|f|$ for $f$
@@ -1540,10 +1527,9 @@ local norms over $D$ equal $\delta^{-1}$ times the local norms over $D'$ (multip
 towers). (6) As in \cite[Lemma~5.21(1)]{FHX}, using flat base change of norms and transitivity of local norms.
 \end{proof}
 
-\begin{proposition}[Properties of classically psh functions]\label{prop:fc-cpsh-properties}
+\begin{proposition}[Properties of classically psh functions {\cite[Proposition~4.2]{GR25}}]\label{prop:fc-cpsh-properties}
 \notready
 \uses{def:fc-classically-psh, prop:fc-subharmonic-properties}
-\source{gr25-classically-psh:prop:classically.psh.properties}
 Classically psh functions form a sheaf. They are stable under sums, nonnegative multiples, decreasing nets, forward
 extension of scalars and pullback by morphisms of schemes of finite type. $\log|f|$ is classically psh for $f$ regular
 on a Zariski open set. On curves, classically psh $=$ subharmonic.
@@ -1558,7 +1544,6 @@ two notions agree because subharmonicity is stable under pullback by morphisms o
 \begin{lemma}[Locally psh functions are classically psh]\label{lem:fc-locally-psh-cpsh}
 \notready
 \uses{def:fc-classically-psh, lem:fc-local-norm-fs, lem:local-basic, prop:fc-subharmonic-properties}
-\source{fhx-envelope-20261028:lem:local-basic}
 Every locally psh function on an open subset of $X^\an$ is classically psh. This is \cite[Lemma~5.2(4)]{FHX}.
 \end{lemma}
 

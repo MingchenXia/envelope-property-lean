@@ -540,11 +540,10 @@ $v(s)\ge\limsup_\epsilon v(s_\epsilon)\ge\Norm_\pi u(s)$ by the lower bound. For
 hypothesis.
 \end{proof}
 
-\begin{proposition}[Nonflat norms for functions regularizable on blowup charts]\label{prop:nf-nonflat-norm}
+\begin{proposition}[Nonflat norms for functions regularizable on blowup charts {\cite[Proposition~5.22]{FHX}}]\label{prop:nf-nonflat-norm}
 \lean{EnvelopeProperty.IsChartRegularizable.isRegularizable_nonflatNorm, EnvelopeProperty.nonempty_normWeights_isChartRegularizable, EnvelopeProperty.ChartNonflatNorms.of_wuRegularization, EnvelopeProperty.hasLogGrowth_nonflatNorm, EnvelopeProperty.IsChartRegularizable.isRegularizable_awayComap_goodLocus}
 \leanok
 \uses{conv:nf-setting, def:nf-chart-regularizable, lem:nf-chart-regularizable-closure, lem:nf-good-locus, def:nf-weights, lem:nf-weights-basic, prop:gluing, lem:reg-closure-elementary, lem:finite-etale-norm, lem:growth, lem:nonflat-extension, prop:nf-identification}
-\source{fhx-envelope-20261028:prop:nonflat-norm}
 In the setting of Convention~\ref{conv:nf-setting}, the integers $m_y(\pi)$ of Definition~\ref{def:nf-weights} satisfy
 $m_y(\pi)\ge1$ and $\sum_{\pi(y)=s}m_y(\pi)=d$ for every $s\in S^\an$. If $u$ is regularizable on the charts of a blowup,
 of logarithmic growth, and every $x\in Y^\an\setminus Z^\an$ lies in some $Y_{g_0}^\an$ with $u|_{Y_{g_0}^\an}\in\Rcal(Y_{g_0})$,
@@ -564,11 +563,10 @@ number and using $g\ge b_0$). Lemma~\ref{lem:nonflat-extension} gives $v\in\Rcal
 Proposition~\ref{prop:nf-identification} gives $v=\Norm_\pi u$.
 \end{proof}
 
-\begin{proposition}[Projection step for functions regularizable on blowup charts]\label{prop:nf-projection-step}
+\begin{proposition}[Projection step for functions regularizable on blowup charts {\cite[Proposition~5.24]{FHX}}]\label{prop:nf-projection-step}
 \lean{EnvelopeProperty.IsRegularizable.of_projection_chartRegularizable, EnvelopeProperty.ChartNonflatNorms, EnvelopeProperty.ChartNonflatNorms.of_nonflatNorms, EnvelopeProperty.NormWeights.ofSubclass}
 \leanok
 \uses{prop:projection-step, prop:nf-nonflat-norm, lem:nf-chart-regularizable-closure}
-\source{fhx-envelope-20261028:prop:projection-step}
 Proposition~\ref{prop:projection-step} holds for every $u$ that is regularizable on the charts of a blowup (in place of
 weakly psh), with the weights of Proposition~\ref{prop:nf-nonflat-norm}.
 \end{proposition}
@@ -582,11 +580,10 @@ degree $d$. The first three are Lemma~\ref{lem:nf-chart-regularizable-closure}(1
 Proposition~\ref{prop:nf-nonflat-norm} applied to $\pi$ and to $\pi\times\mathrm{id}$.
 \end{proof}
 
-\begin{theorem}[Local regularization for functions regularizable on blowup charts]\label{thm:nf-local-regularization}
+\begin{theorem}[Local regularization for functions regularizable on blowup charts {\cite[Theorem~5.25]{FHX}}]\label{thm:nf-local-regularization}
 \lean{EnvelopeProperty.IsRegularizable.of_isChartRegularizable, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_isAlgClosed, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_convexPLApproximation, EnvelopeProperty.IsRegularizable.of_isChartRegularizable_of_localPositivity}
 \leanok
 \uses{thm:normal-local-regularization, prop:nf-projection-step, lem:nf-chart-regularizable-closure}
-\source{fhx-envelope-20261028:thm:normal-local-regularization}
 Theorem~\ref{thm:normal-local-regularization} holds for every $u$ that is regularizable on the charts of a blowup, of
 logarithmic growth, and regularizable on principal opens covering $Y\setminus Z$.
 \end{theorem}
@@ -597,11 +594,10 @@ projection step there. Restrictions stay in the class (Lemma~\ref{lem:nf-chart-r
 Proposition~\ref{prop:nf-projection-step} replaces Proposition~\ref{prop:projection-step}.
 \end{proof}
 
-\begin{corollary}[Psh descent without the nonflat norm hypothesis]\label{cor:nf-psh-descent}
+\begin{corollary}[Psh descent without the nonflat norm hypothesis {\cite[Corollary~5.26]{FHX}}]\label{cor:nf-psh-descent}
 \lean{EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj, EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj_of_convexPLApproximation}
 \leanok
 \uses{thm:pg-psh-descent, lem:nf-descent-chart, thm:nf-local-regularization}
-\source{fhx-envelope-20261028:cor:normal-weak-global}
 Theorem~\ref{thm:pg-psh-descent} holds without assuming Proposition~\ref{prop:nonflat-norm}.
 \end{corollary}
 

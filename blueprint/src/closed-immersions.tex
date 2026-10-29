@@ -28,12 +28,11 @@ $\{0\}\subseteq\R_{\ge0}$ is closed. Thus $\{x:|a|_x=0\}$ is closed.
 Their intersection, which equals $V^{\an}(I)$ by the definition of support, is closed.
 \end{proof}
 
-\begin{lemma}[Analytification of an affine quotient]\label{lem:analytic-affine-quotient}
+\begin{lemma}[Analytification of an affine quotient {\cite[Proposition~5.24]{FHX}}]\label{lem:analytic-affine-quotient}
 \lean{EnvelopeProperty.Berk.quotientHomeomorph, EnvelopeProperty.Berk.range_quotientComap,
 EnvelopeProperty.Berk.isClosedEmbedding_quotientComap}
 \leanok
 \uses{def:analytic-zero-locus,lem:analytic-zero-locus-closed}
-\source{fhx-envelope-20261028:prop:projection-step}
 For every ideal $I\subseteq A$, restriction along $A\to A/I$ identifies
 $(\Spec(A/I))^{\an}$ homeomorphically with $V^{\an}(I)$.
 Consequently this restriction map is a closed embedding into $(\Spec A)^{\an}$.
@@ -54,11 +53,10 @@ The evaluation definition of the two topologies therefore makes the inverse cont
 The image is $V^{\an}(I)$, which is closed by the preceding lemma.
 \end{proof}
 
-\begin{lemma}[Analytification of a closed immersion]\label{lem:analytic-closed-immersion}
+\begin{lemma}[Analytification of a closed immersion {\cite[Proposition~5.24]{FHX}}]\label{lem:analytic-closed-immersion}
 \lean{EnvelopeProperty.Berk.isClosedEmbedding_comap_of_surjective}
 \leanok
 \uses{spectrum:surjective-closed-embedding,spectrum:trivial-field-bridge}
-\source{fhx-envelope-20261028:prop:projection-step}
 If $\phi:A\to B$ is a surjective $k$-algebra homomorphism, then
 $\phi^{\an}:(\Spec B)^{\an}\to(\Spec A)^{\an}$ is a closed embedding.
 \end{lemma}
@@ -72,12 +70,11 @@ Transporting that closed embedding through the two specialization homeomorphisms
 gives the asserted closed embedding of affine analytifications.
 \end{proof}
 
-\begin{corollary}[Injectivity on a closed affine subset]\label{cor:analytic-closed-restriction-injective}
+\begin{corollary}[Injectivity on a closed affine subset {\cite[Proposition~5.24]{FHX}}]\label{cor:analytic-closed-restriction-injective}
 \lean{EnvelopeProperty.Berk.comap_injOn_zeroLocus_of_surjective_quotient,
 EnvelopeProperty.eq_of_comap_eq_of_surjective_quotient}
 \leanok
 \uses{lem:analytic-affine-quotient,lem:analytic-closed-immersion}
-\source{fhx-envelope-20261028:prop:projection-step}
 Let $\phi:B\to A$ be a $k$-algebra homomorphism and $I\subseteq A$ an ideal.
 If the composite $B\to A\to A/I$ is surjective, then $\phi^{\an}$ is injective on
 $V^{\an}(I)$. In particular, this applies to a finite set of equations $S\subseteq A$

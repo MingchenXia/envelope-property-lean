@@ -6,12 +6,11 @@ $\mathcal X_0=\mathcal X\times_{\mathbf A^1}\{0\}$ be its whole scheme-theoretic
 fibre, with inclusion $i_0$.  Let $(M,\alpha,e)$, $(H,\beta,f)$ be linearized lines with
 generic lines $L,K$ (Lemma~\ref{lem:native-tc-nef-fs-whole-tensor-comparisons}).
 
-\begin{lemma}[The central fibre is projective]
+\begin{lemma}[The central fibre is projective {\cite[\S1.2]{BJ22}}]
 \label{lem:native-tc-nef-fs-central-projective}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.centralProjection_isProjective}
 \uses{lem:intrinsic-original-normalized-central-native-projective}
-\source{bj22-trivval:sec:tc}
 The structure map $\mathcal X_0\to\operatorname{Spec}k$ is projective.
 \end{lemma}
 
@@ -22,12 +21,11 @@ $0\colon\operatorname{Spec}k\to\mathbf A^1$ gives such a factorization of
 $\mathcal X_0\to\operatorname{Spec}k$, which is therefore projective.
 \end{proof}
 
-\begin{theorem}[Central ampleness of the perturbation]
+\begin{theorem}[Central ampleness of the perturbation {\cite[Lemma~5.5]{FHX}}]
 \label{thm:native-tc-nef-fs-central-tensor-ample}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.central_ample_power_tensor_of_nef}
 \uses{lem:native-tc-nef-fs-central-projective, thm:native-nef-plus-ample}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Suppose $i_0^*M$ is nef, i.e.\ has nonnegative degree on every closed integral curve of
 $\mathcal X_0$, and $i_0^*H$ is ample.  Then
 $i_0^*(M^{\otimes b}\otimes H^{\otimes a})$ is ample for every natural $b$ and every
@@ -48,13 +46,12 @@ $i_0^*(M^{\otimes b}\otimes H^{\otimes a})$, and ampleness is invariant under
 isomorphism.
 \end{proof}
 
-\begin{theorem}[Exact FS realization of the perturbed potential]
+\begin{theorem}[Exact FS realization of the perturbed potential {\cite[Lemma~5.5]{FHX}}]
 \label{thm:native-tc-nef-fs-perturbed-model-exact}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.isFinFS_power_tensor_modelPotential_of_central_nef}
 \uses{thm:native-tc-nef-fs-central-tensor-ample, thm:central-ample-original-exact-finite-fs,
 lem:native-tc-nef-fs-whole-tensor-comparisons}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Assume $k$ is infinite and $\mathcal X$ is integral and dominant over $\mathbf A^1$.  Under
 the hypotheses of Theorem~\ref{thm:native-tc-nef-fs-central-tensor-ample}, with $a>0$, the native
 model potential of $M^{\otimes b}\otimes H^{\otimes a}$, for the linearization and

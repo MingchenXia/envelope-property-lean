@@ -11,7 +11,6 @@ for arbitrary singular potentials.
 \begin{lemma}[Finite rational FS functions]
 \label{lem:seven-finite-rational-fs}
 \uses{def:gl-fs}
-\lean{EnvelopeProperty.MultiModel.IsRatFS.isFinFS_of_everywhere_ne_bot}
 \leanok
 Let $f\in\mathcal H^{\mathrm{gf}}_{\mathbb Q}(\mathcal X,a)$.
 If $f(x)>-\infty$ for every $x\in\mathcal X^{\mathrm{an}}$, then
@@ -25,14 +24,10 @@ Thus at every point at least one section is nonzero. The same original
 family is base point free, as required.
 \end{proof}
 
-\begin{theorem}[Everywhere finite potentials detect the model nef cone]
+\begin{theorem}[Everywhere finite potentials detect the model nef cone {\cite[Proposition~2.1]{FHX}, \cite[Definition~4.1]{BJ22}}]
 \label{thm:seven-finite-psh-nef}
 \uses{lem:seven-finite-rational-fs, cor:gl-pshhom, lem:gl-cones,
 thm:gl-fs-system-theory}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:defi:psh}
-\lean{EnvelopeProperty.MultiModel.IsPSH.exists_isFinFS_net_of_everywhere_ne_bot,
-EnvelopeProperty.MultiModel.IsPSH.mem_nefCone_of_everywhere_ne_bot,
-EnvelopeProperty.MultiModel.mem_nefCone_iff_exists_everywhere_finite_psh}
 \leanok
 A real model class $\theta$ belongs to $N(\mathcal X)$ if and only if it
 admits an everywhere finite $\theta$-psh potential. Moreover, for an
@@ -52,11 +47,9 @@ the value $+\infty$, so ``everywhere greater than $-\infty$'' is equivalent
 to everywhere finite here.
 \end{proof}
 
-\begin{theorem}[PSH2 for everywhere finite limits]
+\begin{theorem}[PSH2 for everywhere finite limits {\cite[Proposition~2.1]{FHX}, \cite[Theorem~4.5]{BJ22}}]
 \label{thm:seven-finite-limit-psh2}
 \uses{thm:seven-finite-psh-nef, thm:gl-fs-system-theory, lem:gl-cones}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:thm:psh12}
-\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_everywhere_ne_bot}
 \leanok
 Let $(u_i)$ be a decreasing directed net with
 $u_i\in\mathrm{PSH}(\mathcal X,\theta_i)$ and $\theta_i\to\theta$.
@@ -71,11 +64,9 @@ The independently proved nef decreasing-limit theorem therefore applies.
 The limit is nontrivial since it is finite at the trivial point.
 \end{proof}
 
-\begin{theorem}[Continuous sequential rational regularization]
+\begin{theorem}[Continuous sequential rational regularization {\cite[Proposition~2.1]{FHX}, \cite[Definition~4.1]{BJ22}}]
 \label{thm:seven-continuous-rational-fs-sequence}
 \uses{thm:seven-finite-psh-nef, cor:gl-pshhom}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:defi:psh}
-\lean{EnvelopeProperty.MultiModel.IsPSH.exists_isFinFS_seq_of_continuous}
 \leanok
 Let $u\colon\mathcal X^{\mathrm{an}}\to\mathbb R$ be continuous and
 $\theta$-psh. There are rational classes $a_n\to\theta$ and decreasing
@@ -106,11 +97,9 @@ uniform convergence of the functions. Since the sequence decreases and
 has pointwise limit $u$, its pointwise infimum is $u$.
 \end{proof}
 
-\begin{corollary}[Prescribed dyadic classes]
+\begin{corollary}[Prescribed dyadic classes {\cite[Proposition~2.1]{FHX}, \cite[Definition~4.1]{BJ22}}]
 \label{cor:seven-continuous-dyadic-rational-fs}
 \uses{thm:seven-continuous-rational-fs-sequence, lem:gl-fs-system}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:defi:psh}
-\lean{EnvelopeProperty.MultiModel.IsPSH.exists_isFinFS_seq_dyadic_of_continuous}
 \leanok
 If $\theta\in\mathbb Q^r$ and $u$ is a continuous real-valued
 $\theta$-psh potential, then there is a decreasing sequence
@@ -138,7 +127,7 @@ $u\le g_m$. Thus the pointwise infimum is $u$.
 
 This continuation uses the actual original multiprojective model and the
 trivial valuation of the residue field at each of its original scheme
-supports. Unlike the everywhere-finite checkpoint, it permits the limit
+supports. Unlike the everywhere-finite construction, it permits the limit
 to have value $-\infty$ at other analytic points. It does not establish
 full PSH2 or identify model psh functions with intrinsic BJ psh functions.
 
@@ -208,11 +197,10 @@ $a_i\in C(\mathcal X)$. Taking the limit in the closed model nef cone gives
 $\theta\in N(\mathcal X)$.
 \end{proof}
 
-\begin{theorem}[PSH2 with support-trivial finite limits]
+\begin{theorem}[PSH2 with support-trivial finite limits {\cite[Proposition~2.1]{FHX}, \cite[Theorem~4.5]{BJ22}}]
 \label{thm:seven-support-trivial-limit-psh2}
 \uses{thm:seven-support-trivial-psh-nef, thm:gl-fs-system-theory,
 lem:gl-cones}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:thm:psh12}
 \lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_supportTrivialPoint_ne_bot}
 \leanok
 Let $u_i\in\mathrm{PSH}(\mathcal X,\theta_i)$ be decreasing with
@@ -989,7 +977,7 @@ to $c_t/c_i$.
 \end{definition}
 \begin{proof}
 The original degree-one piece contains $c_t$ by construction and embeds into
-the original full $R_1$ by the original saturation lemma. The previously proved
+the original full $R_1$ by the original saturation lemma. The proved
 actual sheaf-gluing inverse produces $w_t$. Its exact global coefficient is
 $c_t$ by the true inverse law, while its proved exact chart restriction is the
 actual inverse frame applied to the literal original regular ratio $c_t$/$c_i$.
@@ -1066,8 +1054,6 @@ not supplied as a new norm-comparison premise.
 \begin{lemma}[Actual over-site coefficients compute the genuine proper-model norm]
 \label{lem:seven-native-over-frame-model-norm}
 \uses{lem:seven-native-whole-section-map-frame}
-\lean{EnvelopeProperty.CanonicalGeometry.localTrivializationCoefficient_eq_overFrameCoefficient,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_sectionHom_eq_overFrameEval}
 \leanok
 On an arbitrary actual integral proper model over bounded prescribed
 coefficients, let U be an actual affine neighborhood of a valued point's
@@ -1096,7 +1082,6 @@ matching certificate.
 \uses{lem:seven-native-over-frame-model-norm,
 thm:seven-native-original-global-section-gluing,
 def:seven-native-original-coordinate-frames}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneModelNorm_originalSection_chart}
 \leanok
 For EVERY original full saturated $f\in R_1$, let $s_f$ be the SAME actual
 global section in $L_j$ produced by the proved sheaf gluing. For every actual
@@ -1120,10 +1105,6 @@ to the true produced coordinate frame and the actual affine center chart.
 \label{thm:seven-native-coordinate-model-norm-unit-sup}
 \uses{thm:seven-native-original-degree-one-local-norm,
 thm:seven-native-coordinate-local-generators}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneModelNorm_coordinate_le_one,
-EnvelopeProperty.MultiModel.nativeRankOneModelNorm_coordinate_self,
-EnvelopeProperty.MultiModel.nativeRankOneModelNorm_existsCoordinate_eq_one,
-EnvelopeProperty.MultiModel.nativeRankOneModelNorm_iSupCoordinate_eq_one}
 \leanok
 At EVERY actual native relative point over bounded original coefficients,
 all SAME actual original coordinate global section norms are at most one,
@@ -1144,7 +1125,6 @@ and this attained lower bound give the stated supremum.
 \begin{lemma}[Every true center chart is originally normalized]
 \label{lem:seven-native-center-chart-original-unit-value}
 \uses{thm:seven-native-coordinate-local-generators}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneCenterChart_coordinate_value_one}
 \leanok
 For EVERY original analytic point x, if its TRUE native valuative center
 belongs to an original nonzero coordinate chart $U_i$, then the original
@@ -1166,8 +1146,6 @@ Original normalization supplies $|c_i|_x\le1$, proving equality.
 \uses{thm:seven-native-original-degree-one-local-norm,
 lem:seven-native-center-chart-original-unit-value,
 thm:seven-native-original-full-H0}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneModelNorm_originalSection_eq_secAbs,
-EnvelopeProperty.MultiModel.nativeRankOneModelNorm_globalSection_eq_secAbs}
 \leanok
 For EVERY original analytic x, including nongeneric support, and EVERY
 original full saturated coefficient $f\in R_1$,
@@ -1315,7 +1293,7 @@ is the proved genuine original/native function-field equivalence.
 \end{theorem}
 \begin{proof}
 The preceding exact actual power coefficient is $r_{i,j}^m$. The true native
-generic germ preserves powers. Its previously proved original coordinate
+generic germ preserves powers. Its proved original coordinate
 value is $\gamma_i(r_{i,j})=E_i(c_j/c_i)$, and the SAME actual ring
 equivalence $E_i$ preserves powers. This proves the exact native generic
 coefficient. Every actual tensor power is invertible by the existing
@@ -1330,7 +1308,7 @@ These actual coordinate tensor frames and actual nonzero normalizers are
 immediately usable for original full $R_m$/native H0($L_j^m$) gluing. That
 higher-degree H0 comparison, its true model norms, all rational classes,
 intrinsic numerical cones and the full FS/BJ PSH identification remain
-separate producers at this checkpoint.
+separate producers from this result.
 \end{remark}
 
 \subsection{Actual original saturated coefficients in every nonnegative tensor degree}
@@ -1525,7 +1503,6 @@ H0 and coefficient constructions themselves remain valid over arbitrary k.
 \label{thm:seven-native-original-tensor-local-norm}
 \uses{thm:seven-native-original-tensor-h0-linear,
 lem:seven-native-over-frame-model-norm}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_originalSection_chart}
 \leanok
 For EVERY m in N, EVERY original full f in $R_{m\cdot1}$, and EVERY genuine
 relative native point y over a bounded base valuation, the actual proper
@@ -1549,8 +1526,6 @@ properness theorem under IsAlgClosed k, not an assumed new norm certificate.
 \uses{thm:seven-native-original-tensor-local-norm,
 lem:seven-native-center-chart-original-unit-value,
 thm:seven-native-original-tensor-h0-linear}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_originalSection_eq_secAbs,
-EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_globalSection_eq_secAbs}
 \leanok
 For EVERY original analytic point x, with ANY support, EVERY m in N and
 EVERY original full saturated f in $R_{m\cdot1}$,
@@ -1601,7 +1576,6 @@ identity is derived, not a new supplied section/class matching condition.
 \begin{lemma}[The original nonnegative class law derives the actual natural degree]
 \label{lem:seven-native-fs-natural-degree}
 \uses{def:gl-fs}
-\lean{EnvelopeProperty.MultiModel.FSData.nativeNonnegativeTensorDegree_eq}
 \leanok
 For every original rank-one FSData D of class a with a(0) nonnegative,
 its full integer degree function is exactly
@@ -1620,9 +1594,6 @@ which proves the entire degree function identity.
 \uses{lem:seven-native-fs-natural-degree,
 thm:seven-native-full-tensor-model-norm-dictionary,
 thm:seven-native-original-tensor-h0-linear}
-\lean{EnvelopeProperty.MultiModel.FSData.nativeTensorModelNormEval,
-EnvelopeProperty.MultiModel.FSData.nativeTensorModelNormEval_nativePoint,
-EnvelopeProperty.MultiModel.FSData.nativeTensorModelNormEval_eq_eval_comp}
 \leanok
 Every term of D gives the SAME original full saturated section in $R_n$,
 and hence its actual native global section $S_n$(f) of the actual line
@@ -1685,10 +1656,6 @@ required to be supplied as a glued original section.
 \label{thm:seven-native-finite-family-to-original-fs}
 \uses{thm:seven-native-full-tensor-model-norm-dictionary,
 thm:seven-native-original-tensor-h0-linear,def:gl-fs}
-\lean{EnvelopeProperty.MultiModel.nativeTensorSectionFamilyModelNormEval,
-EnvelopeProperty.MultiModel.nativeTensorSectionFamilyOriginalFSData,
-EnvelopeProperty.MultiModel.nativeTensorSectionFamilyOriginalFSData_eval_nativePoint,
-EnvelopeProperty.MultiModel.nativeTensorSectionFamilyOriginalFSData_eval_eq_comp}
 \leanok
 For ANY such actual finite family T, positive natural m, natural n and
 rational rank-one class a with the usual literal degree equation
@@ -1724,8 +1691,6 @@ without any support condition or supplied matching certificate.
 \label{thm:seven-original-fs-to-actual-finite-family}
 \uses{thm:seven-native-original-finite-fs-model-norms,
 thm:seven-native-original-tensor-h0-linear}
-\lean{EnvelopeProperty.MultiModel.FSData.nativeTensorSectionFamily,
-EnvelopeProperty.MultiModel.FSData.nativeTensorSectionFamily_eval_eq_comp}
 \leanok
 For EVERY original FSData D of a nonnegative rational rank-one class,
 there is an actual finite family of whole native global sections of the
@@ -1737,7 +1702,7 @@ arbitrary k; its norm comparison retains IsAlgClosed k.
 \end{theorem}
 \begin{proof}
 Apply the actual H0 inverse to EACH ORIGINAL full saturated term of D
-and keep its SAME real weight. The previously derived natural degree
+and keep its SAME real weight. The derived natural degree
 law puts every term in the SAME actual native tensor power. Take the
 finite image of D's attached term set under this construction. Reading
 back its finite-image supremum gives exactly the already proved true
@@ -1762,8 +1727,6 @@ expression of the preceding finite-family dictionary.
 \begin{definition}[Actual native tensor-ray FS classes]
 \label{def:seven-native-direct-tensor-fs-classes}
 \uses{thm:seven-native-finite-family-to-original-fs}
-\lean{EnvelopeProperty.MultiModel.IsNativeTensorFS,
-EnvelopeProperty.MultiModel.IsNativeFinTensorFS}
 \leanok
 For a rational rank-one class a, native tensor-ray FS means an actual
 function u with u(y) not minus infinity for SOME native y, together with
@@ -1787,8 +1750,6 @@ less than plus infinity, just as in its original finite-FS counterpart.
 \uses{def:seven-native-direct-tensor-fs-classes,
 thm:seven-native-finite-family-to-original-fs,
 thm:seven-original-fs-to-actual-finite-family,def:gl-fs}
-\lean{EnvelopeProperty.MultiModel.isFS_iff_nativeTensorFS,
-EnvelopeProperty.MultiModel.isFinFS_iff_nativeFinTensorFS}
 \leanok
 For EVERY nonnegative original rank-one rational class a, original
 IsFS(a) coincides, through the genuine native analytic homeomorphism,
@@ -1838,8 +1799,7 @@ relative point space, through the genuine original analytic homeomorphism.
 \begin{lemma}[The actual tensor-degree law forces a nonnegative rational coefficient]
 \label{lem:seven-native-tensor-fs-nonnegative-degree}
 \uses{def:seven-native-direct-tensor-fs-classes}
-\lean{EnvelopeProperty.MultiModel.IsNativeTensorFS.nonneg}
-\leanok
+
 EVERY directly defined actual native tensor-ray FS function has a
 nonnegative rational coefficient a(0), derived from its ACTUAL tensor
 degree law, without a newly supplied nonnegativity assumption.
@@ -1854,7 +1814,6 @@ that product negative, a contradiction. No section matching is used.
 \begin{definition}[Direct actual native tensor-ray PSH]
 \label{def:seven-native-direct-tensor-psh}
 \uses{def:seven-native-direct-tensor-fs-classes,def:gl-psh}
-\lean{EnvelopeProperty.MultiModel.IsNativeTensorPSH}
 \leanok
 Native tensor-ray PSH(theta,u) means u is not identically minus infinity,
 is upper semicontinuous, and is the pointwise infimum of a decreasing
@@ -1876,7 +1835,6 @@ an assumed identification with original PSH.
 \uses{lem:seven-native-tensor-fs-nonnegative-degree,
 def:seven-native-direct-tensor-psh,
 thm:seven-native-tensor-ray-fs-class-comparison,def:gl-psh}
-\lean{EnvelopeProperty.MultiModel.isPSH_iff_nativeTensorPSH}
 \leanok
 For EVERY nonnegative REAL rank-one class theta, ORIGINAL PSH(theta)
 coincides, through the genuine analytic homeomorphism, with the directly
@@ -1929,7 +1887,6 @@ is supplied or assumed.
 \begin{lemma}[A true map-to-unit scalar identity evaluates in its actual frame]
 \label{lem:seven-native-map-to-unit-frame-coefficient}
 \uses{def:seven-native-original-coordinate-frames}
-\lean{EnvelopeProperty.CanonicalGeometry.localFrameCoefficients_mapToUnit_apply}
 \leanok
 Let Y be an integral scheme, M an actual sheaf module, e an actual
 over-site frame on U and beta:M to $O_Y$ an actual sheaf map. If the ENTIRE
@@ -1954,8 +1911,6 @@ is typed in that actual commutative structure section ring.
 \label{lem:seven-native-negative-actual-ideal-frame}
 \uses{def:seven-native-original-coordinate-frames,
 lem:seven-native-map-to-unit-frame-coefficient}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeCoordinateFrame,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeCoordinateFrame_inclusion}
 \leanok
 On EVERY original nonzero coordinate chart $U_i$, the SAME actual principal
 ideal generator gives a true negative-line frame e minus ij. Its ENTIRE
@@ -1969,7 +1924,7 @@ Consequently alpha(s) has actual local regular coefficient $r_i$j times
 the actual negative-frame coefficient of EVERY actual local section s.
 \end{lemma}
 \begin{proof}
-Use the previously constructed genuine principal ideal-generator iso
+Use the constructed genuine principal ideal-generator iso
 from the structure sheaf to $I_j$ restricted to $U_i$. Transport its inverse
 by the actual restriction/over-site equivalence to obtain e minus ij.
 The actual hyperplane kernel ideal has already been proved to be spanned
@@ -1986,9 +1941,6 @@ map identity. No frame or inclusion matching condition is supplied.
 \label{thm:seven-native-negative-global-original-coefficient}
 \uses{lem:seven-native-negative-actual-ideal-frame,
 thm:seven-native-original-field-coefficients,lem:gl-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient_local,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient_mem_sections}
 \leanok
 For EVERY actual global s of $I_j$, let g(s)=$alpha_t$op(s) be its ACTUAL
 global regular image and define the literal original rational coefficient
@@ -2025,7 +1977,7 @@ denominator equals C minus one(s) times $c_l$ and belongs to $A_l$ on EVERY
 such chart. Apply the independently proved ORIGINAL all-chart full
 saturation criterion to obtain membership in ORIGINAL FULL R minus one.
 This uses actual ideal inclusion and actual generic germs, and imposes
-no presentation of s as a previously constructed original section.
+no presentation of s as a constructed original section.
 \end{proof}
 
 The immediate consumer is genuine inverse negative frames applied to
@@ -2045,9 +1997,6 @@ No nonzero global negative-line section is assumed.
 \label{thm:seven-native-original-negative-local-sections}
 \uses{lem:seven-native-negative-actual-ideal-frame,
 thm:seven-native-original-field-coefficients,lem:gl-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeLocalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeLocalSectionOfOriginal_coefficient,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeLocalSectionOfOriginal_inclusion_germ}
 \leanok
 For EVERY ORIGINAL f in FULL R minus one and EVERY original nonzero
 chart $U_i$, the actual inverse negative frame gives an actual local
@@ -2074,7 +2023,6 @@ germ, without an assumed frame or section presentation.
 \label{lem:seven-native-negative-global-coefficient-faithful}
 \uses{thm:seven-native-negative-global-original-coefficient,
 thm:seven-native-original-field-coefficients}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient_injective}
 \leanok
 The literal original coefficient C minus one is injective on ACTUAL
 whole native H0($I_j$). Its faithfulness is derived from the true ideal
@@ -2098,10 +2046,6 @@ injectivity of the actual kernel inclusion gives s=t.
 \uses{thm:seven-native-original-negative-local-sections,
 lem:seven-native-negative-global-coefficient-faithful,
 thm:seven-native-coordinate-local-generators}
-\lean{EnvelopeProperty.MultiModel.nativeRankOne_existsNegativeGlobalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionOfOriginal_restrict,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionOfOriginal_coefficient}
 \leanok
 For EVERY ORIGINAL FULL f in R minus one there is an ACTUAL whole
 negative-line section S minus(f), constructed by actual sheaf gluing,
@@ -2135,9 +2079,6 @@ original $c_i$ proves C minus one(S minus(f))=f.
 \uses{thm:seven-native-negative-global-original-coefficient,
 lem:seven-native-negative-global-coefficient-faithful,
 thm:seven-native-original-negative-global-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsEquiv,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsEquiv_apply,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsEquiv_symm}
 \leanok
 There is an actual set equivalence H0($I_j$) with ORIGINAL FULL R minus
 one, whose forward map is the SAME literal C minus one and whose inverse
@@ -2172,7 +2113,6 @@ is the precise boundary of the existing actual native properness result.
 \label{thm:seven-native-original-negative-local-norm}
 \uses{thm:seven-native-original-negative-global-sections,
 lem:seven-native-negative-actual-ideal-frame,lem:seven-native-over-frame-model-norm}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeModelNorm_originalSection_chart}
 \leanok
 Let y be any actual native relative valued point over a bounded base
 valuation. If its actual proper center belongs to an original nonzero
@@ -2197,8 +2137,6 @@ matching premise.
 \uses{thm:seven-native-original-negative-local-norm,
 thm:seven-native-original-negative-h0,thm:seven-native-coordinate-local-generators,
 lem:seven-native-center-chart-original-unit-value}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeModelNorm_originalSection_eq_secAbs,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeModelNorm_globalSection_eq_secAbs}
 \leanok
 At EVERY original analytic point x, with arbitrary support, the TRUE
 negative model norm of $S_-$(f) is exactly ORIGINAL secAbs(x,-1,f) for
@@ -2242,7 +2180,6 @@ comparison equivalence.
 \begin{definition}[The actual structural base action on negative H0]
 \label{def:seven-native-negative-actual-base-action}
 \uses{def:seven-native-actual-base-actions}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeH0BaseModule}
 \leanok
 The k-module structure on ACTUAL H0($I_j$) is its existing true
 Gamma(Y,$O_Y$)-module structure restricted along ACTUAL kappa.
@@ -2252,8 +2189,6 @@ Gamma(Y,$O_Y$)-module structure restricted along ACTUAL kappa.
 \label{thm:seven-native-negative-actual-scalar-laws}
 \uses{thm:seven-native-negative-global-original-coefficient,
 thm:seven-native-actual-base-chart-law}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient_add,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeGlobalSectionCoefficient_base_smul}
 \leanok
 For EVERY actual negative H0 sections s,t and EVERY a in k,
 $C_-$(s+t)=$C_-$(s)+$C_-$(t) and
@@ -2281,9 +2216,6 @@ The result is the stated exact structural base-scalar law.
 \uses{def:seven-native-negative-actual-base-action,
 thm:seven-native-negative-actual-scalar-laws,
 thm:seven-native-original-negative-h0}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsLinearEquiv,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsLinearEquiv_apply,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeH0OriginalSectionsLinearEquiv_symm}
 \leanok
 The ACTUAL native negative H0, with its TRUE structural-base k-action,
 is k-linearly equivalent to ORIGINAL FULL R minus one, for arbitrary k.
@@ -2318,9 +2250,6 @@ negative section, matching certificate or properness premise is supplied.
 \begin{lemma}[The actual tensor of maps to the structure sheaf]
 \label{lem:seven-native-actual-tensor-maps-to-unit}
 \uses{lem:seven-native-actual-tensor-frame-coefficients}
-\lean{EnvelopeProperty.CanonicalGeometry.tensorMapsToUnit,
-EnvelopeProperty.CanonicalGeometry.tensorMapsToUnit_tensorSection,
-EnvelopeProperty.CanonicalGeometry.tensorMapsToUnit_frame_apply}
 \leanok
 For any scheme Y and ACTUAL sheaf-module maps alpha:L to $O_Y$ and
 beta:N to $O_Y$, the genuine sheafification adjunction constructs an
@@ -2350,8 +2279,6 @@ claim on EVERY local section, with no pure-presentation assumption.
 \begin{lemma}[Actual map powers have the genuine tensor-frame coefficient powers]
 \label{lem:seven-native-actual-map-to-unit-powers}
 \uses{lem:seven-native-actual-tensor-maps-to-unit}
-\lean{EnvelopeProperty.CanonicalGeometry.mapToUnitTensorPower,
-EnvelopeProperty.CanonicalGeometry.mapToUnitTensorPower_frame_apply}
 \leanok
 For any actual alpha:L to $O_Y$, define $alpha_0$ to be the ACTUAL unit
 identity and $alpha_($m+1)=T($alpha_m$,alpha), on the SAME actual recursive
@@ -2373,10 +2300,6 @@ produced actual tensor-power frame. This proves the assertion for all m.
 \label{thm:seven-native-negative-tensor-inclusion-frames}
 \uses{lem:seven-native-actual-map-to-unit-powers,
 lem:seven-native-negative-actual-ideal-frame,thm:seven-native-original-field-coefficients}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorFrame,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorInclusion,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorInclusion_coefficient,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorInclusion_generic}
 \leanok
 For EVERY natural m, the true original negative coordinate frames
 construct actual frames of $I_j$ tensorPower m, and the actual ideal
@@ -2421,8 +2344,6 @@ Original degree minus m is written m times integer degree minus one.
 \label{def:seven-native-negative-tensor-atlas-coefficient}
 \uses{thm:seven-native-negative-tensor-inclusion-frames,
 thm:seven-native-coordinate-local-generators,thm:seven-native-original-field-coefficients}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorAtlas,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient}
 \leanok
 The original nonzero coordinate opens and their genuinely constructed
 negative tensor frames form an ACTUAL atlas of $I_j$ tensorPower m.
@@ -2438,8 +2359,6 @@ structure generic germ of $alpha_m$(s).
 \uses{def:seven-native-negative-tensor-atlas-coefficient,
 thm:seven-native-negative-tensor-inclusion-frames,
 thm:seven-native-original-field-coefficients,lem:gl-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient_local,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient_mem_sections}
 \leanok
 For EVERY actual whole negative-power section s and EVERY original
 nonzero chart $U_l$, $C_-$m(s)*$c_l^m$ equals the ORIGINAL chart readback of
@@ -2474,7 +2393,6 @@ assumed and no new section space is substituted.
 \label{lem:seven-native-negative-tensor-original-coefficient-faithful}
 \uses{def:seven-native-negative-tensor-atlas-coefficient,
 thm:seven-native-negative-tensor-original-full-coefficient}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient_injective}
 \leanok
 The literal original $C_-$m is injective on ACTUAL whole native
 H0($I_j$ tensorPower m), for every natural m over arbitrary k.
@@ -2511,7 +2429,6 @@ over arbitrary k, without any properness or global-section normalizer.
 \begin{lemma}[An actual whole scalar identity determines every smaller-open coefficient]
 \label{lem:seven-native-negative-subopen-scalar}
 \uses{thm:seven-native-negative-tensor-inclusion-frames}
-\lean{EnvelopeProperty.CanonicalGeometry.localFrameCoefficientsOn_mapToUnit_apply}
 \leanok
 Let alpha:M to $O_Y$ be an ACTUAL sheaf-module map with true whole frame
 scalar identity e inverse followed by alpha on U equals multiplication
@@ -2535,8 +2452,6 @@ order. No smaller-open scalar formula is assumed.
 lem:seven-native-actual-tensor-maps-to-unit,
 lem:seven-native-actual-map-to-unit-powers,
 lem:seven-native-actual-tensor-frame-coefficients}
-\lean{EnvelopeProperty.CanonicalGeometry.tensorMapsToUnit_coefficients_apply,
-EnvelopeProperty.CanonicalGeometry.mapToUnitTensorPower_coefficients_apply}
 \leanok
 For genuine frames e,f on U, EVERY actual tensor section on EVERY
 W to U has actual tensor-map coefficient equal to the product of the
@@ -2566,8 +2481,6 @@ formula and the original scalar power recursion.
 \uses{lem:seven-native-negative-subopen-scalar,
 lem:seven-native-negative-subopen-tensor-powers,
 thm:seven-native-negative-tensor-inclusion-frames}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorInclusion_coefficient_on,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorInclusion_open_injective}
 \leanok
 For EVERY original nonzero coordinate chart $U_i$ and EVERY W mapping
 to $U_i$, the SAME original inclusion power $alpha_m$ on EVERY actual
@@ -2594,7 +2507,7 @@ This genuine overlap separation is immediately consumed to glue local
 negative tensor inverse frames from EVERY original FULL $R_-$m section.
 The whole-H0 inverse, negative tensor norms, signed finite-family/PSH,
 arbitrary numerical classes and full intrinsic BJ comparison remain
-separate consumers at this checkpoint.
+separate consumers from this result.
 
 \subsection{Original FULL negative tensor sections are genuine whole native H0}
 Keep the SAME original rank-one model, nonzero $c_j$, actual ideal $I_j$,
@@ -2606,8 +2519,6 @@ ARBITRARY k. No properness or nonzero global negative normalizer occurs.
 \label{def:seven-native-negative-tensor-original-local-sections}
 \uses{thm:seven-native-negative-tensor-original-full-coefficient,
 thm:seven-native-negative-tensor-inclusion-frames,lem:gl-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorLocalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorLocalSectionOfOriginal_coefficient}
 \leanok
 For EVERY ORIGINAL FULL f in degree m times minus one and EVERY
 original nonzero chart $U_i$, the inverse genuine negative tensor frame
@@ -2629,7 +2540,6 @@ matching is supplied.
 \uses{def:seven-native-negative-tensor-original-local-sections,
 thm:seven-native-negative-tensor-inclusion-frames,
 thm:seven-native-original-field-coefficients}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorLocalSectionOfOriginal_inclusion_germ}
 \leanok
 The ACTUAL structure generic germ of $alpha_m$($s_i$(f)) is EXACTLY
 $E_i$(f*$c_j^m$) in the genuine native function field.
@@ -2653,10 +2563,6 @@ thm:seven-native-negative-subopen-faithfulness,
 thm:seven-native-coordinate-local-generators,
 thm:seven-native-negative-tensor-original-full-coefficient,
 thm:seven-native-original-field-coefficients}
-\lean{EnvelopeProperty.MultiModel.nativeRankOne_existsNegativeTensorGlobalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionOfOriginal_restrict,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionOfOriginal_coefficient}
 \leanok
 For EVERY ORIGINAL FULL f in degree m times minus one, there is an
 ACTUAL WHOLE section $S_-$m(f) of $I_j$ tensorPower m restricting to $s_i$(f)
@@ -2692,9 +2598,6 @@ m=0. No generic global negative normalizer or matching certificate occurs.
 \uses{thm:seven-native-negative-tensor-original-whole-sections,
 thm:seven-native-negative-tensor-original-full-coefficient,
 lem:seven-native-negative-tensor-original-coefficient-faithful}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsEquiv,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsEquiv_apply,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsEquiv_symm}
 \leanok
 For EVERY natural m over ARBITRARY k, ACTUAL whole H0 of $I_j$ tensorPower m
 is in genuine set bijection with the EXISTING ORIGINAL FULL section
@@ -2731,7 +2634,6 @@ original coefficients are retained; no norm matching is supplied.
 \uses{thm:seven-native-negative-tensor-original-whole-sections,
 lem:seven-native-over-frame-model-norm,
 thm:seven-native-negative-tensor-inclusion-frames}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_originalSection_chart}
 \leanok
 For EVERY actual relative valued point with bounded base valuation,
 EVERY original nonzero affine chart $U_i$ containing its ACTUAL center,
@@ -2759,8 +2661,6 @@ thm:seven-native-original-field-coefficients,
 thm:seven-native-negative-tensor-full-h0,
 thm:seven-native-negative-tensor-original-full-coefficient,
 lem:seven-native-negative-tensor-original-coefficient-faithful}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_originalSection_eq_secAbs,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_globalSection_eq_secAbs}
 \leanok
 For EVERY original analytic point x and EVERY ORIGINAL FULL f in
 negative tensor degree, the TRUE native model norm of the actual
@@ -2804,7 +2704,6 @@ No properness, norm, matching or field-action comparison is assumed.
 \begin{definition}[The true native negative tensor H0 base action]
 \label{def:seven-native-negative-tensor-actual-base-action}
 \uses{def:seven-native-actual-base-actions}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0BaseModule}
 \leanok
 The actual native k-module on WHOLE H0 of $I_j$ tensorPower m is its
 TRUE global structure-function module action restricted along the
@@ -2817,8 +2716,6 @@ ACTUAL structure-morphism constant map kappa.
 def:seven-native-actual-base-actions,
 thm:seven-native-actual-base-chart-law,
 thm:seven-native-actual-function-field-algebra}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient_add,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorGlobalSectionCoefficient_base_smul}
 \leanok
 For EVERY actual whole negative tensor sections s,t,
 $C_-$m(s+t)=$C_-$m(s)+$C_-$m(t). For EVERY a in the SAME k,
@@ -2850,9 +2747,6 @@ No unknown coefficient or base-action identification is assumed.
 thm:seven-native-negative-tensor-actual-scalar-laws,
 thm:seven-native-negative-tensor-full-h0,
 thm:seven-native-negative-tensor-original-whole-sections}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsLinearEquiv,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsLinearEquiv_apply,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorH0OriginalSectionsLinearEquiv_symm}
 \leanok
 The SAME actual whole-H0/ORIGINAL FULL section set equivalence is a
 TRUE k-linear equivalence for the ACTUAL structure-morphism base action.
@@ -2886,7 +2780,6 @@ The final two norm statements retain explicit IsAlgClosed k.
 \begin{theorem}[The actual coordinate ideal is genuinely dual to the positive coordinate line]
 \label{thm:seven-native-coordinate-ideal-true-dual}
 \uses{def:seven-native-original-coordinate-frames}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneIdealIsoCoordinateLineDual}
 \leanok
 The SAME original ideal module $I_j$ is genuinely isomorphic to dual($L_j$).
 \end{theorem}
@@ -2902,8 +2795,6 @@ hypothesis is supplied.
 \begin{definition}[Actual signed powers of the same coordinate line]
 \label{def:seven-native-signed-coordinate-powers}
 \uses{thm:seven-native-coordinate-ideal-true-dual}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneSignedCoordinatePower,
-EnvelopeProperty.MultiModel.nativeRankOneSignedCoordinatePower_isInvertible}
 \leanok
 For d=n nonnegative, $P_d$ is the ACTUAL $L_j$ tensorPower n. For negative
 successor d=-(n+1), it is the ACTUAL $I_j$ tensorPower (n+1). Degree zero
@@ -2920,12 +2811,6 @@ thm:seven-native-original-tensor-global-coefficients,
 thm:seven-native-original-tensor-h0-linear,
 thm:seven-native-negative-tensor-original-full-coefficient,
 thm:seven-native-negative-tensor-full-h0}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneSignedGlobalSectionCoefficient,
-EnvelopeProperty.MultiModel.nativeRankOneSignedGlobalSectionCoefficient_mem_sections,
-EnvelopeProperty.MultiModel.nativeRankOneSignedGlobalSectionCoefficient_injective,
-EnvelopeProperty.MultiModel.nativeRankOne_existsSignedGlobalSectionOfOriginal,
-EnvelopeProperty.MultiModel.nativeRankOneSignedH0OriginalSectionsEquiv,
-EnvelopeProperty.MultiModel.nativeRankOneSignedH0OriginalSectionsEquiv_apply}
 \leanok
 For EVERY integer d, EVERY arbitrary actual WHOLE H0($P_d$) has its literal
 original coefficient $C_d$ in EXISTING ORIGINAL FULL $R_($constant d), and
@@ -2957,8 +2842,6 @@ FS predicate is assumed.
 \uses{thm:seven-native-signed-coordinate-full-h0,
 thm:seven-native-full-tensor-model-norm-dictionary,
 thm:seven-native-negative-tensor-full-model-norm-dictionary}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneSignedModelNorm_globalSection_eq_secAbs,
-EnvelopeProperty.MultiModel.nativeRankOneSignedModelNorm_originalSection_eq_secAbs}
 \leanok
 Under explicit IsAlgClosed k, for EVERY integer d and arbitrary actual
 whole H0 section s, its TRUE native model norm equals ORIGINAL secAbs
@@ -2995,8 +2878,6 @@ No nonnegative rational-class premise is imposed.
 \uses{def:seven-native-signed-coordinate-powers,
 thm:seven-native-signed-coordinate-full-h0,
 thm:seven-native-signed-coordinate-model-norms}
-\lean{EnvelopeProperty.MultiModel.nativeSignedSectionFamilyModelNormEval,
-EnvelopeProperty.MultiModel.nativeSignedSectionFamilyOriginalFSData}
 \leanok
 For ANY actual finite family T of arbitrary whole H0($P_d$) sections and
 real weights, define its native function DIRECTLY by m inverse times
@@ -3014,8 +2895,6 @@ the native model-norm maximum.
 \uses{def:seven-native-signed-finite-model-norm-families,
 thm:seven-native-signed-coordinate-model-norms,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.nativeSignedSectionFamilyOriginalFSData_eval_nativePoint,
-EnvelopeProperty.MultiModel.nativeSignedSectionFamilyOriginalFSData_eval_eq_comp}
 \leanok
 Under explicit IsAlgClosed k, the produced ORIGINAL FS datum evaluates
 EXACTLY as the TRUE native finite model-norm maximum on ALL supports,
@@ -3038,9 +2917,6 @@ identity. No generic-support condition or norm matching is assumed.
 \uses{thm:seven-native-signed-coordinate-full-h0,
 thm:seven-native-signed-coordinate-model-norms,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.FSData.nativeSignedSectionFamily,
-EnvelopeProperty.MultiModel.FSData.nativeSignedSectionFamily_eval_nativePoint,
-EnvelopeProperty.MultiModel.FSData.nativeSignedSectionFamily_eval_eq_comp}
 \leanok
 For EVERY ORIGINAL FSData D in ANY rational rank-one class, form a
 finite ACTUAL whole-H0 family in $P_($D.deg(0)) with identical weights
@@ -3079,8 +2955,6 @@ genuine signed powers, full H0 and actual analytic homeomorphism remain.
 \begin{definition}[Direct actual native signed FS classes]
 \label{def:seven-direct-native-signed-fs-classes}
 \uses{def:seven-native-signed-finite-model-norm-families}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedFS,
-EnvelopeProperty.MultiModel.IsNativeFinSignedFS}
 \leanok
 DIRECT signed-native FS in rational class a means a nontrivial function
 which is a TRUE finite model-norm maximum of arbitrary ACTUAL whole
@@ -3097,7 +2971,6 @@ FS predicate or transported original function.
 thm:seven-original-fs-native-signed-family-dictionary,
 thm:seven-native-signed-finite-family-original-eval,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.isFS_iff_nativeSignedFS}
 \leanok
 For EVERY original rational coordinate class a, original FS is equivalent
 to DIRECT actual signed-native FS of the SAME function through the true
@@ -3126,7 +2999,6 @@ function witness. No class correspondence is assumed.
 thm:seven-original-fs-native-signed-family-dictionary,
 thm:seven-native-signed-finite-family-original-eval,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.isFinFS_iff_nativeFinSignedFS}
 \leanok
 For EVERY rational a, original EVERYWHERE-FINITE rational FS is equivalent
 to DIRECT actual EVERYWHERE-FINITE rational signed-native FS under the
@@ -3157,7 +3029,6 @@ signed FS families. No real sign or countability assumption is imposed.
 \begin{definition}[Native signed PSH directly from actual finite-H0 model-norm nets]
 \label{def:seven-direct-native-signed-psh}
 \uses{def:seven-direct-native-signed-fs-classes}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSH}
 \leanok
 A native function is signed-coordinate PSH in real class theta if it is
 nontrivial, upper semicontinuous and the exact pointwise infimum of a
@@ -3173,7 +3044,6 @@ No original FS/PSH predicate or transported comparison certificate occurs.
 \uses{def:seven-direct-native-signed-psh,
 thm:seven-native-original-signed-fs-class-comparison,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.isPSH_iff_nativeSignedPSH}
 \leanok
 For EVERY real rank-one coordinate class theta, original PSH is equivalent
 to DIRECT true signed native PSH under the SAME whole analytic homeomorphism.
@@ -3214,7 +3084,6 @@ countability, second-countability or unibranchness hypothesis is imposed.
 \uses{thm:seven-native-original-signed-psh-class-comparison,
 thm:seven-native-original-finite-signed-fs-class-comparison,
 thm:seven-finite-psh-nef}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSH.exists_isNativeFinSignedFS_net_of_everywhere_ne_bot}
 \leanok
 A DIRECT signed native PSH function which is non-bottom at EVERY native
 point is the exact infimum of a decreasing net of DIRECT actual rational
@@ -3243,8 +3112,6 @@ is assumed.
 thm:seven-native-original-finite-signed-fs-class-comparison,
 thm:seven-continuous-rational-fs-sequence,
 cor:seven-continuous-dyadic-rational-fs}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSH.exists_isNativeFinSignedFS_seq_of_continuous,
-EnvelopeProperty.MultiModel.IsNativeSignedPSH.exists_isNativeFinSignedFS_seq_dyadic_of_continuous}
 \leanok
 For EVERY continuous real DIRECT signed native PSH potential, there
 exist decreasing DIRECT actual rational finite signed FS sequences,
@@ -3273,7 +3140,6 @@ none is supplied as a compatibility certificate.
 \label{thm:seven-native-signed-finite-limit-psh2}
 \uses{thm:seven-native-original-signed-psh-class-comparison,
 thm:seven-finite-limit-psh2}
-\lean{EnvelopeProperty.MultiModel.isNativeSignedPSH_of_antitone_of_everywhere_ne_bot}
 \leanok
 For ANY nonempty directed decreasing net of DIRECT actual signed native
 PSH functions with converging real classes, if its exact infimum is
@@ -3388,14 +3254,13 @@ unrestricted singular-limit PSH2 remain separate.
 
 \subsection{Actual signed whole-H0 model norms over arbitrary coefficient fields}
 These NEW actual norm declarations have NO IsAlgClosed hypothesis. The
-previously frozen norm statements are retained unchanged. Arbitrary
+norm statements with an algebraic-closedness hypothesis also apply. Arbitrary
 support and ALL signed integer degrees are included.
 
 \begin{theorem}[Original coordinates of true center charts have value one over arbitrary k]
 \label{thm:seven-native-center-coordinate-one-arbitrary-field}
 \uses{thm:seven-native-structure-proper-arbitrary-field,
 thm:fc-native-rank-one-analytic-comparison}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneCenterChart_coordinate_value_one_arbitraryField}
 \leanok
 For EVERY original analytic point, if its TRUE native model center lies
 in original coordinate chart i, the SAME original coordinate $c_i$ has
@@ -3423,12 +3288,6 @@ thm:seven-native-original-tensor-gluing,
 thm:seven-native-negative-tensor-original-whole-sections,
 thm:seven-native-original-tensor-h0-linear,
 thm:seven-native-negative-tensor-full-h0}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_originalSection_chart_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_originalSection_eq_secAbs_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneTensorModelNorm_globalSection_eq_secAbs_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_originalSection_chart_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_originalSection_eq_secAbs_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneNegativeTensorModelNorm_globalSection_eq_secAbs_arbitraryField}
 \leanok
 For EVERY natural m INCLUDING zero, every ORIGINAL FULL saturated section
 in degree m or -m has its EXACT original section seminorm as the TRUE
@@ -3458,8 +3317,6 @@ No norm matching or special generated-family premise occurs.
 \label{thm:seven-native-signed-full-norms-arbitrary-field}
 \uses{thm:seven-native-tensor-full-norms-arbitrary-field,
 thm:seven-native-signed-coordinate-full-h0}
-\lean{EnvelopeProperty.MultiModel.nativeRankOneSignedModelNorm_globalSection_eq_secAbs_arbitraryField,
-EnvelopeProperty.MultiModel.nativeRankOneSignedModelNorm_originalSection_eq_secAbs_arbitraryField}
 \leanok
 For EVERY integer d and EVERY actual whole H0 section of the genuine
 signed coordinate-line power, its TRUE native model norm is EXACT
@@ -3493,7 +3350,6 @@ constructors are retained literally; no sign or IsAlgClosed is imposed.
 \label{def:seven-native-signed-family-norm-arbitrary-field}
 \uses{thm:seven-native-structure-proper-arbitrary-field,
 thm:seven-native-signed-full-norms-arbitrary-field}
-\lean{EnvelopeProperty.MultiModel.nativeSignedSectionFamilyModelNormEval_arbitraryField}
 \leanok
 For a finite family T of arbitrary actual whole H0 sections of signed
 power d and real weights, define its function DIRECTLY on the WHOLE
@@ -3509,10 +3365,6 @@ No original FS predicate or transported evaluation defines this function.
 thm:seven-native-signed-full-norms-arbitrary-field,
 def:seven-native-signed-finite-model-norm-families,
 thm:seven-original-fs-native-signed-family-dictionary}
-\lean{EnvelopeProperty.MultiModel.nativeSignedSectionFamilyOriginalFSData_eval_nativePoint_arbitraryField,
-EnvelopeProperty.MultiModel.nativeSignedSectionFamilyOriginalFSData_eval_eq_comp_arbitraryField,
-EnvelopeProperty.MultiModel.FSData.nativeSignedSectionFamily_eval_nativePoint_arbitraryField,
-EnvelopeProperty.MultiModel.FSData.nativeSignedSectionFamily_eval_eq_comp_arbitraryField}
 \leanok
 For any finite actual signed whole-H0 family, positive denominator m
 and literal signed degree law d=m*$a_0$, the independently constructed
@@ -3552,8 +3404,6 @@ original coordinate line is allowed; no sign, nef or countability premise.
 \begin{definition}[Direct native signed FS and rational finite FS over arbitrary k]
 \label{def:seven-native-direct-signed-fs-arbitrary-field}
 \uses{def:seven-native-signed-family-norm-arbitrary-field}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedFSArbitraryField,
-EnvelopeProperty.MultiModel.IsNativeFinSignedFSArbitraryField}
 \leanok
 Native FS means nontriviality and representation by an arbitrary finite
 family of ACTUAL signed whole-H0 sections, with TRUE model norms,
@@ -3568,8 +3418,6 @@ an original FS predicate or transported comparison certificate.
 \uses{def:seven-native-direct-signed-fs-arbitrary-field,
 thm:seven-native-signed-family-dictionaries-arbitrary-field,
 def:gl-fs}
-\lean{EnvelopeProperty.MultiModel.isFS_iff_nativeSignedFS_arbitraryField,
-EnvelopeProperty.MultiModel.isFinFS_iff_nativeFinSignedFS_arbitraryField}
 \leanok
 For EVERY rational coordinate-line class, original FS and finite FS
 are equivalent to the NEW direct signed native FS and finite FS,
@@ -3594,7 +3442,6 @@ nonzero original family is supplied as an extra premise.
 \begin{definition}[Direct actual signed native PSH over arbitrary k]
 \label{def:seven-native-direct-signed-psh-arbitrary-field}
 \uses{def:seven-native-direct-signed-fs-arbitrary-field}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSHArbitraryField}
 \leanok
 Native PSH is DIRECTLY a nontrivial upper-semicontinuous function which
 is an exact infimum of an arbitrary nonempty directed decreasing net
@@ -3608,7 +3455,6 @@ No original FS/PSH predicate or transported comparison is in this definition.
 \uses{def:seven-native-direct-signed-psh-arbitrary-field,
 thm:seven-native-original-signed-fs-class-arbitrary-field,
 def:gl-psh}
-\lean{EnvelopeProperty.MultiModel.isPSH_iff_nativeSignedPSH_arbitraryField}
 \leanok
 For EVERY real coordinate-line coefficient, original PSH is equivalent
 to the NEW direct actual signed native PSH through the ACTUAL analytic
@@ -3645,7 +3491,6 @@ countability, second-countability or unibranchness hypothesis is imposed.
 \uses{thm:seven-native-original-signed-psh-class-arbitrary-field,
 thm:seven-native-original-signed-fs-class-arbitrary-field,
 thm:seven-finite-psh-nef}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSHArbitraryField.exists_isNativeFinSignedFS_net_of_everywhere_ne_bot}
 \leanok
 A DIRECT signed native PSH function which is non-bottom at EVERY native
 point is the exact infimum of a decreasing net of DIRECT actual rational
@@ -3674,8 +3519,6 @@ is assumed.
 thm:seven-native-original-signed-fs-class-arbitrary-field,
 thm:seven-continuous-rational-fs-sequence,
 cor:seven-continuous-dyadic-rational-fs}
-\lean{EnvelopeProperty.MultiModel.IsNativeSignedPSHArbitraryField.exists_isNativeFinSignedFS_seq_of_continuous,
-EnvelopeProperty.MultiModel.IsNativeSignedPSHArbitraryField.exists_isNativeFinSignedFS_seq_dyadic_of_continuous}
 \leanok
 For EVERY continuous real DIRECT signed native PSH potential, there
 exist decreasing DIRECT actual rational finite signed FS sequences,
@@ -3704,7 +3547,6 @@ none is supplied as a compatibility certificate.
 \label{thm:seven-native-signed-finite-limit-psh2-arbitrary-field}
 \uses{thm:seven-native-original-signed-psh-class-arbitrary-field,
 thm:seven-finite-limit-psh2}
-\lean{EnvelopeProperty.MultiModel.isNativeSignedPSH_of_antitone_of_everywhere_ne_bot_arbitraryField}
 \leanok
 For ANY nonempty directed decreasing net of DIRECT actual signed native
 PSH functions with converging real classes, if its exact infimum is
@@ -3740,10 +3582,7 @@ with a MultiModel, or the full intrinsic Boucksom--Jonsson comparison.
 \begin{lemma}[Literal original generic tensor coefficient]
 \label{lem:seven-general-generic-tensor-coefficient}
 \uses{thm:actual-model-line-tensor-norm,prop:generated-line-generic-frame-norms}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericMonoidalTensorSection,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericTensorFrame,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericFrameCoefficient_tensor,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.genericFrameCoefficient_unitSection}
+\lean{EnvelopeProperty.Berkovich.SchemeLinePowerFrameNorms.genericTensorFrame}
 \leanok
 Let $p:X\to\operatorname{Spec}(R)$ be proper, let
 $v:R\to\mathbb R_{\geq 0}$ be a valuation bounded by one, and let $y$ be any original
@@ -3773,7 +3612,6 @@ before applying the same ring isomorphism. No tensor/frame matching is assumed.
 \begin{theorem}[True whole norm quotient from actual generated numerator and denominator]
 \label{thm:seven-general-generated-norm-quotient}
 \uses{lem:seven-general-generic-tensor-coefficient,prop:generated-line-generic-frame-norms,thm:actual-model-line-tensor-norm}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_eq_generatedTensorCoefficients}
 \leanok
 Assume $p$ is proper, $v$ is bounded by one, $L,T$ are invertible, and
 $G,H$ are actual original generating-section families of $L\otimes T$
@@ -3809,7 +3647,6 @@ separate following consumer.
 
 \begin{theorem}[One actual generated denominator for every finite original line family]
 \label{thm:seven-general-finite-line-norm-quotient}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_simultaneous_generated_modelNorm_quotients}
 \leanok
 \uses{thm:seven-general-generated-norm-quotient,thm:fc-original-projective-generated-line-quotients}
 Let $p:X\to\operatorname{Spec}(R)$ be projective and let $L_a$ be any
@@ -3846,8 +3683,6 @@ identification is asserted.
 
 \begin{lemma}[True original product section and its model norm]
 \label{lem:seven-general-original-product-section}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.wholeTensorSectionHom,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.modelLineNorm_wholeTensorSectionHom}
 \leanok
 \uses{lem:actual-model-tensor-hom-norm,lem:actual-model-hom-norm-composition,cor:actual-model-hom-norm-identity-isomorphism,lem:actual-line-fiber-section-model-norm}
 For original structure-line morphisms $s:\mathcal O_X\to L$ and
@@ -3869,7 +3704,6 @@ or new formal product on coefficients is used.
 
 \begin{theorem}[Actual generated denominator gives attained whole product maximum]
 \label{thm:seven-general-original-generated-product-maximum}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_modelLineNorm_wholeTensorSectionHom_max}
 \leanok
 \uses{lem:seven-general-original-product-section,thm:actual-model-line-generator-norm-one}
 For any actual global generating family $H$ of an original invertible
@@ -3891,9 +3725,6 @@ finite, the exact finite maximum is the original model norm.
 
 \begin{corollary}[True finite weighted whole-section maxima under a generated twist]
 \label{cor:seven-general-original-weighted-finite-product}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.wholeTensorWeightedFamily,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.weightedWholeSectionModelNormEval,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.weightedWholeSectionModelNormEval_wholeTensorWeightedFamily}
 \leanok
 \uses{thm:seven-general-original-generated-product-maximum}
 For any finite weighted original family $(s_i,c_i)$ and finite actual
@@ -3913,7 +3744,6 @@ for the empty family; no nonzero or non-bottom assumption is added.
 
 \begin{theorem}[One true finite generated twist for all weighted families in finite arbitrary lines]
 \label{thm:seven-general-finite-family-weighted-promotion}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.exists_simultaneous_generated_weightedNorm_promotion}
 \leanok
 \uses{cor:seven-general-original-weighted-finite-product,thm:fc-original-projective-generated-line-quotients}
 For every finite family $L_a$ of arbitrary invertible original modules
@@ -3953,12 +3783,7 @@ extension and full intrinsic BJ remain separate obligations.
 
 \begin{definition}[The whole original curve-degree kernel and its genuine Picard quotient]
 \label{def:seven-native-curve-numerical-quotient}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.curveNumericalKernel,
-EnvelopeProperty.NativeCurveNumericalClasses.mem_curveNumericalKernel,
-EnvelopeProperty.NativeCurveNumericalClasses.NumericalClass,
-EnvelopeProperty.NativeCurveNumericalClasses.classMap,
-EnvelopeProperty.NativeCurveNumericalClasses.classMap_surjective}
-\leanok
+
 \uses{def:fc-original-picard-pullback,thm:fc-original-picard-curve-degree}
 For an original $p:X\to\operatorname{Spec}(k)$, let $K_p$ consist of all
 $a\in\operatorname{Pic}(X)$ such that for every original integral curve
@@ -3983,12 +3808,7 @@ in this kernel; no class of tests is supplied by the caller.
 
 \begin{theorem}[Every actual original curve degree descends and detects exact numerical equality]
 \label{thm:seven-native-curve-degree-descent}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.kernel_le_curveDegreeKernel,
-EnvelopeProperty.NativeCurveNumericalClasses.curveDegree,
-EnvelopeProperty.NativeCurveNumericalClasses.curveDegree_classMap,
-EnvelopeProperty.NativeCurveNumericalClasses.classMap_eq_iff_curveDegrees_eq,
-EnvelopeProperty.NativeCurveNumericalClasses.curveDegree_lineClass,
-EnvelopeProperty.NativeCurveNumericalClasses.numericalClass_ext}
+\lean{EnvelopeProperty.NativeRealNumericalClasses.curveDegree, EnvelopeProperty.NativeRealNumericalClasses.curveDegree_lineClass}
 \leanok
 \uses{def:seven-native-curve-numerical-quotient}
 For every same original projective curve test, the actual degree
@@ -4014,8 +3834,6 @@ curve map, coefficient map or degree.
 
 \begin{theorem}[Actual finite generated representatives for every finite original numerical family]
 \label{thm:seven-native-numerical-common-generated-representatives}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.exists_originalLine_representative,
-EnvelopeProperty.NativeCurveNumericalClasses.exists_simultaneous_generated_numerical_representatives}
 \leanok
 \uses{thm:seven-native-curve-degree-descent,thm:seven-general-finite-line-norm-quotient,thm:fc-original-projective-generated-line-quotients}
 Assume $p$ is projective and let $\alpha_a$ be any finite family in $N_p$.
@@ -4056,8 +3874,6 @@ numerical invariance, ample-cone equality or BJ comparison is asserted.
 
 \begin{definition}[The genuine integral curve-nef monoid]
 \label{def:seven-native-curve-nef-classes}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.curveNefClasses,
-EnvelopeProperty.NativeCurveNumericalClasses.mem_curveNefClasses}
 \leanok
 \uses{thm:seven-native-curve-degree-descent}
 Let $P_p\subset N_p$ consist of all $a$ whose descended degree is
@@ -4075,8 +3891,6 @@ quantified; no replacement family of tests is selected.
 
 \begin{theorem}[Generated original lines are curve-nef and the monoid is pointed]
 \label{thm:seven-native-generated-curve-nef-pointed}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.lineClass_mem_curveNefClasses_of_generatingSections,
-EnvelopeProperty.NativeCurveNumericalClasses.mem_and_inv_mem_curveNefClasses_iff}
 \leanok
 \uses{def:seven-native-curve-nef-classes}
 Every actual original invertible line with genuine global generators has
@@ -4100,7 +3914,6 @@ degrees zero.
 
 \begin{theorem}[One genuine generated nef denominator for every finite numerical family]
 \label{thm:seven-native-common-generated-nef-representatives}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.exists_simultaneous_generated_nef_representatives}
 \leanok
 \uses{thm:seven-native-generated-curve-nef-pointed,thm:fc-original-projective-generated-line-quotients}
 If $p$ is projective and $(a_b)$ is any finite family of actual numerical
@@ -4137,8 +3950,6 @@ field and of dimension one.
 
 \begin{theorem}[Native Picard pullback preserves the entire numerical kernel]
 \label{thm:seven-native-numerical-pullback-kernel}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.picPullback_comp,
-EnvelopeProperty.NativeCurveNumericalClasses.picPullback_mem_curveNumericalKernel}
 \leanok
 \uses{def:seven-native-curve-numerical-quotient}
 Let $p:X\to\operatorname{Spec}(k)$ and
@@ -4159,11 +3970,6 @@ original test in the definition of $K_q$.
 
 \begin{theorem}[Genuine numerical pullback, exact degree laws and curve-nef preservation]
 \label{thm:seven-native-numerical-pullback}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.numericalPullback,
-EnvelopeProperty.NativeCurveNumericalClasses.numericalPullback_classMap,
-EnvelopeProperty.NativeCurveNumericalClasses.curveDegree_numericalPullback,
-EnvelopeProperty.NativeCurveNumericalClasses.numericalPullback_mem_curveNefClasses,
-EnvelopeProperty.NativeCurveNumericalClasses.numericalPullback_comp}
 \leanok
 \uses{thm:seven-native-numerical-pullback-kernel,thm:seven-native-curve-degree-descent,def:seven-native-curve-nef-classes}
 The actual Picard pullback induces a group homomorphism
@@ -4199,9 +4005,6 @@ or intrinsic FS/PSH identification is asserted by this construction.
 
 \begin{definition}[The actual real numerical scalar extension]
 \label{def:seven-native-real-numerical-classes}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.RealNumericalClass,
-EnvelopeProperty.NativeCurveNumericalClasses.nativeRealClass,
-EnvelopeProperty.NativeCurveNumericalClasses.nativeRealClass_mul}
 \leanok
 \uses{def:seven-native-curve-numerical-quotient}
 Write the genuine numerical group $N_p$ additively and define
@@ -4222,10 +4025,6 @@ product is carried to addition of the corresponding real classes.
 
 \begin{theorem}[Every same original curve degree extends linearly and native classes embed]
 \label{thm:seven-native-real-curve-degrees}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.realCurveDegree,
-EnvelopeProperty.NativeCurveNumericalClasses.realCurveDegree_tmul,
-EnvelopeProperty.NativeCurveNumericalClasses.realCurveDegree_nativeRealClass,
-EnvelopeProperty.NativeCurveNumericalClasses.nativeRealClass_injective}
 \leanok
 \uses{def:seven-native-real-numerical-classes,thm:seven-native-curve-degree-descent}
 Every original integral projective over-$k$ dimension-one curve test
@@ -4251,9 +4050,6 @@ replacement degree family is used.
 
 \begin{theorem}[Actual finite native-class support for every real numerical class]
 \label{thm:seven-native-real-finite-support}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.span_nativeRealClass,
-EnvelopeProperty.NativeCurveNumericalClasses.exists_finite_nativeRealClass_coefficients,
-EnvelopeProperty.NativeCurveNumericalClasses.exists_simultaneous_finite_native_support}
 \leanok
 \uses{thm:seven-native-real-curve-degrees}
 The images of all genuine original native numerical classes span
@@ -4274,7 +4070,6 @@ original linear combinations are unchanged.
 
 \begin{theorem}[A common genuinely generated denominator for a finite real numerical family]
 \label{thm:seven-native-real-common-generated}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.exists_simultaneous_generated_real_representatives}
 \leanok
 \uses{thm:seven-native-real-finite-support,thm:seven-native-common-generated-nef-representatives}
 For projective $p$ and every finite family in the actual scalar extension,
@@ -4308,7 +4103,6 @@ numerically equivalent line metrics agree.
 
 \begin{theorem}[One generated real numerical representation preserves every original finite weighted norm family]
 \label{thm:seven-native-real-numerical-weighted-promotion}
-\lean{EnvelopeProperty.NativeCurveNumericalClasses.exists_simultaneous_generated_real_weightedNorm_promotion}
 \leanok
 \uses{thm:seven-native-real-common-generated,cor:seven-general-original-weighted-finite-product}
 Let $p$ be projective and $(\alpha_b)$ any finite family in the actual
@@ -5669,7 +5463,7 @@ maps are the genuine section maps to the SAME $\Gamma(X,V_s)$.
 \begin{proof}
 The proved original chart-range equality with the actual ambient
 coordinate open derives $V_s\subset i^{-1}(D_+(X_s))$. Naturality of the
-actual $i$ section map transports the previously proved literal equation
+actual $i$ section map transports the proved literal equation
 identity across precisely that chart-range equality. No equality of
 arbitrary coefficient maps or frame matching is assumed.
 \end{proof}
@@ -5881,7 +5675,6 @@ $a:F^*L\simeq P$ be the already constructed actual WHOLE line isomorphism.
 
 \begin{definition}[The canonical actual bijection of whole section morphisms]
 \label{def:seven-original-native-canonical-whole-section-homs-route}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateSectionHomEquiv}
 \leanok
 \uses{thm:seven-original-native-global-isomorphism-route,def:seven-original-native-coordinate-line-pullback-iso-route}
 There is a constructed bijection
@@ -5900,7 +5693,6 @@ not assumed as a section matching certificate.
 
 \begin{theorem}[The bijection has the literal actual canonical section pullback]
 \label{thm:seven-original-native-canonical-whole-section-homs-forward-route}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateSectionHomEquiv_apply}
 \leanok
 \uses{def:seven-original-native-canonical-whole-section-homs-route}
 For every actual $\alpha:\mathcal O_Y\to L$, its image under that bijection
@@ -5929,7 +5721,6 @@ $k$, and let $y$ be any actual original relative valued point over $v$.
 
 \begin{lemma}[The actual residue-fiber section commutes with whole postcomposition]
 \label{lem:seven-original-fibre-section-postcomposition-route}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.fibreSection_postcomp}
 \leanok
 \uses{def:seven-original-native-canonical-whole-section-homs-route}
 For any actual whole section morphism $\alpha:\mathcal O_Z\to M$ and
@@ -5946,7 +5737,6 @@ coefficient matching is used.
 
 \begin{definition}[The actual original valued point maps to the SAME native model]
 \label{def:seven-original-native-relative-valued-point-route}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeRelativePoint}
 \leanok
 \uses{thm:seven-original-native-global-base-route}
 Map $y$ to the actual relative valued point of the SAME native model by
@@ -5962,7 +5752,6 @@ no chosen point correspondence is assumed.
 
 \begin{theorem}[The actual ORIGINAL and native proper-model section norms]
 \label{thm:seven-original-native-canonical-section-model-norm-route}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateSectionHomEquiv_modelNorm}
 \leanok
 \uses{thm:seven-original-native-canonical-whole-section-homs-forward-route,lem:seven-original-fibre-section-postcomposition-route,def:seven-original-native-relative-valued-point-route}
 For every actual whole native section morphism $\alpha:\mathcal O_Y\to
@@ -6004,8 +5793,7 @@ ideal equality and actual scheme isomorphism.
 
 \begin{definition}[The actual Cartier kernel-comap module comparison]
 \label{def:seven-cartier-kernel-comap-module-iso-route}
-\lean{EnvelopeProperty.KernelCartierPullback.moduleIso}
-\leanok
+
 \uses{thm:admissible-cartier-canonical-module-pullback}
 The actual canonical comparison gives
 $f^*\operatorname{idealModule}(q)\simeq(I.\operatorname{comap}(f)).
@@ -6021,7 +5809,6 @@ map an isomorphism; no module matching is input.
 
 \begin{theorem}[The actual comparison retains the entire original inclusion]
 \label{thm:seven-cartier-kernel-comap-module-inclusion-route}
-\lean{EnvelopeProperty.KernelCartierPullback.moduleIso_inclusion}
 \leanok
 \uses{def:seven-cartier-kernel-comap-module-iso-route}
 The constructed comparison followed by the actual geometric comap-module
@@ -6049,7 +5836,6 @@ internally supplies all these true properties and this actual equality.
 
 \begin{definition}[The actual canonical comparison through the common geometric ideal]
 \label{def:seven-two-cartier-kernel-comaps-comparison-route}
-\lean{EnvelopeProperty.KernelCartierPullback.commonIso}
 \leanok
 \uses{def:seven-cartier-kernel-comap-module-iso-route}
 The actual canonical maps construct
@@ -6066,7 +5852,6 @@ and their true comaps, not an abstract replacement ideal.
 
 \begin{theorem}[The whole canonical comparison preserves BOTH actual inclusions]
 \label{thm:seven-two-cartier-kernel-comaps-comparison-inclusion-route}
-\lean{EnvelopeProperty.KernelCartierPullback.commonIso_inclusion}
 \leanok
 \uses{def:seven-two-cartier-kernel-comaps-comparison-route,thm:seven-cartier-kernel-comap-module-inclusion-route}
 The constructed iso, followed by the actual $f_P$-pulled kernel inclusion
@@ -6085,7 +5870,6 @@ these opaque interfaces with its already produced actual ideals and maps.
 
 \begin{definition}[Canonical Cartier comparison with its proved inclusion]
 \label{def:intrinsic-kernel-comap-bundle}
-\lean{EnvelopeProperty.KernelCartierPullback.commonIsoWithInclusion}
 \leanok
 \uses{thm:seven-two-cartier-kernel-comaps-comparison-inclusion-route}
 Let $q_N:A_N\to B_N$ and $q_P:A_P\to B_P$ be quasi-compact scheme morphisms,
@@ -6098,14 +5882,13 @@ pullback-unit identifications. No equality of inclusions is an input.
 \begin{proof}
 Use the actual kernel-module comparison on each side, the actual Cartier
 comap isomorphisms, and the common ideal equality to construct $a$.
-The previously proved canonical inclusion theorem derives its equality
+The proved canonical inclusion theorem derives its equality
 from the inclusion laws of these three genuine maps. Bundle this proved
 pair before specializing to the original projective model. The value of
-the pair is definitionally the previously constructed canonical comparison.
+the pair is definitionally the constructed canonical comparison.
 \end{proof}
 \begin{lemma}[Value of the canonical bundle]
 \label{lem:intrinsic-kernel-comap-bundle-value}
-\lean{EnvelopeProperty.KernelCartierPullback.commonIsoWithInclusion_val}
 \leanok
 \uses{def:intrinsic-kernel-comap-bundle}
 The isomorphism underlying the preceding bundle is exactly
@@ -6123,7 +5906,6 @@ and actual whole scheme isomorphism $F:X\simeq Y$.
 
 \begin{definition}[An actual original ideal-module iso with its proved inclusion law]
 \label{def:seven-original-native-coordinate-ideal-iso-with-inclusion-route}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateIdealWithInclusion}
 \leanok
 \uses{thm:seven-two-cartier-kernel-comaps-comparison-inclusion-route,thm:seven-original-native-hyperplane-ideals-whole-route,lem:seven-original-coordinate-hyperplane-comap-cartier-route}
 Construct an actual WHOLE module isomorphism
@@ -6158,7 +5940,6 @@ of the preceding canonical two-sided comparison.
 
 \begin{lemma}[Literal canonical five-factor composition]
 \label{lem:seven-two-cartier-kernel-comaps-explicit-composition-route}
-\lean{EnvelopeProperty.KernelCartierPullback.commonIso_eq_explicit}
 \leanok
 \uses{def:seven-two-cartier-kernel-comaps-comparison-route,def:seven-cartier-kernel-comap-module-iso-route}
 The actual common-comap comparison equals the literal composition of the
@@ -6183,7 +5964,6 @@ and genuine nonempty reference $j$, SAME original-field model and whole
 scheme isomorphism $F$.
 \begin{lemma}[The bundled ideal iso is the original five-factor comparison]
 \label{lem:seven-original-coordinate-comap-bundle-identification}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateIdealWithInclusion_val}
 \leanok
 \uses{def:seven-original-native-coordinate-ideal-iso-with-inclusion-route,lem:seven-two-cartier-kernel-comaps-explicit-composition-route}
 The actual iso returned by \texttt{fixedOriginalNativeCoordinateIdealWithInclusion}
@@ -6201,7 +5981,6 @@ frame or inclusion identification is supplied as a hypothesis.
 \end{proof}
 \begin{theorem}[The original frozen ideal iso preserves the actual whole inclusion]
 \label{thm:seven-original-coordinate-pullback-ideal-inclusion}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateIdealPullbackIso_inclusion}
 \leanok
 \uses{lem:seven-original-coordinate-comap-bundle-identification,def:seven-original-native-coordinate-ideal-iso-with-inclusion-route}
 The actual original ideal-module iso, followed by the true pulled ambient
@@ -6384,7 +6163,6 @@ This remains a subsequent checked consumer, not an assumed matching datum.
 \subsection{Actual dual comparison retains canonical sections of whole functionals}
 \begin{lemma}[Canonical dual sections under an actual module iso]
 \label{lem:seven-dual-canonical-section-iso}
-\lean{EnvelopeProperty.OriginalDualPullbackCoherence.canonicalDualSection_iso}
 \leanok
 Let $e:A\simeq B$ be an actual module iso on a scheme $Z$, and let
 $q_A:A\to\mathcal O_Z$ and $q_B:B\to\mathcal O_Z$ be actual whole
@@ -6401,7 +6179,6 @@ equation is an input; the input is an ordinary whole functional square.
 \end{proof}
 \begin{theorem}[Canonical actual pulled-dual comparison preserves the section]
 \label{thm:seven-pulled-dual-comparison-canonical-section}
-\lean{EnvelopeProperty.OriginalDualPullbackCoherence.pulledDualComparison_section}
 \leanok
 \uses{thm:seven-canonical-dual-section-pullback,lem:seven-dual-canonical-section-iso}
 Let $f_N:Z\to Y_N$ and $f_P:Z\to Y_P$ be actual scheme morphisms, and
@@ -6540,7 +6317,6 @@ module iso. Neither module needs invertibility or properness.
 \begin{theorem}[Actual original H0 on whole section values]
 \label{thm:seven-original-coordinate-h0-hom-values}
 \uses{thm:seven-iso-line-top-section-value-coherence}
-\lean{EnvelopeProperty.ClosedProjectiveGenericCoefficients.fixedOriginalNativeCoordinateH0Iso_sectionAtOne}
 \leanok
 Let $i:X\hookrightarrow\mathbf P^n_k$ be the genuine original integral
 closed embedding over any field, and $j$ a coordinate with nonempty

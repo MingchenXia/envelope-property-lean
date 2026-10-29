@@ -5,13 +5,12 @@ No finite generation, reducedness, or algebraic closedness assumption is needed 
 These affine foundations make explicit the support convention in \cite[\S2.1]{FHX} and the
 convention in \S5 that closed subsets carry their reduced induced structure.
 
-\begin{definition}[Support map]\label{berk:support}
+\begin{definition}[Support map {\cite[\S2.1]{FHX}}]\label{berk:support}
 \lean{EnvelopeProperty.Berk.support, EnvelopeProperty.Berk.preimage_support_zeroLocus,
 EnvelopeProperty.Berk.continuous_support, EnvelopeProperty.Berk.support_comap}
 \leanok
 \uses{def:berk, def:analytic-zero-locus, lem:analytic-zero-locus-closed,
 spectrum:support, spectrum:trivial-field-bridge}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 The support of $x\in(\Spec A)^\an$ is the prime ideal
 $\mathfrak p_x=\{a\in A:|a|_x=0\}$. The resulting map
 $\operatorname{supp}\colon(\Spec A)^\an\to\Spec A$ is continuous and satisfies
@@ -29,12 +28,11 @@ As every Zariski closed set has the form $V(I)$, the support map is continuous.
 Finally $|a|_{\phi^\an(y)}=|\phi(a)|_y$ proves the functoriality formula.
 \end{proof}
 
-\begin{lemma}[Every prime occurs as a support]\label{berk:support-surjective}
+\begin{lemma}[Every prime occurs as a support {\cite[\S2.1]{FHX}}]\label{berk:support-surjective}
 \lean{EnvelopeProperty.Berk.primePoint, EnvelopeProperty.Berk.support_primePoint,
 EnvelopeProperty.Berk.support_surjective}
 \leanok
 \uses{berk:support, def:triv-scaling, lem:analytic-affine-quotient}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For each prime ideal $\mathfrak p$ of $A$, the trivial seminorm of the domain
 $A/\mathfrak p$ pulls back to an analytic point $x_{\mathfrak p}$ whose support
 is $\mathfrak p$. Thus the support map is surjective.
@@ -93,13 +91,12 @@ inequality. Thus their seminorms and logarithms agree.
 The final assertion follows immediately from the containment already proved.
 \end{proof}
 
-\begin{theorem}[Invariance under reduction]\label{berk:reduction-homeomorphism}
+\begin{theorem}[Invariance under reduction {\cite[\S5]{FHX}}]\label{berk:reduction-homeomorphism}
 \lean{EnvelopeProperty.Berk.reductionHomeomorph,
 EnvelopeProperty.Berk.reductionHomeomorph_val_apply,
 EnvelopeProperty.Berk.reductionHomeomorph_symm_val_mk}
 \leanok
 \uses{berk:nilpotents, lem:analytic-affine-quotient}
-\source{fhx-envelope-20261028:sec:normal-local-regularization}
 For $A_{\mathrm{red}}=A/\sqrt{(0)}$, restriction induces a homeomorphism
 $(\Spec A_{\mathrm{red}})^\an\simeq(\Spec A)^\an$.
 This homeomorphism preserves the seminorm of every $a\in A$ and the inverse

@@ -14,7 +14,7 @@ Section~\ref{sec:var-unibranch}: $X$ is unibranch if its normalization is biject
 unibranch, which is the definition of \cite[\S1.1]{FHX}
 (Lemma~\ref{lem:var-unibranch-stalks}).
 
-The chapter proves Theorem~1.1 and Corollary~1.2 of Fang--Han--Xia \cite{FHX} for $X$ itself.
+The chapter proves Theorem~A and Corollary~1.1 of Fang--Han--Xia \cite{FHX} for $X$ itself.
 The route: every class has a presentation, psh functions and the envelope property of $X$ are
 those of the model of the presentation (Theorem~\ref{thm:var-psh-comparison}), and the model
 theorems of Section~\ref{subsec:gl-main} apply to the model. The comparison of psh functions is
@@ -28,7 +28,7 @@ $a\in\Q^s$, Fubini--Study functions of class $a$ and $\theta$-psh functions for
 $\theta\in\R^s$: usc functions $u\not\equiv-\infty$ that are limits of decreasing nets of
 Fubini--Study functions of classes $a_i\to\theta$.
 
-\begin{lemma}[Psh functions through a Fubini--Study dictionary]
+\begin{lemma}[Psh functions through a Fubini--Study dictionary {\cite[Definition~4.1, Lemma~4.6]{BJ22}}]
 \label{lem:var-psh-comparison-dictionary}
 \lean{EnvelopeProperty.Variety.isPSH_iff_of_fsDictionary,
 EnvelopeProperty.Variety.hasEnvelopeProperty_iff_of_fsDictionary}
@@ -36,7 +36,6 @@ EnvelopeProperty.Variety.hasEnvelopeProperty_iff_of_fsDictionary}
 \uses{def:var-psh, def:var-ep, def:gl-fs-system, lem:var-ample-convergence-line-family,
 lem:var-ample-convergence-openness, thm:native-numerical-ample-family-openness,
 lem:var-ep-transport}
-\source{bj22-trivval:defi:psh, bj22-trivval:lem:PSH}
 Let $F$ be a Fubini--Study system on a topological space $B$, $e\colon X^{\mathrm{an}}\to B$ a
 homeomorphism, $L_1,\dots,L_s$ invertible sheaves with coefficient map
 $\pi(a)=\sum_ca_c[L_c]$, and $w\in\R^s$ with $\pi(w)$ ample. Assume:
@@ -89,7 +88,7 @@ The statement on the envelope property follows by transport along $e$
 (Lemma~\ref{lem:var-ep-transport}).
 \end{proof}
 
-\begin{lemma}[The dictionary of a presentation]
+\begin{lemma}[The dictionary of a presentation {\cite[Lemma~2.6]{FHX}}]
 \label{lem:var-presentation-fs-transfer}
 \lean{EnvelopeProperty.Variety.lineFamilyMap_presentation_single_mem_ampleCone,
 EnvelopeProperty.Variety.exists_fsData_of_isFS_presentation,
@@ -97,7 +96,6 @@ EnvelopeProperty.Variety.isFS_presentation_of_sub_mem_ampleCone}
 \leanok
 \uses{thm:pm-fs-dictionary, lem:pm-fs-class, lem:pm-line-class,
 lem:pm-exists-positive-presentation, lem:var-class-promotion}
-\source{fhx-envelope-20261028:lem:finite-class-promotion}
 For a presentation of $X$, the Fubini--Study system of its model $\mathcal P$, the homeomorphism
 $H$, the factor lines $F_c$ and $w=e_0$ satisfy the hypotheses of
 Lemma~\ref{lem:var-psh-comparison-dictionary}.
@@ -115,13 +113,12 @@ denominator $nt$. Since $tz=(nt)a$, Theorem~\ref{thm:pm-fs-dictionary} shows tha
 $\varphi_E\circ H^{-1}=\varphi_D\circ H^{-1}$ is a model Fubini--Study function of class $a$.
 \end{proof}
 
-\begin{theorem}[Psh functions of a variety and of a presentation model]
+\begin{theorem}[Psh functions of a variety and of a presentation model {\cite[Definition~4.1]{BJ22}, \cite[Lemma~2.6]{FHX}}]
 \label{thm:var-psh-comparison}
 \lean{EnvelopeProperty.Variety.isPSH_iff_presentation,
 EnvelopeProperty.Variety.isPSH_presentation_iff_of_eq}
 \leanok
 \uses{lem:var-psh-comparison-dictionary, lem:var-presentation-fs-transfer, def:gl-psh}
-\source{bj22-trivval:defi:psh, fhx-envelope-20261028:lem:finite-class-promotion}
 For a presentation of $X$ with model $\mathcal P$, every $\theta_m\in\R^{r+1}$ and every
 $\varphi\colon X^{\mathrm{an}}\to[-\infty,\infty]$,
 \[
@@ -159,16 +156,15 @@ closed subfields $k_0$ of $k$ and, in characteristic $0$, FHX Theorem~3.1
 constancy and de Jong's alterations are proved. The statements below carry exactly these
 hypotheses.
 
-\begin{theorem}[Fang--Han--Xia, Theorem~1.1]
+\begin{theorem}[Fang--Han--Xia, Theorem~A]
 \label{thm:var-main}
-\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch,
-EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch,
+\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch_of_forall_countable,
+EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch_of_forall_countable,
 EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch_of_charP,
 EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch_of_charP}
 \leanok
 \uses{thm:nn-main, cor:var-ep-comparison, lem:pm-exists-presentation,
 thm:var-unibranch-presentation, lem:var-ep-family}
-\source{fhx-envelope-20261028:thm:intro-main}
 Let $k$ be algebraically closed and $X$ an integral unibranch projective variety over $k$, and
 assume the hypotheses of Theorem~\ref{thm:nn-main} (in characteristic $\ell>0$ only FHX
 Lemma~5.5). Then $\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$: every nonempty
@@ -186,7 +182,7 @@ Lemma~\ref{lem:var-ep-family}. In characteristic $\ell>0$ the characteristic-$0$
 holds vacuously, since every subfield $k_0$ of $k$ has characteristic $\ell$.
 \end{proof}
 
-\begin{theorem}[Boucksom--Jonsson, Theorem~5.12]
+\begin{theorem}[Boucksom--Jonsson, Theorem~5.12 {\cite[Corollary~1.1]{FHX}}]
 \label{thm:var-unibranch-of-ep}
 \lean{EnvelopeProperty.Variety.isUnibranch_of_hasEnvelopeProperty,
 EnvelopeProperty.Variety.isUnibranch_of_forall_hasEnvelopeProperty,
@@ -194,7 +190,6 @@ EnvelopeProperty.Variety.exists_mem_ampleCone}
 \leanok
 \uses{lem:pm-exists-positive-presentation, cor:var-ep-comparison, cor:gl-characterization,
 thm:var-unibranch-presentation, lem:native-projectivity-geometric-ample-line}
-\source{bj22-trivval:thm:unibranch, fhx-envelope-20261028:cor:intro-characterization}
 Let $k$ be algebraically closed. If $\mathrm{EP}_X(\omega)$ holds for some
 $\omega\in\operatorname{Amp}(X)$, then $X$ is unibranch. In particular, if
 $\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$, then $X$ is unibranch. No
@@ -211,14 +206,13 @@ statement, $X$ has an ample invertible sheaf $A$
 (Lemma~\ref{lem:native-projectivity-geometric-ample-line}), and $[A]\in\operatorname{Amp}(X)$.
 \end{proof}
 
-\begin{corollary}[Fang--Han--Xia, Corollary~1.2]
+\begin{corollary}[Fang--Han--Xia, Corollary~1.1]
 \label{cor:var-characterization}
-\lean{EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty,
+\lean{EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_forall_countable,
 EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_charP,
 EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty_of_imp}
 \leanok
 \uses{thm:var-main, thm:var-unibranch-of-ep, thm:var-unibranch-tfae}
-\source{fhx-envelope-20261028:cor:intro-characterization}
 Let $k$ be algebraically closed and $X$ an integral projective variety over $k$, and assume the
 hypotheses of Theorem~\ref{thm:var-main}. The following are equivalent:
 \begin{enumerate}

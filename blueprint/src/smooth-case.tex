@@ -8,13 +8,12 @@ Section~3 before Proposition~\ref{prop:nonflat-norm}; the formalization starts w
 line bundles are $\mathcal O(a)$, sections are forms, and $S=X\times\A^1$ is computed in
 $k[x_0,\dots,x_n,t]$. In characteristic $p$ the proof is FHX's test-ideal argument; in characteristic
 $0$ it is the $L^2$ argument of Section~\ref{sec:char0-blueprint} (Ohsawa--Takegoshi and H\"ormander estimates on the affine
-cone, from the \texttt{TranscendentalNakamaye} project), which replaces \cite[Theorem~5.20]{BJ22} on $\PP^n$.
+cone, from the \texttt{ComplexGeometry} project), which replaces \cite[Theorem~5.20]{BJ22} on $\PP^n$.
 General smooth projective varieties are treated in Section~\ref{sec:smooth-general}.
 
-\begin{definition}[The analytification of $\PP^n$]\label{def:pn-an}
+\begin{definition}[The analytification of $\PP^n$ {\cite[\S2.1]{FHX}}]\label{def:pn-an}
 \lean{EnvelopeProperty.ProjBerk, EnvelopeProperty.ProjBerk.instCompactSpace, EnvelopeProperty.ProjBerk.triv}
 \leanok
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 $(\PP^n)^\an$ is modelled by the semivaluations $|\cdot|$ of $k[x_0,\dots,x_n]$ trivial on $k$ that are
 graded ($|f|=\max_d|f_d|$) and normalized ($\max_i|x_i|=1$); it is compact Hausdorff. A point
 $(\xi,|\cdot|)$ of the Berkovich analytification gives $|f|=|f/x_j^d|/\max_i|x_i/x_j|^d$ on forms of degree
@@ -22,20 +21,18 @@ $d$; conversely the kernel is a relevant homogeneous prime. (The comparison with
 the scheme $\PP^n$ is part of the general Berkovich groundwork, not yet formalized.)
 \end{definition}
 
-\begin{definition}[Gauss extension and $\phi_I$]\label{def:pn-gauss}
+\begin{definition}[Gauss extension and $\phi_I$ {\cite[\S2.1]{FHX}}]\label{def:pn-gauss}
 \lean{EnvelopeProperty.ProjBerk.gaussExt, EnvelopeProperty.ProjBerk.phiIdeal, EnvelopeProperty.ProjBerk.phiIdeal_mul}
 \leanok
 \uses{def:pn-an}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 $\sigma(v)(\sum_\lambda s_\lambda t^\lambda)=\max_\lambda|s_\lambda|_ve^{-\lambda}$, and for an ideal $I$ of
 $k[x][t]$, $\phi_I(v)=\sup_{g\in I}\log|g|_{\sigma(v)}$; $\phi_{IJ}=\phi_I+\phi_J$.
 \end{definition}
 
-\begin{definition}[Fubini--Study and $\theta$-psh functions on $\PP^n$]\label{def:pn-psh}
+\begin{definition}[Fubini--Study and $\theta$-psh functions on $\PP^n$ {\cite[\S2.2]{FHX}}]\label{def:pn-psh}
 \lean{EnvelopeProperty.ProjBerk.FSData, EnvelopeProperty.ProjBerk.IsFS, EnvelopeProperty.ProjBerk.IsRatFS, EnvelopeProperty.ProjBerk.IsPSH, EnvelopeProperty.ProjBerk.IsFS.isPSH, EnvelopeProperty.ProjBerk.isPSH_const}
 \leanok
 \uses{def:pn-an}
-\source{fhx-envelope-20261028:subsec:prelim-psh, bj22-trivval:defi:psh}
 FS functions $m^{-1}\max_j\{\log|s_j|+\lambda_j\}$ for $\mathcal O(a)$; $\theta$-psh functions
 with scalar parameter $\theta\in\R$ (identified with $N^1(\PP^n)_\R$ when $n\ge1$):
 generically finite usc decreasing limits of nets of FS functions with
@@ -43,42 +40,38 @@ classes tending to $\theta$ \cite[Definition~4.1]{BJ22}. FS functions are psh (P
 $\theta$-psh for $\theta\ge0$.
 \end{definition}
 
-\begin{definition}[Envelopes and the envelope property]\label{def:pn-ep}
+\begin{definition}[Envelopes and the envelope property {\cite[\S2.3]{FHX}, \cite[\S5.2]{BJ22}}]\label{def:pn-ep}
 \lean{EnvelopeProperty.ProjBerk.envelope, EnvelopeProperty.ProjBerk.HasEnvelopeProperty, EnvelopeProperty.uscReg, EnvelopeProperty.ProjBerk.IsRatPL}
 \leanok
 \uses{def:pn-psh}
-\source{fhx-envelope-20261028:subsec:prelim-envelopes, bj22-trivval:sec:envprop}
 $\mathrm P_\theta(\phi)=\sup\{\tau\in\PSH(\theta):\tau\le\phi\}$; $\theta$ has the envelope property if the
 usc regularization of the supremum of every bounded-above family in $\PSH(\theta)$ is $\theta$-psh.
 Rational PL functions are differences of finite-valued rational FS functions.
 \end{definition}
 
-\begin{lemma}[Frobenius roots]\label{lem:frobenius-roots}
+\begin{lemma}[Frobenius roots {\cite[(3.3)]{FHX}}]\label{lem:frobenius-roots}
 \lean{EnvelopeProperty.frobRoot, EnvelopeProperty.frobTrace, EnvelopeProperty.gc_frobRoot_frobPow, EnvelopeProperty.frobRoot_mul_le, EnvelopeProperty.HasWeightedGeneratorsLE.frobRoot}
 \leanok
-\source{fhx-envelope-20261028:eq:test-def}
 In a polynomial ring $R$ over a perfect field of characteristic $p$, $I^{[1/q]}=\Phi_e(I)$ for the
 Frobenius trace $\Phi_e$ (trivialization $dx$ of $\omega_R$) is the smallest ideal $J$ with
 $I\subseteq J^{[q]}$; $(IJ)^{[1/q]}\subseteq I^{[1/q]}J^{[1/q]}$; for weights $w$, an ideal generated in
 $w$-degree $\le D$ has root generated in degree $\le\lfloor D/q\rfloor$.
 \end{lemma}
 
-\begin{lemma}[Test ideals and asymptotic test ideals]\label{lem:test-ideals}
+\begin{lemma}[Test ideals and asymptotic test ideals {\cite[(3.4)]{FHX}}]\label{lem:test-ideals}
 \lean{EnvelopeProperty.testIdeal, EnvelopeProperty.exists_testIdeal_eq, EnvelopeProperty.testIdeal_add_le, EnvelopeProperty.asymptoticTestIdeal, EnvelopeProperty.le_asymptoticTestIdeal, EnvelopeProperty.asymptoticTestIdeal_mul_le, EnvelopeProperty.HasWeightedGeneratorsLE.asymptoticTestIdeal}
 \leanok
 \uses{lem:frobenius-roots}
-\source{fhx-envelope-20261028:eq:smooth-test-inclusions}
 $\tau(I^c)=\bigcup_e(I^{\lceil cp^e\rceil})^{[1/p^e]}$, attained for $e\gg0$; subadditivity
 $\tau(I^{c+d})\subseteq\tau(I^c)\tau(I^d)$; for a graded sequence $J_\bullet$, $B_m=\tau(J_q^{m/q})$ for $q$
 divisible, $J_m\subseteq B_m$, $B_{m\ell}\subseteq B_m^\ell$, and $B_m$ is generated in degree $\le mD$ when
 $J_q$ is generated in degree $\le qD$ (the $\PP^n$ case of FHX Lemma~3.2, where $K_X+(n+1)H=0$).
 \end{lemma}
 
-\begin{lemma}[Divisorial trace estimate]\label{lem:pn-divisorial-trace}
+\begin{lemma}[Divisorial trace estimate {\cite[Lemma~3.3]{FHX}}]\label{lem:pn-divisorial-trace}
 \lean{EnvelopeProperty.Cartier.exists_logDiscrepancy_polynomial, EnvelopeProperty.Cartier.exists_logDiscrepancy, EnvelopeProperty.Cartier.IsPBasis.cartier_eq, EnvelopeProperty.Cartier.exists_isPBasis_of_essFiniteType, EnvelopeProperty.Cartier.ordGE_cartier, EnvelopeProperty.Cartier.le_scaled_of_ordGE}
 \leanok
 \uses{lem:test-ideals}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
 For every discrete valuation ring $R'$ essentially of finite type over $k$, with
 \[
  k[x_0,\dots,x_n,t]\subseteq R'\subseteq k(x,t),
@@ -96,11 +89,10 @@ where $a=\ord_{R'}(dx/du)$ for a $p$-basis $u$ of $R'$ containing a uniformizer,
 so $A_S(\ord_{R'})=1+a$. The Cartier operator on top forms is independent of the $p$-basis.
 \end{lemma}
 
-\begin{theorem}[Envelope property of $\PP^n$ in characteristic $p$]\label{thm:pn-ep-charp}
+\begin{theorem}[Envelope property of $\PP^n$ in characteristic $p$ {\cite[Theorem~3.1]{FHX}}]\label{thm:pn-ep-charp}
 \lean{EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charP, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_rat_of_charP, EnvelopeProperty.ProjBerk.isPSH_envelope_nat_of_nonpos, EnvelopeProperty.ProjBerk.isPSH_testLimit, EnvelopeProperty.ProjBerk.testLimit_le_envelope_of_isDivisorial, EnvelopeProperty.ProjBerk.exists_phiIdeal_asymptoticTestIdeal_le, EnvelopeProperty.ProjBerk.exists_le_ord_frobTrace, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_neg}
 \leanok
 \uses{def:pn-ep, lem:test-ideals, lem:pn-divisorial-trace, rmk:bj-pn-ep-assembly}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 Let $k$ be algebraically closed of characteristic $p>0$. Every $\theta\ge0$ has the envelope property on $\PP^n$.
 \end{theorem}
 
@@ -116,7 +108,6 @@ statement holds vacuously, as $\PSH(\theta)=\emptyset$.
 \lean{EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_countable, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charP, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero}
 \leanok
 \uses{def:pn-ep, thm:pn-ep-charp, thm:c0-pn-ep}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 Every $\theta\ge0$ has the envelope property on $\PP^n$ (in characteristic $0$ for countable $k$, the convention of
 \cite[\S5]{FHX}; in characteristic $p$ for every algebraically closed $k$).
 \end{theorem}

@@ -25,7 +25,6 @@ over $R$ is purely inseparable (\ref{algebra:actual-structural-unibranch-local-r
 \lean{EnvelopeProperty.Variety.IsUnibranch, EnvelopeProperty.Variety.isUnibranch_iff_injective}
 \leanok
 \uses{scheme:actual-integral-normalization-affine-charts, scheme:actual-integral-normalization-surjective}
-\source{fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:lem:unibranch-universal}
 An integral scheme $X$ is \emph{unibranch} if its normalization $\nu\colon X^\nu\to X$ is
 bijective. Since $\nu$ is surjective, $X$ is unibranch if and only if $\nu$ is injective.
 \cite[\S1.1]{FHX} defines unibranchness stalk-wise, by requiring that every local ring
@@ -109,11 +108,10 @@ $y'=\iota_U(w')$. The images of $w$ and $w'$ in $\operatorname{Spec}A$ have the 
 under the injective map $j_U$, so they are equal; by hypothesis $w=w'$, hence $y=y'$.
 \end{proof}
 
-\begin{lemma}[Unibranch schemes have unibranch stalks]\label{lem:var-unibranch-stalks}
+\begin{lemma}[Unibranch schemes have unibranch stalks {\cite[Lemma~8.1]{FHX}}]\label{lem:var-unibranch-stalks}
 \lean{EnvelopeProperty.Variety.isUnibranch_iff_forall_affine, EnvelopeProperty.Variety.isUnibranch_iff_isUnibranchLocalRing_stalk, EnvelopeProperty.Variety.affineStalkRingEquiv, EnvelopeProperty.Variety.isUnibranchLocalRing_stalk_fromSpec_iff}
 \leanok
 \uses{def:var-unibranch, lem:var-unibranch-ring, lem:var-unibranch-affine, algebra:actual-structural-unibranch-ring-equivalence}
-\source{fhx-envelope-20261028:lem:unibranch-universal}
 For an integral scheme $X$ the following are equivalent:
 \begin{enumerate}
 \item $X$ is unibranch;
@@ -133,11 +131,10 @@ $\mathcal O_{X,x}\cong A_{\mathfrak p}$, and unibranchness is invariant under ri
 (nonempty) affine open, (2)$\Leftrightarrow$(3).
 \end{proof}
 
-\begin{theorem}[Unibranch varieties]\label{thm:var-unibranch-tfae}
+\begin{theorem}[Unibranch varieties {\cite[Lemma~8.1, Corollary~1.1]{FHX}}]\label{thm:var-unibranch-tfae}
 \lean{EnvelopeProperty.Variety.isUnibranch_tfae, EnvelopeProperty.Variety.isGeometricallyUnibranchScheme_of_isUnibranch, EnvelopeProperty.Variety.isUnibranch_of_isGeometricallyUnibranchScheme, EnvelopeProperty.Variety.isUnibranch_iff_isGeometricallyUnibranchScheme}
 \leanok
 \uses{lem:var-unibranch-stalks, lem:var-unibranch-ring, lem:var-unibranch-affine, scheme:actual-structural-unibranch-stalk-normalization, scheme:actual-integral-geometric-unibranch-normalization-radicial, algebra:actual-structural-unibranch-ring-equivalence}
-\source{fhx-envelope-20261028:lem:unibranch-universal, fhx-envelope-20261028:cor:intro-characterization}
 Let $X$ be an integral scheme locally of finite type over an algebraically closed field $k$. The
 following are equivalent:
 \begin{enumerate}
@@ -202,11 +199,10 @@ $A_{\mathfrak p}\cong B_{\mathfrak P}$, and unibranchness is invariant under rin
 other follows by applying it to $e^{-1}$.
 \end{proof}
 
-\begin{theorem}[Unibranch transfer to presentation models]\label{thm:var-unibranch-presentation}
+\begin{theorem}[Unibranch transfer to presentation models {\cite[Theorem~A, Corollary~1.1]{FHX}}]\label{thm:var-unibranch-presentation}
 \lean{EnvelopeProperty.Variety.isUnibranch_iff_presentation, EnvelopeProperty.Variety.isUnibranch_iff_presentation_of_eq, EnvelopeProperty.Variety.model_coord_ne_zero_iff, EnvelopeProperty.Variety.exists_chartIndex_mem}
 \leanok
 \uses{lem:var-unibranch-stalks, lem:var-unibranch-localizations-iso, def:gl-unibranch, thm:finite-projective-native-field-models, thm:actual-original-family-whole-chart-sections, lem:original-finite-segre-chart-preimage, thm:projective-native-coordinate-chart-support}
-\source{fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:cor:intro-characterization}
 Let $k$ be algebraically closed, $X$ an integral scheme over $k$ with a presentation
 $(q_c)_{c=0}^r$, and $\mathcal P$ its multiprojective model. Then $X$ is unibranch
 (Definition~\ref{def:var-unibranch}) if and only if $\mathcal P$ is unibranch

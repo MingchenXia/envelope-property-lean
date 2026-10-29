@@ -12,7 +12,6 @@ actual pulled-back lines.
 
 \begin{lemma}[Affineness of the native normalized projection]
 \label{lem:kn-normalized-projection-affine}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.normalizationProjection_isAffine,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.normalizedProjection_isAffine}
 \leanok
 The composite of the native relative-normalization projection with
 an affine morphism is affine.  In particular the actual $\pi$ is
@@ -31,7 +30,6 @@ composite statement therefore gives the asserted actual map.
 
 \begin{lemma}[Quasicoherence of the actual structure pushforward]
 \label{lem:kn-normalized-structure-quasicoherent}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.normalizedPushforward_isQuasicoherent}
 \leanok
 \uses{lem:kn-normalized-projection-affine}
 The native module $\pi_*\mathcal O_Z$ is quasicoherent.
@@ -44,7 +42,7 @@ quasicoherence, proving the assertion.
 
 \begin{lemma}[Native positive cohomology across the actual affine projection]
 \label{lem:kn-normalized-affine-cohomology}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_twist_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_pullback_line_iff,EnvelopeProperty.Vanishing.NadelNormalizedCohomologyCore.subsingleton_H_pullback_line_iff_compact,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_pushforward_compact}
+\lean{EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_iff_pushforward, EnvelopeProperty.AffinePushforwardCohomology.subsingleton_H_twist_iff_pushforward}
 \leanok
 \uses{lem:kn-normalized-projection-affine}
 Suppose the original base is separated and has a finite affine open
@@ -84,8 +82,7 @@ These are hypotheses on the original base and section.
 
 \begin{definition}[The original normalized coefficient family]
 \label{def:kn-normalized-coefficients}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.sectionSnc,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.coefficient}
-\leanok
+
 Give the actual zero ideal $J$ of the same original section an
 original SNC presentation $J=\prod_j D_j^{a_j}$.  This presentation
 itself gives the whole SNC witness.  For $i\in\{0,\ldots,n-1\}$,
@@ -96,7 +93,6 @@ $E_i=L^{-i}\otimes\mathcal Hom(\mathcal O_X(-\lfloor(i/n)\operatorname{div}(s)\r
 
 \begin{lemma}[Whole weighted cohomology and the actual summand retracts]
 \label{lem:kn-normalized-weighted-cohomology}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.weightedPushforwardIso,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.twistedWeightedPushforwardIso,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandInclusion,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandProjection,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.summandInclusion_projection,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_summand_of_pushforward,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pushforward_twist_iff}
 \leanok
 \uses{def:kn-normalized-coefficients}
 The existing native normalized eigensheaf isomorphism from PR~215
@@ -136,7 +132,6 @@ for the original finite coproduct.
 
 \begin{theorem}[The actual normalized cyclic positive-cohomology criterion]
 \label{thm:kn-normalized-positive-cohomology}
-\lean{EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_iff_compact,EnvelopeProperty.Vanishing.NadelNormalizedCohomology.subsingleton_H_pullback_line_positive_iff_compact}
 \leanok
 \uses{lem:kn-normalized-affine-cohomology,lem:kn-normalized-weighted-cohomology}
 For the actual original normalized cover and every $q>0$,

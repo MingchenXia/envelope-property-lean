@@ -3,7 +3,6 @@
 
 \begin{lemma}[A genuine continuous map with finite fibre preserves nonisolation]
 \label{topology:actual-finite-fibre-nonisolation}
-\lean{EnvelopeProperty.not_isOpen_singleton_image_of_continuous_of_finite_fibre}
 \leanok
 For an actual continuous map $f:Z\to W$, a point $z$ of a $T_1$
 source, and an ACTUAL finite fibre over $f(z)$, nonisolation of $z$
@@ -20,11 +19,6 @@ No properness, open map or fibre-bijection hypothesis is needed.
 
 \begin{theorem}[Actual polynomial scalar restriction has finite whole point fibres]
 \label{spectrum:actual-finite-polynomial-scalar-restriction}
-\lean{EnvelopeProperty.polynomial_map_moduleFinite,
-EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialScalarRestriction,
-EnvelopeProperty.Berkovich.RelativeSpectrum.polynomialScalarRestriction_val_apply,
-EnvelopeProperty.Berkovich.RelativeSpectrum.continuous_polynomialScalarRestriction,
-EnvelopeProperty.Berkovich.RelativeSpectrum.finite_fibre_polynomialScalarRestriction}
 \leanok
 \uses{spectrum:finite-completed-fibres,spectrum:scalar-restriction}
 Let $S/R$ be an actual finite coefficient algebra with compatible
@@ -57,9 +51,6 @@ without an inference from finitely many scheme supports.
 
 \begin{theorem}[Every actual nonzero-support line point is nonisolated]
 \label{spectrum:actual-rigid-line-nonisolation}
-\lean{EnvelopeProperty.Berkovich.RelativeSpectrum.residueField_finite_of_nonzero_polynomial_support,
-EnvelopeProperty.Berkovich.RelativeSpectrum.not_isOpen_singleton_of_nonzero_polynomial_support,
-EnvelopeProperty.Berkovich.RelativeSpectrum.neBot_nhdsNE_of_nonzero_polynomial_support}
 \leanok
 \uses{topology:actual-finite-fibre-nonisolation,spectrum:actual-finite-polynomial-scalar-restriction,scheme:actual-native-line-evaluation-nonisolation,spectrum:residue-field}
 For ANY field $F$ with ANY prescribed real valuation, every actual
@@ -99,8 +90,6 @@ normality of a scalar-extended curve is asserted or used.
 
 \begin{theorem}[Actual closed points on genuine etale affine curves are nonisolated]
 \label{scheme:actual-rigid-etale-line-chart-nonisolation}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_line_chart_nonzero_support,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_affine_closed_of_etale}
 \leanok
 \uses{spectrum:actual-rigid-line-nonisolation,scheme:actual-general-etale-native-open-map,scheme:relative-affine-valued-point-homeomorphism}
 A native point whose actual image under a genuine etale line chart

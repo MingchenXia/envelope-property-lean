@@ -2,10 +2,6 @@
 
 \begin{lemma}[Original variable equivalences give actual whole polynomial Proj isomorphisms]
 \label{scheme:actual-polynomial-proj-reindexing}
-\lean{EnvelopeProperty.PolynomialProj.renameGraded,
-EnvelopeProperty.PolynomialProj.renameGraded_irrelevant_le,
-EnvelopeProperty.PolynomialProj.standardSchemeIso,
-EnvelopeProperty.PolynomialProj.standardSchemeIso_hom_comp_projection}
 \leanok
 \uses{scheme:actual-polynomial-proj-proper,projective:support,projective:native-homogeneous-chart-isomorphism,projective:native-structure-morphism}
 For ANY commutative coefficient ring $A$ and a genuine variable equivalence
@@ -38,7 +34,6 @@ morphisms, including all section maps.
 
 \begin{lemma}[The empty-variable polynomial Proj is actually empty]
 \label{scheme:actual-polynomial-proj-empty-index}
-\lean{EnvelopeProperty.PolynomialProj.scheme_isEmpty}
 \leanok
 \uses{projective:support}
 For an ACTUALLY empty variable type, the actual original polynomial Proj scheme
@@ -55,8 +50,6 @@ not a supplied empty-space certificate.
 
 \begin{theorem}[Arbitrary finite-variable original projective projections are native-proper]
 \label{scheme:finite-polynomial-proj-native-proper}
-\lean{EnvelopeProperty.PolynomialProj.isProperMap_map_projection,
-EnvelopeProperty.PolynomialProj.isClosedMap_map_projection}
 \leanok
 \uses{scheme:actual-polynomial-proj-reindexing,scheme:actual-polynomial-proj-empty-index,scheme:native-polynomial-projective-proper,scheme:valued-open-embedding}
 For ANY finite variable type, the SAME original polynomial Proj projection
@@ -78,10 +71,6 @@ normalization, enumeration or proper-map certificate.
 
 \begin{theorem}[The original finite-family Rees native projection is proper]
 \label{scheme:original-finite-rees-native-proper}
-\lean{EnvelopeProperty.ReesPresentation.isProperMap_map_projection,
-EnvelopeProperty.ReesPresentation.isClosedMap_map_projection,
-EnvelopeProperty.ReesPresentation.isProperMap_relativeMap_projection,
-EnvelopeProperty.ReesPresentation.isClosedMap_relativeMap_projection}
 \leanok
 \uses{scheme:finite-polynomial-proj-native-proper,scheme:actual-rees-presentation-proper,scheme:native-closed-immersion,scheme:relative-valued-points}
 For ANY commutative ring $A$ and ANY actual finite original family $g_i$, the

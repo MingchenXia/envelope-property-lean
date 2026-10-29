@@ -6,7 +6,7 @@ Write $\mathfrak p_x=\{a:|a|_x=0\}$. This is a prime ideal. The
 constructions below use this actual support, with no field structure or
 trivial valuation assumed on the coefficient ring.
 
-\begin{definition}[Residue field and induced seminorm]
+\begin{definition}[Residue field and induced seminorm {\cite[\S2.1]{FHX}}]
 \label{spectrum:residue-field}
 \lean{EnvelopeProperty.Berkovich.Spectrum.ResidueField,
 EnvelopeProperty.Berkovich.Spectrum.residueValuation,
@@ -15,7 +15,6 @@ EnvelopeProperty.Berkovich.Spectrum.residueAbs,
 EnvelopeProperty.Berkovich.Spectrum.isNonarchimedean_residueAbs}
 \leanok
 \uses{spectrum:support}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 Set $\kappa(x)=\operatorname{Frac}(A/\mathfrak p_x)$.
 There is a multiplicative ultrametric absolute value on $\kappa(x)$
 extending $|\cdot|_x$ on $A$.
@@ -31,7 +30,7 @@ retains the stronger ultrametric inequality. The quotient and localization
 maps preserve the seminorm of every original element of $A$.
 \end{proof}
 
-\begin{definition}[Completed residue field]
+\begin{definition}[Completed residue field {\cite[Lemma~5.13]{FHX}}]
 \label{spectrum:completed-residue-field}
 \lean{EnvelopeProperty.Berkovich.Spectrum.H,
 EnvelopeProperty.Berkovich.Spectrum.residueToH,
@@ -42,7 +41,6 @@ EnvelopeProperty.Berkovich.Spectrum.norm_toH,
 EnvelopeProperty.Berkovich.Spectrum.ker_toH}
 \leanok
 \uses{spectrum:residue-field}
-\source{fhx-envelope-20261028:lem:finite-flat-norm}
 The completed residue field $\mathcal H(x)$ is the completion of
 $\kappa(x)$ in the induced absolute value. It is a complete nonarchimedean
 normed field. The canonical ring homomorphism $\iota_x:A\to\mathcal H(x)$

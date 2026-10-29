@@ -1,6 +1,6 @@
 #!/bin/bash
 # Restore the compiled Lake artifacts of this repository from the published build cache
-# (see ../../BUILD-CACHE.md). Unpacks <package>/.lake/build of every package of the release.
+# (see ../../BUILD-CACHE.md). Unpacks .lake/build and vendor/*/.lake/build.
 #
 #   scripts/build-cache/restore.sh                 # from the orphan branch `build-cache` of origin
 #   scripts/build-cache/restore.sh --release TAG   # from the assets of GitHub release TAG (gh CLI)
@@ -10,8 +10,8 @@
 # streamed through `xz -d | tar -x`; besides the download (release/dir modes) only the unpacked
 # size (about 3.5 GB) of free disk is needed.
 #
-# Mathlib and its dependencies are not part of the cache: run `cd EnvelopeProperty && lake exe cache
-# get` (before or after this script). In an environment that already provides the Mathlib packages
+# Mathlib and its dependencies are not part of the cache: run `lake exe cache get` (before or after
+# this script). In an environment that already provides the Mathlib packages
 # at the pinned revisions, set MATHLIB_PACKAGES=/path/to/.lake/packages to symlink them instead.
 set -euo pipefail
 ROOT=$(cd "$(dirname "$0")/../.." && pwd)
@@ -57,10 +57,10 @@ done
 echo "all $n_got chunks verified; unpacking" >&2
 for c in $chunks; do emit "$c"; done | xz -d -T0 | tar -xf - -C "$ROOT"
 
-if [ -n "${MATHLIB_PACKAGES:-}" ] && [ ! -e EnvelopeProperty/.lake/packages ]; then
-  ln -s "$MATHLIB_PACKAGES" EnvelopeProperty/.lake/packages
+if [ -n "${MATHLIB_PACKAGES:-}" ] && [ ! -e .lake/packages ]; then
+  mkdir -p .lake && ln -s "$MATHLIB_PACKAGES" .lake/packages
 fi
-if [ ! -d EnvelopeProperty/.lake/packages/mathlib/.lake/build ]; then
-  echo "note: Mathlib oleans not found; run: cd EnvelopeProperty && lake exe cache get" >&2
+if [ ! -d .lake/packages/mathlib/.lake/build ]; then
+  echo "note: Mathlib oleans not found; run: lake exe cache get" >&2
 fi
-echo "restored; check with: cd EnvelopeProperty && lake build --no-build" >&2
+echo "restored; check with: lake build --no-build" >&2

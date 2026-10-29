@@ -44,11 +44,10 @@ valuation and $\operatorname{ord}_V(\mathfrak a)=\min_{g\in\mathfrak a}\operator
 
 \subsection{Fubini--Study and psh functions}
 
-\begin{lemma}[Operations on Fubini--Study functions]\label{lem:bj-fs-basic}
+\begin{lemma}[Operations on Fubini--Study functions {\cite[Proposition~2.19, Lemma~2.17]{BJ22}}]\label{lem:bj-fs-basic}
 \lean{EnvelopeProperty.ProjBerk.IsRatFS.mono_class, EnvelopeProperty.ProjBerk.isRatFS_smul_iff, EnvelopeProperty.ProjBerk.IsRatFS.max_const, EnvelopeProperty.ProjBerk.IsFS.exists_antitone_finiteRatFS}
 \leanok
 \uses{def:pn-psh}
-\source{bj22-trivval:prop:FS, bj22-trivval:lem:FSgenfin}
 Let $a\le a'$ be nonnegative rationals.
 \begin{enumerate}
 \item $\mathcal H^{\mathrm{gf}}_\R(a)\subseteq\mathcal H^{\mathrm{gf}}_\R(a')$, and the same holds for
@@ -74,10 +73,9 @@ $\varphi_N=\max\{m^{-1}\max_j(\log|s_j|+\lambda_j^{(N)}),-N\}$, which lies in $\
 and decreases to $\varphi$.
 \end{proof}
 
-\begin{lemma}[Decreasing limits of decreasing limits]\label{lem:bj-psh-diagonal}
+\begin{lemma}[Decreasing limits of decreasing limits {\cite[Lemma~4.6]{BJ22}}]\label{lem:bj-psh-diagonal}
 \lean{EnvelopeProperty.IsDecrNetLimit.of_antitone_of_finite, EnvelopeProperty.IsDecrNetLimit.of_antitone, EnvelopeProperty.IsDecrNetLimit.of_antitone_of_finite_rat}
 \leanok
-\source{bj22-trivval:lem:PSH}
 Let $K$ be a compact space, $S$ a set, $\rho\colon S\to T$ a map to a metric space, and for each
 $s\in S$ let $\mathcal F_s$ be a family of continuous functions $K\to\R$ stable under addition of
 positive rational constants. For $t\in T$ let $\widetilde{\mathcal F}_t$ be the set of pointwise limits
@@ -117,11 +115,10 @@ applications to finite-valued Fubini--Study functions (proof of Theorem~\ref{thm
 positive rational constants are added in the proof, so rational weights are preserved.
 \end{remark}
 
-\begin{theorem}[PSH2]\label{thm:bj-psh2}
+\begin{theorem}[PSH2 {\cite[Theorem~4.5]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{thm:bj-psh2}
 \lean{EnvelopeProperty.ProjBerk.isPSH_of_antitone, EnvelopeProperty.ProjBerk.isPSH_of_tendsto_of_antitone, EnvelopeProperty.ProjBerk.isPSH_of_antitone_seq}
 \leanok
 \uses{lem:bj-psh-diagonal, lem:bj-fs-basic}
-\source{bj22-trivval:thm:psh12, fhx-envelope-20261028:prop:BJ-package}
 \begin{enumerate}
 \item A function $u\not\equiv-\infty$ is $\theta$-psh if and only if it is the pointwise limit of a
 decreasing net $u_i\in\mathcal H_\Q(a_i)$ with $a_i\in\Q$, $a_i\to\theta$.
@@ -139,11 +136,10 @@ infimum of continuous functions, and is $\theta$-psh by definition. (2) By (1) e
 Lemma~\ref{lem:bj-psh-diagonal}, $u\in\widetilde{\mathcal F}_\theta$, and (1) applies.
 \end{proof}
 
-\begin{theorem}[Basic properties]\label{thm:bj-psh-basic}
-\lean{EnvelopeProperty.ProjBerk.IsPSH.add, EnvelopeProperty.ProjBerk.IsPSH.smul, EnvelopeProperty.ProjBerk.IsPSH.max, EnvelopeProperty.ProjBerk.IsPSH.add_const, EnvelopeProperty.ProjBerk.isPSH_of_uniform_limit, EnvelopeProperty.ProjBerk.IsPSH.scaleFun, EnvelopeProperty.ProjBerk.IsPSH.exists_common_net, EnvelopeProperty.ProjBerk.IsPSH.convexComp}
+\begin{theorem}[Basic properties {\cite[Theorem~4.7, Lemma~4.9]{BJ22}}]\label{thm:bj-psh-basic}
+\lean{EnvelopeProperty.ProjBerk.IsPSH.add, EnvelopeProperty.ProjBerk.IsPSH.smul, EnvelopeProperty.ProjBerk.IsPSH.max, EnvelopeProperty.ProjBerk.IsPSH.add_const, EnvelopeProperty.ProjBerk.isPSH_of_uniform_limit, EnvelopeProperty.ProjBerk.IsPSH.scaleFun, EnvelopeProperty.ProjBerk.IsPSH.exists_common_net}
 \leanok
 \uses{thm:bj-psh2, lem:bj-fs-basic, prop:bj-maxprin}
-\source{bj22-trivval:thm:PSH, bj22-trivval:lem:twopsh}
 Let $\theta,\theta'\ge0$.
 \begin{enumerate}
 \item $\PSH(\theta)+\PSH(\theta')\subseteq\PSH(\theta+\theta')$ and $t\PSH(\theta)=\PSH(t\theta)$ for $t>0$.
@@ -165,11 +161,10 @@ $t_mu$ decrease to $tu$, and PSH2 applies. Uniform limits: if $u_m\to u$ uniform
 $u_m+3\cdot2^{-m}$ decreases to $u$, which is finite wherever the $u_m$ are, and PSH2 applies.
 \end{proof}
 
-\begin{proposition}[Monotonicity and maximum principle]\label{prop:bj-maxprin}
+\begin{proposition}[Monotonicity and maximum principle {\cite[Proposition~4.12, Lemma~1.4]{BJ22}}]\label{prop:bj-maxprin}
 \lean{EnvelopeProperty.ProjBerk.IsPSH.antitone, EnvelopeProperty.ProjBerk.IsPSH.iSup_eq, EnvelopeProperty.ProjBerk.IsPSH.rpow_convex, EnvelopeProperty.ProjBerk.IsPSH.apply_triv_eq_zero}
 \leanok
 \uses{thm:bj-psh2}
-\source{bj22-trivval:prop:pshconvex, bj22-trivval:lem:maxprin}
 Order $(\PP^n)^\an$ by $v\le w$ if $|f|_w\le|f|_v$ for all $f\in R$. Every $u\in\PSH(\theta)$ is
 decreasing for this order, $\vtriv$ is its least element, and $\sup u=u(\vtriv)\in\R$.
 \end{proposition}
@@ -181,11 +176,10 @@ is graded, $\vtriv\le v$ for all $v$. Thus $u\le u(\vtriv)$, which is finite sin
 and $u<+\infty$.
 \end{proof}
 
-\begin{lemma}[Envelopes]\label{lem:bj-env-basic}
+\begin{lemma}[Envelopes {\cite[\S2.3]{FHX}}]\label{lem:bj-env-basic}
 \lean{EnvelopeProperty.ProjBerk.envelope_add_const, EnvelopeProperty.ProjBerk.envelope_mul}
 \leanok
 \uses{thm:bj-psh-basic}
-\source{fhx-envelope-20261028:subsec:prelim-envelopes}
 For $\theta\ge0$ and bounded $\phi$: $\mathrm P_\theta$ is increasing,
 $\mathrm P_\theta(\phi+c)=\mathrm P_\theta(\phi)+c$ for $c\in\R$, and
 $\mathrm P_{t\theta}(t\phi)=t\,\mathrm P_\theta(\phi)$ for $t>0$.
@@ -199,11 +193,10 @@ in the corresponding form.
 
 \subsection{Regularization}
 
-\begin{theorem}[Regularization]\label{thm:bj-regularization}
+\begin{theorem}[Regularization {\cite[Theorem~4.15]{BJ22}}]\label{thm:bj-regularization}
 \lean{EnvelopeProperty.ProjBerk.IsPSH.exists_finiteRatFS_net, EnvelopeProperty.ProjBerk.IsPSH.exists_finiteRatFS_net_of_rat}
 \leanok
 \uses{thm:bj-psh2, thm:bj-psh-basic, prop:bj-maxprin, lem:bj-psh-diagonal}
-\source{bj22-trivval:thm:pshample}
 Let $\theta\ge0$ and $u\in\PSH(\theta)$.
 \begin{enumerate}
 \item $u$ is the limit of a decreasing net $u_\alpha\in\mathcal H_\Q(a_\alpha)$ with $a_\alpha\in\Q$,
@@ -240,11 +233,10 @@ above the given sequence). If $\inf_mu_{i_m}(z)>q>u(z)$ for some $z$ and $q\in\Q
 $u_{i'}(z)<q$ for some $i'=i'_m\in I_q$, and $u_{i_m}(z)\le u_{i'_m}(z)<q$, a contradiction.
 \end{proof}
 
-\begin{corollary}[Countable regularization]\label{cor:bj-countable-regularization}
+\begin{corollary}[Countable regularization {\cite[Corollary~12.18]{BJ22}}]\label{cor:bj-countable-regularization}
 \lean{EnvelopeProperty.ProjBerk.IsPSH.exists_finiteRatFS_seq, EnvelopeProperty.ProjBerk.IsPSH.exists_finiteRatFS_seq_of_rat}
 \leanok
 \uses{thm:bj-regularization, lem:bj-lindelof, lem:polydisc-compact}
-\source{bj22-trivval:cor:countreg}
 Assume $k$ countable. In Theorem~\ref{thm:bj-regularization} the nets can be replaced by sequences.
 \end{corollary}
 
@@ -260,16 +252,15 @@ the $i_m$ above indices beyond which $|a_\alpha-\theta|<1/m$.
 strong topology of \cite[\S\S7--12]{BJ22}. Countability of $k$ is the convention of Section~5 of
 \cite{FHX}, where sequences are needed (regularizable functions and locally psh functions are defined by
 sequences); Section~3 of \cite{FHX} takes decreasing limits only of sequences of Fubini--Study functions (by the definition of psh
-functions, \cite[Definition~4.1]{BJ22}; by PSH2 in revision \texttt{832e086}) and uses no countable regularization.
+functions, \cite[Definition~4.1]{BJ22}) and uses no countable regularization.
 \end{remark}
 
 \subsection{PL functions and the envelope criterion}
 
-\begin{lemma}[PL functions form a separating lattice]\label{lem:bj-pl-lattice}
+\begin{lemma}[PL functions form a separating lattice {\cite[Lemma~2.3]{BJ22}}]\label{lem:bj-pl-lattice}
 \lean{EnvelopeProperty.ProjBerk.IsRatPL.max, EnvelopeProperty.ProjBerk.IsRatPL.min, EnvelopeProperty.ProjBerk.exists_isRatPL_ne}
 \leanok
 \uses{lem:bj-fs-basic, def:pn-ep}
-\source{bj22-trivval:lem:FSdense}
 $\operatorname{PL}$ is a $\Q$-vector space of continuous real functions, contains the rational constants,
 is stable under finite maxima and minima, and separates the points of $(\PP^n)^\an$.
 \end{lemma}
@@ -283,11 +274,10 @@ there is a homogeneous such $f=s\in R_d$. Then $\max\{\log|s|,-N\}=\max\{\log|s|
 lies in $\mathcal H_\Q(d)$ and separates $v$ and $w$ for $N$ large.
 \end{proof}
 
-\begin{theorem}[Density of PL functions]\label{thm:bj-pl-dense}
+\begin{theorem}[Density of PL functions {\cite[Theorem~2.2]{BJ22}}]\label{thm:bj-pl-dense}
 \lean{EnvelopeProperty.ProjBerk.exists_isRatPL_abs_sub_lt, EnvelopeProperty.ProjBerk.dense_setOf_isRatPL}
 \leanok
 \uses{lem:bj-pl-lattice}
-\source{bj22-trivval:thm:PLdense}
 $\operatorname{PL}$ is dense in $C^0((\PP^n)^\an,\R)$ for uniform convergence.
 \end{theorem}
 
@@ -316,11 +306,10 @@ $g\ge r>h$ off $F$, $g=C+1>h$ on $F$, and $g(x)=r$. By Theorem~\ref{thm:bj-pl-de
 with $|\psi-(g+2\delta)|<\delta$; then $\psi>h$ and $\psi(x)<r+3\delta$.
 \end{proof}
 
-\begin{lemma}[Approximation of classes]\label{lem:bj-envppty}
+\begin{lemma}[Approximation of classes {\cite[Lemma~5.9]{BJ22}}]\label{lem:bj-envppty}
 \lean{EnvelopeProperty.ProjBerk.HasEnvelopeProperty.of_tendsto, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_forall_rat_gt}
 \leanok
 \uses{thm:bj-psh2, thm:bj-psh-basic}
-\source{bj22-trivval:lem:envppty}
 If $\theta\ge0$ is the limit of classes $\theta_j\ge\theta$ having the envelope property, then $\theta$ has
 the envelope property.
 \end{lemma}
@@ -332,11 +321,10 @@ sequence $u$ is decreasing, $\theta_j\to\theta$, and $u\ge u_{i_0}\not\equiv-\in
 $u\in\PSH(\theta)$.
 \end{proof}
 
-\begin{proposition}[Envelope property via PL obstacles]\label{prop:bj-envelope-criterion}
+\begin{proposition}[Envelope property via PL obstacles {\cite[Proposition~2.5]{FHX}, \cite[Lemma~1.3]{BJadd}}]\label{prop:bj-envelope-criterion}
 \lean{EnvelopeProperty.ProjBerk.HasEnvelopeProperty.isPSH_envelope, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_forall_isRatPL, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_iff_forall_isRatPL}
 \leanok
 \uses{lem:bj-usc-pl, thm:bj-psh2, lem:bj-env-basic}
-\source{fhx-envelope-20261028:prop:ample-envelopes, bj22-addendum:lem:contenv}
 For $\theta\ge0$ the following are equivalent: (i) $\theta$ has the envelope property; (ii)
 $\mathrm P_\theta(\phi)\in\PSH(\theta)$ for every $\phi\in\operatorname{PL}$.
 \end{proposition}
@@ -354,11 +342,10 @@ net of $\theta$-psh functions with infimum $h\not\equiv-\infty$; PSH2 gives $h\i
 
 \subsection{Fubini--Study envelopes and the ideals \texorpdfstring{$J_m$}{Jm}}
 
-\begin{lemma}[Fubini--Study envelopes]\label{lem:bj-fs-envelope}
+\begin{lemma}[Fubini--Study envelopes {\cite[Lemma~5.19]{BJ22}, \cite[Proposition~2.5]{FHX}, \cite[Lemma~1.5]{BJadd}}]\label{lem:bj-fs-envelope}
 \lean{EnvelopeProperty.ProjBerk.envelope_eq_iSup_finiteRatFS, EnvelopeProperty.ProjBerk.envelope_coe_eq_iSup_finiteRatFS}
 \leanok
 \uses{thm:bj-regularization, lem:bj-fs-basic}
-\source{bj22-trivval:lem:envlsc, fhx-envelope-20261028:prop:ample-envelopes, bj22-addendum:lem:FSenv}
 Let $a\in\Q_{>0}$ and $\phi\colon(\PP^n)^\an\to\R$ bounded and lsc. Then
 $\mathrm P_a(\phi)=\sup\{\psi\in\mathcal H_\Q(a):\psi\le\phi\}$.
 \end{lemma}
@@ -375,11 +362,10 @@ with $\mathrm Q$ the right-hand side; letting $\alpha\to\infty$ at each point an
 $\tau\le\mathrm Q$.
 \end{proof}
 
-\begin{definition}[The ideals $J_m$]\label{def:bj-Jm}
+\begin{definition}[The ideals $J_m$ {\cite[\S3]{FHX}}]\label{def:bj-Jm}
 \lean{EnvelopeProperty.ProjBerk.obstacleSpace, EnvelopeProperty.ProjBerk.obstacleIdeal, EnvelopeProperty.ProjBerk.mem_obstacleSpace}
 \leanok
 \uses{def:pn-gauss}
-\source{fhx-envelope-20261028:sec:smooth}
 Let $d\in\mathbf{Z}_{>0}$ and $\phi\colon(\PP^n)^\an\to\R$. For $m\ge1$ let $V_m(\phi)\subseteq R_{md}[t]$ be the set of
 $g$, homogeneous of $x$-degree $md$, with $\log|g|_{\sigma(v)}\le m\,\phi(v)$ for all $v$, and let
 $J_m(\phi)\subseteq R[t]$ be the ideal generated by $V_m(\phi)$.
@@ -406,11 +392,10 @@ $|\cdot|_{\sigma(v)}\le1$, so $\phi_{J_m}=\max_\ell\log|g_\ell|_{\sigma(\cdot)}
 weights, and $\le m\phi$.
 \end{proof}
 
-\begin{proposition}[Envelopes of PL obstacles]\label{prop:bj-envelope-Jm}
+\begin{proposition}[Envelopes of PL obstacles {\cite[Proposition~2.5]{FHX}, \cite[Lemma~5.22]{BJ22}}]\label{prop:bj-envelope-Jm}
 \lean{EnvelopeProperty.ProjBerk.envelope_eq_iSup_obstacleIdeal}
 \leanok
 \uses{lem:bj-fs-envelope, lem:bj-Jm-basic}
-\source{fhx-envelope-20261028:prop:ample-envelopes, bj22-trivval:lem:envline}
 Let $d\in\mathbf{Z}_{>0}$ and $\phi\colon(\PP^n)^\an\to\R$ bounded, lsc, with $\phi\le0$. Then
 $\mathrm P_d(\phi)=\sup_{m\ge1}m^{-1}\phi_{J_m(\phi)}$ pointwise, and $m^{-1}\phi_{J_m}\le
 (mr)^{-1}\phi_{J_{mr}}$ for $r\ge1$.
@@ -458,11 +443,10 @@ $(fg)_{d_0+e_0}=f_{d_0}g_{e_0}+\sum f_dg_e$ the other terms have $d>d_0$ or $e>e
 $N((fg)_{d_0+e_0})=|f||g|$.
 \end{proof}
 
-\begin{lemma}[Affine charts]\label{lem:bj-chart}
-\lean{EnvelopeProperty.ProjBerk.chartAlg, EnvelopeProperty.ProjBerk.finiteType_chartAlg, EnvelopeProperty.ProjBerk.chartHomeomorph, EnvelopeProperty.ProjBerk.stdChart, EnvelopeProperty.ProjBerk.mulChart, EnvelopeProperty.ProjBerk.awayComap_mulChart, EnvelopeProperty.ProjBerk.isIntegrallyClosed_chartAlg, EnvelopeProperty.ProjBerk.isIntegrallyClosed_chartAlg_and}
+\begin{lemma}[Affine charts {\cite[\S5]{FHX}}]\label{lem:bj-chart}
+\lean{EnvelopeProperty.ProjBerk.chartAlg, EnvelopeProperty.ProjBerk.finiteType_chartAlg, EnvelopeProperty.ProjBerk.chartHomeomorph, EnvelopeProperty.ProjBerk.stdChart, EnvelopeProperty.ProjBerk.mulChart, EnvelopeProperty.ProjBerk.awayComap_mulChart}
 \leanok
 \uses{lem:bj-graded-extension, def:berk, lem:principal-open}
-\source{fhx-envelope-20261028:sec:normal-local-regularization}
 Let $0\ne\sigma\in R_e$, $e\ge1$, and $A_\sigma=(R_\sigma)_0$, the degree-zero part of the localization.
 \begin{enumerate}
 \item $A_\sigma$ is a finitely generated integrally closed domain, generated by the $x^\alpha/\sigma$ with
@@ -492,11 +476,10 @@ second as composites of continuous operations on the values $|f|_y$). (3) is the
 together with $\max_{|\alpha|=e}|x^\alpha|_v=1$. (4) $|\sigma|_{\vtriv}=1$.
 \end{proof}
 
-\begin{definition}[Divisorial points]\label{def:pn-div}
+\begin{definition}[Divisorial points {\cite[\S2.1]{FHX}, \cite[\S1.3]{BJ22}}]\label{def:pn-div}
 \lean{EnvelopeProperty.BirationalDVR, EnvelopeProperty.ProjBerk.IsDivisorial}
 \leanok
 \uses{def:pn-gauss}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich, bj22-trivval:sec:Gauss}
 A point $v\in(\PP^n)^\an$ is \emph{divisorial} if there are $c\in\Q_{>0}$ and a discrete valuation ring
 $R'$ with $k[x_0,\dots,x_n,t]\subseteq R'\subseteq k(x_0,\dots,x_n,t)$, essentially of finite type over $k$,
 such that $\log|g|_{\sigma(v)}=-c\operatorname{ord}_{R'}(g)$ for all $g\in R[t]$. We write $(\PP^n)^{\divv}$ for the set of
@@ -599,11 +582,10 @@ the nonzero module $(fE+hE)/hE$ has an associated prime $P=(hE:bf)$, which is as
 $f\in hE_P$ then $sbf\in hE$ for some $s\notin P$, a contradiction. So $f\notin hE_P$ for that $P$.
 \end{proof}
 
-\begin{definition}[Rees valuation rings]\label{def:bj-rees}
+\begin{definition}[Rees valuation rings {\cite[Definition~2.10]{BJ22}}]\label{def:bj-rees}
 \lean{EnvelopeProperty.reesChart, EnvelopeProperty.reesNormalChart, EnvelopeProperty.ReesIndex, EnvelopeProperty.reesValuationRing, EnvelopeProperty.isDiscreteValuationRing_reesValuationRing, EnvelopeProperty.finite_reesIndex, EnvelopeProperty.essFiniteType_reesValuationRing}
 \leanok
 \uses{thm:bj-normalization-finite}
-\source{bj22-trivval:defi:Rees}
 Let $B$ be a finitely generated $k$-domain and $I=(g_1,\dots,g_s)$ with all $g_\ell\ne0$. Let
 $D_\ell=B[g_1/g_\ell,\dots,g_s/g_\ell]\subseteq\operatorname{Frac}B$ and $E_\ell$ its integral closure. The
 \emph{Rees valuation rings} $\mathrm{RV}(I;g)$ are the localizations $(E_\ell)_P$, $1\le\ell\le s$, $P$ a
@@ -612,11 +594,10 @@ Lemma~\ref{lem:bj-dvr-minimal} this is a finite set of discrete valuation rings 
 of finite type over $k$, and $\operatorname{ord}_V(I)=\operatorname{ord}_V(g_\ell)$ for $V=(E_\ell)_P$ (as $g_i/g_\ell\in V$).
 \end{definition}
 
-\begin{theorem}[Rees valuations detect integral closure]\label{thm:bj-rees}
+\begin{theorem}[Rees valuations detect integral closure {\cite[Lemma~1.23, Lemma~2.13]{BJ22}}]\label{thm:bj-rees}
 \lean{EnvelopeProperty.valuation_le_pow_of_forall_dvd, EnvelopeProperty.valuation_le_sup_pow_of_forall_dvd, EnvelopeProperty.isGreatest_valuation_span_pow, EnvelopeProperty.exists_dvd_iff_addVal_le}
 \leanok
 \uses{def:bj-rees, lem:bj-dvr-minimal, thm:bj-normalization-finite}
-\source{bj22-trivval:lem:CLT, bj22-trivval:lem:Shilov}
 In the setting of Definition~\ref{def:bj-rees}, let $w$ be a multiplicative ultrametric seminorm on $B$ with
 $|b|_w\le1$ for $b\in B$ and $\max_\ell|g_\ell|_w>0$. Let $F\in B$ and $r\in\N$ with
 $\operatorname{ord}_V(F)\ge r\operatorname{ord}_V(I)$ for all $V\in\mathrm{RV}(I;g)$. Then $|F|_w\le\max_\ell|g_\ell|_w^r
@@ -655,11 +636,10 @@ $\operatorname{ord}_V(f_\lambda t^\lambda)\ge\operatorname{ord}_V(f)$. The rever
 
 \subsection{The Shilov lemma and divisorial comparison}
 
-\begin{lemma}[Finite Fubini--Study functions]\label{lem:bj-finite-fs}
+\begin{lemma}[Finite Fubini--Study functions {\cite[Proposition~2.25]{BJ22}}]\label{lem:bj-finite-fs}
 \lean{EnvelopeProperty.ProjBerk.X_mem_radical_span, EnvelopeProperty.ProjBerk.X_pow_mem_span_dehomGen, EnvelopeProperty.ProjBerk.IsFiniteRatFS.exists_coneSup}
 \leanok
 \uses{lem:bj-graded-extension, def:pn-gauss}
-\source{bj22-trivval:prop:FSideal}
 Let $\psi=m^{-1}\max_i(\log|s_i|+\lambda_i)\in\mathcal H_\Q(b)$ with $0\ne s_i\in R_{mb}$, $\lambda_i\in\mathbf{Z}_{\le0}$,
 $\max_i\lambda_i=0$. Then $\mathfrak m^e\subseteq(s_i)_i$ for some $e$; the ideal $I\subseteq R[t]$ generated by
 the $g_i=s_it^{-\lambda_i}$ satisfies $\phi_I=m\psi$, $x_j^et^{N}\in I$ for $N=\max_i(-\lambda_i)$ and all $j$, and
@@ -674,11 +654,10 @@ $\sqrt{(s_i)}\supseteq\mathfrak m$. Then $\phi_I=\max_i\log|g_i|_{\sigma(\cdot)}
 $x^\alpha=\sum_ic_is_i$ gives $x^\alpha t^N=\sum_ic_it^{N+\lambda_i}g_i$ for $|\alpha|=e$.
 \end{proof}
 
-\begin{lemma}[Shilov boundary]\label{lem:bj-shilov}
+\begin{lemma}[Shilov boundary {\cite[Lemma~2.13]{BJ22}}]\label{lem:bj-shilov}
 \lean{EnvelopeProperty.ProjBerk.IsFiniteRatFS.exists_finset_iSup_sub_eq, EnvelopeProperty.ProjBerk.isDivisorial_reesPoint}
 \leanok
 \uses{lem:bj-finite-fs, thm:bj-rees, lem:bj-rees-invariant, lem:bj-div-points}
-\source{bj22-trivval:lem:Shilov}
 For every $\psi\in\mathcal H_\Q(b)$ there is a finite set $\Sigma\subseteq(\PP^n)^{\divv}$ containing $\vtriv$
 such that for every $a\in\Q_{\ge0}$ and every $\varphi\in\mathcal H^{\mathrm{gf}}_\Q(a)$,
 $\sup_{(\PP^n)^\an}(\varphi-\psi)=\max_\Sigma(\varphi-\psi)$.
@@ -704,11 +683,10 @@ $\max_i|g_i^{(j)}|_w\ge|t^N|_w>0$. Theorem~\ref{thm:bj-rees} gives
 $\log|F_\ell|_{\sigma(v)}=\log|F_\ell^{(j)}|_w\le\phi_{I^{rM}}(v)$.
 \end{proof}
 
-\begin{lemma}[Suprema against PL functions]\label{lem:bj-sup-pl}
+\begin{lemma}[Suprema against PL functions {\cite[Lemma~4.26]{BJ22}}]\label{lem:bj-sup-pl}
 \lean{EnvelopeProperty.ProjBerk.IsRatPL.exists_finset_iSup_sub_eq}
 \leanok
 \uses{lem:bj-shilov, thm:bj-regularization}
-\source{bj22-trivval:lem:supPL}
 For every $\psi\in\operatorname{PL}$ there is a finite $\Sigma\subseteq(\PP^n)^{\divv}$ such that
 $\sup(u-\psi)=\max_\Sigma(u-\psi)$ for every $\theta\ge0$ and every $u\in\PSH(\theta)$.
 \end{lemma}
@@ -721,11 +699,10 @@ $(u-\psi)(v)\le(u_\alpha+\psi_2-\psi_1)(v)\le\max_\Sigma(u_\alpha-\psi)$. As $\S
 decreases to $u$ pointwise, the right side tends to $\max_\Sigma(u-\psi)$.
 \end{proof}
 
-\begin{theorem}[Divisorial comparison]\label{thm:bj-divisorial-comparison}
+\begin{theorem}[Divisorial comparison {\cite[Theorem~4.22, Corollary~4.23]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{thm:bj-divisorial-comparison}
 \lean{EnvelopeProperty.ProjBerk.IsPSH.le_of_forall_isDivisorial_le, EnvelopeProperty.ProjBerk.IsPSH.eq_of_forall_isDivisorial_eq}
 \leanok
 \uses{lem:bj-sup-pl, thm:bj-pl-dense, lem:bj-usc-pl}
-\source{bj22-trivval:thm:suppsh, bj22-trivval:cor:Hausdorff, fhx-envelope-20261028:prop:BJ-package}
 Let $\theta\ge0$, $u\in\PSH(\theta)$ and $h\colon(\PP^n)^\an\to[-\infty,\infty)$ usc. If $u\le h$ on
 $(\PP^n)^{\divv}$, then $u\le h$ everywhere. In particular a $\theta$-psh function is determined by its
 restriction to $(\PP^n)^{\divv}$.
@@ -737,11 +714,10 @@ since $\Sigma\subseteq(\PP^n)^{\divv}$. So $u\le\psi$ for all such $\psi$, and $
 Lemma~\ref{lem:bj-usc-pl}. For the last claim apply this to two psh functions in both directions.
 \end{proof}
 
-\begin{proposition}[Increasing nets]\label{prop:bj-ep-criterion}
+\begin{proposition}[Increasing nets {\cite[Proposition~2.4]{FHX}, \cite[Theorem~5.11]{BJ22}}]\label{prop:bj-ep-criterion}
 \lean{EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_forall_monotone, EnvelopeProperty.ProjBerk.IsPSH.eq_uscReg_iSup}
 \leanok
 \uses{thm:bj-divisorial-comparison}
-\source{fhx-envelope-20261028:prop:EP-criterion, bj22-trivval:thm:envppty}
 Let $\theta\ge0$. If every bounded-above increasing net $(u_i)$ in $\PSH(\theta)$ admits $u\in\PSH(\theta)$ with
 $u=\sup_iu_i$ on $(\PP^n)^{\divv}$, then $\theta$ has the envelope property. For any such net and $u$,
 $u=(\sup_iu_i)^\star$.
@@ -764,7 +740,7 @@ point as a Rees valuation of a flag ideal (\cite[Lemma~2.15]{BJ22}, via \cite[Le
 interpolation at Rees valuations (\cite[Lemmas~2.18, 2.19]{BJ22}, via relative ampleness on the normalized
 blowup) and the finiteness of psh functions at divisorial points (\cite[Proposition~1.28,
 Corollary~4.17]{BJ22}, via intersection numbers on a normal model). This direction is used in
-\cite[\S\S4, 6--8]{FHX} for general $X$ (\S\S4, 6, 7 in revision \texttt{832e086}), but neither in \cite[\S3]{FHX} nor in \cite[\S5]{FHX} for $X=\PP^n$.
+\cite[\S\S4, 6--8]{FHX} for general $X$, but neither in \cite[\S3]{FHX} nor in \cite[\S5]{FHX} for $X=\PP^n$.
 The finiteness of psh functions on $X^{\divv}$ in \cite[Proposition~2.1(2)]{FHX} is likewise not used on
 $\PP^n$: Section~5 only uses finiteness at $\vtriv$.
 \end{remark}
@@ -817,11 +793,10 @@ In this subsection $P=\PP^n$, $0\ne\sigma\in R_e$ with $e\ge1$, $S=P_\sigma$, $A
 $\iota_\sigma$ are as in Lemma~\ref{lem:bj-chart}, and we identify $S^\an$ with $U_\sigma$ through
 $\iota_\sigma$. For $c\in\Q_{>0}$ the class $c\,\mathcal O_P(e)$ is $ce\in\Q$.
 
-\begin{lemma}[Compactification, part (1)]\label{lem:bj-compactification-regularize}
+\begin{lemma}[Compactification, part (1) {\cite[Lemma~5.10]{FHX}}]\label{lem:bj-compactification-regularize}
 \lean{EnvelopeProperty.ProjBerk.IsPSH.exists_chartFS, EnvelopeProperty.ProjBerk.IsPSH.isRegularizable_chart, EnvelopeProperty.ProjBerk.IsPSH.isRegularizable_mulChart}
 \leanok
 \uses{lem:bj-chart, cor:bj-countable-regularization, def:fs, lem:bj-fs-basic}
-\source{fhx-envelope-20261028:lem:compactification}
 Assume $k$ countable. Let $c\in\Q_{>0}$ and $\Phi\in\PSH(ce)$. There are $u_j\in\FS(S)$ decreasing to
 $\Phi-c\log|\sigma|$ on $S^\an$ with $u_j+c\log|\sigma|$ bounded. In particular
 $(\Phi-c\log|\sigma|)|_{S^\an}\in\Rcal(S)$.
@@ -856,11 +831,10 @@ in $U_\sigma$. The hypothesis there reads $-s\operatorname{ord}_{\sigma_\iota}(\
 letting $s\to\infty$ gives $\operatorname{ord}_{\sigma_\iota}(\tau)\ge(N-\beta)m_\iota\ge\lfloor N-\beta\rfloor m_\iota$ for all $\iota$.
 \end{proof}
 
-\begin{lemma}[Compactification, part (2), regularizable functions]\label{lem:bj-compactification-extend}
-\lean{EnvelopeProperty.ProjBerk.isPSH_chartExt, EnvelopeProperty.ProjBerk.isPSH_chartExt_of_fs, EnvelopeProperty.ProjBerk.isPSH_mulChartExt, EnvelopeProperty.ProjBerk.isPSH_chartExt'}
+\begin{lemma}[Compactification, part (2), regularizable functions {\cite[Lemma~5.10]{FHX}}]\label{lem:bj-compactification-extend}
+\lean{EnvelopeProperty.ProjBerk.isPSH_chartExt, EnvelopeProperty.ProjBerk.isPSH_chartExt_of_fs, EnvelopeProperty.ProjBerk.isPSH_mulChartExt}
 \leanok
 \uses{lem:bj-chart, lem:bj-divisibility, thm:import-growth-control, lem:reg-triv-finite, def:fs, lem:bj-fs-basic}
-\source{fhx-envelope-20261028:lem:compactification}
 Let $w\in\Rcal(S)$, $\kappa\in\Q_{>0}$ and $B_0\in\R$ with $w\le-\kappa\log|\sigma|+B_0$ on $S^\an$. Assume the imported
 Theorem~\ref{thm:import-growth-control}. For every rational $a>\kappa$, the function $\phi$ equal to
 $w+a\log|\sigma|$ on $S^\an$ and to $-\infty$ elsewhere lies in $\PSH(ae)$.

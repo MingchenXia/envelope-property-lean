@@ -1,0 +1,187 @@
+\section{The main theorems without hypotheses}
+\label{sec:main-fully-unconditional}
+
+The main theorems of \cite{FHX} were proved above under two hypotheses at the
+countable algebraically closed subfields $k_0$ of $k$: Lemma~5.5 of \cite{FHX}
+(Lemma~\ref{lem:wu-local-positivity}) and, in characteristic zero, the envelope
+property of smooth projectively normal subvarieties of projective space
+(Theorem~\ref{thm:import-sg-ep-char0}). Both hold over every algebraically
+closed field: the first by Theorem~\ref{thm:lpn-local-positivity-instance}, the
+second by Theorem~\ref{thm:kn-smooth-envelope-char-zero}. For general models
+the theorems also assume fibre constancy at those subfields, which holds over
+every algebraically closed field (Theorem~\ref{thm:gl-fibre-constancy}). This
+section states the resulting theorems; none of them has a hypothesis beyond
+those of \cite{FHX}.
+
+\begin{theorem}[Fang--Han--Xia, Theorem~A]
+\label{thm:fu-variety-main}
+\uses{thm:var-main,thm:lpn-local-positivity-instance,thm:kn-smooth-envelope-char-zero}
+\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_of_isUnibranch,EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_isUnibranch}
+\leanok
+Let $k$ be an algebraically closed field, $X$ an integral unibranch projective
+variety over $k$ and $\theta\in N^1(X)_\R$. Then $\mathrm{EP}_X(\theta)$ holds:
+every nonempty family $(\varphi_i)\subseteq\PSH(X,\theta)$ that is bounded above
+satisfies $(\sup_i\varphi_i)^\star\in\PSH(X,\theta)$.
+\end{theorem}
+\begin{proof}
+Every countable algebraically closed subfield $k_0$ of $k$ is algebraically
+closed, so Lemma~5.5 of \cite{FHX} holds over $k_0$
+(Theorem~\ref{thm:lpn-local-positivity-instance}), and if $k_0$ has
+characteristic zero, so does the envelope property of smooth projectively normal
+subvarieties of $\mathbf P^M_{k_0}$ in the classes $\theta\,c_1(\mathcal O(1))$,
+$\theta\geq0$ (Theorem~\ref{thm:kn-smooth-envelope-char-zero}). These are the
+hypotheses of Theorem~\ref{thm:var-main}, which gives the conclusion.
+\end{proof}
+
+\begin{theorem}[Fang--Han--Xia, Theorem~A, with the stalk-wise definition of unibranch]
+\label{thm:fu-variety-main-stalks}
+\uses{thm:fu-variety-main,lem:var-unibranch-stalks}
+\lean{EnvelopeProperty.Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk,EnvelopeProperty.Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk}
+\leanok
+Let $k$ be an algebraically closed field, $X$ an integral projective variety over
+$k$ such that every local ring $\mathcal O_{X,x}$ is unibranch, and
+$\theta\in N^1(X)_\R$. Then every nonempty family
+$(\varphi_i)\subseteq\PSH(X,\theta)$ that is bounded above satisfies
+$(\sup_i\varphi_i)^\star\in\PSH(X,\theta)$; that is, $\mathrm{EP}_X(\theta)$
+holds.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:var-unibranch-stalks}, $X$ is unibranch in the sense of
+Definition~\ref{def:var-unibranch}; apply Theorem~\ref{thm:fu-variety-main}.
+\end{proof}
+
+This is \texttt{thm:intro-main} of \cite{FHX} word for word, since
+\cite[\S1.1]{FHX} defines an integral variety to be unibranch when every local
+ring has one branch.
+
+\begin{corollary}[Fang--Han--Xia, Corollary~1.1]
+\label{cor:fu-variety-characterization}
+\uses{cor:var-characterization,thm:lpn-local-positivity-instance,thm:kn-smooth-envelope-char-zero}
+\lean{EnvelopeProperty.Variety.isUnibranch_tfae_hasEnvelopeProperty}
+\leanok
+Let $k$ be an algebraically closed field and $X$ an integral projective variety
+over $k$. The following are equivalent:
+\begin{enumerate}
+\item $X$ is unibranch;
+\item[(1$'$)] every local ring $\mathcal O_{X,x}$ is unibranch;
+\item[(1$''$)] every local ring $\mathcal O_{X,x}$ is geometrically unibranch;
+\item[(2)] $\mathrm{EP}_X(\theta)$ holds for every $\theta\in N^1(X)_\R$;
+\item[(3)] $\mathrm{EP}_X(\omega)$ holds for some ample class $\omega\in\operatorname{Amp}(X)$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+As in the proof of Theorem~\ref{thm:fu-variety-main}, the hypotheses of
+Corollary~\ref{cor:var-characterization} hold at every countable algebraically
+closed subfield of $k$, by Theorems~\ref{thm:lpn-local-positivity-instance}
+and~\ref{thm:kn-smooth-envelope-char-zero}; that corollary gives the
+equivalences.
+\end{proof}
+
+\begin{theorem}[Fang--Han--Xia, Theorem~A, for multiprojective subvarieties]
+\label{thm:fu-quot-main}
+\uses{thm:lpn-main-unconditional,thm:kn-smooth-envelope-char-zero}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch,EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch}
+\leanok
+Let $k$ be an algebraically closed field, $I\subseteq k[x^{(c)}_j]$ a prime
+ideal relevant at $j_0$, and suppose that the quotient model $\mathcal X_I$ of
+$X=V(I)\subseteq\mathbf P^{M_1}\times\dots\times\mathbf P^{M_r}$ is unibranch.
+Then $\mathrm{EP}_{\mathcal X_I}(\theta)$ holds for every $\theta\in\R^r$:
+every nonempty family $(\varphi_i)\subseteq\PSH(\mathcal X_I,\theta)$ bounded
+above satisfies $(\sup_i\varphi_i)^\star\in\PSH(\mathcal X_I,\theta)$.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:lpn-main-unconditional} gives the statement under the
+envelope property of smooth projectively normal subvarieties of
+$\mathbf P^M_{k_0}$ in characteristic zero at the countable algebraically closed
+subfields $k_0$ of $k$; it holds by Theorem~\ref{thm:kn-smooth-envelope-char-zero}.
+\end{proof}
+
+\begin{corollary}[Fang--Han--Xia, Corollary~1.1, for multiprojective subvarieties]
+\label{cor:fu-quot-characterization}
+\uses{thm:lpn-main-unconditional,thm:kn-smooth-envelope-char-zero}
+\lean{EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae}
+\leanok
+In the setting of Theorem~\ref{thm:fu-quot-main} without the unibranch
+assumption, the following are equivalent: (1) $\mathcal X_I$ is unibranch;
+(1$'$) every local ring of every affine chart of $\mathcal X_I$ is unibranch;
+(1$''$) every such local ring is geometrically unibranch; (2)
+$\mathrm{EP}_{\mathcal X_I}(\theta)$ for every $\theta\in\R^r$; (3)
+$\mathrm{EP}_{\mathcal X_I}(\omega)$ for some $\omega\in\R^r$ with all
+$\omega_c>0$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:lpn-main-unconditional} gives the equivalences under the
+characteristic-zero envelope hypothesis at the countable algebraically closed
+subfields of $k$, which holds by Theorem~\ref{thm:kn-smooth-envelope-char-zero}.
+\end{proof}
+
+\begin{theorem}[The main theorem for models {\cite[Theorem~A]{FHX}}]
+\label{thm:fu-model-main}
+\uses{thm:lpn-main-unconditional,thm:kn-smooth-envelope-char-zero,thm:gl-fibre-constancy,prop:gl-ample-countable}
+\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch,EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch,EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal,EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield}
+\leanok
+Let $k$ be an algebraically closed field. Then:
+\begin{enumerate}
+\item every projectively normal $X_0=V(I_0)\subseteq\mathbf P^M_{k_0}$ over a
+countable algebraically closed subfield $k_0$ of $k$ has
+$\mathrm{EP}_{X_0}(1)$;
+\item every normal model $\mathcal X$ of rank $r$ over $k$ has
+$\mathrm{EP}_{\mathcal X}(\theta)$ for every $\theta\in\R^r$;
+\item every unibranch model $\mathcal X$ of rank $r$ over $k$ has
+$\mathrm{EP}_{\mathcal X}(\theta)$ for every $\theta\in\R^r$: every nonempty
+family $(\varphi_i)\subseteq\PSH(\mathcal X,\theta)$ bounded above satisfies
+$(\sup_i\varphi_i)^\star\in\PSH(\mathcal X,\theta)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:lpn-main-unconditional} gives (1)--(3) under fibre constancy
+and the characteristic-zero envelope hypothesis at the countable algebraically
+closed subfields of $k$; (1) is Proposition~\ref{prop:gl-ample-countable}. Such
+subfields are algebraically closed, so fibre constancy holds by
+Theorem~\ref{thm:gl-fibre-constancy} and the envelope hypothesis by
+Theorem~\ref{thm:kn-smooth-envelope-char-zero}.
+\end{proof}
+
+\begin{corollary}[Fang--Han--Xia, Corollary~8.4, for models]
+\label{cor:fu-model-psh2-unibranch}
+\uses{cor:nn-psh2-unibranch,thm:lpn-local-positivity-instance,thm:kn-smooth-envelope-char-zero,thm:gl-fibre-constancy}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch}
+\leanok
+Let $k$ be an algebraically closed field and $\mathcal X$ a unibranch model of
+rank $r$ over $k$. If $\theta_i\to\theta$ in $\R^r$ and a net
+$u_i\in\PSH(\mathcal X,\theta_i)$ decreases pointwise to
+$u\not\equiv-\infty$, then $u\in\PSH(\mathcal X,\theta)$.
+\end{corollary}
+\begin{proof}
+The hypotheses of Corollary~\ref{cor:nn-psh2-unibranch} at the countable
+algebraically closed subfields of $k$ hold: Lemma~5.5 of \cite{FHX} by
+Theorem~\ref{thm:lpn-local-positivity-instance}, fibre constancy by
+Theorem~\ref{thm:gl-fibre-constancy}, and the characteristic-zero envelope
+property by Theorem~\ref{thm:kn-smooth-envelope-char-zero}.
+\end{proof}
+
+\cite[Corollary~8.4]{FHX} is stated for an integral unibranch projective variety
+$X$ and $\theta\in N^1(X)_\R$; Corollary~\ref{cor:fu-model-psh2-unibranch} is its
+form on models. The variety form would follow by transporting decreasing nets and
+the convergence of classes through a presentation
+(Theorem~\ref{thm:var-psh-comparison}); it is not formalized.
+
+\begin{corollary}[Characterization of unibranch models {\cite[Corollary~1.1]{FHX}}]
+\label{cor:fu-model-characterization}
+\uses{cor:nn-characterization,thm:lpn-local-positivity-instance,thm:kn-smooth-envelope-char-zero,thm:gl-fibre-constancy}
+\lean{EnvelopeProperty.MultiModel.isUnibranch_tfae_hasEnvelopeProperty}
+\leanok
+Let $k$ be an algebraically closed field. For a model $\mathcal X$ of
+rank $r$ over $k$ the following are equivalent: (1) $\mathcal X$ is unibranch;
+(1$'$) all local rings of all chart algebras are unibranch; (1$''$) they are
+all geometrically unibranch; (2) $\mathrm{EP}_{\mathcal X}(\theta)$ for every
+$\theta\in\R^r$; (3) $\mathrm{EP}_{\mathcal X}(\omega)$ for some $\omega\in\R^r$
+with all $\omega_c>0$.
+\end{corollary}
+\begin{proof}
+The hypotheses of Corollary~\ref{cor:nn-characterization} at the countable
+algebraically closed subfields of $k$ hold: Lemma~5.5 of \cite{FHX} by
+Theorem~\ref{thm:lpn-local-positivity-instance}, fibre constancy by
+Theorem~\ref{thm:gl-fibre-constancy}, and the characteristic-zero envelope
+property by Theorem~\ref{thm:kn-smooth-envelope-char-zero}.
+\end{proof}

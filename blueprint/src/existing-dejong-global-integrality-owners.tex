@@ -4,10 +4,9 @@ All schemes and morphisms in this chapter are ordinary schemes and scheme
 morphisms. A variety over a field is integral, separated and of finite type;
 geometric integrality is not imposed, following \cite{deJong1996}, 2.9.
 
-\begin{definition}[Variety]
+\begin{definition}[Variety {\cite[p.~55]{deJong}}]
 \label{def:variety}
-\source{dejong96-alterations:page-0006}
-\lean{DeJongAlterations.IsVariety}
+\lean{Alterations.IsVariety}
 \leanok
 A variety over a field $k$ is an integral scheme equipped with a separated,
 finite-type structure morphism to $\operatorname{Spec}k$.
@@ -20,7 +19,7 @@ finite-type structure morphism to $\operatorname{Spec}k$.
 \begin{lemma}[The generic point misses a proper support]
 \label{lem:integral-ideal-generic-outside}
 \uses{def:variety}
-\lean{DeJongAlterations.Geometry.IntegralIdeal.genericPoint_not_mem_support}
+\lean{Alterations.Geometry.IntegralIdeal.genericPoint_not_mem_support}
 \leanok
 Let $X$ be integral and let $\mathcal I$ be a quasi-coherent ideal sheaf
 with proper closed support. The generic point of $X$ is outside this support.
@@ -35,11 +34,10 @@ specialization, making the support all of $X$, a contradiction.
 
 \begingroup
 
-\begin{lemma}[Every nonempty affine coordinate ideal is nonzero]
+\begin{lemma}[Every nonempty affine coordinate ideal is nonzero {\cite[p.~67]{deJong}}]
 \label{lem:integral-ideal-affine-nonzero}
 \uses{lem:integral-ideal-generic-outside}
-\source{dejong96-alterations:page-0018}
-\lean{DeJongAlterations.Geometry.IntegralIdeal.ideal_ne_bot_of_support_ne_top}
+\lean{Alterations.Geometry.IntegralIdeal.ideal_ne_bot_of_support_ne_top}
 \leanok
 Under the preceding hypotheses, the actual coordinate ideal of
 $\mathcal I$ on every nonempty affine open $U$ is nonzero.
@@ -57,7 +55,7 @@ the preceding lemma.
 
 \begin{lemma}[Reduced projective spectrum of a domain]
 \label{lem:proj-domain-reduced}
-\lean{DeJongAlterations.Geometry.ProjIntegral.isReduced_proj}
+\lean{Alterations.Geometry.ProjIntegral.isReduced_proj}
 \leanok
 Let $A$ be a domain graded by the nonnegative integers. Then
 $\operatorname{Proj}A$ is reduced, including when it is empty.
@@ -76,7 +74,7 @@ of the scheme.
 
 \begin{lemma}[Generic point of a projective spectrum]
 \label{lem:proj-domain-generic-point}
-\lean{DeJongAlterations.Geometry.ProjIntegral.zeroPoint,DeJongAlterations.Geometry.ProjIntegral.isGenericPoint_of_asHomogeneousIdeal_eq_bot}
+\lean{Alterations.Geometry.ProjIntegral.zeroPoint,Alterations.Geometry.ProjIntegral.isGenericPoint_of_asHomogeneousIdeal_eq_bot}
 \leanok
 Let $A$ be a graded domain with nonzero irrelevant ideal. The homogeneous
 zero prime is a point of $\operatorname{Proj}A$ and is its generic point.
@@ -96,7 +94,7 @@ prime, hence the closure of this point is the whole projective spectrum.
 \begin{theorem}[Integral projective spectra]
 \label{thm:proj-domain-integral}
 \uses{lem:proj-domain-reduced,lem:proj-domain-generic-point}
-\lean{DeJongAlterations.Geometry.ProjIntegral.isIntegral_proj}
+\lean{Alterations.Geometry.ProjIntegral.isIntegral_proj}
 \leanok
 The projective spectrum of a graded domain with nonzero irrelevant ideal
 is an integral scheme.
@@ -113,7 +111,7 @@ reduced scheme is integral.
 
 \begin{definition}[The Rees algebra and its degree pieces]
 \label{def:affine-rees-grading}
-\lean{DeJongAlterations.reesGrading}
+\lean{Alterations.reesGrading}
 \leanok
 Let $R$ be a commutative ring and $I\subset R$ an ideal. Its Rees algebra is the actual
 subalgebra
@@ -131,7 +129,7 @@ $\mathcal R(I)_n=I^nT^n$ with its inherited $R$-module structure.
 \begin{lemma}[The genuine Rees grading]
 \label{lem:affine-rees-grading}
 \uses{def:affine-rees-grading}
-\lean{DeJongAlterations.reesGradedAlgebra,DeJongAlterations.reesGrading_proj}
+\lean{Alterations.reesGradedAlgebra,Alterations.reesGrading_proj}
 \leanok
 The degree pieces form an internal graded algebra structure on $\mathcal R(I)$.
 The degree-$n$ component of $p$ is exactly $a_nT^n$, where $a_n$ is the coefficient
@@ -154,7 +152,7 @@ direct sum and multiplication requirements.
 \begin{lemma}[The degree-zero ring]
 \label{lem:affine-rees-degree-zero}
 \uses{lem:affine-rees-grading}
-\lean{DeJongAlterations.reesDegreeZeroEquiv}
+\lean{Alterations.reesDegreeZeroEquiv}
 \leanok
 The map $R\to\mathcal R(I)_0$ sending $a$ to its constant polynomial is an isomorphism
 of rings.
@@ -173,7 +171,7 @@ Addition, multiplication and the identity agree with those of constant polynomia
 \begin{definition}[Affine blowup]
 \label{def:affine-blowup}
 \uses{lem:affine-rees-grading,lem:affine-rees-degree-zero}
-\lean{DeJongAlterations.affineBlowup,DeJongAlterations.affineBlowupStructure}
+\lean{Alterations.affineBlowup,Alterations.affineBlowupStructure}
 \leanok
 The affine blowup of $I$ is the scheme
 $\operatorname{Bl}_I(\operatorname{Spec}R)=\operatorname{Proj}\mathcal R(I)$ with its
@@ -187,7 +185,7 @@ structure map to $\operatorname{Spec}R$ obtained by identifying the degree-zero 
 \begin{corollary}[Integral affine blowups]
 \label{cor:affine-blowup-integral}
 \uses{thm:proj-domain-integral,def:affine-blowup}
-\lean{DeJongAlterations.Geometry.ProjIntegral.isIntegral_affineBlowup}
+\lean{Alterations.Geometry.ProjIntegral.isIntegral_affineBlowup}
 \leanok
 If $R$ is a domain and $I\ne0$ is an ideal, its native affine blowup
 $\operatorname{Proj}\bigoplus_{n\ge0} I^nT^n$ is integral.
@@ -213,7 +211,7 @@ not assumed.
 \begin{lemma}[Integral native affine blowup pieces]
 \label{lem:global-blowup-integral-affine-pieces}
 \uses{lem:integral-ideal-affine-nonzero,cor:affine-blowup-integral}
-\lean{DeJongAlterations.Geometry.BlowupIntegral.chart_isIntegral}
+\lean{Alterations.Geometry.BlowupIntegral.chart_isIntegral}
 \leanok
 For every nonempty affine open $U\subset X$, the actual
 scheme $\operatorname{Bl}_{D(U)}(\operatorname{Spec}\mathcal O_X(U))$
@@ -222,7 +220,7 @@ is integral.
 \begin{proof}
 Integrality of $X$ makes $\mathcal O_X(U)$ a domain when
 $U$ is nonempty. The proper support hypothesis implies
-$D(U)\ne0$. The previously constructed native Rees blowup
+$D(U)\ne0$. The constructed native Rees blowup
 of a nonzero ideal in a domain is integral. Applying that
 result gives exactly the affine piece used in the gluing.
 \end{proof}
@@ -231,10 +229,9 @@ result gives exactly the affine piece used in the gluing.
 
 \begingroup
 
-\begin{definition}[The fraction chart]
+\begin{definition}[The fraction chart {\cite[p.~64, p.~65]{deJong}}]
 \label{def:affine-blowup-fraction-chart}
-\source{dejong96-alterations:page-0015,dejong96-alterations:page-0016}
-\lean{DeJongAlterations.affineBlowupFractionChart}
+\lean{Alterations.affineBlowupFractionChart}
 \leanok
 Let $R$ be a domain with fraction field $K$, let $I\subset R$ be an ideal and
 let $0\ne g\in I$. Define $R[I/g]\subset K$ to be the $R$-subalgebra generated by
@@ -253,7 +250,7 @@ finitely generated.
 \begin{lemma}[The fraction-chart coefficient map is injective]
 \label{lem:affine-blowup-chart-coefficients-injective}
 \uses{def:affine-blowup-fraction-chart}
-\lean{DeJongAlterations.affineBlowupFractionChart_algebraMap_injective}
+\lean{Alterations.affineBlowupFractionChart_algebraMap_injective}
 \leanok
 For a domain $R$ and any $g\in R$, the coefficient map $R\to R[I/g]$ is
 injective.
@@ -272,7 +269,7 @@ of their images in the fraction field, hence equality in $R$.
 \begin{lemma}[Evaluation of the homogeneous chart]
 \label{lem:affine-blowup-chart-evaluation}
 \uses{lem:affine-rees-grading,def:affine-blowup-fraction-chart}
-\lean{DeJongAlterations.reesChartEvaluation,DeJongAlterations.reesChartEvaluation_mk,DeJongAlterations.reesChartEvaluation_injective}
+\lean{Alterations.reesChartEvaluation,Alterations.reesChartEvaluation_mk,Alterations.reesChartEvaluation_injective}
 \leanok
 The polynomial evaluation $T\mapsto1/g$ induces an injective $R$-algebra map
 \[
@@ -298,7 +295,7 @@ proves injectivity.
 \begin{lemma}[Fractions of powers of the ideal]
 \label{lem:affine-blowup-ideal-power-fraction}
 \uses{def:affine-blowup-fraction-chart}
-\lean{DeJongAlterations.idealPower_div_pow_mem_fractionChart}
+\lean{Alterations.idealPower_div_pow_mem_fractionChart}
 \leanok
 If $a\in I^n$, then $a/g^n\in R[I/g]$.
 \end{lemma}
@@ -318,7 +315,7 @@ given element of $I^{n+1}$.
 \begin{lemma}[The homogeneous coordinate ring is the fraction chart]
 \label{lem:affine-blowup-chart-ring}
 \uses{lem:affine-blowup-chart-evaluation,lem:affine-blowup-ideal-power-fraction}
-\lean{DeJongAlterations.reesChartFractionEquiv}
+\lean{Alterations.reesChartFractionEquiv}
 \leanok
 Evaluation gives an isomorphism of $R$-algebras
 $\mathcal R(I)_{(gT)}\cong R[I/g]$.
@@ -339,7 +336,7 @@ exactly $R[I/g]$. The injectivity just proved identifies the rings.
 \begin{corollary}[The actual Proj chart]
 \label{cor:affine-blowup-chart-scheme}
 \uses{def:affine-blowup,lem:affine-blowup-chart-ring}
-\lean{DeJongAlterations.affineBlowupChartIso}
+\lean{Alterations.affineBlowupChartIso}
 \leanok
 The basic open $D_+(gT)$ of $\operatorname{Bl}_I(\operatorname{Spec}R)$ is
 isomorphic to $\operatorname{Spec}R[I/g]$.
@@ -357,7 +354,7 @@ with the spectrum of the inverse of the preceding ring isomorphism.
 \begin{lemma}[The chart lies over the original affine scheme]
 \label{lem:affine-blowup-chart-over-base}
 \uses{cor:affine-blowup-chart-scheme,lem:affine-blowup-chart-ring}
-\lean{DeJongAlterations.affineBlowupChartInclusion_isOpenImmersion,DeJongAlterations.affineBlowupChartInclusion_structure}
+\lean{Alterations.affineBlowupChartInclusion_isOpenImmersion,Alterations.affineBlowupChartInclusion_structure}
 \leanok
 The map $\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)$ obtained from
 the chart identification is an open immersion. Its composition with the blowup's
@@ -384,7 +381,7 @@ finitely generated.
 \begin{lemma}[The chart is dominant over the base]
 \label{lem:affine-blowup-chart-dominant}
 \uses{lem:affine-blowup-chart-coefficients-injective,lem:affine-blowup-chart-over-base}
-\lean{DeJongAlterations.affineBlowupChartInclusion_comp_isDominant}
+\lean{Alterations.affineBlowupChartInclusion_comp_isDominant}
 \leanok
 If $0\ne g\in I$, then the composition
 $\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)
@@ -410,7 +407,7 @@ finitely generated.
 \begin{theorem}[A nonzero ideal has dominant blowup]
 \label{thm:affine-blowup-dominant}
 \uses{lem:affine-blowup-chart-dominant}
-\lean{DeJongAlterations.affineBlowupStructure_isDominant}
+\lean{Alterations.affineBlowupStructure_isDominant}
 \leanok
 Let $R$ be a domain and $I\ne0$ an ideal. The actual blowup structure map
 $\operatorname{Bl}_I(\operatorname{Spec}R)\to\operatorname{Spec}R$ is dominant.
@@ -434,10 +431,9 @@ gluing the actual affine Rees projective spectra. Throughout, $X$ is
 an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
 No gluing datum or local comparison isomorphism is supplied as an input.
 
-\begin{lemma}[Actual ideal transitions on affine opens]
+\begin{lemma}[Actual ideal transitions on affine opens {\cite[p.~67]{deJong}}]
 \label{lem:blowup-gluing-ideal-transitions}
-\source{dejong96-alterations:page-0018}
-\lean{DeJongAlterations.Geometry.BlowupGluing.coefficientMap,DeJongAlterations.Geometry.BlowupGluing.center_map,DeJongAlterations.Geometry.BlowupGluing.coefficientMap_id,DeJongAlterations.Geometry.BlowupGluing.coefficientMap_comp}
+\lean{Alterations.Geometry.BlowupGluing.coefficientMap,Alterations.Geometry.BlowupGluing.center_map,Alterations.Geometry.BlowupGluing.coefficientMap_id,Alterations.Geometry.BlowupGluing.coefficientMap_comp}
 \leanok
 For an affine principal-open inclusion $U\subset V$, let
 $r_{VU}:\Gamma(V,\mathcal O_X)\to\Gamma(U,\mathcal O_X)$ be the
@@ -462,7 +458,7 @@ hypothesis is imposed, and $s=0$ is allowed.
 \begin{definition}[Coefficient map on Rees algebras]
 \label{def:rees-localization-map}
 \uses{lem:affine-rees-grading}
-\lean{DeJongAlterations.Algebra.ReesLocalization.reesMap,DeJongAlterations.Algebra.ReesLocalization.reesGradedMap,DeJongAlterations.Algebra.ReesLocalization.reesLocalizationAlgebra}
+\lean{Alterations.Algebra.ReesLocalization.reesMap,Alterations.Algebra.ReesLocalization.reesGradedMap,Alterations.Algebra.ReesLocalization.reesLocalizationAlgebra}
 \leanok
 A ring homomorphism $f:R\to S$ induces
 $\mathcal R_R(I)\to\mathcal R_S(IS)$ by coefficientwise polynomial
@@ -486,7 +482,7 @@ compatibility with the native homogeneous pieces.
 \begin{lemma}[The actual Rees map defines a native Proj map]
 \label{lem:rees-coefficient-irrelevant}
 \uses{def:rees-localization-map}
-\lean{DeJongAlterations.reesGradedMap_irrelevant_le_map}
+\lean{Alterations.reesGradedMap_irrelevant_le_map}
 \leanok
 For a ring homomorphism $f:R\to S$ and an ideal $I\subset R$, the
 irrelevant ideal of $\mathcal R_S(IS)$ lies in the extension of the
@@ -510,7 +506,7 @@ all positive homogeneous components proves the containment.
 \begin{definition}[The actual induced blowup morphism]
 \label{def:affine-blowup-coefficient-map}
 \uses{lem:rees-coefficient-irrelevant}
-\lean{DeJongAlterations.affineBlowupMap}
+\lean{Alterations.affineBlowupMap}
 \leanok
 Coefficient extension defines the native morphism
 \[\operatorname{Bl}_{IS}(\operatorname{Spec}S)
@@ -532,7 +528,7 @@ presentation is constructed from a homogeneous algebra presentation.
 
 \begin{definition}[Restriction to degree zero]
 \label{def:proj-degree-zero-map}
-\lean{DeJongAlterations.Geometry.ProjStructureMap.degreeZeroMap}
+\lean{Alterations.Geometry.ProjStructureMap.degreeZeroMap}
 \leanok
 For a graded ring homomorphism $f:A\to B$, its degree-zero restriction
 $f_0:A_0\to B_0$ sends an element $a$ to $f(a)$.
@@ -553,7 +549,7 @@ presentation is constructed from a homogeneous algebra presentation.
 \begin{lemma}[Constants in homogeneous localizations]
 \label{lem:proj-localization-degree-zero}
 \uses{def:proj-degree-zero-map}
-\lean{DeJongAlterations.Geometry.ProjStructureMap.awayMap_comp_fromZero}
+\lean{Alterations.Geometry.ProjStructureMap.awayMap_comp_fromZero}
 \leanok
 For $s\in A$, let $f_s:(A_s)_0\to(B_{f(s)})_0$ be the homogeneous
 localization homomorphism. If $\iota_A:A_0\to(A_s)_0$ and
@@ -582,7 +578,7 @@ presentation is constructed from a homogeneous algebra presentation.
 \begin{theorem}[Naturality of the projective structure morphism]
 \label{thm:proj-structure-map-naturality}
 \uses{lem:proj-localization-degree-zero}
-\lean{DeJongAlterations.Geometry.ProjStructureMap.map_toSpecZero}
+\lean{Alterations.Geometry.ProjStructureMap.map_toSpecZero}
 \leanok
 Suppose $B_+\subseteq f(A_+)B$. Let
 $\pi_A:\operatorname{Proj}(A)\to\operatorname{Spec}(A_0)$ and
@@ -613,7 +609,7 @@ member of an open cover are equal, proving the formula.
 \begin{lemma}[The genuine coefficient structure square]
 \label{lem:affine-blowup-coefficient-square}
 \uses{def:affine-blowup-coefficient-map,thm:proj-structure-map-naturality}
-\lean{DeJongAlterations.reesGradedMap_degreeZero_constants,DeJongAlterations.affineBlowupMap_structure}
+\lean{Alterations.reesGradedMap_degreeZero_constants,Alterations.affineBlowupMap_structure}
 \leanok
 The induced blowup morphism commutes with the native structure maps
 to $\operatorname{Spec}R$ and $\operatorname{Spec}S$ and the spectrum
@@ -635,7 +631,7 @@ followed by these coefficient identifications, gives the square.
 \begin{lemma}[Functoriality with explicitly named ideals]
 \label{lem:affine-blowup-coefficient-functorial}
 \uses{def:affine-blowup-coefficient-map,lem:affine-blowup-coefficient-square}
-\lean{DeJongAlterations.reesGradedMapTo,DeJongAlterations.affineBlowupMapTo,DeJongAlterations.affineBlowupMapTo_structure,DeJongAlterations.affineBlowupMapTo_id,DeJongAlterations.affineBlowupMapTo_comp}
+\lean{Alterations.reesGradedMapTo,Alterations.affineBlowupMapTo,Alterations.affineBlowupMapTo_structure,Alterations.affineBlowupMapTo_id,Alterations.affineBlowupMapTo_comp}
 \leanok
 If $f:R\to S$ carries $I$ to the extended ideal $J=IS$, denote the
 induced native blowup map with both ideals specified. These specified
@@ -668,7 +664,7 @@ No gluing datum or local comparison isomorphism is supplied as an input.
 \begin{definition}[The affine blowup diagram and its structure maps]
 \label{def:blowup-gluing-affine-diagram}
 \uses{lem:blowup-gluing-ideal-transitions,lem:affine-blowup-coefficient-functorial,lem:affine-blowup-coefficient-square}
-\lean{DeJongAlterations.Geometry.BlowupGluing.affineDiagram,DeJongAlterations.Geometry.BlowupGluing.structureNatTrans}
+\lean{Alterations.Geometry.BlowupGluing.affineDiagram,Alterations.Geometry.BlowupGluing.structureNatTrans}
 \leanok
 On the small affine Zariski site of $X$, assign to $U$ the actual
 scheme $B_U=\operatorname{Proj}\mathcal R(\mathcal I(U))$.
@@ -700,7 +696,7 @@ No gluing datum or local comparison isomorphism is supplied as an input.
 
 \begin{lemma}[Actual affine-site restrictions are localizations]
 \label{lem:blowup-gluing-coefficient-localization}
-\lean{DeJongAlterations.Geometry.BlowupGluing.coefficientMap_isLocalization}
+\lean{Alterations.Geometry.BlowupGluing.coefficientMap_isLocalization}
 \leanok
 For every arrow $U\subset V$ of the small affine Zariski site, there
 is a section $s\in\Gamma(V,\mathcal O_X)$ such that its actual
@@ -718,9 +714,8 @@ restriction map as coefficient map.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -728,7 +723,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{lemma}[The actual Rees coefficient map preserves the base]\label{lem:rees-localization-structure}
 \uses{def:affine-blowup}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.reesGradedMap_degreeZero_constants,DeJongAlterations.Geometry.AffineBlowupBaseChange.reesGradedMap_projStructure}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.reesGradedMap_degreeZero_constants,Alterations.Geometry.AffineBlowupBaseChange.reesGradedMap_projStructure}
 \leanok
 For every ring map $f:R\to S$, coefficientwise polynomial mapping gives
 a graded map $\mathcal R(I)\to\mathcal R(I\cdot S)$. On degree zero it
@@ -749,9 +744,8 @@ identity of scheme morphisms.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -759,7 +753,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{definition}[The actual localization comparison]\label{def:affine-blowup-localization-map}
 \uses{lem:rees-localization-structure}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_structure}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap,Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_structure}
 \leanok
 The actual graded coefficient-localization map defines a canonical morphism
 \[j:\operatorname{Bl}_{I_s}(\operatorname{Spec}R_s)
@@ -782,9 +776,8 @@ preceding lemma for the original localization homomorphism.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -792,7 +785,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{theorem}[The exact localization image]\label{thm:affine-blowup-localization-open}
 \uses{def:affine-blowup-localization-map}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_isOpenImmersion,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_opensRange}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_isOpenImmersion,Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationMap_opensRange}
 \leanok
 The actual morphism $j$ is an open immersion with image exactly
 $\pi^{-1}(D(s))$.
@@ -812,9 +805,8 @@ basic open, proving the asserted formula.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -822,7 +814,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{theorem}[The actual restriction isomorphism over the localized base]\label{thm:affine-blowup-localization-iso}
 \uses{thm:affine-blowup-localization-open}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_ι,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_structure}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso,Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_ι,Alterations.Geometry.AffineBlowupBaseChange.affineBlowupLocalizationIso_hom_structure}
 \leanok
 There is a canonical isomorphism
 \[\operatorname{Bl}_{I_s}(\operatorname{Spec}R_s)\simeq\pi^{-1}(D(s))\]
@@ -847,9 +839,8 @@ $\operatorname{Spec}R_s$.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -857,7 +848,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{corollary}[The genuine base-change square]\label{cor:affine-blowup-localization-pullback}
 \uses{thm:affine-blowup-localization-iso}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupLocalization}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupLocalization}
 \leanok
 The actual square with upper map $j$, left vertical map $\pi_s$, right
 vertical map $\pi$, and lower map $\operatorname{Spec}(R\to R_s)$ is Cartesian.
@@ -885,7 +876,7 @@ hypotheses are imposed.
 \begin{definition}[The actual Rees coefficient algebra]
 \label{def:rees-coefficient-localization-algebra}
 \uses{def:rees-localization-map}
-\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficientAlgebra}
+\lean{Alterations.Algebra.ReesCoefficientLocalization.reesCoefficientAlgebra}
 \leanok
 Equip $\mathcal R_S(IS)$ with its $\mathcal R_R(I)$-algebra
 structure induced by the actual coefficientwise polynomial map
@@ -905,7 +896,7 @@ hypotheses are imposed.
 \begin{lemma}[Actual Rees numerators over an arbitrary localization ring]
 \label{lem:rees-coefficient-localization-denominators}
 \uses{def:rees-coefficient-localization-algebra}
-\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_surj}
+\lean{Alterations.Algebra.ReesCoefficientLocalization.reesCoefficient_surj}
 \leanok
 For every $p\in\mathcal R_S(IS)$ there are $N\ge0$ and
 $q\in\mathcal R_R(I)$ with $p\,s^N=f(q)$.
@@ -939,7 +930,7 @@ hypotheses are imposed.
 \begin{lemma}[Actual Rees equality over an arbitrary localization ring]
 \label{lem:rees-coefficient-localization-equality}
 \uses{def:rees-coefficient-localization-algebra}
-\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_exists_of_eq}
+\lean{Alterations.Algebra.ReesCoefficientLocalization.reesCoefficient_exists_of_eq}
 \leanok
 If $q,q'\in\mathcal R_R(I)$ have equal images in
 $\mathcal R_S(IS)$, then $s^Nq=s^Nq'$ for some $N\ge0$.
@@ -967,7 +958,7 @@ hypotheses are imposed.
 \begin{theorem}[Native Rees localization over any coefficient model]
 \label{thm:rees-coefficient-localization}
 \uses{lem:rees-coefficient-localization-denominators,lem:rees-coefficient-localization-equality}
-\lean{DeJongAlterations.Algebra.ReesCoefficientLocalization.reesCoefficient_isLocalization}
+\lean{Alterations.Algebra.ReesCoefficientLocalization.reesCoefficient_isLocalization}
 \leanok
 With the actual coefficient algebra structure,
 $\mathcal R_S(IS)$ is the native localization of
@@ -987,9 +978,8 @@ chosen isomorphism between $S$ and a canonical model.
 
 \begingroup
 
-\source{dejong96-alterations:page-0018}
 This is the coefficient-localization compatibility needed to construct the
-actual blowup used in source 4.8.
+actual blowup used in \cite[4.8]{deJong}.
 
 Let $R$ be any commutative ring, let $I\subset R$ be any ideal, and let
 $s\in R$. Put $R_s=R[1/s]$ and $I_s=I\cdot R_s$. All constructions below
@@ -997,7 +987,7 @@ include zero divisors and $s=0$, and require no finite generation.
 
 \begin{theorem}[Independence of the localization presentation]\label{thm:affine-blowup-general-localization}
 \uses{thm:affine-blowup-localization-open,cor:affine-blowup-localization-pullback,thm:rees-coefficient-localization}
-\lean{DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_isOpenImmersion_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_opensRange_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMap_of_isLocalization,DeJongAlterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMapTo_of_isLocalization}
+\lean{Alterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_isOpenImmersion_of_isLocalization,Alterations.Geometry.AffineBlowupBaseChange.affineBlowupMap_opensRange_of_isLocalization,Alterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMap_of_isLocalization,Alterations.Geometry.AffineBlowupBaseChange.isPullback_affineBlowupMapTo_of_isLocalization}
 \leanok
 Let $S$ be any $R$-algebra which is a localization of $R$ at the powers of
 $s$, and put $J=I\cdot S$. The actual coefficient-induced morphism
@@ -1038,7 +1028,7 @@ No gluing datum or local comparison isomorphism is supplied as an input.
 \begin{lemma}[The affine blowup diagram is equifibered]
 \label{lem:blowup-gluing-equifibered}
 \uses{def:blowup-gluing-affine-diagram,lem:blowup-gluing-coefficient-localization,thm:affine-blowup-general-localization}
-\lean{DeJongAlterations.Geometry.BlowupGluing.structureNatTrans_equifibered}
+\lean{Alterations.Geometry.BlowupGluing.structureNatTrans_equifibered}
 \leanok
 For every arrow $U\subset V$ of the small affine Zariski site, the
 square of actual affine blowup maps and actual affine structure maps
@@ -1065,11 +1055,10 @@ gluing the actual affine Rees projective spectra. Throughout, $X$ is
 an arbitrary scheme and $\mathcal I$ is a native ideal sheaf on $X$.
 No gluing datum or local comparison isomorphism is supplied as an input.
 
-\begin{definition}[The global native blowup]
+\begin{definition}[The global native blowup {\cite[p.~67]{deJong}}]
 \label{def:global-native-blowup}
-\source{dejong96-alterations:page-0018}
 \uses{def:blowup-gluing-affine-diagram,lem:blowup-gluing-equifibered}
-\lean{DeJongAlterations.Geometry.BlowupGluing.relativeGluingData,DeJongAlterations.Geometry.BlowupGluing.blowup,DeJongAlterations.Geometry.BlowupGluing.blowupStructure}
+\lean{Alterations.Geometry.BlowupGluing.relativeGluingData,Alterations.Geometry.BlowupGluing.blowup,Alterations.Geometry.BlowupGluing.blowupStructure}
 \leanok
 Use the canonical affine isomorphisms
 $U\simeq\operatorname{Spec}\Gamma(U,\mathcal O_X)$ to view the affine
@@ -1104,7 +1093,7 @@ No gluing datum or local comparison isomorphism is supplied as an input.
 \begin{theorem}[The global blowup has the prescribed affine pullbacks]
 \label{thm:global-native-blowup-affine-pullback}
 \uses{def:global-native-blowup}
-\lean{DeJongAlterations.Geometry.BlowupGluing.blowupCover,DeJongAlterations.Geometry.BlowupGluing.chartInclusion,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_isOpenImmersion,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_structure,DeJongAlterations.Geometry.BlowupGluing.isPullback_chartOpen,DeJongAlterations.Geometry.BlowupGluing.isPullback_chart,DeJongAlterations.Geometry.BlowupGluing.chartInclusion_opensRange}
+\lean{Alterations.Geometry.BlowupGluing.blowupCover,Alterations.Geometry.BlowupGluing.chartInclusion,Alterations.Geometry.BlowupGluing.chartInclusion_isOpenImmersion,Alterations.Geometry.BlowupGluing.chartInclusion_structure,Alterations.Geometry.BlowupGluing.isPullback_chartOpen,Alterations.Geometry.BlowupGluing.isPullback_chart,Alterations.Geometry.BlowupGluing.chartInclusion_opensRange}
 \leanok
 For every affine open $U\subset X$, the native chart inclusion
 $j_U:B_U\to\operatorname{Bl}_{\mathcal I}X$ is an open immersion,
@@ -1146,7 +1135,7 @@ not assumed.
 \begin{lemma}[Dominance of each nonempty chart over the base]
 \label{lem:global-blowup-integral-chart-dominant}
 \uses{lem:integral-ideal-affine-nonzero,thm:affine-blowup-dominant,thm:global-native-blowup-affine-pullback}
-\lean{DeJongAlterations.Geometry.BlowupIntegral.chartInclusion_comp_isDominant}
+\lean{Alterations.Geometry.BlowupIntegral.chartInclusion_comp_isDominant}
 \leanok
 For a nonempty affine open $U$, the actual chart inclusion
 $j_U:B_U\to B$ has dominant composite $b j_U:B_U\to X$.
@@ -1175,7 +1164,7 @@ not assumed.
 \begin{lemma}[Intersecting nonempty affine blowup charts]
 \label{lem:global-blowup-integral-chart-intersections}
 \uses{lem:global-blowup-integral-chart-dominant,thm:global-native-blowup-affine-pullback}
-\lean{DeJongAlterations.Geometry.BlowupIntegral.chartInclusion_not_disjoint}
+\lean{Alterations.Geometry.BlowupIntegral.chartInclusion_not_disjoint}
 \leanok
 For nonempty affine opens $U,V\subset X$, the open images
 of $j_U$ and $j_V$ in $B$ intersect.
@@ -1203,7 +1192,7 @@ not assumed.
 \begin{definition}[The cover by nonempty base affine pieces]
 \label{def:global-blowup-integral-nonempty-cover}
 \uses{def:global-native-blowup,thm:global-native-blowup-affine-pullback}
-\lean{DeJongAlterations.Geometry.BlowupIntegral.nonemptyAffineBlowupCover}
+\lean{Alterations.Geometry.BlowupIntegral.nonemptyAffineBlowupCover}
 \leanok
 Restrict the actual affine blowup cover to affine opens
 $U\subset X$ that are nonempty.
@@ -1231,7 +1220,7 @@ not assumed.
 \begin{theorem}[Integrality of the global native blowup]
 \label{thm:global-native-blowup-integral}
 \uses{lem:global-blowup-integral-affine-pieces,lem:global-blowup-integral-chart-intersections,def:global-blowup-integral-nonempty-cover}
-\lean{DeJongAlterations.Geometry.BlowupIntegral.isIntegral_blowup}
+\lean{Alterations.Geometry.BlowupIntegral.isIntegral_blowup}
 \leanok
 The actual global blowup $B=\operatorname{Bl}_D(X)$ is an
 integral scheme.

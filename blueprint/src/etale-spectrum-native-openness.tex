@@ -3,7 +3,6 @@
 
 \begin{theorem}[Genuine monic root principal opens map openly]
 \label{spectrum:actual-monic-root-open-map}
-\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_monic_adjoinRoot_away}
 \leanok
 \uses{spectrum:actual-finite-free-open-map,spectrum:principal-open}
 For any commutative ring $A$, actual monic $f\in A[T]$, and original
@@ -25,8 +24,6 @@ gives the actual empty source locus, which causes no exception.
 
 \begin{theorem}[Actual standard-etale presentations give open restriction maps]
 \label{spectrum:actual-standard-etale-open-map}
-\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_standardEtalePair,
-EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_of_isStandardEtale}
 \leanok
 \uses{spectrum:actual-monic-root-open-map}
 Every genuine standard-etale pair and every actual standard-etale
@@ -54,8 +51,6 @@ module certificate.
 
 \begin{theorem}[Every genuine etale affine algebra map is open]
 \label{spectrum:actual-general-etale-open-map}
-\lean{EnvelopeProperty.Berkovich.Spectrum.isOpenMap_comap_of_etale,
-EnvelopeProperty.Berkovich.RelativeSpectrum.isOpenMap_comap_of_etale}
 \leanok
 \uses{spectrum:actual-standard-etale-open-map,spectrum:principal-open,spectrum:relative}
 Every actual etale commutative-ring algebra $A\to B$ induces an open
@@ -94,7 +89,6 @@ certificate or by a separately prescribed scalar-extension lift.
 
 \begin{lemma}[The actual section-ring square on arbitrary affine support pieces]
 \label{scheme:actual-affine-appLE-native-square}
-\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.affineOpenSpectrumHomeomorph_map_appLE}
 \leanok
 \uses{scheme:affine-chart-section-values}
 For any actual morphism $f:X\to Y$, affine opens $U\subseteq Y$,
@@ -117,9 +111,6 @@ extensionality proves equality of the entire chart points.
 
 \begin{theorem}[Actual etale scheme morphisms are open on native point spaces]
 \label{scheme:actual-general-etale-native-open-map}
-\lean{EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpenMap_map_affinePieces_of_etale,
-EnvelopeProperty.Berkovich.SchemeValuedPoint.isOpenMap_map_of_etale,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.isOpenMap_map_of_etale}
 \leanok
 \uses{scheme:actual-affine-appLE-native-square,spectrum:actual-general-etale-open-map,scheme:native-affine-atlas,scheme:relative-valued-point-functor,scheme:relative-native-closed-immersion}
 Every genuine etale morphism of arbitrary schemes induces an open map

@@ -3,8 +3,6 @@
 
 \begin{lemma}[Nonisolation through actual continuous injections and open maps]
 \label{topology:actual-open-map-nonisolation}
-\lean{EnvelopeProperty.not_isOpen_singleton_of_continuous_injective,
-EnvelopeProperty.not_isOpen_singleton_of_isOpenMap}
 For arbitrary topological spaces, a continuous injection sends a
 nonisolated point to a nonisolated point, and a point over a
 nonisolated image under an open map is nonisolated. No separation
@@ -25,11 +23,7 @@ geometry certificates.
 
 \begin{definition}[Actual native points of original rational evaluators]
 \label{scheme:actual-native-rational-evaluation}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.evaluationPoint,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.affineSpectrumHomeomorph_evaluationPoint,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.eval_evaluationPoint,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.map_evaluationPoint}
-\leanok
+
 \uses{scheme:relative-valued-point-functor,scheme:relative-affine-valued-point-homeomorphism}
 For an arbitrary commutative ring $R$, prescribed seminorm $v$,
 actual $R$-algebra $A$ and genuine evaluator $e:A\to_R R$, the
@@ -56,8 +50,6 @@ points, not just support equality.
 
 \begin{theorem}[Actual line evaluation points have no open singleton]
 \label{scheme:actual-native-line-evaluation-nonisolation}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_line_evaluation,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.neBot_nhdsNE_line_evaluation}
 \leanok
 \uses{topology:actual-open-map-nonisolation,scheme:actual-native-rational-evaluation,spectrum:centered-gauss-whole-ray}
 For every actual $a\in R$, evaluation at $a$ in the true native
@@ -90,9 +82,6 @@ is required.
 
 \begin{theorem}[Genuine etale curve charts give nonisolated rational native points]
 \label{scheme:actual-etale-curve-rational-nonisolation}
-\lean{EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_line_chart,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_evaluation_of_etale,
-EnvelopeProperty.Berkovich.RelativeSchemeValuedPoint.not_isOpen_singleton_of_etale_open_line_chart}
 \leanok
 \uses{topology:actual-open-map-nonisolation,scheme:actual-native-line-evaluation-nonisolation,scheme:actual-general-etale-native-open-map,scheme:relative-open-embedding}
 A genuine etale morphism to $\mathbb A^1_R$ makes every native

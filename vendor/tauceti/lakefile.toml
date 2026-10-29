@@ -1,0 +1,19 @@
+name = "tauceti"
+version = "0.1.0"
+license = "Apache-2.0"
+licenseFiles = ["LICENSE"]
+defaultTargets = ["TauCeti"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "TauCeti"
+globs = ["TauCeti.+"]

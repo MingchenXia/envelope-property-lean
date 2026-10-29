@@ -3,7 +3,7 @@
 
 \begin{definition}[Regular scheme]
 \label{def:regular-scheme}
-\lean{DeJongAlterations.IsRegularScheme}
+\lean{Alterations.IsRegularScheme}
 \leanok
 On a locally Noetherian scheme, regularity means that every local ring is
 regular. The stalkwise condition also makes sense without local
@@ -14,11 +14,10 @@ Noetherianity; all varieties in the alteration theorem are Noetherian.
 
 \begingroup
 
-\begin{definition}[Strict normal crossings]
+\begin{definition}[Strict normal crossings {\cite[p.~55]{deJong}}]
 \label{def:snc}
-\source{dejong96-alterations:page-0006}
 \uses{def:regular-scheme}
-\lean{DeJongAlterations.IsStrictNormalCrossings}
+\lean{Alterations.IsStrictNormalCrossings}
 \leanok
 On a Noetherian scheme $S$, a divisor $D$ has strict normal crossings if it
 is reduced, $S$ is regular at all points of $D$, and the scheme-theoretic
@@ -38,7 +37,7 @@ component.
 
 \begin{definition}[Projectivity]
 \label{def:projective-over}
-\lean{DeJongAlterations.IsProjectiveOver}
+\lean{Alterations.IsProjectiveOver}
 \leanok
 A morphism $p:X\to\operatorname{Spec}k$ is projective if it is the composite
 of a closed immersion $X\hookrightarrow\mathbb P^n_k$ and the structure
@@ -52,7 +51,7 @@ morphism of $\mathbb P^n_k$, for some finite $n$.
 \begin{definition}[Alteration with boundary]
 \label{def:alteration-output}
 \uses{def:projective-over,def:regular-scheme,def:snc}
-\lean{DeJongAlterations.AlterationWithBoundary}
+\lean{Alterations.AlterationWithBoundary}
 \leanok
 For a $k$-variety $X$ and a subset $Z$, an alteration with boundary consists
 of $k$-varieties $Y,\overline Y$, a $k$-alteration $f:Y\to X$, a $k$-open
@@ -68,7 +67,7 @@ support exactly $j(f^{-1}(Z))\cup(\overline Y\setminus j(Y))$.
 \begin{lemma}[Open subschemes]
 \label{lem:regular-open}
 \uses{def:regular-scheme}
-\lean{DeJongAlterations.IsRegularScheme.of_isOpenImmersion}
+\lean{Alterations.IsRegularScheme.of_isOpenImmersion}
 \leanok
 An open subscheme of a scheme with regular local rings has regular local rings.
 \end{lemma}
@@ -85,7 +84,7 @@ Regularity of a local ring is invariant under ring isomorphisms.
 \begin{lemma}[Actual divisor components and their finiteness]
 \label{lem:divisor-components}
 \uses{def:snc}
-\lean{DeJongAlterations.divisorComponentOf,DeJongAlterations.divisorComponent_finite}
+\lean{Alterations.divisorComponentOf,Alterations.divisorComponent_finite}
 \leanok
 Every irreducible component of the closed support of $D$ gives an ambient
 closed component in the component type used above. If the ambient space is
@@ -105,10 +104,9 @@ components can be represented by a finite set.
 
 \begingroup
 
-\begin{corollary}[Dimension under an actual dense open immersion]
+\begin{corollary}[Dimension under an actual dense open immersion {\cite[p.~68]{deJong}}]
 \label{cor:function-field-dimension-dense-open}
-\source{dejong96-alterations:page-0019}
-\lean{DeJongAlterations.Geometry.FunctionFieldDimension.topologicalKrullDim_eq_of_openImmersion,DeJongAlterations.Geometry.FunctionFieldDimension.topologicalKrullDim_le_one_of_dense_open}
+\lean{Alterations.Geometry.FunctionFieldDimension.topologicalKrullDim_eq_of_openImmersion,Alterations.Geometry.FunctionFieldDimension.topologicalKrullDim_le_one_of_dense_open}
 \leanok
 Let $Y$ be an integral scheme locally of finite type over $k$ and
 $j:X\to Y$ a dominant open immersion. Then $\dim X=\dim Y$.
@@ -129,11 +127,10 @@ $\dim X\leq\dim Y$, proving equality.
 
 \begingroup
 
-\begin{lemma}[Alterations preserve dimension]
+\begin{lemma}[Alterations preserve dimension {\cite[p.~61]{deJong}}]
 \label{lem:sm-dj-dim-alteration}
-\source{dejong96-alterations:page-0012}
 \uses{cor:function-field-dimension-dense-open}
-\lean{DeJongAlterations.StableModification.DeJong.IsAlteration.toSurjective,DeJongAlterations.StableModification.DeJong.topologicalKrullDim_eq_of_isAlteration,DeJongAlterations.StableModification.DeJong.topologicalKrullDim_eq_of_isModification}
+\lean{Alterations.StableModification.DeJong.IsAlteration.toSurjective,Alterations.StableModification.DeJong.topologicalKrullDim_eq_of_isAlteration,Alterations.StableModification.DeJong.topologicalKrullDim_eq_of_isModification}
 \leanok
 Let $S$ be a scheme locally of finite type over a field and $f:X\to S$ an
 alteration. Then $\dim X=\dim S$. In particular modifications preserve the
@@ -159,7 +156,7 @@ $U\subseteq S$ gives $\dim X=\dim f^{-1}(U)=\dim U=\dim S$.
 \begin{lemma}[Varieties have finite dimension]
 \label{lem:sm-dj-dim-finite}
 \uses{def:variety}
-\lean{DeJongAlterations.StableModification.DeJong.exists_nat_topologicalKrullDim_eq}
+\lean{Alterations.StableModification.DeJong.exists_nat_topologicalKrullDim_eq}
 \leanok
 The dimension of a variety over a field is a natural number.
 \end{lemma}
@@ -174,7 +171,7 @@ field, which is finite because the function field is finitely generated.
 
 \begin{lemma}[The actual dimension of a Cartier support component]
 \label{lem:actual-cartier-component-dimension}
-\lean{DeJongAlterations.Geometry.CartierBoundaryComponentDimension.component_affine_height,DeJongAlterations.Geometry.CartierBoundaryComponentDimension.component_dimension_add_one}
+\lean{Alterations.Geometry.CartierBoundaryComponentDimension.component_affine_height,Alterations.Geometry.CartierBoundaryComponentDimension.component_dimension_add_one}
 \leanok
 Let $X$ be a variety over any field and let $D$ be an actual effective
 Cartier ideal. For every native support component with actual reduced
@@ -199,10 +196,9 @@ finite-type variety dimensions, which gives the stated equality.
 
 \begingroup
 
-\begin{theorem}[Dominant integral pullback preserves Cartier divisors]
+\begin{theorem}[Dominant integral pullback preserves Cartier divisors {\cite[p.~67]{deJong}}]
 \label{thm:cartier-dominant-pullback}
-\source{dejong96-alterations:page-0018}
-\lean{DeJongAlterations.Geometry.CartierDominantPullback.isEffectiveCartierDivisor_comap}
+\lean{Alterations.Geometry.CartierDominantPullback.isEffectiveCartierDivisor_comap}
 \leanok
 Let $f:X\to Y$ be a dominant morphism of integral schemes.
 If $D$ is an effective Cartier divisor on $Y$, then its actual
@@ -228,7 +224,7 @@ the required local statement at every point.
 
 \begin{theorem}[An actual regular codimension-one component is Cartier]
 \label{thm:snc-regular-component-cartier}
-\lean{DeJongAlterations.Geometry.SNCSubdivisorComponent.isRegularRing_of_spec,DeJongAlterations.Geometry.SNCSubdivisorComponent.isRegularRing_quotient_of_specIdealSheaf,DeJongAlterations.Geometry.SNCSubdivisorComponent.isEffectiveCartierDivisor_vanishingIdeal,DeJongAlterations.Geometry.SNCSubdivisorComponent.component_le_support,DeJongAlterations.Geometry.SNCSubdivisorComponent.component_isEffectiveCartierDivisor}
+\lean{Alterations.Geometry.SNCSubdivisorComponent.isRegularRing_of_spec,Alterations.Geometry.SNCSubdivisorComponent.isRegularRing_quotient_of_specIdealSheaf,Alterations.Geometry.SNCSubdivisorComponent.isEffectiveCartierDivisor_vanishingIdeal,Alterations.Geometry.SNCSubdivisorComponent.component_le_support,Alterations.Geometry.SNCSubdivisorComponent.component_isEffectiveCartierDivisor}
 \leanok
 Let $X$ be locally Noetherian, and let $C\subset X$ be irreducible
 closed with pure codimension one. Suppose $X$ is regular along $C$
@@ -254,7 +250,7 @@ These actual affine equations prove the Cartier assertion.
 
 \begin{theorem}[Dominance from an integral scheme over a Dedekind domain forces flatness]
 \label{thm:proper-flattening-dedekind-native-flat}
-\lean{DeJongAlterations.Geometry.ProperFlatteningDedekind.flat_of_dominant_to_spec}
+\lean{Alterations.Geometry.ProperFlatteningDedekind.flat_of_dominant_to_spec}
 \leanok
 Let $R$ be a Dedekind domain and $f:X\to\operatorname{Spec}R$ the
 original dominant morphism from an integral scheme.  Then this same
@@ -284,7 +280,7 @@ proves native flatness of the original $f$.
 
 \begin{theorem}[Unconditional actual alteration over an arbitrary field]
 \label{thm:sm-bridge-alteration-arbitrary-unconditional}
-\lean{DeJongAlterations.StableModificationBridge.AlterationUnconditional.deJongAlterationTheorem}
+\lean{Alterations.StableModificationBridge.AlterationUnconditional.deJongAlterationTheorem}
 \leanok
 For every field $k$, with no perfectness or geometric integrality
 assumption, the native actual \texttt{DeJongAlterationTheorem k}
@@ -317,7 +313,7 @@ No geometric integrality premise on the original variety is added.
 
 \begin{lemma}[Whole stalk ideals and their actual pullback]
 \label{lem:node-fitting-ideal-sheaf-stalks}
-\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.exists_affineOpens_mem,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_ideal_comap,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_le_stalkIdeal,DeJongAlterations.Algebra.NodeFittingIdealSheaf.map_germ_eq_of_le,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_eq_map_germ,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_comap,DeJongAlterations.Algebra.NodeFittingIdealSheaf.ext_stalkIdeal}
+\lean{Alterations.Algebra.NodeFittingIdealSheaf.exists_affineOpens_mem,Alterations.Algebra.NodeFittingIdealSheaf.stalkIdeal,Alterations.Algebra.NodeFittingIdealSheaf.map_germ_ideal_comap,Alterations.Algebra.NodeFittingIdealSheaf.map_germ_le_stalkIdeal,Alterations.Algebra.NodeFittingIdealSheaf.map_germ_eq_of_le,Alterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_eq_map_germ,Alterations.Algebra.NodeFittingIdealSheaf.stalkIdeal_comap,Alterations.Algebra.NodeFittingIdealSheaf.ext_stalkIdeal}
 \leanok
 The supremum of the images of $I(U)$ under original germ maps over all
 affine neighbourhoods $U$ of $x$ defines $I_x$. Every such single actual
@@ -344,7 +340,7 @@ image, and the cover contains every point.
 
 \begin{lemma}[Kernel of the actual closed-subscheme stalk map]
 \label{lem:node-fitting-ideal-sheaf-stalk-kernel}
-\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.ker_stalkMap_subschemeι}
+\lean{Alterations.Algebra.NodeFittingIdealSheaf.ker_stalkMap_subschemeι}
 \leanok
 For any native ideal sheaf datum $I$ on any original scheme $X$, and any
 actual $z\in V(I)$, the kernel of the original native stalk map
@@ -376,7 +372,7 @@ radical, Noetherian hypothesis or point-closedness is used.
 \begin{theorem}[Actual stalk quotient and original quotient-map triangle]
 \label{thm:node-fitting-ideal-sheaf-actual-stalk-quotient}
 \uses{lem:node-fitting-ideal-sheaf-stalk-kernel}
-\lean{DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv,DeJongAlterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv_mk}
+\lean{Alterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv,Alterations.Algebra.NodeFittingIdealSheaf.stalkQuotientEquiv_mk}
 \leanok
 The actual original closed-subscheme stalk is canonically ring-isomorphic
 to $\mathcal O_{X,\iota(z)}/I_{\iota(z)}$, and the isomorphism sends every
@@ -399,7 +395,7 @@ claimed full original map triangle.
 \begin{lemma}[Range of the fraction-chart inclusion]
 \label{lem:affine-blowup-fraction-chart-range}
 \uses{lem:affine-blowup-chart-over-base}
-\lean{DeJongAlterations.affineBlowupFractionChartInclusion_opensRange}
+\lean{Alterations.affineBlowupFractionChartInclusion_opensRange}
 \leanok
 For $0\ne g\in I$, the native open immersion
 $\operatorname{Spec}R[I/g]\to\operatorname{Bl}_I(\operatorname{Spec}R)$
@@ -420,7 +416,7 @@ open $D_+(gT)$.
 \begin{lemma}[The local equation is a non-zero-divisor]
 \label{lem:blowup-chart-equation-regular}
 \uses{def:affine-blowup-fraction-chart}
-\lean{DeJongAlterations.affineBlowupFractionChart_generator_isRegular}
+\lean{Alterations.affineBlowupFractionChart_generator_isRegular}
 \leanok
 For any $g\ne0$, its image in $S$ is a non-zero-divisor.
 \end{lemma}
@@ -439,7 +435,7 @@ the required regularity.
 \begin{lemma}[The exceptional ideal on the actual fraction chart]
 \label{lem:blowup-exceptional-ideal-chart}
 \uses{lem:affine-blowup-chart-over-base}
-\lean{DeJongAlterations.affineBlowupExceptionalIdeal_comap_chart}
+\lean{Alterations.affineBlowupExceptionalIdeal_comap_chart}
 \leanok
 Let $R$ be a domain and $0\ne g\in I$. On the actual chart
 $\operatorname{Spec}R[I/g]$, the pulled-back blowup ideal is exactly the
@@ -458,7 +454,7 @@ chart ideal computation.
 \begingroup
 
 \begin{theorem}[Surjectivity of the actual graded map]\label{thm:rees-polynomial-surjective}
-\lean{DeJongAlterations.Algebra.ReesPresentation.reesPolynomialMap_surjective}
+\lean{Alterations.Algebra.ReesPresentation.reesPolynomialMap_surjective}
 \leanok
 If the family $g$ generates $I$, the actual graded map is surjective.
 \end{theorem}
@@ -478,7 +474,7 @@ Equality is equality in the actual Rees subalgebra of $R[t]$.
 \begin{definition}[Coefficient maps of native projective space]
 \label{def:blowup-projective-coefficient-map}
 \leanok
-\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap_irrelevant,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveCoefficientMap}
+\lean{Alterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap,Alterations.Geometry.BlowupProjectiveEmbedding.polynomialCoefficientMap_irrelevant,Alterations.Geometry.BlowupProjectiveEmbedding.projectiveCoefficientMap}
 A ring homomorphism $R\to A$ induces the genuine coefficientwise graded
 polynomial homomorphism and hence a native scheme morphism
 $\mathbb P^m_A\to\mathbb P^m_R$.
@@ -498,7 +494,7 @@ needed for native Proj. Applying native Proj gives the specified morphism.
 \begin{definition}[The affine map from the actual ideal generators]
 \label{def:blowup-projective-affine-map}
 \leanok
-\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap_surjective,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_isClosedImmersion,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_structure,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap_structure}
+\lean{Alterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap,Alterations.Geometry.BlowupProjectiveEmbedding.generatorPolynomialMap_surjective,Alterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding,Alterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_isClosedImmersion,Alterations.Geometry.BlowupProjectiveEmbedding.affineGeneratorEmbedding_structure,Alterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap,Alterations.Geometry.BlowupProjectiveEmbedding.affineProjectiveMap_structure}
 For a finite family $g_0,\ldots,g_m$ generating an actual ideal $I\subset A$,
 the degree-one Rees elements $g_iT$ define an actual native map from
 $\operatorname{Bl}_I(\operatorname{Spec}A)$ to $\mathbb P^m_R$.
@@ -518,7 +514,7 @@ follows from the two original native structure identities.
 \begin{lemma}[The complete pulled-back chart ideal]
 \label{lem:blowup-projective-pulled-forms}
 \leanok
-\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.ideal_comap_affine,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.coordinateAffineOpen,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.coordinateIdeal_span,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.pulledForm,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.pulledForm_span}
+\lean{Alterations.Geometry.BlowupProjectiveEmbedding.ideal_comap_affine,Alterations.Geometry.BlowupProjectiveEmbedding.coordinateAffineOpen,Alterations.Geometry.BlowupProjectiveEmbedding.coordinateIdeal_span,Alterations.Geometry.BlowupProjectiveEmbedding.pulledForm,Alterations.Geometry.BlowupProjectiveEmbedding.pulledForm_span}
 For an actual affine open $U\subset j^{-1}D_+(X_i)$, the restrictions of
 $F_a/X_i^{\deg F_a}$ generate the entire native pullback ideal on $U$.
 \end{lemma}
@@ -543,7 +539,7 @@ nilpotent structure.
 \label{lem:blowup-projective-subordinate-cover}
 \leanok
 \uses{lem:blowup-projective-pulled-forms}
-\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.SubordinateAffineSite,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCover,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCover_locallyDirected}
+\lean{Alterations.Geometry.BlowupProjectiveEmbedding.SubordinateAffineSite,Alterations.Geometry.BlowupProjectiveEmbedding.subordinateCover,Alterations.Geometry.BlowupProjectiveEmbedding.subordinateCover_locallyDirected}
 The native affine Rees charts above affine opens subordinate to the
 original projective coordinate opens form a locally directed open cover
 of the actual global blowup.
@@ -565,11 +561,10 @@ original native affine Rees transition identities.
 
 \begingroup
 
-\begin{theorem}[The projective morphism from the native global blowup]
+\begin{theorem}[The projective morphism from the native global blowup {\cite[p.~67]{deJong}}]
 \label{thm:blowup-projective-global-map}
-\source{dejong96-alterations:page-0018}
 \leanok
-\lean{DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate_le,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.formsChartMap,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.formsChartMap_compatible,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_restrict,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_structure,DeJongAlterations.Geometry.BlowupProjectiveEmbedding.exists_projectiveBlowupMap}
+\lean{Alterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate,Alterations.Geometry.BlowupProjectiveEmbedding.subordinateCoordinate_le,Alterations.Geometry.BlowupProjectiveEmbedding.formsChartMap,Alterations.Geometry.BlowupProjectiveEmbedding.formsChartMap_compatible,Alterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms,Alterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_restrict,Alterations.Geometry.BlowupProjectiveEmbedding.projectiveBlowupMapOfForms_structure,Alterations.Geometry.BlowupProjectiveEmbedding.exists_projectiveBlowupMap}
 \uses{lem:blowup-projective-subordinate-cover}
 Let $j:X\hookrightarrow\mathbb P^n_R$ be an actual projective embedding and
 let an original ideal $D$ be represented by finite forms $F_a$ of one degree
@@ -596,7 +591,7 @@ glue to its original base identity.
 
 \begin{lemma}[Native closed immersion on each actual target chart]
 \label{lem:segre-native-chart-closed-immersion}
-\lean{DeJongAlterations.Geometry.Segre.coordinateChartIso,DeJongAlterations.Geometry.Segre.coordinateChartInclusion_structure,DeJongAlterations.Geometry.Segre.chartClosedImmersion,DeJongAlterations.Geometry.Segre.chartClosedImmersion_isClosedImmersion,DeJongAlterations.Geometry.Segre.chartToProjective,DeJongAlterations.Geometry.Segre.chartToProjective_structure}
+\lean{Alterations.Geometry.Segre.coordinateChartIso,Alterations.Geometry.Segre.coordinateChartInclusion_structure,Alterations.Geometry.Segre.chartClosedImmersion,Alterations.Geometry.Segre.chartClosedImmersion_isClosedImmersion,Alterations.Geometry.Segre.chartToProjective,Alterations.Geometry.Segre.chartToProjective_structure}
 \leanok
 The actual affine scheme
 $\operatorname{Spec}(A_i\otimes_R B_j)$ has a closed
@@ -622,7 +617,7 @@ restriction of $\mathbf P_R^N\to\operatorname{Spec}R$.
 \begin{lemma}[Actual native coordinate overlap transitions]
 \label{lem:segre-native-coordinate-overlap}
 \uses{lem:segre-native-chart-closed-immersion}
-\lean{DeJongAlterations.Algebra.Segre.CoordinateOverlapRing,DeJongAlterations.Algebra.Segre.overlapCoefficients,DeJongAlterations.Algebra.Segre.overlapAlgebra,DeJongAlterations.Algebra.Segre.overlapLeft,DeJongAlterations.Algebra.Segre.overlapRight,DeJongAlterations.Algebra.Segre.homogeneousChartRatioHom_coordinate,DeJongAlterations.Algebra.Segre.overlap_coordinate_cross,DeJongAlterations.Algebra.Segre.overlapLeft_pivot_isUnit}
+\lean{Alterations.Algebra.Segre.CoordinateOverlapRing,Alterations.Algebra.Segre.overlapCoefficients,Alterations.Algebra.Segre.overlapAlgebra,Alterations.Algebra.Segre.overlapLeft,Alterations.Algebra.Segre.overlapRight,Alterations.Algebra.Segre.homogeneousChartRatioHom_coordinate,Alterations.Algebra.Segre.overlap_coordinate_cross,Alterations.Algebra.Segre.overlapLeft_pivot_isUnit}
 \leanok
 In the actual homogeneous localization at $x_i x_k$, the two
 constructed coordinate-chart restriction maps satisfy

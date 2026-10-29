@@ -7,7 +7,7 @@ $\varphi_M$, $\varphi_H$ for their native model potentials at the fixed Gauss ra
 use the linearizations of tensor products and powers of
 Lemma~\ref{lem:native-tc-nef-fs-whole-tensor-comparisons}.
 
-\begin{theorem}[Native norm factors multiply]
+\begin{theorem}[Native norm factors multiply {\cite[\S1.2]{BJ22}}]
 \label{thm:native-tc-nef-fs-tensor-native-factor}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.gaussNativeNormFactor_tensor_comparisons}
@@ -21,7 +21,6 @@ thm:actual-original-common-affine-line-frames,
 lem:actual-center-generic-tensor-frame,
 thm:fc-original-ample-tensor-ample,
 thm:fc-actual-power-frame-transition-units}
-\source{bj22-trivval:sec:tc}
 If $L$ and $K$ are ample, then at every point and radius the native norm factor of
 $M\otimes H$ is the product of the native norm factors of $M$ and of $H$.
 \end{theorem}
@@ -84,13 +83,12 @@ $M^{\otimes b}$ and $H^{\otimes a}$, whose generic lines $L^{\otimes b}$, $K^{\o
 are ample, and then Theorem~\ref{thm:native-tc-nef-fs-power-potential} to each factor.
 \end{proof}
 
-\begin{theorem}[Exact FS functions from a centrally nef line]
+\begin{theorem}[Exact FS functions from a centrally nef line {\cite[Lemma~5.5]{FHX}}]
 \label{thm:native-tc-nef-fs-actual-potential-sum-finite-fs}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.isFinFS_power_tensor_potential_sum_of_central_nef}
 \uses{thm:native-tc-nef-fs-perturbed-model-exact,
 thm:native-tc-nef-fs-power-tensor-native-potential}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Assume moreover that $k$ is infinite, $\mathcal X$ is integral and dominant over
 $\mathbf A^1$, $M|_{\mathcal X_0}$ is nef and $H|_{\mathcal X_0}$ is ample.  If $a>0$ and
 $L^{\otimes b}$, $K^{\otimes a}$ are ample, then $b\varphi_M+a\varphi_H$ is a finite
@@ -104,13 +102,12 @@ Theorem~\ref{thm:native-tc-nef-fs-power-tensor-native-potential} it equals
 $b\varphi_M+a\varphi_H$ at every point.
 \end{proof}
 
-\begin{corollary}[Division by the nef exponent]
+\begin{corollary}[Division by the nef exponent {\cite[(2.2)]{FHX}}]
 \label{cor:native-tc-nef-fs-potential-add-div}
 \leanok
 \lean{EnvelopeProperty.NativeTestConfiguration.TestConfiguration.isFinFS_potential_add_div_of_central_nef}
 \uses{thm:native-tc-nef-fs-actual-potential-sum-finite-fs,
 lem:native-tc-nef-fs-ray-denominator-division}
-\source{fhx-envelope-20261028:eq:FS-function}
 Under the hypotheses of Theorem~\ref{thm:native-tc-nef-fs-actual-potential-sum-finite-fs}
 and $b>0$, the function $\varphi_M+\frac ab\varphi_H$ is a finite rational Fubini--Study
 function of class $1/b$ for $L^{\otimes b}\otimes K^{\otimes a}$, defined by the same

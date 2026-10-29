@@ -1,0 +1,26 @@
+name = "aintlib"
+version = "0.1.0"
+license = "Apache-2.0"
+licenseFiles = ["LICENSE"]
+defaultTargets = ["Common", "ModularCurves"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+maxSynthPendingDepth = 3
+# Preserve the upstream private-in-public compatibility convention.
+weak.backward.privateInPublic.warn = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "Common"
+globs = ["Common", "Common.+"]
+
+[[lean_lib]]
+name = "ModularCurves"
+globs = ["ModularCurves.+"]
+

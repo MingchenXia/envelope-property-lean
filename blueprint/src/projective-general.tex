@@ -44,11 +44,10 @@ for $j\ge i$, and its limit is $\inf_if_i$.
 
 \subsection{Fubini--Study systems}\label{subsec:pg-fs-systems}
 
-\begin{definition}[Fubini--Study systems]\label{def:pg-fs-system}
+\begin{definition}[Fubini--Study systems {\cite[Definition~2.18, Proposition~2.19, Lemma~2.17]{BJ22}}]\label{def:pg-fs-system}
 \lean{EnvelopeProperty.FSSystem}
 \leanok
 \uses{conv:pg-setting}
-\source{bj22-trivval:defi:FS, bj22-trivval:prop:FS, bj22-trivval:lem:FSgenfin}
 Let $K$ be a compact Hausdorff space, $\star\in K$ and $r\ge1$. A \emph{Fubini--Study system} of rank $r$ on $(K,\star)$
 assigns to every $a\in\Q^r_{\ge0}$ a set $\mathcal H(a)$ of continuous functions $K\to[-\infty,\infty)$, the
 \emph{Fubini--Study functions of class $a$}, and a subset $\mathcal H_{\mathrm{fin}}(a)\subseteq\mathcal H(a)$ of real
@@ -66,21 +65,19 @@ $c\,\mathcal H_{\mathrm{fin}}(a)\subseteq\mathcal H_{\mathrm{fin}}(ca)$;
 \end{enumerate}
 \end{definition}
 
-\begin{definition}[Psh functions of a Fubini--Study system]\label{def:pg-psh}
+\begin{definition}[Psh functions of a Fubini--Study system {\cite[Definition~4.1]{BJ22}, \cite[\S2.2]{FHX}}]\label{def:pg-psh}
 \lean{EnvelopeProperty.FSSystem.IsPSH}
 \leanok
 \uses{def:pg-fs-system}
-\source{bj22-trivval:defi:psh, fhx-envelope-20261028:subsec:prelim-psh}
 For $\theta\in\R^r$, a function $u\colon K\to[-\infty,\infty)$ is \emph{$\theta$-psh}, $u\in\PSH(\theta)$, if
 $u\not\equiv-\infty$, $u$ is upper semicontinuous, and $u$ is the limit of a decreasing net $f_i\in\mathcal H(a_i)$ with
 $a_i\in\Q^r_{\ge0}$ and $a_i\to\theta$.
 \end{definition}
 
-\begin{proposition}[Maximum principle]\label{prop:pg-maxprin}
+\begin{proposition}[Maximum principle {\cite[Proposition~4.12, Lemma~1.4]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{prop:pg-maxprin}
 \lean{EnvelopeProperty.FSSystem.IsPSH.nonneg, EnvelopeProperty.FSSystem.IsPSH.le_apply_triv, EnvelopeProperty.FSSystem.IsPSH.apply_triv_ne_bot, EnvelopeProperty.FSSystem.IsPSH.iSup_eq}
 \leanok
 \uses{def:pg-psh}
-\source{bj22-trivval:prop:pshconvex, bj22-trivval:lem:maxprin, fhx-envelope-20261028:prop:BJ-package}
 If $u\in\PSH(\theta)$, then $\theta\ge0$, $u(\star)\in\R$ and $u\le u(\star)$.
 \end{proposition}
 
@@ -90,11 +87,10 @@ $u(x)\le f_i(x)\le f_i(\star)$ for all $x$ and $i$, so $u(x)\le\inf_if_i(\star)=
 $u(\star)>-\infty$, and $u(\star)\le f_i(\star)<\infty$.
 \end{proof}
 
-\begin{theorem}[PSH1 and PSH2]\label{thm:pg-psh2}
+\begin{theorem}[PSH1 and PSH2 {\cite[Theorem~4.5, Lemma~4.6]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{thm:pg-psh2}
 \lean{EnvelopeProperty.FSSystem.IsFS.isPSH, EnvelopeProperty.FSSystem.isPSH_iff_exists_isFinFS, EnvelopeProperty.FSSystem.isPSH_of_antitone, EnvelopeProperty.FSSystem.isPSH_of_antitone_seq}
 \leanok
 \uses{def:pg-psh, lem:bj-psh-diagonal, rmk:bj-psh-diagonal-finite}
-\source{bj22-trivval:thm:psh12, bj22-trivval:lem:PSH, fhx-envelope-20261028:prop:BJ-package}
 \begin{enumerate}
 \item $\mathcal H(a)\subseteq\PSH(a)$ for $a\in\Q^r_{\ge0}$.
 \item A function $u$ is $\theta$-psh if and only if $u\not\equiv-\infty$ and $u$ is the limit of a decreasing net
@@ -122,11 +118,10 @@ so $f_i\in\widetilde{\mathcal F}_{a_i}$. Lemma~\ref{lem:bj-psh-diagonal} gives $
 applies since $u\not\equiv-\infty$.
 \end{proof}
 
-\begin{theorem}[Basic properties]\label{thm:pg-psh-basic}
+\begin{theorem}[Basic properties {\cite[Theorem~4.7, Lemma~4.9]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{thm:pg-psh-basic}
 \lean{EnvelopeProperty.FSSystem.IsPSH.add, EnvelopeProperty.FSSystem.IsPSH.smul_rat, EnvelopeProperty.FSSystem.IsPSH.smul, EnvelopeProperty.FSSystem.isPSH_smul_iff, EnvelopeProperty.FSSystem.IsPSH.max, EnvelopeProperty.FSSystem.isPSH_finset_sup', EnvelopeProperty.FSSystem.IsPSH.add_const, EnvelopeProperty.FSSystem.isPSH_const, EnvelopeProperty.FSSystem.IsPSH.mono_class}
 \leanok
 \uses{def:pg-psh, prop:pg-maxprin, thm:pg-psh2}
-\source{bj22-trivval:thm:PSH, bj22-trivval:lem:twopsh, fhx-envelope-20261028:prop:BJ-package}
 Let $\theta,\theta'\in\R^r$.
 \begin{enumerate}
 \item $\PSH(\theta)+\PSH(\theta')\subseteq\PSH(\theta+\theta')$, and $t\,\PSH(\theta)=\PSH(t\theta)$ for real $t>0$.
@@ -157,11 +152,10 @@ in every $\mathcal H(a_n)$ by (FS3), and the constant sequence shows $c\in\PSH(\
 $u=u+0\in\PSH(\theta')$ by (1).
 \end{proof}
 
-\begin{theorem}[Regularization]\label{thm:pg-regularization}
+\begin{theorem}[Regularization {\cite[Theorem~4.15]{BJ22}, \cite[Lemma~5.10]{FHX}}]\label{thm:pg-regularization}
 \lean{EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_net_gt, EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_net_of_pos}
 \leanok
 \uses{thm:pg-psh2, prop:pg-maxprin, lem:bj-psh-diagonal}
-\source{bj22-trivval:thm:pshample, fhx-envelope-20261028:lem:compactification}
 Let $u\in\PSH(\theta)$.
 \begin{enumerate}
 \item $u$ is the limit of a decreasing net $f_\alpha\in\mathcal H_{\mathrm{fin}}(a_\alpha)$ with $a_\alpha\in\Q^r$,
@@ -187,11 +181,10 @@ decreasing net in $\mathcal H_{\mathrm{fin}}(\theta)$ with limit $u'$; adding th
 $\mathcal H_{\mathrm{fin}}(\theta)$ by (FS3).
 \end{proof}
 
-\begin{corollary}[Countable regularization]\label{cor:pg-countable-regularization}
+\begin{corollary}[Countable regularization {\cite[Corollary~12.18]{BJ22}}]\label{cor:pg-countable-regularization}
 \lean{EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_seq_gt, EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_seq_of_pos, EnvelopeProperty.FSSystem.IsPSH.exists_isFinFS_seq_dyadic}
 \leanok
 \uses{thm:pg-regularization, lem:bj-lindelof}
-\source{bj22-trivval:cor:countreg}
 Assume that $K$ is second countable and let $u\in\PSH(\theta)$.
 \begin{enumerate}
 \item In Theorem~\ref{thm:pg-regularization} the nets can be replaced by sequences.
@@ -209,7 +202,7 @@ classes tend to $\theta$. Case (2) is the same with constant class. (2) Take the
 \end{proof}
 
 \begin{remark}\label{rmk:pg-fs-system}
-\lean{EnvelopeProperty.ProjBerk.fsSystem, EnvelopeProperty.ProjBerk.fsSystem_isPSH_iff}
+
 \uses{def:pg-fs-system, def:pg-psh, thm:pg-regularization, def:pn-psh}
 In the applications $\mathcal H(a)$ and $\mathcal H_{\mathrm{fin}}(a)$ are the spaces $\mathcal H^{\mathrm{gf}}_\R(L_a)$ and
 $\mathcal H_\Q(L_a)$ of \cite{BJ22} (\texttt{defi:FS}) for $L_a=\sum_ca_cL_c$, where $L_1,\dots,L_r$ are line
@@ -225,11 +218,10 @@ Definition~\ref{def:pn-psh}.
 
 \subsection{Projective varieties}\label{subsec:pg-subvariety}
 
-\begin{definition}[Fubini--Study functions on $X$]\label{def:pg-subvariety-fs}
+\begin{definition}[Fubini--Study functions on $X$ {\cite[Definition~2.18]{BJ22}, \cite[(2.2)]{FHX}}]\label{def:pg-subvariety-fs}
 \lean{EnvelopeProperty.ProjSubvariety.IsFS, EnvelopeProperty.ProjSubvariety.IsFinFS, EnvelopeProperty.ProjSubvariety.isFS_iff_exists_restrict, EnvelopeProperty.ProjSubvariety.isFinFS_iff_exists_restrict}
 \leanok
 \uses{conv:pg-setting, def:pn-psh, def:wu-proj-functions}
-\source{bj22-trivval:defi:FS, fhx-envelope-20261028:eq:FS-function}
 For $a\in\Q_{\ge0}$, $\mathcal H(X,a)$ is the set of functions on $X^\an$ of the form
 $f=m^{-1}\max_t\{\log|s_t|+\lambda_t\}$ with $m\in\mathbf Z_{>0}$, $ma\in\N$, finitely many forms $s_t$ of degree $ma$, at least
 one of them not in $I$, and $\lambda_t\in\R$. The subset $\mathcal H_{\mathrm{fin}}(X,a)$ consists of those with all $\lambda_t\in\Q$
@@ -238,11 +230,10 @@ class $a$ on $(\PP^M)^\an$ (Definition~\ref{def:pn-psh}) whose forms are not all
 finite Fubini--Study functions of class $\mathcal O(1)$ of Definition~\ref{def:wu-proj-functions}(1).
 \end{definition}
 
-\begin{lemma}[Fubini--Study system on $X$]\label{lem:pg-subvariety-fs-system}
+\begin{lemma}[Fubini--Study system on $X$ {\cite[Proposition~2.19, Lemma~2.17]{BJ22}}]\label{lem:pg-subvariety-fs-system}
 \lean{EnvelopeProperty.ProjSubvariety.fsSystem, EnvelopeProperty.ProjSubvariety.secondCountableTopology_an, EnvelopeProperty.ProjSubvariety.IsFS.exists_antitone_isFinFS}
 \leanok
 \uses{def:pg-subvariety-fs, def:pg-fs-system, lem:wu-proj-chart, lem:bj-fs-basic, cor:bj-countable-regularization}
-\source{bj22-trivval:prop:FS, bj22-trivval:lem:FSgenfin}
 $(X^\an,\star)$ with the families $\mathcal H(X,a)\supseteq\mathcal H_{\mathrm{fin}}(X,a)$, $a\in\Q_{\ge0}$, is a Fubini--Study system of
 rank $1$. If $k$ is countable, $X^\an$ is second countable.
 \end{lemma}
@@ -267,11 +258,10 @@ common zero), and $f_n$ decreases to $f$, as in Lemma~\ref{lem:bj-fs-basic}(4). 
 countable for countable $k$ (proof of Corollary~\ref{cor:bj-countable-regularization}).
 \end{proof}
 
-\begin{definition}[Psh functions on $X$]\label{def:pg-subvariety-psh}
+\begin{definition}[Psh functions on $X$ {\cite[Definition~4.1]{BJ22}, \cite[\S2.2]{FHX}}]\label{def:pg-subvariety-psh}
 \lean{EnvelopeProperty.ProjSubvariety.IsPSH, EnvelopeProperty.ProjSubvariety.isPSH_of_antitone_seq}
 \leanok
 \uses{lem:pg-subvariety-fs-system, def:pg-psh}
-\source{bj22-trivval:defi:psh, fhx-envelope-20261028:subsec:prelim-psh}
 For $\theta\in\R$, $\PSH(X,\theta)$ is the set of $\theta$-psh functions (Definition~\ref{def:pg-psh}) of the Fubini--Study system of
 Lemma~\ref{lem:pg-subvariety-fs-system}.
 \end{definition}
@@ -299,11 +289,10 @@ outside $X^\an$; and the approximants decrease on $X^\an$ only, so their limit o
 therefore reused at the level of Fubini--Study data and charts, and the psh theory is that of \S\ref{subsec:pg-fs-systems}.
 \end{remark}
 
-\begin{lemma}[Uniform approximation of continuous psh functions]\label{lem:pg-uniform-approximation}
+\begin{lemma}[Uniform approximation of continuous psh functions {\cite[Theorem~4.15]{BJ22}}]\label{lem:pg-uniform-approximation}
 \lean{EnvelopeProperty.ProjSubvariety.IsPSH.exists_isFiniteFS_abs_sub_le, EnvelopeProperty.ProjSubvariety.IsPSH.exists_seq_isFiniteFS_abs_sub_le, EnvelopeProperty.ProjSubvariety.IsPSH.exists_seq_isFiniteFS_one_abs_sub_le}
 \leanok
 \uses{def:pg-subvariety-psh, thm:pg-regularization, lem:pg-subvariety-fs-system}
-\source{bj22-trivval:thm:pshample}
 Let $a\in\Q_{>0}$ and let $u\in\PSH(X,a)$ be continuous and real valued. For every $\epsilon>0$ there is
 $f\in\mathcal H_{\mathrm{fin}}(X,a)$ with $|u-f|\le\epsilon$ on $X^\an$.
 \end{lemma}
@@ -322,11 +311,10 @@ Theorem~\ref{thm:wu-bj-uniform}, with $\PSH(P,L)$ read as $\PSH(X,1)$ (Remark~\r
 
 \subsection{Normality and division}\label{subsec:pg-normal}
 
-\begin{lemma}[Normal charts]\label{lem:pg-chart-normal}
+\begin{lemma}[Normal charts {\cite[Lemma~5.10]{FHX}}]\label{lem:pg-chart-normal}
 \lean{EnvelopeProperty.ProjSubvariety.IsProjNormal, EnvelopeProperty.ProjSubvariety.isIntegrallyClosed_quotChartAlg, EnvelopeProperty.ProjSubvariety.isIntegrallyClosed_quotChartAlg_and}
 \leanok
 \uses{conv:pg-setting, lem:wu-proj-chart}
-\source{fhx-envelope-20261028:lem:compactification}
 If $X$ is projectively normal, then for every form $\sigma\notin I$ of degree $e\ge1$ the ring $A_\sigma$ is an integrally closed domain
 of finite type over $k$.
 \end{lemma}
@@ -341,11 +329,10 @@ homogeneous component $H_{c'}G$ of degree $c'+c$ lies in $I$; as $I$ is prime an
 $z=\bar H_{Ne}/\bar\sigma^N\in A_\sigma$.
 \end{proof}
 
-\begin{lemma}[Points attached to discrete valuations]\label{lem:pg-div-points}
+\begin{lemma}[Points attached to discrete valuations {\cite[Lemma~2.23]{BJ22}}]\label{lem:pg-div-points}
 \lean{EnvelopeProperty.ProjSubvariety.divPoint, EnvelopeProperty.ProjSubvariety.divPoint_val_of_isHomogeneous, EnvelopeProperty.ProjSubvariety.log_divPoint_val, EnvelopeProperty.ProjSubvariety.divPoint_val_ne_zero}
 \leanok
 \uses{conv:pg-setting, lem:bj-graded-extension}
-\source{bj22-trivval:lem:FShomdiv}
 Let $P$ be a prime ideal of $S$ such that $S_P$ is a discrete valuation ring, with normalized valuation $\operatorname{ord}_P$, and put
 $m_P=\min_j\operatorname{ord}_P(\bar x_j)\in\N$. For every real $t\ge0$ there is $v_{P,t}\in X^\an$ with
 \[
@@ -363,11 +350,10 @@ $v_{P,t}$ of $(\PP^M)^\an$ with $|f|=\max_dN(f_d)$. Since $I$ is homogeneous, th
 $I$, where $N$ vanishes; so $v_{P,t}\in X^\an$. For $\sigma\notin I$, $|\sigma|_{v_{P,t}}=N(\sigma)>0$.
 \end{proof}
 
-\begin{lemma}[Division from growth]\label{lem:pg-division}
+\begin{lemma}[Division from growth {\cite[Lemma~2.23]{BJ22}}]\label{lem:pg-division}
 \lean{EnvelopeProperty.ProjSubvariety.exists_isHomogeneous_sub_pow_mul_mem, EnvelopeProperty.ProjSubvariety.exists_isHomogeneous_sub_pow_mul_mem_of_log_le, EnvelopeProperty.ProjSubvariety.pow_dvd_mk_of_log_le}
 \leanok
 \uses{lem:pg-div-points, lem:bj-dvr-minimal, conv:pg-setting}
-\source{bj22-trivval:lem:FShomdiv}
 Let $X$ be projectively normal, $\sigma\notin I$ a form of degree $e\ge1$, $\tau$ a form of degree $Ne$, and $\beta\in\R$ with
 $0\le\beta\le N$. If there is $C\in\R$ with $\log|\tau|-N\log|\sigma|\le-\beta\log|\sigma|+C$ on $U_\sigma\cap X^\an$, then for
 $N'=\lfloor N-\beta\rfloor$ there is a form $\tau'$ of degree $(N-N')e$ with $\tau-\sigma^{N'}\tau'\in I$.
@@ -388,11 +374,10 @@ Since $\bar\sigma^{N'}$ is homogeneous and $S$ is a graded domain, comparing com
 $\bar\tau=\bar\sigma^{N'}\bar\rho_{(N-N')e}$; let $\tau'$ be a form of degree $(N-N')e$ lifting $\bar\rho_{(N-N')e}$.
 \end{proof}
 
-\begin{lemma}[Compactification, part (2), regularizable functions]\label{lem:pg-compactification-extend}
+\begin{lemma}[Compactification, part (2), regularizable functions {\cite[Lemma~5.10]{FHX}}]\label{lem:pg-compactification-extend}
 \lean{EnvelopeProperty.ProjSubvariety.isPSH_chartExt, EnvelopeProperty.ProjSubvariety.isPSH_chartExt_of_fs, EnvelopeProperty.ProjSubvariety.isPSH_chartExt_fsTerm, EnvelopeProperty.ProjSubvariety.chartExt, EnvelopeProperty.ProjSubvariety.growthFSData}
 \leanok
 \uses{lem:pg-chart-normal, lem:pg-division, thm:import-growth-control, lem:reg-triv-finite, def:fs, lem:wu-proj-chart, lem:bj-chart, lem:pg-subvariety-fs-system, def:pg-subvariety-psh, thm:pg-psh2, thm:pg-psh-basic}
-\source{fhx-envelope-20261028:lem:compactification}
 Let $X$ be projectively normal, $\sigma\notin I$ a form of degree $e\ge1$, and identify $Y=\Spec A_\sigma$ with $U_\sigma\cap X^\an$ through
 $\iota_\sigma$. Assume the imported Theorem~\ref{thm:import-growth-control}. Let $w\in\Rcal(Y)$, $\kappa\in\Q_{>0}$ and $B\in\R$ with
 $w\le-\kappa\log|\sigma|+B$ on $Y^\an$. For every rational $a>\kappa$, the function $\phi$ equal to $w+a\log|\sigma|$ on
@@ -431,11 +416,10 @@ $\phi\in\PSH(X,ae)$.
 
 \subsection{Blowups of projective varieties}\label{subsec:pg-blowup}
 
-\begin{definition}[Bigraded points]\label{def:pg-bigraded}
+\begin{definition}[Bigraded points {\cite[\S2.1]{FHX}}]\label{def:pg-bigraded}
 \lean{EnvelopeProperty.biWeight, EnvelopeProperty.IsBigraded, EnvelopeProperty.BiProjBerk, EnvelopeProperty.BiProjBerk.instCompactSpace, EnvelopeProperty.BiProjBerk.instT2Space, EnvelopeProperty.BiProjBerk.val_le_one, EnvelopeProperty.BiProjBerk.fst, EnvelopeProperty.BiProjBerk.snd}
 \leanok
 \uses{def:pn-an, def:berk}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 Let $R_{M,M'}=k[x_0,\dots,x_M,y_0,\dots,y_{M'}]$, bigraded by $\deg x_j=(1,0)$ and $\deg y_m=(0,1)$; $F_{(a,b)}$ denotes the
 bihomogeneous component of bidegree $(a,b)$. The model of $(\PP^M\times\PP^{M'})^\an$ is the set of multiplicative seminorms $v$ on
 $R_{M,M'}$, trivial on $k$, that are \emph{bigraded}, $|F|_v=\max_{(a,b)}|F_{(a,b)}|_v$, and \emph{normalized},
@@ -463,11 +447,10 @@ $(FG)_{\alpha_0+\beta_0}$ the term $F_{\alpha_0}G_{\beta_0}$ has norm $|F||G|$ a
 $N((FG)_{\alpha_0+\beta_0})=|F||G|$ by the ultrametric inequality, and $|FG|=|F||G|$. The seminorm is bigraded by construction.
 \end{proof}
 
-\begin{definition}[The blowup of a homogeneous ideal]\label{def:pg-blowup}
+\begin{definition}[The blowup of a homogeneous ideal {\cite[Corollary~5.26]{FHX}}]\label{def:pg-blowup}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter, EnvelopeProperty.ProjSubvariety.BlowupCenter.subst, EnvelopeProperty.ProjSubvariety.BlowupCenter.reesMap, EnvelopeProperty.ProjSubvariety.BlowupCenter.ideal, EnvelopeProperty.ProjSubvariety.BlowupCenter.ideal_eq_ker, EnvelopeProperty.ProjSubvariety.BlowupCenter.an, EnvelopeProperty.ProjSubvariety.BlowupCenter.proj, EnvelopeProperty.ProjSubvariety.BlowupCenter.triv}
 \leanok
 \uses{def:pg-bigraded, conv:pg-setting}
-\source{fhx-envelope-20261028:cor:normal-weak-global}
 Let $d\in\N$ and let $G_0,\dots,G_{M'}\in R_M$ be forms of degree $d$, not all in $I$; put $|\mathfrak a|_x=\max_m|G_m|_x$ for
 $x\in X^\an$. Let $\Theta\colon R_{M,M'}\to S[u]$ be the $k$-algebra homomorphism with $\Theta(x_j)=\bar x_j$ and
 $\Theta(y_m)=\bar G_mu$, and $I'=\ker\Theta$; the image $T=S[\bar G_0u,\dots,\bar G_{M'}u]$ is the Rees algebra of
@@ -516,21 +499,19 @@ plays no role below. Over the chart $U_{x_i}\cap X^\an$ the blowup is covered by
 Remark~\ref{rmk:weakly-psh-blowup} (Lemma~\ref{lem:pg-blowup-chart}).
 \end{remark}
 
-\begin{definition}[Fubini--Study functions on the blowup]\label{def:pg-blowup-fs}
+\begin{definition}[Fubini--Study functions on the blowup {\cite[Definition~2.18]{BJ22}}]\label{def:pg-blowup-fs}
 \lean{EnvelopeProperty.BiProjBerk.FSData, EnvelopeProperty.BiProjBerk.FSData.eval, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsFS, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsFinFS}
 \leanok
 \uses{def:pg-blowup, lem:pg-blowup-basic}
-\source{bj22-trivval:defi:FS}
 For $(a,b)\in\Q^2_{\ge0}$, $\mathcal H(X',(a,b))$ is the set of functions on $X'^\an$ of the form $m^{-1}\max_t\{\log|F_t|+\lambda_t\}$ with
 $m\in\mathbf Z_{>0}$, $ma,mb\in\N$, finitely many bihomogeneous $F_t$ of bidegree $(ma,mb)$, not all in $I'$, and $\lambda_t\in\R$. The
 subset $\mathcal H_{\mathrm{fin}}(X',(a,b))$ consists of those with $\lambda_t\in\Q$ and such that at every point of $X'^\an$ some $|F_t|\ne0$.
 \end{definition}
 
-\begin{lemma}[Fubini--Study system on the blowup]\label{lem:pg-blowup-fs-system}
+\begin{lemma}[Fubini--Study system on the blowup {\cite[Proposition~2.19, Lemma~2.17]{BJ22}}]\label{lem:pg-blowup-fs-system}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.fsSystem, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsFS.exists_antitone_isFinFS, EnvelopeProperty.BiProjBerk.FSData.exists_antitone_isRational, EnvelopeProperty.ProjSubvariety.BlowupCenter.secondCountableTopology_an}
 \leanok
 \uses{def:pg-blowup-fs, def:pg-fs-system, lem:pg-blowup-basic}
-\source{bj22-trivval:prop:FS, bj22-trivval:lem:FSgenfin}
 $(X'^\an,\star')$ with the families of Definition~\ref{def:pg-blowup-fs} is a Fubini--Study system of rank $2$.
 \end{lemma}
 
@@ -542,11 +523,10 @@ $x_j^{e}y_m^{e'}$, $x_j,y_m\notin I'$, staying outside the prime $I'$; constants
 products of families; (FS5) by rational weights and truncation.
 \end{proof}
 
-\begin{definition}[Psh functions on the blowup]\label{def:pg-blowup-psh}
+\begin{definition}[Psh functions on the blowup {\cite[Definition~4.1]{BJ22}, \cite[Corollary~5.26]{FHX}}]\label{def:pg-blowup-psh}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH, EnvelopeProperty.ProjSubvariety.BlowupCenter.isPSH_of_antitone_seq, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.exists_isFinFS_seq_of_pos, EnvelopeProperty.ProjSubvariety.BlowupCenter.IsPSH.exists_isFinFS_seq_dyadic, EnvelopeProperty.ProjSubvariety.IsPSH.comp_proj, EnvelopeProperty.ProjSubvariety.BlowupCenter.isPSH_logAbs}
 \leanok
 \uses{lem:pg-blowup-fs-system, def:pg-psh}
-\source{bj22-trivval:defi:psh, fhx-envelope-20261028:cor:normal-weak-global}
 For $\theta\in\R^2$, $\PSH(X',\theta)$ is the set of $\theta$-psh functions of the Fubini--Study system of
 Lemma~\ref{lem:pg-blowup-fs-system}. We write $\PSH(X',\mu^*\mathcal O(a))=\PSH(X',(a,0))$.
 \end{definition}
@@ -582,11 +562,10 @@ its elements, $\gamma(x)\in X'^\an$. For a form $f\in R_M$, $N(f)=|f|_x$, so $\m
 graded.
 \end{proof}
 
-\begin{lemma}[Blowup charts]\label{lem:pg-blowup-chart}
+\begin{lemma}[Blowup charts {\cite[Corollary~5.26]{FHX}}]\label{lem:pg-blowup-chart}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.centerGen, EnvelopeProperty.ProjSubvariety.BlowupCenter.centerSet, EnvelopeProperty.ProjSubvariety.BlowupCenter.chartHom, EnvelopeProperty.ProjSubvariety.BlowupCenter.chartHom_eq_zero_of_mem, EnvelopeProperty.ProjSubvariety.BlowupCenter.one_le_scaleX_chartHom, EnvelopeProperty.ProjSubvariety.BlowupCenter.one_le_scaleY_chartHom, EnvelopeProperty.ProjSubvariety.BlowupCenter.chartPoint, EnvelopeProperty.ProjSubvariety.BlowupCenter.chartPoint_val_of_isWeightedHomogeneous, EnvelopeProperty.ProjSubvariety.BlowupCenter.proj_chartPoint, EnvelopeProperty.ProjSubvariety.BlowupCenter.chartPoint_val_X_inl_self, EnvelopeProperty.ProjSubvariety.BlowupCenter.isWeaklyPSHOn_of_forall_chart, EnvelopeProperty.coe_dehomHom_of_isWeightedHomogeneous}
 \leanok
 \uses{def:pg-blowup, lem:pg-blowup-basic, lem:pg-bigraded-extension, lem:wu-proj-chart, lem:bj-chart, rmk:weakly-psh-blowup}
-\source{fhx-envelope-20261028:cor:normal-weak-global}
 Let $x_i\notin I$, $A_i=A_{x_i}$, $g_m=\bar G_m/\bar x_i^d\in A_i$, $\mathfrak a_i=\{g_0,\dots,g_{M'}\}$, and let $l$ be an index with $g_l\ne0$
 (equivalently $G_l\notin I$). Let $C=A_i[\mathfrak a_i/g_l]\subseteq\operatorname{Frac}A_i$ be the blowup chart of
 Remark~\ref{rmk:weakly-psh-blowup}, and $\delta\colon R_{M,M'}\to C$ the $k$-algebra homomorphism with $\delta(x_j)=\bar x_j/\bar x_i$ and
@@ -648,11 +627,10 @@ let $u_i=(\varphi-\log|x_i|)\circ\iota_i^{-1}$ on $Y_i^\an$. By Lemma~\ref{lem:w
 $-\log|x_i|\circ\iota_i^{-1}=\max_j\log|z_{ij}|\ge0$.
 \end{convention}
 
-\begin{lemma}[Weak plurisubharmonicity on the charts]\label{lem:pg-descent-weakly-psh}
+\begin{lemma}[Weak plurisubharmonicity on the charts {\cite[Lemma~5.4, Definition~5.3, Corollary~5.26]{FHX}}]\label{lem:pg-descent-weakly-psh}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.isDecrConvexPLLimitOn_descentChartFun_comap_chartMap, EnvelopeProperty.ProjSubvariety.BlowupCenter.isWeaklyPSHOn_descentChartFun, EnvelopeProperty.ProjSubvariety.BlowupCenter.isRegularizable_descentChartFun_comap_chartMap, EnvelopeProperty.ProjSubvariety.BlowupCenter.sup_fsTerm_chartTerms}
 \leanok
 \uses{conv:pg-descent, cor:pg-countable-regularization, lem:pg-blowup-fs-system, lem:pg-blowup-basic, lem:pg-blowup-chart, def:convex-pl, lem:local-basic, def:weakly-psh, rmk:weakly-psh-blowup}
-\source{fhx-envelope-20261028:lem:global-to-local, fhx-envelope-20261028:def:locally-L-psh, fhx-envelope-20261028:cor:normal-weak-global}
 For every $i$ with $x_i\notin I$ and every $l$ with $g_{il}\ne0$, the function $w\mapsto u_i(w|_{A_{x_i}})$ on
 $(\Spec A_{x_i}[\mathfrak a_i/g_{il}])^\an$ is the limit of a decreasing sequence of convex PL functions. In particular $u_i$ is weakly psh on
 $Y_i^\an$, with the blowup along $\mathfrak a_i$ as witness.
@@ -686,11 +664,10 @@ $\varphi(\iota_i^{-1}(w|_{A_{x_i}}))-\log|x_i|(\iota_i^{-1}(w|_{A_{x_i}}))=u_i(w
 $\mathfrak a_i$ contains a nonzero element, so $u_i$ is weakly psh with the blowup witness of Remark~\ref{rmk:weakly-psh-blowup}.
 \end{proof}
 
-\begin{lemma}[Regularizability off the centre]\label{lem:pg-descent-cover}
+\begin{lemma}[Regularizability off the centre {\cite[Lemma~5.10, Corollary~5.26]{FHX}}]\label{lem:pg-descent-cover}
 \lean{EnvelopeProperty.ProjSubvariety.BlowupCenter.isRegularizable_descentChartFun_awayComap, EnvelopeProperty.comap_chartMap_comap_chartToAway}
 \leanok
 \uses{conv:pg-descent, thm:pg-psh-basic, thm:pg-psh2, cor:pg-countable-regularization, lem:pg-blowup-fs-system, lem:pg-graph-point, lem:pg-blowup-basic, lem:wu-proj-chart, lem:principal-open, def:fs}
-\source{fhx-envelope-20261028:lem:compactification, fhx-envelope-20261028:cor:normal-weak-global}
 For every $i$ with $x_i\notin I$ and every $l$ with $g_{il}\ne0$, the restriction of $u_i$ to $(Y_i)_{g_{il}}^\an$ lies in $\Rcal((Y_i)_{g_{il}})$.
 \end{lemma}
 
@@ -736,11 +713,10 @@ finite at the trivial valuation, which maps to $\star$ under $\iota_i^{-1}$, bec
 (Lemma~\ref{lem:pg-blowup-basic}(2), Proposition~\ref{prop:pg-maxprin}).
 \end{proof}
 
-\begin{theorem}[Psh descent along modifications]\label{thm:pg-psh-descent}
+\begin{theorem}[Psh descent along modifications {\cite[Corollary~5.26]{FHX}}]\label{thm:pg-psh-descent}
 \lean{EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj, EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj_of_convexPLApproximation, EnvelopeProperty.ProjSubvariety.chartExt_descentChartFun, EnvelopeProperty.ProjSubvariety.chartExt_descentChartFun_le, EnvelopeProperty.ProjSubvariety.chartExt_descentChartFun_of_val_eq_one}
 \leanok
 \uses{conv:pg-descent, prop:pg-maxprin, thm:pg-psh-basic, thm:pg-psh2, lem:pg-blowup-surjective, lem:pg-blowup-basic, lem:pg-descent-weakly-psh, lem:pg-descent-cover, lem:pg-chart-normal, thm:normal-local-regularization, lem:pg-compactification-extend, def:pg-subvariety-psh, def:fs}
-\source{fhx-envelope-20261028:cor:normal-weak-global}
 Let $k$ be countable and $X$ projectively normal, and assume the imported Theorems~\ref{thm:import-growth-control}
 and~\ref{thm:import-local-to-global} and Proposition~\ref{prop:nonflat-norm}. Let $d$, $G_0,\dots,G_{M'}$, $X'^\an$ and $\mu$ be as in
 Definition~\ref{def:pg-blowup}, $a\in\Q_{>0}$, and $\varphi\colon X^\an\to[-\infty,\infty)$. If $\varphi\circ\mu\in\PSH(X',(a,0))$, then
@@ -777,8 +753,7 @@ is Corollary~\ref{cor:normal-weak-global} \cite[Corollary~5.26]{FHX} in the mode
 divisor $D$ of \cite{FHX} is the zero divisor of $G_ly_l$, with $\mathcal O(D)=\mathcal O(d,1)$, $H=\mu^*\mathcal O(1)+D=\mathcal O(1+d,1)$ and $X'_\sigma$ the preimage of
 $(Y_i)_{g_{il}}$; Lemma~\ref{lem:pg-descent-weakly-psh} is \cite[Lemma~5.4(2)]{FHX} on $X'$ in the charts of the blowup, and
 Lemma~\ref{lem:pg-descent-cover} is \cite[Lemma~5.10(1)]{FHX} on $X'$ over the locus where $\mu$ is an isomorphism. Two points differ. The
-modification $X'$ need not be normal: \cite[Corollary~5.26]{FHX} assumes $X'$ integral and first passes to its normalization (revision
-\texttt{832e086} assumes $X'$ normal), but normality of $X'$ is used nowhere in the rest of the proof of \cite{FHX}, since the affine pieces
+modification $X'$ need not be normal: \cite[Corollary~5.26]{FHX} assumes $X'$ integral and first passes to its normalization, but normality of $X'$ is used nowhere in the rest of the proof of \cite{FHX}, since the affine pieces
 $W'$ are isomorphic to open subsets of the normal $X$. And \cite[Lemma~5.10(2)]{FHX} on $X$ is applied to the regularizable functions $u_i$ only, where
 Lemma~\ref{lem:pg-compactification-extend} proves it from growth control and normality of $X$ instead of \cite[Lemma~5.5]{FHX} and
 \cite{CLD12}. The theorem therefore depends on exactly the imported statements of Theorem~\ref{thm:normal-local-regularization}.

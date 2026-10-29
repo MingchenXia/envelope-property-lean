@@ -63,12 +63,11 @@ isomorphic to $T^{\otimes d}$ by evaluation $B^\vee\otimes B\cong\mathcal O_X$.
 A line with an ample positive power is ample, so $T$ is ample.
 \end{proof}
 
-\begin{lemma}[Membership in a fixed ray from an ample difference class]
+\begin{lemma}[Membership in a fixed ray from an ample difference class {\cite[Proposition~2.19]{BJ22}}]
 \label{lem:native-numerical-ray-from-ample-class}
 \lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_ray_of_mem_ampleCone}
 \leanok
 \uses{def:native-numerical-kleiman-criterion,cor:native-numerical-ray-realization-difference}
-\source{bj22-trivval:prop:FS}
 Assume (K).  Let $D=(M,m,\dots)$ be a nonzero varying-line datum and let
 $b\ge0$ be rational with $b[L]-[D]$ in the ample cone.  Then
 $\varphi_D\in\mathcal H(L,b)$.
@@ -97,12 +96,11 @@ $t=(\frac\varepsilon2m)^{-1}$ we get
 $t[L]-[D]=t([L]-\frac\varepsilon2[M])$, a positive multiple of an ample class.
 \end{proof}
 
-\begin{theorem}[The net argument on an ample ray]
+\begin{theorem}[The net argument on an ample ray {\cite[Theorem~4.15]{BJ22}}]
 \label{thm:native-numerical-psh-ray-net}
 \lean{EnvelopeProperty.NativeNumericalFubiniStudy.isPSH_ray_of_antitone_net}
 \leanok
 \uses{lem:native-numerical-ray-coefficient,lem:native-numerical-ray-from-ample-class,def:native-line-whole-section-psh}
-\source{bj22-trivval:thm:pshample}
 Assume (K), let $L$ be ample and $a\ge0$.  Let $\varphi$ be upper
 semicontinuous, not identically $-\infty$, and the pointwise infimum of the
 decreasing functions of nonzero varying-line data $D_j$, $j\in J$ (a nonempty
@@ -132,12 +130,11 @@ $j\ge j_0$ and $n_0$ with $\frac1{n_0+1}<\varepsilon$; for
 $(j,n)\ge(j_0,n_0)$ we get $b_{j,n}<a+\varepsilon+\frac1{n+1}<c$.
 \end{proof}
 
-\begin{theorem}[Comparison on an ample ray]
+\begin{theorem}[Comparison on an ample ray {\cite[Definition~4.1, Theorem~4.15]{BJ22}}]
 \label{thm:native-numerical-psh-ray-comparison}
 \lean{EnvelopeProperty.NativeNumericalFubiniStudy.isPSH_ray_of_isCurveWeakPSH,EnvelopeProperty.NativeNumericalFubiniStudy.isCurveWeakPSH_iff_isPSH_ray}
 \leanok
 \uses{lem:native-numerical-ample-cone-open-fd,thm:native-numerical-psh-ray-net,def:native-numerical-curve-weak-psh,thm:native-numerical-curve-weak-psh-from-ray}
-\source{bj22-trivval:defi:psh,bj22-trivval:thm:pshample}
 Assume (FD) and (K), let $L$ be ample and $a\ge0$.  A function is curve-weak
 numerical psh of class $a[L]$ if and only if it is a fixed-ray psh function
 of $(L,a)$.

@@ -56,11 +56,10 @@ In this subsection $\mathcal F$ is a Fubini--Study system of rank $r$ on a compa
 (Definition~\ref{def:pg-fs-system}), with function classes $\mathcal H(a)\supseteq\mathcal H_{\mathrm{fin}}(a)$, $a\in\Q^r_{\ge0}$, and
 psh classes $\PSH(\theta)$, $\theta\in\R^r$ (Definition~\ref{def:pg-psh}).
 
-\begin{definition}[Envelopes and the envelope property]\label{def:sg-ep}
+\begin{definition}[Envelopes and the envelope property {\cite[\S2.3]{FHX}, \cite[\S5.2]{BJ22}}]\label{def:sg-ep}
 \lean{EnvelopeProperty.FSSystem.envelope, EnvelopeProperty.FSSystem.HasEnvelopeProperty, EnvelopeProperty.FSSystem.IsPL, EnvelopeProperty.ProjSubvariety.envelope, EnvelopeProperty.ProjSubvariety.HasEnvelopeProperty, EnvelopeProperty.ProjSubvariety.IsPL, EnvelopeProperty.ProjSubvariety.isPL_iff}
 \leanok
 \uses{def:pg-fs-system, def:pg-psh, def:pn-ep}
-\source{fhx-envelope-20261028:subsec:prelim-envelopes, bj22-trivval:sec:envprop}
 For $\theta\in\R^r$ and a bounded function $\phi\colon K\to\R$, the \emph{psh envelope} is
 $\mathrm P_\theta(\phi)=\sup\{\tau\in\PSH(\theta):\tau\le\phi\}$, a pointwise supremum without regularization (equal to $-\infty$
 if the set is empty). The class $\theta$ has the \emph{envelope property} if for every nonempty family $(u_i)$ in
@@ -69,11 +68,10 @@ $\operatorname{PL}(K)$ is the set of differences $f-g$ with $f\in\mathcal H_{\ma
 $a,b\in\Q^r_{\ge0}$. For $X$ we use the system of Lemma~\ref{lem:pg-subvariety-fs-system} and write $\operatorname{PL}(X)$.
 \end{definition}
 
-\begin{lemma}[Envelopes]\label{lem:sg-env-basic}
+\begin{lemma}[Envelopes {\cite[\S2.3]{FHX}}]\label{lem:sg-env-basic}
 \lean{EnvelopeProperty.FSSystem.envelope_le, EnvelopeProperty.FSSystem.le_envelope, EnvelopeProperty.FSSystem.envelope_mono, EnvelopeProperty.FSSystem.envelope_eq_self, EnvelopeProperty.FSSystem.const_le_envelope, EnvelopeProperty.FSSystem.iInf_le_envelope, EnvelopeProperty.FSSystem.envelope_add_const, EnvelopeProperty.FSSystem.envelope_smul, EnvelopeProperty.FSSystem.HasEnvelopeProperty.isPSH_uscReg_iSup, EnvelopeProperty.FSSystem.HasEnvelopeProperty.isPSH_envelope, EnvelopeProperty.FSSystem.HasEnvelopeProperty.isPSH_envelope_of_continuous, EnvelopeProperty.ProjSubvariety.envelope_add_const, EnvelopeProperty.ProjSubvariety.envelope_mul, EnvelopeProperty.ProjSubvariety.iInf_le_envelope}
 \leanok
 \uses{def:sg-ep, thm:pg-psh-basic, prop:pg-maxprin}
-\source{fhx-envelope-20261028:subsec:prelim-envelopes}
 Let $\theta\in\R^r$, $\theta\ge0$, and $\phi$ bounded. Then $\mathrm P_\theta$ is increasing in $\phi$,
 $\inf\phi\le\mathrm P_\theta(\phi)\le\phi$, $\mathrm P_\theta(\phi+c)=\mathrm P_\theta(\phi)+c$ for $c\in\R$, and
 $\mathrm P_{t\theta}(t\phi)=t\,\mathrm P_\theta(\phi)$ for real $t>0$.
@@ -86,11 +84,10 @@ bijection of $\PSH(\theta)$ and $u\mapsto tu$ a bijection $\PSH(\theta)\to\PSH(t
 $u\le\phi$ into $u+c\le\phi+c$, resp.\ $tu\le t\phi$.
 \end{proof}
 
-\begin{lemma}[Approximation of classes]\label{lem:sg-envppty}
+\begin{lemma}[Approximation of classes {\cite[Lemma~5.9]{BJ22}, \cite[Theorem~3.1]{FHX}}]\label{lem:sg-envppty}
 \lean{EnvelopeProperty.FSSystem.HasEnvelopeProperty.of_tendsto, EnvelopeProperty.FSSystem.hasEnvelopeProperty_of_forall_rat_gt, EnvelopeProperty.ProjSubvariety.HasEnvelopeProperty.of_tendsto, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_forall_rat_gt}
 \leanok
 \uses{def:sg-ep, thm:pg-psh-basic, thm:pg-psh2}
-\source{bj22-trivval:lem:envppty, fhx-envelope-20261028:thm:smooth-EP}
 Let $\theta\in\R^r$ be the limit of classes $\theta_j\in\R^r$ with $\theta_j\ge\theta$ coordinatewise, each having the envelope
 property. Then $\theta$ has the envelope property.
 \end{lemma}
@@ -102,11 +99,10 @@ sequence $u$ is decreasing, its classes $\theta_j$ tend to $\theta$, and $u\ge u
 (Theorem~\ref{thm:pg-psh2}(3)) gives $u\in\PSH(\theta)$.
 \end{proof}
 
-\begin{lemma}[PL functions]\label{lem:sg-pl}
+\begin{lemma}[PL functions {\cite[Lemma~2.3, Theorem~2.2]{BJ22}}]\label{lem:sg-pl}
 \lean{EnvelopeProperty.FSSystem.IsFinFS.isPL, EnvelopeProperty.FSSystem.isPL_const, EnvelopeProperty.FSSystem.IsPL.continuous, EnvelopeProperty.FSSystem.IsPL.add, EnvelopeProperty.FSSystem.IsPL.sub, EnvelopeProperty.FSSystem.IsPL.smul, EnvelopeProperty.FSSystem.IsPL.max, EnvelopeProperty.FSSystem.IsPL.min, EnvelopeProperty.FSSystem.plSubmodule, EnvelopeProperty.FSSystem.exists_isPL_abs_sub_lt, EnvelopeProperty.FSSystem.dense_setOf_isPL, EnvelopeProperty.FSSystem.exists_isPL_gt, EnvelopeProperty.FSSystem.directedOn_isPL_gt, EnvelopeProperty.FSSystem.iInf_isPL_gt, EnvelopeProperty.FSSystem.exists_antitone_isPL_net}
 \leanok
 \uses{def:sg-ep, def:pg-fs-system, lem:bj-pl-lattice, thm:bj-pl-dense, lem:bj-usc-pl}
-\source{bj22-trivval:lem:FSdense, bj22-trivval:thm:PLdense}
 \begin{enumerate}
 \item $\operatorname{PL}(K)$ is a $\Q$-vector space of continuous real functions which contains the rational constants and
 is stable under finite maxima and minima.
@@ -128,11 +124,10 @@ points, the lattice form of the Stone--Weierstrass theorem on a compact Hausdorf
 verbatim to $K$.
 \end{proof}
 
-\begin{proposition}[Envelope property via PL obstacles]\label{prop:sg-envelope-criterion}
+\begin{proposition}[Envelope property via PL obstacles {\cite[Lemma~1.3]{BJadd}, \cite[Proposition~2.5]{FHX}}]\label{prop:sg-envelope-criterion}
 \lean{EnvelopeProperty.FSSystem.hasEnvelopeProperty_of_forall_isPL, EnvelopeProperty.FSSystem.hasEnvelopeProperty_iff_forall_isPL, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_forall_isPL, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_iff_forall_isPL}
 \leanok
 \uses{lem:sg-pl, lem:sg-env-basic, thm:pg-psh2, def:sg-ep}
-\source{bj22-addendum:lem:contenv, fhx-envelope-20261028:prop:ample-envelopes}
 Assume that $\operatorname{PL}(K)$ separates the points of $K$. Let $\theta\in\R^r$, $\theta\ge0$, and assume that
 $\mathrm P_\theta(\psi)\in\PSH(\theta)$ for every $\psi\in\operatorname{PL}(K)$. Then $\theta$ has the envelope property.
 \end{proposition}
@@ -146,11 +141,10 @@ $\mathrm P_\theta(\psi)$ form a decreasing net of $\theta$-psh functions with li
 PSH2 (Theorem~\ref{thm:pg-psh2}(3)) gives $h\in\PSH(\theta)$.
 \end{proof}
 
-\begin{lemma}[Fubini--Study envelopes]\label{lem:sg-fs-envelope}
+\begin{lemma}[Fubini--Study envelopes {\cite[Lemma~1.5]{BJadd}, \cite[Lemma~5.19]{BJ22}}]\label{lem:sg-fs-envelope}
 \lean{EnvelopeProperty.FSSystem.envelope_eq_iSup_isFinFS, EnvelopeProperty.FSSystem.envelope_coe_eq_iSup_isFinFS, EnvelopeProperty.ProjSubvariety.envelope_eq_iSup_isFinFS}
 \leanok
 \uses{thm:pg-regularization, def:sg-ep, def:pg-fs-system}
-\source{bj22-addendum:lem:FSenv, bj22-trivval:lem:envlsc}
 Let $a\in\Q^r$ have positive coordinates and let $\phi\colon K\to\R$ be bounded and lower semicontinuous. Then
 $\mathrm P_a(\phi)=\sup\{\psi\in\mathcal H_{\mathrm{fin}}(a):\psi\le\phi\}$.
 \end{lemma}
@@ -169,11 +163,10 @@ $\psi_\alpha\le\mathrm Q$. Letting $\alpha\to\infty$ pointwise and choosing $\de
 $\epsilon\to0$.
 \end{proof}
 
-\begin{theorem}[Reduction to integral classes and nonpositive PL obstacles]\label{thm:sg-reduction}
+\begin{theorem}[Reduction to integral classes and nonpositive PL obstacles {\cite[Theorem~3.1]{FHX}, \cite[Lemma~5.9]{BJ22}}]\label{thm:sg-reduction}
 \lean{EnvelopeProperty.FSSystem.hasEnvelopeProperty_of_forall_nat, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_forall_nat, EnvelopeProperty.exists_nat_mul_rat_vec_eq_nat}
 \leanok
 \uses{lem:sg-envppty, prop:sg-envelope-criterion, lem:sg-env-basic, lem:sg-pl, prop:pg-maxprin, thm:pg-psh-basic}
-\source{fhx-envelope-20261028:thm:smooth-EP, bj22-trivval:lem:envppty}
 Assume that $\operatorname{PL}(K)$ separates the points of $K$, and that $\mathrm P_a(\phi)\in\PSH(a)$ for every $a\in\N^r$ with
 positive coordinates and every $\phi\in\operatorname{PL}(K)$ with $\phi\le0$. Then every $\theta\in\R^r$ has the envelope property.
 \end{theorem}
@@ -215,11 +208,10 @@ $k(X)(Y,t)$ with $Y,t$ algebraically independent over $\operatorname{Frac}A_i=k(
 composites of smooth algebras are smooth.
 \end{proof}
 
-\begin{lemma}[Functions attached to ideals of $T$]\label{lem:sg-phi-basic}
+\begin{lemma}[Functions attached to ideals of $T$ {\cite[\S2.1]{FHX}}]\label{lem:sg-phi-basic}
 \lean{EnvelopeProperty.ProjSubvariety.phiIdeal_sup_ker_coneMk, EnvelopeProperty.ProjSubvariety.phiIdeal_comap_coneIrrelevant, EnvelopeProperty.ProjSubvariety.phiIdeal_comap_saturation, EnvelopeProperty.ProjSubvariety.isFS_inv_mul_phiIdeal, EnvelopeProperty.ProjSubvariety.gaussExt_val_eq_zero_of_coneMk_eq_zero, EnvelopeProperty.ProjSubvariety.logAbs_gaussExt_eq_of_coneMk_eq}
 \leanok
 \uses{conv:sg-setting, def:pg-subvariety-fs, lem:pg-subvariety-fs-system}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 Let $\mathfrak b,\mathfrak b'\subseteq T$ be ideals.
 \begin{enumerate}
 \item $\phi_{\mathfrak b}\le0$; $\phi_{\mathfrak b}\le\phi_{\mathfrak b'}$ if $\mathfrak b\subseteq\mathfrak b'$; $\phi_{\mathfrak b}=\max_k\log|g_k|_{\sigma(\cdot)}$ for
@@ -241,11 +233,10 @@ $\phi_{\mathfrak b}(v)=\max_k(\log|s_k|_v-\lambda_k)=\max_{k,\,|\alpha|=D-D_k}(\
 $D$ with forms of degree $D$, among which $s_kx_j^{D-D_k}\notin I$ for $j\in\mathcal J$ ($I$ prime).
 \end{proof}
 
-\begin{lemma}[PL functions separate points of $X^\an$]\label{lem:sg-pl-separate}
+\begin{lemma}[PL functions separate points of $X^\an$ {\cite[Lemma~2.3]{BJ22}}]\label{lem:sg-pl-separate}
 \lean{EnvelopeProperty.ProjSubvariety.exists_isFiniteFS_ne, EnvelopeProperty.ProjSubvariety.separatesPoints_isPL}
 \leanok
 \uses{lem:pg-subvariety-fs-system, def:sg-ep, def:pn-an}
-\source{bj22-trivval:lem:FSdense}
 $\operatorname{PL}(X)$ separates the points of $X^\an$.
 \end{lemma}
 
@@ -258,11 +249,10 @@ $|s|_v,|s|_w>0$, then $f_N(v)=\log|s|_v\ne\log|s|_w=f_N(w)$ for large $N$; if, s
 for large $N$. So $f_N=f_N-0\in\operatorname{PL}(X)$ separates $v$ and $w$.
 \end{proof}
 
-\begin{definition}[Divisorial points of $X$]\label{def:sg-div}
+\begin{definition}[Divisorial points of $X$ {\cite[\S2.1]{FHX}, \cite[\S1.3]{BJ22}}]\label{def:sg-div}
 \lean{EnvelopeProperty.ProjSubvariety.IsDivisorial, EnvelopeProperty.ProjSubvariety.isDivisorial_of_val_eq}
 \leanok
 \uses{conv:sg-setting, def:pn-div}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich, bj22-trivval:sec:Gauss}
 A point $v\in X^\an$ is \emph{divisorial} if there are $c\in\Q_{>0}$ and a discrete valuation ring $R'$ with
 $T\subseteq R'\subseteq\operatorname{Frac}T$, essentially of finite type over $k$, such that $\log|f|_{\sigma(v)}=-c\operatorname{ord}_{R'}(f)$ for all
 $f\in T$. We write $X^{\divv}$ for the set of divisorial points. For such $v$ and an ideal $\mathfrak b\subseteq T$,
@@ -299,11 +289,10 @@ $\operatorname{ord}_{R'}(f)=\min_c\operatorname{ord}_V(f_c/\bar x_j^c)=-b\max_c\
 Take $c=1/b$.
 \end{proof}
 
-\begin{lemma}[Invariance under the torus]\label{lem:sg-rees-invariant}
+\begin{lemma}[Invariance under the torus {\cite[Lemma~2.13]{BJ22}}]\label{lem:sg-rees-invariant}
 \lean{EnvelopeProperty.ProjSubvariety.reesDVR, EnvelopeProperty.ProjSubvariety.reesDVR_torus, EnvelopeProperty.ProjSubvariety.reesOrdX_pos, EnvelopeProperty.ProjSubvariety.isDivisorial_reesPoint}
 \leanok
 \uses{def:bj-rees, lem:bj-rees-invariant}
-\source{bj22-trivval:lem:Shilov}
 Let $A$ be a finitely generated $k$-algebra which is a domain, $B=A[t]$, and $\mathfrak i=(g_1,\dots,g_s)\subseteq B$ with $g_\ell=h_\ell t^{e_\ell}$,
 $0\ne h_\ell\in A$, and $t^N\in\mathfrak i$ for some $N$. For every $V\in\mathrm{RV}(\mathfrak i;g)$ (Definition~\ref{def:bj-rees}),
 $\operatorname{ord}_V(t)>0$ and $\operatorname{ord}_V(\sum_\lambda f_\lambda t^\lambda)=\min_\lambda(\operatorname{ord}_V(f_\lambda)+\lambda\operatorname{ord}_V(t))$ for $f_\lambda\in A$.
@@ -319,11 +308,10 @@ $\mu_0,\dots,\mu_L\in k^\times$; inverting the Vandermonde matrix writes each $f
 $\alpha_{\mu_i}(f)$, so $\operatorname{ord}_V(f_\lambda t^\lambda)\ge\operatorname{ord}_V(f)$; the reverse inequality is the ultrametric inequality.
 \end{proof}
 
-\begin{lemma}[Finite Fubini--Study functions as ideals]\label{lem:sg-finite-fs}
+\begin{lemma}[Finite Fubini--Study functions as ideals {\cite[Proposition~2.25]{BJ22}}]\label{lem:sg-finite-fs}
 \lean{EnvelopeProperty.ProjSubvariety.IsFinFS.exists_coneSup}
 \leanok
 \uses{lem:bj-graded-extension, conv:sg-setting, lem:sg-phi-basic}
-\source{bj22-trivval:prop:FSideal}
 Let $\psi=m^{-1}\max_i(\log|s_i|+\lambda_i)\in\mathcal H_{\mathrm{fin}}(X,b)$ with forms $s_i\notin I$ of degree $mb$, $\lambda_i\in\mathbf{Z}_{\le0}$ and
 $\max_i\lambda_i=0$. Then $\mathfrak m_+^e\subseteq(\bar s_i)_iS$ for some $e\ge mb$; the ideal $\mathfrak i\subseteq T$ generated by the
 $g_i=\bar s_it^{-\lambda_i}$ satisfies $\phi_{\mathfrak i}=m\psi$ on $X^\an$; and for $N=\max_i(-\lambda_i)$ and every $j\in\mathcal J$,
@@ -341,11 +329,10 @@ $\bar x_j^e=\sum_ic_i\bar s_i$ with $c_i\in S_{e-mb}$; then $\bar x_j^et^N=\sum_
 $t^N=\sum_i(c_i/\bar x_j^{e-mb})t^{N+\lambda_i}g_i^{(j)}$ in $B_j$.
 \end{proof}
 
-\begin{lemma}[Shilov boundary on $X$]\label{lem:sg-shilov}
+\begin{lemma}[Shilov boundary on $X$ {\cite[Lemma~2.13]{BJ22}}]\label{lem:sg-shilov}
 \lean{EnvelopeProperty.ProjSubvariety.IsFinFS.exists_finset_iSup_sub_eq, EnvelopeProperty.ProjSubvariety.IsFinFS.exists_finset_le_of_le}
 \leanok
 \uses{lem:sg-finite-fs, thm:bj-rees, def:bj-rees, thm:bj-normalization-finite, lem:sg-rees-invariant, lem:sg-div-points, lem:sg-phi-basic}
-\source{bj22-trivval:lem:Shilov}
 For every $\psi\in\mathcal H_{\mathrm{fin}}(X,b)$ there is a finite set $\Sigma\subseteq X^{\divv}$ containing $\star$ such that for every $a\in\Q_{\ge0}$ and
 every $\varphi\in\mathcal H(X,a)$ with rational weights, $\sup_{X^\an}(\varphi-\psi)=\max_\Sigma(\varphi-\psi)$.
 \end{lemma}
@@ -369,11 +356,10 @@ seminorm on $B_j$ with $|\cdot|_w\le1$ on $B_j$ and $|t|_w=e^{-1}$, so $\max_i|g
 $|F_\ell^{(j)}|_w\le\max_i|g_i^{(j)}|_w^{rM}$, that is, $\log|F_\ell|_{\sigma(v)}\le\phi_{\mathfrak i^{rM}}(v)$.
 \end{proof}
 
-\begin{lemma}[Suprema against PL functions]\label{lem:sg-sup-pl}
+\begin{lemma}[Suprema against PL functions {\cite[Lemma~4.26]{BJ22}}]\label{lem:sg-sup-pl}
 \lean{EnvelopeProperty.ProjSubvariety.IsPL.exists_finset_iSup_sub_eq, EnvelopeProperty.ProjSubvariety.IsPL.exists_finset_le_of_le}
 \leanok
 \uses{lem:sg-shilov, thm:pg-regularization, lem:pg-subvariety-fs-system}
-\source{bj22-trivval:lem:supPL}
 For every $\psi\in\operatorname{PL}(X)$ there is a finite set $\Sigma\subseteq X^{\divv}$ such that $\sup_{X^\an}(u-\psi)=\max_\Sigma(u-\psi)$ for every
 $\theta\in\R$ and every $u\in\PSH(X,\theta)$.
 \end{lemma}
@@ -386,11 +372,10 @@ $(u-\psi)(v)\le(u_\alpha+\psi_2-\psi_1)(v)\le\max_\Sigma(u_\alpha-\psi)$. As $\S
 side tends to $\max_\Sigma(u-\psi)$.
 \end{proof}
 
-\begin{theorem}[Divisorial comparison on $X$]\label{thm:sg-comparison}
+\begin{theorem}[Divisorial comparison on $X$ {\cite[Theorem~4.22]{BJ22}, \cite[Proposition~2.1]{FHX}}]\label{thm:sg-comparison}
 \lean{EnvelopeProperty.ProjSubvariety.IsPSH.le_of_forall_isDivisorial_le, EnvelopeProperty.ProjSubvariety.IsPSH.le_of_forall_isDivisorial_le_isPL, EnvelopeProperty.ProjSubvariety.IsPSH.eq_of_forall_isDivisorial_eq}
 \leanok
 \uses{lem:sg-sup-pl, lem:sg-pl, lem:sg-pl-separate}
-\source{bj22-trivval:thm:suppsh, fhx-envelope-20261028:prop:BJ-package}
 Let $u\in\PSH(X,\theta)$ and $h\colon X^\an\to[-\infty,\infty)$ upper semicontinuous. If $u\le h$ on $X^{\divv}$, then $u\le h$ on $X^\an$.
 \end{theorem}
 
@@ -411,11 +396,10 @@ other then follows through Remark~\ref{rmk:gl-bridges}.
 
 \subsection{The ideals \texorpdfstring{$J_m$}{Jm} on \texorpdfstring{$X$}{X}}\label{subsec:sg-Jm}
 
-\begin{definition}[The ideals $J_m$]\label{def:sg-Jm}
+\begin{definition}[The ideals $J_m$ {\cite[\S3]{FHX}}]\label{def:sg-Jm}
 \lean{EnvelopeProperty.ProjSubvariety.obstacleSpace, EnvelopeProperty.ProjSubvariety.obstacleIdeal, EnvelopeProperty.ProjSubvariety.coneObstacleIdeal, EnvelopeProperty.ProjSubvariety.mem_obstacleSpace}
 \leanok
 \uses{conv:sg-setting, def:bj-Jm}
-\source{fhx-envelope-20261028:sec:smooth}
 Let $d\in\mathbf{Z}_{>0}$ and $\phi\colon X^\an\to\R$. For $m\ge1$ let $V_m(\phi)\subseteq S_{md}[t]$ be the set of $x$-homogeneous $g$ of degree
 $md$ with $\log|g|_{\sigma(v)}\le m\phi(v)$ for all $v\in X^\an$, and $J_m(\phi)\subseteq T$ the ideal generated by $V_m(\phi)$.
 \end{definition}
@@ -439,11 +423,10 @@ Fubini--Study function of class $md$ with integer weights and no common zero on 
 $\mathcal H_{\mathrm{fin}}(X,md)$, and $\phi_{J_m}\le m\phi$ since each generator lies in $V_m$. Scale by $m^{-1}$ (FS4).
 \end{proof}
 
-\begin{proposition}[Envelopes of PL obstacles]\label{prop:sg-envelope-Jm}
+\begin{proposition}[Envelopes of PL obstacles {\cite[Proposition~2.5]{FHX}, \cite[Lemma~5.22]{BJ22}}]\label{prop:sg-envelope-Jm}
 \lean{EnvelopeProperty.ProjSubvariety.envelope_eq_iSup_obstacleIdeal, EnvelopeProperty.ProjSubvariety.envelope_eq_iSup_obstacleIdeal_of_nonpos, EnvelopeProperty.ProjSubvariety.envelope_eq_iSup_coneObstacleIdeal, EnvelopeProperty.ProjSubvariety.inv_mul_phiIdeal_obstacleIdeal_le_mul}
 \leanok
 \uses{lem:sg-fs-envelope, lem:sg-Jm-basic, def:sg-Jm}
-\source{fhx-envelope-20261028:prop:ample-envelopes, bj22-trivval:lem:envline}
 Let $d\in\mathbf{Z}_{>0}$ and $\phi\colon X^\an\to\R$ bounded, lower semicontinuous, with $\phi\le0$. Then
 $\mathrm P_d(\phi)=\sup_{m\ge1}m^{-1}\phi_{J_m(\phi)}$, and $m^{-1}\phi_{J_m}\le(mr)^{-1}\phi_{J_{mr}}$ for $r\ge1$.
 \end{proposition}
@@ -472,11 +455,10 @@ where the $\partial/\partial u'_j$ are the derivations attached to $u'$ ($\parti
 $k[x,t]$ form a $p$-basis and $\Phi^e$ is the trace of Lemma~\ref{lem:frobenius-roots}.
 \end{convention}
 
-\begin{lemma}[Basic properties of $p$-bases]\label{lem:sg-pbasis-basics}
+\begin{lemma}[Basic properties of $p$-bases {\cite[Lemma~3.3]{FHX}}]\label{lem:sg-pbasis-basics}
 \lean{EnvelopeProperty.Cartier.IsPBasis.sum_traceIter_mul_mono, EnvelopeProperty.Cartier.IsPBasis.traceIter_mono_sub_mul_sum, EnvelopeProperty.Cartier.IsPBasis.traceIter_eq_of_sum_eq, EnvelopeProperty.Cartier.IsPBasis.traceIter_mono_pow_sub_one, EnvelopeProperty.Cartier.IsPBasis.traceIter_eq_traceIter_jac_pow_mul, EnvelopeProperty.Cartier.IsPBasis.traceIter_eq_traceIter_jac_pow_mul_of_isDomain, EnvelopeProperty.Cartier.IsPBasis.map_algebraMap_of_isLocalization, EnvelopeProperty.Cartier.IsPBasis.traceIter_mk', EnvelopeProperty.Cartier.IsPBasis.polynomial, EnvelopeProperty.Cartier.IsPBasis.laurentPolynomial, EnvelopeProperty.Cartier.IsPBasis.polynomial_laurentPolynomial}
 \leanok
 \uses{conv:sg-pbasis, lem:pn-divisorial-trace}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
 Let $u$ be a $p$-basis of $A$ and $Q=p^e$.
 \begin{enumerate}
 \item Every $f\in A$ can be written uniquely as $f=\sum_{a\in[0,Q)^N}f_{[a]}^Qu^a$; then $\Phi^e_u(f)=f_{[Q-1,\dots,Q-1]}$ and
@@ -508,20 +490,18 @@ If $u,u'$ are $p$-bases of $A$, the derivations attached to either preserve $A$,
 $Y^\beta=(Y^{\lfloor\beta/p\rfloor})^pY^{\beta-p\lfloor\beta/p\rfloor}$ and similarly for $t$.
 \end{proof}
 
-\begin{definition}[Frobenius roots]\label{def:sg-root}
+\begin{definition}[Frobenius roots {\cite[(3.3)]{FHX}}]\label{def:sg-root}
 \lean{EnvelopeProperty.Cartier.IsPBasis.frobRoot}
 \leanok
 \uses{conv:sg-pbasis, lem:sg-pbasis-basics}
-\source{fhx-envelope-20261028:eq:test-def}
 Let $u$ be a $p$-basis of $A$ and $\mathfrak a\subseteq A$ an ideal. The \emph{Frobenius root} is $\mathfrak a^{[1/p^e]}=\Phi^e_u(\mathfrak a)$, an ideal of $A$
 (it is additive, and $g\Phi^e_u(f)=\Phi^e_u(g^{p^e}f)$). $\mathfrak a^{[q]}$ denotes the ideal generated by the $q$-th powers of elements of $\mathfrak a$.
 \end{definition}
 
-\begin{lemma}[Properties of Frobenius roots]\label{lem:sg-root-basic}
+\begin{lemma}[Properties of Frobenius roots {\cite[(3.3)]{FHX}}]\label{lem:sg-root-basic}
 \lean{EnvelopeProperty.Cartier.IsPBasis.frobRoot_le_iff, EnvelopeProperty.Cartier.IsPBasis.frobRoot_frobPow, EnvelopeProperty.Cartier.IsPBasis.frobRoot_frobRoot, EnvelopeProperty.Cartier.IsPBasis.frobRoot_mul_le, EnvelopeProperty.Cartier.IsPBasis.frobRoot_mono, EnvelopeProperty.Cartier.IsPBasis.frobRoot_eq_frobRoot, EnvelopeProperty.Cartier.IsPBasis.frobRoot_map}
 \leanok
 \uses{def:sg-root, lem:sg-pbasis-basics}
-\source{fhx-envelope-20261028:eq:test-def}
 Let $u$ be a $p$-basis of $A$, $Q=p^e$, $Q'=p^{e'}$, and $\mathfrak a,\mathfrak b\subseteq A$ ideals.
 \begin{enumerate}
 \item $\mathfrak a^{[1/Q]}\subseteq\mathfrak b$ if and only if $\mathfrak a\subseteq\mathfrak b^{[Q]}$.
@@ -554,20 +534,18 @@ $(g)\subseteq((g)^{[1/p^e]})^{[p^e]}\subseteq\mathfrak m^{[p^e]}\subseteq\mathfr
 local domain $A_{\mathfrak m}$ lies in $\bigcap_e\mathfrak m^{p^e}A_{\mathfrak m}=0$ (Krull's intersection theorem), and $g=0$, a contradiction.
 \end{proof}
 
-\begin{definition}[Test ideals]\label{def:sg-test-ideal}
+\begin{definition}[Test ideals {\cite[(3.3)]{FHX}}]\label{def:sg-test-ideal}
 \lean{EnvelopeProperty.Cartier.IsPBasis.testIdeal, EnvelopeProperty.Cartier.IsPBasis.testChain}
 \leanok
 \uses{def:sg-root, lem:test-ideals}
-\source{fhx-envelope-20261028:eq:test-def}
 Let $A$ be a Noetherian domain with a $p$-basis $u$, $\mathfrak a\subseteq A$ an ideal and $c\in\Q_{\ge0}$. The test ideal is
 $\tau(\mathfrak a^c)=\bigcup_{e\ge0}(\mathfrak a^{\lceil cp^e\rceil})^{[1/p^e]}$.
 \end{definition}
 
-\begin{lemma}[Stabilization]\label{lem:sg-test-stable}
+\begin{lemma}[Stabilization {\cite[(3.3)]{FHX}}]\label{lem:sg-test-stable}
 \lean{EnvelopeProperty.Cartier.IsPBasis.testChain_mono, EnvelopeProperty.Cartier.IsPBasis.exists_testIdeal_eq, EnvelopeProperty.Cartier.IsPBasis.testIdeal_mono, EnvelopeProperty.Cartier.IsPBasis.le_testIdeal_one}
 \leanok
 \uses{def:sg-test-ideal, lem:sg-root-basic}
-\source{fhx-envelope-20261028:eq:test-def}
 The ideals $(\mathfrak a^{\lceil cp^e\rceil})^{[1/p^e]}$ increase with $e$; hence $\tau(\mathfrak a^c)=(\mathfrak a^{\lceil cp^e\rceil})^{[1/p^e]}$ for all $e\gg0$, and
 $\tau(\mathfrak a^c)$ is increasing in $\mathfrak a$. Moreover $\mathfrak a\subseteq\tau(\mathfrak a^1)$.
 \end{lemma}
@@ -579,11 +557,10 @@ $(\mathfrak a^{N_e})^{[p]}\subseteq\mathfrak a^{pN_e}\subseteq\mathfrak a^{N_{e+
 Lemma~\ref{lem:sg-root-basic}(3), and $\mathfrak a=(\mathfrak a^{[p^e]})^{[1/p^e]}\subseteq(\mathfrak a^{p^e})^{[1/p^e]}\subseteq\tau(\mathfrak a^1)$.
 \end{proof}
 
-\begin{lemma}[Powers and subadditivity]\label{lem:sg-test-subadditive}
+\begin{lemma}[Powers and subadditivity {\cite[(3.4)]{FHX}}]\label{lem:sg-test-subadditive}
 \lean{EnvelopeProperty.Cartier.IsPBasis.frobRoot_pow_le_frobRoot_pow_add, EnvelopeProperty.Cartier.IsPBasis.testIdeal_pow, EnvelopeProperty.Cartier.IsPBasis.testIdeal_add_le, EnvelopeProperty.Cartier.IsPBasis.testIdeal_nsmul_le}
 \leanok
 \uses{lem:sg-test-element, lem:sg-test-stable, lem:sg-root-basic}
-\source{fhx-envelope-20261028:eq:smooth-test-inclusions}
 Let $A$ be a Noetherian domain with a $p$-basis and $0\ne\mathfrak a\subseteq A$.
 \begin{enumerate}
 \item For $0\ne g\in\mathfrak a$, $r\in\N$ and $k$ with $(g^r)^{[1/p^k]}=A$: $(\mathfrak a^N)^{[1/Q]}\subseteq(\mathfrak a^{Np^k+r})^{[1/p^kQ]}$ for all $N$ and $Q$.
@@ -604,11 +581,10 @@ Lemma~\ref{lem:sg-root-basic}(3), $(\mathfrak a^{\lceil(c+d)Q\rceil})^{[1/Q]}\su
 (\mathfrak a^{\lceil cQ'\rceil})^{[1/Q']}(\mathfrak a^{\lceil dQ'\rceil})^{[1/Q']}\subseteq\tau(\mathfrak a^c)\tau(\mathfrak a^d)$. Induction on $l$ gives the last claim.
 \end{proof}
 
-\begin{lemma}[Asymptotic test ideals]\label{lem:sg-asymptotic}
+\begin{lemma}[Asymptotic test ideals {\cite[(3.4)]{FHX}}]\label{lem:sg-asymptotic}
 \lean{EnvelopeProperty.Cartier.IsPBasis.asymptoticTestIdeal, EnvelopeProperty.Cartier.IsPBasis.testIdeal_le_testIdeal_of_dvd, EnvelopeProperty.Cartier.IsPBasis.exists_asymptoticTestIdeal_eq, EnvelopeProperty.Cartier.IsPBasis.testIdeal_le_asymptoticTestIdeal, EnvelopeProperty.Cartier.IsPBasis.le_asymptoticTestIdeal, EnvelopeProperty.Cartier.IsPBasis.asymptoticTestIdeal_mul_le, EnvelopeProperty.Cartier.IsPBasis.asymptoticTestIdeal_map}
 \leanok
 \uses{lem:sg-test-subadditive, lem:sg-test-stable, lem:test-ideals}
-\source{fhx-envelope-20261028:eq:smooth-test-inclusions}
 Let $A$ be a Noetherian domain with a $p$-basis and $(J_r)_{r\ge1}$ nonzero ideals with $J_rJ_{r'}\subseteq J_{r+r'}$. For $m\ge1$:
 \begin{enumerate}
 \item if $r\mid r'$, then $\tau(J_r^{m/r})\subseteq\tau(J_{r'}^{m/r'})$;
@@ -655,11 +631,10 @@ monomials $w^a$ form a basis of $F$ over $F^p$, which is the claim.
 (3) follows from (1) and (2).
 \end{proof}
 
-\begin{lemma}[Local $p$-bases of smooth algebras]\label{lem:sg-kunz}
+\begin{lemma}[Local $p$-bases of smooth algebras {\cite[Lemma~3.3]{FHX}}]\label{lem:sg-kunz}
 \lean{EnvelopeProperty.Cartier.exists_isPBasis_away_of_isSmoothAt, EnvelopeProperty.Cartier.exists_isPBasis_away_of_smooth, EnvelopeProperty.Cartier.exists_isPBasis_away_of_smooth_of_trdeg, EnvelopeProperty.Cartier.charP_of_isLocalization_away, EnvelopeProperty.Cartier.surjective_pSum_of_span_eq_maximalIdeal}
 \leanok
 \uses{lem:sg-field-pbasis, lem:sg-pbasis-basics}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
 Let $A$ be a smooth $k$-algebra of finite type which is a domain, $d=\operatorname{trdeg}_k\operatorname{Frac}A$, and $\mathfrak m\subseteq A$ a maximal ideal. There are
 $u_1,\dots,u_d\in\mathfrak m$ and $h\in A\setminus\mathfrak m$ such that $u$ is a $p$-basis of $A_h$.
 \end{lemma}
@@ -832,21 +807,19 @@ $\mathfrak J_0D=JD$ gives $\Theta^e_N(\mathfrak a)D=\Phi^e_v(\mathfrak a^ND)=(\m
 (Lemma~\ref{lem:sg-jacobians}(3)).
 \end{proof}
 
-\begin{definition}[Asymptotic test ideals on the cone]\label{def:sg-test-X}
+\begin{definition}[Asymptotic test ideals on the cone {\cite[(3.4)]{FHX}}]\label{def:sg-test-X}
 \lean{EnvelopeProperty.ProjSubvariety.ConeTraceData.chartTestIdeal, EnvelopeProperty.ProjSubvariety.ConeTraceData.testSeq}
 \leanok
 \uses{lem:sg-asymptotic, def:sg-charts}
-\source{fhx-envelope-20261028:eq:smooth-test-inclusions}
 Let $(J_r)_{r\ge1}$ be nonzero ideals of $T$ with $J_rJ_{r'}\subseteq J_{r+r'}$. For $m\ge1$ let
 $B_m=\{f\in T:f\in B_m(D_{i\rho};J_\bullet D_{i\rho})\text{ for all }i,\rho\}$, with the asymptotic test ideals of Lemma~\ref{lem:sg-asymptotic} in the
 rings $D_{i\rho}$ with their $p$-bases $v^{(i\rho)}$.
 \end{definition}
 
-\begin{lemma}[Properties of $B_m$]\label{lem:sg-test-X}
+\begin{lemma}[Properties of $B_m$ {\cite[(3.4)]{FHX}}]\label{lem:sg-test-X}
 \lean{EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_theta_le_testSeq, EnvelopeProperty.ProjSubvariety.ConeTraceData.map_testSeq, EnvelopeProperty.ProjSubvariety.ConeTraceData.le_testSeq, EnvelopeProperty.ProjSubvariety.ConeTraceData.testSeq_mul_le_saturation, EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_phiIdeal_testSeq_eq_theta, EnvelopeProperty.ProjSubvariety.ConeTraceData.phiIdeal_le_testSeq, EnvelopeProperty.ProjSubvariety.ConeTraceData.phiIdeal_testSeq_mul_le}
 \leanok
 \uses{def:sg-test-X, lem:sg-theta-local, lem:sg-sat, lem:sg-asymptotic, lem:sg-test-stable, lem:sg-phi-basic}
-\source{fhx-envelope-20261028:eq:smooth-test-inclusions}
 \begin{enumerate}
 \item For every $m\ge1$, every $r$ divisible enough and every $e\gg0$ (depending on $m$ and $r$), with $N=\lceil mp^e/r\rceil$ and
 $\Theta=\Theta^e_N(J_r)$: $\Theta\subseteq B_m\subseteq\Theta^{\mathrm{sat}}$ and $B_mD_{i\rho}=B_m(D_{i\rho};J_\bullet D_{i\rho})$ for all $i,\rho$.
@@ -866,11 +839,10 @@ $f\in(B_m^l)^{\mathrm{sat}}$.
 (3) Lemma~\ref{lem:sg-phi-basic}(1),(2) and (1), (2).
 \end{proof}
 
-\begin{proposition}[Uniform generation]\label{prop:sg-uniform-generation}
+\begin{proposition}[Uniform generation {\cite[Lemma~3.2]{FHX}}]\label{prop:sg-uniform-generation}
 \lean{EnvelopeProperty.ProjSubvariety.ConeTraceData.c0, EnvelopeProperty.ProjSubvariety.ConeTraceData.theta_eq_span_genSet, EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_span_le_testSeq_le_saturation, EnvelopeProperty.ProjSubvariety.ConeTraceData.isFS_inv_mul_phiIdeal_testSeq}
 \leanok
 \uses{lem:sg-test-X, lem:sg-homog-pbasis, def:sg-forms, lem:sg-phi-basic, lem:sg-pbasis-basics}
-\source{fhx-envelope-20261028:lem:smooth-uniform-twist}
 Let $c_0=M-n+1+\max(\delta_{\mathfrak J},0)$. Let $d\ge1$, let $(J_r)$ be as in Definition~\ref{def:sg-test-X} with each $J_r$ generated by bihomogeneous
 elements of $x$-degree $rd$, and let $m\ge1$. There is an ideal $\mathfrak g\subseteq T$, generated by finitely many bihomogeneous elements of $x$-degree
 $\le md+c_0$, with $\mathfrak g\subseteq B_m\subseteq\mathfrak g^{\mathrm{sat}}$. Consequently $m^{-1}\phi_{B_m}\in\mathcal H(X,d+c_0/m)$, with rational weights.
@@ -890,11 +862,10 @@ using $N\le mQ/r+1$, $M\ge n$ and $Q\ge rd+\max(\delta_M,0)$. Finally $\Theta\ne
 Lemma~\ref{lem:sg-phi-basic}(3) and Lemma~\ref{lem:sg-test-X}(3) give $\phi_{B_m}=\phi_\Theta\in\mathcal H(X,md+c_0)$; scale by $m^{-1}$ (FS4).
 \end{proof}
 
-\begin{lemma}[Frobenius trace estimate]\label{lem:sg-trace-estimate}
+\begin{lemma}[Frobenius trace estimate {\cite[Lemma~3.3]{FHX}}]\label{lem:sg-trace-estimate}
 \lean{EnvelopeProperty.Cartier.exists_logDiscrepancy}
 \leanok
 \uses{conv:sg-pbasis, lem:pn-divisorial-trace}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
 Let $R$ be a discrete valuation ring, essentially of finite type over $k$, with fraction field $F$, and $y$ a $p$-basis of $F$ consisting of elements
 of $R$. There is $a\in\N$ with $\operatorname{ord}_R(\Phi^e_y(f))\ge\lfloor(\operatorname{ord}_R(f)+a)/p^e\rfloor-a$ for all $e\ge0$ and $f\in F$.
 \end{lemma}
@@ -906,11 +877,10 @@ If $\operatorname{ord}_R(f)=o$, then $\operatorname{ord}_R(Jf)=o+a$, so $Jf=\var
 $\Phi^e_u(Jf)=\varpi^\ell\Phi^e_u(g)\in\varpi^\ell R$ since $\Phi^e_u(R)\subseteq R$. Hence $\operatorname{ord}_R(\Phi^e_yf)\ge\ell-a$.
 \end{proof}
 
-\begin{proposition}[Valuative bound]\label{prop:sg-valuative-bound}
+\begin{proposition}[Valuative bound {\cite[Lemma~3.3, (3.8)]{FHX}}]\label{prop:sg-valuative-bound}
 \lean{EnvelopeProperty.ProjSubvariety.ConeTraceData.ordGE_of_mem_thetaK, EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_ord_testSeq_ge, EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_phiIdeal_testSeq_le, EnvelopeProperty.ProjSubvariety.ConeTraceData.exists_phiIdeal_testSeq_coneObstacleIdeal_le}
 \leanok
 \uses{lem:sg-trace-estimate, lem:sg-test-X, def:sg-forms, lem:sg-homog-pbasis}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate, fhx-envelope-20261028:eq:divisorial-test-bound}
 Let $R'$ be a discrete valuation ring with $T\subseteq R'\subseteq K$, essentially of finite type over $k$, such that $\bar x_j$ is a unit of $R'$ for
 some $j\in\mathcal J$. There is $A\ge0$ such that for every graded sequence $(J_r)$ as in Definition~\ref{def:sg-test-X} and every $m\ge1$,
 $\operatorname{ord}_{R'}(B_m)\ge\frac mr\operatorname{ord}_{R'}(J_r)-A$ for all sufficiently divisible $r$.
@@ -927,11 +897,10 @@ $B_m$ is finitely generated, so $\bar x_j^{l}B_m\subseteq\Theta$ for some $l$, a
 
 \subsection{The envelope property}\label{subsec:sg-ep}
 
-\begin{theorem}[Envelope property of smooth projective varieties in characteristic $p$]\label{thm:sg-ep-charp}
+\begin{theorem}[Envelope property of smooth projective varieties in characteristic $p$ {\cite[Theorem~3.1]{FHX}}]\label{thm:sg-ep-charp}
 \lean{EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_charP, EnvelopeProperty.ProjSubvariety.isPSH_envelope_nat_of_charP, EnvelopeProperty.ProjSubvariety.subsingleton_an_of_dim_eq_zero, EnvelopeProperty.ProjSubvariety.ConeTraceData.isPSH_subvarietyTestLimit, EnvelopeProperty.ProjSubvariety.ConeTraceData.subvarietyTestLimit_le_envelope_of_isDivisorial}
 \leanok
 \uses{thm:sg-reduction, lem:sg-pl-separate, prop:sg-envelope-Jm, lem:sg-Jm-basic, def:sg-test-X, lem:sg-test-X, prop:sg-uniform-generation, prop:sg-valuative-bound, def:sg-div, thm:sg-comparison, thm:pg-psh2, lem:sg-env-basic, rmk:bj-pn-ep-assembly}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 Let $k$ be algebraically closed of characteristic $p>0$ and $X=V(I)\subseteq\PP^M$ projectively normal with smooth charts. Then every
 $\theta\in\R$ has the envelope property on $X$.
 \end{theorem}
@@ -984,11 +953,10 @@ Lemma~\ref{lem:frobenius-roots}, and Lemma~\ref{lem:sg-theta-local} holds with $
 sign a power of $x_i$); the argument is then that of Remark~\ref{rmk:bj-pn-ep-assembly}.
 \end{remark}
 
-\begin{theorem}[Characteristic-zero smooth envelopes from relative Nadel vanishing]\label{thm:import-sg-ep-char0}
+\begin{theorem}[Characteristic-zero smooth envelopes from relative Nadel vanishing {\cite[Theorem~5.20]{BJ22}, \cite[Theorem~3.1]{FHX}}]\label{thm:import-sg-ep-char0}
 \lean{EnvelopeProperty.smoothEnvelopeCharZero_of_relativeNadel}
 \leanok
 \uses{conv:sg-setting,def:sg-ep,def:c0n-relative-ample-nadel-input,thm:c0n-original-all-classes-envelope-from-nadel}
-\source{bj22-trivval:thm:contenvlisse,fhx-envelope-20261028:thm:smooth-EP}
 Assume the explicit relative ample ideal-power Nadel vanishing statement
 of Definition~\ref{def:c0n-relative-ample-nadel-input}.
 Let $k$ be algebraically closed of characteristic $0$ and let
@@ -1003,11 +971,10 @@ Apply Theorem~\ref{thm:c0n-original-all-classes-envelope-from-nadel}
 to the same original variety, smooth charts and class.
 \end{proof}
 
-\begin{theorem}[Envelope property of smooth projective varieties]\label{thm:sg-ep}
+\begin{theorem}[Envelope property of smooth projective varieties {\cite[Theorem~3.1]{FHX}}]\label{thm:sg-ep}
 \lean{EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_smooth, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_charZero, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_of_neg}
 \leanok
 \uses{thm:sg-ep-charp, thm:import-sg-ep-char0, thm:c0-pn-ep}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 Let $k$ be algebraically closed and $X=V(I)\subseteq\PP^M$ projectively normal with smooth charts. Then every $\theta\in\R$ has the envelope
 property on $X$. In characteristic $0$ this follows from Theorem~\ref{thm:import-sg-ep-char0} under the explicit relative Nadel input, except for $X=\PP^n$ and $k$ countable,
 where it is Theorem~\ref{thm:c0-pn-ep}. That input holds over every field of characteristic $0$
@@ -1020,11 +987,10 @@ In characteristic $p$ this is Theorem~\ref{thm:sg-ep-charp}. In characteristic $
 and for $\theta<0$ the class $\PSH(X,\theta)$ is empty (Proposition~\ref{prop:pg-maxprin}).
 \end{proof}
 
-\begin{corollary}[Smooth models of rank one]\label{cor:sg-smooth-model}
+\begin{corollary}[Smooth models of rank one {\cite[Theorem~3.1]{FHX}}]\label{cor:sg-smooth-model}
 \lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isSmooth, EnvelopeProperty.MultiModel.exists_degOnePres_veronese, EnvelopeProperty.MultiModel.DegOnePres.hasSmoothCharts_of_isSmooth}
 \leanok
 \uses{thm:sg-ep, def:gl-smooth, def:gl-psh, rmk:gl-model-examples, lem:gl-model-change, lem:gl-veronese, rmk:gl-bridges, lem:wu-veronese, lem:gl-charts}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 Let $\mathcal Y=(K,S,z)$ be a smooth model of rank $1$ (Definition~\ref{def:gl-smooth}) and $t\ge0$. Then $\mathrm{EP}_{\mathcal Y}(t)$ holds. This is
 Theorem~\ref{thm:gl-smooth-ep}; in characteristic $0$ it rests on Theorem~\ref{thm:import-sg-ep-char0}.
 \end{corollary}
@@ -1069,7 +1035,6 @@ conversely.
 
 \begin{remark}[Nef classes]\label{rmk:sg-nef}
 \uses{cor:sg-smooth-model, thm:gl-smooth-ep, cor:gl-smooth-ep-nef, lem:gl-ep-basic, def:gl-cones, rmk:gl-model-comparison, lem:sg-envppty}
-\source{fhx-envelope-20261028:thm:smooth-EP}
 \cite[Theorem~3.1]{FHX} concerns every nef class of a smooth projective variety; its reduction step chooses rational ample classes $\theta_j\to\theta$
 with $\theta_j-\theta$ ample and applies \cite[Lemma~5.9]{BJ22}. In the model of \S\ref{sec:global} the nef classes are those of the model-nef cone
 $N(\mathcal Y)$ (Remark~\ref{rmk:gl-model-comparison}). Corollary~\ref{cor:sg-smooth-model} is Theorem~\ref{thm:gl-smooth-ep}, and

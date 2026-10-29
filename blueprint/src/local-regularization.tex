@@ -12,7 +12,6 @@ integrally closed. For $f\in A$ we write $Y_f=\Spec A_f$.
 \begin{definition}[Affine analytification]\label{def:berk}
 \lean{EnvelopeProperty.Berk, EnvelopeProperty.Berk.logAbs}
 \leanok
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 The analytification $Y^\an$ of $Y=\Spec A$ is the set of maps $x\colon A\to\R_{\ge0}$,
 $f\mapsto|f|_x$, with $|0|_x=0$, $|1|_x=1$, $|fg|_x=|f|_x|g|_x$,
 $|f+g|_x\le\max\{|f|_x,|g|_x\}$ and $|c|_x=1$ for $c\in k^\times$, with the coarsest
@@ -20,11 +19,10 @@ topology making all $x\mapsto|f|_x$ continuous. We put $\log|f|(x)=\log|f|_x\in[
 In the additive notation of \cite{FHX}, $x$ is the semivaluation $f\mapsto-\log|f|_x$.
 \end{definition}
 
-\begin{definition}[Trivial valuation and scaling]\label{def:triv-scaling}
+\begin{definition}[Trivial valuation and scaling {\cite[\S2.1]{FHX}}]\label{def:triv-scaling}
 \lean{EnvelopeProperty.Berk.triv, EnvelopeProperty.Berk.rpow, EnvelopeProperty.Berk.zeroScale}
 \leanok
 \uses{def:berk}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 The trivial valuation $\vtriv$ has $|f|=1$ for $f\ne0$. For $t>0$ the point $t\cdot x$ has
 $|f|_{t\cdot x}=|f|_x^t$, and $0\cdot x$ has $|f|_{0\cdot x}=1$ if $|f|_x\ne0$ and $0$ otherwise.
 \end{definition}
@@ -50,11 +48,10 @@ polydiscs of radius $m\in\N$, and if $k$ (hence $A$) is countable then $\R_{\ge0
 countable.
 \end{proof}
 
-\begin{lemma}[Principal opens]\label{lem:principal-open}
+\begin{lemma}[Principal opens {\cite[\S5]{FHX}}]\label{lem:principal-open}
 \lean{EnvelopeProperty.Berk.isOpenEmbedding_awayComap, EnvelopeProperty.Berk.range_awayComap, EnvelopeProperty.Berk.awayComap_val_mk'}
 \leanok
 \uses{def:berk,spectrum:localization-trivial-field}
-\source{fhx-envelope-20261028:sec:normal-local-regularization}
 For $f\in A$ the restriction map $Y_f^\an\to Y^\an$ is an open embedding with image
 $\{x:|f|_x\ne0\}$, and $|a/f^n|=|a|/|f|^n$ on it.
 \end{lemma}
@@ -66,11 +63,10 @@ is continuous on the open set $\{|f|\ne0\}$, which gives continuity of the inver
 
 \subsection{Local psh functions}\label{subsec:local-psh}
 
-\begin{definition}[Convex PL and locally psh functions]\label{def:convex-pl}
+\begin{definition}[Convex PL and locally psh functions {\cite[Definition~5.1]{FHX}}]\label{def:convex-pl}
 \lean{EnvelopeProperty.IsConvexPLOn, EnvelopeProperty.IsDecrConvexPLLimitOn, EnvelopeProperty.IsLocallyPSHOn}
 \leanok
 \uses{def:berk}
-\source{fhx-envelope-20261028:def:local-psh}
 Let $U\subseteq Y^\an$ be open. A function $u$ is \emph{convex PL} on $U$ if every point of $U$
 has an open neighbourhood $W\subseteq U$ with elements $f_1,\dots,f_r\in A$ not vanishing on $W$
 and finitely many (at least one) $(a_j,b_j)\in\Q^r\times\Q$ with
@@ -88,11 +84,10 @@ principal open defined by their product. The general schemes and base fields of
 \cite[Definition~5.1]{FHX} are needed only in \S\ref{subsec:norms} and Corollary~\ref{cor:normal-weak-global}.
 \end{remark}
 
-\begin{lemma}[Operations on convex PL functions]\label{lem:local-basic}
+\begin{lemma}[Operations on convex PL functions {\cite[Lemma~5.2]{FHX}}]\label{lem:local-basic}
 \lean{EnvelopeProperty.IsConvexPLOn.max, EnvelopeProperty.IsConvexPLOn.add, EnvelopeProperty.IsConvexPLOn.smul, EnvelopeProperty.IsConvexPLOn.add_const, EnvelopeProperty.IsConvexPLOn.add_smul_logAbs, EnvelopeProperty.IsConvexPLOn.piecewise_max}
 \leanok
 \uses{def:convex-pl}
-\source{fhx-envelope-20261028:lem:local-basic}
 Finite maxima and sums, positive rational multiples and rational translates of convex PL
 functions are convex PL, and so is $u+q\log|f|$ on $U\cap\{|f|\ne0\}$ for $q\in\Q$. If
 $U'\subseteq U$ are open, $u$ is convex PL on $U$, $v$ is convex PL on $U'$ and the closure in $U$
@@ -108,11 +103,10 @@ neighbourhood disjoint from the closure in question, on which the function equal
 
 \subsection{Regularizable functions on affine varieties}\label{subsec:regularizable}
 
-\begin{definition}[Affine Fubini--Study and regularizable functions]\label{def:fs}
+\begin{definition}[Affine Fubini--Study and regularizable functions {\cite[Definition~5.7]{FHX}}]\label{def:fs}
 \lean{EnvelopeProperty.FSData, EnvelopeProperty.IsFS, EnvelopeProperty.HasLogGrowth, EnvelopeProperty.IsRegularizable}
 \leanok
 \uses{def:berk}
-\source{fhx-envelope-20261028:def:regularizable}
 An \emph{affine Fubini--Study function} is
 $g=\max\{a_1\log|f_1|+b_1,\dots,a_r\log|f_r|+b_r,b_0\}$ with $a_i\in\Q_{>0}$, $b_i\in\Q$ and
 $f_1,\dots,f_r\in A$ including a set of generators of the $k$-algebra $A$; $\FS(Y)$ is the set of
@@ -121,11 +115,10 @@ $C\in\R$. It is \emph{regularizable}, $u\in\Rcal(Y)$, if $u\not\equiv-\infty$ an
 limit of a decreasing sequence in $\FS(Y)$.
 \end{definition}
 
-\begin{lemma}[Elementary properties of FS functions]\label{lem:fs-basic}
+\begin{lemma}[Elementary properties of FS functions {\cite[Definition~5.7]{FHX}}]\label{lem:fs-basic}
 \lean{EnvelopeProperty.FSData.continuous_eval, EnvelopeProperty.FSData.const_le_eval, EnvelopeProperty.FSData.isConvexPLOn_univ, EnvelopeProperty.FSData.eval_add, EnvelopeProperty.FSData.eval_sup, EnvelopeProperty.FSData.eval_smul, EnvelopeProperty.FSData.eval_addConst, EnvelopeProperty.FSData.eval_mapSup}
 \leanok
 \uses{def:fs, def:convex-pl, lem:local-basic}
-\source{fhx-envelope-20261028:def:regularizable}
 Functions in $\FS(Y)$ are continuous, bounded below and convex PL on $Y^\an$. $\FS(Y)$ is
 stable under finite maxima, sums, multiplication by positive rationals and addition of rational
 constants. If $\pi\colon Y'\to Y$ is a morphism, $g\in\FS(Y)$ and $g'\in\FS(Y')$, then
@@ -139,11 +132,10 @@ is the maximum of the pairwise sums, and $a\log|f|+a'\log|f'|=N^{-1}\log|f^{Na}f
 common denominator $N$. For $\max\{g\circ\pi,g'\}$ the generators come from $g'$.
 \end{proof}
 
-\begin{lemma}[Growth estimates]\label{lem:growth}
+\begin{lemma}[Growth estimates {\cite[Lemma~5.8]{FHX}}]\label{lem:growth}
 \lean{EnvelopeProperty.FSData.exists_eval_comap_le, EnvelopeProperty.FSData.exists_eval_le_comap_of_isIntegral, EnvelopeProperty.valuation_le_of_monic_eval₂_eq_zero}
 \leanok
 \uses{def:fs, lem:polydisc-compact}
-\source{fhx-envelope-20261028:lem:growth}
 (1) If $\pi\colon Y'\to Y$ is a morphism of affine varieties, $g\in\FS(Y)$ and $g'\in\FS(Y')$,
 there are $C\ge0$, $C'$ with $g\circ\pi\le Cg'+C'$. (2) If $\pi\colon Y\to S$ is finite and
 surjective, $g\in\FS(Y)$ and $h\in\FS(S)$, there are $C,C'$ with $g\le C\,h\circ\pi+C'$.
@@ -158,20 +150,18 @@ $|f|>|b_i|^{1/(m-i)}$ for all $i$ then $|f^m|>|b_if^i|$ for all $i$, contradicti
 ultrametric inequality; hence $\log|f|\le\max_i(m-i)^{-1}\log|b_i|\circ\pi$. Apply (1) on $S$.
 \end{proof}
 
-\begin{theorem}[Growth-controlled approximation; formerly imported]\label{thm:import-growth-control}
+\begin{theorem}[Growth-controlled approximation; formerly imported {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.25]{Wu26}}]\label{thm:import-growth-control}
 \lean{EnvelopeProperty.WuRegularization, EnvelopeProperty.ConvexPLApproximation.growthControl, EnvelopeProperty.LocalPositivity.toConvexPLApproximation}
 \leanok
 \uses{def:fs, thm:wu-growth-control, thm:wu-pl-approx, lem:wu-local-positivity}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:psh_regularization_with_growth_control}
 Let $Y$ be normal, $u\in\Rcal(Y)$ and $g\in\FS(Y)$ with $u\le g+C$. For every rational $c>1$
 there are $u_j\in\FS(Y)$ decreasing to $u$ with $u_j-cg$ bounded above.
 \end{theorem}
 
-\begin{theorem}[Local-to-global regularization; formerly imported]\label{thm:import-local-to-global}
+\begin{theorem}[Local-to-global regularization; formerly imported {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.26]{Wu26}}]\label{thm:import-local-to-global}
 \lean{EnvelopeProperty.WuRegularization, EnvelopeProperty.ConvexPLApproximation.localToGlobal, EnvelopeProperty.ConvexPLApproximation.toWuRegularization}
 \leanok
 \uses{def:fs, def:convex-pl, thm:wu-local-to-global, thm:wu-pl-approx, lem:wu-local-positivity}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:approximable_on_exhausting_tropical_polytopes_implies_pshlogreg}
 Let $Y$ be normal and $v\not\equiv-\infty$ of logarithmic growth such that every compact subset
 of $Y^\an$ has an open neighbourhood on which $v$ is the limit of a decreasing sequence of convex
 PL functions. Then $v\in\Rcal(Y)$.
@@ -190,11 +180,10 @@ criterion of Chambert-Loir--Ducros \cite{CLD12} \cite[Lemma~5.5]{FHX}. Only the 
 Theorem~\ref{thm:import-growth-control} is used.
 \end{remark}
 
-\begin{lemma}[Finiteness at the trivial valuation]\label{lem:reg-triv-finite}
+\begin{lemma}[Finiteness at the trivial valuation {\cite[Lemma~5.11]{FHX}}]\label{lem:reg-triv-finite}
 \lean{EnvelopeProperty.IsRegularizable.triv_ne_bot, EnvelopeProperty.FSData.two_mul_eval_le, EnvelopeProperty.FSData.eval_zeroScale_le_triv}
 \leanok
 \uses{def:fs, def:triv-scaling}
-\source{fhx-envelope-20261028:lem:regularizable-closure}
 Every $u\in\Rcal(Y)$ is finite at $\vtriv$.
 \end{lemma}
 
@@ -214,11 +203,10 @@ $u\equiv-\infty$, which is excluded. Finally $u(\vtriv)\le u_1(\vtriv)<\infty$.
 finiteness at $\vtriv$, which is proved here directly.
 \end{remark}
 
-\begin{lemma}[Elementary closure properties]\label{lem:reg-closure-elementary}
+\begin{lemma}[Elementary closure properties {\cite[Lemma~5.11]{FHX}}]\label{lem:reg-closure-elementary}
 \lean{EnvelopeProperty.isRegularizable_finsetSup_fsTerm, EnvelopeProperty.IsRegularizable.sup, EnvelopeProperty.IsRegularizable.add, EnvelopeProperty.IsRegularizable.smul, EnvelopeProperty.IsRegularizable.add_const, EnvelopeProperty.IsRegularizable.comp_comap, EnvelopeProperty.IsRegularizable.comp_awayComap}
 \leanok
 \uses{lem:fs-basic, lem:reg-triv-finite}
-\source{fhx-envelope-20261028:lem:regularizable-closure}
 (3) If $q=\max_i(a_i\log|f_i|+b_i)\not\equiv-\infty$ with $a_i\in\Q_{>0}$, $b_i\in\Q$, then
 $q\in\Rcal(Y)$; $\Rcal(Y)$ is stable under finite maxima, finite sums, positive rational multiples
 and real translates. (4) For a morphism $\pi\colon Y'\to Y$ and $u\in\Rcal(Y)$, $u\circ\pi$ is
@@ -251,11 +239,10 @@ $K$. Starting from $h_1=t_1$, this gives inductively $h_{m+1}\in T$ with
 $h_{m+1}\le\min\{h_m,t_{m+1}\}$ on $K$. Then $u\le h_m\le t_m$ on $K$ and $\inf_mh_m=u$ there.
 \end{proof}
 
-\begin{lemma}[Decreasing limits]\label{lem:reg-decreasing}
+\begin{lemma}[Decreasing limits {\cite[Lemma~5.11]{FHX}}]\label{lem:reg-decreasing}
 \lean{EnvelopeProperty.IsRegularizable.of_antitone}
 \leanok
 \uses{lem:diagonal-compact, thm:import-local-to-global, lem:polydisc-compact}
-\source{fhx-envelope-20261028:lem:regularizable-closure}
 If $Y$ is normal and $u_i\in\Rcal(Y)$ decrease to $u\not\equiv-\infty$, then $u\in\Rcal(Y)$.
 \end{lemma}
 
@@ -266,11 +253,10 @@ decreasing sequence of FS functions, which are convex PL. Since $u\le u_1$ has l
 Theorem~\ref{thm:import-local-to-global} applies.
 \end{proof}
 
-\begin{lemma}[Principal-open extension]\label{lem:principal-extension}
+\begin{lemma}[Principal-open extension {\cite[Lemma~5.12]{FHX}}]\label{lem:principal-extension}
 \lean{EnvelopeProperty.IsRegularizable.awayExtend_add, EnvelopeProperty.IsConvexPLOn.awayExtend, EnvelopeProperty.isConvexPLOn_univ_max_awayExtend, EnvelopeProperty.FSData.eval_awayEps}
 \leanok
 \uses{lem:principal-open, thm:import-growth-control, thm:import-local-to-global, lem:reg-decreasing, lem:reg-triv-finite, lem:local-basic, lem:growth}
-\source{fhx-envelope-20261028:lem:principal-extension}
 Let $0\ne f\in A$ and $u\in\Rcal(Y_f)$ with $u\le g+C$ on $Y_f^\an$ for some $g\in\FS(Y)$. For
 every $c\in\Q_{>0}$ the function equal to $u+c\log|f|$ on $Y_f^\an$ and to $-\infty$ on
 $\{|f|=0\}$ belongs to $\Rcal(Y)$.
@@ -291,22 +277,20 @@ finite at $\vtriv$ by Lemma~\ref{lem:reg-triv-finite}; apply Lemma~\ref{lem:reg-
 
 \subsection{Polynomial convexity}\label{subsec:polyconvex}
 
-\begin{definition}[Polynomial hulls]\label{def:hull}
+\begin{definition}[Polynomial hulls {\cite[\S5.3]{FHX}}]\label{def:hull}
 \lean{EnvelopeProperty.hull, EnvelopeProperty.IsPolyConvex, EnvelopeProperty.IsRunge, EnvelopeProperty.SatisfiesHullIneq}
 \leanok
 \uses{def:berk}
-\source{fhx-envelope-20261028:subsec:polynomial-convexity}
 For compact $K\subseteq Y^\an$, $\widehat K=\{y:\log|f|(y)\le\sup_K\log|f|\ \forall f\in A\}$. $K$ is
 polynomially convex if $\widehat K=K$; an open $D$ is Runge if $\widehat K\subseteq D$ for all compact
 $K\subseteq D$; $u$ satisfies the hull inequality if $u(y)\le\sup_Ku$ for all compact $K$ and
 $y\in\widehat K$.
 \end{definition}
 
-\begin{lemma}[Hulls and the hull inequality]\label{lem:hull-basic}
+\begin{lemma}[Hulls and the hull inequality {\cite[\S5.3]{FHX}}]\label{lem:hull-basic}
 \lean{EnvelopeProperty.isCompact_hull, EnvelopeProperty.subset_hull, EnvelopeProperty.hull_hull, EnvelopeProperty.FSData.satisfiesHullIneq, EnvelopeProperty.iInf_iSup_eq_iSup_iInf_of_antitone, EnvelopeProperty.IsRegularizable.satisfiesHullIneq, EnvelopeProperty.isRunge_iUnion_of_monotone}
 \leanok
 \uses{def:hull, def:fs, lem:polydisc-compact}
-\source{fhx-envelope-20261028:subsec:polynomial-convexity}
 For compact $K$, $\widehat K$ is a compact set containing $K$ and $\widehat{\widehat K}=\widehat K$. Every
 function in $\FS(Y)$ and every $u\in\Rcal(Y)$ satisfies the hull inequality. An increasing union of
 Runge open sets is Runge.
@@ -320,11 +304,10 @@ for $t>\sup_Ku$ the open sets $\{u_j<t\}$ increase and cover $K$. A compact subs
 increasing union of open sets lies in one of them.
 \end{proof}
 
-\begin{lemma}[Polyhedral neighbourhoods]\label{lem:polyhedral-neighborhoods}
+\begin{lemma}[Polyhedral neighbourhoods {\cite[Lemma~5.14]{FHX}}]\label{lem:polyhedral-neighborhoods}
 \lean{EnvelopeProperty.exists_fs_polyhedral_nhd, EnvelopeProperty.IsRunge.exists_fs_exhaustion, EnvelopeProperty.exists_lt_logAbs_of_notMem_hull}
 \leanok
 \uses{lem:hull-basic, lem:fs-basic}
-\source{fhx-envelope-20261028:lem:polyhedral-neighborhoods}
 (1) If $H$ is a polynomially convex compact set and $A'\supseteq H$ open, there is $g\in\FS(Y)$ with
 $g\ge0$, $H\subseteq\interior\{g=0\}$ and $\{g\le1\}\subseteq A'$. (2) Every Runge open $D$ is the
 union of an increasing sequence $\{g_j<1\}$ with $g_j\in\FS(Y)$.
@@ -347,11 +330,9 @@ $K_j\cup Q_{j-1}\subseteq H_j\subseteq\{g_j<1\}\subseteq Q_j\subseteq D$.
 \lean{EnvelopeProperty.mem_hull_frontier_inter_hull}
 \leanok
 \uses{lem:polyhedral-neighborhoods, lem:local-basic, thm:import-local-to-global, lem:hull-basic}
-\source{fhx-envelope-20261028:lem:rossi}
 Let $Y$ be normal, $K$ compact, $x\in\widehat K$ and $V$ a relatively compact open
 neighbourhood of $x$ with $\overline V\cap K=\varnothing$. Then $x$ lies in the hull of
-$\partial V\cap\widehat K$. (Revision \texttt{832e086} of \cite{FHX} assumes $x\in\widehat K\setminus K$;
-$x\notin K$ follows from $x\in V$ and $\overline V\cap K=\varnothing$.)
+$\partial V\cap\widehat K$. Here $x\notin K$ follows from $x\in V$ and $\overline V\cap K=\varnothing$.
 \end{lemma}
 
 \begin{proof}
@@ -381,11 +362,10 @@ commutative ring. Specializing to the trivial-field relative spectrum gives the
 stated point, maximality, and continuity through the evaluation-preserving comparison.
 \end{proof}
 
-\begin{lemma}[Hartogs radius]\label{lem:hartogs}
+\begin{lemma}[Hartogs radius {\cite[Lemma~5.16]{FHX}}]\label{lem:hartogs}
 \lean{EnvelopeProperty.IsRegularizable.of_isRunge_hartogs, EnvelopeProperty.Hartogs.gauss_rad_mem_iff, EnvelopeProperty.Hartogs.isConvexPLOn_radiusFun}
 \leanok
 \uses{lem:gauss-point, spectrum:gauss-compact-fibre-disc, lem:polyhedral-neighborhoods, lem:local-basic, thm:import-local-to-global}
-\source{fhx-envelope-20261028:lem:hartogs}
 Let $Y$ be normal and $u$ upper semicontinuous, of logarithmic growth and not identically
 $-\infty$. If $D=\{u\circ p+\log|w|<0\}\subseteq\widetilde Y^\an$ is Runge, then $u\in\Rcal(Y)$.
 \end{lemma}
@@ -410,11 +390,10 @@ applies.
 \lean{EnvelopeProperty.le_iSup_of_mem_hull_awayExtend, EnvelopeProperty.le_iSup_of_awayComap_mem_hull}
 \leanok
 \uses{lem:principal-extension, lem:hull-basic, lem:principal-open}
-\source{fhx-envelope-20261028:lem:principal-hull}
 Let $0\ne f\in A$, $K\subseteq Y^\an$ compact and $x\in\widehat K\cap Y_f^\an$ (hull in $Y$). If
 $v\in\Rcal(Y_f)$ and $v\le g+C$ for some $g\in\FS(Y)$, then $v(x)\le\sup_Kv$, where $v$ is extended by
 $-\infty$ on $\{|f|=0\}$. (\cite{FHX} writes the conclusion as $v(x)\le\sup_{K\cap Y_f^\an}v$, which is the
-same bound; revision \texttt{832e086} assumes $K\subseteq Y_f^\an$.)
+same bound.)
 \end{lemma}
 
 \begin{proof}
@@ -431,11 +410,10 @@ $\sup_Kv>-\infty$ let $c\downarrow0$; otherwise the inequality gives $v(x)=-\inf
 
 \subsection{A strictly psh exhaustion and gluing}\label{subsec:gluing}
 
-\begin{lemma}[Strict exhaustion]\label{lem:strict-exhaustion}
+\begin{lemma}[Strict exhaustion {\cite[Lemma~5.18]{FHX}}]\label{lem:strict-exhaustion}
 \lean{EnvelopeProperty.exists_isStrictExhaustion, EnvelopeProperty.IsStrictExhaustion}
 \leanok
 \uses{lem:reg-closure-elementary, lem:reg-decreasing, lem:growth}
-\source{fhx-envelope-20261028:lem:strict-exhaustion}
 Let $Y$ be normal ($k$ countable). There is $\rho\in\Rcal(Y)$, $\rho\ge0$, such that for every
 $x\in Y^\an$ and open $V\ni x$ there are $\rho'\in\Rcal(Y)$ and $\delta>0$ with $\rho'\le\rho$,
 $\rho'(x)=\rho(x)$ and $\rho'\le\rho-\delta$ off $V$.
@@ -473,11 +451,10 @@ $R_N-\sum_{j\in J}\gamma_j(h_j-\ell_{\tau_j}(-\log|f_j|))$, $N\ge\max J$, are re
 to $\rho'$, which is finite at $x$; so $\rho'\in\Rcal(Y)$.
 \end{proof}
 
-\begin{lemma}[Hull criterion]\label{lem:hull-criterion}
+\begin{lemma}[Hull criterion {\cite[Lemma~5.19]{FHX}}]\label{lem:hull-criterion}
 \lean{EnvelopeProperty.IsRegularizable.of_hullIneq_add_smul}
 \leanok
 \uses{lem:hartogs, lem:strict-exhaustion, lem:hull-basic}
-\source{fhx-envelope-20261028:lem:hull-criterion}
 Let $u$ be upper semicontinuous of logarithmic growth, $u\not\equiv-\infty$,
 $\widetilde u=u\circ p+\log|w|$ and $\widetilde\rho\ge0$ a finite function on $\widetilde Y^\an$ such that
 every $c\widetilde\rho$, $c\in\Q_{>0}$, is upper semicontinuous (for instance $\widetilde\rho$ as in
@@ -492,11 +469,10 @@ increase to $\{\widetilde u<0\}$ as $c\downarrow0$, since $\widetilde\rho$ is fi
 so $\{\widetilde u<0\}$ is Runge and Lemma~\ref{lem:hartogs} applies.
 \end{proof}
 
-\begin{proposition}[Gluing]\label{prop:gluing}
+\begin{proposition}[Gluing {\cite[Proposition~5.20]{FHX}}]\label{prop:gluing}
 \lean{EnvelopeProperty.gluing_hullIneq, EnvelopeProperty.IsRegularizable.of_cover_principal}
 \leanok
 \uses{lem:strict-exhaustion, lem:rossi, lem:principal-hull, lem:reg-closure-elementary, lem:hull-criterion}
-\source{fhx-envelope-20261028:prop:gluing}
 Let $Y$ be normal, $Z=V(I)\subsetneq Y$ closed, and $u$ upper semicontinuous of logarithmic growth
 such that every $x\in Y^\an\setminus Z^\an$ lies in some $Y_g^\an$ with $u|_{Y_g^\an}\in\Rcal(Y_g)$.
 Let $\rho$ be as in Lemma~\ref{lem:strict-exhaustion}. (1) For rational $c>0$, compact $K$ and
@@ -530,11 +506,10 @@ Z^\an$ is equivalent to covering $Y\setminus Z$, every prime being the support o
 
 \subsection{Weakly psh functions}\label{subsec:weakly-psh}
 
-\begin{definition}[Weakly psh functions]\label{def:weakly-psh}
+\begin{definition}[Weakly psh functions {\cite[Definition~5.6]{FHX}}]\label{def:weakly-psh}
 \lean{EnvelopeProperty.IsWeaklyPSHOn, EnvelopeProperty.IsWeaklyPSHOn.upperSemicontinuousOn, EnvelopeProperty.isPshClass_isWeaklyPSHOn_univ}
 \leanok
 \uses{def:convex-pl}
-\source{fhx-envelope-20261028:def:weakly-psh}
 Let $U\subseteq Y^\an$ be open. A function $u\colon U\to[-\infty,\infty)$ is \emph{weakly psh} if
 there is a proper birational morphism $\mu\colon Y'\to Y$ such that $u\circ\mu^\an$ is locally psh on
 $(\mu^\an)^{-1}(U)$. Weakly psh functions are upper semicontinuous, $\mu^\an$ being proper and
@@ -546,7 +521,7 @@ surjective.
 The formalization takes the witness $\mu$ to be the blowup of $Y=\Spec A$ along an ideal $(s)$, $s\subseteq A$
 finite, covered by the affine charts $\Spec A[s/g]$, $g\in s\setminus\{0\}$; $u$ is weakly psh on $U$ when
 $u\circ\mu^\an$ is locally psh on the preimage of $U$ in every chart. This is equivalent to the
-intrinsic native proper-birational witness formulation above, as now proved in
+intrinsic native proper-birational witness formulation above, as proved in
 Theorem~\ref{paper:actual-proper-birational-weakly-psh-witness-iff}. The forward construction retains
 the SAME original finite-set Rees scheme with actual proper and birational data. Conversely, actual
 proper-birational Rees domination constructs an original finite family and a whole over-base map;
@@ -566,7 +541,6 @@ are stable under adding and taking maxima with regularizable functions.
 \lean{EnvelopeProperty.exists_multiset_algHom_algebraMap_norm_eq_prod, EnvelopeProperty.wgaussValuation_eq_prod_of_eval_eq_norm_finite, EnvelopeProperty.Berk.flatFibreMult, EnvelopeProperty.Berk.sum_flatFibreMult, EnvelopeProperty.Berk.sum_flatFibreMult_of_free, EnvelopeProperty.Berk.wgaussValuation_normForm_away, EnvelopeProperty.exists_free_localizationAway, EnvelopeProperty.flatNormFun, EnvelopeProperty.flatNormFun_eq_normFun, EnvelopeProperty.IsRegularizable.flatNormFun_of_free, EnvelopeProperty.IsRegularizable.flatNormFun}
 \leanok
 \uses{lem:reg-closure-elementary, lem:reg-decreasing, lem:reg-triv-finite, lem:finite-etale-norm, prop:gluing}
-\source{fhx-envelope-20261028:lem:finite-flat-norm}
 Let $\pi\colon Y\to S$ be a finite flat morphism of normal affine varieties of degree $d$. For
 $s\in S^\an$ write $\mathcal H(s)\otimes_{k[S]}k[Y]=\prod_yA_y$, a product of local Artinian
 $\mathcal H(s)$-algebras indexed by the points $y$ over $s$, and $m_y(\pi)=\dim_{\mathcal H(s)}A_y$,
@@ -597,11 +571,10 @@ field $\Omega$, and its norm is the $\dim$-th power of the residue, since the ch
 nilpotent endomorphism is $X^{\dim}$.
 \end{proof}
 
-\begin{lemma}[Finite flat norms and base change]\label{lem:finite-flat-norm-base-change}
+\begin{lemma}[Finite flat norms and base change {\cite[Lemma~5.13]{FHX}}]\label{lem:finite-flat-norm-base-change}
 \lean{EnvelopeProperty.Berk.flatNormFun_scalarExtension}
 \leanok
 \uses{lem:finite-flat-norm,spectrum:paper-flat-norm-base-change}
-\source{fhx-envelope-20261028:lem:finite-flat-norm}
 In the setting of Lemma~\ref{lem:finite-flat-norm}, $(\Norm_\pi u)\circ r=\Norm_{\pi_F}(u\circ r)$ for complete
 extensions $F/k$, where $r$ denotes the restriction maps from the analytifications over $F$.
 \end{lemma}
@@ -632,11 +605,10 @@ the extension of the absolute value of the complete field $\mathcal H(s)$, and t
 weighted Gauss norms. The formalization proves this finite free \'etale form.
 \end{remark}
 
-\begin{lemma}[Finite free \'etale norms]\label{lem:finite-etale-norm}
+\begin{lemma}[Finite free \'etale norms {\cite[Lemma~5.13]{FHX}}]\label{lem:finite-etale-norm}
 \lean{EnvelopeProperty.Berk.fibreMult, EnvelopeProperty.Berk.sum_fibreMult, EnvelopeProperty.Berk.wgaussValuation_map_normForm, EnvelopeProperty.normFun, EnvelopeProperty.exists_normFun_eval_eq, EnvelopeProperty.IsRegularizable.normFun}
 \leanok
 \uses{lem:reg-closure-elementary, lem:reg-decreasing, lem:reg-triv-finite}
-\source{fhx-envelope-20261028:lem:finite-flat-norm}
 Let $k[S]\to k[Y]$ make $k[Y]$ a finite free \'etale $k[S]$-algebra of rank $d$, with $S$ normal and $Y$
 integral. For $y\in Y^\an$ over $s$ put $m_y=\dim_{\mathcal H(s)}\mathcal H(s)\otimes_{k[S]}k[Y]/\mathfrak m_y$,
 where $\mathfrak m_y$ is the kernel of $\mathcal H(s)\otimes_{k[S]}k[Y]\to\mathcal H(y)$. Then
@@ -659,10 +631,9 @@ to $\Norm_\pi u$, which is finite at $\vtriv$ (every point over $\vtriv$ is $\vt
 Lemma~\ref{lem:reg-decreasing} applies.
 \end{proof}
 
-\begin{lemma}[Subharmonic functions on curves]\label{lem:curves}
+\begin{lemma}[Subharmonic functions on curves {\cite[Lemma~5.21]{FHX}, \cite[Proposition~3.5]{GR25}}]\label{lem:curves}
 \notready
 \uses{def:weakly-psh}
-\source{fhx-envelope-20261028:lem:curves, gr25-classically-psh:prop:subharmonic.properties}
 Let $F$ be a complete non-Archimedean field. (1) If $q\colon C'\to C$ is a finite flat surjective
 morphism of normal algebraic $F$-curves, $C$ integral, and $u$ is subharmonic on $C'^\an$, then
 $\Norm_qu(y)=\sum_{q(x)=y}m_x(q)u(x)$ is subharmonic on $C^\an$. (2) Subharmonic functions on the
@@ -688,11 +659,10 @@ surjective over $C$ with a lift $C''\to Y'_F$; the pullback to $C''^\an$ is subh
 surjective descent applies.
 \end{proof}
 
-\begin{lemma}[Extension step of Proposition~\ref{prop:nonflat-norm}]\label{lem:nonflat-extension}
+\begin{lemma}[Extension step of Proposition~\ref{prop:nonflat-norm} {\cite[Proposition~5.22]{FHX}}]\label{lem:nonflat-extension}
 \lean{EnvelopeProperty.IsRegularizable.exists_extend, EnvelopeProperty.IsRegularizable.exists_extend_of_hasEnvelopeProperty, EnvelopeProperty.IsRegularizable.exists_extend_of_charP, EnvelopeProperty.IsRegularizable.exists_extend_of_isAffineSpacePrincipalOpen, EnvelopeProperty.IsRegularizable.exists_extend_of_isAffineSpacePrincipalOpen_of_charP, EnvelopeProperty.ProjBerk.exists_extend_mulChart, EnvelopeProperty.ProjBerk.exists_eval_le_chartLog}
 \leanok
 \uses{lem:principal-extension, lem:growth, lem:bj-chart, lem:bj-compactification-regularize, lem:bj-compactification-extend, def:pn-ep, thm:bj-psh2, thm:bj-psh-basic, thm:pn-ep-charp}
-\source{fhx-envelope-20261028:prop:nonflat-norm}
 Let $k$ be countable, $n\ge1$, $0\ne h_S\in k[y_1,\dots,y_n]$, $S=\Spec k[y]_{h_S}$, $0\ne h\in k[S]$ and $S_0=S_h$. Assume that
 every rational $\theta>0$ has the envelope property on $\PP^n$ (Theorem~\ref{thm:pn-ep-charp} in characteristic $p$) and
 the imported Theorem~\ref{thm:import-growth-control}. Let $v_0\in\Rcal(S_0)$ with $v_0\le g+B$ on $S_0^\an$ for some
@@ -718,11 +688,10 @@ $S_0^\an$, where $\log|h|$ is finite. So $\psi=v_0+a\log|\sigma|$ on $S_0^\an$. 
 $v=(\psi-a\log|\sigma|)|_{S^\an}\in\Rcal(S)$, and $v=v_0$ on $S_0^\an$.
 \end{proof}
 
-\begin{proposition}[Nonflat norms]\label{prop:nonflat-norm}
+\begin{proposition}[Nonflat norms {\cite[Proposition~5.22]{FHX}}]\label{prop:nonflat-norm}
 \lean{EnvelopeProperty.NonflatNorms}
 \notready
 \uses{lem:finite-etale-norm, lem:finite-flat-norm, lem:finite-flat-norm-base-change, lem:curves, prop:gluing, lem:nonflat-extension, lem:growth, lem:reg-triv-finite, thm:pn-ep, spectrum:paper-rigid-complete-extension, algebra:affine-line-avoids-polynomial, scheme:affine-line-closed-immersion}
-\source{fhx-envelope-20261028:prop:nonflat-norm}
 Let $Y$ be a normal affine variety of dimension $n\ge1$, $S\subseteq\A^n$ a principal open subset,
 $\pi\colon Y\to S$ finite surjective generically \'etale of degree $d$, and $Z\subsetneq Y$ closed.
 There are integers $m_y(\pi)\ge1$, $y\in Y^\an$, with $\sum_{\pi(y)=s}m_y(\pi)=d$ for all $s$, such
@@ -756,10 +725,9 @@ gives $v(s)=\Norm_\pi u(s)$.
 
 \subsection{Extension across a closed subset}\label{subsec:extension}
 
-\begin{lemma}[Projections]\label{lem:projection-existence}
+\begin{lemma}[Projections {\cite[Lemma~5.23]{FHX}}]\label{lem:projection-existence}
 \lean{EnvelopeProperty.ProjectionExistence, EnvelopeProperty.exists_projection_of_isAlgClosed, EnvelopeProperty.projectionExistence_of_isAlgClosed}
 \leanok
-\source{fhx-envelope-20261028:lem:projection-existence}
 Let $Y$ be an affine variety of dimension $n\ge1$, $Z\subsetneq Y$ closed and $z\in Z$ a closed point
 at which $Z$ is smooth. There are an affine open $U\ni z$, a principal open $S\subseteq\A^n$ and a
 finite surjective generically \'etale $\pi\colon U\to S$ restricting to a closed immersion on
@@ -778,10 +746,9 @@ principal open $S\ni r(z)$ of a chart $\A^n$ with $S\subseteq N_z\setminus r(X\s
 $U=r^{-1}(S)$ and $\pi=r|_U$.
 \end{proof}
 
-\begin{proposition}[Projection step]\label{prop:projection-step}
+\begin{proposition}[Projection step {\cite[Proposition~5.24]{FHX}}]\label{prop:projection-step}
 \lean{EnvelopeProperty.projection_hullIneq, EnvelopeProperty.IsRegularizable.of_projection, EnvelopeProperty.IsRegularizable.of_projection_weaklyPSH}
 \uses{prop:nonflat-norm, lem:strict-exhaustion, prop:gluing, lem:rossi, lem:hull-criterion, lem:reg-closure-elementary, cor:analytic-closed-restriction-injective}
-\source{fhx-envelope-20261028:prop:projection-step}
 Let $Y,S,\pi,d$ be as in Proposition~\ref{prop:nonflat-norm} and $Z\subsetneq Y$ closed such that
 $\pi|_Z$ is a closed immersion and $Z'=\pi^{-1}(\pi(Z))\setminus Z$ is closed. If $u$ is weakly psh
 of logarithmic growth and regularizable on an affine open cover of $Y\setminus Z$, then
@@ -839,10 +806,9 @@ proved). So Proposition~\ref{prop:projection-step} depends only on \texttt{Nonfl
 \texttt{WuRegularization}.
 \end{remark}
 
-\begin{theorem}[Local regularization]\label{thm:normal-local-regularization}
+\begin{theorem}[Local regularization {\cite[Theorem~5.25]{FHX}}]\label{thm:normal-local-regularization}
 \lean{EnvelopeProperty.IsRegularizable.of_isWeaklyPSHOn_of_localPositivity, EnvelopeProperty.IsRegularizable.of_isWeaklyPSHOn_of_isAlgClosed, EnvelopeProperty.IsRegularizable.of_isWeaklyPSHOn, EnvelopeProperty.IsWeaklyPSHOn.comp_awayComap}
 \uses{prop:gluing, lem:projection-existence, prop:projection-step, lem:reg-closure-elementary}
-\source{fhx-envelope-20261028:thm:normal-local-regularization}
 Let $Y$ be a normal affine variety over the countable field $k$, $Z\subsetneq Y$ closed and $u$
 weakly psh of logarithmic growth, regularizable on an affine open cover of $Y\setminus Z$. Then
 $u\in\Rcal(Y)$.
@@ -867,7 +833,7 @@ The formalized Theorem~\ref{thm:normal-local-regularization} (weakly psh functio
 witnesses; ``regularizable on an affine open cover of $Y\setminus Z$'' in the equivalent principal-open
 form) assumes \texttt{WuRegularization} (Remark~\ref{rmk:imports}),
 \texttt{NonflatNorms} (Proposition~\ref{prop:nonflat-norm}) and \texttt{ProjectionExistence}, which is exactly Lemma~\ref{lem:projection-existence} (with a general
-affine open $U$); the latter is now proved for every algebraically closed field
+affine open $U$); the latter is proved for every algebraically closed field
 (\texttt{projectionExistence\_of\_isAlgClosed}, by an affine route: Noether coordinates with a Nagata
 substitution, a cotangent bound from smoothness of $Z$ at $z$, twisted coordinates $t_i^{f_i}-a_i$, generic
 \'etaleness by perturbing the $a_i$ inside $I$, and Nakayama), so
@@ -883,11 +849,9 @@ and irreducibility of $W\cap Y_1$ is not needed. The two remaining hypotheses ar
 \lean{EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj, EnvelopeProperty.ProjSubvariety.isPSH_of_isPSH_comp_proj_of_convexPLApproximation}
 \leanok
 \uses{thm:normal-local-regularization, thm:pg-psh-descent, rmk:pg-psh-descent-source}
-\source{fhx-envelope-20261028:cor:normal-weak-global}
 Let $X$ be a normal projective variety over the countable field $k$, $L$ an ample $\Q$-line bundle,
 and $\mu\colon X'\to X$ birational from an integral projective $X'$. If $\varphi\circ\mu^\an\in
-\mathrm{PSH}(X',\mu^*L)$ then $\varphi\in\mathrm{PSH}(X,L)$. (Revision \texttt{832e086} of \cite{FHX}
-assumes $X'$ normal.)
+\mathrm{PSH}(X',\mu^*L)$ then $\varphi\in\mathrm{PSH}(X,L)$.
 \end{corollary}
 
 \begin{proof}

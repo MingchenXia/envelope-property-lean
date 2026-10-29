@@ -1,8 +1,9 @@
 \section{PSH2 below a homogeneous majorant}\label{sec:psh2-hom-majorant}
 
-In revision \texttt{832e086} of \cite{FHX}, Proposition~2.1(1) states the decreasing-limit property PSH2 at every class, citing \cite[Theorem~4.5]{BJ22},
-whose proof rests on the false \cite[Lemma~4.6]{BJ22} (Proposition~\ref{prop:nn-bj-lemma46-false}); the revision of 2026-10-28 restricts
-\cite[Proposition~2.1(1)]{FHX} to nef classes and homogeneous nets (\cite[Remark~2.2]{FHX}). PSH2 is proved here at limit classes in the nef cone, for nets
+The decreasing-limit property PSH2 in \cite[Proposition~2.1(1)]{FHX} concerns nef classes
+and homogeneous nets (\cite[Remark~2.2]{FHX}). The proof of the general assertion in
+\cite[Theorem~4.5]{BJ22} rests on the false \cite[Lemma~4.6]{BJ22}
+(Proposition~\ref{prop:nn-bj-lemma46-false}). PSH2 is proved here at limit classes in the nef cone, for nets
 of homogeneous functions, for dominated maxima of homogeneous functions (Theorems~\ref{thm:nn-psh2-hom} and~\ref{thm:nn-hom-max-diagonal}) and under the
 envelope property at the limit class (Theorem~\ref{thm:nn-psh2-of-ep}). This section isolates what is missing in general: PSH2 holds for a decreasing net as
 soon as a single homogeneous $\theta$-psh function dominates all Legendre slices of the limit (Theorem~\ref{thm:hm-psh2-hom-majorant}). The proof is the
@@ -13,11 +14,10 @@ Throughout, $\mathcal X$ is a model over the algebraically closed trivially valu
 Definition~\ref{def:gl-scaling}: $t\cdot v$ is the scaling action of $t>0$ on $\mathcal X^\an$, $(t\cdot u)(v)=t\,u(t^{-1}\cdot v)$, $\hat u=\inf_{t>0}t\cdot u$, and
 $\hat u_\lambda=\widehat{u-\lambda}$ for $\lambda\in\R$, so that $\hat u_\lambda(v)=\inf_{t>0}\bigl((t\cdot u)(v)-t\lambda\bigr)$.
 
-\begin{lemma}[Legendre reconstruction along convex rays]\label{lem:hm-convex-ray-reconstruction}
+\begin{lemma}[Legendre reconstruction along convex rays {\cite[(7.2)]{FHX}, \cite[Theorem~6.24, Lemma~6.25]{BJ22}}]\label{lem:hm-convex-ray-reconstruction}
 \lean{EnvelopeProperty.MultiModel.scaleFun_ne_bot_of_scaleFun_convex, EnvelopeProperty.MultiModel.convexOn_rayFun_of_scaleFun_convex, EnvelopeProperty.MultiModel.eq_iSup_legendreSlice_of_scaleFun_convex}
 \leanok
 \uses{def:gl-scaling, lem:gl-scaling}
-\source{fhx-envelope-20261028:eq:Legendre-reconstruction, bj22-trivval:thm:homogpsh, bj22-trivval:lem:actionconvex}
 Let $u\colon\mathcal X^\an\to[-\infty,\infty)$ with $b=u(\star)\in\R$ and $u\le b$. Assume that for every $v\in\mathcal X^\an$ the ray $g_v(t)=(t\cdot u)(v)$,
 $t>0$, satisfies the convexity inequality
 \[
@@ -45,11 +45,10 @@ $g(t)-t\lambda\ge g(1)-c+t\epsilon\ge g(1)-c$, so $\hat u_\lambda(v)\ge g(1)-c$ 
 $\sup_{\lambda<b}(\hat u_\lambda(v)+\lambda)\ge u(v)$.
 \end{proof}
 
-\begin{lemma}[Slices of a decreasing limit]\label{lem:hm-limit-slices}
+\begin{lemma}[Slices of a decreasing limit {\cite[Theorem~6.24]{BJ22}, \cite[Proposition~7.5]{FHX}}]\label{lem:hm-limit-slices}
 \lean{EnvelopeProperty.MultiModel.isPSHHom_legendreSlice_of_antitone}
 \leanok
 \uses{lem:nn-ray-limit, thm:nn-psh2-hom, thm:gl-homog-decomposition}
-\source{bj22-trivval:thm:homogpsh, fhx-envelope-20261028:prop:homogeneous-slices}
 Let $(I,\le)$ be a nonempty directed set, $\theta_i\to\theta$ a net in $\R^r$, and $u_i\in\PSH(\mathcal X,\theta_i)$ a decreasing net with limit $u$. If
 $\lambda\in\R$ and $\lambda<u(\star)$, then $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
 \end{lemma}
@@ -61,11 +60,10 @@ translate by $-\lambda$; hence $\inf_i(\hat u_i)_\lambda=\hat u_\lambda$ (Lemma~
 $\hat u_\lambda\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$.
 \end{proof}
 
-\begin{theorem}[PSH2 below a homogeneous majorant]\label{thm:hm-psh2-hom-majorant}
+\begin{theorem}[PSH2 below a homogeneous majorant {\cite[Proposition~2.1, Proposition~7.5]{FHX}, \cite[Theorem~4.5]{BJ22}}]\label{thm:hm-psh2-hom-majorant}
 \lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_homMajorant}
 \leanok
 \uses{lem:hm-convex-ray-reconstruction, lem:hm-limit-slices, lem:nn-ray-limit, thm:nn-hom-max-diagonal, prop:nn-homogeneous-slices, thm:gl-fs-system-theory, lem:gl-scaling, def:gl-psh}
-\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:prop:homogeneous-slices, bj22-trivval:thm:psh12}
 Let $(I,\le)$ be a nonempty directed set, $\theta_i\to\theta$ a net in $\R^r$, and $u_i\in\PSH(\mathcal X,\theta_i)$ a decreasing net with limit $u\not\equiv-\infty$;
 put $b=u(\star)$. Suppose that some $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ satisfies
 \[
@@ -107,11 +105,10 @@ Hence $u=U+b$, which lies in $\PSH(\mathcal X,\theta)$ (Theorem~\ref{thm:gl-fs-s
 \end{proof}
 
 
-\begin{corollary}[Majorants from the envelope property]\label{cor:hm-majorant-of-ep}
+\begin{corollary}[Majorants from the envelope property {\cite[Proposition~2.1]{FHX}}]\label{cor:hm-majorant-of-ep}
 \lean{EnvelopeProperty.MultiModel.exists_homMajorant_of_hasEnvelopeProperty}
 \leanok
 \uses{lem:hm-limit-slices, lem:gl-scaling, def:gl-psh, thm:hm-psh2-hom-majorant}
-\source{fhx-envelope-20261028:prop:BJ-package}
 Let $u_i\in\PSH(\mathcal X,\theta_i)$ be a decreasing net, $\theta_i\to\theta$, with limit $u\not\equiv-\infty$, $b=u(\star)$, and assume
 $\mathrm{EP}_{\mathcal X}(\theta)$. Then some $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ satisfies $\hat u_\lambda\le\Psi$ for every $\lambda<b$, namely
 $\Psi=(\sup_{\lambda<b}\hat u_\lambda)^\star$. In particular Theorem~\ref{thm:hm-psh2-hom-majorant} contains Theorem~\ref{thm:nn-psh2-of-ep}.
@@ -136,11 +133,10 @@ The constant $0$ is homogeneous, so $0\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$
 (Lemma~\ref{lem:hm-limit-slices}), hence $\hat u_\lambda\le0$ (Lemma~\ref{lem:gl-scaling}(3)). Apply Theorem~\ref{thm:hm-psh2-hom-majorant} with $\Psi=0$.
 \end{proof}
 
-\begin{lemma}[Decreasing limits below a homogeneous carrier]\label{lem:hm-carrier-limit}
+\begin{lemma}[Decreasing limits below a homogeneous carrier {\cite[Lemma~7.4]{FHX}}]\label{lem:hm-carrier-limit}
 \lean{EnvelopeProperty.MultiModel.isPSH_of_homogeneous_carrier_limit, EnvelopeProperty.MultiModel.IsScaleHomogeneous.homogenization_add_coe_le}
 \leanok
 \uses{thm:hm-psh2-hom-majorant, lem:gl-scaling, def:gl-scaling, thm:gl-fs-system-theory}
-\source{fhx-envelope-20261028:lem:homogeneous-carrier-limit}
 Let $\theta\in\R^r$ and $\Psi\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$. For $n\in\N$ let $A_n$ be a finite set and, for $a\in A_n$,
 $q_{n,a}\in\PSH_{\mathrm{hom}}(\mathcal X,\theta)$ with $q_{n,a}\le\Psi$ and $c_{n,a}\in\R$. Suppose that $U_n=\max_{a\in A_n}(q_{n,a}+c_{n,a})$ decreases
 in $n$ and that $u=\lim_nU_n$ is not identically $-\infty$. Then $u\in\PSH(\mathcal X,\theta)$.
@@ -160,7 +156,6 @@ $\widehat{\Psi+D}(v)\le\Psi(v)$ (if $\Psi(v)=-\infty$ there is nothing to prove)
 
 \begin{remark}[Comparison with the source]\label{rmk:hm-carrier-limit-source}
 \uses{lem:hm-carrier-limit, thm:hm-psh2-hom-majorant}
-\source{fhx-envelope-20261028:lem:homogeneous-carrier-limit, fhx-envelope-20261028:prop:homogeneous-slices}
 \cite[Lemma~7.4]{FHX} is stated on an integral projective variety and also requires the term $\Psi-n$ among the constituents of $U_n$. Its proof builds a
 directed decreasing Fubini--Study net for $u$ from the functions $v\mapsto F(bv)+\epsilon$, where the carrier term makes the homogeneous parts of the
 approximants dominate $\Psi$. Lemma~\ref{lem:hm-carrier-limit} is the model form and is deduced instead from Theorem~\ref{thm:hm-psh2-hom-majorant}; the

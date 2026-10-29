@@ -15,7 +15,6 @@ so the right-hand sides are unambiguous.
 
 \begin{definition}[The original normalized section order]
 \label{def:fp-section-order}
-\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder}
 \leanok
 \uses{lem:gl-sections,def:nn-effective-cone}
 For $v\in\mathcal X^\an$ and $a\in\mathbb Q^r$, define
@@ -34,7 +33,6 @@ they require no identification with a separate numerical-class space.
 
 \begin{lemma}[Nonnegativity of the original section order]
 \label{lem:fp-section-order-nonneg}
-\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_nonneg}
 \leanok
 \uses{def:fp-section-order,lem:gl-sections}
 One has $0\le\sigma_v(a)$ for every $v$ and $a$.
@@ -49,7 +47,6 @@ the empty infimum $+\infty$.
 
 \begin{lemma}[Every actual section bounds the infimum]
 \label{lem:fp-section-order-witness}
-\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_le}
 \leanok
 \uses{def:fp-section-order}
 If $m\ge1$, $d=ma$, and $0\ne f\in R_d$, then
@@ -62,7 +59,6 @@ of the set whose infimum defines $\sigma_v(a)$.
 
 \begin{lemma}[Classes with no original section]
 \label{lem:fp-section-order-noneffective}
-\lean{EnvelopeProperty.MultiModel.sectionVanishingOrder_eq_top_of_not_mem_effectiveCone}
 \leanok
 \uses{def:fp-section-order,def:nn-effective-cone}
 If $a\notin E$, then $\sigma_v(a)=+\infty$.
@@ -75,7 +71,6 @@ infimum is empty.
 
 \begin{lemma}[The original finite-family ray estimate]
 \label{lem:fp-fs-data-ray}
-\lean{EnvelopeProperty.MultiModel.FSData.eval_rpow_le_sub_sectionVanishingOrder}
 \leanok
 \uses{lem:fp-section-order-witness,def:gl-fs,lem:gl-scaling,lem:gl-sections}
 Let $m>0$, $d=ma$, and let $T$ be a finite family of original sections
@@ -109,7 +104,6 @@ logarithm $-\infty$ at $v$, as the bound by its order also shows.
 
 \begin{lemma}[The full Fubini--Study ray estimate]
 \label{lem:fp-fs-ray}
-\lean{EnvelopeProperty.MultiModel.IsFS.apply_rpow_le_sub_sectionVanishingOrder}
 \leanok
 \uses{lem:fp-fs-data-ray,def:gl-fs}
 For every original $\varphi\in\mathcal H(\mathcal X,a)$ and $t>0$,
@@ -123,7 +117,6 @@ same presentation.
 
 \begin{lemma}[The additive Fubini--Study ray estimate]
 \label{lem:fp-fs-additive-ray}
-\lean{EnvelopeProperty.MultiModel.IsFS.add_sectionVanishingOrder_le_apply_triv}
 \leanok
 \uses{lem:fp-fs-ray,thm:gl-fs-system-theory}
 For every original $\varphi\in\mathcal H(\mathcal X,a)$ and $t>0$,
@@ -138,7 +131,6 @@ $b=\varphi(\star)$ and $y=t\sigma_v(a)$.
 
 \begin{definition}[Relaxation along the original effective classes]
 \label{def:fp-relaxed-order}
-\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder}
 \leanok
 \uses{def:fp-section-order,def:nn-effective-cone}
 For $\theta\in\mathbb R^r$, let $\mathcal F_\theta$ be the filter
@@ -153,7 +145,6 @@ Thus the limit is taken through the original effective rational classes.
 
 \begin{lemma}[The relaxed order is nonnegative]
 \label{lem:fp-relaxed-nonneg}
-\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder_nonneg}
 \leanok
 \uses{def:fp-relaxed-order,lem:fp-section-order-nonneg}
 One has $0\le\sigma^-_v(\theta)$ for every $v$ and $\theta$.
@@ -166,7 +157,6 @@ the defining lower limit.
 
 \begin{lemma}[Comparison along actual effective class families]
 \label{lem:fp-relaxed-liminf-net}
-\lean{EnvelopeProperty.MultiModel.relaxedSectionVanishingOrder_le_liminf}
 \leanok
 \uses{def:fp-relaxed-order}
 Let $(a_i)$ be a filtered family of rational classes with
@@ -183,7 +173,6 @@ these lower bounds gives the asserted inequality.
 
 \begin{lemma}[Positive relaxed order forces eventual positive section order]
 \label{lem:fp-eventually-positive-orders}
-\lean{EnvelopeProperty.MultiModel.eventually_pos_sectionVanishingOrder_of_pos_relaxed}
 \leanok
 \uses{lem:fp-relaxed-liminf-net}
 Under the preceding convergence and effectivity hypotheses, if
@@ -199,7 +188,6 @@ so $\sigma_v(a_i)>0$ eventually.
 
 \begin{theorem}[The full additive ray bound for original psh functions]
 \label{thm:fp-psh-additive-ray}
-\lean{EnvelopeProperty.MultiModel.IsPSH.add_relaxedSectionVanishingOrder_le_apply_triv}
 \leanok
 \uses{lem:fp-fs-additive-ray,lem:fp-relaxed-liminf-net,lem:fp-relaxed-nonneg,def:gl-psh,thm:gl-fs-system-theory,def:nn-effective-cone}
 For every original $u\in\operatorname{PSH}(\mathcal X,\theta)$,
@@ -231,7 +219,6 @@ inequality is the actual additive Fubini--Study bound at every index.
 
 \begin{theorem}[Forced poles along every original scaling ray]
 \label{thm:fp-psh-ray}
-\lean{EnvelopeProperty.MultiModel.IsPSH.apply_rpow_le_sub_relaxedSectionVanishingOrder}
 \leanok
 \uses{thm:fp-psh-additive-ray,thm:gl-fs-system-theory}
 Every original $u\in\operatorname{PSH}(\mathcal X,\theta)$ satisfies
@@ -248,7 +235,6 @@ the right-hand side is $-\infty$ and forces that actual value on the ray.
 
 \begin{lemma}[A positive linear ray bound goes below every real constant]
 \label{lem:fp-positive-ray-decay}
-\lean{EnvelopeProperty.exists_lt_of_pos_linear_ray_bound}
 \leanok
 Let $\rho:(0,\infty)\to Y$, $\psi:Y\to[-\infty,+\infty]$,
 $b\in\mathbb R$ and $s\in(0,+\infty]$.  If
@@ -264,7 +250,6 @@ $s=+\infty$ as well.
 
 \begin{lemma}[A continuous compact-space function unbounded below has a pole]
 \label{lem:fp-compact-continuous-pole}
-\lean{EnvelopeProperty.exists_eq_bot_of_continuous_of_forall_exists_lt}
 \leanok
 Let $Y$ be compact and $\psi:Y\to[-\infty,+\infty]$ continuous.
 If for every real $C$ there is $y$ with $\psi(y)<C$, then
@@ -280,7 +265,6 @@ minimality of $m$.  Consequently the attained minimum is $-\infty$.
 
 \begin{corollary}[Positive section order gives Fubini--Study ray decay]
 \label{cor:fp-fs-ray-decay}
-\lean{EnvelopeProperty.MultiModel.IsFS.exists_rpow_lt_of_pos_sectionVanishingOrder}
 \leanok
 \uses{lem:fp-fs-ray,lem:fp-positive-ray-decay,thm:gl-fs-system-theory}
 If $\varphi\in\mathcal H(a)$ and $\sigma_v(a)>0$, then for every
@@ -293,7 +277,6 @@ Fubini--Study bound in the positive-ray lemma.
 
 \begin{corollary}[Positive section order gives an actual Fubini--Study pole]
 \label{cor:fp-fs-pole}
-\lean{EnvelopeProperty.MultiModel.IsFS.exists_eq_bot_of_pos_sectionVanishingOrder}
 \leanok
 \uses{cor:fp-fs-ray-decay,lem:fp-compact-continuous-pole,lem:gl-points-basic,def:gl-fs}
 If $\varphi\in\mathcal H(a)$ and $\sigma_v(a)>0$, then
@@ -307,7 +290,6 @@ original analytic space is compact.  Apply the compact-space pole lemma.
 
 \begin{corollary}[Positive relaxed order gives psh ray decay]
 \label{cor:fp-psh-ray-decay}
-\lean{EnvelopeProperty.MultiModel.IsPSH.exists_rpow_lt_of_pos_relaxedSectionVanishingOrder}
 \leanok
 \uses{thm:fp-psh-ray,lem:fp-positive-ray-decay,thm:gl-fs-system-theory}
 If $u\in\operatorname{PSH}(\theta)$ and $\sigma^-_v(\theta)>0$,
@@ -320,7 +302,6 @@ and the positive computed relaxed order into the positive-ray lemma.
 
 \begin{corollary}[No real global lower bound]
 \label{cor:fp-no-real-lower-bound}
-\lean{EnvelopeProperty.MultiModel.IsPSH.not_exists_real_lower_bound_of_pos_relaxedSectionVanishingOrder}
 \leanok
 \uses{cor:fp-psh-ray-decay}
 If $u\in\operatorname{PSH}(\theta)$ and $\sigma^-_v(\theta)>0$,
@@ -334,7 +315,6 @@ by the preceding corollary.
 
 \begin{corollary}[No real constant is psh]
 \label{cor:fp-no-constant-psh}
-\lean{EnvelopeProperty.MultiModel.not_isPSH_const_of_pos_relaxedSectionVanishingOrder}
 \leanok
 \uses{cor:fp-no-real-lower-bound}
 If $\sigma^-_v(\theta)>0$, then the constant function with any real
@@ -347,7 +327,6 @@ preceding corollary if it were psh.
 
 \begin{corollary}[Actual poles in every sufficiently late original approximant]
 \label{cor:fp-eventual-approximant-poles}
-\lean{EnvelopeProperty.MultiModel.eventually_exists_eq_bot_of_pos_relaxedSectionVanishingOrder}
 \leanok
 \uses{lem:fp-eventually-positive-orders,cor:fp-fs-pole,def:gl-fs,def:nn-effective-cone}
 Let $(a_i,\varphi_i)$ be any filtered family of original Fubini--Study

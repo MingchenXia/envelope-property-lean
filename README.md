@@ -1,197 +1,152 @@
-# The envelope property for unibranch projective varieties — Lean 4 formalization
+# The envelope property for unibranch projective varieties
 
-A Lean 4 / Mathlib formalization of the main results of
+A Lean 4 / Mathlib formalization of the main results of Yanbo Fang, Jiyuan Han and
+Mingchen Xia, *The envelope property for unibranch projective varieties*
+([paper and bibliography](paper/)).
 
-> Yanbo Fang, Jiyuan Han and Mingchen Xia, *The envelope property for unibranch projective
-> varieties* (FHX), [`paper/`](paper/).
+The main theorem proves the envelope property for every real numerical class on
+an integral unibranch projective variety over an algebraically closed, trivially
+valued field. Its corollary characterizes unibranch varieties by the envelope
+property. The statements use the hypotheses of the paper.
 
-The headline theorems are the main theorem of FHX — the envelope property for every real numerical
-class on an integral unibranch projective variety over an algebraically closed, trivially valued
-field, conjectured by Boucksom–Jonsson (BJ22, Conjecture 5.14) — and its corollary characterizing
-unibranch varieties, with **no hypothesis beyond those of the paper**. Everything the proofs use is
-proved here, down to Mathlib (standard axioms only, see [Axioms](#axioms)).
+## Main theorems
 
-Numbering: the paper in `paper/` (revision of 2026-10-28) calls them Theorem A
-(`thm:intro-main`) and Corollary 1.1 (`cor:intro-characterization`); the Lean docstrings and
-`ERRATA.md` cite the revision `832e086`, where they are Theorem 1.1 and Corollary 1.2. The
-statements are the same in both revisions.
+Let `k` be an algebraically closed field with the trivial absolute value, and let
+`p : X ⟶ Spec k` be an integral projective scheme. Write
+`X^an = Variety.An p`, `N¹(X)_ℝ = NativeRealNumericalClasses.Space p`,
+`PSH(X, θ) = Variety.IsPSH p θ` and
+`EP_X(θ) = Variety.HasEnvelopeProperty p θ`.
+The envelope property means that the upper semicontinuous regularization of the
+supremum of every nonempty, uniformly bounded-above family of θ-psh functions is
+θ-psh.
 
-## What is formalized
+The declarations below are in namespace `EnvelopeProperty`, in
+[`EnvelopeProperty/MainTheorem.lean`](EnvelopeProperty/MainTheorem.lean).
+Numbering refers to the [paper in this repository](paper/main.tex).
 
-Let `k` be an algebraically closed field with the trivial absolute value, `X` an integral
-projective `k`-scheme with structure morphism `p : X ⟶ Spec k`, `X^an = Variety.An p` its Berkovich
-analytification, `N¹(X)_ℝ = NativeRealNumericalClasses.Space p` the real numerical classes, and
-`PSH(X, θ) = Variety.IsPSH p θ` the θ-plurisubharmonic functions of Boucksom–Jonsson (BJ22,
-Definition 4.1). `EP_X(θ) = Variety.HasEnvelopeProperty p θ` is the *envelope property*: for every
-nonempty family in `PSH(X, θ)` bounded above, the usc regularization of its supremum is θ-psh.
-`X` is *unibranch* (`Variety.IsUnibranch X`) if its normalization is bijective.
-
-All names below are in the namespace `EnvelopeProperty`; the file is
-[`EnvelopeProperty/EnvelopeProperty/MainTheoremFullyUnconditional.lean`](EnvelopeProperty/EnvelopeProperty/MainTheoremFullyUnconditional.lean).
-
-| FHX (832e086 / 2026-10-28) | Lean | Statement |
+| Paper | Lean declaration | Statement |
 |---|---|---|
-| Theorem 1.1 / Theorem A | `Variety.hasEnvelopeProperty_of_isUnibranch_fully_unconditional` | `X` unibranch ⇒ `EP_X(θ)` for every `θ ∈ N¹(X)_ℝ` |
-| Theorem 1.1 / Theorem A, family form (as stated in the paper) | `Variety.isPSH_uscReg_iSup_of_isUnibranch_fully_unconditional` | `X` unibranch, `(φ_i)` a nonempty family in `PSH(X, θ)` uniformly bounded above ⇒ `(sup_i φ_i)^⋆ ∈ PSH(X, θ)` |
-| Corollary 1.2 / Corollary 1.1 | `Variety.isUnibranch_tfae_hasEnvelopeProperty_fully_unconditional` | equivalent: (1) `X` unibranch; (1′) every local ring `𝒪_{X,x}` unibranch; (1″) every `𝒪_{X,x}` geometrically unibranch; (2) `EP_X(θ)` for all `θ ∈ N¹(X)_ℝ`; (3) `EP_X(ω)` for some ample `ω` |
+| Theorem A | `Variety.hasEnvelopeProperty_of_isUnibranch` | If `X` is unibranch, `EP_X(θ)` holds for every `θ ∈ N¹(X)_ℝ`. |
+| Theorem A, family form | `Variety.isPSH_uscReg_iSup_of_isUnibranch` | For a nonempty uniformly bounded-above family `(φ_i)` in `PSH(X, θ)`, its regularized supremum belongs to `PSH(X, θ)`. |
+| Theorem A, local-ring form | `Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk`, `Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk` | The same conclusions when every local ring `𝒪_{X,x}` is unibranch. |
+| Corollary 1.1 | `Variety.isUnibranch_tfae_hasEnvelopeProperty` | Equivalent: `X` is unibranch; its local rings are unibranch; its local rings are geometrically unibranch; `EP_X(θ)` holds for every real numerical class; `EP_X(ω)` holds for some ample class. |
+| Corollary 7.6, on multiprojective models | `MultiModel.hasEnvelopeProperty_of_isNormal` | A normal model has the envelope property at every real class. |
+| Corollary 8.4, on multiprojective models | `MultiModel.isPSH_of_antitone_of_isUnibranch` | A nontrivial decreasing limit of psh functions whose classes converge is psh at the limiting class. |
 
-In the 2026-10-28 revision "unibranch" is defined by the local rings (every `𝒪_{X,x}` has one
-branch); Theorem A in exactly that form is
-`Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk_fully_unconditional` and
-`Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk_fully_unconditional`.
+`Variety.IsUnibranch X` means that the normalization of `X` is bijective; its
+equivalence with the local-ring definition is proved in
+[`Source/Unibranch.lean`](EnvelopeProperty/Source/Unibranch.lean).
 
-The same file states the theorems for the multiprojective models of the proof
-(`MultiModel.*_fully_unconditional`, including FHX Corollary 7.5 of `832e086`, `cor:normal-EP`, for
-normal models) and for
-`X = V(I) ⊆ ∏_c ℙ^{M_c}` given by a prime ideal (`MultiModel.*quotModel*_fully_unconditional`).
+The same file gives the envelope theorem, its family form and the characterization
+for multiprojective models (`MultiModel.hasEnvelopeProperty_of_isUnibranch`,
+`MultiModel.isPSH_uscReg_iSup_of_isUnibranch`,
+`MultiModel.isUnibranch_tfae_hasEnvelopeProperty`) and for prime-ideal presentations
+`X = V(I) ⊆ ∏_c ℙ^{M_c}`
+(`MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch`,
+`MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch`,
+`MultiModel.quotModel_isUnibranch_tfae`).
 
-All theorems of `MainTheoremFullyUnconditional.lean`: `ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_fully_unconditional`, `MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable_fully_unconditional`, `MultiModel.hasEnvelopeProperty_of_isUnibranch_fully_unconditional`, `MultiModel.isPSH_uscReg_iSup_of_isUnibranch_fully_unconditional`, `MultiModel.isPSH_of_antitone_of_isUnibranch_fully_unconditional`, `MultiModel.isUnibranch_tfae_hasEnvelopeProperty_fully_unconditional`, `MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_fully_unconditional`, `MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch_fully_unconditional`, `MultiModel.quotModel_isUnibranch_tfae_fully_unconditional`, `Variety.hasEnvelopeProperty_of_isUnibranch_fully_unconditional`, `Variety.isPSH_uscReg_iSup_of_isUnibranch_fully_unconditional`, `Variety.hasEnvelopeProperty_of_forall_isUnibranchLocalRing_stalk_fully_unconditional`, `Variety.isPSH_uscReg_iSup_of_forall_isUnibranchLocalRing_stalk_fully_unconditional`, `Variety.isUnibranch_tfae_hasEnvelopeProperty_fully_unconditional`.
+## Formalization conventions
 
-The other release roots contain the earlier forms of the same theorems, in which the (meanwhile
-proved) inputs appear as explicit hypotheses — FHX Lemma 5.5 (`LocalPositivity`), FHX Theorem 3.1
-in characteristic 0 (`SmoothEnvelopeCharZero`), and fibre constancy (FHX Theorem 6.1, Step 1) —
-quantified over countable algebraically closed subfields:
-`EnvelopeProperty/MainTheorem.lean`, `EnvelopeProperty/Global/MainTheorem.lean`,
-`EnvelopeProperty/MainTheoremUnconditional.lean`, `EnvelopeProperty/Source/MainTheorem.lean`,
-`EnvelopeProperty/Source/Characterization.lean` (all under `EnvelopeProperty/`).
+- Convergence of classes is `Variety.AmpleTendsto`, defined using the order of the
+  ample cone. When `N¹(X)_ℝ` is finite dimensional, it is equivalent to Euclidean
+  convergence: `Variety.ampleTendsto_iff_tendsto` and
+  `Variety.isPSH_iff_isCurveWeakPSH` in
+  [`Source/FiniteDimensionalTopology.lean`](EnvelopeProperty/Source/FiniteDimensionalTopology.lean).
+  Finite dimensionality of the Néron–Severi space is not formalized; the main
+  theorems do not assume it.
+- Nets in the definition of `IsPSH` are indexed by directed preorders in the
+  universe of `X`.
+- The trivially valued field is `k` itself. No countability assumption is imposed
+  on `k`.
 
-**Certificates for the errata** ([`ERRATA.md`](ERRATA.md)):
+## Errata certificates
 
-* `not_bj22Lemma46 : ¬ BJ22Lemma46Statement` — Lemma 4.6 of Boucksom–Jonsson (BJ22) is false
-  (`Global/Lemma46Counterexample.lean`; ERRATA EP-1.1);
-* `MultiModel.isPSH_of_antitone_of_homMajorant` — BJ22's PSH2 holds on every model for a decreasing
-  limit dominated by one homogeneous psh function (`Global/PSH2HomogeneousMajorant.lean`; EP-1.1);
-* `ProjBerk.bj621_counterexample` — FHX Remark 7.3: on `ℙ¹` the monotonicity step of the proof of
-  BJ22 Theorem 6.21 fails (`Projective/Remark73ProjectiveLine.lean`; EP-4.1).
+[`ERRATA.md`](ERRATA.md) records corrections to the literature and the corresponding
+formal results. In particular:
 
-### Formalization conventions
-
-* Convergence of classes in `N¹(X)_ℝ` (in the definition of `IsPSH`) is `Variety.AmpleTendsto`:
-  convergence in the order of the ample cone. When `N¹(X)_ℝ` is finite dimensional this is
-  convergence in its Euclidean topology, so that `IsPSH` is literally BJ22's definition:
-  `Variety.ampleTendsto_iff_tendsto` and `Variety.isPSH_iff_isCurveWeakPSH`
-  (`EnvelopeProperty/Source/FiniteDimensionalTopology.lean`), under the explicit assumption
-  `[FiniteDimensional ℝ (Space p)]`. Finite dimensionality of `N¹(X)_ℝ` (Néron–Severi) is not
-  formalized; the main theorems do not assume it.
-* Nets in the definition of `IsPSH` are indexed by directed preorders in the universe of `X`.
-* The trivially valued field is `k` itself; no countability assumption is made on `k`.
+- `not_bj22Lemma46 : ¬ BJ22Lemma46Statement` is a counterexample to BJ22 Lemma 4.6
+  ([source](EnvelopeProperty/Global/Lemma46Counterexample.lean)).
+- `MultiModel.isPSH_of_antitone_of_homMajorant` proves decreasing-limit stability
+  below a homogeneous majorant
+  ([source](EnvelopeProperty/Global/PSH2HomogeneousMajorant.lean)).
+- `ProjBerk.bj621_counterexample` formalizes the projective-line example of FHX
+  Remark 7.3, refuting a monotonicity step in the proof of BJ22 Theorem 6.21
+  ([source](EnvelopeProperty/Projective/Remark73ProjectiveLine.lean)).
 
 ## Building
 
-Requirements: [elan](https://github.com/leanprover/elan) (the toolchain `leanprover/lean4:v4.33.1` is selected by
-`lean-toolchain`), `git`, `xz`, and about 10 GB of disk (Mathlib's cache ≈ 5 GB, this repository's
-cache ≈ 3.5 GB unpacked).
+Install [elan](https://github.com/leanprover/elan), `git` and `xz`. The toolchain is
+`leanprover/lean4:v4.33.1`; Mathlib is pinned to
+`0df444a360eaa60ab8c11dca51a86af692955474` (`v4.33.1`). Run from the repository root:
 
 ```sh
-git clone --single-branch -b main <this repository> envelope-property-lean
-cd envelope-property-lean/EnvelopeProperty
-lake exe cache get                    # Mathlib 0df444a3 and its dependencies, prebuilt
-cd .. && scripts/build-cache/restore.sh && cd EnvelopeProperty   # this repository, prebuilt
-lake build --no-build                 # check: everything up to date, nothing compiled
-lake env lean ../scripts/Axioms.lean  # the axiom audit below
+lake exe cache get
+scripts/build-cache/restore.sh
+lake build --no-build
+lake env lean scripts/Axioms.lean
 ```
 
-Without the build cache, `lake build` (in `EnvelopeProperty/`) compiles all 6161
-modules; expect many hours. See [`BUILD-CACHE.md`](BUILD-CACHE.md). Do not run `lake update`: the
-dependency revisions are pinned in `EnvelopeProperty/lake-manifest.json` (Mathlib
-`0df444a360eaa60ab8c11dca51a86af692955474`, tag `v4.33.1`), and the build cache is valid only for them.
+The first command downloads Mathlib and its dependencies; the second restores this
+project's compiled artifacts. `lake build --no-build` checks that every module is
+up to date without compiling anything. To compile from source, use `lake build`.
+See [`BUILD-CACHE.md`](BUILD-CACHE.md) for cache requirements and options.
+Do not run `lake update`: the dependency revisions are pinned.
 
-`lake build` builds the default target, the library `EnvelopeProperty`. Its `globs` select every
-`EnvelopeProperty.*` module present in the repository, which is exactly the import closure below;
-the other packages are built as dependencies. A single theorem file can be checked with e.g.
-`lake build EnvelopeProperty.MainTheoremFullyUnconditional`.
+A single module can be checked with `lake build EnvelopeProperty.MainTheorem`.
+The default build includes every module under `EnvelopeProperty/`.
 
 ## Axioms
 
-`scripts/Axioms.lean` prints the axioms of the headline theorems, of the earlier forms and of the
-errata certificates. Each depends exactly on `[propext, Classical.choice, Quot.sound]`.
-
-Checked for workspace revision `322d15868e36b7aec63561aa2fc8cf98f038206c` (2026-10-28): `lake build --no-build` succeeded; all 141 `#print axioms` lines report `[propext, Classical.choice, Quot.sound]`.
+[`scripts/Axioms.lean`](scripts/Axioms.lean) audits the main theorems, the errata
+certificates, decreasing-limit stability and the finite-dimensional topology
+comparison. All 96 audited theorems depend exactly on
+`[propext, Classical.choice, Quot.sound]`, Lean's standard axioms.
 
 ## Layout
 
-The repository is the import closure of the 12 release roots — the six theorem files listed
-above, the three errata certificates, two supporting files (`Global/EPDecreasingLimits.lean`:
-PSH2 for decreasing limits under the envelope property; `Global/HomogeneousCarrierLimit.lean`: FHX
-Lemma 7.4 of the 2026-10-28 revision) and `Source/FiniteDimensionalTopology.lean` (the definition
-of `IsPSH` is BJ22's when `N¹(X)_ℝ` is finite dimensional) — computed by [`scripts/closure.py`](scripts/closure.py)
-(`python3 scripts/closure.py` re-checks it). It keeps the directory layout of the
-development workspace, so that the Lake package names, options and the build cache are those of the
-workspace build. Source revision: workspace `322d15868e36b7aec63561aa2fc8cf98f038206c` (see
-[`RELEASE-MANIFEST.json`](RELEASE-MANIFEST.json), which lists every file with its sha256).
+One Lake project at the repository root contains the following library and
+vendored source files:
 
-| Directory | Lake package | Modules | Content |
-|---|---|---|---|
-| `EnvelopeProperty/` | `EnvelopeProperty` | 3090 | FHX: definitions, the main theorems and their proofs |
-| `EnvelopeProperty/deps/hironaka-ep33/` | `hironakaEp33` | 627 | Hironaka: principalization and resolution in characteristic 0 (port of resolutionorg/hironaka) |
-| `EnvelopeProperty/deps/aintlib-ep33/` | `aintlibEp33` | 185 | AINTLIB `ModularCurves` / `Common`: sheaves of modules, Čech cohomology, projective space |
-| `EnvelopeProperty/deps/tauceti-generic-ep33/` | `tauCetiGenericEp33` | 4 | Tau Ceti: generic freeness |
-| `DeJongAlterations/` | `deJongProjectivityEp33` | 1114 | de Jong's alteration theorem via Temkin's stable modification (package config name `DeJongAlterations`) |
-| `TranscendentalNakamaye/` | `TranscendentalNakamaye` | 1054 | complex-analytic infrastructure: complex manifolds, multiplier ideals, analytic resolution, Ohsawa–Takegoshi |
-| `SGPTFormalization/` | `SGPTFormalization` | 34 | holomorphic germs of schemes over ℂ (from the SGPT formalization) |
-| `BingWangEntropy/` | `BingWangEntropy` | 53 | the complex manifold of a smooth scheme over ℂ |
-| **total** | | **6161** | |
+| Directory | Lean modules | Contents |
+|---|---:|---|
+| `EnvelopeProperty/`, excluding the two parts below | 3,089 | Envelope properties, Berkovich geometry, local regularization, vanishing and the main theorems |
+| `EnvelopeProperty/Alterations/` | 1,114 | Alterations and stable modification |
+| `EnvelopeProperty/ComplexGeometry/` | 1,141 | Complex manifolds, pluripotential theory, resolution, analytic germs and schemes over ℂ |
+| `vendor/hironaka/` | 627 | Principalization and resolution in characteristic zero |
+| `vendor/aintlib/` | 185 | Sheaves of modules, Čech cohomology and projective geometry |
+| `vendor/tauceti/` | 4 | Generic freeness |
+| **Total** | **6,160** | |
 
-Each package directory holds its `lakefile.toml`, `lean-toolchain` and `lake-manifest.json`. The
-lakefiles are those of the workspace with exact-module globs that are not in the closure removed
-(and, in `aintlibEp33`, the library `AintlibEp33`, whose root is not in the closure); options and
-requirements are unchanged.
-
-## Paper and errata
-
-* [`paper/`](paper/): the authors' LaTeX source (`main.tex`, `ComplexGeometry.bib`,
-  `cgeometry.sty`; revision of 2026-10-28) and the compiled `main.pdf`. The formalization was written against
-  the revision `832e086`; in the later revision the main theorem and its corollary are unchanged,
-  six intermediate statements are strengthened along the lines of ERRATA §1.3, and the
-  formalization needs no change (ERRATA §1.4, EP-4.4).
-* [`ERRATA.md`](ERRATA.md): the mistakes in the literature found while formalizing (BJ22, its
-  addendum, Wu, the Stacks project, Roberts–Singh, Temkin 2010, de Jong 1996, and the sources of the
-  analytic part), with their status, fixes and Lean certificates.
-
-## Blueprint
-
-[`blueprint/`](blueprint/) is a curated subset of the blueprint (the informal, node-by-node
-mathematical route) of the formalization: the 1286 chapters (4617 statements)
-containing the nodes of the headline theorems, of the `LocalPositivity` and
-`SmoothEnvelopeCharZero` inputs, of the global theorems `thm:gl-*` and of the errata certificates,
-closed under `\uses` and `\ref`. See [`blueprint/README.md`](blueprint/README.md) for how it was
-selected and how to build it.
+[`blueprint/`](blueprint/) contains a curated mathematical blueprint;
+[`paper/`](paper/) contains the paper, bibliography and compiled paper;
+[`scripts/`](scripts/) contains the axiom audit and cache utilities.
 
 ## Third-party code
 
-The following directories contain code from other projects, with their original copyright headers
-and license files; the compatibility changes are recorded in the patch files next to them.
+Vendored code retains its upstream license and attribution. Compatibility patches
+and upstream information are stored alongside it:
 
-* `EnvelopeProperty/deps/hironaka-ep33/` — from [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka)
-  (Apache-2.0), backported to Lean/Mathlib v4.33.1 (`UPSTREAM-CONE.json`, `compatibility.patch`).
-* `EnvelopeProperty/deps/aintlib-ep33/` — the `ModularCurves` and `Common` libraries of
-  [AINTLIB](https://github.com/CBirkbeck/AINTLIB) (Apache-2.0; `UPSTREAM.json`,
-  `COMPATIBILITY.patch`).
-* `EnvelopeProperty/deps/tauceti-generic-ep33/` — generic freeness from
-  [Tau Ceti](https://github.com/TauCetiProject/TauCeti) (Apache-2.0; `UPSTREAM.json`).
-* Individual files elsewhere keep the headers of their origin, e.g.
-  `TranscendentalNakamaye/TranscendentalNakamaye/Upstream/` (from zblore/csd-lean4, Apache-2.0)
-  and some `DeJongAlterations/DeJongAlterations/Algebra/` files (from resolutionorg/hironaka).
+- [`vendor/hironaka/`](vendor/hironaka/):
+  [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka), Apache-2.0.
+- [`vendor/aintlib/`](vendor/aintlib/):
+  [AINTLIB](https://github.com/CBirkbeck/AINTLIB), Apache-2.0.
+- [`vendor/tauceti/`](vendor/tauceti/):
+  [Tau Ceti](https://github.com/TauCetiProject/TauCeti), Apache-2.0.
+- Individual files under `EnvelopeProperty/ComplexGeometry/Upstream/` include code
+  from [zblore/csd-lean4](https://github.com/zblore/csd-lean4), Apache-2.0.
+  Some files under `EnvelopeProperty/Alterations/Algebra/` include code from
+  resolutionorg/hironaka. Their original headers are retained.
 
 ## License
 
-This repository is released under the Apache License, Version 2.0 ([`LICENSE`](LICENSE)). Every file
-that does not carry another notice — including the files whose header is the placeholder
-"Copyright (c) 2026. All rights reserved." and the files without a header — is released under
-Apache-2.0 (see `LICENSE`). Vendored code keeps its upstream license: the packages under
-`EnvelopeProperty/deps/` (Apache-2.0, with their own `LICENSE` files) and the individual files that
-carry the header of their origin (see [Third-party code](#third-party-code)).
+The repository is released under the Apache License, Version 2.0
+([`LICENSE`](LICENSE)). Files without a license header, and files with the
+placeholder header “Copyright (c) 2026. All rights reserved.”, are included under
+Apache-2.0. Vendored code retains its own license notices.
 
 ## Credits
 
-* **Paper:** Yanbo Fang, Jiyuan Han and Mingchen Xia, *The envelope property for unibranch
-  projective varieties, with an appendix on the singular Yau–Tian–Donaldson conjecture*
-  ([`paper/`](paper/)).
-* **Lean formalization:** carried out by the AI agents Claude (Anthropic) and Codex (OpenAI) in an
-  Archon Horizon workspace.
-* **Built on** [Mathlib](https://github.com/leanprover-community/mathlib4) (the Mathlib community)
-  and the vendored upstream projects
-  [resolutionorg/hironaka](https://github.com/resolutionorg/hironaka) (Resolution),
-  [AINTLIB](https://github.com/CBirkbeck/AINTLIB) (Chris Birkbeck and contributors),
-  [Tau Ceti](https://github.com/TauCetiProject/TauCeti) (the Tau Ceti contributors) and
-  [zblore/csd-lean4](https://github.com/zblore/csd-lean4) (Zayn Blore).
+The paper is by Yanbo Fang, Jiyuan Han and Mingchen Xia. The Lean formalization
+was carried out by the AI agents Claude (Anthropic) and Codex (OpenAI).
+It builds on Mathlib and the third-party projects credited above.

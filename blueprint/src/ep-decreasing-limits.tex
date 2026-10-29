@@ -6,11 +6,10 @@ the homogeneous decreasing-limit theorem. The envelope property is used only
 at the limiting class. On unibranch models it is supplied by the main theorem,
 with the same mathematical inputs as that theorem.
 
-\begin{lemma}[Convex rays of decreasing limits]\label{lem:ep-limit-convex-rays}
+\begin{lemma}[Convex rays of decreasing limits {\cite[Proposition~2.1]{FHX}, \cite[Lemma~6.25]{BJ22}}]\label{lem:ep-limit-convex-rays}
 \lean{EnvelopeProperty.MultiModel.iInf_psh_ne_top, EnvelopeProperty.MultiModel.iInf_psh_le_triv, EnvelopeProperty.MultiModel.iInf_psh_triv_ne_bot, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_convex, EnvelopeProperty.MultiModel.scaleFun_iInf_psh_ne_bot, EnvelopeProperty.MultiModel.convexOn_rayFun_iInf_psh}
 \leanok
 \uses{lem:gl-action-convex, lem:gl-scaling, thm:gl-fs-system-theory}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:lem:actionconvex}
 Let $u_i\in\PSH(\mathcal X,\theta_i)$ decrease to $u\not\equiv-\infty$.
 Then $u\le u(\star)\in\R$. For every $v$, the function
 $g_v(t)=t u(t^{-1}v)$ on $t>0$ satisfies the convexity inequality and
@@ -29,11 +28,10 @@ $t_0/(t+t_0)$ and $t/(t+t_0)$. A value $g_v(t)=-\infty$ would force
 $g_v(t_0)=-\infty$. Hence all ray values are finite.
 \end{proof}
 
-\begin{lemma}[Reconstruction of a decreasing limit]\label{lem:ep-limit-reconstruction}
+\begin{lemma}[Reconstruction of a decreasing limit {\cite[(7.2)]{FHX}, \cite[Theorem~6.24]{BJ22}}]\label{lem:ep-limit-reconstruction}
 \lean{EnvelopeProperty.MultiModel.iInf_psh_eq_iSup_legendreSlice}
 \leanok
 \uses{lem:ep-limit-convex-rays, lem:gl-scaling, thm:gl-homog-decomposition}
-\source{fhx-envelope-20261028:eq:Legendre-reconstruction, bj22-trivval:thm:homogpsh}
 For the limit $u$ above, writing $b=u(\star)$ and
 $\hat u_\lambda=\inf_{t>0}t(u(t^{-1}\cdot)-\lambda)$, one has
 $u=\sup_{\lambda<b}(\hat u_\lambda+\lambda)$ pointwise.
@@ -52,11 +50,10 @@ to zero proves the lower bound. If $u(v)=-\infty$, the upper bound alone
 gives equality.
 \end{proof}
 
-\begin{theorem}[Decreasing limits under the envelope property]\label{thm:ep-decreasing-limits}
+\begin{theorem}[Decreasing limits under the envelope property {\cite[Proposition~2.1]{FHX}, \cite[Theorem~4.5]{BJ22}}]\label{thm:ep-decreasing-limits}
 \lean{EnvelopeProperty.MultiModel.legendreSlice_iInf, EnvelopeProperty.MultiModel.isPSH_of_antitone_of_hasEnvelopeProperty}
 \leanok
 \uses{lem:ep-limit-reconstruction, thm:nn-psh2-hom, cor:gl-pshhom, def:gl-psh}
-\source{fhx-envelope-20261028:prop:BJ-package, bj22-trivval:thm:psh12}
 Suppose $\mathrm{EP}_{\mathcal X}(\theta)$ holds. If
 $u_i\in\PSH(\mathcal X,\theta_i)$ decrease to $u\not\equiv-\infty$ and
 $\theta_i\to\theta$, then $u\in\PSH(\mathcal X,\theta)$.
@@ -76,10 +73,9 @@ gives $u=u^\star\in\PSH(\mathcal X,\theta)$.
 \end{proof}
 
 \begin{corollary}[Decreasing limits on unibranch models]\label{cor:ep-unibranch-decreasing-limits}
-\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch}
+\lean{EnvelopeProperty.MultiModel.isPSH_of_antitone_of_isUnibranch_of_forall_countable}
 \leanok
 \uses{thm:ep-decreasing-limits, thm:nn-main}
-\source{fhx-envelope-20261028:prop:BJ-package, fhx-envelope-20261028:thm:intro-main, fhx-envelope-20261028:cor:unibranch-decreasing-stability}
 Under the hypotheses of the main theorem, the preceding decreasing-limit
 property holds at every real class on every unibranch model. This is
 \cite[Corollary~8.4]{FHX} on models.

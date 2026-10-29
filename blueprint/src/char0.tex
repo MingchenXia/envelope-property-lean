@@ -42,11 +42,10 @@ $x$-degree and $t$-degree are its degrees in $x$ and in $t$.
 
 \subsection{Divisorial valuation rings and extension of scalars}
 
-\begin{definition}[Divisorial valuation rings]\label{def:c0-dvr}
+\begin{definition}[Divisorial valuation rings {\cite[\S2.1]{FHX}}]\label{def:c0-dvr}
 \lean{EnvelopeProperty.BirationalDVR, EnvelopeProperty.BirationalDVR.ordIdeal}
 \leanok
 \uses{conv:c0}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 Let $F$ be a field and $N\ge1$. A \emph{divisorial valuation ring over $F$} (in the variables
 $z_1,\dots,z_N$) is a discrete valuation ring $V$ with $F[z]\subseteq V\subseteq F(z)$ which is essentially of
 finite type over $F$. We write $\operatorname{ord}_V$ for its normalized valuation, $\mathfrak m_V$ and $\kappa_V$ for its maximal
@@ -110,11 +109,10 @@ $I_1=(a_i)_i$ or $I_2=(c_j)_j$, hence contains $I_1I_2$. The Jacobson radical of
 $k$-algebra $A$ is $0$, so $I_1I_2=0$, and $I_1=0$ or $I_2=0$ since $A$ is a domain; that is, $\alpha=0$ or $\beta=0$.
 \end{proof}
 
-\begin{lemma}[Extension of scalars of divisorial valuation rings]\label{lem:c0-base-change-dvr}
+\begin{lemma}[Extension of scalars of divisorial valuation rings {\cite[\S1.3]{BJ22}}]\label{lem:c0-base-change-dvr}
 \lean{EnvelopeProperty.BirationalDVR.baseChange, EnvelopeProperty.BirationalDVR.irreducible_toBaseChange, EnvelopeProperty.BirationalDVR.addVal_toBaseChange_sum, EnvelopeProperty.BirationalDVR.ord_baseChange_sum, EnvelopeProperty.BirationalDVR.coneBaseChange, EnvelopeProperty.BirationalDVR.ord_coneBaseChange_sum}
 \leanok
 \uses{def:c0-dvr, lem:c0-tensor-domain}
-\source{bj22-trivval:sec:Gauss}
 Let $k$ be algebraically closed, $K'\supseteq k$ a field, and $V$ a divisorial valuation ring over $k$ in $N$ variables.
 Then $V\otimes_kK'$ is a domain, $\mathfrak m_V\otimes_kK'$ is a prime ideal, and
 $V_{K'}\coloneqq(V\otimes_kK')_{\mathfrak m_V\otimes K'}$ is a divisorial valuation ring over $K'$ in the same variables, with
@@ -242,11 +240,10 @@ nonzero principal maximal ideal, a discrete valuation ring, with fraction field 
 ($C\subseteq B\subseteq V$, $\mathfrak n'=\mathfrak m_V\cap C$). As in Lemma~\ref{lem:c0-dvr-curve}, $V=C_{\mathfrak n'}$.
 \end{proof}
 
-\begin{lemma}[Partial derivatives and the log discrepancy]\label{lem:c0-dvr-jacobian}
+\begin{lemma}[Partial derivatives and the log discrepancy {\cite[Lemma~3.3]{FHX}}]\label{lem:c0-dvr-jacobian}
 \lean{EnvelopeProperty.Char0.partialDeriv, EnvelopeProperty.Char0.partialDeriv_mem, EnvelopeProperty.Char0.jacobian, EnvelopeProperty.Char0.jacobian_ne_zero, EnvelopeProperty.Char0.BirationalDVR.jacobian_mem_and_ne_zero, EnvelopeProperty.Char0.logDiscrepancy, EnvelopeProperty.Char0.BirationalDVR.logDiscrepancy_ne_top}
 \leanok
 \uses{lem:c0-dvr-primitive}
-\source{fhx-envelope-20261028:lem:divisorial-trace-estimate}
 In the setting of Lemma~\ref{lem:c0-dvr-primitive}, write $w_1=\pi$, $w_j=u_j$ for $2\le j\le N$. The partial derivatives
 $\partial/\partial w_j$ of $L(\pi)=F(w_1,\dots,w_N)$ extend uniquely to $F$-derivations $\partial_j$ of $K$, and $\partial_j(V)\subseteq V$.
 The Jacobian $\mathrm{Jac}_V\coloneqq\det(\partial_jz_i)_{i,j}\in V$ is nonzero. We put
@@ -309,11 +306,10 @@ $p_1\pi=p_0$ and $r_ju_j=q_j$ in $V$ give $p_1(\mu(s,u))\,s=p_0(\mu(s,u))$ and $
 $p_1\circ\mu$, $r_j\circ\mu$ have no zeros by (1), so $(s,u)$ is a function of $\mu(s,u)$. Shrinking $U$ makes $\mu(U)$ bounded.
 \end{proof}
 
-\begin{proposition}[Valuative bound for square integrable polynomials]\label{prop:c0-valuative-bound}
+\begin{proposition}[Valuative bound for square integrable polynomials {\cite{DemAM}, \cite[Lemma~3.3]{FHX}}]\label{prop:c0-valuative-bound}
 \lean{EnvelopeProperty.Char0.valuativeBound_of_coordinates, EnvelopeProperty.Char0.valuativeBound_forall_dvr, EnvelopeProperty.Char0.neg_one_lt_of_setLIntegral_rpow_lt_top}
 \leanok
 \uses{lem:c0-analytic-chart, lem:c0-analytic-basics}
-\source{demailly-analytic-methods, fhx-envelope-20261028:lem:divisorial-trace-estimate}
 Let $V$ be a divisorial valuation ring over $\mathbf C$ in $N$ variables, $g=(g_1,\dots,g_s)$ polynomials not all zero, $c>0$ real,
 and $f\in\mathbf C[z]$ square integrable against $|g|^{-2c}$. Then $\operatorname{ord}_V(f)>c\operatorname{ord}_V(g)-A(V)$.
 \end{proposition}
@@ -399,10 +395,9 @@ $t$-degree. (4) $Z(g)\subseteq Z(g_j)$ for $g_j\ne0$ (Lemma~\ref{lem:c0-analytic
 $(1+|z|^2)^{-2}\bigl((1+|z|^2)|\xi|^2-|\langle\xi,z\rangle|^2\bigr)$.
 \end{proof}
 
-\begin{lemma}[The Ohsawa--Takegoshi theorem at a point]\label{lem:c0-ot-point}
+\begin{lemma}[The Ohsawa--Takegoshi theorem at a point {\cite{DemAM}, \cite{Dem92}}]\label{lem:c0-ot-point}
 \lean{EnvelopeProperty.Char0.exists_extension_from_point_ball, EnvelopeProperty.Char0.plurisubharmonicOn_mul_logNormSqFam}
 \leanok
-\source{demailly-analytic-methods, demailly92-regularization}
 For every $r>0$ there is $C_r>0$ such that for every $y\in\mathbf C^N$ and every plurisubharmonic $\psi$ on $B(y,r)$ with $\psi(y)>-\infty$
 there is a holomorphic function $f$ on $B(y,r)$ with $f(y)=1$ and $\int_{B(y,r)}|f|^2e^{-\psi}\,d\lambda\le C_re^{-\psi(y)}$.
 \end{lemma}
@@ -412,10 +407,9 @@ This is the Ohsawa--Takegoshi extension theorem from the point $\{y\}$ in the bo
 \cite[Corollary~13.9, Remark~13.10]{DemAM}, used in the same way in the proof of \cite[Theorem~14.2]{DemAM}; translate to $y=0$.
 \end{proof}
 
-\begin{lemma}[H\"ormander's estimate on balls]\label{lem:c0-hormander-bounded}
+\begin{lemma}[H\"ormander's estimate on balls {\cite{DemAM}}]\label{lem:c0-hormander-bounded}
 \lean{EnvelopeProperty.Char0.hormander_ball, EnvelopeProperty.Char0.exists_holomorphic_ball}
 \leanok
-\source{demailly-analytic-methods}
 Let $R>0$, $\Phi$ a smooth plurisubharmonic function on a neighbourhood of $\overline{B(0,R+1)}\subseteq\mathbf C^N$, $v=\sum_jv_jd\bar z_j$ a
 smooth $(0,1)$-form with compact support in $B(0,R)$ and $\bar\partial v=0$, and $g\ge0$ measurable, supported in $B(0,R)$, with
 $|\sum_jv_j\bar\xi_j|^2\le g\cdot L_\Phi(\xi)$ for all $\xi\in\mathbf C^N$ ($L_\Phi$ the Levi form) and $\int g e^{-\Phi}<\infty$. There is
@@ -427,11 +421,10 @@ This is H\"ormander's $L^2$ estimate for the $\bar\partial$-equation on the boun
 $e^{-\Phi}$, in the twisted form with the Levi form of the weight \cite[Theorems~5.1 and 5.2]{DemAM}, restricted to $B(0,R)$.
 \end{proof}
 
-\begin{lemma}[H\"ormander's estimate on $\mathbf C^N$ with polynomial weights]\label{lem:c0-hormander-global}
+\begin{lemma}[H\"ormander's estimate on $\mathbf C^N$ with polynomial weights {\cite{DemAM}}]\label{lem:c0-hormander-global}
 \lean{EnvelopeProperty.Char0.exists_entire_hormander_global, EnvelopeProperty.Char0.exists_entire_hormander_global_weights, EnvelopeProperty.Char0.hormanderWeight, EnvelopeProperty.Char0.iSup_exp_neg_hormanderWeight}
 \leanok
 \uses{lem:c0-hormander-bounded, lem:c0-weight}
-\source{demailly-analytic-methods}
 Let
 \[
  \Phi_0=\sum_{a=1}^pc_a\log\sum_j|h_{a,j}|^2,\qquad c_a>0,
@@ -482,11 +475,10 @@ $|c_{\alpha,\lambda}|\le C'\rho^{a-n-1-|\alpha|}\sigma^{b-1-\lambda}\|F\|$ for a
 $c_{\alpha,\lambda}=0$ if $|\alpha|>a-n-1$ (resp.\ $\lambda>b-1$).
 \end{proof}
 
-\begin{proposition}[$L^2$ extension from a point with polynomial growth]\label{prop:c0-l2-extension}
+\begin{proposition}[$L^2$ extension from a point with polynomial growth {\cite{DemAM}, \cite{Dem92}}]\label{prop:c0-l2-extension}
 \lean{EnvelopeProperty.Char0.exists_entire_extension, EnvelopeProperty.Char0.exists_polynomial_extension, EnvelopeProperty.Char0.c0Weight}
 \leanok
 \uses{lem:c0-ot-point, lem:c0-hormander-global, lem:c0-polynomial-growth, lem:c0-weight, lem:c0-analytic-basics}
-\source{demailly-analytic-methods, demailly92-regularization}
 Let $g$, $D$, $c$, $\varphi$, $C_g$, $\beta$ be as in Lemma~\ref{lem:c0-weight}, $M=cD$, and $\omega=e^{-2\varphi}(1+|z|^2)^{-N-1}$. For every compact
 $K\subseteq\mathbf C^N$ there is $C_K$ such that for every $y\in K\setminus Z(g)$ there is a polynomial $F$ with $F(y)=1$,
 $\int|F|^2\omega\,d\lambda\le C_Ke^{-2\varphi(y)}$, $x$-degree $\le M+2$ and $t$-degree $\le c\beta+N$.
@@ -508,11 +500,10 @@ $1+|z|^2\le(1+|x|^2)(1+|t|^2)$, $\omega\ge C_g^{-c}(1+|x|^2)^{-M-N-1}(1+|t|^2)^{
 $b=c\beta+N+1$ shows that $F$ is a polynomial of $x$-degree $\le M+N+1-(n+1)=M+2$ and $t$-degree $\le c\beta+N$.
 \end{proof}
 
-\begin{corollary}[Polynomials dominating a fractional power]\label{cor:c0-bergman-lower}
+\begin{corollary}[Polynomials dominating a fractional power {\cite{DemAM}}]\label{cor:c0-bergman-lower}
 \lean{EnvelopeProperty.Char0.bergmanSpace, EnvelopeProperty.Char0.wNormSq_weightedHomogeneousComponent_le, EnvelopeProperty.Char0.exists_homogeneous_basis, EnvelopeProperty.Char0.exists_sum_norm_le, EnvelopeProperty.Char0.exists_homogeneous_lower_bound, EnvelopeProperty.Char0.exists_homogeneous_lower_bound_of_bihomogeneous, EnvelopeProperty.Char0.BergmanLowerBound, EnvelopeProperty.Char0.bergmanLowerBound_holds}
 \leanok
 \uses{prop:c0-l2-extension, lem:c0-weight, lem:c0-analytic-basics}
-\source{demailly-analytic-methods}
 In the setting of Proposition~\ref{prop:c0-l2-extension} there are finitely many $x$-homogeneous polynomials $P_1,\dots,P_r$ of
 $x$-degree $\le M+2$, each square integrable against $|g|^{-2c}$, such that for every compact $K$ there is $c_K>0$ with
 $|P|\ge c_K|g|^c$ on $K$.
@@ -537,11 +528,10 @@ $(\PP^n)^\an$ are fixed; $\phi=\psi_1-\psi_2$ with $\psi_\nu\in\mathcal H_\Q(b_\
 $h\in k[z]$ let $h^\iota\in\mathbf C[z]$ be its image, and for a divisorial point $v$ with ring $V$ (Definition~\ref{def:c0-dvr}) let $V_{\mathbf C}$
 be its extension of scalars along $\iota$ (Lemma~\ref{lem:c0-base-change-dvr}).
 
-\begin{lemma}[Finitely many valuations define $J_m$]\label{lem:c0-shilov-description}
+\begin{lemma}[Finitely many valuations define $J_m$ {\cite[Lemma~2.13]{BJ22}}]\label{lem:c0-shilov-description}
 \lean{EnvelopeProperty.ProjBerk.IsRatPL.exists_shilov_description}
 \leanok
 \uses{lem:bj-shilov, def:bj-Jm, lem:bj-fs-basic, def:c0-dvr}
-\source{bj22-trivval:lem:Shilov}
 There are divisorial points $v_1,\dots,v_r$, with rings $V_i$ and constants $c_i\in\Q_{>0}$ as in Definition~\ref{def:c0-dvr}, and real numbers
 $\gamma_1,\dots,\gamma_r$ such that for every $m\ge1$,
 \[
@@ -557,11 +547,10 @@ Fubini--Study function for $\mathcal O(d)$, so $\varphi_g=m^{-1}\log|g|_{\sigma(
 $\varphi_g\le\psi_1$ on $\Sigma$, if and only if $\log|g|_{\sigma(v_i)}\le m\phi(v_i)$ for all $i$, that is, $-c_i\operatorname{ord}_{V_i}(g)\le m\phi(v_i)$.
 \end{proof}
 
-\begin{proposition}[The key inequality]\label{prop:c0-key-inequality}
+\begin{proposition}[The key inequality {\cite[Theorem~5.20]{BJ22}, \cite[(3.5)]{FHX}}]\label{prop:c0-key-inequality}
 \lean{EnvelopeProperty.ProjBerk.IsRatPL.exists_key_inequality}
 \leanok
 \uses{lem:c0-shilov-description, cor:c0-bergman-lower, prop:c0-valuative-bound, cor:c0-valuative-upper, lem:c0-base-change-dvr, cor:c0-base-change-orders, lem:c0-dvr-jacobian, lem:c0-embedding, lem:bj-Jm-basic, thm:bj-divisorial-comparison, thm:bj-psh-basic}
-\source{bj22-trivval:thm:contenvlisse, fhx-envelope-20261028:eq:smooth-Q-test-sandwich}
 There is $N_0\in\N$ such that for all $m,q\ge1$, $\frac mq\phi_{J_q}\le\phi_{J_{m+2}}+N_0$ on $(\PP^n)^\an$.
 \end{proposition}
 
@@ -596,11 +585,10 @@ $h=\phi_{J_{m+2}}+N_0$ is continuous and real valued. Since $u\le h$ on $(\PP^n)
 $u\le h$ everywhere.
 \end{proof}
 
-\begin{theorem}[Envelopes of PL obstacles in characteristic zero]\label{thm:c0-envelope-pl}
+\begin{theorem}[Envelopes of PL obstacles in characteristic zero {\cite[Lemma~5.22, Theorem~5.20]{BJ22}, \cite[(3.2)]{FHX}}]\label{thm:c0-envelope-pl}
 \lean{EnvelopeProperty.ProjBerk.IsRatPL.isPSH_envelope_nat_of_nonpos_of_inputs}
 \leanok
 \uses{prop:c0-key-inequality, prop:bj-envelope-Jm, lem:bj-Jm-basic, thm:bj-psh-basic}
-\source{bj22-trivval:lem:envline, bj22-trivval:thm:contenvlisse, fhx-envelope-20261028:eq:smooth-Q-limit}
 In the setting of this subsection, $m^{-1}\phi_{J_m}$ converges uniformly to $\mathrm P_d(\phi)$ on $(\PP^n)^\an$, and $\mathrm P_d(\phi)\in\PSH(d)$.
 \end{theorem}
 
@@ -614,11 +602,10 @@ so $m'^{-1}\phi_{J_{m'}}\to\mathrm Q$ uniformly. These functions lie in $\mathca
 $\PSH(d)$ is closed under uniform limits of sequences (Theorem~\ref{thm:bj-psh-basic}(2)), so $\mathrm Q\in\PSH(d)$.
 \end{proof}
 
-\begin{theorem}[Envelope property of $\PP^n$ in characteristic zero]\label{thm:c0-pn-ep}
+\begin{theorem}[Envelope property of $\PP^n$ in characteristic zero {\cite[Theorem~3.1]{FHX}, \cite[Theorem~5.20]{BJ22}}]\label{thm:c0-pn-ep}
 \lean{EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero_of_inputs, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_charZero_of_valuativeUpperBound, EnvelopeProperty.ProjBerk.hasEnvelopeProperty_of_ringHom_complex_of_inputs}
 \leanok
 \uses{thm:c0-envelope-pl, lem:c0-embedding, lem:bj-envppty, prop:bj-envelope-criterion, lem:bj-env-basic, lem:bj-pl-lattice, thm:bj-psh-basic, def:pn-ep}
-\source{fhx-envelope-20261028:thm:smooth-EP, bj22-trivval:thm:contenvlisse}
 Let $k$ be a countable algebraically closed field of characteristic $0$. Every $\theta\ge0$ has the envelope property on $\PP^n$.
 \end{theorem}
 

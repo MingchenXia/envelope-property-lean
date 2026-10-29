@@ -23,11 +23,10 @@ classes and a bound on the potential of $\mathcal H$ independent of $b$ (Lemmas~
 output of the native pipeline (Definition~\ref{def:lpn-native-potential-family}, Theorem~\ref{thm:lpn-local-positivity}),
 which is then constructed (Theorem~\ref{thm:lpn-native-potential-family-exists}).
 
-\begin{lemma}[Uniform limits with converging classes]\label{lem:lpn-uniform-limit}
+\begin{lemma}[Uniform limits with converging classes {\cite[Theorem~4.7]{BJ22}}]\label{lem:lpn-uniform-limit}
 \lean{EnvelopeProperty.FSSystem.isPSH_of_uniform_limit, EnvelopeProperty.ProjSubvariety.isPSH_of_uniform_limit}
 \leanok
 \uses{def:pg-psh, thm:pg-psh2, def:pg-subvariety-psh}
-\source{bj22-trivval:thm:PSH}
 Let $K$ be a compact Fubini--Study system, $(w_i)$ a family indexed by a nontrivial filter with
 $w_i\in\PSH(\theta_i)$, $\theta_i\to\theta_0$, and $u\colon K\to[-\infty,\infty]$ such that for every
 $\epsilon>0$ eventually $w_i\le u+\epsilon$ and $u\le w_i+\epsilon$ on $K$. Then $u\in\PSH(\theta_0)$. In particular
@@ -152,7 +151,6 @@ Lemma~\ref{lem:lpn-potential-family} with $e=d=ra$ and $e'=q$.
 \lean{EnvelopeProperty.LocalPositivity.of_nativePotentialFSFamily}
 \leanok
 \uses{thm:lpn-native-potential-psh}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Let $k$ be algebraically closed. Suppose that for every projectively normal $X=V(I)\subseteq\mathbb P^M$, every
 $a\in\Q_{>0}$ and every locally $\mathcal O(a)$-convex $\varphi\colon X^\an\to\R$ (in the sense of
 \cite[Definition~5.3]{FHX}) there is a native potential family. Then the conclusion of
@@ -217,7 +215,6 @@ $p_M\circ\iota=r\varphi+c$ this is a native potential family (Definition~\ref{de
 \lean{EnvelopeProperty.ProjSubvariety.IsLocallyConvexAll.nativePotentialFSFamily}
 \leanok
 \uses{thm:lpn-native-potential-family-of-tc, thm:central-nef-tc-native-product-ideal, thm:pl-original-normalized-native-test-configuration, cor:pl-original-normalized-native-test-configuration-line-inputs, cor:pl-model-potential-convex-function, thm:pl-original-normalized-tc-tautological-central-ample, def:pl-original-normalized-tc-tautological-line-data}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Let $k$ be perfect and infinite (for instance algebraically closed), $S''$ integrally closed, $a\in\Q_{>0}$ and
 $\varphi\colon X^\an\to\R$ locally $\mathcal O(a)$-convex in the sense of \cite[Definition~5.3]{FHX}. Then $\varphi$ admits a
 native potential family for $a$ (Definition~\ref{def:lpn-native-potential-family}).
@@ -243,7 +240,6 @@ with $c=-B$ concludes.
 \lean{EnvelopeProperty.LocalPositivity.instOfIsAlgClosed}
 \leanok
 \uses{thm:lpn-local-positivity, thm:lpn-native-potential-family-exists}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Let $k$ be algebraically closed. For every projectively normal $X=V(I)\subseteq\mathbb P^M$, every $a\in\Q_{>0}$ and
 every locally $\mathcal O(a)$-convex $\varphi\colon X^\an\to\R$, $\varphi\in\PSH(X,a)$.
 \end{theorem}
@@ -253,11 +249,9 @@ An algebraically closed field is perfect and infinite. Theorem~\ref{thm:lpn-nati
 hypothesis of Theorem~\ref{thm:lpn-local-positivity}.
 \end{proof}
 
-\begin{theorem}[The main theorems without the local positivity hypothesis]\label{thm:lpn-main-unconditional}
-\lean{EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_quotModel_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_quotModel_of_isUnibranch_of_charP_unconditional, EnvelopeProperty.MultiModel.quotModel_isUnibranch_tfae_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.isPSH_uscReg_iSup_of_isUnibranch_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isUnibranch_of_charP_unconditional, EnvelopeProperty.MultiModel.hasEnvelopeProperty_of_isNormal_of_forall_countable_unconditional, EnvelopeProperty.ProjSubvariety.hasEnvelopeProperty_one_of_isProjNormal_of_subfield_unconditional}
+\begin{theorem}[The main theorems without the local positivity hypothesis {\cite[Theorem~A]{FHX}}]\label{thm:lpn-main-unconditional}
 \leanok
 \uses{thm:lpn-local-positivity-instance, thm:nn-main, thm:gl-main, cor:gl-characterization}
-\source{fhx-envelope-20261028:thm:intro-main}
 The statements of Theorem~\ref{thm:nn-main}, Theorem~\ref{thm:gl-main} and Corollary~\ref{cor:gl-characterization} hold
 without the hypothesis of Lemma~\ref{lem:wu-local-positivity} at the countable algebraically closed subfields of $k$.
 \end{theorem}

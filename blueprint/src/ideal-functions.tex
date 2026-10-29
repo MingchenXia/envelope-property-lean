@@ -8,14 +8,13 @@ semivaluation's center. The following affine statements impose precisely the
 boundedness needed for independence of the generators. They do not construct
 the projective Gauss extension or glue coherent ideal sheaves across charts.
 
-\begin{definition}[Bounded points and ideal norms]
+\begin{definition}[Bounded points and ideal norms {\cite[\S2.1]{FHX}}]
 \label{def:bounded-ideal-norm}
 \lean{EnvelopeProperty.Berk.IsBounded, EnvelopeProperty.Berk.idealNorm,
 EnvelopeProperty.Berk.idealLog, EnvelopeProperty.Berk.idealNorm_le_one,
 EnvelopeProperty.Berk.idealLog_le_zero}
 \leanok
 \uses{def:berk,def:general-ideal-norm,spectrum:trivial-field-bridge}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 A point $x\in Y^{\mathrm{an}}$ is bounded on $A$ if $|a|_x\le1$ for every
 $a\in A$. For an ideal $I\subseteq A$ put
 \[
@@ -25,14 +24,13 @@ $a\in A$. For an ideal $I\subseteq A$ put
 If $x$ is bounded then $|I|_x\le1$ and $\log|I|(x)\le0$.
 \end{definition}
 
-\begin{lemma}[Evaluation of generated ideals]
+\begin{lemma}[Evaluation of generated ideals {\cite[\S2.1]{FHX}}]
 \label{lem:ideal-norm-span}
 \lean{EnvelopeProperty.Berk.idealNorm_span,
 EnvelopeProperty.Berk.idealNorm_span_finset,
 EnvelopeProperty.Berk.idealNorm_span_finset_eq_of_span_eq}
 \leanok
 \uses{def:bounded-ideal-norm,lem:general-ideal-norm-generators}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 If $x$ is bounded and $S\subseteq A$, then
 \[
  |(S)|_x=\sup_{s\in S}|s|_x.
@@ -51,14 +49,13 @@ giving the upper bound. A supremum over a finite set is its maximum;
 applying the equality to either generating family proves independence.
 \end{proof}
 
-\begin{lemma}[Ideal arithmetic]
+\begin{lemma}[Ideal arithmetic {\cite[\S2.1]{FHX}}]
 \label{lem:ideal-norm-arithmetic}
 \lean{EnvelopeProperty.Berk.idealNorm_sup,
 EnvelopeProperty.Berk.idealNorm_mul,
 EnvelopeProperty.Berk.idealNorm_pow}
 \leanok
 \uses{lem:ideal-norm-span,lem:general-ideal-norm-arithmetic}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For a bounded point $x$ and ideals $I,J\subseteq A$,
 \[
  |I+J|_x=\max\{|I|_x,|J|_x\},\qquad
@@ -76,7 +73,7 @@ using the product equality and the unit ideal base case, proves the
 power equality.
 \end{proof}
 
-\begin{lemma}[Logarithmic ideal formulas]
+\begin{lemma}[Logarithmic ideal formulas {\cite[\S2.1]{FHX}}]
 \label{lem:ideal-log-arithmetic}
 \lean{EnvelopeProperty.Berk.idealLog_sup,
 EnvelopeProperty.Berk.idealLog_mul,
@@ -85,7 +82,6 @@ EnvelopeProperty.Berk.idealLog_span_finset,
 EnvelopeProperty.Berk.continuousOn_idealLog_of_span_eq}
 \leanok
 \uses{lem:ideal-norm-span,lem:ideal-norm-arithmetic,lem:general-ideal-log}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For a bounded point $x$,
 \[
  \log|I+J|(x)=\max\{\log|I|(x),\log|J|(x)\},\qquad
@@ -109,14 +105,13 @@ finite maxima of continuous functions are continuous, also for the
 empty family, whose value is the constant $-\infty$.
 \end{proof}
 
-\begin{lemma}[Vanishing locus of an ideal function]
+\begin{lemma}[Vanishing locus of an ideal function {\cite[\S2.1]{FHX}}]
 \label{lem:ideal-function-vanishing}
 \lean{EnvelopeProperty.Berk.idealNorm_eq_zero_iff,
 EnvelopeProperty.Berk.idealLog_eq_bot_iff}
 \leanok
 \uses{def:bounded-ideal-norm,def:analytic-zero-locus,lem:analytic-affine-quotient,
 lem:general-ideal-norm-generators}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 For every affine analytic point $x$, without a boundedness assumption,
 $|I|_x=0$ if and only if $I$ is contained in the support of $x$.
 Equivalently $\log|I|(x)=-\infty$ exactly on the analytification of the
@@ -130,14 +125,13 @@ The logarithm of a nonnegative extended real number equals $-\infty$
 if and only if that number is zero.
 \end{proof}
 
-\begin{lemma}[Pullback of affine ideal functions]
+\begin{lemma}[Pullback of affine ideal functions {\cite[\S2.1]{FHX}}]
 \label{lem:ideal-function-pullback}
 \lean{EnvelopeProperty.Berk.IsBounded.comap,
 EnvelopeProperty.Berk.idealNorm_map,
 EnvelopeProperty.Berk.idealLog_map}
 \leanok
 \uses{lem:ideal-norm-span,lem:general-ideal-pullback}
-\source{fhx-envelope-20261028:subsec:prelim-berkovich}
 Let $\varphi\colon A\to B$ be a $k$-algebra map and let $y$ be a
 bounded point of $(\operatorname{Spec} B)^{\mathrm{an}}$. Its restriction
 $x=\varphi^{\mathrm{an}}(y)$ is bounded on $A$. For the extended ideal

@@ -41,21 +41,19 @@ compact: they are closed, and since $g\ge a_i\log|f_i|+b_i$ for the generators $
 they lie in a polydisc (Lemma~\ref{lem:polydisc-compact}).
 \end{convention}
 
-\begin{definition}[Functions standard at infinity]\label{def:wu-standard}
+\begin{definition}[Functions standard at infinity {\cite[Lemma~3.24]{Wu26}}]\label{def:wu-standard}
 \notready
 \uses{conv:wu-setting, def:convex-pl, def:fs}
-\source{wu26-local-psh:lem:psh_PL_functions_are_pshlogreg}
 Let $h\in\FS(Y)$. A function $w\colon Y^\an\to\R$ is \emph{standard at infinity with respect to $h$} if
 $w$ is convex PL on $Y^\an$ and there is a compact set $E\subseteq Y^\an$ with $w=h$ on $Y^\an\setminus E$.
 Such a $w$ is continuous, hence bounded on $E$; since $h\ge b_0$, there is $C\in\R$ with $w\le h+C$ on
 $Y^\an$.
 \end{definition}
 
-\begin{theorem}[Approximation of convex PL functions standard at infinity]\label{thm:wu-pl-approx}
+\begin{theorem}[Approximation of convex PL functions standard at infinity {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.24]{Wu26}}]\label{thm:wu-pl-approx}
 \lean{EnvelopeProperty.ConvexPLApproximation, EnvelopeProperty.LocalPositivity.exists_antitone_fsData, EnvelopeProperty.LocalPositivity.toConvexPLApproximation}
 \leanok
 \uses{def:wu-standard, thm:wu-pl-approx-uniform, lem:fs-basic}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:psh_PL_functions_are_pshlogreg}
 Let $w$ be standard at infinity with respect to $h\in\FS(Y)$. For every rational $c>1$ there are
 $h_j\in\FS(Y)$ decreasing to $w$ and constants $C_j\in\R$ with $h_j\le ch+C_j$.
 \end{theorem}
@@ -70,11 +68,10 @@ $E$ we have $h_j\le\max_Ew+4$ and $ch\ge cb_0$. Hence $h_j\le ch+C_j$ with
 $C_j\coloneqq\max\{4-(c-1)b_0,\ \max_Ew+4-cb_0\}$.
 \end{proof}
 
-\begin{lemma}[Comparison with the statements of Lemma~5.11(5),(6)]\label{lem:wu-pl-special-case}
+\begin{lemma}[Comparison with the statements of Lemma~5.11(5),(6) {\cite[Lemma~5.11]{FHX}}]\label{lem:wu-pl-special-case}
 \lean{EnvelopeProperty.ConvexPLApproximation.of_wuRegularization, EnvelopeProperty.exists_le_eval_add_of_isConvexPLOn_univ}
 \leanok
 \uses{def:wu-standard, thm:import-growth-control, thm:import-local-to-global, def:convex-pl}
-\source{fhx-envelope-20261028:lem:regularizable-closure}
 The statements of Theorems~\ref{thm:import-growth-control} and~\ref{thm:import-local-to-global} imply the
 conclusion of Theorem~\ref{thm:wu-pl-approx}.
 \end{lemma}
@@ -87,11 +84,10 @@ gives $w\in\Rcal(Y)$, and Theorem~\ref{thm:import-growth-control}, applied with 
 rational $c>1$ functions $u_j\in\FS(Y)$ decreasing to $w$ with $u_j-ch$ bounded above.
 \end{proof}
 
-\begin{lemma}[Collar gluing]\label{lem:wu-collar}
+\begin{lemma}[Collar gluing {\cite[Lemma~5.10]{FHX}, \cite[Lemma~3.25]{Wu26}}]\label{lem:wu-collar}
 \lean{EnvelopeProperty.exists_collar}
 \leanok
 \uses{conv:wu-setting, def:wu-standard, lem:local-basic, lem:fs-basic}
-\source{fhx-envelope-20261028:lem:compactification, wu26-local-psh:lem:psh_regularization_with_growth_control}
 Let $g\in\FS(Y)$ with $g\ge0$, let $c\in\Q$ with $c>1$, $C\in\R$, $C_1\in\Q$, and let
 $v\colon Y^\an\to[-\infty,\infty)$ satisfy $v\le g+C$. Let $t\in\R$ with $(c-1)t\ge C-C_1+2$, let
 $U\subseteq Y^\an$ be an open set containing $\{g\le t+1\}$, and let $(v_j)$ be a decreasing sequence of
@@ -148,11 +144,10 @@ For fixed $l$ and $x\in Y^\an$, (b) gives $\inf_mG_m(x)\le\inf_{m\ge l}\bigl(\ma
 $G_m-cg$ equals $-m+2^{-m}$ off $K_m$ and is continuous on the compact set $K_m$, hence bounded above.
 \end{proof}
 
-\begin{proposition}[Regularization with growth control]\label{prop:wu-main}
+\begin{proposition}[Regularization with growth control {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.26]{Wu26}}]\label{prop:wu-main}
 \lean{EnvelopeProperty.exists_antitone_fs_growth_of_local}
 \leanok
 \uses{conv:wu-setting, lem:wu-collar, thm:wu-pl-approx, lem:wu-growth-diagonal, lem:fs-basic}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:approximable_on_exhausting_tropical_polytopes_implies_pshlogreg}
 Let $v\colon Y^\an\to[-\infty,\infty)$, $g\in\FS(Y)$ and $C\in\R$ with $v\le g+C$, and assume that every compact
 subset of $Y^\an$ has an open neighbourhood on which $v$ is the limit of a decreasing sequence of convex PL
 functions. For every rational $c>1$ there are $G_m\in\FS(Y)$ decreasing to $v$ and constants $A_m,B_m$ with
@@ -173,11 +168,10 @@ $G_{n,0}\le c_3g+B_{n}$. The $w_n$ decrease to $v$, because $c_1g-n$ decreases t
 of Lemma~\ref{lem:wu-growth-diagonal} (with $c_3<c$, to $(w_n)$ and $(G_{n,m})_m$) gives the assertion.
 \end{proof}
 
-\begin{theorem}[Growth-controlled approximation]\label{thm:wu-growth-control}
+\begin{theorem}[Growth-controlled approximation {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.25]{Wu26}}]\label{thm:wu-growth-control}
 \lean{EnvelopeProperty.ConvexPLApproximation.growthControl}
 \leanok
 \uses{prop:wu-main, lem:fs-basic, def:fs}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:psh_regularization_with_growth_control}
 Let $u\in\Rcal(Y)$ and $g\in\FS(Y)$, $C\in\R$ with $u\le g+C$. For every rational $c>1$ there are $u_j\in\FS(Y)$
 decreasing to $u$ such that each $u_j-cg$ is bounded.
 \end{theorem}
@@ -188,11 +182,10 @@ The functions of a decreasing sequence in $\FS(Y)$ with limit $u$ are convex PL 
 $Y^\an$ of every compact set; the proposition gives the $u_j$, with $u_j-cg$ bounded on both sides.
 \end{proof}
 
-\begin{theorem}[Local-to-global regularization]\label{thm:wu-local-to-global}
+\begin{theorem}[Local-to-global regularization {\cite[Lemma~5.11]{FHX}, \cite[Lemma~3.26]{Wu26}}]\label{thm:wu-local-to-global}
 \lean{EnvelopeProperty.ConvexPLApproximation.localToGlobal, EnvelopeProperty.ConvexPLApproximation.toWuRegularization}
 \leanok
 \uses{prop:wu-main, def:fs, def:convex-pl}
-\source{fhx-envelope-20261028:lem:regularizable-closure, wu26-local-psh:lem:approximable_on_exhausting_tropical_polytopes_implies_pshlogreg}
 Let $v\colon Y^\an\to[-\infty,\infty)$ be a function of logarithmic growth, not identically $-\infty$, such that
 every compact subset of $Y^\an$ has an open neighbourhood on which $v$ is the limit of a decreasing sequence of
 convex PL functions. Then $v\in\Rcal(Y)$.
@@ -232,11 +225,10 @@ of degree $d\ge1$, $U_\sigma=\{|\sigma|\ne0\}$ and $\iota_\sigma$ are as in Lemm
 elements of $R_M$ have absolute value $\le1$ at points of $(\PP^M)^\an$.
 \end{convention}
 
-\begin{lemma}[Normal form of Fubini--Study functions]\label{lem:wu-fs-normal-form}
+\begin{lemma}[Normal form of Fubini--Study functions {\cite[Proposition~3.17]{Wu26}, \cite[Lemma~5.9]{FHX}}]\label{lem:wu-fs-normal-form}
 \lean{EnvelopeProperty.FSData.NormalForm, EnvelopeProperty.FSData.nonempty_normalForm}
 \leanok
 \uses{conv:wu-setting, def:fs}
-\source{wu26-local-psh:prop:potential_of_positive_form_is_Fubini-Study, fhx-envelope-20261028:lem:boundary-presentation}
 For every $h\in\FS(Y)$ there are $N\in\N_{>0}$, generators $y_1,\dots,y_m$ of $A$ and
 $\lambda_0,\dots,\lambda_m\in\Q$ with $Nh=\max\{\lambda_0,\log|y_1|+\lambda_1,\dots,\log|y_m|+\lambda_m\}$.
 \end{lemma}
@@ -249,11 +241,10 @@ $Nh=\max\{\log|f_i^{Na_i}|+Nb_i,\ \log|f_i|-M,\ Nb_0\}$, and the family $(f_i^{N
 generators among the $f_i$.
 \end{proof}
 
-\begin{lemma}[Normalized Rees algebra]\label{lem:wu-graded-closure}
+\begin{lemma}[Normalized Rees algebra {\cite[Lemma~5.9]{FHX}}]\label{lem:wu-graded-closure}
 \lean{EnvelopeProperty.normalizedRees_spec, EnvelopeProperty.isGraded_normalizedRees, EnvelopeProperty.fg_normalizedRees, EnvelopeProperty.finiteDimensional_gradedPiece_normalizedRees, EnvelopeProperty.isIntegrallyClosed_normalizedRees, EnvelopeProperty.exists_algebraMap_eq_of_C_mem_normalizedRees, EnvelopeProperty.homLocNormalizedReesEquiv, EnvelopeProperty.exists_pow_eq_sum_reesGen}
 \leanok
 \uses{conv:wu-graded, thm:bj-normalization-finite}
-\source{fhx-envelope-20261028:lem:boundary-presentation}
 Let $y_1,\dots,y_m$ generate $A$, and set
 \[
 S\coloneqq k[T,y_1T,\dots,y_mT]\subseteq A[T].
@@ -327,11 +318,10 @@ So all components of $z$ have degree divisible by $e$; they lie in $B$ by graded
 Finally an element of $B_{(\sigma)}$ is $b/\sigma^j$ with $b\in B_{je}$, which lies in $B^{(e)}_{(\sigma)}$.
 \end{proof}
 
-\begin{definition}[The compactification attached to a Fubini--Study function]\label{def:wu-compactification}
+\begin{definition}[The compactification attached to a Fubini--Study function {\cite[Lemma~5.9]{FHX}}]\label{def:wu-compactification}
 \lean{EnvelopeProperty.FSData.Compactification, EnvelopeProperty.FSData.Compactification.φ, EnvelopeProperty.FSData.Compactification.proj, EnvelopeProperty.FSData.Compactification.bdry, EnvelopeProperty.FSData.Compactification.ψ, EnvelopeProperty.FSData.nonempty_compactification, EnvelopeProperty.FSData.Compactification.isIntegrallyClosed_quotient}
 \leanok
 \uses{lem:wu-fs-normal-form, lem:wu-graded-closure, lem:wu-veronese, conv:wu-graded}
-\source{fhx-envelope-20261028:lem:boundary-presentation}
 Let $h\in\FS(Y)$. Choose $N$, $y_l$ and $\lambda_l$ by Lemma~\ref{lem:wu-fs-normal-form}, let $S\subseteq S'$ be as in
 Lemma~\ref{lem:wu-graded-closure}, choose $e$ by Lemma~\ref{lem:wu-veronese} for $B=S'$, and put
 $S''\coloneqq S'^{(e)}$. Let $z_0=T^e,z_1,\dots,z_M$ be a $k$-basis of $S''_1=S'_e$, and let $I$ be the kernel of
@@ -379,7 +369,6 @@ Lemma~\ref{lem:bj-chart}(4) applies.
 \lean{EnvelopeProperty.ProjSubvariety.IsFiniteFS, EnvelopeProperty.ProjSubvariety.IsFiniteFS.continuous, EnvelopeProperty.ProjSubvariety.IsLocallyConvexAt, EnvelopeProperty.ProjSubvariety.IsLocallyConvex, EnvelopeProperty.ProjSubvariety.IsFiniteFS.isLocallyConvex, EnvelopeProperty.ProjSubvariety.IsLocallyConvex.isLocallyConvexAll, EnvelopeProperty.ProjSubvariety.isLocallyConvexAll_iff, EnvelopeProperty.ProjSubvariety.isConvexPLOn_comp_chartInv}
 \leanok
 \uses{conv:wu-graded, lem:wu-proj-chart, def:convex-pl}
-\source{fhx-envelope-20261028:def:locally-L-psh, fhx-envelope-20261028:subsec:prelim-psh}
 Let $I\subseteq R_M$ be as in Lemma~\ref{lem:wu-proj-chart}, $S''=R_M/I$ and $P^\an=V(I)^\an$.
 \begin{enumerate}
 \item A \emph{finite Fubini--Study function of class $\mathcal O(1)$} on $P^\an$ is a function
@@ -395,11 +384,10 @@ $\log$ of invertible functions (Lemma~\ref{lem:local-basic}), (2) is the notion 
 function of \cite[Definition~5.3]{FHX}, in the form given by the remark following it.
 \end{definition}
 
-\begin{lemma}[Boundary presentation]\label{lem:wu-boundary-presentation}
+\begin{lemma}[Boundary presentation {\cite[Lemma~5.9]{FHX}, \cite[Proposition~3.17]{Wu26}}]\label{lem:wu-boundary-presentation}
 \lean{EnvelopeProperty.FSData.Compactification.isFiniteFS_ψ, EnvelopeProperty.FSData.Compactification.exists_val_bdry_ne_zero, EnvelopeProperty.FSData.Compactification.eval_chart, EnvelopeProperty.FSData.Compactification.ψ_eq, EnvelopeProperty.FSData.exists_boundaryPresentation}
 \leanok
 \uses{lem:wu-fs-normal-form, def:wu-compactification, lem:wu-proj-chart, lem:wu-graded-closure, def:wu-proj-functions}
-\source{fhx-envelope-20261028:lem:boundary-presentation, wu26-local-psh:prop:potential_of_positive_form_is_Fubini-Study}
 In the situation of Definition~\ref{def:wu-compactification}, $\psi$ is a finite Fubini--Study function of class
 $\mathcal O(1)$ on $P^\an$, and on $U_{x_0}\cap P^\an=Y^\an$
 \[
@@ -420,11 +408,10 @@ $\psi-\log|x_0|=\max\{0,\max_l(e\log|y_l|+e\lambda_l-e\lambda_0)\}=e(Nh-\lambda_
 Lemma~\ref{lem:wu-fs-normal-form}.
 \end{proof}
 
-\begin{lemma}[Restriction of Fubini--Study functions]\label{lem:wu-fs-restriction}
+\begin{lemma}[Restriction of Fubini--Study functions {\cite[Lemma~5.10]{FHX}, \cite[Proposition~3.17]{Wu26}}]\label{lem:wu-fs-restriction}
 \lean{EnvelopeProperty.ProjSubvariety.exists_fsData_eval_affineChart, EnvelopeProperty.ProjSubvariety.adjoin_range_coeff_map_X}
 \leanok
 \uses{def:wu-compactification, lem:wu-proj-chart, def:wu-proj-functions, def:fs}
-\source{fhx-envelope-20261028:lem:compactification, wu26-local-psh:prop:potential_of_positive_form_is_Fubini-Study}
 In the situation of Definition~\ref{def:wu-compactification}, let $\Psi$ be a finite Fubini--Study function of class
 $\mathcal O(1)$ on $P^\an$. Then $\Psi-\log|x_0|$, as a function on $Y^\an$, lies in $\FS(Y)$.
 \end{lemma}
@@ -441,11 +428,10 @@ $\log|u_i|-C_0=\log|x_i|-\log|x_0|-C_0\le\Psi-\log|x_0|$ and $-C_0\le\Psi-\log|x
 \]
 \end{proof}
 
-\begin{theorem}[Uniform approximation of convex PL functions standard at infinity]\label{thm:wu-pl-approx-uniform}
+\begin{theorem}[Uniform approximation of convex PL functions standard at infinity {\cite[Lemma~3.24]{Wu26}, \cite[Lemma~5.10]{FHX}}]\label{thm:wu-pl-approx-uniform}
 \lean{EnvelopeProperty.LocalPositivity.exists_fsData_abs_sub_le}
 \leanok
 \uses{def:wu-standard, def:wu-compactification, lem:wu-boundary-presentation, lem:wu-proj-chart, def:wu-proj-functions, thm:wu-pos, lem:wu-fs-restriction, lem:local-basic, lem:fs-basic}
-\source{wu26-local-psh:lem:psh_PL_functions_are_pshlogreg, fhx-envelope-20261028:lem:compactification}
 Let $w$ be standard at infinity with respect to $h\in\FS(Y)$. For every $\epsilon>0$ there is $v\in\FS(Y)$ with
 $|v-w|\le\epsilon$ on $Y^\an$.
 \end{theorem}
@@ -489,7 +475,6 @@ Lemma~\ref{lem:wu-fs-restriction} is \cite[Lemma~5.10(1)]{FHX} for finite Fubini
 \begin{convention}\label{conv:wu-bj-global}
 \notready
 \uses{def:wu-proj-functions, lem:wu-proj-chart}
-\source{fhx-envelope-20261028:subsec:prelim-psh, fhx-envelope-20261028:subsec:prelim-envelopes, bj22-trivval:defi:psh}
 In this subsection $I\subseteq R_M$ is a homogeneous prime not containing all $x_i$ such that $S''=R_M/I$ is an
 integrally closed domain with $S''_0=k$; $P=\operatorname{Proj}S''$ is a normal projective variety and
 $L=\mathcal O_P(1)$ is very ample. As for Definition~\ref{def:pn-an}, $V(I)^\an$ is identified with the Berkovich
@@ -503,10 +488,9 @@ $\mathcal O_P(m)$, so the finite Fubini--Study functions of class $\mathcal O(1)
 $\mathcal H(L)$ in the notation of \cite{BJ22}.
 \end{convention}
 
-\begin{lemma}[Density of PL functions]\label{lem:wu-pl-dense}
+\begin{lemma}[Density of PL functions {\cite[Theorem~2.2]{BJ22}}]\label{lem:wu-pl-dense}
 \notready
 \uses{conv:wu-bj-global, thm:bj-pl-dense, lem:bj-fs-basic}
-\source{bj22-trivval:thm:PLdense}
 $\operatorname{PL}(P^\an)$ contains the restrictions of the rational PL functions on $(\PP^M)^\an$, is stable under
 finite maxima and minima, and is dense in $C^0(P^\an)$ for uniform convergence.
 \end{lemma}
@@ -521,11 +505,10 @@ $-\max\{-a,-b\}$. Given $f\in C^0(P^\an)$, extend it to $F\in C^0((\PP^M)^\an)$ 
 (Theorem~\ref{thm:bj-pl-dense}) and restrict.
 \end{proof}
 
-\begin{lemma}[Locally convex functions are PL]\label{lem:wu-locally-convex-pl}
+\begin{lemma}[Locally convex functions are PL {\cite[Lemma~5.5]{FHX}}]\label{lem:wu-locally-convex-pl}
 \lean{EnvelopeProperty.ProjSubvariety.IsLocallyConvex.isPL}
 \leanok
 \uses{conv:wu-bj-global,def:wu-proj-functions,lem:lp-pl-sheaf,lem:lp-chart-log-germ,lem:lp-log-germ}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Every locally $\mathcal O(a)$-convex function $\varphi\colon P^\an\to\R$ belongs to $\operatorname{PL}(P^\an)$.
 \end{lemma}
 
@@ -543,37 +526,33 @@ Thus $\varphi$ is locally equal to global PL functions. Lemma~\ref{lem:lp-pl-she
 exactly. This proves PL membership; the positivity criterion below remains a separate step.
 \end{proof}
 
-\begin{theorem}[Imported: PL functions and test configurations]\label{thm:wu-bj-testconfig}
+\begin{theorem}[Imported: PL functions and test configurations {\cite[Theorem~2.7]{BJ22}, \cite[\S2.3]{FHX}}]\label{thm:wu-bj-testconfig}
 \notready
 \uses{conv:wu-bj-global}
-\source{bj22-trivval:thm:VCarPL, fhx-envelope-20261028:subsec:prelim-envelopes}
 For every $\varphi\in\operatorname{PL}(P^\an)$ there are an integer $r\ge1$ and a test configuration
 $(\mathcal X,\mathcal L)$ for $(P,rL)$, with $\mathcal L$ a line bundle and $\mathcal X$ normal, dominating
 $P\times\A^1$ through a projective birational morphism that is an isomorphism outside the central fibre, such that
 $r\varphi=\phi_{\mathcal L}$.
 \end{theorem}
 
-\begin{theorem}[Imported: nef test configurations give psh functions]\label{thm:wu-bj-nef-psh}
+\begin{theorem}[Imported: nef test configurations give psh functions {\cite[Definition~3.2, Lemma~3.1, Lemma~4.3, Lemma~3.7]{BJ22}}]\label{thm:wu-bj-nef-psh}
 \notready
 \uses{conv:wu-bj-global, thm:wu-bj-testconfig}
-\source{bj22-trivval:defi:PLpsh, bj22-trivval:lem:relnef, bj22-trivval:lem:consistent, bj22-trivval:lem:pshPL}
 In the situation of Theorem~\ref{thm:wu-bj-testconfig}, if $\mathcal L$ has nonnegative degree on every integral curve
 contained in the central fibre $\mathcal X_0$, then $\varphi\in\PSH(P,L)$.
 \end{theorem}
 
-\begin{theorem}[Imported: positivity criterion of Chambert-Loir--Ducros]\label{thm:wu-cld-nef}
+\begin{theorem}[Imported: positivity criterion of Chambert-Loir--Ducros {\cite[Lemma~5.5]{FHX}}]\label{thm:wu-cld-nef}
 \notready
 \uses{conv:wu-bj-global, thm:wu-bj-testconfig, def:wu-proj-functions}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 In the situation of Theorem~\ref{thm:wu-bj-testconfig}, if $r\varphi$ is locally $\mathcal O(r)$-convex, then
 $\mathcal L$ has nonnegative degree on every integral curve contained in $\mathcal X_0$.
 \end{theorem}
 
-\begin{theorem}[Uniform approximation of continuous psh functions]\label{thm:wu-bj-uniform}
+\begin{theorem}[Uniform approximation of continuous psh functions {\cite[Theorem~4.15]{BJ22}, \cite[Proposition~2.11]{Wu26}}]\label{thm:wu-bj-uniform}
 \lean{EnvelopeProperty.ProjSubvariety.IsPSH.exists_isFiniteFS_one_abs_sub_le, EnvelopeProperty.ProjSubvariety.IsPSH.exists_seq_isFiniteFS_one_abs_sub_le}
 \leanok
 \uses{conv:wu-bj-global, def:wu-proj-functions, lem:pg-uniform-approximation}
-\source{bj22-trivval:thm:pshample, wu26-local-psh:prop:regularization_omega_psh_by_omega_FS_functions}
 If $\varphi\colon P^\an\to\R$ is continuous and $\varphi\in\PSH(P,L)$, then for every $\epsilon>0$ there is a finite
 Fubini--Study function $\Psi$ of class $\mathcal O(1)$ with $|\varphi-\Psi|\le\epsilon$ on $P^\an$.
 \end{theorem}
@@ -587,7 +566,6 @@ Lemma~\ref{lem:pg-uniform-approximation}; it is a theorem, not an import.
 \lean{EnvelopeProperty.LocalPositivity, EnvelopeProperty.LocalPositivity.instOfIsAlgClosed}
 \leanok
 \uses{thm:lpn-local-positivity-instance, def:wu-proj-functions, def:pg-subvariety-psh}
-\source{fhx-envelope-20261028:lem:local-PL-positivity}
 Let $k$ be algebraically closed. Every locally $\mathcal O(1)$-convex function $\varphi\colon P^\an\to\R$ belongs to
 $\PSH(P,L)$. In Lean this statement (for every projectively normal $V(I)$ and every class $\mathcal O(a)$, $a\in\Q_{>0}$,
 with local convexity in the form of \cite[Definition~5.3]{FHX}: for every admissible pair) is the class
@@ -601,11 +579,10 @@ piecewise linear model, nefness of the central fibre and the exact finite Fubini
 potential), and functions with a native potential family are psh (Theorem~\ref{thm:lpn-local-positivity}).
 \end{proof}
 
-\begin{theorem}[Positivity, uniform form]\label{thm:wu-pos}
+\begin{theorem}[Positivity, uniform form {\cite[Lemma~5.5]{FHX}, \cite[Theorem~3.23]{Wu26}, \cite[Theorem~4.15]{BJ22}}]\label{thm:wu-pos}
 \lean{EnvelopeProperty.LocalPositivity.exists_isFiniteFS_abs_sub_le, EnvelopeProperty.LocalPositivity.isPSH_of_isLocallyConvex, EnvelopeProperty.ProjSubvariety.IsLocallyConvex.continuous}
 \leanok
 \uses{lem:wu-local-positivity, thm:wu-bj-uniform, lem:pg-uniform-approximation, conv:wu-bj-global, def:wu-proj-functions}
-\source{fhx-envelope-20261028:lem:local-PL-positivity, wu26-local-psh:thm:GPSH_PL_equals_to_LPSH_PL, bj22-trivval:thm:pshample}
 Let $I\subseteq R_M$ be as in Convention~\ref{conv:wu-bj-global}. For every continuous locally $\mathcal O(1)$-convex
 function $\varphi\colon V(I)^\an\to\R$ and every $\epsilon>0$ there is a finite Fubini--Study function $\Psi$ of class
 $\mathcal O(1)$ with $|\varphi-\Psi|\le\epsilon$ on $V(I)^\an$.

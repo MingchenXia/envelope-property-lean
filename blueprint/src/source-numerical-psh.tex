@@ -10,7 +10,7 @@ ample invertible sheaves (Definition~\ref{def:native-numerical-ample-cone}) and
 $\operatorname{Nef}(X)$ for the cone of classes of nonnegative degree on every closed integral
 curve (Theorem~\ref{thm:native-numerical-nef-cone}).
 
-This chapter states the objects of Fang--Han--Xia, Theorem~1.1 and Corollary~1.2, on $X$
+This chapter states the objects of Fang--Han--Xia, Theorem~A and Corollary~1.1, on $X$
 itself: the analytification, Boucksom--Jonsson's $\theta$-psh functions for
 $\theta\in N^1(X)_\R$, and the envelope property. Boucksom--Jonsson work in the finite
 dimensional space $\operatorname{Num}(X)=N^1(X)_\R$, in which the ample cone is open. Finite
@@ -23,24 +23,22 @@ hypothesis (Lemma~\ref{lem:var-ample-convergence-openness}).
 
 \subsection{The analytification and convergence of numerical classes}
 
-\begin{definition}[The analytification]
+\begin{definition}[The analytification {\cite[\S1.1.5]{BJ22}}]
 \label{def:var-analytification}
 \lean{EnvelopeProperty.Variety.An}
 \leanok
 \uses{scheme:relative-valued-points}
-\source{bj22-trivval:sec:triv}
 The analytification $X^{\mathrm{an}}$ is the space of pairs $(x,|\cdot|)$ of a point $x\in X$
 and an absolute value on its residue field $\kappa(x)$ that is trivial on $k$, with the
 Berkovich topology (the coarsest topology for which the supports and the evaluations of
 sections are continuous).
 \end{definition}
 
-\begin{definition}[Convergence in the ample-cone order]
+\begin{definition}[Convergence in the ample-cone order {\cite[Definition~4.1]{BJ22}}]
 \label{def:var-ample-convergence}
 \lean{EnvelopeProperty.Variety.AmpleTendsto}
 \leanok
 \uses{def:native-numerical-ample-cone}
-\source{bj22-trivval:defi:psh}
 Let $(c_j)_{j\in J}$ be a family in $N^1(X)_\R$, $\mathcal F$ a filter on $J$ and
 $\theta\in N^1(X)_\R$. We say that $c_j\to\theta$ along $\mathcal F$ if for every
 $\eta\in\operatorname{Amp}(X)$, eventually along $\mathcal F$ both $\eta+(c_j-\theta)$ and
@@ -70,13 +68,12 @@ definition to the ample class $r^{-1}\eta$ and multiply by $r$; for $r<0$, do th
 $-r$ and exchange the two conditions; for $r=0$ the family is constant.
 \end{proof}
 
-\begin{lemma}[Openness of the ample cone along a convergent family]
+\begin{lemma}[Openness of the ample cone along a convergent family {\cite[Lemma~2.6]{FHX}}]
 \label{lem:var-ample-convergence-openness}
 \lean{EnvelopeProperty.Variety.AmpleTendsto.eventually_sub_mem,
 EnvelopeProperty.Variety.AmpleTendsto.eventually_add_sub_mem}
 \leanok
 \uses{def:var-ample-convergence}
-\source{fhx-envelope-20261028:lem:finite-class-promotion}
 If $c_j\to\theta$ and $\eta$ is ample, then eventually $\theta+\eta-c_j$ and $c_j+\eta-\theta$
 are ample.
 \end{lemma}
@@ -153,12 +150,11 @@ $\varphi_D$ of nonzero data with $[D]=\theta$ form the set $\mathcal H^{\mathrm{
 of generically finite Fubini--Study functions of class $\theta$
 (Definition~\ref{def:native-numerical-whole-section-fs}).
 
-\begin{definition}[$\theta$-psh functions]
+\begin{definition}[$\theta$-psh functions {\cite[Definition~4.1, Definition~2.18]{BJ22}}]
 \label{def:var-psh}
 \lean{EnvelopeProperty.Variety.IsPSH}
 \leanok
 \uses{def:var-analytification,def:var-ample-convergence,def:native-numerical-whole-section-fs-data}
-\source{bj22-trivval:defi:psh,bj22-trivval:defi:FS}
 Let $X$ be integral and $\theta\in N^1(X)_\R$. A function
 $\varphi:X^{\mathrm{an}}\to[-\infty,+\infty]$ is \emph{$\theta$-psh} if it is not identically
 $-\infty$, upper semicontinuous, and the pointwise limit (infimum) of a decreasing net
@@ -178,12 +174,11 @@ dimensional (Corollary~\ref{cor:var-psh-curve-weak-fd}). The index sets of the n
 a fixed universe, a size convention.
 \end{remark}
 
-\begin{definition}[The envelope property]
+\begin{definition}[The envelope property {\cite[Theorem~A]{FHX}, \cite[\S5.2]{BJ22}}]
 \label{def:var-ep}
 \lean{EnvelopeProperty.Variety.HasEnvelopeProperty}
 \leanok
 \uses{def:var-psh}
-\source{fhx-envelope-20261028:thm:intro-main,bj22-trivval:sec:envprop}
 A class $\theta\in N^1(X)_\R$ has the \emph{envelope property} $\operatorname{EP}_X(\theta)$ if
 for every nonempty set $S\subset\operatorname{PSH}(X,\theta)$ that is uniformly bounded above,
 the upper semicontinuous regularization $(\sup S)^\star$ of its pointwise supremum is
@@ -261,13 +256,12 @@ $\sup_i\varphi_i$.
 
 \subsection{Promotion of Fubini--Study functions}
 
-\begin{lemma}[Finite class promotion]
+\begin{lemma}[Finite class promotion {\cite[Lemma~2.6]{FHX}}]
 \label{lem:var-class-promotion}
 \lean{EnvelopeProperty.NativeNumericalFubiniStudy.FSData.exists_promotion,
 EnvelopeProperty.NativeNumericalFubiniStudy.FSData.isFS_of_ample_sub}
 \leanok
 \uses{thm:native-numerical-kleiman-from-nef-ample,lem:native-numerical-ray-from-ample-class,thm:native-numerical-fs-from-ray,thm:native-numerical-generated-line-sums,lem:native-numerical-line-tensor-power}
-\source{fhx-envelope-20261028:lem:finite-class-promotion}
 Let $X$ be integral, $D=(L,m,(s_j,\lambda_j))$ a nonzero Fubini--Study datum, $M$ an invertible
 sheaf and $n>0$ such that $n^{-1}[M]-[D]$ is ample. Then there are $t>0$ and a nonzero datum $E$
 with line $M^{\otimes t}$, denominator $nt$ and $\varphi_E=\varphi_D$. In particular
@@ -348,7 +342,6 @@ $c_j-\theta$.
 \lean{EnvelopeProperty.Variety.isPSH_iff_isCurveWeakPSH}
 \leanok
 \uses{thm:var-ample-convergence-fd,def:var-psh,def:native-numerical-curve-weak-psh}
-\source{bj22-trivval:defi:psh}
 If $N^1(X)_\R$ is finite dimensional, then $\operatorname{PSH}(X,\theta)$ is the set of
 functions of Boucksom--Jonsson, Definition~4.1, with convergence of the classes in the topology
 of $N^1(X)_\R$.
