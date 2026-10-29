@@ -74,6 +74,23 @@ formal results. In particular:
   Remark 7.3, refuting a monotonicity step in the proof of BJ22 Theorem 6.21
   ([source](EnvelopeProperty/Projective/Remark73ProjectiveLine.lean)).
 
+## Counterexample to BJ22 Theorem 4.5
+
+[`BJ45-counterexample.md`](BJ45-counterexample.md) gives a mathematical
+counterexample to the original varying-class assertion (PSH2) in BJ22
+Theorem 4.5. On an integral projective non-unibranch surface $X$, it constructs
+an ample line bundle $A$, a class $\theta$, and a generically finite function $u$
+such that
+
+$$
+u\in\operatorname{PSH}(X,\theta+n^{-1}[A])\quad\text{for every }n\ge1,
+\qquad u\notin\operatorname{PSH}(X,\theta).
+$$
+
+Thus the constant sequence $u_n=u$ violates the varying-class assertion.
+The note includes the construction and proof; **it is not formalized in Lean**.
+It does not contradict the unibranch results stated above.
+
 ## Building
 
 Install [elan](https://github.com/leanprover/elan), `git` and `xz`. The toolchain is
@@ -150,3 +167,4 @@ Apache-2.0. Vendored code retains its own license notices.
 The paper is by Yanbo Fang, Jiyuan Han and Mingchen Xia. The Lean formalization
 was carried out by the AI agents Claude (Anthropic) and Codex (OpenAI).
 It builds on Mathlib and the third-party projects credited above.
+
