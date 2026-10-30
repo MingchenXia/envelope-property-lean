@@ -64,7 +64,7 @@ over a trivially valued field”*.
 
 ## Wu
 
-Source: K.-R. Wu, *On the local theory of non-archimedean psh functions*.
+Source: L. Wu, *On the local theory of non-archimedean psh functions*.
 The following corrections are also recorded in FHX §5.
 
 ### Wu-Principal. Lemma 5.11 and Proposition 5.10
